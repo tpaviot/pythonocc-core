@@ -58,6 +58,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StlMesh_SequenceNodeOfSequenceOfMeshTriangle.hxx>
 #include<StlMesh_MeshTriangle.hxx>
 #include<StlMesh_MeshDomain.hxx>
+#include<TopLoc_MapOfLocation.hxx>
+#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
+#include<TopLoc_Datum3D.hxx>
+#include<TopLoc_ItemLocation.hxx>
+#include<TopLoc_IndexedMapOfLocation.hxx>
+#include<TopLoc_MapLocationHasher.hxx>
+#include<TopLoc_Location.hxx>
+#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
+#include<TopLoc_SListNodeOfItemLocation.hxx>
+#include<TopLoc_SListOfItemLocation.hxx>
+#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_Array2OfXYZ.hxx>
 #include<TColgp_SequenceOfVec.hxx>

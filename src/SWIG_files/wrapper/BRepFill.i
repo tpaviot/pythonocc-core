@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPFILLDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BREPFILLDOCSTRING) BRepFill
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepFill_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -70,6 +56,29 @@ enum BRepFill_TransitionStyle {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(BRepFill_CurveConstraint)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfNodeShape)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt)
+%wrap_handle(BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal)
+%wrap_handle(BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape)
+%wrap_handle(BRepFill_ListNodeOfListOfOffsetWire)
+%wrap_handle(BRepFill_LocationLaw)
+%wrap_handle(BRepFill_PipeShell)
+%wrap_handle(BRepFill_SectionLaw)
+%wrap_handle(BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder)
+%wrap_handle(BRepFill_SequenceNodeOfSequenceOfFaceAndOrder)
+%wrap_handle(BRepFill_SequenceNodeOfSequenceOfSection)
+%wrap_handle(BRepFill_ACRLaw)
+%wrap_handle(BRepFill_Edge3DLaw)
+%wrap_handle(BRepFill_EdgeOnSurfLaw)
+%wrap_handle(BRepFill_NSections)
+%wrap_handle(BRepFill_ShapeLaw)
+%wrap_handle(BRepFill_DraftLaw)
 
 %rename(brepfill) BRepFill;
 class BRepFill {
@@ -405,51 +414,7 @@ class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 };
 
 
-%extend BRepFill_CurveConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_CurveConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_CurveConstraint::Handle_BRepFill_CurveConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_CurveConstraint;
-class Handle_BRepFill_CurveConstraint : public Handle_GeomPlate_CurveConstraint {
-
-    public:
-        // constructors
-        Handle_BRepFill_CurveConstraint();
-        Handle_BRepFill_CurveConstraint(const Handle_BRepFill_CurveConstraint &aHandle);
-        Handle_BRepFill_CurveConstraint(const BRepFill_CurveConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_CurveConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_CurveConstraint {
-    BRepFill_CurveConstraint* _get_reference() {
-    return (BRepFill_CurveConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_CurveConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_CurveConstraint)
 
 %extend BRepFill_CurveConstraint {
 	%pythoncode {
@@ -725,51 +690,7 @@ class BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public TCollectio
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape::Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape;
-class Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape();
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape(const Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape(const BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
-    BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape)
 
 %extend BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
 	%pythoncode {
@@ -800,51 +721,7 @@ class BRepFill_DataMapNodeOfDataMapOfNodeShape : public TCollection_MapNode {
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfNodeShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape::Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape;
-class Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape();
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape(const Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape(const BRepFill_DataMapNodeOfDataMapOfNodeShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape {
-    BRepFill_DataMapNodeOfDataMapOfNodeShape* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfNodeShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfNodeShape)
 
 %extend BRepFill_DataMapNodeOfDataMapOfNodeShape {
 	%pythoncode {
@@ -875,51 +752,7 @@ class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public TCollecti
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape::Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape;
-class Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape();
-        Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape(const Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape(const BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
-    BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape)
 
 %extend BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
 	%pythoncode {
@@ -950,51 +783,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : public TCo
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape::Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape;
-class Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape();
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape(const Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape(const BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
-    BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape)
 
 %extend BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
 	%pythoncode {
@@ -1025,51 +814,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public TCollection_Ma
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape::Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape;
-class Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape();
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape(const Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape(const BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
-    BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape)
 
 %extend BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
 	%pythoncode {
@@ -1100,51 +845,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public TCollection_Map
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt::Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt;
-class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt();
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt(const Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt(const BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
-    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt)
 
 %extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
 	%pythoncode {
@@ -1175,51 +876,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public TCollection_Ma
 };
 
 
-%extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal::Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal;
-class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal();
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal(const Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal &aHandle);
-        Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal(const BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
-    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal* _get_reference() {
-    return (BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal)
 
 %extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
 	%pythoncode {
@@ -2334,51 +1991,7 @@ class BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape : pu
 };
 
 
-%extend BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape::Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape;
-class Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape();
-        Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape(const Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape &aHandle);
-        Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape(const BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
-    BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape* _get_reference() {
-    return (BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape)
 
 %extend BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
 	%pythoncode {
@@ -2557,51 +2170,7 @@ class BRepFill_ListNodeOfListOfOffsetWire : public TCollection_MapNode {
 };
 
 
-%extend BRepFill_ListNodeOfListOfOffsetWire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_ListNodeOfListOfOffsetWire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_ListNodeOfListOfOffsetWire::Handle_BRepFill_ListNodeOfListOfOffsetWire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_ListNodeOfListOfOffsetWire;
-class Handle_BRepFill_ListNodeOfListOfOffsetWire : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_ListNodeOfListOfOffsetWire();
-        Handle_BRepFill_ListNodeOfListOfOffsetWire(const Handle_BRepFill_ListNodeOfListOfOffsetWire &aHandle);
-        Handle_BRepFill_ListNodeOfListOfOffsetWire(const BRepFill_ListNodeOfListOfOffsetWire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_ListNodeOfListOfOffsetWire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_ListNodeOfListOfOffsetWire {
-    BRepFill_ListNodeOfListOfOffsetWire* _get_reference() {
-    return (BRepFill_ListNodeOfListOfOffsetWire*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_ListNodeOfListOfOffsetWire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_ListNodeOfListOfOffsetWire)
 
 %extend BRepFill_ListNodeOfListOfOffsetWire {
 	%pythoncode {
@@ -2897,51 +2466,7 @@ class BRepFill_LocationLaw : public MMgt_TShared {
 };
 
 
-%extend BRepFill_LocationLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_LocationLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_LocationLaw::Handle_BRepFill_LocationLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_LocationLaw;
-class Handle_BRepFill_LocationLaw : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepFill_LocationLaw();
-        Handle_BRepFill_LocationLaw(const Handle_BRepFill_LocationLaw &aHandle);
-        Handle_BRepFill_LocationLaw(const BRepFill_LocationLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_LocationLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_LocationLaw {
-    BRepFill_LocationLaw* _get_reference() {
-    return (BRepFill_LocationLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_LocationLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_LocationLaw)
 
 %extend BRepFill_LocationLaw {
 	%pythoncode {
@@ -3552,51 +3077,7 @@ class BRepFill_PipeShell : public MMgt_TShared {
 };
 
 
-%extend BRepFill_PipeShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_PipeShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_PipeShell::Handle_BRepFill_PipeShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_PipeShell;
-class Handle_BRepFill_PipeShell : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepFill_PipeShell();
-        Handle_BRepFill_PipeShell(const Handle_BRepFill_PipeShell &aHandle);
-        Handle_BRepFill_PipeShell(const BRepFill_PipeShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_PipeShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_PipeShell {
-    BRepFill_PipeShell* _get_reference() {
-    return (BRepFill_PipeShell*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_PipeShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_PipeShell)
 
 %extend BRepFill_PipeShell {
 	%pythoncode {
@@ -3736,51 +3217,7 @@ class BRepFill_SectionLaw : public MMgt_TShared {
 };
 
 
-%extend BRepFill_SectionLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_SectionLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_SectionLaw::Handle_BRepFill_SectionLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_SectionLaw;
-class Handle_BRepFill_SectionLaw : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepFill_SectionLaw();
-        Handle_BRepFill_SectionLaw(const Handle_BRepFill_SectionLaw &aHandle);
-        Handle_BRepFill_SectionLaw(const BRepFill_SectionLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_SectionLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_SectionLaw {
-    BRepFill_SectionLaw* _get_reference() {
-    return (BRepFill_SectionLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_SectionLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_SectionLaw)
 
 %extend BRepFill_SectionLaw {
 	%pythoncode {
@@ -3856,51 +3293,7 @@ class BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public TCollection_Seq
 };
 
 
-%extend BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder::Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder;
-class Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder();
-        Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder(const Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder &aHandle);
-        Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder(const BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
-    BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder* _get_reference() {
-    return (BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder)
 
 %extend BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
 	%pythoncode {
@@ -3927,51 +3320,7 @@ class BRepFill_SequenceNodeOfSequenceOfFaceAndOrder : public TCollection_SeqNode
 };
 
 
-%extend BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder::Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder;
-class Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder();
-        Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder(const Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder &aHandle);
-        Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder(const BRepFill_SequenceNodeOfSequenceOfFaceAndOrder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
-    BRepFill_SequenceNodeOfSequenceOfFaceAndOrder* _get_reference() {
-    return (BRepFill_SequenceNodeOfSequenceOfFaceAndOrder*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_SequenceNodeOfSequenceOfFaceAndOrder)
 
 %extend BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
 	%pythoncode {
@@ -3998,51 +3347,7 @@ class BRepFill_SequenceNodeOfSequenceOfSection : public TCollection_SeqNode {
 };
 
 
-%extend BRepFill_SequenceNodeOfSequenceOfSection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_SequenceNodeOfSequenceOfSection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_SequenceNodeOfSequenceOfSection::Handle_BRepFill_SequenceNodeOfSequenceOfSection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_SequenceNodeOfSequenceOfSection;
-class Handle_BRepFill_SequenceNodeOfSequenceOfSection : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepFill_SequenceNodeOfSequenceOfSection();
-        Handle_BRepFill_SequenceNodeOfSequenceOfSection(const Handle_BRepFill_SequenceNodeOfSequenceOfSection &aHandle);
-        Handle_BRepFill_SequenceNodeOfSequenceOfSection(const BRepFill_SequenceNodeOfSequenceOfSection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_SequenceNodeOfSequenceOfSection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfSection {
-    BRepFill_SequenceNodeOfSequenceOfSection* _get_reference() {
-    return (BRepFill_SequenceNodeOfSequenceOfSection*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_SequenceNodeOfSequenceOfSection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_SequenceNodeOfSequenceOfSection)
 
 %extend BRepFill_SequenceNodeOfSequenceOfSection {
 	%pythoncode {
@@ -4808,51 +4113,7 @@ class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 };
 
 
-%extend BRepFill_ACRLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_ACRLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_ACRLaw::Handle_BRepFill_ACRLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_ACRLaw;
-class Handle_BRepFill_ACRLaw : public Handle_BRepFill_LocationLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_ACRLaw();
-        Handle_BRepFill_ACRLaw(const Handle_BRepFill_ACRLaw &aHandle);
-        Handle_BRepFill_ACRLaw(const BRepFill_ACRLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_ACRLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_ACRLaw {
-    BRepFill_ACRLaw* _get_reference() {
-    return (BRepFill_ACRLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_ACRLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_ACRLaw)
 
 %extend BRepFill_ACRLaw {
 	%pythoncode {
@@ -4873,51 +4134,7 @@ class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
 };
 
 
-%extend BRepFill_Edge3DLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_Edge3DLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_Edge3DLaw::Handle_BRepFill_Edge3DLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_Edge3DLaw;
-class Handle_BRepFill_Edge3DLaw : public Handle_BRepFill_LocationLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_Edge3DLaw();
-        Handle_BRepFill_Edge3DLaw(const Handle_BRepFill_Edge3DLaw &aHandle);
-        Handle_BRepFill_Edge3DLaw(const BRepFill_Edge3DLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_Edge3DLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_Edge3DLaw {
-    BRepFill_Edge3DLaw* _get_reference() {
-    return (BRepFill_Edge3DLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_Edge3DLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_Edge3DLaw)
 
 %extend BRepFill_Edge3DLaw {
 	%pythoncode {
@@ -4944,51 +4161,7 @@ class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
 };
 
 
-%extend BRepFill_EdgeOnSurfLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_EdgeOnSurfLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_EdgeOnSurfLaw::Handle_BRepFill_EdgeOnSurfLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_EdgeOnSurfLaw;
-class Handle_BRepFill_EdgeOnSurfLaw : public Handle_BRepFill_LocationLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_EdgeOnSurfLaw();
-        Handle_BRepFill_EdgeOnSurfLaw(const Handle_BRepFill_EdgeOnSurfLaw &aHandle);
-        Handle_BRepFill_EdgeOnSurfLaw(const BRepFill_EdgeOnSurfLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_EdgeOnSurfLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_EdgeOnSurfLaw {
-    BRepFill_EdgeOnSurfLaw* _get_reference() {
-    return (BRepFill_EdgeOnSurfLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_EdgeOnSurfLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_EdgeOnSurfLaw)
 
 %extend BRepFill_EdgeOnSurfLaw {
 	%pythoncode {
@@ -5079,51 +4252,7 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 };
 
 
-%extend BRepFill_NSections {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_NSections(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_NSections::Handle_BRepFill_NSections %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_NSections;
-class Handle_BRepFill_NSections : public Handle_BRepFill_SectionLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_NSections();
-        Handle_BRepFill_NSections(const Handle_BRepFill_NSections &aHandle);
-        Handle_BRepFill_NSections(const BRepFill_NSections *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_NSections DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_NSections {
-    BRepFill_NSections* _get_reference() {
-    return (BRepFill_NSections*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_NSections {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_NSections)
 
 %extend BRepFill_NSections {
 	%pythoncode {
@@ -5224,51 +4353,7 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 };
 
 
-%extend BRepFill_ShapeLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_ShapeLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_ShapeLaw::Handle_BRepFill_ShapeLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_ShapeLaw;
-class Handle_BRepFill_ShapeLaw : public Handle_BRepFill_SectionLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_ShapeLaw();
-        Handle_BRepFill_ShapeLaw(const Handle_BRepFill_ShapeLaw &aHandle);
-        Handle_BRepFill_ShapeLaw(const BRepFill_ShapeLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_ShapeLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_ShapeLaw {
-    BRepFill_ShapeLaw* _get_reference() {
-    return (BRepFill_ShapeLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_ShapeLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_ShapeLaw)
 
 %extend BRepFill_ShapeLaw {
 	%pythoncode {
@@ -5297,51 +4382,7 @@ class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
 };
 
 
-%extend BRepFill_DraftLaw {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepFill_DraftLaw(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepFill_DraftLaw::Handle_BRepFill_DraftLaw %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepFill_DraftLaw;
-class Handle_BRepFill_DraftLaw : public Handle_BRepFill_Edge3DLaw {
-
-    public:
-        // constructors
-        Handle_BRepFill_DraftLaw();
-        Handle_BRepFill_DraftLaw(const Handle_BRepFill_DraftLaw &aHandle);
-        Handle_BRepFill_DraftLaw(const BRepFill_DraftLaw *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepFill_DraftLaw DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepFill_DraftLaw {
-    BRepFill_DraftLaw* _get_reference() {
-    return (BRepFill_DraftLaw*)$self->Access();
-    }
-};
-
-%extend Handle_BRepFill_DraftLaw {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepFill_DraftLaw)
 
 %extend BRepFill_DraftLaw {
 	%pythoncode {

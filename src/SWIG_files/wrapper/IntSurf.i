@@ -18,7 +18,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTSURFDOCSTRING
-"No docstring provided."
+"This package provides resources for
+all the packages concerning the intersection
+between surfaces.
+
+-Level: Internal
+
+All the methods of all the classes of this package are Internal.
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTSURFDOCSTRING) IntSurf
 
@@ -34,24 +43,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntSurf_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Handle_NCollection_BaseAllocator IntSurf_Allocator;
@@ -73,6 +68,12 @@ enum IntSurf_TypeTrans {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(IntSurf_LineOn2S)
+%wrap_handle(IntSurf_ListNodeOfListOfPntOn2S)
+%wrap_handle(IntSurf_SequenceNodeOfSequenceOfCouple)
+%wrap_handle(IntSurf_SequenceNodeOfSequenceOfInteriorPoint)
+%wrap_handle(IntSurf_SequenceNodeOfSequenceOfPathPoint)
 
 %rename(intsurf) IntSurf;
 class IntSurf {
@@ -355,51 +356,7 @@ class IntSurf_LineOn2S : public MMgt_TShared {
 };
 
 
-%extend IntSurf_LineOn2S {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntSurf_LineOn2S(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntSurf_LineOn2S::Handle_IntSurf_LineOn2S %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntSurf_LineOn2S;
-class Handle_IntSurf_LineOn2S : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IntSurf_LineOn2S();
-        Handle_IntSurf_LineOn2S(const Handle_IntSurf_LineOn2S &aHandle);
-        Handle_IntSurf_LineOn2S(const IntSurf_LineOn2S *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntSurf_LineOn2S DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntSurf_LineOn2S {
-    IntSurf_LineOn2S* _get_reference() {
-    return (IntSurf_LineOn2S*)$self->Access();
-    }
-};
-
-%extend Handle_IntSurf_LineOn2S {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntSurf_LineOn2S)
 
 %extend IntSurf_LineOn2S {
 	%pythoncode {
@@ -463,51 +420,7 @@ class IntSurf_ListNodeOfListOfPntOn2S : public TCollection_MapNode {
 };
 
 
-%extend IntSurf_ListNodeOfListOfPntOn2S {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntSurf_ListNodeOfListOfPntOn2S(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntSurf_ListNodeOfListOfPntOn2S::Handle_IntSurf_ListNodeOfListOfPntOn2S %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntSurf_ListNodeOfListOfPntOn2S;
-class Handle_IntSurf_ListNodeOfListOfPntOn2S : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntSurf_ListNodeOfListOfPntOn2S();
-        Handle_IntSurf_ListNodeOfListOfPntOn2S(const Handle_IntSurf_ListNodeOfListOfPntOn2S &aHandle);
-        Handle_IntSurf_ListNodeOfListOfPntOn2S(const IntSurf_ListNodeOfListOfPntOn2S *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntSurf_ListNodeOfListOfPntOn2S DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntSurf_ListNodeOfListOfPntOn2S {
-    IntSurf_ListNodeOfListOfPntOn2S* _get_reference() {
-    return (IntSurf_ListNodeOfListOfPntOn2S*)$self->Access();
-    }
-};
-
-%extend Handle_IntSurf_ListNodeOfListOfPntOn2S {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntSurf_ListNodeOfListOfPntOn2S)
 
 %extend IntSurf_ListNodeOfListOfPntOn2S {
 	%pythoncode {
@@ -1236,51 +1149,7 @@ class IntSurf_SequenceNodeOfSequenceOfCouple : public TCollection_SeqNode {
 };
 
 
-%extend IntSurf_SequenceNodeOfSequenceOfCouple {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntSurf_SequenceNodeOfSequenceOfCouple(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntSurf_SequenceNodeOfSequenceOfCouple::Handle_IntSurf_SequenceNodeOfSequenceOfCouple %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntSurf_SequenceNodeOfSequenceOfCouple;
-class Handle_IntSurf_SequenceNodeOfSequenceOfCouple : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntSurf_SequenceNodeOfSequenceOfCouple();
-        Handle_IntSurf_SequenceNodeOfSequenceOfCouple(const Handle_IntSurf_SequenceNodeOfSequenceOfCouple &aHandle);
-        Handle_IntSurf_SequenceNodeOfSequenceOfCouple(const IntSurf_SequenceNodeOfSequenceOfCouple *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntSurf_SequenceNodeOfSequenceOfCouple DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfCouple {
-    IntSurf_SequenceNodeOfSequenceOfCouple* _get_reference() {
-    return (IntSurf_SequenceNodeOfSequenceOfCouple*)$self->Access();
-    }
-};
-
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfCouple {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntSurf_SequenceNodeOfSequenceOfCouple)
 
 %extend IntSurf_SequenceNodeOfSequenceOfCouple {
 	%pythoncode {
@@ -1307,51 +1176,7 @@ class IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public TCollection_SeqNode
 };
 
 
-%extend IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint::Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint;
-class Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint();
-        Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint(const Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint &aHandle);
-        Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint(const IntSurf_SequenceNodeOfSequenceOfInteriorPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
-    IntSurf_SequenceNodeOfSequenceOfInteriorPoint* _get_reference() {
-    return (IntSurf_SequenceNodeOfSequenceOfInteriorPoint*)$self->Access();
-    }
-};
-
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntSurf_SequenceNodeOfSequenceOfInteriorPoint)
 
 %extend IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
 	%pythoncode {
@@ -1378,51 +1203,7 @@ class IntSurf_SequenceNodeOfSequenceOfPathPoint : public TCollection_SeqNode {
 };
 
 
-%extend IntSurf_SequenceNodeOfSequenceOfPathPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint::Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint;
-class Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint();
-        Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint(const Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint &aHandle);
-        Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint(const IntSurf_SequenceNodeOfSequenceOfPathPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint {
-    IntSurf_SequenceNodeOfSequenceOfPathPoint* _get_reference() {
-    return (IntSurf_SequenceNodeOfSequenceOfPathPoint*)$self->Access();
-    }
-};
-
-%extend Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntSurf_SequenceNodeOfSequenceOfPathPoint)
 
 %extend IntSurf_SequenceNodeOfSequenceOfPathPoint {
 	%pythoncode {

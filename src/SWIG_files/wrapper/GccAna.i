@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCANADOCSTRING
-"No docstring provided."
+"-Purpose : This package provides an implementation of analytics
+algorithms (using only non persistant entities) used
+to create 2d lines or circles with geometric constraints.
+"
 %enddef
 %module (package="OCC.Core", docstring=GCCANADOCSTRING) GccAna
 
@@ -34,30 +37,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GccAna_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor GccAna_Circ2d2TanOn;
 class GccAna_Circ2d2TanOn {

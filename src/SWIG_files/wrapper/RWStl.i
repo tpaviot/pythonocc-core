@@ -18,7 +18,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTLDOCSTRING
-"No docstring provided."
+"This package contains the methods to be used in
+the Stereo Lithograpy Application. The main
+features of this application are ,starting from a
+Shape :
+- mesh this shape with a maximun tolerance,
+- display the meshing,
+- write the meshing in a file (binary or ascii),
+- read of file (binary or ascii) and display it,
+- translate a binary file to an ascii file,
+- translate an ascii file to an binary file.
+"
 %enddef
 %module (package="OCC.Core", docstring=RWSTLDOCSTRING) RWStl
 
@@ -34,30 +44,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include RWStl_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(rwstl) RWStl;
 class RWStl {

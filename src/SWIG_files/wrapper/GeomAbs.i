@@ -18,7 +18,29 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMABSDOCSTRING
-"No docstring provided."
+"This package gives resources for Geometric applications
+
+it contains :
+CurveType enumeration to describe the different type of
+curves
+
+SurfaceType enumeration to describe the different type of
+surfaces
+
+Shape enumeration to describe the continuity of curve
+or surface
+
+CurveForm enumeration to describe the specific form of
+curve
+
+SurfaceForm enumeration to describe the specific form of
+surface
+
+BSplKnotDistribution enumeration to describe the
+repartition of set of knots
+
+UVSense enumeration to describe the orientation of
+the parametric surface"
 %enddef
 %module (package="OCC.Core", docstring=GEOMABSDOCSTRING) GeomAbs
 
@@ -34,24 +56,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomAbs_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -140,4 +148,5 @@ enum GeomAbs_UVSense {
 };
 
 /* end public enums declaration */
+
 

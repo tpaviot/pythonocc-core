@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BITGTEDOCSTRING
-"No docstring provided."
+"
+"
 %enddef
 %module (package="OCC.Core", docstring=BITGTEDOCSTRING) BiTgte
 
@@ -34,24 +35,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BiTgte_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -67,6 +54,10 @@ enum BiTgte_ContactType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(BiTgte_DataMapNodeOfDataMapOfShapeBox)
+%wrap_handle(BiTgte_HCurveOnEdge)
+%wrap_handle(BiTgte_HCurveOnVertex)
 
 %nodefaultctor BiTgte_Blend;
 class BiTgte_Blend {
@@ -784,51 +775,7 @@ class BiTgte_DataMapNodeOfDataMapOfShapeBox : public TCollection_MapNode {
 };
 
 
-%extend BiTgte_DataMapNodeOfDataMapOfShapeBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox::Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox;
-class Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox();
-        Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox(const Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox &aHandle);
-        Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox(const BiTgte_DataMapNodeOfDataMapOfShapeBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox {
-    BiTgte_DataMapNodeOfDataMapOfShapeBox* _get_reference() {
-    return (BiTgte_DataMapNodeOfDataMapOfShapeBox*)$self->Access();
-    }
-};
-
-%extend Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BiTgte_DataMapNodeOfDataMapOfShapeBox)
 
 %extend BiTgte_DataMapNodeOfDataMapOfShapeBox {
 	%pythoncode {
@@ -952,51 +899,7 @@ class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
 };
 
 
-%extend BiTgte_HCurveOnEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BiTgte_HCurveOnEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BiTgte_HCurveOnEdge::Handle_BiTgte_HCurveOnEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BiTgte_HCurveOnEdge;
-class Handle_BiTgte_HCurveOnEdge : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_BiTgte_HCurveOnEdge();
-        Handle_BiTgte_HCurveOnEdge(const Handle_BiTgte_HCurveOnEdge &aHandle);
-        Handle_BiTgte_HCurveOnEdge(const BiTgte_HCurveOnEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BiTgte_HCurveOnEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BiTgte_HCurveOnEdge {
-    BiTgte_HCurveOnEdge* _get_reference() {
-    return (BiTgte_HCurveOnEdge*)$self->Access();
-    }
-};
-
-%extend Handle_BiTgte_HCurveOnEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BiTgte_HCurveOnEdge)
 
 %extend BiTgte_HCurveOnEdge {
 	%pythoncode {
@@ -1037,51 +940,7 @@ class BiTgte_HCurveOnVertex : public Adaptor3d_HCurve {
 };
 
 
-%extend BiTgte_HCurveOnVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BiTgte_HCurveOnVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BiTgte_HCurveOnVertex::Handle_BiTgte_HCurveOnVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BiTgte_HCurveOnVertex;
-class Handle_BiTgte_HCurveOnVertex : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_BiTgte_HCurveOnVertex();
-        Handle_BiTgte_HCurveOnVertex(const Handle_BiTgte_HCurveOnVertex &aHandle);
-        Handle_BiTgte_HCurveOnVertex(const BiTgte_HCurveOnVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BiTgte_HCurveOnVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BiTgte_HCurveOnVertex {
-    BiTgte_HCurveOnVertex* _get_reference() {
-    return (BiTgte_HCurveOnVertex*)$self->Access();
-    }
-};
-
-%extend Handle_BiTgte_HCurveOnVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BiTgte_HCurveOnVertex)
 
 %extend BiTgte_HCurveOnVertex {
 	%pythoncode {

@@ -18,7 +18,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEPROCESSDOCSTRING
-"No docstring provided."
+"Shape Processing module
+allows to define and apply general Shape Processing as a
+customizable sequence of Shape Healing operators. The
+customization is implemented via user-editable resource
+file which defines sequence of operators to be executed
+and their parameters.
+"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEPROCESSDOCSTRING) ShapeProcess
 
@@ -34,24 +40,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeProcess_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const Handle_ShapeProcess_Context & context );
@@ -59,6 +51,13 @@ typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const Handle_ShapeProcess
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeProcess_Context)
+%wrap_handle(ShapeProcess_DictionaryOfOperator)
+%wrap_handle(ShapeProcess_Operator)
+%wrap_handle(ShapeProcess_StackItemOfDictionaryOfOperator)
+%wrap_handle(ShapeProcess_ShapeContext)
+%wrap_handle(ShapeProcess_UOperator)
 
 %rename(shapeprocess) ShapeProcess;
 class ShapeProcess {
@@ -279,51 +278,7 @@ class ShapeProcess_Context : public MMgt_TShared {
 };
 
 
-%extend ShapeProcess_Context {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_Context(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_Context::Handle_ShapeProcess_Context %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_Context;
-class Handle_ShapeProcess_Context : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_Context();
-        Handle_ShapeProcess_Context(const Handle_ShapeProcess_Context &aHandle);
-        Handle_ShapeProcess_Context(const ShapeProcess_Context *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_Context DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_Context {
-    ShapeProcess_Context* _get_reference() {
-    return (ShapeProcess_Context*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_Context {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_Context)
 
 %extend ShapeProcess_Context {
 	%pythoncode {
@@ -474,51 +429,7 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 };
 
 
-%extend ShapeProcess_DictionaryOfOperator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_DictionaryOfOperator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_DictionaryOfOperator::Handle_ShapeProcess_DictionaryOfOperator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_DictionaryOfOperator;
-class Handle_ShapeProcess_DictionaryOfOperator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_DictionaryOfOperator();
-        Handle_ShapeProcess_DictionaryOfOperator(const Handle_ShapeProcess_DictionaryOfOperator &aHandle);
-        Handle_ShapeProcess_DictionaryOfOperator(const ShapeProcess_DictionaryOfOperator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_DictionaryOfOperator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_DictionaryOfOperator {
-    ShapeProcess_DictionaryOfOperator* _get_reference() {
-    return (ShapeProcess_DictionaryOfOperator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_DictionaryOfOperator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_DictionaryOfOperator)
 
 %extend ShapeProcess_DictionaryOfOperator {
 	%pythoncode {
@@ -624,51 +535,7 @@ class ShapeProcess_Operator : public MMgt_TShared {
 };
 
 
-%extend ShapeProcess_Operator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_Operator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_Operator::Handle_ShapeProcess_Operator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_Operator;
-class Handle_ShapeProcess_Operator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_Operator();
-        Handle_ShapeProcess_Operator(const Handle_ShapeProcess_Operator &aHandle);
-        Handle_ShapeProcess_Operator(const ShapeProcess_Operator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_Operator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_Operator {
-    ShapeProcess_Operator* _get_reference() {
-    return (ShapeProcess_Operator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_Operator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_Operator)
 
 %extend ShapeProcess_Operator {
 	%pythoncode {
@@ -705,51 +572,7 @@ class ShapeProcess_StackItemOfDictionaryOfOperator : public MMgt_TShared {
 };
 
 
-%extend ShapeProcess_StackItemOfDictionaryOfOperator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_StackItemOfDictionaryOfOperator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_StackItemOfDictionaryOfOperator::Handle_ShapeProcess_StackItemOfDictionaryOfOperator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_StackItemOfDictionaryOfOperator;
-class Handle_ShapeProcess_StackItemOfDictionaryOfOperator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_StackItemOfDictionaryOfOperator();
-        Handle_ShapeProcess_StackItemOfDictionaryOfOperator(const Handle_ShapeProcess_StackItemOfDictionaryOfOperator &aHandle);
-        Handle_ShapeProcess_StackItemOfDictionaryOfOperator(const ShapeProcess_StackItemOfDictionaryOfOperator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_StackItemOfDictionaryOfOperator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
-    ShapeProcess_StackItemOfDictionaryOfOperator* _get_reference() {
-    return (ShapeProcess_StackItemOfDictionaryOfOperator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_StackItemOfDictionaryOfOperator)
 
 %extend ShapeProcess_StackItemOfDictionaryOfOperator {
 	%pythoncode {
@@ -910,51 +733,7 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 };
 
 
-%extend ShapeProcess_ShapeContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_ShapeContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_ShapeContext::Handle_ShapeProcess_ShapeContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_ShapeContext;
-class Handle_ShapeProcess_ShapeContext : public Handle_ShapeProcess_Context {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_ShapeContext();
-        Handle_ShapeProcess_ShapeContext(const Handle_ShapeProcess_ShapeContext &aHandle);
-        Handle_ShapeProcess_ShapeContext(const ShapeProcess_ShapeContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_ShapeContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_ShapeContext {
-    ShapeProcess_ShapeContext* _get_reference() {
-    return (ShapeProcess_ShapeContext*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_ShapeContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_ShapeContext)
 
 %extend ShapeProcess_ShapeContext {
 	%pythoncode {
@@ -983,51 +762,7 @@ class ShapeProcess_UOperator : public ShapeProcess_Operator {
 };
 
 
-%extend ShapeProcess_UOperator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeProcess_UOperator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeProcess_UOperator::Handle_ShapeProcess_UOperator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeProcess_UOperator;
-class Handle_ShapeProcess_UOperator : public Handle_ShapeProcess_Operator {
-
-    public:
-        // constructors
-        Handle_ShapeProcess_UOperator();
-        Handle_ShapeProcess_UOperator(const Handle_ShapeProcess_UOperator &aHandle);
-        Handle_ShapeProcess_UOperator(const ShapeProcess_UOperator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeProcess_UOperator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeProcess_UOperator {
-    ShapeProcess_UOperator* _get_reference() {
-    return (ShapeProcess_UOperator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeProcess_UOperator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeProcess_UOperator)
 
 %extend ShapeProcess_UOperator {
 	%pythoncode {

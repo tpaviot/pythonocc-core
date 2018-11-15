@@ -18,7 +18,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GPDOCSTRING
-"No docstring provided."
+"- Purpose :
+The geometric processor package, called gp, provides an
+implementation of entities used :
+. for algebraic calculation such as 'XYZ' coordinates, 'Mat'
+matrix
+. for basis analytic geometry such as Transformations, point,
+vector, line, plane, axis placement, conics, and elementary
+surfaces.
+These entities are defined in 2d and 3d space.
+All the classes of this package are non-persistent.
+"
 %enddef
 %module (package="OCC.Core", docstring=GPDOCSTRING) gp
 
@@ -34,24 +44,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include gp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -99,6 +95,7 @@ enum gp_EulerSequence {
 };
 
 /* end public enums declaration */
+
 
 %rename(gp) gp;
 class gp {

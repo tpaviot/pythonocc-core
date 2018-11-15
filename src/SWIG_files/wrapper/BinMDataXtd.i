@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMDATAXTDDOCSTRING
-"No docstring provided."
+"Storage and Retrieval drivers for modelling attributes.
+"
 %enddef
 %module (package="OCC.Core", docstring=BINMDATAXTDDOCSTRING) BinMDataXtd
 
@@ -34,30 +35,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMDataXtd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMDataXtd_AxisDriver)
+%wrap_handle(BinMDataXtd_ConstraintDriver)
+%wrap_handle(BinMDataXtd_GeometryDriver)
+%wrap_handle(BinMDataXtd_PatternStdDriver)
+%wrap_handle(BinMDataXtd_PlacementDriver)
+%wrap_handle(BinMDataXtd_PlaneDriver)
+%wrap_handle(BinMDataXtd_PointDriver)
+%wrap_handle(BinMDataXtd_ShapeDriver)
 
 %rename(binmdataxtd) BinMDataXtd;
 class BinMDataXtd {
@@ -126,51 +122,7 @@ class BinMDataXtd_AxisDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_AxisDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_AxisDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_AxisDriver::Handle_BinMDataXtd_AxisDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_AxisDriver;
-class Handle_BinMDataXtd_AxisDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_AxisDriver();
-        Handle_BinMDataXtd_AxisDriver(const Handle_BinMDataXtd_AxisDriver &aHandle);
-        Handle_BinMDataXtd_AxisDriver(const BinMDataXtd_AxisDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_AxisDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_AxisDriver {
-    BinMDataXtd_AxisDriver* _get_reference() {
-    return (BinMDataXtd_AxisDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_AxisDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_AxisDriver)
 
 %extend BinMDataXtd_AxisDriver {
 	%pythoncode {
@@ -213,51 +165,7 @@ class BinMDataXtd_ConstraintDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_ConstraintDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_ConstraintDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_ConstraintDriver::Handle_BinMDataXtd_ConstraintDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_ConstraintDriver;
-class Handle_BinMDataXtd_ConstraintDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_ConstraintDriver();
-        Handle_BinMDataXtd_ConstraintDriver(const Handle_BinMDataXtd_ConstraintDriver &aHandle);
-        Handle_BinMDataXtd_ConstraintDriver(const BinMDataXtd_ConstraintDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_ConstraintDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_ConstraintDriver {
-    BinMDataXtd_ConstraintDriver* _get_reference() {
-    return (BinMDataXtd_ConstraintDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_ConstraintDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_ConstraintDriver)
 
 %extend BinMDataXtd_ConstraintDriver {
 	%pythoncode {
@@ -300,51 +208,7 @@ class BinMDataXtd_GeometryDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_GeometryDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_GeometryDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_GeometryDriver::Handle_BinMDataXtd_GeometryDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_GeometryDriver;
-class Handle_BinMDataXtd_GeometryDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_GeometryDriver();
-        Handle_BinMDataXtd_GeometryDriver(const Handle_BinMDataXtd_GeometryDriver &aHandle);
-        Handle_BinMDataXtd_GeometryDriver(const BinMDataXtd_GeometryDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_GeometryDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_GeometryDriver {
-    BinMDataXtd_GeometryDriver* _get_reference() {
-    return (BinMDataXtd_GeometryDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_GeometryDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_GeometryDriver)
 
 %extend BinMDataXtd_GeometryDriver {
 	%pythoncode {
@@ -387,51 +251,7 @@ class BinMDataXtd_PatternStdDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_PatternStdDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_PatternStdDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_PatternStdDriver::Handle_BinMDataXtd_PatternStdDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_PatternStdDriver;
-class Handle_BinMDataXtd_PatternStdDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_PatternStdDriver();
-        Handle_BinMDataXtd_PatternStdDriver(const Handle_BinMDataXtd_PatternStdDriver &aHandle);
-        Handle_BinMDataXtd_PatternStdDriver(const BinMDataXtd_PatternStdDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_PatternStdDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_PatternStdDriver {
-    BinMDataXtd_PatternStdDriver* _get_reference() {
-    return (BinMDataXtd_PatternStdDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_PatternStdDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_PatternStdDriver)
 
 %extend BinMDataXtd_PatternStdDriver {
 	%pythoncode {
@@ -474,51 +294,7 @@ class BinMDataXtd_PlacementDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_PlacementDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_PlacementDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_PlacementDriver::Handle_BinMDataXtd_PlacementDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_PlacementDriver;
-class Handle_BinMDataXtd_PlacementDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_PlacementDriver();
-        Handle_BinMDataXtd_PlacementDriver(const Handle_BinMDataXtd_PlacementDriver &aHandle);
-        Handle_BinMDataXtd_PlacementDriver(const BinMDataXtd_PlacementDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_PlacementDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_PlacementDriver {
-    BinMDataXtd_PlacementDriver* _get_reference() {
-    return (BinMDataXtd_PlacementDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_PlacementDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_PlacementDriver)
 
 %extend BinMDataXtd_PlacementDriver {
 	%pythoncode {
@@ -561,51 +337,7 @@ class BinMDataXtd_PlaneDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_PlaneDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_PlaneDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_PlaneDriver::Handle_BinMDataXtd_PlaneDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_PlaneDriver;
-class Handle_BinMDataXtd_PlaneDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_PlaneDriver();
-        Handle_BinMDataXtd_PlaneDriver(const Handle_BinMDataXtd_PlaneDriver &aHandle);
-        Handle_BinMDataXtd_PlaneDriver(const BinMDataXtd_PlaneDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_PlaneDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_PlaneDriver {
-    BinMDataXtd_PlaneDriver* _get_reference() {
-    return (BinMDataXtd_PlaneDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_PlaneDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_PlaneDriver)
 
 %extend BinMDataXtd_PlaneDriver {
 	%pythoncode {
@@ -648,51 +380,7 @@ class BinMDataXtd_PointDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_PointDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_PointDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_PointDriver::Handle_BinMDataXtd_PointDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_PointDriver;
-class Handle_BinMDataXtd_PointDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_PointDriver();
-        Handle_BinMDataXtd_PointDriver(const Handle_BinMDataXtd_PointDriver &aHandle);
-        Handle_BinMDataXtd_PointDriver(const BinMDataXtd_PointDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_PointDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_PointDriver {
-    BinMDataXtd_PointDriver* _get_reference() {
-    return (BinMDataXtd_PointDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_PointDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_PointDriver)
 
 %extend BinMDataXtd_PointDriver {
 	%pythoncode {
@@ -735,51 +423,7 @@ class BinMDataXtd_ShapeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDataXtd_ShapeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDataXtd_ShapeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDataXtd_ShapeDriver::Handle_BinMDataXtd_ShapeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDataXtd_ShapeDriver;
-class Handle_BinMDataXtd_ShapeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDataXtd_ShapeDriver();
-        Handle_BinMDataXtd_ShapeDriver(const Handle_BinMDataXtd_ShapeDriver &aHandle);
-        Handle_BinMDataXtd_ShapeDriver(const BinMDataXtd_ShapeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDataXtd_ShapeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDataXtd_ShapeDriver {
-    BinMDataXtd_ShapeDriver* _get_reference() {
-    return (BinMDataXtd_ShapeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDataXtd_ShapeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDataXtd_ShapeDriver)
 
 %extend BinMDataXtd_ShapeDriver {
 	%pythoncode {

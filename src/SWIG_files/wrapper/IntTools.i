@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTTOOLSDOCSTRING
-"No docstring provided."
+"Contains classes for intersection and classification
+-     purposes and accompanying classes"
 %enddef
 %module (package="OCC.Core", docstring=INTTOOLSDOCSTRING) IntTools
 
@@ -34,30 +35,32 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntTools_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(IntTools_Context)
+%wrap_handle(IntTools_DataMapNodeOfDataMapOfCurveSampleBox)
+%wrap_handle(IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox)
+%wrap_handle(IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress)
+%wrap_handle(IntTools_ListNodeOfListOfBox)
+%wrap_handle(IntTools_ListNodeOfListOfCurveRangeSample)
+%wrap_handle(IntTools_ListNodeOfListOfSurfaceRangeSample)
+%wrap_handle(IntTools_SequenceNodeOfSequenceOfCommonPrts)
+%wrap_handle(IntTools_SequenceNodeOfSequenceOfCurves)
+%wrap_handle(IntTools_SequenceNodeOfSequenceOfPntOn2Faces)
+%wrap_handle(IntTools_SequenceNodeOfSequenceOfRanges)
+%wrap_handle(IntTools_SequenceNodeOfSequenceOfRoots)
+%wrap_handle(IntTools_StdMapNodeOfMapOfCurveSample)
+%wrap_handle(IntTools_StdMapNodeOfMapOfSurfaceSample)
+%wrap_handle(IntTools_TopolTool)
 
 %rename(inttools) IntTools;
 class IntTools {
@@ -1125,51 +1128,7 @@ class IntTools_Context : public MMgt_TShared {
 };
 
 
-%extend IntTools_Context {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_Context(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_Context::Handle_IntTools_Context %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_Context;
-class Handle_IntTools_Context : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IntTools_Context();
-        Handle_IntTools_Context(const Handle_IntTools_Context &aHandle);
-        Handle_IntTools_Context(const IntTools_Context *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_Context DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_Context {
-    IntTools_Context* _get_reference() {
-    return (IntTools_Context*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_Context {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_Context)
 
 %extend IntTools_Context {
 	%pythoncode {
@@ -1450,51 +1409,7 @@ class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode
 };
 
 
-%extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox::Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
-class Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox();
-        Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox(const Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox &aHandle);
-        Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox(const IntTools_DataMapNodeOfDataMapOfCurveSampleBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-    IntTools_DataMapNodeOfDataMapOfCurveSampleBox* _get_reference() {
-    return (IntTools_DataMapNodeOfDataMapOfCurveSampleBox*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_DataMapNodeOfDataMapOfCurveSampleBox)
 
 %extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
 	%pythoncode {
@@ -1525,51 +1440,7 @@ class IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public TCollection_MapNo
 };
 
 
-%extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox::Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
-class Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox();
-        Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox(const Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox &aHandle);
-        Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox(const IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-    IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox* _get_reference() {
-    return (IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox)
 
 %extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
 	%pythoncode {
@@ -2297,51 +2168,7 @@ class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCo
 };
 
 
-%extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress::Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
-class Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress();
-        Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(const Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress &aHandle);
-        Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(const IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-    IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress* _get_reference() {
-    return (IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress)
 
 %extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
 	%pythoncode {
@@ -2598,51 +2425,7 @@ class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
 };
 
 
-%extend IntTools_ListNodeOfListOfBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_ListNodeOfListOfBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_ListNodeOfListOfBox::Handle_IntTools_ListNodeOfListOfBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_ListNodeOfListOfBox;
-class Handle_IntTools_ListNodeOfListOfBox : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_ListNodeOfListOfBox();
-        Handle_IntTools_ListNodeOfListOfBox(const Handle_IntTools_ListNodeOfListOfBox &aHandle);
-        Handle_IntTools_ListNodeOfListOfBox(const IntTools_ListNodeOfListOfBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_ListNodeOfListOfBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_ListNodeOfListOfBox {
-    IntTools_ListNodeOfListOfBox* _get_reference() {
-    return (IntTools_ListNodeOfListOfBox*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_ListNodeOfListOfBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_ListNodeOfListOfBox)
 
 %extend IntTools_ListNodeOfListOfBox {
 	%pythoncode {
@@ -2667,51 +2450,7 @@ class IntTools_ListNodeOfListOfCurveRangeSample : public TCollection_MapNode {
 };
 
 
-%extend IntTools_ListNodeOfListOfCurveRangeSample {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_ListNodeOfListOfCurveRangeSample(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_ListNodeOfListOfCurveRangeSample::Handle_IntTools_ListNodeOfListOfCurveRangeSample %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_ListNodeOfListOfCurveRangeSample;
-class Handle_IntTools_ListNodeOfListOfCurveRangeSample : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_ListNodeOfListOfCurveRangeSample();
-        Handle_IntTools_ListNodeOfListOfCurveRangeSample(const Handle_IntTools_ListNodeOfListOfCurveRangeSample &aHandle);
-        Handle_IntTools_ListNodeOfListOfCurveRangeSample(const IntTools_ListNodeOfListOfCurveRangeSample *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_ListNodeOfListOfCurveRangeSample DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
-    IntTools_ListNodeOfListOfCurveRangeSample* _get_reference() {
-    return (IntTools_ListNodeOfListOfCurveRangeSample*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_ListNodeOfListOfCurveRangeSample)
 
 %extend IntTools_ListNodeOfListOfCurveRangeSample {
 	%pythoncode {
@@ -2736,51 +2475,7 @@ class IntTools_ListNodeOfListOfSurfaceRangeSample : public TCollection_MapNode {
 };
 
 
-%extend IntTools_ListNodeOfListOfSurfaceRangeSample {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_ListNodeOfListOfSurfaceRangeSample(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample::Handle_IntTools_ListNodeOfListOfSurfaceRangeSample %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_ListNodeOfListOfSurfaceRangeSample;
-class Handle_IntTools_ListNodeOfListOfSurfaceRangeSample : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_ListNodeOfListOfSurfaceRangeSample();
-        Handle_IntTools_ListNodeOfListOfSurfaceRangeSample(const Handle_IntTools_ListNodeOfListOfSurfaceRangeSample &aHandle);
-        Handle_IntTools_ListNodeOfListOfSurfaceRangeSample(const IntTools_ListNodeOfListOfSurfaceRangeSample *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_ListNodeOfListOfSurfaceRangeSample DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
-    IntTools_ListNodeOfListOfSurfaceRangeSample* _get_reference() {
-    return (IntTools_ListNodeOfListOfSurfaceRangeSample*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_ListNodeOfListOfSurfaceRangeSample)
 
 %extend IntTools_ListNodeOfListOfSurfaceRangeSample {
 	%pythoncode {
@@ -3953,51 +3648,7 @@ class IntTools_SequenceNodeOfSequenceOfCommonPrts : public TCollection_SeqNode {
 };
 
 
-%extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts::Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts;
-class Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts();
-        Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts(const Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts &aHandle);
-        Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts(const IntTools_SequenceNodeOfSequenceOfCommonPrts *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
-    IntTools_SequenceNodeOfSequenceOfCommonPrts* _get_reference() {
-    return (IntTools_SequenceNodeOfSequenceOfCommonPrts*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_SequenceNodeOfSequenceOfCommonPrts)
 
 %extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
 	%pythoncode {
@@ -4024,51 +3675,7 @@ class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode {
 };
 
 
-%extend IntTools_SequenceNodeOfSequenceOfCurves {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfCurves(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfCurves::Handle_IntTools_SequenceNodeOfSequenceOfCurves %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfCurves;
-class Handle_IntTools_SequenceNodeOfSequenceOfCurves : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntTools_SequenceNodeOfSequenceOfCurves();
-        Handle_IntTools_SequenceNodeOfSequenceOfCurves(const Handle_IntTools_SequenceNodeOfSequenceOfCurves &aHandle);
-        Handle_IntTools_SequenceNodeOfSequenceOfCurves(const IntTools_SequenceNodeOfSequenceOfCurves *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_SequenceNodeOfSequenceOfCurves DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
-    IntTools_SequenceNodeOfSequenceOfCurves* _get_reference() {
-    return (IntTools_SequenceNodeOfSequenceOfCurves*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_SequenceNodeOfSequenceOfCurves)
 
 %extend IntTools_SequenceNodeOfSequenceOfCurves {
 	%pythoncode {
@@ -4095,51 +3702,7 @@ class IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public TCollection_SeqNode 
 };
 
 
-%extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces::Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
-class Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces();
-        Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces(const Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces &aHandle);
-        Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces(const IntTools_SequenceNodeOfSequenceOfPntOn2Faces *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-    IntTools_SequenceNodeOfSequenceOfPntOn2Faces* _get_reference() {
-    return (IntTools_SequenceNodeOfSequenceOfPntOn2Faces*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_SequenceNodeOfSequenceOfPntOn2Faces)
 
 %extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
 	%pythoncode {
@@ -4166,51 +3729,7 @@ class IntTools_SequenceNodeOfSequenceOfRanges : public TCollection_SeqNode {
 };
 
 
-%extend IntTools_SequenceNodeOfSequenceOfRanges {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfRanges(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfRanges::Handle_IntTools_SequenceNodeOfSequenceOfRanges %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfRanges;
-class Handle_IntTools_SequenceNodeOfSequenceOfRanges : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntTools_SequenceNodeOfSequenceOfRanges();
-        Handle_IntTools_SequenceNodeOfSequenceOfRanges(const Handle_IntTools_SequenceNodeOfSequenceOfRanges &aHandle);
-        Handle_IntTools_SequenceNodeOfSequenceOfRanges(const IntTools_SequenceNodeOfSequenceOfRanges *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_SequenceNodeOfSequenceOfRanges DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
-    IntTools_SequenceNodeOfSequenceOfRanges* _get_reference() {
-    return (IntTools_SequenceNodeOfSequenceOfRanges*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_SequenceNodeOfSequenceOfRanges)
 
 %extend IntTools_SequenceNodeOfSequenceOfRanges {
 	%pythoncode {
@@ -4237,51 +3756,7 @@ class IntTools_SequenceNodeOfSequenceOfRoots : public TCollection_SeqNode {
 };
 
 
-%extend IntTools_SequenceNodeOfSequenceOfRoots {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfRoots(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfRoots::Handle_IntTools_SequenceNodeOfSequenceOfRoots %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfRoots;
-class Handle_IntTools_SequenceNodeOfSequenceOfRoots : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntTools_SequenceNodeOfSequenceOfRoots();
-        Handle_IntTools_SequenceNodeOfSequenceOfRoots(const Handle_IntTools_SequenceNodeOfSequenceOfRoots &aHandle);
-        Handle_IntTools_SequenceNodeOfSequenceOfRoots(const IntTools_SequenceNodeOfSequenceOfRoots *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_SequenceNodeOfSequenceOfRoots DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
-    IntTools_SequenceNodeOfSequenceOfRoots* _get_reference() {
-    return (IntTools_SequenceNodeOfSequenceOfRoots*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_SequenceNodeOfSequenceOfRoots)
 
 %extend IntTools_SequenceNodeOfSequenceOfRoots {
 	%pythoncode {
@@ -5094,51 +4569,7 @@ class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
 };
 
 
-%extend IntTools_StdMapNodeOfMapOfCurveSample {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_StdMapNodeOfMapOfCurveSample(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_StdMapNodeOfMapOfCurveSample::Handle_IntTools_StdMapNodeOfMapOfCurveSample %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_StdMapNodeOfMapOfCurveSample;
-class Handle_IntTools_StdMapNodeOfMapOfCurveSample : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_StdMapNodeOfMapOfCurveSample();
-        Handle_IntTools_StdMapNodeOfMapOfCurveSample(const Handle_IntTools_StdMapNodeOfMapOfCurveSample &aHandle);
-        Handle_IntTools_StdMapNodeOfMapOfCurveSample(const IntTools_StdMapNodeOfMapOfCurveSample *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_StdMapNodeOfMapOfCurveSample DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
-    IntTools_StdMapNodeOfMapOfCurveSample* _get_reference() {
-    return (IntTools_StdMapNodeOfMapOfCurveSample*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_StdMapNodeOfMapOfCurveSample)
 
 %extend IntTools_StdMapNodeOfMapOfCurveSample {
 	%pythoncode {
@@ -5163,51 +4594,7 @@ class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode {
 };
 
 
-%extend IntTools_StdMapNodeOfMapOfSurfaceSample {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_StdMapNodeOfMapOfSurfaceSample(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample::Handle_IntTools_StdMapNodeOfMapOfSurfaceSample %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_StdMapNodeOfMapOfSurfaceSample;
-class Handle_IntTools_StdMapNodeOfMapOfSurfaceSample : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntTools_StdMapNodeOfMapOfSurfaceSample();
-        Handle_IntTools_StdMapNodeOfMapOfSurfaceSample(const Handle_IntTools_StdMapNodeOfMapOfSurfaceSample &aHandle);
-        Handle_IntTools_StdMapNodeOfMapOfSurfaceSample(const IntTools_StdMapNodeOfMapOfSurfaceSample *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_StdMapNodeOfMapOfSurfaceSample DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
-    IntTools_StdMapNodeOfMapOfSurfaceSample* _get_reference() {
-    return (IntTools_StdMapNodeOfMapOfSurfaceSample*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_StdMapNodeOfMapOfSurfaceSample)
 
 %extend IntTools_StdMapNodeOfMapOfSurfaceSample {
 	%pythoncode {
@@ -6048,51 +5435,7 @@ class IntTools_TopolTool : public Adaptor3d_TopolTool {
 };
 
 
-%extend IntTools_TopolTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntTools_TopolTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntTools_TopolTool::Handle_IntTools_TopolTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntTools_TopolTool;
-class Handle_IntTools_TopolTool : public Handle_Adaptor3d_TopolTool {
-
-    public:
-        // constructors
-        Handle_IntTools_TopolTool();
-        Handle_IntTools_TopolTool(const Handle_IntTools_TopolTool &aHandle);
-        Handle_IntTools_TopolTool(const IntTools_TopolTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntTools_TopolTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntTools_TopolTool {
-    IntTools_TopolTool* _get_reference() {
-    return (IntTools_TopolTool*)$self->Access();
-    }
-};
-
-%extend Handle_IntTools_TopolTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntTools_TopolTool)
 
 %extend IntTools_TopolTool {
 	%pythoncode {

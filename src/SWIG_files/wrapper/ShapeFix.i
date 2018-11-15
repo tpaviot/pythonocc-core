@@ -18,7 +18,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEFIXDOCSTRING
-"No docstring provided."
+"This package provides algorithms for fixing
+problematic (violating Open CASCADE requirements) shapes.
+Tools from package ShapeAnalysis are used for detecting the problems. The
+detecting and fixing is done taking in account various
+criteria implemented in BRepCheck package.
+Each class of package ShapeFix deals with one
+certain type of shapes or with some family of problems.
+"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEFIXDOCSTRING) ShapeFix
 
@@ -34,30 +41,32 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeFix_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeFix_DataMapNodeOfDataMapOfShapeBox2d)
+%wrap_handle(ShapeFix_Edge)
+%wrap_handle(ShapeFix_EdgeProjAux)
+%wrap_handle(ShapeFix_Root)
+%wrap_handle(ShapeFix_SequenceNodeOfSequenceOfWireSegment)
+%wrap_handle(ShapeFix_ComposeShell)
+%wrap_handle(ShapeFix_Face)
+%wrap_handle(ShapeFix_FixSmallFace)
+%wrap_handle(ShapeFix_FixSmallSolid)
+%wrap_handle(ShapeFix_Shape)
+%wrap_handle(ShapeFix_Shell)
+%wrap_handle(ShapeFix_Solid)
+%wrap_handle(ShapeFix_SplitCommonVertex)
+%wrap_handle(ShapeFix_Wire)
+%wrap_handle(ShapeFix_Wireframe)
 
 %rename(shapefix) ShapeFix;
 class ShapeFix {
@@ -187,51 +196,7 @@ class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode {
 };
 
 
-%extend ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d::Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
-class Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d();
-        Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d(const Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d &aHandle);
-        Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d(const ShapeFix_DataMapNodeOfDataMapOfShapeBox2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
-    ShapeFix_DataMapNodeOfDataMapOfShapeBox2d* _get_reference() {
-    return (ShapeFix_DataMapNodeOfDataMapOfShapeBox2d*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_DataMapNodeOfDataMapOfShapeBox2d)
 
 %extend ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
 	%pythoncode {
@@ -493,51 +458,7 @@ class ShapeFix_Edge : public MMgt_TShared {
 };
 
 
-%extend ShapeFix_Edge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Edge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Edge::Handle_ShapeFix_Edge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Edge;
-class Handle_ShapeFix_Edge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Edge();
-        Handle_ShapeFix_Edge(const Handle_ShapeFix_Edge &aHandle);
-        Handle_ShapeFix_Edge(const ShapeFix_Edge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Edge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Edge {
-    ShapeFix_Edge* _get_reference() {
-    return (ShapeFix_Edge*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Edge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Edge)
 
 %extend ShapeFix_Edge {
 	%pythoncode {
@@ -643,51 +564,7 @@ class ShapeFix_EdgeProjAux : public MMgt_TShared {
 };
 
 
-%extend ShapeFix_EdgeProjAux {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_EdgeProjAux(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_EdgeProjAux::Handle_ShapeFix_EdgeProjAux %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_EdgeProjAux;
-class Handle_ShapeFix_EdgeProjAux : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeFix_EdgeProjAux();
-        Handle_ShapeFix_EdgeProjAux(const Handle_ShapeFix_EdgeProjAux &aHandle);
-        Handle_ShapeFix_EdgeProjAux(const ShapeFix_EdgeProjAux *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_EdgeProjAux DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_EdgeProjAux {
-    ShapeFix_EdgeProjAux* _get_reference() {
-    return (ShapeFix_EdgeProjAux*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_EdgeProjAux {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_EdgeProjAux)
 
 %extend ShapeFix_EdgeProjAux {
 	%pythoncode {
@@ -1039,51 +916,7 @@ class ShapeFix_Root : public MMgt_TShared {
 };
 
 
-%extend ShapeFix_Root {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Root(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Root::Handle_ShapeFix_Root %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Root;
-class Handle_ShapeFix_Root : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Root();
-        Handle_ShapeFix_Root(const Handle_ShapeFix_Root &aHandle);
-        Handle_ShapeFix_Root(const ShapeFix_Root *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Root DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Root {
-    ShapeFix_Root* _get_reference() {
-    return (ShapeFix_Root*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Root {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Root)
 
 %extend ShapeFix_Root {
 	%pythoncode {
@@ -1110,51 +943,7 @@ class ShapeFix_SequenceNodeOfSequenceOfWireSegment : public TCollection_SeqNode 
 };
 
 
-%extend ShapeFix_SequenceNodeOfSequenceOfWireSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment::Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment;
-class Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment();
-        Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment(const Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment &aHandle);
-        Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment(const ShapeFix_SequenceNodeOfSequenceOfWireSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment {
-    ShapeFix_SequenceNodeOfSequenceOfWireSegment* _get_reference() {
-    return (ShapeFix_SequenceNodeOfSequenceOfWireSegment*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_SequenceNodeOfSequenceOfWireSegment)
 
 %extend ShapeFix_SequenceNodeOfSequenceOfWireSegment {
 	%pythoncode {
@@ -1614,51 +1403,7 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_ComposeShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_ComposeShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_ComposeShell::Handle_ShapeFix_ComposeShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_ComposeShell;
-class Handle_ShapeFix_ComposeShell : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_ComposeShell();
-        Handle_ShapeFix_ComposeShell(const Handle_ShapeFix_ComposeShell &aHandle);
-        Handle_ShapeFix_ComposeShell(const ShapeFix_ComposeShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_ComposeShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_ComposeShell {
-    ShapeFix_ComposeShell* _get_reference() {
-    return (ShapeFix_ComposeShell*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_ComposeShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_ComposeShell)
 
 %extend ShapeFix_ComposeShell {
 	%pythoncode {
@@ -2006,51 +1751,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_Face {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Face(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Face::Handle_ShapeFix_Face %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Face;
-class Handle_ShapeFix_Face : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Face();
-        Handle_ShapeFix_Face(const Handle_ShapeFix_Face &aHandle);
-        Handle_ShapeFix_Face(const ShapeFix_Face *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Face DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Face {
-    ShapeFix_Face* _get_reference() {
-    return (ShapeFix_Face*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Face {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Face)
 
 %extend ShapeFix_Face {
 	%pythoncode {
@@ -2185,51 +1886,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_FixSmallFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_FixSmallFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_FixSmallFace::Handle_ShapeFix_FixSmallFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_FixSmallFace;
-class Handle_ShapeFix_FixSmallFace : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_FixSmallFace();
-        Handle_ShapeFix_FixSmallFace(const Handle_ShapeFix_FixSmallFace &aHandle);
-        Handle_ShapeFix_FixSmallFace(const ShapeFix_FixSmallFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_FixSmallFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_FixSmallFace {
-    ShapeFix_FixSmallFace* _get_reference() {
-    return (ShapeFix_FixSmallFace*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_FixSmallFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_FixSmallFace)
 
 %extend ShapeFix_FixSmallFace {
 	%pythoncode {
@@ -2292,51 +1949,7 @@ class ShapeFix_FixSmallSolid : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_FixSmallSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_FixSmallSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_FixSmallSolid::Handle_ShapeFix_FixSmallSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_FixSmallSolid;
-class Handle_ShapeFix_FixSmallSolid : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_FixSmallSolid();
-        Handle_ShapeFix_FixSmallSolid(const Handle_ShapeFix_FixSmallSolid &aHandle);
-        Handle_ShapeFix_FixSmallSolid(const ShapeFix_FixSmallSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_FixSmallSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_FixSmallSolid {
-    ShapeFix_FixSmallSolid* _get_reference() {
-    return (ShapeFix_FixSmallSolid*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_FixSmallSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_FixSmallSolid)
 
 %extend ShapeFix_FixSmallSolid {
 	%pythoncode {
@@ -2546,51 +2159,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
             };
 
 
-%extend ShapeFix_Shape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Shape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Shape::Handle_ShapeFix_Shape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Shape;
-class Handle_ShapeFix_Shape : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Shape();
-        Handle_ShapeFix_Shape(const Handle_ShapeFix_Shape &aHandle);
-        Handle_ShapeFix_Shape(const ShapeFix_Shape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Shape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Shape {
-    ShapeFix_Shape* _get_reference() {
-    return (ShapeFix_Shape*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Shape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Shape)
 
 %extend ShapeFix_Shape {
 	%pythoncode {
@@ -2741,51 +2310,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
             };
 
 
-%extend ShapeFix_Shell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Shell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Shell::Handle_ShapeFix_Shell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Shell;
-class Handle_ShapeFix_Shell : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Shell();
-        Handle_ShapeFix_Shell(const Handle_ShapeFix_Shell &aHandle);
-        Handle_ShapeFix_Shell(const ShapeFix_Shell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Shell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Shell {
-    ShapeFix_Shell* _get_reference() {
-    return (ShapeFix_Shell*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Shell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Shell)
 
 %extend ShapeFix_Shell {
 	%pythoncode {
@@ -2920,51 +2445,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_Solid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Solid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Solid::Handle_ShapeFix_Solid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Solid;
-class Handle_ShapeFix_Solid : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Solid();
-        Handle_ShapeFix_Solid(const Handle_ShapeFix_Solid &aHandle);
-        Handle_ShapeFix_Solid(const ShapeFix_Solid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Solid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Solid {
-    ShapeFix_Solid* _get_reference() {
-    return (ShapeFix_Solid*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Solid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Solid)
 
 %extend ShapeFix_Solid {
 	%pythoncode {
@@ -2995,51 +2476,7 @@ class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_SplitCommonVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_SplitCommonVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_SplitCommonVertex::Handle_ShapeFix_SplitCommonVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_SplitCommonVertex;
-class Handle_ShapeFix_SplitCommonVertex : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_SplitCommonVertex();
-        Handle_ShapeFix_SplitCommonVertex(const Handle_ShapeFix_SplitCommonVertex &aHandle);
-        Handle_ShapeFix_SplitCommonVertex(const ShapeFix_SplitCommonVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_SplitCommonVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_SplitCommonVertex {
-    ShapeFix_SplitCommonVertex* _get_reference() {
-    return (ShapeFix_SplitCommonVertex*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_SplitCommonVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_SplitCommonVertex)
 
 %extend ShapeFix_SplitCommonVertex {
 	%pythoncode {
@@ -3851,51 +3288,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_Wire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Wire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Wire::Handle_ShapeFix_Wire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Wire;
-class Handle_ShapeFix_Wire : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Wire();
-        Handle_ShapeFix_Wire(const Handle_ShapeFix_Wire &aHandle);
-        Handle_ShapeFix_Wire(const ShapeFix_Wire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Wire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Wire {
-    ShapeFix_Wire* _get_reference() {
-    return (ShapeFix_Wire*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Wire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Wire)
 
 %extend ShapeFix_Wire {
 	%pythoncode {
@@ -4023,51 +3416,7 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 };
 
 
-%extend ShapeFix_Wireframe {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeFix_Wireframe(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeFix_Wireframe::Handle_ShapeFix_Wireframe %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeFix_Wireframe;
-class Handle_ShapeFix_Wireframe : public Handle_ShapeFix_Root {
-
-    public:
-        // constructors
-        Handle_ShapeFix_Wireframe();
-        Handle_ShapeFix_Wireframe(const Handle_ShapeFix_Wireframe &aHandle);
-        Handle_ShapeFix_Wireframe(const ShapeFix_Wireframe *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeFix_Wireframe DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeFix_Wireframe {
-    ShapeFix_Wireframe* _get_reference() {
-    return (ShapeFix_Wireframe*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeFix_Wireframe {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeFix_Wireframe)
 
 %extend ShapeFix_Wireframe {
 	%pythoncode {

@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BISECTORDOCSTRING
-"No docstring provided."
+"- Purpose : This package provides the bisecting line between two
+geometric elements.
+"
 %enddef
 %module (package="OCC.Core", docstring=BISECTORDOCSTRING) Bisector
 
@@ -34,30 +36,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Bisector_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Bisector_Curve)
+%wrap_handle(Bisector_BisecAna)
+%wrap_handle(Bisector_BisecCC)
+%wrap_handle(Bisector_BisecPC)
 
 %rename(bisector) Bisector;
 class Bisector {
@@ -237,51 +230,7 @@ class Bisector_Curve : public Geom2d_Curve {
 };
 
 
-%extend Bisector_Curve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Bisector_Curve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Bisector_Curve::Handle_Bisector_Curve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Bisector_Curve;
-class Handle_Bisector_Curve : public Handle_Geom2d_Curve {
-
-    public:
-        // constructors
-        Handle_Bisector_Curve();
-        Handle_Bisector_Curve(const Handle_Bisector_Curve &aHandle);
-        Handle_Bisector_Curve(const Bisector_Curve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Bisector_Curve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Bisector_Curve {
-    Bisector_Curve* _get_reference() {
-    return (Bisector_Curve*)$self->Access();
-    }
-};
-
-%extend Handle_Bisector_Curve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Bisector_Curve)
 
 %extend Bisector_Curve {
 	%pythoncode {
@@ -887,51 +836,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 };
 
 
-%extend Bisector_BisecAna {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Bisector_BisecAna(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Bisector_BisecAna::Handle_Bisector_BisecAna %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Bisector_BisecAna;
-class Handle_Bisector_BisecAna : public Handle_Bisector_Curve {
-
-    public:
-        // constructors
-        Handle_Bisector_BisecAna();
-        Handle_Bisector_BisecAna(const Handle_Bisector_BisecAna &aHandle);
-        Handle_Bisector_BisecAna(const Bisector_BisecAna *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Bisector_BisecAna DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Bisector_BisecAna {
-    Bisector_BisecAna* _get_reference() {
-    return (Bisector_BisecAna*)$self->Access();
-    }
-};
-
-%extend Handle_Bisector_BisecAna {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Bisector_BisecAna)
 
 %extend Bisector_BisecAna {
 	%pythoncode {
@@ -1198,51 +1103,7 @@ class Bisector_BisecCC : public Bisector_Curve {
 };
 
 
-%extend Bisector_BisecCC {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Bisector_BisecCC(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Bisector_BisecCC::Handle_Bisector_BisecCC %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Bisector_BisecCC;
-class Handle_Bisector_BisecCC : public Handle_Bisector_Curve {
-
-    public:
-        // constructors
-        Handle_Bisector_BisecCC();
-        Handle_Bisector_BisecCC(const Handle_Bisector_BisecCC &aHandle);
-        Handle_Bisector_BisecCC(const Bisector_BisecCC *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Bisector_BisecCC DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Bisector_BisecCC {
-    Bisector_BisecCC* _get_reference() {
-    return (Bisector_BisecCC*)$self->Access();
-    }
-};
-
-%extend Handle_Bisector_BisecCC {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Bisector_BisecCC)
 
 %extend Bisector_BisecCC {
 	%pythoncode {
@@ -1497,51 +1358,7 @@ class Bisector_BisecPC : public Bisector_Curve {
 };
 
 
-%extend Bisector_BisecPC {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Bisector_BisecPC(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Bisector_BisecPC::Handle_Bisector_BisecPC %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Bisector_BisecPC;
-class Handle_Bisector_BisecPC : public Handle_Bisector_Curve {
-
-    public:
-        // constructors
-        Handle_Bisector_BisecPC();
-        Handle_Bisector_BisecPC(const Handle_Bisector_BisecPC &aHandle);
-        Handle_Bisector_BisecPC(const Bisector_BisecPC *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Bisector_BisecPC DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Bisector_BisecPC {
-    Bisector_BisecPC* _get_reference() {
-    return (Bisector_BisecPC*)$self->Access();
-    }
-};
-
-%extend Handle_Bisector_BisecPC {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Bisector_BisecPC)
 
 %extend Bisector_BisecPC {
 	%pythoncode {

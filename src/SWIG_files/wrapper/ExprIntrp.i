@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define EXPRINTRPDOCSTRING
-"No docstring provided."
+"Describes an interpreter for GeneralExpressions,
+GeneralFunctions, and GeneralRelations defined in
+package Expr.
+"
 %enddef
 %module (package="OCC.Core", docstring=EXPRINTRPDOCSTRING) ExprIntrp
 
@@ -34,30 +37,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ExprIntrp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ExprIntrp_Generator)
+%wrap_handle(ExprIntrp_ListNodeOfStackOfGeneralExpression)
+%wrap_handle(ExprIntrp_ListNodeOfStackOfGeneralFunction)
+%wrap_handle(ExprIntrp_ListNodeOfStackOfGeneralRelation)
+%wrap_handle(ExprIntrp_SequenceNodeOfSequenceOfNamedExpression)
+%wrap_handle(ExprIntrp_SequenceNodeOfSequenceOfNamedFunction)
+%wrap_handle(ExprIntrp_GenExp)
+%wrap_handle(ExprIntrp_GenFct)
+%wrap_handle(ExprIntrp_GenRel)
 
 %rename(exprintrp) ExprIntrp;
 %nodefaultctor ExprIntrp;
@@ -220,51 +219,7 @@ class ExprIntrp_Generator : public MMgt_TShared {
 };
 
 
-%extend ExprIntrp_Generator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_Generator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_Generator::Handle_ExprIntrp_Generator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_Generator;
-class Handle_ExprIntrp_Generator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_Generator();
-        Handle_ExprIntrp_Generator(const Handle_ExprIntrp_Generator &aHandle);
-        Handle_ExprIntrp_Generator(const ExprIntrp_Generator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_Generator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_Generator {
-    ExprIntrp_Generator* _get_reference() {
-    return (ExprIntrp_Generator*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_Generator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_Generator)
 
 %extend ExprIntrp_Generator {
 	%pythoncode {
@@ -406,51 +361,7 @@ class ExprIntrp_ListNodeOfStackOfGeneralExpression : public TCollection_MapNode 
 };
 
 
-%extend ExprIntrp_ListNodeOfStackOfGeneralExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression::Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression;
-class Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression();
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression(const Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression &aHandle);
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression(const ExprIntrp_ListNodeOfStackOfGeneralExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression {
-    ExprIntrp_ListNodeOfStackOfGeneralExpression* _get_reference() {
-    return (ExprIntrp_ListNodeOfStackOfGeneralExpression*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_ListNodeOfStackOfGeneralExpression)
 
 %extend ExprIntrp_ListNodeOfStackOfGeneralExpression {
 	%pythoncode {
@@ -475,51 +386,7 @@ class ExprIntrp_ListNodeOfStackOfGeneralFunction : public TCollection_MapNode {
 };
 
 
-%extend ExprIntrp_ListNodeOfStackOfGeneralFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction::Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction;
-class Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction();
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction(const Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction &aHandle);
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction(const ExprIntrp_ListNodeOfStackOfGeneralFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction {
-    ExprIntrp_ListNodeOfStackOfGeneralFunction* _get_reference() {
-    return (ExprIntrp_ListNodeOfStackOfGeneralFunction*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_ListNodeOfStackOfGeneralFunction)
 
 %extend ExprIntrp_ListNodeOfStackOfGeneralFunction {
 	%pythoncode {
@@ -544,51 +411,7 @@ class ExprIntrp_ListNodeOfStackOfGeneralRelation : public TCollection_MapNode {
 };
 
 
-%extend ExprIntrp_ListNodeOfStackOfGeneralRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation::Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation;
-class Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation();
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation(const Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation &aHandle);
-        Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation(const ExprIntrp_ListNodeOfStackOfGeneralRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation {
-    ExprIntrp_ListNodeOfStackOfGeneralRelation* _get_reference() {
-    return (ExprIntrp_ListNodeOfStackOfGeneralRelation*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_ListNodeOfStackOfGeneralRelation)
 
 %extend ExprIntrp_ListNodeOfStackOfGeneralRelation {
 	%pythoncode {
@@ -615,51 +438,7 @@ class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_Seq
 };
 
 
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression::Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
-class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression();
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(const Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression &aHandle);
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(const ExprIntrp_SequenceNodeOfSequenceOfNamedExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-    ExprIntrp_SequenceNodeOfSequenceOfNamedExpression* _get_reference() {
-    return (ExprIntrp_SequenceNodeOfSequenceOfNamedExpression*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_SequenceNodeOfSequenceOfNamedExpression)
 
 %extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
 	%pythoncode {
@@ -686,51 +465,7 @@ class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public TCollection_SeqNo
 };
 
 
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction::Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
-class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction();
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction(const Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction &aHandle);
-        Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction(const ExprIntrp_SequenceNodeOfSequenceOfNamedFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-    ExprIntrp_SequenceNodeOfSequenceOfNamedFunction* _get_reference() {
-    return (ExprIntrp_SequenceNodeOfSequenceOfNamedFunction*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_SequenceNodeOfSequenceOfNamedFunction)
 
 %extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
 	%pythoncode {
@@ -1458,51 +1193,7 @@ class ExprIntrp_GenExp : public ExprIntrp_Generator {
 };
 
 
-%extend ExprIntrp_GenExp {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_GenExp(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_GenExp::Handle_ExprIntrp_GenExp %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_GenExp;
-class Handle_ExprIntrp_GenExp : public Handle_ExprIntrp_Generator {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_GenExp();
-        Handle_ExprIntrp_GenExp(const Handle_ExprIntrp_GenExp &aHandle);
-        Handle_ExprIntrp_GenExp(const ExprIntrp_GenExp *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_GenExp DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_GenExp {
-    ExprIntrp_GenExp* _get_reference() {
-    return (ExprIntrp_GenExp*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_GenExp {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_GenExp)
 
 %extend ExprIntrp_GenExp {
 	%pythoncode {
@@ -1529,51 +1220,7 @@ class ExprIntrp_GenFct : public ExprIntrp_Generator {
 };
 
 
-%extend ExprIntrp_GenFct {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_GenFct(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_GenFct::Handle_ExprIntrp_GenFct %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_GenFct;
-class Handle_ExprIntrp_GenFct : public Handle_ExprIntrp_Generator {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_GenFct();
-        Handle_ExprIntrp_GenFct(const Handle_ExprIntrp_GenFct &aHandle);
-        Handle_ExprIntrp_GenFct(const ExprIntrp_GenFct *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_GenFct DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_GenFct {
-    ExprIntrp_GenFct* _get_reference() {
-    return (ExprIntrp_GenFct*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_GenFct {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_GenFct)
 
 %extend ExprIntrp_GenFct {
 	%pythoncode {
@@ -1610,51 +1257,7 @@ class ExprIntrp_GenRel : public ExprIntrp_Generator {
 };
 
 
-%extend ExprIntrp_GenRel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ExprIntrp_GenRel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ExprIntrp_GenRel::Handle_ExprIntrp_GenRel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ExprIntrp_GenRel;
-class Handle_ExprIntrp_GenRel : public Handle_ExprIntrp_Generator {
-
-    public:
-        // constructors
-        Handle_ExprIntrp_GenRel();
-        Handle_ExprIntrp_GenRel(const Handle_ExprIntrp_GenRel &aHandle);
-        Handle_ExprIntrp_GenRel(const ExprIntrp_GenRel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ExprIntrp_GenRel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ExprIntrp_GenRel {
-    ExprIntrp_GenRel* _get_reference() {
-    return (ExprIntrp_GenRel*)$self->Access();
-    }
-};
-
-%extend Handle_ExprIntrp_GenRel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ExprIntrp_GenRel)
 
 %extend ExprIntrp_GenRel {
 	%pythoncode {

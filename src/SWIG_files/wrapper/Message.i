@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MESSAGEDOCSTRING
-"No docstring provided."
+"Defines
+- tools to work with messages
+- basic tools intended for progress indication
+"
 %enddef
 %module (package="OCC.Core", docstring=MESSAGEDOCSTRING) Message
 
@@ -34,24 +37,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Message_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Handle_Message_ArrayOfMsg Message_HArrayOfMsg;
@@ -209,6 +198,15 @@ enum Message_StatusType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Message_Algorithm)
+%wrap_handle(Message_ListNodeOfListOfMsg)
+%wrap_handle(Message_Messenger)
+%wrap_handle(Message_Printer)
+%wrap_handle(Message_ProgressIndicator)
+%wrap_handle(Message_SequenceNodeOfSequenceOfPrinters)
+%wrap_handle(Message_SequenceNodeOfSequenceOfProgressScale)
+%wrap_handle(Message_PrinterOStream)
 
 %rename(message) Message;
 class Message {
@@ -447,51 +445,7 @@ class Message_Algorithm : public MMgt_TShared {
 };
 
 
-%extend Message_Algorithm {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_Algorithm(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_Algorithm::Handle_Message_Algorithm %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_Algorithm;
-class Handle_Message_Algorithm : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Message_Algorithm();
-        Handle_Message_Algorithm(const Handle_Message_Algorithm &aHandle);
-        Handle_Message_Algorithm(const Message_Algorithm *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_Algorithm DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_Algorithm {
-    Message_Algorithm* _get_reference() {
-    return (Message_Algorithm*)$self->Access();
-    }
-};
-
-%extend Handle_Message_Algorithm {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_Algorithm)
 
 %extend Message_Algorithm {
 	%pythoncode {
@@ -555,51 +509,7 @@ class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
 };
 
 
-%extend Message_ListNodeOfListOfMsg {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_ListNodeOfListOfMsg(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_ListNodeOfListOfMsg::Handle_Message_ListNodeOfListOfMsg %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_ListNodeOfListOfMsg;
-class Handle_Message_ListNodeOfListOfMsg : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Message_ListNodeOfListOfMsg();
-        Handle_Message_ListNodeOfListOfMsg(const Handle_Message_ListNodeOfListOfMsg &aHandle);
-        Handle_Message_ListNodeOfListOfMsg(const Message_ListNodeOfListOfMsg *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_ListNodeOfListOfMsg DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_ListNodeOfListOfMsg {
-    Message_ListNodeOfListOfMsg* _get_reference() {
-    return (Message_ListNodeOfListOfMsg*)$self->Access();
-    }
-};
-
-%extend Handle_Message_ListNodeOfListOfMsg {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_ListNodeOfListOfMsg)
 
 %extend Message_ListNodeOfListOfMsg {
 	%pythoncode {
@@ -833,51 +743,7 @@ class Message_Messenger : public MMgt_TShared {
 };
 
 
-%extend Message_Messenger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_Messenger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_Messenger::Handle_Message_Messenger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_Messenger;
-class Handle_Message_Messenger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Message_Messenger();
-        Handle_Message_Messenger(const Handle_Message_Messenger &aHandle);
-        Handle_Message_Messenger(const Message_Messenger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_Messenger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_Messenger {
-    Message_Messenger* _get_reference() {
-    return (Message_Messenger*)$self->Access();
-    }
-};
-
-%extend Handle_Message_Messenger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_Messenger)
 
 %extend Message_Messenger {
 	%pythoncode {
@@ -1012,51 +878,7 @@ class Message_Printer : public MMgt_TShared {
 };
 
 
-%extend Message_Printer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_Printer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_Printer::Handle_Message_Printer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_Printer;
-class Handle_Message_Printer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Message_Printer();
-        Handle_Message_Printer(const Handle_Message_Printer &aHandle);
-        Handle_Message_Printer(const Message_Printer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_Printer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_Printer {
-    Message_Printer* _get_reference() {
-    return (Message_Printer*)$self->Access();
-    }
-};
-
-%extend Handle_Message_Printer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_Printer)
 
 %extend Message_Printer {
 	%pythoncode {
@@ -1267,51 +1089,7 @@ class Message_ProgressIndicator : public MMgt_TShared {
 };
 
 
-%extend Message_ProgressIndicator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_ProgressIndicator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_ProgressIndicator::Handle_Message_ProgressIndicator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_ProgressIndicator;
-class Handle_Message_ProgressIndicator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Message_ProgressIndicator();
-        Handle_Message_ProgressIndicator(const Handle_Message_ProgressIndicator &aHandle);
-        Handle_Message_ProgressIndicator(const Message_ProgressIndicator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_ProgressIndicator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_ProgressIndicator {
-    Message_ProgressIndicator* _get_reference() {
-    return (Message_ProgressIndicator*)$self->Access();
-    }
-};
-
-%extend Handle_Message_ProgressIndicator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_ProgressIndicator)
 
 %extend Message_ProgressIndicator {
 	%pythoncode {
@@ -1580,51 +1358,7 @@ class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
 };
 
 
-%extend Message_SequenceNodeOfSequenceOfPrinters {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_SequenceNodeOfSequenceOfPrinters(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_SequenceNodeOfSequenceOfPrinters::Handle_Message_SequenceNodeOfSequenceOfPrinters %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_SequenceNodeOfSequenceOfPrinters;
-class Handle_Message_SequenceNodeOfSequenceOfPrinters : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Message_SequenceNodeOfSequenceOfPrinters();
-        Handle_Message_SequenceNodeOfSequenceOfPrinters(const Handle_Message_SequenceNodeOfSequenceOfPrinters &aHandle);
-        Handle_Message_SequenceNodeOfSequenceOfPrinters(const Message_SequenceNodeOfSequenceOfPrinters *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_SequenceNodeOfSequenceOfPrinters DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
-    Message_SequenceNodeOfSequenceOfPrinters* _get_reference() {
-    return (Message_SequenceNodeOfSequenceOfPrinters*)$self->Access();
-    }
-};
-
-%extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_SequenceNodeOfSequenceOfPrinters)
 
 %extend Message_SequenceNodeOfSequenceOfPrinters {
 	%pythoncode {
@@ -1651,51 +1385,7 @@ class Message_SequenceNodeOfSequenceOfProgressScale : public TCollection_SeqNode
 };
 
 
-%extend Message_SequenceNodeOfSequenceOfProgressScale {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_SequenceNodeOfSequenceOfProgressScale(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_SequenceNodeOfSequenceOfProgressScale::Handle_Message_SequenceNodeOfSequenceOfProgressScale %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_SequenceNodeOfSequenceOfProgressScale;
-class Handle_Message_SequenceNodeOfSequenceOfProgressScale : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Message_SequenceNodeOfSequenceOfProgressScale();
-        Handle_Message_SequenceNodeOfSequenceOfProgressScale(const Handle_Message_SequenceNodeOfSequenceOfProgressScale &aHandle);
-        Handle_Message_SequenceNodeOfSequenceOfProgressScale(const Message_SequenceNodeOfSequenceOfProgressScale *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_SequenceNodeOfSequenceOfProgressScale DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
-    Message_SequenceNodeOfSequenceOfProgressScale* _get_reference() {
-    return (Message_SequenceNodeOfSequenceOfProgressScale*)$self->Access();
-    }
-};
-
-%extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_SequenceNodeOfSequenceOfProgressScale)
 
 %extend Message_SequenceNodeOfSequenceOfProgressScale {
 	%pythoncode {
@@ -2076,51 +1766,7 @@ class Message_PrinterOStream : public Message_Printer {
 };
 
 
-%extend Message_PrinterOStream {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Message_PrinterOStream(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Message_PrinterOStream::Handle_Message_PrinterOStream %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Message_PrinterOStream;
-class Handle_Message_PrinterOStream : public Handle_Message_Printer {
-
-    public:
-        // constructors
-        Handle_Message_PrinterOStream();
-        Handle_Message_PrinterOStream(const Handle_Message_PrinterOStream &aHandle);
-        Handle_Message_PrinterOStream(const Message_PrinterOStream *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Message_PrinterOStream DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Message_PrinterOStream {
-    Message_PrinterOStream* _get_reference() {
-    return (Message_PrinterOStream*)$self->Access();
-    }
-};
-
-%extend Handle_Message_PrinterOStream {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Message_PrinterOStream)
 
 %extend Message_PrinterOStream {
 	%pythoncode {

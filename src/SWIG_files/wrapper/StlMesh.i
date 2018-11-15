@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STLMESHDOCSTRING
-"No docstring provided."
+"Implements a basic mesh data-structure for the
+needs of the application fast prototyping.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=STLMESHDOCSTRING) StlMesh
 
@@ -34,30 +37,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StlMesh_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(StlMesh_Mesh)
+%wrap_handle(StlMesh_MeshDomain)
+%wrap_handle(StlMesh_MeshTriangle)
+%wrap_handle(StlMesh_SequenceNodeOfSequenceOfMesh)
+%wrap_handle(StlMesh_SequenceNodeOfSequenceOfMeshDomain)
+%wrap_handle(StlMesh_SequenceNodeOfSequenceOfMeshTriangle)
 
 %rename(stlmesh) StlMesh;
 class StlMesh {
@@ -224,51 +220,7 @@ class StlMesh_Mesh : public MMgt_TShared {
 };
 
 
-%extend StlMesh_Mesh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_Mesh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_Mesh::Handle_StlMesh_Mesh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_Mesh;
-class Handle_StlMesh_Mesh : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StlMesh_Mesh();
-        Handle_StlMesh_Mesh(const Handle_StlMesh_Mesh &aHandle);
-        Handle_StlMesh_Mesh(const StlMesh_Mesh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_Mesh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_Mesh {
-    StlMesh_Mesh* _get_reference() {
-    return (StlMesh_Mesh*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_Mesh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_Mesh)
 
 %extend StlMesh_Mesh {
 	%pythoncode {
@@ -367,51 +319,7 @@ class StlMesh_MeshDomain : public MMgt_TShared {
 };
 
 
-%extend StlMesh_MeshDomain {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_MeshDomain(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_MeshDomain::Handle_StlMesh_MeshDomain %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_MeshDomain;
-class Handle_StlMesh_MeshDomain : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StlMesh_MeshDomain();
-        Handle_StlMesh_MeshDomain(const Handle_StlMesh_MeshDomain &aHandle);
-        Handle_StlMesh_MeshDomain(const StlMesh_MeshDomain *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_MeshDomain DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_MeshDomain {
-    StlMesh_MeshDomain* _get_reference() {
-    return (StlMesh_MeshDomain*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_MeshDomain {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_MeshDomain)
 
 %extend StlMesh_MeshDomain {
 	%pythoncode {
@@ -585,51 +493,7 @@ class StlMesh_MeshTriangle : public MMgt_TShared {
 };
 
 
-%extend StlMesh_MeshTriangle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_MeshTriangle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_MeshTriangle::Handle_StlMesh_MeshTriangle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_MeshTriangle;
-class Handle_StlMesh_MeshTriangle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StlMesh_MeshTriangle();
-        Handle_StlMesh_MeshTriangle(const Handle_StlMesh_MeshTriangle &aHandle);
-        Handle_StlMesh_MeshTriangle(const StlMesh_MeshTriangle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_MeshTriangle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_MeshTriangle {
-    StlMesh_MeshTriangle* _get_reference() {
-    return (StlMesh_MeshTriangle*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_MeshTriangle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_MeshTriangle)
 
 %extend StlMesh_MeshTriangle {
 	%pythoncode {
@@ -656,51 +520,7 @@ class StlMesh_SequenceNodeOfSequenceOfMesh : public TCollection_SeqNode {
 };
 
 
-%extend StlMesh_SequenceNodeOfSequenceOfMesh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_SequenceNodeOfSequenceOfMesh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_SequenceNodeOfSequenceOfMesh::Handle_StlMesh_SequenceNodeOfSequenceOfMesh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_SequenceNodeOfSequenceOfMesh;
-class Handle_StlMesh_SequenceNodeOfSequenceOfMesh : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StlMesh_SequenceNodeOfSequenceOfMesh();
-        Handle_StlMesh_SequenceNodeOfSequenceOfMesh(const Handle_StlMesh_SequenceNodeOfSequenceOfMesh &aHandle);
-        Handle_StlMesh_SequenceNodeOfSequenceOfMesh(const StlMesh_SequenceNodeOfSequenceOfMesh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_SequenceNodeOfSequenceOfMesh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMesh {
-    StlMesh_SequenceNodeOfSequenceOfMesh* _get_reference() {
-    return (StlMesh_SequenceNodeOfSequenceOfMesh*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMesh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_SequenceNodeOfSequenceOfMesh)
 
 %extend StlMesh_SequenceNodeOfSequenceOfMesh {
 	%pythoncode {
@@ -727,51 +547,7 @@ class StlMesh_SequenceNodeOfSequenceOfMeshDomain : public TCollection_SeqNode {
 };
 
 
-%extend StlMesh_SequenceNodeOfSequenceOfMeshDomain {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain::Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain;
-class Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain();
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain(const Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain &aHandle);
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain(const StlMesh_SequenceNodeOfSequenceOfMeshDomain *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain {
-    StlMesh_SequenceNodeOfSequenceOfMeshDomain* _get_reference() {
-    return (StlMesh_SequenceNodeOfSequenceOfMeshDomain*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_SequenceNodeOfSequenceOfMeshDomain)
 
 %extend StlMesh_SequenceNodeOfSequenceOfMeshDomain {
 	%pythoncode {
@@ -798,51 +574,7 @@ class StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public TCollection_SeqNode 
 };
 
 
-%extend StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle::Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
-class Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle();
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle(const Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle &aHandle);
-        Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle(const StlMesh_SequenceNodeOfSequenceOfMeshTriangle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
-    StlMesh_SequenceNodeOfSequenceOfMeshTriangle* _get_reference() {
-    return (StlMesh_SequenceNodeOfSequenceOfMeshTriangle*)$self->Access();
-    }
-};
-
-%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StlMesh_SequenceNodeOfSequenceOfMeshTriangle)
 
 %extend StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
 	%pythoncode {

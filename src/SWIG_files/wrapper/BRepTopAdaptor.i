@@ -18,7 +18,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPTOPADAPTORDOCSTRING
-"No docstring provided."
+"
+
+
+*** Class2d  : Low level algorithm for 2d classification
+
+*** FClass2d  : 2d classification on a Face from TopoDS
+A face is first loaded and then every
+classification is computed as a rejection.
+(call BRepClass algorithms if necessary,
+ie, when the rejection is not efficient)
+
+*** TopolTool : Several tools used by the intersection
+algorithm and topology.
+
+
+
+-Level: Internal
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPTOPADAPTORDOCSTRING) BRepTopAdaptor
 
@@ -34,24 +51,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepTopAdaptor_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
@@ -59,6 +62,10 @@ typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRepTopAdaptor_DataMapNodeOfMapOfShapeTool)
+%wrap_handle(BRepTopAdaptor_HVertex)
+%wrap_handle(BRepTopAdaptor_TopolTool)
 
 %nodefaultctor BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool : public TCollection_BasicMapIterator {
@@ -119,51 +126,7 @@ class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public TCollection_MapNode {
 };
 
 
-%extend BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool::Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
-class Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool();
-        Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool(const Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool &aHandle);
-        Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool(const BRepTopAdaptor_DataMapNodeOfMapOfShapeTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
-    BRepTopAdaptor_DataMapNodeOfMapOfShapeTool* _get_reference() {
-    return (BRepTopAdaptor_DataMapNodeOfMapOfShapeTool*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTopAdaptor_DataMapNodeOfMapOfShapeTool)
 
 %extend BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
 	%pythoncode {
@@ -279,51 +242,7 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 };
 
 
-%extend BRepTopAdaptor_HVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTopAdaptor_HVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTopAdaptor_HVertex::Handle_BRepTopAdaptor_HVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTopAdaptor_HVertex;
-class Handle_BRepTopAdaptor_HVertex : public Handle_Adaptor3d_HVertex {
-
-    public:
-        // constructors
-        Handle_BRepTopAdaptor_HVertex();
-        Handle_BRepTopAdaptor_HVertex(const Handle_BRepTopAdaptor_HVertex &aHandle);
-        Handle_BRepTopAdaptor_HVertex(const BRepTopAdaptor_HVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTopAdaptor_HVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTopAdaptor_HVertex {
-    BRepTopAdaptor_HVertex* _get_reference() {
-    return (BRepTopAdaptor_HVertex*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTopAdaptor_HVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTopAdaptor_HVertex)
 
 %extend BRepTopAdaptor_HVertex {
 	%pythoncode {
@@ -654,51 +573,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 };
 
 
-%extend BRepTopAdaptor_TopolTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTopAdaptor_TopolTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTopAdaptor_TopolTool::Handle_BRepTopAdaptor_TopolTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTopAdaptor_TopolTool;
-class Handle_BRepTopAdaptor_TopolTool : public Handle_Adaptor3d_TopolTool {
-
-    public:
-        // constructors
-        Handle_BRepTopAdaptor_TopolTool();
-        Handle_BRepTopAdaptor_TopolTool(const Handle_BRepTopAdaptor_TopolTool &aHandle);
-        Handle_BRepTopAdaptor_TopolTool(const BRepTopAdaptor_TopolTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTopAdaptor_TopolTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTopAdaptor_TopolTool {
-    BRepTopAdaptor_TopolTool* _get_reference() {
-    return (BRepTopAdaptor_TopolTool*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTopAdaptor_TopolTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTopAdaptor_TopolTool)
 
 %extend BRepTopAdaptor_TopolTool {
 	%pythoncode {

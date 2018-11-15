@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPGEOMDOCSTRING
-"No docstring provided."
+"-Purpose : AP214 CC1 , Revision 4 for Geom (Part42, geometric)
+Upgrading from Revision 2 to Revision 4 : 26 Mar 1997
+"
 %enddef
 %module (package="OCC.Core", docstring=STEPGEOMDOCSTRING) StepGeom
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepGeom_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -107,6 +95,100 @@ enum StepGeom_TransitionCode {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepGeom_CompositeCurveSegment)
+%wrap_handle(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx)
+%wrap_handle(StepGeom_GeometricRepresentationContext)
+%wrap_handle(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext)
+%wrap_handle(StepGeom_GeometricRepresentationContextAndParametricRepresentationContext)
+%wrap_handle(StepGeom_GeometricRepresentationItem)
+%wrap_handle(StepGeom_HArray1OfBoundaryCurve)
+%wrap_handle(StepGeom_HArray1OfCartesianPoint)
+%wrap_handle(StepGeom_HArray1OfCompositeCurveSegment)
+%wrap_handle(StepGeom_HArray1OfCurve)
+%wrap_handle(StepGeom_HArray1OfPcurveOrSurface)
+%wrap_handle(StepGeom_HArray1OfSurfaceBoundary)
+%wrap_handle(StepGeom_HArray1OfTrimmingSelect)
+%wrap_handle(StepGeom_HArray2OfCartesianPoint)
+%wrap_handle(StepGeom_HArray2OfSurfacePatch)
+%wrap_handle(StepGeom_SurfacePatch)
+%wrap_handle(StepGeom_TrimmingMember)
+%wrap_handle(StepGeom_CartesianTransformationOperator)
+%wrap_handle(StepGeom_Curve)
+%wrap_handle(StepGeom_Direction)
+%wrap_handle(StepGeom_Placement)
+%wrap_handle(StepGeom_Point)
+%wrap_handle(StepGeom_ReparametrisedCompositeCurveSegment)
+%wrap_handle(StepGeom_Surface)
+%wrap_handle(StepGeom_Vector)
+%wrap_handle(StepGeom_Axis1Placement)
+%wrap_handle(StepGeom_Axis2Placement2d)
+%wrap_handle(StepGeom_Axis2Placement3d)
+%wrap_handle(StepGeom_BoundedCurve)
+%wrap_handle(StepGeom_BoundedSurface)
+%wrap_handle(StepGeom_CartesianPoint)
+%wrap_handle(StepGeom_CartesianTransformationOperator2d)
+%wrap_handle(StepGeom_CartesianTransformationOperator3d)
+%wrap_handle(StepGeom_Conic)
+%wrap_handle(StepGeom_CurveReplica)
+%wrap_handle(StepGeom_DegeneratePcurve)
+%wrap_handle(StepGeom_ElementarySurface)
+%wrap_handle(StepGeom_Line)
+%wrap_handle(StepGeom_OffsetCurve3d)
+%wrap_handle(StepGeom_OffsetSurface)
+%wrap_handle(StepGeom_OrientedSurface)
+%wrap_handle(StepGeom_Pcurve)
+%wrap_handle(StepGeom_PointOnCurve)
+%wrap_handle(StepGeom_PointOnSurface)
+%wrap_handle(StepGeom_PointReplica)
+%wrap_handle(StepGeom_SurfaceCurve)
+%wrap_handle(StepGeom_SurfaceReplica)
+%wrap_handle(StepGeom_SweptSurface)
+%wrap_handle(StepGeom_BSplineCurve)
+%wrap_handle(StepGeom_BSplineSurface)
+%wrap_handle(StepGeom_Circle)
+%wrap_handle(StepGeom_CompositeCurve)
+%wrap_handle(StepGeom_ConicalSurface)
+%wrap_handle(StepGeom_CurveBoundedSurface)
+%wrap_handle(StepGeom_CylindricalSurface)
+%wrap_handle(StepGeom_Ellipse)
+%wrap_handle(StepGeom_EvaluatedDegeneratePcurve)
+%wrap_handle(StepGeom_Hyperbola)
+%wrap_handle(StepGeom_IntersectionCurve)
+%wrap_handle(StepGeom_Parabola)
+%wrap_handle(StepGeom_Plane)
+%wrap_handle(StepGeom_Polyline)
+%wrap_handle(StepGeom_RectangularCompositeSurface)
+%wrap_handle(StepGeom_RectangularTrimmedSurface)
+%wrap_handle(StepGeom_SeamCurve)
+%wrap_handle(StepGeom_SphericalSurface)
+%wrap_handle(StepGeom_SurfaceCurveAndBoundedCurve)
+%wrap_handle(StepGeom_SurfaceOfLinearExtrusion)
+%wrap_handle(StepGeom_SurfaceOfRevolution)
+%wrap_handle(StepGeom_ToroidalSurface)
+%wrap_handle(StepGeom_TrimmedCurve)
+%wrap_handle(StepGeom_BSplineCurveWithKnots)
+%wrap_handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)
+%wrap_handle(StepGeom_BSplineSurfaceWithKnots)
+%wrap_handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)
+%wrap_handle(StepGeom_BezierCurve)
+%wrap_handle(StepGeom_BezierCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_BezierSurface)
+%wrap_handle(StepGeom_BezierSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_CompositeCurveOnSurface)
+%wrap_handle(StepGeom_DegenerateToroidalSurface)
+%wrap_handle(StepGeom_QuasiUniformCurve)
+%wrap_handle(StepGeom_QuasiUniformCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_QuasiUniformSurface)
+%wrap_handle(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_RationalBSplineCurve)
+%wrap_handle(StepGeom_RationalBSplineSurface)
+%wrap_handle(StepGeom_UniformCurve)
+%wrap_handle(StepGeom_UniformCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_UniformSurface)
+%wrap_handle(StepGeom_UniformSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_BoundaryCurve)
+%wrap_handle(StepGeom_OuterBoundaryCurve)
 
 %nodefaultctor StepGeom_Array1OfBoundaryCurve;
 class StepGeom_Array1OfBoundaryCurve {
@@ -1024,51 +1106,7 @@ class StepGeom_CompositeCurveSegment : public MMgt_TShared {
 };
 
 
-%extend StepGeom_CompositeCurveSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CompositeCurveSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CompositeCurveSegment::Handle_StepGeom_CompositeCurveSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CompositeCurveSegment;
-class Handle_StepGeom_CompositeCurveSegment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_CompositeCurveSegment();
-        Handle_StepGeom_CompositeCurveSegment(const Handle_StepGeom_CompositeCurveSegment &aHandle);
-        Handle_StepGeom_CompositeCurveSegment(const StepGeom_CompositeCurveSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CompositeCurveSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CompositeCurveSegment {
-    StepGeom_CompositeCurveSegment* _get_reference() {
-    return (StepGeom_CompositeCurveSegment*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CompositeCurveSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CompositeCurveSegment)
 
 %extend StepGeom_CompositeCurveSegment {
 	%pythoncode {
@@ -1244,51 +1282,7 @@ class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public 
 };
 
 
-%extend StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
-class Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public Handle_StepRepr_RepresentationContext {
-
-    public:
-        // constructors
-        Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx();
-        Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx(const Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx &aHandle);
-        Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
-    StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* _get_reference() {
-    return (StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx)
 
 %extend StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 	%pythoncode {
@@ -1335,51 +1329,7 @@ class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationCo
 };
 
 
-%extend StepGeom_GeometricRepresentationContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_GeometricRepresentationContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_GeometricRepresentationContext::Handle_StepGeom_GeometricRepresentationContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_GeometricRepresentationContext;
-class Handle_StepGeom_GeometricRepresentationContext : public Handle_StepRepr_RepresentationContext {
-
-    public:
-        // constructors
-        Handle_StepGeom_GeometricRepresentationContext();
-        Handle_StepGeom_GeometricRepresentationContext(const Handle_StepGeom_GeometricRepresentationContext &aHandle);
-        Handle_StepGeom_GeometricRepresentationContext(const StepGeom_GeometricRepresentationContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_GeometricRepresentationContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_GeometricRepresentationContext {
-    StepGeom_GeometricRepresentationContext* _get_reference() {
-    return (StepGeom_GeometricRepresentationContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_GeometricRepresentationContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_GeometricRepresentationContext)
 
 %extend StepGeom_GeometricRepresentationContext {
 	%pythoncode {
@@ -1480,51 +1430,7 @@ class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : publ
 };
 
 
-%extend StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
-class Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : public Handle_StepRepr_RepresentationContext {
-
-    public:
-        // constructors
-        Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext();
-        Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext(const Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext &aHandle);
-        Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext(const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
-    StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* _get_reference() {
-    return (StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext)
 
 %extend StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
 	%pythoncode {
@@ -1603,51 +1509,7 @@ class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext 
 };
 
 
-%extend StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
-class Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public Handle_StepRepr_RepresentationContext {
-
-    public:
-        // constructors
-        Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext();
-        Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext(const Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext &aHandle);
-        Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext(const StepGeom_GeometricRepresentationContextAndParametricRepresentationContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
-    StepGeom_GeometricRepresentationContextAndParametricRepresentationContext* _get_reference() {
-    return (StepGeom_GeometricRepresentationContextAndParametricRepresentationContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_GeometricRepresentationContextAndParametricRepresentationContext)
 
 %extend StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
 	%pythoncode {
@@ -1666,51 +1528,7 @@ class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem 
 };
 
 
-%extend StepGeom_GeometricRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_GeometricRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_GeometricRepresentationItem::Handle_StepGeom_GeometricRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_GeometricRepresentationItem;
-class Handle_StepGeom_GeometricRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_GeometricRepresentationItem();
-        Handle_StepGeom_GeometricRepresentationItem(const Handle_StepGeom_GeometricRepresentationItem &aHandle);
-        Handle_StepGeom_GeometricRepresentationItem(const StepGeom_GeometricRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_GeometricRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_GeometricRepresentationItem {
-    StepGeom_GeometricRepresentationItem* _get_reference() {
-    return (StepGeom_GeometricRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_GeometricRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_GeometricRepresentationItem)
 
 %extend StepGeom_GeometricRepresentationItem {
 	%pythoncode {
@@ -1787,51 +1605,7 @@ class StepGeom_HArray1OfBoundaryCurve : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfBoundaryCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfBoundaryCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfBoundaryCurve::Handle_StepGeom_HArray1OfBoundaryCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfBoundaryCurve;
-class Handle_StepGeom_HArray1OfBoundaryCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfBoundaryCurve();
-        Handle_StepGeom_HArray1OfBoundaryCurve(const Handle_StepGeom_HArray1OfBoundaryCurve &aHandle);
-        Handle_StepGeom_HArray1OfBoundaryCurve(const StepGeom_HArray1OfBoundaryCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfBoundaryCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfBoundaryCurve {
-    StepGeom_HArray1OfBoundaryCurve* _get_reference() {
-    return (StepGeom_HArray1OfBoundaryCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfBoundaryCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfBoundaryCurve)
 
 %extend StepGeom_HArray1OfBoundaryCurve {
 	%pythoncode {
@@ -1908,51 +1682,7 @@ class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfCartesianPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfCartesianPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfCartesianPoint::Handle_StepGeom_HArray1OfCartesianPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfCartesianPoint;
-class Handle_StepGeom_HArray1OfCartesianPoint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfCartesianPoint();
-        Handle_StepGeom_HArray1OfCartesianPoint(const Handle_StepGeom_HArray1OfCartesianPoint &aHandle);
-        Handle_StepGeom_HArray1OfCartesianPoint(const StepGeom_HArray1OfCartesianPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfCartesianPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfCartesianPoint {
-    StepGeom_HArray1OfCartesianPoint* _get_reference() {
-    return (StepGeom_HArray1OfCartesianPoint*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfCartesianPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfCartesianPoint)
 
 %extend StepGeom_HArray1OfCartesianPoint {
 	%pythoncode {
@@ -2029,51 +1759,7 @@ class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfCompositeCurveSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfCompositeCurveSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfCompositeCurveSegment::Handle_StepGeom_HArray1OfCompositeCurveSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfCompositeCurveSegment;
-class Handle_StepGeom_HArray1OfCompositeCurveSegment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfCompositeCurveSegment();
-        Handle_StepGeom_HArray1OfCompositeCurveSegment(const Handle_StepGeom_HArray1OfCompositeCurveSegment &aHandle);
-        Handle_StepGeom_HArray1OfCompositeCurveSegment(const StepGeom_HArray1OfCompositeCurveSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfCompositeCurveSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfCompositeCurveSegment {
-    StepGeom_HArray1OfCompositeCurveSegment* _get_reference() {
-    return (StepGeom_HArray1OfCompositeCurveSegment*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfCompositeCurveSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfCompositeCurveSegment)
 
 %extend StepGeom_HArray1OfCompositeCurveSegment {
 	%pythoncode {
@@ -2150,51 +1836,7 @@ class StepGeom_HArray1OfCurve : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfCurve::Handle_StepGeom_HArray1OfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfCurve;
-class Handle_StepGeom_HArray1OfCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfCurve();
-        Handle_StepGeom_HArray1OfCurve(const Handle_StepGeom_HArray1OfCurve &aHandle);
-        Handle_StepGeom_HArray1OfCurve(const StepGeom_HArray1OfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfCurve {
-    StepGeom_HArray1OfCurve* _get_reference() {
-    return (StepGeom_HArray1OfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfCurve)
 
 %extend StepGeom_HArray1OfCurve {
 	%pythoncode {
@@ -2271,51 +1913,7 @@ class StepGeom_HArray1OfPcurveOrSurface : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfPcurveOrSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfPcurveOrSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfPcurveOrSurface::Handle_StepGeom_HArray1OfPcurveOrSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfPcurveOrSurface;
-class Handle_StepGeom_HArray1OfPcurveOrSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfPcurveOrSurface();
-        Handle_StepGeom_HArray1OfPcurveOrSurface(const Handle_StepGeom_HArray1OfPcurveOrSurface &aHandle);
-        Handle_StepGeom_HArray1OfPcurveOrSurface(const StepGeom_HArray1OfPcurveOrSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfPcurveOrSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfPcurveOrSurface {
-    StepGeom_HArray1OfPcurveOrSurface* _get_reference() {
-    return (StepGeom_HArray1OfPcurveOrSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfPcurveOrSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfPcurveOrSurface)
 
 %extend StepGeom_HArray1OfPcurveOrSurface {
 	%pythoncode {
@@ -2392,51 +1990,7 @@ class StepGeom_HArray1OfSurfaceBoundary : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfSurfaceBoundary {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfSurfaceBoundary(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfSurfaceBoundary::Handle_StepGeom_HArray1OfSurfaceBoundary %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfSurfaceBoundary;
-class Handle_StepGeom_HArray1OfSurfaceBoundary : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfSurfaceBoundary();
-        Handle_StepGeom_HArray1OfSurfaceBoundary(const Handle_StepGeom_HArray1OfSurfaceBoundary &aHandle);
-        Handle_StepGeom_HArray1OfSurfaceBoundary(const StepGeom_HArray1OfSurfaceBoundary *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfSurfaceBoundary DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfSurfaceBoundary {
-    StepGeom_HArray1OfSurfaceBoundary* _get_reference() {
-    return (StepGeom_HArray1OfSurfaceBoundary*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfSurfaceBoundary {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfSurfaceBoundary)
 
 %extend StepGeom_HArray1OfSurfaceBoundary {
 	%pythoncode {
@@ -2513,51 +2067,7 @@ class StepGeom_HArray1OfTrimmingSelect : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray1OfTrimmingSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray1OfTrimmingSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray1OfTrimmingSelect::Handle_StepGeom_HArray1OfTrimmingSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray1OfTrimmingSelect;
-class Handle_StepGeom_HArray1OfTrimmingSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray1OfTrimmingSelect();
-        Handle_StepGeom_HArray1OfTrimmingSelect(const Handle_StepGeom_HArray1OfTrimmingSelect &aHandle);
-        Handle_StepGeom_HArray1OfTrimmingSelect(const StepGeom_HArray1OfTrimmingSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray1OfTrimmingSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray1OfTrimmingSelect {
-    StepGeom_HArray1OfTrimmingSelect* _get_reference() {
-    return (StepGeom_HArray1OfTrimmingSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray1OfTrimmingSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray1OfTrimmingSelect)
 
 %extend StepGeom_HArray1OfTrimmingSelect {
 	%pythoncode {
@@ -2660,51 +2170,7 @@ class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray2OfCartesianPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray2OfCartesianPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray2OfCartesianPoint::Handle_StepGeom_HArray2OfCartesianPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray2OfCartesianPoint;
-class Handle_StepGeom_HArray2OfCartesianPoint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray2OfCartesianPoint();
-        Handle_StepGeom_HArray2OfCartesianPoint(const Handle_StepGeom_HArray2OfCartesianPoint &aHandle);
-        Handle_StepGeom_HArray2OfCartesianPoint(const StepGeom_HArray2OfCartesianPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray2OfCartesianPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray2OfCartesianPoint {
-    StepGeom_HArray2OfCartesianPoint* _get_reference() {
-    return (StepGeom_HArray2OfCartesianPoint*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray2OfCartesianPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray2OfCartesianPoint)
 
 %extend StepGeom_HArray2OfCartesianPoint {
 	%pythoncode {
@@ -2807,51 +2273,7 @@ class StepGeom_HArray2OfSurfacePatch : public MMgt_TShared {
 };
 
 
-%extend StepGeom_HArray2OfSurfacePatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_HArray2OfSurfacePatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_HArray2OfSurfacePatch::Handle_StepGeom_HArray2OfSurfacePatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_HArray2OfSurfacePatch;
-class Handle_StepGeom_HArray2OfSurfacePatch : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_HArray2OfSurfacePatch();
-        Handle_StepGeom_HArray2OfSurfacePatch(const Handle_StepGeom_HArray2OfSurfacePatch &aHandle);
-        Handle_StepGeom_HArray2OfSurfacePatch(const StepGeom_HArray2OfSurfacePatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_HArray2OfSurfacePatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_HArray2OfSurfacePatch {
-    StepGeom_HArray2OfSurfacePatch* _get_reference() {
-    return (StepGeom_HArray2OfSurfacePatch*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_HArray2OfSurfacePatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_HArray2OfSurfacePatch)
 
 %extend StepGeom_HArray2OfSurfacePatch {
 	%pythoncode {
@@ -3008,51 +2430,7 @@ class StepGeom_SurfacePatch : public MMgt_TShared {
 };
 
 
-%extend StepGeom_SurfacePatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfacePatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfacePatch::Handle_StepGeom_SurfacePatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfacePatch;
-class Handle_StepGeom_SurfacePatch : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfacePatch();
-        Handle_StepGeom_SurfacePatch(const Handle_StepGeom_SurfacePatch &aHandle);
-        Handle_StepGeom_SurfacePatch(const StepGeom_SurfacePatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfacePatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfacePatch {
-    StepGeom_SurfacePatch* _get_reference() {
-    return (StepGeom_SurfacePatch*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfacePatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfacePatch)
 
 %extend StepGeom_SurfacePatch {
 	%pythoncode {
@@ -3083,51 +2461,7 @@ class StepGeom_TrimmingMember : public StepData_SelectReal {
 };
 
 
-%extend StepGeom_TrimmingMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_TrimmingMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_TrimmingMember::Handle_StepGeom_TrimmingMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_TrimmingMember;
-class Handle_StepGeom_TrimmingMember : public Handle_StepData_SelectReal {
-
-    public:
-        // constructors
-        Handle_StepGeom_TrimmingMember();
-        Handle_StepGeom_TrimmingMember(const Handle_StepGeom_TrimmingMember &aHandle);
-        Handle_StepGeom_TrimmingMember(const StepGeom_TrimmingMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_TrimmingMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_TrimmingMember {
-    StepGeom_TrimmingMember* _get_reference() {
-    return (StepGeom_TrimmingMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_TrimmingMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_TrimmingMember)
 
 %extend StepGeom_TrimmingMember {
 	%pythoncode {
@@ -3332,51 +2666,7 @@ class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepres
 };
 
 
-%extend StepGeom_CartesianTransformationOperator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CartesianTransformationOperator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CartesianTransformationOperator::Handle_StepGeom_CartesianTransformationOperator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CartesianTransformationOperator;
-class Handle_StepGeom_CartesianTransformationOperator : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_CartesianTransformationOperator();
-        Handle_StepGeom_CartesianTransformationOperator(const Handle_StepGeom_CartesianTransformationOperator &aHandle);
-        Handle_StepGeom_CartesianTransformationOperator(const StepGeom_CartesianTransformationOperator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CartesianTransformationOperator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CartesianTransformationOperator {
-    StepGeom_CartesianTransformationOperator* _get_reference() {
-    return (StepGeom_CartesianTransformationOperator*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CartesianTransformationOperator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CartesianTransformationOperator)
 
 %extend StepGeom_CartesianTransformationOperator {
 	%pythoncode {
@@ -3395,51 +2685,7 @@ class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Curve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Curve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Curve::Handle_StepGeom_Curve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Curve;
-class Handle_StepGeom_Curve : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Curve();
-        Handle_StepGeom_Curve(const Handle_StepGeom_Curve &aHandle);
-        Handle_StepGeom_Curve(const StepGeom_Curve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Curve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Curve {
-    StepGeom_Curve* _get_reference() {
-    return (StepGeom_Curve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Curve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Curve)
 
 %extend StepGeom_Curve {
 	%pythoncode {
@@ -3492,51 +2738,7 @@ class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Direction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Direction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Direction::Handle_StepGeom_Direction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Direction;
-class Handle_StepGeom_Direction : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Direction();
-        Handle_StepGeom_Direction(const Handle_StepGeom_Direction &aHandle);
-        Handle_StepGeom_Direction(const StepGeom_Direction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Direction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Direction {
-    StepGeom_Direction* _get_reference() {
-    return (StepGeom_Direction*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Direction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Direction)
 
 %extend StepGeom_Direction {
 	%pythoncode {
@@ -3579,51 +2781,7 @@ class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Placement::Handle_StepGeom_Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Placement;
-class Handle_StepGeom_Placement : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Placement();
-        Handle_StepGeom_Placement(const Handle_StepGeom_Placement &aHandle);
-        Handle_StepGeom_Placement(const StepGeom_Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Placement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Placement {
-    StepGeom_Placement* _get_reference() {
-    return (StepGeom_Placement*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Placement)
 
 %extend StepGeom_Placement {
 	%pythoncode {
@@ -3642,51 +2800,7 @@ class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Point::Handle_StepGeom_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Point;
-class Handle_StepGeom_Point : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Point();
-        Handle_StepGeom_Point(const Handle_StepGeom_Point &aHandle);
-        Handle_StepGeom_Point(const StepGeom_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Point DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Point {
-    StepGeom_Point* _get_reference() {
-    return (StepGeom_Point*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Point)
 
 %extend StepGeom_Point {
 	%pythoncode {
@@ -3737,51 +2851,7 @@ class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCu
 };
 
 
-%extend StepGeom_ReparametrisedCompositeCurveSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_ReparametrisedCompositeCurveSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_ReparametrisedCompositeCurveSegment::Handle_StepGeom_ReparametrisedCompositeCurveSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_ReparametrisedCompositeCurveSegment;
-class Handle_StepGeom_ReparametrisedCompositeCurveSegment : public Handle_StepGeom_CompositeCurveSegment {
-
-    public:
-        // constructors
-        Handle_StepGeom_ReparametrisedCompositeCurveSegment();
-        Handle_StepGeom_ReparametrisedCompositeCurveSegment(const Handle_StepGeom_ReparametrisedCompositeCurveSegment &aHandle);
-        Handle_StepGeom_ReparametrisedCompositeCurveSegment(const StepGeom_ReparametrisedCompositeCurveSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_ReparametrisedCompositeCurveSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_ReparametrisedCompositeCurveSegment {
-    StepGeom_ReparametrisedCompositeCurveSegment* _get_reference() {
-    return (StepGeom_ReparametrisedCompositeCurveSegment*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_ReparametrisedCompositeCurveSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_ReparametrisedCompositeCurveSegment)
 
 %extend StepGeom_ReparametrisedCompositeCurveSegment {
 	%pythoncode {
@@ -3800,51 +2870,7 @@ class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Surface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Surface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Surface::Handle_StepGeom_Surface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Surface;
-class Handle_StepGeom_Surface : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Surface();
-        Handle_StepGeom_Surface(const Handle_StepGeom_Surface &aHandle);
-        Handle_StepGeom_Surface(const StepGeom_Surface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Surface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Surface {
-    StepGeom_Surface* _get_reference() {
-    return (StepGeom_Surface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Surface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Surface)
 
 %extend StepGeom_Surface {
 	%pythoncode {
@@ -3899,51 +2925,7 @@ class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepGeom_Vector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Vector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Vector::Handle_StepGeom_Vector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Vector;
-class Handle_StepGeom_Vector : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepGeom_Vector();
-        Handle_StepGeom_Vector(const Handle_StepGeom_Vector &aHandle);
-        Handle_StepGeom_Vector(const StepGeom_Vector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Vector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Vector {
-    StepGeom_Vector* _get_reference() {
-    return (StepGeom_Vector*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Vector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Vector)
 
 %extend StepGeom_Vector {
 	%pythoncode {
@@ -4000,51 +2982,7 @@ class StepGeom_Axis1Placement : public StepGeom_Placement {
 };
 
 
-%extend StepGeom_Axis1Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Axis1Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Axis1Placement::Handle_StepGeom_Axis1Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Axis1Placement;
-class Handle_StepGeom_Axis1Placement : public Handle_StepGeom_Placement {
-
-    public:
-        // constructors
-        Handle_StepGeom_Axis1Placement();
-        Handle_StepGeom_Axis1Placement(const Handle_StepGeom_Axis1Placement &aHandle);
-        Handle_StepGeom_Axis1Placement(const StepGeom_Axis1Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Axis1Placement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Axis1Placement {
-    StepGeom_Axis1Placement* _get_reference() {
-    return (StepGeom_Axis1Placement*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Axis1Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Axis1Placement)
 
 %extend StepGeom_Axis1Placement {
 	%pythoncode {
@@ -4101,51 +3039,7 @@ class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 };
 
 
-%extend StepGeom_Axis2Placement2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Axis2Placement2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Axis2Placement2d::Handle_StepGeom_Axis2Placement2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Axis2Placement2d;
-class Handle_StepGeom_Axis2Placement2d : public Handle_StepGeom_Placement {
-
-    public:
-        // constructors
-        Handle_StepGeom_Axis2Placement2d();
-        Handle_StepGeom_Axis2Placement2d(const Handle_StepGeom_Axis2Placement2d &aHandle);
-        Handle_StepGeom_Axis2Placement2d(const StepGeom_Axis2Placement2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Axis2Placement2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Axis2Placement2d {
-    StepGeom_Axis2Placement2d* _get_reference() {
-    return (StepGeom_Axis2Placement2d*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Axis2Placement2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Axis2Placement2d)
 
 %extend StepGeom_Axis2Placement2d {
 	%pythoncode {
@@ -4224,51 +3118,7 @@ class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 };
 
 
-%extend StepGeom_Axis2Placement3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Axis2Placement3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Axis2Placement3d::Handle_StepGeom_Axis2Placement3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Axis2Placement3d;
-class Handle_StepGeom_Axis2Placement3d : public Handle_StepGeom_Placement {
-
-    public:
-        // constructors
-        Handle_StepGeom_Axis2Placement3d();
-        Handle_StepGeom_Axis2Placement3d(const Handle_StepGeom_Axis2Placement3d &aHandle);
-        Handle_StepGeom_Axis2Placement3d(const StepGeom_Axis2Placement3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Axis2Placement3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Axis2Placement3d {
-    StepGeom_Axis2Placement3d* _get_reference() {
-    return (StepGeom_Axis2Placement3d*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Axis2Placement3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Axis2Placement3d)
 
 %extend StepGeom_Axis2Placement3d {
 	%pythoncode {
@@ -4287,51 +3137,7 @@ class StepGeom_BoundedCurve : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_BoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BoundedCurve::Handle_StepGeom_BoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BoundedCurve;
-class Handle_StepGeom_BoundedCurve : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BoundedCurve();
-        Handle_StepGeom_BoundedCurve(const Handle_StepGeom_BoundedCurve &aHandle);
-        Handle_StepGeom_BoundedCurve(const StepGeom_BoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BoundedCurve {
-    StepGeom_BoundedCurve* _get_reference() {
-    return (StepGeom_BoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BoundedCurve)
 
 %extend StepGeom_BoundedCurve {
 	%pythoncode {
@@ -4350,51 +3156,7 @@ class StepGeom_BoundedSurface : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_BoundedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BoundedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BoundedSurface::Handle_StepGeom_BoundedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BoundedSurface;
-class Handle_StepGeom_BoundedSurface : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BoundedSurface();
-        Handle_StepGeom_BoundedSurface(const Handle_StepGeom_BoundedSurface &aHandle);
-        Handle_StepGeom_BoundedSurface(const StepGeom_BoundedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BoundedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BoundedSurface {
-    StepGeom_BoundedSurface* _get_reference() {
-    return (StepGeom_BoundedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BoundedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BoundedSurface)
 
 %extend StepGeom_BoundedSurface {
 	%pythoncode {
@@ -4469,51 +3231,7 @@ class StepGeom_CartesianPoint : public StepGeom_Point {
 };
 
 
-%extend StepGeom_CartesianPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CartesianPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CartesianPoint::Handle_StepGeom_CartesianPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CartesianPoint;
-class Handle_StepGeom_CartesianPoint : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepGeom_CartesianPoint();
-        Handle_StepGeom_CartesianPoint(const Handle_StepGeom_CartesianPoint &aHandle);
-        Handle_StepGeom_CartesianPoint(const StepGeom_CartesianPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CartesianPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CartesianPoint {
-    StepGeom_CartesianPoint* _get_reference() {
-    return (StepGeom_CartesianPoint*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CartesianPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CartesianPoint)
 
 %extend StepGeom_CartesianPoint {
 	%pythoncode {
@@ -4530,51 +3248,7 @@ class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTran
 };
 
 
-%extend StepGeom_CartesianTransformationOperator2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CartesianTransformationOperator2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CartesianTransformationOperator2d::Handle_StepGeom_CartesianTransformationOperator2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CartesianTransformationOperator2d;
-class Handle_StepGeom_CartesianTransformationOperator2d : public Handle_StepGeom_CartesianTransformationOperator {
-
-    public:
-        // constructors
-        Handle_StepGeom_CartesianTransformationOperator2d();
-        Handle_StepGeom_CartesianTransformationOperator2d(const Handle_StepGeom_CartesianTransformationOperator2d &aHandle);
-        Handle_StepGeom_CartesianTransformationOperator2d(const StepGeom_CartesianTransformationOperator2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CartesianTransformationOperator2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CartesianTransformationOperator2d {
-    StepGeom_CartesianTransformationOperator2d* _get_reference() {
-    return (StepGeom_CartesianTransformationOperator2d*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CartesianTransformationOperator2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CartesianTransformationOperator2d)
 
 %extend StepGeom_CartesianTransformationOperator2d {
 	%pythoncode {
@@ -4655,51 +3329,7 @@ class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTran
 };
 
 
-%extend StepGeom_CartesianTransformationOperator3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CartesianTransformationOperator3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CartesianTransformationOperator3d::Handle_StepGeom_CartesianTransformationOperator3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CartesianTransformationOperator3d;
-class Handle_StepGeom_CartesianTransformationOperator3d : public Handle_StepGeom_CartesianTransformationOperator {
-
-    public:
-        // constructors
-        Handle_StepGeom_CartesianTransformationOperator3d();
-        Handle_StepGeom_CartesianTransformationOperator3d(const Handle_StepGeom_CartesianTransformationOperator3d &aHandle);
-        Handle_StepGeom_CartesianTransformationOperator3d(const StepGeom_CartesianTransformationOperator3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CartesianTransformationOperator3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CartesianTransformationOperator3d {
-    StepGeom_CartesianTransformationOperator3d* _get_reference() {
-    return (StepGeom_CartesianTransformationOperator3d*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CartesianTransformationOperator3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CartesianTransformationOperator3d)
 
 %extend StepGeom_CartesianTransformationOperator3d {
 	%pythoncode {
@@ -4742,51 +3372,7 @@ class StepGeom_Conic : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_Conic {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Conic(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Conic::Handle_StepGeom_Conic %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Conic;
-class Handle_StepGeom_Conic : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_Conic();
-        Handle_StepGeom_Conic(const Handle_StepGeom_Conic &aHandle);
-        Handle_StepGeom_Conic(const StepGeom_Conic *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Conic DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Conic {
-    StepGeom_Conic* _get_reference() {
-    return (StepGeom_Conic*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Conic {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Conic)
 
 %extend StepGeom_Conic {
 	%pythoncode {
@@ -4841,51 +3427,7 @@ class StepGeom_CurveReplica : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_CurveReplica {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CurveReplica(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CurveReplica::Handle_StepGeom_CurveReplica %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CurveReplica;
-class Handle_StepGeom_CurveReplica : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_CurveReplica();
-        Handle_StepGeom_CurveReplica(const Handle_StepGeom_CurveReplica &aHandle);
-        Handle_StepGeom_CurveReplica(const StepGeom_CurveReplica *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CurveReplica DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CurveReplica {
-    StepGeom_CurveReplica* _get_reference() {
-    return (StepGeom_CurveReplica*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CurveReplica {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CurveReplica)
 
 %extend StepGeom_CurveReplica {
 	%pythoncode {
@@ -4940,51 +3482,7 @@ class StepGeom_DegeneratePcurve : public StepGeom_Point {
 };
 
 
-%extend StepGeom_DegeneratePcurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_DegeneratePcurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_DegeneratePcurve::Handle_StepGeom_DegeneratePcurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_DegeneratePcurve;
-class Handle_StepGeom_DegeneratePcurve : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepGeom_DegeneratePcurve();
-        Handle_StepGeom_DegeneratePcurve(const Handle_StepGeom_DegeneratePcurve &aHandle);
-        Handle_StepGeom_DegeneratePcurve(const StepGeom_DegeneratePcurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_DegeneratePcurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_DegeneratePcurve {
-    StepGeom_DegeneratePcurve* _get_reference() {
-    return (StepGeom_DegeneratePcurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_DegeneratePcurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_DegeneratePcurve)
 
 %extend StepGeom_DegeneratePcurve {
 	%pythoncode {
@@ -5027,51 +3525,7 @@ class StepGeom_ElementarySurface : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_ElementarySurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_ElementarySurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_ElementarySurface::Handle_StepGeom_ElementarySurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_ElementarySurface;
-class Handle_StepGeom_ElementarySurface : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_ElementarySurface();
-        Handle_StepGeom_ElementarySurface(const Handle_StepGeom_ElementarySurface &aHandle);
-        Handle_StepGeom_ElementarySurface(const StepGeom_ElementarySurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_ElementarySurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_ElementarySurface {
-    StepGeom_ElementarySurface* _get_reference() {
-    return (StepGeom_ElementarySurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_ElementarySurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_ElementarySurface)
 
 %extend StepGeom_ElementarySurface {
 	%pythoncode {
@@ -5126,51 +3580,7 @@ class StepGeom_Line : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Line::Handle_StepGeom_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Line;
-class Handle_StepGeom_Line : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_Line();
-        Handle_StepGeom_Line(const Handle_StepGeom_Line &aHandle);
-        Handle_StepGeom_Line(const StepGeom_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Line {
-    StepGeom_Line* _get_reference() {
-    return (StepGeom_Line*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Line)
 
 %extend StepGeom_Line {
 	%pythoncode {
@@ -5249,51 +3659,7 @@ class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_OffsetCurve3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_OffsetCurve3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_OffsetCurve3d::Handle_StepGeom_OffsetCurve3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_OffsetCurve3d;
-class Handle_StepGeom_OffsetCurve3d : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_OffsetCurve3d();
-        Handle_StepGeom_OffsetCurve3d(const Handle_StepGeom_OffsetCurve3d &aHandle);
-        Handle_StepGeom_OffsetCurve3d(const StepGeom_OffsetCurve3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_OffsetCurve3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_OffsetCurve3d {
-    StepGeom_OffsetCurve3d* _get_reference() {
-    return (StepGeom_OffsetCurve3d*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_OffsetCurve3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_OffsetCurve3d)
 
 %extend StepGeom_OffsetCurve3d {
 	%pythoncode {
@@ -5360,51 +3726,7 @@ class StepGeom_OffsetSurface : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_OffsetSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_OffsetSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_OffsetSurface::Handle_StepGeom_OffsetSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_OffsetSurface;
-class Handle_StepGeom_OffsetSurface : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_OffsetSurface();
-        Handle_StepGeom_OffsetSurface(const Handle_StepGeom_OffsetSurface &aHandle);
-        Handle_StepGeom_OffsetSurface(const StepGeom_OffsetSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_OffsetSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_OffsetSurface {
-    StepGeom_OffsetSurface* _get_reference() {
-    return (StepGeom_OffsetSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_OffsetSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_OffsetSurface)
 
 %extend StepGeom_OffsetSurface {
 	%pythoncode {
@@ -5447,51 +3769,7 @@ class StepGeom_OrientedSurface : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_OrientedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_OrientedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_OrientedSurface::Handle_StepGeom_OrientedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_OrientedSurface;
-class Handle_StepGeom_OrientedSurface : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_OrientedSurface();
-        Handle_StepGeom_OrientedSurface(const Handle_StepGeom_OrientedSurface &aHandle);
-        Handle_StepGeom_OrientedSurface(const StepGeom_OrientedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_OrientedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_OrientedSurface {
-    StepGeom_OrientedSurface* _get_reference() {
-    return (StepGeom_OrientedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_OrientedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_OrientedSurface)
 
 %extend StepGeom_OrientedSurface {
 	%pythoncode {
@@ -5546,51 +3824,7 @@ class StepGeom_Pcurve : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_Pcurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Pcurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Pcurve::Handle_StepGeom_Pcurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Pcurve;
-class Handle_StepGeom_Pcurve : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_Pcurve();
-        Handle_StepGeom_Pcurve(const Handle_StepGeom_Pcurve &aHandle);
-        Handle_StepGeom_Pcurve(const StepGeom_Pcurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Pcurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Pcurve {
-    StepGeom_Pcurve* _get_reference() {
-    return (StepGeom_Pcurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Pcurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Pcurve)
 
 %extend StepGeom_Pcurve {
 	%pythoncode {
@@ -5645,51 +3879,7 @@ class StepGeom_PointOnCurve : public StepGeom_Point {
 };
 
 
-%extend StepGeom_PointOnCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_PointOnCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_PointOnCurve::Handle_StepGeom_PointOnCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_PointOnCurve;
-class Handle_StepGeom_PointOnCurve : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepGeom_PointOnCurve();
-        Handle_StepGeom_PointOnCurve(const Handle_StepGeom_PointOnCurve &aHandle);
-        Handle_StepGeom_PointOnCurve(const StepGeom_PointOnCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_PointOnCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_PointOnCurve {
-    StepGeom_PointOnCurve* _get_reference() {
-    return (StepGeom_PointOnCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_PointOnCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_PointOnCurve)
 
 %extend StepGeom_PointOnCurve {
 	%pythoncode {
@@ -5756,51 +3946,7 @@ class StepGeom_PointOnSurface : public StepGeom_Point {
 };
 
 
-%extend StepGeom_PointOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_PointOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_PointOnSurface::Handle_StepGeom_PointOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_PointOnSurface;
-class Handle_StepGeom_PointOnSurface : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepGeom_PointOnSurface();
-        Handle_StepGeom_PointOnSurface(const Handle_StepGeom_PointOnSurface &aHandle);
-        Handle_StepGeom_PointOnSurface(const StepGeom_PointOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_PointOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_PointOnSurface {
-    StepGeom_PointOnSurface* _get_reference() {
-    return (StepGeom_PointOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_PointOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_PointOnSurface)
 
 %extend StepGeom_PointOnSurface {
 	%pythoncode {
@@ -5855,51 +4001,7 @@ class StepGeom_PointReplica : public StepGeom_Point {
 };
 
 
-%extend StepGeom_PointReplica {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_PointReplica(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_PointReplica::Handle_StepGeom_PointReplica %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_PointReplica;
-class Handle_StepGeom_PointReplica : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepGeom_PointReplica();
-        Handle_StepGeom_PointReplica(const Handle_StepGeom_PointReplica &aHandle);
-        Handle_StepGeom_PointReplica(const StepGeom_PointReplica *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_PointReplica DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_PointReplica {
-    StepGeom_PointReplica* _get_reference() {
-    return (StepGeom_PointReplica*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_PointReplica {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_PointReplica)
 
 %extend StepGeom_PointReplica {
 	%pythoncode {
@@ -5976,51 +4078,7 @@ class StepGeom_SurfaceCurve : public StepGeom_Curve {
 };
 
 
-%extend StepGeom_SurfaceCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfaceCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfaceCurve::Handle_StepGeom_SurfaceCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfaceCurve;
-class Handle_StepGeom_SurfaceCurve : public Handle_StepGeom_Curve {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfaceCurve();
-        Handle_StepGeom_SurfaceCurve(const Handle_StepGeom_SurfaceCurve &aHandle);
-        Handle_StepGeom_SurfaceCurve(const StepGeom_SurfaceCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfaceCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfaceCurve {
-    StepGeom_SurfaceCurve* _get_reference() {
-    return (StepGeom_SurfaceCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfaceCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfaceCurve)
 
 %extend StepGeom_SurfaceCurve {
 	%pythoncode {
@@ -6075,51 +4133,7 @@ class StepGeom_SurfaceReplica : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_SurfaceReplica {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfaceReplica(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfaceReplica::Handle_StepGeom_SurfaceReplica %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfaceReplica;
-class Handle_StepGeom_SurfaceReplica : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfaceReplica();
-        Handle_StepGeom_SurfaceReplica(const Handle_StepGeom_SurfaceReplica &aHandle);
-        Handle_StepGeom_SurfaceReplica(const StepGeom_SurfaceReplica *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfaceReplica DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfaceReplica {
-    StepGeom_SurfaceReplica* _get_reference() {
-    return (StepGeom_SurfaceReplica*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfaceReplica {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfaceReplica)
 
 %extend StepGeom_SurfaceReplica {
 	%pythoncode {
@@ -6162,51 +4176,7 @@ class StepGeom_SweptSurface : public StepGeom_Surface {
 };
 
 
-%extend StepGeom_SweptSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SweptSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SweptSurface::Handle_StepGeom_SweptSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SweptSurface;
-class Handle_StepGeom_SweptSurface : public Handle_StepGeom_Surface {
-
-    public:
-        // constructors
-        Handle_StepGeom_SweptSurface();
-        Handle_StepGeom_SweptSurface(const Handle_StepGeom_SweptSurface &aHandle);
-        Handle_StepGeom_SweptSurface(const StepGeom_SweptSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SweptSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SweptSurface {
-    StepGeom_SweptSurface* _get_reference() {
-    return (StepGeom_SweptSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SweptSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SweptSurface)
 
 %extend StepGeom_SweptSurface {
 	%pythoncode {
@@ -6307,51 +4277,7 @@ class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 };
 
 
-%extend StepGeom_BSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineCurve::Handle_StepGeom_BSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineCurve;
-class Handle_StepGeom_BSplineCurve : public Handle_StepGeom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineCurve();
-        Handle_StepGeom_BSplineCurve(const Handle_StepGeom_BSplineCurve &aHandle);
-        Handle_StepGeom_BSplineCurve(const StepGeom_BSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineCurve {
-    StepGeom_BSplineCurve* _get_reference() {
-    return (StepGeom_BSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineCurve)
 
 %extend StepGeom_BSplineCurve {
 	%pythoncode {
@@ -6482,51 +4408,7 @@ class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 };
 
 
-%extend StepGeom_BSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineSurface::Handle_StepGeom_BSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineSurface;
-class Handle_StepGeom_BSplineSurface : public Handle_StepGeom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineSurface();
-        Handle_StepGeom_BSplineSurface(const Handle_StepGeom_BSplineSurface &aHandle);
-        Handle_StepGeom_BSplineSurface(const StepGeom_BSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineSurface {
-    StepGeom_BSplineSurface* _get_reference() {
-    return (StepGeom_BSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineSurface)
 
 %extend StepGeom_BSplineSurface {
 	%pythoncode {
@@ -6573,51 +4455,7 @@ class StepGeom_Circle : public StepGeom_Conic {
 };
 
 
-%extend StepGeom_Circle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Circle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Circle::Handle_StepGeom_Circle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Circle;
-class Handle_StepGeom_Circle : public Handle_StepGeom_Conic {
-
-    public:
-        // constructors
-        Handle_StepGeom_Circle();
-        Handle_StepGeom_Circle(const Handle_StepGeom_Circle &aHandle);
-        Handle_StepGeom_Circle(const StepGeom_Circle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Circle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Circle {
-    StepGeom_Circle* _get_reference() {
-    return (StepGeom_Circle*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Circle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Circle)
 
 %extend StepGeom_Circle {
 	%pythoncode {
@@ -6682,51 +4520,7 @@ class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 };
 
 
-%extend StepGeom_CompositeCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CompositeCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CompositeCurve::Handle_StepGeom_CompositeCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CompositeCurve;
-class Handle_StepGeom_CompositeCurve : public Handle_StepGeom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_CompositeCurve();
-        Handle_StepGeom_CompositeCurve(const Handle_StepGeom_CompositeCurve &aHandle);
-        Handle_StepGeom_CompositeCurve(const StepGeom_CompositeCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CompositeCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CompositeCurve {
-    StepGeom_CompositeCurve* _get_reference() {
-    return (StepGeom_CompositeCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CompositeCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CompositeCurve)
 
 %extend StepGeom_CompositeCurve {
 	%pythoncode {
@@ -6785,51 +4579,7 @@ class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 };
 
 
-%extend StepGeom_ConicalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_ConicalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_ConicalSurface::Handle_StepGeom_ConicalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_ConicalSurface;
-class Handle_StepGeom_ConicalSurface : public Handle_StepGeom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_ConicalSurface();
-        Handle_StepGeom_ConicalSurface(const Handle_StepGeom_ConicalSurface &aHandle);
-        Handle_StepGeom_ConicalSurface(const StepGeom_ConicalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_ConicalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_ConicalSurface {
-    StepGeom_ConicalSurface* _get_reference() {
-    return (StepGeom_ConicalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_ConicalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_ConicalSurface)
 
 %extend StepGeom_ConicalSurface {
 	%pythoncode {
@@ -6904,51 +4654,7 @@ class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 };
 
 
-%extend StepGeom_CurveBoundedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CurveBoundedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CurveBoundedSurface::Handle_StepGeom_CurveBoundedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CurveBoundedSurface;
-class Handle_StepGeom_CurveBoundedSurface : public Handle_StepGeom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_CurveBoundedSurface();
-        Handle_StepGeom_CurveBoundedSurface(const Handle_StepGeom_CurveBoundedSurface &aHandle);
-        Handle_StepGeom_CurveBoundedSurface(const StepGeom_CurveBoundedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CurveBoundedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CurveBoundedSurface {
-    StepGeom_CurveBoundedSurface* _get_reference() {
-    return (StepGeom_CurveBoundedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CurveBoundedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CurveBoundedSurface)
 
 %extend StepGeom_CurveBoundedSurface {
 	%pythoncode {
@@ -6995,51 +4701,7 @@ class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 };
 
 
-%extend StepGeom_CylindricalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CylindricalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CylindricalSurface::Handle_StepGeom_CylindricalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CylindricalSurface;
-class Handle_StepGeom_CylindricalSurface : public Handle_StepGeom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_CylindricalSurface();
-        Handle_StepGeom_CylindricalSurface(const Handle_StepGeom_CylindricalSurface &aHandle);
-        Handle_StepGeom_CylindricalSurface(const StepGeom_CylindricalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CylindricalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CylindricalSurface {
-    StepGeom_CylindricalSurface* _get_reference() {
-    return (StepGeom_CylindricalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CylindricalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CylindricalSurface)
 
 %extend StepGeom_CylindricalSurface {
 	%pythoncode {
@@ -7098,51 +4760,7 @@ class StepGeom_Ellipse : public StepGeom_Conic {
 };
 
 
-%extend StepGeom_Ellipse {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Ellipse(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Ellipse::Handle_StepGeom_Ellipse %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Ellipse;
-class Handle_StepGeom_Ellipse : public Handle_StepGeom_Conic {
-
-    public:
-        // constructors
-        Handle_StepGeom_Ellipse();
-        Handle_StepGeom_Ellipse(const Handle_StepGeom_Ellipse &aHandle);
-        Handle_StepGeom_Ellipse(const StepGeom_Ellipse *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Ellipse DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Ellipse {
-    StepGeom_Ellipse* _get_reference() {
-    return (StepGeom_Ellipse*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Ellipse {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Ellipse)
 
 %extend StepGeom_Ellipse {
 	%pythoncode {
@@ -7193,51 +4811,7 @@ class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 };
 
 
-%extend StepGeom_EvaluatedDegeneratePcurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_EvaluatedDegeneratePcurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_EvaluatedDegeneratePcurve::Handle_StepGeom_EvaluatedDegeneratePcurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_EvaluatedDegeneratePcurve;
-class Handle_StepGeom_EvaluatedDegeneratePcurve : public Handle_StepGeom_DegeneratePcurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_EvaluatedDegeneratePcurve();
-        Handle_StepGeom_EvaluatedDegeneratePcurve(const Handle_StepGeom_EvaluatedDegeneratePcurve &aHandle);
-        Handle_StepGeom_EvaluatedDegeneratePcurve(const StepGeom_EvaluatedDegeneratePcurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_EvaluatedDegeneratePcurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_EvaluatedDegeneratePcurve {
-    StepGeom_EvaluatedDegeneratePcurve* _get_reference() {
-    return (StepGeom_EvaluatedDegeneratePcurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_EvaluatedDegeneratePcurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_EvaluatedDegeneratePcurve)
 
 %extend StepGeom_EvaluatedDegeneratePcurve {
 	%pythoncode {
@@ -7296,51 +4870,7 @@ class StepGeom_Hyperbola : public StepGeom_Conic {
 };
 
 
-%extend StepGeom_Hyperbola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Hyperbola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Hyperbola::Handle_StepGeom_Hyperbola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Hyperbola;
-class Handle_StepGeom_Hyperbola : public Handle_StepGeom_Conic {
-
-    public:
-        // constructors
-        Handle_StepGeom_Hyperbola();
-        Handle_StepGeom_Hyperbola(const Handle_StepGeom_Hyperbola &aHandle);
-        Handle_StepGeom_Hyperbola(const StepGeom_Hyperbola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Hyperbola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Hyperbola {
-    StepGeom_Hyperbola* _get_reference() {
-    return (StepGeom_Hyperbola*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Hyperbola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Hyperbola)
 
 %extend StepGeom_Hyperbola {
 	%pythoncode {
@@ -7359,51 +4889,7 @@ class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 };
 
 
-%extend StepGeom_IntersectionCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_IntersectionCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_IntersectionCurve::Handle_StepGeom_IntersectionCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_IntersectionCurve;
-class Handle_StepGeom_IntersectionCurve : public Handle_StepGeom_SurfaceCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_IntersectionCurve();
-        Handle_StepGeom_IntersectionCurve(const Handle_StepGeom_IntersectionCurve &aHandle);
-        Handle_StepGeom_IntersectionCurve(const StepGeom_IntersectionCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_IntersectionCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_IntersectionCurve {
-    StepGeom_IntersectionCurve* _get_reference() {
-    return (StepGeom_IntersectionCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_IntersectionCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_IntersectionCurve)
 
 %extend StepGeom_IntersectionCurve {
 	%pythoncode {
@@ -7450,51 +4936,7 @@ class StepGeom_Parabola : public StepGeom_Conic {
 };
 
 
-%extend StepGeom_Parabola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Parabola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Parabola::Handle_StepGeom_Parabola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Parabola;
-class Handle_StepGeom_Parabola : public Handle_StepGeom_Conic {
-
-    public:
-        // constructors
-        Handle_StepGeom_Parabola();
-        Handle_StepGeom_Parabola(const Handle_StepGeom_Parabola &aHandle);
-        Handle_StepGeom_Parabola(const StepGeom_Parabola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Parabola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Parabola {
-    StepGeom_Parabola* _get_reference() {
-    return (StepGeom_Parabola*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Parabola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Parabola)
 
 %extend StepGeom_Parabola {
 	%pythoncode {
@@ -7513,51 +4955,7 @@ class StepGeom_Plane : public StepGeom_ElementarySurface {
 };
 
 
-%extend StepGeom_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Plane::Handle_StepGeom_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Plane;
-class Handle_StepGeom_Plane : public Handle_StepGeom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_Plane();
-        Handle_StepGeom_Plane(const Handle_StepGeom_Plane &aHandle);
-        Handle_StepGeom_Plane(const StepGeom_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Plane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Plane {
-    StepGeom_Plane* _get_reference() {
-    return (StepGeom_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Plane)
 
 %extend StepGeom_Plane {
 	%pythoncode {
@@ -7610,51 +5008,7 @@ class StepGeom_Polyline : public StepGeom_BoundedCurve {
 };
 
 
-%extend StepGeom_Polyline {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_Polyline(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_Polyline::Handle_StepGeom_Polyline %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_Polyline;
-class Handle_StepGeom_Polyline : public Handle_StepGeom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_Polyline();
-        Handle_StepGeom_Polyline(const Handle_StepGeom_Polyline &aHandle);
-        Handle_StepGeom_Polyline(const StepGeom_Polyline *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_Polyline DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_Polyline {
-    StepGeom_Polyline* _get_reference() {
-    return (StepGeom_Polyline*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_Polyline {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_Polyline)
 
 %extend StepGeom_Polyline {
 	%pythoncode {
@@ -7713,51 +5067,7 @@ class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 };
 
 
-%extend StepGeom_RectangularCompositeSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_RectangularCompositeSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_RectangularCompositeSurface::Handle_StepGeom_RectangularCompositeSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_RectangularCompositeSurface;
-class Handle_StepGeom_RectangularCompositeSurface : public Handle_StepGeom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_RectangularCompositeSurface();
-        Handle_StepGeom_RectangularCompositeSurface(const Handle_StepGeom_RectangularCompositeSurface &aHandle);
-        Handle_StepGeom_RectangularCompositeSurface(const StepGeom_RectangularCompositeSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_RectangularCompositeSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_RectangularCompositeSurface {
-    StepGeom_RectangularCompositeSurface* _get_reference() {
-    return (StepGeom_RectangularCompositeSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_RectangularCompositeSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_RectangularCompositeSurface)
 
 %extend StepGeom_RectangularCompositeSurface {
 	%pythoncode {
@@ -7872,51 +5182,7 @@ class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 };
 
 
-%extend StepGeom_RectangularTrimmedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_RectangularTrimmedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_RectangularTrimmedSurface::Handle_StepGeom_RectangularTrimmedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_RectangularTrimmedSurface;
-class Handle_StepGeom_RectangularTrimmedSurface : public Handle_StepGeom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_RectangularTrimmedSurface();
-        Handle_StepGeom_RectangularTrimmedSurface(const Handle_StepGeom_RectangularTrimmedSurface &aHandle);
-        Handle_StepGeom_RectangularTrimmedSurface(const StepGeom_RectangularTrimmedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_RectangularTrimmedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_RectangularTrimmedSurface {
-    StepGeom_RectangularTrimmedSurface* _get_reference() {
-    return (StepGeom_RectangularTrimmedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_RectangularTrimmedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_RectangularTrimmedSurface)
 
 %extend StepGeom_RectangularTrimmedSurface {
 	%pythoncode {
@@ -7935,51 +5201,7 @@ class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 };
 
 
-%extend StepGeom_SeamCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SeamCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SeamCurve::Handle_StepGeom_SeamCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SeamCurve;
-class Handle_StepGeom_SeamCurve : public Handle_StepGeom_SurfaceCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_SeamCurve();
-        Handle_StepGeom_SeamCurve(const Handle_StepGeom_SeamCurve &aHandle);
-        Handle_StepGeom_SeamCurve(const StepGeom_SeamCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SeamCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SeamCurve {
-    StepGeom_SeamCurve* _get_reference() {
-    return (StepGeom_SeamCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SeamCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SeamCurve)
 
 %extend StepGeom_SeamCurve {
 	%pythoncode {
@@ -8026,51 +5248,7 @@ class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 };
 
 
-%extend StepGeom_SphericalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SphericalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SphericalSurface::Handle_StepGeom_SphericalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SphericalSurface;
-class Handle_StepGeom_SphericalSurface : public Handle_StepGeom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_SphericalSurface();
-        Handle_StepGeom_SphericalSurface(const Handle_StepGeom_SphericalSurface &aHandle);
-        Handle_StepGeom_SphericalSurface(const StepGeom_SphericalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SphericalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SphericalSurface {
-    StepGeom_SphericalSurface* _get_reference() {
-    return (StepGeom_SphericalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SphericalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SphericalSurface)
 
 %extend StepGeom_SphericalSurface {
 	%pythoncode {
@@ -8095,51 +5273,7 @@ class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 };
 
 
-%extend StepGeom_SurfaceCurveAndBoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfaceCurveAndBoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfaceCurveAndBoundedCurve::Handle_StepGeom_SurfaceCurveAndBoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfaceCurveAndBoundedCurve;
-class Handle_StepGeom_SurfaceCurveAndBoundedCurve : public Handle_StepGeom_SurfaceCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfaceCurveAndBoundedCurve();
-        Handle_StepGeom_SurfaceCurveAndBoundedCurve(const Handle_StepGeom_SurfaceCurveAndBoundedCurve &aHandle);
-        Handle_StepGeom_SurfaceCurveAndBoundedCurve(const StepGeom_SurfaceCurveAndBoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfaceCurveAndBoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfaceCurveAndBoundedCurve {
-    StepGeom_SurfaceCurveAndBoundedCurve* _get_reference() {
-    return (StepGeom_SurfaceCurveAndBoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfaceCurveAndBoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfaceCurveAndBoundedCurve)
 
 %extend StepGeom_SurfaceCurveAndBoundedCurve {
 	%pythoncode {
@@ -8186,51 +5320,7 @@ class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 };
 
 
-%extend StepGeom_SurfaceOfLinearExtrusion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfaceOfLinearExtrusion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfaceOfLinearExtrusion::Handle_StepGeom_SurfaceOfLinearExtrusion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfaceOfLinearExtrusion;
-class Handle_StepGeom_SurfaceOfLinearExtrusion : public Handle_StepGeom_SweptSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfaceOfLinearExtrusion();
-        Handle_StepGeom_SurfaceOfLinearExtrusion(const Handle_StepGeom_SurfaceOfLinearExtrusion &aHandle);
-        Handle_StepGeom_SurfaceOfLinearExtrusion(const StepGeom_SurfaceOfLinearExtrusion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfaceOfLinearExtrusion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfaceOfLinearExtrusion {
-    StepGeom_SurfaceOfLinearExtrusion* _get_reference() {
-    return (StepGeom_SurfaceOfLinearExtrusion*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfaceOfLinearExtrusion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfaceOfLinearExtrusion)
 
 %extend StepGeom_SurfaceOfLinearExtrusion {
 	%pythoncode {
@@ -8277,51 +5367,7 @@ class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 };
 
 
-%extend StepGeom_SurfaceOfRevolution {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_SurfaceOfRevolution(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_SurfaceOfRevolution::Handle_StepGeom_SurfaceOfRevolution %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_SurfaceOfRevolution;
-class Handle_StepGeom_SurfaceOfRevolution : public Handle_StepGeom_SweptSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_SurfaceOfRevolution();
-        Handle_StepGeom_SurfaceOfRevolution(const Handle_StepGeom_SurfaceOfRevolution &aHandle);
-        Handle_StepGeom_SurfaceOfRevolution(const StepGeom_SurfaceOfRevolution *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_SurfaceOfRevolution DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_SurfaceOfRevolution {
-    StepGeom_SurfaceOfRevolution* _get_reference() {
-    return (StepGeom_SurfaceOfRevolution*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_SurfaceOfRevolution {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_SurfaceOfRevolution)
 
 %extend StepGeom_SurfaceOfRevolution {
 	%pythoncode {
@@ -8380,51 +5426,7 @@ class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 };
 
 
-%extend StepGeom_ToroidalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_ToroidalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_ToroidalSurface::Handle_StepGeom_ToroidalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_ToroidalSurface;
-class Handle_StepGeom_ToroidalSurface : public Handle_StepGeom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_ToroidalSurface();
-        Handle_StepGeom_ToroidalSurface(const Handle_StepGeom_ToroidalSurface &aHandle);
-        Handle_StepGeom_ToroidalSurface(const StepGeom_ToroidalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_ToroidalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_ToroidalSurface {
-    StepGeom_ToroidalSurface* _get_reference() {
-    return (StepGeom_ToroidalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_ToroidalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_ToroidalSurface)
 
 %extend StepGeom_ToroidalSurface {
 	%pythoncode {
@@ -8535,51 +5537,7 @@ class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 };
 
 
-%extend StepGeom_TrimmedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_TrimmedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_TrimmedCurve::Handle_StepGeom_TrimmedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_TrimmedCurve;
-class Handle_StepGeom_TrimmedCurve : public Handle_StepGeom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_TrimmedCurve();
-        Handle_StepGeom_TrimmedCurve(const Handle_StepGeom_TrimmedCurve &aHandle);
-        Handle_StepGeom_TrimmedCurve(const StepGeom_TrimmedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_TrimmedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_TrimmedCurve {
-    StepGeom_TrimmedCurve* _get_reference() {
-    return (StepGeom_TrimmedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_TrimmedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_TrimmedCurve)
 
 %extend StepGeom_TrimmedCurve {
 	%pythoncode {
@@ -8686,51 +5644,7 @@ class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 };
 
 
-%extend StepGeom_BSplineCurveWithKnots {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineCurveWithKnots(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineCurveWithKnots::Handle_StepGeom_BSplineCurveWithKnots %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineCurveWithKnots;
-class Handle_StepGeom_BSplineCurveWithKnots : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineCurveWithKnots();
-        Handle_StepGeom_BSplineCurveWithKnots(const Handle_StepGeom_BSplineCurveWithKnots &aHandle);
-        Handle_StepGeom_BSplineCurveWithKnots(const StepGeom_BSplineCurveWithKnots *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineCurveWithKnots DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineCurveWithKnots {
-    StepGeom_BSplineCurveWithKnots* _get_reference() {
-    return (StepGeom_BSplineCurveWithKnots*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineCurveWithKnots {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineCurveWithKnots)
 
 %extend StepGeom_BSplineCurveWithKnots {
 	%pythoncode {
@@ -8899,51 +5813,7 @@ class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BS
 };
 
 
-%extend StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
-class Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve();
-        Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve(const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve &aHandle);
-        Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve(const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
-    StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* _get_reference() {
-    return (StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)
 
 %extend StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
 	%pythoncode {
@@ -9102,51 +5972,7 @@ class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 };
 
 
-%extend StepGeom_BSplineSurfaceWithKnots {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineSurfaceWithKnots(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineSurfaceWithKnots::Handle_StepGeom_BSplineSurfaceWithKnots %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineSurfaceWithKnots;
-class Handle_StepGeom_BSplineSurfaceWithKnots : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineSurfaceWithKnots();
-        Handle_StepGeom_BSplineSurfaceWithKnots(const Handle_StepGeom_BSplineSurfaceWithKnots &aHandle);
-        Handle_StepGeom_BSplineSurfaceWithKnots(const StepGeom_BSplineSurfaceWithKnots *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineSurfaceWithKnots DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineSurfaceWithKnots {
-    StepGeom_BSplineSurfaceWithKnots* _get_reference() {
-    return (StepGeom_BSplineSurfaceWithKnots*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineSurfaceWithKnots {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineSurfaceWithKnots)
 
 %extend StepGeom_BSplineSurfaceWithKnots {
 	%pythoncode {
@@ -9377,51 +6203,7 @@ class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeo
 };
 
 
-%extend StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
-class Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface();
-        Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface(const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface &aHandle);
-        Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface(const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
-    StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* _get_reference() {
-    return (StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)
 
 %extend StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	%pythoncode {
@@ -9440,51 +6222,7 @@ class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 };
 
 
-%extend StepGeom_BezierCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BezierCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BezierCurve::Handle_StepGeom_BezierCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BezierCurve;
-class Handle_StepGeom_BezierCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BezierCurve();
-        Handle_StepGeom_BezierCurve(const Handle_StepGeom_BezierCurve &aHandle);
-        Handle_StepGeom_BezierCurve(const StepGeom_BezierCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BezierCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BezierCurve {
-    StepGeom_BezierCurve* _get_reference() {
-    return (StepGeom_BezierCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BezierCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BezierCurve)
 
 %extend StepGeom_BezierCurve {
 	%pythoncode {
@@ -9597,51 +6335,7 @@ class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve
 };
 
 
-%extend StepGeom_BezierCurveAndRationalBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BezierCurveAndRationalBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BezierCurveAndRationalBSplineCurve::Handle_StepGeom_BezierCurveAndRationalBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BezierCurveAndRationalBSplineCurve;
-class Handle_StepGeom_BezierCurveAndRationalBSplineCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_BezierCurveAndRationalBSplineCurve();
-        Handle_StepGeom_BezierCurveAndRationalBSplineCurve(const Handle_StepGeom_BezierCurveAndRationalBSplineCurve &aHandle);
-        Handle_StepGeom_BezierCurveAndRationalBSplineCurve(const StepGeom_BezierCurveAndRationalBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BezierCurveAndRationalBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BezierCurveAndRationalBSplineCurve {
-    StepGeom_BezierCurveAndRationalBSplineCurve* _get_reference() {
-    return (StepGeom_BezierCurveAndRationalBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BezierCurveAndRationalBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BezierCurveAndRationalBSplineCurve)
 
 %extend StepGeom_BezierCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -9660,51 +6354,7 @@ class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 };
 
 
-%extend StepGeom_BezierSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BezierSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BezierSurface::Handle_StepGeom_BezierSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BezierSurface;
-class Handle_StepGeom_BezierSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BezierSurface();
-        Handle_StepGeom_BezierSurface(const Handle_StepGeom_BezierSurface &aHandle);
-        Handle_StepGeom_BezierSurface(const StepGeom_BezierSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BezierSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BezierSurface {
-    StepGeom_BezierSurface* _get_reference() {
-    return (StepGeom_BezierSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BezierSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BezierSurface)
 
 %extend StepGeom_BezierSurface {
 	%pythoncode {
@@ -9835,51 +6485,7 @@ class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineS
 };
 
 
-%extend StepGeom_BezierSurfaceAndRationalBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface::Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface;
-class Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface();
-        Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface(const Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface &aHandle);
-        Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface(const StepGeom_BezierSurfaceAndRationalBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface {
-    StepGeom_BezierSurfaceAndRationalBSplineSurface* _get_reference() {
-    return (StepGeom_BezierSurfaceAndRationalBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BezierSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_BezierSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -9898,51 +6504,7 @@ class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 };
 
 
-%extend StepGeom_CompositeCurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_CompositeCurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_CompositeCurveOnSurface::Handle_StepGeom_CompositeCurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_CompositeCurveOnSurface;
-class Handle_StepGeom_CompositeCurveOnSurface : public Handle_StepGeom_CompositeCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_CompositeCurveOnSurface();
-        Handle_StepGeom_CompositeCurveOnSurface(const Handle_StepGeom_CompositeCurveOnSurface &aHandle);
-        Handle_StepGeom_CompositeCurveOnSurface(const StepGeom_CompositeCurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_CompositeCurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_CompositeCurveOnSurface {
-    StepGeom_CompositeCurveOnSurface* _get_reference() {
-    return (StepGeom_CompositeCurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_CompositeCurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_CompositeCurveOnSurface)
 
 %extend StepGeom_CompositeCurveOnSurface {
 	%pythoncode {
@@ -9997,51 +6559,7 @@ class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 };
 
 
-%extend StepGeom_DegenerateToroidalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_DegenerateToroidalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_DegenerateToroidalSurface::Handle_StepGeom_DegenerateToroidalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_DegenerateToroidalSurface;
-class Handle_StepGeom_DegenerateToroidalSurface : public Handle_StepGeom_ToroidalSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_DegenerateToroidalSurface();
-        Handle_StepGeom_DegenerateToroidalSurface(const Handle_StepGeom_DegenerateToroidalSurface &aHandle);
-        Handle_StepGeom_DegenerateToroidalSurface(const StepGeom_DegenerateToroidalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_DegenerateToroidalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_DegenerateToroidalSurface {
-    StepGeom_DegenerateToroidalSurface* _get_reference() {
-    return (StepGeom_DegenerateToroidalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_DegenerateToroidalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_DegenerateToroidalSurface)
 
 %extend StepGeom_DegenerateToroidalSurface {
 	%pythoncode {
@@ -10060,51 +6578,7 @@ class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 };
 
 
-%extend StepGeom_QuasiUniformCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_QuasiUniformCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_QuasiUniformCurve::Handle_StepGeom_QuasiUniformCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_QuasiUniformCurve;
-class Handle_StepGeom_QuasiUniformCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_QuasiUniformCurve();
-        Handle_StepGeom_QuasiUniformCurve(const Handle_StepGeom_QuasiUniformCurve &aHandle);
-        Handle_StepGeom_QuasiUniformCurve(const StepGeom_QuasiUniformCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_QuasiUniformCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_QuasiUniformCurve {
-    StepGeom_QuasiUniformCurve* _get_reference() {
-    return (StepGeom_QuasiUniformCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_QuasiUniformCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_QuasiUniformCurve)
 
 %extend StepGeom_QuasiUniformCurve {
 	%pythoncode {
@@ -10217,51 +6691,7 @@ class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplin
 };
 
 
-%extend StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
-class Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve();
-        Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve(const Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve &aHandle);
-        Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve(const StepGeom_QuasiUniformCurveAndRationalBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
-    StepGeom_QuasiUniformCurveAndRationalBSplineCurve* _get_reference() {
-    return (StepGeom_QuasiUniformCurveAndRationalBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_QuasiUniformCurveAndRationalBSplineCurve)
 
 %extend StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -10280,51 +6710,7 @@ class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 };
 
 
-%extend StepGeom_QuasiUniformSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_QuasiUniformSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_QuasiUniformSurface::Handle_StepGeom_QuasiUniformSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_QuasiUniformSurface;
-class Handle_StepGeom_QuasiUniformSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_QuasiUniformSurface();
-        Handle_StepGeom_QuasiUniformSurface(const Handle_StepGeom_QuasiUniformSurface &aHandle);
-        Handle_StepGeom_QuasiUniformSurface(const StepGeom_QuasiUniformSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_QuasiUniformSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_QuasiUniformSurface {
-    StepGeom_QuasiUniformSurface* _get_reference() {
-    return (StepGeom_QuasiUniformSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_QuasiUniformSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_QuasiUniformSurface)
 
 %extend StepGeom_QuasiUniformSurface {
 	%pythoncode {
@@ -10455,51 +6841,7 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 };
 
 
-%extend StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
-class Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface();
-        Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface(const Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface &aHandle);
-        Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface(const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
-    StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* _get_reference() {
-    return (StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -10572,51 +6914,7 @@ class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 };
 
 
-%extend StepGeom_RationalBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_RationalBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_RationalBSplineCurve::Handle_StepGeom_RationalBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_RationalBSplineCurve;
-class Handle_StepGeom_RationalBSplineCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_RationalBSplineCurve();
-        Handle_StepGeom_RationalBSplineCurve(const Handle_StepGeom_RationalBSplineCurve &aHandle);
-        Handle_StepGeom_RationalBSplineCurve(const StepGeom_RationalBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_RationalBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_RationalBSplineCurve {
-    StepGeom_RationalBSplineCurve* _get_reference() {
-    return (StepGeom_RationalBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_RationalBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_RationalBSplineCurve)
 
 %extend StepGeom_RationalBSplineCurve {
 	%pythoncode {
@@ -10703,51 +7001,7 @@ class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 };
 
 
-%extend StepGeom_RationalBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_RationalBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_RationalBSplineSurface::Handle_StepGeom_RationalBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_RationalBSplineSurface;
-class Handle_StepGeom_RationalBSplineSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_RationalBSplineSurface();
-        Handle_StepGeom_RationalBSplineSurface(const Handle_StepGeom_RationalBSplineSurface &aHandle);
-        Handle_StepGeom_RationalBSplineSurface(const StepGeom_RationalBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_RationalBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_RationalBSplineSurface {
-    StepGeom_RationalBSplineSurface* _get_reference() {
-    return (StepGeom_RationalBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_RationalBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_RationalBSplineSurface)
 
 %extend StepGeom_RationalBSplineSurface {
 	%pythoncode {
@@ -10766,51 +7020,7 @@ class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 };
 
 
-%extend StepGeom_UniformCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_UniformCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_UniformCurve::Handle_StepGeom_UniformCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_UniformCurve;
-class Handle_StepGeom_UniformCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_UniformCurve();
-        Handle_StepGeom_UniformCurve(const Handle_StepGeom_UniformCurve &aHandle);
-        Handle_StepGeom_UniformCurve(const StepGeom_UniformCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_UniformCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_UniformCurve {
-    StepGeom_UniformCurve* _get_reference() {
-    return (StepGeom_UniformCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_UniformCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_UniformCurve)
 
 %extend StepGeom_UniformCurve {
 	%pythoncode {
@@ -10923,51 +7133,7 @@ class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurv
 };
 
 
-%extend StepGeom_UniformCurveAndRationalBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_UniformCurveAndRationalBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_UniformCurveAndRationalBSplineCurve::Handle_StepGeom_UniformCurveAndRationalBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_UniformCurveAndRationalBSplineCurve;
-class Handle_StepGeom_UniformCurveAndRationalBSplineCurve : public Handle_StepGeom_BSplineCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_UniformCurveAndRationalBSplineCurve();
-        Handle_StepGeom_UniformCurveAndRationalBSplineCurve(const Handle_StepGeom_UniformCurveAndRationalBSplineCurve &aHandle);
-        Handle_StepGeom_UniformCurveAndRationalBSplineCurve(const StepGeom_UniformCurveAndRationalBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_UniformCurveAndRationalBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_UniformCurveAndRationalBSplineCurve {
-    StepGeom_UniformCurveAndRationalBSplineCurve* _get_reference() {
-    return (StepGeom_UniformCurveAndRationalBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_UniformCurveAndRationalBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_UniformCurveAndRationalBSplineCurve)
 
 %extend StepGeom_UniformCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -10986,51 +7152,7 @@ class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 };
 
 
-%extend StepGeom_UniformSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_UniformSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_UniformSurface::Handle_StepGeom_UniformSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_UniformSurface;
-class Handle_StepGeom_UniformSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_UniformSurface();
-        Handle_StepGeom_UniformSurface(const Handle_StepGeom_UniformSurface &aHandle);
-        Handle_StepGeom_UniformSurface(const StepGeom_UniformSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_UniformSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_UniformSurface {
-    StepGeom_UniformSurface* _get_reference() {
-    return (StepGeom_UniformSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_UniformSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_UniformSurface)
 
 %extend StepGeom_UniformSurface {
 	%pythoncode {
@@ -11161,51 +7283,7 @@ class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSpline
 };
 
 
-%extend StepGeom_UniformSurfaceAndRationalBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface::Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface;
-class Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface : public Handle_StepGeom_BSplineSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface();
-        Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface(const Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface &aHandle);
-        Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface(const StepGeom_UniformSurfaceAndRationalBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface {
-    StepGeom_UniformSurfaceAndRationalBSplineSurface* _get_reference() {
-    return (StepGeom_UniformSurfaceAndRationalBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_UniformSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_UniformSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -11224,51 +7302,7 @@ class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
 };
 
 
-%extend StepGeom_BoundaryCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_BoundaryCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_BoundaryCurve::Handle_StepGeom_BoundaryCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_BoundaryCurve;
-class Handle_StepGeom_BoundaryCurve : public Handle_StepGeom_CompositeCurveOnSurface {
-
-    public:
-        // constructors
-        Handle_StepGeom_BoundaryCurve();
-        Handle_StepGeom_BoundaryCurve(const Handle_StepGeom_BoundaryCurve &aHandle);
-        Handle_StepGeom_BoundaryCurve(const StepGeom_BoundaryCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_BoundaryCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_BoundaryCurve {
-    StepGeom_BoundaryCurve* _get_reference() {
-    return (StepGeom_BoundaryCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_BoundaryCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_BoundaryCurve)
 
 %extend StepGeom_BoundaryCurve {
 	%pythoncode {
@@ -11287,51 +7321,7 @@ class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 };
 
 
-%extend StepGeom_OuterBoundaryCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepGeom_OuterBoundaryCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepGeom_OuterBoundaryCurve::Handle_StepGeom_OuterBoundaryCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepGeom_OuterBoundaryCurve;
-class Handle_StepGeom_OuterBoundaryCurve : public Handle_StepGeom_BoundaryCurve {
-
-    public:
-        // constructors
-        Handle_StepGeom_OuterBoundaryCurve();
-        Handle_StepGeom_OuterBoundaryCurve(const Handle_StepGeom_OuterBoundaryCurve &aHandle);
-        Handle_StepGeom_OuterBoundaryCurve(const StepGeom_OuterBoundaryCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepGeom_OuterBoundaryCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepGeom_OuterBoundaryCurve {
-    StepGeom_OuterBoundaryCurve* _get_reference() {
-    return (StepGeom_OuterBoundaryCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepGeom_OuterBoundaryCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepGeom_OuterBoundaryCurve)
 
 %extend StepGeom_OuterBoundaryCurve {
 	%pythoncode {

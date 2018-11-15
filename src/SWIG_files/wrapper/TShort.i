@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TSHORTDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=TSHORTDOCSTRING) TShort
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TShort_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TShort_HArray1OfShortReal)
+%wrap_handle(TShort_HArray2OfShortReal)
+%wrap_handle(TShort_HSequenceOfShortReal)
+%wrap_handle(TShort_SequenceNodeOfSequenceOfShortReal)
 
 %nodefaultctor TShort_Array1OfShortReal;
 class TShort_Array1OfShortReal {
@@ -325,51 +316,7 @@ class TShort_HArray1OfShortReal : public MMgt_TShared {
 };
 
 
-%extend TShort_HArray1OfShortReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TShort_HArray1OfShortReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TShort_HArray1OfShortReal::Handle_TShort_HArray1OfShortReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TShort_HArray1OfShortReal;
-class Handle_TShort_HArray1OfShortReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TShort_HArray1OfShortReal();
-        Handle_TShort_HArray1OfShortReal(const Handle_TShort_HArray1OfShortReal &aHandle);
-        Handle_TShort_HArray1OfShortReal(const TShort_HArray1OfShortReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TShort_HArray1OfShortReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TShort_HArray1OfShortReal {
-    TShort_HArray1OfShortReal* _get_reference() {
-    return (TShort_HArray1OfShortReal*)$self->Access();
-    }
-};
-
-%extend Handle_TShort_HArray1OfShortReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TShort_HArray1OfShortReal)
 
 %extend TShort_HArray1OfShortReal {
 	%pythoncode {
@@ -472,51 +419,7 @@ class TShort_HArray2OfShortReal : public MMgt_TShared {
 };
 
 
-%extend TShort_HArray2OfShortReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TShort_HArray2OfShortReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TShort_HArray2OfShortReal::Handle_TShort_HArray2OfShortReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TShort_HArray2OfShortReal;
-class Handle_TShort_HArray2OfShortReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TShort_HArray2OfShortReal();
-        Handle_TShort_HArray2OfShortReal(const Handle_TShort_HArray2OfShortReal &aHandle);
-        Handle_TShort_HArray2OfShortReal(const TShort_HArray2OfShortReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TShort_HArray2OfShortReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TShort_HArray2OfShortReal {
-    TShort_HArray2OfShortReal* _get_reference() {
-    return (TShort_HArray2OfShortReal*)$self->Access();
-    }
-};
-
-%extend Handle_TShort_HArray2OfShortReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TShort_HArray2OfShortReal)
 
 %extend TShort_HArray2OfShortReal {
 	%pythoncode {
@@ -661,51 +564,7 @@ class TShort_HSequenceOfShortReal : public MMgt_TShared {
 };
 
 
-%extend TShort_HSequenceOfShortReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TShort_HSequenceOfShortReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TShort_HSequenceOfShortReal::Handle_TShort_HSequenceOfShortReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TShort_HSequenceOfShortReal;
-class Handle_TShort_HSequenceOfShortReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TShort_HSequenceOfShortReal();
-        Handle_TShort_HSequenceOfShortReal(const Handle_TShort_HSequenceOfShortReal &aHandle);
-        Handle_TShort_HSequenceOfShortReal(const TShort_HSequenceOfShortReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TShort_HSequenceOfShortReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TShort_HSequenceOfShortReal {
-    TShort_HSequenceOfShortReal* _get_reference() {
-    return (TShort_HSequenceOfShortReal*)$self->Access();
-    }
-};
-
-%extend Handle_TShort_HSequenceOfShortReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TShort_HSequenceOfShortReal)
 
 %extend TShort_HSequenceOfShortReal {
 	%pythoncode {
@@ -732,51 +591,7 @@ class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
 };
 
 
-%extend TShort_SequenceNodeOfSequenceOfShortReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TShort_SequenceNodeOfSequenceOfShortReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TShort_SequenceNodeOfSequenceOfShortReal::Handle_TShort_SequenceNodeOfSequenceOfShortReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TShort_SequenceNodeOfSequenceOfShortReal;
-class Handle_TShort_SequenceNodeOfSequenceOfShortReal : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TShort_SequenceNodeOfSequenceOfShortReal();
-        Handle_TShort_SequenceNodeOfSequenceOfShortReal(const Handle_TShort_SequenceNodeOfSequenceOfShortReal &aHandle);
-        Handle_TShort_SequenceNodeOfSequenceOfShortReal(const TShort_SequenceNodeOfSequenceOfShortReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TShort_SequenceNodeOfSequenceOfShortReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
-    TShort_SequenceNodeOfSequenceOfShortReal* _get_reference() {
-    return (TShort_SequenceNodeOfSequenceOfShortReal*)$self->Access();
-    }
-};
-
-%extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TShort_SequenceNodeOfSequenceOfShortReal)
 
 %extend TShort_SequenceNodeOfSequenceOfShortReal {
 	%pythoncode {

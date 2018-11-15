@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define V3DDOCSTRING
-"No docstring provided."
+"This package contains the set of commands and services
+of the 3D Viewer. It provides a set of high level commands
+to control the views and viewing modes. This package is
+complementary to the Visual3D graphic package.
+"
 %enddef
 %module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 
@@ -34,24 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include V3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef V3d_View * V3d_ViewPointer;
@@ -178,6 +168,21 @@ enum V3d_TypeOfZclipping {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(V3d_CircularGrid)
+%wrap_handle(V3d_ColorScale)
+%wrap_handle(V3d_ColorScaleLayerItem)
+%wrap_handle(V3d_LayerMgr)
+%wrap_handle(V3d_Light)
+%wrap_handle(V3d_Plane)
+%wrap_handle(V3d_RectangularGrid)
+%wrap_handle(V3d_View)
+%wrap_handle(V3d_Viewer)
+%wrap_handle(V3d_AmbientLight)
+%wrap_handle(V3d_PositionLight)
+%wrap_handle(V3d_DirectionalLight)
+%wrap_handle(V3d_PositionalLight)
+%wrap_handle(V3d_SpotLight)
 
 %rename(v3d) V3d;
 class V3d {
@@ -344,51 +349,7 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 };
 
 
-%extend V3d_CircularGrid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_CircularGrid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_CircularGrid::Handle_V3d_CircularGrid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_CircularGrid;
-class Handle_V3d_CircularGrid : public Handle_Aspect_CircularGrid {
-
-    public:
-        // constructors
-        Handle_V3d_CircularGrid();
-        Handle_V3d_CircularGrid(const Handle_V3d_CircularGrid &aHandle);
-        Handle_V3d_CircularGrid(const V3d_CircularGrid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_CircularGrid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_CircularGrid {
-    V3d_CircularGrid* _get_reference() {
-    return (V3d_CircularGrid*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_CircularGrid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_CircularGrid)
 
 %extend V3d_CircularGrid {
 	%pythoncode {
@@ -479,51 +440,7 @@ class V3d_ColorScale : public Aspect_ColorScale {
 };
 
 
-%extend V3d_ColorScale {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_ColorScale(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_ColorScale::Handle_V3d_ColorScale %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_ColorScale;
-class Handle_V3d_ColorScale : public Handle_Aspect_ColorScale {
-
-    public:
-        // constructors
-        Handle_V3d_ColorScale();
-        Handle_V3d_ColorScale(const Handle_V3d_ColorScale &aHandle);
-        Handle_V3d_ColorScale(const V3d_ColorScale *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_ColorScale DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_ColorScale {
-    V3d_ColorScale* _get_reference() {
-    return (V3d_ColorScale*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_ColorScale {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_ColorScale)
 
 %extend V3d_ColorScale {
 	%pythoncode {
@@ -556,51 +473,7 @@ class V3d_ColorScaleLayerItem : public Visual3d_LayerItem {
 };
 
 
-%extend V3d_ColorScaleLayerItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_ColorScaleLayerItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_ColorScaleLayerItem::Handle_V3d_ColorScaleLayerItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_ColorScaleLayerItem;
-class Handle_V3d_ColorScaleLayerItem : public Handle_Visual3d_LayerItem {
-
-    public:
-        // constructors
-        Handle_V3d_ColorScaleLayerItem();
-        Handle_V3d_ColorScaleLayerItem(const Handle_V3d_ColorScaleLayerItem &aHandle);
-        Handle_V3d_ColorScaleLayerItem(const V3d_ColorScaleLayerItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_ColorScaleLayerItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_ColorScaleLayerItem {
-    V3d_ColorScaleLayerItem* _get_reference() {
-    return (V3d_ColorScaleLayerItem*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_ColorScaleLayerItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_ColorScaleLayerItem)
 
 %extend V3d_ColorScaleLayerItem {
 	%pythoncode {
@@ -653,51 +526,7 @@ class V3d_LayerMgr : public MMgt_TShared {
 };
 
 
-%extend V3d_LayerMgr {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_LayerMgr(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_LayerMgr::Handle_V3d_LayerMgr %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_LayerMgr;
-class Handle_V3d_LayerMgr : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_V3d_LayerMgr();
-        Handle_V3d_LayerMgr(const Handle_V3d_LayerMgr &aHandle);
-        Handle_V3d_LayerMgr(const V3d_LayerMgr *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_LayerMgr DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_LayerMgr {
-    V3d_LayerMgr* _get_reference() {
-    return (V3d_LayerMgr*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_LayerMgr {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_LayerMgr)
 
 %extend V3d_LayerMgr {
 	%pythoncode {
@@ -794,51 +623,7 @@ class V3d_Light : public MMgt_TShared {
 };
 
 
-%extend V3d_Light {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_Light(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_Light::Handle_V3d_Light %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_Light;
-class Handle_V3d_Light : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_V3d_Light();
-        Handle_V3d_Light(const Handle_V3d_Light &aHandle);
-        Handle_V3d_Light(const V3d_Light *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_Light DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_Light {
-    V3d_Light* _get_reference() {
-    return (V3d_Light*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_Light {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_Light)
 
 %extend V3d_Light {
 	%pythoncode {
@@ -948,51 +733,7 @@ class V3d_Plane : public MMgt_TShared {
 };
 
 
-%extend V3d_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_Plane::Handle_V3d_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_Plane;
-class Handle_V3d_Plane : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_V3d_Plane();
-        Handle_V3d_Plane(const Handle_V3d_Plane &aHandle);
-        Handle_V3d_Plane(const V3d_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_Plane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_Plane {
-    V3d_Plane* _get_reference() {
-    return (V3d_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_Plane)
 
 %extend V3d_Plane {
 	%pythoncode {
@@ -1055,51 +796,7 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 };
 
 
-%extend V3d_RectangularGrid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_RectangularGrid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_RectangularGrid::Handle_V3d_RectangularGrid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_RectangularGrid;
-class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
-
-    public:
-        // constructors
-        Handle_V3d_RectangularGrid();
-        Handle_V3d_RectangularGrid(const Handle_V3d_RectangularGrid &aHandle);
-        Handle_V3d_RectangularGrid(const V3d_RectangularGrid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_RectangularGrid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_RectangularGrid {
-    V3d_RectangularGrid* _get_reference() {
-    return (V3d_RectangularGrid*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_RectangularGrid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_RectangularGrid)
 
 %extend V3d_RectangularGrid {
 	%pythoncode {
@@ -2740,51 +2437,7 @@ class V3d_View : public MMgt_TShared {
 };
 
 
-%extend V3d_View {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_View(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_View::Handle_V3d_View %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_View;
-class Handle_V3d_View : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_V3d_View();
-        Handle_V3d_View(const Handle_V3d_View &aHandle);
-        Handle_V3d_View(const V3d_View *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_View DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_View {
-    V3d_View* _get_reference() {
-    return (V3d_View*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_View {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_View)
 
 %extend V3d_View {
 	%pythoncode {
@@ -3559,51 +3212,7 @@ class V3d_Viewer : public MMgt_TShared {
 };
 
 
-%extend V3d_Viewer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_Viewer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_Viewer::Handle_V3d_Viewer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_Viewer;
-class Handle_V3d_Viewer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_V3d_Viewer();
-        Handle_V3d_Viewer(const Handle_V3d_Viewer &aHandle);
-        Handle_V3d_Viewer(const V3d_Viewer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_Viewer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_Viewer {
-    V3d_Viewer* _get_reference() {
-    return (V3d_Viewer*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_Viewer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_Viewer)
 
 %extend V3d_Viewer {
 	%pythoncode {
@@ -3626,51 +3235,7 @@ class V3d_AmbientLight : public V3d_Light {
 };
 
 
-%extend V3d_AmbientLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_AmbientLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_AmbientLight::Handle_V3d_AmbientLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_AmbientLight;
-class Handle_V3d_AmbientLight : public Handle_V3d_Light {
-
-    public:
-        // constructors
-        Handle_V3d_AmbientLight();
-        Handle_V3d_AmbientLight(const Handle_V3d_AmbientLight &aHandle);
-        Handle_V3d_AmbientLight(const V3d_AmbientLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_AmbientLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_AmbientLight {
-    V3d_AmbientLight* _get_reference() {
-    return (V3d_AmbientLight*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_AmbientLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_AmbientLight)
 
 %extend V3d_AmbientLight {
 	%pythoncode {
@@ -3799,51 +3364,7 @@ class V3d_PositionLight : public V3d_Light {
 };
 
 
-%extend V3d_PositionLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_PositionLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_PositionLight::Handle_V3d_PositionLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_PositionLight;
-class Handle_V3d_PositionLight : public Handle_V3d_Light {
-
-    public:
-        // constructors
-        Handle_V3d_PositionLight();
-        Handle_V3d_PositionLight(const Handle_V3d_PositionLight &aHandle);
-        Handle_V3d_PositionLight(const V3d_PositionLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_PositionLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_PositionLight {
-    V3d_PositionLight* _get_reference() {
-    return (V3d_PositionLight*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_PositionLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_PositionLight)
 
 %extend V3d_PositionLight {
 	%pythoncode {
@@ -3984,51 +3505,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 };
 
 
-%extend V3d_DirectionalLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_DirectionalLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_DirectionalLight::Handle_V3d_DirectionalLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_DirectionalLight;
-class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
-
-    public:
-        // constructors
-        Handle_V3d_DirectionalLight();
-        Handle_V3d_DirectionalLight(const Handle_V3d_DirectionalLight &aHandle);
-        Handle_V3d_DirectionalLight(const V3d_DirectionalLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_DirectionalLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_DirectionalLight {
-    V3d_DirectionalLight* _get_reference() {
-    return (V3d_DirectionalLight*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_DirectionalLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_DirectionalLight)
 
 %extend V3d_DirectionalLight {
 	%pythoncode {
@@ -4141,51 +3618,7 @@ class V3d_PositionalLight : public V3d_PositionLight {
 };
 
 
-%extend V3d_PositionalLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_PositionalLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_PositionalLight::Handle_V3d_PositionalLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_PositionalLight;
-class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
-
-    public:
-        // constructors
-        Handle_V3d_PositionalLight();
-        Handle_V3d_PositionalLight(const Handle_V3d_PositionalLight &aHandle);
-        Handle_V3d_PositionalLight(const V3d_PositionalLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_PositionalLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_PositionalLight {
-    V3d_PositionalLight* _get_reference() {
-    return (V3d_PositionalLight*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_PositionalLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_PositionalLight)
 
 %extend V3d_PositionalLight {
 	%pythoncode {
@@ -4366,51 +3799,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 };
 
 
-%extend V3d_SpotLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_SpotLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_SpotLight::Handle_V3d_SpotLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_SpotLight;
-class Handle_V3d_SpotLight : public Handle_V3d_PositionLight {
-
-    public:
-        // constructors
-        Handle_V3d_SpotLight();
-        Handle_V3d_SpotLight(const Handle_V3d_SpotLight &aHandle);
-        Handle_V3d_SpotLight(const V3d_SpotLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_SpotLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_SpotLight {
-    V3d_SpotLight* _get_reference() {
-    return (V3d_SpotLight*)$self->Access();
-    }
-};
-
-%extend Handle_V3d_SpotLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(V3d_SpotLight)
 
 %extend V3d_SpotLight {
 	%pythoncode {

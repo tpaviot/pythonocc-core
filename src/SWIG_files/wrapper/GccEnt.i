@@ -18,7 +18,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCENTDOCSTRING
-"No docstring provided."
+"This package provides an implementation of the qualified
+entities useful to create 2d entities with geometric
+constraints. The qualifier explains which subfamily of
+solutions we want to obtain. It uses the following law: the
+matter/the interior side is at the left of the line, if we go
+from the beginning to the end.
+The qualifiers are:
+Enclosing  : the solution(s) must enclose the argument.
+Enclosed  : the solution(s) must be enclosed in the
+argument.
+Outside   : both the solution(s) and the argument must be
+outside to each other.
+Unqualified : the position is undefined, so give all the
+solutions.
+The use of a qualifier is always required if such
+subfamilies exist. For example, it is not used for a point.
+Note:  the interior of a curve is defined as the left-hand
+side of the curve in relation to its orientation."
 %enddef
 %module (package="OCC.Core", docstring=GCCENTDOCSTRING) GccEnt
 
@@ -34,24 +51,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GccEnt_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -66,6 +69,7 @@ enum GccEnt_Position {
 };
 
 /* end public enums declaration */
+
 
 %rename(gccent) GccEnt;
 class GccEnt {

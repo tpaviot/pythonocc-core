@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLLECTIONDOCSTRING
-"No docstring provided."
+"The package <TCollection> provides the services for the
+transient basic data structures.
+"
 %enddef
 %module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TCollection_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TCollection_SeqNode * TCollection_SeqNodePtr;
@@ -65,6 +53,11 @@ enum TCollection_Side {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TCollection_HAsciiString)
+%wrap_handle(TCollection_HExtendedString)
+%wrap_handle(TCollection_MapNode)
+%wrap_handle(TCollection_SeqNode)
 
 %rename(tcollection) TCollection;
 class TCollection {
@@ -2067,51 +2060,7 @@ class TCollection_HAsciiString : public MMgt_TShared {
 };
 
 
-%extend TCollection_HAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TCollection_HAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TCollection_HAsciiString::Handle_TCollection_HAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TCollection_HAsciiString;
-class Handle_TCollection_HAsciiString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TCollection_HAsciiString();
-        Handle_TCollection_HAsciiString(const Handle_TCollection_HAsciiString &aHandle);
-        Handle_TCollection_HAsciiString(const TCollection_HAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TCollection_HAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TCollection_HAsciiString {
-    TCollection_HAsciiString* _get_reference() {
-    return (TCollection_HAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TCollection_HAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TCollection_HAsciiString)
 
 %extend TCollection_HAsciiString {
 	%pythoncode {
@@ -2388,51 +2337,7 @@ class TCollection_HExtendedString : public MMgt_TShared {
 };
 
 
-%extend TCollection_HExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TCollection_HExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TCollection_HExtendedString::Handle_TCollection_HExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TCollection_HExtendedString;
-class Handle_TCollection_HExtendedString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TCollection_HExtendedString();
-        Handle_TCollection_HExtendedString(const Handle_TCollection_HExtendedString &aHandle);
-        Handle_TCollection_HExtendedString(const TCollection_HExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TCollection_HExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TCollection_HExtendedString {
-    TCollection_HExtendedString* _get_reference() {
-    return (TCollection_HExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TCollection_HExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TCollection_HExtendedString)
 
 %extend TCollection_HExtendedString {
 	%pythoncode {
@@ -2455,51 +2360,7 @@ class TCollection_MapNode : public MMgt_TShared {
 };
 
 
-%extend TCollection_MapNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TCollection_MapNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TCollection_MapNode::Handle_TCollection_MapNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TCollection_MapNode;
-class Handle_TCollection_MapNode : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TCollection_MapNode();
-        Handle_TCollection_MapNode(const Handle_TCollection_MapNode &aHandle);
-        Handle_TCollection_MapNode(const TCollection_MapNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TCollection_MapNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TCollection_MapNode {
-    TCollection_MapNode* _get_reference() {
-    return (TCollection_MapNode*)$self->Access();
-    }
-};
-
-%extend Handle_TCollection_MapNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TCollection_MapNode)
 
 %extend TCollection_MapNode {
 	%pythoncode {
@@ -2596,51 +2457,7 @@ class TCollection_SeqNode : public MMgt_TShared {
 };
 
 
-%extend TCollection_SeqNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TCollection_SeqNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TCollection_SeqNode::Handle_TCollection_SeqNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TCollection_SeqNode;
-class Handle_TCollection_SeqNode : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TCollection_SeqNode();
-        Handle_TCollection_SeqNode(const Handle_TCollection_SeqNode &aHandle);
-        Handle_TCollection_SeqNode(const TCollection_SeqNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TCollection_SeqNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TCollection_SeqNode {
-    TCollection_SeqNode* _get_reference() {
-    return (TCollection_SeqNode*)$self->Access();
-    }
-};
-
-%extend Handle_TCollection_SeqNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TCollection_SeqNode)
 
 %extend TCollection_SeqNode {
 	%pythoncode {

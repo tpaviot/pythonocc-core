@@ -18,7 +18,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STORAGEDOCSTRING
-"No docstring provided."
+"Storage package is used to write and read persistent objects.
+These objects are read and written by a retrieval or storage
+algorithm (Storage_Schema object) in a container (disk, memory,
+network ...). Drivers (FSD_File objects) assign a physical
+container for data to be stored or retrieved.
+The standard procedure for an application in
+reading a container is the following:
+-  open the driver in reading mode,
+-  call the Read function from the schema,
+setting the driver as a parameter. This  function returns
+an instance of the  Storage_Data class which contains the  data being read,
+-  close the driver.
+The standard procedure for an application in writing a container is the following:
+-  open the driver in writing mode,
+-  create an instance of the Storage_Data  class, then
+add the persistent data to write  with the function AddRoot,
+-  call the function Write from the schema,
+setting the driver and the Storage_Data  instance as parameters,
+-   close the driver.
+"
 %enddef
 %module (package="OCC.Core", docstring=STORAGEDOCSTRING) Storage
 
@@ -34,24 +53,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Storage_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Storage_BaseDriver * Storage_Container;
@@ -90,6 +95,25 @@ enum Storage_OpenMode {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Storage_CallBack)
+%wrap_handle(Storage_Data)
+%wrap_handle(Storage_DataMapNodeOfMapOfCallBack)
+%wrap_handle(Storage_DataMapNodeOfMapOfPers)
+%wrap_handle(Storage_HArrayOfCallBack)
+%wrap_handle(Storage_HArrayOfSchema)
+%wrap_handle(Storage_HPArray)
+%wrap_handle(Storage_HSeqOfRoot)
+%wrap_handle(Storage_HeaderData)
+%wrap_handle(Storage_IndexedDataMapNodeOfPType)
+%wrap_handle(Storage_InternalData)
+%wrap_handle(Storage_Root)
+%wrap_handle(Storage_RootData)
+%wrap_handle(Storage_Schema)
+%wrap_handle(Storage_SequenceNodeOfSeqOfRoot)
+%wrap_handle(Storage_TypeData)
+%wrap_handle(Storage_TypedCallBack)
+%wrap_handle(Storage_DefaultCallBack)
 
 %rename(storage) Storage;
 class Storage {
@@ -773,51 +797,7 @@ class Storage_CallBack : public MMgt_TShared {
 };
 
 
-%extend Storage_CallBack {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_CallBack(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_CallBack::Handle_Storage_CallBack %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_CallBack;
-class Handle_Storage_CallBack : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_CallBack();
-        Handle_Storage_CallBack(const Handle_Storage_CallBack &aHandle);
-        Handle_Storage_CallBack(const Storage_CallBack *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_CallBack DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_CallBack {
-    Storage_CallBack* _get_reference() {
-    return (Storage_CallBack*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_CallBack {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_CallBack)
 
 %extend Storage_CallBack {
 	%pythoncode {
@@ -1026,51 +1006,7 @@ class Storage_Data : public MMgt_TShared {
 };
 
 
-%extend Storage_Data {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_Data(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_Data::Handle_Storage_Data %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_Data;
-class Handle_Storage_Data : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_Data();
-        Handle_Storage_Data(const Handle_Storage_Data &aHandle);
-        Handle_Storage_Data(const Storage_Data *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_Data DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_Data {
-    Storage_Data* _get_reference() {
-    return (Storage_Data*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_Data {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_Data)
 
 %extend Storage_Data {
 	%pythoncode {
@@ -1171,51 +1107,7 @@ class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
 };
 
 
-%extend Storage_DataMapNodeOfMapOfCallBack {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_DataMapNodeOfMapOfCallBack(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_DataMapNodeOfMapOfCallBack::Handle_Storage_DataMapNodeOfMapOfCallBack %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_DataMapNodeOfMapOfCallBack;
-class Handle_Storage_DataMapNodeOfMapOfCallBack : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Storage_DataMapNodeOfMapOfCallBack();
-        Handle_Storage_DataMapNodeOfMapOfCallBack(const Handle_Storage_DataMapNodeOfMapOfCallBack &aHandle);
-        Handle_Storage_DataMapNodeOfMapOfCallBack(const Storage_DataMapNodeOfMapOfCallBack *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_DataMapNodeOfMapOfCallBack DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_DataMapNodeOfMapOfCallBack {
-    Storage_DataMapNodeOfMapOfCallBack* _get_reference() {
-    return (Storage_DataMapNodeOfMapOfCallBack*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_DataMapNodeOfMapOfCallBack {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_DataMapNodeOfMapOfCallBack)
 
 %extend Storage_DataMapNodeOfMapOfCallBack {
 	%pythoncode {
@@ -1246,51 +1138,7 @@ class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode {
 };
 
 
-%extend Storage_DataMapNodeOfMapOfPers {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_DataMapNodeOfMapOfPers(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_DataMapNodeOfMapOfPers::Handle_Storage_DataMapNodeOfMapOfPers %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_DataMapNodeOfMapOfPers;
-class Handle_Storage_DataMapNodeOfMapOfPers : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Storage_DataMapNodeOfMapOfPers();
-        Handle_Storage_DataMapNodeOfMapOfPers(const Handle_Storage_DataMapNodeOfMapOfPers &aHandle);
-        Handle_Storage_DataMapNodeOfMapOfPers(const Storage_DataMapNodeOfMapOfPers *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_DataMapNodeOfMapOfPers DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_DataMapNodeOfMapOfPers {
-    Storage_DataMapNodeOfMapOfPers* _get_reference() {
-    return (Storage_DataMapNodeOfMapOfPers*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_DataMapNodeOfMapOfPers {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_DataMapNodeOfMapOfPers)
 
 %extend Storage_DataMapNodeOfMapOfPers {
 	%pythoncode {
@@ -1367,51 +1215,7 @@ class Storage_HArrayOfCallBack : public MMgt_TShared {
 };
 
 
-%extend Storage_HArrayOfCallBack {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_HArrayOfCallBack(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_HArrayOfCallBack::Handle_Storage_HArrayOfCallBack %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_HArrayOfCallBack;
-class Handle_Storage_HArrayOfCallBack : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_HArrayOfCallBack();
-        Handle_Storage_HArrayOfCallBack(const Handle_Storage_HArrayOfCallBack &aHandle);
-        Handle_Storage_HArrayOfCallBack(const Storage_HArrayOfCallBack *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_HArrayOfCallBack DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_HArrayOfCallBack {
-    Storage_HArrayOfCallBack* _get_reference() {
-    return (Storage_HArrayOfCallBack*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_HArrayOfCallBack {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_HArrayOfCallBack)
 
 %extend Storage_HArrayOfCallBack {
 	%pythoncode {
@@ -1488,51 +1292,7 @@ class Storage_HArrayOfSchema : public MMgt_TShared {
 };
 
 
-%extend Storage_HArrayOfSchema {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_HArrayOfSchema(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_HArrayOfSchema::Handle_Storage_HArrayOfSchema %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_HArrayOfSchema;
-class Handle_Storage_HArrayOfSchema : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_HArrayOfSchema();
-        Handle_Storage_HArrayOfSchema(const Handle_Storage_HArrayOfSchema &aHandle);
-        Handle_Storage_HArrayOfSchema(const Storage_HArrayOfSchema *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_HArrayOfSchema DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_HArrayOfSchema {
-    Storage_HArrayOfSchema* _get_reference() {
-    return (Storage_HArrayOfSchema*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_HArrayOfSchema {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_HArrayOfSchema)
 
 %extend Storage_HArrayOfSchema {
 	%pythoncode {
@@ -1609,51 +1369,7 @@ class Storage_HPArray : public MMgt_TShared {
 };
 
 
-%extend Storage_HPArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_HPArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_HPArray::Handle_Storage_HPArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_HPArray;
-class Handle_Storage_HPArray : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_HPArray();
-        Handle_Storage_HPArray(const Handle_Storage_HPArray &aHandle);
-        Handle_Storage_HPArray(const Storage_HPArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_HPArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_HPArray {
-    Storage_HPArray* _get_reference() {
-    return (Storage_HPArray*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_HPArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_HPArray)
 
 %extend Storage_HPArray {
 	%pythoncode {
@@ -1798,51 +1514,7 @@ class Storage_HSeqOfRoot : public MMgt_TShared {
 };
 
 
-%extend Storage_HSeqOfRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_HSeqOfRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_HSeqOfRoot::Handle_Storage_HSeqOfRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_HSeqOfRoot;
-class Handle_Storage_HSeqOfRoot : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_HSeqOfRoot();
-        Handle_Storage_HSeqOfRoot(const Handle_Storage_HSeqOfRoot &aHandle);
-        Handle_Storage_HSeqOfRoot(const Storage_HSeqOfRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_HSeqOfRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_HSeqOfRoot {
-    Storage_HSeqOfRoot* _get_reference() {
-    return (Storage_HSeqOfRoot*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_HSeqOfRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_HSeqOfRoot)
 
 %extend Storage_HSeqOfRoot {
 	%pythoncode {
@@ -1971,51 +1643,7 @@ class Storage_HeaderData : public MMgt_TShared {
 };
 
 
-%extend Storage_HeaderData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_HeaderData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_HeaderData::Handle_Storage_HeaderData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_HeaderData;
-class Handle_Storage_HeaderData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_HeaderData();
-        Handle_Storage_HeaderData(const Handle_Storage_HeaderData &aHandle);
-        Handle_Storage_HeaderData(const Storage_HeaderData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_HeaderData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_HeaderData {
-    Storage_HeaderData* _get_reference() {
-    return (Storage_HeaderData*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_HeaderData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_HeaderData)
 
 %extend Storage_HeaderData {
 	%pythoncode {
@@ -2076,51 +1704,7 @@ class Storage_IndexedDataMapNodeOfPType : public TCollection_MapNode {
             };
 
 
-%extend Storage_IndexedDataMapNodeOfPType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_IndexedDataMapNodeOfPType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_IndexedDataMapNodeOfPType::Handle_Storage_IndexedDataMapNodeOfPType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_IndexedDataMapNodeOfPType;
-class Handle_Storage_IndexedDataMapNodeOfPType : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Storage_IndexedDataMapNodeOfPType();
-        Handle_Storage_IndexedDataMapNodeOfPType(const Handle_Storage_IndexedDataMapNodeOfPType &aHandle);
-        Handle_Storage_IndexedDataMapNodeOfPType(const Storage_IndexedDataMapNodeOfPType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_IndexedDataMapNodeOfPType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_IndexedDataMapNodeOfPType {
-    Storage_IndexedDataMapNodeOfPType* _get_reference() {
-    return (Storage_IndexedDataMapNodeOfPType*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_IndexedDataMapNodeOfPType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_IndexedDataMapNodeOfPType)
 
 %extend Storage_IndexedDataMapNodeOfPType {
 	%pythoncode {
@@ -2141,51 +1725,7 @@ class Storage_InternalData : public MMgt_TShared {
 };
 
 
-%extend Storage_InternalData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_InternalData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_InternalData::Handle_Storage_InternalData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_InternalData;
-class Handle_Storage_InternalData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_InternalData();
-        Handle_Storage_InternalData(const Handle_Storage_InternalData &aHandle);
-        Handle_Storage_InternalData(const Storage_InternalData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_InternalData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_InternalData {
-    Storage_InternalData* _get_reference() {
-    return (Storage_InternalData*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_InternalData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_InternalData)
 
 %extend Storage_InternalData {
 	%pythoncode {
@@ -2608,51 +2148,7 @@ class Storage_Root : public MMgt_TShared {
 };
 
 
-%extend Storage_Root {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_Root(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_Root::Handle_Storage_Root %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_Root;
-class Handle_Storage_Root : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_Root();
-        Handle_Storage_Root(const Handle_Storage_Root &aHandle);
-        Handle_Storage_Root(const Storage_Root *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_Root DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_Root {
-    Storage_Root* _get_reference() {
-    return (Storage_Root*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_Root {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_Root)
 
 %extend Storage_Root {
 	%pythoncode {
@@ -2723,51 +2219,7 @@ class Storage_RootData : public MMgt_TShared {
 };
 
 
-%extend Storage_RootData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_RootData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_RootData::Handle_Storage_RootData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_RootData;
-class Handle_Storage_RootData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_RootData();
-        Handle_Storage_RootData(const Handle_Storage_RootData &aHandle);
-        Handle_Storage_RootData(const Storage_RootData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_RootData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_RootData {
-    Storage_RootData* _get_reference() {
-    return (Storage_RootData*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_RootData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_RootData)
 
 %extend Storage_RootData {
 	%pythoncode {
@@ -3032,51 +2484,7 @@ class Storage_Schema : public MMgt_TShared {
 };
 
 
-%extend Storage_Schema {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_Schema(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_Schema::Handle_Storage_Schema %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_Schema;
-class Handle_Storage_Schema : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_Schema();
-        Handle_Storage_Schema(const Handle_Storage_Schema &aHandle);
-        Handle_Storage_Schema(const Storage_Schema *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_Schema DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_Schema {
-    Storage_Schema* _get_reference() {
-    return (Storage_Schema*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_Schema {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_Schema)
 
 %extend Storage_Schema {
 	%pythoncode {
@@ -3246,51 +2654,7 @@ class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
 };
 
 
-%extend Storage_SequenceNodeOfSeqOfRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_SequenceNodeOfSeqOfRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_SequenceNodeOfSeqOfRoot::Handle_Storage_SequenceNodeOfSeqOfRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_SequenceNodeOfSeqOfRoot;
-class Handle_Storage_SequenceNodeOfSeqOfRoot : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Storage_SequenceNodeOfSeqOfRoot();
-        Handle_Storage_SequenceNodeOfSeqOfRoot(const Handle_Storage_SequenceNodeOfSeqOfRoot &aHandle);
-        Handle_Storage_SequenceNodeOfSeqOfRoot(const Storage_SequenceNodeOfSeqOfRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_SequenceNodeOfSeqOfRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_SequenceNodeOfSeqOfRoot {
-    Storage_SequenceNodeOfSeqOfRoot* _get_reference() {
-    return (Storage_SequenceNodeOfSeqOfRoot*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_SequenceNodeOfSeqOfRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_SequenceNodeOfSeqOfRoot)
 
 %extend Storage_SequenceNodeOfSeqOfRoot {
 	%pythoncode {
@@ -3337,51 +2701,7 @@ class Storage_TypeData : public MMgt_TShared {
 };
 
 
-%extend Storage_TypeData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_TypeData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_TypeData::Handle_Storage_TypeData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_TypeData;
-class Handle_Storage_TypeData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_TypeData();
-        Handle_Storage_TypeData(const Handle_Storage_TypeData &aHandle);
-        Handle_Storage_TypeData(const Storage_TypeData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_TypeData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_TypeData {
-    Storage_TypeData* _get_reference() {
-    return (Storage_TypeData*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_TypeData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_TypeData)
 
 %extend Storage_TypeData {
 	%pythoncode {
@@ -3436,51 +2756,7 @@ class Storage_TypedCallBack : public MMgt_TShared {
 };
 
 
-%extend Storage_TypedCallBack {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_TypedCallBack(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_TypedCallBack::Handle_Storage_TypedCallBack %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_TypedCallBack;
-class Handle_Storage_TypedCallBack : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Storage_TypedCallBack();
-        Handle_Storage_TypedCallBack(const Handle_Storage_TypedCallBack &aHandle);
-        Handle_Storage_TypedCallBack(const Storage_TypedCallBack *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_TypedCallBack DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_TypedCallBack {
-    Storage_TypedCallBack* _get_reference() {
-    return (Storage_TypedCallBack*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_TypedCallBack {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_TypedCallBack)
 
 %extend Storage_TypedCallBack {
 	%pythoncode {
@@ -3540,51 +2816,7 @@ class Storage_DefaultCallBack : public Storage_CallBack {
 };
 
 
-%extend Storage_DefaultCallBack {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Storage_DefaultCallBack(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Storage_DefaultCallBack::Handle_Storage_DefaultCallBack %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Storage_DefaultCallBack;
-class Handle_Storage_DefaultCallBack : public Handle_Storage_CallBack {
-
-    public:
-        // constructors
-        Handle_Storage_DefaultCallBack();
-        Handle_Storage_DefaultCallBack(const Handle_Storage_DefaultCallBack &aHandle);
-        Handle_Storage_DefaultCallBack(const Storage_DefaultCallBack *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Storage_DefaultCallBack DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Storage_DefaultCallBack {
-    Storage_DefaultCallBack* _get_reference() {
-    return (Storage_DefaultCallBack*)$self->Access();
-    }
-};
-
-%extend Handle_Storage_DefaultCallBack {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Storage_DefaultCallBack)
 
 %extend Storage_DefaultCallBack {
 	%pythoncode {

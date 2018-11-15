@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPCAFCONTROLDOCSTRING
-"No docstring provided."
+"-Purpose : This package provides external access and control for STEP,
+on the level of CAF (shapes with attributes, external
+references etc.)
+"
 %enddef
 %module (package="OCC.Core", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
 
@@ -34,30 +37,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include STEPCAFControl_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(STEPCAFControl_ActorWrite)
+%wrap_handle(STEPCAFControl_Controller)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfLabelShape)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfShapePD)
+%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR)
+%wrap_handle(STEPCAFControl_DictionaryOfExternFile)
+%wrap_handle(STEPCAFControl_ExternFile)
+%wrap_handle(STEPCAFControl_StackItemOfDictionaryOfExternFile)
 
 %nodefaultctor STEPCAFControl_ActorWrite;
 class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
@@ -99,51 +100,7 @@ class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 };
 
 
-%extend STEPCAFControl_ActorWrite {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_ActorWrite(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_ActorWrite::Handle_STEPCAFControl_ActorWrite %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_ActorWrite;
-class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_ActorWrite();
-        Handle_STEPCAFControl_ActorWrite(const Handle_STEPCAFControl_ActorWrite &aHandle);
-        Handle_STEPCAFControl_ActorWrite(const STEPCAFControl_ActorWrite *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_ActorWrite DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_ActorWrite {
-    STEPCAFControl_ActorWrite* _get_reference() {
-    return (STEPCAFControl_ActorWrite*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_ActorWrite {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_ActorWrite)
 
 %extend STEPCAFControl_ActorWrite {
 	%pythoncode {
@@ -168,51 +125,7 @@ class STEPCAFControl_Controller : public STEPControl_Controller {
 };
 
 
-%extend STEPCAFControl_Controller {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_Controller(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_Controller::Handle_STEPCAFControl_Controller %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_Controller;
-class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_Controller();
-        Handle_STEPCAFControl_Controller(const Handle_STEPCAFControl_Controller &aHandle);
-        Handle_STEPCAFControl_Controller(const STEPCAFControl_Controller *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_Controller DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_Controller {
-    STEPCAFControl_Controller* _get_reference() {
-    return (STEPCAFControl_Controller*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_Controller {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_Controller)
 
 %extend STEPCAFControl_Controller {
 	%pythoncode {
@@ -453,51 +366,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(const STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
 	%pythoncode {
@@ -528,51 +397,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNo
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape::Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(const STEPCAFControl_DataMapNodeOfDataMapOfLabelShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-    STEPCAFControl_DataMapNodeOfDataMapOfLabelShape* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfLabelShape*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfLabelShape)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
 	%pythoncode {
@@ -603,51 +428,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_Map
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(const STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
 	%pythoncode {
@@ -678,51 +459,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_Ma
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(const STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
 	%pythoncode {
@@ -753,51 +490,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode 
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD::Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD(const STEPCAFControl_DataMapNodeOfDataMapOfShapePD *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-    STEPCAFControl_DataMapNodeOfDataMapOfShapePD* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfShapePD*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfShapePD)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
 	%pythoncode {
@@ -828,51 +521,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode
 };
 
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR::Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
-class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR();
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(const Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR &aHandle);
-        Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(const STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-    STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR* _get_reference() {
-    return (STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR)
 
 %extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
 	%pythoncode {
@@ -1521,51 +1170,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 };
 
 
-%extend STEPCAFControl_DictionaryOfExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_DictionaryOfExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_DictionaryOfExternFile::Handle_STEPCAFControl_DictionaryOfExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_DictionaryOfExternFile;
-class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_DictionaryOfExternFile();
-        Handle_STEPCAFControl_DictionaryOfExternFile(const Handle_STEPCAFControl_DictionaryOfExternFile &aHandle);
-        Handle_STEPCAFControl_DictionaryOfExternFile(const STEPCAFControl_DictionaryOfExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_DictionaryOfExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_DictionaryOfExternFile {
-    STEPCAFControl_DictionaryOfExternFile* _get_reference() {
-    return (STEPCAFControl_DictionaryOfExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_DictionaryOfExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_DictionaryOfExternFile)
 
 %extend STEPCAFControl_DictionaryOfExternFile {
 	%pythoncode {
@@ -1644,51 +1249,7 @@ class STEPCAFControl_ExternFile : public MMgt_TShared {
 };
 
 
-%extend STEPCAFControl_ExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_ExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_ExternFile::Handle_STEPCAFControl_ExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_ExternFile;
-class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_ExternFile();
-        Handle_STEPCAFControl_ExternFile(const Handle_STEPCAFControl_ExternFile &aHandle);
-        Handle_STEPCAFControl_ExternFile(const STEPCAFControl_ExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_ExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_ExternFile {
-    STEPCAFControl_ExternFile* _get_reference() {
-    return (STEPCAFControl_ExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_ExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_ExternFile)
 
 %extend STEPCAFControl_ExternFile {
 	%pythoncode {
@@ -1993,51 +1554,7 @@ class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
 };
 
 
-%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile::Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile;
-class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile();
-        Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile(const Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile &aHandle);
-        Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile(const STEPCAFControl_StackItemOfDictionaryOfExternFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
-    STEPCAFControl_StackItemOfDictionaryOfExternFile* _get_reference() {
-    return (STEPCAFControl_StackItemOfDictionaryOfExternFile*)$self->Access();
-    }
-};
-
-%extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPCAFControl_StackItemOfDictionaryOfExternFile)
 
 %extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
 	%pythoncode {

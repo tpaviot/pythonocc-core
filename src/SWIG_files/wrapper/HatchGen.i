@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HATCHGENDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=HATCHGENDOCSTRING) HatchGen
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include HatchGen_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -73,6 +59,10 @@ enum HatchGen_IntersectionType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(HatchGen_SequenceNodeOfDomains)
+%wrap_handle(HatchGen_SequenceNodeOfPointsOnElement)
+%wrap_handle(HatchGen_SequenceNodeOfPointsOnHatching)
 
 %nodefaultctor HatchGen_Domain;
 class HatchGen_Domain {
@@ -753,51 +743,7 @@ class HatchGen_SequenceNodeOfDomains : public TCollection_SeqNode {
 };
 
 
-%extend HatchGen_SequenceNodeOfDomains {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HatchGen_SequenceNodeOfDomains(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HatchGen_SequenceNodeOfDomains::Handle_HatchGen_SequenceNodeOfDomains %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HatchGen_SequenceNodeOfDomains;
-class Handle_HatchGen_SequenceNodeOfDomains : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_HatchGen_SequenceNodeOfDomains();
-        Handle_HatchGen_SequenceNodeOfDomains(const Handle_HatchGen_SequenceNodeOfDomains &aHandle);
-        Handle_HatchGen_SequenceNodeOfDomains(const HatchGen_SequenceNodeOfDomains *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HatchGen_SequenceNodeOfDomains DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HatchGen_SequenceNodeOfDomains {
-    HatchGen_SequenceNodeOfDomains* _get_reference() {
-    return (HatchGen_SequenceNodeOfDomains*)$self->Access();
-    }
-};
-
-%extend Handle_HatchGen_SequenceNodeOfDomains {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HatchGen_SequenceNodeOfDomains)
 
 %extend HatchGen_SequenceNodeOfDomains {
 	%pythoncode {
@@ -824,51 +770,7 @@ class HatchGen_SequenceNodeOfPointsOnElement : public TCollection_SeqNode {
 };
 
 
-%extend HatchGen_SequenceNodeOfPointsOnElement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HatchGen_SequenceNodeOfPointsOnElement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HatchGen_SequenceNodeOfPointsOnElement::Handle_HatchGen_SequenceNodeOfPointsOnElement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HatchGen_SequenceNodeOfPointsOnElement;
-class Handle_HatchGen_SequenceNodeOfPointsOnElement : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_HatchGen_SequenceNodeOfPointsOnElement();
-        Handle_HatchGen_SequenceNodeOfPointsOnElement(const Handle_HatchGen_SequenceNodeOfPointsOnElement &aHandle);
-        Handle_HatchGen_SequenceNodeOfPointsOnElement(const HatchGen_SequenceNodeOfPointsOnElement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HatchGen_SequenceNodeOfPointsOnElement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
-    HatchGen_SequenceNodeOfPointsOnElement* _get_reference() {
-    return (HatchGen_SequenceNodeOfPointsOnElement*)$self->Access();
-    }
-};
-
-%extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HatchGen_SequenceNodeOfPointsOnElement)
 
 %extend HatchGen_SequenceNodeOfPointsOnElement {
 	%pythoncode {
@@ -895,51 +797,7 @@ class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode {
 };
 
 
-%extend HatchGen_SequenceNodeOfPointsOnHatching {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HatchGen_SequenceNodeOfPointsOnHatching(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HatchGen_SequenceNodeOfPointsOnHatching::Handle_HatchGen_SequenceNodeOfPointsOnHatching %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HatchGen_SequenceNodeOfPointsOnHatching;
-class Handle_HatchGen_SequenceNodeOfPointsOnHatching : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_HatchGen_SequenceNodeOfPointsOnHatching();
-        Handle_HatchGen_SequenceNodeOfPointsOnHatching(const Handle_HatchGen_SequenceNodeOfPointsOnHatching &aHandle);
-        Handle_HatchGen_SequenceNodeOfPointsOnHatching(const HatchGen_SequenceNodeOfPointsOnHatching *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HatchGen_SequenceNodeOfPointsOnHatching DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
-    HatchGen_SequenceNodeOfPointsOnHatching* _get_reference() {
-    return (HatchGen_SequenceNodeOfPointsOnHatching*)$self->Access();
-    }
-};
-
-%extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HatchGen_SequenceNodeOfPointsOnHatching)
 
 %extend HatchGen_SequenceNodeOfPointsOnHatching {
 	%pythoncode {

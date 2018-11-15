@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMDATAXTDDOCSTRING
-"No docstring provided."
+"Storage and Retrieval drivers for modelling attributes.
+Transient attributes are defined in package TDataXtd.
+"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDATAXTDDOCSTRING) XmlMDataXtd
 
@@ -34,30 +36,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlMDataXtd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlMDataXtd_AxisDriver)
+%wrap_handle(XmlMDataXtd_ConstraintDriver)
+%wrap_handle(XmlMDataXtd_GeometryDriver)
+%wrap_handle(XmlMDataXtd_PatternStdDriver)
+%wrap_handle(XmlMDataXtd_PlacementDriver)
+%wrap_handle(XmlMDataXtd_PlaneDriver)
+%wrap_handle(XmlMDataXtd_PointDriver)
+%wrap_handle(XmlMDataXtd_ShapeDriver)
 
 %rename(xmlmdataxtd) XmlMDataXtd;
 class XmlMDataXtd {
@@ -126,51 +123,7 @@ class XmlMDataXtd_AxisDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_AxisDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_AxisDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_AxisDriver::Handle_XmlMDataXtd_AxisDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_AxisDriver;
-class Handle_XmlMDataXtd_AxisDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_AxisDriver();
-        Handle_XmlMDataXtd_AxisDriver(const Handle_XmlMDataXtd_AxisDriver &aHandle);
-        Handle_XmlMDataXtd_AxisDriver(const XmlMDataXtd_AxisDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_AxisDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_AxisDriver {
-    XmlMDataXtd_AxisDriver* _get_reference() {
-    return (XmlMDataXtd_AxisDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_AxisDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_AxisDriver)
 
 %extend XmlMDataXtd_AxisDriver {
 	%pythoncode {
@@ -213,51 +166,7 @@ class XmlMDataXtd_ConstraintDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_ConstraintDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_ConstraintDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_ConstraintDriver::Handle_XmlMDataXtd_ConstraintDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_ConstraintDriver;
-class Handle_XmlMDataXtd_ConstraintDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_ConstraintDriver();
-        Handle_XmlMDataXtd_ConstraintDriver(const Handle_XmlMDataXtd_ConstraintDriver &aHandle);
-        Handle_XmlMDataXtd_ConstraintDriver(const XmlMDataXtd_ConstraintDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_ConstraintDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_ConstraintDriver {
-    XmlMDataXtd_ConstraintDriver* _get_reference() {
-    return (XmlMDataXtd_ConstraintDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_ConstraintDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_ConstraintDriver)
 
 %extend XmlMDataXtd_ConstraintDriver {
 	%pythoncode {
@@ -300,51 +209,7 @@ class XmlMDataXtd_GeometryDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_GeometryDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_GeometryDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_GeometryDriver::Handle_XmlMDataXtd_GeometryDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_GeometryDriver;
-class Handle_XmlMDataXtd_GeometryDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_GeometryDriver();
-        Handle_XmlMDataXtd_GeometryDriver(const Handle_XmlMDataXtd_GeometryDriver &aHandle);
-        Handle_XmlMDataXtd_GeometryDriver(const XmlMDataXtd_GeometryDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_GeometryDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_GeometryDriver {
-    XmlMDataXtd_GeometryDriver* _get_reference() {
-    return (XmlMDataXtd_GeometryDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_GeometryDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_GeometryDriver)
 
 %extend XmlMDataXtd_GeometryDriver {
 	%pythoncode {
@@ -387,51 +252,7 @@ class XmlMDataXtd_PatternStdDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_PatternStdDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_PatternStdDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_PatternStdDriver::Handle_XmlMDataXtd_PatternStdDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_PatternStdDriver;
-class Handle_XmlMDataXtd_PatternStdDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_PatternStdDriver();
-        Handle_XmlMDataXtd_PatternStdDriver(const Handle_XmlMDataXtd_PatternStdDriver &aHandle);
-        Handle_XmlMDataXtd_PatternStdDriver(const XmlMDataXtd_PatternStdDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_PatternStdDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_PatternStdDriver {
-    XmlMDataXtd_PatternStdDriver* _get_reference() {
-    return (XmlMDataXtd_PatternStdDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_PatternStdDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_PatternStdDriver)
 
 %extend XmlMDataXtd_PatternStdDriver {
 	%pythoncode {
@@ -474,51 +295,7 @@ class XmlMDataXtd_PlacementDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_PlacementDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_PlacementDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_PlacementDriver::Handle_XmlMDataXtd_PlacementDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_PlacementDriver;
-class Handle_XmlMDataXtd_PlacementDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_PlacementDriver();
-        Handle_XmlMDataXtd_PlacementDriver(const Handle_XmlMDataXtd_PlacementDriver &aHandle);
-        Handle_XmlMDataXtd_PlacementDriver(const XmlMDataXtd_PlacementDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_PlacementDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_PlacementDriver {
-    XmlMDataXtd_PlacementDriver* _get_reference() {
-    return (XmlMDataXtd_PlacementDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_PlacementDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_PlacementDriver)
 
 %extend XmlMDataXtd_PlacementDriver {
 	%pythoncode {
@@ -561,51 +338,7 @@ class XmlMDataXtd_PlaneDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_PlaneDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_PlaneDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_PlaneDriver::Handle_XmlMDataXtd_PlaneDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_PlaneDriver;
-class Handle_XmlMDataXtd_PlaneDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_PlaneDriver();
-        Handle_XmlMDataXtd_PlaneDriver(const Handle_XmlMDataXtd_PlaneDriver &aHandle);
-        Handle_XmlMDataXtd_PlaneDriver(const XmlMDataXtd_PlaneDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_PlaneDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_PlaneDriver {
-    XmlMDataXtd_PlaneDriver* _get_reference() {
-    return (XmlMDataXtd_PlaneDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_PlaneDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_PlaneDriver)
 
 %extend XmlMDataXtd_PlaneDriver {
 	%pythoncode {
@@ -648,51 +381,7 @@ class XmlMDataXtd_PointDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_PointDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_PointDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_PointDriver::Handle_XmlMDataXtd_PointDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_PointDriver;
-class Handle_XmlMDataXtd_PointDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_PointDriver();
-        Handle_XmlMDataXtd_PointDriver(const Handle_XmlMDataXtd_PointDriver &aHandle);
-        Handle_XmlMDataXtd_PointDriver(const XmlMDataXtd_PointDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_PointDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_PointDriver {
-    XmlMDataXtd_PointDriver* _get_reference() {
-    return (XmlMDataXtd_PointDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_PointDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_PointDriver)
 
 %extend XmlMDataXtd_PointDriver {
 	%pythoncode {
@@ -735,51 +424,7 @@ class XmlMDataXtd_ShapeDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDataXtd_ShapeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDataXtd_ShapeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDataXtd_ShapeDriver::Handle_XmlMDataXtd_ShapeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDataXtd_ShapeDriver;
-class Handle_XmlMDataXtd_ShapeDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDataXtd_ShapeDriver();
-        Handle_XmlMDataXtd_ShapeDriver(const Handle_XmlMDataXtd_ShapeDriver &aHandle);
-        Handle_XmlMDataXtd_ShapeDriver(const XmlMDataXtd_ShapeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDataXtd_ShapeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDataXtd_ShapeDriver {
-    XmlMDataXtd_ShapeDriver* _get_reference() {
-    return (XmlMDataXtd_ShapeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDataXtd_ShapeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDataXtd_ShapeDriver)
 
 %extend XmlMDataXtd_ShapeDriver {
 	%pythoncode {

@@ -18,7 +18,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTANADOCSTRING
-"No docstring provided."
+"This package provides the intersections between :
+
+- Natural Quadrics when the result is a conic (QuadQuadGeo)
+
+- A natural Quadric and a Quadric defined by its Coefficients
+(IntQuadQuad)
+
+- 3 Pln  (Int3Pln)
+
+- a Line and a Torus  (IntLinTorus)
+
+- a Conic from gp and a Quadric defined by its Coefficients
+(IntConicQuad)
+
+
+-Level: Public
+
+All the methods of the classes of this package are public.
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTANADOCSTRING) IntAna
 
@@ -34,24 +54,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntAna_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -71,6 +77,8 @@ enum IntAna_ResultType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(IntAna_ListNodeOfListOfCurve)
 
 %nodefaultctor IntAna_Curve;
 class IntAna_Curve {
@@ -912,51 +920,7 @@ class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
 };
 
 
-%extend IntAna_ListNodeOfListOfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntAna_ListNodeOfListOfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntAna_ListNodeOfListOfCurve::Handle_IntAna_ListNodeOfListOfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntAna_ListNodeOfListOfCurve;
-class Handle_IntAna_ListNodeOfListOfCurve : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_IntAna_ListNodeOfListOfCurve();
-        Handle_IntAna_ListNodeOfListOfCurve(const Handle_IntAna_ListNodeOfListOfCurve &aHandle);
-        Handle_IntAna_ListNodeOfListOfCurve(const IntAna_ListNodeOfListOfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntAna_ListNodeOfListOfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntAna_ListNodeOfListOfCurve {
-    IntAna_ListNodeOfListOfCurve* _get_reference() {
-    return (IntAna_ListNodeOfListOfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_IntAna_ListNodeOfListOfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntAna_ListNodeOfListOfCurve)
 
 %extend IntAna_ListNodeOfListOfCurve {
 	%pythoncode {

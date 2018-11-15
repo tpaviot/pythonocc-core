@@ -18,7 +18,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GRAPHIC3DDOCSTRING
-"No docstring provided."
+"-Version:
+
+This package permits the creation of 3d graphic objects
+in a visualiser.
+These objects, called structures, are composed of groups of
+primitives and attributes.
+The group is the smallest editable element of a structure.
+A structure can be displayed, erased, high-lighted.
+A transformation can be applied to it.
+Structures can be connected to form a tree of structures,
+composed by transformations.
+The visualiser permits global manipulation of structures.
+
+-Keywords: Structure, Group, Primitives, Line, Marker, Text,
+FillAreas, Vertex, Vector, Material, Font, Shading
+-Warning:
+-References:
+"
 %enddef
 %module (package="OCC.Core", docstring=GRAPHIC3DDOCSTRING) Graphic3d
 
@@ -34,24 +51,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Graphic3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_Vec4 <Standard_Integer> Graphic3d_Vec4i;
@@ -394,6 +397,48 @@ enum Graphic3d_NameOfTextureEnv {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Graphic3d_ArrayOfPrimitives)
+%wrap_handle(Graphic3d_AspectFillArea3d)
+%wrap_handle(Graphic3d_AspectLine3d)
+%wrap_handle(Graphic3d_AspectMarker3d)
+%wrap_handle(Graphic3d_AspectText3d)
+%wrap_handle(Graphic3d_BoundBuffer)
+%wrap_handle(Graphic3d_CStructure)
+%wrap_handle(Graphic3d_Camera)
+%wrap_handle(Graphic3d_ClipPlane)
+%wrap_handle(Graphic3d_DataStructureManager)
+%wrap_handle(Graphic3d_GraphicDriver)
+%wrap_handle(Graphic3d_Group)
+%wrap_handle(Graphic3d_HSequenceOfStructure)
+%wrap_handle(Graphic3d_ListNodeOfListOfShortReal)
+%wrap_handle(Graphic3d_MarkerImage)
+%wrap_handle(Graphic3d_SequenceNodeOfSequenceOfStructure)
+%wrap_handle(Graphic3d_ShaderObject)
+%wrap_handle(Graphic3d_ShaderProgram)
+%wrap_handle(Graphic3d_ShaderVariable)
+%wrap_handle(Graphic3d_Structure)
+%wrap_handle(Graphic3d_StructureManager)
+%wrap_handle(Graphic3d_TextureParams)
+%wrap_handle(Graphic3d_TextureRoot)
+%wrap_handle(Graphic3d_ViewAffinity)
+%wrap_handle(Graphic3d_ArrayOfPoints)
+%wrap_handle(Graphic3d_ArrayOfPolygons)
+%wrap_handle(Graphic3d_ArrayOfPolylines)
+%wrap_handle(Graphic3d_ArrayOfQuadrangleStrips)
+%wrap_handle(Graphic3d_ArrayOfQuadrangles)
+%wrap_handle(Graphic3d_ArrayOfSegments)
+%wrap_handle(Graphic3d_ArrayOfTriangleFans)
+%wrap_handle(Graphic3d_ArrayOfTriangleStrips)
+%wrap_handle(Graphic3d_ArrayOfTriangles)
+%wrap_handle(Graphic3d_TextureEnv)
+%wrap_handle(Graphic3d_TextureMap)
+%wrap_handle(Graphic3d_Texture1D)
+%wrap_handle(Graphic3d_Texture2D)
+%wrap_handle(Graphic3d_Texture1Dmanual)
+%wrap_handle(Graphic3d_Texture1Dsegment)
+%wrap_handle(Graphic3d_Texture2Dmanual)
+%wrap_handle(Graphic3d_Texture2Dplane)
 
 %nodefaultctor Graphic3d_Array1OfVector;
 class Graphic3d_Array1OfVector {
@@ -1300,51 +1345,7 @@ class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_ArrayOfPrimitives {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfPrimitives(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfPrimitives::Handle_Graphic3d_ArrayOfPrimitives %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfPrimitives;
-class Handle_Graphic3d_ArrayOfPrimitives : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfPrimitives();
-        Handle_Graphic3d_ArrayOfPrimitives(const Handle_Graphic3d_ArrayOfPrimitives &aHandle);
-        Handle_Graphic3d_ArrayOfPrimitives(const Graphic3d_ArrayOfPrimitives *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfPrimitives DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfPrimitives {
-    Graphic3d_ArrayOfPrimitives* _get_reference() {
-    return (Graphic3d_ArrayOfPrimitives*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfPrimitives {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfPrimitives)
 
 %extend Graphic3d_ArrayOfPrimitives {
 	%pythoncode {
@@ -1523,51 +1524,7 @@ class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 };
 
 
-%extend Graphic3d_AspectFillArea3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_AspectFillArea3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_AspectFillArea3d::Handle_Graphic3d_AspectFillArea3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_AspectFillArea3d;
-class Handle_Graphic3d_AspectFillArea3d : public Handle_Aspect_AspectFillArea {
-
-    public:
-        // constructors
-        Handle_Graphic3d_AspectFillArea3d();
-        Handle_Graphic3d_AspectFillArea3d(const Handle_Graphic3d_AspectFillArea3d &aHandle);
-        Handle_Graphic3d_AspectFillArea3d(const Graphic3d_AspectFillArea3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_AspectFillArea3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_AspectFillArea3d {
-    Graphic3d_AspectFillArea3d* _get_reference() {
-    return (Graphic3d_AspectFillArea3d*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_AspectFillArea3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_AspectFillArea3d)
 
 %extend Graphic3d_AspectFillArea3d {
 	%pythoncode {
@@ -1610,51 +1567,7 @@ class Graphic3d_AspectLine3d : public Aspect_AspectLine {
 };
 
 
-%extend Graphic3d_AspectLine3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_AspectLine3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_AspectLine3d::Handle_Graphic3d_AspectLine3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_AspectLine3d;
-class Handle_Graphic3d_AspectLine3d : public Handle_Aspect_AspectLine {
-
-    public:
-        // constructors
-        Handle_Graphic3d_AspectLine3d();
-        Handle_Graphic3d_AspectLine3d(const Handle_Graphic3d_AspectLine3d &aHandle);
-        Handle_Graphic3d_AspectLine3d(const Graphic3d_AspectLine3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_AspectLine3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_AspectLine3d {
-    Graphic3d_AspectLine3d* _get_reference() {
-    return (Graphic3d_AspectLine3d*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_AspectLine3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_AspectLine3d)
 
 %extend Graphic3d_AspectLine3d {
 	%pythoncode {
@@ -1751,51 +1664,7 @@ class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 };
 
 
-%extend Graphic3d_AspectMarker3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_AspectMarker3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_AspectMarker3d::Handle_Graphic3d_AspectMarker3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_AspectMarker3d;
-class Handle_Graphic3d_AspectMarker3d : public Handle_Aspect_AspectMarker {
-
-    public:
-        // constructors
-        Handle_Graphic3d_AspectMarker3d();
-        Handle_Graphic3d_AspectMarker3d(const Handle_Graphic3d_AspectMarker3d &aHandle);
-        Handle_Graphic3d_AspectMarker3d(const Graphic3d_AspectMarker3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_AspectMarker3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_AspectMarker3d {
-    Graphic3d_AspectMarker3d* _get_reference() {
-    return (Graphic3d_AspectMarker3d*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_AspectMarker3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_AspectMarker3d)
 
 %extend Graphic3d_AspectMarker3d {
 	%pythoncode {
@@ -2026,51 +1895,7 @@ class Graphic3d_AspectText3d : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_AspectText3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_AspectText3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_AspectText3d::Handle_Graphic3d_AspectText3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_AspectText3d;
-class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_AspectText3d();
-        Handle_Graphic3d_AspectText3d(const Handle_Graphic3d_AspectText3d &aHandle);
-        Handle_Graphic3d_AspectText3d(const Graphic3d_AspectText3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_AspectText3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_AspectText3d {
-    Graphic3d_AspectText3d* _get_reference() {
-    return (Graphic3d_AspectText3d*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_AspectText3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_AspectText3d)
 
 %extend Graphic3d_AspectText3d {
 	%pythoncode {
@@ -2270,51 +2095,7 @@ class Graphic3d_BoundBuffer : public NCollection_Buffer {
 };
 
 
-%extend Graphic3d_BoundBuffer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_BoundBuffer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_BoundBuffer::Handle_Graphic3d_BoundBuffer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_BoundBuffer;
-class Handle_Graphic3d_BoundBuffer : public Handle_NCollection_Buffer {
-
-    public:
-        // constructors
-        Handle_Graphic3d_BoundBuffer();
-        Handle_Graphic3d_BoundBuffer(const Handle_Graphic3d_BoundBuffer &aHandle);
-        Handle_Graphic3d_BoundBuffer(const Graphic3d_BoundBuffer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_BoundBuffer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_BoundBuffer {
-    Graphic3d_BoundBuffer* _get_reference() {
-    return (Graphic3d_BoundBuffer*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_BoundBuffer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_BoundBuffer)
 
 %extend Graphic3d_BoundBuffer {
 	%pythoncode {
@@ -2752,51 +2533,7 @@ class Graphic3d_CStructure : public Standard_Transient {
 };
 
 
-%extend Graphic3d_CStructure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_CStructure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_CStructure::Handle_Graphic3d_CStructure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_CStructure;
-class Handle_Graphic3d_CStructure : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_CStructure();
-        Handle_Graphic3d_CStructure(const Handle_Graphic3d_CStructure &aHandle);
-        Handle_Graphic3d_CStructure(const Graphic3d_CStructure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_CStructure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_CStructure {
-    Graphic3d_CStructure* _get_reference() {
-    return (Graphic3d_CStructure*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_CStructure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_CStructure)
 
 %extend Graphic3d_CStructure {
 	%pythoncode {
@@ -3317,51 +3054,7 @@ enum IODType {
 };
 
 
-%extend Graphic3d_Camera {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Camera(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Camera::Handle_Graphic3d_Camera %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Camera;
-class Handle_Graphic3d_Camera : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Camera();
-        Handle_Graphic3d_Camera(const Handle_Graphic3d_Camera &aHandle);
-        Handle_Graphic3d_Camera(const Graphic3d_Camera *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Camera DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Camera {
-    Graphic3d_Camera* _get_reference() {
-    return (Graphic3d_Camera*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Camera {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Camera)
 
 %extend Graphic3d_Camera {
 	%pythoncode {
@@ -3559,51 +3252,7 @@ typedef NCollection_Vec4 <Standard_Real> Equation;
 };
 
 
-%extend Graphic3d_ClipPlane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ClipPlane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ClipPlane::Handle_Graphic3d_ClipPlane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ClipPlane;
-class Handle_Graphic3d_ClipPlane : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ClipPlane();
-        Handle_Graphic3d_ClipPlane(const Handle_Graphic3d_ClipPlane &aHandle);
-        Handle_Graphic3d_ClipPlane(const Graphic3d_ClipPlane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ClipPlane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ClipPlane {
-    Graphic3d_ClipPlane* _get_reference() {
-    return (Graphic3d_ClipPlane*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ClipPlane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ClipPlane)
 
 %extend Graphic3d_ClipPlane {
 	%pythoncode {
@@ -3622,51 +3271,7 @@ class Graphic3d_DataStructureManager : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_DataStructureManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_DataStructureManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_DataStructureManager::Handle_Graphic3d_DataStructureManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_DataStructureManager;
-class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_DataStructureManager();
-        Handle_Graphic3d_DataStructureManager(const Handle_Graphic3d_DataStructureManager &aHandle);
-        Handle_Graphic3d_DataStructureManager(const Graphic3d_DataStructureManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_DataStructureManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_DataStructureManager {
-    Graphic3d_DataStructureManager* _get_reference() {
-    return (Graphic3d_DataStructureManager*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_DataStructureManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_DataStructureManager)
 
 %extend Graphic3d_DataStructureManager {
 	%pythoncode {
@@ -4761,51 +4366,7 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_GraphicDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_GraphicDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_GraphicDriver::Handle_Graphic3d_GraphicDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_GraphicDriver;
-class Handle_Graphic3d_GraphicDriver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_GraphicDriver();
-        Handle_Graphic3d_GraphicDriver(const Handle_Graphic3d_GraphicDriver &aHandle);
-        Handle_Graphic3d_GraphicDriver(const Graphic3d_GraphicDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_GraphicDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_GraphicDriver {
-    Graphic3d_GraphicDriver* _get_reference() {
-    return (Graphic3d_GraphicDriver*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_GraphicDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_GraphicDriver)
 
 %extend Graphic3d_GraphicDriver {
 	%pythoncode {
@@ -5126,51 +4687,7 @@ class Graphic3d_Group : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_Group {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Group(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Group::Handle_Graphic3d_Group %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Group;
-class Handle_Graphic3d_Group : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Group();
-        Handle_Graphic3d_Group(const Handle_Graphic3d_Group &aHandle);
-        Handle_Graphic3d_Group(const Graphic3d_Group *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Group DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Group {
-    Graphic3d_Group* _get_reference() {
-    return (Graphic3d_Group*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Group {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Group)
 
 %extend Graphic3d_Group {
 	%pythoncode {
@@ -5315,51 +4832,7 @@ class Graphic3d_HSequenceOfStructure : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_HSequenceOfStructure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_HSequenceOfStructure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_HSequenceOfStructure::Handle_Graphic3d_HSequenceOfStructure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_HSequenceOfStructure;
-class Handle_Graphic3d_HSequenceOfStructure : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_HSequenceOfStructure();
-        Handle_Graphic3d_HSequenceOfStructure(const Handle_Graphic3d_HSequenceOfStructure &aHandle);
-        Handle_Graphic3d_HSequenceOfStructure(const Graphic3d_HSequenceOfStructure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_HSequenceOfStructure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_HSequenceOfStructure {
-    Graphic3d_HSequenceOfStructure* _get_reference() {
-    return (Graphic3d_HSequenceOfStructure*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_HSequenceOfStructure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_HSequenceOfStructure)
 
 %extend Graphic3d_HSequenceOfStructure {
 	%pythoncode {
@@ -5423,51 +4896,7 @@ class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode {
 };
 
 
-%extend Graphic3d_ListNodeOfListOfShortReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ListNodeOfListOfShortReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ListNodeOfListOfShortReal::Handle_Graphic3d_ListNodeOfListOfShortReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ListNodeOfListOfShortReal;
-class Handle_Graphic3d_ListNodeOfListOfShortReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ListNodeOfListOfShortReal();
-        Handle_Graphic3d_ListNodeOfListOfShortReal(const Handle_Graphic3d_ListNodeOfListOfShortReal &aHandle);
-        Handle_Graphic3d_ListNodeOfListOfShortReal(const Graphic3d_ListNodeOfListOfShortReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ListNodeOfListOfShortReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ListNodeOfListOfShortReal {
-    Graphic3d_ListNodeOfListOfShortReal* _get_reference() {
-    return (Graphic3d_ListNodeOfListOfShortReal*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ListNodeOfListOfShortReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ListNodeOfListOfShortReal)
 
 %extend Graphic3d_ListNodeOfListOfShortReal {
 	%pythoncode {
@@ -5677,51 +5106,7 @@ class Graphic3d_MarkerImage : public Standard_Transient {
 };
 
 
-%extend Graphic3d_MarkerImage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_MarkerImage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_MarkerImage::Handle_Graphic3d_MarkerImage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_MarkerImage;
-class Handle_Graphic3d_MarkerImage : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_MarkerImage();
-        Handle_Graphic3d_MarkerImage(const Handle_Graphic3d_MarkerImage &aHandle);
-        Handle_Graphic3d_MarkerImage(const Graphic3d_MarkerImage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_MarkerImage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_MarkerImage {
-    Graphic3d_MarkerImage* _get_reference() {
-    return (Graphic3d_MarkerImage*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_MarkerImage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_MarkerImage)
 
 %extend Graphic3d_MarkerImage {
 	%pythoncode {
@@ -6139,51 +5524,7 @@ class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
 };
 
 
-%extend Graphic3d_SequenceNodeOfSequenceOfStructure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_SequenceNodeOfSequenceOfStructure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure::Handle_Graphic3d_SequenceNodeOfSequenceOfStructure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_SequenceNodeOfSequenceOfStructure;
-class Handle_Graphic3d_SequenceNodeOfSequenceOfStructure : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Graphic3d_SequenceNodeOfSequenceOfStructure();
-        Handle_Graphic3d_SequenceNodeOfSequenceOfStructure(const Handle_Graphic3d_SequenceNodeOfSequenceOfStructure &aHandle);
-        Handle_Graphic3d_SequenceNodeOfSequenceOfStructure(const Graphic3d_SequenceNodeOfSequenceOfStructure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_SequenceNodeOfSequenceOfStructure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
-    Graphic3d_SequenceNodeOfSequenceOfStructure* _get_reference() {
-    return (Graphic3d_SequenceNodeOfSequenceOfStructure*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_SequenceNodeOfSequenceOfStructure)
 
 %extend Graphic3d_SequenceNodeOfSequenceOfStructure {
 	%pythoncode {
@@ -6389,51 +5730,7 @@ class Graphic3d_ShaderObject : public Standard_Transient {
 };
 
 
-%extend Graphic3d_ShaderObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ShaderObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ShaderObject::Handle_Graphic3d_ShaderObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ShaderObject;
-class Handle_Graphic3d_ShaderObject : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ShaderObject();
-        Handle_Graphic3d_ShaderObject(const Handle_Graphic3d_ShaderObject &aHandle);
-        Handle_Graphic3d_ShaderObject(const Graphic3d_ShaderObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ShaderObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ShaderObject {
-    Graphic3d_ShaderObject* _get_reference() {
-    return (Graphic3d_ShaderObject*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ShaderObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ShaderObject)
 
 %extend Graphic3d_ShaderObject {
 	%pythoncode {
@@ -6540,51 +5837,7 @@ enum ShaderName {
 };
 
 
-%extend Graphic3d_ShaderProgram {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ShaderProgram(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ShaderProgram::Handle_Graphic3d_ShaderProgram %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ShaderProgram;
-class Handle_Graphic3d_ShaderProgram : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ShaderProgram();
-        Handle_Graphic3d_ShaderProgram(const Handle_Graphic3d_ShaderProgram &aHandle);
-        Handle_Graphic3d_ShaderProgram(const Graphic3d_ShaderProgram *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ShaderProgram DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ShaderProgram {
-    Graphic3d_ShaderProgram* _get_reference() {
-    return (Graphic3d_ShaderProgram*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ShaderProgram {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ShaderProgram)
 
 %extend Graphic3d_ShaderProgram {
 	%pythoncode {
@@ -6615,51 +5868,7 @@ class Graphic3d_ShaderVariable : public Standard_Transient {
 };
 
 
-%extend Graphic3d_ShaderVariable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ShaderVariable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ShaderVariable::Handle_Graphic3d_ShaderVariable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ShaderVariable;
-class Handle_Graphic3d_ShaderVariable : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ShaderVariable();
-        Handle_Graphic3d_ShaderVariable(const Handle_Graphic3d_ShaderVariable &aHandle);
-        Handle_Graphic3d_ShaderVariable(const Graphic3d_ShaderVariable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ShaderVariable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ShaderVariable {
-    Graphic3d_ShaderVariable* _get_reference() {
-    return (Graphic3d_ShaderVariable*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ShaderVariable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ShaderVariable)
 
 %extend Graphic3d_ShaderVariable {
 	%pythoncode {
@@ -7332,51 +6541,7 @@ class Graphic3d_Structure : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_Structure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Structure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Structure::Handle_Graphic3d_Structure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Structure;
-class Handle_Graphic3d_Structure : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Structure();
-        Handle_Graphic3d_Structure(const Handle_Graphic3d_Structure &aHandle);
-        Handle_Graphic3d_Structure(const Graphic3d_Structure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Structure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Structure {
-    Graphic3d_Structure* _get_reference() {
-    return (Graphic3d_Structure*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Structure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Structure)
 
 %extend Graphic3d_Structure {
 	%pythoncode {
@@ -7731,51 +6896,7 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_StructureManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_StructureManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_StructureManager::Handle_Graphic3d_StructureManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_StructureManager;
-class Handle_Graphic3d_StructureManager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_StructureManager();
-        Handle_Graphic3d_StructureManager(const Handle_Graphic3d_StructureManager &aHandle);
-        Handle_Graphic3d_StructureManager(const Graphic3d_StructureManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_StructureManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_StructureManager {
-    Graphic3d_StructureManager* _get_reference() {
-    return (Graphic3d_StructureManager*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_StructureManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_StructureManager)
 
 %extend Graphic3d_StructureManager {
 	%pythoncode {
@@ -7926,51 +7047,7 @@ class Graphic3d_TextureParams : public Standard_Transient {
 };
 
 
-%extend Graphic3d_TextureParams {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_TextureParams(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_TextureParams::Handle_Graphic3d_TextureParams %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_TextureParams;
-class Handle_Graphic3d_TextureParams : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_TextureParams();
-        Handle_Graphic3d_TextureParams(const Handle_Graphic3d_TextureParams &aHandle);
-        Handle_Graphic3d_TextureParams(const Graphic3d_TextureParams *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_TextureParams DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_TextureParams {
-    Graphic3d_TextureParams* _get_reference() {
-    return (Graphic3d_TextureParams*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_TextureParams {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_TextureParams)
 
 %extend Graphic3d_TextureParams {
 	%pythoncode {
@@ -8029,51 +7106,7 @@ class Graphic3d_TextureRoot : public MMgt_TShared {
 };
 
 
-%extend Graphic3d_TextureRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_TextureRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_TextureRoot::Handle_Graphic3d_TextureRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_TextureRoot;
-class Handle_Graphic3d_TextureRoot : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Graphic3d_TextureRoot();
-        Handle_Graphic3d_TextureRoot(const Handle_Graphic3d_TextureRoot &aHandle);
-        Handle_Graphic3d_TextureRoot(const Graphic3d_TextureRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_TextureRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_TextureRoot {
-    Graphic3d_TextureRoot* _get_reference() {
-    return (Graphic3d_TextureRoot*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_TextureRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_TextureRoot)
 
 %extend Graphic3d_TextureRoot {
 	%pythoncode {
@@ -8491,51 +7524,7 @@ class Graphic3d_ViewAffinity : public Standard_Transient {
 };
 
 
-%extend Graphic3d_ViewAffinity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ViewAffinity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ViewAffinity::Handle_Graphic3d_ViewAffinity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ViewAffinity;
-class Handle_Graphic3d_ViewAffinity : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ViewAffinity();
-        Handle_Graphic3d_ViewAffinity(const Handle_Graphic3d_ViewAffinity &aHandle);
-        Handle_Graphic3d_ViewAffinity(const Graphic3d_ViewAffinity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ViewAffinity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ViewAffinity {
-    Graphic3d_ViewAffinity* _get_reference() {
-    return (Graphic3d_ViewAffinity*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ViewAffinity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ViewAffinity)
 
 %extend Graphic3d_ViewAffinity {
 	%pythoncode {
@@ -8617,51 +7606,7 @@ class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfPoints {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfPoints(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfPoints::Handle_Graphic3d_ArrayOfPoints %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfPoints;
-class Handle_Graphic3d_ArrayOfPoints : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfPoints();
-        Handle_Graphic3d_ArrayOfPoints(const Handle_Graphic3d_ArrayOfPoints &aHandle);
-        Handle_Graphic3d_ArrayOfPoints(const Graphic3d_ArrayOfPoints *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfPoints DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfPoints {
-    Graphic3d_ArrayOfPoints* _get_reference() {
-    return (Graphic3d_ArrayOfPoints*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfPoints {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfPoints)
 
 %extend Graphic3d_ArrayOfPoints {
 	%pythoncode {
@@ -8694,51 +7639,7 @@ class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfPolygons {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfPolygons(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfPolygons::Handle_Graphic3d_ArrayOfPolygons %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfPolygons;
-class Handle_Graphic3d_ArrayOfPolygons : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfPolygons();
-        Handle_Graphic3d_ArrayOfPolygons(const Handle_Graphic3d_ArrayOfPolygons &aHandle);
-        Handle_Graphic3d_ArrayOfPolygons(const Graphic3d_ArrayOfPolygons *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfPolygons DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfPolygons {
-    Graphic3d_ArrayOfPolygons* _get_reference() {
-    return (Graphic3d_ArrayOfPolygons*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfPolygons {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfPolygons)
 
 %extend Graphic3d_ArrayOfPolygons {
 	%pythoncode {
@@ -8767,51 +7668,7 @@ class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfPolylines {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfPolylines(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfPolylines::Handle_Graphic3d_ArrayOfPolylines %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfPolylines;
-class Handle_Graphic3d_ArrayOfPolylines : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfPolylines();
-        Handle_Graphic3d_ArrayOfPolylines(const Handle_Graphic3d_ArrayOfPolylines &aHandle);
-        Handle_Graphic3d_ArrayOfPolylines(const Graphic3d_ArrayOfPolylines *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfPolylines DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfPolylines {
-    Graphic3d_ArrayOfPolylines* _get_reference() {
-    return (Graphic3d_ArrayOfPolylines*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfPolylines {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfPolylines)
 
 %extend Graphic3d_ArrayOfPolylines {
 	%pythoncode {
@@ -8842,51 +7699,7 @@ class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfQuadrangleStrips {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfQuadrangleStrips(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfQuadrangleStrips::Handle_Graphic3d_ArrayOfQuadrangleStrips %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfQuadrangleStrips;
-class Handle_Graphic3d_ArrayOfQuadrangleStrips : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfQuadrangleStrips();
-        Handle_Graphic3d_ArrayOfQuadrangleStrips(const Handle_Graphic3d_ArrayOfQuadrangleStrips &aHandle);
-        Handle_Graphic3d_ArrayOfQuadrangleStrips(const Graphic3d_ArrayOfQuadrangleStrips *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfQuadrangleStrips DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
-    Graphic3d_ArrayOfQuadrangleStrips* _get_reference() {
-    return (Graphic3d_ArrayOfQuadrangleStrips*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfQuadrangleStrips)
 
 %extend Graphic3d_ArrayOfQuadrangleStrips {
 	%pythoncode {
@@ -8915,51 +7728,7 @@ class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfQuadrangles {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfQuadrangles(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfQuadrangles::Handle_Graphic3d_ArrayOfQuadrangles %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfQuadrangles;
-class Handle_Graphic3d_ArrayOfQuadrangles : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfQuadrangles();
-        Handle_Graphic3d_ArrayOfQuadrangles(const Handle_Graphic3d_ArrayOfQuadrangles &aHandle);
-        Handle_Graphic3d_ArrayOfQuadrangles(const Graphic3d_ArrayOfQuadrangles *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfQuadrangles DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfQuadrangles {
-    Graphic3d_ArrayOfQuadrangles* _get_reference() {
-    return (Graphic3d_ArrayOfQuadrangles*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfQuadrangles {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfQuadrangles)
 
 %extend Graphic3d_ArrayOfQuadrangles {
 	%pythoncode {
@@ -8984,51 +7753,7 @@ class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfSegments {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfSegments(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfSegments::Handle_Graphic3d_ArrayOfSegments %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfSegments;
-class Handle_Graphic3d_ArrayOfSegments : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfSegments();
-        Handle_Graphic3d_ArrayOfSegments(const Handle_Graphic3d_ArrayOfSegments &aHandle);
-        Handle_Graphic3d_ArrayOfSegments(const Graphic3d_ArrayOfSegments *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfSegments DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfSegments {
-    Graphic3d_ArrayOfSegments* _get_reference() {
-    return (Graphic3d_ArrayOfSegments*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfSegments {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfSegments)
 
 %extend Graphic3d_ArrayOfSegments {
 	%pythoncode {
@@ -9059,51 +7784,7 @@ class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfTriangleFans {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangleFans(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfTriangleFans::Handle_Graphic3d_ArrayOfTriangleFans %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfTriangleFans;
-class Handle_Graphic3d_ArrayOfTriangleFans : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfTriangleFans();
-        Handle_Graphic3d_ArrayOfTriangleFans(const Handle_Graphic3d_ArrayOfTriangleFans &aHandle);
-        Handle_Graphic3d_ArrayOfTriangleFans(const Graphic3d_ArrayOfTriangleFans *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfTriangleFans DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfTriangleFans {
-    Graphic3d_ArrayOfTriangleFans* _get_reference() {
-    return (Graphic3d_ArrayOfTriangleFans*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfTriangleFans {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfTriangleFans)
 
 %extend Graphic3d_ArrayOfTriangleFans {
 	%pythoncode {
@@ -9134,51 +7815,7 @@ class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfTriangleStrips {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangleStrips(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfTriangleStrips::Handle_Graphic3d_ArrayOfTriangleStrips %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfTriangleStrips;
-class Handle_Graphic3d_ArrayOfTriangleStrips : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfTriangleStrips();
-        Handle_Graphic3d_ArrayOfTriangleStrips(const Handle_Graphic3d_ArrayOfTriangleStrips &aHandle);
-        Handle_Graphic3d_ArrayOfTriangleStrips(const Graphic3d_ArrayOfTriangleStrips *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfTriangleStrips DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfTriangleStrips {
-    Graphic3d_ArrayOfTriangleStrips* _get_reference() {
-    return (Graphic3d_ArrayOfTriangleStrips*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfTriangleStrips {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfTriangleStrips)
 
 %extend Graphic3d_ArrayOfTriangleStrips {
 	%pythoncode {
@@ -9207,51 +7844,7 @@ class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%extend Graphic3d_ArrayOfTriangles {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangles(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_ArrayOfTriangles::Handle_Graphic3d_ArrayOfTriangles %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_ArrayOfTriangles;
-class Handle_Graphic3d_ArrayOfTriangles : public Handle_Graphic3d_ArrayOfPrimitives {
-
-    public:
-        // constructors
-        Handle_Graphic3d_ArrayOfTriangles();
-        Handle_Graphic3d_ArrayOfTriangles(const Handle_Graphic3d_ArrayOfTriangles &aHandle);
-        Handle_Graphic3d_ArrayOfTriangles(const Graphic3d_ArrayOfTriangles *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_ArrayOfTriangles DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_ArrayOfTriangles {
-    Graphic3d_ArrayOfTriangles* _get_reference() {
-    return (Graphic3d_ArrayOfTriangles*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_ArrayOfTriangles {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_ArrayOfTriangles)
 
 %extend Graphic3d_ArrayOfTriangles {
 	%pythoncode {
@@ -9308,51 +7901,7 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 };
 
 
-%extend Graphic3d_TextureEnv {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_TextureEnv(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_TextureEnv::Handle_Graphic3d_TextureEnv %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_TextureEnv;
-class Handle_Graphic3d_TextureEnv : public Handle_Graphic3d_TextureRoot {
-
-    public:
-        // constructors
-        Handle_Graphic3d_TextureEnv();
-        Handle_Graphic3d_TextureEnv(const Handle_Graphic3d_TextureEnv &aHandle);
-        Handle_Graphic3d_TextureEnv(const Graphic3d_TextureEnv *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_TextureEnv DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_TextureEnv {
-    Graphic3d_TextureEnv* _get_reference() {
-    return (Graphic3d_TextureEnv*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_TextureEnv {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_TextureEnv)
 
 %extend Graphic3d_TextureEnv {
 	%pythoncode {
@@ -9433,51 +7982,7 @@ class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 };
 
 
-%extend Graphic3d_TextureMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_TextureMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_TextureMap::Handle_Graphic3d_TextureMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_TextureMap;
-class Handle_Graphic3d_TextureMap : public Handle_Graphic3d_TextureRoot {
-
-    public:
-        // constructors
-        Handle_Graphic3d_TextureMap();
-        Handle_Graphic3d_TextureMap(const Handle_Graphic3d_TextureMap &aHandle);
-        Handle_Graphic3d_TextureMap(const Graphic3d_TextureMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_TextureMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_TextureMap {
-    Graphic3d_TextureMap* _get_reference() {
-    return (Graphic3d_TextureMap*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_TextureMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_TextureMap)
 
 %extend Graphic3d_TextureMap {
 	%pythoncode {
@@ -9510,51 +8015,7 @@ class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 };
 
 
-%extend Graphic3d_Texture1D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture1D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture1D::Handle_Graphic3d_Texture1D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture1D;
-class Handle_Graphic3d_Texture1D : public Handle_Graphic3d_TextureMap {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture1D();
-        Handle_Graphic3d_Texture1D(const Handle_Graphic3d_Texture1D &aHandle);
-        Handle_Graphic3d_Texture1D(const Graphic3d_Texture1D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture1D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture1D {
-    Graphic3d_Texture1D* _get_reference() {
-    return (Graphic3d_Texture1D*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture1D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture1D)
 
 %extend Graphic3d_Texture1D {
 	%pythoncode {
@@ -9587,51 +8048,7 @@ class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 };
 
 
-%extend Graphic3d_Texture2D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture2D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture2D::Handle_Graphic3d_Texture2D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture2D;
-class Handle_Graphic3d_Texture2D : public Handle_Graphic3d_TextureMap {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture2D();
-        Handle_Graphic3d_Texture2D(const Handle_Graphic3d_Texture2D &aHandle);
-        Handle_Graphic3d_Texture2D(const Graphic3d_Texture2D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture2D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture2D {
-    Graphic3d_Texture2D* _get_reference() {
-    return (Graphic3d_Texture2D*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture2D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture2D)
 
 %extend Graphic3d_Texture2D {
 	%pythoncode {
@@ -9668,51 +8085,7 @@ class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 };
 
 
-%extend Graphic3d_Texture1Dmanual {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture1Dmanual(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture1Dmanual::Handle_Graphic3d_Texture1Dmanual %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture1Dmanual;
-class Handle_Graphic3d_Texture1Dmanual : public Handle_Graphic3d_Texture1D {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture1Dmanual();
-        Handle_Graphic3d_Texture1Dmanual(const Handle_Graphic3d_Texture1Dmanual &aHandle);
-        Handle_Graphic3d_Texture1Dmanual(const Graphic3d_Texture1Dmanual *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture1Dmanual DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture1Dmanual {
-    Graphic3d_Texture1Dmanual* _get_reference() {
-    return (Graphic3d_Texture1Dmanual*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture1Dmanual {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture1Dmanual)
 
 %extend Graphic3d_Texture1Dmanual {
 	%pythoncode {
@@ -9785,51 +8158,7 @@ class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 };
 
 
-%extend Graphic3d_Texture1Dsegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture1Dsegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture1Dsegment::Handle_Graphic3d_Texture1Dsegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture1Dsegment;
-class Handle_Graphic3d_Texture1Dsegment : public Handle_Graphic3d_Texture1D {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture1Dsegment();
-        Handle_Graphic3d_Texture1Dsegment(const Handle_Graphic3d_Texture1Dsegment &aHandle);
-        Handle_Graphic3d_Texture1Dsegment(const Graphic3d_Texture1Dsegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture1Dsegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture1Dsegment {
-    Graphic3d_Texture1Dsegment* _get_reference() {
-    return (Graphic3d_Texture1Dsegment*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture1Dsegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture1Dsegment)
 
 %extend Graphic3d_Texture1Dsegment {
 	%pythoncode {
@@ -9866,51 +8195,7 @@ class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 };
 
 
-%extend Graphic3d_Texture2Dmanual {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture2Dmanual(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture2Dmanual::Handle_Graphic3d_Texture2Dmanual %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture2Dmanual;
-class Handle_Graphic3d_Texture2Dmanual : public Handle_Graphic3d_Texture2D {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture2Dmanual();
-        Handle_Graphic3d_Texture2Dmanual(const Handle_Graphic3d_Texture2Dmanual &aHandle);
-        Handle_Graphic3d_Texture2Dmanual(const Graphic3d_Texture2Dmanual *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture2Dmanual DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture2Dmanual {
-    Graphic3d_Texture2Dmanual* _get_reference() {
-    return (Graphic3d_Texture2Dmanual*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture2Dmanual {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture2Dmanual)
 
 %extend Graphic3d_Texture2Dmanual {
 	%pythoncode {
@@ -10097,51 +8382,7 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 };
 
 
-%extend Graphic3d_Texture2Dplane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_Texture2Dplane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_Texture2Dplane::Handle_Graphic3d_Texture2Dplane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_Texture2Dplane;
-class Handle_Graphic3d_Texture2Dplane : public Handle_Graphic3d_Texture2D {
-
-    public:
-        // constructors
-        Handle_Graphic3d_Texture2Dplane();
-        Handle_Graphic3d_Texture2Dplane(const Handle_Graphic3d_Texture2Dplane &aHandle);
-        Handle_Graphic3d_Texture2Dplane(const Graphic3d_Texture2Dplane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_Texture2Dplane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_Texture2Dplane {
-    Graphic3d_Texture2Dplane* _get_reference() {
-    return (Graphic3d_Texture2Dplane*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_Texture2Dplane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Graphic3d_Texture2Dplane)
 
 %extend Graphic3d_Texture2Dplane {
 	%pythoncode {

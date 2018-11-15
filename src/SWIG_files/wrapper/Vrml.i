@@ -18,7 +18,52 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLDOCSTRING
-"No docstring provided."
+"Vrml package implements the specification of the
+VRML ( Virtual Reality Modeling Language ). VRML
+is a standard language for describing interactive
+3-D objects and worlds delivered across Internet.
+Actual version of Vrml package have made for objects
+of VRML version 1.0.
+This package is used by VrmlConverter package.
+The developer should already be familiar with VRML
+specification before using this package.
+
+Coordinate System
+
+VRML uses a Cartesian, right-handed, 3-dimensional coordinate system.
+By default, objects are projected onto a 2-dimensional device by projecting
+them in the direction of the positive Z axis, with the positive X axis to
+the right and the positive Y axis up. A camera or modeling transformation
+may be used to alter this default projection.
+The standard unit for lengths and distances specified is meters.
+The standard unit for angles is radians.
+
+Fields
+
+There are two general classes of fields; fields that contain a single value
+(where a value may be a single number, a vector, or even an image), and fields that
+contain multiple values. Single-valued fields all have names that begin with 'SF',
+multiple-valued fields have names that begin with 'MF'. Each field type defines
+the format for the values it writes.
+
+Nodes
+
+VRML defines several different classes of nodes. Most of the nodes can be classified
+into one of three categories; shape, property or group. Shape nodes define the geometry
+in the world. Conceptually, they are the only nodes that draw anything. Property nodes
+affect the way shapes are drawn. And grouping nodes gather other nodes together, allowing
+collections of nodes to be treated as a single object. Some group nodes also control
+whether or not their children are drawn.
+Nodes may contain zero or more fields. Each node type defines the type, name, and default
+value for each of its fields. The default value for the field is used if a value for
+the field is not specified in the VRML file.
+
+Instancing
+
+A node may be the child of more than one group. This is called 'instancing' (using the same
+instance of a node multiple times, called 'aliasing' or 'multiple references' by other
+systems), and is accomplished by using the 'USE' and 'DEF keywords.
+"
 %enddef
 %module (package="OCC.Core", docstring=VRMLDOCSTRING) Vrml
 
@@ -34,24 +79,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Vrml_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -140,6 +171,16 @@ enum Vrml_FontStyleStyle {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Vrml_AsciiText)
+%wrap_handle(Vrml_Coordinate3)
+%wrap_handle(Vrml_IndexedFaceSet)
+%wrap_handle(Vrml_IndexedLineSet)
+%wrap_handle(Vrml_LOD)
+%wrap_handle(Vrml_Material)
+%wrap_handle(Vrml_Normal)
+%wrap_handle(Vrml_SFImage)
+%wrap_handle(Vrml_TextureCoordinate2)
 
 %rename(vrml) Vrml;
 class Vrml {
@@ -238,51 +279,7 @@ class Vrml_AsciiText : public MMgt_TShared {
         };
 
 
-%extend Vrml_AsciiText {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_AsciiText(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_AsciiText::Handle_Vrml_AsciiText %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_AsciiText;
-class Handle_Vrml_AsciiText : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_AsciiText();
-        Handle_Vrml_AsciiText(const Handle_Vrml_AsciiText &aHandle);
-        Handle_Vrml_AsciiText(const Vrml_AsciiText *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_AsciiText DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_AsciiText {
-    Vrml_AsciiText* _get_reference() {
-    return (Vrml_AsciiText*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_AsciiText {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_AsciiText)
 
 %extend Vrml_AsciiText {
 	%pythoncode {
@@ -382,51 +379,7 @@ class Vrml_Coordinate3 : public MMgt_TShared {
         };
 
 
-%extend Vrml_Coordinate3 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_Coordinate3(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_Coordinate3::Handle_Vrml_Coordinate3 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_Coordinate3;
-class Handle_Vrml_Coordinate3 : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_Coordinate3();
-        Handle_Vrml_Coordinate3(const Handle_Vrml_Coordinate3 &aHandle);
-        Handle_Vrml_Coordinate3(const Vrml_Coordinate3 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_Coordinate3 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_Coordinate3 {
-    Vrml_Coordinate3* _get_reference() {
-    return (Vrml_Coordinate3*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_Coordinate3 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_Coordinate3)
 
 %extend Vrml_Coordinate3 {
 	%pythoncode {
@@ -778,51 +731,7 @@ class Vrml_IndexedFaceSet : public MMgt_TShared {
         };
 
 
-%extend Vrml_IndexedFaceSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_IndexedFaceSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_IndexedFaceSet::Handle_Vrml_IndexedFaceSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_IndexedFaceSet;
-class Handle_Vrml_IndexedFaceSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_IndexedFaceSet();
-        Handle_Vrml_IndexedFaceSet(const Handle_Vrml_IndexedFaceSet &aHandle);
-        Handle_Vrml_IndexedFaceSet(const Vrml_IndexedFaceSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_IndexedFaceSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_IndexedFaceSet {
-    Vrml_IndexedFaceSet* _get_reference() {
-    return (Vrml_IndexedFaceSet*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_IndexedFaceSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_IndexedFaceSet)
 
 %extend Vrml_IndexedFaceSet {
 	%pythoncode {
@@ -899,51 +808,7 @@ class Vrml_IndexedLineSet : public MMgt_TShared {
         };
 
 
-%extend Vrml_IndexedLineSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_IndexedLineSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_IndexedLineSet::Handle_Vrml_IndexedLineSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_IndexedLineSet;
-class Handle_Vrml_IndexedLineSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_IndexedLineSet();
-        Handle_Vrml_IndexedLineSet(const Handle_Vrml_IndexedLineSet &aHandle);
-        Handle_Vrml_IndexedLineSet(const Vrml_IndexedLineSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_IndexedLineSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_IndexedLineSet {
-    Vrml_IndexedLineSet* _get_reference() {
-    return (Vrml_IndexedLineSet*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_IndexedLineSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_IndexedLineSet)
 
 %extend Vrml_IndexedLineSet {
 	%pythoncode {
@@ -1066,51 +931,7 @@ class Vrml_LOD : public MMgt_TShared {
         };
 
 
-%extend Vrml_LOD {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_LOD(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_LOD::Handle_Vrml_LOD %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_LOD;
-class Handle_Vrml_LOD : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_LOD();
-        Handle_Vrml_LOD(const Handle_Vrml_LOD &aHandle);
-        Handle_Vrml_LOD(const Vrml_LOD *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_LOD DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_LOD {
-    Vrml_LOD* _get_reference() {
-    return (Vrml_LOD*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_LOD {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_LOD)
 
 %extend Vrml_LOD {
 	%pythoncode {
@@ -1211,51 +1032,7 @@ class Vrml_Material : public MMgt_TShared {
         };
 
 
-%extend Vrml_Material {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_Material(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_Material::Handle_Vrml_Material %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_Material;
-class Handle_Vrml_Material : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_Material();
-        Handle_Vrml_Material(const Handle_Vrml_Material &aHandle);
-        Handle_Vrml_Material(const Vrml_Material *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_Material DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_Material {
-    Vrml_Material* _get_reference() {
-    return (Vrml_Material*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_Material {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_Material)
 
 %extend Vrml_Material {
 	%pythoncode {
@@ -1374,51 +1151,7 @@ class Vrml_Normal : public MMgt_TShared {
         };
 
 
-%extend Vrml_Normal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_Normal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_Normal::Handle_Vrml_Normal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_Normal;
-class Handle_Vrml_Normal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_Normal();
-        Handle_Vrml_Normal(const Handle_Vrml_Normal &aHandle);
-        Handle_Vrml_Normal(const Vrml_Normal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_Normal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_Normal {
-    Vrml_Normal* _get_reference() {
-    return (Vrml_Normal*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_Normal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_Normal)
 
 %extend Vrml_Normal {
 	%pythoncode {
@@ -1841,51 +1574,7 @@ class Vrml_SFImage : public MMgt_TShared {
 };
 
 
-%extend Vrml_SFImage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_SFImage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_SFImage::Handle_Vrml_SFImage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_SFImage;
-class Handle_Vrml_SFImage : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_SFImage();
-        Handle_Vrml_SFImage(const Handle_Vrml_SFImage &aHandle);
-        Handle_Vrml_SFImage(const Vrml_SFImage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_SFImage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_SFImage {
-    Vrml_SFImage* _get_reference() {
-    return (Vrml_SFImage*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_SFImage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_SFImage)
 
 %extend Vrml_SFImage {
 	%pythoncode {
@@ -2473,51 +2162,7 @@ class Vrml_TextureCoordinate2 : public MMgt_TShared {
         };
 
 
-%extend Vrml_TextureCoordinate2 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Vrml_TextureCoordinate2(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Vrml_TextureCoordinate2::Handle_Vrml_TextureCoordinate2 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Vrml_TextureCoordinate2;
-class Handle_Vrml_TextureCoordinate2 : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Vrml_TextureCoordinate2();
-        Handle_Vrml_TextureCoordinate2(const Handle_Vrml_TextureCoordinate2 &aHandle);
-        Handle_Vrml_TextureCoordinate2(const Vrml_TextureCoordinate2 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Vrml_TextureCoordinate2 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Vrml_TextureCoordinate2 {
-    Vrml_TextureCoordinate2* _get_reference() {
-    return (Vrml_TextureCoordinate2*)$self->Access();
-    }
-};
-
-%extend Handle_Vrml_TextureCoordinate2 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Vrml_TextureCoordinate2)
 
 %extend Vrml_TextureCoordinate2 {
 	%pythoncode {

@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLGEOMDOCSTRING
-"No docstring provided."
+"-Purpose : This package is used to instantiate of several
+generic classes from the package TCollection with
+objects from the package Geom.
+"
 %enddef
 %module (package="OCC.Core", docstring=TCOLGEOMDOCSTRING) TColGeom
 
@@ -34,30 +37,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TColGeom_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TColGeom_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom_HArray1OfBezierCurve)
+%wrap_handle(TColGeom_HArray1OfCurve)
+%wrap_handle(TColGeom_HArray1OfSurface)
+%wrap_handle(TColGeom_HArray2OfSurface)
+%wrap_handle(TColGeom_HSequenceOfBoundedCurve)
+%wrap_handle(TColGeom_HSequenceOfCurve)
+%wrap_handle(TColGeom_SequenceNodeOfSequenceOfBoundedCurve)
+%wrap_handle(TColGeom_SequenceNodeOfSequenceOfCurve)
+%wrap_handle(TColGeom_SequenceNodeOfSequenceOfSurface)
 
 %nodefaultctor TColGeom_Array1OfBSplineCurve;
 class TColGeom_Array1OfBSplineCurve {
@@ -695,51 +695,7 @@ class TColGeom_HArray1OfBSplineCurve : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HArray1OfBSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HArray1OfBSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HArray1OfBSplineCurve::Handle_TColGeom_HArray1OfBSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HArray1OfBSplineCurve;
-class Handle_TColGeom_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HArray1OfBSplineCurve();
-        Handle_TColGeom_HArray1OfBSplineCurve(const Handle_TColGeom_HArray1OfBSplineCurve &aHandle);
-        Handle_TColGeom_HArray1OfBSplineCurve(const TColGeom_HArray1OfBSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HArray1OfBSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HArray1OfBSplineCurve {
-    TColGeom_HArray1OfBSplineCurve* _get_reference() {
-    return (TColGeom_HArray1OfBSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HArray1OfBSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HArray1OfBSplineCurve)
 
 %extend TColGeom_HArray1OfBSplineCurve {
 	%pythoncode {
@@ -816,51 +772,7 @@ class TColGeom_HArray1OfBezierCurve : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HArray1OfBezierCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HArray1OfBezierCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HArray1OfBezierCurve::Handle_TColGeom_HArray1OfBezierCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HArray1OfBezierCurve;
-class Handle_TColGeom_HArray1OfBezierCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HArray1OfBezierCurve();
-        Handle_TColGeom_HArray1OfBezierCurve(const Handle_TColGeom_HArray1OfBezierCurve &aHandle);
-        Handle_TColGeom_HArray1OfBezierCurve(const TColGeom_HArray1OfBezierCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HArray1OfBezierCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HArray1OfBezierCurve {
-    TColGeom_HArray1OfBezierCurve* _get_reference() {
-    return (TColGeom_HArray1OfBezierCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HArray1OfBezierCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HArray1OfBezierCurve)
 
 %extend TColGeom_HArray1OfBezierCurve {
 	%pythoncode {
@@ -937,51 +849,7 @@ class TColGeom_HArray1OfCurve : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HArray1OfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HArray1OfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HArray1OfCurve::Handle_TColGeom_HArray1OfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HArray1OfCurve;
-class Handle_TColGeom_HArray1OfCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HArray1OfCurve();
-        Handle_TColGeom_HArray1OfCurve(const Handle_TColGeom_HArray1OfCurve &aHandle);
-        Handle_TColGeom_HArray1OfCurve(const TColGeom_HArray1OfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HArray1OfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HArray1OfCurve {
-    TColGeom_HArray1OfCurve* _get_reference() {
-    return (TColGeom_HArray1OfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HArray1OfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HArray1OfCurve)
 
 %extend TColGeom_HArray1OfCurve {
 	%pythoncode {
@@ -1058,51 +926,7 @@ class TColGeom_HArray1OfSurface : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HArray1OfSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HArray1OfSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HArray1OfSurface::Handle_TColGeom_HArray1OfSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HArray1OfSurface;
-class Handle_TColGeom_HArray1OfSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HArray1OfSurface();
-        Handle_TColGeom_HArray1OfSurface(const Handle_TColGeom_HArray1OfSurface &aHandle);
-        Handle_TColGeom_HArray1OfSurface(const TColGeom_HArray1OfSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HArray1OfSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HArray1OfSurface {
-    TColGeom_HArray1OfSurface* _get_reference() {
-    return (TColGeom_HArray1OfSurface*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HArray1OfSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HArray1OfSurface)
 
 %extend TColGeom_HArray1OfSurface {
 	%pythoncode {
@@ -1205,51 +1029,7 @@ class TColGeom_HArray2OfSurface : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HArray2OfSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HArray2OfSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HArray2OfSurface::Handle_TColGeom_HArray2OfSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HArray2OfSurface;
-class Handle_TColGeom_HArray2OfSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HArray2OfSurface();
-        Handle_TColGeom_HArray2OfSurface(const Handle_TColGeom_HArray2OfSurface &aHandle);
-        Handle_TColGeom_HArray2OfSurface(const TColGeom_HArray2OfSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HArray2OfSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HArray2OfSurface {
-    TColGeom_HArray2OfSurface* _get_reference() {
-    return (TColGeom_HArray2OfSurface*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HArray2OfSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HArray2OfSurface)
 
 %extend TColGeom_HArray2OfSurface {
 	%pythoncode {
@@ -1394,51 +1174,7 @@ class TColGeom_HSequenceOfBoundedCurve : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HSequenceOfBoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HSequenceOfBoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HSequenceOfBoundedCurve::Handle_TColGeom_HSequenceOfBoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HSequenceOfBoundedCurve;
-class Handle_TColGeom_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HSequenceOfBoundedCurve();
-        Handle_TColGeom_HSequenceOfBoundedCurve(const Handle_TColGeom_HSequenceOfBoundedCurve &aHandle);
-        Handle_TColGeom_HSequenceOfBoundedCurve(const TColGeom_HSequenceOfBoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HSequenceOfBoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HSequenceOfBoundedCurve {
-    TColGeom_HSequenceOfBoundedCurve* _get_reference() {
-    return (TColGeom_HSequenceOfBoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HSequenceOfBoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HSequenceOfBoundedCurve)
 
 %extend TColGeom_HSequenceOfBoundedCurve {
 	%pythoncode {
@@ -1583,51 +1319,7 @@ class TColGeom_HSequenceOfCurve : public MMgt_TShared {
 };
 
 
-%extend TColGeom_HSequenceOfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_HSequenceOfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_HSequenceOfCurve::Handle_TColGeom_HSequenceOfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_HSequenceOfCurve;
-class Handle_TColGeom_HSequenceOfCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColGeom_HSequenceOfCurve();
-        Handle_TColGeom_HSequenceOfCurve(const Handle_TColGeom_HSequenceOfCurve &aHandle);
-        Handle_TColGeom_HSequenceOfCurve(const TColGeom_HSequenceOfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_HSequenceOfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_HSequenceOfCurve {
-    TColGeom_HSequenceOfCurve* _get_reference() {
-    return (TColGeom_HSequenceOfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_HSequenceOfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_HSequenceOfCurve)
 
 %extend TColGeom_HSequenceOfCurve {
 	%pythoncode {
@@ -1654,51 +1346,7 @@ class TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode
 };
 
 
-%extend TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve::Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve;
-class Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve();
-        Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve(const Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve &aHandle);
-        Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve(const TColGeom_SequenceNodeOfSequenceOfBoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
-    TColGeom_SequenceNodeOfSequenceOfBoundedCurve* _get_reference() {
-    return (TColGeom_SequenceNodeOfSequenceOfBoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_SequenceNodeOfSequenceOfBoundedCurve)
 
 %extend TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
 	%pythoncode {
@@ -1725,51 +1373,7 @@ class TColGeom_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
 };
 
 
-%extend TColGeom_SequenceNodeOfSequenceOfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_SequenceNodeOfSequenceOfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_SequenceNodeOfSequenceOfCurve::Handle_TColGeom_SequenceNodeOfSequenceOfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_SequenceNodeOfSequenceOfCurve;
-class Handle_TColGeom_SequenceNodeOfSequenceOfCurve : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColGeom_SequenceNodeOfSequenceOfCurve();
-        Handle_TColGeom_SequenceNodeOfSequenceOfCurve(const Handle_TColGeom_SequenceNodeOfSequenceOfCurve &aHandle);
-        Handle_TColGeom_SequenceNodeOfSequenceOfCurve(const TColGeom_SequenceNodeOfSequenceOfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_SequenceNodeOfSequenceOfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfCurve {
-    TColGeom_SequenceNodeOfSequenceOfCurve* _get_reference() {
-    return (TColGeom_SequenceNodeOfSequenceOfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_SequenceNodeOfSequenceOfCurve)
 
 %extend TColGeom_SequenceNodeOfSequenceOfCurve {
 	%pythoncode {
@@ -1796,51 +1400,7 @@ class TColGeom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode {
 };
 
 
-%extend TColGeom_SequenceNodeOfSequenceOfSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColGeom_SequenceNodeOfSequenceOfSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColGeom_SequenceNodeOfSequenceOfSurface::Handle_TColGeom_SequenceNodeOfSequenceOfSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColGeom_SequenceNodeOfSequenceOfSurface;
-class Handle_TColGeom_SequenceNodeOfSequenceOfSurface : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColGeom_SequenceNodeOfSequenceOfSurface();
-        Handle_TColGeom_SequenceNodeOfSequenceOfSurface(const Handle_TColGeom_SequenceNodeOfSequenceOfSurface &aHandle);
-        Handle_TColGeom_SequenceNodeOfSequenceOfSurface(const TColGeom_SequenceNodeOfSequenceOfSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColGeom_SequenceNodeOfSequenceOfSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfSurface {
-    TColGeom_SequenceNodeOfSequenceOfSurface* _get_reference() {
-    return (TColGeom_SequenceNodeOfSequenceOfSurface*)$self->Access();
-    }
-};
-
-%extend Handle_TColGeom_SequenceNodeOfSequenceOfSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColGeom_SequenceNodeOfSequenceOfSurface)
 
 %extend TColGeom_SequenceNodeOfSequenceOfSurface {
 	%pythoncode {

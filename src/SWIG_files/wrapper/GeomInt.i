@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMINTDOCSTRING
-"No docstring provided."
+"Provides intersections on between two surfaces of Geom.
+The result are curves from Geom.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=GEOMINTDOCSTRING) GeomInt
 
@@ -34,24 +37,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomInt_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_Vector <Standard_Real> GeomInt_VectorOfReal;
@@ -59,6 +48,8 @@ typedef NCollection_Vector <Standard_Real> GeomInt_VectorOfReal;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation)
 
 %rename(geomint) GeomInt;
 class GeomInt {
@@ -1858,51 +1849,7 @@ class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public TCollecti
 };
 
 
-%extend GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation::Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation;
-class Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation();
-        Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation(const Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation &aHandle);
-        Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation(const GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation {
-    GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation* _get_reference() {
-    return (GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation*)$self->Access();
-    }
-};
-
-%extend Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation)
 
 %extend GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation {
 	%pythoncode {

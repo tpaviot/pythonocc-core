@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLLDRIVERSDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=XMLLDRIVERSDOCSTRING) XmlLDrivers
 
@@ -34,30 +34,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlLDrivers_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlLDrivers_DocumentRetrievalDriver)
+%wrap_handle(XmlLDrivers_DocumentStorageDriver)
+%wrap_handle(XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef)
 
 %rename(xmlldrivers) XmlLDrivers;
 class XmlLDrivers {
@@ -132,51 +122,7 @@ class XmlLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 };
 
 
-%extend XmlLDrivers_DocumentRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlLDrivers_DocumentRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlLDrivers_DocumentRetrievalDriver::Handle_XmlLDrivers_DocumentRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlLDrivers_DocumentRetrievalDriver;
-class Handle_XmlLDrivers_DocumentRetrievalDriver : public Handle_PCDM_RetrievalDriver {
-
-    public:
-        // constructors
-        Handle_XmlLDrivers_DocumentRetrievalDriver();
-        Handle_XmlLDrivers_DocumentRetrievalDriver(const Handle_XmlLDrivers_DocumentRetrievalDriver &aHandle);
-        Handle_XmlLDrivers_DocumentRetrievalDriver(const XmlLDrivers_DocumentRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlLDrivers_DocumentRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlLDrivers_DocumentRetrievalDriver {
-    XmlLDrivers_DocumentRetrievalDriver* _get_reference() {
-    return (XmlLDrivers_DocumentRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlLDrivers_DocumentRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlLDrivers_DocumentRetrievalDriver)
 
 %extend XmlLDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -213,51 +159,7 @@ class XmlLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 };
 
 
-%extend XmlLDrivers_DocumentStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlLDrivers_DocumentStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlLDrivers_DocumentStorageDriver::Handle_XmlLDrivers_DocumentStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlLDrivers_DocumentStorageDriver;
-class Handle_XmlLDrivers_DocumentStorageDriver : public Handle_PCDM_StorageDriver {
-
-    public:
-        // constructors
-        Handle_XmlLDrivers_DocumentStorageDriver();
-        Handle_XmlLDrivers_DocumentStorageDriver(const Handle_XmlLDrivers_DocumentStorageDriver &aHandle);
-        Handle_XmlLDrivers_DocumentStorageDriver(const XmlLDrivers_DocumentStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlLDrivers_DocumentStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlLDrivers_DocumentStorageDriver {
-    XmlLDrivers_DocumentStorageDriver* _get_reference() {
-    return (XmlLDrivers_DocumentStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlLDrivers_DocumentStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlLDrivers_DocumentStorageDriver)
 
 %extend XmlLDrivers_DocumentStorageDriver {
 	%pythoncode {
@@ -315,51 +217,7 @@ class XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef : public TCollection_SeqN
 };
 
 
-%extend XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef::Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef;
-class Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef();
-        Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef(const Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef &aHandle);
-        Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef(const XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef {
-    XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef* _get_reference() {
-    return (XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef*)$self->Access();
-    }
-};
-
-%extend Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef)
 
 %extend XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef {
 	%pythoncode {

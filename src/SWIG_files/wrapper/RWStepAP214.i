@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPAP214DOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP214DOCSTRING) RWStepAP214
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include RWStepAP214_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(RWStepAP214_GeneralModule)
+%wrap_handle(RWStepAP214_ReadWriteModule)
 
 %rename(rwstepap214) RWStepAP214;
 class RWStepAP214 {
@@ -158,51 +147,7 @@ class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 };
 
 
-%extend RWStepAP214_GeneralModule {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_RWStepAP214_GeneralModule(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_RWStepAP214_GeneralModule::Handle_RWStepAP214_GeneralModule %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_RWStepAP214_GeneralModule;
-class Handle_RWStepAP214_GeneralModule : public Handle_StepData_GeneralModule {
-
-    public:
-        // constructors
-        Handle_RWStepAP214_GeneralModule();
-        Handle_RWStepAP214_GeneralModule(const Handle_RWStepAP214_GeneralModule &aHandle);
-        Handle_RWStepAP214_GeneralModule(const RWStepAP214_GeneralModule *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_RWStepAP214_GeneralModule DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_RWStepAP214_GeneralModule {
-    RWStepAP214_GeneralModule* _get_reference() {
-    return (RWStepAP214_GeneralModule*)$self->Access();
-    }
-};
-
-%extend Handle_RWStepAP214_GeneralModule {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(RWStepAP214_GeneralModule)
 
 %extend RWStepAP214_GeneralModule {
 	%pythoncode {
@@ -1449,51 +1394,7 @@ class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 };
 
 
-%extend RWStepAP214_ReadWriteModule {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_RWStepAP214_ReadWriteModule(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_RWStepAP214_ReadWriteModule::Handle_RWStepAP214_ReadWriteModule %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_RWStepAP214_ReadWriteModule;
-class Handle_RWStepAP214_ReadWriteModule : public Handle_StepData_ReadWriteModule {
-
-    public:
-        // constructors
-        Handle_RWStepAP214_ReadWriteModule();
-        Handle_RWStepAP214_ReadWriteModule(const Handle_RWStepAP214_ReadWriteModule &aHandle);
-        Handle_RWStepAP214_ReadWriteModule(const RWStepAP214_ReadWriteModule *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_RWStepAP214_ReadWriteModule DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_RWStepAP214_ReadWriteModule {
-    RWStepAP214_ReadWriteModule* _get_reference() {
-    return (RWStepAP214_ReadWriteModule*)$self->Access();
-    }
-};
-
-%extend Handle_RWStepAP214_ReadWriteModule {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(RWStepAP214_ReadWriteModule)
 
 %extend RWStepAP214_ReadWriteModule {
 	%pythoncode {

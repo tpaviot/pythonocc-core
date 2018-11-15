@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINXCAFDRIVERSDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BINXCAFDRIVERSDOCSTRING) BinXCAFDrivers
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinXCAFDrivers_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinXCAFDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinXCAFDrivers_DocumentStorageDriver)
 
 %rename(binxcafdrivers) BinXCAFDrivers;
 class BinXCAFDrivers {
@@ -102,51 +91,7 @@ class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetriev
 };
 
 
-%extend BinXCAFDrivers_DocumentRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinXCAFDrivers_DocumentRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinXCAFDrivers_DocumentRetrievalDriver::Handle_BinXCAFDrivers_DocumentRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinXCAFDrivers_DocumentRetrievalDriver;
-class Handle_BinXCAFDrivers_DocumentRetrievalDriver : public Handle_BinDrivers_DocumentRetrievalDriver {
-
-    public:
-        // constructors
-        Handle_BinXCAFDrivers_DocumentRetrievalDriver();
-        Handle_BinXCAFDrivers_DocumentRetrievalDriver(const Handle_BinXCAFDrivers_DocumentRetrievalDriver &aHandle);
-        Handle_BinXCAFDrivers_DocumentRetrievalDriver(const BinXCAFDrivers_DocumentRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinXCAFDrivers_DocumentRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinXCAFDrivers_DocumentRetrievalDriver {
-    BinXCAFDrivers_DocumentRetrievalDriver* _get_reference() {
-    return (BinXCAFDrivers_DocumentRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinXCAFDrivers_DocumentRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinXCAFDrivers_DocumentRetrievalDriver)
 
 %extend BinXCAFDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -171,51 +116,7 @@ class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDr
 };
 
 
-%extend BinXCAFDrivers_DocumentStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinXCAFDrivers_DocumentStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinXCAFDrivers_DocumentStorageDriver::Handle_BinXCAFDrivers_DocumentStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinXCAFDrivers_DocumentStorageDriver;
-class Handle_BinXCAFDrivers_DocumentStorageDriver : public Handle_BinDrivers_DocumentStorageDriver {
-
-    public:
-        // constructors
-        Handle_BinXCAFDrivers_DocumentStorageDriver();
-        Handle_BinXCAFDrivers_DocumentStorageDriver(const Handle_BinXCAFDrivers_DocumentStorageDriver &aHandle);
-        Handle_BinXCAFDrivers_DocumentStorageDriver(const BinXCAFDrivers_DocumentStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinXCAFDrivers_DocumentStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinXCAFDrivers_DocumentStorageDriver {
-    BinXCAFDrivers_DocumentStorageDriver* _get_reference() {
-    return (BinXCAFDrivers_DocumentStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinXCAFDrivers_DocumentStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinXCAFDrivers_DocumentStorageDriver)
 
 %extend BinXCAFDrivers_DocumentStorageDriver {
 	%pythoncode {

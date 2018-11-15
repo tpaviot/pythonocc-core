@@ -18,7 +18,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPGPROPDOCSTRING
-"No docstring provided."
+"Provides global functions to compute a shape's global
+properties for lines, surfaces or volumes, and bring
+them together with the global properties already
+computed for a geometric system.
+The global properties computed for a system are :
+- its mass,
+- its center of mass,
+- its matrix of inertia,
+- its moment about an axis,
+- its radius of gyration about an axis,
+- and its principal properties of inertia such as
+principal axis, principal moments, principal radius of gyration.
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPGPROPDOCSTRING) BRepGProp
 
@@ -34,30 +46,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepGProp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(brepgprop) BRepGProp;
 class BRepGProp {

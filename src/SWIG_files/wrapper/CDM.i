@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CDMDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=CDMDOCSTRING) CDM
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include CDM_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef CDM_Document * CDM_DocumentPointer;
@@ -68,6 +54,19 @@ enum CDM_CanCloseStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(CDM_Application)
+%wrap_handle(CDM_DataMapNodeOfMetaDataLookUpTable)
+%wrap_handle(CDM_DataMapNodeOfPresentationDirectory)
+%wrap_handle(CDM_Document)
+%wrap_handle(CDM_ListNodeOfListOfDocument)
+%wrap_handle(CDM_ListNodeOfListOfReferences)
+%wrap_handle(CDM_MessageDriver)
+%wrap_handle(CDM_MetaData)
+%wrap_handle(CDM_Reference)
+%wrap_handle(CDM_StdMapNodeOfMapOfDocument)
+%wrap_handle(CDM_COutMessageDriver)
+%wrap_handle(CDM_NullMessageDriver)
 
 %nodefaultctor CDM_Application;
 class CDM_Application : public Standard_Transient {
@@ -115,51 +114,7 @@ class CDM_Application : public Standard_Transient {
 };
 
 
-%extend CDM_Application {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_Application(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_Application::Handle_CDM_Application %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_Application;
-class Handle_CDM_Application : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDM_Application();
-        Handle_CDM_Application(const Handle_CDM_Application &aHandle);
-        Handle_CDM_Application(const CDM_Application *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_Application DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_Application {
-    CDM_Application* _get_reference() {
-    return (CDM_Application*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_Application {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_Application)
 
 %extend CDM_Application {
 	%pythoncode {
@@ -260,51 +215,7 @@ class CDM_DataMapNodeOfMetaDataLookUpTable : public TCollection_MapNode {
 };
 
 
-%extend CDM_DataMapNodeOfMetaDataLookUpTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_DataMapNodeOfMetaDataLookUpTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_DataMapNodeOfMetaDataLookUpTable::Handle_CDM_DataMapNodeOfMetaDataLookUpTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_DataMapNodeOfMetaDataLookUpTable;
-class Handle_CDM_DataMapNodeOfMetaDataLookUpTable : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_CDM_DataMapNodeOfMetaDataLookUpTable();
-        Handle_CDM_DataMapNodeOfMetaDataLookUpTable(const Handle_CDM_DataMapNodeOfMetaDataLookUpTable &aHandle);
-        Handle_CDM_DataMapNodeOfMetaDataLookUpTable(const CDM_DataMapNodeOfMetaDataLookUpTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_DataMapNodeOfMetaDataLookUpTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_DataMapNodeOfMetaDataLookUpTable {
-    CDM_DataMapNodeOfMetaDataLookUpTable* _get_reference() {
-    return (CDM_DataMapNodeOfMetaDataLookUpTable*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_DataMapNodeOfMetaDataLookUpTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_DataMapNodeOfMetaDataLookUpTable)
 
 %extend CDM_DataMapNodeOfMetaDataLookUpTable {
 	%pythoncode {
@@ -335,51 +246,7 @@ class CDM_DataMapNodeOfPresentationDirectory : public TCollection_MapNode {
 };
 
 
-%extend CDM_DataMapNodeOfPresentationDirectory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_DataMapNodeOfPresentationDirectory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_DataMapNodeOfPresentationDirectory::Handle_CDM_DataMapNodeOfPresentationDirectory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_DataMapNodeOfPresentationDirectory;
-class Handle_CDM_DataMapNodeOfPresentationDirectory : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_CDM_DataMapNodeOfPresentationDirectory();
-        Handle_CDM_DataMapNodeOfPresentationDirectory(const Handle_CDM_DataMapNodeOfPresentationDirectory &aHandle);
-        Handle_CDM_DataMapNodeOfPresentationDirectory(const CDM_DataMapNodeOfPresentationDirectory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_DataMapNodeOfPresentationDirectory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_DataMapNodeOfPresentationDirectory {
-    CDM_DataMapNodeOfPresentationDirectory* _get_reference() {
-    return (CDM_DataMapNodeOfPresentationDirectory*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_DataMapNodeOfPresentationDirectory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_DataMapNodeOfPresentationDirectory)
 
 %extend CDM_DataMapNodeOfPresentationDirectory {
 	%pythoncode {
@@ -905,51 +772,7 @@ class CDM_Document : public Standard_Transient {
 };
 
 
-%extend CDM_Document {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_Document(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_Document::Handle_CDM_Document %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_Document;
-class Handle_CDM_Document : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDM_Document();
-        Handle_CDM_Document(const Handle_CDM_Document &aHandle);
-        Handle_CDM_Document(const CDM_Document *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_Document DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_Document {
-    CDM_Document* _get_reference() {
-    return (CDM_Document*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_Document {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_Document)
 
 %extend CDM_Document {
 	%pythoncode {
@@ -1078,51 +901,7 @@ class CDM_ListNodeOfListOfDocument : public TCollection_MapNode {
 };
 
 
-%extend CDM_ListNodeOfListOfDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_ListNodeOfListOfDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_ListNodeOfListOfDocument::Handle_CDM_ListNodeOfListOfDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_ListNodeOfListOfDocument;
-class Handle_CDM_ListNodeOfListOfDocument : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_CDM_ListNodeOfListOfDocument();
-        Handle_CDM_ListNodeOfListOfDocument(const Handle_CDM_ListNodeOfListOfDocument &aHandle);
-        Handle_CDM_ListNodeOfListOfDocument(const CDM_ListNodeOfListOfDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_ListNodeOfListOfDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_ListNodeOfListOfDocument {
-    CDM_ListNodeOfListOfDocument* _get_reference() {
-    return (CDM_ListNodeOfListOfDocument*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_ListNodeOfListOfDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_ListNodeOfListOfDocument)
 
 %extend CDM_ListNodeOfListOfDocument {
 	%pythoncode {
@@ -1147,51 +926,7 @@ class CDM_ListNodeOfListOfReferences : public TCollection_MapNode {
 };
 
 
-%extend CDM_ListNodeOfListOfReferences {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_ListNodeOfListOfReferences(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_ListNodeOfListOfReferences::Handle_CDM_ListNodeOfListOfReferences %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_ListNodeOfListOfReferences;
-class Handle_CDM_ListNodeOfListOfReferences : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_CDM_ListNodeOfListOfReferences();
-        Handle_CDM_ListNodeOfListOfReferences(const Handle_CDM_ListNodeOfListOfReferences &aHandle);
-        Handle_CDM_ListNodeOfListOfReferences(const CDM_ListNodeOfListOfReferences *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_ListNodeOfListOfReferences DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_ListNodeOfListOfReferences {
-    CDM_ListNodeOfListOfReferences* _get_reference() {
-    return (CDM_ListNodeOfListOfReferences*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_ListNodeOfListOfReferences {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_ListNodeOfListOfReferences)
 
 %extend CDM_ListNodeOfListOfReferences {
 	%pythoncode {
@@ -1574,51 +1309,7 @@ class CDM_MessageDriver : public Standard_Transient {
 };
 
 
-%extend CDM_MessageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_MessageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_MessageDriver::Handle_CDM_MessageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_MessageDriver;
-class Handle_CDM_MessageDriver : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDM_MessageDriver();
-        Handle_CDM_MessageDriver(const Handle_CDM_MessageDriver &aHandle);
-        Handle_CDM_MessageDriver(const CDM_MessageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_MessageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_MessageDriver {
-    CDM_MessageDriver* _get_reference() {
-    return (CDM_MessageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_MessageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_MessageDriver)
 
 %extend CDM_MessageDriver {
 	%pythoncode {
@@ -1725,51 +1416,7 @@ class CDM_MetaData : public Standard_Transient {
 };
 
 
-%extend CDM_MetaData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_MetaData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_MetaData::Handle_CDM_MetaData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_MetaData;
-class Handle_CDM_MetaData : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDM_MetaData();
-        Handle_CDM_MetaData(const Handle_CDM_MetaData &aHandle);
-        Handle_CDM_MetaData(const CDM_MetaData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_MetaData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_MetaData {
-    CDM_MetaData* _get_reference() {
-    return (CDM_MetaData*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_MetaData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_MetaData)
 
 %extend CDM_MetaData {
 	%pythoncode {
@@ -1968,51 +1615,7 @@ class CDM_Reference : public Standard_Transient {
 };
 
 
-%extend CDM_Reference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_Reference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_Reference::Handle_CDM_Reference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_Reference;
-class Handle_CDM_Reference : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDM_Reference();
-        Handle_CDM_Reference(const Handle_CDM_Reference &aHandle);
-        Handle_CDM_Reference(const CDM_Reference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_Reference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_Reference {
-    CDM_Reference* _get_reference() {
-    return (CDM_Reference*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_Reference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_Reference)
 
 %extend CDM_Reference {
 	%pythoncode {
@@ -2076,51 +1679,7 @@ class CDM_StdMapNodeOfMapOfDocument : public TCollection_MapNode {
 };
 
 
-%extend CDM_StdMapNodeOfMapOfDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_StdMapNodeOfMapOfDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_StdMapNodeOfMapOfDocument::Handle_CDM_StdMapNodeOfMapOfDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_StdMapNodeOfMapOfDocument;
-class Handle_CDM_StdMapNodeOfMapOfDocument : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_CDM_StdMapNodeOfMapOfDocument();
-        Handle_CDM_StdMapNodeOfMapOfDocument(const Handle_CDM_StdMapNodeOfMapOfDocument &aHandle);
-        Handle_CDM_StdMapNodeOfMapOfDocument(const CDM_StdMapNodeOfMapOfDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_StdMapNodeOfMapOfDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_StdMapNodeOfMapOfDocument {
-    CDM_StdMapNodeOfMapOfDocument* _get_reference() {
-    return (CDM_StdMapNodeOfMapOfDocument*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_StdMapNodeOfMapOfDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_StdMapNodeOfMapOfDocument)
 
 %extend CDM_StdMapNodeOfMapOfDocument {
 	%pythoncode {
@@ -2139,51 +1698,7 @@ class CDM_COutMessageDriver : public CDM_MessageDriver {
 };
 
 
-%extend CDM_COutMessageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_COutMessageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_COutMessageDriver::Handle_CDM_COutMessageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_COutMessageDriver;
-class Handle_CDM_COutMessageDriver : public Handle_CDM_MessageDriver {
-
-    public:
-        // constructors
-        Handle_CDM_COutMessageDriver();
-        Handle_CDM_COutMessageDriver(const Handle_CDM_COutMessageDriver &aHandle);
-        Handle_CDM_COutMessageDriver(const CDM_COutMessageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_COutMessageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_COutMessageDriver {
-    CDM_COutMessageDriver* _get_reference() {
-    return (CDM_COutMessageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_COutMessageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_COutMessageDriver)
 
 %extend CDM_COutMessageDriver {
 	%pythoncode {
@@ -2206,51 +1721,7 @@ class CDM_NullMessageDriver : public CDM_MessageDriver {
 };
 
 
-%extend CDM_NullMessageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDM_NullMessageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDM_NullMessageDriver::Handle_CDM_NullMessageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDM_NullMessageDriver;
-class Handle_CDM_NullMessageDriver : public Handle_CDM_MessageDriver {
-
-    public:
-        // constructors
-        Handle_CDM_NullMessageDriver();
-        Handle_CDM_NullMessageDriver(const Handle_CDM_NullMessageDriver &aHandle);
-        Handle_CDM_NullMessageDriver(const CDM_NullMessageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDM_NullMessageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDM_NullMessageDriver {
-    CDM_NullMessageDriver* _get_reference() {
-    return (CDM_NullMessageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_CDM_NullMessageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDM_NullMessageDriver)
 
 %extend CDM_NullMessageDriver {
 	%pythoncode {

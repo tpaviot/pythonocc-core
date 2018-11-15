@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DADAPTORDOCSTRING
-"No docstring provided."
+"this package contains the geometric definition of
+2d curves compatible with the Adaptor package
+templates.
+"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 
@@ -34,30 +37,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Geom2dAdaptor_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Geom2dAdaptor_GHCurve)
+%wrap_handle(Geom2dAdaptor_HCurve)
 
 %rename(geom2dadaptor) Geom2dAdaptor;
 class Geom2dAdaptor {
@@ -347,51 +339,7 @@ class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%extend Geom2dAdaptor_GHCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2dAdaptor_GHCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2dAdaptor_GHCurve::Handle_Geom2dAdaptor_GHCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2dAdaptor_GHCurve;
-class Handle_Geom2dAdaptor_GHCurve : public Handle_Adaptor2d_HCurve2d {
-
-    public:
-        // constructors
-        Handle_Geom2dAdaptor_GHCurve();
-        Handle_Geom2dAdaptor_GHCurve(const Handle_Geom2dAdaptor_GHCurve &aHandle);
-        Handle_Geom2dAdaptor_GHCurve(const Geom2dAdaptor_GHCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2dAdaptor_GHCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2dAdaptor_GHCurve {
-    Geom2dAdaptor_GHCurve* _get_reference() {
-    return (Geom2dAdaptor_GHCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2dAdaptor_GHCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2dAdaptor_GHCurve)
 
 %extend Geom2dAdaptor_GHCurve {
 	%pythoncode {
@@ -432,51 +380,7 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 };
 
 
-%extend Geom2dAdaptor_HCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2dAdaptor_HCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2dAdaptor_HCurve::Handle_Geom2dAdaptor_HCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2dAdaptor_HCurve;
-class Handle_Geom2dAdaptor_HCurve : public Handle_Geom2dAdaptor_GHCurve {
-
-    public:
-        // constructors
-        Handle_Geom2dAdaptor_HCurve();
-        Handle_Geom2dAdaptor_HCurve(const Handle_Geom2dAdaptor_HCurve &aHandle);
-        Handle_Geom2dAdaptor_HCurve(const Geom2dAdaptor_HCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2dAdaptor_HCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2dAdaptor_HCurve {
-    Geom2dAdaptor_HCurve* _get_reference() {
-    return (Geom2dAdaptor_HCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2dAdaptor_HCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2dAdaptor_HCurve)
 
 %extend Geom2dAdaptor_HCurve {
 	%pythoncode {

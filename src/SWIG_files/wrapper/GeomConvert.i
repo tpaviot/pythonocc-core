@@ -18,7 +18,33 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMCONVERTDOCSTRING
-"No docstring provided."
+"- Purpose : The GeomConvert package provides some global functions as follows
+-  converting classical Geom curves into BSpline curves,
+-  segmenting BSpline curves, particularly at knots
+values: this function may be used in conjunction with the
+GeomConvert_BSplineCurveKnotSplitting
+class to segment a BSpline curve into arcs which
+comply with required continuity levels,
+-  converting classical Geom surfaces into BSpline surfaces, and
+-  segmenting BSpline surfaces, particularly at
+knots values: this function may be used in conjunction with the
+GeomConvert_BSplineSurfaceKnotSplitting
+class to segment a BSpline surface into patches
+which comply with required continuity levels.
+All geometric entities used in this package are bounded.
+
+References :
+. Generating the Bezier Points of B-spline curves and surfaces
+(Wolfgang Bohm) CAGD volume 13 number 6 november 1981
+. On NURBS: A Survey (Leslie Piegl) IEEE Computer Graphics and
+Application January 1991
+. Curve and surface construction using rational B-splines
+(Leslie Piegl and Wayne Tiller) CAD Volume 19 number 9 november
+1987
+. A survey of curve and surface methods in CAGD (Wolfgang BOHM)
+CAGD 1 1984
+
+"
 %enddef
 %module (package="OCC.Core", docstring=GEOMCONVERTDOCSTRING) GeomConvert
 
@@ -34,30 +60,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomConvert_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(geomconvert) GeomConvert;
 class GeomConvert {

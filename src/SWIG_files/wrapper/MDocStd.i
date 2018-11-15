@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MDOCSTDDOCSTRING
-"No docstring provided."
+"Drivers for TDocStd_Document
+"
 %enddef
 %module (package="OCC.Core", docstring=MDOCSTDDOCSTRING) MDocStd
 
@@ -34,30 +35,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MDocStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MDocStd_DocumentRetrievalDriver)
+%wrap_handle(MDocStd_DocumentStorageDriver)
+%wrap_handle(MDocStd_XLinkRetrievalDriver)
+%wrap_handle(MDocStd_XLinkStorageDriver)
 
 %rename(mdocstd) MDocStd;
 class MDocStd {
@@ -144,51 +136,7 @@ class MDocStd_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 };
 
 
-%extend MDocStd_DocumentRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDocStd_DocumentRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDocStd_DocumentRetrievalDriver::Handle_MDocStd_DocumentRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDocStd_DocumentRetrievalDriver;
-class Handle_MDocStd_DocumentRetrievalDriver : public Handle_PCDM_RetrievalDriver {
-
-    public:
-        // constructors
-        Handle_MDocStd_DocumentRetrievalDriver();
-        Handle_MDocStd_DocumentRetrievalDriver(const Handle_MDocStd_DocumentRetrievalDriver &aHandle);
-        Handle_MDocStd_DocumentRetrievalDriver(const MDocStd_DocumentRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDocStd_DocumentRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDocStd_DocumentRetrievalDriver {
-    MDocStd_DocumentRetrievalDriver* _get_reference() {
-    return (MDocStd_DocumentRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDocStd_DocumentRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDocStd_DocumentRetrievalDriver)
 
 %extend MDocStd_DocumentRetrievalDriver {
 	%pythoncode {
@@ -241,51 +189,7 @@ class MDocStd_DocumentStorageDriver : public PCDM_StorageDriver {
 };
 
 
-%extend MDocStd_DocumentStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDocStd_DocumentStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDocStd_DocumentStorageDriver::Handle_MDocStd_DocumentStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDocStd_DocumentStorageDriver;
-class Handle_MDocStd_DocumentStorageDriver : public Handle_PCDM_StorageDriver {
-
-    public:
-        // constructors
-        Handle_MDocStd_DocumentStorageDriver();
-        Handle_MDocStd_DocumentStorageDriver(const Handle_MDocStd_DocumentStorageDriver &aHandle);
-        Handle_MDocStd_DocumentStorageDriver(const MDocStd_DocumentStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDocStd_DocumentStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDocStd_DocumentStorageDriver {
-    MDocStd_DocumentStorageDriver* _get_reference() {
-    return (MDocStd_DocumentStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDocStd_DocumentStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDocStd_DocumentStorageDriver)
 
 %extend MDocStd_DocumentStorageDriver {
 	%pythoncode {
@@ -330,51 +234,7 @@ class MDocStd_XLinkRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MDocStd_XLinkRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDocStd_XLinkRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDocStd_XLinkRetrievalDriver::Handle_MDocStd_XLinkRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDocStd_XLinkRetrievalDriver;
-class Handle_MDocStd_XLinkRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MDocStd_XLinkRetrievalDriver();
-        Handle_MDocStd_XLinkRetrievalDriver(const Handle_MDocStd_XLinkRetrievalDriver &aHandle);
-        Handle_MDocStd_XLinkRetrievalDriver(const MDocStd_XLinkRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDocStd_XLinkRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDocStd_XLinkRetrievalDriver {
-    MDocStd_XLinkRetrievalDriver* _get_reference() {
-    return (MDocStd_XLinkRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDocStd_XLinkRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDocStd_XLinkRetrievalDriver)
 
 %extend MDocStd_XLinkRetrievalDriver {
 	%pythoncode {
@@ -419,51 +279,7 @@ class MDocStd_XLinkStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MDocStd_XLinkStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDocStd_XLinkStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDocStd_XLinkStorageDriver::Handle_MDocStd_XLinkStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDocStd_XLinkStorageDriver;
-class Handle_MDocStd_XLinkStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MDocStd_XLinkStorageDriver();
-        Handle_MDocStd_XLinkStorageDriver(const Handle_MDocStd_XLinkStorageDriver &aHandle);
-        Handle_MDocStd_XLinkStorageDriver(const MDocStd_XLinkStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDocStd_XLinkStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDocStd_XLinkStorageDriver {
-    MDocStd_XLinkStorageDriver* _get_reference() {
-    return (MDocStd_XLinkStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDocStd_XLinkStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDocStd_XLinkStorageDriver)
 
 %extend MDocStd_XLinkStorageDriver {
 	%pythoncode {

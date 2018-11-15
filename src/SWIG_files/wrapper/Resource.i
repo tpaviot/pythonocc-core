@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RESOURCEDOCSTRING
-"No docstring provided."
+"A RESOURCE is a parameter saved on a file and used to
+initialize a variable.
+"
 %enddef
 %module (package="OCC.Core", docstring=RESOURCEDOCSTRING) Resource
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Resource_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,6 +53,10 @@ enum Resource_FormatType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString)
+%wrap_handle(Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString)
+%wrap_handle(Resource_Manager)
 
 %nodefaultctor Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString;
 class Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString : public TCollection_BasicMapIterator {
@@ -160,51 +152,7 @@ class Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public TCollection
 };
 
 
-%extend Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString::Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString;
-class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString();
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString(const Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString &aHandle);
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString(const Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
-    Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString* _get_reference() {
-    return (Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString)
 
 %extend Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
 	%pythoncode {
@@ -235,51 +183,7 @@ class Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public TCollect
 };
 
 
-%extend Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString::Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString;
-class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString();
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString(const Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString &aHandle);
-        Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString(const Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
-    Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString* _get_reference() {
-    return (Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString)
 
 %extend Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
 	%pythoncode {
@@ -603,51 +507,7 @@ class Resource_Manager : public MMgt_TShared {
 };
 
 
-%extend Resource_Manager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Resource_Manager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Resource_Manager::Handle_Resource_Manager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Resource_Manager;
-class Handle_Resource_Manager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Resource_Manager();
-        Handle_Resource_Manager(const Handle_Resource_Manager &aHandle);
-        Handle_Resource_Manager(const Resource_Manager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Resource_Manager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Resource_Manager {
-    Resource_Manager* _get_reference() {
-    return (Resource_Manager*)$self->Access();
-    }
-};
-
-%extend Handle_Resource_Manager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Resource_Manager)
 
 %extend Resource_Manager {
 	%pythoncode {

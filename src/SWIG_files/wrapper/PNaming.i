@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PNAMINGDOCSTRING
-"No docstring provided."
+"
+"
 %enddef
 %module (package="OCC.Core", docstring=PNAMINGDOCSTRING) PNaming
 
@@ -34,30 +35,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PNaming_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor PNaming_FieldOfHArray1OfNamedShape;
 class PNaming_FieldOfHArray1OfNamedShape : public DBC_BaseArray {
@@ -208,52 +196,6 @@ class PNaming_HArray1OfNamedShape : public Standard_Persistent {
 
 %extend PNaming_HArray1OfNamedShape {
 	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_HArray1OfNamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_HArray1OfNamedShape::Handle_PNaming_HArray1OfNamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_HArray1OfNamedShape;
-class Handle_PNaming_HArray1OfNamedShape : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PNaming_HArray1OfNamedShape();
-        Handle_PNaming_HArray1OfNamedShape(const Handle_PNaming_HArray1OfNamedShape &aHandle);
-        Handle_PNaming_HArray1OfNamedShape(const PNaming_HArray1OfNamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_HArray1OfNamedShape DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_HArray1OfNamedShape {
-    PNaming_HArray1OfNamedShape* _get_reference() {
-    return (PNaming_HArray1OfNamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_HArray1OfNamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend PNaming_HArray1OfNamedShape {
-	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
@@ -372,52 +314,6 @@ class PNaming_Name : public Standard_Persistent {
 		void _CSFDB_SetPNaming_NamemyIndex (const Standard_Integer p);
 };
 
-
-%extend PNaming_Name {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Name(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Name::Handle_PNaming_Name %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Name;
-class Handle_PNaming_Name : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PNaming_Name();
-        Handle_PNaming_Name(const Handle_PNaming_Name &aHandle);
-        Handle_PNaming_Name(const PNaming_Name *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Name DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Name {
-    PNaming_Name* _get_reference() {
-    return (PNaming_Name*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Name {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PNaming_Name {
 	%pythoncode {
@@ -559,52 +455,6 @@ class PNaming_Name_1 : public Standard_Persistent {
 		void _CSFDB_SetPNaming_Name_1myContextLabel (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%extend PNaming_Name_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Name_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Name_1::Handle_PNaming_Name_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Name_1;
-class Handle_PNaming_Name_1 : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PNaming_Name_1();
-        Handle_PNaming_Name_1(const Handle_PNaming_Name_1 &aHandle);
-        Handle_PNaming_Name_1(const PNaming_Name_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Name_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Name_1 {
-    PNaming_Name_1* _get_reference() {
-    return (PNaming_Name_1*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Name_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PNaming_Name_1 {
 	%pythoncode {
@@ -769,52 +619,6 @@ class PNaming_Name_2 : public Standard_Persistent {
 
 %extend PNaming_Name_2 {
 	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Name_2(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Name_2::Handle_PNaming_Name_2 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Name_2;
-class Handle_PNaming_Name_2 : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PNaming_Name_2();
-        Handle_PNaming_Name_2(const Handle_PNaming_Name_2 &aHandle);
-        Handle_PNaming_Name_2(const PNaming_Name_2 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Name_2 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Name_2 {
-    PNaming_Name_2* _get_reference() {
-    return (PNaming_Name_2*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Name_2 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend PNaming_Name_2 {
-	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
@@ -940,52 +744,6 @@ class PNaming_NamedShape : public PDF_Attribute {
 
 %extend PNaming_NamedShape {
 	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_NamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_NamedShape::Handle_PNaming_NamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_NamedShape;
-class Handle_PNaming_NamedShape : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PNaming_NamedShape();
-        Handle_PNaming_NamedShape(const Handle_PNaming_NamedShape &aHandle);
-        Handle_PNaming_NamedShape(const PNaming_NamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_NamedShape DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_NamedShape {
-    PNaming_NamedShape* _get_reference() {
-    return (PNaming_NamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_NamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend PNaming_NamedShape {
-	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
@@ -1024,52 +782,6 @@ class PNaming_Naming : public PDF_Attribute {
 		void _CSFDB_SetPNaming_NamingmyName (const Handle_PNaming_Name & p);
 };
 
-
-%extend PNaming_Naming {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Naming(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Naming::Handle_PNaming_Naming %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Naming;
-class Handle_PNaming_Naming : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PNaming_Naming();
-        Handle_PNaming_Naming(const Handle_PNaming_Naming &aHandle);
-        Handle_PNaming_Naming(const PNaming_Naming *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Naming DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Naming {
-    PNaming_Naming* _get_reference() {
-    return (PNaming_Naming*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Naming {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PNaming_Naming {
 	%pythoncode {
@@ -1114,52 +826,6 @@ class PNaming_Naming_1 : public PDF_Attribute {
 
 %extend PNaming_Naming_1 {
 	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Naming_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Naming_1::Handle_PNaming_Naming_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Naming_1;
-class Handle_PNaming_Naming_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PNaming_Naming_1();
-        Handle_PNaming_Naming_1(const Handle_PNaming_Naming_1 &aHandle);
-        Handle_PNaming_Naming_1(const PNaming_Naming_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Naming_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Naming_1 {
-    PNaming_Naming_1* _get_reference() {
-    return (PNaming_Naming_1*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Naming_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend PNaming_Naming_1 {
-	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
@@ -1198,52 +864,6 @@ class PNaming_Naming_2 : public PDF_Attribute {
 		void _CSFDB_SetPNaming_Naming_2myName (const Handle_PNaming_Name_2 & p);
 };
 
-
-%extend PNaming_Naming_2 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_Naming_2(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_Naming_2::Handle_PNaming_Naming_2 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_Naming_2;
-class Handle_PNaming_Naming_2 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PNaming_Naming_2();
-        Handle_PNaming_Naming_2(const Handle_PNaming_Naming_2 &aHandle);
-        Handle_PNaming_Naming_2(const PNaming_Naming_2 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_Naming_2 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_Naming_2 {
-    PNaming_Naming_2* _get_reference() {
-    return (PNaming_Naming_2*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_Naming_2 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PNaming_Naming_2 {
 	%pythoncode {
@@ -1291,52 +911,6 @@ class PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape : public PStandard_ArrayNod
 		void _CSFDB_SetPNaming_VArrayNodeOfFieldOfHArray1OfNamedShapemyValue (const Handle_PNaming_NamedShape & p);
 };
 
-
-%extend PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape::Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape;
-class Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape : public Handle_PStandard_ArrayNode {
-
-    public:
-        // constructors
-        Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape();
-        Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape(const Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape &aHandle);
-        Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape(const PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape {
-    PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape* _get_reference() {
-    return (PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape {
 	%pythoncode {

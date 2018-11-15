@@ -18,7 +18,37 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDOCSTDDOCSTRING
-"No docstring provided."
+"This package define CAF main classes.
+
+* The standard application root class
+
+* The standard document wich contains data
+
+* The external reference mechanism between documents
+
+* Attributes for Document management
+Standard documents offer you a ready-to-use
+document containing a TDF-based data
+structure. The documents themselves are
+contained in a class inheriting from
+TDocStd_Application which manages creation,
+storage and retrieval of documents.
+You can implement undo and redo in your
+document, and refer from the data framework of
+one document to that of another one. This is
+done by means of external link attributes, which
+store the path and the entry of external links. To
+sum up, standard documents alone provide
+access to the data framework. They also allow
+you to:
+-  Update external links
+-  Manage the saving and opening of data
+-  Manage undo/redo functionality.
+Note
+For information on the relations between this
+component of OCAF and the others, refer to the
+OCAF User's Guide.
+"
 %enddef
 %module (package="OCC.Core", docstring=TDOCSTDDOCSTRING) TDocStd
 
@@ -34,24 +64,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TDocStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TDocStd_XLink * TDocStd_XLinkPtr;
@@ -59,6 +75,19 @@ typedef TDocStd_XLink * TDocStd_XLinkPtr;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TDocStd_Application)
+%wrap_handle(TDocStd_ApplicationDelta)
+%wrap_handle(TDocStd_CompoundDelta)
+%wrap_handle(TDocStd_DataMapNodeOfLabelIDMapDataMap)
+%wrap_handle(TDocStd_Document)
+%wrap_handle(TDocStd_Modified)
+%wrap_handle(TDocStd_MultiTransactionManager)
+%wrap_handle(TDocStd_Owner)
+%wrap_handle(TDocStd_SequenceNodeOfSequenceOfApplicationDelta)
+%wrap_handle(TDocStd_SequenceNodeOfSequenceOfDocument)
+%wrap_handle(TDocStd_XLink)
+%wrap_handle(TDocStd_XLinkRoot)
 
 %rename(tdocstd) TDocStd;
 class TDocStd {
@@ -211,51 +240,7 @@ class TDocStd_Application : public CDF_Application {
 };
 
 
-%extend TDocStd_Application {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_Application(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_Application::Handle_TDocStd_Application %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_Application;
-class Handle_TDocStd_Application : public Handle_CDF_Application {
-
-    public:
-        // constructors
-        Handle_TDocStd_Application();
-        Handle_TDocStd_Application(const Handle_TDocStd_Application &aHandle);
-        Handle_TDocStd_Application(const TDocStd_Application *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_Application DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_Application {
-    TDocStd_Application* _get_reference() {
-    return (TDocStd_Application*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_Application {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_Application)
 
 %extend TDocStd_Application {
 	%pythoncode {
@@ -294,51 +279,7 @@ class TDocStd_ApplicationDelta : public MMgt_TShared {
         };
 
 
-%extend TDocStd_ApplicationDelta {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_ApplicationDelta(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_ApplicationDelta::Handle_TDocStd_ApplicationDelta %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_ApplicationDelta;
-class Handle_TDocStd_ApplicationDelta : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDocStd_ApplicationDelta();
-        Handle_TDocStd_ApplicationDelta(const Handle_TDocStd_ApplicationDelta &aHandle);
-        Handle_TDocStd_ApplicationDelta(const TDocStd_ApplicationDelta *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_ApplicationDelta DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_ApplicationDelta {
-    TDocStd_ApplicationDelta* _get_reference() {
-    return (TDocStd_ApplicationDelta*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_ApplicationDelta {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_ApplicationDelta)
 
 %extend TDocStd_ApplicationDelta {
 	%pythoncode {
@@ -357,51 +298,7 @@ class TDocStd_CompoundDelta : public TDF_Delta {
 };
 
 
-%extend TDocStd_CompoundDelta {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_CompoundDelta(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_CompoundDelta::Handle_TDocStd_CompoundDelta %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_CompoundDelta;
-class Handle_TDocStd_CompoundDelta : public Handle_TDF_Delta {
-
-    public:
-        // constructors
-        Handle_TDocStd_CompoundDelta();
-        Handle_TDocStd_CompoundDelta(const Handle_TDocStd_CompoundDelta &aHandle);
-        Handle_TDocStd_CompoundDelta(const TDocStd_CompoundDelta *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_CompoundDelta DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_CompoundDelta {
-    TDocStd_CompoundDelta* _get_reference() {
-    return (TDocStd_CompoundDelta*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_CompoundDelta {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_CompoundDelta)
 
 %extend TDocStd_CompoundDelta {
 	%pythoncode {
@@ -492,51 +389,7 @@ class TDocStd_DataMapNodeOfLabelIDMapDataMap : public TCollection_MapNode {
 };
 
 
-%extend TDocStd_DataMapNodeOfLabelIDMapDataMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap::Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap;
-class Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap();
-        Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap(const Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap &aHandle);
-        Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap(const TDocStd_DataMapNodeOfLabelIDMapDataMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap {
-    TDocStd_DataMapNodeOfLabelIDMapDataMap* _get_reference() {
-    return (TDocStd_DataMapNodeOfLabelIDMapDataMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_DataMapNodeOfLabelIDMapDataMap)
 
 %extend TDocStd_DataMapNodeOfLabelIDMapDataMap {
 	%pythoncode {
@@ -835,51 +688,7 @@ class TDocStd_Document : public CDM_Document {
 };
 
 
-%extend TDocStd_Document {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_Document(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_Document::Handle_TDocStd_Document %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_Document;
-class Handle_TDocStd_Document : public Handle_CDM_Document {
-
-    public:
-        // constructors
-        Handle_TDocStd_Document();
-        Handle_TDocStd_Document(const Handle_TDocStd_Document &aHandle);
-        Handle_TDocStd_Document(const TDocStd_Document *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_Document DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_Document {
-    TDocStd_Document* _get_reference() {
-    return (TDocStd_Document*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_Document {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_Document)
 
 %extend TDocStd_Document {
 	%pythoncode {
@@ -1087,51 +896,7 @@ class TDocStd_Modified : public TDF_Attribute {
         };
 
 
-%extend TDocStd_Modified {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_Modified(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_Modified::Handle_TDocStd_Modified %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_Modified;
-class Handle_TDocStd_Modified : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDocStd_Modified();
-        Handle_TDocStd_Modified(const Handle_TDocStd_Modified &aHandle);
-        Handle_TDocStd_Modified(const TDocStd_Modified *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_Modified DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_Modified {
-    TDocStd_Modified* _get_reference() {
-    return (TDocStd_Modified*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_Modified {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_Modified)
 
 %extend TDocStd_Modified {
 	%pythoncode {
@@ -1296,51 +1061,7 @@ class TDocStd_MultiTransactionManager : public MMgt_TShared {
 };
 
 
-%extend TDocStd_MultiTransactionManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_MultiTransactionManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_MultiTransactionManager::Handle_TDocStd_MultiTransactionManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_MultiTransactionManager;
-class Handle_TDocStd_MultiTransactionManager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDocStd_MultiTransactionManager();
-        Handle_TDocStd_MultiTransactionManager(const Handle_TDocStd_MultiTransactionManager &aHandle);
-        Handle_TDocStd_MultiTransactionManager(const TDocStd_MultiTransactionManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_MultiTransactionManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_MultiTransactionManager {
-    TDocStd_MultiTransactionManager* _get_reference() {
-    return (TDocStd_MultiTransactionManager*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_MultiTransactionManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_MultiTransactionManager)
 
 %extend TDocStd_MultiTransactionManager {
 	%pythoncode {
@@ -1419,51 +1140,7 @@ class TDocStd_Owner : public TDF_Attribute {
         };
 
 
-%extend TDocStd_Owner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_Owner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_Owner::Handle_TDocStd_Owner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_Owner;
-class Handle_TDocStd_Owner : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDocStd_Owner();
-        Handle_TDocStd_Owner(const Handle_TDocStd_Owner &aHandle);
-        Handle_TDocStd_Owner(const TDocStd_Owner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_Owner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_Owner {
-    TDocStd_Owner* _get_reference() {
-    return (TDocStd_Owner*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_Owner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_Owner)
 
 %extend TDocStd_Owner {
 	%pythoncode {
@@ -1531,51 +1208,7 @@ class TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public TCollection_SeqN
 };
 
 
-%extend TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta::Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta;
-class Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta();
-        Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta(const Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta &aHandle);
-        Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta(const TDocStd_SequenceNodeOfSequenceOfApplicationDelta *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
-    TDocStd_SequenceNodeOfSequenceOfApplicationDelta* _get_reference() {
-    return (TDocStd_SequenceNodeOfSequenceOfApplicationDelta*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_SequenceNodeOfSequenceOfApplicationDelta)
 
 %extend TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
 	%pythoncode {
@@ -1602,51 +1235,7 @@ class TDocStd_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode {
 };
 
 
-%extend TDocStd_SequenceNodeOfSequenceOfDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_SequenceNodeOfSequenceOfDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_SequenceNodeOfSequenceOfDocument::Handle_TDocStd_SequenceNodeOfSequenceOfDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_SequenceNodeOfSequenceOfDocument;
-class Handle_TDocStd_SequenceNodeOfSequenceOfDocument : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TDocStd_SequenceNodeOfSequenceOfDocument();
-        Handle_TDocStd_SequenceNodeOfSequenceOfDocument(const Handle_TDocStd_SequenceNodeOfSequenceOfDocument &aHandle);
-        Handle_TDocStd_SequenceNodeOfSequenceOfDocument(const TDocStd_SequenceNodeOfSequenceOfDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_SequenceNodeOfSequenceOfDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_SequenceNodeOfSequenceOfDocument {
-    TDocStd_SequenceNodeOfSequenceOfDocument* _get_reference() {
-    return (TDocStd_SequenceNodeOfSequenceOfDocument*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_SequenceNodeOfSequenceOfDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_SequenceNodeOfSequenceOfDocument)
 
 %extend TDocStd_SequenceNodeOfSequenceOfDocument {
 	%pythoncode {
@@ -2083,51 +1672,7 @@ class TDocStd_XLink : public TDF_Attribute {
         };
 
 
-%extend TDocStd_XLink {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_XLink(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_XLink::Handle_TDocStd_XLink %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_XLink;
-class Handle_TDocStd_XLink : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDocStd_XLink();
-        Handle_TDocStd_XLink(const Handle_TDocStd_XLink &aHandle);
-        Handle_TDocStd_XLink(const TDocStd_XLink *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_XLink DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_XLink {
-    TDocStd_XLink* _get_reference() {
-    return (TDocStd_XLink*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_XLink {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_XLink)
 
 %extend TDocStd_XLink {
 	%pythoncode {
@@ -2265,51 +1810,7 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
         };
 
 
-%extend TDocStd_XLinkRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDocStd_XLinkRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDocStd_XLinkRoot::Handle_TDocStd_XLinkRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDocStd_XLinkRoot;
-class Handle_TDocStd_XLinkRoot : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDocStd_XLinkRoot();
-        Handle_TDocStd_XLinkRoot(const Handle_TDocStd_XLinkRoot &aHandle);
-        Handle_TDocStd_XLinkRoot(const TDocStd_XLinkRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDocStd_XLinkRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDocStd_XLinkRoot {
-    TDocStd_XLinkRoot* _get_reference() {
-    return (TDocStd_XLinkRoot*)$self->Access();
-    }
-};
-
-%extend Handle_TDocStd_XLinkRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDocStd_XLinkRoot)
 
 %extend TDocStd_XLinkRoot {
 	%pythoncode {

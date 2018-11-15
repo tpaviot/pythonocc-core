@@ -18,7 +18,42 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPTRANSDOCSTRING
-"No docstring provided."
+"This  package provides algorithms to  compute
+complex transitions. A transition is the status of
+geometry near the boundary of a Shape. An example
+is the intersection of a curve and a surface
+enclosing a solid  , the transition tells if the
+parts of the curve just before and just after the
+intersection are  inside, outside  or  on the
+boundary of the solid.
+
+The difficulty with transitions arise when dealing
+with trimmed geometries like edges and faces. When
+the geometric intersections are inside the trimmed
+geometry the transition is usually computed by the
+intersection algorithms  as the trimming can be
+safely ignored. If the intersection falls on the
+trimming boundaries  one must  consider  the
+neighbouring entities. Consider as an example the
+intersection of a curve  and a  solid, if the
+intersection falls on an edge of the solid it does
+not falls inside the two faces adjacent to the
+edge, a complex transition occurs.
+
+This package provides two classes :
+
+* CurveTransition is used to compute complex
+transitions with an other curve.
+
+* SurfaceTransition is used to compute complex
+transitions in 3D space.
+
+The curves and surfaces are given  by a first or
+second order approximation around the intersection
+point.  For a curve, the tangent vector or the
+osculating circle. For a surface the normal vector
+or the osculating quadric.
+"
 %enddef
 %module (package="OCC.Core", docstring=TOPTRANSDOCSTRING) TopTrans
 
@@ -34,30 +69,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopTrans_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor TopTrans_Array2OfOrientation;
 class TopTrans_Array2OfOrientation {

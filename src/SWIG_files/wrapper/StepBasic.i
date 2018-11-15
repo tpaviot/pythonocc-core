@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPBASICDOCSTRING
-"No docstring provided."
+"-Purpose : Collects definitions of STEP entities from Part 41 of ISO10303
+"
 %enddef
 %module (package="OCC.Core", docstring=STEPBASICDOCSTRING) StepBasic
 
@@ -34,24 +35,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepBasic_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -120,6 +107,149 @@ enum StepBasic_SiPrefix {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepBasic_Action)
+%wrap_handle(StepBasic_ActionAssignment)
+%wrap_handle(StepBasic_ActionMethod)
+%wrap_handle(StepBasic_ActionRequestAssignment)
+%wrap_handle(StepBasic_ActionRequestSolution)
+%wrap_handle(StepBasic_Address)
+%wrap_handle(StepBasic_ApplicationContext)
+%wrap_handle(StepBasic_ApplicationContextElement)
+%wrap_handle(StepBasic_ApplicationProtocolDefinition)
+%wrap_handle(StepBasic_Approval)
+%wrap_handle(StepBasic_ApprovalAssignment)
+%wrap_handle(StepBasic_ApprovalDateTime)
+%wrap_handle(StepBasic_ApprovalPersonOrganization)
+%wrap_handle(StepBasic_ApprovalRelationship)
+%wrap_handle(StepBasic_ApprovalRole)
+%wrap_handle(StepBasic_ApprovalStatus)
+%wrap_handle(StepBasic_Certification)
+%wrap_handle(StepBasic_CertificationAssignment)
+%wrap_handle(StepBasic_CertificationType)
+%wrap_handle(StepBasic_CharacterizedObject)
+%wrap_handle(StepBasic_Contract)
+%wrap_handle(StepBasic_ContractAssignment)
+%wrap_handle(StepBasic_ContractType)
+%wrap_handle(StepBasic_CoordinatedUniversalTimeOffset)
+%wrap_handle(StepBasic_Date)
+%wrap_handle(StepBasic_DateAndTime)
+%wrap_handle(StepBasic_DateAndTimeAssignment)
+%wrap_handle(StepBasic_DateAssignment)
+%wrap_handle(StepBasic_DateRole)
+%wrap_handle(StepBasic_DateTimeRole)
+%wrap_handle(StepBasic_DerivedUnit)
+%wrap_handle(StepBasic_DerivedUnitElement)
+%wrap_handle(StepBasic_DimensionalExponents)
+%wrap_handle(StepBasic_Document)
+%wrap_handle(StepBasic_DocumentProductAssociation)
+%wrap_handle(StepBasic_DocumentReference)
+%wrap_handle(StepBasic_DocumentRelationship)
+%wrap_handle(StepBasic_DocumentRepresentationType)
+%wrap_handle(StepBasic_DocumentType)
+%wrap_handle(StepBasic_DocumentUsageConstraint)
+%wrap_handle(StepBasic_Effectivity)
+%wrap_handle(StepBasic_EffectivityAssignment)
+%wrap_handle(StepBasic_EulerAngles)
+%wrap_handle(StepBasic_ExternalSource)
+%wrap_handle(StepBasic_ExternallyDefinedItem)
+%wrap_handle(StepBasic_GeneralProperty)
+%wrap_handle(StepBasic_Group)
+%wrap_handle(StepBasic_GroupAssignment)
+%wrap_handle(StepBasic_GroupRelationship)
+%wrap_handle(StepBasic_HArray1OfApproval)
+%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
+%wrap_handle(StepBasic_HArray1OfDocument)
+%wrap_handle(StepBasic_HArray1OfNamedUnit)
+%wrap_handle(StepBasic_HArray1OfOrganization)
+%wrap_handle(StepBasic_HArray1OfPerson)
+%wrap_handle(StepBasic_HArray1OfProduct)
+%wrap_handle(StepBasic_HArray1OfProductContext)
+%wrap_handle(StepBasic_HArray1OfProductDefinition)
+%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
+%wrap_handle(StepBasic_IdentificationAssignment)
+%wrap_handle(StepBasic_IdentificationRole)
+%wrap_handle(StepBasic_LocalTime)
+%wrap_handle(StepBasic_MeasureValueMember)
+%wrap_handle(StepBasic_MeasureWithUnit)
+%wrap_handle(StepBasic_NameAssignment)
+%wrap_handle(StepBasic_NamedUnit)
+%wrap_handle(StepBasic_ObjectRole)
+%wrap_handle(StepBasic_Organization)
+%wrap_handle(StepBasic_OrganizationAssignment)
+%wrap_handle(StepBasic_OrganizationRole)
+%wrap_handle(StepBasic_Person)
+%wrap_handle(StepBasic_PersonAndOrganization)
+%wrap_handle(StepBasic_PersonAndOrganizationAssignment)
+%wrap_handle(StepBasic_PersonAndOrganizationRole)
+%wrap_handle(StepBasic_Product)
+%wrap_handle(StepBasic_ProductCategory)
+%wrap_handle(StepBasic_ProductCategoryRelationship)
+%wrap_handle(StepBasic_ProductDefinition)
+%wrap_handle(StepBasic_ProductDefinitionFormation)
+%wrap_handle(StepBasic_ProductDefinitionFormationRelationship)
+%wrap_handle(StepBasic_ProductDefinitionRelationship)
+%wrap_handle(StepBasic_RoleAssociation)
+%wrap_handle(StepBasic_SecurityClassification)
+%wrap_handle(StepBasic_SecurityClassificationAssignment)
+%wrap_handle(StepBasic_SecurityClassificationLevel)
+%wrap_handle(StepBasic_SizeMember)
+%wrap_handle(StepBasic_VersionedActionRequest)
+%wrap_handle(StepBasic_AreaUnit)
+%wrap_handle(StepBasic_CalendarDate)
+%wrap_handle(StepBasic_ConversionBasedUnit)
+%wrap_handle(StepBasic_DigitalDocument)
+%wrap_handle(StepBasic_DocumentFile)
+%wrap_handle(StepBasic_DocumentProductEquivalence)
+%wrap_handle(StepBasic_ExternalIdentificationAssignment)
+%wrap_handle(StepBasic_LengthMeasureWithUnit)
+%wrap_handle(StepBasic_LengthUnit)
+%wrap_handle(StepBasic_MassMeasureWithUnit)
+%wrap_handle(StepBasic_MassUnit)
+%wrap_handle(StepBasic_OrdinalDate)
+%wrap_handle(StepBasic_OrganizationalAddress)
+%wrap_handle(StepBasic_PersonalAddress)
+%wrap_handle(StepBasic_PhysicallyModeledProductDefinition)
+%wrap_handle(StepBasic_PlaneAngleMeasureWithUnit)
+%wrap_handle(StepBasic_PlaneAngleUnit)
+%wrap_handle(StepBasic_ProductConceptContext)
+%wrap_handle(StepBasic_ProductContext)
+%wrap_handle(StepBasic_ProductDefinitionContext)
+%wrap_handle(StepBasic_ProductDefinitionEffectivity)
+%wrap_handle(StepBasic_ProductDefinitionFormationWithSpecifiedSource)
+%wrap_handle(StepBasic_ProductDefinitionWithAssociatedDocuments)
+%wrap_handle(StepBasic_ProductRelatedProductCategory)
+%wrap_handle(StepBasic_RatioMeasureWithUnit)
+%wrap_handle(StepBasic_RatioUnit)
+%wrap_handle(StepBasic_SiUnit)
+%wrap_handle(StepBasic_SolidAngleMeasureWithUnit)
+%wrap_handle(StepBasic_SolidAngleUnit)
+%wrap_handle(StepBasic_ThermodynamicTemperatureUnit)
+%wrap_handle(StepBasic_TimeMeasureWithUnit)
+%wrap_handle(StepBasic_TimeUnit)
+%wrap_handle(StepBasic_UncertaintyMeasureWithUnit)
+%wrap_handle(StepBasic_VolumeUnit)
+%wrap_handle(StepBasic_WeekOfYearAndDayDate)
+%wrap_handle(StepBasic_ConversionBasedUnitAndAreaUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndLengthUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndMassUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndPlaneAngleUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndRatioUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndSolidAngleUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndTimeUnit)
+%wrap_handle(StepBasic_ConversionBasedUnitAndVolumeUnit)
+%wrap_handle(StepBasic_DesignContext)
+%wrap_handle(StepBasic_MechanicalContext)
+%wrap_handle(StepBasic_ProductType)
+%wrap_handle(StepBasic_SiUnitAndAreaUnit)
+%wrap_handle(StepBasic_SiUnitAndLengthUnit)
+%wrap_handle(StepBasic_SiUnitAndMassUnit)
+%wrap_handle(StepBasic_SiUnitAndPlaneAngleUnit)
+%wrap_handle(StepBasic_SiUnitAndRatioUnit)
+%wrap_handle(StepBasic_SiUnitAndSolidAngleUnit)
+%wrap_handle(StepBasic_SiUnitAndThermodynamicTemperatureUnit)
+%wrap_handle(StepBasic_SiUnitAndTimeUnit)
+%wrap_handle(StepBasic_SiUnitAndVolumeUnit)
 
 %nodefaultctor StepBasic_Action;
 class StepBasic_Action : public MMgt_TShared {
@@ -195,51 +325,7 @@ class StepBasic_Action : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Action {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Action(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Action::Handle_StepBasic_Action %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Action;
-class Handle_StepBasic_Action : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Action();
-        Handle_StepBasic_Action(const Handle_StepBasic_Action &aHandle);
-        Handle_StepBasic_Action(const StepBasic_Action *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Action DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Action {
-    StepBasic_Action* _get_reference() {
-    return (StepBasic_Action*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Action {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Action)
 
 %extend StepBasic_Action {
 	%pythoncode {
@@ -280,51 +366,7 @@ class StepBasic_ActionAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ActionAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ActionAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ActionAssignment::Handle_StepBasic_ActionAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ActionAssignment;
-class Handle_StepBasic_ActionAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ActionAssignment();
-        Handle_StepBasic_ActionAssignment(const Handle_StepBasic_ActionAssignment &aHandle);
-        Handle_StepBasic_ActionAssignment(const StepBasic_ActionAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ActionAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ActionAssignment {
-    StepBasic_ActionAssignment* _get_reference() {
-    return (StepBasic_ActionAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ActionAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ActionAssignment)
 
 %extend StepBasic_ActionAssignment {
 	%pythoncode {
@@ -421,51 +463,7 @@ class StepBasic_ActionMethod : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ActionMethod {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ActionMethod(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ActionMethod::Handle_StepBasic_ActionMethod %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ActionMethod;
-class Handle_StepBasic_ActionMethod : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ActionMethod();
-        Handle_StepBasic_ActionMethod(const Handle_StepBasic_ActionMethod &aHandle);
-        Handle_StepBasic_ActionMethod(const StepBasic_ActionMethod *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ActionMethod DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ActionMethod {
-    StepBasic_ActionMethod* _get_reference() {
-    return (StepBasic_ActionMethod*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ActionMethod {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ActionMethod)
 
 %extend StepBasic_ActionMethod {
 	%pythoncode {
@@ -506,51 +504,7 @@ class StepBasic_ActionRequestAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ActionRequestAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ActionRequestAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ActionRequestAssignment::Handle_StepBasic_ActionRequestAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ActionRequestAssignment;
-class Handle_StepBasic_ActionRequestAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ActionRequestAssignment();
-        Handle_StepBasic_ActionRequestAssignment(const Handle_StepBasic_ActionRequestAssignment &aHandle);
-        Handle_StepBasic_ActionRequestAssignment(const StepBasic_ActionRequestAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ActionRequestAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ActionRequestAssignment {
-    StepBasic_ActionRequestAssignment* _get_reference() {
-    return (StepBasic_ActionRequestAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ActionRequestAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ActionRequestAssignment)
 
 %extend StepBasic_ActionRequestAssignment {
 	%pythoncode {
@@ -607,51 +561,7 @@ class StepBasic_ActionRequestSolution : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ActionRequestSolution {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ActionRequestSolution(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ActionRequestSolution::Handle_StepBasic_ActionRequestSolution %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ActionRequestSolution;
-class Handle_StepBasic_ActionRequestSolution : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ActionRequestSolution();
-        Handle_StepBasic_ActionRequestSolution(const Handle_StepBasic_ActionRequestSolution &aHandle);
-        Handle_StepBasic_ActionRequestSolution(const StepBasic_ActionRequestSolution *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ActionRequestSolution DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ActionRequestSolution {
-    StepBasic_ActionRequestSolution* _get_reference() {
-    return (StepBasic_ActionRequestSolution*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ActionRequestSolution {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ActionRequestSolution)
 
 %extend StepBasic_ActionRequestSolution {
 	%pythoncode {
@@ -938,51 +848,7 @@ class StepBasic_Address : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Address {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Address(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Address::Handle_StepBasic_Address %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Address;
-class Handle_StepBasic_Address : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Address();
-        Handle_StepBasic_Address(const Handle_StepBasic_Address &aHandle);
-        Handle_StepBasic_Address(const StepBasic_Address *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Address DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Address {
-    StepBasic_Address* _get_reference() {
-    return (StepBasic_Address*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Address {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Address)
 
 %extend StepBasic_Address {
 	%pythoncode {
@@ -1017,51 +883,7 @@ class StepBasic_ApplicationContext : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApplicationContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApplicationContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApplicationContext::Handle_StepBasic_ApplicationContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApplicationContext;
-class Handle_StepBasic_ApplicationContext : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApplicationContext();
-        Handle_StepBasic_ApplicationContext(const Handle_StepBasic_ApplicationContext &aHandle);
-        Handle_StepBasic_ApplicationContext(const StepBasic_ApplicationContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApplicationContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApplicationContext {
-    StepBasic_ApplicationContext* _get_reference() {
-    return (StepBasic_ApplicationContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApplicationContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApplicationContext)
 
 %extend StepBasic_ApplicationContext {
 	%pythoncode {
@@ -1108,51 +930,7 @@ class StepBasic_ApplicationContextElement : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApplicationContextElement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApplicationContextElement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApplicationContextElement::Handle_StepBasic_ApplicationContextElement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApplicationContextElement;
-class Handle_StepBasic_ApplicationContextElement : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApplicationContextElement();
-        Handle_StepBasic_ApplicationContextElement(const Handle_StepBasic_ApplicationContextElement &aHandle);
-        Handle_StepBasic_ApplicationContextElement(const StepBasic_ApplicationContextElement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApplicationContextElement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApplicationContextElement {
-    StepBasic_ApplicationContextElement* _get_reference() {
-    return (StepBasic_ApplicationContextElement*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApplicationContextElement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApplicationContextElement)
 
 %extend StepBasic_ApplicationContextElement {
 	%pythoncode {
@@ -1223,51 +1001,7 @@ class StepBasic_ApplicationProtocolDefinition : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApplicationProtocolDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApplicationProtocolDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApplicationProtocolDefinition::Handle_StepBasic_ApplicationProtocolDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApplicationProtocolDefinition;
-class Handle_StepBasic_ApplicationProtocolDefinition : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApplicationProtocolDefinition();
-        Handle_StepBasic_ApplicationProtocolDefinition(const Handle_StepBasic_ApplicationProtocolDefinition &aHandle);
-        Handle_StepBasic_ApplicationProtocolDefinition(const StepBasic_ApplicationProtocolDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApplicationProtocolDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApplicationProtocolDefinition {
-    StepBasic_ApplicationProtocolDefinition* _get_reference() {
-    return (StepBasic_ApplicationProtocolDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApplicationProtocolDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApplicationProtocolDefinition)
 
 %extend StepBasic_ApplicationProtocolDefinition {
 	%pythoncode {
@@ -1314,51 +1048,7 @@ class StepBasic_Approval : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Approval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Approval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Approval::Handle_StepBasic_Approval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Approval;
-class Handle_StepBasic_Approval : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Approval();
-        Handle_StepBasic_Approval(const Handle_StepBasic_Approval &aHandle);
-        Handle_StepBasic_Approval(const StepBasic_Approval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Approval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Approval {
-    StepBasic_Approval* _get_reference() {
-    return (StepBasic_Approval*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Approval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Approval)
 
 %extend StepBasic_Approval {
 	%pythoncode {
@@ -1387,51 +1077,7 @@ class StepBasic_ApprovalAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalAssignment::Handle_StepBasic_ApprovalAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalAssignment;
-class Handle_StepBasic_ApprovalAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalAssignment();
-        Handle_StepBasic_ApprovalAssignment(const Handle_StepBasic_ApprovalAssignment &aHandle);
-        Handle_StepBasic_ApprovalAssignment(const StepBasic_ApprovalAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalAssignment {
-    StepBasic_ApprovalAssignment* _get_reference() {
-    return (StepBasic_ApprovalAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalAssignment)
 
 %extend StepBasic_ApprovalAssignment {
 	%pythoncode {
@@ -1476,51 +1122,7 @@ class StepBasic_ApprovalDateTime : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalDateTime {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalDateTime(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalDateTime::Handle_StepBasic_ApprovalDateTime %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalDateTime;
-class Handle_StepBasic_ApprovalDateTime : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalDateTime();
-        Handle_StepBasic_ApprovalDateTime(const Handle_StepBasic_ApprovalDateTime &aHandle);
-        Handle_StepBasic_ApprovalDateTime(const StepBasic_ApprovalDateTime *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalDateTime DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalDateTime {
-    StepBasic_ApprovalDateTime* _get_reference() {
-    return (StepBasic_ApprovalDateTime*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalDateTime {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalDateTime)
 
 %extend StepBasic_ApprovalDateTime {
 	%pythoncode {
@@ -1579,51 +1181,7 @@ class StepBasic_ApprovalPersonOrganization : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalPersonOrganization {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalPersonOrganization(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalPersonOrganization::Handle_StepBasic_ApprovalPersonOrganization %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalPersonOrganization;
-class Handle_StepBasic_ApprovalPersonOrganization : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalPersonOrganization();
-        Handle_StepBasic_ApprovalPersonOrganization(const Handle_StepBasic_ApprovalPersonOrganization &aHandle);
-        Handle_StepBasic_ApprovalPersonOrganization(const StepBasic_ApprovalPersonOrganization *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalPersonOrganization DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalPersonOrganization {
-    StepBasic_ApprovalPersonOrganization* _get_reference() {
-    return (StepBasic_ApprovalPersonOrganization*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalPersonOrganization {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalPersonOrganization)
 
 %extend StepBasic_ApprovalPersonOrganization {
 	%pythoncode {
@@ -1694,51 +1252,7 @@ class StepBasic_ApprovalRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalRelationship::Handle_StepBasic_ApprovalRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalRelationship;
-class Handle_StepBasic_ApprovalRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalRelationship();
-        Handle_StepBasic_ApprovalRelationship(const Handle_StepBasic_ApprovalRelationship &aHandle);
-        Handle_StepBasic_ApprovalRelationship(const StepBasic_ApprovalRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalRelationship {
-    StepBasic_ApprovalRelationship* _get_reference() {
-    return (StepBasic_ApprovalRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalRelationship)
 
 %extend StepBasic_ApprovalRelationship {
 	%pythoncode {
@@ -1773,51 +1287,7 @@ class StepBasic_ApprovalRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalRole::Handle_StepBasic_ApprovalRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalRole;
-class Handle_StepBasic_ApprovalRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalRole();
-        Handle_StepBasic_ApprovalRole(const Handle_StepBasic_ApprovalRole &aHandle);
-        Handle_StepBasic_ApprovalRole(const StepBasic_ApprovalRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalRole {
-    StepBasic_ApprovalRole* _get_reference() {
-    return (StepBasic_ApprovalRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalRole)
 
 %extend StepBasic_ApprovalRole {
 	%pythoncode {
@@ -1852,51 +1322,7 @@ class StepBasic_ApprovalStatus : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ApprovalStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ApprovalStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ApprovalStatus::Handle_StepBasic_ApprovalStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ApprovalStatus;
-class Handle_StepBasic_ApprovalStatus : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ApprovalStatus();
-        Handle_StepBasic_ApprovalStatus(const Handle_StepBasic_ApprovalStatus &aHandle);
-        Handle_StepBasic_ApprovalStatus(const StepBasic_ApprovalStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ApprovalStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ApprovalStatus {
-    StepBasic_ApprovalStatus* _get_reference() {
-    return (StepBasic_ApprovalStatus*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ApprovalStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ApprovalStatus)
 
 %extend StepBasic_ApprovalStatus {
 	%pythoncode {
@@ -2839,51 +2265,7 @@ class StepBasic_Certification : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Certification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Certification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Certification::Handle_StepBasic_Certification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Certification;
-class Handle_StepBasic_Certification : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Certification();
-        Handle_StepBasic_Certification(const Handle_StepBasic_Certification &aHandle);
-        Handle_StepBasic_Certification(const StepBasic_Certification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Certification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Certification {
-    StepBasic_Certification* _get_reference() {
-    return (StepBasic_Certification*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Certification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Certification)
 
 %extend StepBasic_Certification {
 	%pythoncode {
@@ -2924,51 +2306,7 @@ class StepBasic_CertificationAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_CertificationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_CertificationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_CertificationAssignment::Handle_StepBasic_CertificationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_CertificationAssignment;
-class Handle_StepBasic_CertificationAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_CertificationAssignment();
-        Handle_StepBasic_CertificationAssignment(const Handle_StepBasic_CertificationAssignment &aHandle);
-        Handle_StepBasic_CertificationAssignment(const StepBasic_CertificationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_CertificationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_CertificationAssignment {
-    StepBasic_CertificationAssignment* _get_reference() {
-    return (StepBasic_CertificationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_CertificationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_CertificationAssignment)
 
 %extend StepBasic_CertificationAssignment {
 	%pythoncode {
@@ -3009,51 +2347,7 @@ class StepBasic_CertificationType : public MMgt_TShared {
 };
 
 
-%extend StepBasic_CertificationType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_CertificationType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_CertificationType::Handle_StepBasic_CertificationType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_CertificationType;
-class Handle_StepBasic_CertificationType : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_CertificationType();
-        Handle_StepBasic_CertificationType(const Handle_StepBasic_CertificationType &aHandle);
-        Handle_StepBasic_CertificationType(const StepBasic_CertificationType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_CertificationType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_CertificationType {
-    StepBasic_CertificationType* _get_reference() {
-    return (StepBasic_CertificationType*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_CertificationType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_CertificationType)
 
 %extend StepBasic_CertificationType {
 	%pythoncode {
@@ -3118,51 +2412,7 @@ class StepBasic_CharacterizedObject : public MMgt_TShared {
 };
 
 
-%extend StepBasic_CharacterizedObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_CharacterizedObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_CharacterizedObject::Handle_StepBasic_CharacterizedObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_CharacterizedObject;
-class Handle_StepBasic_CharacterizedObject : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_CharacterizedObject();
-        Handle_StepBasic_CharacterizedObject(const Handle_StepBasic_CharacterizedObject &aHandle);
-        Handle_StepBasic_CharacterizedObject(const StepBasic_CharacterizedObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_CharacterizedObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_CharacterizedObject {
-    StepBasic_CharacterizedObject* _get_reference() {
-    return (StepBasic_CharacterizedObject*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_CharacterizedObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_CharacterizedObject)
 
 %extend StepBasic_CharacterizedObject {
 	%pythoncode {
@@ -3235,51 +2485,7 @@ class StepBasic_Contract : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Contract {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Contract(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Contract::Handle_StepBasic_Contract %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Contract;
-class Handle_StepBasic_Contract : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Contract();
-        Handle_StepBasic_Contract(const Handle_StepBasic_Contract &aHandle);
-        Handle_StepBasic_Contract(const StepBasic_Contract *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Contract DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Contract {
-    StepBasic_Contract* _get_reference() {
-    return (StepBasic_Contract*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Contract {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Contract)
 
 %extend StepBasic_Contract {
 	%pythoncode {
@@ -3320,51 +2526,7 @@ class StepBasic_ContractAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ContractAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ContractAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ContractAssignment::Handle_StepBasic_ContractAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ContractAssignment;
-class Handle_StepBasic_ContractAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ContractAssignment();
-        Handle_StepBasic_ContractAssignment(const Handle_StepBasic_ContractAssignment &aHandle);
-        Handle_StepBasic_ContractAssignment(const StepBasic_ContractAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ContractAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ContractAssignment {
-    StepBasic_ContractAssignment* _get_reference() {
-    return (StepBasic_ContractAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ContractAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ContractAssignment)
 
 %extend StepBasic_ContractAssignment {
 	%pythoncode {
@@ -3405,51 +2567,7 @@ class StepBasic_ContractType : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ContractType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ContractType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ContractType::Handle_StepBasic_ContractType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ContractType;
-class Handle_StepBasic_ContractType : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ContractType();
-        Handle_StepBasic_ContractType(const Handle_StepBasic_ContractType &aHandle);
-        Handle_StepBasic_ContractType(const StepBasic_ContractType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ContractType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ContractType {
-    StepBasic_ContractType* _get_reference() {
-    return (StepBasic_ContractType*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ContractType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ContractType)
 
 %extend StepBasic_ContractType {
 	%pythoncode {
@@ -3518,51 +2636,7 @@ class StepBasic_CoordinatedUniversalTimeOffset : public MMgt_TShared {
 };
 
 
-%extend StepBasic_CoordinatedUniversalTimeOffset {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_CoordinatedUniversalTimeOffset(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_CoordinatedUniversalTimeOffset::Handle_StepBasic_CoordinatedUniversalTimeOffset %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_CoordinatedUniversalTimeOffset;
-class Handle_StepBasic_CoordinatedUniversalTimeOffset : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_CoordinatedUniversalTimeOffset();
-        Handle_StepBasic_CoordinatedUniversalTimeOffset(const Handle_StepBasic_CoordinatedUniversalTimeOffset &aHandle);
-        Handle_StepBasic_CoordinatedUniversalTimeOffset(const StepBasic_CoordinatedUniversalTimeOffset *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_CoordinatedUniversalTimeOffset DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_CoordinatedUniversalTimeOffset {
-    StepBasic_CoordinatedUniversalTimeOffset* _get_reference() {
-    return (StepBasic_CoordinatedUniversalTimeOffset*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_CoordinatedUniversalTimeOffset {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_CoordinatedUniversalTimeOffset)
 
 %extend StepBasic_CoordinatedUniversalTimeOffset {
 	%pythoncode {
@@ -3597,51 +2671,7 @@ class StepBasic_Date : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Date {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Date(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Date::Handle_StepBasic_Date %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Date;
-class Handle_StepBasic_Date : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Date();
-        Handle_StepBasic_Date(const Handle_StepBasic_Date &aHandle);
-        Handle_StepBasic_Date(const StepBasic_Date *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Date DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Date {
-    StepBasic_Date* _get_reference() {
-    return (StepBasic_Date*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Date {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Date)
 
 %extend StepBasic_Date {
 	%pythoncode {
@@ -3688,51 +2718,7 @@ class StepBasic_DateAndTime : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DateAndTime {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DateAndTime(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DateAndTime::Handle_StepBasic_DateAndTime %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DateAndTime;
-class Handle_StepBasic_DateAndTime : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DateAndTime();
-        Handle_StepBasic_DateAndTime(const Handle_StepBasic_DateAndTime &aHandle);
-        Handle_StepBasic_DateAndTime(const StepBasic_DateAndTime *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DateAndTime DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DateAndTime {
-    StepBasic_DateAndTime* _get_reference() {
-    return (StepBasic_DateAndTime*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DateAndTime {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DateAndTime)
 
 %extend StepBasic_DateAndTime {
 	%pythoncode {
@@ -3773,51 +2759,7 @@ class StepBasic_DateAndTimeAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DateAndTimeAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DateAndTimeAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DateAndTimeAssignment::Handle_StepBasic_DateAndTimeAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DateAndTimeAssignment;
-class Handle_StepBasic_DateAndTimeAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DateAndTimeAssignment();
-        Handle_StepBasic_DateAndTimeAssignment(const Handle_StepBasic_DateAndTimeAssignment &aHandle);
-        Handle_StepBasic_DateAndTimeAssignment(const StepBasic_DateAndTimeAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DateAndTimeAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DateAndTimeAssignment {
-    StepBasic_DateAndTimeAssignment* _get_reference() {
-    return (StepBasic_DateAndTimeAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DateAndTimeAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DateAndTimeAssignment)
 
 %extend StepBasic_DateAndTimeAssignment {
 	%pythoncode {
@@ -3858,51 +2800,7 @@ class StepBasic_DateAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DateAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DateAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DateAssignment::Handle_StepBasic_DateAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DateAssignment;
-class Handle_StepBasic_DateAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DateAssignment();
-        Handle_StepBasic_DateAssignment(const Handle_StepBasic_DateAssignment &aHandle);
-        Handle_StepBasic_DateAssignment(const StepBasic_DateAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DateAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DateAssignment {
-    StepBasic_DateAssignment* _get_reference() {
-    return (StepBasic_DateAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DateAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DateAssignment)
 
 %extend StepBasic_DateAssignment {
 	%pythoncode {
@@ -3937,51 +2835,7 @@ class StepBasic_DateRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DateRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DateRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DateRole::Handle_StepBasic_DateRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DateRole;
-class Handle_StepBasic_DateRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DateRole();
-        Handle_StepBasic_DateRole(const Handle_StepBasic_DateRole &aHandle);
-        Handle_StepBasic_DateRole(const StepBasic_DateRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DateRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DateRole {
-    StepBasic_DateRole* _get_reference() {
-    return (StepBasic_DateRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DateRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DateRole)
 
 %extend StepBasic_DateRole {
 	%pythoncode {
@@ -4016,51 +2870,7 @@ class StepBasic_DateTimeRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DateTimeRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DateTimeRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DateTimeRole::Handle_StepBasic_DateTimeRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DateTimeRole;
-class Handle_StepBasic_DateTimeRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DateTimeRole();
-        Handle_StepBasic_DateTimeRole(const Handle_StepBasic_DateTimeRole &aHandle);
-        Handle_StepBasic_DateTimeRole(const StepBasic_DateTimeRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DateTimeRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DateTimeRole {
-    StepBasic_DateTimeRole* _get_reference() {
-    return (StepBasic_DateTimeRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DateTimeRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DateTimeRole)
 
 %extend StepBasic_DateTimeRole {
 	%pythoncode {
@@ -4146,51 +2956,7 @@ class StepBasic_DerivedUnit : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DerivedUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DerivedUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DerivedUnit::Handle_StepBasic_DerivedUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DerivedUnit;
-class Handle_StepBasic_DerivedUnit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DerivedUnit();
-        Handle_StepBasic_DerivedUnit(const Handle_StepBasic_DerivedUnit &aHandle);
-        Handle_StepBasic_DerivedUnit(const StepBasic_DerivedUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DerivedUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DerivedUnit {
-    StepBasic_DerivedUnit* _get_reference() {
-    return (StepBasic_DerivedUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DerivedUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DerivedUnit)
 
 %extend StepBasic_DerivedUnit {
 	%pythoncode {
@@ -4235,51 +3001,7 @@ class StepBasic_DerivedUnitElement : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DerivedUnitElement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DerivedUnitElement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DerivedUnitElement::Handle_StepBasic_DerivedUnitElement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DerivedUnitElement;
-class Handle_StepBasic_DerivedUnitElement : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DerivedUnitElement();
-        Handle_StepBasic_DerivedUnitElement(const Handle_StepBasic_DerivedUnitElement &aHandle);
-        Handle_StepBasic_DerivedUnitElement(const StepBasic_DerivedUnitElement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DerivedUnitElement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DerivedUnitElement {
-    StepBasic_DerivedUnitElement* _get_reference() {
-    return (StepBasic_DerivedUnitElement*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DerivedUnitElement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DerivedUnitElement)
 
 %extend StepBasic_DerivedUnitElement {
 	%pythoncode {
@@ -4386,51 +3108,7 @@ class StepBasic_DimensionalExponents : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DimensionalExponents {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DimensionalExponents(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DimensionalExponents::Handle_StepBasic_DimensionalExponents %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DimensionalExponents;
-class Handle_StepBasic_DimensionalExponents : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DimensionalExponents();
-        Handle_StepBasic_DimensionalExponents(const Handle_StepBasic_DimensionalExponents &aHandle);
-        Handle_StepBasic_DimensionalExponents(const StepBasic_DimensionalExponents *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DimensionalExponents DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DimensionalExponents {
-    StepBasic_DimensionalExponents* _get_reference() {
-    return (StepBasic_DimensionalExponents*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DimensionalExponents {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DimensionalExponents)
 
 %extend StepBasic_DimensionalExponents {
 	%pythoncode {
@@ -4527,51 +3205,7 @@ class StepBasic_Document : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Document {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Document(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Document::Handle_StepBasic_Document %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Document;
-class Handle_StepBasic_Document : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Document();
-        Handle_StepBasic_Document(const Handle_StepBasic_Document &aHandle);
-        Handle_StepBasic_Document(const StepBasic_Document *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Document DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Document {
-    StepBasic_Document* _get_reference() {
-    return (StepBasic_Document*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Document {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Document)
 
 %extend StepBasic_Document {
 	%pythoncode {
@@ -4668,51 +3302,7 @@ class StepBasic_DocumentProductAssociation : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentProductAssociation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentProductAssociation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentProductAssociation::Handle_StepBasic_DocumentProductAssociation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentProductAssociation;
-class Handle_StepBasic_DocumentProductAssociation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentProductAssociation();
-        Handle_StepBasic_DocumentProductAssociation(const Handle_StepBasic_DocumentProductAssociation &aHandle);
-        Handle_StepBasic_DocumentProductAssociation(const StepBasic_DocumentProductAssociation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentProductAssociation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentProductAssociation {
-    StepBasic_DocumentProductAssociation* _get_reference() {
-    return (StepBasic_DocumentProductAssociation*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentProductAssociation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentProductAssociation)
 
 %extend StepBasic_DocumentProductAssociation {
 	%pythoncode {
@@ -4753,51 +3343,7 @@ class StepBasic_DocumentReference : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentReference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentReference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentReference::Handle_StepBasic_DocumentReference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentReference;
-class Handle_StepBasic_DocumentReference : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentReference();
-        Handle_StepBasic_DocumentReference(const Handle_StepBasic_DocumentReference &aHandle);
-        Handle_StepBasic_DocumentReference(const StepBasic_DocumentReference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentReference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentReference {
-    StepBasic_DocumentReference* _get_reference() {
-    return (StepBasic_DocumentReference*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentReference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentReference)
 
 %extend StepBasic_DocumentReference {
 	%pythoncode {
@@ -4866,51 +3412,7 @@ class StepBasic_DocumentRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentRelationship::Handle_StepBasic_DocumentRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentRelationship;
-class Handle_StepBasic_DocumentRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentRelationship();
-        Handle_StepBasic_DocumentRelationship(const Handle_StepBasic_DocumentRelationship &aHandle);
-        Handle_StepBasic_DocumentRelationship(const StepBasic_DocumentRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentRelationship {
-    StepBasic_DocumentRelationship* _get_reference() {
-    return (StepBasic_DocumentRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentRelationship)
 
 %extend StepBasic_DocumentRelationship {
 	%pythoncode {
@@ -4967,51 +3469,7 @@ class StepBasic_DocumentRepresentationType : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentRepresentationType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentRepresentationType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentRepresentationType::Handle_StepBasic_DocumentRepresentationType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentRepresentationType;
-class Handle_StepBasic_DocumentRepresentationType : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentRepresentationType();
-        Handle_StepBasic_DocumentRepresentationType(const Handle_StepBasic_DocumentRepresentationType &aHandle);
-        Handle_StepBasic_DocumentRepresentationType(const StepBasic_DocumentRepresentationType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentRepresentationType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentRepresentationType {
-    StepBasic_DocumentRepresentationType* _get_reference() {
-    return (StepBasic_DocumentRepresentationType*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentRepresentationType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentRepresentationType)
 
 %extend StepBasic_DocumentRepresentationType {
 	%pythoncode {
@@ -5044,51 +3502,7 @@ class StepBasic_DocumentType : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentType::Handle_StepBasic_DocumentType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentType;
-class Handle_StepBasic_DocumentType : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentType();
-        Handle_StepBasic_DocumentType(const Handle_StepBasic_DocumentType &aHandle);
-        Handle_StepBasic_DocumentType(const StepBasic_DocumentType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentType {
-    StepBasic_DocumentType* _get_reference() {
-    return (StepBasic_DocumentType*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentType)
 
 %extend StepBasic_DocumentType {
 	%pythoncode {
@@ -5145,51 +3559,7 @@ class StepBasic_DocumentUsageConstraint : public MMgt_TShared {
 };
 
 
-%extend StepBasic_DocumentUsageConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentUsageConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentUsageConstraint::Handle_StepBasic_DocumentUsageConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentUsageConstraint;
-class Handle_StepBasic_DocumentUsageConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentUsageConstraint();
-        Handle_StepBasic_DocumentUsageConstraint(const Handle_StepBasic_DocumentUsageConstraint &aHandle);
-        Handle_StepBasic_DocumentUsageConstraint(const StepBasic_DocumentUsageConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentUsageConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentUsageConstraint {
-    StepBasic_DocumentUsageConstraint* _get_reference() {
-    return (StepBasic_DocumentUsageConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentUsageConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentUsageConstraint)
 
 %extend StepBasic_DocumentUsageConstraint {
 	%pythoncode {
@@ -5222,51 +3592,7 @@ class StepBasic_Effectivity : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Effectivity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Effectivity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Effectivity::Handle_StepBasic_Effectivity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Effectivity;
-class Handle_StepBasic_Effectivity : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Effectivity();
-        Handle_StepBasic_Effectivity(const Handle_StepBasic_Effectivity &aHandle);
-        Handle_StepBasic_Effectivity(const StepBasic_Effectivity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Effectivity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Effectivity {
-    StepBasic_Effectivity* _get_reference() {
-    return (StepBasic_Effectivity*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Effectivity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Effectivity)
 
 %extend StepBasic_Effectivity {
 	%pythoncode {
@@ -5307,51 +3633,7 @@ class StepBasic_EffectivityAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_EffectivityAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_EffectivityAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_EffectivityAssignment::Handle_StepBasic_EffectivityAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_EffectivityAssignment;
-class Handle_StepBasic_EffectivityAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_EffectivityAssignment();
-        Handle_StepBasic_EffectivityAssignment(const Handle_StepBasic_EffectivityAssignment &aHandle);
-        Handle_StepBasic_EffectivityAssignment(const StepBasic_EffectivityAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_EffectivityAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_EffectivityAssignment {
-    StepBasic_EffectivityAssignment* _get_reference() {
-    return (StepBasic_EffectivityAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_EffectivityAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_EffectivityAssignment)
 
 %extend StepBasic_EffectivityAssignment {
 	%pythoncode {
@@ -5392,51 +3674,7 @@ class StepBasic_EulerAngles : public MMgt_TShared {
 };
 
 
-%extend StepBasic_EulerAngles {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_EulerAngles(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_EulerAngles::Handle_StepBasic_EulerAngles %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_EulerAngles;
-class Handle_StepBasic_EulerAngles : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_EulerAngles();
-        Handle_StepBasic_EulerAngles(const Handle_StepBasic_EulerAngles &aHandle);
-        Handle_StepBasic_EulerAngles(const StepBasic_EulerAngles *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_EulerAngles DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_EulerAngles {
-    StepBasic_EulerAngles* _get_reference() {
-    return (StepBasic_EulerAngles*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_EulerAngles {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_EulerAngles)
 
 %extend StepBasic_EulerAngles {
 	%pythoncode {
@@ -5477,51 +3715,7 @@ class StepBasic_ExternalSource : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ExternalSource {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ExternalSource(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ExternalSource::Handle_StepBasic_ExternalSource %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ExternalSource;
-class Handle_StepBasic_ExternalSource : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ExternalSource();
-        Handle_StepBasic_ExternalSource(const Handle_StepBasic_ExternalSource &aHandle);
-        Handle_StepBasic_ExternalSource(const StepBasic_ExternalSource *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ExternalSource DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ExternalSource {
-    StepBasic_ExternalSource* _get_reference() {
-    return (StepBasic_ExternalSource*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ExternalSource {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ExternalSource)
 
 %extend StepBasic_ExternalSource {
 	%pythoncode {
@@ -5578,51 +3772,7 @@ class StepBasic_ExternallyDefinedItem : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ExternallyDefinedItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ExternallyDefinedItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ExternallyDefinedItem::Handle_StepBasic_ExternallyDefinedItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ExternallyDefinedItem;
-class Handle_StepBasic_ExternallyDefinedItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ExternallyDefinedItem();
-        Handle_StepBasic_ExternallyDefinedItem(const Handle_StepBasic_ExternallyDefinedItem &aHandle);
-        Handle_StepBasic_ExternallyDefinedItem(const StepBasic_ExternallyDefinedItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ExternallyDefinedItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ExternallyDefinedItem {
-    StepBasic_ExternallyDefinedItem* _get_reference() {
-    return (StepBasic_ExternallyDefinedItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ExternallyDefinedItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ExternallyDefinedItem)
 
 %extend StepBasic_ExternallyDefinedItem {
 	%pythoncode {
@@ -5703,51 +3853,7 @@ class StepBasic_GeneralProperty : public MMgt_TShared {
 };
 
 
-%extend StepBasic_GeneralProperty {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_GeneralProperty(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_GeneralProperty::Handle_StepBasic_GeneralProperty %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_GeneralProperty;
-class Handle_StepBasic_GeneralProperty : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_GeneralProperty();
-        Handle_StepBasic_GeneralProperty(const Handle_StepBasic_GeneralProperty &aHandle);
-        Handle_StepBasic_GeneralProperty(const StepBasic_GeneralProperty *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_GeneralProperty DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_GeneralProperty {
-    StepBasic_GeneralProperty* _get_reference() {
-    return (StepBasic_GeneralProperty*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_GeneralProperty {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_GeneralProperty)
 
 %extend StepBasic_GeneralProperty {
 	%pythoncode {
@@ -5812,51 +3918,7 @@ class StepBasic_Group : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Group {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Group(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Group::Handle_StepBasic_Group %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Group;
-class Handle_StepBasic_Group : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Group();
-        Handle_StepBasic_Group(const Handle_StepBasic_Group &aHandle);
-        Handle_StepBasic_Group(const StepBasic_Group *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Group DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Group {
-    StepBasic_Group* _get_reference() {
-    return (StepBasic_Group*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Group {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Group)
 
 %extend StepBasic_Group {
 	%pythoncode {
@@ -5897,51 +3959,7 @@ class StepBasic_GroupAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_GroupAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_GroupAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_GroupAssignment::Handle_StepBasic_GroupAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_GroupAssignment;
-class Handle_StepBasic_GroupAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_GroupAssignment();
-        Handle_StepBasic_GroupAssignment(const Handle_StepBasic_GroupAssignment &aHandle);
-        Handle_StepBasic_GroupAssignment(const StepBasic_GroupAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_GroupAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_GroupAssignment {
-    StepBasic_GroupAssignment* _get_reference() {
-    return (StepBasic_GroupAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_GroupAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_GroupAssignment)
 
 %extend StepBasic_GroupAssignment {
 	%pythoncode {
@@ -6038,51 +4056,7 @@ class StepBasic_GroupRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_GroupRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_GroupRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_GroupRelationship::Handle_StepBasic_GroupRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_GroupRelationship;
-class Handle_StepBasic_GroupRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_GroupRelationship();
-        Handle_StepBasic_GroupRelationship(const Handle_StepBasic_GroupRelationship &aHandle);
-        Handle_StepBasic_GroupRelationship(const StepBasic_GroupRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_GroupRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_GroupRelationship {
-    StepBasic_GroupRelationship* _get_reference() {
-    return (StepBasic_GroupRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_GroupRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_GroupRelationship)
 
 %extend StepBasic_GroupRelationship {
 	%pythoncode {
@@ -6159,51 +4133,7 @@ class StepBasic_HArray1OfApproval : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfApproval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfApproval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfApproval::Handle_StepBasic_HArray1OfApproval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfApproval;
-class Handle_StepBasic_HArray1OfApproval : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfApproval();
-        Handle_StepBasic_HArray1OfApproval(const Handle_StepBasic_HArray1OfApproval &aHandle);
-        Handle_StepBasic_HArray1OfApproval(const StepBasic_HArray1OfApproval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfApproval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfApproval {
-    StepBasic_HArray1OfApproval* _get_reference() {
-    return (StepBasic_HArray1OfApproval*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfApproval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfApproval)
 
 %extend StepBasic_HArray1OfApproval {
 	%pythoncode {
@@ -6280,51 +4210,7 @@ class StepBasic_HArray1OfDerivedUnitElement : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfDerivedUnitElement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfDerivedUnitElement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfDerivedUnitElement::Handle_StepBasic_HArray1OfDerivedUnitElement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfDerivedUnitElement;
-class Handle_StepBasic_HArray1OfDerivedUnitElement : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfDerivedUnitElement();
-        Handle_StepBasic_HArray1OfDerivedUnitElement(const Handle_StepBasic_HArray1OfDerivedUnitElement &aHandle);
-        Handle_StepBasic_HArray1OfDerivedUnitElement(const StepBasic_HArray1OfDerivedUnitElement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfDerivedUnitElement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfDerivedUnitElement {
-    StepBasic_HArray1OfDerivedUnitElement* _get_reference() {
-    return (StepBasic_HArray1OfDerivedUnitElement*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfDerivedUnitElement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfDerivedUnitElement)
 
 %extend StepBasic_HArray1OfDerivedUnitElement {
 	%pythoncode {
@@ -6401,51 +4287,7 @@ class StepBasic_HArray1OfDocument : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfDocument::Handle_StepBasic_HArray1OfDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfDocument;
-class Handle_StepBasic_HArray1OfDocument : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfDocument();
-        Handle_StepBasic_HArray1OfDocument(const Handle_StepBasic_HArray1OfDocument &aHandle);
-        Handle_StepBasic_HArray1OfDocument(const StepBasic_HArray1OfDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfDocument {
-    StepBasic_HArray1OfDocument* _get_reference() {
-    return (StepBasic_HArray1OfDocument*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfDocument)
 
 %extend StepBasic_HArray1OfDocument {
 	%pythoncode {
@@ -6522,51 +4364,7 @@ class StepBasic_HArray1OfNamedUnit : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfNamedUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfNamedUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfNamedUnit::Handle_StepBasic_HArray1OfNamedUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfNamedUnit;
-class Handle_StepBasic_HArray1OfNamedUnit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfNamedUnit();
-        Handle_StepBasic_HArray1OfNamedUnit(const Handle_StepBasic_HArray1OfNamedUnit &aHandle);
-        Handle_StepBasic_HArray1OfNamedUnit(const StepBasic_HArray1OfNamedUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfNamedUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfNamedUnit {
-    StepBasic_HArray1OfNamedUnit* _get_reference() {
-    return (StepBasic_HArray1OfNamedUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfNamedUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfNamedUnit)
 
 %extend StepBasic_HArray1OfNamedUnit {
 	%pythoncode {
@@ -6643,51 +4441,7 @@ class StepBasic_HArray1OfOrganization : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfOrganization {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfOrganization(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfOrganization::Handle_StepBasic_HArray1OfOrganization %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfOrganization;
-class Handle_StepBasic_HArray1OfOrganization : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfOrganization();
-        Handle_StepBasic_HArray1OfOrganization(const Handle_StepBasic_HArray1OfOrganization &aHandle);
-        Handle_StepBasic_HArray1OfOrganization(const StepBasic_HArray1OfOrganization *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfOrganization DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfOrganization {
-    StepBasic_HArray1OfOrganization* _get_reference() {
-    return (StepBasic_HArray1OfOrganization*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfOrganization {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfOrganization)
 
 %extend StepBasic_HArray1OfOrganization {
 	%pythoncode {
@@ -6764,51 +4518,7 @@ class StepBasic_HArray1OfPerson : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfPerson {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfPerson(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfPerson::Handle_StepBasic_HArray1OfPerson %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfPerson;
-class Handle_StepBasic_HArray1OfPerson : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfPerson();
-        Handle_StepBasic_HArray1OfPerson(const Handle_StepBasic_HArray1OfPerson &aHandle);
-        Handle_StepBasic_HArray1OfPerson(const StepBasic_HArray1OfPerson *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfPerson DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfPerson {
-    StepBasic_HArray1OfPerson* _get_reference() {
-    return (StepBasic_HArray1OfPerson*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfPerson {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfPerson)
 
 %extend StepBasic_HArray1OfPerson {
 	%pythoncode {
@@ -6885,51 +4595,7 @@ class StepBasic_HArray1OfProduct : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfProduct {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfProduct(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfProduct::Handle_StepBasic_HArray1OfProduct %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfProduct;
-class Handle_StepBasic_HArray1OfProduct : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfProduct();
-        Handle_StepBasic_HArray1OfProduct(const Handle_StepBasic_HArray1OfProduct &aHandle);
-        Handle_StepBasic_HArray1OfProduct(const StepBasic_HArray1OfProduct *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfProduct DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfProduct {
-    StepBasic_HArray1OfProduct* _get_reference() {
-    return (StepBasic_HArray1OfProduct*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfProduct {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfProduct)
 
 %extend StepBasic_HArray1OfProduct {
 	%pythoncode {
@@ -7006,51 +4672,7 @@ class StepBasic_HArray1OfProductContext : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfProductContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfProductContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfProductContext::Handle_StepBasic_HArray1OfProductContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfProductContext;
-class Handle_StepBasic_HArray1OfProductContext : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfProductContext();
-        Handle_StepBasic_HArray1OfProductContext(const Handle_StepBasic_HArray1OfProductContext &aHandle);
-        Handle_StepBasic_HArray1OfProductContext(const StepBasic_HArray1OfProductContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfProductContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfProductContext {
-    StepBasic_HArray1OfProductContext* _get_reference() {
-    return (StepBasic_HArray1OfProductContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfProductContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfProductContext)
 
 %extend StepBasic_HArray1OfProductContext {
 	%pythoncode {
@@ -7127,51 +4749,7 @@ class StepBasic_HArray1OfProductDefinition : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfProductDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfProductDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfProductDefinition::Handle_StepBasic_HArray1OfProductDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfProductDefinition;
-class Handle_StepBasic_HArray1OfProductDefinition : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfProductDefinition();
-        Handle_StepBasic_HArray1OfProductDefinition(const Handle_StepBasic_HArray1OfProductDefinition &aHandle);
-        Handle_StepBasic_HArray1OfProductDefinition(const StepBasic_HArray1OfProductDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfProductDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfProductDefinition {
-    StepBasic_HArray1OfProductDefinition* _get_reference() {
-    return (StepBasic_HArray1OfProductDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfProductDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfProductDefinition)
 
 %extend StepBasic_HArray1OfProductDefinition {
 	%pythoncode {
@@ -7248,51 +4826,7 @@ class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public MMgt_TShared {
 };
 
 
-%extend StepBasic_HArray1OfUncertaintyMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit::Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit;
-class Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit();
-        Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit &aHandle);
-        Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit(const StepBasic_HArray1OfUncertaintyMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit {
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit* _get_reference() {
-    return (StepBasic_HArray1OfUncertaintyMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 
 %extend StepBasic_HArray1OfUncertaintyMeasureWithUnit {
 	%pythoncode {
@@ -7349,51 +4883,7 @@ class StepBasic_IdentificationAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_IdentificationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_IdentificationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_IdentificationAssignment::Handle_StepBasic_IdentificationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_IdentificationAssignment;
-class Handle_StepBasic_IdentificationAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_IdentificationAssignment();
-        Handle_StepBasic_IdentificationAssignment(const Handle_StepBasic_IdentificationAssignment &aHandle);
-        Handle_StepBasic_IdentificationAssignment(const StepBasic_IdentificationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_IdentificationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_IdentificationAssignment {
-    StepBasic_IdentificationAssignment* _get_reference() {
-    return (StepBasic_IdentificationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_IdentificationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_IdentificationAssignment)
 
 %extend StepBasic_IdentificationAssignment {
 	%pythoncode {
@@ -7458,51 +4948,7 @@ class StepBasic_IdentificationRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_IdentificationRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_IdentificationRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_IdentificationRole::Handle_StepBasic_IdentificationRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_IdentificationRole;
-class Handle_StepBasic_IdentificationRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_IdentificationRole();
-        Handle_StepBasic_IdentificationRole(const Handle_StepBasic_IdentificationRole &aHandle);
-        Handle_StepBasic_IdentificationRole(const StepBasic_IdentificationRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_IdentificationRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_IdentificationRole {
-    StepBasic_IdentificationRole* _get_reference() {
-    return (StepBasic_IdentificationRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_IdentificationRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_IdentificationRole)
 
 %extend StepBasic_IdentificationRole {
 	%pythoncode {
@@ -7593,51 +5039,7 @@ class StepBasic_LocalTime : public MMgt_TShared {
 };
 
 
-%extend StepBasic_LocalTime {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_LocalTime(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_LocalTime::Handle_StepBasic_LocalTime %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_LocalTime;
-class Handle_StepBasic_LocalTime : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_LocalTime();
-        Handle_StepBasic_LocalTime(const Handle_StepBasic_LocalTime &aHandle);
-        Handle_StepBasic_LocalTime(const StepBasic_LocalTime *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_LocalTime DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_LocalTime {
-    StepBasic_LocalTime* _get_reference() {
-    return (StepBasic_LocalTime*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_LocalTime {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_LocalTime)
 
 %extend StepBasic_LocalTime {
 	%pythoncode {
@@ -7668,51 +5070,7 @@ class StepBasic_MeasureValueMember : public StepData_SelectReal {
 };
 
 
-%extend StepBasic_MeasureValueMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_MeasureValueMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_MeasureValueMember::Handle_StepBasic_MeasureValueMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_MeasureValueMember;
-class Handle_StepBasic_MeasureValueMember : public Handle_StepData_SelectReal {
-
-    public:
-        // constructors
-        Handle_StepBasic_MeasureValueMember();
-        Handle_StepBasic_MeasureValueMember(const Handle_StepBasic_MeasureValueMember &aHandle);
-        Handle_StepBasic_MeasureValueMember(const StepBasic_MeasureValueMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_MeasureValueMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_MeasureValueMember {
-    StepBasic_MeasureValueMember* _get_reference() {
-    return (StepBasic_MeasureValueMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_MeasureValueMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_MeasureValueMember)
 
 %extend StepBasic_MeasureValueMember {
 	%pythoncode {
@@ -7769,51 +5127,7 @@ class StepBasic_MeasureWithUnit : public MMgt_TShared {
 };
 
 
-%extend StepBasic_MeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_MeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_MeasureWithUnit::Handle_StepBasic_MeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_MeasureWithUnit;
-class Handle_StepBasic_MeasureWithUnit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_MeasureWithUnit();
-        Handle_StepBasic_MeasureWithUnit(const Handle_StepBasic_MeasureWithUnit &aHandle);
-        Handle_StepBasic_MeasureWithUnit(const StepBasic_MeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_MeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_MeasureWithUnit {
-    StepBasic_MeasureWithUnit* _get_reference() {
-    return (StepBasic_MeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_MeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_MeasureWithUnit)
 
 %extend StepBasic_MeasureWithUnit {
 	%pythoncode {
@@ -7854,51 +5168,7 @@ class StepBasic_NameAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_NameAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_NameAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_NameAssignment::Handle_StepBasic_NameAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_NameAssignment;
-class Handle_StepBasic_NameAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_NameAssignment();
-        Handle_StepBasic_NameAssignment(const Handle_StepBasic_NameAssignment &aHandle);
-        Handle_StepBasic_NameAssignment(const StepBasic_NameAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_NameAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_NameAssignment {
-    StepBasic_NameAssignment* _get_reference() {
-    return (StepBasic_NameAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_NameAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_NameAssignment)
 
 %extend StepBasic_NameAssignment {
 	%pythoncode {
@@ -7933,51 +5203,7 @@ class StepBasic_NamedUnit : public MMgt_TShared {
 };
 
 
-%extend StepBasic_NamedUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_NamedUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_NamedUnit::Handle_StepBasic_NamedUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_NamedUnit;
-class Handle_StepBasic_NamedUnit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_NamedUnit();
-        Handle_StepBasic_NamedUnit(const Handle_StepBasic_NamedUnit &aHandle);
-        Handle_StepBasic_NamedUnit(const StepBasic_NamedUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_NamedUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_NamedUnit {
-    StepBasic_NamedUnit* _get_reference() {
-    return (StepBasic_NamedUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_NamedUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_NamedUnit)
 
 %extend StepBasic_NamedUnit {
 	%pythoncode {
@@ -8042,51 +5268,7 @@ class StepBasic_ObjectRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ObjectRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ObjectRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ObjectRole::Handle_StepBasic_ObjectRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ObjectRole;
-class Handle_StepBasic_ObjectRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ObjectRole();
-        Handle_StepBasic_ObjectRole(const Handle_StepBasic_ObjectRole &aHandle);
-        Handle_StepBasic_ObjectRole(const StepBasic_ObjectRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ObjectRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ObjectRole {
-    StepBasic_ObjectRole* _get_reference() {
-    return (StepBasic_ObjectRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ObjectRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ObjectRole)
 
 %extend StepBasic_ObjectRole {
 	%pythoncode {
@@ -8155,51 +5337,7 @@ class StepBasic_Organization : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Organization {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Organization(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Organization::Handle_StepBasic_Organization %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Organization;
-class Handle_StepBasic_Organization : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Organization();
-        Handle_StepBasic_Organization(const Handle_StepBasic_Organization &aHandle);
-        Handle_StepBasic_Organization(const StepBasic_Organization *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Organization DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Organization {
-    StepBasic_Organization* _get_reference() {
-    return (StepBasic_Organization*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Organization {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Organization)
 
 %extend StepBasic_Organization {
 	%pythoncode {
@@ -8240,51 +5378,7 @@ class StepBasic_OrganizationAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_OrganizationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_OrganizationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_OrganizationAssignment::Handle_StepBasic_OrganizationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_OrganizationAssignment;
-class Handle_StepBasic_OrganizationAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_OrganizationAssignment();
-        Handle_StepBasic_OrganizationAssignment(const Handle_StepBasic_OrganizationAssignment &aHandle);
-        Handle_StepBasic_OrganizationAssignment(const StepBasic_OrganizationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_OrganizationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_OrganizationAssignment {
-    StepBasic_OrganizationAssignment* _get_reference() {
-    return (StepBasic_OrganizationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_OrganizationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_OrganizationAssignment)
 
 %extend StepBasic_OrganizationAssignment {
 	%pythoncode {
@@ -8319,51 +5413,7 @@ class StepBasic_OrganizationRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_OrganizationRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_OrganizationRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_OrganizationRole::Handle_StepBasic_OrganizationRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_OrganizationRole;
-class Handle_StepBasic_OrganizationRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_OrganizationRole();
-        Handle_StepBasic_OrganizationRole(const Handle_StepBasic_OrganizationRole &aHandle);
-        Handle_StepBasic_OrganizationRole(const StepBasic_OrganizationRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_OrganizationRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_OrganizationRole {
-    StepBasic_OrganizationRole* _get_reference() {
-    return (StepBasic_OrganizationRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_OrganizationRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_OrganizationRole)
 
 %extend StepBasic_OrganizationRole {
 	%pythoncode {
@@ -8538,51 +5588,7 @@ class StepBasic_Person : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Person {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Person(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Person::Handle_StepBasic_Person %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Person;
-class Handle_StepBasic_Person : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Person();
-        Handle_StepBasic_Person(const Handle_StepBasic_Person &aHandle);
-        Handle_StepBasic_Person(const StepBasic_Person *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Person DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Person {
-    StepBasic_Person* _get_reference() {
-    return (StepBasic_Person*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Person {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Person)
 
 %extend StepBasic_Person {
 	%pythoncode {
@@ -8629,51 +5635,7 @@ class StepBasic_PersonAndOrganization : public MMgt_TShared {
 };
 
 
-%extend StepBasic_PersonAndOrganization {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PersonAndOrganization(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PersonAndOrganization::Handle_StepBasic_PersonAndOrganization %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PersonAndOrganization;
-class Handle_StepBasic_PersonAndOrganization : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_PersonAndOrganization();
-        Handle_StepBasic_PersonAndOrganization(const Handle_StepBasic_PersonAndOrganization &aHandle);
-        Handle_StepBasic_PersonAndOrganization(const StepBasic_PersonAndOrganization *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PersonAndOrganization DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PersonAndOrganization {
-    StepBasic_PersonAndOrganization* _get_reference() {
-    return (StepBasic_PersonAndOrganization*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PersonAndOrganization {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PersonAndOrganization)
 
 %extend StepBasic_PersonAndOrganization {
 	%pythoncode {
@@ -8714,51 +5676,7 @@ class StepBasic_PersonAndOrganizationAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_PersonAndOrganizationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PersonAndOrganizationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PersonAndOrganizationAssignment::Handle_StepBasic_PersonAndOrganizationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PersonAndOrganizationAssignment;
-class Handle_StepBasic_PersonAndOrganizationAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_PersonAndOrganizationAssignment();
-        Handle_StepBasic_PersonAndOrganizationAssignment(const Handle_StepBasic_PersonAndOrganizationAssignment &aHandle);
-        Handle_StepBasic_PersonAndOrganizationAssignment(const StepBasic_PersonAndOrganizationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PersonAndOrganizationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PersonAndOrganizationAssignment {
-    StepBasic_PersonAndOrganizationAssignment* _get_reference() {
-    return (StepBasic_PersonAndOrganizationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PersonAndOrganizationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PersonAndOrganizationAssignment)
 
 %extend StepBasic_PersonAndOrganizationAssignment {
 	%pythoncode {
@@ -8793,51 +5711,7 @@ class StepBasic_PersonAndOrganizationRole : public MMgt_TShared {
 };
 
 
-%extend StepBasic_PersonAndOrganizationRole {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PersonAndOrganizationRole(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PersonAndOrganizationRole::Handle_StepBasic_PersonAndOrganizationRole %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PersonAndOrganizationRole;
-class Handle_StepBasic_PersonAndOrganizationRole : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_PersonAndOrganizationRole();
-        Handle_StepBasic_PersonAndOrganizationRole(const Handle_StepBasic_PersonAndOrganizationRole &aHandle);
-        Handle_StepBasic_PersonAndOrganizationRole(const StepBasic_PersonAndOrganizationRole *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PersonAndOrganizationRole DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PersonAndOrganizationRole {
-    StepBasic_PersonAndOrganizationRole* _get_reference() {
-    return (StepBasic_PersonAndOrganizationRole*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PersonAndOrganizationRole {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PersonAndOrganizationRole)
 
 %extend StepBasic_PersonAndOrganizationRole {
 	%pythoncode {
@@ -8961,51 +5835,7 @@ class StepBasic_Product : public MMgt_TShared {
 };
 
 
-%extend StepBasic_Product {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_Product(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_Product::Handle_StepBasic_Product %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_Product;
-class Handle_StepBasic_Product : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_Product();
-        Handle_StepBasic_Product(const Handle_StepBasic_Product &aHandle);
-        Handle_StepBasic_Product(const StepBasic_Product *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_Product DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_Product {
-    StepBasic_Product* _get_reference() {
-    return (StepBasic_Product*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_Product {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_Product)
 
 %extend StepBasic_Product {
 	%pythoncode {
@@ -9062,51 +5892,7 @@ class StepBasic_ProductCategory : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductCategory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductCategory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductCategory::Handle_StepBasic_ProductCategory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductCategory;
-class Handle_StepBasic_ProductCategory : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductCategory();
-        Handle_StepBasic_ProductCategory(const Handle_StepBasic_ProductCategory &aHandle);
-        Handle_StepBasic_ProductCategory(const StepBasic_ProductCategory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductCategory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductCategory {
-    StepBasic_ProductCategory* _get_reference() {
-    return (StepBasic_ProductCategory*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductCategory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductCategory)
 
 %extend StepBasic_ProductCategory {
 	%pythoncode {
@@ -9203,51 +5989,7 @@ class StepBasic_ProductCategoryRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductCategoryRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductCategoryRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductCategoryRelationship::Handle_StepBasic_ProductCategoryRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductCategoryRelationship;
-class Handle_StepBasic_ProductCategoryRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductCategoryRelationship();
-        Handle_StepBasic_ProductCategoryRelationship(const Handle_StepBasic_ProductCategoryRelationship &aHandle);
-        Handle_StepBasic_ProductCategoryRelationship(const StepBasic_ProductCategoryRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductCategoryRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductCategoryRelationship {
-    StepBasic_ProductCategoryRelationship* _get_reference() {
-    return (StepBasic_ProductCategoryRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductCategoryRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductCategoryRelationship)
 
 %extend StepBasic_ProductCategoryRelationship {
 	%pythoncode {
@@ -9318,51 +6060,7 @@ class StepBasic_ProductDefinition : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinition::Handle_StepBasic_ProductDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinition;
-class Handle_StepBasic_ProductDefinition : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinition();
-        Handle_StepBasic_ProductDefinition(const Handle_StepBasic_ProductDefinition &aHandle);
-        Handle_StepBasic_ProductDefinition(const StepBasic_ProductDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinition {
-    StepBasic_ProductDefinition* _get_reference() {
-    return (StepBasic_ProductDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinition)
 
 %extend StepBasic_ProductDefinition {
 	%pythoncode {
@@ -9421,51 +6119,7 @@ class StepBasic_ProductDefinitionFormation : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductDefinitionFormation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionFormation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionFormation::Handle_StepBasic_ProductDefinitionFormation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionFormation;
-class Handle_StepBasic_ProductDefinitionFormation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionFormation();
-        Handle_StepBasic_ProductDefinitionFormation(const Handle_StepBasic_ProductDefinitionFormation &aHandle);
-        Handle_StepBasic_ProductDefinitionFormation(const StepBasic_ProductDefinitionFormation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionFormation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionFormation {
-    StepBasic_ProductDefinitionFormation* _get_reference() {
-    return (StepBasic_ProductDefinitionFormation*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionFormation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionFormation)
 
 %extend StepBasic_ProductDefinitionFormation {
 	%pythoncode {
@@ -9570,51 +6224,7 @@ class StepBasic_ProductDefinitionFormationRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductDefinitionFormationRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionFormationRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionFormationRelationship::Handle_StepBasic_ProductDefinitionFormationRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionFormationRelationship;
-class Handle_StepBasic_ProductDefinitionFormationRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionFormationRelationship();
-        Handle_StepBasic_ProductDefinitionFormationRelationship(const Handle_StepBasic_ProductDefinitionFormationRelationship &aHandle);
-        Handle_StepBasic_ProductDefinitionFormationRelationship(const StepBasic_ProductDefinitionFormationRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionFormationRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionFormationRelationship {
-    StepBasic_ProductDefinitionFormationRelationship* _get_reference() {
-    return (StepBasic_ProductDefinitionFormationRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionFormationRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionFormationRelationship)
 
 %extend StepBasic_ProductDefinitionFormationRelationship {
 	%pythoncode {
@@ -9727,51 +6337,7 @@ class StepBasic_ProductDefinitionRelationship : public MMgt_TShared {
 };
 
 
-%extend StepBasic_ProductDefinitionRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionRelationship::Handle_StepBasic_ProductDefinitionRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionRelationship;
-class Handle_StepBasic_ProductDefinitionRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionRelationship();
-        Handle_StepBasic_ProductDefinitionRelationship(const Handle_StepBasic_ProductDefinitionRelationship &aHandle);
-        Handle_StepBasic_ProductDefinitionRelationship(const StepBasic_ProductDefinitionRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionRelationship {
-    StepBasic_ProductDefinitionRelationship* _get_reference() {
-    return (StepBasic_ProductDefinitionRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionRelationship)
 
 %extend StepBasic_ProductDefinitionRelationship {
 	%pythoncode {
@@ -9871,51 +6437,7 @@ class StepBasic_RoleAssociation : public MMgt_TShared {
 };
 
 
-%extend StepBasic_RoleAssociation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_RoleAssociation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_RoleAssociation::Handle_StepBasic_RoleAssociation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_RoleAssociation;
-class Handle_StepBasic_RoleAssociation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_RoleAssociation();
-        Handle_StepBasic_RoleAssociation(const Handle_StepBasic_RoleAssociation &aHandle);
-        Handle_StepBasic_RoleAssociation(const StepBasic_RoleAssociation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_RoleAssociation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_RoleAssociation {
-    StepBasic_RoleAssociation* _get_reference() {
-    return (StepBasic_RoleAssociation*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_RoleAssociation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_RoleAssociation)
 
 %extend StepBasic_RoleAssociation {
 	%pythoncode {
@@ -10065,51 +6587,7 @@ class StepBasic_SecurityClassification : public MMgt_TShared {
 };
 
 
-%extend StepBasic_SecurityClassification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SecurityClassification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SecurityClassification::Handle_StepBasic_SecurityClassification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SecurityClassification;
-class Handle_StepBasic_SecurityClassification : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_SecurityClassification();
-        Handle_StepBasic_SecurityClassification(const Handle_StepBasic_SecurityClassification &aHandle);
-        Handle_StepBasic_SecurityClassification(const StepBasic_SecurityClassification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SecurityClassification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SecurityClassification {
-    StepBasic_SecurityClassification* _get_reference() {
-    return (StepBasic_SecurityClassification*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SecurityClassification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SecurityClassification)
 
 %extend StepBasic_SecurityClassification {
 	%pythoncode {
@@ -10138,51 +6616,7 @@ class StepBasic_SecurityClassificationAssignment : public MMgt_TShared {
 };
 
 
-%extend StepBasic_SecurityClassificationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SecurityClassificationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SecurityClassificationAssignment::Handle_StepBasic_SecurityClassificationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SecurityClassificationAssignment;
-class Handle_StepBasic_SecurityClassificationAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_SecurityClassificationAssignment();
-        Handle_StepBasic_SecurityClassificationAssignment(const Handle_StepBasic_SecurityClassificationAssignment &aHandle);
-        Handle_StepBasic_SecurityClassificationAssignment(const StepBasic_SecurityClassificationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SecurityClassificationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SecurityClassificationAssignment {
-    StepBasic_SecurityClassificationAssignment* _get_reference() {
-    return (StepBasic_SecurityClassificationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SecurityClassificationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SecurityClassificationAssignment)
 
 %extend StepBasic_SecurityClassificationAssignment {
 	%pythoncode {
@@ -10217,51 +6651,7 @@ class StepBasic_SecurityClassificationLevel : public MMgt_TShared {
 };
 
 
-%extend StepBasic_SecurityClassificationLevel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SecurityClassificationLevel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SecurityClassificationLevel::Handle_StepBasic_SecurityClassificationLevel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SecurityClassificationLevel;
-class Handle_StepBasic_SecurityClassificationLevel : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_SecurityClassificationLevel();
-        Handle_StepBasic_SecurityClassificationLevel(const Handle_StepBasic_SecurityClassificationLevel &aHandle);
-        Handle_StepBasic_SecurityClassificationLevel(const StepBasic_SecurityClassificationLevel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SecurityClassificationLevel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SecurityClassificationLevel {
-    StepBasic_SecurityClassificationLevel* _get_reference() {
-    return (StepBasic_SecurityClassificationLevel*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SecurityClassificationLevel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SecurityClassificationLevel)
 
 %extend StepBasic_SecurityClassificationLevel {
 	%pythoncode {
@@ -10292,51 +6682,7 @@ class StepBasic_SizeMember : public StepData_SelectReal {
 };
 
 
-%extend StepBasic_SizeMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SizeMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SizeMember::Handle_StepBasic_SizeMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SizeMember;
-class Handle_StepBasic_SizeMember : public Handle_StepData_SelectReal {
-
-    public:
-        // constructors
-        Handle_StepBasic_SizeMember();
-        Handle_StepBasic_SizeMember(const Handle_StepBasic_SizeMember &aHandle);
-        Handle_StepBasic_SizeMember(const StepBasic_SizeMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SizeMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SizeMember {
-    StepBasic_SizeMember* _get_reference() {
-    return (StepBasic_SizeMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SizeMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SizeMember)
 
 %extend StepBasic_SizeMember {
 	%pythoncode {
@@ -10556,51 +6902,7 @@ class StepBasic_VersionedActionRequest : public MMgt_TShared {
 };
 
 
-%extend StepBasic_VersionedActionRequest {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_VersionedActionRequest(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_VersionedActionRequest::Handle_StepBasic_VersionedActionRequest %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_VersionedActionRequest;
-class Handle_StepBasic_VersionedActionRequest : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepBasic_VersionedActionRequest();
-        Handle_StepBasic_VersionedActionRequest(const Handle_StepBasic_VersionedActionRequest &aHandle);
-        Handle_StepBasic_VersionedActionRequest(const StepBasic_VersionedActionRequest *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_VersionedActionRequest DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_VersionedActionRequest {
-    StepBasic_VersionedActionRequest* _get_reference() {
-    return (StepBasic_VersionedActionRequest*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_VersionedActionRequest {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_VersionedActionRequest)
 
 %extend StepBasic_VersionedActionRequest {
 	%pythoncode {
@@ -10617,51 +6919,7 @@ class StepBasic_AreaUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_AreaUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_AreaUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_AreaUnit::Handle_StepBasic_AreaUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_AreaUnit;
-class Handle_StepBasic_AreaUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_AreaUnit();
-        Handle_StepBasic_AreaUnit(const Handle_StepBasic_AreaUnit &aHandle);
-        Handle_StepBasic_AreaUnit(const StepBasic_AreaUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_AreaUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_AreaUnit {
-    StepBasic_AreaUnit* _get_reference() {
-    return (StepBasic_AreaUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_AreaUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_AreaUnit)
 
 %extend StepBasic_AreaUnit {
 	%pythoncode {
@@ -10716,51 +6974,7 @@ class StepBasic_CalendarDate : public StepBasic_Date {
 };
 
 
-%extend StepBasic_CalendarDate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_CalendarDate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_CalendarDate::Handle_StepBasic_CalendarDate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_CalendarDate;
-class Handle_StepBasic_CalendarDate : public Handle_StepBasic_Date {
-
-    public:
-        // constructors
-        Handle_StepBasic_CalendarDate();
-        Handle_StepBasic_CalendarDate(const Handle_StepBasic_CalendarDate &aHandle);
-        Handle_StepBasic_CalendarDate(const StepBasic_CalendarDate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_CalendarDate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_CalendarDate {
-    StepBasic_CalendarDate* _get_reference() {
-    return (StepBasic_CalendarDate*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_CalendarDate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_CalendarDate)
 
 %extend StepBasic_CalendarDate {
 	%pythoncode {
@@ -10815,51 +7029,7 @@ class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_ConversionBasedUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnit::Handle_StepBasic_ConversionBasedUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnit;
-class Handle_StepBasic_ConversionBasedUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnit();
-        Handle_StepBasic_ConversionBasedUnit(const Handle_StepBasic_ConversionBasedUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnit(const StepBasic_ConversionBasedUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnit {
-    StepBasic_ConversionBasedUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnit)
 
 %extend StepBasic_ConversionBasedUnit {
 	%pythoncode {
@@ -10876,51 +7046,7 @@ class StepBasic_DigitalDocument : public StepBasic_Document {
 };
 
 
-%extend StepBasic_DigitalDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DigitalDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DigitalDocument::Handle_StepBasic_DigitalDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DigitalDocument;
-class Handle_StepBasic_DigitalDocument : public Handle_StepBasic_Document {
-
-    public:
-        // constructors
-        Handle_StepBasic_DigitalDocument();
-        Handle_StepBasic_DigitalDocument(const Handle_StepBasic_DigitalDocument &aHandle);
-        Handle_StepBasic_DigitalDocument(const StepBasic_DigitalDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DigitalDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DigitalDocument {
-    StepBasic_DigitalDocument* _get_reference() {
-    return (StepBasic_DigitalDocument*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DigitalDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DigitalDocument)
 
 %extend StepBasic_DigitalDocument {
 	%pythoncode {
@@ -10975,51 +7101,7 @@ class StepBasic_DocumentFile : public StepBasic_Document {
 };
 
 
-%extend StepBasic_DocumentFile {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentFile(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentFile::Handle_StepBasic_DocumentFile %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentFile;
-class Handle_StepBasic_DocumentFile : public Handle_StepBasic_Document {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentFile();
-        Handle_StepBasic_DocumentFile(const Handle_StepBasic_DocumentFile &aHandle);
-        Handle_StepBasic_DocumentFile(const StepBasic_DocumentFile *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentFile DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentFile {
-    StepBasic_DocumentFile* _get_reference() {
-    return (StepBasic_DocumentFile*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentFile {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentFile)
 
 %extend StepBasic_DocumentFile {
 	%pythoncode {
@@ -11038,51 +7120,7 @@ class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAss
 };
 
 
-%extend StepBasic_DocumentProductEquivalence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DocumentProductEquivalence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DocumentProductEquivalence::Handle_StepBasic_DocumentProductEquivalence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DocumentProductEquivalence;
-class Handle_StepBasic_DocumentProductEquivalence : public Handle_StepBasic_DocumentProductAssociation {
-
-    public:
-        // constructors
-        Handle_StepBasic_DocumentProductEquivalence();
-        Handle_StepBasic_DocumentProductEquivalence(const Handle_StepBasic_DocumentProductEquivalence &aHandle);
-        Handle_StepBasic_DocumentProductEquivalence(const StepBasic_DocumentProductEquivalence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DocumentProductEquivalence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DocumentProductEquivalence {
-    StepBasic_DocumentProductEquivalence* _get_reference() {
-    return (StepBasic_DocumentProductEquivalence*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DocumentProductEquivalence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DocumentProductEquivalence)
 
 %extend StepBasic_DocumentProductEquivalence {
 	%pythoncode {
@@ -11127,51 +7165,7 @@ class StepBasic_ExternalIdentificationAssignment : public StepBasic_Identificati
 };
 
 
-%extend StepBasic_ExternalIdentificationAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ExternalIdentificationAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ExternalIdentificationAssignment::Handle_StepBasic_ExternalIdentificationAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ExternalIdentificationAssignment;
-class Handle_StepBasic_ExternalIdentificationAssignment : public Handle_StepBasic_IdentificationAssignment {
-
-    public:
-        // constructors
-        Handle_StepBasic_ExternalIdentificationAssignment();
-        Handle_StepBasic_ExternalIdentificationAssignment(const Handle_StepBasic_ExternalIdentificationAssignment &aHandle);
-        Handle_StepBasic_ExternalIdentificationAssignment(const StepBasic_ExternalIdentificationAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ExternalIdentificationAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ExternalIdentificationAssignment {
-    StepBasic_ExternalIdentificationAssignment* _get_reference() {
-    return (StepBasic_ExternalIdentificationAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ExternalIdentificationAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ExternalIdentificationAssignment)
 
 %extend StepBasic_ExternalIdentificationAssignment {
 	%pythoncode {
@@ -11190,51 +7184,7 @@ class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_LengthMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_LengthMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_LengthMeasureWithUnit::Handle_StepBasic_LengthMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_LengthMeasureWithUnit;
-class Handle_StepBasic_LengthMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_LengthMeasureWithUnit();
-        Handle_StepBasic_LengthMeasureWithUnit(const Handle_StepBasic_LengthMeasureWithUnit &aHandle);
-        Handle_StepBasic_LengthMeasureWithUnit(const StepBasic_LengthMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_LengthMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_LengthMeasureWithUnit {
-    StepBasic_LengthMeasureWithUnit* _get_reference() {
-    return (StepBasic_LengthMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_LengthMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_LengthMeasureWithUnit)
 
 %extend StepBasic_LengthMeasureWithUnit {
 	%pythoncode {
@@ -11253,51 +7203,7 @@ class StepBasic_LengthUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_LengthUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_LengthUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_LengthUnit::Handle_StepBasic_LengthUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_LengthUnit;
-class Handle_StepBasic_LengthUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_LengthUnit();
-        Handle_StepBasic_LengthUnit(const Handle_StepBasic_LengthUnit &aHandle);
-        Handle_StepBasic_LengthUnit(const StepBasic_LengthUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_LengthUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_LengthUnit {
-    StepBasic_LengthUnit* _get_reference() {
-    return (StepBasic_LengthUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_LengthUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_LengthUnit)
 
 %extend StepBasic_LengthUnit {
 	%pythoncode {
@@ -11316,51 +7222,7 @@ class StepBasic_MassMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_MassMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_MassMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_MassMeasureWithUnit::Handle_StepBasic_MassMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_MassMeasureWithUnit;
-class Handle_StepBasic_MassMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_MassMeasureWithUnit();
-        Handle_StepBasic_MassMeasureWithUnit(const Handle_StepBasic_MassMeasureWithUnit &aHandle);
-        Handle_StepBasic_MassMeasureWithUnit(const StepBasic_MassMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_MassMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_MassMeasureWithUnit {
-    StepBasic_MassMeasureWithUnit* _get_reference() {
-    return (StepBasic_MassMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_MassMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_MassMeasureWithUnit)
 
 %extend StepBasic_MassMeasureWithUnit {
 	%pythoncode {
@@ -11379,51 +7241,7 @@ class StepBasic_MassUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_MassUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_MassUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_MassUnit::Handle_StepBasic_MassUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_MassUnit;
-class Handle_StepBasic_MassUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_MassUnit();
-        Handle_StepBasic_MassUnit(const Handle_StepBasic_MassUnit &aHandle);
-        Handle_StepBasic_MassUnit(const StepBasic_MassUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_MassUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_MassUnit {
-    StepBasic_MassUnit* _get_reference() {
-    return (StepBasic_MassUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_MassUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_MassUnit)
 
 %extend StepBasic_MassUnit {
 	%pythoncode {
@@ -11466,51 +7284,7 @@ class StepBasic_OrdinalDate : public StepBasic_Date {
 };
 
 
-%extend StepBasic_OrdinalDate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_OrdinalDate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_OrdinalDate::Handle_StepBasic_OrdinalDate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_OrdinalDate;
-class Handle_StepBasic_OrdinalDate : public Handle_StepBasic_Date {
-
-    public:
-        // constructors
-        Handle_StepBasic_OrdinalDate();
-        Handle_StepBasic_OrdinalDate(const Handle_StepBasic_OrdinalDate &aHandle);
-        Handle_StepBasic_OrdinalDate(const StepBasic_OrdinalDate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_OrdinalDate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_OrdinalDate {
-    StepBasic_OrdinalDate* _get_reference() {
-    return (StepBasic_OrdinalDate*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_OrdinalDate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_OrdinalDate)
 
 %extend StepBasic_OrdinalDate {
 	%pythoncode {
@@ -11667,51 +7441,7 @@ class StepBasic_OrganizationalAddress : public StepBasic_Address {
 };
 
 
-%extend StepBasic_OrganizationalAddress {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_OrganizationalAddress(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_OrganizationalAddress::Handle_StepBasic_OrganizationalAddress %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_OrganizationalAddress;
-class Handle_StepBasic_OrganizationalAddress : public Handle_StepBasic_Address {
-
-    public:
-        // constructors
-        Handle_StepBasic_OrganizationalAddress();
-        Handle_StepBasic_OrganizationalAddress(const Handle_StepBasic_OrganizationalAddress &aHandle);
-        Handle_StepBasic_OrganizationalAddress(const StepBasic_OrganizationalAddress *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_OrganizationalAddress DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_OrganizationalAddress {
-    StepBasic_OrganizationalAddress* _get_reference() {
-    return (StepBasic_OrganizationalAddress*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_OrganizationalAddress {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_OrganizationalAddress)
 
 %extend StepBasic_OrganizationalAddress {
 	%pythoncode {
@@ -11868,51 +7598,7 @@ class StepBasic_PersonalAddress : public StepBasic_Address {
 };
 
 
-%extend StepBasic_PersonalAddress {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PersonalAddress(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PersonalAddress::Handle_StepBasic_PersonalAddress %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PersonalAddress;
-class Handle_StepBasic_PersonalAddress : public Handle_StepBasic_Address {
-
-    public:
-        // constructors
-        Handle_StepBasic_PersonalAddress();
-        Handle_StepBasic_PersonalAddress(const Handle_StepBasic_PersonalAddress &aHandle);
-        Handle_StepBasic_PersonalAddress(const StepBasic_PersonalAddress *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PersonalAddress DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PersonalAddress {
-    StepBasic_PersonalAddress* _get_reference() {
-    return (StepBasic_PersonalAddress*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PersonalAddress {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PersonalAddress)
 
 %extend StepBasic_PersonalAddress {
 	%pythoncode {
@@ -11929,51 +7615,7 @@ class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDef
 };
 
 
-%extend StepBasic_PhysicallyModeledProductDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PhysicallyModeledProductDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PhysicallyModeledProductDefinition::Handle_StepBasic_PhysicallyModeledProductDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PhysicallyModeledProductDefinition;
-class Handle_StepBasic_PhysicallyModeledProductDefinition : public Handle_StepBasic_ProductDefinition {
-
-    public:
-        // constructors
-        Handle_StepBasic_PhysicallyModeledProductDefinition();
-        Handle_StepBasic_PhysicallyModeledProductDefinition(const Handle_StepBasic_PhysicallyModeledProductDefinition &aHandle);
-        Handle_StepBasic_PhysicallyModeledProductDefinition(const StepBasic_PhysicallyModeledProductDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PhysicallyModeledProductDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PhysicallyModeledProductDefinition {
-    StepBasic_PhysicallyModeledProductDefinition* _get_reference() {
-    return (StepBasic_PhysicallyModeledProductDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PhysicallyModeledProductDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PhysicallyModeledProductDefinition)
 
 %extend StepBasic_PhysicallyModeledProductDefinition {
 	%pythoncode {
@@ -11992,51 +7634,7 @@ class StepBasic_PlaneAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_PlaneAngleMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PlaneAngleMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PlaneAngleMeasureWithUnit::Handle_StepBasic_PlaneAngleMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PlaneAngleMeasureWithUnit;
-class Handle_StepBasic_PlaneAngleMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_PlaneAngleMeasureWithUnit();
-        Handle_StepBasic_PlaneAngleMeasureWithUnit(const Handle_StepBasic_PlaneAngleMeasureWithUnit &aHandle);
-        Handle_StepBasic_PlaneAngleMeasureWithUnit(const StepBasic_PlaneAngleMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PlaneAngleMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PlaneAngleMeasureWithUnit {
-    StepBasic_PlaneAngleMeasureWithUnit* _get_reference() {
-    return (StepBasic_PlaneAngleMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PlaneAngleMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PlaneAngleMeasureWithUnit)
 
 %extend StepBasic_PlaneAngleMeasureWithUnit {
 	%pythoncode {
@@ -12055,51 +7653,7 @@ class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_PlaneAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_PlaneAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_PlaneAngleUnit::Handle_StepBasic_PlaneAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_PlaneAngleUnit;
-class Handle_StepBasic_PlaneAngleUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_PlaneAngleUnit();
-        Handle_StepBasic_PlaneAngleUnit(const Handle_StepBasic_PlaneAngleUnit &aHandle);
-        Handle_StepBasic_PlaneAngleUnit(const StepBasic_PlaneAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_PlaneAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_PlaneAngleUnit {
-    StepBasic_PlaneAngleUnit* _get_reference() {
-    return (StepBasic_PlaneAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_PlaneAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_PlaneAngleUnit)
 
 %extend StepBasic_PlaneAngleUnit {
 	%pythoncode {
@@ -12144,51 +7698,7 @@ class StepBasic_ProductConceptContext : public StepBasic_ApplicationContextEleme
 };
 
 
-%extend StepBasic_ProductConceptContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductConceptContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductConceptContext::Handle_StepBasic_ProductConceptContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductConceptContext;
-class Handle_StepBasic_ProductConceptContext : public Handle_StepBasic_ApplicationContextElement {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductConceptContext();
-        Handle_StepBasic_ProductConceptContext(const Handle_StepBasic_ProductConceptContext &aHandle);
-        Handle_StepBasic_ProductConceptContext(const StepBasic_ProductConceptContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductConceptContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductConceptContext {
-    StepBasic_ProductConceptContext* _get_reference() {
-    return (StepBasic_ProductConceptContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductConceptContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductConceptContext)
 
 %extend StepBasic_ProductConceptContext {
 	%pythoncode {
@@ -12235,51 +7745,7 @@ class StepBasic_ProductContext : public StepBasic_ApplicationContextElement {
 };
 
 
-%extend StepBasic_ProductContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductContext::Handle_StepBasic_ProductContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductContext;
-class Handle_StepBasic_ProductContext : public Handle_StepBasic_ApplicationContextElement {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductContext();
-        Handle_StepBasic_ProductContext(const Handle_StepBasic_ProductContext &aHandle);
-        Handle_StepBasic_ProductContext(const StepBasic_ProductContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductContext {
-    StepBasic_ProductContext* _get_reference() {
-    return (StepBasic_ProductContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductContext)
 
 %extend StepBasic_ProductContext {
 	%pythoncode {
@@ -12326,51 +7792,7 @@ class StepBasic_ProductDefinitionContext : public StepBasic_ApplicationContextEl
 };
 
 
-%extend StepBasic_ProductDefinitionContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionContext::Handle_StepBasic_ProductDefinitionContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionContext;
-class Handle_StepBasic_ProductDefinitionContext : public Handle_StepBasic_ApplicationContextElement {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionContext();
-        Handle_StepBasic_ProductDefinitionContext(const Handle_StepBasic_ProductDefinitionContext &aHandle);
-        Handle_StepBasic_ProductDefinitionContext(const StepBasic_ProductDefinitionContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionContext {
-    StepBasic_ProductDefinitionContext* _get_reference() {
-    return (StepBasic_ProductDefinitionContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionContext)
 
 %extend StepBasic_ProductDefinitionContext {
 	%pythoncode {
@@ -12405,51 +7827,7 @@ class StepBasic_ProductDefinitionEffectivity : public StepBasic_Effectivity {
 };
 
 
-%extend StepBasic_ProductDefinitionEffectivity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionEffectivity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionEffectivity::Handle_StepBasic_ProductDefinitionEffectivity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionEffectivity;
-class Handle_StepBasic_ProductDefinitionEffectivity : public Handle_StepBasic_Effectivity {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionEffectivity();
-        Handle_StepBasic_ProductDefinitionEffectivity(const Handle_StepBasic_ProductDefinitionEffectivity &aHandle);
-        Handle_StepBasic_ProductDefinitionEffectivity(const StepBasic_ProductDefinitionEffectivity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionEffectivity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionEffectivity {
-    StepBasic_ProductDefinitionEffectivity* _get_reference() {
-    return (StepBasic_ProductDefinitionEffectivity*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionEffectivity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionEffectivity)
 
 %extend StepBasic_ProductDefinitionEffectivity {
 	%pythoncode {
@@ -12500,51 +7878,7 @@ class StepBasic_ProductDefinitionFormationWithSpecifiedSource : public StepBasic
 };
 
 
-%extend StepBasic_ProductDefinitionFormationWithSpecifiedSource {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource::Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource;
-class Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource : public Handle_StepBasic_ProductDefinitionFormation {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource();
-        Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource(const Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource &aHandle);
-        Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource(const StepBasic_ProductDefinitionFormationWithSpecifiedSource *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource {
-    StepBasic_ProductDefinitionFormationWithSpecifiedSource* _get_reference() {
-    return (StepBasic_ProductDefinitionFormationWithSpecifiedSource*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionFormationWithSpecifiedSource)
 
 %extend StepBasic_ProductDefinitionFormationWithSpecifiedSource {
 	%pythoncode {
@@ -12603,51 +7937,7 @@ class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_Prod
 };
 
 
-%extend StepBasic_ProductDefinitionWithAssociatedDocuments {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductDefinitionWithAssociatedDocuments(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductDefinitionWithAssociatedDocuments::Handle_StepBasic_ProductDefinitionWithAssociatedDocuments %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductDefinitionWithAssociatedDocuments;
-class Handle_StepBasic_ProductDefinitionWithAssociatedDocuments : public Handle_StepBasic_ProductDefinition {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductDefinitionWithAssociatedDocuments();
-        Handle_StepBasic_ProductDefinitionWithAssociatedDocuments(const Handle_StepBasic_ProductDefinitionWithAssociatedDocuments &aHandle);
-        Handle_StepBasic_ProductDefinitionWithAssociatedDocuments(const StepBasic_ProductDefinitionWithAssociatedDocuments *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductDefinitionWithAssociatedDocuments DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductDefinitionWithAssociatedDocuments {
-    StepBasic_ProductDefinitionWithAssociatedDocuments* _get_reference() {
-    return (StepBasic_ProductDefinitionWithAssociatedDocuments*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductDefinitionWithAssociatedDocuments {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductDefinitionWithAssociatedDocuments)
 
 %extend StepBasic_ProductDefinitionWithAssociatedDocuments {
 	%pythoncode {
@@ -12708,51 +7998,7 @@ class StepBasic_ProductRelatedProductCategory : public StepBasic_ProductCategory
 };
 
 
-%extend StepBasic_ProductRelatedProductCategory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductRelatedProductCategory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductRelatedProductCategory::Handle_StepBasic_ProductRelatedProductCategory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductRelatedProductCategory;
-class Handle_StepBasic_ProductRelatedProductCategory : public Handle_StepBasic_ProductCategory {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductRelatedProductCategory();
-        Handle_StepBasic_ProductRelatedProductCategory(const Handle_StepBasic_ProductRelatedProductCategory &aHandle);
-        Handle_StepBasic_ProductRelatedProductCategory(const StepBasic_ProductRelatedProductCategory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductRelatedProductCategory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductRelatedProductCategory {
-    StepBasic_ProductRelatedProductCategory* _get_reference() {
-    return (StepBasic_ProductRelatedProductCategory*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductRelatedProductCategory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductRelatedProductCategory)
 
 %extend StepBasic_ProductRelatedProductCategory {
 	%pythoncode {
@@ -12771,51 +8017,7 @@ class StepBasic_RatioMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_RatioMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_RatioMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_RatioMeasureWithUnit::Handle_StepBasic_RatioMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_RatioMeasureWithUnit;
-class Handle_StepBasic_RatioMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_RatioMeasureWithUnit();
-        Handle_StepBasic_RatioMeasureWithUnit(const Handle_StepBasic_RatioMeasureWithUnit &aHandle);
-        Handle_StepBasic_RatioMeasureWithUnit(const StepBasic_RatioMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_RatioMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_RatioMeasureWithUnit {
-    StepBasic_RatioMeasureWithUnit* _get_reference() {
-    return (StepBasic_RatioMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_RatioMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_RatioMeasureWithUnit)
 
 %extend StepBasic_RatioMeasureWithUnit {
 	%pythoncode {
@@ -12834,51 +8036,7 @@ class StepBasic_RatioUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_RatioUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_RatioUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_RatioUnit::Handle_StepBasic_RatioUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_RatioUnit;
-class Handle_StepBasic_RatioUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_RatioUnit();
-        Handle_StepBasic_RatioUnit(const Handle_StepBasic_RatioUnit &aHandle);
-        Handle_StepBasic_RatioUnit(const StepBasic_RatioUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_RatioUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_RatioUnit {
-    StepBasic_RatioUnit* _get_reference() {
-    return (StepBasic_RatioUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_RatioUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_RatioUnit)
 
 %extend StepBasic_RatioUnit {
 	%pythoncode {
@@ -12951,51 +8109,7 @@ class StepBasic_SiUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_SiUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnit::Handle_StepBasic_SiUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnit;
-class Handle_StepBasic_SiUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnit();
-        Handle_StepBasic_SiUnit(const Handle_StepBasic_SiUnit &aHandle);
-        Handle_StepBasic_SiUnit(const StepBasic_SiUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnit {
-    StepBasic_SiUnit* _get_reference() {
-    return (StepBasic_SiUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnit)
 
 %extend StepBasic_SiUnit {
 	%pythoncode {
@@ -13014,51 +8128,7 @@ class StepBasic_SolidAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_SolidAngleMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SolidAngleMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SolidAngleMeasureWithUnit::Handle_StepBasic_SolidAngleMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SolidAngleMeasureWithUnit;
-class Handle_StepBasic_SolidAngleMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SolidAngleMeasureWithUnit();
-        Handle_StepBasic_SolidAngleMeasureWithUnit(const Handle_StepBasic_SolidAngleMeasureWithUnit &aHandle);
-        Handle_StepBasic_SolidAngleMeasureWithUnit(const StepBasic_SolidAngleMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SolidAngleMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SolidAngleMeasureWithUnit {
-    StepBasic_SolidAngleMeasureWithUnit* _get_reference() {
-    return (StepBasic_SolidAngleMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SolidAngleMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SolidAngleMeasureWithUnit)
 
 %extend StepBasic_SolidAngleMeasureWithUnit {
 	%pythoncode {
@@ -13077,51 +8147,7 @@ class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_SolidAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SolidAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SolidAngleUnit::Handle_StepBasic_SolidAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SolidAngleUnit;
-class Handle_StepBasic_SolidAngleUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SolidAngleUnit();
-        Handle_StepBasic_SolidAngleUnit(const Handle_StepBasic_SolidAngleUnit &aHandle);
-        Handle_StepBasic_SolidAngleUnit(const StepBasic_SolidAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SolidAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SolidAngleUnit {
-    StepBasic_SolidAngleUnit* _get_reference() {
-    return (StepBasic_SolidAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SolidAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SolidAngleUnit)
 
 %extend StepBasic_SolidAngleUnit {
 	%pythoncode {
@@ -13140,51 +8166,7 @@ class StepBasic_ThermodynamicTemperatureUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_ThermodynamicTemperatureUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ThermodynamicTemperatureUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ThermodynamicTemperatureUnit::Handle_StepBasic_ThermodynamicTemperatureUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ThermodynamicTemperatureUnit;
-class Handle_StepBasic_ThermodynamicTemperatureUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ThermodynamicTemperatureUnit();
-        Handle_StepBasic_ThermodynamicTemperatureUnit(const Handle_StepBasic_ThermodynamicTemperatureUnit &aHandle);
-        Handle_StepBasic_ThermodynamicTemperatureUnit(const StepBasic_ThermodynamicTemperatureUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ThermodynamicTemperatureUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ThermodynamicTemperatureUnit {
-    StepBasic_ThermodynamicTemperatureUnit* _get_reference() {
-    return (StepBasic_ThermodynamicTemperatureUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ThermodynamicTemperatureUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ThermodynamicTemperatureUnit)
 
 %extend StepBasic_ThermodynamicTemperatureUnit {
 	%pythoncode {
@@ -13203,51 +8185,7 @@ class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_TimeMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_TimeMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_TimeMeasureWithUnit::Handle_StepBasic_TimeMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_TimeMeasureWithUnit;
-class Handle_StepBasic_TimeMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_TimeMeasureWithUnit();
-        Handle_StepBasic_TimeMeasureWithUnit(const Handle_StepBasic_TimeMeasureWithUnit &aHandle);
-        Handle_StepBasic_TimeMeasureWithUnit(const StepBasic_TimeMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_TimeMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_TimeMeasureWithUnit {
-    StepBasic_TimeMeasureWithUnit* _get_reference() {
-    return (StepBasic_TimeMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_TimeMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_TimeMeasureWithUnit)
 
 %extend StepBasic_TimeMeasureWithUnit {
 	%pythoncode {
@@ -13266,51 +8204,7 @@ class StepBasic_TimeUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_TimeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_TimeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_TimeUnit::Handle_StepBasic_TimeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_TimeUnit;
-class Handle_StepBasic_TimeUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_TimeUnit();
-        Handle_StepBasic_TimeUnit(const Handle_StepBasic_TimeUnit &aHandle);
-        Handle_StepBasic_TimeUnit(const StepBasic_TimeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_TimeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_TimeUnit {
-    StepBasic_TimeUnit* _get_reference() {
-    return (StepBasic_TimeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_TimeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_TimeUnit)
 
 %extend StepBasic_TimeUnit {
 	%pythoncode {
@@ -13369,51 +8263,7 @@ class StepBasic_UncertaintyMeasureWithUnit : public StepBasic_MeasureWithUnit {
 };
 
 
-%extend StepBasic_UncertaintyMeasureWithUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_UncertaintyMeasureWithUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_UncertaintyMeasureWithUnit::Handle_StepBasic_UncertaintyMeasureWithUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_UncertaintyMeasureWithUnit;
-class Handle_StepBasic_UncertaintyMeasureWithUnit : public Handle_StepBasic_MeasureWithUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_UncertaintyMeasureWithUnit();
-        Handle_StepBasic_UncertaintyMeasureWithUnit(const Handle_StepBasic_UncertaintyMeasureWithUnit &aHandle);
-        Handle_StepBasic_UncertaintyMeasureWithUnit(const StepBasic_UncertaintyMeasureWithUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_UncertaintyMeasureWithUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_UncertaintyMeasureWithUnit {
-    StepBasic_UncertaintyMeasureWithUnit* _get_reference() {
-    return (StepBasic_UncertaintyMeasureWithUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_UncertaintyMeasureWithUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_UncertaintyMeasureWithUnit)
 
 %extend StepBasic_UncertaintyMeasureWithUnit {
 	%pythoncode {
@@ -13430,51 +8280,7 @@ class StepBasic_VolumeUnit : public StepBasic_NamedUnit {
 };
 
 
-%extend StepBasic_VolumeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_VolumeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_VolumeUnit::Handle_StepBasic_VolumeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_VolumeUnit;
-class Handle_StepBasic_VolumeUnit : public Handle_StepBasic_NamedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_VolumeUnit();
-        Handle_StepBasic_VolumeUnit(const Handle_StepBasic_VolumeUnit &aHandle);
-        Handle_StepBasic_VolumeUnit(const StepBasic_VolumeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_VolumeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_VolumeUnit {
-    StepBasic_VolumeUnit* _get_reference() {
-    return (StepBasic_VolumeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_VolumeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_VolumeUnit)
 
 %extend StepBasic_VolumeUnit {
 	%pythoncode {
@@ -13539,51 +8345,7 @@ class StepBasic_WeekOfYearAndDayDate : public StepBasic_Date {
 };
 
 
-%extend StepBasic_WeekOfYearAndDayDate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_WeekOfYearAndDayDate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_WeekOfYearAndDayDate::Handle_StepBasic_WeekOfYearAndDayDate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_WeekOfYearAndDayDate;
-class Handle_StepBasic_WeekOfYearAndDayDate : public Handle_StepBasic_Date {
-
-    public:
-        // constructors
-        Handle_StepBasic_WeekOfYearAndDayDate();
-        Handle_StepBasic_WeekOfYearAndDayDate(const Handle_StepBasic_WeekOfYearAndDayDate &aHandle);
-        Handle_StepBasic_WeekOfYearAndDayDate(const StepBasic_WeekOfYearAndDayDate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_WeekOfYearAndDayDate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_WeekOfYearAndDayDate {
-    StepBasic_WeekOfYearAndDayDate* _get_reference() {
-    return (StepBasic_WeekOfYearAndDayDate*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_WeekOfYearAndDayDate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_WeekOfYearAndDayDate)
 
 %extend StepBasic_WeekOfYearAndDayDate {
 	%pythoncode {
@@ -13612,51 +8374,7 @@ class StepBasic_ConversionBasedUnitAndAreaUnit : public StepBasic_ConversionBase
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndAreaUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndAreaUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndAreaUnit::Handle_StepBasic_ConversionBasedUnitAndAreaUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndAreaUnit;
-class Handle_StepBasic_ConversionBasedUnitAndAreaUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndAreaUnit();
-        Handle_StepBasic_ConversionBasedUnitAndAreaUnit(const Handle_StepBasic_ConversionBasedUnitAndAreaUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndAreaUnit(const StepBasic_ConversionBasedUnitAndAreaUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndAreaUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndAreaUnit {
-    StepBasic_ConversionBasedUnitAndAreaUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndAreaUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndAreaUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndAreaUnit)
 
 %extend StepBasic_ConversionBasedUnitAndAreaUnit {
 	%pythoncode {
@@ -13701,51 +8419,7 @@ class StepBasic_ConversionBasedUnitAndLengthUnit : public StepBasic_ConversionBa
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndLengthUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndLengthUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndLengthUnit::Handle_StepBasic_ConversionBasedUnitAndLengthUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndLengthUnit;
-class Handle_StepBasic_ConversionBasedUnitAndLengthUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndLengthUnit();
-        Handle_StepBasic_ConversionBasedUnitAndLengthUnit(const Handle_StepBasic_ConversionBasedUnitAndLengthUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndLengthUnit(const StepBasic_ConversionBasedUnitAndLengthUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndLengthUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndLengthUnit {
-    StepBasic_ConversionBasedUnitAndLengthUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndLengthUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndLengthUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndLengthUnit)
 
 %extend StepBasic_ConversionBasedUnitAndLengthUnit {
 	%pythoncode {
@@ -13790,51 +8464,7 @@ class StepBasic_ConversionBasedUnitAndMassUnit : public StepBasic_ConversionBase
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndMassUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndMassUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndMassUnit::Handle_StepBasic_ConversionBasedUnitAndMassUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndMassUnit;
-class Handle_StepBasic_ConversionBasedUnitAndMassUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndMassUnit();
-        Handle_StepBasic_ConversionBasedUnitAndMassUnit(const Handle_StepBasic_ConversionBasedUnitAndMassUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndMassUnit(const StepBasic_ConversionBasedUnitAndMassUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndMassUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndMassUnit {
-    StepBasic_ConversionBasedUnitAndMassUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndMassUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndMassUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndMassUnit)
 
 %extend StepBasic_ConversionBasedUnitAndMassUnit {
 	%pythoncode {
@@ -13879,51 +8509,7 @@ class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_Conversi
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndPlaneAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit::Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit;
-class Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit();
-        Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit(const Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit(const StepBasic_ConversionBasedUnitAndPlaneAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit {
-    StepBasic_ConversionBasedUnitAndPlaneAngleUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndPlaneAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndPlaneAngleUnit)
 
 %extend StepBasic_ConversionBasedUnitAndPlaneAngleUnit {
 	%pythoncode {
@@ -13968,51 +8554,7 @@ class StepBasic_ConversionBasedUnitAndRatioUnit : public StepBasic_ConversionBas
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndRatioUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndRatioUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndRatioUnit::Handle_StepBasic_ConversionBasedUnitAndRatioUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndRatioUnit;
-class Handle_StepBasic_ConversionBasedUnitAndRatioUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndRatioUnit();
-        Handle_StepBasic_ConversionBasedUnitAndRatioUnit(const Handle_StepBasic_ConversionBasedUnitAndRatioUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndRatioUnit(const StepBasic_ConversionBasedUnitAndRatioUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndRatioUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndRatioUnit {
-    StepBasic_ConversionBasedUnitAndRatioUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndRatioUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndRatioUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndRatioUnit)
 
 %extend StepBasic_ConversionBasedUnitAndRatioUnit {
 	%pythoncode {
@@ -14057,51 +8599,7 @@ class StepBasic_ConversionBasedUnitAndSolidAngleUnit : public StepBasic_Conversi
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndSolidAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit::Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit;
-class Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit();
-        Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit(const Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit(const StepBasic_ConversionBasedUnitAndSolidAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit {
-    StepBasic_ConversionBasedUnitAndSolidAngleUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndSolidAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndSolidAngleUnit)
 
 %extend StepBasic_ConversionBasedUnitAndSolidAngleUnit {
 	%pythoncode {
@@ -14146,51 +8644,7 @@ class StepBasic_ConversionBasedUnitAndTimeUnit : public StepBasic_ConversionBase
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndTimeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndTimeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndTimeUnit::Handle_StepBasic_ConversionBasedUnitAndTimeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndTimeUnit;
-class Handle_StepBasic_ConversionBasedUnitAndTimeUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndTimeUnit();
-        Handle_StepBasic_ConversionBasedUnitAndTimeUnit(const Handle_StepBasic_ConversionBasedUnitAndTimeUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndTimeUnit(const StepBasic_ConversionBasedUnitAndTimeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndTimeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndTimeUnit {
-    StepBasic_ConversionBasedUnitAndTimeUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndTimeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndTimeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndTimeUnit)
 
 %extend StepBasic_ConversionBasedUnitAndTimeUnit {
 	%pythoncode {
@@ -14219,51 +8673,7 @@ class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBa
 };
 
 
-%extend StepBasic_ConversionBasedUnitAndVolumeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ConversionBasedUnitAndVolumeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ConversionBasedUnitAndVolumeUnit::Handle_StepBasic_ConversionBasedUnitAndVolumeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ConversionBasedUnitAndVolumeUnit;
-class Handle_StepBasic_ConversionBasedUnitAndVolumeUnit : public Handle_StepBasic_ConversionBasedUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_ConversionBasedUnitAndVolumeUnit();
-        Handle_StepBasic_ConversionBasedUnitAndVolumeUnit(const Handle_StepBasic_ConversionBasedUnitAndVolumeUnit &aHandle);
-        Handle_StepBasic_ConversionBasedUnitAndVolumeUnit(const StepBasic_ConversionBasedUnitAndVolumeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ConversionBasedUnitAndVolumeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ConversionBasedUnitAndVolumeUnit {
-    StepBasic_ConversionBasedUnitAndVolumeUnit* _get_reference() {
-    return (StepBasic_ConversionBasedUnitAndVolumeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ConversionBasedUnitAndVolumeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ConversionBasedUnitAndVolumeUnit)
 
 %extend StepBasic_ConversionBasedUnitAndVolumeUnit {
 	%pythoncode {
@@ -14280,51 +8690,7 @@ class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext {
 };
 
 
-%extend StepBasic_DesignContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_DesignContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_DesignContext::Handle_StepBasic_DesignContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_DesignContext;
-class Handle_StepBasic_DesignContext : public Handle_StepBasic_ProductDefinitionContext {
-
-    public:
-        // constructors
-        Handle_StepBasic_DesignContext();
-        Handle_StepBasic_DesignContext(const Handle_StepBasic_DesignContext &aHandle);
-        Handle_StepBasic_DesignContext(const StepBasic_DesignContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_DesignContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_DesignContext {
-    StepBasic_DesignContext* _get_reference() {
-    return (StepBasic_DesignContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_DesignContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_DesignContext)
 
 %extend StepBasic_DesignContext {
 	%pythoncode {
@@ -14343,51 +8709,7 @@ class StepBasic_MechanicalContext : public StepBasic_ProductContext {
 };
 
 
-%extend StepBasic_MechanicalContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_MechanicalContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_MechanicalContext::Handle_StepBasic_MechanicalContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_MechanicalContext;
-class Handle_StepBasic_MechanicalContext : public Handle_StepBasic_ProductContext {
-
-    public:
-        // constructors
-        Handle_StepBasic_MechanicalContext();
-        Handle_StepBasic_MechanicalContext(const Handle_StepBasic_MechanicalContext &aHandle);
-        Handle_StepBasic_MechanicalContext(const StepBasic_MechanicalContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_MechanicalContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_MechanicalContext {
-    StepBasic_MechanicalContext* _get_reference() {
-    return (StepBasic_MechanicalContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_MechanicalContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_MechanicalContext)
 
 %extend StepBasic_MechanicalContext {
 	%pythoncode {
@@ -14406,51 +8728,7 @@ class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory {
 };
 
 
-%extend StepBasic_ProductType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_ProductType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_ProductType::Handle_StepBasic_ProductType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_ProductType;
-class Handle_StepBasic_ProductType : public Handle_StepBasic_ProductRelatedProductCategory {
-
-    public:
-        // constructors
-        Handle_StepBasic_ProductType();
-        Handle_StepBasic_ProductType(const Handle_StepBasic_ProductType &aHandle);
-        Handle_StepBasic_ProductType(const StepBasic_ProductType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_ProductType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_ProductType {
-    StepBasic_ProductType* _get_reference() {
-    return (StepBasic_ProductType*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_ProductType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_ProductType)
 
 %extend StepBasic_ProductType {
 	%pythoncode {
@@ -14489,51 +8767,7 @@ class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndAreaUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndAreaUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndAreaUnit::Handle_StepBasic_SiUnitAndAreaUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndAreaUnit;
-class Handle_StepBasic_SiUnitAndAreaUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndAreaUnit();
-        Handle_StepBasic_SiUnitAndAreaUnit(const Handle_StepBasic_SiUnitAndAreaUnit &aHandle);
-        Handle_StepBasic_SiUnitAndAreaUnit(const StepBasic_SiUnitAndAreaUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndAreaUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndAreaUnit {
-    StepBasic_SiUnitAndAreaUnit* _get_reference() {
-    return (StepBasic_SiUnitAndAreaUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndAreaUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndAreaUnit)
 
 %extend StepBasic_SiUnitAndAreaUnit {
 	%pythoncode {
@@ -14578,51 +8812,7 @@ class StepBasic_SiUnitAndLengthUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndLengthUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndLengthUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndLengthUnit::Handle_StepBasic_SiUnitAndLengthUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndLengthUnit;
-class Handle_StepBasic_SiUnitAndLengthUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndLengthUnit();
-        Handle_StepBasic_SiUnitAndLengthUnit(const Handle_StepBasic_SiUnitAndLengthUnit &aHandle);
-        Handle_StepBasic_SiUnitAndLengthUnit(const StepBasic_SiUnitAndLengthUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndLengthUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndLengthUnit {
-    StepBasic_SiUnitAndLengthUnit* _get_reference() {
-    return (StepBasic_SiUnitAndLengthUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndLengthUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndLengthUnit)
 
 %extend StepBasic_SiUnitAndLengthUnit {
 	%pythoncode {
@@ -14667,51 +8857,7 @@ class StepBasic_SiUnitAndMassUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndMassUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndMassUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndMassUnit::Handle_StepBasic_SiUnitAndMassUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndMassUnit;
-class Handle_StepBasic_SiUnitAndMassUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndMassUnit();
-        Handle_StepBasic_SiUnitAndMassUnit(const Handle_StepBasic_SiUnitAndMassUnit &aHandle);
-        Handle_StepBasic_SiUnitAndMassUnit(const StepBasic_SiUnitAndMassUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndMassUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndMassUnit {
-    StepBasic_SiUnitAndMassUnit* _get_reference() {
-    return (StepBasic_SiUnitAndMassUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndMassUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndMassUnit)
 
 %extend StepBasic_SiUnitAndMassUnit {
 	%pythoncode {
@@ -14756,51 +8902,7 @@ class StepBasic_SiUnitAndPlaneAngleUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndPlaneAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndPlaneAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndPlaneAngleUnit::Handle_StepBasic_SiUnitAndPlaneAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndPlaneAngleUnit;
-class Handle_StepBasic_SiUnitAndPlaneAngleUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndPlaneAngleUnit();
-        Handle_StepBasic_SiUnitAndPlaneAngleUnit(const Handle_StepBasic_SiUnitAndPlaneAngleUnit &aHandle);
-        Handle_StepBasic_SiUnitAndPlaneAngleUnit(const StepBasic_SiUnitAndPlaneAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndPlaneAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndPlaneAngleUnit {
-    StepBasic_SiUnitAndPlaneAngleUnit* _get_reference() {
-    return (StepBasic_SiUnitAndPlaneAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndPlaneAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndPlaneAngleUnit)
 
 %extend StepBasic_SiUnitAndPlaneAngleUnit {
 	%pythoncode {
@@ -14845,51 +8947,7 @@ class StepBasic_SiUnitAndRatioUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndRatioUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndRatioUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndRatioUnit::Handle_StepBasic_SiUnitAndRatioUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndRatioUnit;
-class Handle_StepBasic_SiUnitAndRatioUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndRatioUnit();
-        Handle_StepBasic_SiUnitAndRatioUnit(const Handle_StepBasic_SiUnitAndRatioUnit &aHandle);
-        Handle_StepBasic_SiUnitAndRatioUnit(const StepBasic_SiUnitAndRatioUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndRatioUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndRatioUnit {
-    StepBasic_SiUnitAndRatioUnit* _get_reference() {
-    return (StepBasic_SiUnitAndRatioUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndRatioUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndRatioUnit)
 
 %extend StepBasic_SiUnitAndRatioUnit {
 	%pythoncode {
@@ -14934,51 +8992,7 @@ class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndSolidAngleUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndSolidAngleUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndSolidAngleUnit::Handle_StepBasic_SiUnitAndSolidAngleUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndSolidAngleUnit;
-class Handle_StepBasic_SiUnitAndSolidAngleUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndSolidAngleUnit();
-        Handle_StepBasic_SiUnitAndSolidAngleUnit(const Handle_StepBasic_SiUnitAndSolidAngleUnit &aHandle);
-        Handle_StepBasic_SiUnitAndSolidAngleUnit(const StepBasic_SiUnitAndSolidAngleUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndSolidAngleUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndSolidAngleUnit {
-    StepBasic_SiUnitAndSolidAngleUnit* _get_reference() {
-    return (StepBasic_SiUnitAndSolidAngleUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndSolidAngleUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndSolidAngleUnit)
 
 %extend StepBasic_SiUnitAndSolidAngleUnit {
 	%pythoncode {
@@ -15023,51 +9037,7 @@ class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit 
 };
 
 
-%extend StepBasic_SiUnitAndThermodynamicTemperatureUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit::Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit;
-class Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit();
-        Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit(const Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit &aHandle);
-        Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit(const StepBasic_SiUnitAndThermodynamicTemperatureUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit {
-    StepBasic_SiUnitAndThermodynamicTemperatureUnit* _get_reference() {
-    return (StepBasic_SiUnitAndThermodynamicTemperatureUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndThermodynamicTemperatureUnit)
 
 %extend StepBasic_SiUnitAndThermodynamicTemperatureUnit {
 	%pythoncode {
@@ -15112,51 +9082,7 @@ class StepBasic_SiUnitAndTimeUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndTimeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndTimeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndTimeUnit::Handle_StepBasic_SiUnitAndTimeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndTimeUnit;
-class Handle_StepBasic_SiUnitAndTimeUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndTimeUnit();
-        Handle_StepBasic_SiUnitAndTimeUnit(const Handle_StepBasic_SiUnitAndTimeUnit &aHandle);
-        Handle_StepBasic_SiUnitAndTimeUnit(const StepBasic_SiUnitAndTimeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndTimeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndTimeUnit {
-    StepBasic_SiUnitAndTimeUnit* _get_reference() {
-    return (StepBasic_SiUnitAndTimeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndTimeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndTimeUnit)
 
 %extend StepBasic_SiUnitAndTimeUnit {
 	%pythoncode {
@@ -15195,51 +9121,7 @@ class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
 };
 
 
-%extend StepBasic_SiUnitAndVolumeUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepBasic_SiUnitAndVolumeUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepBasic_SiUnitAndVolumeUnit::Handle_StepBasic_SiUnitAndVolumeUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepBasic_SiUnitAndVolumeUnit;
-class Handle_StepBasic_SiUnitAndVolumeUnit : public Handle_StepBasic_SiUnit {
-
-    public:
-        // constructors
-        Handle_StepBasic_SiUnitAndVolumeUnit();
-        Handle_StepBasic_SiUnitAndVolumeUnit(const Handle_StepBasic_SiUnitAndVolumeUnit &aHandle);
-        Handle_StepBasic_SiUnitAndVolumeUnit(const StepBasic_SiUnitAndVolumeUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepBasic_SiUnitAndVolumeUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepBasic_SiUnitAndVolumeUnit {
-    StepBasic_SiUnitAndVolumeUnit* _get_reference() {
-    return (StepBasic_SiUnitAndVolumeUnit*)$self->Access();
-    }
-};
-
-%extend Handle_StepBasic_SiUnitAndVolumeUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepBasic_SiUnitAndVolumeUnit)
 
 %extend StepBasic_SiUnitAndVolumeUnit {
 	%pythoncode {

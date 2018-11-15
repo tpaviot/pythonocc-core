@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMXCAFDOCDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BINMXCAFDOCDOCSTRING) BinMXCAFDoc
 
@@ -34,30 +34,32 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMXCAFDoc_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMXCAFDoc_AreaDriver)
+%wrap_handle(BinMXCAFDoc_CentroidDriver)
+%wrap_handle(BinMXCAFDoc_ColorDriver)
+%wrap_handle(BinMXCAFDoc_ColorToolDriver)
+%wrap_handle(BinMXCAFDoc_DatumDriver)
+%wrap_handle(BinMXCAFDoc_DimTolDriver)
+%wrap_handle(BinMXCAFDoc_DimTolToolDriver)
+%wrap_handle(BinMXCAFDoc_DocumentToolDriver)
+%wrap_handle(BinMXCAFDoc_GraphNodeDriver)
+%wrap_handle(BinMXCAFDoc_LayerToolDriver)
+%wrap_handle(BinMXCAFDoc_LocationDriver)
+%wrap_handle(BinMXCAFDoc_MaterialDriver)
+%wrap_handle(BinMXCAFDoc_MaterialToolDriver)
+%wrap_handle(BinMXCAFDoc_ShapeToolDriver)
+%wrap_handle(BinMXCAFDoc_VolumeDriver)
 
 %rename(binmxcafdoc) BinMXCAFDoc;
 class BinMXCAFDoc {
@@ -116,51 +118,7 @@ class BinMXCAFDoc_AreaDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_AreaDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_AreaDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_AreaDriver::Handle_BinMXCAFDoc_AreaDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_AreaDriver;
-class Handle_BinMXCAFDoc_AreaDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_AreaDriver();
-        Handle_BinMXCAFDoc_AreaDriver(const Handle_BinMXCAFDoc_AreaDriver &aHandle);
-        Handle_BinMXCAFDoc_AreaDriver(const BinMXCAFDoc_AreaDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_AreaDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_AreaDriver {
-    BinMXCAFDoc_AreaDriver* _get_reference() {
-    return (BinMXCAFDoc_AreaDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_AreaDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_AreaDriver)
 
 %extend BinMXCAFDoc_AreaDriver {
 	%pythoncode {
@@ -203,51 +161,7 @@ class BinMXCAFDoc_CentroidDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_CentroidDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_CentroidDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_CentroidDriver::Handle_BinMXCAFDoc_CentroidDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_CentroidDriver;
-class Handle_BinMXCAFDoc_CentroidDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_CentroidDriver();
-        Handle_BinMXCAFDoc_CentroidDriver(const Handle_BinMXCAFDoc_CentroidDriver &aHandle);
-        Handle_BinMXCAFDoc_CentroidDriver(const BinMXCAFDoc_CentroidDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_CentroidDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_CentroidDriver {
-    BinMXCAFDoc_CentroidDriver* _get_reference() {
-    return (BinMXCAFDoc_CentroidDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_CentroidDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_CentroidDriver)
 
 %extend BinMXCAFDoc_CentroidDriver {
 	%pythoncode {
@@ -290,51 +204,7 @@ class BinMXCAFDoc_ColorDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_ColorDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_ColorDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_ColorDriver::Handle_BinMXCAFDoc_ColorDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_ColorDriver;
-class Handle_BinMXCAFDoc_ColorDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_ColorDriver();
-        Handle_BinMXCAFDoc_ColorDriver(const Handle_BinMXCAFDoc_ColorDriver &aHandle);
-        Handle_BinMXCAFDoc_ColorDriver(const BinMXCAFDoc_ColorDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_ColorDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_ColorDriver {
-    BinMXCAFDoc_ColorDriver* _get_reference() {
-    return (BinMXCAFDoc_ColorDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_ColorDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_ColorDriver)
 
 %extend BinMXCAFDoc_ColorDriver {
 	%pythoncode {
@@ -377,51 +247,7 @@ class BinMXCAFDoc_ColorToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_ColorToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_ColorToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_ColorToolDriver::Handle_BinMXCAFDoc_ColorToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_ColorToolDriver;
-class Handle_BinMXCAFDoc_ColorToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_ColorToolDriver();
-        Handle_BinMXCAFDoc_ColorToolDriver(const Handle_BinMXCAFDoc_ColorToolDriver &aHandle);
-        Handle_BinMXCAFDoc_ColorToolDriver(const BinMXCAFDoc_ColorToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_ColorToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_ColorToolDriver {
-    BinMXCAFDoc_ColorToolDriver* _get_reference() {
-    return (BinMXCAFDoc_ColorToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_ColorToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_ColorToolDriver)
 
 %extend BinMXCAFDoc_ColorToolDriver {
 	%pythoncode {
@@ -464,51 +290,7 @@ class BinMXCAFDoc_DatumDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_DatumDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_DatumDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_DatumDriver::Handle_BinMXCAFDoc_DatumDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_DatumDriver;
-class Handle_BinMXCAFDoc_DatumDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_DatumDriver();
-        Handle_BinMXCAFDoc_DatumDriver(const Handle_BinMXCAFDoc_DatumDriver &aHandle);
-        Handle_BinMXCAFDoc_DatumDriver(const BinMXCAFDoc_DatumDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_DatumDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_DatumDriver {
-    BinMXCAFDoc_DatumDriver* _get_reference() {
-    return (BinMXCAFDoc_DatumDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_DatumDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_DatumDriver)
 
 %extend BinMXCAFDoc_DatumDriver {
 	%pythoncode {
@@ -551,51 +333,7 @@ class BinMXCAFDoc_DimTolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_DimTolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_DimTolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_DimTolDriver::Handle_BinMXCAFDoc_DimTolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_DimTolDriver;
-class Handle_BinMXCAFDoc_DimTolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_DimTolDriver();
-        Handle_BinMXCAFDoc_DimTolDriver(const Handle_BinMXCAFDoc_DimTolDriver &aHandle);
-        Handle_BinMXCAFDoc_DimTolDriver(const BinMXCAFDoc_DimTolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_DimTolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_DimTolDriver {
-    BinMXCAFDoc_DimTolDriver* _get_reference() {
-    return (BinMXCAFDoc_DimTolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_DimTolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_DimTolDriver)
 
 %extend BinMXCAFDoc_DimTolDriver {
 	%pythoncode {
@@ -638,51 +376,7 @@ class BinMXCAFDoc_DimTolToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_DimTolToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_DimTolToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_DimTolToolDriver::Handle_BinMXCAFDoc_DimTolToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_DimTolToolDriver;
-class Handle_BinMXCAFDoc_DimTolToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_DimTolToolDriver();
-        Handle_BinMXCAFDoc_DimTolToolDriver(const Handle_BinMXCAFDoc_DimTolToolDriver &aHandle);
-        Handle_BinMXCAFDoc_DimTolToolDriver(const BinMXCAFDoc_DimTolToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_DimTolToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_DimTolToolDriver {
-    BinMXCAFDoc_DimTolToolDriver* _get_reference() {
-    return (BinMXCAFDoc_DimTolToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_DimTolToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_DimTolToolDriver)
 
 %extend BinMXCAFDoc_DimTolToolDriver {
 	%pythoncode {
@@ -725,51 +419,7 @@ class BinMXCAFDoc_DocumentToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_DocumentToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_DocumentToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_DocumentToolDriver::Handle_BinMXCAFDoc_DocumentToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_DocumentToolDriver;
-class Handle_BinMXCAFDoc_DocumentToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_DocumentToolDriver();
-        Handle_BinMXCAFDoc_DocumentToolDriver(const Handle_BinMXCAFDoc_DocumentToolDriver &aHandle);
-        Handle_BinMXCAFDoc_DocumentToolDriver(const BinMXCAFDoc_DocumentToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_DocumentToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_DocumentToolDriver {
-    BinMXCAFDoc_DocumentToolDriver* _get_reference() {
-    return (BinMXCAFDoc_DocumentToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_DocumentToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_DocumentToolDriver)
 
 %extend BinMXCAFDoc_DocumentToolDriver {
 	%pythoncode {
@@ -812,51 +462,7 @@ class BinMXCAFDoc_GraphNodeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_GraphNodeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_GraphNodeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_GraphNodeDriver::Handle_BinMXCAFDoc_GraphNodeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_GraphNodeDriver;
-class Handle_BinMXCAFDoc_GraphNodeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_GraphNodeDriver();
-        Handle_BinMXCAFDoc_GraphNodeDriver(const Handle_BinMXCAFDoc_GraphNodeDriver &aHandle);
-        Handle_BinMXCAFDoc_GraphNodeDriver(const BinMXCAFDoc_GraphNodeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_GraphNodeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_GraphNodeDriver {
-    BinMXCAFDoc_GraphNodeDriver* _get_reference() {
-    return (BinMXCAFDoc_GraphNodeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_GraphNodeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_GraphNodeDriver)
 
 %extend BinMXCAFDoc_GraphNodeDriver {
 	%pythoncode {
@@ -899,51 +505,7 @@ class BinMXCAFDoc_LayerToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_LayerToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_LayerToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_LayerToolDriver::Handle_BinMXCAFDoc_LayerToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_LayerToolDriver;
-class Handle_BinMXCAFDoc_LayerToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_LayerToolDriver();
-        Handle_BinMXCAFDoc_LayerToolDriver(const Handle_BinMXCAFDoc_LayerToolDriver &aHandle);
-        Handle_BinMXCAFDoc_LayerToolDriver(const BinMXCAFDoc_LayerToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_LayerToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_LayerToolDriver {
-    BinMXCAFDoc_LayerToolDriver* _get_reference() {
-    return (BinMXCAFDoc_LayerToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_LayerToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_LayerToolDriver)
 
 %extend BinMXCAFDoc_LayerToolDriver {
 	%pythoncode {
@@ -1014,51 +576,7 @@ class BinMXCAFDoc_LocationDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_LocationDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_LocationDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_LocationDriver::Handle_BinMXCAFDoc_LocationDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_LocationDriver;
-class Handle_BinMXCAFDoc_LocationDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_LocationDriver();
-        Handle_BinMXCAFDoc_LocationDriver(const Handle_BinMXCAFDoc_LocationDriver &aHandle);
-        Handle_BinMXCAFDoc_LocationDriver(const BinMXCAFDoc_LocationDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_LocationDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_LocationDriver {
-    BinMXCAFDoc_LocationDriver* _get_reference() {
-    return (BinMXCAFDoc_LocationDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_LocationDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_LocationDriver)
 
 %extend BinMXCAFDoc_LocationDriver {
 	%pythoncode {
@@ -1101,51 +619,7 @@ class BinMXCAFDoc_MaterialDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_MaterialDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_MaterialDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_MaterialDriver::Handle_BinMXCAFDoc_MaterialDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_MaterialDriver;
-class Handle_BinMXCAFDoc_MaterialDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_MaterialDriver();
-        Handle_BinMXCAFDoc_MaterialDriver(const Handle_BinMXCAFDoc_MaterialDriver &aHandle);
-        Handle_BinMXCAFDoc_MaterialDriver(const BinMXCAFDoc_MaterialDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_MaterialDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_MaterialDriver {
-    BinMXCAFDoc_MaterialDriver* _get_reference() {
-    return (BinMXCAFDoc_MaterialDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_MaterialDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_MaterialDriver)
 
 %extend BinMXCAFDoc_MaterialDriver {
 	%pythoncode {
@@ -1188,51 +662,7 @@ class BinMXCAFDoc_MaterialToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_MaterialToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_MaterialToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_MaterialToolDriver::Handle_BinMXCAFDoc_MaterialToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_MaterialToolDriver;
-class Handle_BinMXCAFDoc_MaterialToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_MaterialToolDriver();
-        Handle_BinMXCAFDoc_MaterialToolDriver(const Handle_BinMXCAFDoc_MaterialToolDriver &aHandle);
-        Handle_BinMXCAFDoc_MaterialToolDriver(const BinMXCAFDoc_MaterialToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_MaterialToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_MaterialToolDriver {
-    BinMXCAFDoc_MaterialToolDriver* _get_reference() {
-    return (BinMXCAFDoc_MaterialToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_MaterialToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_MaterialToolDriver)
 
 %extend BinMXCAFDoc_MaterialToolDriver {
 	%pythoncode {
@@ -1275,51 +705,7 @@ class BinMXCAFDoc_ShapeToolDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_ShapeToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_ShapeToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_ShapeToolDriver::Handle_BinMXCAFDoc_ShapeToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_ShapeToolDriver;
-class Handle_BinMXCAFDoc_ShapeToolDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_ShapeToolDriver();
-        Handle_BinMXCAFDoc_ShapeToolDriver(const Handle_BinMXCAFDoc_ShapeToolDriver &aHandle);
-        Handle_BinMXCAFDoc_ShapeToolDriver(const BinMXCAFDoc_ShapeToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_ShapeToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_ShapeToolDriver {
-    BinMXCAFDoc_ShapeToolDriver* _get_reference() {
-    return (BinMXCAFDoc_ShapeToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_ShapeToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_ShapeToolDriver)
 
 %extend BinMXCAFDoc_ShapeToolDriver {
 	%pythoncode {
@@ -1362,51 +748,7 @@ class BinMXCAFDoc_VolumeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMXCAFDoc_VolumeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMXCAFDoc_VolumeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMXCAFDoc_VolumeDriver::Handle_BinMXCAFDoc_VolumeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMXCAFDoc_VolumeDriver;
-class Handle_BinMXCAFDoc_VolumeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMXCAFDoc_VolumeDriver();
-        Handle_BinMXCAFDoc_VolumeDriver(const Handle_BinMXCAFDoc_VolumeDriver &aHandle);
-        Handle_BinMXCAFDoc_VolumeDriver(const BinMXCAFDoc_VolumeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMXCAFDoc_VolumeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMXCAFDoc_VolumeDriver {
-    BinMXCAFDoc_VolumeDriver* _get_reference() {
-    return (BinMXCAFDoc_VolumeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMXCAFDoc_VolumeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMXCAFDoc_VolumeDriver)
 
 %extend BinMXCAFDoc_VolumeDriver {
 	%pythoncode {

@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LAWDOCSTRING
-"No docstring provided."
+"Multiple services concerning 1d functions.
+"
 %enddef
 %module (package="OCC.Core", docstring=LAWDOCSTRING) Law
 
@@ -34,30 +35,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Law_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Law_BSpline)
+%wrap_handle(Law_Function)
+%wrap_handle(Law_ListNodeOfLaws)
+%wrap_handle(Law_BSpFunc)
+%wrap_handle(Law_Composite)
+%wrap_handle(Law_Constant)
+%wrap_handle(Law_Linear)
+%wrap_handle(Law_Interpol)
+%wrap_handle(Law_S)
 
 %rename(law) Law;
 class Law {
@@ -764,51 +761,7 @@ class Law_BSpline : public MMgt_TShared {
 };
 
 
-%extend Law_BSpline {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_BSpline(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_BSpline::Handle_Law_BSpline %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_BSpline;
-class Handle_Law_BSpline : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Law_BSpline();
-        Handle_Law_BSpline(const Handle_Law_BSpline &aHandle);
-        Handle_Law_BSpline(const Law_BSpline *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_BSpline DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_BSpline {
-    Law_BSpline* _get_reference() {
-    return (Law_BSpline*)$self->Access();
-    }
-};
-
-%extend Handle_Law_BSpline {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_BSpline)
 
 %extend Law_BSpline {
 	%pythoncode {
@@ -942,51 +895,7 @@ class Law_Function : public MMgt_TShared {
 };
 
 
-%extend Law_Function {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_Function(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_Function::Handle_Law_Function %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_Function;
-class Handle_Law_Function : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Law_Function();
-        Handle_Law_Function(const Handle_Law_Function &aHandle);
-        Handle_Law_Function(const Law_Function *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_Function DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_Function {
-    Law_Function* _get_reference() {
-    return (Law_Function*)$self->Access();
-    }
-};
-
-%extend Handle_Law_Function {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_Function)
 
 %extend Law_Function {
 	%pythoncode {
@@ -1256,51 +1165,7 @@ class Law_ListNodeOfLaws : public TCollection_MapNode {
 };
 
 
-%extend Law_ListNodeOfLaws {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_ListNodeOfLaws(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_ListNodeOfLaws::Handle_Law_ListNodeOfLaws %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_ListNodeOfLaws;
-class Handle_Law_ListNodeOfLaws : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Law_ListNodeOfLaws();
-        Handle_Law_ListNodeOfLaws(const Handle_Law_ListNodeOfLaws &aHandle);
-        Handle_Law_ListNodeOfLaws(const Law_ListNodeOfLaws *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_ListNodeOfLaws DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_ListNodeOfLaws {
-    Law_ListNodeOfLaws* _get_reference() {
-    return (Law_ListNodeOfLaws*)$self->Access();
-    }
-};
-
-%extend Handle_Law_ListNodeOfLaws {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_ListNodeOfLaws)
 
 %extend Law_ListNodeOfLaws {
 	%pythoncode {
@@ -1407,51 +1272,7 @@ class Law_BSpFunc : public Law_Function {
 };
 
 
-%extend Law_BSpFunc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_BSpFunc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_BSpFunc::Handle_Law_BSpFunc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_BSpFunc;
-class Handle_Law_BSpFunc : public Handle_Law_Function {
-
-    public:
-        // constructors
-        Handle_Law_BSpFunc();
-        Handle_Law_BSpFunc(const Handle_Law_BSpFunc &aHandle);
-        Handle_Law_BSpFunc(const Law_BSpFunc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_BSpFunc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_BSpFunc {
-    Law_BSpFunc* _get_reference() {
-    return (Law_BSpFunc*)$self->Access();
-    }
-};
-
-%extend Handle_Law_BSpFunc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_BSpFunc)
 
 %extend Law_BSpFunc {
 	%pythoncode {
@@ -1580,51 +1401,7 @@ class Law_Composite : public Law_Function {
 };
 
 
-%extend Law_Composite {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_Composite(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_Composite::Handle_Law_Composite %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_Composite;
-class Handle_Law_Composite : public Handle_Law_Function {
-
-    public:
-        // constructors
-        Handle_Law_Composite();
-        Handle_Law_Composite(const Handle_Law_Composite &aHandle);
-        Handle_Law_Composite(const Law_Composite *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_Composite DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_Composite {
-    Law_Composite* _get_reference() {
-    return (Law_Composite*)$self->Access();
-    }
-};
-
-%extend Handle_Law_Composite {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_Composite)
 
 %extend Law_Composite {
 	%pythoncode {
@@ -1729,51 +1506,7 @@ class Law_Constant : public Law_Function {
 };
 
 
-%extend Law_Constant {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_Constant(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_Constant::Handle_Law_Constant %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_Constant;
-class Handle_Law_Constant : public Handle_Law_Function {
-
-    public:
-        // constructors
-        Handle_Law_Constant();
-        Handle_Law_Constant(const Handle_Law_Constant &aHandle);
-        Handle_Law_Constant(const Law_Constant *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_Constant DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_Constant {
-    Law_Constant* _get_reference() {
-    return (Law_Constant*)$self->Access();
-    }
-};
-
-%extend Handle_Law_Constant {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_Constant)
 
 %extend Law_Constant {
 	%pythoncode {
@@ -1884,51 +1617,7 @@ class Law_Linear : public Law_Function {
 };
 
 
-%extend Law_Linear {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_Linear(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_Linear::Handle_Law_Linear %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_Linear;
-class Handle_Law_Linear : public Handle_Law_Function {
-
-    public:
-        // constructors
-        Handle_Law_Linear();
-        Handle_Law_Linear(const Handle_Law_Linear &aHandle);
-        Handle_Law_Linear(const Law_Linear *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_Linear DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_Linear {
-    Law_Linear* _get_reference() {
-    return (Law_Linear*)$self->Access();
-    }
-};
-
-%extend Handle_Law_Linear {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_Linear)
 
 %extend Law_Linear {
 	%pythoncode {
@@ -1999,51 +1688,7 @@ class Law_Interpol : public Law_BSpFunc {
 };
 
 
-%extend Law_Interpol {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_Interpol(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_Interpol::Handle_Law_Interpol %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_Interpol;
-class Handle_Law_Interpol : public Handle_Law_BSpFunc {
-
-    public:
-        // constructors
-        Handle_Law_Interpol();
-        Handle_Law_Interpol(const Handle_Law_Interpol &aHandle);
-        Handle_Law_Interpol(const Law_Interpol *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_Interpol DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_Interpol {
-    Law_Interpol* _get_reference() {
-    return (Law_Interpol*)$self->Access();
-    }
-};
-
-%extend Handle_Law_Interpol {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_Interpol)
 
 %extend Law_Interpol {
 	%pythoncode {
@@ -2094,51 +1739,7 @@ class Law_S : public Law_BSpFunc {
 };
 
 
-%extend Law_S {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Law_S(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Law_S::Handle_Law_S %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Law_S;
-class Handle_Law_S : public Handle_Law_BSpFunc {
-
-    public:
-        // constructors
-        Handle_Law_S();
-        Handle_Law_S(const Handle_Law_S &aHandle);
-        Handle_Law_S(const Law_S *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Law_S DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Law_S {
-    Law_S* _get_reference() {
-    return (Law_S*)$self->Access();
-    }
-};
-
-%extend Handle_Law_S {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Law_S)
 
 %extend Law_S {
 	%pythoncode {

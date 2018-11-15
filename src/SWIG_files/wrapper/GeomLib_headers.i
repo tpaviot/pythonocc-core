@@ -491,6 +491,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AdvApprox_Cutting.hxx>
 #include<AdvApprox_PrefAndRec.hxx>
 #include<AdvApprox_EvaluatorFunction.hxx>
+#include<PLib.hxx>
+#include<PLib_DoubleJacobiPolynomial.hxx>
+#include<PLib_JacobiPolynomial_0.hxx>
+#include<PLib_HermitJacobi.hxx>
+#include<PLib_JacobiPolynomial.hxx>
+#include<PLib_Base.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_Array2OfXYZ.hxx>
 #include<TColgp_SequenceOfVec.hxx>

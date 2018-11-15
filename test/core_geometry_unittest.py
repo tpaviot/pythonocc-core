@@ -119,7 +119,7 @@ class TestGeometry(unittest.TestCase):
         '''Test: point from curve'''
         radius, abscissa = 5., 3.
         C = Geom2d_Circle(gp_OX2d(), radius, True)
-        GAC = Geom2dAdaptor_Curve(C.GetHandle())
+        GAC = Geom2dAdaptor_Curve(C)
         UA = GCPnts_UniformAbscissa(GAC, abscissa)
 
         aSequence = []
@@ -150,10 +150,10 @@ class TestGeometry(unittest.TestCase):
         distance, radius = 5., 5.
 
         C = Geom_Circle(gp_XOY(), radius)
-        PPC = GeomAPI_ProjectPointOnCurve(P, C.GetHandle())
+        PPC = GeomAPI_ProjectPointOnCurve(P, C)
         N = PPC.NearestPoint()
         NbResults = PPC.NbPoints()
-        edg = make_edge(C.GetHandle())
+        edg = make_edge(C)
 
         if NbResults > 0:
             for i in range(1, NbResults+1):
@@ -173,7 +173,7 @@ class TestGeometry(unittest.TestCase):
         P = gp_Pnt(7., 8., 9.)
         radius = 5
         SP = Geom_SphericalSurface(gp_Ax3(gp_XOY()), radius)
-        PPS = GeomAPI_ProjectPointOnSurf(P, SP.GetHandle())
+        PPS = GeomAPI_ProjectPointOnSurf(P, SP)
         N = PPS.NearestPoint()
         NbResults = PPS.NbPoints()
         if NbResults > 0:
@@ -256,7 +256,7 @@ class TestGeometry(unittest.TestCase):
         harray.SetValue(4, gp_Pnt2d(7 + 4, 3))
         harray.SetValue(5, gp_Pnt2d(7 + 5, 5))
 
-        anInterpolation = Geom2dAPI_Interpolate(harray.GetHandle(), False, 0.01)
+        anInterpolation = Geom2dAPI_Interpolate(harray, False, 0.01)
         anInterpolation.Perform()
         SPL2 = anInterpolation.Curve()
 
@@ -267,7 +267,7 @@ class TestGeometry(unittest.TestCase):
         harray2.SetValue(4, gp_Pnt2d(11 + 4, 3))
         harray2.SetValue(5, gp_Pnt2d(11 + 5, 5))
 
-        anInterpolation2 = Geom2dAPI_Interpolate(harray2.GetHandle(), True, 0.01)
+        anInterpolation2 = Geom2dAPI_Interpolate(harray2, True, 0.01)
         anInterpolation2.Perform()
         SPL3 = anInterpolation2.Curve()
         i = 0
@@ -294,7 +294,7 @@ class TestGeometry(unittest.TestCase):
         ell = GCE2d_MakeEllipse(axis, major, minor)
         E = ell.Value()
         TC = Geom2d_TrimmedCurve(E, -1, 2, True)
-        SPL = geom2dconvert_CurveToBSplineCurve(TC.GetHandle(), Convert_TgtThetaOver2)
+        SPL = geom2dconvert_CurveToBSplineCurve(TC, Convert_TgtThetaOver2)
 
     def test_curves2d_from_offset(self):
         '''Test: curves 2d from offset'''
@@ -368,7 +368,6 @@ class TestGeometry(unittest.TestCase):
 
         aaa = point_list_to_TColgp_Array1OfPnt(array)
         SPL1 = GeomAPI_PointsToBSpline(aaa).Curve()
-        SPL1_c = SPL1.GetObject()
 
         a2 = []
         a2.append(gp_Pnt(-4, 0, 2))
@@ -378,20 +377,19 @@ class TestGeometry(unittest.TestCase):
         a2.append(gp_Pnt(4, 9, -1))
         bbb = point_list_to_TColgp_Array1OfPnt(a2)
         SPL2 = GeomAPI_PointsToBSpline(bbb).Curve()
-        SPL2_c = SPL2.GetObject()
 
         aGeomFill1 = GeomFill_BSplineCurves(SPL1,
                                             SPL2,
                                             GeomFill_StretchStyle)
 
-        SPL3 = Handle_Geom_BSplineCurve_DownCast(SPL1_c.Translated(gp_Vec(10, 0, 0)))
-        SPL4 = Handle_Geom_BSplineCurve_DownCast(SPL2_c.Translated(gp_Vec(10, 0, 0)))
+        SPL3 = Handle_Geom_BSplineCurve_DownCast(SPL1.Translated(gp_Vec(10, 0, 0)))
+        SPL4 = Handle_Geom_BSplineCurve_DownCast(SPL2.Translated(gp_Vec(10, 0, 0)))
         aGeomFill2 = GeomFill_BSplineCurves(SPL3,
                                             SPL4,
                                             GeomFill_CoonsStyle)
 
-        SPL5 = Handle_Geom_BSplineCurve_DownCast(SPL1_c.Translated(gp_Vec(20, 0, 0)))
-        SPL6 = Handle_Geom_BSplineCurve_DownCast(SPL2_c.Translated(gp_Vec(20, 0, 0)))
+        SPL5 = Handle_Geom_BSplineCurve_DownCast(SPL1.Translated(gp_Vec(20, 0, 0)))
+        SPL6 = Handle_Geom_BSplineCurve_DownCast(SPL2.Translated(gp_Vec(20, 0, 0)))
         aGeomFill3 = GeomFill_BSplineCurves(SPL5,
                                             SPL6,
                                             GeomFill_CurvedStyle)
@@ -420,14 +418,14 @@ class TestGeometry(unittest.TestCase):
         aPipe2 = GeomFill_Pipe(SPL1, E, GeomFill_IsConstantNormal)
         aPipe2.Perform(False, False)
         aSurface2 = aPipe2.Surface()
-        aSurface2.GetObject().Translate(gp_Vec(5, 0, 0))
+        aSurface2.Translate(gp_Vec(5, 0, 0))
 
         TC1 = GC_MakeSegment(gp_Pnt(1, 1, 1), gp_Pnt(2, 2, 2)).Value()
         TC2 = GC_MakeSegment(gp_Pnt(1, 1, 0), gp_Pnt(3, 2, 1)).Value()
         aPipe3 = GeomFill_Pipe(SPL1, TC1, TC2)
         aPipe3.Perform(False, False)
         aSurface3 = aPipe3.Surface()
-        aSurface3.GetObject().Translate(gp_Vec(10, 0, 0))
+        aSurface3.Translate(gp_Vec(10, 0, 0))
 
         for i, mode in enumerate([GeomFill_IsConstantNormal,
                                   GeomFill_IsCorrectedFrenet,
@@ -441,7 +439,7 @@ class TestGeometry(unittest.TestCase):
             aPipe2 = GeomFill_Pipe(SPL1, TC1, TC2, mode)
             aPipe2.Perform(False, False)
             aSurface2 = aPipe2.Surface()
-            aSurface2.GetObject().Translate(gp_Vec(5, 5, 0))
+            aSurface2.Translate(gp_Vec(5, 5, 0))
 
     def test_bezier_surfaces(self):
         '''Test: Bezier surfaces'''
@@ -494,18 +492,18 @@ class TestGeometry(unittest.TestCase):
                                                       array3, array4])
 
         bezierarray = TColGeom_Array2OfBezierSurface(1, 2, 1, 2)
-        bezierarray.SetValue(1, 1, BZ1.GetHandle())
-        bezierarray.SetValue(1, 2, BZ2.GetHandle())
-        bezierarray.SetValue(2, 1, BZ3.GetHandle())
-        bezierarray.SetValue(2, 2, BZ4.GetHandle())
+        bezierarray.SetValue(1, 1, BZ1)
+        bezierarray.SetValue(1, 2, BZ2)
+        bezierarray.SetValue(2, 1, BZ3)
+        bezierarray.SetValue(2, 2, BZ4)
 
         BB = GeomConvert_CompBezierSurfacesToBSplineSurface(bezierarray)
         self.assertTrue(BB.IsDone())
-        poles = BB.Poles().GetObject().Array2()
-        uknots = BB.UKnots().GetObject().Array1()
-        vknots = BB.VKnots().GetObject().Array1()
-        umult = BB.UMultiplicities().GetObject().Array1()
-        vmult = BB.VMultiplicities().GetObject().Array1()
+        poles = BB.Poles().Array2()
+        uknots = BB.UKnots().Array1()
+        vknots = BB.VKnots().Array1()
+        umult = BB.UMultiplicities().Array1()
+        vmult = BB.VMultiplicities().Array1()
         udeg = BB.UDegree()
         vdeg = BB.VDegree()
 
@@ -541,9 +539,9 @@ class TestGeometry(unittest.TestCase):
         GOS2 = Geom_OffsetSurface(aGeomSurface, offset)
 
         face1 = make_face(aGeomSurface)
-        face2 = make_face(GOS.GetHandle())
-        face3 = make_face(GOS1.GetHandle())
-        face4 = make_face(GOS2.GetHandle())
+        face2 = make_face(GOS)
+        face3 = make_face(GOS1)
+        face4 = make_face(GOS2)
 
     def test_surfaces_from_revolution(self):
         '''Test: surfaces from revolution'''
@@ -557,7 +555,7 @@ class TestGeometry(unittest.TestCase):
         SOR = Geom_SurfaceOfRevolution(aCurve, gp_OX())
         edge = make_edge(aCurve)
         self.assertFalse(edge.IsNull())
-        face = make_face(SOR.GetHandle())
+        face = make_face(SOR)
         self.assertFalse(face.IsNull())
 
     def test_distances(self):
@@ -621,7 +619,7 @@ class TestGeometry(unittest.TestCase):
             P3, P4 = gp_Pnt(), gp_Pnt()
             ESS.Points(k, P3, P4)
             aCurve = GC_MakeSegment(P3, P4).Value()
-            self.assertFalse(aCurve.IsNull())
+            self.assertFalse(aCurve is None)
 
 
 def suite():

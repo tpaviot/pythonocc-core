@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XSCONTROLDOCSTRING
-"No docstring provided."
+"-Purpose : This package provides complements to IFSelect & Co for
+control of a session
+"
 %enddef
 %module (package="OCC.Core", docstring=XSCONTROLDOCSTRING) XSControl
 
@@ -34,30 +36,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XSControl_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XSControl_ConnectedShapes)
+%wrap_handle(XSControl_Controller)
+%wrap_handle(XSControl_SelectForTransfer)
+%wrap_handle(XSControl_SignTransferStatus)
+%wrap_handle(XSControl_TransferReader)
+%wrap_handle(XSControl_TransferWriter)
+%wrap_handle(XSControl_WorkSession)
 
 %rename(xscontrol) XSControl;
 class XSControl {
@@ -146,51 +142,7 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 };
 
 
-%extend XSControl_ConnectedShapes {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_ConnectedShapes(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_ConnectedShapes::Handle_XSControl_ConnectedShapes %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_ConnectedShapes;
-class Handle_XSControl_ConnectedShapes : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_XSControl_ConnectedShapes();
-        Handle_XSControl_ConnectedShapes(const Handle_XSControl_ConnectedShapes &aHandle);
-        Handle_XSControl_ConnectedShapes(const XSControl_ConnectedShapes *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_ConnectedShapes DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_ConnectedShapes {
-    XSControl_ConnectedShapes* _get_reference() {
-    return (XSControl_ConnectedShapes*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_ConnectedShapes {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_ConnectedShapes)
 
 %extend XSControl_ConnectedShapes {
 	%pythoncode {
@@ -547,51 +499,7 @@ class XSControl_Controller : public MMgt_TShared {
 };
 
 
-%extend XSControl_Controller {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_Controller(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_Controller::Handle_XSControl_Controller %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_Controller;
-class Handle_XSControl_Controller : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_XSControl_Controller();
-        Handle_XSControl_Controller(const Handle_XSControl_Controller &aHandle);
-        Handle_XSControl_Controller(const XSControl_Controller *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_Controller DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_Controller {
-    XSControl_Controller* _get_reference() {
-    return (XSControl_Controller*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_Controller {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_Controller)
 
 %extend XSControl_Controller {
 	%pythoncode {
@@ -941,51 +849,7 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 };
 
 
-%extend XSControl_SelectForTransfer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_SelectForTransfer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_SelectForTransfer::Handle_XSControl_SelectForTransfer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_SelectForTransfer;
-class Handle_XSControl_SelectForTransfer : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_XSControl_SelectForTransfer();
-        Handle_XSControl_SelectForTransfer(const Handle_XSControl_SelectForTransfer &aHandle);
-        Handle_XSControl_SelectForTransfer(const XSControl_SelectForTransfer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_SelectForTransfer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_SelectForTransfer {
-    XSControl_SelectForTransfer* _get_reference() {
-    return (XSControl_SelectForTransfer*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_SelectForTransfer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_SelectForTransfer)
 
 %extend XSControl_SelectForTransfer {
 	%pythoncode {
@@ -1050,51 +914,7 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 };
 
 
-%extend XSControl_SignTransferStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_SignTransferStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_SignTransferStatus::Handle_XSControl_SignTransferStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_SignTransferStatus;
-class Handle_XSControl_SignTransferStatus : public Handle_IFSelect_Signature {
-
-    public:
-        // constructors
-        Handle_XSControl_SignTransferStatus();
-        Handle_XSControl_SignTransferStatus(const Handle_XSControl_SignTransferStatus &aHandle);
-        Handle_XSControl_SignTransferStatus(const XSControl_SignTransferStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_SignTransferStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_SignTransferStatus {
-    XSControl_SignTransferStatus* _get_reference() {
-    return (XSControl_SignTransferStatus*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_SignTransferStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_SignTransferStatus)
 
 %extend XSControl_SignTransferStatus {
 	%pythoncode {
@@ -1505,51 +1325,7 @@ class XSControl_TransferReader : public MMgt_TShared {
 };
 
 
-%extend XSControl_TransferReader {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_TransferReader(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_TransferReader::Handle_XSControl_TransferReader %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_TransferReader;
-class Handle_XSControl_TransferReader : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_XSControl_TransferReader();
-        Handle_XSControl_TransferReader(const Handle_XSControl_TransferReader &aHandle);
-        Handle_XSControl_TransferReader(const XSControl_TransferReader *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_TransferReader DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_TransferReader {
-    XSControl_TransferReader* _get_reference() {
-    return (XSControl_TransferReader*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_TransferReader {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_TransferReader)
 
 %extend XSControl_TransferReader {
 	%pythoncode {
@@ -1690,51 +1466,7 @@ class XSControl_TransferWriter : public MMgt_TShared {
 };
 
 
-%extend XSControl_TransferWriter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_TransferWriter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_TransferWriter::Handle_XSControl_TransferWriter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_TransferWriter;
-class Handle_XSControl_TransferWriter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_XSControl_TransferWriter();
-        Handle_XSControl_TransferWriter(const Handle_XSControl_TransferWriter &aHandle);
-        Handle_XSControl_TransferWriter(const XSControl_TransferWriter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_TransferWriter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_TransferWriter {
-    XSControl_TransferWriter* _get_reference() {
-    return (XSControl_TransferWriter*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_TransferWriter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_TransferWriter)
 
 %extend XSControl_TransferWriter {
 	%pythoncode {
@@ -2316,51 +2048,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 };
 
 
-%extend XSControl_WorkSession {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XSControl_WorkSession(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XSControl_WorkSession::Handle_XSControl_WorkSession %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XSControl_WorkSession;
-class Handle_XSControl_WorkSession : public Handle_IFSelect_WorkSession {
-
-    public:
-        // constructors
-        Handle_XSControl_WorkSession();
-        Handle_XSControl_WorkSession(const Handle_XSControl_WorkSession &aHandle);
-        Handle_XSControl_WorkSession(const XSControl_WorkSession *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XSControl_WorkSession DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XSControl_WorkSession {
-    XSControl_WorkSession* _get_reference() {
-    return (XSControl_WorkSession*)$self->Access();
-    }
-};
-
-%extend Handle_XSControl_WorkSession {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XSControl_WorkSession)
 
 %extend XSControl_WorkSession {
 	%pythoncode {

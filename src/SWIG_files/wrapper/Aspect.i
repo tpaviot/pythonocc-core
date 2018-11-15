@@ -18,7 +18,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ASPECTDOCSTRING
-"No docstring provided."
+"-Version:
+
+This package contains the group of graphic elements common
+to different types of visualisers. It allows the description
+of a screen background, a window, an edge, and groups of
+graphic attributes that can be used in describing 2D
+and 3D objects.
+
+-Keywords: Window, Aspect, FillArea, Line, Marker, Edge
+Highlight, Hatch, Background, GradientBackground, Color map,
+Type map, Width map, Font map
+-Warning:
+-References:
+"
 %enddef
 %module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 
@@ -34,24 +47,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Aspect_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef void * Aspect_Display;
@@ -312,6 +311,16 @@ enum Aspect_InteriorStyle {
 
 /* end public enums declaration */
 
+%wrap_handle(Aspect_AspectFillArea)
+%wrap_handle(Aspect_AspectLine)
+%wrap_handle(Aspect_AspectMarker)
+%wrap_handle(Aspect_ColorScale)
+%wrap_handle(Aspect_Grid)
+%wrap_handle(Aspect_SequenceNodeOfSequenceOfColor)
+%wrap_handle(Aspect_Window)
+%wrap_handle(Aspect_CircularGrid)
+%wrap_handle(Aspect_RectangularGrid)
+
 %nodefaultctor Aspect_AspectFillArea;
 class Aspect_AspectFillArea : public MMgt_TShared {
 	public:
@@ -412,51 +421,7 @@ class Aspect_AspectFillArea : public MMgt_TShared {
 };
 
 
-%extend Aspect_AspectFillArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_AspectFillArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_AspectFillArea::Handle_Aspect_AspectFillArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_AspectFillArea;
-class Handle_Aspect_AspectFillArea : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_AspectFillArea();
-        Handle_Aspect_AspectFillArea(const Handle_Aspect_AspectFillArea &aHandle);
-        Handle_Aspect_AspectFillArea(const Aspect_AspectFillArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_AspectFillArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_AspectFillArea {
-    Aspect_AspectFillArea* _get_reference() {
-    return (Aspect_AspectFillArea*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_AspectFillArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_AspectFillArea)
 
 %extend Aspect_AspectFillArea {
 	%pythoncode {
@@ -505,51 +470,7 @@ class Aspect_AspectLine : public MMgt_TShared {
 };
 
 
-%extend Aspect_AspectLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_AspectLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_AspectLine::Handle_Aspect_AspectLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_AspectLine;
-class Handle_Aspect_AspectLine : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_AspectLine();
-        Handle_Aspect_AspectLine(const Handle_Aspect_AspectLine &aHandle);
-        Handle_Aspect_AspectLine(const Aspect_AspectLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_AspectLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_AspectLine {
-    Aspect_AspectLine* _get_reference() {
-    return (Aspect_AspectLine*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_AspectLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_AspectLine)
 
 %extend Aspect_AspectLine {
 	%pythoncode {
@@ -598,51 +519,7 @@ class Aspect_AspectMarker : public MMgt_TShared {
 };
 
 
-%extend Aspect_AspectMarker {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_AspectMarker(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_AspectMarker::Handle_Aspect_AspectMarker %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_AspectMarker;
-class Handle_Aspect_AspectMarker : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_AspectMarker();
-        Handle_Aspect_AspectMarker(const Handle_Aspect_AspectMarker &aHandle);
-        Handle_Aspect_AspectMarker(const Aspect_AspectMarker *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_AspectMarker DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_AspectMarker {
-    Aspect_AspectMarker* _get_reference() {
-    return (Aspect_AspectMarker*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_AspectMarker {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_AspectMarker)
 
 %extend Aspect_AspectMarker {
 	%pythoncode {
@@ -1118,51 +995,7 @@ class Aspect_ColorScale : public MMgt_TShared {
 };
 
 
-%extend Aspect_ColorScale {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_ColorScale(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_ColorScale::Handle_Aspect_ColorScale %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_ColorScale;
-class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_ColorScale();
-        Handle_Aspect_ColorScale(const Handle_Aspect_ColorScale &aHandle);
-        Handle_Aspect_ColorScale(const Aspect_ColorScale *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_ColorScale DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_ColorScale {
-    Aspect_ColorScale* _get_reference() {
-    return (Aspect_ColorScale*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_ColorScale {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_ColorScale)
 
 %extend Aspect_ColorScale {
 	%pythoncode {
@@ -1424,51 +1257,7 @@ class Aspect_Grid : public MMgt_TShared {
 };
 
 
-%extend Aspect_Grid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_Grid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_Grid::Handle_Aspect_Grid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_Grid;
-class Handle_Aspect_Grid : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_Grid();
-        Handle_Aspect_Grid(const Handle_Aspect_Grid &aHandle);
-        Handle_Aspect_Grid(const Aspect_Grid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_Grid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_Grid {
-    Aspect_Grid* _get_reference() {
-    return (Aspect_Grid*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_Grid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_Grid)
 
 %extend Aspect_Grid {
 	%pythoncode {
@@ -1495,51 +1284,7 @@ class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
 };
 
 
-%extend Aspect_SequenceNodeOfSequenceOfColor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfColor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfColor::Handle_Aspect_SequenceNodeOfSequenceOfColor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfColor;
-class Handle_Aspect_SequenceNodeOfSequenceOfColor : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Aspect_SequenceNodeOfSequenceOfColor();
-        Handle_Aspect_SequenceNodeOfSequenceOfColor(const Handle_Aspect_SequenceNodeOfSequenceOfColor &aHandle);
-        Handle_Aspect_SequenceNodeOfSequenceOfColor(const Aspect_SequenceNodeOfSequenceOfColor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_SequenceNodeOfSequenceOfColor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
-    Aspect_SequenceNodeOfSequenceOfColor* _get_reference() {
-    return (Aspect_SequenceNodeOfSequenceOfColor*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_SequenceNodeOfSequenceOfColor)
 
 %extend Aspect_SequenceNodeOfSequenceOfColor {
 	%pythoncode {
@@ -1837,51 +1582,7 @@ class Aspect_Window : public MMgt_TShared {
 };
 
 
-%extend Aspect_Window {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_Window(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_Window::Handle_Aspect_Window %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_Window;
-class Handle_Aspect_Window : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Aspect_Window();
-        Handle_Aspect_Window(const Handle_Aspect_Window &aHandle);
-        Handle_Aspect_Window(const Aspect_Window *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_Window DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_Window {
-    Aspect_Window* _get_reference() {
-    return (Aspect_Window*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_Window {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_Window)
 
 %extend Aspect_Window {
 	%pythoncode {
@@ -1970,51 +1671,7 @@ class Aspect_CircularGrid : public Aspect_Grid {
 };
 
 
-%extend Aspect_CircularGrid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_CircularGrid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_CircularGrid::Handle_Aspect_CircularGrid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_CircularGrid;
-class Handle_Aspect_CircularGrid : public Handle_Aspect_Grid {
-
-    public:
-        // constructors
-        Handle_Aspect_CircularGrid();
-        Handle_Aspect_CircularGrid(const Handle_Aspect_CircularGrid &aHandle);
-        Handle_Aspect_CircularGrid(const Aspect_CircularGrid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_CircularGrid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_CircularGrid {
-    Aspect_CircularGrid* _get_reference() {
-    return (Aspect_CircularGrid*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_CircularGrid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_CircularGrid)
 
 %extend Aspect_CircularGrid {
 	%pythoncode {
@@ -2186,51 +1843,7 @@ class Aspect_RectangularGrid : public Aspect_Grid {
 };
 
 
-%extend Aspect_RectangularGrid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Aspect_RectangularGrid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Aspect_RectangularGrid::Handle_Aspect_RectangularGrid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Aspect_RectangularGrid;
-class Handle_Aspect_RectangularGrid : public Handle_Aspect_Grid {
-
-    public:
-        // constructors
-        Handle_Aspect_RectangularGrid();
-        Handle_Aspect_RectangularGrid(const Handle_Aspect_RectangularGrid &aHandle);
-        Handle_Aspect_RectangularGrid(const Aspect_RectangularGrid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Aspect_RectangularGrid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Aspect_RectangularGrid {
-    Aspect_RectangularGrid* _get_reference() {
-    return (Aspect_RectangularGrid*)$self->Access();
-    }
-};
-
-%extend Handle_Aspect_RectangularGrid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Aspect_RectangularGrid)
 
 %extend Aspect_RectangularGrid {
 	%pythoncode {

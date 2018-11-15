@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMXCAFDOCDOCSTRING
-"No docstring provided."
+"Storage and Retrieval drivers for modelling attributes.
+Transient attributes are defined in package XCAFDoc
+"
 %enddef
 %module (package="OCC.Core", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
 
@@ -34,30 +36,32 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlMXCAFDoc_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlMXCAFDoc_AreaDriver)
+%wrap_handle(XmlMXCAFDoc_CentroidDriver)
+%wrap_handle(XmlMXCAFDoc_ColorDriver)
+%wrap_handle(XmlMXCAFDoc_ColorToolDriver)
+%wrap_handle(XmlMXCAFDoc_DatumDriver)
+%wrap_handle(XmlMXCAFDoc_DimTolDriver)
+%wrap_handle(XmlMXCAFDoc_DimTolToolDriver)
+%wrap_handle(XmlMXCAFDoc_DocumentToolDriver)
+%wrap_handle(XmlMXCAFDoc_GraphNodeDriver)
+%wrap_handle(XmlMXCAFDoc_LayerToolDriver)
+%wrap_handle(XmlMXCAFDoc_LocationDriver)
+%wrap_handle(XmlMXCAFDoc_MaterialDriver)
+%wrap_handle(XmlMXCAFDoc_MaterialToolDriver)
+%wrap_handle(XmlMXCAFDoc_ShapeToolDriver)
+%wrap_handle(XmlMXCAFDoc_VolumeDriver)
 
 %rename(xmlmxcafdoc) XmlMXCAFDoc;
 class XmlMXCAFDoc {
@@ -116,51 +120,7 @@ class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_AreaDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_AreaDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_AreaDriver::Handle_XmlMXCAFDoc_AreaDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_AreaDriver;
-class Handle_XmlMXCAFDoc_AreaDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_AreaDriver();
-        Handle_XmlMXCAFDoc_AreaDriver(const Handle_XmlMXCAFDoc_AreaDriver &aHandle);
-        Handle_XmlMXCAFDoc_AreaDriver(const XmlMXCAFDoc_AreaDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_AreaDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_AreaDriver {
-    XmlMXCAFDoc_AreaDriver* _get_reference() {
-    return (XmlMXCAFDoc_AreaDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_AreaDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_AreaDriver)
 
 %extend XmlMXCAFDoc_AreaDriver {
 	%pythoncode {
@@ -203,51 +163,7 @@ class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_CentroidDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_CentroidDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_CentroidDriver::Handle_XmlMXCAFDoc_CentroidDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_CentroidDriver;
-class Handle_XmlMXCAFDoc_CentroidDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_CentroidDriver();
-        Handle_XmlMXCAFDoc_CentroidDriver(const Handle_XmlMXCAFDoc_CentroidDriver &aHandle);
-        Handle_XmlMXCAFDoc_CentroidDriver(const XmlMXCAFDoc_CentroidDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_CentroidDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_CentroidDriver {
-    XmlMXCAFDoc_CentroidDriver* _get_reference() {
-    return (XmlMXCAFDoc_CentroidDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_CentroidDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_CentroidDriver)
 
 %extend XmlMXCAFDoc_CentroidDriver {
 	%pythoncode {
@@ -290,51 +206,7 @@ class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_ColorDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_ColorDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_ColorDriver::Handle_XmlMXCAFDoc_ColorDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_ColorDriver;
-class Handle_XmlMXCAFDoc_ColorDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_ColorDriver();
-        Handle_XmlMXCAFDoc_ColorDriver(const Handle_XmlMXCAFDoc_ColorDriver &aHandle);
-        Handle_XmlMXCAFDoc_ColorDriver(const XmlMXCAFDoc_ColorDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_ColorDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_ColorDriver {
-    XmlMXCAFDoc_ColorDriver* _get_reference() {
-    return (XmlMXCAFDoc_ColorDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_ColorDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_ColorDriver)
 
 %extend XmlMXCAFDoc_ColorDriver {
 	%pythoncode {
@@ -377,51 +249,7 @@ class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_ColorToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_ColorToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_ColorToolDriver::Handle_XmlMXCAFDoc_ColorToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_ColorToolDriver;
-class Handle_XmlMXCAFDoc_ColorToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_ColorToolDriver();
-        Handle_XmlMXCAFDoc_ColorToolDriver(const Handle_XmlMXCAFDoc_ColorToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_ColorToolDriver(const XmlMXCAFDoc_ColorToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_ColorToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_ColorToolDriver {
-    XmlMXCAFDoc_ColorToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_ColorToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_ColorToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_ColorToolDriver)
 
 %extend XmlMXCAFDoc_ColorToolDriver {
 	%pythoncode {
@@ -464,51 +292,7 @@ class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_DatumDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_DatumDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_DatumDriver::Handle_XmlMXCAFDoc_DatumDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_DatumDriver;
-class Handle_XmlMXCAFDoc_DatumDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_DatumDriver();
-        Handle_XmlMXCAFDoc_DatumDriver(const Handle_XmlMXCAFDoc_DatumDriver &aHandle);
-        Handle_XmlMXCAFDoc_DatumDriver(const XmlMXCAFDoc_DatumDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_DatumDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_DatumDriver {
-    XmlMXCAFDoc_DatumDriver* _get_reference() {
-    return (XmlMXCAFDoc_DatumDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_DatumDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_DatumDriver)
 
 %extend XmlMXCAFDoc_DatumDriver {
 	%pythoncode {
@@ -551,51 +335,7 @@ class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_DimTolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_DimTolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_DimTolDriver::Handle_XmlMXCAFDoc_DimTolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_DimTolDriver;
-class Handle_XmlMXCAFDoc_DimTolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_DimTolDriver();
-        Handle_XmlMXCAFDoc_DimTolDriver(const Handle_XmlMXCAFDoc_DimTolDriver &aHandle);
-        Handle_XmlMXCAFDoc_DimTolDriver(const XmlMXCAFDoc_DimTolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_DimTolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_DimTolDriver {
-    XmlMXCAFDoc_DimTolDriver* _get_reference() {
-    return (XmlMXCAFDoc_DimTolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_DimTolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_DimTolDriver)
 
 %extend XmlMXCAFDoc_DimTolDriver {
 	%pythoncode {
@@ -638,51 +378,7 @@ class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_DimTolToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_DimTolToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_DimTolToolDriver::Handle_XmlMXCAFDoc_DimTolToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_DimTolToolDriver;
-class Handle_XmlMXCAFDoc_DimTolToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_DimTolToolDriver();
-        Handle_XmlMXCAFDoc_DimTolToolDriver(const Handle_XmlMXCAFDoc_DimTolToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_DimTolToolDriver(const XmlMXCAFDoc_DimTolToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_DimTolToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_DimTolToolDriver {
-    XmlMXCAFDoc_DimTolToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_DimTolToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_DimTolToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_DimTolToolDriver)
 
 %extend XmlMXCAFDoc_DimTolToolDriver {
 	%pythoncode {
@@ -725,51 +421,7 @@ class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_DocumentToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_DocumentToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_DocumentToolDriver::Handle_XmlMXCAFDoc_DocumentToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_DocumentToolDriver;
-class Handle_XmlMXCAFDoc_DocumentToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_DocumentToolDriver();
-        Handle_XmlMXCAFDoc_DocumentToolDriver(const Handle_XmlMXCAFDoc_DocumentToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_DocumentToolDriver(const XmlMXCAFDoc_DocumentToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_DocumentToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_DocumentToolDriver {
-    XmlMXCAFDoc_DocumentToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_DocumentToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_DocumentToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_DocumentToolDriver)
 
 %extend XmlMXCAFDoc_DocumentToolDriver {
 	%pythoncode {
@@ -812,51 +464,7 @@ class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_GraphNodeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_GraphNodeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_GraphNodeDriver::Handle_XmlMXCAFDoc_GraphNodeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_GraphNodeDriver;
-class Handle_XmlMXCAFDoc_GraphNodeDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_GraphNodeDriver();
-        Handle_XmlMXCAFDoc_GraphNodeDriver(const Handle_XmlMXCAFDoc_GraphNodeDriver &aHandle);
-        Handle_XmlMXCAFDoc_GraphNodeDriver(const XmlMXCAFDoc_GraphNodeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_GraphNodeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_GraphNodeDriver {
-    XmlMXCAFDoc_GraphNodeDriver* _get_reference() {
-    return (XmlMXCAFDoc_GraphNodeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_GraphNodeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_GraphNodeDriver)
 
 %extend XmlMXCAFDoc_GraphNodeDriver {
 	%pythoncode {
@@ -899,51 +507,7 @@ class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_LayerToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_LayerToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_LayerToolDriver::Handle_XmlMXCAFDoc_LayerToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_LayerToolDriver;
-class Handle_XmlMXCAFDoc_LayerToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_LayerToolDriver();
-        Handle_XmlMXCAFDoc_LayerToolDriver(const Handle_XmlMXCAFDoc_LayerToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_LayerToolDriver(const XmlMXCAFDoc_LayerToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_LayerToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_LayerToolDriver {
-    XmlMXCAFDoc_LayerToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_LayerToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_LayerToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_LayerToolDriver)
 
 %extend XmlMXCAFDoc_LayerToolDriver {
 	%pythoncode {
@@ -1016,51 +580,7 @@ class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_LocationDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_LocationDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_LocationDriver::Handle_XmlMXCAFDoc_LocationDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_LocationDriver;
-class Handle_XmlMXCAFDoc_LocationDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_LocationDriver();
-        Handle_XmlMXCAFDoc_LocationDriver(const Handle_XmlMXCAFDoc_LocationDriver &aHandle);
-        Handle_XmlMXCAFDoc_LocationDriver(const XmlMXCAFDoc_LocationDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_LocationDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_LocationDriver {
-    XmlMXCAFDoc_LocationDriver* _get_reference() {
-    return (XmlMXCAFDoc_LocationDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_LocationDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_LocationDriver)
 
 %extend XmlMXCAFDoc_LocationDriver {
 	%pythoncode {
@@ -1103,51 +623,7 @@ class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_MaterialDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_MaterialDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_MaterialDriver::Handle_XmlMXCAFDoc_MaterialDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_MaterialDriver;
-class Handle_XmlMXCAFDoc_MaterialDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_MaterialDriver();
-        Handle_XmlMXCAFDoc_MaterialDriver(const Handle_XmlMXCAFDoc_MaterialDriver &aHandle);
-        Handle_XmlMXCAFDoc_MaterialDriver(const XmlMXCAFDoc_MaterialDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_MaterialDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_MaterialDriver {
-    XmlMXCAFDoc_MaterialDriver* _get_reference() {
-    return (XmlMXCAFDoc_MaterialDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_MaterialDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_MaterialDriver)
 
 %extend XmlMXCAFDoc_MaterialDriver {
 	%pythoncode {
@@ -1190,51 +666,7 @@ class XmlMXCAFDoc_MaterialToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_MaterialToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_MaterialToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_MaterialToolDriver::Handle_XmlMXCAFDoc_MaterialToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_MaterialToolDriver;
-class Handle_XmlMXCAFDoc_MaterialToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_MaterialToolDriver();
-        Handle_XmlMXCAFDoc_MaterialToolDriver(const Handle_XmlMXCAFDoc_MaterialToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_MaterialToolDriver(const XmlMXCAFDoc_MaterialToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_MaterialToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_MaterialToolDriver {
-    XmlMXCAFDoc_MaterialToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_MaterialToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_MaterialToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_MaterialToolDriver)
 
 %extend XmlMXCAFDoc_MaterialToolDriver {
 	%pythoncode {
@@ -1277,51 +709,7 @@ class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_ShapeToolDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_ShapeToolDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_ShapeToolDriver::Handle_XmlMXCAFDoc_ShapeToolDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_ShapeToolDriver;
-class Handle_XmlMXCAFDoc_ShapeToolDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_ShapeToolDriver();
-        Handle_XmlMXCAFDoc_ShapeToolDriver(const Handle_XmlMXCAFDoc_ShapeToolDriver &aHandle);
-        Handle_XmlMXCAFDoc_ShapeToolDriver(const XmlMXCAFDoc_ShapeToolDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_ShapeToolDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_ShapeToolDriver {
-    XmlMXCAFDoc_ShapeToolDriver* _get_reference() {
-    return (XmlMXCAFDoc_ShapeToolDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_ShapeToolDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_ShapeToolDriver)
 
 %extend XmlMXCAFDoc_ShapeToolDriver {
 	%pythoncode {
@@ -1364,51 +752,7 @@ class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMXCAFDoc_VolumeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMXCAFDoc_VolumeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMXCAFDoc_VolumeDriver::Handle_XmlMXCAFDoc_VolumeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMXCAFDoc_VolumeDriver;
-class Handle_XmlMXCAFDoc_VolumeDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMXCAFDoc_VolumeDriver();
-        Handle_XmlMXCAFDoc_VolumeDriver(const Handle_XmlMXCAFDoc_VolumeDriver &aHandle);
-        Handle_XmlMXCAFDoc_VolumeDriver(const XmlMXCAFDoc_VolumeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMXCAFDoc_VolumeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMXCAFDoc_VolumeDriver {
-    XmlMXCAFDoc_VolumeDriver* _get_reference() {
-    return (XmlMXCAFDoc_VolumeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMXCAFDoc_VolumeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMXCAFDoc_VolumeDriver)
 
 %extend XmlMXCAFDoc_VolumeDriver {
 	%pythoncode {

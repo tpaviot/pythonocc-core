@@ -18,7 +18,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCPNTSDOCSTRING
-"No docstring provided."
+"This package contains the geometric algorithmes used to
+compute characteristic points on parametrized curves.
+
+They are high level algorithms based on the low level
+algorithms in CPnts.
+-Level : Public.
+All methods of all classes will be public.
+"
 %enddef
 %module (package="OCC.Core", docstring=GCPNTSDOCSTRING) GCPnts
 
@@ -34,24 +41,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GCPnts_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -71,6 +64,7 @@ enum GCPnts_AbscissaType {
 };
 
 /* end public enums declaration */
+
 
 class GCPnts_AbscissaPoint {
 	public:

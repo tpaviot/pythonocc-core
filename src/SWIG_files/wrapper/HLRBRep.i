@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRBREPDOCSTRING
-"No docstring provided."
+"algorithms on the BRep DataStructure.
+
+The class PolyAlgo is used to remove Hidden lines
+on Shapes with Triangulations.
+"
 %enddef
 %module (package="OCC.Core", docstring=HLRBREPDOCSTRING) HLRBRep
 
@@ -34,30 +38,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include HLRBRep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(HLRBRep_AreaLimit)
+%wrap_handle(HLRBRep_Data)
+%wrap_handle(HLRBRep_InternalAlgo)
+%wrap_handle(HLRBRep_ListNodeOfListOfBPnt2D)
+%wrap_handle(HLRBRep_ListNodeOfListOfBPoint)
+%wrap_handle(HLRBRep_PolyAlgo)
+%wrap_handle(HLRBRep_SequenceNodeOfSeqOfShapeBounds)
+%wrap_handle(HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter)
+%wrap_handle(HLRBRep_Algo)
 
 %rename(hlrbrep) HLRBRep;
 class HLRBRep {
@@ -202,51 +202,7 @@ class HLRBRep_AreaLimit : public MMgt_TShared {
 };
 
 
-%extend HLRBRep_AreaLimit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_AreaLimit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_AreaLimit::Handle_HLRBRep_AreaLimit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_AreaLimit;
-class Handle_HLRBRep_AreaLimit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRBRep_AreaLimit();
-        Handle_HLRBRep_AreaLimit(const Handle_HLRBRep_AreaLimit &aHandle);
-        Handle_HLRBRep_AreaLimit(const HLRBRep_AreaLimit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_AreaLimit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_AreaLimit {
-    HLRBRep_AreaLimit* _get_reference() {
-    return (HLRBRep_AreaLimit*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_AreaLimit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_AreaLimit)
 
 %extend HLRBRep_AreaLimit {
 	%pythoncode {
@@ -2122,51 +2078,7 @@ class HLRBRep_Data : public MMgt_TShared {
 };
 
 
-%extend HLRBRep_Data {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_Data(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_Data::Handle_HLRBRep_Data %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_Data;
-class Handle_HLRBRep_Data : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRBRep_Data();
-        Handle_HLRBRep_Data(const Handle_HLRBRep_Data &aHandle);
-        Handle_HLRBRep_Data(const HLRBRep_Data *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_Data DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_Data {
-    HLRBRep_Data* _get_reference() {
-    return (HLRBRep_Data*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_Data {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_Data)
 
 %extend HLRBRep_Data {
 	%pythoncode {
@@ -3687,51 +3599,7 @@ class HLRBRep_InternalAlgo : public MMgt_TShared {
 };
 
 
-%extend HLRBRep_InternalAlgo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_InternalAlgo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_InternalAlgo::Handle_HLRBRep_InternalAlgo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_InternalAlgo;
-class Handle_HLRBRep_InternalAlgo : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRBRep_InternalAlgo();
-        Handle_HLRBRep_InternalAlgo(const Handle_HLRBRep_InternalAlgo &aHandle);
-        Handle_HLRBRep_InternalAlgo(const HLRBRep_InternalAlgo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_InternalAlgo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_InternalAlgo {
-    HLRBRep_InternalAlgo* _get_reference() {
-    return (HLRBRep_InternalAlgo*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_InternalAlgo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_InternalAlgo)
 
 %extend HLRBRep_InternalAlgo {
 	%pythoncode {
@@ -4263,51 +4131,7 @@ class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode {
 };
 
 
-%extend HLRBRep_ListNodeOfListOfBPnt2D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_ListNodeOfListOfBPnt2D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_ListNodeOfListOfBPnt2D::Handle_HLRBRep_ListNodeOfListOfBPnt2D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_ListNodeOfListOfBPnt2D;
-class Handle_HLRBRep_ListNodeOfListOfBPnt2D : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRBRep_ListNodeOfListOfBPnt2D();
-        Handle_HLRBRep_ListNodeOfListOfBPnt2D(const Handle_HLRBRep_ListNodeOfListOfBPnt2D &aHandle);
-        Handle_HLRBRep_ListNodeOfListOfBPnt2D(const HLRBRep_ListNodeOfListOfBPnt2D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_ListNodeOfListOfBPnt2D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
-    HLRBRep_ListNodeOfListOfBPnt2D* _get_reference() {
-    return (HLRBRep_ListNodeOfListOfBPnt2D*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_ListNodeOfListOfBPnt2D)
 
 %extend HLRBRep_ListNodeOfListOfBPnt2D {
 	%pythoncode {
@@ -4332,51 +4156,7 @@ class HLRBRep_ListNodeOfListOfBPoint : public TCollection_MapNode {
 };
 
 
-%extend HLRBRep_ListNodeOfListOfBPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_ListNodeOfListOfBPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_ListNodeOfListOfBPoint::Handle_HLRBRep_ListNodeOfListOfBPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_ListNodeOfListOfBPoint;
-class Handle_HLRBRep_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRBRep_ListNodeOfListOfBPoint();
-        Handle_HLRBRep_ListNodeOfListOfBPoint(const Handle_HLRBRep_ListNodeOfListOfBPoint &aHandle);
-        Handle_HLRBRep_ListNodeOfListOfBPoint(const HLRBRep_ListNodeOfListOfBPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_ListNodeOfListOfBPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_ListNodeOfListOfBPoint {
-    HLRBRep_ListNodeOfListOfBPoint* _get_reference() {
-    return (HLRBRep_ListNodeOfListOfBPoint*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_ListNodeOfListOfBPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_ListNodeOfListOfBPoint)
 
 %extend HLRBRep_ListNodeOfListOfBPoint {
 	%pythoncode {
@@ -4983,51 +4763,7 @@ class HLRBRep_PolyAlgo : public MMgt_TShared {
 };
 
 
-%extend HLRBRep_PolyAlgo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_PolyAlgo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_PolyAlgo::Handle_HLRBRep_PolyAlgo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_PolyAlgo;
-class Handle_HLRBRep_PolyAlgo : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRBRep_PolyAlgo();
-        Handle_HLRBRep_PolyAlgo(const Handle_HLRBRep_PolyAlgo &aHandle);
-        Handle_HLRBRep_PolyAlgo(const HLRBRep_PolyAlgo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_PolyAlgo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_PolyAlgo {
-    HLRBRep_PolyAlgo* _get_reference() {
-    return (HLRBRep_PolyAlgo*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_PolyAlgo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_PolyAlgo)
 
 %extend HLRBRep_PolyAlgo {
 	%pythoncode {
@@ -5708,51 +5444,7 @@ class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode {
 };
 
 
-%extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds::Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds;
-class Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds();
-        Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds(const Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds &aHandle);
-        Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds(const HLRBRep_SequenceNodeOfSeqOfShapeBounds *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-    HLRBRep_SequenceNodeOfSeqOfShapeBounds* _get_reference() {
-    return (HLRBRep_SequenceNodeOfSeqOfShapeBounds*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_SequenceNodeOfSeqOfShapeBounds)
 
 %extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
 	%pythoncode {
@@ -5779,51 +5471,7 @@ class HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter :
 };
 
 
-%extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
-class Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter();
-        Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(const Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter &aHandle);
-        Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(const HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-    HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* _get_reference() {
-    return (HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter)
 
 %extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
 	%pythoncode {
@@ -7704,51 +7352,7 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 };
 
 
-%extend HLRBRep_Algo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRBRep_Algo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRBRep_Algo::Handle_HLRBRep_Algo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRBRep_Algo;
-class Handle_HLRBRep_Algo : public Handle_HLRBRep_InternalAlgo {
-
-    public:
-        // constructors
-        Handle_HLRBRep_Algo();
-        Handle_HLRBRep_Algo(const Handle_HLRBRep_Algo &aHandle);
-        Handle_HLRBRep_Algo(const HLRBRep_Algo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRBRep_Algo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRBRep_Algo {
-    HLRBRep_Algo* _get_reference() {
-    return (HLRBRep_Algo*)$self->Access();
-    }
-};
-
-%extend Handle_HLRBRep_Algo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRBRep_Algo)
 
 %extend HLRBRep_Algo {
 	%pythoncode {

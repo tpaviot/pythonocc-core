@@ -18,7 +18,57 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BSPLSLIBDOCSTRING
-"No docstring provided."
+"- Purpose : BSplSLib  B-spline surface Library
+This package provides  an implementation of geometric
+functions for rational and non rational, periodic and non
+periodic B-spline surface computation.
+
+this package uses  the multi-dimensions splines methods
+provided in the package BSplCLib.
+
+In this package the B-spline surface is defined with :
+. its control points : Array2OfPnt   Poles
+. its weights    : Array2OfReal  Weights
+. its knots and their multiplicity in the two parametric
+direction U and V : Array1OfReal  UKnots, VKnots and
+Array1OfInteger UMults, VMults.
+. the degree of the normalized Spline functions :
+UDegree, VDegree
+
+. the Booleans URational, VRational to know if the weights
+are constant in the U or V direction.
+
+. the Booleans UPeriodic,  VRational to know if the the
+surface is periodic in the U or V direction.
+
+Warnings : The bounds of UKnots and UMults should be the
+same, the bounds of VKnots and VMults should be the same,
+the bounds of Poles and Weights shoud be the same.
+
+The Control points representation is :
+Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend)
+.                   .
+.                   .
+Poles(Uend, Vorigin) .....................Poles(Uend, Vend)
+
+For the double array the row indice  corresponds to the
+parametric U direction and the columns indice corresponds
+to the parametric V direction.
+
+KeyWords :
+B-spline surface, Functions, Library
+
+References :
+. A survey of curve and surface methods in CADG Wolfgang BOHM
+CAGD 1 (1984)
+. On de Boor-like algorithms and blossoming Wolfgang BOEHM
+cagd 5 (1988)
+. Blossoming and knot insertion algorithms for B-spline curves
+Ronald N. GOLDMAN
+. Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+. Curves and Surfaces for Computer Aided Geometric Design,
+a practical guide Gerald Farin
+"
 %enddef
 %module (package="OCC.Core", docstring=BSPLSLIBDOCSTRING) BSplSLib
 
@@ -34,30 +84,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BSplSLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(bsplslib) BSplSLib;
 class BSplSLib {

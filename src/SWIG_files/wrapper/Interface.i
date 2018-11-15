@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTERFACEDOCSTRING
-"No docstring provided."
+"-Purpose : defines a general frame for interface data
+used to manipulate results of normalized Interface outputs
+(i.e. files), also as a basis to define transfer operations
+(in other packages : see package Transfer)
+"
 %enddef
 %module (package="OCC.Core", docstring=INTERFACEDOCSTRING) Interface
 
@@ -34,24 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Interface_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Boolean ( * Interface_StaticSatisfies ) ( const Handle_TCollection_HAsciiString & val );
@@ -93,6 +83,36 @@ enum Interface_CheckStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Interface_Check)
+%wrap_handle(Interface_CopyControl)
+%wrap_handle(Interface_DataMapNodeOfDataMapOfTransientInteger)
+%wrap_handle(Interface_EntityCluster)
+%wrap_handle(Interface_FileReaderData)
+%wrap_handle(Interface_GTool)
+%wrap_handle(Interface_GeneralModule)
+%wrap_handle(Interface_GlobalNodeOfGeneralLib)
+%wrap_handle(Interface_GlobalNodeOfReaderLib)
+%wrap_handle(Interface_HArray1OfHAsciiString)
+%wrap_handle(Interface_HGraph)
+%wrap_handle(Interface_HSequenceOfCheck)
+%wrap_handle(Interface_IndexedMapNodeOfIndexedMapOfAsciiString)
+%wrap_handle(Interface_IntVal)
+%wrap_handle(Interface_InterfaceModel)
+%wrap_handle(Interface_NodeOfGeneralLib)
+%wrap_handle(Interface_NodeOfReaderLib)
+%wrap_handle(Interface_ParamList)
+%wrap_handle(Interface_ParamSet)
+%wrap_handle(Interface_Protocol)
+%wrap_handle(Interface_ReaderModule)
+%wrap_handle(Interface_ReportEntity)
+%wrap_handle(Interface_SequenceNodeOfSequenceOfCheck)
+%wrap_handle(Interface_SignLabel)
+%wrap_handle(Interface_SignType)
+%wrap_handle(Interface_TypedValue)
+%wrap_handle(Interface_UndefinedContent)
+%wrap_handle(Interface_CopyMap)
+%wrap_handle(Interface_Static)
 
 %nodefaultctor Interface_Array1OfFileParameter;
 class Interface_Array1OfFileParameter {
@@ -978,51 +998,7 @@ class Interface_Check : public MMgt_TShared {
 };
 
 
-%extend Interface_Check {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_Check(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_Check::Handle_Interface_Check %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_Check;
-class Handle_Interface_Check : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_Check();
-        Handle_Interface_Check(const Handle_Interface_Check &aHandle);
-        Handle_Interface_Check(const Interface_Check *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_Check DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_Check {
-    Interface_Check* _get_reference() {
-    return (Interface_Check*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_Check {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_Check)
 
 %extend Interface_Check {
 	%pythoncode {
@@ -1423,51 +1399,7 @@ class Interface_CopyControl : public MMgt_TShared {
 };
 
 
-%extend Interface_CopyControl {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_CopyControl(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_CopyControl::Handle_Interface_CopyControl %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_CopyControl;
-class Handle_Interface_CopyControl : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_CopyControl();
-        Handle_Interface_CopyControl(const Handle_Interface_CopyControl &aHandle);
-        Handle_Interface_CopyControl(const Interface_CopyControl *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_CopyControl DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_CopyControl {
-    Interface_CopyControl* _get_reference() {
-    return (Interface_CopyControl*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_CopyControl {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_CopyControl)
 
 %extend Interface_CopyControl {
 	%pythoncode {
@@ -1705,51 +1637,7 @@ class Interface_DataMapNodeOfDataMapOfTransientInteger : public TCollection_MapN
             };
 
 
-%extend Interface_DataMapNodeOfDataMapOfTransientInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_DataMapNodeOfDataMapOfTransientInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_DataMapNodeOfDataMapOfTransientInteger::Handle_Interface_DataMapNodeOfDataMapOfTransientInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_DataMapNodeOfDataMapOfTransientInteger;
-class Handle_Interface_DataMapNodeOfDataMapOfTransientInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Interface_DataMapNodeOfDataMapOfTransientInteger();
-        Handle_Interface_DataMapNodeOfDataMapOfTransientInteger(const Handle_Interface_DataMapNodeOfDataMapOfTransientInteger &aHandle);
-        Handle_Interface_DataMapNodeOfDataMapOfTransientInteger(const Interface_DataMapNodeOfDataMapOfTransientInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_DataMapNodeOfDataMapOfTransientInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_DataMapNodeOfDataMapOfTransientInteger {
-    Interface_DataMapNodeOfDataMapOfTransientInteger* _get_reference() {
-    return (Interface_DataMapNodeOfDataMapOfTransientInteger*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_DataMapNodeOfDataMapOfTransientInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_DataMapNodeOfDataMapOfTransientInteger)
 
 %extend Interface_DataMapNodeOfDataMapOfTransientInteger {
 	%pythoncode {
@@ -1933,51 +1821,7 @@ class Interface_EntityCluster : public MMgt_TShared {
 };
 
 
-%extend Interface_EntityCluster {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_EntityCluster(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_EntityCluster::Handle_Interface_EntityCluster %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_EntityCluster;
-class Handle_Interface_EntityCluster : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_EntityCluster();
-        Handle_Interface_EntityCluster(const Handle_Interface_EntityCluster &aHandle);
-        Handle_Interface_EntityCluster(const Interface_EntityCluster *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_EntityCluster DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_EntityCluster {
-    Interface_EntityCluster* _get_reference() {
-    return (Interface_EntityCluster*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_EntityCluster {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_EntityCluster)
 
 %extend Interface_EntityCluster {
 	%pythoncode {
@@ -2515,51 +2359,7 @@ class Interface_FileReaderData : public MMgt_TShared {
 };
 
 
-%extend Interface_FileReaderData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_FileReaderData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_FileReaderData::Handle_Interface_FileReaderData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_FileReaderData;
-class Handle_Interface_FileReaderData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_FileReaderData();
-        Handle_Interface_FileReaderData(const Handle_Interface_FileReaderData &aHandle);
-        Handle_Interface_FileReaderData(const Interface_FileReaderData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_FileReaderData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_FileReaderData {
-    Interface_FileReaderData* _get_reference() {
-    return (Interface_FileReaderData*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_FileReaderData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_FileReaderData)
 
 %extend Interface_FileReaderData {
 	%pythoncode {
@@ -2958,51 +2758,7 @@ class Interface_GTool : public MMgt_TShared {
 };
 
 
-%extend Interface_GTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_GTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_GTool::Handle_Interface_GTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_GTool;
-class Handle_Interface_GTool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_GTool();
-        Handle_Interface_GTool(const Handle_Interface_GTool &aHandle);
-        Handle_Interface_GTool(const Interface_GTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_GTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_GTool {
-    Interface_GTool* _get_reference() {
-    return (Interface_GTool*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_GTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_GTool)
 
 %extend Interface_GTool {
 	%pythoncode {
@@ -3275,51 +3031,7 @@ class Interface_GeneralModule : public MMgt_TShared {
 };
 
 
-%extend Interface_GeneralModule {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_GeneralModule(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_GeneralModule::Handle_Interface_GeneralModule %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_GeneralModule;
-class Handle_Interface_GeneralModule : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_GeneralModule();
-        Handle_Interface_GeneralModule(const Handle_Interface_GeneralModule &aHandle);
-        Handle_Interface_GeneralModule(const Interface_GeneralModule *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_GeneralModule DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_GeneralModule {
-    Interface_GeneralModule* _get_reference() {
-    return (Interface_GeneralModule*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_GeneralModule {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_GeneralModule)
 
 %extend Interface_GeneralModule {
 	%pythoncode {
@@ -3356,51 +3068,7 @@ class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 };
 
 
-%extend Interface_GlobalNodeOfGeneralLib {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_GlobalNodeOfGeneralLib(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_GlobalNodeOfGeneralLib::Handle_Interface_GlobalNodeOfGeneralLib %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_GlobalNodeOfGeneralLib;
-class Handle_Interface_GlobalNodeOfGeneralLib : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Interface_GlobalNodeOfGeneralLib();
-        Handle_Interface_GlobalNodeOfGeneralLib(const Handle_Interface_GlobalNodeOfGeneralLib &aHandle);
-        Handle_Interface_GlobalNodeOfGeneralLib(const Interface_GlobalNodeOfGeneralLib *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_GlobalNodeOfGeneralLib DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_GlobalNodeOfGeneralLib {
-    Interface_GlobalNodeOfGeneralLib* _get_reference() {
-    return (Interface_GlobalNodeOfGeneralLib*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_GlobalNodeOfGeneralLib {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_GlobalNodeOfGeneralLib)
 
 %extend Interface_GlobalNodeOfGeneralLib {
 	%pythoncode {
@@ -3437,51 +3105,7 @@ class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 };
 
 
-%extend Interface_GlobalNodeOfReaderLib {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_GlobalNodeOfReaderLib(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_GlobalNodeOfReaderLib::Handle_Interface_GlobalNodeOfReaderLib %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_GlobalNodeOfReaderLib;
-class Handle_Interface_GlobalNodeOfReaderLib : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Interface_GlobalNodeOfReaderLib();
-        Handle_Interface_GlobalNodeOfReaderLib(const Handle_Interface_GlobalNodeOfReaderLib &aHandle);
-        Handle_Interface_GlobalNodeOfReaderLib(const Interface_GlobalNodeOfReaderLib *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_GlobalNodeOfReaderLib DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_GlobalNodeOfReaderLib {
-    Interface_GlobalNodeOfReaderLib* _get_reference() {
-    return (Interface_GlobalNodeOfReaderLib*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_GlobalNodeOfReaderLib {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_GlobalNodeOfReaderLib)
 
 %extend Interface_GlobalNodeOfReaderLib {
 	%pythoncode {
@@ -3895,51 +3519,7 @@ class Interface_HArray1OfHAsciiString : public MMgt_TShared {
 };
 
 
-%extend Interface_HArray1OfHAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_HArray1OfHAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_HArray1OfHAsciiString::Handle_Interface_HArray1OfHAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_HArray1OfHAsciiString;
-class Handle_Interface_HArray1OfHAsciiString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_HArray1OfHAsciiString();
-        Handle_Interface_HArray1OfHAsciiString(const Handle_Interface_HArray1OfHAsciiString &aHandle);
-        Handle_Interface_HArray1OfHAsciiString(const Interface_HArray1OfHAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_HArray1OfHAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_HArray1OfHAsciiString {
-    Interface_HArray1OfHAsciiString* _get_reference() {
-    return (Interface_HArray1OfHAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_HArray1OfHAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_HArray1OfHAsciiString)
 
 %extend Interface_HArray1OfHAsciiString {
 	%pythoncode {
@@ -4018,51 +3598,7 @@ class Interface_HGraph : public MMgt_TShared {
 };
 
 
-%extend Interface_HGraph {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_HGraph(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_HGraph::Handle_Interface_HGraph %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_HGraph;
-class Handle_Interface_HGraph : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_HGraph();
-        Handle_Interface_HGraph(const Handle_Interface_HGraph &aHandle);
-        Handle_Interface_HGraph(const Interface_HGraph *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_HGraph DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_HGraph {
-    Interface_HGraph* _get_reference() {
-    return (Interface_HGraph*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_HGraph {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_HGraph)
 
 %extend Interface_HGraph {
 	%pythoncode {
@@ -4207,51 +3743,7 @@ class Interface_HSequenceOfCheck : public MMgt_TShared {
 };
 
 
-%extend Interface_HSequenceOfCheck {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_HSequenceOfCheck(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_HSequenceOfCheck::Handle_Interface_HSequenceOfCheck %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_HSequenceOfCheck;
-class Handle_Interface_HSequenceOfCheck : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_HSequenceOfCheck();
-        Handle_Interface_HSequenceOfCheck(const Handle_Interface_HSequenceOfCheck &aHandle);
-        Handle_Interface_HSequenceOfCheck(const Interface_HSequenceOfCheck *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_HSequenceOfCheck DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_HSequenceOfCheck {
-    Interface_HSequenceOfCheck* _get_reference() {
-    return (Interface_HSequenceOfCheck*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_HSequenceOfCheck {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_HSequenceOfCheck)
 
 %extend Interface_HSequenceOfCheck {
 	%pythoncode {
@@ -4297,51 +3789,7 @@ class Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public TCollection_Map
 };
 
 
-%extend Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString::Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString;
-class Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString();
-        Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString(const Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString &aHandle);
-        Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString(const Interface_IndexedMapNodeOfIndexedMapOfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
-    Interface_IndexedMapNodeOfIndexedMapOfAsciiString* _get_reference() {
-    return (Interface_IndexedMapNodeOfIndexedMapOfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_IndexedMapNodeOfIndexedMapOfAsciiString)
 
 %extend Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
 	%pythoncode {
@@ -4617,51 +4065,7 @@ class Interface_IntVal : public MMgt_TShared {
             };
 
 
-%extend Interface_IntVal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_IntVal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_IntVal::Handle_Interface_IntVal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_IntVal;
-class Handle_Interface_IntVal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_IntVal();
-        Handle_Interface_IntVal(const Handle_Interface_IntVal &aHandle);
-        Handle_Interface_IntVal(const Interface_IntVal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_IntVal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_IntVal {
-    Interface_IntVal* _get_reference() {
-    return (Interface_IntVal*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_IntVal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_IntVal)
 
 %extend Interface_IntVal {
 	%pythoncode {
@@ -5189,51 +4593,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 };
 
 
-%extend Interface_InterfaceModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_InterfaceModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_InterfaceModel::Handle_Interface_InterfaceModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_InterfaceModel;
-class Handle_Interface_InterfaceModel : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_InterfaceModel();
-        Handle_Interface_InterfaceModel(const Handle_Interface_InterfaceModel &aHandle);
-        Handle_Interface_InterfaceModel(const Interface_InterfaceModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_InterfaceModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_InterfaceModel {
-    Interface_InterfaceModel* _get_reference() {
-    return (Interface_InterfaceModel*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_InterfaceModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_InterfaceModel)
 
 %extend Interface_InterfaceModel {
 	%pythoncode {
@@ -5699,51 +5059,7 @@ class Interface_NodeOfGeneralLib : public MMgt_TShared {
 };
 
 
-%extend Interface_NodeOfGeneralLib {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_NodeOfGeneralLib(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_NodeOfGeneralLib::Handle_Interface_NodeOfGeneralLib %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_NodeOfGeneralLib;
-class Handle_Interface_NodeOfGeneralLib : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_NodeOfGeneralLib();
-        Handle_Interface_NodeOfGeneralLib(const Handle_Interface_NodeOfGeneralLib &aHandle);
-        Handle_Interface_NodeOfGeneralLib(const Interface_NodeOfGeneralLib *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_NodeOfGeneralLib DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_NodeOfGeneralLib {
-    Interface_NodeOfGeneralLib* _get_reference() {
-    return (Interface_NodeOfGeneralLib*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_NodeOfGeneralLib {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_NodeOfGeneralLib)
 
 %extend Interface_NodeOfGeneralLib {
 	%pythoncode {
@@ -5778,51 +5094,7 @@ class Interface_NodeOfReaderLib : public MMgt_TShared {
 };
 
 
-%extend Interface_NodeOfReaderLib {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_NodeOfReaderLib(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_NodeOfReaderLib::Handle_Interface_NodeOfReaderLib %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_NodeOfReaderLib;
-class Handle_Interface_NodeOfReaderLib : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_NodeOfReaderLib();
-        Handle_Interface_NodeOfReaderLib(const Handle_Interface_NodeOfReaderLib &aHandle);
-        Handle_Interface_NodeOfReaderLib(const Interface_NodeOfReaderLib *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_NodeOfReaderLib DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_NodeOfReaderLib {
-    Interface_NodeOfReaderLib* _get_reference() {
-    return (Interface_NodeOfReaderLib*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_NodeOfReaderLib {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_NodeOfReaderLib)
 
 %extend Interface_NodeOfReaderLib {
 	%pythoncode {
@@ -5891,51 +5163,7 @@ class Interface_ParamList : public MMgt_TShared {
 };
 
 
-%extend Interface_ParamList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_ParamList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_ParamList::Handle_Interface_ParamList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_ParamList;
-class Handle_Interface_ParamList : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_ParamList();
-        Handle_Interface_ParamList(const Handle_Interface_ParamList &aHandle);
-        Handle_Interface_ParamList(const Interface_ParamList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_ParamList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_ParamList {
-    Interface_ParamList* _get_reference() {
-    return (Interface_ParamList*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_ParamList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_ParamList)
 
 %extend Interface_ParamList {
 	%pythoncode {
@@ -6028,51 +5256,7 @@ class Interface_ParamSet : public MMgt_TShared {
 };
 
 
-%extend Interface_ParamSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_ParamSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_ParamSet::Handle_Interface_ParamSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_ParamSet;
-class Handle_Interface_ParamSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_ParamSet();
-        Handle_Interface_ParamSet(const Handle_Interface_ParamSet &aHandle);
-        Handle_Interface_ParamSet(const Interface_ParamSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_ParamSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_ParamSet {
-    Interface_ParamSet* _get_reference() {
-    return (Interface_ParamSet*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_ParamSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_ParamSet)
 
 %extend Interface_ParamSet {
 	%pythoncode {
@@ -6199,51 +5383,7 @@ class Interface_Protocol : public MMgt_TShared {
 };
 
 
-%extend Interface_Protocol {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_Protocol(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_Protocol::Handle_Interface_Protocol %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_Protocol;
-class Handle_Interface_Protocol : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_Protocol();
-        Handle_Interface_Protocol(const Handle_Interface_Protocol &aHandle);
-        Handle_Interface_Protocol(const Interface_Protocol *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_Protocol DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_Protocol {
-    Interface_Protocol* _get_reference() {
-    return (Interface_Protocol*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_Protocol {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_Protocol)
 
 %extend Interface_Protocol {
 	%pythoncode {
@@ -6370,51 +5510,7 @@ class Interface_ReaderModule : public MMgt_TShared {
 };
 
 
-%extend Interface_ReaderModule {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_ReaderModule(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_ReaderModule::Handle_Interface_ReaderModule %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_ReaderModule;
-class Handle_Interface_ReaderModule : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_ReaderModule();
-        Handle_Interface_ReaderModule(const Handle_Interface_ReaderModule &aHandle);
-        Handle_Interface_ReaderModule(const Interface_ReaderModule *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_ReaderModule DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_ReaderModule {
-    Interface_ReaderModule* _get_reference() {
-    return (Interface_ReaderModule*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_ReaderModule {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_ReaderModule)
 
 %extend Interface_ReaderModule {
 	%pythoncode {
@@ -6501,51 +5597,7 @@ class Interface_ReportEntity : public MMgt_TShared {
 };
 
 
-%extend Interface_ReportEntity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_ReportEntity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_ReportEntity::Handle_Interface_ReportEntity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_ReportEntity;
-class Handle_Interface_ReportEntity : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_ReportEntity();
-        Handle_Interface_ReportEntity(const Handle_Interface_ReportEntity &aHandle);
-        Handle_Interface_ReportEntity(const Interface_ReportEntity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_ReportEntity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_ReportEntity {
-    Interface_ReportEntity* _get_reference() {
-    return (Interface_ReportEntity*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_ReportEntity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_ReportEntity)
 
 %extend Interface_ReportEntity {
 	%pythoncode {
@@ -6572,51 +5624,7 @@ class Interface_SequenceNodeOfSequenceOfCheck : public TCollection_SeqNode {
 };
 
 
-%extend Interface_SequenceNodeOfSequenceOfCheck {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_SequenceNodeOfSequenceOfCheck(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_SequenceNodeOfSequenceOfCheck::Handle_Interface_SequenceNodeOfSequenceOfCheck %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_SequenceNodeOfSequenceOfCheck;
-class Handle_Interface_SequenceNodeOfSequenceOfCheck : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Interface_SequenceNodeOfSequenceOfCheck();
-        Handle_Interface_SequenceNodeOfSequenceOfCheck(const Handle_Interface_SequenceNodeOfSequenceOfCheck &aHandle);
-        Handle_Interface_SequenceNodeOfSequenceOfCheck(const Interface_SequenceNodeOfSequenceOfCheck *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_SequenceNodeOfSequenceOfCheck DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_SequenceNodeOfSequenceOfCheck {
-    Interface_SequenceNodeOfSequenceOfCheck* _get_reference() {
-    return (Interface_SequenceNodeOfSequenceOfCheck*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_SequenceNodeOfSequenceOfCheck {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_SequenceNodeOfSequenceOfCheck)
 
 %extend Interface_SequenceNodeOfSequenceOfCheck {
 	%pythoncode {
@@ -7030,51 +6038,7 @@ class Interface_SignLabel : public MoniTool_SignText {
 };
 
 
-%extend Interface_SignLabel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_SignLabel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_SignLabel::Handle_Interface_SignLabel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_SignLabel;
-class Handle_Interface_SignLabel : public Handle_MoniTool_SignText {
-
-    public:
-        // constructors
-        Handle_Interface_SignLabel();
-        Handle_Interface_SignLabel(const Handle_Interface_SignLabel &aHandle);
-        Handle_Interface_SignLabel(const Interface_SignLabel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_SignLabel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_SignLabel {
-    Interface_SignLabel* _get_reference() {
-    return (Interface_SignLabel*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_SignLabel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_SignLabel)
 
 %extend Interface_SignLabel {
 	%pythoncode {
@@ -7115,51 +6079,7 @@ class Interface_SignType : public MoniTool_SignText {
 };
 
 
-%extend Interface_SignType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_SignType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_SignType::Handle_Interface_SignType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_SignType;
-class Handle_Interface_SignType : public Handle_MoniTool_SignText {
-
-    public:
-        // constructors
-        Handle_Interface_SignType();
-        Handle_Interface_SignType(const Handle_Interface_SignType &aHandle);
-        Handle_Interface_SignType(const Interface_SignType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_SignType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_SignType {
-    Interface_SignType* _get_reference() {
-    return (Interface_SignType*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_SignType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_SignType)
 
 %extend Interface_SignType {
 	%pythoncode {
@@ -7206,51 +6126,7 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 };
 
 
-%extend Interface_TypedValue {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_TypedValue(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_TypedValue::Handle_Interface_TypedValue %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_TypedValue;
-class Handle_Interface_TypedValue : public Handle_MoniTool_TypedValue {
-
-    public:
-        // constructors
-        Handle_Interface_TypedValue();
-        Handle_Interface_TypedValue(const Handle_Interface_TypedValue &aHandle);
-        Handle_Interface_TypedValue(const Interface_TypedValue *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_TypedValue DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_TypedValue {
-    Interface_TypedValue* _get_reference() {
-    return (Interface_TypedValue*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_TypedValue {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_TypedValue)
 
 %extend Interface_TypedValue {
 	%pythoncode {
@@ -7415,51 +6291,7 @@ class Interface_UndefinedContent : public MMgt_TShared {
 };
 
 
-%extend Interface_UndefinedContent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_UndefinedContent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_UndefinedContent::Handle_Interface_UndefinedContent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_UndefinedContent;
-class Handle_Interface_UndefinedContent : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Interface_UndefinedContent();
-        Handle_Interface_UndefinedContent(const Handle_Interface_UndefinedContent &aHandle);
-        Handle_Interface_UndefinedContent(const Interface_UndefinedContent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_UndefinedContent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_UndefinedContent {
-    Interface_UndefinedContent* _get_reference() {
-    return (Interface_UndefinedContent*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_UndefinedContent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_UndefinedContent)
 
 %extend Interface_UndefinedContent {
 	%pythoncode {
@@ -7512,51 +6344,7 @@ class Interface_CopyMap : public Interface_CopyControl {
 };
 
 
-%extend Interface_CopyMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_CopyMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_CopyMap::Handle_Interface_CopyMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_CopyMap;
-class Handle_Interface_CopyMap : public Handle_Interface_CopyControl {
-
-    public:
-        // constructors
-        Handle_Interface_CopyMap();
-        Handle_Interface_CopyMap(const Handle_Interface_CopyMap &aHandle);
-        Handle_Interface_CopyMap(const Interface_CopyMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_CopyMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_CopyMap {
-    Interface_CopyMap* _get_reference() {
-    return (Interface_CopyMap*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_CopyMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_CopyMap)
 
 %extend Interface_CopyMap {
 	%pythoncode {
@@ -7876,51 +6664,7 @@ class Interface_Static : public Interface_TypedValue {
 };
 
 
-%extend Interface_Static {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Interface_Static(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Interface_Static::Handle_Interface_Static %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Interface_Static;
-class Handle_Interface_Static : public Handle_Interface_TypedValue {
-
-    public:
-        // constructors
-        Handle_Interface_Static();
-        Handle_Interface_Static(const Handle_Interface_Static &aHandle);
-        Handle_Interface_Static(const Interface_Static *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Interface_Static DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Interface_Static {
-    Interface_Static* _get_reference() {
-    return (Interface_Static*)$self->Access();
-    }
-};
-
-%extend Handle_Interface_Static {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Interface_Static)
 
 %extend Interface_Static {
 	%pythoncode {

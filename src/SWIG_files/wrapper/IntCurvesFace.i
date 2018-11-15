@@ -18,7 +18,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTCURVESFACEDOCSTRING
-"No docstring provided."
+"
+This package provide algorithms to compute the intersection points
+between a Face [a Shape] and a set of curves (The face [shape] is
+loaded, then for each curve is given to compute the intersection).
+
+Intersector [ ShapeIntersector ] can be used when the caller have
+to intersect more than one curve with the face [the shape].
+
+
+If there is only one curve, or if the face has no restrictions,
+someother algorithms can be called.
+
+see for example the packages :
+
+** BRepIntCurveSurface : ( One Curve  <->  One Shape )
+** IntCurveSurface   : ( One Curve  <->  One Surface)
+
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVESFACEDOCSTRING) IntCurvesFace
 
@@ -34,30 +53,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntCurvesFace_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor IntCurvesFace_Intersector;
 class IntCurvesFace_Intersector {

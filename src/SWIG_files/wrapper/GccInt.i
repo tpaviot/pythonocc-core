@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCINTDOCSTRING
-"No docstring provided."
+"This package implements the services needed by the
+toolkit Gcc to use curves other than lines or circles.
+This package is also used for intersections and
+bisecting curves.
+"
 %enddef
 %module (package="OCC.Core", docstring=GCCINTDOCSTRING) GccInt
 
@@ -34,24 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GccInt_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -67,6 +57,14 @@ enum GccInt_IType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(GccInt_Bisec)
+%wrap_handle(GccInt_BCirc)
+%wrap_handle(GccInt_BElips)
+%wrap_handle(GccInt_BHyper)
+%wrap_handle(GccInt_BLine)
+%wrap_handle(GccInt_BParab)
+%wrap_handle(GccInt_BPoint)
 
 %nodefaultctor GccInt_Bisec;
 class GccInt_Bisec : public MMgt_TShared {
@@ -116,51 +114,7 @@ class GccInt_Bisec : public MMgt_TShared {
 };
 
 
-%extend GccInt_Bisec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_Bisec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_Bisec::Handle_GccInt_Bisec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_Bisec;
-class Handle_GccInt_Bisec : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GccInt_Bisec();
-        Handle_GccInt_Bisec(const Handle_GccInt_Bisec &aHandle);
-        Handle_GccInt_Bisec(const GccInt_Bisec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_Bisec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_Bisec {
-    GccInt_Bisec* _get_reference() {
-    return (GccInt_Bisec*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_Bisec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_Bisec)
 
 %extend GccInt_Bisec {
 	%pythoncode {
@@ -193,51 +147,7 @@ class GccInt_BCirc : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BCirc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BCirc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BCirc::Handle_GccInt_BCirc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BCirc;
-class Handle_GccInt_BCirc : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BCirc();
-        Handle_GccInt_BCirc(const Handle_GccInt_BCirc &aHandle);
-        Handle_GccInt_BCirc(const GccInt_BCirc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BCirc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BCirc {
-    GccInt_BCirc* _get_reference() {
-    return (GccInt_BCirc*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BCirc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BCirc)
 
 %extend GccInt_BCirc {
 	%pythoncode {
@@ -270,51 +180,7 @@ class GccInt_BElips : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BElips {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BElips(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BElips::Handle_GccInt_BElips %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BElips;
-class Handle_GccInt_BElips : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BElips();
-        Handle_GccInt_BElips(const Handle_GccInt_BElips &aHandle);
-        Handle_GccInt_BElips(const GccInt_BElips *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BElips DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BElips {
-    GccInt_BElips* _get_reference() {
-    return (GccInt_BElips*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BElips {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BElips)
 
 %extend GccInt_BElips {
 	%pythoncode {
@@ -347,51 +213,7 @@ class GccInt_BHyper : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BHyper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BHyper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BHyper::Handle_GccInt_BHyper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BHyper;
-class Handle_GccInt_BHyper : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BHyper();
-        Handle_GccInt_BHyper(const Handle_GccInt_BHyper &aHandle);
-        Handle_GccInt_BHyper(const GccInt_BHyper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BHyper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BHyper {
-    GccInt_BHyper* _get_reference() {
-    return (GccInt_BHyper*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BHyper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BHyper)
 
 %extend GccInt_BHyper {
 	%pythoncode {
@@ -424,51 +246,7 @@ class GccInt_BLine : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BLine::Handle_GccInt_BLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BLine;
-class Handle_GccInt_BLine : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BLine();
-        Handle_GccInt_BLine(const Handle_GccInt_BLine &aHandle);
-        Handle_GccInt_BLine(const GccInt_BLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BLine {
-    GccInt_BLine* _get_reference() {
-    return (GccInt_BLine*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BLine)
 
 %extend GccInt_BLine {
 	%pythoncode {
@@ -501,51 +279,7 @@ class GccInt_BParab : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BParab {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BParab(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BParab::Handle_GccInt_BParab %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BParab;
-class Handle_GccInt_BParab : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BParab();
-        Handle_GccInt_BParab(const Handle_GccInt_BParab &aHandle);
-        Handle_GccInt_BParab(const GccInt_BParab *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BParab DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BParab {
-    GccInt_BParab* _get_reference() {
-    return (GccInt_BParab*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BParab {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BParab)
 
 %extend GccInt_BParab {
 	%pythoncode {
@@ -578,51 +312,7 @@ class GccInt_BPoint : public GccInt_Bisec {
 };
 
 
-%extend GccInt_BPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GccInt_BPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GccInt_BPoint::Handle_GccInt_BPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GccInt_BPoint;
-class Handle_GccInt_BPoint : public Handle_GccInt_Bisec {
-
-    public:
-        // constructors
-        Handle_GccInt_BPoint();
-        Handle_GccInt_BPoint(const Handle_GccInt_BPoint &aHandle);
-        Handle_GccInt_BPoint(const GccInt_BPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GccInt_BPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GccInt_BPoint {
-    GccInt_BPoint* _get_reference() {
-    return (GccInt_BPoint*)$self->Access();
-    }
-};
-
-%extend Handle_GccInt_BPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GccInt_BPoint)
 
 %extend GccInt_BPoint {
 	%pythoncode {

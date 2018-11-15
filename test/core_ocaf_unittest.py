@@ -42,26 +42,29 @@ class TestOCAF(unittest.TestCase):
     def test_create_app(self):
         ''' Creates an OCAF app and an empty document '''
         # create an handle to a document
-        h_doc = Handle_TDocStd_Document()
-        assert(h_doc.IsNull())
+        doc = Handle_TDocStd_Document()
+        with self.assertWarns(DeprecationWarning):
+            assert(doc.IsNull())
         # Create the application
-        app = XCAFApp_Application.GetApplication().GetObject()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), h_doc)
+        app = XCAFApp_Application.GetApplication()
+        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
 
     def test_write_step_file(self):
         ''' Exports a colored box into a STEP file '''
         ### initialisation
-        h_doc = Handle_TDocStd_Document()
-        assert(h_doc.IsNull())
+        doc = Handle_TDocStd_Document()
+        with self.assertWarns(DeprecationWarning):
+            assert(doc.IsNull())
         # Create the application
-        app = XCAFApp_Application.GetApplication().GetObject()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), h_doc)
+        app = XCAFApp_Application.GetApplication()
+        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
+
+        with self.assertWarns(DeprecationWarning):
+            assert(not doc.IsNull())
+
         # Get root assembly
-        doc = h_doc.GetObject()
-        h_shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
-        l_Colors = XCAFDoc_DocumentTool_ColorTool(doc.Main())
-        shape_tool = h_shape_tool.GetObject()
-        colors = l_Colors.GetObject()
+        shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
+        colors = XCAFDoc_DocumentTool_ColorTool(doc.Main())
         ### create the shape to export
         test_shape = BRepPrimAPI_MakeBox(100., 100., 100.).Shape()
 
@@ -74,8 +77,8 @@ class TestOCAF(unittest.TestCase):
         colors.SetColor(shp_label, red_color, XCAFDoc_ColorGen)
         # write file
         WS = XSControl_WorkSession()
-        writer = STEPCAFControl_Writer(WS.GetHandle(), False)
-        writer.Transfer(h_doc, STEPControl_AsIs)
+        writer = STEPCAFControl_Writer(WS, False)
+        writer.Transfer(doc, STEPControl_AsIs)
         status = writer.Write("./test_io/test_ocaf_generated.stp")
         assert status
         assert os.path.isfile("./test_io/test_ocaf_generated.stp")
@@ -83,13 +86,12 @@ class TestOCAF(unittest.TestCase):
     def test_read_step_file(self):
         ''' Reads the previous step file '''
         # create an handle to a document
-        h_doc = Handle_TDocStd_Document()
+        doc = Handle_TDocStd_Document()
         # Create the application
-        app = XCAFApp_Application.GetApplication().GetObject()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), h_doc)
+        app = XCAFApp_Application.GetApplication()
+        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
         # Get root assembly
-        doc = h_doc.GetObject()
-        h_shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
+        shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
         l_colors = XCAFDoc_DocumentTool_ColorTool(doc.Main())
         step_reader = STEPCAFControl_Reader()
         step_reader.SetColorMode(True)
@@ -98,13 +100,12 @@ class TestOCAF(unittest.TestCase):
         step_reader.SetMatMode(True)
         status = step_reader.ReadFile("./test_io/test_ocaf.stp")
         if status == IFSelect_RetDone:
-            step_reader.Transfer(doc.GetHandle())
+            step_reader.Transfer(doc)
 
         labels = TDF_LabelSequence()
         color_labels = TDF_LabelSequence()
 
-        shape_tool = h_shape_tool.GetObject()
-        h_shape_tool.GetObject().GetFreeShapes(labels)
+        shape_tool.GetFreeShapes(labels)
 
         assert(labels.Length() == 1)
         sub_shapes_labels = TDF_LabelSequence()
@@ -112,11 +113,11 @@ class TestOCAF(unittest.TestCase):
         shape_tool.GetSubShapes(labels.Value(1), sub_shapes_labels)
         assert(sub_shapes_labels.Length() == 0)
 
-        l_colors.GetObject().GetColors(color_labels)
+        l_colors.GetColors(color_labels)
         assert(color_labels.Length() == 1)
 
         label_shp = labels.Value(1)
-        a_shape = h_shape_tool.GetObject().GetShape(label_shp)
+        a_shape = shape_tool.GetShape(label_shp)
         assert(not a_shape.IsNull())
 
 

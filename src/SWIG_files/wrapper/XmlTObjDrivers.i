@@ -34,30 +34,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlTObjDrivers_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlTObjDrivers_DocumentRetrievalDriver)
+%wrap_handle(XmlTObjDrivers_DocumentStorageDriver)
+%wrap_handle(XmlTObjDrivers_IntSparseArrayDriver)
+%wrap_handle(XmlTObjDrivers_ModelDriver)
+%wrap_handle(XmlTObjDrivers_ObjectDriver)
+%wrap_handle(XmlTObjDrivers_ReferenceDriver)
+%wrap_handle(XmlTObjDrivers_XYZDriver)
 
 %rename(xmltobjdrivers) XmlTObjDrivers;
 %nodefaultctor XmlTObjDrivers;
@@ -101,51 +95,7 @@ class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrie
 };
 
 
-%extend XmlTObjDrivers_DocumentRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_DocumentRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_DocumentRetrievalDriver::Handle_XmlTObjDrivers_DocumentRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_DocumentRetrievalDriver;
-class Handle_XmlTObjDrivers_DocumentRetrievalDriver : public Handle_XmlLDrivers_DocumentRetrievalDriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_DocumentRetrievalDriver();
-        Handle_XmlTObjDrivers_DocumentRetrievalDriver(const Handle_XmlTObjDrivers_DocumentRetrievalDriver &aHandle);
-        Handle_XmlTObjDrivers_DocumentRetrievalDriver(const XmlTObjDrivers_DocumentRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_DocumentRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_DocumentRetrievalDriver {
-    XmlTObjDrivers_DocumentRetrievalDriver* _get_reference() {
-    return (XmlTObjDrivers_DocumentRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_DocumentRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_DocumentRetrievalDriver)
 
 %extend XmlTObjDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -170,51 +120,7 @@ class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageD
 };
 
 
-%extend XmlTObjDrivers_DocumentStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_DocumentStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_DocumentStorageDriver::Handle_XmlTObjDrivers_DocumentStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_DocumentStorageDriver;
-class Handle_XmlTObjDrivers_DocumentStorageDriver : public Handle_XmlLDrivers_DocumentStorageDriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_DocumentStorageDriver();
-        Handle_XmlTObjDrivers_DocumentStorageDriver(const Handle_XmlTObjDrivers_DocumentStorageDriver &aHandle);
-        Handle_XmlTObjDrivers_DocumentStorageDriver(const XmlTObjDrivers_DocumentStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_DocumentStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_DocumentStorageDriver {
-    XmlTObjDrivers_DocumentStorageDriver* _get_reference() {
-    return (XmlTObjDrivers_DocumentStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_DocumentStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_DocumentStorageDriver)
 
 %extend XmlTObjDrivers_DocumentStorageDriver {
 	%pythoncode {
@@ -257,51 +163,7 @@ class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlTObjDrivers_IntSparseArrayDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_IntSparseArrayDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_IntSparseArrayDriver::Handle_XmlTObjDrivers_IntSparseArrayDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_IntSparseArrayDriver;
-class Handle_XmlTObjDrivers_IntSparseArrayDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_IntSparseArrayDriver();
-        Handle_XmlTObjDrivers_IntSparseArrayDriver(const Handle_XmlTObjDrivers_IntSparseArrayDriver &aHandle);
-        Handle_XmlTObjDrivers_IntSparseArrayDriver(const XmlTObjDrivers_IntSparseArrayDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_IntSparseArrayDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_IntSparseArrayDriver {
-    XmlTObjDrivers_IntSparseArrayDriver* _get_reference() {
-    return (XmlTObjDrivers_IntSparseArrayDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_IntSparseArrayDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_IntSparseArrayDriver)
 
 %extend XmlTObjDrivers_IntSparseArrayDriver {
 	%pythoncode {
@@ -344,51 +206,7 @@ class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlTObjDrivers_ModelDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_ModelDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_ModelDriver::Handle_XmlTObjDrivers_ModelDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_ModelDriver;
-class Handle_XmlTObjDrivers_ModelDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_ModelDriver();
-        Handle_XmlTObjDrivers_ModelDriver(const Handle_XmlTObjDrivers_ModelDriver &aHandle);
-        Handle_XmlTObjDrivers_ModelDriver(const XmlTObjDrivers_ModelDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_ModelDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_ModelDriver {
-    XmlTObjDrivers_ModelDriver* _get_reference() {
-    return (XmlTObjDrivers_ModelDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_ModelDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_ModelDriver)
 
 %extend XmlTObjDrivers_ModelDriver {
 	%pythoncode {
@@ -431,51 +249,7 @@ class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlTObjDrivers_ObjectDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_ObjectDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_ObjectDriver::Handle_XmlTObjDrivers_ObjectDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_ObjectDriver;
-class Handle_XmlTObjDrivers_ObjectDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_ObjectDriver();
-        Handle_XmlTObjDrivers_ObjectDriver(const Handle_XmlTObjDrivers_ObjectDriver &aHandle);
-        Handle_XmlTObjDrivers_ObjectDriver(const XmlTObjDrivers_ObjectDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_ObjectDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_ObjectDriver {
-    XmlTObjDrivers_ObjectDriver* _get_reference() {
-    return (XmlTObjDrivers_ObjectDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_ObjectDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_ObjectDriver)
 
 %extend XmlTObjDrivers_ObjectDriver {
 	%pythoncode {
@@ -518,51 +292,7 @@ class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlTObjDrivers_ReferenceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_ReferenceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_ReferenceDriver::Handle_XmlTObjDrivers_ReferenceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_ReferenceDriver;
-class Handle_XmlTObjDrivers_ReferenceDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_ReferenceDriver();
-        Handle_XmlTObjDrivers_ReferenceDriver(const Handle_XmlTObjDrivers_ReferenceDriver &aHandle);
-        Handle_XmlTObjDrivers_ReferenceDriver(const XmlTObjDrivers_ReferenceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_ReferenceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_ReferenceDriver {
-    XmlTObjDrivers_ReferenceDriver* _get_reference() {
-    return (XmlTObjDrivers_ReferenceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_ReferenceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_ReferenceDriver)
 
 %extend XmlTObjDrivers_ReferenceDriver {
 	%pythoncode {
@@ -605,51 +335,7 @@ class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlTObjDrivers_XYZDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlTObjDrivers_XYZDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlTObjDrivers_XYZDriver::Handle_XmlTObjDrivers_XYZDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlTObjDrivers_XYZDriver;
-class Handle_XmlTObjDrivers_XYZDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlTObjDrivers_XYZDriver();
-        Handle_XmlTObjDrivers_XYZDriver(const Handle_XmlTObjDrivers_XYZDriver &aHandle);
-        Handle_XmlTObjDrivers_XYZDriver(const XmlTObjDrivers_XYZDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlTObjDrivers_XYZDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlTObjDrivers_XYZDriver {
-    XmlTObjDrivers_XYZDriver* _get_reference() {
-    return (XmlTObjDrivers_XYZDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlTObjDrivers_XYZDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlTObjDrivers_XYZDriver)
 
 %extend XmlTObjDrivers_XYZDriver {
 	%pythoncode {

@@ -18,7 +18,30 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MDFDOCSTRING
-"No docstring provided."
+"This package provides classes and methods to
+translate a transient DF into a persistent one and
+vice versa.
+
+Driver
+
+A driver is a tool used to translate a transient
+attribute into a persistent one and vice versa.
+
+Relocation Table
+
+A relocation table is a tool who provides services
+to relocate transient objects into persistent ones
+(or vice versa). It uses a map system to keep the
+sharing. This service is used by the drivers.
+
+Driver Table
+
+A driver table is an object building links between
+object types and object drivers. In the
+translation process, a driver table is asked to
+give a translation driver for each current object
+to be translated.
+"
 %enddef
 %module (package="OCC.Core", docstring=MDFDOCSTRING) MDF
 
@@ -34,30 +57,37 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MDF_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MDF_ARDriver)
+%wrap_handle(MDF_ARDriverHSequence)
+%wrap_handle(MDF_ARDriverTable)
+%wrap_handle(MDF_ASDriver)
+%wrap_handle(MDF_ASDriverHSequence)
+%wrap_handle(MDF_ASDriverTable)
+%wrap_handle(MDF_DataMapNodeOfTypeARDriverMap)
+%wrap_handle(MDF_DataMapNodeOfTypeASDriverMap)
+%wrap_handle(MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable)
+%wrap_handle(MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable)
+%wrap_handle(MDF_ListNodeOfDriverListOfARDriverTable)
+%wrap_handle(MDF_ListNodeOfDriverListOfASDriverTable)
+%wrap_handle(MDF_RRelocationTable)
+%wrap_handle(MDF_SRelocationTable)
+%wrap_handle(MDF_SequenceNodeOfARDriverSequence)
+%wrap_handle(MDF_SequenceNodeOfASDriverSequence)
+%wrap_handle(MDF_ReferenceRetrievalDriver)
+%wrap_handle(MDF_ReferenceStorageDriver)
+%wrap_handle(MDF_TagSourceRetrievalDriver)
+%wrap_handle(MDF_TagSourceStorageDriver)
 
 %rename(mdf) MDF;
 class MDF {
@@ -164,51 +194,7 @@ class MDF_ARDriver : public MMgt_TShared {
 };
 
 
-%extend MDF_ARDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ARDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ARDriver::Handle_MDF_ARDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ARDriver;
-class Handle_MDF_ARDriver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ARDriver();
-        Handle_MDF_ARDriver(const Handle_MDF_ARDriver &aHandle);
-        Handle_MDF_ARDriver(const MDF_ARDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ARDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ARDriver {
-    MDF_ARDriver* _get_reference() {
-    return (MDF_ARDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ARDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ARDriver)
 
 %extend MDF_ARDriver {
 	%pythoncode {
@@ -353,51 +339,7 @@ class MDF_ARDriverHSequence : public MMgt_TShared {
 };
 
 
-%extend MDF_ARDriverHSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ARDriverHSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ARDriverHSequence::Handle_MDF_ARDriverHSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ARDriverHSequence;
-class Handle_MDF_ARDriverHSequence : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ARDriverHSequence();
-        Handle_MDF_ARDriverHSequence(const Handle_MDF_ARDriverHSequence &aHandle);
-        Handle_MDF_ARDriverHSequence(const MDF_ARDriverHSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ARDriverHSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ARDriverHSequence {
-    MDF_ARDriverHSequence* _get_reference() {
-    return (MDF_ARDriverHSequence*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ARDriverHSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ARDriverHSequence)
 
 %extend MDF_ARDriverHSequence {
 	%pythoncode {
@@ -585,51 +527,7 @@ class MDF_ARDriverTable : public MMgt_TShared {
 };
 
 
-%extend MDF_ARDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ARDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ARDriverTable::Handle_MDF_ARDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ARDriverTable;
-class Handle_MDF_ARDriverTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ARDriverTable();
-        Handle_MDF_ARDriverTable(const Handle_MDF_ARDriverTable &aHandle);
-        Handle_MDF_ARDriverTable(const MDF_ARDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ARDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ARDriverTable {
-    MDF_ARDriverTable* _get_reference() {
-    return (MDF_ARDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ARDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ARDriverTable)
 
 %extend MDF_ARDriverTable {
 	%pythoncode {
@@ -680,51 +578,7 @@ class MDF_ASDriver : public MMgt_TShared {
 };
 
 
-%extend MDF_ASDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ASDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ASDriver::Handle_MDF_ASDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ASDriver;
-class Handle_MDF_ASDriver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ASDriver();
-        Handle_MDF_ASDriver(const Handle_MDF_ASDriver &aHandle);
-        Handle_MDF_ASDriver(const MDF_ASDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ASDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ASDriver {
-    MDF_ASDriver* _get_reference() {
-    return (MDF_ASDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ASDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ASDriver)
 
 %extend MDF_ASDriver {
 	%pythoncode {
@@ -869,51 +723,7 @@ class MDF_ASDriverHSequence : public MMgt_TShared {
 };
 
 
-%extend MDF_ASDriverHSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ASDriverHSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ASDriverHSequence::Handle_MDF_ASDriverHSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ASDriverHSequence;
-class Handle_MDF_ASDriverHSequence : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ASDriverHSequence();
-        Handle_MDF_ASDriverHSequence(const Handle_MDF_ASDriverHSequence &aHandle);
-        Handle_MDF_ASDriverHSequence(const MDF_ASDriverHSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ASDriverHSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ASDriverHSequence {
-    MDF_ASDriverHSequence* _get_reference() {
-    return (MDF_ASDriverHSequence*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ASDriverHSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ASDriverHSequence)
 
 %extend MDF_ASDriverHSequence {
 	%pythoncode {
@@ -1101,51 +911,7 @@ class MDF_ASDriverTable : public MMgt_TShared {
 };
 
 
-%extend MDF_ASDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ASDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ASDriverTable::Handle_MDF_ASDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ASDriverTable;
-class Handle_MDF_ASDriverTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_ASDriverTable();
-        Handle_MDF_ASDriverTable(const Handle_MDF_ASDriverTable &aHandle);
-        Handle_MDF_ASDriverTable(const MDF_ASDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ASDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ASDriverTable {
-    MDF_ASDriverTable* _get_reference() {
-    return (MDF_ASDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ASDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ASDriverTable)
 
 %extend MDF_ASDriverTable {
 	%pythoncode {
@@ -1316,51 +1082,7 @@ class MDF_DataMapNodeOfTypeARDriverMap : public TCollection_MapNode {
 };
 
 
-%extend MDF_DataMapNodeOfTypeARDriverMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_DataMapNodeOfTypeARDriverMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_DataMapNodeOfTypeARDriverMap::Handle_MDF_DataMapNodeOfTypeARDriverMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_DataMapNodeOfTypeARDriverMap;
-class Handle_MDF_DataMapNodeOfTypeARDriverMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_DataMapNodeOfTypeARDriverMap();
-        Handle_MDF_DataMapNodeOfTypeARDriverMap(const Handle_MDF_DataMapNodeOfTypeARDriverMap &aHandle);
-        Handle_MDF_DataMapNodeOfTypeARDriverMap(const MDF_DataMapNodeOfTypeARDriverMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_DataMapNodeOfTypeARDriverMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_DataMapNodeOfTypeARDriverMap {
-    MDF_DataMapNodeOfTypeARDriverMap* _get_reference() {
-    return (MDF_DataMapNodeOfTypeARDriverMap*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_DataMapNodeOfTypeARDriverMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_DataMapNodeOfTypeARDriverMap)
 
 %extend MDF_DataMapNodeOfTypeARDriverMap {
 	%pythoncode {
@@ -1391,51 +1113,7 @@ class MDF_DataMapNodeOfTypeASDriverMap : public TCollection_MapNode {
 };
 
 
-%extend MDF_DataMapNodeOfTypeASDriverMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_DataMapNodeOfTypeASDriverMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_DataMapNodeOfTypeASDriverMap::Handle_MDF_DataMapNodeOfTypeASDriverMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_DataMapNodeOfTypeASDriverMap;
-class Handle_MDF_DataMapNodeOfTypeASDriverMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_DataMapNodeOfTypeASDriverMap();
-        Handle_MDF_DataMapNodeOfTypeASDriverMap(const Handle_MDF_DataMapNodeOfTypeASDriverMap &aHandle);
-        Handle_MDF_DataMapNodeOfTypeASDriverMap(const MDF_DataMapNodeOfTypeASDriverMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_DataMapNodeOfTypeASDriverMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_DataMapNodeOfTypeASDriverMap {
-    MDF_DataMapNodeOfTypeASDriverMap* _get_reference() {
-    return (MDF_DataMapNodeOfTypeASDriverMap*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_DataMapNodeOfTypeASDriverMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_DataMapNodeOfTypeASDriverMap)
 
 %extend MDF_DataMapNodeOfTypeASDriverMap {
 	%pythoncode {
@@ -1466,51 +1144,7 @@ class MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable : public TCollection_Map
 };
 
 
-%extend MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable::Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable;
-class Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable();
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable(const Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable &aHandle);
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable(const MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable {
-    MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable* _get_reference() {
-    return (MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable)
 
 %extend MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable {
 	%pythoncode {
@@ -1541,51 +1175,7 @@ class MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable : public TCollection_Map
 };
 
 
-%extend MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable::Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable;
-class Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable();
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable(const Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable &aHandle);
-        Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable(const MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable {
-    MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable* _get_reference() {
-    return (MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable)
 
 %extend MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable {
 	%pythoncode {
@@ -1958,51 +1548,7 @@ class MDF_ListNodeOfDriverListOfARDriverTable : public TCollection_MapNode {
 };
 
 
-%extend MDF_ListNodeOfDriverListOfARDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ListNodeOfDriverListOfARDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ListNodeOfDriverListOfARDriverTable::Handle_MDF_ListNodeOfDriverListOfARDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ListNodeOfDriverListOfARDriverTable;
-class Handle_MDF_ListNodeOfDriverListOfARDriverTable : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_ListNodeOfDriverListOfARDriverTable();
-        Handle_MDF_ListNodeOfDriverListOfARDriverTable(const Handle_MDF_ListNodeOfDriverListOfARDriverTable &aHandle);
-        Handle_MDF_ListNodeOfDriverListOfARDriverTable(const MDF_ListNodeOfDriverListOfARDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ListNodeOfDriverListOfARDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ListNodeOfDriverListOfARDriverTable {
-    MDF_ListNodeOfDriverListOfARDriverTable* _get_reference() {
-    return (MDF_ListNodeOfDriverListOfARDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ListNodeOfDriverListOfARDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ListNodeOfDriverListOfARDriverTable)
 
 %extend MDF_ListNodeOfDriverListOfARDriverTable {
 	%pythoncode {
@@ -2027,51 +1573,7 @@ class MDF_ListNodeOfDriverListOfASDriverTable : public TCollection_MapNode {
 };
 
 
-%extend MDF_ListNodeOfDriverListOfASDriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ListNodeOfDriverListOfASDriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ListNodeOfDriverListOfASDriverTable::Handle_MDF_ListNodeOfDriverListOfASDriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ListNodeOfDriverListOfASDriverTable;
-class Handle_MDF_ListNodeOfDriverListOfASDriverTable : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MDF_ListNodeOfDriverListOfASDriverTable();
-        Handle_MDF_ListNodeOfDriverListOfASDriverTable(const Handle_MDF_ListNodeOfDriverListOfASDriverTable &aHandle);
-        Handle_MDF_ListNodeOfDriverListOfASDriverTable(const MDF_ListNodeOfDriverListOfASDriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ListNodeOfDriverListOfASDriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ListNodeOfDriverListOfASDriverTable {
-    MDF_ListNodeOfDriverListOfASDriverTable* _get_reference() {
-    return (MDF_ListNodeOfDriverListOfASDriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ListNodeOfDriverListOfASDriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ListNodeOfDriverListOfASDriverTable)
 
 %extend MDF_ListNodeOfDriverListOfASDriverTable {
 	%pythoncode {
@@ -2140,51 +1642,7 @@ class MDF_RRelocationTable : public MMgt_TShared {
 };
 
 
-%extend MDF_RRelocationTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_RRelocationTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_RRelocationTable::Handle_MDF_RRelocationTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_RRelocationTable;
-class Handle_MDF_RRelocationTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_RRelocationTable();
-        Handle_MDF_RRelocationTable(const Handle_MDF_RRelocationTable &aHandle);
-        Handle_MDF_RRelocationTable(const MDF_RRelocationTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_RRelocationTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_RRelocationTable {
-    MDF_RRelocationTable* _get_reference() {
-    return (MDF_RRelocationTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_RRelocationTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_RRelocationTable)
 
 %extend MDF_RRelocationTable {
 	%pythoncode {
@@ -2253,51 +1711,7 @@ class MDF_SRelocationTable : public MMgt_TShared {
 };
 
 
-%extend MDF_SRelocationTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_SRelocationTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_SRelocationTable::Handle_MDF_SRelocationTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_SRelocationTable;
-class Handle_MDF_SRelocationTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MDF_SRelocationTable();
-        Handle_MDF_SRelocationTable(const Handle_MDF_SRelocationTable &aHandle);
-        Handle_MDF_SRelocationTable(const MDF_SRelocationTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_SRelocationTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_SRelocationTable {
-    MDF_SRelocationTable* _get_reference() {
-    return (MDF_SRelocationTable*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_SRelocationTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_SRelocationTable)
 
 %extend MDF_SRelocationTable {
 	%pythoncode {
@@ -2324,51 +1738,7 @@ class MDF_SequenceNodeOfARDriverSequence : public TCollection_SeqNode {
 };
 
 
-%extend MDF_SequenceNodeOfARDriverSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_SequenceNodeOfARDriverSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_SequenceNodeOfARDriverSequence::Handle_MDF_SequenceNodeOfARDriverSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_SequenceNodeOfARDriverSequence;
-class Handle_MDF_SequenceNodeOfARDriverSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MDF_SequenceNodeOfARDriverSequence();
-        Handle_MDF_SequenceNodeOfARDriverSequence(const Handle_MDF_SequenceNodeOfARDriverSequence &aHandle);
-        Handle_MDF_SequenceNodeOfARDriverSequence(const MDF_SequenceNodeOfARDriverSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_SequenceNodeOfARDriverSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_SequenceNodeOfARDriverSequence {
-    MDF_SequenceNodeOfARDriverSequence* _get_reference() {
-    return (MDF_SequenceNodeOfARDriverSequence*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_SequenceNodeOfARDriverSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_SequenceNodeOfARDriverSequence)
 
 %extend MDF_SequenceNodeOfARDriverSequence {
 	%pythoncode {
@@ -2395,51 +1765,7 @@ class MDF_SequenceNodeOfASDriverSequence : public TCollection_SeqNode {
 };
 
 
-%extend MDF_SequenceNodeOfASDriverSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_SequenceNodeOfASDriverSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_SequenceNodeOfASDriverSequence::Handle_MDF_SequenceNodeOfASDriverSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_SequenceNodeOfASDriverSequence;
-class Handle_MDF_SequenceNodeOfASDriverSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MDF_SequenceNodeOfASDriverSequence();
-        Handle_MDF_SequenceNodeOfASDriverSequence(const Handle_MDF_SequenceNodeOfASDriverSequence &aHandle);
-        Handle_MDF_SequenceNodeOfASDriverSequence(const MDF_SequenceNodeOfASDriverSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_SequenceNodeOfASDriverSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_SequenceNodeOfASDriverSequence {
-    MDF_SequenceNodeOfASDriverSequence* _get_reference() {
-    return (MDF_SequenceNodeOfASDriverSequence*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_SequenceNodeOfASDriverSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_SequenceNodeOfASDriverSequence)
 
 %extend MDF_SequenceNodeOfASDriverSequence {
 	%pythoncode {
@@ -2914,51 +2240,7 @@ class MDF_ReferenceRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MDF_ReferenceRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ReferenceRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ReferenceRetrievalDriver::Handle_MDF_ReferenceRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ReferenceRetrievalDriver;
-class Handle_MDF_ReferenceRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MDF_ReferenceRetrievalDriver();
-        Handle_MDF_ReferenceRetrievalDriver(const Handle_MDF_ReferenceRetrievalDriver &aHandle);
-        Handle_MDF_ReferenceRetrievalDriver(const MDF_ReferenceRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ReferenceRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ReferenceRetrievalDriver {
-    MDF_ReferenceRetrievalDriver* _get_reference() {
-    return (MDF_ReferenceRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ReferenceRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ReferenceRetrievalDriver)
 
 %extend MDF_ReferenceRetrievalDriver {
 	%pythoncode {
@@ -3003,51 +2285,7 @@ class MDF_ReferenceStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MDF_ReferenceStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_ReferenceStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_ReferenceStorageDriver::Handle_MDF_ReferenceStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_ReferenceStorageDriver;
-class Handle_MDF_ReferenceStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MDF_ReferenceStorageDriver();
-        Handle_MDF_ReferenceStorageDriver(const Handle_MDF_ReferenceStorageDriver &aHandle);
-        Handle_MDF_ReferenceStorageDriver(const MDF_ReferenceStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_ReferenceStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_ReferenceStorageDriver {
-    MDF_ReferenceStorageDriver* _get_reference() {
-    return (MDF_ReferenceStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_ReferenceStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_ReferenceStorageDriver)
 
 %extend MDF_ReferenceStorageDriver {
 	%pythoncode {
@@ -3092,51 +2330,7 @@ class MDF_TagSourceRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MDF_TagSourceRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_TagSourceRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_TagSourceRetrievalDriver::Handle_MDF_TagSourceRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_TagSourceRetrievalDriver;
-class Handle_MDF_TagSourceRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MDF_TagSourceRetrievalDriver();
-        Handle_MDF_TagSourceRetrievalDriver(const Handle_MDF_TagSourceRetrievalDriver &aHandle);
-        Handle_MDF_TagSourceRetrievalDriver(const MDF_TagSourceRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_TagSourceRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_TagSourceRetrievalDriver {
-    MDF_TagSourceRetrievalDriver* _get_reference() {
-    return (MDF_TagSourceRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_TagSourceRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_TagSourceRetrievalDriver)
 
 %extend MDF_TagSourceRetrievalDriver {
 	%pythoncode {
@@ -3181,51 +2375,7 @@ class MDF_TagSourceStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MDF_TagSourceStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MDF_TagSourceStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MDF_TagSourceStorageDriver::Handle_MDF_TagSourceStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MDF_TagSourceStorageDriver;
-class Handle_MDF_TagSourceStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MDF_TagSourceStorageDriver();
-        Handle_MDF_TagSourceStorageDriver(const Handle_MDF_TagSourceStorageDriver &aHandle);
-        Handle_MDF_TagSourceStorageDriver(const MDF_TagSourceStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MDF_TagSourceStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MDF_TagSourceStorageDriver {
-    MDF_TagSourceStorageDriver* _get_reference() {
-    return (MDF_TagSourceStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MDF_TagSourceStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MDF_TagSourceStorageDriver)
 
 %extend MDF_TagSourceStorageDriver {
 	%pythoncode {

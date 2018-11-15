@@ -18,7 +18,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDFDOCSTRING
-"No docstring provided."
+"This package provides data framework for binding
+features and data structures.
+
+The feature structure is a tree used to bind
+semantic informations about each feature together.
+
+The only one concrete  attribute defined in this
+package is the TagSource attribute.This attribute
+is used for random creation of child labels under
+a given label. Tags are randomly delivered.
+
+-Category: GUID - AttributeID
+2a96b611-ec8b-11d0-bee7-080009dc3333	TDataStd_TagSource
+
+"
 %enddef
 %module (package="OCC.Core", docstring=TDFDOCSTRING) TDF
 
@@ -34,24 +48,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TDF_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Handle_NCollection_BaseAllocator TDF_HAllocator;
@@ -67,6 +67,41 @@ enum  {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TDF_Attribute)
+%wrap_handle(TDF_AttributeDelta)
+%wrap_handle(TDF_Data)
+%wrap_handle(TDF_DataMapNodeOfAttributeDataMap)
+%wrap_handle(TDF_DataMapNodeOfLabelDataMap)
+%wrap_handle(TDF_DataMapNodeOfLabelIntegerMap)
+%wrap_handle(TDF_DataSet)
+%wrap_handle(TDF_Delta)
+%wrap_handle(TDF_DoubleMapNodeOfAttributeDoubleMap)
+%wrap_handle(TDF_DoubleMapNodeOfGUIDProgIDMap)
+%wrap_handle(TDF_DoubleMapNodeOfLabelDoubleMap)
+%wrap_handle(TDF_HAttributeArray1)
+%wrap_handle(TDF_IndexedMapNodeOfAttributeIndexedMap)
+%wrap_handle(TDF_IndexedMapNodeOfLabelIndexedMap)
+%wrap_handle(TDF_ListNodeOfAttributeDeltaList)
+%wrap_handle(TDF_ListNodeOfAttributeList)
+%wrap_handle(TDF_ListNodeOfDeltaList)
+%wrap_handle(TDF_ListNodeOfIDList)
+%wrap_handle(TDF_ListNodeOfLabelList)
+%wrap_handle(TDF_RelocationTable)
+%wrap_handle(TDF_SequenceNodeOfAttributeSequence)
+%wrap_handle(TDF_SequenceNodeOfLabelSequence)
+%wrap_handle(TDF_StdMapNodeOfAttributeMap)
+%wrap_handle(TDF_StdMapNodeOfIDMap)
+%wrap_handle(TDF_StdMapNodeOfLabelMap)
+%wrap_handle(TDF_DeltaOnAddition)
+%wrap_handle(TDF_DeltaOnForget)
+%wrap_handle(TDF_DeltaOnModification)
+%wrap_handle(TDF_DeltaOnRemoval)
+%wrap_handle(TDF_DeltaOnResume)
+%wrap_handle(TDF_Reference)
+%wrap_handle(TDF_TagSource)
+%wrap_handle(TDF_DefaultDeltaOnModification)
+%wrap_handle(TDF_DefaultDeltaOnRemoval)
 
 %rename(tdf) TDF;
 class TDF {
@@ -387,51 +422,7 @@ class TDF_Attribute : public MMgt_TShared {
 };
 
 
-%extend TDF_Attribute {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_Attribute(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_Attribute::Handle_TDF_Attribute %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_Attribute;
-class Handle_TDF_Attribute : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_Attribute();
-        Handle_TDF_Attribute(const Handle_TDF_Attribute &aHandle);
-        Handle_TDF_Attribute(const TDF_Attribute *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_Attribute DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_Attribute {
-    TDF_Attribute* _get_reference() {
-    return (TDF_Attribute*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_Attribute {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_Attribute)
 
 %extend TDF_Attribute {
 	%pythoncode {
@@ -646,51 +637,7 @@ class TDF_AttributeDelta : public MMgt_TShared {
         };
 
 
-%extend TDF_AttributeDelta {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_AttributeDelta(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_AttributeDelta::Handle_TDF_AttributeDelta %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_AttributeDelta;
-class Handle_TDF_AttributeDelta : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_AttributeDelta();
-        Handle_TDF_AttributeDelta(const Handle_TDF_AttributeDelta &aHandle);
-        Handle_TDF_AttributeDelta(const TDF_AttributeDelta *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_AttributeDelta DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_AttributeDelta {
-    TDF_AttributeDelta* _get_reference() {
-    return (TDF_AttributeDelta*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_AttributeDelta {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_AttributeDelta)
 
 %extend TDF_AttributeDelta {
 	%pythoncode {
@@ -1912,51 +1859,7 @@ class TDF_Data : public MMgt_TShared {
 };
 
 
-%extend TDF_Data {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_Data(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_Data::Handle_TDF_Data %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_Data;
-class Handle_TDF_Data : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_Data();
-        Handle_TDF_Data(const Handle_TDF_Data &aHandle);
-        Handle_TDF_Data(const TDF_Data *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_Data DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_Data {
-    TDF_Data* _get_reference() {
-    return (TDF_Data*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_Data {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_Data)
 
 %extend TDF_Data {
 	%pythoncode {
@@ -2092,51 +1995,7 @@ class TDF_DataMapNodeOfAttributeDataMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_DataMapNodeOfAttributeDataMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DataMapNodeOfAttributeDataMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DataMapNodeOfAttributeDataMap::Handle_TDF_DataMapNodeOfAttributeDataMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DataMapNodeOfAttributeDataMap;
-class Handle_TDF_DataMapNodeOfAttributeDataMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DataMapNodeOfAttributeDataMap();
-        Handle_TDF_DataMapNodeOfAttributeDataMap(const Handle_TDF_DataMapNodeOfAttributeDataMap &aHandle);
-        Handle_TDF_DataMapNodeOfAttributeDataMap(const TDF_DataMapNodeOfAttributeDataMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DataMapNodeOfAttributeDataMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DataMapNodeOfAttributeDataMap {
-    TDF_DataMapNodeOfAttributeDataMap* _get_reference() {
-    return (TDF_DataMapNodeOfAttributeDataMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DataMapNodeOfAttributeDataMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DataMapNodeOfAttributeDataMap)
 
 %extend TDF_DataMapNodeOfAttributeDataMap {
 	%pythoncode {
@@ -2167,51 +2026,7 @@ class TDF_DataMapNodeOfLabelDataMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_DataMapNodeOfLabelDataMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DataMapNodeOfLabelDataMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DataMapNodeOfLabelDataMap::Handle_TDF_DataMapNodeOfLabelDataMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DataMapNodeOfLabelDataMap;
-class Handle_TDF_DataMapNodeOfLabelDataMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DataMapNodeOfLabelDataMap();
-        Handle_TDF_DataMapNodeOfLabelDataMap(const Handle_TDF_DataMapNodeOfLabelDataMap &aHandle);
-        Handle_TDF_DataMapNodeOfLabelDataMap(const TDF_DataMapNodeOfLabelDataMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DataMapNodeOfLabelDataMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DataMapNodeOfLabelDataMap {
-    TDF_DataMapNodeOfLabelDataMap* _get_reference() {
-    return (TDF_DataMapNodeOfLabelDataMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DataMapNodeOfLabelDataMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DataMapNodeOfLabelDataMap)
 
 %extend TDF_DataMapNodeOfLabelDataMap {
 	%pythoncode {
@@ -2251,51 +2066,7 @@ class TDF_DataMapNodeOfLabelIntegerMap : public TCollection_MapNode {
             };
 
 
-%extend TDF_DataMapNodeOfLabelIntegerMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DataMapNodeOfLabelIntegerMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DataMapNodeOfLabelIntegerMap::Handle_TDF_DataMapNodeOfLabelIntegerMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DataMapNodeOfLabelIntegerMap;
-class Handle_TDF_DataMapNodeOfLabelIntegerMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DataMapNodeOfLabelIntegerMap();
-        Handle_TDF_DataMapNodeOfLabelIntegerMap(const Handle_TDF_DataMapNodeOfLabelIntegerMap &aHandle);
-        Handle_TDF_DataMapNodeOfLabelIntegerMap(const TDF_DataMapNodeOfLabelIntegerMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DataMapNodeOfLabelIntegerMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DataMapNodeOfLabelIntegerMap {
-    TDF_DataMapNodeOfLabelIntegerMap* _get_reference() {
-    return (TDF_DataMapNodeOfLabelIntegerMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DataMapNodeOfLabelIntegerMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DataMapNodeOfLabelIntegerMap)
 
 %extend TDF_DataMapNodeOfLabelIntegerMap {
 	%pythoncode {
@@ -2392,51 +2163,7 @@ class TDF_DataSet : public MMgt_TShared {
         };
 
 
-%extend TDF_DataSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DataSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DataSet::Handle_TDF_DataSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DataSet;
-class Handle_TDF_DataSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_DataSet();
-        Handle_TDF_DataSet(const Handle_TDF_DataSet &aHandle);
-        Handle_TDF_DataSet(const TDF_DataSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DataSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DataSet {
-    TDF_DataSet* _get_reference() {
-    return (TDF_DataSet*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DataSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DataSet)
 
 %extend TDF_DataSet {
 	%pythoncode {
@@ -2517,51 +2244,7 @@ class TDF_Delta : public MMgt_TShared {
         };
 
 
-%extend TDF_Delta {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_Delta(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_Delta::Handle_TDF_Delta %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_Delta;
-class Handle_TDF_Delta : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_Delta();
-        Handle_TDF_Delta(const Handle_TDF_Delta &aHandle);
-        Handle_TDF_Delta(const TDF_Delta *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_Delta DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_Delta {
-    TDF_Delta* _get_reference() {
-    return (TDF_Delta*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_Delta {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_Delta)
 
 %extend TDF_Delta {
 	%pythoncode {
@@ -2838,51 +2521,7 @@ class TDF_DoubleMapNodeOfAttributeDoubleMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_DoubleMapNodeOfAttributeDoubleMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DoubleMapNodeOfAttributeDoubleMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DoubleMapNodeOfAttributeDoubleMap::Handle_TDF_DoubleMapNodeOfAttributeDoubleMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DoubleMapNodeOfAttributeDoubleMap;
-class Handle_TDF_DoubleMapNodeOfAttributeDoubleMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DoubleMapNodeOfAttributeDoubleMap();
-        Handle_TDF_DoubleMapNodeOfAttributeDoubleMap(const Handle_TDF_DoubleMapNodeOfAttributeDoubleMap &aHandle);
-        Handle_TDF_DoubleMapNodeOfAttributeDoubleMap(const TDF_DoubleMapNodeOfAttributeDoubleMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DoubleMapNodeOfAttributeDoubleMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DoubleMapNodeOfAttributeDoubleMap {
-    TDF_DoubleMapNodeOfAttributeDoubleMap* _get_reference() {
-    return (TDF_DoubleMapNodeOfAttributeDoubleMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DoubleMapNodeOfAttributeDoubleMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DoubleMapNodeOfAttributeDoubleMap)
 
 %extend TDF_DoubleMapNodeOfAttributeDoubleMap {
 	%pythoncode {
@@ -2919,51 +2558,7 @@ class TDF_DoubleMapNodeOfGUIDProgIDMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_DoubleMapNodeOfGUIDProgIDMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DoubleMapNodeOfGUIDProgIDMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DoubleMapNodeOfGUIDProgIDMap::Handle_TDF_DoubleMapNodeOfGUIDProgIDMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DoubleMapNodeOfGUIDProgIDMap;
-class Handle_TDF_DoubleMapNodeOfGUIDProgIDMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DoubleMapNodeOfGUIDProgIDMap();
-        Handle_TDF_DoubleMapNodeOfGUIDProgIDMap(const Handle_TDF_DoubleMapNodeOfGUIDProgIDMap &aHandle);
-        Handle_TDF_DoubleMapNodeOfGUIDProgIDMap(const TDF_DoubleMapNodeOfGUIDProgIDMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DoubleMapNodeOfGUIDProgIDMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DoubleMapNodeOfGUIDProgIDMap {
-    TDF_DoubleMapNodeOfGUIDProgIDMap* _get_reference() {
-    return (TDF_DoubleMapNodeOfGUIDProgIDMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DoubleMapNodeOfGUIDProgIDMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DoubleMapNodeOfGUIDProgIDMap)
 
 %extend TDF_DoubleMapNodeOfGUIDProgIDMap {
 	%pythoncode {
@@ -3000,51 +2595,7 @@ class TDF_DoubleMapNodeOfLabelDoubleMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_DoubleMapNodeOfLabelDoubleMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DoubleMapNodeOfLabelDoubleMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DoubleMapNodeOfLabelDoubleMap::Handle_TDF_DoubleMapNodeOfLabelDoubleMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DoubleMapNodeOfLabelDoubleMap;
-class Handle_TDF_DoubleMapNodeOfLabelDoubleMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_DoubleMapNodeOfLabelDoubleMap();
-        Handle_TDF_DoubleMapNodeOfLabelDoubleMap(const Handle_TDF_DoubleMapNodeOfLabelDoubleMap &aHandle);
-        Handle_TDF_DoubleMapNodeOfLabelDoubleMap(const TDF_DoubleMapNodeOfLabelDoubleMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DoubleMapNodeOfLabelDoubleMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DoubleMapNodeOfLabelDoubleMap {
-    TDF_DoubleMapNodeOfLabelDoubleMap* _get_reference() {
-    return (TDF_DoubleMapNodeOfLabelDoubleMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DoubleMapNodeOfLabelDoubleMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DoubleMapNodeOfLabelDoubleMap)
 
 %extend TDF_DoubleMapNodeOfLabelDoubleMap {
 	%pythoncode {
@@ -3212,51 +2763,7 @@ class TDF_HAttributeArray1 : public MMgt_TShared {
 };
 
 
-%extend TDF_HAttributeArray1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_HAttributeArray1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_HAttributeArray1::Handle_TDF_HAttributeArray1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_HAttributeArray1;
-class Handle_TDF_HAttributeArray1 : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_HAttributeArray1();
-        Handle_TDF_HAttributeArray1(const Handle_TDF_HAttributeArray1 &aHandle);
-        Handle_TDF_HAttributeArray1(const TDF_HAttributeArray1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_HAttributeArray1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_HAttributeArray1 {
-    TDF_HAttributeArray1* _get_reference() {
-    return (TDF_HAttributeArray1*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_HAttributeArray1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_HAttributeArray1)
 
 %extend TDF_HAttributeArray1 {
 	%pythoncode {
@@ -3621,51 +3128,7 @@ class TDF_IndexedMapNodeOfAttributeIndexedMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_IndexedMapNodeOfAttributeIndexedMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_IndexedMapNodeOfAttributeIndexedMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_IndexedMapNodeOfAttributeIndexedMap::Handle_TDF_IndexedMapNodeOfAttributeIndexedMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_IndexedMapNodeOfAttributeIndexedMap;
-class Handle_TDF_IndexedMapNodeOfAttributeIndexedMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_IndexedMapNodeOfAttributeIndexedMap();
-        Handle_TDF_IndexedMapNodeOfAttributeIndexedMap(const Handle_TDF_IndexedMapNodeOfAttributeIndexedMap &aHandle);
-        Handle_TDF_IndexedMapNodeOfAttributeIndexedMap(const TDF_IndexedMapNodeOfAttributeIndexedMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_IndexedMapNodeOfAttributeIndexedMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_IndexedMapNodeOfAttributeIndexedMap {
-    TDF_IndexedMapNodeOfAttributeIndexedMap* _get_reference() {
-    return (TDF_IndexedMapNodeOfAttributeIndexedMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_IndexedMapNodeOfAttributeIndexedMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_IndexedMapNodeOfAttributeIndexedMap)
 
 %extend TDF_IndexedMapNodeOfAttributeIndexedMap {
 	%pythoncode {
@@ -3711,51 +3174,7 @@ class TDF_IndexedMapNodeOfLabelIndexedMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_IndexedMapNodeOfLabelIndexedMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_IndexedMapNodeOfLabelIndexedMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_IndexedMapNodeOfLabelIndexedMap::Handle_TDF_IndexedMapNodeOfLabelIndexedMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_IndexedMapNodeOfLabelIndexedMap;
-class Handle_TDF_IndexedMapNodeOfLabelIndexedMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_IndexedMapNodeOfLabelIndexedMap();
-        Handle_TDF_IndexedMapNodeOfLabelIndexedMap(const Handle_TDF_IndexedMapNodeOfLabelIndexedMap &aHandle);
-        Handle_TDF_IndexedMapNodeOfLabelIndexedMap(const TDF_IndexedMapNodeOfLabelIndexedMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_IndexedMapNodeOfLabelIndexedMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_IndexedMapNodeOfLabelIndexedMap {
-    TDF_IndexedMapNodeOfLabelIndexedMap* _get_reference() {
-    return (TDF_IndexedMapNodeOfLabelIndexedMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_IndexedMapNodeOfLabelIndexedMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_IndexedMapNodeOfLabelIndexedMap)
 
 %extend TDF_IndexedMapNodeOfLabelIndexedMap {
 	%pythoncode {
@@ -4953,51 +4372,7 @@ class TDF_ListNodeOfAttributeDeltaList : public TCollection_MapNode {
 };
 
 
-%extend TDF_ListNodeOfAttributeDeltaList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_ListNodeOfAttributeDeltaList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_ListNodeOfAttributeDeltaList::Handle_TDF_ListNodeOfAttributeDeltaList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_ListNodeOfAttributeDeltaList;
-class Handle_TDF_ListNodeOfAttributeDeltaList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_ListNodeOfAttributeDeltaList();
-        Handle_TDF_ListNodeOfAttributeDeltaList(const Handle_TDF_ListNodeOfAttributeDeltaList &aHandle);
-        Handle_TDF_ListNodeOfAttributeDeltaList(const TDF_ListNodeOfAttributeDeltaList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_ListNodeOfAttributeDeltaList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_ListNodeOfAttributeDeltaList {
-    TDF_ListNodeOfAttributeDeltaList* _get_reference() {
-    return (TDF_ListNodeOfAttributeDeltaList*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_ListNodeOfAttributeDeltaList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_ListNodeOfAttributeDeltaList)
 
 %extend TDF_ListNodeOfAttributeDeltaList {
 	%pythoncode {
@@ -5022,51 +4397,7 @@ class TDF_ListNodeOfAttributeList : public TCollection_MapNode {
 };
 
 
-%extend TDF_ListNodeOfAttributeList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_ListNodeOfAttributeList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_ListNodeOfAttributeList::Handle_TDF_ListNodeOfAttributeList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_ListNodeOfAttributeList;
-class Handle_TDF_ListNodeOfAttributeList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_ListNodeOfAttributeList();
-        Handle_TDF_ListNodeOfAttributeList(const Handle_TDF_ListNodeOfAttributeList &aHandle);
-        Handle_TDF_ListNodeOfAttributeList(const TDF_ListNodeOfAttributeList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_ListNodeOfAttributeList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_ListNodeOfAttributeList {
-    TDF_ListNodeOfAttributeList* _get_reference() {
-    return (TDF_ListNodeOfAttributeList*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_ListNodeOfAttributeList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_ListNodeOfAttributeList)
 
 %extend TDF_ListNodeOfAttributeList {
 	%pythoncode {
@@ -5091,51 +4422,7 @@ class TDF_ListNodeOfDeltaList : public TCollection_MapNode {
 };
 
 
-%extend TDF_ListNodeOfDeltaList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_ListNodeOfDeltaList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_ListNodeOfDeltaList::Handle_TDF_ListNodeOfDeltaList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_ListNodeOfDeltaList;
-class Handle_TDF_ListNodeOfDeltaList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_ListNodeOfDeltaList();
-        Handle_TDF_ListNodeOfDeltaList(const Handle_TDF_ListNodeOfDeltaList &aHandle);
-        Handle_TDF_ListNodeOfDeltaList(const TDF_ListNodeOfDeltaList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_ListNodeOfDeltaList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_ListNodeOfDeltaList {
-    TDF_ListNodeOfDeltaList* _get_reference() {
-    return (TDF_ListNodeOfDeltaList*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_ListNodeOfDeltaList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_ListNodeOfDeltaList)
 
 %extend TDF_ListNodeOfDeltaList {
 	%pythoncode {
@@ -5160,51 +4447,7 @@ class TDF_ListNodeOfIDList : public TCollection_MapNode {
 };
 
 
-%extend TDF_ListNodeOfIDList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_ListNodeOfIDList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_ListNodeOfIDList::Handle_TDF_ListNodeOfIDList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_ListNodeOfIDList;
-class Handle_TDF_ListNodeOfIDList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_ListNodeOfIDList();
-        Handle_TDF_ListNodeOfIDList(const Handle_TDF_ListNodeOfIDList &aHandle);
-        Handle_TDF_ListNodeOfIDList(const TDF_ListNodeOfIDList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_ListNodeOfIDList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_ListNodeOfIDList {
-    TDF_ListNodeOfIDList* _get_reference() {
-    return (TDF_ListNodeOfIDList*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_ListNodeOfIDList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_ListNodeOfIDList)
 
 %extend TDF_ListNodeOfIDList {
 	%pythoncode {
@@ -5229,51 +4472,7 @@ class TDF_ListNodeOfLabelList : public TCollection_MapNode {
 };
 
 
-%extend TDF_ListNodeOfLabelList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_ListNodeOfLabelList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_ListNodeOfLabelList::Handle_TDF_ListNodeOfLabelList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_ListNodeOfLabelList;
-class Handle_TDF_ListNodeOfLabelList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_ListNodeOfLabelList();
-        Handle_TDF_ListNodeOfLabelList(const Handle_TDF_ListNodeOfLabelList &aHandle);
-        Handle_TDF_ListNodeOfLabelList(const TDF_ListNodeOfLabelList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_ListNodeOfLabelList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_ListNodeOfLabelList {
-    TDF_ListNodeOfLabelList* _get_reference() {
-    return (TDF_ListNodeOfLabelList*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_ListNodeOfLabelList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_ListNodeOfLabelList)
 
 %extend TDF_ListNodeOfLabelList {
 	%pythoncode {
@@ -5527,51 +4726,7 @@ class TDF_RelocationTable : public MMgt_TShared {
 };
 
 
-%extend TDF_RelocationTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_RelocationTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_RelocationTable::Handle_TDF_RelocationTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_RelocationTable;
-class Handle_TDF_RelocationTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDF_RelocationTable();
-        Handle_TDF_RelocationTable(const Handle_TDF_RelocationTable &aHandle);
-        Handle_TDF_RelocationTable(const TDF_RelocationTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_RelocationTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_RelocationTable {
-    TDF_RelocationTable* _get_reference() {
-    return (TDF_RelocationTable*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_RelocationTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_RelocationTable)
 
 %extend TDF_RelocationTable {
 	%pythoncode {
@@ -5598,51 +4753,7 @@ class TDF_SequenceNodeOfAttributeSequence : public TCollection_SeqNode {
 };
 
 
-%extend TDF_SequenceNodeOfAttributeSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_SequenceNodeOfAttributeSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_SequenceNodeOfAttributeSequence::Handle_TDF_SequenceNodeOfAttributeSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_SequenceNodeOfAttributeSequence;
-class Handle_TDF_SequenceNodeOfAttributeSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TDF_SequenceNodeOfAttributeSequence();
-        Handle_TDF_SequenceNodeOfAttributeSequence(const Handle_TDF_SequenceNodeOfAttributeSequence &aHandle);
-        Handle_TDF_SequenceNodeOfAttributeSequence(const TDF_SequenceNodeOfAttributeSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_SequenceNodeOfAttributeSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_SequenceNodeOfAttributeSequence {
-    TDF_SequenceNodeOfAttributeSequence* _get_reference() {
-    return (TDF_SequenceNodeOfAttributeSequence*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_SequenceNodeOfAttributeSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_SequenceNodeOfAttributeSequence)
 
 %extend TDF_SequenceNodeOfAttributeSequence {
 	%pythoncode {
@@ -5669,51 +4780,7 @@ class TDF_SequenceNodeOfLabelSequence : public TCollection_SeqNode {
 };
 
 
-%extend TDF_SequenceNodeOfLabelSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_SequenceNodeOfLabelSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_SequenceNodeOfLabelSequence::Handle_TDF_SequenceNodeOfLabelSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_SequenceNodeOfLabelSequence;
-class Handle_TDF_SequenceNodeOfLabelSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TDF_SequenceNodeOfLabelSequence();
-        Handle_TDF_SequenceNodeOfLabelSequence(const Handle_TDF_SequenceNodeOfLabelSequence &aHandle);
-        Handle_TDF_SequenceNodeOfLabelSequence(const TDF_SequenceNodeOfLabelSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_SequenceNodeOfLabelSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_SequenceNodeOfLabelSequence {
-    TDF_SequenceNodeOfLabelSequence* _get_reference() {
-    return (TDF_SequenceNodeOfLabelSequence*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_SequenceNodeOfLabelSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_SequenceNodeOfLabelSequence)
 
 %extend TDF_SequenceNodeOfLabelSequence {
 	%pythoncode {
@@ -5738,51 +4805,7 @@ class TDF_StdMapNodeOfAttributeMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_StdMapNodeOfAttributeMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_StdMapNodeOfAttributeMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_StdMapNodeOfAttributeMap::Handle_TDF_StdMapNodeOfAttributeMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_StdMapNodeOfAttributeMap;
-class Handle_TDF_StdMapNodeOfAttributeMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_StdMapNodeOfAttributeMap();
-        Handle_TDF_StdMapNodeOfAttributeMap(const Handle_TDF_StdMapNodeOfAttributeMap &aHandle);
-        Handle_TDF_StdMapNodeOfAttributeMap(const TDF_StdMapNodeOfAttributeMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_StdMapNodeOfAttributeMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_StdMapNodeOfAttributeMap {
-    TDF_StdMapNodeOfAttributeMap* _get_reference() {
-    return (TDF_StdMapNodeOfAttributeMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_StdMapNodeOfAttributeMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_StdMapNodeOfAttributeMap)
 
 %extend TDF_StdMapNodeOfAttributeMap {
 	%pythoncode {
@@ -5807,51 +4830,7 @@ class TDF_StdMapNodeOfIDMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_StdMapNodeOfIDMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_StdMapNodeOfIDMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_StdMapNodeOfIDMap::Handle_TDF_StdMapNodeOfIDMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_StdMapNodeOfIDMap;
-class Handle_TDF_StdMapNodeOfIDMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_StdMapNodeOfIDMap();
-        Handle_TDF_StdMapNodeOfIDMap(const Handle_TDF_StdMapNodeOfIDMap &aHandle);
-        Handle_TDF_StdMapNodeOfIDMap(const TDF_StdMapNodeOfIDMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_StdMapNodeOfIDMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_StdMapNodeOfIDMap {
-    TDF_StdMapNodeOfIDMap* _get_reference() {
-    return (TDF_StdMapNodeOfIDMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_StdMapNodeOfIDMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_StdMapNodeOfIDMap)
 
 %extend TDF_StdMapNodeOfIDMap {
 	%pythoncode {
@@ -5876,51 +4855,7 @@ class TDF_StdMapNodeOfLabelMap : public TCollection_MapNode {
 };
 
 
-%extend TDF_StdMapNodeOfLabelMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_StdMapNodeOfLabelMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_StdMapNodeOfLabelMap::Handle_TDF_StdMapNodeOfLabelMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_StdMapNodeOfLabelMap;
-class Handle_TDF_StdMapNodeOfLabelMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDF_StdMapNodeOfLabelMap();
-        Handle_TDF_StdMapNodeOfLabelMap(const Handle_TDF_StdMapNodeOfLabelMap &aHandle);
-        Handle_TDF_StdMapNodeOfLabelMap(const TDF_StdMapNodeOfLabelMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_StdMapNodeOfLabelMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_StdMapNodeOfLabelMap {
-    TDF_StdMapNodeOfLabelMap* _get_reference() {
-    return (TDF_StdMapNodeOfLabelMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_StdMapNodeOfLabelMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_StdMapNodeOfLabelMap)
 
 %extend TDF_StdMapNodeOfLabelMap {
 	%pythoncode {
@@ -6282,51 +5217,7 @@ class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 };
 
 
-%extend TDF_DeltaOnAddition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DeltaOnAddition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DeltaOnAddition::Handle_TDF_DeltaOnAddition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DeltaOnAddition;
-class Handle_TDF_DeltaOnAddition : public Handle_TDF_AttributeDelta {
-
-    public:
-        // constructors
-        Handle_TDF_DeltaOnAddition();
-        Handle_TDF_DeltaOnAddition(const Handle_TDF_DeltaOnAddition &aHandle);
-        Handle_TDF_DeltaOnAddition(const TDF_DeltaOnAddition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DeltaOnAddition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DeltaOnAddition {
-    TDF_DeltaOnAddition* _get_reference() {
-    return (TDF_DeltaOnAddition*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DeltaOnAddition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DeltaOnAddition)
 
 %extend TDF_DeltaOnAddition {
 	%pythoncode {
@@ -6353,51 +5244,7 @@ class TDF_DeltaOnForget : public TDF_AttributeDelta {
 };
 
 
-%extend TDF_DeltaOnForget {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DeltaOnForget(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DeltaOnForget::Handle_TDF_DeltaOnForget %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DeltaOnForget;
-class Handle_TDF_DeltaOnForget : public Handle_TDF_AttributeDelta {
-
-    public:
-        // constructors
-        Handle_TDF_DeltaOnForget();
-        Handle_TDF_DeltaOnForget(const Handle_TDF_DeltaOnForget &aHandle);
-        Handle_TDF_DeltaOnForget(const TDF_DeltaOnForget *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DeltaOnForget DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DeltaOnForget {
-    TDF_DeltaOnForget* _get_reference() {
-    return (TDF_DeltaOnForget*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DeltaOnForget {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DeltaOnForget)
 
 %extend TDF_DeltaOnForget {
 	%pythoncode {
@@ -6416,51 +5263,7 @@ class TDF_DeltaOnModification : public TDF_AttributeDelta {
 };
 
 
-%extend TDF_DeltaOnModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DeltaOnModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DeltaOnModification::Handle_TDF_DeltaOnModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DeltaOnModification;
-class Handle_TDF_DeltaOnModification : public Handle_TDF_AttributeDelta {
-
-    public:
-        // constructors
-        Handle_TDF_DeltaOnModification();
-        Handle_TDF_DeltaOnModification(const Handle_TDF_DeltaOnModification &aHandle);
-        Handle_TDF_DeltaOnModification(const TDF_DeltaOnModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DeltaOnModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DeltaOnModification {
-    TDF_DeltaOnModification* _get_reference() {
-    return (TDF_DeltaOnModification*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DeltaOnModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DeltaOnModification)
 
 %extend TDF_DeltaOnModification {
 	%pythoncode {
@@ -6473,51 +5276,7 @@ class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
 };
 
 
-%extend TDF_DeltaOnRemoval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DeltaOnRemoval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DeltaOnRemoval::Handle_TDF_DeltaOnRemoval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DeltaOnRemoval;
-class Handle_TDF_DeltaOnRemoval : public Handle_TDF_AttributeDelta {
-
-    public:
-        // constructors
-        Handle_TDF_DeltaOnRemoval();
-        Handle_TDF_DeltaOnRemoval(const Handle_TDF_DeltaOnRemoval &aHandle);
-        Handle_TDF_DeltaOnRemoval(const TDF_DeltaOnRemoval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DeltaOnRemoval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DeltaOnRemoval {
-    TDF_DeltaOnRemoval* _get_reference() {
-    return (TDF_DeltaOnRemoval*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DeltaOnRemoval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DeltaOnRemoval)
 
 %extend TDF_DeltaOnRemoval {
 	%pythoncode {
@@ -6544,51 +5303,7 @@ class TDF_DeltaOnResume : public TDF_AttributeDelta {
 };
 
 
-%extend TDF_DeltaOnResume {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DeltaOnResume(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DeltaOnResume::Handle_TDF_DeltaOnResume %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DeltaOnResume;
-class Handle_TDF_DeltaOnResume : public Handle_TDF_AttributeDelta {
-
-    public:
-        // constructors
-        Handle_TDF_DeltaOnResume();
-        Handle_TDF_DeltaOnResume(const Handle_TDF_DeltaOnResume &aHandle);
-        Handle_TDF_DeltaOnResume(const TDF_DeltaOnResume *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DeltaOnResume DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DeltaOnResume {
-    TDF_DeltaOnResume* _get_reference() {
-    return (TDF_DeltaOnResume*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DeltaOnResume {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DeltaOnResume)
 
 %extend TDF_DeltaOnResume {
 	%pythoncode {
@@ -6663,51 +5378,7 @@ class TDF_Reference : public TDF_Attribute {
 };
 
 
-%extend TDF_Reference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_Reference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_Reference::Handle_TDF_Reference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_Reference;
-class Handle_TDF_Reference : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDF_Reference();
-        Handle_TDF_Reference(const Handle_TDF_Reference &aHandle);
-        Handle_TDF_Reference(const TDF_Reference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_Reference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_Reference {
-    TDF_Reference* _get_reference() {
-    return (TDF_Reference*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_Reference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_Reference)
 
 %extend TDF_Reference {
 	%pythoncode {
@@ -6788,51 +5459,7 @@ class TDF_TagSource : public TDF_Attribute {
 };
 
 
-%extend TDF_TagSource {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_TagSource(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_TagSource::Handle_TDF_TagSource %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_TagSource;
-class Handle_TDF_TagSource : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDF_TagSource();
-        Handle_TDF_TagSource(const Handle_TDF_TagSource &aHandle);
-        Handle_TDF_TagSource(const TDF_TagSource *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_TagSource DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_TagSource {
-    TDF_TagSource* _get_reference() {
-    return (TDF_TagSource*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_TagSource {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_TagSource)
 
 %extend TDF_TagSource {
 	%pythoncode {
@@ -6859,51 +5486,7 @@ class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 };
 
 
-%extend TDF_DefaultDeltaOnModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DefaultDeltaOnModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DefaultDeltaOnModification::Handle_TDF_DefaultDeltaOnModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DefaultDeltaOnModification;
-class Handle_TDF_DefaultDeltaOnModification : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDF_DefaultDeltaOnModification();
-        Handle_TDF_DefaultDeltaOnModification(const Handle_TDF_DefaultDeltaOnModification &aHandle);
-        Handle_TDF_DefaultDeltaOnModification(const TDF_DefaultDeltaOnModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DefaultDeltaOnModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DefaultDeltaOnModification {
-    TDF_DefaultDeltaOnModification* _get_reference() {
-    return (TDF_DefaultDeltaOnModification*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DefaultDeltaOnModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DefaultDeltaOnModification)
 
 %extend TDF_DefaultDeltaOnModification {
 	%pythoncode {
@@ -6930,51 +5513,7 @@ class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 };
 
 
-%extend TDF_DefaultDeltaOnRemoval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDF_DefaultDeltaOnRemoval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDF_DefaultDeltaOnRemoval::Handle_TDF_DefaultDeltaOnRemoval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDF_DefaultDeltaOnRemoval;
-class Handle_TDF_DefaultDeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
-
-    public:
-        // constructors
-        Handle_TDF_DefaultDeltaOnRemoval();
-        Handle_TDF_DefaultDeltaOnRemoval(const Handle_TDF_DefaultDeltaOnRemoval &aHandle);
-        Handle_TDF_DefaultDeltaOnRemoval(const TDF_DefaultDeltaOnRemoval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDF_DefaultDeltaOnRemoval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDF_DefaultDeltaOnRemoval {
-    TDF_DefaultDeltaOnRemoval* _get_reference() {
-    return (TDF_DefaultDeltaOnRemoval*)$self->Access();
-    }
-};
-
-%extend Handle_TDF_DefaultDeltaOnRemoval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDF_DefaultDeltaOnRemoval)
 
 %extend TDF_DefaultDeltaOnRemoval {
 	%pythoncode {

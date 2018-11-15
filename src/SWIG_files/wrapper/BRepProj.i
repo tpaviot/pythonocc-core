@@ -18,7 +18,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPROJDOCSTRING
-"No docstring provided."
+"The BRepProj  package provides  Projection
+Algorithms   like Cylindrical  and Conical
+Projections. Those algorithms have been put in an
+independant package  instead of BRepAlgo  (like
+NormalProjection) because of cyclic reference with
+BRepFill. So this package is not available for
+the moment to BRepFill.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPPROJDOCSTRING) BRepProj
 
@@ -34,30 +42,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepProj_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor BRepProj_Projection;
 class BRepProj_Projection {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPOFFSETAPIDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETAPIDOCSTRING) BRepOffsetAPI
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepOffsetAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef BRepBuilderAPI_Sewing BRepOffsetAPI_Sewing;
@@ -60,6 +46,9 @@ typedef Handle_BRepBuilderAPI_Sewing Handle_BRepOffsetAPI_Sewing;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal)
+%wrap_handle(BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape)
 
 %nodefaultctor BRepOffsetAPI_DraftAngle;
 class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {
@@ -1316,51 +1305,7 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public TCollection_
 };
 
 
-%extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal::Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal;
-class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal();
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal(const Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal &aHandle);
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal(const BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
-    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal* _get_reference() {
-    return (BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal)
 
 %extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
 	%pythoncode {
@@ -1387,51 +1332,7 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public TCollection
 };
 
 
-%extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape::Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape;
-class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape();
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape(const Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape &aHandle);
-        Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape(const BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
-    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape* _get_reference() {
-    return (BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape)
 
 %extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
 	%pythoncode {
