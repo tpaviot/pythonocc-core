@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ELSLIBDOCSTRING
-"No docstring provided."
+"- Purpose : Provides functions for basic geometric computation onelementary surfaces.This includes:-  calculation of a point or derived vector on a surfacewhere the surface is provided by the gp package, ordefined in canonical form (as in the gp package), andthe point is defined with a parameter,-  evaluation of the parameters corresponding to apoint on an elementary surface from gp,-  calculation of isoparametric curves on an elementarysurface defined in canonical form (as in the gp package).Notes:-  ElSLib stands for Elementary Surfaces Library.-  If the surfaces provided by the gp package are notexplicitly parameterized, they still have an implicitparameterization, similar to that which they infer onthe equivalent Geom surfaces.Note: ElSLib stands for Elementary Surfaces Library."
 %enddef
 %module (package="OCC.Core", docstring=ELSLIBDOCSTRING) ElSLib
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ElSLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(elslib) ElSLib;
 class ElSLib {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPVISUALDOCSTRING
-"No docstring provided."
+"Collects definitions of STEP entities for visualpresentations from Part 46 of ISO10303"
 %enddef
 %module (package="OCC.Core", docstring=STEPVISUALDOCSTRING) StepVisual
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepVisual_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -60,6 +46,16 @@ def register_handle(handle, base_object):
 enum StepVisual_CentralOrParallel {
 	StepVisual_copCentral = 0,
 	StepVisual_copParallel = 1,
+};
+
+enum StepVisual_MarkerType {
+	StepVisual_mtDot = 0,
+	StepVisual_mtX = 1,
+	StepVisual_mtPlus = 2,
+	StepVisual_mtAsterisk = 3,
+	StepVisual_mtRing = 4,
+	StepVisual_mtSquare = 5,
+	StepVisual_mtTriangle = 6,
 };
 
 enum StepVisual_SurfaceSide {
@@ -75,17 +71,88 @@ enum StepVisual_TextPath {
 	StepVisual_tpLeft = 3,
 };
 
-enum StepVisual_MarkerType {
-	StepVisual_mtDot = 0,
-	StepVisual_mtX = 1,
-	StepVisual_mtPlus = 2,
-	StepVisual_mtAsterisk = 3,
-	StepVisual_mtRing = 4,
-	StepVisual_mtSquare = 5,
-	StepVisual_mtTriangle = 6,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(StepVisual_AnnotationText)
+%wrap_handle(StepVisual_AreaInSet)
+%wrap_handle(StepVisual_CameraImage)
+%wrap_handle(StepVisual_CameraModel)
+%wrap_handle(StepVisual_CameraUsage)
+%wrap_handle(StepVisual_Colour)
+%wrap_handle(StepVisual_CompositeText)
+%wrap_handle(StepVisual_CurveStyle)
+%wrap_handle(StepVisual_CurveStyleFont)
+%wrap_handle(StepVisual_CurveStyleFontPattern)
+%wrap_handle(StepVisual_DraughtingModel)
+%wrap_handle(StepVisual_ExternallyDefinedCurveFont)
+%wrap_handle(StepVisual_ExternallyDefinedTextFont)
+%wrap_handle(StepVisual_FillAreaStyle)
+%wrap_handle(StepVisual_FillAreaStyleColour)
+%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
+%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
+%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
+%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
+%wrap_handle(StepVisual_HArray1OfInvisibleItem)
+%wrap_handle(StepVisual_HArray1OfLayeredItem)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
+%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
+%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
+%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
+%wrap_handle(StepVisual_Invisibility)
+%wrap_handle(StepVisual_MarkerMember)
+%wrap_handle(StepVisual_PlanarExtent)
+%wrap_handle(StepVisual_PointStyle)
+%wrap_handle(StepVisual_PreDefinedItem)
+%wrap_handle(StepVisual_PresentationLayerAssignment)
+%wrap_handle(StepVisual_PresentationLayerUsage)
+%wrap_handle(StepVisual_PresentationRepresentation)
+%wrap_handle(StepVisual_PresentationSet)
+%wrap_handle(StepVisual_PresentationSize)
+%wrap_handle(StepVisual_PresentationStyleAssignment)
+%wrap_handle(StepVisual_PresentedItem)
+%wrap_handle(StepVisual_PresentedItemRepresentation)
+%wrap_handle(StepVisual_StyledItem)
+%wrap_handle(StepVisual_SurfaceSideStyle)
+%wrap_handle(StepVisual_SurfaceStyleBoundary)
+%wrap_handle(StepVisual_SurfaceStyleControlGrid)
+%wrap_handle(StepVisual_SurfaceStyleFillArea)
+%wrap_handle(StepVisual_SurfaceStyleParameterLine)
+%wrap_handle(StepVisual_SurfaceStyleSegmentationCurve)
+%wrap_handle(StepVisual_SurfaceStyleSilhouette)
+%wrap_handle(StepVisual_SurfaceStyleUsage)
+%wrap_handle(StepVisual_Template)
+%wrap_handle(StepVisual_TemplateInstance)
+%wrap_handle(StepVisual_TextLiteral)
+%wrap_handle(StepVisual_TextStyle)
+%wrap_handle(StepVisual_TextStyleForDefinedFont)
+%wrap_handle(StepVisual_ViewVolume)
+%wrap_handle(StepVisual_AnnotationOccurrence)
+%wrap_handle(StepVisual_BackgroundColour)
+%wrap_handle(StepVisual_CameraImage2dWithScale)
+%wrap_handle(StepVisual_CameraImage3dWithScale)
+%wrap_handle(StepVisual_CameraModelD2)
+%wrap_handle(StepVisual_CameraModelD3)
+%wrap_handle(StepVisual_ColourSpecification)
+%wrap_handle(StepVisual_CompositeTextWithExtent)
+%wrap_handle(StepVisual_ContextDependentInvisibility)
+%wrap_handle(StepVisual_MechanicalDesignGeometricPresentationRepresentation)
+%wrap_handle(StepVisual_OverRidingStyledItem)
+%wrap_handle(StepVisual_PlanarBox)
+%wrap_handle(StepVisual_PreDefinedColour)
+%wrap_handle(StepVisual_PreDefinedCurveFont)
+%wrap_handle(StepVisual_PreDefinedTextFont)
+%wrap_handle(StepVisual_PresentationArea)
+%wrap_handle(StepVisual_PresentationStyleByContext)
+%wrap_handle(StepVisual_PresentationView)
+%wrap_handle(StepVisual_TextStyleWithBoxCharacteristics)
+%wrap_handle(StepVisual_AnnotationTextOccurrence)
+%wrap_handle(StepVisual_ColourRgb)
+%wrap_handle(StepVisual_ContextDependentOverRidingStyledItem)
+%wrap_handle(StepVisual_DraughtingAnnotationOccurrence)
+%wrap_handle(StepVisual_DraughtingPreDefinedColour)
+%wrap_handle(StepVisual_DraughtingPreDefinedCurveFont)
+%wrap_handle(StepVisual_MechanicalDesignGeometricPresentationArea)
 
 %nodefaultctor StepVisual_AnnotationText;
 class StepVisual_AnnotationText : public StepRepr_MappedItem {
@@ -99,51 +166,7 @@ class StepVisual_AnnotationText : public StepRepr_MappedItem {
 };
 
 
-%extend StepVisual_AnnotationText {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_AnnotationText(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_AnnotationText::Handle_StepVisual_AnnotationText %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_AnnotationText;
-class Handle_StepVisual_AnnotationText : public Handle_StepRepr_MappedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_AnnotationText();
-        Handle_StepVisual_AnnotationText(const Handle_StepVisual_AnnotationText &aHandle);
-        Handle_StepVisual_AnnotationText(const StepVisual_AnnotationText *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_AnnotationText DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_AnnotationText {
-    StepVisual_AnnotationText* _get_reference() {
-    return (StepVisual_AnnotationText*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_AnnotationText {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_AnnotationText)
 
 %extend StepVisual_AnnotationText {
 	%pythoncode {
@@ -190,51 +213,7 @@ class StepVisual_AreaInSet : public MMgt_TShared {
 };
 
 
-%extend StepVisual_AreaInSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_AreaInSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_AreaInSet::Handle_StepVisual_AreaInSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_AreaInSet;
-class Handle_StepVisual_AreaInSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_AreaInSet();
-        Handle_StepVisual_AreaInSet(const Handle_StepVisual_AreaInSet &aHandle);
-        Handle_StepVisual_AreaInSet(const StepVisual_AreaInSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_AreaInSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_AreaInSet {
-    StepVisual_AreaInSet* _get_reference() {
-    return (StepVisual_AreaInSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_AreaInSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_AreaInSet)
 
 %extend StepVisual_AreaInSet {
 	%pythoncode {
@@ -1282,51 +1261,7 @@ class StepVisual_CameraImage : public StepRepr_MappedItem {
 };
 
 
-%extend StepVisual_CameraImage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraImage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraImage::Handle_StepVisual_CameraImage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraImage;
-class Handle_StepVisual_CameraImage : public Handle_StepRepr_MappedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraImage();
-        Handle_StepVisual_CameraImage(const Handle_StepVisual_CameraImage &aHandle);
-        Handle_StepVisual_CameraImage(const StepVisual_CameraImage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraImage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraImage {
-    StepVisual_CameraImage* _get_reference() {
-    return (StepVisual_CameraImage*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraImage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraImage)
 
 %extend StepVisual_CameraImage {
 	%pythoncode {
@@ -1345,51 +1280,7 @@ class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepVisual_CameraModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraModel::Handle_StepVisual_CameraModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraModel;
-class Handle_StepVisual_CameraModel : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraModel();
-        Handle_StepVisual_CameraModel(const Handle_StepVisual_CameraModel &aHandle);
-        Handle_StepVisual_CameraModel(const StepVisual_CameraModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraModel {
-    StepVisual_CameraModel* _get_reference() {
-    return (StepVisual_CameraModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraModel)
 
 %extend StepVisual_CameraModel {
 	%pythoncode {
@@ -1408,51 +1299,7 @@ class StepVisual_CameraUsage : public StepRepr_RepresentationMap {
 };
 
 
-%extend StepVisual_CameraUsage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraUsage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraUsage::Handle_StepVisual_CameraUsage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraUsage;
-class Handle_StepVisual_CameraUsage : public Handle_StepRepr_RepresentationMap {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraUsage();
-        Handle_StepVisual_CameraUsage(const Handle_StepVisual_CameraUsage &aHandle);
-        Handle_StepVisual_CameraUsage(const StepVisual_CameraUsage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraUsage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraUsage {
-    StepVisual_CameraUsage* _get_reference() {
-    return (StepVisual_CameraUsage*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraUsage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraUsage)
 
 %extend StepVisual_CameraUsage {
 	%pythoncode {
@@ -1471,51 +1318,7 @@ class StepVisual_Colour : public MMgt_TShared {
 };
 
 
-%extend StepVisual_Colour {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_Colour(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_Colour::Handle_StepVisual_Colour %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_Colour;
-class Handle_StepVisual_Colour : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_Colour();
-        Handle_StepVisual_Colour(const Handle_StepVisual_Colour &aHandle);
-        Handle_StepVisual_Colour(const StepVisual_Colour *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_Colour DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_Colour {
-    StepVisual_Colour* _get_reference() {
-    return (StepVisual_Colour*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_Colour {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_Colour)
 
 %extend StepVisual_Colour {
 	%pythoncode {
@@ -1568,51 +1371,7 @@ class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepVisual_CompositeText {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CompositeText(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CompositeText::Handle_StepVisual_CompositeText %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CompositeText;
-class Handle_StepVisual_CompositeText : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_CompositeText();
-        Handle_StepVisual_CompositeText(const Handle_StepVisual_CompositeText &aHandle);
-        Handle_StepVisual_CompositeText(const StepVisual_CompositeText *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CompositeText DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CompositeText {
-    StepVisual_CompositeText* _get_reference() {
-    return (StepVisual_CompositeText*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CompositeText {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CompositeText)
 
 %extend StepVisual_CompositeText {
 	%pythoncode {
@@ -1683,51 +1442,7 @@ class StepVisual_CurveStyle : public MMgt_TShared {
 };
 
 
-%extend StepVisual_CurveStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CurveStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CurveStyle::Handle_StepVisual_CurveStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CurveStyle;
-class Handle_StepVisual_CurveStyle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_CurveStyle();
-        Handle_StepVisual_CurveStyle(const Handle_StepVisual_CurveStyle &aHandle);
-        Handle_StepVisual_CurveStyle(const StepVisual_CurveStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CurveStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CurveStyle {
-    StepVisual_CurveStyle* _get_reference() {
-    return (StepVisual_CurveStyle*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CurveStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CurveStyle)
 
 %extend StepVisual_CurveStyle {
 	%pythoncode {
@@ -1784,51 +1499,7 @@ class StepVisual_CurveStyleFont : public MMgt_TShared {
 };
 
 
-%extend StepVisual_CurveStyleFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CurveStyleFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CurveStyleFont::Handle_StepVisual_CurveStyleFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CurveStyleFont;
-class Handle_StepVisual_CurveStyleFont : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_CurveStyleFont();
-        Handle_StepVisual_CurveStyleFont(const Handle_StepVisual_CurveStyleFont &aHandle);
-        Handle_StepVisual_CurveStyleFont(const StepVisual_CurveStyleFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CurveStyleFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CurveStyleFont {
-    StepVisual_CurveStyleFont* _get_reference() {
-    return (StepVisual_CurveStyleFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CurveStyleFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CurveStyleFont)
 
 %extend StepVisual_CurveStyleFont {
 	%pythoncode {
@@ -1875,51 +1546,7 @@ class StepVisual_CurveStyleFontPattern : public MMgt_TShared {
 };
 
 
-%extend StepVisual_CurveStyleFontPattern {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CurveStyleFontPattern(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CurveStyleFontPattern::Handle_StepVisual_CurveStyleFontPattern %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CurveStyleFontPattern;
-class Handle_StepVisual_CurveStyleFontPattern : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_CurveStyleFontPattern();
-        Handle_StepVisual_CurveStyleFontPattern(const Handle_StepVisual_CurveStyleFontPattern &aHandle);
-        Handle_StepVisual_CurveStyleFontPattern(const StepVisual_CurveStyleFontPattern *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CurveStyleFontPattern DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CurveStyleFontPattern {
-    StepVisual_CurveStyleFontPattern* _get_reference() {
-    return (StepVisual_CurveStyleFontPattern*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CurveStyleFontPattern {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CurveStyleFontPattern)
 
 %extend StepVisual_CurveStyleFontPattern {
 	%pythoncode {
@@ -2026,51 +1653,7 @@ class StepVisual_DraughtingModel : public StepRepr_Representation {
 };
 
 
-%extend StepVisual_DraughtingModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_DraughtingModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_DraughtingModel::Handle_StepVisual_DraughtingModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_DraughtingModel;
-class Handle_StepVisual_DraughtingModel : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepVisual_DraughtingModel();
-        Handle_StepVisual_DraughtingModel(const Handle_StepVisual_DraughtingModel &aHandle);
-        Handle_StepVisual_DraughtingModel(const StepVisual_DraughtingModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_DraughtingModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_DraughtingModel {
-    StepVisual_DraughtingModel* _get_reference() {
-    return (StepVisual_DraughtingModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_DraughtingModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_DraughtingModel)
 
 %extend StepVisual_DraughtingModel {
 	%pythoncode {
@@ -2089,51 +1672,7 @@ class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefined
 };
 
 
-%extend StepVisual_ExternallyDefinedCurveFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ExternallyDefinedCurveFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ExternallyDefinedCurveFont::Handle_StepVisual_ExternallyDefinedCurveFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ExternallyDefinedCurveFont;
-class Handle_StepVisual_ExternallyDefinedCurveFont : public Handle_StepBasic_ExternallyDefinedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_ExternallyDefinedCurveFont();
-        Handle_StepVisual_ExternallyDefinedCurveFont(const Handle_StepVisual_ExternallyDefinedCurveFont &aHandle);
-        Handle_StepVisual_ExternallyDefinedCurveFont(const StepVisual_ExternallyDefinedCurveFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ExternallyDefinedCurveFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ExternallyDefinedCurveFont {
-    StepVisual_ExternallyDefinedCurveFont* _get_reference() {
-    return (StepVisual_ExternallyDefinedCurveFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ExternallyDefinedCurveFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ExternallyDefinedCurveFont)
 
 %extend StepVisual_ExternallyDefinedCurveFont {
 	%pythoncode {
@@ -2152,51 +1691,7 @@ class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedI
 };
 
 
-%extend StepVisual_ExternallyDefinedTextFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ExternallyDefinedTextFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ExternallyDefinedTextFont::Handle_StepVisual_ExternallyDefinedTextFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ExternallyDefinedTextFont;
-class Handle_StepVisual_ExternallyDefinedTextFont : public Handle_StepBasic_ExternallyDefinedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_ExternallyDefinedTextFont();
-        Handle_StepVisual_ExternallyDefinedTextFont(const Handle_StepVisual_ExternallyDefinedTextFont &aHandle);
-        Handle_StepVisual_ExternallyDefinedTextFont(const StepVisual_ExternallyDefinedTextFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ExternallyDefinedTextFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ExternallyDefinedTextFont {
-    StepVisual_ExternallyDefinedTextFont* _get_reference() {
-    return (StepVisual_ExternallyDefinedTextFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ExternallyDefinedTextFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ExternallyDefinedTextFont)
 
 %extend StepVisual_ExternallyDefinedTextFont {
 	%pythoncode {
@@ -2253,51 +1748,7 @@ class StepVisual_FillAreaStyle : public MMgt_TShared {
 };
 
 
-%extend StepVisual_FillAreaStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_FillAreaStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_FillAreaStyle::Handle_StepVisual_FillAreaStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_FillAreaStyle;
-class Handle_StepVisual_FillAreaStyle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_FillAreaStyle();
-        Handle_StepVisual_FillAreaStyle(const Handle_StepVisual_FillAreaStyle &aHandle);
-        Handle_StepVisual_FillAreaStyle(const StepVisual_FillAreaStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_FillAreaStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_FillAreaStyle {
-    StepVisual_FillAreaStyle* _get_reference() {
-    return (StepVisual_FillAreaStyle*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_FillAreaStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_FillAreaStyle)
 
 %extend StepVisual_FillAreaStyle {
 	%pythoncode {
@@ -2344,51 +1795,7 @@ class StepVisual_FillAreaStyleColour : public MMgt_TShared {
 };
 
 
-%extend StepVisual_FillAreaStyleColour {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_FillAreaStyleColour(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_FillAreaStyleColour::Handle_StepVisual_FillAreaStyleColour %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_FillAreaStyleColour;
-class Handle_StepVisual_FillAreaStyleColour : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_FillAreaStyleColour();
-        Handle_StepVisual_FillAreaStyleColour(const Handle_StepVisual_FillAreaStyleColour &aHandle);
-        Handle_StepVisual_FillAreaStyleColour(const StepVisual_FillAreaStyleColour *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_FillAreaStyleColour DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_FillAreaStyleColour {
-    StepVisual_FillAreaStyleColour* _get_reference() {
-    return (StepVisual_FillAreaStyleColour*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_FillAreaStyleColour {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_FillAreaStyleColour)
 
 %extend StepVisual_FillAreaStyleColour {
 	%pythoncode {
@@ -2533,51 +1940,7 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfBoxCharacteristicSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfBoxCharacteristicSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfBoxCharacteristicSelect::Handle_StepVisual_HArray1OfBoxCharacteristicSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfBoxCharacteristicSelect;
-class Handle_StepVisual_HArray1OfBoxCharacteristicSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfBoxCharacteristicSelect();
-        Handle_StepVisual_HArray1OfBoxCharacteristicSelect(const Handle_StepVisual_HArray1OfBoxCharacteristicSelect &aHandle);
-        Handle_StepVisual_HArray1OfBoxCharacteristicSelect(const StepVisual_HArray1OfBoxCharacteristicSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfBoxCharacteristicSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfBoxCharacteristicSelect {
-    StepVisual_HArray1OfBoxCharacteristicSelect* _get_reference() {
-    return (StepVisual_HArray1OfBoxCharacteristicSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfBoxCharacteristicSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
 
 %extend StepVisual_HArray1OfBoxCharacteristicSelect {
 	%pythoncode {
@@ -2654,51 +2017,7 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfCurveStyleFontPattern {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfCurveStyleFontPattern(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfCurveStyleFontPattern::Handle_StepVisual_HArray1OfCurveStyleFontPattern %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfCurveStyleFontPattern;
-class Handle_StepVisual_HArray1OfCurveStyleFontPattern : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfCurveStyleFontPattern();
-        Handle_StepVisual_HArray1OfCurveStyleFontPattern(const Handle_StepVisual_HArray1OfCurveStyleFontPattern &aHandle);
-        Handle_StepVisual_HArray1OfCurveStyleFontPattern(const StepVisual_HArray1OfCurveStyleFontPattern *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfCurveStyleFontPattern DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfCurveStyleFontPattern {
-    StepVisual_HArray1OfCurveStyleFontPattern* _get_reference() {
-    return (StepVisual_HArray1OfCurveStyleFontPattern*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfCurveStyleFontPattern {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
 
 %extend StepVisual_HArray1OfCurveStyleFontPattern {
 	%pythoncode {
@@ -2775,51 +2094,7 @@ class StepVisual_HArray1OfDirectionCountSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfDirectionCountSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfDirectionCountSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfDirectionCountSelect::Handle_StepVisual_HArray1OfDirectionCountSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfDirectionCountSelect;
-class Handle_StepVisual_HArray1OfDirectionCountSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfDirectionCountSelect();
-        Handle_StepVisual_HArray1OfDirectionCountSelect(const Handle_StepVisual_HArray1OfDirectionCountSelect &aHandle);
-        Handle_StepVisual_HArray1OfDirectionCountSelect(const StepVisual_HArray1OfDirectionCountSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfDirectionCountSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfDirectionCountSelect {
-    StepVisual_HArray1OfDirectionCountSelect* _get_reference() {
-    return (StepVisual_HArray1OfDirectionCountSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfDirectionCountSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfDirectionCountSelect)
 
 %extend StepVisual_HArray1OfDirectionCountSelect {
 	%pythoncode {
@@ -2896,51 +2171,7 @@ class StepVisual_HArray1OfFillStyleSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfFillStyleSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfFillStyleSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfFillStyleSelect::Handle_StepVisual_HArray1OfFillStyleSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfFillStyleSelect;
-class Handle_StepVisual_HArray1OfFillStyleSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfFillStyleSelect();
-        Handle_StepVisual_HArray1OfFillStyleSelect(const Handle_StepVisual_HArray1OfFillStyleSelect &aHandle);
-        Handle_StepVisual_HArray1OfFillStyleSelect(const StepVisual_HArray1OfFillStyleSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfFillStyleSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfFillStyleSelect {
-    StepVisual_HArray1OfFillStyleSelect* _get_reference() {
-    return (StepVisual_HArray1OfFillStyleSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfFillStyleSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfFillStyleSelect)
 
 %extend StepVisual_HArray1OfFillStyleSelect {
 	%pythoncode {
@@ -3017,51 +2248,7 @@ class StepVisual_HArray1OfInvisibleItem : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfInvisibleItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfInvisibleItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfInvisibleItem::Handle_StepVisual_HArray1OfInvisibleItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfInvisibleItem;
-class Handle_StepVisual_HArray1OfInvisibleItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfInvisibleItem();
-        Handle_StepVisual_HArray1OfInvisibleItem(const Handle_StepVisual_HArray1OfInvisibleItem &aHandle);
-        Handle_StepVisual_HArray1OfInvisibleItem(const StepVisual_HArray1OfInvisibleItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfInvisibleItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfInvisibleItem {
-    StepVisual_HArray1OfInvisibleItem* _get_reference() {
-    return (StepVisual_HArray1OfInvisibleItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfInvisibleItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfInvisibleItem)
 
 %extend StepVisual_HArray1OfInvisibleItem {
 	%pythoncode {
@@ -3138,51 +2325,7 @@ class StepVisual_HArray1OfLayeredItem : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfLayeredItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfLayeredItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfLayeredItem::Handle_StepVisual_HArray1OfLayeredItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfLayeredItem;
-class Handle_StepVisual_HArray1OfLayeredItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfLayeredItem();
-        Handle_StepVisual_HArray1OfLayeredItem(const Handle_StepVisual_HArray1OfLayeredItem &aHandle);
-        Handle_StepVisual_HArray1OfLayeredItem(const StepVisual_HArray1OfLayeredItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfLayeredItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfLayeredItem {
-    StepVisual_HArray1OfLayeredItem* _get_reference() {
-    return (StepVisual_HArray1OfLayeredItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfLayeredItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfLayeredItem)
 
 %extend StepVisual_HArray1OfLayeredItem {
 	%pythoncode {
@@ -3259,51 +2402,7 @@ class StepVisual_HArray1OfPresentationStyleAssignment : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfPresentationStyleAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfPresentationStyleAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfPresentationStyleAssignment::Handle_StepVisual_HArray1OfPresentationStyleAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfPresentationStyleAssignment;
-class Handle_StepVisual_HArray1OfPresentationStyleAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfPresentationStyleAssignment();
-        Handle_StepVisual_HArray1OfPresentationStyleAssignment(const Handle_StepVisual_HArray1OfPresentationStyleAssignment &aHandle);
-        Handle_StepVisual_HArray1OfPresentationStyleAssignment(const StepVisual_HArray1OfPresentationStyleAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfPresentationStyleAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfPresentationStyleAssignment {
-    StepVisual_HArray1OfPresentationStyleAssignment* _get_reference() {
-    return (StepVisual_HArray1OfPresentationStyleAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfPresentationStyleAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
 
 %extend StepVisual_HArray1OfPresentationStyleAssignment {
 	%pythoncode {
@@ -3380,51 +2479,7 @@ class StepVisual_HArray1OfPresentationStyleSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfPresentationStyleSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfPresentationStyleSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfPresentationStyleSelect::Handle_StepVisual_HArray1OfPresentationStyleSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfPresentationStyleSelect;
-class Handle_StepVisual_HArray1OfPresentationStyleSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfPresentationStyleSelect();
-        Handle_StepVisual_HArray1OfPresentationStyleSelect(const Handle_StepVisual_HArray1OfPresentationStyleSelect &aHandle);
-        Handle_StepVisual_HArray1OfPresentationStyleSelect(const StepVisual_HArray1OfPresentationStyleSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfPresentationStyleSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfPresentationStyleSelect {
-    StepVisual_HArray1OfPresentationStyleSelect* _get_reference() {
-    return (StepVisual_HArray1OfPresentationStyleSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfPresentationStyleSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfPresentationStyleSelect)
 
 %extend StepVisual_HArray1OfPresentationStyleSelect {
 	%pythoncode {
@@ -3501,51 +2556,7 @@ class StepVisual_HArray1OfStyleContextSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfStyleContextSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfStyleContextSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfStyleContextSelect::Handle_StepVisual_HArray1OfStyleContextSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfStyleContextSelect;
-class Handle_StepVisual_HArray1OfStyleContextSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfStyleContextSelect();
-        Handle_StepVisual_HArray1OfStyleContextSelect(const Handle_StepVisual_HArray1OfStyleContextSelect &aHandle);
-        Handle_StepVisual_HArray1OfStyleContextSelect(const StepVisual_HArray1OfStyleContextSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfStyleContextSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfStyleContextSelect {
-    StepVisual_HArray1OfStyleContextSelect* _get_reference() {
-    return (StepVisual_HArray1OfStyleContextSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfStyleContextSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfStyleContextSelect)
 
 %extend StepVisual_HArray1OfStyleContextSelect {
 	%pythoncode {
@@ -3622,51 +2633,7 @@ class StepVisual_HArray1OfSurfaceStyleElementSelect : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfSurfaceStyleElementSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfSurfaceStyleElementSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfSurfaceStyleElementSelect::Handle_StepVisual_HArray1OfSurfaceStyleElementSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfSurfaceStyleElementSelect;
-class Handle_StepVisual_HArray1OfSurfaceStyleElementSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfSurfaceStyleElementSelect();
-        Handle_StepVisual_HArray1OfSurfaceStyleElementSelect(const Handle_StepVisual_HArray1OfSurfaceStyleElementSelect &aHandle);
-        Handle_StepVisual_HArray1OfSurfaceStyleElementSelect(const StepVisual_HArray1OfSurfaceStyleElementSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfSurfaceStyleElementSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfSurfaceStyleElementSelect {
-    StepVisual_HArray1OfSurfaceStyleElementSelect* _get_reference() {
-    return (StepVisual_HArray1OfSurfaceStyleElementSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfSurfaceStyleElementSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
 
 %extend StepVisual_HArray1OfSurfaceStyleElementSelect {
 	%pythoncode {
@@ -3743,51 +2710,7 @@ class StepVisual_HArray1OfTextOrCharacter : public MMgt_TShared {
 };
 
 
-%extend StepVisual_HArray1OfTextOrCharacter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_HArray1OfTextOrCharacter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_HArray1OfTextOrCharacter::Handle_StepVisual_HArray1OfTextOrCharacter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_HArray1OfTextOrCharacter;
-class Handle_StepVisual_HArray1OfTextOrCharacter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_HArray1OfTextOrCharacter();
-        Handle_StepVisual_HArray1OfTextOrCharacter(const Handle_StepVisual_HArray1OfTextOrCharacter &aHandle);
-        Handle_StepVisual_HArray1OfTextOrCharacter(const StepVisual_HArray1OfTextOrCharacter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_HArray1OfTextOrCharacter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_HArray1OfTextOrCharacter {
-    StepVisual_HArray1OfTextOrCharacter* _get_reference() {
-    return (StepVisual_HArray1OfTextOrCharacter*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_HArray1OfTextOrCharacter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_HArray1OfTextOrCharacter)
 
 %extend StepVisual_HArray1OfTextOrCharacter {
 	%pythoncode {
@@ -3832,51 +2755,7 @@ class StepVisual_Invisibility : public MMgt_TShared {
 };
 
 
-%extend StepVisual_Invisibility {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_Invisibility(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_Invisibility::Handle_StepVisual_Invisibility %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_Invisibility;
-class Handle_StepVisual_Invisibility : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_Invisibility();
-        Handle_StepVisual_Invisibility(const Handle_StepVisual_Invisibility &aHandle);
-        Handle_StepVisual_Invisibility(const StepVisual_Invisibility *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_Invisibility DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_Invisibility {
-    StepVisual_Invisibility* _get_reference() {
-    return (StepVisual_Invisibility*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_Invisibility {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_Invisibility)
 
 %extend StepVisual_Invisibility {
 	%pythoncode {
@@ -4046,51 +2925,7 @@ class StepVisual_MarkerMember : public StepData_SelectInt {
 };
 
 
-%extend StepVisual_MarkerMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_MarkerMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_MarkerMember::Handle_StepVisual_MarkerMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_MarkerMember;
-class Handle_StepVisual_MarkerMember : public Handle_StepData_SelectInt {
-
-    public:
-        // constructors
-        Handle_StepVisual_MarkerMember();
-        Handle_StepVisual_MarkerMember(const Handle_StepVisual_MarkerMember &aHandle);
-        Handle_StepVisual_MarkerMember(const StepVisual_MarkerMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_MarkerMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_MarkerMember {
-    StepVisual_MarkerMember* _get_reference() {
-    return (StepVisual_MarkerMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_MarkerMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_MarkerMember)
 
 %extend StepVisual_MarkerMember {
 	%pythoncode {
@@ -4190,51 +3025,7 @@ class StepVisual_PlanarExtent : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepVisual_PlanarExtent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PlanarExtent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PlanarExtent::Handle_StepVisual_PlanarExtent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PlanarExtent;
-class Handle_StepVisual_PlanarExtent : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_PlanarExtent();
-        Handle_StepVisual_PlanarExtent(const Handle_StepVisual_PlanarExtent &aHandle);
-        Handle_StepVisual_PlanarExtent(const StepVisual_PlanarExtent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PlanarExtent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PlanarExtent {
-    StepVisual_PlanarExtent* _get_reference() {
-    return (StepVisual_PlanarExtent*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PlanarExtent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PlanarExtent)
 
 %extend StepVisual_PlanarExtent {
 	%pythoncode {
@@ -4305,51 +3096,7 @@ class StepVisual_PointStyle : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PointStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PointStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PointStyle::Handle_StepVisual_PointStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PointStyle;
-class Handle_StepVisual_PointStyle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PointStyle();
-        Handle_StepVisual_PointStyle(const Handle_StepVisual_PointStyle &aHandle);
-        Handle_StepVisual_PointStyle(const StepVisual_PointStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PointStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PointStyle {
-    StepVisual_PointStyle* _get_reference() {
-    return (StepVisual_PointStyle*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PointStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PointStyle)
 
 %extend StepVisual_PointStyle {
 	%pythoncode {
@@ -4384,51 +3131,7 @@ class StepVisual_PreDefinedItem : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PreDefinedItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PreDefinedItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PreDefinedItem::Handle_StepVisual_PreDefinedItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PreDefinedItem;
-class Handle_StepVisual_PreDefinedItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PreDefinedItem();
-        Handle_StepVisual_PreDefinedItem(const Handle_StepVisual_PreDefinedItem &aHandle);
-        Handle_StepVisual_PreDefinedItem(const StepVisual_PreDefinedItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PreDefinedItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PreDefinedItem {
-    StepVisual_PreDefinedItem* _get_reference() {
-    return (StepVisual_PreDefinedItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PreDefinedItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PreDefinedItem)
 
 %extend StepVisual_PreDefinedItem {
 	%pythoncode {
@@ -4497,51 +3200,7 @@ class StepVisual_PresentationLayerAssignment : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentationLayerAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationLayerAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationLayerAssignment::Handle_StepVisual_PresentationLayerAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationLayerAssignment;
-class Handle_StepVisual_PresentationLayerAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationLayerAssignment();
-        Handle_StepVisual_PresentationLayerAssignment(const Handle_StepVisual_PresentationLayerAssignment &aHandle);
-        Handle_StepVisual_PresentationLayerAssignment(const StepVisual_PresentationLayerAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationLayerAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationLayerAssignment {
-    StepVisual_PresentationLayerAssignment* _get_reference() {
-    return (StepVisual_PresentationLayerAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationLayerAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationLayerAssignment)
 
 %extend StepVisual_PresentationLayerAssignment {
 	%pythoncode {
@@ -4586,51 +3245,7 @@ class StepVisual_PresentationLayerUsage : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentationLayerUsage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationLayerUsage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationLayerUsage::Handle_StepVisual_PresentationLayerUsage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationLayerUsage;
-class Handle_StepVisual_PresentationLayerUsage : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationLayerUsage();
-        Handle_StepVisual_PresentationLayerUsage(const Handle_StepVisual_PresentationLayerUsage &aHandle);
-        Handle_StepVisual_PresentationLayerUsage(const StepVisual_PresentationLayerUsage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationLayerUsage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationLayerUsage {
-    StepVisual_PresentationLayerUsage* _get_reference() {
-    return (StepVisual_PresentationLayerUsage*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationLayerUsage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationLayerUsage)
 
 %extend StepVisual_PresentationLayerUsage {
 	%pythoncode {
@@ -4649,51 +3264,7 @@ class StepVisual_PresentationRepresentation : public StepRepr_Representation {
 };
 
 
-%extend StepVisual_PresentationRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationRepresentation::Handle_StepVisual_PresentationRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationRepresentation;
-class Handle_StepVisual_PresentationRepresentation : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationRepresentation();
-        Handle_StepVisual_PresentationRepresentation(const Handle_StepVisual_PresentationRepresentation &aHandle);
-        Handle_StepVisual_PresentationRepresentation(const StepVisual_PresentationRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationRepresentation {
-    StepVisual_PresentationRepresentation* _get_reference() {
-    return (StepVisual_PresentationRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationRepresentation)
 
 %extend StepVisual_PresentationRepresentation {
 	%pythoncode {
@@ -4749,51 +3320,7 @@ class StepVisual_PresentationSet : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentationSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationSet::Handle_StepVisual_PresentationSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationSet;
-class Handle_StepVisual_PresentationSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationSet();
-        Handle_StepVisual_PresentationSet(const Handle_StepVisual_PresentationSet &aHandle);
-        Handle_StepVisual_PresentationSet(const StepVisual_PresentationSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationSet {
-    StepVisual_PresentationSet* _get_reference() {
-    return (StepVisual_PresentationSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationSet)
 
 %extend StepVisual_PresentationSet {
 	%pythoncode {
@@ -4840,51 +3367,7 @@ class StepVisual_PresentationSize : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentationSize {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationSize(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationSize::Handle_StepVisual_PresentationSize %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationSize;
-class Handle_StepVisual_PresentationSize : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationSize();
-        Handle_StepVisual_PresentationSize(const Handle_StepVisual_PresentationSize &aHandle);
-        Handle_StepVisual_PresentationSize(const StepVisual_PresentationSize *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationSize DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationSize {
-    StepVisual_PresentationSize* _get_reference() {
-    return (StepVisual_PresentationSize*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationSize {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationSize)
 
 %extend StepVisual_PresentationSize {
 	%pythoncode {
@@ -4972,51 +3455,7 @@ class StepVisual_PresentationStyleAssignment : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentationStyleAssignment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationStyleAssignment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationStyleAssignment::Handle_StepVisual_PresentationStyleAssignment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationStyleAssignment;
-class Handle_StepVisual_PresentationStyleAssignment : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationStyleAssignment();
-        Handle_StepVisual_PresentationStyleAssignment(const Handle_StepVisual_PresentationStyleAssignment &aHandle);
-        Handle_StepVisual_PresentationStyleAssignment(const StepVisual_PresentationStyleAssignment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationStyleAssignment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationStyleAssignment {
-    StepVisual_PresentationStyleAssignment* _get_reference() {
-    return (StepVisual_PresentationStyleAssignment*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationStyleAssignment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationStyleAssignment)
 
 %extend StepVisual_PresentationStyleAssignment {
 	%pythoncode {
@@ -5072,51 +3511,7 @@ class StepVisual_PresentedItem : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentedItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentedItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentedItem::Handle_StepVisual_PresentedItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentedItem;
-class Handle_StepVisual_PresentedItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentedItem();
-        Handle_StepVisual_PresentedItem(const Handle_StepVisual_PresentedItem &aHandle);
-        Handle_StepVisual_PresentedItem(const StepVisual_PresentedItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentedItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentedItem {
-    StepVisual_PresentedItem* _get_reference() {
-    return (StepVisual_PresentedItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentedItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentedItem)
 
 %extend StepVisual_PresentedItem {
 	%pythoncode {
@@ -5161,51 +3556,7 @@ class StepVisual_PresentedItemRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepVisual_PresentedItemRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentedItemRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentedItemRepresentation::Handle_StepVisual_PresentedItemRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentedItemRepresentation;
-class Handle_StepVisual_PresentedItemRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentedItemRepresentation();
-        Handle_StepVisual_PresentedItemRepresentation(const Handle_StepVisual_PresentedItemRepresentation &aHandle);
-        Handle_StepVisual_PresentedItemRepresentation(const StepVisual_PresentedItemRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentedItemRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentedItemRepresentation {
-    StepVisual_PresentedItemRepresentation* _get_reference() {
-    return (StepVisual_PresentedItemRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentedItemRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentedItemRepresentation)
 
 %extend StepVisual_PresentedItemRepresentation {
 	%pythoncode {
@@ -5313,51 +3664,7 @@ class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 };
 
 
-%extend StepVisual_StyledItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_StyledItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_StyledItem::Handle_StepVisual_StyledItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_StyledItem;
-class Handle_StepVisual_StyledItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_StyledItem();
-        Handle_StepVisual_StyledItem(const Handle_StepVisual_StyledItem &aHandle);
-        Handle_StepVisual_StyledItem(const StepVisual_StyledItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_StyledItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_StyledItem {
-    StepVisual_StyledItem* _get_reference() {
-    return (StepVisual_StyledItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_StyledItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_StyledItem)
 
 %extend StepVisual_StyledItem {
 	%pythoncode {
@@ -5414,51 +3721,7 @@ class StepVisual_SurfaceSideStyle : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceSideStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceSideStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceSideStyle::Handle_StepVisual_SurfaceSideStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceSideStyle;
-class Handle_StepVisual_SurfaceSideStyle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceSideStyle();
-        Handle_StepVisual_SurfaceSideStyle(const Handle_StepVisual_SurfaceSideStyle &aHandle);
-        Handle_StepVisual_SurfaceSideStyle(const StepVisual_SurfaceSideStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceSideStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceSideStyle {
-    StepVisual_SurfaceSideStyle* _get_reference() {
-    return (StepVisual_SurfaceSideStyle*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceSideStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceSideStyle)
 
 %extend StepVisual_SurfaceSideStyle {
 	%pythoncode {
@@ -5493,51 +3756,7 @@ class StepVisual_SurfaceStyleBoundary : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleBoundary {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleBoundary(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleBoundary::Handle_StepVisual_SurfaceStyleBoundary %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleBoundary;
-class Handle_StepVisual_SurfaceStyleBoundary : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleBoundary();
-        Handle_StepVisual_SurfaceStyleBoundary(const Handle_StepVisual_SurfaceStyleBoundary &aHandle);
-        Handle_StepVisual_SurfaceStyleBoundary(const StepVisual_SurfaceStyleBoundary *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleBoundary DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleBoundary {
-    StepVisual_SurfaceStyleBoundary* _get_reference() {
-    return (StepVisual_SurfaceStyleBoundary*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleBoundary {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleBoundary)
 
 %extend StepVisual_SurfaceStyleBoundary {
 	%pythoncode {
@@ -5572,51 +3791,7 @@ class StepVisual_SurfaceStyleControlGrid : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleControlGrid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleControlGrid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleControlGrid::Handle_StepVisual_SurfaceStyleControlGrid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleControlGrid;
-class Handle_StepVisual_SurfaceStyleControlGrid : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleControlGrid();
-        Handle_StepVisual_SurfaceStyleControlGrid(const Handle_StepVisual_SurfaceStyleControlGrid &aHandle);
-        Handle_StepVisual_SurfaceStyleControlGrid(const StepVisual_SurfaceStyleControlGrid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleControlGrid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleControlGrid {
-    StepVisual_SurfaceStyleControlGrid* _get_reference() {
-    return (StepVisual_SurfaceStyleControlGrid*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleControlGrid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleControlGrid)
 
 %extend StepVisual_SurfaceStyleControlGrid {
 	%pythoncode {
@@ -5694,51 +3869,7 @@ class StepVisual_SurfaceStyleFillArea : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleFillArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleFillArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleFillArea::Handle_StepVisual_SurfaceStyleFillArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleFillArea;
-class Handle_StepVisual_SurfaceStyleFillArea : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleFillArea();
-        Handle_StepVisual_SurfaceStyleFillArea(const Handle_StepVisual_SurfaceStyleFillArea &aHandle);
-        Handle_StepVisual_SurfaceStyleFillArea(const StepVisual_SurfaceStyleFillArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleFillArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleFillArea {
-    StepVisual_SurfaceStyleFillArea* _get_reference() {
-    return (StepVisual_SurfaceStyleFillArea*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleFillArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleFillArea)
 
 %extend StepVisual_SurfaceStyleFillArea {
 	%pythoncode {
@@ -5795,51 +3926,7 @@ class StepVisual_SurfaceStyleParameterLine : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleParameterLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleParameterLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleParameterLine::Handle_StepVisual_SurfaceStyleParameterLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleParameterLine;
-class Handle_StepVisual_SurfaceStyleParameterLine : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleParameterLine();
-        Handle_StepVisual_SurfaceStyleParameterLine(const Handle_StepVisual_SurfaceStyleParameterLine &aHandle);
-        Handle_StepVisual_SurfaceStyleParameterLine(const StepVisual_SurfaceStyleParameterLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleParameterLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleParameterLine {
-    StepVisual_SurfaceStyleParameterLine* _get_reference() {
-    return (StepVisual_SurfaceStyleParameterLine*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleParameterLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleParameterLine)
 
 %extend StepVisual_SurfaceStyleParameterLine {
 	%pythoncode {
@@ -5874,51 +3961,7 @@ class StepVisual_SurfaceStyleSegmentationCurve : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleSegmentationCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleSegmentationCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleSegmentationCurve::Handle_StepVisual_SurfaceStyleSegmentationCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleSegmentationCurve;
-class Handle_StepVisual_SurfaceStyleSegmentationCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleSegmentationCurve();
-        Handle_StepVisual_SurfaceStyleSegmentationCurve(const Handle_StepVisual_SurfaceStyleSegmentationCurve &aHandle);
-        Handle_StepVisual_SurfaceStyleSegmentationCurve(const StepVisual_SurfaceStyleSegmentationCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleSegmentationCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleSegmentationCurve {
-    StepVisual_SurfaceStyleSegmentationCurve* _get_reference() {
-    return (StepVisual_SurfaceStyleSegmentationCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleSegmentationCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleSegmentationCurve)
 
 %extend StepVisual_SurfaceStyleSegmentationCurve {
 	%pythoncode {
@@ -5953,51 +3996,7 @@ class StepVisual_SurfaceStyleSilhouette : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleSilhouette {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleSilhouette(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleSilhouette::Handle_StepVisual_SurfaceStyleSilhouette %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleSilhouette;
-class Handle_StepVisual_SurfaceStyleSilhouette : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleSilhouette();
-        Handle_StepVisual_SurfaceStyleSilhouette(const Handle_StepVisual_SurfaceStyleSilhouette &aHandle);
-        Handle_StepVisual_SurfaceStyleSilhouette(const StepVisual_SurfaceStyleSilhouette *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleSilhouette DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleSilhouette {
-    StepVisual_SurfaceStyleSilhouette* _get_reference() {
-    return (StepVisual_SurfaceStyleSilhouette*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleSilhouette {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleSilhouette)
 
 %extend StepVisual_SurfaceStyleSilhouette {
 	%pythoncode {
@@ -6044,51 +4043,7 @@ class StepVisual_SurfaceStyleUsage : public MMgt_TShared {
 };
 
 
-%extend StepVisual_SurfaceStyleUsage {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_SurfaceStyleUsage(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_SurfaceStyleUsage::Handle_StepVisual_SurfaceStyleUsage %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_SurfaceStyleUsage;
-class Handle_StepVisual_SurfaceStyleUsage : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_SurfaceStyleUsage();
-        Handle_StepVisual_SurfaceStyleUsage(const Handle_StepVisual_SurfaceStyleUsage &aHandle);
-        Handle_StepVisual_SurfaceStyleUsage(const StepVisual_SurfaceStyleUsage *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_SurfaceStyleUsage DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_SurfaceStyleUsage {
-    StepVisual_SurfaceStyleUsage* _get_reference() {
-    return (StepVisual_SurfaceStyleUsage*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_SurfaceStyleUsage {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_SurfaceStyleUsage)
 
 %extend StepVisual_SurfaceStyleUsage {
 	%pythoncode {
@@ -6107,51 +4062,7 @@ class StepVisual_Template : public StepRepr_Representation {
 };
 
 
-%extend StepVisual_Template {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_Template(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_Template::Handle_StepVisual_Template %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_Template;
-class Handle_StepVisual_Template : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepVisual_Template();
-        Handle_StepVisual_Template(const Handle_StepVisual_Template &aHandle);
-        Handle_StepVisual_Template(const StepVisual_Template *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_Template DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_Template {
-    StepVisual_Template* _get_reference() {
-    return (StepVisual_Template*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_Template {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_Template)
 
 %extend StepVisual_Template {
 	%pythoncode {
@@ -6170,51 +4081,7 @@ class StepVisual_TemplateInstance : public StepRepr_MappedItem {
 };
 
 
-%extend StepVisual_TemplateInstance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_TemplateInstance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_TemplateInstance::Handle_StepVisual_TemplateInstance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_TemplateInstance;
-class Handle_StepVisual_TemplateInstance : public Handle_StepRepr_MappedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_TemplateInstance();
-        Handle_StepVisual_TemplateInstance(const Handle_StepVisual_TemplateInstance &aHandle);
-        Handle_StepVisual_TemplateInstance(const StepVisual_TemplateInstance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_TemplateInstance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_TemplateInstance {
-    StepVisual_TemplateInstance* _get_reference() {
-    return (StepVisual_TemplateInstance*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_TemplateInstance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_TemplateInstance)
 
 %extend StepVisual_TemplateInstance {
 	%pythoncode {
@@ -6305,51 +4172,7 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepVisual_TextLiteral {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_TextLiteral(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_TextLiteral::Handle_StepVisual_TextLiteral %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_TextLiteral;
-class Handle_StepVisual_TextLiteral : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_TextLiteral();
-        Handle_StepVisual_TextLiteral(const Handle_StepVisual_TextLiteral &aHandle);
-        Handle_StepVisual_TextLiteral(const StepVisual_TextLiteral *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_TextLiteral DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_TextLiteral {
-    StepVisual_TextLiteral* _get_reference() {
-    return (StepVisual_TextLiteral*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_TextLiteral {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_TextLiteral)
 
 %extend StepVisual_TextLiteral {
 	%pythoncode {
@@ -6439,51 +4262,7 @@ class StepVisual_TextStyle : public MMgt_TShared {
 };
 
 
-%extend StepVisual_TextStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_TextStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_TextStyle::Handle_StepVisual_TextStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_TextStyle;
-class Handle_StepVisual_TextStyle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_TextStyle();
-        Handle_StepVisual_TextStyle(const Handle_StepVisual_TextStyle &aHandle);
-        Handle_StepVisual_TextStyle(const StepVisual_TextStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_TextStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_TextStyle {
-    StepVisual_TextStyle* _get_reference() {
-    return (StepVisual_TextStyle*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_TextStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_TextStyle)
 
 %extend StepVisual_TextStyle {
 	%pythoncode {
@@ -6518,51 +4297,7 @@ class StepVisual_TextStyleForDefinedFont : public MMgt_TShared {
 };
 
 
-%extend StepVisual_TextStyleForDefinedFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_TextStyleForDefinedFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_TextStyleForDefinedFont::Handle_StepVisual_TextStyleForDefinedFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_TextStyleForDefinedFont;
-class Handle_StepVisual_TextStyleForDefinedFont : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_TextStyleForDefinedFont();
-        Handle_StepVisual_TextStyleForDefinedFont(const Handle_StepVisual_TextStyleForDefinedFont &aHandle);
-        Handle_StepVisual_TextStyleForDefinedFont(const StepVisual_TextStyleForDefinedFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_TextStyleForDefinedFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_TextStyleForDefinedFont {
-    StepVisual_TextStyleForDefinedFont* _get_reference() {
-    return (StepVisual_TextStyleForDefinedFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_TextStyleForDefinedFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_TextStyleForDefinedFont)
 
 %extend StepVisual_TextStyleForDefinedFont {
 	%pythoncode {
@@ -6693,51 +4428,7 @@ class StepVisual_ViewVolume : public MMgt_TShared {
 };
 
 
-%extend StepVisual_ViewVolume {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ViewVolume(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ViewVolume::Handle_StepVisual_ViewVolume %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ViewVolume;
-class Handle_StepVisual_ViewVolume : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepVisual_ViewVolume();
-        Handle_StepVisual_ViewVolume(const Handle_StepVisual_ViewVolume &aHandle);
-        Handle_StepVisual_ViewVolume(const StepVisual_ViewVolume *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ViewVolume DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ViewVolume {
-    StepVisual_ViewVolume* _get_reference() {
-    return (StepVisual_ViewVolume*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ViewVolume {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ViewVolume)
 
 %extend StepVisual_ViewVolume {
 	%pythoncode {
@@ -6756,51 +4447,7 @@ class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem {
 };
 
 
-%extend StepVisual_AnnotationOccurrence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_AnnotationOccurrence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_AnnotationOccurrence::Handle_StepVisual_AnnotationOccurrence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_AnnotationOccurrence;
-class Handle_StepVisual_AnnotationOccurrence : public Handle_StepVisual_StyledItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_AnnotationOccurrence();
-        Handle_StepVisual_AnnotationOccurrence(const Handle_StepVisual_AnnotationOccurrence &aHandle);
-        Handle_StepVisual_AnnotationOccurrence(const StepVisual_AnnotationOccurrence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_AnnotationOccurrence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_AnnotationOccurrence {
-    StepVisual_AnnotationOccurrence* _get_reference() {
-    return (StepVisual_AnnotationOccurrence*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_AnnotationOccurrence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_AnnotationOccurrence)
 
 %extend StepVisual_AnnotationOccurrence {
 	%pythoncode {
@@ -6835,51 +4482,7 @@ class StepVisual_BackgroundColour : public StepVisual_Colour {
 };
 
 
-%extend StepVisual_BackgroundColour {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_BackgroundColour(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_BackgroundColour::Handle_StepVisual_BackgroundColour %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_BackgroundColour;
-class Handle_StepVisual_BackgroundColour : public Handle_StepVisual_Colour {
-
-    public:
-        // constructors
-        Handle_StepVisual_BackgroundColour();
-        Handle_StepVisual_BackgroundColour(const Handle_StepVisual_BackgroundColour &aHandle);
-        Handle_StepVisual_BackgroundColour(const StepVisual_BackgroundColour *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_BackgroundColour DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_BackgroundColour {
-    StepVisual_BackgroundColour* _get_reference() {
-    return (StepVisual_BackgroundColour*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_BackgroundColour {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_BackgroundColour)
 
 %extend StepVisual_BackgroundColour {
 	%pythoncode {
@@ -6896,51 +4499,7 @@ class StepVisual_CameraImage2dWithScale : public StepVisual_CameraImage {
 };
 
 
-%extend StepVisual_CameraImage2dWithScale {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraImage2dWithScale(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraImage2dWithScale::Handle_StepVisual_CameraImage2dWithScale %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraImage2dWithScale;
-class Handle_StepVisual_CameraImage2dWithScale : public Handle_StepVisual_CameraImage {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraImage2dWithScale();
-        Handle_StepVisual_CameraImage2dWithScale(const Handle_StepVisual_CameraImage2dWithScale &aHandle);
-        Handle_StepVisual_CameraImage2dWithScale(const StepVisual_CameraImage2dWithScale *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraImage2dWithScale DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraImage2dWithScale {
-    StepVisual_CameraImage2dWithScale* _get_reference() {
-    return (StepVisual_CameraImage2dWithScale*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraImage2dWithScale {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraImage2dWithScale)
 
 %extend StepVisual_CameraImage2dWithScale {
 	%pythoncode {
@@ -6957,51 +4516,7 @@ class StepVisual_CameraImage3dWithScale : public StepVisual_CameraImage {
 };
 
 
-%extend StepVisual_CameraImage3dWithScale {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraImage3dWithScale(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraImage3dWithScale::Handle_StepVisual_CameraImage3dWithScale %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraImage3dWithScale;
-class Handle_StepVisual_CameraImage3dWithScale : public Handle_StepVisual_CameraImage {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraImage3dWithScale();
-        Handle_StepVisual_CameraImage3dWithScale(const Handle_StepVisual_CameraImage3dWithScale &aHandle);
-        Handle_StepVisual_CameraImage3dWithScale(const StepVisual_CameraImage3dWithScale *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraImage3dWithScale DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraImage3dWithScale {
-    StepVisual_CameraImage3dWithScale* _get_reference() {
-    return (StepVisual_CameraImage3dWithScale*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraImage3dWithScale {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraImage3dWithScale)
 
 %extend StepVisual_CameraImage3dWithScale {
 	%pythoncode {
@@ -7056,51 +4571,7 @@ class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 };
 
 
-%extend StepVisual_CameraModelD2 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraModelD2(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraModelD2::Handle_StepVisual_CameraModelD2 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraModelD2;
-class Handle_StepVisual_CameraModelD2 : public Handle_StepVisual_CameraModel {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraModelD2();
-        Handle_StepVisual_CameraModelD2(const Handle_StepVisual_CameraModelD2 &aHandle);
-        Handle_StepVisual_CameraModelD2(const StepVisual_CameraModelD2 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraModelD2 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraModelD2 {
-    StepVisual_CameraModelD2* _get_reference() {
-    return (StepVisual_CameraModelD2*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraModelD2 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraModelD2)
 
 %extend StepVisual_CameraModelD2 {
 	%pythoncode {
@@ -7155,51 +4626,7 @@ class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 };
 
 
-%extend StepVisual_CameraModelD3 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CameraModelD3(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CameraModelD3::Handle_StepVisual_CameraModelD3 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CameraModelD3;
-class Handle_StepVisual_CameraModelD3 : public Handle_StepVisual_CameraModel {
-
-    public:
-        // constructors
-        Handle_StepVisual_CameraModelD3();
-        Handle_StepVisual_CameraModelD3(const Handle_StepVisual_CameraModelD3 &aHandle);
-        Handle_StepVisual_CameraModelD3(const StepVisual_CameraModelD3 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CameraModelD3 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CameraModelD3 {
-    StepVisual_CameraModelD3* _get_reference() {
-    return (StepVisual_CameraModelD3*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CameraModelD3 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CameraModelD3)
 
 %extend StepVisual_CameraModelD3 {
 	%pythoncode {
@@ -7234,51 +4661,7 @@ class StepVisual_ColourSpecification : public StepVisual_Colour {
 };
 
 
-%extend StepVisual_ColourSpecification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ColourSpecification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ColourSpecification::Handle_StepVisual_ColourSpecification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ColourSpecification;
-class Handle_StepVisual_ColourSpecification : public Handle_StepVisual_Colour {
-
-    public:
-        // constructors
-        Handle_StepVisual_ColourSpecification();
-        Handle_StepVisual_ColourSpecification(const Handle_StepVisual_ColourSpecification &aHandle);
-        Handle_StepVisual_ColourSpecification(const StepVisual_ColourSpecification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ColourSpecification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ColourSpecification {
-    StepVisual_ColourSpecification* _get_reference() {
-    return (StepVisual_ColourSpecification*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ColourSpecification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ColourSpecification)
 
 %extend StepVisual_ColourSpecification {
 	%pythoncode {
@@ -7325,51 +4708,7 @@ class StepVisual_CompositeTextWithExtent : public StepVisual_CompositeText {
 };
 
 
-%extend StepVisual_CompositeTextWithExtent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_CompositeTextWithExtent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_CompositeTextWithExtent::Handle_StepVisual_CompositeTextWithExtent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_CompositeTextWithExtent;
-class Handle_StepVisual_CompositeTextWithExtent : public Handle_StepVisual_CompositeText {
-
-    public:
-        // constructors
-        Handle_StepVisual_CompositeTextWithExtent();
-        Handle_StepVisual_CompositeTextWithExtent(const Handle_StepVisual_CompositeTextWithExtent &aHandle);
-        Handle_StepVisual_CompositeTextWithExtent(const StepVisual_CompositeTextWithExtent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_CompositeTextWithExtent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_CompositeTextWithExtent {
-    StepVisual_CompositeTextWithExtent* _get_reference() {
-    return (StepVisual_CompositeTextWithExtent*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_CompositeTextWithExtent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_CompositeTextWithExtent)
 
 %extend StepVisual_CompositeTextWithExtent {
 	%pythoncode {
@@ -7412,51 +4751,7 @@ class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 };
 
 
-%extend StepVisual_ContextDependentInvisibility {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ContextDependentInvisibility(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ContextDependentInvisibility::Handle_StepVisual_ContextDependentInvisibility %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ContextDependentInvisibility;
-class Handle_StepVisual_ContextDependentInvisibility : public Handle_StepVisual_Invisibility {
-
-    public:
-        // constructors
-        Handle_StepVisual_ContextDependentInvisibility();
-        Handle_StepVisual_ContextDependentInvisibility(const Handle_StepVisual_ContextDependentInvisibility &aHandle);
-        Handle_StepVisual_ContextDependentInvisibility(const StepVisual_ContextDependentInvisibility *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ContextDependentInvisibility DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ContextDependentInvisibility {
-    StepVisual_ContextDependentInvisibility* _get_reference() {
-    return (StepVisual_ContextDependentInvisibility*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ContextDependentInvisibility {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ContextDependentInvisibility)
 
 %extend StepVisual_ContextDependentInvisibility {
 	%pythoncode {
@@ -7475,51 +4770,7 @@ class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public St
 };
 
 
-%extend StepVisual_MechanicalDesignGeometricPresentationRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation::Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation;
-class Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation : public Handle_StepVisual_PresentationRepresentation {
-
-    public:
-        // constructors
-        Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation();
-        Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation(const Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation &aHandle);
-        Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation(const StepVisual_MechanicalDesignGeometricPresentationRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation {
-    StepVisual_MechanicalDesignGeometricPresentationRepresentation* _get_reference() {
-    return (StepVisual_MechanicalDesignGeometricPresentationRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_MechanicalDesignGeometricPresentationRepresentation)
 
 %extend StepVisual_MechanicalDesignGeometricPresentationRepresentation {
 	%pythoncode {
@@ -7570,51 +4821,7 @@ class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 };
 
 
-%extend StepVisual_OverRidingStyledItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_OverRidingStyledItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_OverRidingStyledItem::Handle_StepVisual_OverRidingStyledItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_OverRidingStyledItem;
-class Handle_StepVisual_OverRidingStyledItem : public Handle_StepVisual_StyledItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_OverRidingStyledItem();
-        Handle_StepVisual_OverRidingStyledItem(const Handle_StepVisual_OverRidingStyledItem &aHandle);
-        Handle_StepVisual_OverRidingStyledItem(const StepVisual_OverRidingStyledItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_OverRidingStyledItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_OverRidingStyledItem {
-    StepVisual_OverRidingStyledItem* _get_reference() {
-    return (StepVisual_OverRidingStyledItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_OverRidingStyledItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_OverRidingStyledItem)
 
 %extend StepVisual_OverRidingStyledItem {
 	%pythoncode {
@@ -7665,51 +4872,7 @@ class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 };
 
 
-%extend StepVisual_PlanarBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PlanarBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PlanarBox::Handle_StepVisual_PlanarBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PlanarBox;
-class Handle_StepVisual_PlanarBox : public Handle_StepVisual_PlanarExtent {
-
-    public:
-        // constructors
-        Handle_StepVisual_PlanarBox();
-        Handle_StepVisual_PlanarBox(const Handle_StepVisual_PlanarBox &aHandle);
-        Handle_StepVisual_PlanarBox(const StepVisual_PlanarBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PlanarBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PlanarBox {
-    StepVisual_PlanarBox* _get_reference() {
-    return (StepVisual_PlanarBox*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PlanarBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PlanarBox)
 
 %extend StepVisual_PlanarBox {
 	%pythoncode {
@@ -7742,51 +4905,7 @@ class StepVisual_PreDefinedColour : public StepVisual_Colour {
 };
 
 
-%extend StepVisual_PreDefinedColour {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PreDefinedColour(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PreDefinedColour::Handle_StepVisual_PreDefinedColour %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PreDefinedColour;
-class Handle_StepVisual_PreDefinedColour : public Handle_StepVisual_Colour {
-
-    public:
-        // constructors
-        Handle_StepVisual_PreDefinedColour();
-        Handle_StepVisual_PreDefinedColour(const Handle_StepVisual_PreDefinedColour &aHandle);
-        Handle_StepVisual_PreDefinedColour(const StepVisual_PreDefinedColour *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PreDefinedColour DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PreDefinedColour {
-    StepVisual_PreDefinedColour* _get_reference() {
-    return (StepVisual_PreDefinedColour*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PreDefinedColour {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PreDefinedColour)
 
 %extend StepVisual_PreDefinedColour {
 	%pythoncode {
@@ -7805,51 +4924,7 @@ class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem {
 };
 
 
-%extend StepVisual_PreDefinedCurveFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PreDefinedCurveFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PreDefinedCurveFont::Handle_StepVisual_PreDefinedCurveFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PreDefinedCurveFont;
-class Handle_StepVisual_PreDefinedCurveFont : public Handle_StepVisual_PreDefinedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_PreDefinedCurveFont();
-        Handle_StepVisual_PreDefinedCurveFont(const Handle_StepVisual_PreDefinedCurveFont &aHandle);
-        Handle_StepVisual_PreDefinedCurveFont(const StepVisual_PreDefinedCurveFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PreDefinedCurveFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PreDefinedCurveFont {
-    StepVisual_PreDefinedCurveFont* _get_reference() {
-    return (StepVisual_PreDefinedCurveFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PreDefinedCurveFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PreDefinedCurveFont)
 
 %extend StepVisual_PreDefinedCurveFont {
 	%pythoncode {
@@ -7868,51 +4943,7 @@ class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem {
 };
 
 
-%extend StepVisual_PreDefinedTextFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PreDefinedTextFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PreDefinedTextFont::Handle_StepVisual_PreDefinedTextFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PreDefinedTextFont;
-class Handle_StepVisual_PreDefinedTextFont : public Handle_StepVisual_PreDefinedItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_PreDefinedTextFont();
-        Handle_StepVisual_PreDefinedTextFont(const Handle_StepVisual_PreDefinedTextFont &aHandle);
-        Handle_StepVisual_PreDefinedTextFont(const StepVisual_PreDefinedTextFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PreDefinedTextFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PreDefinedTextFont {
-    StepVisual_PreDefinedTextFont* _get_reference() {
-    return (StepVisual_PreDefinedTextFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PreDefinedTextFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PreDefinedTextFont)
 
 %extend StepVisual_PreDefinedTextFont {
 	%pythoncode {
@@ -7931,51 +4962,7 @@ class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation
 };
 
 
-%extend StepVisual_PresentationArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationArea::Handle_StepVisual_PresentationArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationArea;
-class Handle_StepVisual_PresentationArea : public Handle_StepVisual_PresentationRepresentation {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationArea();
-        Handle_StepVisual_PresentationArea(const Handle_StepVisual_PresentationArea &aHandle);
-        Handle_StepVisual_PresentationArea(const StepVisual_PresentationArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationArea {
-    StepVisual_PresentationArea* _get_reference() {
-    return (StepVisual_PresentationArea*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationArea)
 
 %extend StepVisual_PresentationArea {
 	%pythoncode {
@@ -8018,51 +5005,7 @@ class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyl
 };
 
 
-%extend StepVisual_PresentationStyleByContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationStyleByContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationStyleByContext::Handle_StepVisual_PresentationStyleByContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationStyleByContext;
-class Handle_StepVisual_PresentationStyleByContext : public Handle_StepVisual_PresentationStyleAssignment {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationStyleByContext();
-        Handle_StepVisual_PresentationStyleByContext(const Handle_StepVisual_PresentationStyleByContext &aHandle);
-        Handle_StepVisual_PresentationStyleByContext(const StepVisual_PresentationStyleByContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationStyleByContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationStyleByContext {
-    StepVisual_PresentationStyleByContext* _get_reference() {
-    return (StepVisual_PresentationStyleByContext*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationStyleByContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationStyleByContext)
 
 %extend StepVisual_PresentationStyleByContext {
 	%pythoncode {
@@ -8081,51 +5024,7 @@ class StepVisual_PresentationView : public StepVisual_PresentationRepresentation
 };
 
 
-%extend StepVisual_PresentationView {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_PresentationView(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_PresentationView::Handle_StepVisual_PresentationView %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_PresentationView;
-class Handle_StepVisual_PresentationView : public Handle_StepVisual_PresentationRepresentation {
-
-    public:
-        // constructors
-        Handle_StepVisual_PresentationView();
-        Handle_StepVisual_PresentationView(const Handle_StepVisual_PresentationView &aHandle);
-        Handle_StepVisual_PresentationView(const StepVisual_PresentationView *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_PresentationView DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_PresentationView {
-    StepVisual_PresentationView* _get_reference() {
-    return (StepVisual_PresentationView*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_PresentationView {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_PresentationView)
 
 %extend StepVisual_PresentationView {
 	%pythoncode {
@@ -8182,51 +5081,7 @@ class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 };
 
 
-%extend StepVisual_TextStyleWithBoxCharacteristics {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_TextStyleWithBoxCharacteristics(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_TextStyleWithBoxCharacteristics::Handle_StepVisual_TextStyleWithBoxCharacteristics %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_TextStyleWithBoxCharacteristics;
-class Handle_StepVisual_TextStyleWithBoxCharacteristics : public Handle_StepVisual_TextStyle {
-
-    public:
-        // constructors
-        Handle_StepVisual_TextStyleWithBoxCharacteristics();
-        Handle_StepVisual_TextStyleWithBoxCharacteristics(const Handle_StepVisual_TextStyleWithBoxCharacteristics &aHandle);
-        Handle_StepVisual_TextStyleWithBoxCharacteristics(const StepVisual_TextStyleWithBoxCharacteristics *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_TextStyleWithBoxCharacteristics DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_TextStyleWithBoxCharacteristics {
-    StepVisual_TextStyleWithBoxCharacteristics* _get_reference() {
-    return (StepVisual_TextStyleWithBoxCharacteristics*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_TextStyleWithBoxCharacteristics {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_TextStyleWithBoxCharacteristics)
 
 %extend StepVisual_TextStyleWithBoxCharacteristics {
 	%pythoncode {
@@ -8245,51 +5100,7 @@ class StepVisual_AnnotationTextOccurrence : public StepVisual_AnnotationOccurren
 };
 
 
-%extend StepVisual_AnnotationTextOccurrence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_AnnotationTextOccurrence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_AnnotationTextOccurrence::Handle_StepVisual_AnnotationTextOccurrence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_AnnotationTextOccurrence;
-class Handle_StepVisual_AnnotationTextOccurrence : public Handle_StepVisual_AnnotationOccurrence {
-
-    public:
-        // constructors
-        Handle_StepVisual_AnnotationTextOccurrence();
-        Handle_StepVisual_AnnotationTextOccurrence(const Handle_StepVisual_AnnotationTextOccurrence &aHandle);
-        Handle_StepVisual_AnnotationTextOccurrence(const StepVisual_AnnotationTextOccurrence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_AnnotationTextOccurrence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_AnnotationTextOccurrence {
-    StepVisual_AnnotationTextOccurrence* _get_reference() {
-    return (StepVisual_AnnotationTextOccurrence*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_AnnotationTextOccurrence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_AnnotationTextOccurrence)
 
 %extend StepVisual_AnnotationTextOccurrence {
 	%pythoncode {
@@ -8356,51 +5167,7 @@ class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
 };
 
 
-%extend StepVisual_ColourRgb {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ColourRgb(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ColourRgb::Handle_StepVisual_ColourRgb %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ColourRgb;
-class Handle_StepVisual_ColourRgb : public Handle_StepVisual_ColourSpecification {
-
-    public:
-        // constructors
-        Handle_StepVisual_ColourRgb();
-        Handle_StepVisual_ColourRgb(const Handle_StepVisual_ColourRgb &aHandle);
-        Handle_StepVisual_ColourRgb(const StepVisual_ColourRgb *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ColourRgb DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ColourRgb {
-    StepVisual_ColourRgb* _get_reference() {
-    return (StepVisual_ColourRgb*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ColourRgb {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ColourRgb)
 
 %extend StepVisual_ColourRgb {
 	%pythoncode {
@@ -8465,51 +5232,7 @@ class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRi
 };
 
 
-%extend StepVisual_ContextDependentOverRidingStyledItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_ContextDependentOverRidingStyledItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_ContextDependentOverRidingStyledItem::Handle_StepVisual_ContextDependentOverRidingStyledItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_ContextDependentOverRidingStyledItem;
-class Handle_StepVisual_ContextDependentOverRidingStyledItem : public Handle_StepVisual_OverRidingStyledItem {
-
-    public:
-        // constructors
-        Handle_StepVisual_ContextDependentOverRidingStyledItem();
-        Handle_StepVisual_ContextDependentOverRidingStyledItem(const Handle_StepVisual_ContextDependentOverRidingStyledItem &aHandle);
-        Handle_StepVisual_ContextDependentOverRidingStyledItem(const StepVisual_ContextDependentOverRidingStyledItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_ContextDependentOverRidingStyledItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_ContextDependentOverRidingStyledItem {
-    StepVisual_ContextDependentOverRidingStyledItem* _get_reference() {
-    return (StepVisual_ContextDependentOverRidingStyledItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_ContextDependentOverRidingStyledItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_ContextDependentOverRidingStyledItem)
 
 %extend StepVisual_ContextDependentOverRidingStyledItem {
 	%pythoncode {
@@ -8528,51 +5251,7 @@ class StepVisual_DraughtingAnnotationOccurrence : public StepVisual_AnnotationOc
 };
 
 
-%extend StepVisual_DraughtingAnnotationOccurrence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_DraughtingAnnotationOccurrence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_DraughtingAnnotationOccurrence::Handle_StepVisual_DraughtingAnnotationOccurrence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_DraughtingAnnotationOccurrence;
-class Handle_StepVisual_DraughtingAnnotationOccurrence : public Handle_StepVisual_AnnotationOccurrence {
-
-    public:
-        // constructors
-        Handle_StepVisual_DraughtingAnnotationOccurrence();
-        Handle_StepVisual_DraughtingAnnotationOccurrence(const Handle_StepVisual_DraughtingAnnotationOccurrence &aHandle);
-        Handle_StepVisual_DraughtingAnnotationOccurrence(const StepVisual_DraughtingAnnotationOccurrence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_DraughtingAnnotationOccurrence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_DraughtingAnnotationOccurrence {
-    StepVisual_DraughtingAnnotationOccurrence* _get_reference() {
-    return (StepVisual_DraughtingAnnotationOccurrence*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_DraughtingAnnotationOccurrence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_DraughtingAnnotationOccurrence)
 
 %extend StepVisual_DraughtingAnnotationOccurrence {
 	%pythoncode {
@@ -8591,51 +5270,7 @@ class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour
 };
 
 
-%extend StepVisual_DraughtingPreDefinedColour {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_DraughtingPreDefinedColour(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_DraughtingPreDefinedColour::Handle_StepVisual_DraughtingPreDefinedColour %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_DraughtingPreDefinedColour;
-class Handle_StepVisual_DraughtingPreDefinedColour : public Handle_StepVisual_PreDefinedColour {
-
-    public:
-        // constructors
-        Handle_StepVisual_DraughtingPreDefinedColour();
-        Handle_StepVisual_DraughtingPreDefinedColour(const Handle_StepVisual_DraughtingPreDefinedColour &aHandle);
-        Handle_StepVisual_DraughtingPreDefinedColour(const StepVisual_DraughtingPreDefinedColour *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_DraughtingPreDefinedColour DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_DraughtingPreDefinedColour {
-    StepVisual_DraughtingPreDefinedColour* _get_reference() {
-    return (StepVisual_DraughtingPreDefinedColour*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_DraughtingPreDefinedColour {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_DraughtingPreDefinedColour)
 
 %extend StepVisual_DraughtingPreDefinedColour {
 	%pythoncode {
@@ -8654,51 +5289,7 @@ class StepVisual_DraughtingPreDefinedCurveFont : public StepVisual_PreDefinedCur
 };
 
 
-%extend StepVisual_DraughtingPreDefinedCurveFont {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_DraughtingPreDefinedCurveFont(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_DraughtingPreDefinedCurveFont::Handle_StepVisual_DraughtingPreDefinedCurveFont %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_DraughtingPreDefinedCurveFont;
-class Handle_StepVisual_DraughtingPreDefinedCurveFont : public Handle_StepVisual_PreDefinedCurveFont {
-
-    public:
-        // constructors
-        Handle_StepVisual_DraughtingPreDefinedCurveFont();
-        Handle_StepVisual_DraughtingPreDefinedCurveFont(const Handle_StepVisual_DraughtingPreDefinedCurveFont &aHandle);
-        Handle_StepVisual_DraughtingPreDefinedCurveFont(const StepVisual_DraughtingPreDefinedCurveFont *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_DraughtingPreDefinedCurveFont DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_DraughtingPreDefinedCurveFont {
-    StepVisual_DraughtingPreDefinedCurveFont* _get_reference() {
-    return (StepVisual_DraughtingPreDefinedCurveFont*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_DraughtingPreDefinedCurveFont {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_DraughtingPreDefinedCurveFont)
 
 %extend StepVisual_DraughtingPreDefinedCurveFont {
 	%pythoncode {
@@ -8717,51 +5308,7 @@ class StepVisual_MechanicalDesignGeometricPresentationArea : public StepVisual_P
 };
 
 
-%extend StepVisual_MechanicalDesignGeometricPresentationArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepVisual_MechanicalDesignGeometricPresentationArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepVisual_MechanicalDesignGeometricPresentationArea::Handle_StepVisual_MechanicalDesignGeometricPresentationArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepVisual_MechanicalDesignGeometricPresentationArea;
-class Handle_StepVisual_MechanicalDesignGeometricPresentationArea : public Handle_StepVisual_PresentationArea {
-
-    public:
-        // constructors
-        Handle_StepVisual_MechanicalDesignGeometricPresentationArea();
-        Handle_StepVisual_MechanicalDesignGeometricPresentationArea(const Handle_StepVisual_MechanicalDesignGeometricPresentationArea &aHandle);
-        Handle_StepVisual_MechanicalDesignGeometricPresentationArea(const StepVisual_MechanicalDesignGeometricPresentationArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepVisual_MechanicalDesignGeometricPresentationArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepVisual_MechanicalDesignGeometricPresentationArea {
-    StepVisual_MechanicalDesignGeometricPresentationArea* _get_reference() {
-    return (StepVisual_MechanicalDesignGeometricPresentationArea*)$self->Access();
-    }
-};
-
-%extend Handle_StepVisual_MechanicalDesignGeometricPresentationArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepVisual_MechanicalDesignGeometricPresentationArea)
 
 %extend StepVisual_MechanicalDesignGeometricPresentationArea {
 	%pythoncode {

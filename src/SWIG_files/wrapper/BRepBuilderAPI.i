@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBUILDERAPIDOCSTRING
-"No docstring provided."
+"The BRepBuilderAPI package  provides an  ApplicationProgramming Interface for the BRep topology datastructure.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.* Examples of programming of high-level operationsfrom low-level operations.* A complete coverage of modelling :- Creating vertices ,edges, faces, solids.- Sweeping operations.- Boolean operations.- Global properties computation.The API provides classes to build objects:* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused to build the object.*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to make a vertex <V> from a point <P>one can writes :V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);V = MV.Vertex();For tolerances a default precision is used whichcan  be  changed  by  the  packahe methodBRepBuilderAPI::Precision.For error handling the BRepBuilderAPI commands raise onlythe NotDone error. When Done is false on a commandthe error description can be asked to the command.In theory the comands can be  called with anyarguments, argument checking is performed by thecommand."
 %enddef
 %module (package="OCC.Core", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepBuilderAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_CellFilter <BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
@@ -60,21 +46,6 @@ typedef NCollection_UBTree <Standard_Integer , Bnd_Box> BRepBuilderAPI_BndBoxTre
 /* end typedefs declaration */
 
 /* public enums */
-enum BRepBuilderAPI_ShapeModification {
-	BRepBuilderAPI_Preserved = 0,
-	BRepBuilderAPI_Deleted = 1,
-	BRepBuilderAPI_Trimmed = 2,
-	BRepBuilderAPI_Merged = 3,
-	BRepBuilderAPI_BoundaryModified = 4,
-};
-
-enum BRepBuilderAPI_WireError {
-	BRepBuilderAPI_WireDone = 0,
-	BRepBuilderAPI_EmptyWire = 1,
-	BRepBuilderAPI_DisconnectedWire = 2,
-	BRepBuilderAPI_NonManifoldWire = 3,
-};
-
 enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_EdgeDone = 0,
 	BRepBuilderAPI_PointProjectionFailed = 1,
@@ -85,6 +56,14 @@ enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_LineThroughIdenticPoints = 6,
 };
 
+enum BRepBuilderAPI_FaceError {
+	BRepBuilderAPI_FaceDone = 0,
+	BRepBuilderAPI_NoFace = 1,
+	BRepBuilderAPI_NotPlanar = 2,
+	BRepBuilderAPI_CurveProjectionFailed = 3,
+	BRepBuilderAPI_ParametersOutOfRange = 4,
+};
+
 enum BRepBuilderAPI_PipeError {
 	BRepBuilderAPI_PipeDone = 0,
 	BRepBuilderAPI_PipeNotDone = 1,
@@ -92,18 +71,12 @@ enum BRepBuilderAPI_PipeError {
 	BRepBuilderAPI_ImpossibleContact = 3,
 };
 
-enum BRepBuilderAPI_TransitionMode {
-	BRepBuilderAPI_Transformed = 0,
-	BRepBuilderAPI_RightCorner = 1,
-	BRepBuilderAPI_RoundCorner = 2,
-};
-
-enum BRepBuilderAPI_FaceError {
-	BRepBuilderAPI_FaceDone = 0,
-	BRepBuilderAPI_NoFace = 1,
-	BRepBuilderAPI_NotPlanar = 2,
-	BRepBuilderAPI_CurveProjectionFailed = 3,
-	BRepBuilderAPI_ParametersOutOfRange = 4,
+enum BRepBuilderAPI_ShapeModification {
+	BRepBuilderAPI_Preserved = 0,
+	BRepBuilderAPI_Deleted = 1,
+	BRepBuilderAPI_Trimmed = 2,
+	BRepBuilderAPI_Merged = 3,
+	BRepBuilderAPI_BoundaryModified = 4,
 };
 
 enum BRepBuilderAPI_ShellError {
@@ -113,7 +86,23 @@ enum BRepBuilderAPI_ShellError {
 	BRepBuilderAPI_ShellParametersOutOfRange = 3,
 };
 
+enum BRepBuilderAPI_TransitionMode {
+	BRepBuilderAPI_Transformed = 0,
+	BRepBuilderAPI_RightCorner = 1,
+	BRepBuilderAPI_RoundCorner = 2,
+};
+
+enum BRepBuilderAPI_WireError {
+	BRepBuilderAPI_WireDone = 0,
+	BRepBuilderAPI_EmptyWire = 1,
+	BRepBuilderAPI_DisconnectedWire = 2,
+	BRepBuilderAPI_NonManifoldWire = 3,
+};
+
 /* end public enums declaration */
+
+%wrap_handle(BRepBuilderAPI_FastSewing)
+%wrap_handle(BRepBuilderAPI_Sewing)
 
 %rename(brepbuilderapi) BRepBuilderAPI;
 class BRepBuilderAPI {
@@ -306,51 +295,7 @@ enum FS_Statuses {
 };
 
 
-%extend BRepBuilderAPI_FastSewing {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBuilderAPI_FastSewing(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBuilderAPI_FastSewing::Handle_BRepBuilderAPI_FastSewing %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBuilderAPI_FastSewing;
-class Handle_BRepBuilderAPI_FastSewing : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepBuilderAPI_FastSewing();
-        Handle_BRepBuilderAPI_FastSewing(const Handle_BRepBuilderAPI_FastSewing &aHandle);
-        Handle_BRepBuilderAPI_FastSewing(const BRepBuilderAPI_FastSewing *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBuilderAPI_FastSewing DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBuilderAPI_FastSewing {
-    BRepBuilderAPI_FastSewing* _get_reference() {
-    return (BRepBuilderAPI_FastSewing*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBuilderAPI_FastSewing {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBuilderAPI_FastSewing)
 
 %extend BRepBuilderAPI_FastSewing {
 	%pythoncode {
@@ -750,51 +695,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 };
 
 
-%extend BRepBuilderAPI_Sewing {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBuilderAPI_Sewing(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBuilderAPI_Sewing::Handle_BRepBuilderAPI_Sewing %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBuilderAPI_Sewing;
-class Handle_BRepBuilderAPI_Sewing : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepBuilderAPI_Sewing();
-        Handle_BRepBuilderAPI_Sewing(const Handle_BRepBuilderAPI_Sewing &aHandle);
-        Handle_BRepBuilderAPI_Sewing(const BRepBuilderAPI_Sewing *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBuilderAPI_Sewing DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBuilderAPI_Sewing {
-    BRepBuilderAPI_Sewing* _get_reference() {
-    return (BRepBuilderAPI_Sewing*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBuilderAPI_Sewing {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBuilderAPI_Sewing)
 
 %extend BRepBuilderAPI_Sewing {
 	%pythoncode {

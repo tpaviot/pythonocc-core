@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPTOOLSDOCSTRING
-"No docstring provided."
+"The TopTools package provides  utilities for thetopological data structure.* ShapeMapHasher. Hash a Shape base on the TShapeand the Location. The Orientation is not used.* OrientedShapeMapHasher. Hash a Shape base on theTShape ,the Location and the Orientation.* Instantiations of TCollection for Shapes :MapOfShapeIndexedMapOfShapeDataMapOfIntegerShapeDataMapOfShapeIntegerDataMapOfShapeRealArray1OfShapeHArray1OfShapeSequenceOfShapeHSequenceOfShapeListOfShapeArray1OfListShapeHArray1OfListShapeDataMapOfIntegerListOfShapeDataMapOfShapeListOfShapeDataMapOfShapeListOfIntegerIndexedDataMapOfShapeShapeIndexedDataMapOfShapeListOfShapeDataMapOfShapeShapeIndexedMapOfOrientedShapeDataMapOfShapeSequenceOfShapeIndexedDataMapOfShapeAddressDataMapOfOrientedShapeShape* LocationSet : to write sets of locations.* ShapeSet : to writes sets of TShapes.Package Methods :Dump : To dump the topology of a Shape.- Level : PublicAll methods of all classes will be public."
 %enddef
 %module (package="OCC.Core", docstring=TOPTOOLSDOCSTRING) TopTools
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopTools_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopTools_LocationSet * TopTools_LocationSetPtr;
@@ -59,6 +45,30 @@ typedef TopTools_LocationSet * TopTools_LocationSetPtr;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfIntegerListOfShape)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfIntegerShape)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfOrientedShapeShape)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeInteger)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeListOfInteger)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeListOfShape)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeReal)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape)
+%wrap_handle(TopTools_DataMapNodeOfDataMapOfShapeShape)
+%wrap_handle(TopTools_HArray1OfListOfShape)
+%wrap_handle(TopTools_HArray1OfShape)
+%wrap_handle(TopTools_HArray2OfShape)
+%wrap_handle(TopTools_HSequenceOfShape)
+%wrap_handle(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress)
+%wrap_handle(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape)
+%wrap_handle(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape)
+%wrap_handle(TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape)
+%wrap_handle(TopTools_IndexedMapNodeOfIndexedMapOfShape)
+%wrap_handle(TopTools_ListNodeOfListOfShape)
+%wrap_handle(TopTools_SequenceNodeOfSequenceOfShape)
+%wrap_handle(TopTools_StdMapNodeOfMapOfOrientedShape)
+%wrap_handle(TopTools_StdMapNodeOfMapOfShape)
 
 %rename(toptools) TopTools;
 class TopTools {
@@ -755,51 +765,7 @@ class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_Map
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape::Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(const Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(const TopTools_DataMapNodeOfDataMapOfIntegerListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-    TopTools_DataMapNodeOfDataMapOfIntegerListOfShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfIntegerListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfIntegerListOfShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
 	%pythoncode {
@@ -839,51 +805,7 @@ class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape::Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape(const Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape(const TopTools_DataMapNodeOfDataMapOfIntegerShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
-    TopTools_DataMapNodeOfDataMapOfIntegerShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfIntegerShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfIntegerShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
 	%pythoncode {
@@ -923,51 +845,7 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_M
             };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger::Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
-class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger();
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(const Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(const TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-    TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger)
 
 %extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
 	%pythoncode {
@@ -998,51 +876,7 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public TCollection_Map
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape::Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape(const Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape(const TopTools_DataMapNodeOfDataMapOfOrientedShapeShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-    TopTools_DataMapNodeOfDataMapOfOrientedShapeShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfOrientedShapeShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfOrientedShapeShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
 	%pythoncode {
@@ -1082,51 +916,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
             };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger::Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger(const Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger(const TopTools_DataMapNodeOfDataMapOfShapeInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
-    TopTools_DataMapNodeOfDataMapOfShapeInteger* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeInteger)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
 	%pythoncode {
@@ -1157,51 +947,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public TCollection_Map
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger::Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger(const Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger(const TopTools_DataMapNodeOfDataMapOfShapeListOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-    TopTools_DataMapNodeOfDataMapOfShapeListOfInteger* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeListOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeListOfInteger)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
 	%pythoncode {
@@ -1232,51 +978,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public TCollection_MapNo
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape(const Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape(const TopTools_DataMapNodeOfDataMapOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-    TopTools_DataMapNodeOfDataMapOfShapeListOfShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeListOfShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
 	%pythoncode {
@@ -1316,51 +1018,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
             };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal::Handle_TopTools_DataMapNodeOfDataMapOfShapeReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeReal;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeReal();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeReal(const Handle_TopTools_DataMapNodeOfDataMapOfShapeReal &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeReal(const TopTools_DataMapNodeOfDataMapOfShapeReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
-    TopTools_DataMapNodeOfDataMapOfShapeReal* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeReal*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeReal)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeReal {
 	%pythoncode {
@@ -1391,51 +1049,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_M
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(const Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(const TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-    TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
 	%pythoncode {
@@ -1466,51 +1080,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeShape;
-class Handle_TopTools_DataMapNodeOfDataMapOfShapeShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeShape();
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeShape(const Handle_TopTools_DataMapNodeOfDataMapOfShapeShape &aHandle);
-        Handle_TopTools_DataMapNodeOfDataMapOfShapeShape(const TopTools_DataMapNodeOfDataMapOfShapeShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_DataMapNodeOfDataMapOfShapeShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
-    TopTools_DataMapNodeOfDataMapOfShapeShape* _get_reference() {
-    return (TopTools_DataMapNodeOfDataMapOfShapeShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_DataMapNodeOfDataMapOfShapeShape)
 
 %extend TopTools_DataMapNodeOfDataMapOfShapeShape {
 	%pythoncode {
@@ -2417,51 +1987,7 @@ class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 };
 
 
-%extend TopTools_HArray1OfListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_HArray1OfListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_HArray1OfListOfShape::Handle_TopTools_HArray1OfListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_HArray1OfListOfShape;
-class Handle_TopTools_HArray1OfListOfShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopTools_HArray1OfListOfShape();
-        Handle_TopTools_HArray1OfListOfShape(const Handle_TopTools_HArray1OfListOfShape &aHandle);
-        Handle_TopTools_HArray1OfListOfShape(const TopTools_HArray1OfListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_HArray1OfListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_HArray1OfListOfShape {
-    TopTools_HArray1OfListOfShape* _get_reference() {
-    return (TopTools_HArray1OfListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_HArray1OfListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_HArray1OfListOfShape)
 
 %extend TopTools_HArray1OfListOfShape {
 	%pythoncode {
@@ -2538,51 +2064,7 @@ class TopTools_HArray1OfShape : public MMgt_TShared {
 };
 
 
-%extend TopTools_HArray1OfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_HArray1OfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_HArray1OfShape::Handle_TopTools_HArray1OfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_HArray1OfShape;
-class Handle_TopTools_HArray1OfShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopTools_HArray1OfShape();
-        Handle_TopTools_HArray1OfShape(const Handle_TopTools_HArray1OfShape &aHandle);
-        Handle_TopTools_HArray1OfShape(const TopTools_HArray1OfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_HArray1OfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_HArray1OfShape {
-    TopTools_HArray1OfShape* _get_reference() {
-    return (TopTools_HArray1OfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_HArray1OfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_HArray1OfShape)
 
 %extend TopTools_HArray1OfShape {
 	%pythoncode {
@@ -2685,51 +2167,7 @@ class TopTools_HArray2OfShape : public MMgt_TShared {
 };
 
 
-%extend TopTools_HArray2OfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_HArray2OfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_HArray2OfShape::Handle_TopTools_HArray2OfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_HArray2OfShape;
-class Handle_TopTools_HArray2OfShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopTools_HArray2OfShape();
-        Handle_TopTools_HArray2OfShape(const Handle_TopTools_HArray2OfShape &aHandle);
-        Handle_TopTools_HArray2OfShape(const TopTools_HArray2OfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_HArray2OfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_HArray2OfShape {
-    TopTools_HArray2OfShape* _get_reference() {
-    return (TopTools_HArray2OfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_HArray2OfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_HArray2OfShape)
 
 %extend TopTools_HArray2OfShape {
 	%pythoncode {
@@ -2874,51 +2312,7 @@ class TopTools_HSequenceOfShape : public MMgt_TShared {
 };
 
 
-%extend TopTools_HSequenceOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_HSequenceOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_HSequenceOfShape::Handle_TopTools_HSequenceOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_HSequenceOfShape;
-class Handle_TopTools_HSequenceOfShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopTools_HSequenceOfShape();
-        Handle_TopTools_HSequenceOfShape(const Handle_TopTools_HSequenceOfShape &aHandle);
-        Handle_TopTools_HSequenceOfShape(const TopTools_HSequenceOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_HSequenceOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_HSequenceOfShape {
-    TopTools_HSequenceOfShape* _get_reference() {
-    return (TopTools_HSequenceOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_HSequenceOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_HSequenceOfShape)
 
 %extend TopTools_HSequenceOfShape {
 	%pythoncode {
@@ -2970,51 +2364,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public TCollec
 };
 
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
-class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress();
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress(const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress &aHandle);
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress(const TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress* _get_reference() {
-    return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress)
 
 %extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
 	%pythoncode {
@@ -3066,51 +2416,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public TCo
 };
 
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
-class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape();
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape(const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape &aHandle);
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape(const TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape* _get_reference() {
-    return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape)
 
 %extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
 	%pythoncode {
@@ -3162,51 +2468,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollecti
 };
 
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
-class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape();
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape(const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape &aHandle);
-        Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape(const TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape* _get_reference() {
-    return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape)
 
 %extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
 	%pythoncode {
@@ -3597,51 +2859,7 @@ class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_Ma
 };
 
 
-%extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape::Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
-class Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape();
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(const Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape &aHandle);
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(const TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-    TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape* _get_reference() {
-    return (TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape)
 
 %extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
 	%pythoncode {
@@ -3687,51 +2905,7 @@ class TopTools_IndexedMapNodeOfIndexedMapOfShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape::Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape;
-class Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape();
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape(const Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape &aHandle);
-        Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape(const TopTools_IndexedMapNodeOfIndexedMapOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
-    TopTools_IndexedMapNodeOfIndexedMapOfShape* _get_reference() {
-    return (TopTools_IndexedMapNodeOfIndexedMapOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_IndexedMapNodeOfIndexedMapOfShape)
 
 %extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
 	%pythoncode {
@@ -3957,51 +3131,7 @@ class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_ListNodeOfListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_ListNodeOfListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_ListNodeOfListOfShape::Handle_TopTools_ListNodeOfListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_ListNodeOfListOfShape;
-class Handle_TopTools_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_ListNodeOfListOfShape();
-        Handle_TopTools_ListNodeOfListOfShape(const Handle_TopTools_ListNodeOfListOfShape &aHandle);
-        Handle_TopTools_ListNodeOfListOfShape(const TopTools_ListNodeOfListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_ListNodeOfListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_ListNodeOfListOfShape {
-    TopTools_ListNodeOfListOfShape* _get_reference() {
-    return (TopTools_ListNodeOfListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_ListNodeOfListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_ListNodeOfListOfShape)
 
 %extend TopTools_ListNodeOfListOfShape {
 	%pythoncode {
@@ -4510,51 +3640,7 @@ class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 };
 
 
-%extend TopTools_SequenceNodeOfSequenceOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_SequenceNodeOfSequenceOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_SequenceNodeOfSequenceOfShape::Handle_TopTools_SequenceNodeOfSequenceOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_SequenceNodeOfSequenceOfShape;
-class Handle_TopTools_SequenceNodeOfSequenceOfShape : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TopTools_SequenceNodeOfSequenceOfShape();
-        Handle_TopTools_SequenceNodeOfSequenceOfShape(const Handle_TopTools_SequenceNodeOfSequenceOfShape &aHandle);
-        Handle_TopTools_SequenceNodeOfSequenceOfShape(const TopTools_SequenceNodeOfSequenceOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_SequenceNodeOfSequenceOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
-    TopTools_SequenceNodeOfSequenceOfShape* _get_reference() {
-    return (TopTools_SequenceNodeOfSequenceOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_SequenceNodeOfSequenceOfShape)
 
 %extend TopTools_SequenceNodeOfSequenceOfShape {
 	%pythoncode {
@@ -4991,51 +4077,7 @@ class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_StdMapNodeOfMapOfOrientedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_StdMapNodeOfMapOfOrientedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_StdMapNodeOfMapOfOrientedShape::Handle_TopTools_StdMapNodeOfMapOfOrientedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_StdMapNodeOfMapOfOrientedShape;
-class Handle_TopTools_StdMapNodeOfMapOfOrientedShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_StdMapNodeOfMapOfOrientedShape();
-        Handle_TopTools_StdMapNodeOfMapOfOrientedShape(const Handle_TopTools_StdMapNodeOfMapOfOrientedShape &aHandle);
-        Handle_TopTools_StdMapNodeOfMapOfOrientedShape(const TopTools_StdMapNodeOfMapOfOrientedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_StdMapNodeOfMapOfOrientedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
-    TopTools_StdMapNodeOfMapOfOrientedShape* _get_reference() {
-    return (TopTools_StdMapNodeOfMapOfOrientedShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_StdMapNodeOfMapOfOrientedShape)
 
 %extend TopTools_StdMapNodeOfMapOfOrientedShape {
 	%pythoncode {
@@ -5060,51 +4102,7 @@ class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
 };
 
 
-%extend TopTools_StdMapNodeOfMapOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopTools_StdMapNodeOfMapOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopTools_StdMapNodeOfMapOfShape::Handle_TopTools_StdMapNodeOfMapOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopTools_StdMapNodeOfMapOfShape;
-class Handle_TopTools_StdMapNodeOfMapOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopTools_StdMapNodeOfMapOfShape();
-        Handle_TopTools_StdMapNodeOfMapOfShape(const Handle_TopTools_StdMapNodeOfMapOfShape &aHandle);
-        Handle_TopTools_StdMapNodeOfMapOfShape(const TopTools_StdMapNodeOfMapOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopTools_StdMapNodeOfMapOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopTools_StdMapNodeOfMapOfShape {
-    TopTools_StdMapNodeOfMapOfShape* _get_reference() {
-    return (TopTools_StdMapNodeOfMapOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopTools_StdMapNodeOfMapOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopTools_StdMapNodeOfMapOfShape)
 
 %extend TopTools_StdMapNodeOfMapOfShape {
 	%pythoncode {

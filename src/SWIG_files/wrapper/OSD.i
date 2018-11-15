@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define OSDDOCSTRING
-"No docstring provided."
+"-History:Version  Date    Purpose1.1  24/06/92  Operating System Dependent tools1.22.03.0Windows NT 30/09/96 ( EUG )Set of Operating Sytem Dependent Tools(O)perating (S)ystem (D)ependent"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include OSD_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
@@ -59,11 +45,18 @@ typedef pthread_t OSD_PThread;
 /* end typedefs declaration */
 
 /* public enums */
-enum OSD_LockType {
-	OSD_NoLock = 0,
-	OSD_ReadLock = 1,
-	OSD_WriteLock = 2,
-	OSD_ExclusiveLock = 3,
+enum OSD_FromWhere {
+	OSD_FromBeginning = 0,
+	OSD_FromHere = 1,
+	OSD_FromEnd = 2,
+};
+
+enum OSD_KindFile {
+	OSD_FILE = 0,
+	OSD_DIRECTORY = 1,
+	OSD_LINK = 2,
+	OSD_SOCKET = 3,
+	OSD_UNKNOWN = 4,
 };
 
 enum OSD_LoadMode {
@@ -71,10 +64,11 @@ enum OSD_LoadMode {
 	OSD_RTLD_NOW = 1,
 };
 
-enum OSD_OpenMode {
-	OSD_ReadOnly = 0,
-	OSD_WriteOnly = 1,
-	OSD_ReadWrite = 2,
+enum OSD_LockType {
+	OSD_NoLock = 0,
+	OSD_ReadLock = 1,
+	OSD_WriteLock = 2,
+	OSD_ExclusiveLock = 3,
 };
 
 enum OSD_OEMType {
@@ -92,52 +86,10 @@ enum OSD_OEMType {
 	OSD_AIX = 11,
 };
 
-enum OSD_WhoAmI {
-	OSD_WDirectory = 0,
-	OSD_WDirectoryIterator = 1,
-	OSD_WEnvironment = 2,
-	OSD_WFile = 3,
-	OSD_WFileNode = 4,
-	OSD_WFileIterator = 5,
-	OSD_WPath = 6,
-	OSD_WProcess = 7,
-	OSD_WProtection = 8,
-	OSD_WHost = 9,
-	OSD_WDisk = 10,
-	OSD_WChronometer = 11,
-	OSD_WTimer = 12,
-	OSD_WPackage = 13,
-	OSD_WPrinter = 14,
-	OSD_WEnvironmentIterator = 15,
-};
-
-enum OSD_SysType {
-	OSD_Unknown = 0,
-	OSD_Default = 1,
-	OSD_UnixBSD = 2,
-	OSD_UnixSystemV = 3,
-	OSD_VMS = 4,
-	OSD_OS2 = 5,
-	OSD_OSF = 6,
-	OSD_MacOs = 7,
-	OSD_Taligent = 8,
-	OSD_WindowsNT = 9,
-	OSD_LinuxREDHAT = 10,
-	OSD_Aix = 11,
-};
-
-enum OSD_KindFile {
-	OSD_FILE = 0,
-	OSD_DIRECTORY = 1,
-	OSD_LINK = 2,
-	OSD_SOCKET = 3,
-	OSD_UNKNOWN = 4,
-};
-
-enum OSD_FromWhere {
-	OSD_FromBeginning = 0,
-	OSD_FromHere = 1,
-	OSD_FromEnd = 2,
+enum OSD_OpenMode {
+	OSD_ReadOnly = 0,
+	OSD_WriteOnly = 1,
+	OSD_ReadWrite = 2,
 };
 
 enum OSD_SingleProtection {
@@ -157,6 +109,40 @@ enum OSD_SingleProtection {
 	OSD_RXD = 13,
 	OSD_WXD = 14,
 	OSD_RWXD = 15,
+};
+
+enum OSD_SysType {
+	OSD_Unknown = 0,
+	OSD_Default = 1,
+	OSD_UnixBSD = 2,
+	OSD_UnixSystemV = 3,
+	OSD_VMS = 4,
+	OSD_OS2 = 5,
+	OSD_OSF = 6,
+	OSD_MacOs = 7,
+	OSD_Taligent = 8,
+	OSD_WindowsNT = 9,
+	OSD_LinuxREDHAT = 10,
+	OSD_Aix = 11,
+};
+
+enum OSD_WhoAmI {
+	OSD_WDirectory = 0,
+	OSD_WDirectoryIterator = 1,
+	OSD_WEnvironment = 2,
+	OSD_WFile = 3,
+	OSD_WFileNode = 4,
+	OSD_WFileIterator = 5,
+	OSD_WPath = 6,
+	OSD_WProcess = 7,
+	OSD_WProtection = 8,
+	OSD_WHost = 9,
+	OSD_WDisk = 10,
+	OSD_WChronometer = 11,
+	OSD_WTimer = 12,
+	OSD_WPackage = 13,
+	OSD_WPrinter = 14,
+	OSD_WEnvironmentIterator = 15,
 };
 
 /* end public enums declaration */

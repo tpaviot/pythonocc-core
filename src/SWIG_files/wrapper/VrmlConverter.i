@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLCONVERTERDOCSTRING
-"No docstring provided."
+"-Purpose:Computes different kinds of presentation and converts CasCade objects( points, curves, surfaces, shapes ... ) into nodes of VRML format( package Vrml ), into specific geometry shapes ( AsciiText, Cone,IndexedFaceSet, IndexedLineSet, .... ) for requested (or default) propertiesof the geometry and its appearance ( Material, Normal, Texture2, ... )and requested (or default) properties of cameras and lights ( OrthograpicCamera,PerspectiveCamera, DirectionalLight, SpotLight ).All requested properties of a current representation are specifiedin aDrawer of Drawer class, which qualifies how the presentationalgorithms compute the presentation of a specific kind of object.This includes for example color, maximal chordial deviation, etc... with default values.In the result the classes of this package Add a corresponding VRMLdescription to anOStream."
 %enddef
 %module (package="OCC.Core", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
@@ -34,29 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include VrmlConverter_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum VrmlConverter_TypeOfCamera {
+	VrmlConverter_NoCamera = 0,
+	VrmlConverter_PerspectiveCamera = 1,
+	VrmlConverter_OrthographicCamera = 2,
+};
+
 enum VrmlConverter_TypeOfLight {
 	VrmlConverter_NoLight = 0,
 	VrmlConverter_DirectionLight = 1,
@@ -64,13 +56,14 @@ enum VrmlConverter_TypeOfLight {
 	VrmlConverter_SpotLight = 3,
 };
 
-enum VrmlConverter_TypeOfCamera {
-	VrmlConverter_NoCamera = 0,
-	VrmlConverter_PerspectiveCamera = 1,
-	VrmlConverter_OrthographicCamera = 2,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(VrmlConverter_Drawer)
+%wrap_handle(VrmlConverter_LineAspect)
+%wrap_handle(VrmlConverter_PointAspect)
+%wrap_handle(VrmlConverter_Projector)
+%wrap_handle(VrmlConverter_ShadingAspect)
+%wrap_handle(VrmlConverter_IsoAspect)
 
 class VrmlConverter_Curve {
 	public:
@@ -492,51 +485,7 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 };
 
 
-%extend VrmlConverter_Drawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_Drawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_Drawer::Handle_VrmlConverter_Drawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_Drawer;
-class Handle_VrmlConverter_Drawer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_Drawer();
-        Handle_VrmlConverter_Drawer(const Handle_VrmlConverter_Drawer &aHandle);
-        Handle_VrmlConverter_Drawer(const VrmlConverter_Drawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_Drawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_Drawer {
-    VrmlConverter_Drawer* _get_reference() {
-    return (VrmlConverter_Drawer*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_Drawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_Drawer)
 
 %extend VrmlConverter_Drawer {
 	%pythoncode {
@@ -609,51 +558,7 @@ class VrmlConverter_LineAspect : public MMgt_TShared {
 };
 
 
-%extend VrmlConverter_LineAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_LineAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_LineAspect::Handle_VrmlConverter_LineAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_LineAspect;
-class Handle_VrmlConverter_LineAspect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_LineAspect();
-        Handle_VrmlConverter_LineAspect(const Handle_VrmlConverter_LineAspect &aHandle);
-        Handle_VrmlConverter_LineAspect(const VrmlConverter_LineAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_LineAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_LineAspect {
-    VrmlConverter_LineAspect* _get_reference() {
-    return (VrmlConverter_LineAspect*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_LineAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_LineAspect)
 
 %extend VrmlConverter_LineAspect {
 	%pythoncode {
@@ -704,51 +609,7 @@ class VrmlConverter_PointAspect : public MMgt_TShared {
 };
 
 
-%extend VrmlConverter_PointAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_PointAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_PointAspect::Handle_VrmlConverter_PointAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_PointAspect;
-class Handle_VrmlConverter_PointAspect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_PointAspect();
-        Handle_VrmlConverter_PointAspect(const Handle_VrmlConverter_PointAspect &aHandle);
-        Handle_VrmlConverter_PointAspect(const VrmlConverter_PointAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_PointAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_PointAspect {
-    VrmlConverter_PointAspect* _get_reference() {
-    return (VrmlConverter_PointAspect*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_PointAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_PointAspect)
 
 %extend VrmlConverter_PointAspect {
 	%pythoncode {
@@ -817,51 +678,7 @@ class VrmlConverter_Projector : public MMgt_TShared {
 };
 
 
-%extend VrmlConverter_Projector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_Projector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_Projector::Handle_VrmlConverter_Projector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_Projector;
-class Handle_VrmlConverter_Projector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_Projector();
-        Handle_VrmlConverter_Projector(const Handle_VrmlConverter_Projector &aHandle);
-        Handle_VrmlConverter_Projector(const VrmlConverter_Projector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_Projector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_Projector {
-    VrmlConverter_Projector* _get_reference() {
-    return (VrmlConverter_Projector*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_Projector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_Projector)
 
 %extend VrmlConverter_Projector {
 	%pythoncode {
@@ -958,51 +775,7 @@ class VrmlConverter_ShadingAspect : public MMgt_TShared {
 };
 
 
-%extend VrmlConverter_ShadingAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_ShadingAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_ShadingAspect::Handle_VrmlConverter_ShadingAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_ShadingAspect;
-class Handle_VrmlConverter_ShadingAspect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_ShadingAspect();
-        Handle_VrmlConverter_ShadingAspect(const Handle_VrmlConverter_ShadingAspect &aHandle);
-        Handle_VrmlConverter_ShadingAspect(const VrmlConverter_ShadingAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_ShadingAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_ShadingAspect {
-    VrmlConverter_ShadingAspect* _get_reference() {
-    return (VrmlConverter_ShadingAspect*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_ShadingAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_ShadingAspect)
 
 %extend VrmlConverter_ShadingAspect {
 	%pythoncode {
@@ -1201,51 +974,7 @@ class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 };
 
 
-%extend VrmlConverter_IsoAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlConverter_IsoAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlConverter_IsoAspect::Handle_VrmlConverter_IsoAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlConverter_IsoAspect;
-class Handle_VrmlConverter_IsoAspect : public Handle_VrmlConverter_LineAspect {
-
-    public:
-        // constructors
-        Handle_VrmlConverter_IsoAspect();
-        Handle_VrmlConverter_IsoAspect(const Handle_VrmlConverter_IsoAspect &aHandle);
-        Handle_VrmlConverter_IsoAspect(const VrmlConverter_IsoAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlConverter_IsoAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlConverter_IsoAspect {
-    VrmlConverter_IsoAspect* _get_reference() {
-    return (VrmlConverter_IsoAspect*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlConverter_IsoAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlConverter_IsoAspect)
 
 %extend VrmlConverter_IsoAspect {
 	%pythoncode {

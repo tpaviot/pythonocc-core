@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDOCSTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PDOCSTDDOCSTRING) PDocStd
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PDocStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(PDocStd_Document)
+%wrap_handle(PDocStd_XLink)
 
 %nodefaultctor PDocStd_Document;
 class PDocStd_Document : public PCDM_Document {
@@ -101,51 +90,7 @@ class PDocStd_Document : public PCDM_Document {
 };
 
 
-%extend PDocStd_Document {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDocStd_Document(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDocStd_Document::Handle_PDocStd_Document %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDocStd_Document;
-class Handle_PDocStd_Document : public Handle_PCDM_Document {
-
-    public:
-        // constructors
-        Handle_PDocStd_Document();
-        Handle_PDocStd_Document(const Handle_PDocStd_Document &aHandle);
-        Handle_PDocStd_Document(const PDocStd_Document *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDocStd_Document DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDocStd_Document {
-    PDocStd_Document* _get_reference() {
-    return (PDocStd_Document*)$self->Access();
-    }
-};
-
-%extend Handle_PDocStd_Document {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDocStd_Document)
 
 %extend PDocStd_Document {
 	%pythoncode {
@@ -218,51 +163,7 @@ class PDocStd_XLink : public PDF_Attribute {
 };
 
 
-%extend PDocStd_XLink {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDocStd_XLink(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDocStd_XLink::Handle_PDocStd_XLink %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDocStd_XLink;
-class Handle_PDocStd_XLink : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDocStd_XLink();
-        Handle_PDocStd_XLink(const Handle_PDocStd_XLink &aHandle);
-        Handle_PDocStd_XLink(const PDocStd_XLink *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDocStd_XLink DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDocStd_XLink {
-    PDocStd_XLink* _get_reference() {
-    return (PDocStd_XLink*)$self->Access();
-    }
-};
-
-%extend Handle_PDocStd_XLink {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDocStd_XLink)
 
 %extend PDocStd_XLink {
 	%pythoncode {

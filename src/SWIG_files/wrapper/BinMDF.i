@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMDFDOCSTRING
-"No docstring provided."
+"This package provides classes and methods totranslate a transient DF into a persistent one andvice versa.DriverA driver is a tool used to translate a transientattribute into a persistent one and vice versa.Driver TableA driver table is an object building links betweenobject types and object drivers. In thetranslation process, a driver table is asked togive a translation driver for each current objectto be translated."
 %enddef
 %module (package="OCC.Core", docstring=BINMDFDOCSTRING) BinMDF
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMDF_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TColStd_DataMapOfAsciiStringInteger BinMDF_StringIdMap;
@@ -59,6 +45,13 @@ typedef TColStd_DataMapOfAsciiStringInteger BinMDF_StringIdMap;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMDF_ADriver)
+%wrap_handle(BinMDF_ADriverTable)
+%wrap_handle(BinMDF_DataMapNodeOfTypeADriverMap)
+%wrap_handle(BinMDF_DoubleMapNodeOfTypeIdMap)
+%wrap_handle(BinMDF_ReferenceDriver)
+%wrap_handle(BinMDF_TagSourceDriver)
 
 %rename(binmdf) BinMDF;
 class BinMDF {
@@ -137,51 +130,7 @@ class BinMDF_ADriver : public MMgt_TShared {
 };
 
 
-%extend BinMDF_ADriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_ADriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_ADriver::Handle_BinMDF_ADriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_ADriver;
-class Handle_BinMDF_ADriver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BinMDF_ADriver();
-        Handle_BinMDF_ADriver(const Handle_BinMDF_ADriver &aHandle);
-        Handle_BinMDF_ADriver(const BinMDF_ADriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_ADriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_ADriver {
-    BinMDF_ADriver* _get_reference() {
-    return (BinMDF_ADriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_ADriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_ADriver)
 
 %extend BinMDF_ADriver {
 	%pythoncode {
@@ -242,51 +191,7 @@ class BinMDF_ADriverTable : public MMgt_TShared {
 };
 
 
-%extend BinMDF_ADriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_ADriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_ADriverTable::Handle_BinMDF_ADriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_ADriverTable;
-class Handle_BinMDF_ADriverTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BinMDF_ADriverTable();
-        Handle_BinMDF_ADriverTable(const Handle_BinMDF_ADriverTable &aHandle);
-        Handle_BinMDF_ADriverTable(const BinMDF_ADriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_ADriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_ADriverTable {
-    BinMDF_ADriverTable* _get_reference() {
-    return (BinMDF_ADriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_ADriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_ADriverTable)
 
 %extend BinMDF_ADriverTable {
 	%pythoncode {
@@ -352,51 +257,7 @@ class BinMDF_DataMapNodeOfTypeADriverMap : public TCollection_MapNode {
 };
 
 
-%extend BinMDF_DataMapNodeOfTypeADriverMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_DataMapNodeOfTypeADriverMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_DataMapNodeOfTypeADriverMap::Handle_BinMDF_DataMapNodeOfTypeADriverMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_DataMapNodeOfTypeADriverMap;
-class Handle_BinMDF_DataMapNodeOfTypeADriverMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BinMDF_DataMapNodeOfTypeADriverMap();
-        Handle_BinMDF_DataMapNodeOfTypeADriverMap(const Handle_BinMDF_DataMapNodeOfTypeADriverMap &aHandle);
-        Handle_BinMDF_DataMapNodeOfTypeADriverMap(const BinMDF_DataMapNodeOfTypeADriverMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_DataMapNodeOfTypeADriverMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_DataMapNodeOfTypeADriverMap {
-    BinMDF_DataMapNodeOfTypeADriverMap* _get_reference() {
-    return (BinMDF_DataMapNodeOfTypeADriverMap*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_DataMapNodeOfTypeADriverMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_DataMapNodeOfTypeADriverMap)
 
 %extend BinMDF_DataMapNodeOfTypeADriverMap {
 	%pythoncode {
@@ -477,51 +338,7 @@ class BinMDF_DoubleMapNodeOfTypeIdMap : public TCollection_MapNode {
 };
 
 
-%extend BinMDF_DoubleMapNodeOfTypeIdMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_DoubleMapNodeOfTypeIdMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_DoubleMapNodeOfTypeIdMap::Handle_BinMDF_DoubleMapNodeOfTypeIdMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_DoubleMapNodeOfTypeIdMap;
-class Handle_BinMDF_DoubleMapNodeOfTypeIdMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BinMDF_DoubleMapNodeOfTypeIdMap();
-        Handle_BinMDF_DoubleMapNodeOfTypeIdMap(const Handle_BinMDF_DoubleMapNodeOfTypeIdMap &aHandle);
-        Handle_BinMDF_DoubleMapNodeOfTypeIdMap(const BinMDF_DoubleMapNodeOfTypeIdMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_DoubleMapNodeOfTypeIdMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_DoubleMapNodeOfTypeIdMap {
-    BinMDF_DoubleMapNodeOfTypeIdMap* _get_reference() {
-    return (BinMDF_DoubleMapNodeOfTypeIdMap*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_DoubleMapNodeOfTypeIdMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_DoubleMapNodeOfTypeIdMap)
 
 %extend BinMDF_DoubleMapNodeOfTypeIdMap {
 	%pythoncode {
@@ -738,51 +555,7 @@ class BinMDF_ReferenceDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDF_ReferenceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_ReferenceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_ReferenceDriver::Handle_BinMDF_ReferenceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_ReferenceDriver;
-class Handle_BinMDF_ReferenceDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDF_ReferenceDriver();
-        Handle_BinMDF_ReferenceDriver(const Handle_BinMDF_ReferenceDriver &aHandle);
-        Handle_BinMDF_ReferenceDriver(const BinMDF_ReferenceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_ReferenceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_ReferenceDriver {
-    BinMDF_ReferenceDriver* _get_reference() {
-    return (BinMDF_ReferenceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_ReferenceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_ReferenceDriver)
 
 %extend BinMDF_ReferenceDriver {
 	%pythoncode {
@@ -825,51 +598,7 @@ class BinMDF_TagSourceDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMDF_TagSourceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMDF_TagSourceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMDF_TagSourceDriver::Handle_BinMDF_TagSourceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMDF_TagSourceDriver;
-class Handle_BinMDF_TagSourceDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMDF_TagSourceDriver();
-        Handle_BinMDF_TagSourceDriver(const Handle_BinMDF_TagSourceDriver &aHandle);
-        Handle_BinMDF_TagSourceDriver(const BinMDF_TagSourceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMDF_TagSourceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMDF_TagSourceDriver {
-    BinMDF_TagSourceDriver* _get_reference() {
-    return (BinMDF_TagSourceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMDF_TagSourceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMDF_TagSourceDriver)
 
 %extend BinMDF_TagSourceDriver {
 	%pythoncode {

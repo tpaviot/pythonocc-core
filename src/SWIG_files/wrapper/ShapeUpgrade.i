@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEUPGRADEDOCSTRING
-"No docstring provided."
+"This package provides toolsfor splitting and converting shapes by some criteria. Itprovides modifications of the kind when one topologicalobject can be converted or splitted to several ones. Inparticular this package contains high level API classes which perform:converting geometry of shapes up to given continuity,splitting revolutions by U to segments less than given value,converting to beziers,splitting closed faces."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
@@ -34,30 +34,41 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeUpgrade_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeUpgrade_RemoveLocations)
+%wrap_handle(ShapeUpgrade_SplitCurve)
+%wrap_handle(ShapeUpgrade_SplitSurface)
+%wrap_handle(ShapeUpgrade_Tool)
+%wrap_handle(ShapeUpgrade_UnifySameDomain)
+%wrap_handle(ShapeUpgrade_ConvertSurfaceToBezierBasis)
+%wrap_handle(ShapeUpgrade_EdgeDivide)
+%wrap_handle(ShapeUpgrade_FaceDivide)
+%wrap_handle(ShapeUpgrade_FixSmallCurves)
+%wrap_handle(ShapeUpgrade_RemoveInternalWires)
+%wrap_handle(ShapeUpgrade_SplitCurve2d)
+%wrap_handle(ShapeUpgrade_SplitCurve3d)
+%wrap_handle(ShapeUpgrade_SplitSurfaceAngle)
+%wrap_handle(ShapeUpgrade_SplitSurfaceArea)
+%wrap_handle(ShapeUpgrade_SplitSurfaceContinuity)
+%wrap_handle(ShapeUpgrade_WireDivide)
+%wrap_handle(ShapeUpgrade_ClosedEdgeDivide)
+%wrap_handle(ShapeUpgrade_ClosedFaceDivide)
+%wrap_handle(ShapeUpgrade_ConvertCurve2dToBezier)
+%wrap_handle(ShapeUpgrade_ConvertCurve3dToBezier)
+%wrap_handle(ShapeUpgrade_FaceDivideArea)
+%wrap_handle(ShapeUpgrade_FixSmallBezierCurves)
+%wrap_handle(ShapeUpgrade_SplitCurve2dContinuity)
+%wrap_handle(ShapeUpgrade_SplitCurve3dContinuity)
 
 %rename(shapeupgrade) ShapeUpgrade;
 class ShapeUpgrade {
@@ -138,51 +149,7 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 };
 
 
-%extend ShapeUpgrade_RemoveLocations {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_RemoveLocations(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_RemoveLocations::Handle_ShapeUpgrade_RemoveLocations %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_RemoveLocations;
-class Handle_ShapeUpgrade_RemoveLocations : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_RemoveLocations();
-        Handle_ShapeUpgrade_RemoveLocations(const Handle_ShapeUpgrade_RemoveLocations &aHandle);
-        Handle_ShapeUpgrade_RemoveLocations(const ShapeUpgrade_RemoveLocations *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_RemoveLocations DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_RemoveLocations {
-    ShapeUpgrade_RemoveLocations* _get_reference() {
-    return (ShapeUpgrade_RemoveLocations*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_RemoveLocations {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_RemoveLocations)
 
 %extend ShapeUpgrade_RemoveLocations {
 	%pythoncode {
@@ -427,51 +394,7 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 };
 
 
-%extend ShapeUpgrade_SplitCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitCurve::Handle_ShapeUpgrade_SplitCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitCurve;
-class Handle_ShapeUpgrade_SplitCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitCurve();
-        Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_SplitCurve &aHandle);
-        Handle_ShapeUpgrade_SplitCurve(const ShapeUpgrade_SplitCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitCurve {
-    ShapeUpgrade_SplitCurve* _get_reference() {
-    return (ShapeUpgrade_SplitCurve*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitCurve)
 
 %extend ShapeUpgrade_SplitCurve {
 	%pythoncode {
@@ -580,51 +503,7 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 };
 
 
-%extend ShapeUpgrade_SplitSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitSurface::Handle_ShapeUpgrade_SplitSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitSurface;
-class Handle_ShapeUpgrade_SplitSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitSurface();
-        Handle_ShapeUpgrade_SplitSurface(const Handle_ShapeUpgrade_SplitSurface &aHandle);
-        Handle_ShapeUpgrade_SplitSurface(const ShapeUpgrade_SplitSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitSurface {
-    ShapeUpgrade_SplitSurface* _get_reference() {
-    return (ShapeUpgrade_SplitSurface*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitSurface)
 
 %extend ShapeUpgrade_SplitSurface {
 	%pythoncode {
@@ -715,51 +594,7 @@ class ShapeUpgrade_Tool : public MMgt_TShared {
 };
 
 
-%extend ShapeUpgrade_Tool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_Tool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_Tool::Handle_ShapeUpgrade_Tool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_Tool;
-class Handle_ShapeUpgrade_Tool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_Tool();
-        Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_Tool &aHandle);
-        Handle_ShapeUpgrade_Tool(const ShapeUpgrade_Tool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_Tool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_Tool {
-    ShapeUpgrade_Tool* _get_reference() {
-    return (ShapeUpgrade_Tool*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_Tool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_Tool)
 
 %extend ShapeUpgrade_Tool {
 	%pythoncode {
@@ -838,51 +673,7 @@ class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 };
 
 
-%extend ShapeUpgrade_UnifySameDomain {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_UnifySameDomain(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_UnifySameDomain::Handle_ShapeUpgrade_UnifySameDomain %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_UnifySameDomain;
-class Handle_ShapeUpgrade_UnifySameDomain : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_UnifySameDomain();
-        Handle_ShapeUpgrade_UnifySameDomain(const Handle_ShapeUpgrade_UnifySameDomain &aHandle);
-        Handle_ShapeUpgrade_UnifySameDomain(const ShapeUpgrade_UnifySameDomain *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_UnifySameDomain DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_UnifySameDomain {
-    ShapeUpgrade_UnifySameDomain* _get_reference() {
-    return (ShapeUpgrade_UnifySameDomain*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_UnifySameDomain {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_UnifySameDomain)
 
 %extend ShapeUpgrade_UnifySameDomain {
 	%pythoncode {
@@ -979,51 +770,7 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 };
 
 
-%extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis::Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis;
-class Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis : public Handle_ShapeUpgrade_SplitSurface {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis();
-        Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis &aHandle);
-        Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(const ShapeUpgrade_ConvertSurfaceToBezierBasis *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
-    ShapeUpgrade_ConvertSurfaceToBezierBasis* _get_reference() {
-    return (ShapeUpgrade_ConvertSurfaceToBezierBasis*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_ConvertSurfaceToBezierBasis)
 
 %extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
 	%pythoncode {
@@ -1104,51 +851,7 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 };
 
 
-%extend ShapeUpgrade_EdgeDivide {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_EdgeDivide(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_EdgeDivide::Handle_ShapeUpgrade_EdgeDivide %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_EdgeDivide;
-class Handle_ShapeUpgrade_EdgeDivide : public Handle_ShapeUpgrade_Tool {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_EdgeDivide();
-        Handle_ShapeUpgrade_EdgeDivide(const Handle_ShapeUpgrade_EdgeDivide &aHandle);
-        Handle_ShapeUpgrade_EdgeDivide(const ShapeUpgrade_EdgeDivide *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_EdgeDivide DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_EdgeDivide {
-    ShapeUpgrade_EdgeDivide* _get_reference() {
-    return (ShapeUpgrade_EdgeDivide*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_EdgeDivide {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_EdgeDivide)
 
 %extend ShapeUpgrade_EdgeDivide {
 	%pythoncode {
@@ -1251,51 +954,7 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 };
 
 
-%extend ShapeUpgrade_FaceDivide {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_FaceDivide(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_FaceDivide::Handle_ShapeUpgrade_FaceDivide %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_FaceDivide;
-class Handle_ShapeUpgrade_FaceDivide : public Handle_ShapeUpgrade_Tool {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_FaceDivide();
-        Handle_ShapeUpgrade_FaceDivide(const Handle_ShapeUpgrade_FaceDivide &aHandle);
-        Handle_ShapeUpgrade_FaceDivide(const ShapeUpgrade_FaceDivide *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_FaceDivide DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_FaceDivide {
-    ShapeUpgrade_FaceDivide* _get_reference() {
-    return (ShapeUpgrade_FaceDivide*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_FaceDivide {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_FaceDivide)
 
 %extend ShapeUpgrade_FaceDivide {
 	%pythoncode {
@@ -1358,51 +1017,7 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 };
 
 
-%extend ShapeUpgrade_FixSmallCurves {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_FixSmallCurves(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_FixSmallCurves::Handle_ShapeUpgrade_FixSmallCurves %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_FixSmallCurves;
-class Handle_ShapeUpgrade_FixSmallCurves : public Handle_ShapeUpgrade_Tool {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_FixSmallCurves();
-        Handle_ShapeUpgrade_FixSmallCurves(const Handle_ShapeUpgrade_FixSmallCurves &aHandle);
-        Handle_ShapeUpgrade_FixSmallCurves(const ShapeUpgrade_FixSmallCurves *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_FixSmallCurves DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_FixSmallCurves {
-    ShapeUpgrade_FixSmallCurves* _get_reference() {
-    return (ShapeUpgrade_FixSmallCurves*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_FixSmallCurves {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_FixSmallCurves)
 
 %extend ShapeUpgrade_FixSmallCurves {
 	%pythoncode {
@@ -1501,51 +1116,7 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 };
 
 
-%extend ShapeUpgrade_RemoveInternalWires {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_RemoveInternalWires(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_RemoveInternalWires::Handle_ShapeUpgrade_RemoveInternalWires %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_RemoveInternalWires;
-class Handle_ShapeUpgrade_RemoveInternalWires : public Handle_ShapeUpgrade_Tool {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_RemoveInternalWires();
-        Handle_ShapeUpgrade_RemoveInternalWires(const Handle_ShapeUpgrade_RemoveInternalWires &aHandle);
-        Handle_ShapeUpgrade_RemoveInternalWires(const ShapeUpgrade_RemoveInternalWires *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_RemoveInternalWires DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_RemoveInternalWires {
-    ShapeUpgrade_RemoveInternalWires* _get_reference() {
-    return (ShapeUpgrade_RemoveInternalWires*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_RemoveInternalWires {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_RemoveInternalWires)
 
 %extend ShapeUpgrade_RemoveInternalWires {
 	%pythoncode {
@@ -1973,51 +1544,7 @@ class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 };
 
 
-%extend ShapeUpgrade_SplitCurve2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitCurve2d::Handle_ShapeUpgrade_SplitCurve2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitCurve2d;
-class Handle_ShapeUpgrade_SplitCurve2d : public Handle_ShapeUpgrade_SplitCurve {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitCurve2d();
-        Handle_ShapeUpgrade_SplitCurve2d(const Handle_ShapeUpgrade_SplitCurve2d &aHandle);
-        Handle_ShapeUpgrade_SplitCurve2d(const ShapeUpgrade_SplitCurve2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitCurve2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitCurve2d {
-    ShapeUpgrade_SplitCurve2d* _get_reference() {
-    return (ShapeUpgrade_SplitCurve2d*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitCurve2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitCurve2d)
 
 %extend ShapeUpgrade_SplitCurve2d {
 	%pythoncode {
@@ -2068,51 +1595,7 @@ class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 };
 
 
-%extend ShapeUpgrade_SplitCurve3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitCurve3d::Handle_ShapeUpgrade_SplitCurve3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitCurve3d;
-class Handle_ShapeUpgrade_SplitCurve3d : public Handle_ShapeUpgrade_SplitCurve {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitCurve3d();
-        Handle_ShapeUpgrade_SplitCurve3d(const Handle_ShapeUpgrade_SplitCurve3d &aHandle);
-        Handle_ShapeUpgrade_SplitCurve3d(const ShapeUpgrade_SplitCurve3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitCurve3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitCurve3d {
-    ShapeUpgrade_SplitCurve3d* _get_reference() {
-    return (ShapeUpgrade_SplitCurve3d*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitCurve3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitCurve3d)
 
 %extend ShapeUpgrade_SplitCurve3d {
 	%pythoncode {
@@ -2155,51 +1638,7 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 };
 
 
-%extend ShapeUpgrade_SplitSurfaceAngle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceAngle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitSurfaceAngle::Handle_ShapeUpgrade_SplitSurfaceAngle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitSurfaceAngle;
-class Handle_ShapeUpgrade_SplitSurfaceAngle : public Handle_ShapeUpgrade_SplitSurface {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitSurfaceAngle();
-        Handle_ShapeUpgrade_SplitSurfaceAngle(const Handle_ShapeUpgrade_SplitSurfaceAngle &aHandle);
-        Handle_ShapeUpgrade_SplitSurfaceAngle(const ShapeUpgrade_SplitSurfaceAngle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitSurfaceAngle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitSurfaceAngle {
-    ShapeUpgrade_SplitSurfaceAngle* _get_reference() {
-    return (ShapeUpgrade_SplitSurfaceAngle*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitSurfaceAngle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitSurfaceAngle)
 
 %extend ShapeUpgrade_SplitSurfaceAngle {
 	%pythoncode {
@@ -2237,51 +1676,7 @@ class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 };
 
 
-%extend ShapeUpgrade_SplitSurfaceArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitSurfaceArea::Handle_ShapeUpgrade_SplitSurfaceArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitSurfaceArea;
-class Handle_ShapeUpgrade_SplitSurfaceArea : public Handle_ShapeUpgrade_SplitSurface {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitSurfaceArea();
-        Handle_ShapeUpgrade_SplitSurfaceArea(const Handle_ShapeUpgrade_SplitSurfaceArea &aHandle);
-        Handle_ShapeUpgrade_SplitSurfaceArea(const ShapeUpgrade_SplitSurfaceArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitSurfaceArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitSurfaceArea {
-    ShapeUpgrade_SplitSurfaceArea* _get_reference() {
-    return (ShapeUpgrade_SplitSurfaceArea*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitSurfaceArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitSurfaceArea)
 
 %extend ShapeUpgrade_SplitSurfaceArea {
 	%pythoncode {
@@ -2322,51 +1717,7 @@ class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 };
 
 
-%extend ShapeUpgrade_SplitSurfaceContinuity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceContinuity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitSurfaceContinuity::Handle_ShapeUpgrade_SplitSurfaceContinuity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitSurfaceContinuity;
-class Handle_ShapeUpgrade_SplitSurfaceContinuity : public Handle_ShapeUpgrade_SplitSurface {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitSurfaceContinuity();
-        Handle_ShapeUpgrade_SplitSurfaceContinuity(const Handle_ShapeUpgrade_SplitSurfaceContinuity &aHandle);
-        Handle_ShapeUpgrade_SplitSurfaceContinuity(const ShapeUpgrade_SplitSurfaceContinuity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitSurfaceContinuity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
-    ShapeUpgrade_SplitSurfaceContinuity* _get_reference() {
-    return (ShapeUpgrade_SplitSurfaceContinuity*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitSurfaceContinuity)
 
 %extend ShapeUpgrade_SplitSurfaceContinuity {
 	%pythoncode {
@@ -2533,51 +1884,7 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 };
 
 
-%extend ShapeUpgrade_WireDivide {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_WireDivide(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_WireDivide::Handle_ShapeUpgrade_WireDivide %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_WireDivide;
-class Handle_ShapeUpgrade_WireDivide : public Handle_ShapeUpgrade_Tool {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_WireDivide();
-        Handle_ShapeUpgrade_WireDivide(const Handle_ShapeUpgrade_WireDivide &aHandle);
-        Handle_ShapeUpgrade_WireDivide(const ShapeUpgrade_WireDivide *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_WireDivide DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_WireDivide {
-    ShapeUpgrade_WireDivide* _get_reference() {
-    return (ShapeUpgrade_WireDivide*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_WireDivide {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_WireDivide)
 
 %extend ShapeUpgrade_WireDivide {
 	%pythoncode {
@@ -2602,51 +1909,7 @@ class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 };
 
 
-%extend ShapeUpgrade_ClosedEdgeDivide {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_ClosedEdgeDivide(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_ClosedEdgeDivide::Handle_ShapeUpgrade_ClosedEdgeDivide %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_ClosedEdgeDivide;
-class Handle_ShapeUpgrade_ClosedEdgeDivide : public Handle_ShapeUpgrade_EdgeDivide {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_ClosedEdgeDivide();
-        Handle_ShapeUpgrade_ClosedEdgeDivide(const Handle_ShapeUpgrade_ClosedEdgeDivide &aHandle);
-        Handle_ShapeUpgrade_ClosedEdgeDivide(const ShapeUpgrade_ClosedEdgeDivide *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_ClosedEdgeDivide DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_ClosedEdgeDivide {
-    ShapeUpgrade_ClosedEdgeDivide* _get_reference() {
-    return (ShapeUpgrade_ClosedEdgeDivide*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_ClosedEdgeDivide {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_ClosedEdgeDivide)
 
 %extend ShapeUpgrade_ClosedEdgeDivide {
 	%pythoncode {
@@ -2693,51 +1956,7 @@ class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 };
 
 
-%extend ShapeUpgrade_ClosedFaceDivide {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_ClosedFaceDivide(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_ClosedFaceDivide::Handle_ShapeUpgrade_ClosedFaceDivide %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_ClosedFaceDivide;
-class Handle_ShapeUpgrade_ClosedFaceDivide : public Handle_ShapeUpgrade_FaceDivide {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_ClosedFaceDivide();
-        Handle_ShapeUpgrade_ClosedFaceDivide(const Handle_ShapeUpgrade_ClosedFaceDivide &aHandle);
-        Handle_ShapeUpgrade_ClosedFaceDivide(const ShapeUpgrade_ClosedFaceDivide *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_ClosedFaceDivide DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_ClosedFaceDivide {
-    ShapeUpgrade_ClosedFaceDivide* _get_reference() {
-    return (ShapeUpgrade_ClosedFaceDivide*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_ClosedFaceDivide {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_ClosedFaceDivide)
 
 %extend ShapeUpgrade_ClosedFaceDivide {
 	%pythoncode {
@@ -2776,51 +1995,7 @@ class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 };
 
 
-%extend ShapeUpgrade_ConvertCurve2dToBezier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_ConvertCurve2dToBezier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_ConvertCurve2dToBezier::Handle_ShapeUpgrade_ConvertCurve2dToBezier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_ConvertCurve2dToBezier;
-class Handle_ShapeUpgrade_ConvertCurve2dToBezier : public Handle_ShapeUpgrade_SplitCurve2d {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_ConvertCurve2dToBezier();
-        Handle_ShapeUpgrade_ConvertCurve2dToBezier(const Handle_ShapeUpgrade_ConvertCurve2dToBezier &aHandle);
-        Handle_ShapeUpgrade_ConvertCurve2dToBezier(const ShapeUpgrade_ConvertCurve2dToBezier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_ConvertCurve2dToBezier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
-    ShapeUpgrade_ConvertCurve2dToBezier* _get_reference() {
-    return (ShapeUpgrade_ConvertCurve2dToBezier*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_ConvertCurve2dToBezier)
 
 %extend ShapeUpgrade_ConvertCurve2dToBezier {
 	%pythoncode {
@@ -2901,51 +2076,7 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 };
 
 
-%extend ShapeUpgrade_ConvertCurve3dToBezier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_ConvertCurve3dToBezier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_ConvertCurve3dToBezier::Handle_ShapeUpgrade_ConvertCurve3dToBezier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_ConvertCurve3dToBezier;
-class Handle_ShapeUpgrade_ConvertCurve3dToBezier : public Handle_ShapeUpgrade_SplitCurve3d {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_ConvertCurve3dToBezier();
-        Handle_ShapeUpgrade_ConvertCurve3dToBezier(const Handle_ShapeUpgrade_ConvertCurve3dToBezier &aHandle);
-        Handle_ShapeUpgrade_ConvertCurve3dToBezier(const ShapeUpgrade_ConvertCurve3dToBezier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_ConvertCurve3dToBezier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
-    ShapeUpgrade_ConvertCurve3dToBezier* _get_reference() {
-    return (ShapeUpgrade_ConvertCurve3dToBezier*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_ConvertCurve3dToBezier)
 
 %extend ShapeUpgrade_ConvertCurve3dToBezier {
 	%pythoncode {
@@ -2989,51 +2120,7 @@ class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
             };
 
 
-%extend ShapeUpgrade_FaceDivideArea {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_FaceDivideArea(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_FaceDivideArea::Handle_ShapeUpgrade_FaceDivideArea %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_FaceDivideArea;
-class Handle_ShapeUpgrade_FaceDivideArea : public Handle_ShapeUpgrade_FaceDivide {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_FaceDivideArea();
-        Handle_ShapeUpgrade_FaceDivideArea(const Handle_ShapeUpgrade_FaceDivideArea &aHandle);
-        Handle_ShapeUpgrade_FaceDivideArea(const ShapeUpgrade_FaceDivideArea *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_FaceDivideArea DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_FaceDivideArea {
-    ShapeUpgrade_FaceDivideArea* _get_reference() {
-    return (ShapeUpgrade_FaceDivideArea*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_FaceDivideArea {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_FaceDivideArea)
 
 %extend ShapeUpgrade_FaceDivideArea {
 	%pythoncode {
@@ -3064,51 +2151,7 @@ class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 };
 
 
-%extend ShapeUpgrade_FixSmallBezierCurves {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_FixSmallBezierCurves(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_FixSmallBezierCurves::Handle_ShapeUpgrade_FixSmallBezierCurves %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_FixSmallBezierCurves;
-class Handle_ShapeUpgrade_FixSmallBezierCurves : public Handle_ShapeUpgrade_FixSmallCurves {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_FixSmallBezierCurves();
-        Handle_ShapeUpgrade_FixSmallBezierCurves(const Handle_ShapeUpgrade_FixSmallBezierCurves &aHandle);
-        Handle_ShapeUpgrade_FixSmallBezierCurves(const ShapeUpgrade_FixSmallBezierCurves *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_FixSmallBezierCurves DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_FixSmallBezierCurves {
-    ShapeUpgrade_FixSmallBezierCurves* _get_reference() {
-    return (ShapeUpgrade_FixSmallBezierCurves*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_FixSmallBezierCurves {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_FixSmallBezierCurves)
 
 %extend ShapeUpgrade_FixSmallBezierCurves {
 	%pythoncode {
@@ -3149,51 +2192,7 @@ class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 };
 
 
-%extend ShapeUpgrade_SplitCurve2dContinuity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve2dContinuity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitCurve2dContinuity::Handle_ShapeUpgrade_SplitCurve2dContinuity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitCurve2dContinuity;
-class Handle_ShapeUpgrade_SplitCurve2dContinuity : public Handle_ShapeUpgrade_SplitCurve2d {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitCurve2dContinuity();
-        Handle_ShapeUpgrade_SplitCurve2dContinuity(const Handle_ShapeUpgrade_SplitCurve2dContinuity &aHandle);
-        Handle_ShapeUpgrade_SplitCurve2dContinuity(const ShapeUpgrade_SplitCurve2dContinuity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitCurve2dContinuity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
-    ShapeUpgrade_SplitCurve2dContinuity* _get_reference() {
-    return (ShapeUpgrade_SplitCurve2dContinuity*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitCurve2dContinuity)
 
 %extend ShapeUpgrade_SplitCurve2dContinuity {
 	%pythoncode {
@@ -3238,51 +2237,7 @@ class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 };
 
 
-%extend ShapeUpgrade_SplitCurve3dContinuity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve3dContinuity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeUpgrade_SplitCurve3dContinuity::Handle_ShapeUpgrade_SplitCurve3dContinuity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeUpgrade_SplitCurve3dContinuity;
-class Handle_ShapeUpgrade_SplitCurve3dContinuity : public Handle_ShapeUpgrade_SplitCurve3d {
-
-    public:
-        // constructors
-        Handle_ShapeUpgrade_SplitCurve3dContinuity();
-        Handle_ShapeUpgrade_SplitCurve3dContinuity(const Handle_ShapeUpgrade_SplitCurve3dContinuity &aHandle);
-        Handle_ShapeUpgrade_SplitCurve3dContinuity(const ShapeUpgrade_SplitCurve3dContinuity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeUpgrade_SplitCurve3dContinuity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
-    ShapeUpgrade_SplitCurve3dContinuity* _get_reference() {
-    return (ShapeUpgrade_SplitCurve3dContinuity*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeUpgrade_SplitCurve3dContinuity)
 
 %extend ShapeUpgrade_SplitCurve3dContinuity {
 	%pythoncode {

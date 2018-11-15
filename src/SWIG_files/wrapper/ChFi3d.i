@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFI3DDOCSTRING
-"No docstring provided."
+"creation of spatial fillets on a solid."
 %enddef
 %module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ChFi3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +50,7 @@ enum ChFi3d_FilletShape {
 };
 
 /* end public enums declaration */
+
 
 %rename(chfi3d) ChFi3d;
 class ChFi3d {

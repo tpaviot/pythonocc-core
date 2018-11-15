@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTFDOCSTRING
-"No docstring provided."
+"Interference computation between polygons, lines andpolyhedra with only triangular facets. These objectsare polygonal representations of complex  curves andtriangulated representations of complex surfaces."
 %enddef
 %module (package="OCC.Core", docstring=INTFDOCSTRING) Intf
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Intf_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,6 +51,10 @@ enum Intf_PIType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Intf_SequenceNodeOfSeqOfSectionLine)
+%wrap_handle(Intf_SequenceNodeOfSeqOfSectionPoint)
+%wrap_handle(Intf_SequenceNodeOfSeqOfTangentZone)
 
 %rename(intf) Intf;
 class Intf {
@@ -1101,51 +1091,7 @@ class Intf_SequenceNodeOfSeqOfSectionLine : public TCollection_SeqNode {
 };
 
 
-%extend Intf_SequenceNodeOfSeqOfSectionLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Intf_SequenceNodeOfSeqOfSectionLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Intf_SequenceNodeOfSeqOfSectionLine::Handle_Intf_SequenceNodeOfSeqOfSectionLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Intf_SequenceNodeOfSeqOfSectionLine;
-class Handle_Intf_SequenceNodeOfSeqOfSectionLine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Intf_SequenceNodeOfSeqOfSectionLine();
-        Handle_Intf_SequenceNodeOfSeqOfSectionLine(const Handle_Intf_SequenceNodeOfSeqOfSectionLine &aHandle);
-        Handle_Intf_SequenceNodeOfSeqOfSectionLine(const Intf_SequenceNodeOfSeqOfSectionLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Intf_SequenceNodeOfSeqOfSectionLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Intf_SequenceNodeOfSeqOfSectionLine {
-    Intf_SequenceNodeOfSeqOfSectionLine* _get_reference() {
-    return (Intf_SequenceNodeOfSeqOfSectionLine*)$self->Access();
-    }
-};
-
-%extend Handle_Intf_SequenceNodeOfSeqOfSectionLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Intf_SequenceNodeOfSeqOfSectionLine)
 
 %extend Intf_SequenceNodeOfSeqOfSectionLine {
 	%pythoncode {
@@ -1172,51 +1118,7 @@ class Intf_SequenceNodeOfSeqOfSectionPoint : public TCollection_SeqNode {
 };
 
 
-%extend Intf_SequenceNodeOfSeqOfSectionPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Intf_SequenceNodeOfSeqOfSectionPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Intf_SequenceNodeOfSeqOfSectionPoint::Handle_Intf_SequenceNodeOfSeqOfSectionPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Intf_SequenceNodeOfSeqOfSectionPoint;
-class Handle_Intf_SequenceNodeOfSeqOfSectionPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Intf_SequenceNodeOfSeqOfSectionPoint();
-        Handle_Intf_SequenceNodeOfSeqOfSectionPoint(const Handle_Intf_SequenceNodeOfSeqOfSectionPoint &aHandle);
-        Handle_Intf_SequenceNodeOfSeqOfSectionPoint(const Intf_SequenceNodeOfSeqOfSectionPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Intf_SequenceNodeOfSeqOfSectionPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Intf_SequenceNodeOfSeqOfSectionPoint {
-    Intf_SequenceNodeOfSeqOfSectionPoint* _get_reference() {
-    return (Intf_SequenceNodeOfSeqOfSectionPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Intf_SequenceNodeOfSeqOfSectionPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Intf_SequenceNodeOfSeqOfSectionPoint)
 
 %extend Intf_SequenceNodeOfSeqOfSectionPoint {
 	%pythoncode {
@@ -1243,51 +1145,7 @@ class Intf_SequenceNodeOfSeqOfTangentZone : public TCollection_SeqNode {
 };
 
 
-%extend Intf_SequenceNodeOfSeqOfTangentZone {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Intf_SequenceNodeOfSeqOfTangentZone(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Intf_SequenceNodeOfSeqOfTangentZone::Handle_Intf_SequenceNodeOfSeqOfTangentZone %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Intf_SequenceNodeOfSeqOfTangentZone;
-class Handle_Intf_SequenceNodeOfSeqOfTangentZone : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Intf_SequenceNodeOfSeqOfTangentZone();
-        Handle_Intf_SequenceNodeOfSeqOfTangentZone(const Handle_Intf_SequenceNodeOfSeqOfTangentZone &aHandle);
-        Handle_Intf_SequenceNodeOfSeqOfTangentZone(const Intf_SequenceNodeOfSeqOfTangentZone *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Intf_SequenceNodeOfSeqOfTangentZone DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Intf_SequenceNodeOfSeqOfTangentZone {
-    Intf_SequenceNodeOfSeqOfTangentZone* _get_reference() {
-    return (Intf_SequenceNodeOfSeqOfTangentZone*)$self->Access();
-    }
-};
-
-%extend Handle_Intf_SequenceNodeOfSeqOfTangentZone {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Intf_SequenceNodeOfSeqOfTangentZone)
 
 %extend Intf_SequenceNodeOfSeqOfTangentZone {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPALGODOCSTRING
-"No docstring provided."
+"The BRepAlgo package provides a full range ofservices to perform Old Boolean Operations in Open CASCADE.Attention:The New Boolean Operation has replaced the OldBoolean Operations algorithm in the BrepAlgoAPIpackage in Open CASCADE."
 %enddef
 %module (package="OCC.Core", docstring=BREPALGODOCSTRING) BRepAlgo
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepAlgo_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -63,6 +49,12 @@ enum BRepAlgo_CheckStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(BRepAlgo_AsDes)
+%wrap_handle(BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean)
+%wrap_handle(BRepAlgo_DataMapNodeOfDataMapOfShapeInterference)
+%wrap_handle(BRepAlgo_EdgeConnector)
+%wrap_handle(BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger)
 
 %rename(brepalgo) BRepAlgo;
 class BRepAlgo {
@@ -227,51 +219,7 @@ class BRepAlgo_AsDes : public MMgt_TShared {
 };
 
 
-%extend BRepAlgo_AsDes {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepAlgo_AsDes(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepAlgo_AsDes::Handle_BRepAlgo_AsDes %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepAlgo_AsDes;
-class Handle_BRepAlgo_AsDes : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepAlgo_AsDes();
-        Handle_BRepAlgo_AsDes(const Handle_BRepAlgo_AsDes &aHandle);
-        Handle_BRepAlgo_AsDes(const BRepAlgo_AsDes *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepAlgo_AsDes DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepAlgo_AsDes {
-    BRepAlgo_AsDes* _get_reference() {
-    return (BRepAlgo_AsDes*)$self->Access();
-    }
-};
-
-%extend Handle_BRepAlgo_AsDes {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepAlgo_AsDes)
 
 %extend BRepAlgo_AsDes {
 	%pythoncode {
@@ -770,51 +718,7 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
             };
 
 
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean::Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
-class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean();
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(const Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean &aHandle);
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(const BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-    BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean* _get_reference() {
-    return (BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean*)$self->Access();
-    }
-};
-
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean)
 
 %extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
 	%pythoncode {
@@ -845,51 +749,7 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapN
 };
 
 
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference::Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference;
-class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference();
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(const Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference &aHandle);
-        Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(const BRepAlgo_DataMapNodeOfDataMapOfShapeInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-    BRepAlgo_DataMapNodeOfDataMapOfShapeInterference* _get_reference() {
-    return (BRepAlgo_DataMapNodeOfDataMapOfShapeInterference*)$self->Access();
-    }
-};
-
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepAlgo_DataMapNodeOfDataMapOfShapeInterference)
 
 %extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
 	%pythoncode {
@@ -1124,51 +984,7 @@ class BRepAlgo_EdgeConnector : public MMgt_TShared {
 };
 
 
-%extend BRepAlgo_EdgeConnector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepAlgo_EdgeConnector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepAlgo_EdgeConnector::Handle_BRepAlgo_EdgeConnector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepAlgo_EdgeConnector;
-class Handle_BRepAlgo_EdgeConnector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepAlgo_EdgeConnector();
-        Handle_BRepAlgo_EdgeConnector(const Handle_BRepAlgo_EdgeConnector &aHandle);
-        Handle_BRepAlgo_EdgeConnector(const BRepAlgo_EdgeConnector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepAlgo_EdgeConnector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepAlgo_EdgeConnector {
-    BRepAlgo_EdgeConnector* _get_reference() {
-    return (BRepAlgo_EdgeConnector*)$self->Access();
-    }
-};
-
-%extend Handle_BRepAlgo_EdgeConnector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepAlgo_EdgeConnector)
 
 %extend BRepAlgo_EdgeConnector {
 	%pythoncode {
@@ -1639,51 +1455,7 @@ class BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public TCollection_Se
 };
 
 
-%extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger::Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger;
-class Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger();
-        Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger(const Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger &aHandle);
-        Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger(const BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-    BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger* _get_reference() {
-    return (BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger)
 
 %extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
 	%pythoncode {

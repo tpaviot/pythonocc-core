@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MESHVSDOCSTRING
-"No docstring provided."
+"This package provides classes and simple methods of flexible presentation objectthat is responsible for the following tasks:1) Displaying mesh ( some mesh elements and nodes may be hidden )2) Results of calculations and analysis are shown through the single common interface.3) The data can be shown with different visual styles: colors, vectors, texts and deformed mesh.4) Selection of mesh entities (except hidden ones)"
 %enddef
 %module (package="OCC.Core", docstring=MESHVSDOCSTRING) MeshVS
 
@@ -34,64 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MeshVS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Integer MeshVS_DisplayModeFlags;
 typedef NCollection_List <Handle_TColgp_HArray1OfPnt>::Iterator MeshVS_PolyhedronVertsIter;
 typedef NCollection_List <Handle_TColgp_HArray1OfPnt> MeshVS_PolyhedronVerts;
-typedef std::pair <Standard_Integer , Standard_Integer> MeshVS_NodePair;
-typedef Standard_Integer MeshVS_BuilderPriority;
 typedef MeshVS_Mesh * MeshVS_MeshPtr;
+typedef Standard_Integer MeshVS_BuilderPriority;
+typedef std::pair <Standard_Integer , Standard_Integer> MeshVS_NodePair;
 /* end typedefs declaration */
 
 /* public enums */
-enum MeshVS_EntityType {
-	MeshVS_ET_NONE = 0,
-	MeshVS_ET_Node = 1,
-	MeshVS_ET_0D = 2,
-	MeshVS_ET_Link = 4,
-	MeshVS_ET_Face = 8,
-	MeshVS_ET_Volume = 16,
-	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
-	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
-};
-
-enum MeshVS_MeshSelectionMethod {
-	MeshVS_MSM_PRECISE = 0,
-	MeshVS_MSM_NODES = 1,
-	MeshVS_MSM_BOX = 2,
-};
-
-enum MeshVS_SelectionModeFlags {
-	MeshVS_SMF_Mesh = 0,
-	MeshVS_SMF_Node = 1,
-	MeshVS_SMF_0D = 2,
-	MeshVS_SMF_Link = 4,
-	MeshVS_SMF_Face = 8,
-	MeshVS_SMF_Volume = 16,
-	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
-	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
-	MeshVS_SMF_Group = 256,
-};
-
 enum  {
 	MeshVS_BP_Mesh = 5,
 	MeshVS_BP_NodalColor = 10,
@@ -100,6 +57,25 @@ enum  {
 	MeshVS_BP_Vector = 25,
 	MeshVS_BP_User = 30,
 	MeshVS_BP_Default = MeshVS_BP_User,
+};
+
+enum  {
+	MeshVS_DMF_WireFrame = 1,
+	MeshVS_DMF_Shading = 2,
+	MeshVS_DMF_Shrink = 3,
+	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
+	MeshVS_DMF_VectorDataPrs = 4,
+	MeshVS_DMF_NodalColorDataPrs = 8,
+	MeshVS_DMF_ElementalColorDataPrs = 16,
+	MeshVS_DMF_TextDataPrs = 32,
+	MeshVS_DMF_EntitiesWithData = 64,
+	MeshVS_DMF_DeformedPrsWireFrame = 128,
+	MeshVS_DMF_DeformedPrsShading = 256,
+	MeshVS_DMF_DeformedPrsShrink = 384,
+	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
+	MeshVS_DMF_SelectionPrs = 512,
+	MeshVS_DMF_HilightPrs = 1024,
+	MeshVS_DMF_User = 2048,
 };
 
 enum MeshVS_DrawerAttribute {
@@ -145,26 +121,69 @@ enum MeshVS_DrawerAttribute {
 	MeshVS_DA_User = 39,
 };
 
-enum  {
-	MeshVS_DMF_WireFrame = 1,
-	MeshVS_DMF_Shading = 2,
-	MeshVS_DMF_Shrink = 3,
-	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
-	MeshVS_DMF_VectorDataPrs = 4,
-	MeshVS_DMF_NodalColorDataPrs = 8,
-	MeshVS_DMF_ElementalColorDataPrs = 16,
-	MeshVS_DMF_TextDataPrs = 32,
-	MeshVS_DMF_EntitiesWithData = 64,
-	MeshVS_DMF_DeformedPrsWireFrame = 128,
-	MeshVS_DMF_DeformedPrsShading = 256,
-	MeshVS_DMF_DeformedPrsShrink = 384,
-	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
-	MeshVS_DMF_SelectionPrs = 512,
-	MeshVS_DMF_HilightPrs = 1024,
-	MeshVS_DMF_User = 2048,
+enum MeshVS_EntityType {
+	MeshVS_ET_NONE = 0,
+	MeshVS_ET_Node = 1,
+	MeshVS_ET_0D = 2,
+	MeshVS_ET_Link = 4,
+	MeshVS_ET_Face = 8,
+	MeshVS_ET_Volume = 16,
+	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
+	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
+};
+
+enum MeshVS_MeshSelectionMethod {
+	MeshVS_MSM_PRECISE = 0,
+	MeshVS_MSM_NODES = 1,
+	MeshVS_MSM_BOX = 2,
+};
+
+enum MeshVS_SelectionModeFlags {
+	MeshVS_SMF_Mesh = 0,
+	MeshVS_SMF_Node = 1,
+	MeshVS_SMF_0D = 2,
+	MeshVS_SMF_Link = 4,
+	MeshVS_SMF_Face = 8,
+	MeshVS_SMF_Volume = 16,
+	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
+	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
+	MeshVS_SMF_Group = 256,
 };
 
 /* end public enums declaration */
+
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerBoolean)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerColor)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerMaterial)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerOwner)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfIntegerVector)
+%wrap_handle(MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger)
+%wrap_handle(MeshVS_DataSource)
+%wrap_handle(MeshVS_Drawer)
+%wrap_handle(MeshVS_DummySensitiveEntity)
+%wrap_handle(MeshVS_HArray1OfSequenceOfInteger)
+%wrap_handle(MeshVS_Mesh)
+%wrap_handle(MeshVS_MeshEntityOwner)
+%wrap_handle(MeshVS_MeshOwner)
+%wrap_handle(MeshVS_PrsBuilder)
+%wrap_handle(MeshVS_SensitiveFace)
+%wrap_handle(MeshVS_SensitiveMesh)
+%wrap_handle(MeshVS_SensitivePolyhedron)
+%wrap_handle(MeshVS_SensitiveSegment)
+%wrap_handle(MeshVS_SequenceNodeOfSequenceOfPrsBuilder)
+%wrap_handle(MeshVS_StdMapNodeOfMapOfTwoNodes)
+%wrap_handle(MeshVS_DataSource3D)
+%wrap_handle(MeshVS_DeformedDataSource)
+%wrap_handle(MeshVS_ElementalColorPrsBuilder)
+%wrap_handle(MeshVS_MeshPrsBuilder)
+%wrap_handle(MeshVS_NodalColorPrsBuilder)
+%wrap_handle(MeshVS_TextPrsBuilder)
+%wrap_handle(MeshVS_VectorPrsBuilder)
 
 %nodefaultctor MeshVS_Array1OfSequenceOfInteger;
 class MeshVS_Array1OfSequenceOfInteger {
@@ -688,51 +707,7 @@ class MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public TCollection_MapNod
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger::Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger;
-class Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger();
-        Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger(const Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger(const MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger)
 
 %extend MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
 	%pythoncode {
@@ -772,51 +747,7 @@ class MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public TCollecti
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger::Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger;
-class Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger();
-        Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger(const Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger(const MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger)
 
 %extend MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
 	%pythoncode {
@@ -856,51 +787,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public TCollection_MapNo
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString(const MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
-    MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
 	%pythoncode {
@@ -949,51 +836,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode {
             };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean(const MeshVS_DataMapNodeOfDataMapOfIntegerBoolean *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
-    MeshVS_DataMapNodeOfDataMapOfIntegerBoolean* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerBoolean*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerBoolean)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
 	%pythoncode {
@@ -1033,51 +876,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerColor : public TCollection_MapNode {
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerColor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor(const MeshVS_DataMapNodeOfDataMapOfIntegerColor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor {
-    MeshVS_DataMapNodeOfDataMapOfIntegerColor* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerColor*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerColor)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerColor {
 	%pythoncode {
@@ -1117,51 +916,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public TCollection_MapNode 
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial(const MeshVS_DataMapNodeOfDataMapOfIntegerMaterial *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
-    MeshVS_DataMapNodeOfDataMapOfIntegerMaterial* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerMaterial*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerMaterial)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
 	%pythoncode {
@@ -1201,51 +956,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public TCollection_M
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner(const MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
-    MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
 	%pythoncode {
@@ -1285,51 +996,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public TCollection_MapNode {
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner(const MeshVS_DataMapNodeOfDataMapOfIntegerOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
-    MeshVS_DataMapNodeOfDataMapOfIntegerOwner* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerOwner*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerOwner)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
 	%pythoncode {
@@ -1369,51 +1036,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public TCollection_MapNode
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors(const MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
-    MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
 	%pythoncode {
@@ -1453,51 +1076,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerVector : public TCollection_MapNode {
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfIntegerVector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector::Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector;
-class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector();
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector(const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector(const MeshVS_DataMapNodeOfDataMapOfIntegerVector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector {
-    MeshVS_DataMapNodeOfDataMapOfIntegerVector* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfIntegerVector*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfIntegerVector)
 
 %extend MeshVS_DataMapNodeOfDataMapOfIntegerVector {
 	%pythoncode {
@@ -1528,51 +1107,7 @@ class MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public TCollection_Ma
 };
 
 
-%extend MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger::Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger;
-class Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger();
-        Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger(const Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger &aHandle);
-        Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger(const MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger* _get_reference() {
-    return (MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger)
 
 %extend MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
 	%pythoncode {
@@ -2730,51 +2265,7 @@ class MeshVS_DataSource : public MMgt_TShared {
 };
 
 
-%extend MeshVS_DataSource {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataSource(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataSource::Handle_MeshVS_DataSource %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataSource;
-class Handle_MeshVS_DataSource : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataSource();
-        Handle_MeshVS_DataSource(const Handle_MeshVS_DataSource &aHandle);
-        Handle_MeshVS_DataSource(const MeshVS_DataSource *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataSource DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataSource {
-    MeshVS_DataSource* _get_reference() {
-    return (MeshVS_DataSource*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataSource {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataSource)
 
 %extend MeshVS_DataSource {
 	%pythoncode {
@@ -2927,51 +2418,7 @@ class MeshVS_Drawer : public MMgt_TShared {
 };
 
 
-%extend MeshVS_Drawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_Drawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_Drawer::Handle_MeshVS_Drawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_Drawer;
-class Handle_MeshVS_Drawer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MeshVS_Drawer();
-        Handle_MeshVS_Drawer(const Handle_MeshVS_Drawer &aHandle);
-        Handle_MeshVS_Drawer(const MeshVS_Drawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_Drawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_Drawer {
-    MeshVS_Drawer* _get_reference() {
-    return (MeshVS_Drawer*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_Drawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_Drawer)
 
 %extend MeshVS_Drawer {
 	%pythoncode {
@@ -3022,51 +2469,7 @@ class MeshVS_DummySensitiveEntity : public SelectBasics_SensitiveEntity {
 };
 
 
-%extend MeshVS_DummySensitiveEntity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DummySensitiveEntity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DummySensitiveEntity::Handle_MeshVS_DummySensitiveEntity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DummySensitiveEntity;
-class Handle_MeshVS_DummySensitiveEntity : public Handle_SelectBasics_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_MeshVS_DummySensitiveEntity();
-        Handle_MeshVS_DummySensitiveEntity(const Handle_MeshVS_DummySensitiveEntity &aHandle);
-        Handle_MeshVS_DummySensitiveEntity(const MeshVS_DummySensitiveEntity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DummySensitiveEntity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DummySensitiveEntity {
-    MeshVS_DummySensitiveEntity* _get_reference() {
-    return (MeshVS_DummySensitiveEntity*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DummySensitiveEntity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DummySensitiveEntity)
 
 %extend MeshVS_DummySensitiveEntity {
 	%pythoncode {
@@ -3143,51 +2546,7 @@ class MeshVS_HArray1OfSequenceOfInteger : public MMgt_TShared {
 };
 
 
-%extend MeshVS_HArray1OfSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_HArray1OfSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_HArray1OfSequenceOfInteger::Handle_MeshVS_HArray1OfSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_HArray1OfSequenceOfInteger;
-class Handle_MeshVS_HArray1OfSequenceOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MeshVS_HArray1OfSequenceOfInteger();
-        Handle_MeshVS_HArray1OfSequenceOfInteger(const Handle_MeshVS_HArray1OfSequenceOfInteger &aHandle);
-        Handle_MeshVS_HArray1OfSequenceOfInteger(const MeshVS_HArray1OfSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_HArray1OfSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_HArray1OfSequenceOfInteger {
-    MeshVS_HArray1OfSequenceOfInteger* _get_reference() {
-    return (MeshVS_HArray1OfSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_HArray1OfSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_HArray1OfSequenceOfInteger)
 
 %extend MeshVS_HArray1OfSequenceOfInteger {
 	%pythoncode {
@@ -3586,51 +2945,7 @@ class MeshVS_Mesh : public AIS_InteractiveObject {
 };
 
 
-%extend MeshVS_Mesh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_Mesh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_Mesh::Handle_MeshVS_Mesh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_Mesh;
-class Handle_MeshVS_Mesh : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_MeshVS_Mesh();
-        Handle_MeshVS_Mesh(const Handle_MeshVS_Mesh &aHandle);
-        Handle_MeshVS_Mesh(const MeshVS_Mesh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_Mesh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_Mesh {
-    MeshVS_Mesh* _get_reference() {
-    return (MeshVS_Mesh*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_Mesh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_Mesh)
 
 %extend MeshVS_Mesh {
 	%pythoncode {
@@ -3739,51 +3054,7 @@ class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 };
 
 
-%extend MeshVS_MeshEntityOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_MeshEntityOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_MeshEntityOwner::Handle_MeshVS_MeshEntityOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_MeshEntityOwner;
-class Handle_MeshVS_MeshEntityOwner : public Handle_SelectMgr_EntityOwner {
-
-    public:
-        // constructors
-        Handle_MeshVS_MeshEntityOwner();
-        Handle_MeshVS_MeshEntityOwner(const Handle_MeshVS_MeshEntityOwner &aHandle);
-        Handle_MeshVS_MeshEntityOwner(const MeshVS_MeshEntityOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_MeshEntityOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_MeshEntityOwner {
-    MeshVS_MeshEntityOwner* _get_reference() {
-    return (MeshVS_MeshEntityOwner*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_MeshEntityOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_MeshEntityOwner)
 
 %extend MeshVS_MeshEntityOwner {
 	%pythoncode {
@@ -3882,51 +3153,7 @@ class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 };
 
 
-%extend MeshVS_MeshOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_MeshOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_MeshOwner::Handle_MeshVS_MeshOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_MeshOwner;
-class Handle_MeshVS_MeshOwner : public Handle_SelectMgr_EntityOwner {
-
-    public:
-        // constructors
-        Handle_MeshVS_MeshOwner();
-        Handle_MeshVS_MeshOwner(const Handle_MeshVS_MeshOwner &aHandle);
-        Handle_MeshVS_MeshOwner(const MeshVS_MeshOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_MeshOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_MeshOwner {
-    MeshVS_MeshOwner* _get_reference() {
-    return (MeshVS_MeshOwner*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_MeshOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_MeshOwner)
 
 %extend MeshVS_MeshOwner {
 	%pythoncode {
@@ -4061,51 +3288,7 @@ class MeshVS_PrsBuilder : public MMgt_TShared {
 };
 
 
-%extend MeshVS_PrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_PrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_PrsBuilder::Handle_MeshVS_PrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_PrsBuilder;
-class Handle_MeshVS_PrsBuilder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MeshVS_PrsBuilder();
-        Handle_MeshVS_PrsBuilder(const Handle_MeshVS_PrsBuilder &aHandle);
-        Handle_MeshVS_PrsBuilder(const MeshVS_PrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_PrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_PrsBuilder {
-    MeshVS_PrsBuilder* _get_reference() {
-    return (MeshVS_PrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_PrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_PrsBuilder)
 
 %extend MeshVS_PrsBuilder {
 	%pythoncode {
@@ -4128,51 +3311,7 @@ class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 };
 
 
-%extend MeshVS_SensitiveFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_SensitiveFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_SensitiveFace::Handle_MeshVS_SensitiveFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_SensitiveFace;
-class Handle_MeshVS_SensitiveFace : public Handle_Select3D_SensitiveFace {
-
-    public:
-        // constructors
-        Handle_MeshVS_SensitiveFace();
-        Handle_MeshVS_SensitiveFace(const Handle_MeshVS_SensitiveFace &aHandle);
-        Handle_MeshVS_SensitiveFace(const MeshVS_SensitiveFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_SensitiveFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_SensitiveFace {
-    MeshVS_SensitiveFace* _get_reference() {
-    return (MeshVS_SensitiveFace*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_SensitiveFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_SensitiveFace)
 
 %extend MeshVS_SensitiveFace {
 	%pythoncode {
@@ -4219,51 +3358,7 @@ class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 };
 
 
-%extend MeshVS_SensitiveMesh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_SensitiveMesh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_SensitiveMesh::Handle_MeshVS_SensitiveMesh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_SensitiveMesh;
-class Handle_MeshVS_SensitiveMesh : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_MeshVS_SensitiveMesh();
-        Handle_MeshVS_SensitiveMesh(const Handle_MeshVS_SensitiveMesh &aHandle);
-        Handle_MeshVS_SensitiveMesh(const MeshVS_SensitiveMesh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_SensitiveMesh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_SensitiveMesh {
-    MeshVS_SensitiveMesh* _get_reference() {
-    return (MeshVS_SensitiveMesh*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_SensitiveMesh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_SensitiveMesh)
 
 %extend MeshVS_SensitiveMesh {
 	%pythoncode {
@@ -4312,51 +3407,7 @@ class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 };
 
 
-%extend MeshVS_SensitivePolyhedron {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_SensitivePolyhedron(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_SensitivePolyhedron::Handle_MeshVS_SensitivePolyhedron %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_SensitivePolyhedron;
-class Handle_MeshVS_SensitivePolyhedron : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_MeshVS_SensitivePolyhedron();
-        Handle_MeshVS_SensitivePolyhedron(const Handle_MeshVS_SensitivePolyhedron &aHandle);
-        Handle_MeshVS_SensitivePolyhedron(const MeshVS_SensitivePolyhedron *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_SensitivePolyhedron DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_SensitivePolyhedron {
-    MeshVS_SensitivePolyhedron* _get_reference() {
-    return (MeshVS_SensitivePolyhedron*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_SensitivePolyhedron {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_SensitivePolyhedron)
 
 %extend MeshVS_SensitivePolyhedron {
 	%pythoncode {
@@ -4379,51 +3430,7 @@ class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 };
 
 
-%extend MeshVS_SensitiveSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_SensitiveSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_SensitiveSegment::Handle_MeshVS_SensitiveSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_SensitiveSegment;
-class Handle_MeshVS_SensitiveSegment : public Handle_Select3D_SensitiveSegment {
-
-    public:
-        // constructors
-        Handle_MeshVS_SensitiveSegment();
-        Handle_MeshVS_SensitiveSegment(const Handle_MeshVS_SensitiveSegment &aHandle);
-        Handle_MeshVS_SensitiveSegment(const MeshVS_SensitiveSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_SensitiveSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_SensitiveSegment {
-    MeshVS_SensitiveSegment* _get_reference() {
-    return (MeshVS_SensitiveSegment*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_SensitiveSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_SensitiveSegment)
 
 %extend MeshVS_SensitiveSegment {
 	%pythoncode {
@@ -4450,51 +3457,7 @@ class MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public TCollection_SeqNode {
 };
 
 
-%extend MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder::Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder;
-class Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder();
-        Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder(const Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder &aHandle);
-        Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder(const MeshVS_SequenceNodeOfSequenceOfPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
-    MeshVS_SequenceNodeOfSequenceOfPrsBuilder* _get_reference() {
-    return (MeshVS_SequenceNodeOfSequenceOfPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_SequenceNodeOfSequenceOfPrsBuilder)
 
 %extend MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
 	%pythoncode {
@@ -4662,51 +3625,7 @@ class MeshVS_StdMapNodeOfMapOfTwoNodes : public TCollection_MapNode {
 };
 
 
-%extend MeshVS_StdMapNodeOfMapOfTwoNodes {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_StdMapNodeOfMapOfTwoNodes(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_StdMapNodeOfMapOfTwoNodes::Handle_MeshVS_StdMapNodeOfMapOfTwoNodes %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_StdMapNodeOfMapOfTwoNodes;
-class Handle_MeshVS_StdMapNodeOfMapOfTwoNodes : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MeshVS_StdMapNodeOfMapOfTwoNodes();
-        Handle_MeshVS_StdMapNodeOfMapOfTwoNodes(const Handle_MeshVS_StdMapNodeOfMapOfTwoNodes &aHandle);
-        Handle_MeshVS_StdMapNodeOfMapOfTwoNodes(const MeshVS_StdMapNodeOfMapOfTwoNodes *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_StdMapNodeOfMapOfTwoNodes DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_StdMapNodeOfMapOfTwoNodes {
-    MeshVS_StdMapNodeOfMapOfTwoNodes* _get_reference() {
-    return (MeshVS_StdMapNodeOfMapOfTwoNodes*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_StdMapNodeOfMapOfTwoNodes {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_StdMapNodeOfMapOfTwoNodes)
 
 %extend MeshVS_StdMapNodeOfMapOfTwoNodes {
 	%pythoncode {
@@ -4942,51 +3861,7 @@ class MeshVS_DataSource3D : public MeshVS_DataSource {
 };
 
 
-%extend MeshVS_DataSource3D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DataSource3D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DataSource3D::Handle_MeshVS_DataSource3D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DataSource3D;
-class Handle_MeshVS_DataSource3D : public Handle_MeshVS_DataSource {
-
-    public:
-        // constructors
-        Handle_MeshVS_DataSource3D();
-        Handle_MeshVS_DataSource3D(const Handle_MeshVS_DataSource3D &aHandle);
-        Handle_MeshVS_DataSource3D(const MeshVS_DataSource3D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DataSource3D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DataSource3D {
-    MeshVS_DataSource3D* _get_reference() {
-    return (MeshVS_DataSource3D*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DataSource3D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DataSource3D)
 
 %extend MeshVS_DataSource3D {
 	%pythoncode {
@@ -5127,51 +4002,7 @@ class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 };
 
 
-%extend MeshVS_DeformedDataSource {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_DeformedDataSource(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_DeformedDataSource::Handle_MeshVS_DeformedDataSource %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_DeformedDataSource;
-class Handle_MeshVS_DeformedDataSource : public Handle_MeshVS_DataSource {
-
-    public:
-        // constructors
-        Handle_MeshVS_DeformedDataSource();
-        Handle_MeshVS_DeformedDataSource(const Handle_MeshVS_DeformedDataSource &aHandle);
-        Handle_MeshVS_DeformedDataSource(const MeshVS_DeformedDataSource *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_DeformedDataSource DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_DeformedDataSource {
-    MeshVS_DeformedDataSource* _get_reference() {
-    return (MeshVS_DeformedDataSource*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_DeformedDataSource {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_DeformedDataSource)
 
 %extend MeshVS_DeformedDataSource {
 	%pythoncode {
@@ -5320,51 +4151,7 @@ class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 };
 
 
-%extend MeshVS_ElementalColorPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_ElementalColorPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_ElementalColorPrsBuilder::Handle_MeshVS_ElementalColorPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_ElementalColorPrsBuilder;
-class Handle_MeshVS_ElementalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
-
-    public:
-        // constructors
-        Handle_MeshVS_ElementalColorPrsBuilder();
-        Handle_MeshVS_ElementalColorPrsBuilder(const Handle_MeshVS_ElementalColorPrsBuilder &aHandle);
-        Handle_MeshVS_ElementalColorPrsBuilder(const MeshVS_ElementalColorPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_ElementalColorPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_ElementalColorPrsBuilder {
-    MeshVS_ElementalColorPrsBuilder* _get_reference() {
-    return (MeshVS_ElementalColorPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_ElementalColorPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_ElementalColorPrsBuilder)
 
 %extend MeshVS_ElementalColorPrsBuilder {
 	%pythoncode {
@@ -5489,51 +4276,7 @@ class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 };
 
 
-%extend MeshVS_MeshPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_MeshPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_MeshPrsBuilder::Handle_MeshVS_MeshPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_MeshPrsBuilder;
-class Handle_MeshVS_MeshPrsBuilder : public Handle_MeshVS_PrsBuilder {
-
-    public:
-        // constructors
-        Handle_MeshVS_MeshPrsBuilder();
-        Handle_MeshVS_MeshPrsBuilder(const Handle_MeshVS_MeshPrsBuilder &aHandle);
-        Handle_MeshVS_MeshPrsBuilder(const MeshVS_MeshPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_MeshPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_MeshPrsBuilder {
-    MeshVS_MeshPrsBuilder* _get_reference() {
-    return (MeshVS_MeshPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_MeshPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_MeshPrsBuilder)
 
 %extend MeshVS_MeshPrsBuilder {
 	%pythoncode {
@@ -5712,51 +4455,7 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 };
 
 
-%extend MeshVS_NodalColorPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_NodalColorPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_NodalColorPrsBuilder::Handle_MeshVS_NodalColorPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_NodalColorPrsBuilder;
-class Handle_MeshVS_NodalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
-
-    public:
-        // constructors
-        Handle_MeshVS_NodalColorPrsBuilder();
-        Handle_MeshVS_NodalColorPrsBuilder(const Handle_MeshVS_NodalColorPrsBuilder &aHandle);
-        Handle_MeshVS_NodalColorPrsBuilder(const MeshVS_NodalColorPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_NodalColorPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_NodalColorPrsBuilder {
-    MeshVS_NodalColorPrsBuilder* _get_reference() {
-    return (MeshVS_NodalColorPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_NodalColorPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_NodalColorPrsBuilder)
 
 %extend MeshVS_NodalColorPrsBuilder {
 	%pythoncode {
@@ -5853,51 +4552,7 @@ class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 };
 
 
-%extend MeshVS_TextPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_TextPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_TextPrsBuilder::Handle_MeshVS_TextPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_TextPrsBuilder;
-class Handle_MeshVS_TextPrsBuilder : public Handle_MeshVS_PrsBuilder {
-
-    public:
-        // constructors
-        Handle_MeshVS_TextPrsBuilder();
-        Handle_MeshVS_TextPrsBuilder(const Handle_MeshVS_TextPrsBuilder &aHandle);
-        Handle_MeshVS_TextPrsBuilder(const MeshVS_TextPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_TextPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_TextPrsBuilder {
-    MeshVS_TextPrsBuilder* _get_reference() {
-    return (MeshVS_TextPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_TextPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_TextPrsBuilder)
 
 %extend MeshVS_TextPrsBuilder {
 	%pythoncode {
@@ -6060,51 +4715,7 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 };
 
 
-%extend MeshVS_VectorPrsBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MeshVS_VectorPrsBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MeshVS_VectorPrsBuilder::Handle_MeshVS_VectorPrsBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MeshVS_VectorPrsBuilder;
-class Handle_MeshVS_VectorPrsBuilder : public Handle_MeshVS_PrsBuilder {
-
-    public:
-        // constructors
-        Handle_MeshVS_VectorPrsBuilder();
-        Handle_MeshVS_VectorPrsBuilder(const Handle_MeshVS_VectorPrsBuilder &aHandle);
-        Handle_MeshVS_VectorPrsBuilder(const MeshVS_VectorPrsBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MeshVS_VectorPrsBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MeshVS_VectorPrsBuilder {
-    MeshVS_VectorPrsBuilder* _get_reference() {
-    return (MeshVS_VectorPrsBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_MeshVS_VectorPrsBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MeshVS_VectorPrsBuilder)
 
 %extend MeshVS_VectorPrsBuilder {
 	%pythoncode {

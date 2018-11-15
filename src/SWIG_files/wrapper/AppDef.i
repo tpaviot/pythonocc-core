@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPDEFDOCSTRING
-"No docstring provided."
+"This package describes all the classes needed to approximatepoints in Bezier curves. It is used in the packageAppParCurves.The points of the same range for the approximation areorganised in MultiPointConstraints. These MultiPointConstraintsare organized in a MultiLine.The corresponding result of a MultiLine approximation isa MultiCurve (set of Bezier curves) which has the samestructure as a MultiLine: The MultiCurve is a set ofMultiPoint.A point of a MultiLine can have many significations: the approximation curvecan go through this point or not, can have a given tangency, or canhave a given curvature.Note: a CurvaturePoint is also a PassPoint and a TangencyPoint.A TangencyPoint is also a PassPoint."
 %enddef
 %module (package="OCC.Core", docstring=APPDEFDOCSTRING) AppDef
 
@@ -34,30 +34,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AppDef_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(AppDef_HArray1OfMultiPointConstraint)
+%wrap_handle(AppDef_SmoothCriterion)
+%wrap_handle(AppDef_LinearCriteria)
 
 %nodefaultctor AppDef_Array1OfMultiPointConstraint;
 class AppDef_Array1OfMultiPointConstraint {
@@ -1074,51 +1064,7 @@ class AppDef_HArray1OfMultiPointConstraint : public MMgt_TShared {
 };
 
 
-%extend AppDef_HArray1OfMultiPointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppDef_HArray1OfMultiPointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppDef_HArray1OfMultiPointConstraint::Handle_AppDef_HArray1OfMultiPointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppDef_HArray1OfMultiPointConstraint;
-class Handle_AppDef_HArray1OfMultiPointConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppDef_HArray1OfMultiPointConstraint();
-        Handle_AppDef_HArray1OfMultiPointConstraint(const Handle_AppDef_HArray1OfMultiPointConstraint &aHandle);
-        Handle_AppDef_HArray1OfMultiPointConstraint(const AppDef_HArray1OfMultiPointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppDef_HArray1OfMultiPointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppDef_HArray1OfMultiPointConstraint {
-    AppDef_HArray1OfMultiPointConstraint* _get_reference() {
-    return (AppDef_HArray1OfMultiPointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_AppDef_HArray1OfMultiPointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppDef_HArray1OfMultiPointConstraint)
 
 %extend AppDef_HArray1OfMultiPointConstraint {
 	%pythoncode {
@@ -3039,51 +2985,7 @@ class AppDef_SmoothCriterion : public MMgt_TShared {
 };
 
 
-%extend AppDef_SmoothCriterion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppDef_SmoothCriterion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppDef_SmoothCriterion::Handle_AppDef_SmoothCriterion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppDef_SmoothCriterion;
-class Handle_AppDef_SmoothCriterion : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppDef_SmoothCriterion();
-        Handle_AppDef_SmoothCriterion(const Handle_AppDef_SmoothCriterion &aHandle);
-        Handle_AppDef_SmoothCriterion(const AppDef_SmoothCriterion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppDef_SmoothCriterion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppDef_SmoothCriterion {
-    AppDef_SmoothCriterion* _get_reference() {
-    return (AppDef_SmoothCriterion*)$self->Access();
-    }
-};
-
-%extend Handle_AppDef_SmoothCriterion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppDef_SmoothCriterion)
 
 %extend AppDef_SmoothCriterion {
 	%pythoncode {
@@ -3956,51 +3858,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 };
 
 
-%extend AppDef_LinearCriteria {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppDef_LinearCriteria(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppDef_LinearCriteria::Handle_AppDef_LinearCriteria %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppDef_LinearCriteria;
-class Handle_AppDef_LinearCriteria : public Handle_AppDef_SmoothCriterion {
-
-    public:
-        // constructors
-        Handle_AppDef_LinearCriteria();
-        Handle_AppDef_LinearCriteria(const Handle_AppDef_LinearCriteria &aHandle);
-        Handle_AppDef_LinearCriteria(const AppDef_LinearCriteria *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppDef_LinearCriteria DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppDef_LinearCriteria {
-    AppDef_LinearCriteria* _get_reference() {
-    return (AppDef_LinearCriteria*)$self->Access();
-    }
-};
-
-%extend Handle_AppDef_LinearCriteria {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppDef_LinearCriteria)
 
 %extend AppDef_LinearCriteria {
 	%pythoncode {

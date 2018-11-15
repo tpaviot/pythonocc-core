@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDATASTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PDATASTDDOCSTRING) PDataStd
 
@@ -34,30 +34,56 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PDataStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(PDataStd_AsciiString)
+%wrap_handle(PDataStd_BooleanArray)
+%wrap_handle(PDataStd_BooleanList)
+%wrap_handle(PDataStd_ByteArray)
+%wrap_handle(PDataStd_ByteArray_1)
+%wrap_handle(PDataStd_Comment)
+%wrap_handle(PDataStd_Directory)
+%wrap_handle(PDataStd_Expression)
+%wrap_handle(PDataStd_ExtStringArray)
+%wrap_handle(PDataStd_ExtStringArray_1)
+%wrap_handle(PDataStd_ExtStringList)
+%wrap_handle(PDataStd_HArray1OfByte)
+%wrap_handle(PDataStd_HArray1OfHArray1OfInteger)
+%wrap_handle(PDataStd_HArray1OfHArray1OfReal)
+%wrap_handle(PDataStd_HArray1OfHAsciiString)
+%wrap_handle(PDataStd_IntPackedMap)
+%wrap_handle(PDataStd_IntPackedMap_1)
+%wrap_handle(PDataStd_Integer)
+%wrap_handle(PDataStd_IntegerArray)
+%wrap_handle(PDataStd_IntegerArray_1)
+%wrap_handle(PDataStd_IntegerList)
+%wrap_handle(PDataStd_Name)
+%wrap_handle(PDataStd_NamedData)
+%wrap_handle(PDataStd_NoteBook)
+%wrap_handle(PDataStd_Real)
+%wrap_handle(PDataStd_RealArray)
+%wrap_handle(PDataStd_RealArray_1)
+%wrap_handle(PDataStd_RealList)
+%wrap_handle(PDataStd_ReferenceArray)
+%wrap_handle(PDataStd_ReferenceList)
+%wrap_handle(PDataStd_Relation)
+%wrap_handle(PDataStd_Tick)
+%wrap_handle(PDataStd_TreeNode)
+%wrap_handle(PDataStd_UAttribute)
+%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfByte)
+%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger)
+%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal)
+%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString)
+%wrap_handle(PDataStd_Variable)
 
 %nodefaultctor PDataStd_AsciiString;
 class PDataStd_AsciiString : public PDF_Attribute {
@@ -101,51 +127,7 @@ class PDataStd_AsciiString : public PDF_Attribute {
 };
 
 
-%extend PDataStd_AsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_AsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_AsciiString::Handle_PDataStd_AsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_AsciiString;
-class Handle_PDataStd_AsciiString : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_AsciiString();
-        Handle_PDataStd_AsciiString(const Handle_PDataStd_AsciiString &aHandle);
-        Handle_PDataStd_AsciiString(const PDataStd_AsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_AsciiString DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_AsciiString {
-    PDataStd_AsciiString* _get_reference() {
-    return (PDataStd_AsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_AsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_AsciiString)
 
 %extend PDataStd_AsciiString {
 	%pythoncode {
@@ -228,51 +210,7 @@ class PDataStd_BooleanArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_BooleanArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_BooleanArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_BooleanArray::Handle_PDataStd_BooleanArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_BooleanArray;
-class Handle_PDataStd_BooleanArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_BooleanArray();
-        Handle_PDataStd_BooleanArray(const Handle_PDataStd_BooleanArray &aHandle);
-        Handle_PDataStd_BooleanArray(const PDataStd_BooleanArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_BooleanArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_BooleanArray {
-    PDataStd_BooleanArray* _get_reference() {
-    return (PDataStd_BooleanArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_BooleanArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_BooleanArray)
 
 %extend PDataStd_BooleanArray {
 	%pythoncode {
@@ -335,51 +273,7 @@ class PDataStd_BooleanList : public PDF_Attribute {
 };
 
 
-%extend PDataStd_BooleanList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_BooleanList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_BooleanList::Handle_PDataStd_BooleanList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_BooleanList;
-class Handle_PDataStd_BooleanList : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_BooleanList();
-        Handle_PDataStd_BooleanList(const Handle_PDataStd_BooleanList &aHandle);
-        Handle_PDataStd_BooleanList(const PDataStd_BooleanList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_BooleanList DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_BooleanList {
-    PDataStd_BooleanList* _get_reference() {
-    return (PDataStd_BooleanList*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_BooleanList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_BooleanList)
 
 %extend PDataStd_BooleanList {
 	%pythoncode {
@@ -422,51 +316,7 @@ class PDataStd_ByteArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ByteArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ByteArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ByteArray::Handle_PDataStd_ByteArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ByteArray;
-class Handle_PDataStd_ByteArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ByteArray();
-        Handle_PDataStd_ByteArray(const Handle_PDataStd_ByteArray &aHandle);
-        Handle_PDataStd_ByteArray(const PDataStd_ByteArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ByteArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ByteArray {
-    PDataStd_ByteArray* _get_reference() {
-    return (PDataStd_ByteArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ByteArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ByteArray)
 
 %extend PDataStd_ByteArray {
 	%pythoncode {
@@ -529,51 +379,7 @@ class PDataStd_ByteArray_1 : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ByteArray_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ByteArray_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ByteArray_1::Handle_PDataStd_ByteArray_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ByteArray_1;
-class Handle_PDataStd_ByteArray_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ByteArray_1();
-        Handle_PDataStd_ByteArray_1(const Handle_PDataStd_ByteArray_1 &aHandle);
-        Handle_PDataStd_ByteArray_1(const PDataStd_ByteArray_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ByteArray_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ByteArray_1 {
-    PDataStd_ByteArray_1* _get_reference() {
-    return (PDataStd_ByteArray_1*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ByteArray_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ByteArray_1)
 
 %extend PDataStd_ByteArray_1 {
 	%pythoncode {
@@ -622,51 +428,7 @@ class PDataStd_Comment : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Comment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Comment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Comment::Handle_PDataStd_Comment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Comment;
-class Handle_PDataStd_Comment : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Comment();
-        Handle_PDataStd_Comment(const Handle_PDataStd_Comment &aHandle);
-        Handle_PDataStd_Comment(const PDataStd_Comment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Comment DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Comment {
-    PDataStd_Comment* _get_reference() {
-    return (PDataStd_Comment*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Comment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Comment)
 
 %extend PDataStd_Comment {
 	%pythoncode {
@@ -689,51 +451,7 @@ class PDataStd_Directory : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Directory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Directory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Directory::Handle_PDataStd_Directory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Directory;
-class Handle_PDataStd_Directory : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Directory();
-        Handle_PDataStd_Directory(const Handle_PDataStd_Directory &aHandle);
-        Handle_PDataStd_Directory(const PDataStd_Directory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Directory DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Directory {
-    PDataStd_Directory* _get_reference() {
-    return (PDataStd_Directory*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Directory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Directory)
 
 %extend PDataStd_Directory {
 	%pythoncode {
@@ -802,51 +520,7 @@ class PDataStd_Expression : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Expression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Expression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Expression::Handle_PDataStd_Expression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Expression;
-class Handle_PDataStd_Expression : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Expression();
-        Handle_PDataStd_Expression(const Handle_PDataStd_Expression &aHandle);
-        Handle_PDataStd_Expression(const PDataStd_Expression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Expression DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Expression {
-    PDataStd_Expression* _get_reference() {
-    return (PDataStd_Expression*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Expression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Expression)
 
 %extend PDataStd_Expression {
 	%pythoncode {
@@ -909,51 +583,7 @@ class PDataStd_ExtStringArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ExtStringArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ExtStringArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ExtStringArray::Handle_PDataStd_ExtStringArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ExtStringArray;
-class Handle_PDataStd_ExtStringArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ExtStringArray();
-        Handle_PDataStd_ExtStringArray(const Handle_PDataStd_ExtStringArray &aHandle);
-        Handle_PDataStd_ExtStringArray(const PDataStd_ExtStringArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ExtStringArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ExtStringArray {
-    PDataStd_ExtStringArray* _get_reference() {
-    return (PDataStd_ExtStringArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ExtStringArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ExtStringArray)
 
 %extend PDataStd_ExtStringArray {
 	%pythoncode {
@@ -1036,51 +666,7 @@ class PDataStd_ExtStringArray_1 : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ExtStringArray_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ExtStringArray_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ExtStringArray_1::Handle_PDataStd_ExtStringArray_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ExtStringArray_1;
-class Handle_PDataStd_ExtStringArray_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ExtStringArray_1();
-        Handle_PDataStd_ExtStringArray_1(const Handle_PDataStd_ExtStringArray_1 &aHandle);
-        Handle_PDataStd_ExtStringArray_1(const PDataStd_ExtStringArray_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ExtStringArray_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ExtStringArray_1 {
-    PDataStd_ExtStringArray_1* _get_reference() {
-    return (PDataStd_ExtStringArray_1*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ExtStringArray_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ExtStringArray_1)
 
 %extend PDataStd_ExtStringArray_1 {
 	%pythoncode {
@@ -1143,51 +729,7 @@ class PDataStd_ExtStringList : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ExtStringList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ExtStringList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ExtStringList::Handle_PDataStd_ExtStringList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ExtStringList;
-class Handle_PDataStd_ExtStringList : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ExtStringList();
-        Handle_PDataStd_ExtStringList(const Handle_PDataStd_ExtStringList &aHandle);
-        Handle_PDataStd_ExtStringList(const PDataStd_ExtStringList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ExtStringList DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ExtStringList {
-    PDataStd_ExtStringList* _get_reference() {
-    return (PDataStd_ExtStringList*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ExtStringList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ExtStringList)
 
 %extend PDataStd_ExtStringList {
 	%pythoncode {
@@ -1530,51 +1072,7 @@ class PDataStd_HArray1OfByte : public Standard_Persistent {
 };
 
 
-%extend PDataStd_HArray1OfByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_HArray1OfByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_HArray1OfByte::Handle_PDataStd_HArray1OfByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_HArray1OfByte;
-class Handle_PDataStd_HArray1OfByte : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PDataStd_HArray1OfByte();
-        Handle_PDataStd_HArray1OfByte(const Handle_PDataStd_HArray1OfByte &aHandle);
-        Handle_PDataStd_HArray1OfByte(const PDataStd_HArray1OfByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_HArray1OfByte DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_HArray1OfByte {
-    PDataStd_HArray1OfByte* _get_reference() {
-    return (PDataStd_HArray1OfByte*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_HArray1OfByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_HArray1OfByte)
 
 %extend PDataStd_HArray1OfByte {
 	%pythoncode {
@@ -1665,51 +1163,7 @@ class PDataStd_HArray1OfHArray1OfInteger : public Standard_Persistent {
 };
 
 
-%extend PDataStd_HArray1OfHArray1OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_HArray1OfHArray1OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_HArray1OfHArray1OfInteger::Handle_PDataStd_HArray1OfHArray1OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_HArray1OfHArray1OfInteger;
-class Handle_PDataStd_HArray1OfHArray1OfInteger : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PDataStd_HArray1OfHArray1OfInteger();
-        Handle_PDataStd_HArray1OfHArray1OfInteger(const Handle_PDataStd_HArray1OfHArray1OfInteger &aHandle);
-        Handle_PDataStd_HArray1OfHArray1OfInteger(const PDataStd_HArray1OfHArray1OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_HArray1OfHArray1OfInteger DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_HArray1OfHArray1OfInteger {
-    PDataStd_HArray1OfHArray1OfInteger* _get_reference() {
-    return (PDataStd_HArray1OfHArray1OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_HArray1OfHArray1OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_HArray1OfHArray1OfInteger)
 
 %extend PDataStd_HArray1OfHArray1OfInteger {
 	%pythoncode {
@@ -1800,51 +1254,7 @@ class PDataStd_HArray1OfHArray1OfReal : public Standard_Persistent {
 };
 
 
-%extend PDataStd_HArray1OfHArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_HArray1OfHArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_HArray1OfHArray1OfReal::Handle_PDataStd_HArray1OfHArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_HArray1OfHArray1OfReal;
-class Handle_PDataStd_HArray1OfHArray1OfReal : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PDataStd_HArray1OfHArray1OfReal();
-        Handle_PDataStd_HArray1OfHArray1OfReal(const Handle_PDataStd_HArray1OfHArray1OfReal &aHandle);
-        Handle_PDataStd_HArray1OfHArray1OfReal(const PDataStd_HArray1OfHArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_HArray1OfHArray1OfReal DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_HArray1OfHArray1OfReal {
-    PDataStd_HArray1OfHArray1OfReal* _get_reference() {
-    return (PDataStd_HArray1OfHArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_HArray1OfHArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_HArray1OfHArray1OfReal)
 
 %extend PDataStd_HArray1OfHArray1OfReal {
 	%pythoncode {
@@ -1935,51 +1345,7 @@ class PDataStd_HArray1OfHAsciiString : public Standard_Persistent {
 };
 
 
-%extend PDataStd_HArray1OfHAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_HArray1OfHAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_HArray1OfHAsciiString::Handle_PDataStd_HArray1OfHAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_HArray1OfHAsciiString;
-class Handle_PDataStd_HArray1OfHAsciiString : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PDataStd_HArray1OfHAsciiString();
-        Handle_PDataStd_HArray1OfHAsciiString(const Handle_PDataStd_HArray1OfHAsciiString &aHandle);
-        Handle_PDataStd_HArray1OfHAsciiString(const PDataStd_HArray1OfHAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_HArray1OfHAsciiString DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_HArray1OfHAsciiString {
-    PDataStd_HArray1OfHAsciiString* _get_reference() {
-    return (PDataStd_HArray1OfHAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_HArray1OfHAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_HArray1OfHAsciiString)
 
 %extend PDataStd_HArray1OfHAsciiString {
 	%pythoncode {
@@ -2054,51 +1420,7 @@ class PDataStd_IntPackedMap : public PDF_Attribute {
 };
 
 
-%extend PDataStd_IntPackedMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_IntPackedMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_IntPackedMap::Handle_PDataStd_IntPackedMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_IntPackedMap;
-class Handle_PDataStd_IntPackedMap : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_IntPackedMap();
-        Handle_PDataStd_IntPackedMap(const Handle_PDataStd_IntPackedMap &aHandle);
-        Handle_PDataStd_IntPackedMap(const PDataStd_IntPackedMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_IntPackedMap DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_IntPackedMap {
-    PDataStd_IntPackedMap* _get_reference() {
-    return (PDataStd_IntPackedMap*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_IntPackedMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_IntPackedMap)
 
 %extend PDataStd_IntPackedMap {
 	%pythoncode {
@@ -2193,51 +1515,7 @@ class PDataStd_IntPackedMap_1 : public PDF_Attribute {
 };
 
 
-%extend PDataStd_IntPackedMap_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_IntPackedMap_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_IntPackedMap_1::Handle_PDataStd_IntPackedMap_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_IntPackedMap_1;
-class Handle_PDataStd_IntPackedMap_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_IntPackedMap_1();
-        Handle_PDataStd_IntPackedMap_1(const Handle_PDataStd_IntPackedMap_1 &aHandle);
-        Handle_PDataStd_IntPackedMap_1(const PDataStd_IntPackedMap_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_IntPackedMap_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_IntPackedMap_1 {
-    PDataStd_IntPackedMap_1* _get_reference() {
-    return (PDataStd_IntPackedMap_1*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_IntPackedMap_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_IntPackedMap_1)
 
 %extend PDataStd_IntPackedMap_1 {
 	%pythoncode {
@@ -2286,51 +1564,7 @@ class PDataStd_Integer : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Integer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Integer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Integer::Handle_PDataStd_Integer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Integer;
-class Handle_PDataStd_Integer : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Integer();
-        Handle_PDataStd_Integer(const Handle_PDataStd_Integer &aHandle);
-        Handle_PDataStd_Integer(const PDataStd_Integer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Integer DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Integer {
-    PDataStd_Integer* _get_reference() {
-    return (PDataStd_Integer*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Integer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Integer)
 
 %extend PDataStd_Integer {
 	%pythoncode {
@@ -2393,51 +1627,7 @@ class PDataStd_IntegerArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_IntegerArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_IntegerArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_IntegerArray::Handle_PDataStd_IntegerArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_IntegerArray;
-class Handle_PDataStd_IntegerArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_IntegerArray();
-        Handle_PDataStd_IntegerArray(const Handle_PDataStd_IntegerArray &aHandle);
-        Handle_PDataStd_IntegerArray(const PDataStd_IntegerArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_IntegerArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_IntegerArray {
-    PDataStd_IntegerArray* _get_reference() {
-    return (PDataStd_IntegerArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_IntegerArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_IntegerArray)
 
 %extend PDataStd_IntegerArray {
 	%pythoncode {
@@ -2520,51 +1710,7 @@ class PDataStd_IntegerArray_1 : public PDF_Attribute {
 };
 
 
-%extend PDataStd_IntegerArray_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_IntegerArray_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_IntegerArray_1::Handle_PDataStd_IntegerArray_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_IntegerArray_1;
-class Handle_PDataStd_IntegerArray_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_IntegerArray_1();
-        Handle_PDataStd_IntegerArray_1(const Handle_PDataStd_IntegerArray_1 &aHandle);
-        Handle_PDataStd_IntegerArray_1(const PDataStd_IntegerArray_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_IntegerArray_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_IntegerArray_1 {
-    PDataStd_IntegerArray_1* _get_reference() {
-    return (PDataStd_IntegerArray_1*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_IntegerArray_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_IntegerArray_1)
 
 %extend PDataStd_IntegerArray_1 {
 	%pythoncode {
@@ -2627,51 +1773,7 @@ class PDataStd_IntegerList : public PDF_Attribute {
 };
 
 
-%extend PDataStd_IntegerList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_IntegerList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_IntegerList::Handle_PDataStd_IntegerList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_IntegerList;
-class Handle_PDataStd_IntegerList : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_IntegerList();
-        Handle_PDataStd_IntegerList(const Handle_PDataStd_IntegerList &aHandle);
-        Handle_PDataStd_IntegerList(const PDataStd_IntegerList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_IntegerList DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_IntegerList {
-    PDataStd_IntegerList* _get_reference() {
-    return (PDataStd_IntegerList*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_IntegerList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_IntegerList)
 
 %extend PDataStd_IntegerList {
 	%pythoncode {
@@ -2720,51 +1822,7 @@ class PDataStd_Name : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Name {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Name(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Name::Handle_PDataStd_Name %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Name;
-class Handle_PDataStd_Name : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Name();
-        Handle_PDataStd_Name(const Handle_PDataStd_Name &aHandle);
-        Handle_PDataStd_Name(const PDataStd_Name *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Name DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Name {
-    PDataStd_Name* _get_reference() {
-    return (PDataStd_Name*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Name {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Name)
 
 %extend PDataStd_Name {
 	%pythoncode {
@@ -3117,51 +2175,7 @@ class PDataStd_NamedData : public PDF_Attribute {
 };
 
 
-%extend PDataStd_NamedData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_NamedData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_NamedData::Handle_PDataStd_NamedData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_NamedData;
-class Handle_PDataStd_NamedData : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_NamedData();
-        Handle_PDataStd_NamedData(const Handle_PDataStd_NamedData &aHandle);
-        Handle_PDataStd_NamedData(const PDataStd_NamedData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_NamedData DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_NamedData {
-    PDataStd_NamedData* _get_reference() {
-    return (PDataStd_NamedData*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_NamedData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_NamedData)
 
 %extend PDataStd_NamedData {
 	%pythoncode {
@@ -3184,51 +2198,7 @@ class PDataStd_NoteBook : public PDF_Attribute {
 };
 
 
-%extend PDataStd_NoteBook {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_NoteBook(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_NoteBook::Handle_PDataStd_NoteBook %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_NoteBook;
-class Handle_PDataStd_NoteBook : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_NoteBook();
-        Handle_PDataStd_NoteBook(const Handle_PDataStd_NoteBook &aHandle);
-        Handle_PDataStd_NoteBook(const PDataStd_NoteBook *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_NoteBook DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_NoteBook {
-    PDataStd_NoteBook* _get_reference() {
-    return (PDataStd_NoteBook*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_NoteBook {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_NoteBook)
 
 %extend PDataStd_NoteBook {
 	%pythoncode {
@@ -3299,51 +2269,7 @@ class PDataStd_Real : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Real {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Real(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Real::Handle_PDataStd_Real %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Real;
-class Handle_PDataStd_Real : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Real();
-        Handle_PDataStd_Real(const Handle_PDataStd_Real &aHandle);
-        Handle_PDataStd_Real(const PDataStd_Real *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Real DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Real {
-    PDataStd_Real* _get_reference() {
-    return (PDataStd_Real*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Real {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Real)
 
 %extend PDataStd_Real {
 	%pythoncode {
@@ -3406,51 +2332,7 @@ class PDataStd_RealArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_RealArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_RealArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_RealArray::Handle_PDataStd_RealArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_RealArray;
-class Handle_PDataStd_RealArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_RealArray();
-        Handle_PDataStd_RealArray(const Handle_PDataStd_RealArray &aHandle);
-        Handle_PDataStd_RealArray(const PDataStd_RealArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_RealArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_RealArray {
-    PDataStd_RealArray* _get_reference() {
-    return (PDataStd_RealArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_RealArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_RealArray)
 
 %extend PDataStd_RealArray {
 	%pythoncode {
@@ -3533,51 +2415,7 @@ class PDataStd_RealArray_1 : public PDF_Attribute {
 };
 
 
-%extend PDataStd_RealArray_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_RealArray_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_RealArray_1::Handle_PDataStd_RealArray_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_RealArray_1;
-class Handle_PDataStd_RealArray_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_RealArray_1();
-        Handle_PDataStd_RealArray_1(const Handle_PDataStd_RealArray_1 &aHandle);
-        Handle_PDataStd_RealArray_1(const PDataStd_RealArray_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_RealArray_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_RealArray_1 {
-    PDataStd_RealArray_1* _get_reference() {
-    return (PDataStd_RealArray_1*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_RealArray_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_RealArray_1)
 
 %extend PDataStd_RealArray_1 {
 	%pythoncode {
@@ -3640,51 +2478,7 @@ class PDataStd_RealList : public PDF_Attribute {
 };
 
 
-%extend PDataStd_RealList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_RealList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_RealList::Handle_PDataStd_RealList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_RealList;
-class Handle_PDataStd_RealList : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_RealList();
-        Handle_PDataStd_RealList(const Handle_PDataStd_RealList &aHandle);
-        Handle_PDataStd_RealList(const PDataStd_RealList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_RealList DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_RealList {
-    PDataStd_RealList* _get_reference() {
-    return (PDataStd_RealList*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_RealList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_RealList)
 
 %extend PDataStd_RealList {
 	%pythoncode {
@@ -3747,51 +2541,7 @@ class PDataStd_ReferenceArray : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ReferenceArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ReferenceArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ReferenceArray::Handle_PDataStd_ReferenceArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ReferenceArray;
-class Handle_PDataStd_ReferenceArray : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ReferenceArray();
-        Handle_PDataStd_ReferenceArray(const Handle_PDataStd_ReferenceArray &aHandle);
-        Handle_PDataStd_ReferenceArray(const PDataStd_ReferenceArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ReferenceArray DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ReferenceArray {
-    PDataStd_ReferenceArray* _get_reference() {
-    return (PDataStd_ReferenceArray*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ReferenceArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ReferenceArray)
 
 %extend PDataStd_ReferenceArray {
 	%pythoncode {
@@ -3854,51 +2604,7 @@ class PDataStd_ReferenceList : public PDF_Attribute {
 };
 
 
-%extend PDataStd_ReferenceList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_ReferenceList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_ReferenceList::Handle_PDataStd_ReferenceList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_ReferenceList;
-class Handle_PDataStd_ReferenceList : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_ReferenceList();
-        Handle_PDataStd_ReferenceList(const Handle_PDataStd_ReferenceList &aHandle);
-        Handle_PDataStd_ReferenceList(const PDataStd_ReferenceList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_ReferenceList DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_ReferenceList {
-    PDataStd_ReferenceList* _get_reference() {
-    return (PDataStd_ReferenceList*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_ReferenceList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_ReferenceList)
 
 %extend PDataStd_ReferenceList {
 	%pythoncode {
@@ -3967,51 +2673,7 @@ class PDataStd_Relation : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Relation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Relation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Relation::Handle_PDataStd_Relation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Relation;
-class Handle_PDataStd_Relation : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Relation();
-        Handle_PDataStd_Relation(const Handle_PDataStd_Relation &aHandle);
-        Handle_PDataStd_Relation(const PDataStd_Relation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Relation DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Relation {
-    PDataStd_Relation* _get_reference() {
-    return (PDataStd_Relation*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Relation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Relation)
 
 %extend PDataStd_Relation {
 	%pythoncode {
@@ -4034,51 +2696,7 @@ class PDataStd_Tick : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Tick {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Tick(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Tick::Handle_PDataStd_Tick %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Tick;
-class Handle_PDataStd_Tick : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Tick();
-        Handle_PDataStd_Tick(const Handle_PDataStd_Tick &aHandle);
-        Handle_PDataStd_Tick(const PDataStd_Tick *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Tick DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Tick {
-    PDataStd_Tick* _get_reference() {
-    return (PDataStd_Tick*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Tick {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Tick)
 
 %extend PDataStd_Tick {
 	%pythoncode {
@@ -4155,51 +2773,7 @@ class PDataStd_TreeNode : public PDF_Attribute {
 };
 
 
-%extend PDataStd_TreeNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_TreeNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_TreeNode::Handle_PDataStd_TreeNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_TreeNode;
-class Handle_PDataStd_TreeNode : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_TreeNode();
-        Handle_PDataStd_TreeNode(const Handle_PDataStd_TreeNode &aHandle);
-        Handle_PDataStd_TreeNode(const PDataStd_TreeNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_TreeNode DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_TreeNode {
-    PDataStd_TreeNode* _get_reference() {
-    return (PDataStd_TreeNode*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_TreeNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_TreeNode)
 
 %extend PDataStd_TreeNode {
 	%pythoncode {
@@ -4242,51 +2816,7 @@ class PDataStd_UAttribute : public PDF_Attribute {
 };
 
 
-%extend PDataStd_UAttribute {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_UAttribute(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_UAttribute::Handle_PDataStd_UAttribute %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_UAttribute;
-class Handle_PDataStd_UAttribute : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_UAttribute();
-        Handle_PDataStd_UAttribute(const Handle_PDataStd_UAttribute &aHandle);
-        Handle_PDataStd_UAttribute(const PDataStd_UAttribute *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_UAttribute DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_UAttribute {
-    PDataStd_UAttribute* _get_reference() {
-    return (PDataStd_UAttribute*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_UAttribute {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_UAttribute)
 
 %extend PDataStd_UAttribute {
 	%pythoncode {
@@ -4335,51 +2865,7 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfByte : public PStandard_ArrayNode {
 };
 
 
-%extend PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte::Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte;
-class Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte : public Handle_PStandard_ArrayNode {
-
-    public:
-        // constructors
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte();
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte(const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte &aHandle);
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte(const PDataStd_VArrayNodeOfFieldOfHArray1OfByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
-    PDataStd_VArrayNodeOfFieldOfHArray1OfByte* _get_reference() {
-    return (PDataStd_VArrayNodeOfFieldOfHArray1OfByte*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfByte)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
 	%pythoncode {
@@ -4428,51 +2914,7 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger : public PStandard_A
 };
 
 
-%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger::Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger;
-class Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger : public Handle_PStandard_ArrayNode {
-
-    public:
-        // constructors
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger();
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger(const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger &aHandle);
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger(const PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
-    PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger* _get_reference() {
-    return (PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
 	%pythoncode {
@@ -4521,51 +2963,7 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal : public PStandard_Arra
 };
 
 
-%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal::Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal;
-class Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal : public Handle_PStandard_ArrayNode {
-
-    public:
-        // constructors
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal();
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal(const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal &aHandle);
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal(const PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
-    PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal* _get_reference() {
-    return (PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
 	%pythoncode {
@@ -4614,51 +3012,7 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public PStandard_Array
 };
 
 
-%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString::Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString;
-class Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public Handle_PStandard_ArrayNode {
-
-    public:
-        // constructors
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString();
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString &aHandle);
-        Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(const PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
-    PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString* _get_reference() {
-    return (PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
 	%pythoncode {
@@ -4851,51 +3205,7 @@ class PDataStd_Variable : public PDF_Attribute {
 };
 
 
-%extend PDataStd_Variable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataStd_Variable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataStd_Variable::Handle_PDataStd_Variable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataStd_Variable;
-class Handle_PDataStd_Variable : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataStd_Variable();
-        Handle_PDataStd_Variable(const Handle_PDataStd_Variable &aHandle);
-        Handle_PDataStd_Variable(const PDataStd_Variable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataStd_Variable DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataStd_Variable {
-    PDataStd_Variable* _get_reference() {
-    return (PDataStd_Variable*)$self->Access();
-    }
-};
-
-%extend Handle_PDataStd_Variable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataStd_Variable)
 
 %extend PDataStd_Variable {
 	%pythoncode {

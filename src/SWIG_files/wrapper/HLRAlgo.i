@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRALGODOCSTRING
-"No docstring provided."
+"industrial design, drawings need to offer thepossibility of removing lines, which are hiddenin a given projection. To do this, the HiddenLine Removal component provides twoalgorithms: HLRBRep_Algo and HLRBRep_PolyAlgo.These algorithms remove or indicate lineshidden by surfaces. For a given projection, theycalculate a set of lines characteristic of theobject being represented. They are also usedin conjunction with extraction utilities, whichreconstruct a new, simplified shape from aselection of calculation results. This new shapeis made up of edges, which represent the linesof the visualized shape in a plane. This plane is the projection plane.HLRBRep_Algo takes into account the shapeitself. HLRBRep_PolyAlgo works with apolyhedral simplification of the shape. Whenyou use HLRBRep_Algo, you obtain an exactresult, whereas, when you useHLRBRep_PolyAlgo, you reduce computationtime but obtain polygonal segments."
 %enddef
 %module (package="OCC.Core", docstring=HLRALGODOCSTRING) HLRAlgo
 
@@ -34,30 +34,30 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include HLRAlgo_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(HLRAlgo_EdgesBlock)
+%wrap_handle(HLRAlgo_HArray1OfPHDat)
+%wrap_handle(HLRAlgo_HArray1OfPINod)
+%wrap_handle(HLRAlgo_HArray1OfPISeg)
+%wrap_handle(HLRAlgo_HArray1OfTData)
+%wrap_handle(HLRAlgo_ListNodeOfInterferenceList)
+%wrap_handle(HLRAlgo_ListNodeOfListOfBPoint)
+%wrap_handle(HLRAlgo_PolyAlgo)
+%wrap_handle(HLRAlgo_PolyData)
+%wrap_handle(HLRAlgo_PolyInternalData)
+%wrap_handle(HLRAlgo_PolyInternalNode)
+%wrap_handle(HLRAlgo_PolyShellData)
+%wrap_handle(HLRAlgo_WiresBlock)
 
 %rename(hlralgo) HLRAlgo;
 class HLRAlgo {
@@ -1180,51 +1180,7 @@ class HLRAlgo_EdgesBlock : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_EdgesBlock {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_EdgesBlock(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_EdgesBlock::Handle_HLRAlgo_EdgesBlock %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_EdgesBlock;
-class Handle_HLRAlgo_EdgesBlock : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_EdgesBlock();
-        Handle_HLRAlgo_EdgesBlock(const Handle_HLRAlgo_EdgesBlock &aHandle);
-        Handle_HLRAlgo_EdgesBlock(const HLRAlgo_EdgesBlock *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_EdgesBlock DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_EdgesBlock {
-    HLRAlgo_EdgesBlock* _get_reference() {
-    return (HLRAlgo_EdgesBlock*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_EdgesBlock {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_EdgesBlock)
 
 %extend HLRAlgo_EdgesBlock {
 	%pythoncode {
@@ -1301,51 +1257,7 @@ class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_HArray1OfPHDat {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_HArray1OfPHDat(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_HArray1OfPHDat::Handle_HLRAlgo_HArray1OfPHDat %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_HArray1OfPHDat;
-class Handle_HLRAlgo_HArray1OfPHDat : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_HArray1OfPHDat();
-        Handle_HLRAlgo_HArray1OfPHDat(const Handle_HLRAlgo_HArray1OfPHDat &aHandle);
-        Handle_HLRAlgo_HArray1OfPHDat(const HLRAlgo_HArray1OfPHDat *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_HArray1OfPHDat DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_HArray1OfPHDat {
-    HLRAlgo_HArray1OfPHDat* _get_reference() {
-    return (HLRAlgo_HArray1OfPHDat*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_HArray1OfPHDat {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_HArray1OfPHDat)
 
 %extend HLRAlgo_HArray1OfPHDat {
 	%pythoncode {
@@ -1422,51 +1334,7 @@ class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_HArray1OfPINod {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_HArray1OfPINod(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_HArray1OfPINod::Handle_HLRAlgo_HArray1OfPINod %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_HArray1OfPINod;
-class Handle_HLRAlgo_HArray1OfPINod : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_HArray1OfPINod();
-        Handle_HLRAlgo_HArray1OfPINod(const Handle_HLRAlgo_HArray1OfPINod &aHandle);
-        Handle_HLRAlgo_HArray1OfPINod(const HLRAlgo_HArray1OfPINod *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_HArray1OfPINod DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_HArray1OfPINod {
-    HLRAlgo_HArray1OfPINod* _get_reference() {
-    return (HLRAlgo_HArray1OfPINod*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_HArray1OfPINod {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_HArray1OfPINod)
 
 %extend HLRAlgo_HArray1OfPINod {
 	%pythoncode {
@@ -1543,51 +1411,7 @@ class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_HArray1OfPISeg {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_HArray1OfPISeg(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_HArray1OfPISeg::Handle_HLRAlgo_HArray1OfPISeg %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_HArray1OfPISeg;
-class Handle_HLRAlgo_HArray1OfPISeg : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_HArray1OfPISeg();
-        Handle_HLRAlgo_HArray1OfPISeg(const Handle_HLRAlgo_HArray1OfPISeg &aHandle);
-        Handle_HLRAlgo_HArray1OfPISeg(const HLRAlgo_HArray1OfPISeg *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_HArray1OfPISeg DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_HArray1OfPISeg {
-    HLRAlgo_HArray1OfPISeg* _get_reference() {
-    return (HLRAlgo_HArray1OfPISeg*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_HArray1OfPISeg {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_HArray1OfPISeg)
 
 %extend HLRAlgo_HArray1OfPISeg {
 	%pythoncode {
@@ -1664,51 +1488,7 @@ class HLRAlgo_HArray1OfTData : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_HArray1OfTData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_HArray1OfTData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_HArray1OfTData::Handle_HLRAlgo_HArray1OfTData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_HArray1OfTData;
-class Handle_HLRAlgo_HArray1OfTData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_HArray1OfTData();
-        Handle_HLRAlgo_HArray1OfTData(const Handle_HLRAlgo_HArray1OfTData &aHandle);
-        Handle_HLRAlgo_HArray1OfTData(const HLRAlgo_HArray1OfTData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_HArray1OfTData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_HArray1OfTData {
-    HLRAlgo_HArray1OfTData* _get_reference() {
-    return (HLRAlgo_HArray1OfTData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_HArray1OfTData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_HArray1OfTData)
 
 %extend HLRAlgo_HArray1OfTData {
 	%pythoncode {
@@ -2136,51 +1916,7 @@ class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
 };
 
 
-%extend HLRAlgo_ListNodeOfInterferenceList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_ListNodeOfInterferenceList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_ListNodeOfInterferenceList::Handle_HLRAlgo_ListNodeOfInterferenceList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_ListNodeOfInterferenceList;
-class Handle_HLRAlgo_ListNodeOfInterferenceList : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_ListNodeOfInterferenceList();
-        Handle_HLRAlgo_ListNodeOfInterferenceList(const Handle_HLRAlgo_ListNodeOfInterferenceList &aHandle);
-        Handle_HLRAlgo_ListNodeOfInterferenceList(const HLRAlgo_ListNodeOfInterferenceList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_ListNodeOfInterferenceList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_ListNodeOfInterferenceList {
-    HLRAlgo_ListNodeOfInterferenceList* _get_reference() {
-    return (HLRAlgo_ListNodeOfInterferenceList*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_ListNodeOfInterferenceList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_ListNodeOfInterferenceList)
 
 %extend HLRAlgo_ListNodeOfInterferenceList {
 	%pythoncode {
@@ -2205,51 +1941,7 @@ class HLRAlgo_ListNodeOfListOfBPoint : public TCollection_MapNode {
 };
 
 
-%extend HLRAlgo_ListNodeOfListOfBPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_ListNodeOfListOfBPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_ListNodeOfListOfBPoint::Handle_HLRAlgo_ListNodeOfListOfBPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_ListNodeOfListOfBPoint;
-class Handle_HLRAlgo_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_ListNodeOfListOfBPoint();
-        Handle_HLRAlgo_ListNodeOfListOfBPoint(const Handle_HLRAlgo_ListNodeOfListOfBPoint &aHandle);
-        Handle_HLRAlgo_ListNodeOfListOfBPoint(const HLRAlgo_ListNodeOfListOfBPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_ListNodeOfListOfBPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
-    HLRAlgo_ListNodeOfListOfBPoint* _get_reference() {
-    return (HLRAlgo_ListNodeOfListOfBPoint*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_ListNodeOfListOfBPoint)
 
 %extend HLRAlgo_ListNodeOfListOfBPoint {
 	%pythoncode {
@@ -2483,51 +2175,7 @@ class HLRAlgo_PolyAlgo : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_PolyAlgo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_PolyAlgo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_PolyAlgo::Handle_HLRAlgo_PolyAlgo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_PolyAlgo;
-class Handle_HLRAlgo_PolyAlgo : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_PolyAlgo();
-        Handle_HLRAlgo_PolyAlgo(const Handle_HLRAlgo_PolyAlgo &aHandle);
-        Handle_HLRAlgo_PolyAlgo(const HLRAlgo_PolyAlgo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_PolyAlgo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_PolyAlgo {
-    HLRAlgo_PolyAlgo* _get_reference() {
-    return (HLRAlgo_PolyAlgo*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_PolyAlgo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_PolyAlgo)
 
 %extend HLRAlgo_PolyAlgo {
 	%pythoncode {
@@ -2614,51 +2262,7 @@ class HLRAlgo_PolyData : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_PolyData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_PolyData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_PolyData::Handle_HLRAlgo_PolyData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_PolyData;
-class Handle_HLRAlgo_PolyData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_PolyData();
-        Handle_HLRAlgo_PolyData(const Handle_HLRAlgo_PolyData &aHandle);
-        Handle_HLRAlgo_PolyData(const HLRAlgo_PolyData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_PolyData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_PolyData {
-    HLRAlgo_PolyData* _get_reference() {
-    return (HLRAlgo_PolyData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_PolyData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_PolyData)
 
 %extend HLRAlgo_PolyData {
 	%pythoncode {
@@ -2856,51 +2460,7 @@ class HLRAlgo_PolyInternalData : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_PolyInternalData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_PolyInternalData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_PolyInternalData::Handle_HLRAlgo_PolyInternalData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_PolyInternalData;
-class Handle_HLRAlgo_PolyInternalData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_PolyInternalData();
-        Handle_HLRAlgo_PolyInternalData(const Handle_HLRAlgo_PolyInternalData &aHandle);
-        Handle_HLRAlgo_PolyInternalData(const HLRAlgo_PolyInternalData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_PolyInternalData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_PolyInternalData {
-    HLRAlgo_PolyInternalData* _get_reference() {
-    return (HLRAlgo_PolyInternalData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_PolyInternalData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_PolyInternalData)
 
 %extend HLRAlgo_PolyInternalData {
 	%pythoncode {
@@ -2925,51 +2485,7 @@ class HLRAlgo_PolyInternalNode : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_PolyInternalNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_PolyInternalNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_PolyInternalNode::Handle_HLRAlgo_PolyInternalNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_PolyInternalNode;
-class Handle_HLRAlgo_PolyInternalNode : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_PolyInternalNode();
-        Handle_HLRAlgo_PolyInternalNode(const Handle_HLRAlgo_PolyInternalNode &aHandle);
-        Handle_HLRAlgo_PolyInternalNode(const HLRAlgo_PolyInternalNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_PolyInternalNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_PolyInternalNode {
-    HLRAlgo_PolyInternalNode* _get_reference() {
-    return (HLRAlgo_PolyInternalNode*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_PolyInternalNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_PolyInternalNode)
 
 %extend HLRAlgo_PolyInternalNode {
 	%pythoncode {
@@ -3039,51 +2555,7 @@ class HLRAlgo_PolyShellData : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_PolyShellData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_PolyShellData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_PolyShellData::Handle_HLRAlgo_PolyShellData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_PolyShellData;
-class Handle_HLRAlgo_PolyShellData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_PolyShellData();
-        Handle_HLRAlgo_PolyShellData(const Handle_HLRAlgo_PolyShellData &aHandle);
-        Handle_HLRAlgo_PolyShellData(const HLRAlgo_PolyShellData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_PolyShellData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_PolyShellData {
-    HLRAlgo_PolyShellData* _get_reference() {
-    return (HLRAlgo_PolyShellData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_PolyShellData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_PolyShellData)
 
 %extend HLRAlgo_PolyShellData {
 	%pythoncode {
@@ -3332,51 +2804,7 @@ class HLRAlgo_WiresBlock : public MMgt_TShared {
 };
 
 
-%extend HLRAlgo_WiresBlock {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRAlgo_WiresBlock(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRAlgo_WiresBlock::Handle_HLRAlgo_WiresBlock %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRAlgo_WiresBlock;
-class Handle_HLRAlgo_WiresBlock : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRAlgo_WiresBlock();
-        Handle_HLRAlgo_WiresBlock(const Handle_HLRAlgo_WiresBlock &aHandle);
-        Handle_HLRAlgo_WiresBlock(const HLRAlgo_WiresBlock *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRAlgo_WiresBlock DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRAlgo_WiresBlock {
-    HLRAlgo_WiresBlock* _get_reference() {
-    return (HLRAlgo_WiresBlock*)$self->Access();
-    }
-};
-
-%extend Handle_HLRAlgo_WiresBlock {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRAlgo_WiresBlock)
 
 %extend HLRAlgo_WiresBlock {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPDSDOCSTRING
-"No docstring provided."
+"This package provides services used by the TopOpeBRepBuildpackage performing topological operations on the BRepdata structure."
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDSDOCSTRING) TopOpeBRepDS
 
@@ -34,39 +34,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopOpeBRepDS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopOpeBRepDS_DataStructure * TopOpeBRepDS_PDataStructure;
 /* end typedefs declaration */
 
 /* public enums */
+enum TopOpeBRepDS_CheckStatus {
+	TopOpeBRepDS_OK = 0,
+	TopOpeBRepDS_NOK = 1,
+};
+
 enum TopOpeBRepDS_Config {
 	TopOpeBRepDS_UNSHGEOMETRY = 0,
 	TopOpeBRepDS_SAMEORIENTED = 1,
 	TopOpeBRepDS_DIFFORIENTED = 2,
-};
-
-enum TopOpeBRepDS_CheckStatus {
-	TopOpeBRepDS_OK = 0,
-	TopOpeBRepDS_NOK = 1,
 };
 
 enum TopOpeBRepDS_Kind {
@@ -85,6 +71,35 @@ enum TopOpeBRepDS_Kind {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TopOpeBRepDS_Association)
+%wrap_handle(TopOpeBRepDS_Check)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfMapOfCurve)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfMapOfPoint)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfMapOfSurface)
+%wrap_handle(TopOpeBRepDS_DataMapNodeOfShapeSurface)
+%wrap_handle(TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape)
+%wrap_handle(TopOpeBRepDS_GapTool)
+%wrap_handle(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
+%wrap_handle(TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState)
+%wrap_handle(TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint)
+%wrap_handle(TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData)
+%wrap_handle(TopOpeBRepDS_Interference)
+%wrap_handle(TopOpeBRepDS_ListNodeOfListOfInterference)
+%wrap_handle(TopOpeBRepDS_Marker)
+%wrap_handle(TopOpeBRepDS_CurvePointInterference)
+%wrap_handle(TopOpeBRepDS_ShapeShapeInterference)
+%wrap_handle(TopOpeBRepDS_SolidSurfaceInterference)
+%wrap_handle(TopOpeBRepDS_SurfaceCurveInterference)
+%wrap_handle(TopOpeBRepDS_EdgeVertexInterference)
+%wrap_handle(TopOpeBRepDS_FaceEdgeInterference)
 
 %rename(topopebrepds) TopOpeBRepDS;
 class TopOpeBRepDS {
@@ -360,51 +375,7 @@ class TopOpeBRepDS_Association : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepDS_Association {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_Association(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_Association::Handle_TopOpeBRepDS_Association %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_Association;
-class Handle_TopOpeBRepDS_Association : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_Association();
-        Handle_TopOpeBRepDS_Association(const Handle_TopOpeBRepDS_Association &aHandle);
-        Handle_TopOpeBRepDS_Association(const TopOpeBRepDS_Association *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_Association DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_Association {
-    TopOpeBRepDS_Association* _get_reference() {
-    return (TopOpeBRepDS_Association*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_Association {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_Association)
 
 %extend TopOpeBRepDS_Association {
 	%pythoncode {
@@ -928,51 +899,7 @@ class TopOpeBRepDS_Check : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepDS_Check {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_Check(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_Check::Handle_TopOpeBRepDS_Check %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_Check;
-class Handle_TopOpeBRepDS_Check : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_Check();
-        Handle_TopOpeBRepDS_Check(const Handle_TopOpeBRepDS_Check &aHandle);
-        Handle_TopOpeBRepDS_Check(const TopOpeBRepDS_Check *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_Check DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_Check {
-    TopOpeBRepDS_Check* _get_reference() {
-    return (TopOpeBRepDS_Check*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_Check {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_Check)
 
 %extend TopOpeBRepDS_Check {
 	%pythoncode {
@@ -1673,51 +1600,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public TCollection_MapNod
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus(const TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
 	%pythoncode {
@@ -1757,51 +1640,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : public TCol
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
 	%pythoncode {
@@ -1832,51 +1671,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference : public
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference(const TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
 	%pythoncode {
@@ -1907,51 +1702,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public TCollection_
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape(const TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
 	%pythoncode {
@@ -1982,51 +1733,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public TColl
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State(const TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
 	%pythoncode {
@@ -2057,51 +1764,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public TCollection_MapNode
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState::Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState;
-class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState();
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState(const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState(const TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState)
 
 %extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
 	%pythoncode {
@@ -2141,51 +1804,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfCurve : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfMapOfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve::Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve;
-class Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve();
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve(const Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve(const TopOpeBRepDS_DataMapNodeOfMapOfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve {
-    TopOpeBRepDS_DataMapNodeOfMapOfCurve* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfMapOfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfMapOfCurve)
 
 %extend TopOpeBRepDS_DataMapNodeOfMapOfCurve {
 	%pythoncode {
@@ -2225,51 +1844,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public TCollection_MapNo
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData::Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData;
-class Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData();
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData(const Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData(const TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
-    TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData)
 
 %extend TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
 	%pythoncode {
@@ -2309,51 +1884,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfPoint : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfMapOfPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint::Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint;
-class Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint();
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint(const Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint(const TopOpeBRepDS_DataMapNodeOfMapOfPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint {
-    TopOpeBRepDS_DataMapNodeOfMapOfPoint* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfMapOfPoint*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfMapOfPoint)
 
 %extend TopOpeBRepDS_DataMapNodeOfMapOfPoint {
 	%pythoncode {
@@ -2393,51 +1924,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfSurface : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfMapOfSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface::Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface;
-class Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface();
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface(const Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface(const TopOpeBRepDS_DataMapNodeOfMapOfSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface {
-    TopOpeBRepDS_DataMapNodeOfMapOfSurface* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfMapOfSurface*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfMapOfSurface)
 
 %extend TopOpeBRepDS_DataMapNodeOfMapOfSurface {
 	%pythoncode {
@@ -2468,51 +1955,7 @@ class TopOpeBRepDS_DataMapNodeOfShapeSurface : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepDS_DataMapNodeOfShapeSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface::Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface;
-class Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface();
-        Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface(const Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface &aHandle);
-        Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface(const TopOpeBRepDS_DataMapNodeOfShapeSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface {
-    TopOpeBRepDS_DataMapNodeOfShapeSurface* _get_reference() {
-    return (TopOpeBRepDS_DataMapNodeOfShapeSurface*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DataMapNodeOfShapeSurface)
 
 %extend TopOpeBRepDS_DataMapNodeOfShapeSurface {
 	%pythoncode {
@@ -3774,51 +3217,7 @@ class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_M
 };
 
 
-%extend TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape::Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape;
-class Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape();
-        Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape(const Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape &aHandle);
-        Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape(const TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
-    TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape* _get_reference() {
-    return (TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape)
 
 %extend TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
 	%pythoncode {
@@ -4717,51 +4116,7 @@ class TopOpeBRepDS_GapTool : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepDS_GapTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_GapTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_GapTool::Handle_TopOpeBRepDS_GapTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_GapTool;
-class Handle_TopOpeBRepDS_GapTool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_GapTool();
-        Handle_TopOpeBRepDS_GapTool(const Handle_TopOpeBRepDS_GapTool &aHandle);
-        Handle_TopOpeBRepDS_GapTool(const TopOpeBRepDS_GapTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_GapTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_GapTool {
-    TopOpeBRepDS_GapTool* _get_reference() {
-    return (TopOpeBRepDS_GapTool*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_GapTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_GapTool)
 
 %extend TopOpeBRepDS_GapTool {
 	%pythoncode {
@@ -4885,51 +4240,7 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public MMgt_TSh
 };
 
 
-%extend TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference;
-class Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference();
-        Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference &aHandle);
-        Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* _get_reference() {
-    return (TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 
 %extend TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
 	%pythoncode {
@@ -4981,51 +4292,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : public T
 };
 
 
-%extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState::Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState;
-class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState();
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState(const Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState &aHandle);
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState(const TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
-    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState* _get_reference() {
-    return (TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState)
 
 %extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
 	%pythoncode {
@@ -5077,51 +4344,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : public TCol
 };
 
 
-%extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint::Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint;
-class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint();
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint(const Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint &aHandle);
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint(const TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
-    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint* _get_reference() {
-    return (TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint)
 
 %extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
 	%pythoncode {
@@ -5173,51 +4396,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public TCollection_MapNo
 };
 
 
-%extend TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData::Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData;
-class Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData();
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData(const Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData &aHandle);
-        Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData(const TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
-    TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData* _get_reference() {
-    return (TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData)
 
 %extend TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
 	%pythoncode {
@@ -5604,51 +4783,7 @@ class TopOpeBRepDS_Interference : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepDS_Interference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_Interference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_Interference::Handle_TopOpeBRepDS_Interference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_Interference;
-class Handle_TopOpeBRepDS_Interference : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_Interference();
-        Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_Interference &aHandle);
-        Handle_TopOpeBRepDS_Interference(const TopOpeBRepDS_Interference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_Interference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_Interference {
-    TopOpeBRepDS_Interference* _get_reference() {
-    return (TopOpeBRepDS_Interference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_Interference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_Interference)
 
 %extend TopOpeBRepDS_Interference {
 	%pythoncode {
@@ -5927,51 +5062,7 @@ class TopOpeBRepDS_ListNodeOfListOfInterference : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepDS_ListNodeOfListOfInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_ListNodeOfListOfInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_ListNodeOfListOfInterference::Handle_TopOpeBRepDS_ListNodeOfListOfInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_ListNodeOfListOfInterference;
-class Handle_TopOpeBRepDS_ListNodeOfListOfInterference : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_ListNodeOfListOfInterference();
-        Handle_TopOpeBRepDS_ListNodeOfListOfInterference(const Handle_TopOpeBRepDS_ListNodeOfListOfInterference &aHandle);
-        Handle_TopOpeBRepDS_ListNodeOfListOfInterference(const TopOpeBRepDS_ListNodeOfListOfInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_ListNodeOfListOfInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_ListNodeOfListOfInterference {
-    TopOpeBRepDS_ListNodeOfListOfInterference* _get_reference() {
-    return (TopOpeBRepDS_ListNodeOfListOfInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_ListNodeOfListOfInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_ListNodeOfListOfInterference)
 
 %extend TopOpeBRepDS_ListNodeOfListOfInterference {
 	%pythoncode {
@@ -6641,51 +5732,7 @@ class TopOpeBRepDS_Marker : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepDS_Marker {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_Marker(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_Marker::Handle_TopOpeBRepDS_Marker %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_Marker;
-class Handle_TopOpeBRepDS_Marker : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_Marker();
-        Handle_TopOpeBRepDS_Marker(const Handle_TopOpeBRepDS_Marker &aHandle);
-        Handle_TopOpeBRepDS_Marker(const TopOpeBRepDS_Marker *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_Marker DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_Marker {
-    TopOpeBRepDS_Marker* _get_reference() {
-    return (TopOpeBRepDS_Marker*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_Marker {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_Marker)
 
 %extend TopOpeBRepDS_Marker {
 	%pythoncode {
@@ -7686,51 +6733,7 @@ class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
         };
 
 
-%extend TopOpeBRepDS_CurvePointInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_CurvePointInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_CurvePointInterference::Handle_TopOpeBRepDS_CurvePointInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_CurvePointInterference;
-class Handle_TopOpeBRepDS_CurvePointInterference : public Handle_TopOpeBRepDS_Interference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_CurvePointInterference();
-        Handle_TopOpeBRepDS_CurvePointInterference(const Handle_TopOpeBRepDS_CurvePointInterference &aHandle);
-        Handle_TopOpeBRepDS_CurvePointInterference(const TopOpeBRepDS_CurvePointInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_CurvePointInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_CurvePointInterference {
-    TopOpeBRepDS_CurvePointInterference* _get_reference() {
-    return (TopOpeBRepDS_CurvePointInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_CurvePointInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_CurvePointInterference)
 
 %extend TopOpeBRepDS_CurvePointInterference {
 	%pythoncode {
@@ -7895,51 +6898,7 @@ class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
         };
 
 
-%extend TopOpeBRepDS_ShapeShapeInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_ShapeShapeInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_ShapeShapeInterference::Handle_TopOpeBRepDS_ShapeShapeInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_ShapeShapeInterference;
-class Handle_TopOpeBRepDS_ShapeShapeInterference : public Handle_TopOpeBRepDS_Interference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_ShapeShapeInterference();
-        Handle_TopOpeBRepDS_ShapeShapeInterference(const Handle_TopOpeBRepDS_ShapeShapeInterference &aHandle);
-        Handle_TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_ShapeShapeInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_ShapeShapeInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_ShapeShapeInterference {
-    TopOpeBRepDS_ShapeShapeInterference* _get_reference() {
-    return (TopOpeBRepDS_ShapeShapeInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_ShapeShapeInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_ShapeShapeInterference)
 
 %extend TopOpeBRepDS_ShapeShapeInterference {
 	%pythoncode {
@@ -7974,51 +6933,7 @@ class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
         };
 
 
-%extend TopOpeBRepDS_SolidSurfaceInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_SolidSurfaceInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_SolidSurfaceInterference::Handle_TopOpeBRepDS_SolidSurfaceInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_SolidSurfaceInterference;
-class Handle_TopOpeBRepDS_SolidSurfaceInterference : public Handle_TopOpeBRepDS_Interference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_SolidSurfaceInterference();
-        Handle_TopOpeBRepDS_SolidSurfaceInterference(const Handle_TopOpeBRepDS_SolidSurfaceInterference &aHandle);
-        Handle_TopOpeBRepDS_SolidSurfaceInterference(const TopOpeBRepDS_SolidSurfaceInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_SolidSurfaceInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_SolidSurfaceInterference {
-    TopOpeBRepDS_SolidSurfaceInterference* _get_reference() {
-    return (TopOpeBRepDS_SolidSurfaceInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_SolidSurfaceInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_SolidSurfaceInterference)
 
 %extend TopOpeBRepDS_SolidSurfaceInterference {
 	%pythoncode {
@@ -8083,51 +6998,7 @@ class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
         };
 
 
-%extend TopOpeBRepDS_SurfaceCurveInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_SurfaceCurveInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_SurfaceCurveInterference::Handle_TopOpeBRepDS_SurfaceCurveInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_SurfaceCurveInterference;
-class Handle_TopOpeBRepDS_SurfaceCurveInterference : public Handle_TopOpeBRepDS_Interference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_SurfaceCurveInterference();
-        Handle_TopOpeBRepDS_SurfaceCurveInterference(const Handle_TopOpeBRepDS_SurfaceCurveInterference &aHandle);
-        Handle_TopOpeBRepDS_SurfaceCurveInterference(const TopOpeBRepDS_SurfaceCurveInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_SurfaceCurveInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_SurfaceCurveInterference {
-    TopOpeBRepDS_SurfaceCurveInterference* _get_reference() {
-    return (TopOpeBRepDS_SurfaceCurveInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_SurfaceCurveInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_SurfaceCurveInterference)
 
 %extend TopOpeBRepDS_SurfaceCurveInterference {
 	%pythoncode {
@@ -8248,51 +7119,7 @@ class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterf
         };
 
 
-%extend TopOpeBRepDS_EdgeVertexInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_EdgeVertexInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_EdgeVertexInterference::Handle_TopOpeBRepDS_EdgeVertexInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_EdgeVertexInterference;
-class Handle_TopOpeBRepDS_EdgeVertexInterference : public Handle_TopOpeBRepDS_ShapeShapeInterference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_EdgeVertexInterference();
-        Handle_TopOpeBRepDS_EdgeVertexInterference(const Handle_TopOpeBRepDS_EdgeVertexInterference &aHandle);
-        Handle_TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_EdgeVertexInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_EdgeVertexInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_EdgeVertexInterference {
-    TopOpeBRepDS_EdgeVertexInterference* _get_reference() {
-    return (TopOpeBRepDS_EdgeVertexInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_EdgeVertexInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_EdgeVertexInterference)
 
 %extend TopOpeBRepDS_EdgeVertexInterference {
 	%pythoncode {
@@ -8329,51 +7156,7 @@ class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterfer
         };
 
 
-%extend TopOpeBRepDS_FaceEdgeInterference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepDS_FaceEdgeInterference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepDS_FaceEdgeInterference::Handle_TopOpeBRepDS_FaceEdgeInterference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepDS_FaceEdgeInterference;
-class Handle_TopOpeBRepDS_FaceEdgeInterference : public Handle_TopOpeBRepDS_ShapeShapeInterference {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepDS_FaceEdgeInterference();
-        Handle_TopOpeBRepDS_FaceEdgeInterference(const Handle_TopOpeBRepDS_FaceEdgeInterference &aHandle);
-        Handle_TopOpeBRepDS_FaceEdgeInterference(const TopOpeBRepDS_FaceEdgeInterference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepDS_FaceEdgeInterference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepDS_FaceEdgeInterference {
-    TopOpeBRepDS_FaceEdgeInterference* _get_reference() {
-    return (TopOpeBRepDS_FaceEdgeInterference*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepDS_FaceEdgeInterference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepDS_FaceEdgeInterference)
 
 %extend TopOpeBRepDS_FaceEdgeInterference {
 	%pythoncode {

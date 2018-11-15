@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADVAPP2VARDOCSTRING
-"No docstring provided."
+"This package provides algorithms to approximate afunction of 2 variables that can be multidimensional;the result is a BSpline function with the required continuityWarning: only one 3D BSpline for the moment"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AdvApp2Var_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -68,6 +54,11 @@ enum AdvApp2Var_CriterionType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfNode)
+%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfPatch)
+%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfStrip)
+%wrap_handle(AdvApp2Var_SequenceNodeOfStrip)
 
 %nodefaultctor AdvApp2Var_ApproxAFunc2Var;
 class AdvApp2Var_ApproxAFunc2Var {
@@ -2109,51 +2100,7 @@ class AdvApp2Var_SequenceNodeOfSequenceOfNode : public TCollection_SeqNode {
 };
 
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode::Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode;
-class Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode();
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode(const Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode &aHandle);
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode(const AdvApp2Var_SequenceNodeOfSequenceOfNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
-    AdvApp2Var_SequenceNodeOfSequenceOfNode* _get_reference() {
-    return (AdvApp2Var_SequenceNodeOfSequenceOfNode*)$self->Access();
-    }
-};
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfNode)
 
 %extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
 	%pythoncode {
@@ -2180,51 +2127,7 @@ class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode {
 };
 
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch::Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch;
-class Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch();
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch(const Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch &aHandle);
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch(const AdvApp2Var_SequenceNodeOfSequenceOfPatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-    AdvApp2Var_SequenceNodeOfSequenceOfPatch* _get_reference() {
-    return (AdvApp2Var_SequenceNodeOfSequenceOfPatch*)$self->Access();
-    }
-};
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfPatch)
 
 %extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
 	%pythoncode {
@@ -2251,51 +2154,7 @@ class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode {
 };
 
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip::Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip;
-class Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip();
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip(const Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip &aHandle);
-        Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip(const AdvApp2Var_SequenceNodeOfSequenceOfStrip *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-    AdvApp2Var_SequenceNodeOfSequenceOfStrip* _get_reference() {
-    return (AdvApp2Var_SequenceNodeOfSequenceOfStrip*)$self->Access();
-    }
-};
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfStrip)
 
 %extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
 	%pythoncode {
@@ -2322,51 +2181,7 @@ class AdvApp2Var_SequenceNodeOfStrip : public TCollection_SeqNode {
 };
 
 
-%extend AdvApp2Var_SequenceNodeOfStrip {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfStrip(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AdvApp2Var_SequenceNodeOfStrip::Handle_AdvApp2Var_SequenceNodeOfStrip %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AdvApp2Var_SequenceNodeOfStrip;
-class Handle_AdvApp2Var_SequenceNodeOfStrip : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AdvApp2Var_SequenceNodeOfStrip();
-        Handle_AdvApp2Var_SequenceNodeOfStrip(const Handle_AdvApp2Var_SequenceNodeOfStrip &aHandle);
-        Handle_AdvApp2Var_SequenceNodeOfStrip(const AdvApp2Var_SequenceNodeOfStrip *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AdvApp2Var_SequenceNodeOfStrip DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AdvApp2Var_SequenceNodeOfStrip {
-    AdvApp2Var_SequenceNodeOfStrip* _get_reference() {
-    return (AdvApp2Var_SequenceNodeOfStrip*)$self->Access();
-    }
-};
-
-%extend Handle_AdvApp2Var_SequenceNodeOfStrip {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AdvApp2Var_SequenceNodeOfStrip)
 
 %extend AdvApp2Var_SequenceNodeOfStrip {
 	%pythoncode {

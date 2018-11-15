@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPECUSTOMDOCSTRING
-"No docstring provided."
+"This package is intended toconvert geometrical objects and topological. Themodifications of one geometrical object to another(one) geometrical object are provided. The supportedmodifications are the following:conversion of BSpline and Bezier surfaces to analytical form,conversion of indirect elementary surfaces (with left-handedcoordinate systems) into direct ones,conversion of elementary surfaces to surfaces of revolution,conversion of surface of linear extrusion, revolution, offsetsurface to bspline,modification of parameterization, degree, number of segments of bsplinesurfaces, scale the shape."
 %enddef
 %module (package="OCC.Core", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 
@@ -34,30 +34,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeCustom_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeCustom_Modification)
+%wrap_handle(ShapeCustom_RestrictionParameters)
+%wrap_handle(ShapeCustom_TrsfModification)
+%wrap_handle(ShapeCustom_ConvertToBSpline)
+%wrap_handle(ShapeCustom_DirectModification)
 
 %rename(shapecustom) ShapeCustom;
 class ShapeCustom {
@@ -285,51 +277,7 @@ class ShapeCustom_Modification : public BRepTools_Modification {
 };
 
 
-%extend ShapeCustom_Modification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_Modification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_Modification::Handle_ShapeCustom_Modification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_Modification;
-class Handle_ShapeCustom_Modification : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_Modification();
-        Handle_ShapeCustom_Modification(const Handle_ShapeCustom_Modification &aHandle);
-        Handle_ShapeCustom_Modification(const ShapeCustom_Modification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_Modification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_Modification {
-    ShapeCustom_Modification* _get_reference() {
-    return (ShapeCustom_Modification*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_Modification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeCustom_Modification)
 
 %extend ShapeCustom_Modification {
 	%pythoncode {
@@ -556,51 +504,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
             };
 
 
-%extend ShapeCustom_RestrictionParameters {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_RestrictionParameters(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_RestrictionParameters::Handle_ShapeCustom_RestrictionParameters %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_RestrictionParameters;
-class Handle_ShapeCustom_RestrictionParameters : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_RestrictionParameters();
-        Handle_ShapeCustom_RestrictionParameters(const Handle_ShapeCustom_RestrictionParameters &aHandle);
-        Handle_ShapeCustom_RestrictionParameters(const ShapeCustom_RestrictionParameters *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_RestrictionParameters DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_RestrictionParameters {
-    ShapeCustom_RestrictionParameters* _get_reference() {
-    return (ShapeCustom_RestrictionParameters*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_RestrictionParameters {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeCustom_RestrictionParameters)
 
 %extend ShapeCustom_RestrictionParameters {
 	%pythoncode {
@@ -750,51 +654,7 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 };
 
 
-%extend ShapeCustom_TrsfModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_TrsfModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_TrsfModification::Handle_ShapeCustom_TrsfModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_TrsfModification;
-class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModification {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_TrsfModification();
-        Handle_ShapeCustom_TrsfModification(const Handle_ShapeCustom_TrsfModification &aHandle);
-        Handle_ShapeCustom_TrsfModification(const ShapeCustom_TrsfModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_TrsfModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_TrsfModification {
-    ShapeCustom_TrsfModification* _get_reference() {
-    return (ShapeCustom_TrsfModification*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_TrsfModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeCustom_TrsfModification)
 
 %extend ShapeCustom_TrsfModification {
 	%pythoncode {
@@ -937,51 +797,7 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 };
 
 
-%extend ShapeCustom_ConvertToBSpline {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_ConvertToBSpline(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_ConvertToBSpline::Handle_ShapeCustom_ConvertToBSpline %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_ConvertToBSpline;
-class Handle_ShapeCustom_ConvertToBSpline : public Handle_ShapeCustom_Modification {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_ConvertToBSpline();
-        Handle_ShapeCustom_ConvertToBSpline(const Handle_ShapeCustom_ConvertToBSpline &aHandle);
-        Handle_ShapeCustom_ConvertToBSpline(const ShapeCustom_ConvertToBSpline *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_ConvertToBSpline DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_ConvertToBSpline {
-    ShapeCustom_ConvertToBSpline* _get_reference() {
-    return (ShapeCustom_ConvertToBSpline*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_ConvertToBSpline {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeCustom_ConvertToBSpline)
 
 %extend ShapeCustom_ConvertToBSpline {
 	%pythoncode {
@@ -1092,51 +908,7 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 };
 
 
-%extend ShapeCustom_DirectModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_DirectModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_DirectModification::Handle_ShapeCustom_DirectModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_DirectModification;
-class Handle_ShapeCustom_DirectModification : public Handle_ShapeCustom_Modification {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_DirectModification();
-        Handle_ShapeCustom_DirectModification(const Handle_ShapeCustom_DirectModification &aHandle);
-        Handle_ShapeCustom_DirectModification(const ShapeCustom_DirectModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_DirectModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_DirectModification {
-    ShapeCustom_DirectModification* _get_reference() {
-    return (ShapeCustom_DirectModification*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_DirectModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeCustom_DirectModification)
 
 %extend ShapeCustom_DirectModification {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define AISDOCSTRING
-"No docstring provided."
+"Application Interactive Services provide the means tocreate links between an application GUI viewer andthe packages which are used to manage selectionand presentation. The tools AIS defined in order todo this include different sorts of entities: both theselectable viewable objects themselves and thecontext and attribute managers to define theirselection and display.To orient the user as he works in a modelingenvironment, views and selections must becomprehensible. There must be several different sortsof selectable and viewable object defined. These mustalso be interactive, that is, connecting graphicrepresentation and the underlying referencegeometry. These entities are called InteractiveObjects, and are divided into four types:-  the Datum-  the Relation-  the Object-  None.The Datum groups together the construction elementssuch as lines, circles, points, trihedra, plane trihedra,planes and axes.The Relation is made up of constraints on one ormore interactive shapes and the correspondingreference geometry. For example, you might want toconstrain two edges in a parallel relation. Thiscontraint is considered as an object in its own right,and is shown as a sensitive primitive. This takes thegraphic form of a perpendicular arrow marked withthe || symbol and lying between the two edges.The Object type includes topological shapes, andconnections between shapes.None, in order not to eliminate the object, tells theapplication to look further until it finds an objectdefinition in its generation which is accepted.Inside these categories, you have the possibilityof  an additional characterization by means of asignature. The signature provides an index to thefurther characterization. By default, the  InteractiveObject has a None type and a signature of 0(equivalent to None.) If you want to give a particulartype and signature to your interactive object, you mustredefine the two virtual methods: Type and Signature.In the C++ inheritance structure of the package, eachclass representing a specific Interactive Objectinherits AIS_InteractiveObject. Among theseinheriting classes, AIS_Relation functions as theabstract mother class for tinheriting classes definingdisplay of specific relational constraints and types ofdimension. Some of these include:-  display of constraints based on relations ofsymmetry, tangency, parallelism and concentricity-  display of dimensions for angles, offsets,diameters, radii and chamfers.No viewer can show everything at once with anycoherence or clarity. Views must be managedcarefully both sequentially and at any given instant.Another function of the view is that of a context tocarry out design in. The design changes are appliedto the objects in the view and then extended to theunderlying reference geometry by a solver. To makesense of this complicated visual data, several displayand selection tools are required. To facilitatemanagement, each object and each constructionelement has a selection priority. There are alsomeans to modify the default priority.To define an environment of dynamic detection, youcan use standard filter classes or create your own. Afilter questions the owner of the sensitive primitive inlocal context to determine if it has the the desiredqualities. If it answers positively, it is kept. If not, it is rejected.The standard filters supplied in AIS include:AIS_AttributeFilterAIS_SignatureFilterAIS_TypeFilter.Only the type filter can be used in the defaultoperating mode, the neutral point. The others canonly be used in open local contexts.Neutral point and local context constitute the twooperating modes of the central entity which pilotsvisualizations and selections, the Interactive Context.It is linked to a main viewer and if you like, a trash binviewer as well.The neutral point, which is the default mode, allowsyou to easily visualize and select interactive objectswhich have been loaded into the context. Openinglocal contexts allows you to prepare and use atemporary selection environment without disturbingthe neutral point. A set of functions allows you tochoose the interactive objects which you want to acton, the selection modes which you want to activate,and the temporary visualizations which you willexecute. When the operation is finished, you close thecurrent local context and return to the state in whichyou were before opening it (neutral point or previouslocal context).An interactive object can have a certain number ofgraphic attributes which are specific to it, such asvisualization mode, color, and material. By the sametoken, the interactive context has a set of graphicattributes, the Drawer which is valid by default for theobjects it controls.  When an interactive object isvisualized, the required graphic attributes are firsttaken from the object's own Drawer if one exists, orfrom the context drawer for the others."
 %enddef
 %module (package="OCC.Core", docstring=AISDOCSTRING) AIS
 
@@ -34,30 +34,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AIS_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
 typedef NCollection_List <Handle_Standard_Transient> AIS_NListTransient;
 typedef AIS_NListTransient::Iterator AIS_NListIteratorOfListTransient;
-typedef AIS_InteractiveContext * AIS_PToContext;
 typedef NCollection_DataMap <Handle_Standard_Transient , AIS_NListIteratorOfListTransient> AIS_NDataMapOfTransientIteratorOfListTransient;
+typedef AIS_InteractiveContext * AIS_PToContext;
 /* end typedefs declaration */
 
 /* public enums */
@@ -67,6 +53,120 @@ enum AIS_ClearMode {
 	AIS_CM_Filters = 2,
 	AIS_CM_StandardModes = 3,
 	AIS_CM_TemporaryShapePrs = 4,
+};
+
+enum AIS_ConnectStatus {
+	AIS_CS_None = 0,
+	AIS_CS_Connection = 1,
+	AIS_CS_Transform = 2,
+	AIS_CS_Both = 3,
+};
+
+enum AIS_DimensionSelectionMode {
+	AIS_DSM_All = 0,
+	AIS_DSM_Line = 1,
+	AIS_DSM_Text = 2,
+};
+
+enum AIS_DisplayMode {
+	AIS_WireFrame = 0,
+	AIS_Shaded = 1,
+};
+
+enum AIS_DisplaySpecialSymbol {
+	AIS_DSS_No = 0,
+	AIS_DSS_Before = 1,
+	AIS_DSS_After = 2,
+};
+
+enum AIS_DisplayStatus {
+	AIS_DS_Displayed = 0,
+	AIS_DS_Erased = 1,
+	AIS_DS_Temporary = 2,
+	AIS_DS_None = 3,
+};
+
+enum AIS_KindOfDimension {
+	AIS_KOD_NONE = 0,
+	AIS_KOD_LENGTH = 1,
+	AIS_KOD_PLANEANGLE = 2,
+	AIS_KOD_SOLIDANGLE = 3,
+	AIS_KOD_AREA = 4,
+	AIS_KOD_VOLUME = 5,
+	AIS_KOD_MASS = 6,
+	AIS_KOD_TIME = 7,
+	AIS_KOD_RADIUS = 8,
+	AIS_KOD_DIAMETER = 9,
+	AIS_KOD_CHAMF2D = 10,
+	AIS_KOD_CHAMF3D = 11,
+	AIS_KOD_OFFSET = 12,
+	AIS_KOD_ELLIPSERADIUS = 13,
+};
+
+enum AIS_KindOfInteractive {
+	AIS_KOI_None = 0,
+	AIS_KOI_Datum = 1,
+	AIS_KOI_Shape = 2,
+	AIS_KOI_Object = 3,
+	AIS_KOI_Relation = 4,
+	AIS_KOI_Dimension = 5,
+};
+
+enum AIS_KindOfSurface {
+	AIS_KOS_Plane = 0,
+	AIS_KOS_Cylinder = 1,
+	AIS_KOS_Cone = 2,
+	AIS_KOS_Sphere = 3,
+	AIS_KOS_Torus = 4,
+	AIS_KOS_Revolution = 5,
+	AIS_KOS_Extrusion = 6,
+	AIS_KOS_OtherSurface = 7,
+};
+
+enum AIS_KindOfUnit {
+	AIS_TOU_LENGTH = 0,
+	AIS_TOU_SURFACE = 1,
+	AIS_TOU_VOLUME = 2,
+	AIS_TOU_PLANE_ANGLE = 3,
+	AIS_TOU_SOLID_ANGLE = 4,
+	AIS_TOU_MASS = 5,
+	AIS_TOU_FORCE = 6,
+	AIS_TOU_TIME = 7,
+};
+
+enum AIS_SelectStatus {
+	AIS_SS_Added = 0,
+	AIS_SS_Removed = 1,
+	AIS_SS_NotDone = 2,
+};
+
+enum AIS_StandardDatum {
+	AIS_SD_None = 0,
+	AIS_SD_Point = 1,
+	AIS_SD_Axis = 2,
+	AIS_SD_Trihedron = 3,
+	AIS_SD_PlaneTrihedron = 4,
+	AIS_SD_Line = 5,
+	AIS_SD_Circle = 6,
+	AIS_SD_Plane = 7,
+};
+
+enum AIS_StatusOfDetection {
+	AIS_SOD_Error = 0,
+	AIS_SOD_Nothing = 1,
+	AIS_SOD_AllBad = 2,
+	AIS_SOD_Selected = 3,
+	AIS_SOD_OnlyOneDetected = 4,
+	AIS_SOD_OnlyOneGood = 5,
+	AIS_SOD_SeveralGood = 6,
+};
+
+enum AIS_StatusOfPick {
+	AIS_SOP_Error = 0,
+	AIS_SOP_NothingSelected = 1,
+	AIS_SOP_Removed = 2,
+	AIS_SOP_OneSelected = 3,
+	AIS_SOP_SeveralSelected = 4,
 };
 
 enum AIS_TypeOfAttribute {
@@ -87,44 +187,6 @@ enum AIS_TypeOfAttribute {
 	AIS_TOA_ThirdAxis = 14,
 };
 
-enum AIS_DimensionSelectionMode {
-	AIS_DSM_All = 0,
-	AIS_DSM_Line = 1,
-	AIS_DSM_Text = 2,
-};
-
-enum AIS_KindOfInteractive {
-	AIS_KOI_None = 0,
-	AIS_KOI_Datum = 1,
-	AIS_KOI_Shape = 2,
-	AIS_KOI_Object = 3,
-	AIS_KOI_Relation = 4,
-	AIS_KOI_Dimension = 5,
-};
-
-enum AIS_KindOfDimension {
-	AIS_KOD_NONE = 0,
-	AIS_KOD_LENGTH = 1,
-	AIS_KOD_PLANEANGLE = 2,
-	AIS_KOD_SOLIDANGLE = 3,
-	AIS_KOD_AREA = 4,
-	AIS_KOD_VOLUME = 5,
-	AIS_KOD_MASS = 6,
-	AIS_KOD_TIME = 7,
-	AIS_KOD_RADIUS = 8,
-	AIS_KOD_DIAMETER = 9,
-	AIS_KOD_CHAMF2D = 10,
-	AIS_KOD_CHAMF3D = 11,
-	AIS_KOD_OFFSET = 12,
-	AIS_KOD_ELLIPSERADIUS = 13,
-};
-
-enum AIS_SelectStatus {
-	AIS_SS_Added = 0,
-	AIS_SS_Removed = 1,
-	AIS_SS_NotDone = 2,
-};
-
 enum AIS_TypeOfAxis {
 	AIS_TOAX_Unknown = 0,
 	AIS_TOAX_XAxis = 1,
@@ -132,85 +194,16 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_ZAxis = 3,
 };
 
-enum AIS_KindOfUnit {
-	AIS_TOU_LENGTH = 0,
-	AIS_TOU_SURFACE = 1,
-	AIS_TOU_VOLUME = 2,
-	AIS_TOU_PLANE_ANGLE = 3,
-	AIS_TOU_SOLID_ANGLE = 4,
-	AIS_TOU_MASS = 5,
-	AIS_TOU_FORCE = 6,
-	AIS_TOU_TIME = 7,
-};
-
-enum AIS_ConnectStatus {
-	AIS_CS_None = 0,
-	AIS_CS_Connection = 1,
-	AIS_CS_Transform = 2,
-	AIS_CS_Both = 3,
+enum AIS_TypeOfDist {
+	AIS_TOD_Unknown = 0,
+	AIS_TOD_Horizontal = 1,
+	AIS_TOD_Vertical = 2,
 };
 
 enum AIS_TypeOfIso {
 	AIS_TOI_IsoU = 0,
 	AIS_TOI_IsoV = 1,
 	AIS_TOI_Both = 2,
-};
-
-enum AIS_StatusOfDetection {
-	AIS_SOD_Error = 0,
-	AIS_SOD_Nothing = 1,
-	AIS_SOD_AllBad = 2,
-	AIS_SOD_Selected = 3,
-	AIS_SOD_OnlyOneDetected = 4,
-	AIS_SOD_OnlyOneGood = 5,
-	AIS_SOD_SeveralGood = 6,
-};
-
-enum AIS_KindOfSurface {
-	AIS_KOS_Plane = 0,
-	AIS_KOS_Cylinder = 1,
-	AIS_KOS_Cone = 2,
-	AIS_KOS_Sphere = 3,
-	AIS_KOS_Torus = 4,
-	AIS_KOS_Revolution = 5,
-	AIS_KOS_Extrusion = 6,
-	AIS_KOS_OtherSurface = 7,
-};
-
-enum AIS_StandardDatum {
-	AIS_SD_None = 0,
-	AIS_SD_Point = 1,
-	AIS_SD_Axis = 2,
-	AIS_SD_Trihedron = 3,
-	AIS_SD_PlaneTrihedron = 4,
-	AIS_SD_Line = 5,
-	AIS_SD_Circle = 6,
-	AIS_SD_Plane = 7,
-};
-
-enum AIS_DisplayMode {
-	AIS_WireFrame = 0,
-	AIS_Shaded = 1,
-};
-
-enum AIS_StatusOfPick {
-	AIS_SOP_Error = 0,
-	AIS_SOP_NothingSelected = 1,
-	AIS_SOP_Removed = 2,
-	AIS_SOP_OneSelected = 3,
-	AIS_SOP_SeveralSelected = 4,
-};
-
-enum AIS_DisplaySpecialSymbol {
-	AIS_DSS_No = 0,
-	AIS_DSS_Before = 1,
-	AIS_DSS_After = 2,
-};
-
-enum AIS_TypeOfDist {
-	AIS_TOD_Unknown = 0,
-	AIS_TOD_Horizontal = 1,
-	AIS_TOD_Vertical = 2,
 };
 
 enum AIS_TypeOfPlane {
@@ -220,14 +213,67 @@ enum AIS_TypeOfPlane {
 	AIS_TOPL_YZPlane = 3,
 };
 
-enum AIS_DisplayStatus {
-	AIS_DS_Displayed = 0,
-	AIS_DS_Erased = 1,
-	AIS_DS_Temporary = 2,
-	AIS_DS_None = 3,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(AIS_AttributeFilter)
+%wrap_handle(AIS_BadEdgeFilter)
+%wrap_handle(AIS_C0RegularityFilter)
+%wrap_handle(AIS_DataMapNodeOfDataMapOfILC)
+%wrap_handle(AIS_DataMapNodeOfDataMapOfIOStatus)
+%wrap_handle(AIS_DataMapNodeOfDataMapOfSelStat)
+%wrap_handle(AIS_DataMapNodeOfDataMapofIntegerListOfinteractive)
+%wrap_handle(AIS_DimensionOwner)
+%wrap_handle(AIS_ExclusionFilter)
+%wrap_handle(AIS_GlobalStatus)
+%wrap_handle(AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs)
+%wrap_handle(AIS_InteractiveContext)
+%wrap_handle(AIS_InteractiveObject)
+%wrap_handle(AIS_ListNodeOfListOfInteractive)
+%wrap_handle(AIS_LocalContext)
+%wrap_handle(AIS_LocalStatus)
+%wrap_handle(AIS_Selection)
+%wrap_handle(AIS_SequenceNodeOfSequenceOfDimension)
+%wrap_handle(AIS_SequenceNodeOfSequenceOfInteractive)
+%wrap_handle(AIS_StdMapNodeOfMapOfInteractive)
+%wrap_handle(AIS_TypeFilter)
+%wrap_handle(AIS_Axis)
+%wrap_handle(AIS_Circle)
+%wrap_handle(AIS_ConnectedInteractive)
+%wrap_handle(AIS_Dimension)
+%wrap_handle(AIS_Line)
+%wrap_handle(AIS_MultipleConnectedInteractive)
+%wrap_handle(AIS_Plane)
+%wrap_handle(AIS_PlaneTrihedron)
+%wrap_handle(AIS_Point)
+%wrap_handle(AIS_PointCloud)
+%wrap_handle(AIS_Relation)
+%wrap_handle(AIS_Shape)
+%wrap_handle(AIS_SignatureFilter)
+%wrap_handle(AIS_TextLabel)
+%wrap_handle(AIS_Triangulation)
+%wrap_handle(AIS_Trihedron)
+%wrap_handle(AIS_AngleDimension)
+%wrap_handle(AIS_Chamf2dDimension)
+%wrap_handle(AIS_Chamf3dDimension)
+%wrap_handle(AIS_ColoredShape)
+%wrap_handle(AIS_ConcentricRelation)
+%wrap_handle(AIS_DiameterDimension)
+%wrap_handle(AIS_EllipseRadiusDimension)
+%wrap_handle(AIS_EqualDistanceRelation)
+%wrap_handle(AIS_EqualRadiusRelation)
+%wrap_handle(AIS_FixRelation)
+%wrap_handle(AIS_IdenticRelation)
+%wrap_handle(AIS_LengthDimension)
+%wrap_handle(AIS_MidPointRelation)
+%wrap_handle(AIS_OffsetDimension)
+%wrap_handle(AIS_ParallelRelation)
+%wrap_handle(AIS_PerpendicularRelation)
+%wrap_handle(AIS_RadiusDimension)
+%wrap_handle(AIS_SymmetricRelation)
+%wrap_handle(AIS_TangentRelation)
+%wrap_handle(AIS_TexturedShape)
+%wrap_handle(AIS_MaxRadiusDimension)
+%wrap_handle(AIS_MinRadiusDimension)
 
 %rename(ais) AIS;
 class AIS {
@@ -728,51 +774,7 @@ class AIS_AttributeFilter : public SelectMgr_Filter {
 };
 
 
-%extend AIS_AttributeFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_AttributeFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_AttributeFilter::Handle_AIS_AttributeFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_AttributeFilter;
-class Handle_AIS_AttributeFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_AIS_AttributeFilter();
-        Handle_AIS_AttributeFilter(const Handle_AIS_AttributeFilter &aHandle);
-        Handle_AIS_AttributeFilter(const AIS_AttributeFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_AttributeFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_AttributeFilter {
-    AIS_AttributeFilter* _get_reference() {
-    return (AIS_AttributeFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_AttributeFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_AttributeFilter)
 
 %extend AIS_AttributeFilter {
 	%pythoncode {
@@ -829,51 +831,7 @@ class AIS_BadEdgeFilter : public SelectMgr_Filter {
 };
 
 
-%extend AIS_BadEdgeFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_BadEdgeFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_BadEdgeFilter::Handle_AIS_BadEdgeFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_BadEdgeFilter;
-class Handle_AIS_BadEdgeFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_AIS_BadEdgeFilter();
-        Handle_AIS_BadEdgeFilter(const Handle_AIS_BadEdgeFilter &aHandle);
-        Handle_AIS_BadEdgeFilter(const AIS_BadEdgeFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_BadEdgeFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_BadEdgeFilter {
-    AIS_BadEdgeFilter* _get_reference() {
-    return (AIS_BadEdgeFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_BadEdgeFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_BadEdgeFilter)
 
 %extend AIS_BadEdgeFilter {
 	%pythoncode {
@@ -904,163 +862,9 @@ class AIS_C0RegularityFilter : public SelectMgr_Filter {
 };
 
 
-%extend AIS_C0RegularityFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_C0RegularityFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_C0RegularityFilter::Handle_AIS_C0RegularityFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_C0RegularityFilter;
-class Handle_AIS_C0RegularityFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_AIS_C0RegularityFilter();
-        Handle_AIS_C0RegularityFilter(const Handle_AIS_C0RegularityFilter &aHandle);
-        Handle_AIS_C0RegularityFilter(const AIS_C0RegularityFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_C0RegularityFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_C0RegularityFilter {
-    AIS_C0RegularityFilter* _get_reference() {
-    return (AIS_C0RegularityFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_C0RegularityFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_C0RegularityFilter)
 
 %extend AIS_C0RegularityFilter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AIS_ColoredDrawer;
-class AIS_ColoredDrawer : public Prs3d_Drawer {
-	public:
-		bool myIsHidden;
-		bool myHasOwnColor;
-		bool myHasOwnWidth;
-		%feature("compactdefaultargs") AIS_ColoredDrawer;
-		%feature("autodoc", "	:param theLink:
-	:type theLink: Handle_Prs3d_Drawer &
-	:rtype: None
-") AIS_ColoredDrawer;
-		 AIS_ColoredDrawer (const Handle_Prs3d_Drawer & theLink);
-		%feature("compactdefaultargs") IsHidden;
-		%feature("autodoc", "	:rtype: bool
-") IsHidden;
-		Standard_Boolean IsHidden ();
-		%feature("compactdefaultargs") SetHidden;
-		%feature("autodoc", "	:param theToHide:
-	:type theToHide: bool
-	:rtype: None
-") SetHidden;
-		void SetHidden (const Standard_Boolean theToHide);
-		%feature("compactdefaultargs") HasOwnColor;
-		%feature("autodoc", "	:rtype: bool
-") HasOwnColor;
-		Standard_Boolean HasOwnColor ();
-		%feature("compactdefaultargs") UnsetOwnColor;
-		%feature("autodoc", "	:rtype: None
-") UnsetOwnColor;
-		void UnsetOwnColor ();
-		%feature("compactdefaultargs") SetOwnColor;
-		%feature("autodoc", "	:param &:
-	:type &: Quantity_Color
-	:rtype: None
-") SetOwnColor;
-		void SetOwnColor (const Quantity_Color &);
-		%feature("compactdefaultargs") HasOwnWidth;
-		%feature("autodoc", "	:rtype: bool
-") HasOwnWidth;
-		Standard_Boolean HasOwnWidth ();
-		%feature("compactdefaultargs") UnsetOwnWidth;
-		%feature("autodoc", "	:rtype: None
-") UnsetOwnWidth;
-		void UnsetOwnWidth ();
-		%feature("compactdefaultargs") SetOwnWidth;
-		%feature("autodoc", "	:param Standard_Real:
-	:type Standard_Real: 
-	:rtype: None
-") SetOwnWidth;
-		void SetOwnWidth (const Standard_Real);
-		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
-		%feature("autodoc", "	:param :
-	:type : AIS_ColoredDrawer
-	:rtype: None
-") DEFINE_STANDARD_RTTI;
-		 DEFINE_STANDARD_RTTI (AIS_ColoredDrawer );
-};
-
-
-%extend AIS_ColoredDrawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ColoredDrawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ColoredDrawer::Handle_AIS_ColoredDrawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ColoredDrawer;
-class Handle_AIS_ColoredDrawer : public Handle_Prs3d_Drawer {
-
-    public:
-        // constructors
-        Handle_AIS_ColoredDrawer();
-        Handle_AIS_ColoredDrawer(const Handle_AIS_ColoredDrawer &aHandle);
-        Handle_AIS_ColoredDrawer(const AIS_ColoredDrawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ColoredDrawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ColoredDrawer {
-    AIS_ColoredDrawer* _get_reference() {
-    return (AIS_ColoredDrawer*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ColoredDrawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend AIS_ColoredDrawer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1238,51 +1042,7 @@ class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
 };
 
 
-%extend AIS_DataMapNodeOfDataMapOfILC {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfILC(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DataMapNodeOfDataMapOfILC::Handle_AIS_DataMapNodeOfDataMapOfILC %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfILC;
-class Handle_AIS_DataMapNodeOfDataMapOfILC : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_DataMapNodeOfDataMapOfILC();
-        Handle_AIS_DataMapNodeOfDataMapOfILC(const Handle_AIS_DataMapNodeOfDataMapOfILC &aHandle);
-        Handle_AIS_DataMapNodeOfDataMapOfILC(const AIS_DataMapNodeOfDataMapOfILC *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DataMapNodeOfDataMapOfILC DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DataMapNodeOfDataMapOfILC {
-    AIS_DataMapNodeOfDataMapOfILC* _get_reference() {
-    return (AIS_DataMapNodeOfDataMapOfILC*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfILC {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DataMapNodeOfDataMapOfILC)
 
 %extend AIS_DataMapNodeOfDataMapOfILC {
 	%pythoncode {
@@ -1313,51 +1073,7 @@ class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode {
 };
 
 
-%extend AIS_DataMapNodeOfDataMapOfIOStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfIOStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DataMapNodeOfDataMapOfIOStatus::Handle_AIS_DataMapNodeOfDataMapOfIOStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfIOStatus;
-class Handle_AIS_DataMapNodeOfDataMapOfIOStatus : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_DataMapNodeOfDataMapOfIOStatus();
-        Handle_AIS_DataMapNodeOfDataMapOfIOStatus(const Handle_AIS_DataMapNodeOfDataMapOfIOStatus &aHandle);
-        Handle_AIS_DataMapNodeOfDataMapOfIOStatus(const AIS_DataMapNodeOfDataMapOfIOStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DataMapNodeOfDataMapOfIOStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DataMapNodeOfDataMapOfIOStatus {
-    AIS_DataMapNodeOfDataMapOfIOStatus* _get_reference() {
-    return (AIS_DataMapNodeOfDataMapOfIOStatus*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfIOStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DataMapNodeOfDataMapOfIOStatus)
 
 %extend AIS_DataMapNodeOfDataMapOfIOStatus {
 	%pythoncode {
@@ -1388,51 +1104,7 @@ class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode {
 };
 
 
-%extend AIS_DataMapNodeOfDataMapOfSelStat {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfSelStat(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DataMapNodeOfDataMapOfSelStat::Handle_AIS_DataMapNodeOfDataMapOfSelStat %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfSelStat;
-class Handle_AIS_DataMapNodeOfDataMapOfSelStat : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_DataMapNodeOfDataMapOfSelStat();
-        Handle_AIS_DataMapNodeOfDataMapOfSelStat(const Handle_AIS_DataMapNodeOfDataMapOfSelStat &aHandle);
-        Handle_AIS_DataMapNodeOfDataMapOfSelStat(const AIS_DataMapNodeOfDataMapOfSelStat *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DataMapNodeOfDataMapOfSelStat DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
-    AIS_DataMapNodeOfDataMapOfSelStat* _get_reference() {
-    return (AIS_DataMapNodeOfDataMapOfSelStat*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DataMapNodeOfDataMapOfSelStat)
 
 %extend AIS_DataMapNodeOfDataMapOfSelStat {
 	%pythoncode {
@@ -1472,51 +1144,7 @@ class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_Ma
 };
 
 
-%extend AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive::Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
-class Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive();
-        Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(const Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive &aHandle);
-        Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(const AIS_DataMapNodeOfDataMapofIntegerListOfinteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-    AIS_DataMapNodeOfDataMapofIntegerListOfinteractive* _get_reference() {
-    return (AIS_DataMapNodeOfDataMapofIntegerListOfinteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DataMapNodeOfDataMapofIntegerListOfinteractive)
 
 %extend AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
 	%pythoncode {
@@ -1915,51 +1543,7 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 };
 
 
-%extend AIS_DimensionOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DimensionOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DimensionOwner::Handle_AIS_DimensionOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DimensionOwner;
-class Handle_AIS_DimensionOwner : public Handle_SelectMgr_EntityOwner {
-
-    public:
-        // constructors
-        Handle_AIS_DimensionOwner();
-        Handle_AIS_DimensionOwner(const Handle_AIS_DimensionOwner &aHandle);
-        Handle_AIS_DimensionOwner(const AIS_DimensionOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DimensionOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DimensionOwner {
-    AIS_DimensionOwner* _get_reference() {
-    return (AIS_DimensionOwner*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DimensionOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DimensionOwner)
 
 %extend AIS_DimensionOwner {
 	%pythoncode {
@@ -2072,51 +1656,7 @@ class AIS_ExclusionFilter : public SelectMgr_Filter {
 };
 
 
-%extend AIS_ExclusionFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ExclusionFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ExclusionFilter::Handle_AIS_ExclusionFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ExclusionFilter;
-class Handle_AIS_ExclusionFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_AIS_ExclusionFilter();
-        Handle_AIS_ExclusionFilter(const Handle_AIS_ExclusionFilter &aHandle);
-        Handle_AIS_ExclusionFilter(const AIS_ExclusionFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ExclusionFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ExclusionFilter {
-    AIS_ExclusionFilter* _get_reference() {
-    return (AIS_ExclusionFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ExclusionFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ExclusionFilter)
 
 %extend AIS_ExclusionFilter {
 	%pythoncode {
@@ -2249,51 +1789,7 @@ class AIS_GlobalStatus : public MMgt_TShared {
 };
 
 
-%extend AIS_GlobalStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_GlobalStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_GlobalStatus::Handle_AIS_GlobalStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_GlobalStatus;
-class Handle_AIS_GlobalStatus : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AIS_GlobalStatus();
-        Handle_AIS_GlobalStatus(const Handle_AIS_GlobalStatus &aHandle);
-        Handle_AIS_GlobalStatus(const AIS_GlobalStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_GlobalStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_GlobalStatus {
-    AIS_GlobalStatus* _get_reference() {
-    return (AIS_GlobalStatus*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_GlobalStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_GlobalStatus)
 
 %extend AIS_GlobalStatus {
 	%pythoncode {
@@ -2423,51 +1919,7 @@ class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapN
 };
 
 
-%extend AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs::Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
-class Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs();
-        Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs &aHandle);
-        Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-    AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs* _get_reference() {
-    return (AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs)
 
 %extend AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
 	%pythoncode {
@@ -4511,51 +3963,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 };
 
 
-%extend AIS_InteractiveContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_InteractiveContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_InteractiveContext::Handle_AIS_InteractiveContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_InteractiveContext;
-class Handle_AIS_InteractiveContext : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AIS_InteractiveContext();
-        Handle_AIS_InteractiveContext(const Handle_AIS_InteractiveContext &aHandle);
-        Handle_AIS_InteractiveContext(const AIS_InteractiveContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_InteractiveContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_InteractiveContext {
-    AIS_InteractiveContext* _get_reference() {
-    return (AIS_InteractiveContext*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_InteractiveContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_InteractiveContext)
 
 %extend AIS_InteractiveContext {
 	%pythoncode {
@@ -5002,51 +4410,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 };
 
 
-%extend AIS_InteractiveObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_InteractiveObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_InteractiveObject::Handle_AIS_InteractiveObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_InteractiveObject;
-class Handle_AIS_InteractiveObject : public Handle_SelectMgr_SelectableObject {
-
-    public:
-        // constructors
-        Handle_AIS_InteractiveObject();
-        Handle_AIS_InteractiveObject(const Handle_AIS_InteractiveObject &aHandle);
-        Handle_AIS_InteractiveObject(const AIS_InteractiveObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_InteractiveObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_InteractiveObject {
-    AIS_InteractiveObject* _get_reference() {
-    return (AIS_InteractiveObject*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_InteractiveObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_InteractiveObject)
 
 %extend AIS_InteractiveObject {
 	%pythoncode {
@@ -5110,51 +4474,7 @@ class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode {
 };
 
 
-%extend AIS_ListNodeOfListOfInteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ListNodeOfListOfInteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ListNodeOfListOfInteractive::Handle_AIS_ListNodeOfListOfInteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ListNodeOfListOfInteractive;
-class Handle_AIS_ListNodeOfListOfInteractive : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_ListNodeOfListOfInteractive();
-        Handle_AIS_ListNodeOfListOfInteractive(const Handle_AIS_ListNodeOfListOfInteractive &aHandle);
-        Handle_AIS_ListNodeOfListOfInteractive(const AIS_ListNodeOfListOfInteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ListNodeOfListOfInteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ListNodeOfListOfInteractive {
-    AIS_ListNodeOfListOfInteractive* _get_reference() {
-    return (AIS_ListNodeOfListOfInteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ListNodeOfListOfInteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ListNodeOfListOfInteractive)
 
 %extend AIS_ListNodeOfListOfInteractive {
 	%pythoncode {
@@ -5978,51 +5298,7 @@ class AIS_LocalContext : public MMgt_TShared {
 };
 
 
-%extend AIS_LocalContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_LocalContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_LocalContext::Handle_AIS_LocalContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_LocalContext;
-class Handle_AIS_LocalContext : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AIS_LocalContext();
-        Handle_AIS_LocalContext(const Handle_AIS_LocalContext &aHandle);
-        Handle_AIS_LocalContext(const AIS_LocalContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_LocalContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_LocalContext {
-    AIS_LocalContext* _get_reference() {
-    return (AIS_LocalContext*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_LocalContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_LocalContext)
 
 %extend AIS_LocalContext {
 	%pythoncode {
@@ -6167,51 +5443,7 @@ class AIS_LocalStatus : public MMgt_TShared {
 };
 
 
-%extend AIS_LocalStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_LocalStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_LocalStatus::Handle_AIS_LocalStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_LocalStatus;
-class Handle_AIS_LocalStatus : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AIS_LocalStatus();
-        Handle_AIS_LocalStatus(const Handle_AIS_LocalStatus &aHandle);
-        Handle_AIS_LocalStatus(const AIS_LocalStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_LocalStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_LocalStatus {
-    AIS_LocalStatus* _get_reference() {
-    return (AIS_LocalStatus*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_LocalStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_LocalStatus)
 
 %extend AIS_LocalStatus {
 	%pythoncode {
@@ -6450,51 +5682,7 @@ class AIS_Selection : public MMgt_TShared {
 };
 
 
-%extend AIS_Selection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Selection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Selection::Handle_AIS_Selection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Selection;
-class Handle_AIS_Selection : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AIS_Selection();
-        Handle_AIS_Selection(const Handle_AIS_Selection &aHandle);
-        Handle_AIS_Selection(const AIS_Selection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Selection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Selection {
-    AIS_Selection* _get_reference() {
-    return (AIS_Selection*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Selection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Selection)
 
 %extend AIS_Selection {
 	%pythoncode {
@@ -6521,51 +5709,7 @@ class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode {
 };
 
 
-%extend AIS_SequenceNodeOfSequenceOfDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_SequenceNodeOfSequenceOfDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_SequenceNodeOfSequenceOfDimension::Handle_AIS_SequenceNodeOfSequenceOfDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_SequenceNodeOfSequenceOfDimension;
-class Handle_AIS_SequenceNodeOfSequenceOfDimension : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AIS_SequenceNodeOfSequenceOfDimension();
-        Handle_AIS_SequenceNodeOfSequenceOfDimension(const Handle_AIS_SequenceNodeOfSequenceOfDimension &aHandle);
-        Handle_AIS_SequenceNodeOfSequenceOfDimension(const AIS_SequenceNodeOfSequenceOfDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_SequenceNodeOfSequenceOfDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_SequenceNodeOfSequenceOfDimension {
-    AIS_SequenceNodeOfSequenceOfDimension* _get_reference() {
-    return (AIS_SequenceNodeOfSequenceOfDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_SequenceNodeOfSequenceOfDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_SequenceNodeOfSequenceOfDimension)
 
 %extend AIS_SequenceNodeOfSequenceOfDimension {
 	%pythoncode {
@@ -6592,51 +5736,7 @@ class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode {
 };
 
 
-%extend AIS_SequenceNodeOfSequenceOfInteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_SequenceNodeOfSequenceOfInteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_SequenceNodeOfSequenceOfInteractive::Handle_AIS_SequenceNodeOfSequenceOfInteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_SequenceNodeOfSequenceOfInteractive;
-class Handle_AIS_SequenceNodeOfSequenceOfInteractive : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AIS_SequenceNodeOfSequenceOfInteractive();
-        Handle_AIS_SequenceNodeOfSequenceOfInteractive(const Handle_AIS_SequenceNodeOfSequenceOfInteractive &aHandle);
-        Handle_AIS_SequenceNodeOfSequenceOfInteractive(const AIS_SequenceNodeOfSequenceOfInteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_SequenceNodeOfSequenceOfInteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
-    AIS_SequenceNodeOfSequenceOfInteractive* _get_reference() {
-    return (AIS_SequenceNodeOfSequenceOfInteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_SequenceNodeOfSequenceOfInteractive)
 
 %extend AIS_SequenceNodeOfSequenceOfInteractive {
 	%pythoncode {
@@ -6947,51 +6047,7 @@ class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode {
 };
 
 
-%extend AIS_StdMapNodeOfMapOfInteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_StdMapNodeOfMapOfInteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_StdMapNodeOfMapOfInteractive::Handle_AIS_StdMapNodeOfMapOfInteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_StdMapNodeOfMapOfInteractive;
-class Handle_AIS_StdMapNodeOfMapOfInteractive : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_AIS_StdMapNodeOfMapOfInteractive();
-        Handle_AIS_StdMapNodeOfMapOfInteractive(const Handle_AIS_StdMapNodeOfMapOfInteractive &aHandle);
-        Handle_AIS_StdMapNodeOfMapOfInteractive(const AIS_StdMapNodeOfMapOfInteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_StdMapNodeOfMapOfInteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_StdMapNodeOfMapOfInteractive {
-    AIS_StdMapNodeOfMapOfInteractive* _get_reference() {
-    return (AIS_StdMapNodeOfMapOfInteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_StdMapNodeOfMapOfInteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_StdMapNodeOfMapOfInteractive)
 
 %extend AIS_StdMapNodeOfMapOfInteractive {
 	%pythoncode {
@@ -7020,51 +6076,7 @@ class AIS_TypeFilter : public SelectMgr_Filter {
 };
 
 
-%extend AIS_TypeFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_TypeFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_TypeFilter::Handle_AIS_TypeFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_TypeFilter;
-class Handle_AIS_TypeFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_AIS_TypeFilter();
-        Handle_AIS_TypeFilter(const Handle_AIS_TypeFilter &aHandle);
-        Handle_AIS_TypeFilter(const AIS_TypeFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_TypeFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_TypeFilter {
-    AIS_TypeFilter* _get_reference() {
-    return (AIS_TypeFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_TypeFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_TypeFilter)
 
 %extend AIS_TypeFilter {
 	%pythoncode {
@@ -7215,51 +6227,7 @@ class AIS_Axis : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Axis {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Axis(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Axis::Handle_AIS_Axis %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Axis;
-class Handle_AIS_Axis : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Axis();
-        Handle_AIS_Axis(const Handle_AIS_Axis &aHandle);
-        Handle_AIS_Axis(const AIS_Axis *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Axis DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Axis {
-    AIS_Axis* _get_reference() {
-    return (AIS_Axis*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Axis {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Axis)
 
 %extend AIS_Axis {
 	%pythoncode {
@@ -7406,51 +6374,7 @@ class AIS_Circle : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Circle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Circle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Circle::Handle_AIS_Circle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Circle;
-class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Circle();
-        Handle_AIS_Circle(const Handle_AIS_Circle &aHandle);
-        Handle_AIS_Circle(const AIS_Circle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Circle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Circle {
-    AIS_Circle* _get_reference() {
-    return (AIS_Circle*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Circle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Circle)
 
 %extend AIS_Circle {
 	%pythoncode {
@@ -7525,51 +6449,7 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_ConnectedInteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ConnectedInteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ConnectedInteractive::Handle_AIS_ConnectedInteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ConnectedInteractive;
-class Handle_AIS_ConnectedInteractive : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_ConnectedInteractive();
-        Handle_AIS_ConnectedInteractive(const Handle_AIS_ConnectedInteractive &aHandle);
-        Handle_AIS_ConnectedInteractive(const AIS_ConnectedInteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ConnectedInteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ConnectedInteractive {
-    AIS_ConnectedInteractive* _get_reference() {
-    return (AIS_ConnectedInteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ConnectedInteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ConnectedInteractive)
 
 %extend AIS_ConnectedInteractive {
 	%pythoncode {
@@ -7781,51 +6661,7 @@ enum ComputeMode {
 };
 
 
-%extend AIS_Dimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Dimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Dimension::Handle_AIS_Dimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Dimension;
-class Handle_AIS_Dimension : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Dimension();
-        Handle_AIS_Dimension(const Handle_AIS_Dimension &aHandle);
-        Handle_AIS_Dimension(const AIS_Dimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Dimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Dimension {
-    AIS_Dimension* _get_reference() {
-    return (AIS_Dimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Dimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Dimension)
 
 %extend AIS_Dimension {
 	%pythoncode {
@@ -7948,51 +6784,7 @@ class AIS_Line : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Line::Handle_AIS_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Line;
-class Handle_AIS_Line : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Line();
-        Handle_AIS_Line(const Handle_AIS_Line &aHandle);
-        Handle_AIS_Line(const AIS_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Line {
-    AIS_Line* _get_reference() {
-    return (AIS_Line*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Line)
 
 %extend AIS_Line {
 	%pythoncode {
@@ -8097,51 +6889,7 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_MultipleConnectedInteractive {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_MultipleConnectedInteractive(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_MultipleConnectedInteractive::Handle_AIS_MultipleConnectedInteractive %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_MultipleConnectedInteractive;
-class Handle_AIS_MultipleConnectedInteractive : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_MultipleConnectedInteractive();
-        Handle_AIS_MultipleConnectedInteractive(const Handle_AIS_MultipleConnectedInteractive &aHandle);
-        Handle_AIS_MultipleConnectedInteractive(const AIS_MultipleConnectedInteractive *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_MultipleConnectedInteractive DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_MultipleConnectedInteractive {
-    AIS_MultipleConnectedInteractive* _get_reference() {
-    return (AIS_MultipleConnectedInteractive*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_MultipleConnectedInteractive {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_MultipleConnectedInteractive)
 
 %extend AIS_MultipleConnectedInteractive {
 	%pythoncode {
@@ -8408,51 +7156,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Plane::Handle_AIS_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Plane;
-class Handle_AIS_Plane : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Plane();
-        Handle_AIS_Plane(const Handle_AIS_Plane &aHandle);
-        Handle_AIS_Plane(const AIS_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Plane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Plane {
-    AIS_Plane* _get_reference() {
-    return (AIS_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Plane)
 
 %extend AIS_Plane {
 	%pythoncode {
@@ -8575,51 +7279,7 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_PlaneTrihedron {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_PlaneTrihedron(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_PlaneTrihedron::Handle_AIS_PlaneTrihedron %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_PlaneTrihedron;
-class Handle_AIS_PlaneTrihedron : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_PlaneTrihedron();
-        Handle_AIS_PlaneTrihedron(const Handle_AIS_PlaneTrihedron &aHandle);
-        Handle_AIS_PlaneTrihedron(const AIS_PlaneTrihedron *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_PlaneTrihedron DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_PlaneTrihedron {
-    AIS_PlaneTrihedron* _get_reference() {
-    return (AIS_PlaneTrihedron*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_PlaneTrihedron {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_PlaneTrihedron)
 
 %extend AIS_PlaneTrihedron {
 	%pythoncode {
@@ -8732,51 +7392,7 @@ class AIS_Point : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Point::Handle_AIS_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Point;
-class Handle_AIS_Point : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Point();
-        Handle_AIS_Point(const Handle_AIS_Point &aHandle);
-        Handle_AIS_Point(const AIS_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Point DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Point {
-    AIS_Point* _get_reference() {
-    return (AIS_Point*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Point)
 
 %extend AIS_Point {
 	%pythoncode {
@@ -8879,51 +7495,7 @@ enum DisplayMode {
 };
 
 
-%extend AIS_PointCloud {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_PointCloud(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_PointCloud::Handle_AIS_PointCloud %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_PointCloud;
-class Handle_AIS_PointCloud : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_PointCloud();
-        Handle_AIS_PointCloud(const Handle_AIS_PointCloud &aHandle);
-        Handle_AIS_PointCloud(const AIS_PointCloud *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_PointCloud DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_PointCloud {
-    AIS_PointCloud* _get_reference() {
-    return (AIS_PointCloud*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_PointCloud {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_PointCloud)
 
 %extend AIS_PointCloud {
 	%pythoncode {
@@ -9132,51 +7704,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Relation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Relation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Relation::Handle_AIS_Relation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Relation;
-class Handle_AIS_Relation : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Relation();
-        Handle_AIS_Relation(const Handle_AIS_Relation &aHandle);
-        Handle_AIS_Relation(const AIS_Relation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Relation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Relation {
-    AIS_Relation* _get_reference() {
-    return (AIS_Relation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Relation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Relation)
 
 %extend AIS_Relation {
 	%pythoncode {
@@ -9477,51 +8005,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Shape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Shape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Shape::Handle_AIS_Shape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Shape;
-class Handle_AIS_Shape : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Shape();
-        Handle_AIS_Shape(const Handle_AIS_Shape &aHandle);
-        Handle_AIS_Shape(const AIS_Shape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Shape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Shape {
-    AIS_Shape* _get_reference() {
-    return (AIS_Shape*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Shape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Shape)
 
 %extend AIS_Shape {
 	%pythoncode {
@@ -9552,51 +8036,7 @@ class AIS_SignatureFilter : public AIS_TypeFilter {
 };
 
 
-%extend AIS_SignatureFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_SignatureFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_SignatureFilter::Handle_AIS_SignatureFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_SignatureFilter;
-class Handle_AIS_SignatureFilter : public Handle_AIS_TypeFilter {
-
-    public:
-        // constructors
-        Handle_AIS_SignatureFilter();
-        Handle_AIS_SignatureFilter(const Handle_AIS_SignatureFilter &aHandle);
-        Handle_AIS_SignatureFilter(const AIS_SignatureFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_SignatureFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_SignatureFilter {
-    AIS_SignatureFilter* _get_reference() {
-    return (AIS_SignatureFilter*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_SignatureFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_SignatureFilter)
 
 %extend AIS_SignatureFilter {
 	%pythoncode {
@@ -9711,51 +8151,7 @@ class AIS_TextLabel : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_TextLabel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_TextLabel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_TextLabel::Handle_AIS_TextLabel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_TextLabel;
-class Handle_AIS_TextLabel : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_TextLabel();
-        Handle_AIS_TextLabel(const Handle_AIS_TextLabel &aHandle);
-        Handle_AIS_TextLabel(const AIS_TextLabel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_TextLabel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_TextLabel {
-    AIS_TextLabel* _get_reference() {
-    return (AIS_TextLabel*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_TextLabel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_TextLabel)
 
 %extend AIS_TextLabel {
 	%pythoncode {
@@ -9802,51 +8198,7 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Triangulation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Triangulation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Triangulation::Handle_AIS_Triangulation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Triangulation;
-class Handle_AIS_Triangulation : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Triangulation();
-        Handle_AIS_Triangulation(const Handle_AIS_Triangulation &aHandle);
-        Handle_AIS_Triangulation(const AIS_Triangulation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Triangulation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Triangulation {
-    AIS_Triangulation* _get_reference() {
-    return (AIS_Triangulation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Triangulation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Triangulation)
 
 %extend AIS_Triangulation {
 	%pythoncode {
@@ -10055,51 +8407,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 };
 
 
-%extend AIS_Trihedron {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Trihedron(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Trihedron::Handle_AIS_Trihedron %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Trihedron;
-class Handle_AIS_Trihedron : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_AIS_Trihedron();
-        Handle_AIS_Trihedron(const Handle_AIS_Trihedron &aHandle);
-        Handle_AIS_Trihedron(const AIS_Trihedron *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Trihedron DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Trihedron {
-    AIS_Trihedron* _get_reference() {
-    return (AIS_Trihedron*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Trihedron {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Trihedron)
 
 %extend AIS_Trihedron {
 	%pythoncode {
@@ -10312,51 +8620,7 @@ class AIS_AngleDimension : public AIS_Dimension {
 };
 
 
-%extend AIS_AngleDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_AngleDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_AngleDimension::Handle_AIS_AngleDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_AngleDimension;
-class Handle_AIS_AngleDimension : public Handle_AIS_Dimension {
-
-    public:
-        // constructors
-        Handle_AIS_AngleDimension();
-        Handle_AIS_AngleDimension(const Handle_AIS_AngleDimension &aHandle);
-        Handle_AIS_AngleDimension(const AIS_AngleDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_AngleDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_AngleDimension {
-    AIS_AngleDimension* _get_reference() {
-    return (AIS_AngleDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_AngleDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_AngleDimension)
 
 %extend AIS_AngleDimension {
 	%pythoncode {
@@ -10427,51 +8691,7 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 };
 
 
-%extend AIS_Chamf2dDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Chamf2dDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Chamf2dDimension::Handle_AIS_Chamf2dDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Chamf2dDimension;
-class Handle_AIS_Chamf2dDimension : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_Chamf2dDimension();
-        Handle_AIS_Chamf2dDimension(const Handle_AIS_Chamf2dDimension &aHandle);
-        Handle_AIS_Chamf2dDimension(const AIS_Chamf2dDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Chamf2dDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Chamf2dDimension {
-    AIS_Chamf2dDimension* _get_reference() {
-    return (AIS_Chamf2dDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Chamf2dDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Chamf2dDimension)
 
 %extend AIS_Chamf2dDimension {
 	%pythoncode {
@@ -10538,51 +8758,7 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 };
 
 
-%extend AIS_Chamf3dDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Chamf3dDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Chamf3dDimension::Handle_AIS_Chamf3dDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Chamf3dDimension;
-class Handle_AIS_Chamf3dDimension : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_Chamf3dDimension();
-        Handle_AIS_Chamf3dDimension(const Handle_AIS_Chamf3dDimension &aHandle);
-        Handle_AIS_Chamf3dDimension(const AIS_Chamf3dDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Chamf3dDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Chamf3dDimension {
-    AIS_Chamf3dDimension* _get_reference() {
-    return (AIS_Chamf3dDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Chamf3dDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_Chamf3dDimension)
 
 %extend AIS_Chamf3dDimension {
 	%pythoncode {
@@ -10693,51 +8869,7 @@ class AIS_ColoredShape : public AIS_Shape {
 };
 
 
-%extend AIS_ColoredShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ColoredShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ColoredShape::Handle_AIS_ColoredShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ColoredShape;
-class Handle_AIS_ColoredShape : public Handle_AIS_Shape {
-
-    public:
-        // constructors
-        Handle_AIS_ColoredShape();
-        Handle_AIS_ColoredShape(const Handle_AIS_ColoredShape &aHandle);
-        Handle_AIS_ColoredShape(const AIS_ColoredShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ColoredShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ColoredShape {
-    AIS_ColoredShape* _get_reference() {
-    return (AIS_ColoredShape*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ColoredShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ColoredShape)
 
 %extend AIS_ColoredShape {
 	%pythoncode {
@@ -10774,51 +8906,7 @@ class AIS_ConcentricRelation : public AIS_Relation {
 };
 
 
-%extend AIS_ConcentricRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ConcentricRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ConcentricRelation::Handle_AIS_ConcentricRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ConcentricRelation;
-class Handle_AIS_ConcentricRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_ConcentricRelation();
-        Handle_AIS_ConcentricRelation(const Handle_AIS_ConcentricRelation &aHandle);
-        Handle_AIS_ConcentricRelation(const AIS_ConcentricRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ConcentricRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ConcentricRelation {
-    AIS_ConcentricRelation* _get_reference() {
-    return (AIS_ConcentricRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ConcentricRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ConcentricRelation)
 
 %extend AIS_ConcentricRelation {
 	%pythoncode {
@@ -10935,51 +9023,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 };
 
 
-%extend AIS_DiameterDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_DiameterDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_DiameterDimension::Handle_AIS_DiameterDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_DiameterDimension;
-class Handle_AIS_DiameterDimension : public Handle_AIS_Dimension {
-
-    public:
-        // constructors
-        Handle_AIS_DiameterDimension();
-        Handle_AIS_DiameterDimension(const Handle_AIS_DiameterDimension &aHandle);
-        Handle_AIS_DiameterDimension(const AIS_DiameterDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_DiameterDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_DiameterDimension {
-    AIS_DiameterDimension* _get_reference() {
-    return (AIS_DiameterDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_DiameterDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_DiameterDimension)
 
 %extend AIS_DiameterDimension {
 	%pythoncode {
@@ -11004,51 +9048,7 @@ class AIS_EllipseRadiusDimension : public AIS_Relation {
 };
 
 
-%extend AIS_EllipseRadiusDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_EllipseRadiusDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_EllipseRadiusDimension::Handle_AIS_EllipseRadiusDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_EllipseRadiusDimension;
-class Handle_AIS_EllipseRadiusDimension : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_EllipseRadiusDimension();
-        Handle_AIS_EllipseRadiusDimension(const Handle_AIS_EllipseRadiusDimension &aHandle);
-        Handle_AIS_EllipseRadiusDimension(const AIS_EllipseRadiusDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_EllipseRadiusDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_EllipseRadiusDimension {
-    AIS_EllipseRadiusDimension* _get_reference() {
-    return (AIS_EllipseRadiusDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_EllipseRadiusDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_EllipseRadiusDimension)
 
 %extend AIS_EllipseRadiusDimension {
 	%pythoncode {
@@ -11227,51 +9227,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 };
 
 
-%extend AIS_EqualDistanceRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_EqualDistanceRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_EqualDistanceRelation::Handle_AIS_EqualDistanceRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_EqualDistanceRelation;
-class Handle_AIS_EqualDistanceRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_EqualDistanceRelation();
-        Handle_AIS_EqualDistanceRelation(const Handle_AIS_EqualDistanceRelation &aHandle);
-        Handle_AIS_EqualDistanceRelation(const AIS_EqualDistanceRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_EqualDistanceRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_EqualDistanceRelation {
-    AIS_EqualDistanceRelation* _get_reference() {
-    return (AIS_EqualDistanceRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_EqualDistanceRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_EqualDistanceRelation)
 
 %extend AIS_EqualDistanceRelation {
 	%pythoncode {
@@ -11308,51 +9264,7 @@ class AIS_EqualRadiusRelation : public AIS_Relation {
 };
 
 
-%extend AIS_EqualRadiusRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_EqualRadiusRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_EqualRadiusRelation::Handle_AIS_EqualRadiusRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_EqualRadiusRelation;
-class Handle_AIS_EqualRadiusRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_EqualRadiusRelation();
-        Handle_AIS_EqualRadiusRelation(const Handle_AIS_EqualRadiusRelation &aHandle);
-        Handle_AIS_EqualRadiusRelation(const AIS_EqualRadiusRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_EqualRadiusRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_EqualRadiusRelation {
-    AIS_EqualRadiusRelation* _get_reference() {
-    return (AIS_EqualRadiusRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_EqualRadiusRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_EqualRadiusRelation)
 
 %extend AIS_EqualRadiusRelation {
 	%pythoncode {
@@ -11449,51 +9361,7 @@ class AIS_FixRelation : public AIS_Relation {
 };
 
 
-%extend AIS_FixRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_FixRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_FixRelation::Handle_AIS_FixRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_FixRelation;
-class Handle_AIS_FixRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_FixRelation();
-        Handle_AIS_FixRelation(const Handle_AIS_FixRelation &aHandle);
-        Handle_AIS_FixRelation(const AIS_FixRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_FixRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_FixRelation {
-    AIS_FixRelation* _get_reference() {
-    return (AIS_FixRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_FixRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_FixRelation)
 
 %extend AIS_FixRelation {
 	%pythoncode {
@@ -11536,51 +9404,7 @@ class AIS_IdenticRelation : public AIS_Relation {
 };
 
 
-%extend AIS_IdenticRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_IdenticRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_IdenticRelation::Handle_AIS_IdenticRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_IdenticRelation;
-class Handle_AIS_IdenticRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_IdenticRelation();
-        Handle_AIS_IdenticRelation(const Handle_AIS_IdenticRelation &aHandle);
-        Handle_AIS_IdenticRelation(const AIS_IdenticRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_IdenticRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_IdenticRelation {
-    AIS_IdenticRelation* _get_reference() {
-    return (AIS_IdenticRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_IdenticRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_IdenticRelation)
 
 %extend AIS_IdenticRelation {
 	%pythoncode {
@@ -11757,51 +9581,7 @@ class AIS_LengthDimension : public AIS_Dimension {
 };
 
 
-%extend AIS_LengthDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_LengthDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_LengthDimension::Handle_AIS_LengthDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_LengthDimension;
-class Handle_AIS_LengthDimension : public Handle_AIS_Dimension {
-
-    public:
-        // constructors
-        Handle_AIS_LengthDimension();
-        Handle_AIS_LengthDimension(const Handle_AIS_LengthDimension &aHandle);
-        Handle_AIS_LengthDimension(const AIS_LengthDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_LengthDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_LengthDimension {
-    AIS_LengthDimension* _get_reference() {
-    return (AIS_LengthDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_LengthDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_LengthDimension)
 
 %extend AIS_LengthDimension {
 	%pythoncode {
@@ -11852,51 +9632,7 @@ class AIS_MidPointRelation : public AIS_Relation {
 };
 
 
-%extend AIS_MidPointRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_MidPointRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_MidPointRelation::Handle_AIS_MidPointRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_MidPointRelation;
-class Handle_AIS_MidPointRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_MidPointRelation();
-        Handle_AIS_MidPointRelation(const Handle_AIS_MidPointRelation &aHandle);
-        Handle_AIS_MidPointRelation(const AIS_MidPointRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_MidPointRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_MidPointRelation {
-    AIS_MidPointRelation* _get_reference() {
-    return (AIS_MidPointRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_MidPointRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_MidPointRelation)
 
 %extend AIS_MidPointRelation {
 	%pythoncode {
@@ -11955,51 +9691,7 @@ class AIS_OffsetDimension : public AIS_Relation {
 };
 
 
-%extend AIS_OffsetDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_OffsetDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_OffsetDimension::Handle_AIS_OffsetDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_OffsetDimension;
-class Handle_AIS_OffsetDimension : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_OffsetDimension();
-        Handle_AIS_OffsetDimension(const Handle_AIS_OffsetDimension &aHandle);
-        Handle_AIS_OffsetDimension(const AIS_OffsetDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_OffsetDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_OffsetDimension {
-    AIS_OffsetDimension* _get_reference() {
-    return (AIS_OffsetDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_OffsetDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_OffsetDimension)
 
 %extend AIS_OffsetDimension {
 	%pythoncode {
@@ -12060,51 +9752,7 @@ class AIS_ParallelRelation : public AIS_Relation {
 };
 
 
-%extend AIS_ParallelRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ParallelRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ParallelRelation::Handle_AIS_ParallelRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ParallelRelation;
-class Handle_AIS_ParallelRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_ParallelRelation();
-        Handle_AIS_ParallelRelation(const Handle_AIS_ParallelRelation &aHandle);
-        Handle_AIS_ParallelRelation(const AIS_ParallelRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ParallelRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ParallelRelation {
-    AIS_ParallelRelation* _get_reference() {
-    return (AIS_ParallelRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ParallelRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_ParallelRelation)
 
 %extend AIS_ParallelRelation {
 	%pythoncode {
@@ -12151,51 +9799,7 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 };
 
 
-%extend AIS_PerpendicularRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_PerpendicularRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_PerpendicularRelation::Handle_AIS_PerpendicularRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_PerpendicularRelation;
-class Handle_AIS_PerpendicularRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_PerpendicularRelation();
-        Handle_AIS_PerpendicularRelation(const Handle_AIS_PerpendicularRelation &aHandle);
-        Handle_AIS_PerpendicularRelation(const AIS_PerpendicularRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_PerpendicularRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_PerpendicularRelation {
-    AIS_PerpendicularRelation* _get_reference() {
-    return (AIS_PerpendicularRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_PerpendicularRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_PerpendicularRelation)
 
 %extend AIS_PerpendicularRelation {
 	%pythoncode {
@@ -12312,51 +9916,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 };
 
 
-%extend AIS_RadiusDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_RadiusDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_RadiusDimension::Handle_AIS_RadiusDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_RadiusDimension;
-class Handle_AIS_RadiusDimension : public Handle_AIS_Dimension {
-
-    public:
-        // constructors
-        Handle_AIS_RadiusDimension();
-        Handle_AIS_RadiusDimension(const Handle_AIS_RadiusDimension &aHandle);
-        Handle_AIS_RadiusDimension(const AIS_RadiusDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_RadiusDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_RadiusDimension {
-    AIS_RadiusDimension* _get_reference() {
-    return (AIS_RadiusDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_RadiusDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_RadiusDimension)
 
 %extend AIS_RadiusDimension {
 	%pythoncode {
@@ -12415,51 +9975,7 @@ class AIS_SymmetricRelation : public AIS_Relation {
 };
 
 
-%extend AIS_SymmetricRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_SymmetricRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_SymmetricRelation::Handle_AIS_SymmetricRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_SymmetricRelation;
-class Handle_AIS_SymmetricRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_SymmetricRelation();
-        Handle_AIS_SymmetricRelation(const Handle_AIS_SymmetricRelation &aHandle);
-        Handle_AIS_SymmetricRelation(const AIS_SymmetricRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_SymmetricRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_SymmetricRelation {
-    AIS_SymmetricRelation* _get_reference() {
-    return (AIS_SymmetricRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_SymmetricRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_SymmetricRelation)
 
 %extend AIS_SymmetricRelation {
 	%pythoncode {
@@ -12512,51 +10028,7 @@ class AIS_TangentRelation : public AIS_Relation {
 };
 
 
-%extend AIS_TangentRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_TangentRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_TangentRelation::Handle_AIS_TangentRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_TangentRelation;
-class Handle_AIS_TangentRelation : public Handle_AIS_Relation {
-
-    public:
-        // constructors
-        Handle_AIS_TangentRelation();
-        Handle_AIS_TangentRelation(const Handle_AIS_TangentRelation &aHandle);
-        Handle_AIS_TangentRelation(const AIS_TangentRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_TangentRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_TangentRelation {
-    AIS_TangentRelation* _get_reference() {
-    return (AIS_TangentRelation*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_TangentRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_TangentRelation)
 
 %extend AIS_TangentRelation {
 	%pythoncode {
@@ -12765,51 +10237,7 @@ class AIS_TexturedShape : public AIS_Shape {
 };
 
 
-%extend AIS_TexturedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_TexturedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_TexturedShape::Handle_AIS_TexturedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_TexturedShape;
-class Handle_AIS_TexturedShape : public Handle_AIS_Shape {
-
-    public:
-        // constructors
-        Handle_AIS_TexturedShape();
-        Handle_AIS_TexturedShape(const Handle_AIS_TexturedShape &aHandle);
-        Handle_AIS_TexturedShape(const AIS_TexturedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_TexturedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_TexturedShape {
-    AIS_TexturedShape* _get_reference() {
-    return (AIS_TexturedShape*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_TexturedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_TexturedShape)
 
 %extend AIS_TexturedShape {
 	%pythoncode {
@@ -12864,51 +10292,7 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 };
 
 
-%extend AIS_MaxRadiusDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_MaxRadiusDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_MaxRadiusDimension::Handle_AIS_MaxRadiusDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_MaxRadiusDimension;
-class Handle_AIS_MaxRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
-
-    public:
-        // constructors
-        Handle_AIS_MaxRadiusDimension();
-        Handle_AIS_MaxRadiusDimension(const Handle_AIS_MaxRadiusDimension &aHandle);
-        Handle_AIS_MaxRadiusDimension(const AIS_MaxRadiusDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_MaxRadiusDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_MaxRadiusDimension {
-    AIS_MaxRadiusDimension* _get_reference() {
-    return (AIS_MaxRadiusDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_MaxRadiusDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_MaxRadiusDimension)
 
 %extend AIS_MaxRadiusDimension {
 	%pythoncode {
@@ -12963,51 +10347,7 @@ class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 };
 
 
-%extend AIS_MinRadiusDimension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_MinRadiusDimension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_MinRadiusDimension::Handle_AIS_MinRadiusDimension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_MinRadiusDimension;
-class Handle_AIS_MinRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
-
-    public:
-        // constructors
-        Handle_AIS_MinRadiusDimension();
-        Handle_AIS_MinRadiusDimension(const Handle_AIS_MinRadiusDimension &aHandle);
-        Handle_AIS_MinRadiusDimension(const AIS_MinRadiusDimension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_MinRadiusDimension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_MinRadiusDimension {
-    AIS_MinRadiusDimension* _get_reference() {
-    return (AIS_MinRadiusDimension*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_MinRadiusDimension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AIS_MinRadiusDimension)
 
 %extend AIS_MinRadiusDimension {
 	%pythoncode {

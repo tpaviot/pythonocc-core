@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DDOCSTRING
-"No docstring provided."
+"- Purpose :This package contains the definition of the geometric objectssuch as point, vector, axis placement, curves and thedescription of the geometric transformations availablefor these objects.All these entities are defined in 2D space.This package gives the possibility :. to create geometric objects,. to have information about them,. to modify these objects.This package uses the services of the package gp (Geometricprocessor) which describes non-persistent objects for algebraiccalculus and basic analytic geometry. The purpose of this packageis to create persistent geometric objects and to read geometricinformation about these objects. Complexes geometric algorithmesare not described in this package.   At construction time,elementary verifications are done to verify that the objectsare coherents, but some verifications which require complexalgorithmes (for example to check that a curve has not nulllength or does not self-intersect) must be done before theconstruction of the geometric objects."
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DDOCSTRING) Geom2d
 
@@ -34,30 +34,37 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Geom2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Geom2d_Geometry)
+%wrap_handle(Geom2d_Transformation)
+%wrap_handle(Geom2d_AxisPlacement)
+%wrap_handle(Geom2d_Curve)
+%wrap_handle(Geom2d_Point)
+%wrap_handle(Geom2d_Vector)
+%wrap_handle(Geom2d_BoundedCurve)
+%wrap_handle(Geom2d_CartesianPoint)
+%wrap_handle(Geom2d_Conic)
+%wrap_handle(Geom2d_Direction)
+%wrap_handle(Geom2d_Line)
+%wrap_handle(Geom2d_OffsetCurve)
+%wrap_handle(Geom2d_VectorWithMagnitude)
+%wrap_handle(Geom2d_BSplineCurve)
+%wrap_handle(Geom2d_BezierCurve)
+%wrap_handle(Geom2d_Circle)
+%wrap_handle(Geom2d_Ellipse)
+%wrap_handle(Geom2d_Hyperbola)
+%wrap_handle(Geom2d_Parabola)
+%wrap_handle(Geom2d_TrimmedCurve)
 
 %nodefaultctor Geom2d_Geometry;
 class Geom2d_Geometry : public MMgt_TShared {
@@ -179,51 +186,7 @@ class Geom2d_Geometry : public MMgt_TShared {
 };
 
 
-%extend Geom2d_Geometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Geometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Geometry::Handle_Geom2d_Geometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Geometry;
-class Handle_Geom2d_Geometry : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Geom2d_Geometry();
-        Handle_Geom2d_Geometry(const Handle_Geom2d_Geometry &aHandle);
-        Handle_Geom2d_Geometry(const Geom2d_Geometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Geometry DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Geometry {
-    Geom2d_Geometry* _get_reference() {
-    return (Geom2d_Geometry*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Geometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Geometry)
 
 %extend Geom2d_Geometry {
 	%pythoncode {
@@ -444,51 +407,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 };
 
 
-%extend Geom2d_Transformation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Transformation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Transformation::Handle_Geom2d_Transformation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Transformation;
-class Handle_Geom2d_Transformation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Geom2d_Transformation();
-        Handle_Geom2d_Transformation(const Handle_Geom2d_Transformation &aHandle);
-        Handle_Geom2d_Transformation(const Geom2d_Transformation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Transformation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Transformation {
-    Geom2d_Transformation* _get_reference() {
-    return (Geom2d_Transformation*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Transformation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Transformation)
 
 %extend Geom2d_Transformation {
 	%pythoncode {
@@ -593,51 +512,7 @@ class Geom2d_AxisPlacement : public Geom2d_Geometry {
 };
 
 
-%extend Geom2d_AxisPlacement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_AxisPlacement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_AxisPlacement::Handle_Geom2d_AxisPlacement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_AxisPlacement;
-class Handle_Geom2d_AxisPlacement : public Handle_Geom2d_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom2d_AxisPlacement();
-        Handle_Geom2d_AxisPlacement(const Handle_Geom2d_AxisPlacement &aHandle);
-        Handle_Geom2d_AxisPlacement(const Geom2d_AxisPlacement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_AxisPlacement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_AxisPlacement {
-    Geom2d_AxisPlacement* _get_reference() {
-    return (Geom2d_AxisPlacement*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_AxisPlacement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_AxisPlacement)
 
 %extend Geom2d_AxisPlacement {
 	%pythoncode {
@@ -802,51 +677,7 @@ class Geom2d_Curve : public Geom2d_Geometry {
 };
 
 
-%extend Geom2d_Curve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Curve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Curve::Handle_Geom2d_Curve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Curve;
-class Handle_Geom2d_Curve : public Handle_Geom2d_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom2d_Curve();
-        Handle_Geom2d_Curve(const Handle_Geom2d_Curve &aHandle);
-        Handle_Geom2d_Curve(const Geom2d_Curve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Curve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Curve {
-    Geom2d_Curve* _get_reference() {
-    return (Geom2d_Curve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Curve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Curve)
 
 %extend Geom2d_Curve {
 	%pythoncode {
@@ -903,51 +734,7 @@ class Geom2d_Point : public Geom2d_Geometry {
 };
 
 
-%extend Geom2d_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Point::Handle_Geom2d_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Point;
-class Handle_Geom2d_Point : public Handle_Geom2d_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom2d_Point();
-        Handle_Geom2d_Point(const Handle_Geom2d_Point &aHandle);
-        Handle_Geom2d_Point(const Geom2d_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Point DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Point {
-    Geom2d_Point* _get_reference() {
-    return (Geom2d_Point*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Point)
 
 %extend Geom2d_Point {
 	%pythoncode {
@@ -1036,51 +823,7 @@ class Geom2d_Vector : public Geom2d_Geometry {
 };
 
 
-%extend Geom2d_Vector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Vector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Vector::Handle_Geom2d_Vector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Vector;
-class Handle_Geom2d_Vector : public Handle_Geom2d_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom2d_Vector();
-        Handle_Geom2d_Vector(const Handle_Geom2d_Vector &aHandle);
-        Handle_Geom2d_Vector(const Geom2d_Vector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Vector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Vector {
-    Geom2d_Vector* _get_reference() {
-    return (Geom2d_Vector*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Vector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Vector)
 
 %extend Geom2d_Vector {
 	%pythoncode {
@@ -1105,51 +848,7 @@ class Geom2d_BoundedCurve : public Geom2d_Curve {
 };
 
 
-%extend Geom2d_BoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_BoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_BoundedCurve::Handle_Geom2d_BoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_BoundedCurve;
-class Handle_Geom2d_BoundedCurve : public Handle_Geom2d_Curve {
-
-    public:
-        // constructors
-        Handle_Geom2d_BoundedCurve();
-        Handle_Geom2d_BoundedCurve(const Handle_Geom2d_BoundedCurve &aHandle);
-        Handle_Geom2d_BoundedCurve(const Geom2d_BoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_BoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_BoundedCurve {
-    Geom2d_BoundedCurve* _get_reference() {
-    return (Geom2d_BoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_BoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_BoundedCurve)
 
 %extend Geom2d_BoundedCurve {
 	%pythoncode {
@@ -1250,51 +949,7 @@ class Geom2d_CartesianPoint : public Geom2d_Point {
 };
 
 
-%extend Geom2d_CartesianPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_CartesianPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_CartesianPoint::Handle_Geom2d_CartesianPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_CartesianPoint;
-class Handle_Geom2d_CartesianPoint : public Handle_Geom2d_Point {
-
-    public:
-        // constructors
-        Handle_Geom2d_CartesianPoint();
-        Handle_Geom2d_CartesianPoint(const Handle_Geom2d_CartesianPoint &aHandle);
-        Handle_Geom2d_CartesianPoint(const Geom2d_CartesianPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_CartesianPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_CartesianPoint {
-    Geom2d_CartesianPoint* _get_reference() {
-    return (Geom2d_CartesianPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_CartesianPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_CartesianPoint)
 
 %extend Geom2d_CartesianPoint {
 	%pythoncode {
@@ -1395,51 +1050,7 @@ class Geom2d_Conic : public Geom2d_Curve {
 };
 
 
-%extend Geom2d_Conic {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Conic(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Conic::Handle_Geom2d_Conic %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Conic;
-class Handle_Geom2d_Conic : public Handle_Geom2d_Curve {
-
-    public:
-        // constructors
-        Handle_Geom2d_Conic();
-        Handle_Geom2d_Conic(const Handle_Geom2d_Conic &aHandle);
-        Handle_Geom2d_Conic(const Geom2d_Conic *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Conic DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Conic {
-    Geom2d_Conic* _get_reference() {
-    return (Geom2d_Conic*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Conic {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Conic)
 
 %extend Geom2d_Conic {
 	%pythoncode {
@@ -1550,51 +1161,7 @@ class Geom2d_Direction : public Geom2d_Vector {
 };
 
 
-%extend Geom2d_Direction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Direction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Direction::Handle_Geom2d_Direction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Direction;
-class Handle_Geom2d_Direction : public Handle_Geom2d_Vector {
-
-    public:
-        // constructors
-        Handle_Geom2d_Direction();
-        Handle_Geom2d_Direction(const Handle_Geom2d_Direction &aHandle);
-        Handle_Geom2d_Direction(const Geom2d_Direction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Direction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Direction {
-    Geom2d_Direction* _get_reference() {
-    return (Geom2d_Direction*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Direction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Direction)
 
 %extend Geom2d_Direction {
 	%pythoncode {
@@ -1841,51 +1408,7 @@ class Geom2d_Line : public Geom2d_Curve {
 };
 
 
-%extend Geom2d_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Line::Handle_Geom2d_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Line;
-class Handle_Geom2d_Line : public Handle_Geom2d_Curve {
-
-    public:
-        // constructors
-        Handle_Geom2d_Line();
-        Handle_Geom2d_Line(const Handle_Geom2d_Line &aHandle);
-        Handle_Geom2d_Line(const Geom2d_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Line {
-    Geom2d_Line* _get_reference() {
-    return (Geom2d_Line*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Line)
 
 %extend Geom2d_Line {
 	%pythoncode {
@@ -2150,51 +1673,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 };
 
 
-%extend Geom2d_OffsetCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_OffsetCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_OffsetCurve::Handle_Geom2d_OffsetCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_OffsetCurve;
-class Handle_Geom2d_OffsetCurve : public Handle_Geom2d_Curve {
-
-    public:
-        // constructors
-        Handle_Geom2d_OffsetCurve();
-        Handle_Geom2d_OffsetCurve(const Handle_Geom2d_OffsetCurve &aHandle);
-        Handle_Geom2d_OffsetCurve(const Geom2d_OffsetCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_OffsetCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_OffsetCurve {
-    Geom2d_OffsetCurve* _get_reference() {
-    return (Geom2d_OffsetCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_OffsetCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_OffsetCurve)
 
 %extend Geom2d_OffsetCurve {
 	%pythoncode {
@@ -2425,51 +1904,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 };
 
 
-%extend Geom2d_VectorWithMagnitude {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_VectorWithMagnitude(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_VectorWithMagnitude::Handle_Geom2d_VectorWithMagnitude %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_VectorWithMagnitude;
-class Handle_Geom2d_VectorWithMagnitude : public Handle_Geom2d_Vector {
-
-    public:
-        // constructors
-        Handle_Geom2d_VectorWithMagnitude();
-        Handle_Geom2d_VectorWithMagnitude(const Handle_Geom2d_VectorWithMagnitude &aHandle);
-        Handle_Geom2d_VectorWithMagnitude(const Geom2d_VectorWithMagnitude *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_VectorWithMagnitude DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_VectorWithMagnitude {
-    Geom2d_VectorWithMagnitude* _get_reference() {
-    return (Geom2d_VectorWithMagnitude*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_VectorWithMagnitude {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_VectorWithMagnitude)
 
 %extend Geom2d_VectorWithMagnitude {
 	%pythoncode {
@@ -3184,51 +2619,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 };
 
 
-%extend Geom2d_BSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_BSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_BSplineCurve::Handle_Geom2d_BSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_BSplineCurve;
-class Handle_Geom2d_BSplineCurve : public Handle_Geom2d_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom2d_BSplineCurve();
-        Handle_Geom2d_BSplineCurve(const Handle_Geom2d_BSplineCurve &aHandle);
-        Handle_Geom2d_BSplineCurve(const Geom2d_BSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_BSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_BSplineCurve {
-    Geom2d_BSplineCurve* _get_reference() {
-    return (Geom2d_BSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_BSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_BSplineCurve)
 
 %extend Geom2d_BSplineCurve {
 	%pythoncode {
@@ -3539,51 +2930,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 };
 
 
-%extend Geom2d_BezierCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_BezierCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_BezierCurve::Handle_Geom2d_BezierCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_BezierCurve;
-class Handle_Geom2d_BezierCurve : public Handle_Geom2d_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom2d_BezierCurve();
-        Handle_Geom2d_BezierCurve(const Handle_Geom2d_BezierCurve &aHandle);
-        Handle_Geom2d_BezierCurve(const Geom2d_BezierCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_BezierCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_BezierCurve {
-    Geom2d_BezierCurve* _get_reference() {
-    return (Geom2d_BezierCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_BezierCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_BezierCurve)
 
 %extend Geom2d_BezierCurve {
 	%pythoncode {
@@ -3766,51 +3113,7 @@ class Geom2d_Circle : public Geom2d_Conic {
 };
 
 
-%extend Geom2d_Circle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Circle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Circle::Handle_Geom2d_Circle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Circle;
-class Handle_Geom2d_Circle : public Handle_Geom2d_Conic {
-
-    public:
-        // constructors
-        Handle_Geom2d_Circle();
-        Handle_Geom2d_Circle(const Handle_Geom2d_Circle &aHandle);
-        Handle_Geom2d_Circle(const Geom2d_Circle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Circle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Circle {
-    Geom2d_Circle* _get_reference() {
-    return (Geom2d_Circle*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Circle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Circle)
 
 %extend Geom2d_Circle {
 	%pythoncode {
@@ -4047,51 +3350,7 @@ class Geom2d_Ellipse : public Geom2d_Conic {
 };
 
 
-%extend Geom2d_Ellipse {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Ellipse(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Ellipse::Handle_Geom2d_Ellipse %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Ellipse;
-class Handle_Geom2d_Ellipse : public Handle_Geom2d_Conic {
-
-    public:
-        // constructors
-        Handle_Geom2d_Ellipse();
-        Handle_Geom2d_Ellipse(const Handle_Geom2d_Ellipse &aHandle);
-        Handle_Geom2d_Ellipse(const Geom2d_Ellipse *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Ellipse DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Ellipse {
-    Geom2d_Ellipse* _get_reference() {
-    return (Geom2d_Ellipse*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Ellipse {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Ellipse)
 
 %extend Geom2d_Ellipse {
 	%pythoncode {
@@ -4360,51 +3619,7 @@ class Geom2d_Hyperbola : public Geom2d_Conic {
 };
 
 
-%extend Geom2d_Hyperbola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Hyperbola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Hyperbola::Handle_Geom2d_Hyperbola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Hyperbola;
-class Handle_Geom2d_Hyperbola : public Handle_Geom2d_Conic {
-
-    public:
-        // constructors
-        Handle_Geom2d_Hyperbola();
-        Handle_Geom2d_Hyperbola(const Handle_Geom2d_Hyperbola &aHandle);
-        Handle_Geom2d_Hyperbola(const Geom2d_Hyperbola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Hyperbola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Hyperbola {
-    Geom2d_Hyperbola* _get_reference() {
-    return (Geom2d_Hyperbola*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Hyperbola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Hyperbola)
 
 %extend Geom2d_Hyperbola {
 	%pythoncode {
@@ -4635,51 +3850,7 @@ class Geom2d_Parabola : public Geom2d_Conic {
 };
 
 
-%extend Geom2d_Parabola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_Parabola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_Parabola::Handle_Geom2d_Parabola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_Parabola;
-class Handle_Geom2d_Parabola : public Handle_Geom2d_Conic {
-
-    public:
-        // constructors
-        Handle_Geom2d_Parabola();
-        Handle_Geom2d_Parabola(const Handle_Geom2d_Parabola &aHandle);
-        Handle_Geom2d_Parabola(const Geom2d_Parabola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_Parabola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_Parabola {
-    Geom2d_Parabola* _get_reference() {
-    return (Geom2d_Parabola*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_Parabola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_Parabola)
 
 %extend Geom2d_Parabola {
 	%pythoncode {
@@ -4892,51 +4063,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 };
 
 
-%extend Geom2d_TrimmedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2d_TrimmedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2d_TrimmedCurve::Handle_Geom2d_TrimmedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2d_TrimmedCurve;
-class Handle_Geom2d_TrimmedCurve : public Handle_Geom2d_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom2d_TrimmedCurve();
-        Handle_Geom2d_TrimmedCurve(const Handle_Geom2d_TrimmedCurve &aHandle);
-        Handle_Geom2d_TrimmedCurve(const Geom2d_TrimmedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2d_TrimmedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2d_TrimmedCurve {
-    Geom2d_TrimmedCurve* _get_reference() {
-    return (Geom2d_TrimmedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2d_TrimmedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2d_TrimmedCurve)
 
 %extend Geom2d_TrimmedCurve {
 	%pythoncode {

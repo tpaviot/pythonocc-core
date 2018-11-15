@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PPRSSTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PPRSSTDDOCSTRING) PPrsStd
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PPrsStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(PPrsStd_AISPresentation)
+%wrap_handle(PPrsStd_AISPresentation_1)
 
 %nodefaultctor PPrsStd_AISPresentation;
 class PPrsStd_AISPresentation : public PDF_Attribute {
@@ -195,51 +184,7 @@ class PPrsStd_AISPresentation : public PDF_Attribute {
 };
 
 
-%extend PPrsStd_AISPresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PPrsStd_AISPresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PPrsStd_AISPresentation::Handle_PPrsStd_AISPresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PPrsStd_AISPresentation;
-class Handle_PPrsStd_AISPresentation : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PPrsStd_AISPresentation();
-        Handle_PPrsStd_AISPresentation(const Handle_PPrsStd_AISPresentation &aHandle);
-        Handle_PPrsStd_AISPresentation(const PPrsStd_AISPresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PPrsStd_AISPresentation DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PPrsStd_AISPresentation {
-    PPrsStd_AISPresentation* _get_reference() {
-    return (PPrsStd_AISPresentation*)$self->Access();
-    }
-};
-
-%extend Handle_PPrsStd_AISPresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PPrsStd_AISPresentation)
 
 %extend PPrsStd_AISPresentation {
 	%pythoncode {
@@ -402,51 +347,7 @@ class PPrsStd_AISPresentation_1 : public PDF_Attribute {
 };
 
 
-%extend PPrsStd_AISPresentation_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PPrsStd_AISPresentation_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PPrsStd_AISPresentation_1::Handle_PPrsStd_AISPresentation_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PPrsStd_AISPresentation_1;
-class Handle_PPrsStd_AISPresentation_1 : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PPrsStd_AISPresentation_1();
-        Handle_PPrsStd_AISPresentation_1(const Handle_PPrsStd_AISPresentation_1 &aHandle);
-        Handle_PPrsStd_AISPresentation_1(const PPrsStd_AISPresentation_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PPrsStd_AISPresentation_1 DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PPrsStd_AISPresentation_1 {
-    PPrsStd_AISPresentation_1* _get_reference() {
-    return (PPrsStd_AISPresentation_1*)$self->Access();
-    }
-};
-
-%extend Handle_PPrsStd_AISPresentation_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PPrsStd_AISPresentation_1)
 
 %extend PPrsStd_AISPresentation_1 {
 	%pythoncode {

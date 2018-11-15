@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define DICODOCSTRING
-"No docstring provided."
+"-Purpose : Defines alphanumeric dictionaries and iterators on themThose are generic classes (Iterator is nested in Dictionary)Three default instantiations are offered :with Integer and Handle Objects (Persistent and Transient)"
 %enddef
 %module (package="OCC.Core", docstring=DICODOCSTRING) Dico
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Dico_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Dico_DictionaryOfInteger)
+%wrap_handle(Dico_DictionaryOfTransient)
+%wrap_handle(Dico_StackItemOfDictionaryOfInteger)
+%wrap_handle(Dico_StackItemOfDictionaryOfTransient)
 
 %nodefaultctor Dico_DictionaryOfInteger;
 class Dico_DictionaryOfInteger : public MMgt_TShared {
@@ -203,51 +194,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 };
 
 
-%extend Dico_DictionaryOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Dico_DictionaryOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Dico_DictionaryOfInteger::Handle_Dico_DictionaryOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Dico_DictionaryOfInteger;
-class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Dico_DictionaryOfInteger();
-        Handle_Dico_DictionaryOfInteger(const Handle_Dico_DictionaryOfInteger &aHandle);
-        Handle_Dico_DictionaryOfInteger(const Dico_DictionaryOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Dico_DictionaryOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Dico_DictionaryOfInteger {
-    Dico_DictionaryOfInteger* _get_reference() {
-    return (Dico_DictionaryOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_Dico_DictionaryOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Dico_DictionaryOfInteger)
 
 %extend Dico_DictionaryOfInteger {
 	%pythoncode {
@@ -398,51 +345,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 };
 
 
-%extend Dico_DictionaryOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Dico_DictionaryOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Dico_DictionaryOfTransient::Handle_Dico_DictionaryOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Dico_DictionaryOfTransient;
-class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Dico_DictionaryOfTransient();
-        Handle_Dico_DictionaryOfTransient(const Handle_Dico_DictionaryOfTransient &aHandle);
-        Handle_Dico_DictionaryOfTransient(const Dico_DictionaryOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Dico_DictionaryOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Dico_DictionaryOfTransient {
-    Dico_DictionaryOfTransient* _get_reference() {
-    return (Dico_DictionaryOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Dico_DictionaryOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Dico_DictionaryOfTransient)
 
 %extend Dico_DictionaryOfTransient {
 	%pythoncode {
@@ -585,51 +488,7 @@ class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 };
 
 
-%extend Dico_StackItemOfDictionaryOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Dico_StackItemOfDictionaryOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Dico_StackItemOfDictionaryOfInteger::Handle_Dico_StackItemOfDictionaryOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Dico_StackItemOfDictionaryOfInteger;
-class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Dico_StackItemOfDictionaryOfInteger();
-        Handle_Dico_StackItemOfDictionaryOfInteger(const Handle_Dico_StackItemOfDictionaryOfInteger &aHandle);
-        Handle_Dico_StackItemOfDictionaryOfInteger(const Dico_StackItemOfDictionaryOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Dico_StackItemOfDictionaryOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Dico_StackItemOfDictionaryOfInteger {
-    Dico_StackItemOfDictionaryOfInteger* _get_reference() {
-    return (Dico_StackItemOfDictionaryOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_Dico_StackItemOfDictionaryOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Dico_StackItemOfDictionaryOfInteger)
 
 %extend Dico_StackItemOfDictionaryOfInteger {
 	%pythoncode {
@@ -666,51 +525,7 @@ class Dico_StackItemOfDictionaryOfTransient : public MMgt_TShared {
 };
 
 
-%extend Dico_StackItemOfDictionaryOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Dico_StackItemOfDictionaryOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Dico_StackItemOfDictionaryOfTransient::Handle_Dico_StackItemOfDictionaryOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Dico_StackItemOfDictionaryOfTransient;
-class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Dico_StackItemOfDictionaryOfTransient();
-        Handle_Dico_StackItemOfDictionaryOfTransient(const Handle_Dico_StackItemOfDictionaryOfTransient &aHandle);
-        Handle_Dico_StackItemOfDictionaryOfTransient(const Dico_StackItemOfDictionaryOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Dico_StackItemOfDictionaryOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Dico_StackItemOfDictionaryOfTransient {
-    Dico_StackItemOfDictionaryOfTransient* _get_reference() {
-    return (Dico_StackItemOfDictionaryOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Dico_StackItemOfDictionaryOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Dico_StackItemOfDictionaryOfTransient)
 
 %extend Dico_StackItemOfDictionaryOfTransient {
 	%pythoncode {

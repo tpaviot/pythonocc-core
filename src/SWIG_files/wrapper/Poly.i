@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define POLYDOCSTRING
-"No docstring provided."
+"This package provides classes and services tohandle :* 3D triangular polyhedrons.* 3D polygons.* 2D polygon.* Tools to dump, save and restore those objects."
 %enddef
 %module (package="OCC.Core", docstring=POLYDOCSTRING) Poly
 
@@ -34,34 +34,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Poly_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
 typedef NCollection_Vector <Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoherentLink;
-typedef NCollection_Vector <Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
 typedef NCollection_Vector <Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
+typedef NCollection_Vector <Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
 typedef NCollection_List <Handle_Poly_Triangulation> Poly_ListOfTriangulation;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Poly_HArray1OfTriangle)
+%wrap_handle(Poly_Polygon2D)
+%wrap_handle(Poly_Polygon3D)
+%wrap_handle(Poly_PolygonOnTriangulation)
+%wrap_handle(Poly_Triangulation)
 
 %rename(poly) Poly;
 class Poly {
@@ -760,51 +752,7 @@ class Poly_HArray1OfTriangle : public MMgt_TShared {
 };
 
 
-%extend Poly_HArray1OfTriangle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Poly_HArray1OfTriangle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Poly_HArray1OfTriangle::Handle_Poly_HArray1OfTriangle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Poly_HArray1OfTriangle;
-class Handle_Poly_HArray1OfTriangle : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Poly_HArray1OfTriangle();
-        Handle_Poly_HArray1OfTriangle(const Handle_Poly_HArray1OfTriangle &aHandle);
-        Handle_Poly_HArray1OfTriangle(const Poly_HArray1OfTriangle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Poly_HArray1OfTriangle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Poly_HArray1OfTriangle {
-    Poly_HArray1OfTriangle* _get_reference() {
-    return (Poly_HArray1OfTriangle*)$self->Access();
-    }
-};
-
-%extend Handle_Poly_HArray1OfTriangle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Poly_HArray1OfTriangle)
 
 %extend Poly_HArray1OfTriangle {
 	%pythoncode {
@@ -851,51 +799,7 @@ class Poly_Polygon2D : public MMgt_TShared {
 };
 
 
-%extend Poly_Polygon2D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Poly_Polygon2D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Poly_Polygon2D::Handle_Poly_Polygon2D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Poly_Polygon2D;
-class Handle_Poly_Polygon2D : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Poly_Polygon2D();
-        Handle_Poly_Polygon2D(const Handle_Poly_Polygon2D &aHandle);
-        Handle_Poly_Polygon2D(const Poly_Polygon2D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Poly_Polygon2D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Poly_Polygon2D {
-    Poly_Polygon2D* _get_reference() {
-    return (Poly_Polygon2D*)$self->Access();
-    }
-};
-
-%extend Handle_Poly_Polygon2D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Poly_Polygon2D)
 
 %extend Poly_Polygon2D {
 	%pythoncode {
@@ -970,51 +874,7 @@ class Poly_Polygon3D : public MMgt_TShared {
 };
 
 
-%extend Poly_Polygon3D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Poly_Polygon3D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Poly_Polygon3D::Handle_Poly_Polygon3D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Poly_Polygon3D;
-class Handle_Poly_Polygon3D : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Poly_Polygon3D();
-        Handle_Poly_Polygon3D(const Handle_Poly_Polygon3D &aHandle);
-        Handle_Poly_Polygon3D(const Poly_Polygon3D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Poly_Polygon3D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Poly_Polygon3D {
-    Poly_Polygon3D* _get_reference() {
-    return (Poly_Polygon3D*)$self->Access();
-    }
-};
-
-%extend Handle_Poly_Polygon3D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Poly_Polygon3D)
 
 %extend Poly_Polygon3D {
 	%pythoncode {
@@ -1083,51 +943,7 @@ class Poly_PolygonOnTriangulation : public MMgt_TShared {
 };
 
 
-%extend Poly_PolygonOnTriangulation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Poly_PolygonOnTriangulation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Poly_PolygonOnTriangulation::Handle_Poly_PolygonOnTriangulation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Poly_PolygonOnTriangulation;
-class Handle_Poly_PolygonOnTriangulation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Poly_PolygonOnTriangulation();
-        Handle_Poly_PolygonOnTriangulation(const Handle_Poly_PolygonOnTriangulation &aHandle);
-        Handle_Poly_PolygonOnTriangulation(const Poly_PolygonOnTriangulation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Poly_PolygonOnTriangulation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Poly_PolygonOnTriangulation {
-    Poly_PolygonOnTriangulation* _get_reference() {
-    return (Poly_PolygonOnTriangulation*)$self->Access();
-    }
-};
-
-%extend Handle_Poly_PolygonOnTriangulation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Poly_PolygonOnTriangulation)
 
 %extend Poly_PolygonOnTriangulation {
 	%pythoncode {
@@ -1353,51 +1169,7 @@ class Poly_Triangulation : public MMgt_TShared {
 };
 
 
-%extend Poly_Triangulation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Poly_Triangulation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Poly_Triangulation::Handle_Poly_Triangulation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Poly_Triangulation;
-class Handle_Poly_Triangulation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Poly_Triangulation();
-        Handle_Poly_Triangulation(const Handle_Poly_Triangulation &aHandle);
-        Handle_Poly_Triangulation(const Poly_Triangulation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Poly_Triangulation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Poly_Triangulation {
-    Poly_Triangulation* _get_reference() {
-    return (Poly_Triangulation*)$self->Access();
-    }
-};
-
-%extend Handle_Poly_Triangulation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Poly_Triangulation)
 
 %extend Poly_Triangulation {
 	%pythoncode {

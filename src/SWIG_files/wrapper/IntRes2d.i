@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTRES2DDOCSTRING
-"No docstring provided."
+"This package provides the definition of the results ofthe intersection between 2D curves and the definitionof a domain on a 2D curve.-Level: PublicAll the methods of all the classes of this package are public."
 %enddef
 %module (package="OCC.Core", docstring=INTRES2DDOCSTRING) IntRes2d
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntRes2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -77,6 +63,9 @@ enum IntRes2d_TypeTrans {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint)
+%wrap_handle(IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment)
 
 %nodefaultctor IntRes2d_Domain;
 class IntRes2d_Domain {
@@ -548,51 +537,7 @@ class IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public TCollection_Se
 };
 
 
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint::Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
-class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint();
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint(const Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint &aHandle);
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint(const IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-    IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint* _get_reference() {
-    return (IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint*)$self->Access();
-    }
-};
-
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint)
 
 %extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
 	%pythoncode {
@@ -619,51 +564,7 @@ class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_
 };
 
 
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment::Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
-class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment();
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(const Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment &aHandle);
-        Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(const IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-    IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment* _get_reference() {
-    return (IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment*)$self->Access();
-    }
-};
-
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment)
 
 %extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
 	%pythoncode {

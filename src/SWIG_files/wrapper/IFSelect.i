@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IFSELECTDOCSTRING
-"No docstring provided."
+"-Purpose : Gives tools to manage Selecting a group of Entitiesprocessed by an Interface, for instance to divide up anoriginal Model (from a File) to several smaller onesThey use description of an Interface Model as a graphRemark that this corresponds to the description of a'scenario' of sharing out a File. Parts of this Scenarioare intended to be permanently stored. IFSelect providesthe Transient, active counterparts (to run the Scenario).But a permanent one (either as Persistent Objects or asinterpretable Text) must be provided elsewhere."
 %enddef
 %module (package="OCC.Core", docstring=IFSELECTDOCSTRING) IFSelect
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IFSelect_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef IFSelect_ReturnStatus ( * IFSelect_ActFunc ) ( const Handle_IFSelect_SessionPilot & );
@@ -62,18 +48,6 @@ typedef MoniTool_Profile IFSelect_Profile;
 /* end typedefs declaration */
 
 /* public enums */
-enum IFSelect_PrintFail {
-	IFSelect_FailOnly = 0,
-	IFSelect_FailAndWarn = 1,
-};
-
-enum IFSelect_RemainMode {
-	IFSelect_RemainForget = 0,
-	IFSelect_RemainCompute = 1,
-	IFSelect_RemainDisplay = 2,
-	IFSelect_RemainUndo = 3,
-};
-
 enum IFSelect_EditValue {
 	IFSelect_Optional = 0,
 	IFSelect_Editable = 1,
@@ -81,14 +55,6 @@ enum IFSelect_EditValue {
 	IFSelect_EditComputed = 3,
 	IFSelect_EditRead = 4,
 	IFSelect_EditDynamic = 5,
-};
-
-enum IFSelect_ReturnStatus {
-	IFSelect_RetVoid = 0,
-	IFSelect_RetDone = 1,
-	IFSelect_RetError = 2,
-	IFSelect_RetFail = 3,
-	IFSelect_RetStop = 4,
 };
 
 enum IFSelect_PrintCount {
@@ -103,7 +69,104 @@ enum IFSelect_PrintCount {
 	IFSelect_ResultCount = 8,
 };
 
+enum IFSelect_PrintFail {
+	IFSelect_FailOnly = 0,
+	IFSelect_FailAndWarn = 1,
+};
+
+enum IFSelect_RemainMode {
+	IFSelect_RemainForget = 0,
+	IFSelect_RemainCompute = 1,
+	IFSelect_RemainDisplay = 2,
+	IFSelect_RemainUndo = 3,
+};
+
+enum IFSelect_ReturnStatus {
+	IFSelect_RetVoid = 0,
+	IFSelect_RetDone = 1,
+	IFSelect_RetError = 2,
+	IFSelect_RetFail = 3,
+	IFSelect_RetStop = 4,
+};
+
 /* end public enums declaration */
+
+%wrap_handle(IFSelect_Activator)
+%wrap_handle(IFSelect_AppliedModifiers)
+%wrap_handle(IFSelect_Dispatch)
+%wrap_handle(IFSelect_EditForm)
+%wrap_handle(IFSelect_Editor)
+%wrap_handle(IFSelect_GeneralModifier)
+%wrap_handle(IFSelect_HSeqOfSelection)
+%wrap_handle(IFSelect_IntParam)
+%wrap_handle(IFSelect_ListEditor)
+%wrap_handle(IFSelect_ModelCopier)
+%wrap_handle(IFSelect_PacketList)
+%wrap_handle(IFSelect_Selection)
+%wrap_handle(IFSelect_SequenceNodeOfSequenceOfAppliedModifiers)
+%wrap_handle(IFSelect_SequenceNodeOfSequenceOfGeneralModifier)
+%wrap_handle(IFSelect_SequenceNodeOfSequenceOfInterfaceModel)
+%wrap_handle(IFSelect_SequenceNodeOfTSeqOfDispatch)
+%wrap_handle(IFSelect_SequenceNodeOfTSeqOfSelection)
+%wrap_handle(IFSelect_SessionDumper)
+%wrap_handle(IFSelect_ShareOut)
+%wrap_handle(IFSelect_Signature)
+%wrap_handle(IFSelect_SignatureList)
+%wrap_handle(IFSelect_Transformer)
+%wrap_handle(IFSelect_WorkLibrary)
+%wrap_handle(IFSelect_WorkSession)
+%wrap_handle(IFSelect_Act)
+%wrap_handle(IFSelect_BasicDumper)
+%wrap_handle(IFSelect_CheckCounter)
+%wrap_handle(IFSelect_DispGlobal)
+%wrap_handle(IFSelect_DispPerCount)
+%wrap_handle(IFSelect_DispPerFiles)
+%wrap_handle(IFSelect_DispPerOne)
+%wrap_handle(IFSelect_DispPerSignature)
+%wrap_handle(IFSelect_Modifier)
+%wrap_handle(IFSelect_ParamEditor)
+%wrap_handle(IFSelect_SelectBase)
+%wrap_handle(IFSelect_SelectCombine)
+%wrap_handle(IFSelect_SelectControl)
+%wrap_handle(IFSelect_SelectDeduct)
+%wrap_handle(IFSelect_SessionPilot)
+%wrap_handle(IFSelect_SignCategory)
+%wrap_handle(IFSelect_SignCounter)
+%wrap_handle(IFSelect_SignMultiple)
+%wrap_handle(IFSelect_SignType)
+%wrap_handle(IFSelect_SignValidity)
+%wrap_handle(IFSelect_TransformStandard)
+%wrap_handle(IFSelect_GraphCounter)
+%wrap_handle(IFSelect_ModifEditForm)
+%wrap_handle(IFSelect_ModifReorder)
+%wrap_handle(IFSelect_SelectAnyList)
+%wrap_handle(IFSelect_SelectDiff)
+%wrap_handle(IFSelect_SelectEntityNumber)
+%wrap_handle(IFSelect_SelectExplore)
+%wrap_handle(IFSelect_SelectExtract)
+%wrap_handle(IFSelect_SelectIntersection)
+%wrap_handle(IFSelect_SelectModelEntities)
+%wrap_handle(IFSelect_SelectModelRoots)
+%wrap_handle(IFSelect_SelectPointed)
+%wrap_handle(IFSelect_SelectShared)
+%wrap_handle(IFSelect_SelectSharing)
+%wrap_handle(IFSelect_SelectSuite)
+%wrap_handle(IFSelect_SelectUnion)
+%wrap_handle(IFSelect_SignAncestor)
+%wrap_handle(IFSelect_SelectAnyType)
+%wrap_handle(IFSelect_SelectErrorEntities)
+%wrap_handle(IFSelect_SelectFlag)
+%wrap_handle(IFSelect_SelectInList)
+%wrap_handle(IFSelect_SelectRange)
+%wrap_handle(IFSelect_SelectRootComps)
+%wrap_handle(IFSelect_SelectRoots)
+%wrap_handle(IFSelect_SelectSent)
+%wrap_handle(IFSelect_SelectSignature)
+%wrap_handle(IFSelect_SelectSignedShared)
+%wrap_handle(IFSelect_SelectSignedSharing)
+%wrap_handle(IFSelect_SelectUnknownEntities)
+%wrap_handle(IFSelect_SelectIncorrectEntities)
+%wrap_handle(IFSelect_SelectType)
 
 %rename(ifselect) IFSelect;
 class IFSelect {
@@ -278,51 +341,7 @@ class IFSelect_Activator : public MMgt_TShared {
 };
 
 
-%extend IFSelect_Activator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Activator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Activator::Handle_IFSelect_Activator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Activator;
-class Handle_IFSelect_Activator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_Activator();
-        Handle_IFSelect_Activator(const Handle_IFSelect_Activator &aHandle);
-        Handle_IFSelect_Activator(const IFSelect_Activator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Activator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Activator {
-    IFSelect_Activator* _get_reference() {
-    return (IFSelect_Activator*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Activator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Activator)
 
 %extend IFSelect_Activator {
 	%pythoncode {
@@ -399,51 +418,7 @@ class IFSelect_AppliedModifiers : public MMgt_TShared {
 };
 
 
-%extend IFSelect_AppliedModifiers {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_AppliedModifiers(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_AppliedModifiers::Handle_IFSelect_AppliedModifiers %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_AppliedModifiers;
-class Handle_IFSelect_AppliedModifiers : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_AppliedModifiers();
-        Handle_IFSelect_AppliedModifiers(const Handle_IFSelect_AppliedModifiers &aHandle);
-        Handle_IFSelect_AppliedModifiers(const IFSelect_AppliedModifiers *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_AppliedModifiers DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_AppliedModifiers {
-    IFSelect_AppliedModifiers* _get_reference() {
-    return (IFSelect_AppliedModifiers*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_AppliedModifiers {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_AppliedModifiers)
 
 %extend IFSelect_AppliedModifiers {
 	%pythoncode {
@@ -978,51 +953,7 @@ class IFSelect_Dispatch : public MMgt_TShared {
 };
 
 
-%extend IFSelect_Dispatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Dispatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Dispatch::Handle_IFSelect_Dispatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Dispatch;
-class Handle_IFSelect_Dispatch : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_Dispatch();
-        Handle_IFSelect_Dispatch(const Handle_IFSelect_Dispatch &aHandle);
-        Handle_IFSelect_Dispatch(const IFSelect_Dispatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Dispatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Dispatch {
-    IFSelect_Dispatch* _get_reference() {
-    return (IFSelect_Dispatch*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Dispatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Dispatch)
 
 %extend IFSelect_Dispatch {
 	%pythoncode {
@@ -1388,51 +1319,7 @@ class IFSelect_EditForm : public MMgt_TShared {
 };
 
 
-%extend IFSelect_EditForm {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_EditForm(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_EditForm::Handle_IFSelect_EditForm %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_EditForm;
-class Handle_IFSelect_EditForm : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_EditForm();
-        Handle_IFSelect_EditForm(const Handle_IFSelect_EditForm &aHandle);
-        Handle_IFSelect_EditForm(const IFSelect_EditForm *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_EditForm DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_EditForm {
-    IFSelect_EditForm* _get_reference() {
-    return (IFSelect_EditForm*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_EditForm {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_EditForm)
 
 %extend IFSelect_EditForm {
 	%pythoncode {
@@ -1651,51 +1538,7 @@ class IFSelect_Editor : public MMgt_TShared {
 };
 
 
-%extend IFSelect_Editor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Editor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Editor::Handle_IFSelect_Editor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Editor;
-class Handle_IFSelect_Editor : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_Editor();
-        Handle_IFSelect_Editor(const Handle_IFSelect_Editor &aHandle);
-        Handle_IFSelect_Editor(const IFSelect_Editor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Editor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Editor {
-    IFSelect_Editor* _get_reference() {
-    return (IFSelect_Editor*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Editor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Editor)
 
 %extend IFSelect_Editor {
 	%pythoncode {
@@ -1828,51 +1671,7 @@ class IFSelect_GeneralModifier : public MMgt_TShared {
 };
 
 
-%extend IFSelect_GeneralModifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_GeneralModifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_GeneralModifier::Handle_IFSelect_GeneralModifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_GeneralModifier;
-class Handle_IFSelect_GeneralModifier : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_GeneralModifier();
-        Handle_IFSelect_GeneralModifier(const Handle_IFSelect_GeneralModifier &aHandle);
-        Handle_IFSelect_GeneralModifier(const IFSelect_GeneralModifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_GeneralModifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_GeneralModifier {
-    IFSelect_GeneralModifier* _get_reference() {
-    return (IFSelect_GeneralModifier*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_GeneralModifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_GeneralModifier)
 
 %extend IFSelect_GeneralModifier {
 	%pythoncode {
@@ -2017,51 +1816,7 @@ class IFSelect_HSeqOfSelection : public MMgt_TShared {
 };
 
 
-%extend IFSelect_HSeqOfSelection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_HSeqOfSelection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_HSeqOfSelection::Handle_IFSelect_HSeqOfSelection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_HSeqOfSelection;
-class Handle_IFSelect_HSeqOfSelection : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_HSeqOfSelection();
-        Handle_IFSelect_HSeqOfSelection(const Handle_IFSelect_HSeqOfSelection &aHandle);
-        Handle_IFSelect_HSeqOfSelection(const IFSelect_HSeqOfSelection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_HSeqOfSelection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_HSeqOfSelection {
-    IFSelect_HSeqOfSelection* _get_reference() {
-    return (IFSelect_HSeqOfSelection*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_HSeqOfSelection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_HSeqOfSelection)
 
 %extend IFSelect_HSeqOfSelection {
 	%pythoncode {
@@ -2102,51 +1857,7 @@ class IFSelect_IntParam : public MMgt_TShared {
 };
 
 
-%extend IFSelect_IntParam {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_IntParam(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_IntParam::Handle_IFSelect_IntParam %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_IntParam;
-class Handle_IFSelect_IntParam : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_IntParam();
-        Handle_IFSelect_IntParam(const Handle_IFSelect_IntParam &aHandle);
-        Handle_IFSelect_IntParam(const IFSelect_IntParam *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_IntParam DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_IntParam {
-    IFSelect_IntParam* _get_reference() {
-    return (IFSelect_IntParam*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_IntParam {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_IntParam)
 
 %extend IFSelect_IntParam {
 	%pythoncode {
@@ -2301,51 +2012,7 @@ class IFSelect_ListEditor : public MMgt_TShared {
 };
 
 
-%extend IFSelect_ListEditor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ListEditor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ListEditor::Handle_IFSelect_ListEditor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ListEditor;
-class Handle_IFSelect_ListEditor : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_ListEditor();
-        Handle_IFSelect_ListEditor(const Handle_IFSelect_ListEditor &aHandle);
-        Handle_IFSelect_ListEditor(const IFSelect_ListEditor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ListEditor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ListEditor {
-    IFSelect_ListEditor* _get_reference() {
-    return (IFSelect_ListEditor*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ListEditor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ListEditor)
 
 %extend IFSelect_ListEditor {
 	%pythoncode {
@@ -2564,51 +2231,7 @@ class IFSelect_ModelCopier : public MMgt_TShared {
 };
 
 
-%extend IFSelect_ModelCopier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ModelCopier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ModelCopier::Handle_IFSelect_ModelCopier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ModelCopier;
-class Handle_IFSelect_ModelCopier : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_ModelCopier();
-        Handle_IFSelect_ModelCopier(const Handle_IFSelect_ModelCopier &aHandle);
-        Handle_IFSelect_ModelCopier(const IFSelect_ModelCopier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ModelCopier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ModelCopier {
-    IFSelect_ModelCopier* _get_reference() {
-    return (IFSelect_ModelCopier*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ModelCopier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ModelCopier)
 
 %extend IFSelect_ModelCopier {
 	%pythoncode {
@@ -2719,51 +2342,7 @@ class IFSelect_PacketList : public MMgt_TShared {
 };
 
 
-%extend IFSelect_PacketList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_PacketList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_PacketList::Handle_IFSelect_PacketList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_PacketList;
-class Handle_IFSelect_PacketList : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_PacketList();
-        Handle_IFSelect_PacketList(const Handle_IFSelect_PacketList &aHandle);
-        Handle_IFSelect_PacketList(const IFSelect_PacketList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_PacketList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_PacketList {
-    IFSelect_PacketList* _get_reference() {
-    return (IFSelect_PacketList*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_PacketList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_PacketList)
 
 %extend IFSelect_PacketList {
 	%pythoncode {
@@ -2814,51 +2393,7 @@ class IFSelect_Selection : public MMgt_TShared {
 };
 
 
-%extend IFSelect_Selection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Selection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Selection::Handle_IFSelect_Selection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Selection;
-class Handle_IFSelect_Selection : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_Selection();
-        Handle_IFSelect_Selection(const Handle_IFSelect_Selection &aHandle);
-        Handle_IFSelect_Selection(const IFSelect_Selection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Selection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Selection {
-    IFSelect_Selection* _get_reference() {
-    return (IFSelect_Selection*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Selection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Selection)
 
 %extend IFSelect_Selection {
 	%pythoncode {
@@ -2952,51 +2487,7 @@ class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public TCollection_Seq
 };
 
 
-%extend IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers::Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers;
-class Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers();
-        Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers(const Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers &aHandle);
-        Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers(const IFSelect_SequenceNodeOfSequenceOfAppliedModifiers *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
-    IFSelect_SequenceNodeOfSequenceOfAppliedModifiers* _get_reference() {
-    return (IFSelect_SequenceNodeOfSequenceOfAppliedModifiers*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SequenceNodeOfSequenceOfAppliedModifiers)
 
 %extend IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
 	%pythoncode {
@@ -3023,51 +2514,7 @@ class IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public TCollection_SeqN
 };
 
 
-%extend IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier::Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier;
-class Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier();
-        Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier(const Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier &aHandle);
-        Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier(const IFSelect_SequenceNodeOfSequenceOfGeneralModifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
-    IFSelect_SequenceNodeOfSequenceOfGeneralModifier* _get_reference() {
-    return (IFSelect_SequenceNodeOfSequenceOfGeneralModifier*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SequenceNodeOfSequenceOfGeneralModifier)
 
 %extend IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
 	%pythoncode {
@@ -3094,51 +2541,7 @@ class IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public TCollection_SeqNo
 };
 
 
-%extend IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel::Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel;
-class Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel();
-        Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel(const Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel &aHandle);
-        Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel(const IFSelect_SequenceNodeOfSequenceOfInterfaceModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
-    IFSelect_SequenceNodeOfSequenceOfInterfaceModel* _get_reference() {
-    return (IFSelect_SequenceNodeOfSequenceOfInterfaceModel*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SequenceNodeOfSequenceOfInterfaceModel)
 
 %extend IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
 	%pythoncode {
@@ -3165,51 +2568,7 @@ class IFSelect_SequenceNodeOfTSeqOfDispatch : public TCollection_SeqNode {
 };
 
 
-%extend IFSelect_SequenceNodeOfTSeqOfDispatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SequenceNodeOfTSeqOfDispatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SequenceNodeOfTSeqOfDispatch::Handle_IFSelect_SequenceNodeOfTSeqOfDispatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SequenceNodeOfTSeqOfDispatch;
-class Handle_IFSelect_SequenceNodeOfTSeqOfDispatch : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IFSelect_SequenceNodeOfTSeqOfDispatch();
-        Handle_IFSelect_SequenceNodeOfTSeqOfDispatch(const Handle_IFSelect_SequenceNodeOfTSeqOfDispatch &aHandle);
-        Handle_IFSelect_SequenceNodeOfTSeqOfDispatch(const IFSelect_SequenceNodeOfTSeqOfDispatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SequenceNodeOfTSeqOfDispatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SequenceNodeOfTSeqOfDispatch {
-    IFSelect_SequenceNodeOfTSeqOfDispatch* _get_reference() {
-    return (IFSelect_SequenceNodeOfTSeqOfDispatch*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SequenceNodeOfTSeqOfDispatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SequenceNodeOfTSeqOfDispatch)
 
 %extend IFSelect_SequenceNodeOfTSeqOfDispatch {
 	%pythoncode {
@@ -3236,51 +2595,7 @@ class IFSelect_SequenceNodeOfTSeqOfSelection : public TCollection_SeqNode {
 };
 
 
-%extend IFSelect_SequenceNodeOfTSeqOfSelection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SequenceNodeOfTSeqOfSelection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SequenceNodeOfTSeqOfSelection::Handle_IFSelect_SequenceNodeOfTSeqOfSelection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SequenceNodeOfTSeqOfSelection;
-class Handle_IFSelect_SequenceNodeOfTSeqOfSelection : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IFSelect_SequenceNodeOfTSeqOfSelection();
-        Handle_IFSelect_SequenceNodeOfTSeqOfSelection(const Handle_IFSelect_SequenceNodeOfTSeqOfSelection &aHandle);
-        Handle_IFSelect_SequenceNodeOfTSeqOfSelection(const IFSelect_SequenceNodeOfTSeqOfSelection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SequenceNodeOfTSeqOfSelection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SequenceNodeOfTSeqOfSelection {
-    IFSelect_SequenceNodeOfTSeqOfSelection* _get_reference() {
-    return (IFSelect_SequenceNodeOfTSeqOfSelection*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SequenceNodeOfTSeqOfSelection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SequenceNodeOfTSeqOfSelection)
 
 %extend IFSelect_SequenceNodeOfTSeqOfSelection {
 	%pythoncode {
@@ -3756,51 +3071,7 @@ class IFSelect_SessionDumper : public MMgt_TShared {
 };
 
 
-%extend IFSelect_SessionDumper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SessionDumper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SessionDumper::Handle_IFSelect_SessionDumper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SessionDumper;
-class Handle_IFSelect_SessionDumper : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_SessionDumper();
-        Handle_IFSelect_SessionDumper(const Handle_IFSelect_SessionDumper &aHandle);
-        Handle_IFSelect_SessionDumper(const IFSelect_SessionDumper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SessionDumper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SessionDumper {
-    IFSelect_SessionDumper* _get_reference() {
-    return (IFSelect_SessionDumper*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SessionDumper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SessionDumper)
 
 %extend IFSelect_SessionDumper {
 	%pythoncode {
@@ -4362,51 +3633,7 @@ class IFSelect_ShareOut : public MMgt_TShared {
 };
 
 
-%extend IFSelect_ShareOut {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ShareOut(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ShareOut::Handle_IFSelect_ShareOut %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ShareOut;
-class Handle_IFSelect_ShareOut : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_ShareOut();
-        Handle_IFSelect_ShareOut(const Handle_IFSelect_ShareOut &aHandle);
-        Handle_IFSelect_ShareOut(const IFSelect_ShareOut *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ShareOut DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ShareOut {
-    IFSelect_ShareOut* _get_reference() {
-    return (IFSelect_ShareOut*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ShareOut {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ShareOut)
 
 %extend IFSelect_ShareOut {
 	%pythoncode {
@@ -4660,51 +3887,7 @@ class IFSelect_Signature : public Interface_SignType {
 };
 
 
-%extend IFSelect_Signature {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Signature(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Signature::Handle_IFSelect_Signature %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Signature;
-class Handle_IFSelect_Signature : public Handle_Interface_SignType {
-
-    public:
-        // constructors
-        Handle_IFSelect_Signature();
-        Handle_IFSelect_Signature(const Handle_IFSelect_Signature &aHandle);
-        Handle_IFSelect_Signature(const IFSelect_Signature *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Signature DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Signature {
-    IFSelect_Signature* _get_reference() {
-    return (IFSelect_Signature*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Signature {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Signature)
 
 %extend IFSelect_Signature {
 	%pythoncode {
@@ -4858,51 +4041,7 @@ class IFSelect_SignatureList : public MMgt_TShared {
 };
 
 
-%extend IFSelect_SignatureList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignatureList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignatureList::Handle_IFSelect_SignatureList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignatureList;
-class Handle_IFSelect_SignatureList : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignatureList();
-        Handle_IFSelect_SignatureList(const Handle_IFSelect_SignatureList &aHandle);
-        Handle_IFSelect_SignatureList(const IFSelect_SignatureList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignatureList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignatureList {
-    IFSelect_SignatureList* _get_reference() {
-    return (IFSelect_SignatureList*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignatureList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignatureList)
 
 %extend IFSelect_SignatureList {
 	%pythoncode {
@@ -5239,51 +4378,7 @@ class IFSelect_Transformer : public MMgt_TShared {
 };
 
 
-%extend IFSelect_Transformer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Transformer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Transformer::Handle_IFSelect_Transformer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Transformer;
-class Handle_IFSelect_Transformer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_Transformer();
-        Handle_IFSelect_Transformer(const Handle_IFSelect_Transformer &aHandle);
-        Handle_IFSelect_Transformer(const IFSelect_Transformer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Transformer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Transformer {
-    IFSelect_Transformer* _get_reference() {
-    return (IFSelect_Transformer*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Transformer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Transformer)
 
 %extend IFSelect_Transformer {
 	%pythoncode {
@@ -5398,51 +4493,7 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 };
 
 
-%extend IFSelect_WorkLibrary {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_WorkLibrary(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_WorkLibrary::Handle_IFSelect_WorkLibrary %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_WorkLibrary;
-class Handle_IFSelect_WorkLibrary : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_IFSelect_WorkLibrary();
-        Handle_IFSelect_WorkLibrary(const Handle_IFSelect_WorkLibrary &aHandle);
-        Handle_IFSelect_WorkLibrary(const IFSelect_WorkLibrary *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_WorkLibrary DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_WorkLibrary {
-    IFSelect_WorkLibrary* _get_reference() {
-    return (IFSelect_WorkLibrary*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_WorkLibrary {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_WorkLibrary)
 
 %extend IFSelect_WorkLibrary {
 	%pythoncode {
@@ -6807,51 +5858,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 };
 
 
-%extend IFSelect_WorkSession {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_WorkSession(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_WorkSession::Handle_IFSelect_WorkSession %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_WorkSession;
-class Handle_IFSelect_WorkSession : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IFSelect_WorkSession();
-        Handle_IFSelect_WorkSession(const Handle_IFSelect_WorkSession &aHandle);
-        Handle_IFSelect_WorkSession(const IFSelect_WorkSession *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_WorkSession DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_WorkSession {
-    IFSelect_WorkSession* _get_reference() {
-    return (IFSelect_WorkSession*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_WorkSession {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_WorkSession)
 
 %extend IFSelect_WorkSession {
 	%pythoncode {
@@ -6928,51 +5935,7 @@ class IFSelect_Act : public IFSelect_Activator {
 };
 
 
-%extend IFSelect_Act {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Act(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Act::Handle_IFSelect_Act %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Act;
-class Handle_IFSelect_Act : public Handle_IFSelect_Activator {
-
-    public:
-        // constructors
-        Handle_IFSelect_Act();
-        Handle_IFSelect_Act(const Handle_IFSelect_Act &aHandle);
-        Handle_IFSelect_Act(const IFSelect_Act *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Act DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Act {
-    IFSelect_Act* _get_reference() {
-    return (IFSelect_Act*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Act {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Act)
 
 %extend IFSelect_Act {
 	%pythoncode {
@@ -7013,51 +5976,7 @@ class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 };
 
 
-%extend IFSelect_BasicDumper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_BasicDumper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_BasicDumper::Handle_IFSelect_BasicDumper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_BasicDumper;
-class Handle_IFSelect_BasicDumper : public Handle_IFSelect_SessionDumper {
-
-    public:
-        // constructors
-        Handle_IFSelect_BasicDumper();
-        Handle_IFSelect_BasicDumper(const Handle_IFSelect_BasicDumper &aHandle);
-        Handle_IFSelect_BasicDumper(const IFSelect_BasicDumper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_BasicDumper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_BasicDumper {
-    IFSelect_BasicDumper* _get_reference() {
-    return (IFSelect_BasicDumper*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_BasicDumper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_BasicDumper)
 
 %extend IFSelect_BasicDumper {
 	%pythoncode {
@@ -7106,51 +6025,7 @@ class IFSelect_CheckCounter : public IFSelect_SignatureList {
 };
 
 
-%extend IFSelect_CheckCounter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_CheckCounter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_CheckCounter::Handle_IFSelect_CheckCounter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_CheckCounter;
-class Handle_IFSelect_CheckCounter : public Handle_IFSelect_SignatureList {
-
-    public:
-        // constructors
-        Handle_IFSelect_CheckCounter();
-        Handle_IFSelect_CheckCounter(const Handle_IFSelect_CheckCounter &aHandle);
-        Handle_IFSelect_CheckCounter(const IFSelect_CheckCounter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_CheckCounter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_CheckCounter {
-    IFSelect_CheckCounter* _get_reference() {
-    return (IFSelect_CheckCounter*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_CheckCounter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_CheckCounter)
 
 %extend IFSelect_CheckCounter {
 	%pythoncode {
@@ -7205,51 +6080,7 @@ class IFSelect_DispGlobal : public IFSelect_Dispatch {
 };
 
 
-%extend IFSelect_DispGlobal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_DispGlobal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_DispGlobal::Handle_IFSelect_DispGlobal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_DispGlobal;
-class Handle_IFSelect_DispGlobal : public Handle_IFSelect_Dispatch {
-
-    public:
-        // constructors
-        Handle_IFSelect_DispGlobal();
-        Handle_IFSelect_DispGlobal(const Handle_IFSelect_DispGlobal &aHandle);
-        Handle_IFSelect_DispGlobal(const IFSelect_DispGlobal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_DispGlobal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_DispGlobal {
-    IFSelect_DispGlobal* _get_reference() {
-    return (IFSelect_DispGlobal*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_DispGlobal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_DispGlobal)
 
 %extend IFSelect_DispGlobal {
 	%pythoncode {
@@ -7324,51 +6155,7 @@ class IFSelect_DispPerCount : public IFSelect_Dispatch {
 };
 
 
-%extend IFSelect_DispPerCount {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_DispPerCount(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_DispPerCount::Handle_IFSelect_DispPerCount %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_DispPerCount;
-class Handle_IFSelect_DispPerCount : public Handle_IFSelect_Dispatch {
-
-    public:
-        // constructors
-        Handle_IFSelect_DispPerCount();
-        Handle_IFSelect_DispPerCount(const Handle_IFSelect_DispPerCount &aHandle);
-        Handle_IFSelect_DispPerCount(const IFSelect_DispPerCount *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_DispPerCount DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_DispPerCount {
-    IFSelect_DispPerCount* _get_reference() {
-    return (IFSelect_DispPerCount*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_DispPerCount {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_DispPerCount)
 
 %extend IFSelect_DispPerCount {
 	%pythoncode {
@@ -7443,51 +6230,7 @@ class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 };
 
 
-%extend IFSelect_DispPerFiles {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_DispPerFiles(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_DispPerFiles::Handle_IFSelect_DispPerFiles %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_DispPerFiles;
-class Handle_IFSelect_DispPerFiles : public Handle_IFSelect_Dispatch {
-
-    public:
-        // constructors
-        Handle_IFSelect_DispPerFiles();
-        Handle_IFSelect_DispPerFiles(const Handle_IFSelect_DispPerFiles &aHandle);
-        Handle_IFSelect_DispPerFiles(const IFSelect_DispPerFiles *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_DispPerFiles DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_DispPerFiles {
-    IFSelect_DispPerFiles* _get_reference() {
-    return (IFSelect_DispPerFiles*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_DispPerFiles {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_DispPerFiles)
 
 %extend IFSelect_DispPerFiles {
 	%pythoncode {
@@ -7542,51 +6285,7 @@ class IFSelect_DispPerOne : public IFSelect_Dispatch {
 };
 
 
-%extend IFSelect_DispPerOne {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_DispPerOne(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_DispPerOne::Handle_IFSelect_DispPerOne %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_DispPerOne;
-class Handle_IFSelect_DispPerOne : public Handle_IFSelect_Dispatch {
-
-    public:
-        // constructors
-        Handle_IFSelect_DispPerOne();
-        Handle_IFSelect_DispPerOne(const Handle_IFSelect_DispPerOne &aHandle);
-        Handle_IFSelect_DispPerOne(const IFSelect_DispPerOne *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_DispPerOne DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_DispPerOne {
-    IFSelect_DispPerOne* _get_reference() {
-    return (IFSelect_DispPerOne*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_DispPerOne {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_DispPerOne)
 
 %extend IFSelect_DispPerOne {
 	%pythoncode {
@@ -7651,51 +6350,7 @@ class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 };
 
 
-%extend IFSelect_DispPerSignature {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_DispPerSignature(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_DispPerSignature::Handle_IFSelect_DispPerSignature %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_DispPerSignature;
-class Handle_IFSelect_DispPerSignature : public Handle_IFSelect_Dispatch {
-
-    public:
-        // constructors
-        Handle_IFSelect_DispPerSignature();
-        Handle_IFSelect_DispPerSignature(const Handle_IFSelect_DispPerSignature &aHandle);
-        Handle_IFSelect_DispPerSignature(const IFSelect_DispPerSignature *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_DispPerSignature DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_DispPerSignature {
-    IFSelect_DispPerSignature* _get_reference() {
-    return (IFSelect_DispPerSignature*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_DispPerSignature {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_DispPerSignature)
 
 %extend IFSelect_DispPerSignature {
 	%pythoncode {
@@ -7722,51 +6377,7 @@ class IFSelect_Modifier : public IFSelect_GeneralModifier {
 };
 
 
-%extend IFSelect_Modifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_Modifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_Modifier::Handle_IFSelect_Modifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_Modifier;
-class Handle_IFSelect_Modifier : public Handle_IFSelect_GeneralModifier {
-
-    public:
-        // constructors
-        Handle_IFSelect_Modifier();
-        Handle_IFSelect_Modifier(const Handle_IFSelect_Modifier &aHandle);
-        Handle_IFSelect_Modifier(const IFSelect_Modifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_Modifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_Modifier {
-    IFSelect_Modifier* _get_reference() {
-    return (IFSelect_Modifier*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_Modifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_Modifier)
 
 %extend IFSelect_Modifier {
 	%pythoncode {
@@ -7859,51 +6470,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 };
 
 
-%extend IFSelect_ParamEditor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ParamEditor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ParamEditor::Handle_IFSelect_ParamEditor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ParamEditor;
-class Handle_IFSelect_ParamEditor : public Handle_IFSelect_Editor {
-
-    public:
-        // constructors
-        Handle_IFSelect_ParamEditor();
-        Handle_IFSelect_ParamEditor(const Handle_IFSelect_ParamEditor &aHandle);
-        Handle_IFSelect_ParamEditor(const IFSelect_ParamEditor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ParamEditor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ParamEditor {
-    IFSelect_ParamEditor* _get_reference() {
-    return (IFSelect_ParamEditor*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ParamEditor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ParamEditor)
 
 %extend IFSelect_ParamEditor {
 	%pythoncode {
@@ -7924,51 +6491,7 @@ class IFSelect_SelectBase : public IFSelect_Selection {
 };
 
 
-%extend IFSelect_SelectBase {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectBase(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectBase::Handle_IFSelect_SelectBase %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectBase;
-class Handle_IFSelect_SelectBase : public Handle_IFSelect_Selection {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectBase();
-        Handle_IFSelect_SelectBase(const Handle_IFSelect_SelectBase &aHandle);
-        Handle_IFSelect_SelectBase(const IFSelect_SelectBase *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectBase DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectBase {
-    IFSelect_SelectBase* _get_reference() {
-    return (IFSelect_SelectBase*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectBase {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectBase)
 
 %extend IFSelect_SelectBase {
 	%pythoncode {
@@ -8037,51 +6560,7 @@ class IFSelect_SelectCombine : public IFSelect_Selection {
 };
 
 
-%extend IFSelect_SelectCombine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectCombine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectCombine::Handle_IFSelect_SelectCombine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectCombine;
-class Handle_IFSelect_SelectCombine : public Handle_IFSelect_Selection {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectCombine();
-        Handle_IFSelect_SelectCombine(const Handle_IFSelect_SelectCombine &aHandle);
-        Handle_IFSelect_SelectCombine(const IFSelect_SelectCombine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectCombine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectCombine {
-    IFSelect_SelectCombine* _get_reference() {
-    return (IFSelect_SelectCombine*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectCombine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectCombine)
 
 %extend IFSelect_SelectCombine {
 	%pythoncode {
@@ -8136,51 +6615,7 @@ class IFSelect_SelectControl : public IFSelect_Selection {
 };
 
 
-%extend IFSelect_SelectControl {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectControl(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectControl::Handle_IFSelect_SelectControl %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectControl;
-class Handle_IFSelect_SelectControl : public Handle_IFSelect_Selection {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectControl();
-        Handle_IFSelect_SelectControl(const Handle_IFSelect_SelectControl &aHandle);
-        Handle_IFSelect_SelectControl(const IFSelect_SelectControl *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectControl DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectControl {
-    IFSelect_SelectControl* _get_reference() {
-    return (IFSelect_SelectControl*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectControl {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectControl)
 
 %extend IFSelect_SelectControl {
 	%pythoncode {
@@ -8241,51 +6676,7 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 };
 
 
-%extend IFSelect_SelectDeduct {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectDeduct(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectDeduct::Handle_IFSelect_SelectDeduct %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectDeduct;
-class Handle_IFSelect_SelectDeduct : public Handle_IFSelect_Selection {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectDeduct();
-        Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectDeduct &aHandle);
-        Handle_IFSelect_SelectDeduct(const IFSelect_SelectDeduct *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectDeduct DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectDeduct {
-    IFSelect_SelectDeduct* _get_reference() {
-    return (IFSelect_SelectDeduct*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectDeduct {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectDeduct)
 
 %extend IFSelect_SelectDeduct {
 	%pythoncode {
@@ -8502,51 +6893,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 };
 
 
-%extend IFSelect_SessionPilot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SessionPilot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SessionPilot::Handle_IFSelect_SessionPilot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SessionPilot;
-class Handle_IFSelect_SessionPilot : public Handle_IFSelect_Activator {
-
-    public:
-        // constructors
-        Handle_IFSelect_SessionPilot();
-        Handle_IFSelect_SessionPilot(const Handle_IFSelect_SessionPilot &aHandle);
-        Handle_IFSelect_SessionPilot(const IFSelect_SessionPilot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SessionPilot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SessionPilot {
-    IFSelect_SessionPilot* _get_reference() {
-    return (IFSelect_SessionPilot*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SessionPilot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SessionPilot)
 
 %extend IFSelect_SessionPilot {
 	%pythoncode {
@@ -8575,51 +6922,7 @@ class IFSelect_SignCategory : public IFSelect_Signature {
 };
 
 
-%extend IFSelect_SignCategory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignCategory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignCategory::Handle_IFSelect_SignCategory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignCategory;
-class Handle_IFSelect_SignCategory : public Handle_IFSelect_Signature {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignCategory();
-        Handle_IFSelect_SignCategory(const Handle_IFSelect_SignCategory &aHandle);
-        Handle_IFSelect_SignCategory(const IFSelect_SignCategory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignCategory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignCategory {
-    IFSelect_SignCategory* _get_reference() {
-    return (IFSelect_SignCategory*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignCategory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignCategory)
 
 %extend IFSelect_SignCategory {
 	%pythoncode {
@@ -8784,51 +7087,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 };
 
 
-%extend IFSelect_SignCounter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignCounter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignCounter::Handle_IFSelect_SignCounter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignCounter;
-class Handle_IFSelect_SignCounter : public Handle_IFSelect_SignatureList {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignCounter();
-        Handle_IFSelect_SignCounter(const Handle_IFSelect_SignCounter &aHandle);
-        Handle_IFSelect_SignCounter(const IFSelect_SignCounter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignCounter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignCounter {
-    IFSelect_SignCounter* _get_reference() {
-    return (IFSelect_SignCounter*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignCounter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignCounter)
 
 %extend IFSelect_SignCounter {
 	%pythoncode {
@@ -8885,51 +7144,7 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 };
 
 
-%extend IFSelect_SignMultiple {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignMultiple(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignMultiple::Handle_IFSelect_SignMultiple %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignMultiple;
-class Handle_IFSelect_SignMultiple : public Handle_IFSelect_Signature {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignMultiple();
-        Handle_IFSelect_SignMultiple(const Handle_IFSelect_SignMultiple &aHandle);
-        Handle_IFSelect_SignMultiple(const IFSelect_SignMultiple *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignMultiple DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignMultiple {
-    IFSelect_SignMultiple* _get_reference() {
-    return (IFSelect_SignMultiple*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignMultiple {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignMultiple)
 
 %extend IFSelect_SignMultiple {
 	%pythoncode {
@@ -8960,51 +7175,7 @@ class IFSelect_SignType : public IFSelect_Signature {
 };
 
 
-%extend IFSelect_SignType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignType::Handle_IFSelect_SignType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignType;
-class Handle_IFSelect_SignType : public Handle_IFSelect_Signature {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignType();
-        Handle_IFSelect_SignType(const Handle_IFSelect_SignType &aHandle);
-        Handle_IFSelect_SignType(const IFSelect_SignType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignType {
-    IFSelect_SignType* _get_reference() {
-    return (IFSelect_SignType*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignType)
 
 %extend IFSelect_SignType {
 	%pythoncode {
@@ -9043,51 +7214,7 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 };
 
 
-%extend IFSelect_SignValidity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignValidity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignValidity::Handle_IFSelect_SignValidity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignValidity;
-class Handle_IFSelect_SignValidity : public Handle_IFSelect_Signature {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignValidity();
-        Handle_IFSelect_SignValidity(const Handle_IFSelect_SignValidity &aHandle);
-        Handle_IFSelect_SignValidity(const IFSelect_SignValidity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignValidity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignValidity {
-    IFSelect_SignValidity* _get_reference() {
-    return (IFSelect_SignValidity*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignValidity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignValidity)
 
 %extend IFSelect_SignValidity {
 	%pythoncode {
@@ -9264,51 +7391,7 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 };
 
 
-%extend IFSelect_TransformStandard {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_TransformStandard(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_TransformStandard::Handle_IFSelect_TransformStandard %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_TransformStandard;
-class Handle_IFSelect_TransformStandard : public Handle_IFSelect_Transformer {
-
-    public:
-        // constructors
-        Handle_IFSelect_TransformStandard();
-        Handle_IFSelect_TransformStandard(const Handle_IFSelect_TransformStandard &aHandle);
-        Handle_IFSelect_TransformStandard(const IFSelect_TransformStandard *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_TransformStandard DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_TransformStandard {
-    IFSelect_TransformStandard* _get_reference() {
-    return (IFSelect_TransformStandard*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_TransformStandard {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_TransformStandard)
 
 %extend IFSelect_TransformStandard {
 	%pythoncode {
@@ -9355,51 +7438,7 @@ class IFSelect_GraphCounter : public IFSelect_SignCounter {
 };
 
 
-%extend IFSelect_GraphCounter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_GraphCounter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_GraphCounter::Handle_IFSelect_GraphCounter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_GraphCounter;
-class Handle_IFSelect_GraphCounter : public Handle_IFSelect_SignCounter {
-
-    public:
-        // constructors
-        Handle_IFSelect_GraphCounter();
-        Handle_IFSelect_GraphCounter(const Handle_IFSelect_GraphCounter &aHandle);
-        Handle_IFSelect_GraphCounter(const IFSelect_GraphCounter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_GraphCounter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_GraphCounter {
-    IFSelect_GraphCounter* _get_reference() {
-    return (IFSelect_GraphCounter*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_GraphCounter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_GraphCounter)
 
 %extend IFSelect_GraphCounter {
 	%pythoncode {
@@ -9446,51 +7485,7 @@ class IFSelect_ModifEditForm : public IFSelect_Modifier {
 };
 
 
-%extend IFSelect_ModifEditForm {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ModifEditForm(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ModifEditForm::Handle_IFSelect_ModifEditForm %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ModifEditForm;
-class Handle_IFSelect_ModifEditForm : public Handle_IFSelect_Modifier {
-
-    public:
-        // constructors
-        Handle_IFSelect_ModifEditForm();
-        Handle_IFSelect_ModifEditForm(const Handle_IFSelect_ModifEditForm &aHandle);
-        Handle_IFSelect_ModifEditForm(const IFSelect_ModifEditForm *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ModifEditForm DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ModifEditForm {
-    IFSelect_ModifEditForm* _get_reference() {
-    return (IFSelect_ModifEditForm*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ModifEditForm {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ModifEditForm)
 
 %extend IFSelect_ModifEditForm {
 	%pythoncode {
@@ -9531,51 +7526,7 @@ class IFSelect_ModifReorder : public IFSelect_Modifier {
 };
 
 
-%extend IFSelect_ModifReorder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_ModifReorder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_ModifReorder::Handle_IFSelect_ModifReorder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_ModifReorder;
-class Handle_IFSelect_ModifReorder : public Handle_IFSelect_Modifier {
-
-    public:
-        // constructors
-        Handle_IFSelect_ModifReorder();
-        Handle_IFSelect_ModifReorder(const Handle_IFSelect_ModifReorder &aHandle);
-        Handle_IFSelect_ModifReorder(const IFSelect_ModifReorder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_ModifReorder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_ModifReorder {
-    IFSelect_ModifReorder* _get_reference() {
-    return (IFSelect_ModifReorder*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_ModifReorder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_ModifReorder)
 
 %extend IFSelect_ModifReorder {
 	%pythoncode {
@@ -9708,51 +7659,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectAnyList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectAnyList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectAnyList::Handle_IFSelect_SelectAnyList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectAnyList;
-class Handle_IFSelect_SelectAnyList : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectAnyList();
-        Handle_IFSelect_SelectAnyList(const Handle_IFSelect_SelectAnyList &aHandle);
-        Handle_IFSelect_SelectAnyList(const IFSelect_SelectAnyList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectAnyList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectAnyList {
-    IFSelect_SelectAnyList* _get_reference() {
-    return (IFSelect_SelectAnyList*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectAnyList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectAnyList)
 
 %extend IFSelect_SelectAnyList {
 	%pythoncode {
@@ -9785,51 +7692,7 @@ class IFSelect_SelectDiff : public IFSelect_SelectControl {
 };
 
 
-%extend IFSelect_SelectDiff {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectDiff(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectDiff::Handle_IFSelect_SelectDiff %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectDiff;
-class Handle_IFSelect_SelectDiff : public Handle_IFSelect_SelectControl {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectDiff();
-        Handle_IFSelect_SelectDiff(const Handle_IFSelect_SelectDiff &aHandle);
-        Handle_IFSelect_SelectDiff(const IFSelect_SelectDiff *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectDiff DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectDiff {
-    IFSelect_SelectDiff* _get_reference() {
-    return (IFSelect_SelectDiff*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectDiff {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectDiff)
 
 %extend IFSelect_SelectDiff {
 	%pythoncode {
@@ -9876,51 +7739,7 @@ class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
 };
 
 
-%extend IFSelect_SelectEntityNumber {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectEntityNumber(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectEntityNumber::Handle_IFSelect_SelectEntityNumber %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectEntityNumber;
-class Handle_IFSelect_SelectEntityNumber : public Handle_IFSelect_SelectBase {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectEntityNumber();
-        Handle_IFSelect_SelectEntityNumber(const Handle_IFSelect_SelectEntityNumber &aHandle);
-        Handle_IFSelect_SelectEntityNumber(const IFSelect_SelectEntityNumber *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectEntityNumber DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectEntityNumber {
-    IFSelect_SelectEntityNumber* _get_reference() {
-    return (IFSelect_SelectEntityNumber*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectEntityNumber {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectEntityNumber)
 
 %extend IFSelect_SelectEntityNumber {
 	%pythoncode {
@@ -9973,51 +7792,7 @@ class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectExplore {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectExplore(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectExplore::Handle_IFSelect_SelectExplore %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectExplore;
-class Handle_IFSelect_SelectExplore : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectExplore();
-        Handle_IFSelect_SelectExplore(const Handle_IFSelect_SelectExplore &aHandle);
-        Handle_IFSelect_SelectExplore(const IFSelect_SelectExplore *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectExplore DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectExplore {
-    IFSelect_SelectExplore* _get_reference() {
-    return (IFSelect_SelectExplore*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectExplore {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectExplore)
 
 %extend IFSelect_SelectExplore {
 	%pythoncode {
@@ -10088,51 +7863,7 @@ class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectExtract {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectExtract(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectExtract::Handle_IFSelect_SelectExtract %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectExtract;
-class Handle_IFSelect_SelectExtract : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectExtract();
-        Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectExtract &aHandle);
-        Handle_IFSelect_SelectExtract(const IFSelect_SelectExtract *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectExtract DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectExtract {
-    IFSelect_SelectExtract* _get_reference() {
-    return (IFSelect_SelectExtract*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectExtract {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectExtract)
 
 %extend IFSelect_SelectExtract {
 	%pythoncode {
@@ -10165,51 +7896,7 @@ class IFSelect_SelectIntersection : public IFSelect_SelectCombine {
 };
 
 
-%extend IFSelect_SelectIntersection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectIntersection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectIntersection::Handle_IFSelect_SelectIntersection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectIntersection;
-class Handle_IFSelect_SelectIntersection : public Handle_IFSelect_SelectCombine {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectIntersection();
-        Handle_IFSelect_SelectIntersection(const Handle_IFSelect_SelectIntersection &aHandle);
-        Handle_IFSelect_SelectIntersection(const IFSelect_SelectIntersection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectIntersection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectIntersection {
-    IFSelect_SelectIntersection* _get_reference() {
-    return (IFSelect_SelectIntersection*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectIntersection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectIntersection)
 
 %extend IFSelect_SelectIntersection {
 	%pythoncode {
@@ -10250,51 +7937,7 @@ class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 };
 
 
-%extend IFSelect_SelectModelEntities {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectModelEntities(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectModelEntities::Handle_IFSelect_SelectModelEntities %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectModelEntities;
-class Handle_IFSelect_SelectModelEntities : public Handle_IFSelect_SelectBase {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectModelEntities();
-        Handle_IFSelect_SelectModelEntities(const Handle_IFSelect_SelectModelEntities &aHandle);
-        Handle_IFSelect_SelectModelEntities(const IFSelect_SelectModelEntities *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectModelEntities DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectModelEntities {
-    IFSelect_SelectModelEntities* _get_reference() {
-    return (IFSelect_SelectModelEntities*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectModelEntities {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectModelEntities)
 
 %extend IFSelect_SelectModelEntities {
 	%pythoncode {
@@ -10327,51 +7970,7 @@ class IFSelect_SelectModelRoots : public IFSelect_SelectBase {
 };
 
 
-%extend IFSelect_SelectModelRoots {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectModelRoots(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectModelRoots::Handle_IFSelect_SelectModelRoots %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectModelRoots;
-class Handle_IFSelect_SelectModelRoots : public Handle_IFSelect_SelectBase {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectModelRoots();
-        Handle_IFSelect_SelectModelRoots(const Handle_IFSelect_SelectModelRoots &aHandle);
-        Handle_IFSelect_SelectModelRoots(const IFSelect_SelectModelRoots *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectModelRoots DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectModelRoots {
-    IFSelect_SelectModelRoots* _get_reference() {
-    return (IFSelect_SelectModelRoots*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectModelRoots {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectModelRoots)
 
 %extend IFSelect_SelectModelRoots {
 	%pythoncode {
@@ -10518,51 +8117,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 };
 
 
-%extend IFSelect_SelectPointed {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectPointed(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectPointed::Handle_IFSelect_SelectPointed %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectPointed;
-class Handle_IFSelect_SelectPointed : public Handle_IFSelect_SelectBase {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectPointed();
-        Handle_IFSelect_SelectPointed(const Handle_IFSelect_SelectPointed &aHandle);
-        Handle_IFSelect_SelectPointed(const IFSelect_SelectPointed *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectPointed DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectPointed {
-    IFSelect_SelectPointed* _get_reference() {
-    return (IFSelect_SelectPointed*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectPointed {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectPointed)
 
 %extend IFSelect_SelectPointed {
 	%pythoncode {
@@ -10595,51 +8150,7 @@ class IFSelect_SelectShared : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectShared {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectShared(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectShared::Handle_IFSelect_SelectShared %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectShared;
-class Handle_IFSelect_SelectShared : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectShared();
-        Handle_IFSelect_SelectShared(const Handle_IFSelect_SelectShared &aHandle);
-        Handle_IFSelect_SelectShared(const IFSelect_SelectShared *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectShared DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectShared {
-    IFSelect_SelectShared* _get_reference() {
-    return (IFSelect_SelectShared*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectShared {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectShared)
 
 %extend IFSelect_SelectShared {
 	%pythoncode {
@@ -10672,51 +8183,7 @@ class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectSharing {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSharing(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSharing::Handle_IFSelect_SelectSharing %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSharing;
-class Handle_IFSelect_SelectSharing : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSharing();
-        Handle_IFSelect_SelectSharing(const Handle_IFSelect_SelectSharing &aHandle);
-        Handle_IFSelect_SelectSharing(const IFSelect_SelectSharing *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSharing DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSharing {
-    IFSelect_SelectSharing* _get_reference() {
-    return (IFSelect_SelectSharing*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSharing {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSharing)
 
 %extend IFSelect_SelectSharing {
 	%pythoncode {
@@ -10795,51 +8262,7 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 };
 
 
-%extend IFSelect_SelectSuite {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSuite(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSuite::Handle_IFSelect_SelectSuite %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSuite;
-class Handle_IFSelect_SelectSuite : public Handle_IFSelect_SelectDeduct {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSuite();
-        Handle_IFSelect_SelectSuite(const Handle_IFSelect_SelectSuite &aHandle);
-        Handle_IFSelect_SelectSuite(const IFSelect_SelectSuite *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSuite DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSuite {
-    IFSelect_SelectSuite* _get_reference() {
-    return (IFSelect_SelectSuite*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSuite {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSuite)
 
 %extend IFSelect_SelectSuite {
 	%pythoncode {
@@ -10872,51 +8295,7 @@ class IFSelect_SelectUnion : public IFSelect_SelectCombine {
 };
 
 
-%extend IFSelect_SelectUnion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectUnion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectUnion::Handle_IFSelect_SelectUnion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectUnion;
-class Handle_IFSelect_SelectUnion : public Handle_IFSelect_SelectCombine {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectUnion();
-        Handle_IFSelect_SelectUnion(const Handle_IFSelect_SelectUnion &aHandle);
-        Handle_IFSelect_SelectUnion(const IFSelect_SelectUnion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectUnion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectUnion {
-    IFSelect_SelectUnion* _get_reference() {
-    return (IFSelect_SelectUnion*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectUnion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectUnion)
 
 %extend IFSelect_SelectUnion {
 	%pythoncode {
@@ -10947,51 +8326,7 @@ class IFSelect_SignAncestor : public IFSelect_SignType {
 };
 
 
-%extend IFSelect_SignAncestor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SignAncestor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SignAncestor::Handle_IFSelect_SignAncestor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SignAncestor;
-class Handle_IFSelect_SignAncestor : public Handle_IFSelect_SignType {
-
-    public:
-        // constructors
-        Handle_IFSelect_SignAncestor();
-        Handle_IFSelect_SignAncestor(const Handle_IFSelect_SignAncestor &aHandle);
-        Handle_IFSelect_SignAncestor(const IFSelect_SignAncestor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SignAncestor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SignAncestor {
-    IFSelect_SignAncestor* _get_reference() {
-    return (IFSelect_SignAncestor*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SignAncestor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SignAncestor)
 
 %extend IFSelect_SignAncestor {
 	%pythoncode {
@@ -11022,51 +8357,7 @@ class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectAnyType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectAnyType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectAnyType::Handle_IFSelect_SelectAnyType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectAnyType;
-class Handle_IFSelect_SelectAnyType : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectAnyType();
-        Handle_IFSelect_SelectAnyType(const Handle_IFSelect_SelectAnyType &aHandle);
-        Handle_IFSelect_SelectAnyType(const IFSelect_SelectAnyType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectAnyType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectAnyType {
-    IFSelect_SelectAnyType* _get_reference() {
-    return (IFSelect_SelectAnyType*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectAnyType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectAnyType)
 
 %extend IFSelect_SelectAnyType {
 	%pythoncode {
@@ -11103,51 +8394,7 @@ class IFSelect_SelectErrorEntities : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectErrorEntities {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectErrorEntities(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectErrorEntities::Handle_IFSelect_SelectErrorEntities %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectErrorEntities;
-class Handle_IFSelect_SelectErrorEntities : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectErrorEntities();
-        Handle_IFSelect_SelectErrorEntities(const Handle_IFSelect_SelectErrorEntities &aHandle);
-        Handle_IFSelect_SelectErrorEntities(const IFSelect_SelectErrorEntities *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectErrorEntities DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectErrorEntities {
-    IFSelect_SelectErrorEntities* _get_reference() {
-    return (IFSelect_SelectErrorEntities*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectErrorEntities {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectErrorEntities)
 
 %extend IFSelect_SelectErrorEntities {
 	%pythoncode {
@@ -11200,51 +8447,7 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectFlag {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectFlag(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectFlag::Handle_IFSelect_SelectFlag %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectFlag;
-class Handle_IFSelect_SelectFlag : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectFlag();
-        Handle_IFSelect_SelectFlag(const Handle_IFSelect_SelectFlag &aHandle);
-        Handle_IFSelect_SelectFlag(const IFSelect_SelectFlag *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectFlag DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectFlag {
-    IFSelect_SelectFlag* _get_reference() {
-    return (IFSelect_SelectFlag*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectFlag {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectFlag)
 
 %extend IFSelect_SelectFlag {
 	%pythoncode {
@@ -11281,51 +8484,7 @@ class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 };
 
 
-%extend IFSelect_SelectInList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectInList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectInList::Handle_IFSelect_SelectInList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectInList;
-class Handle_IFSelect_SelectInList : public Handle_IFSelect_SelectAnyList {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectInList();
-        Handle_IFSelect_SelectInList(const Handle_IFSelect_SelectInList &aHandle);
-        Handle_IFSelect_SelectInList(const IFSelect_SelectInList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectInList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectInList {
-    IFSelect_SelectInList* _get_reference() {
-    return (IFSelect_SelectInList*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectInList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectInList)
 
 %extend IFSelect_SelectInList {
 	%pythoncode {
@@ -11432,51 +8591,7 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectRange {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectRange(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectRange::Handle_IFSelect_SelectRange %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectRange;
-class Handle_IFSelect_SelectRange : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectRange();
-        Handle_IFSelect_SelectRange(const Handle_IFSelect_SelectRange &aHandle);
-        Handle_IFSelect_SelectRange(const IFSelect_SelectRange *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectRange DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectRange {
-    IFSelect_SelectRange* _get_reference() {
-    return (IFSelect_SelectRange*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectRange {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectRange)
 
 %extend IFSelect_SelectRange {
 	%pythoncode {
@@ -11521,51 +8636,7 @@ class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectRootComps {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectRootComps(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectRootComps::Handle_IFSelect_SelectRootComps %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectRootComps;
-class Handle_IFSelect_SelectRootComps : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectRootComps();
-        Handle_IFSelect_SelectRootComps(const Handle_IFSelect_SelectRootComps &aHandle);
-        Handle_IFSelect_SelectRootComps(const IFSelect_SelectRootComps *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectRootComps DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectRootComps {
-    IFSelect_SelectRootComps* _get_reference() {
-    return (IFSelect_SelectRootComps*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectRootComps {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectRootComps)
 
 %extend IFSelect_SelectRootComps {
 	%pythoncode {
@@ -11610,51 +8681,7 @@ class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectRoots {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectRoots(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectRoots::Handle_IFSelect_SelectRoots %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectRoots;
-class Handle_IFSelect_SelectRoots : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectRoots();
-        Handle_IFSelect_SelectRoots(const Handle_IFSelect_SelectRoots &aHandle);
-        Handle_IFSelect_SelectRoots(const IFSelect_SelectRoots *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectRoots DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectRoots {
-    IFSelect_SelectRoots* _get_reference() {
-    return (IFSelect_SelectRoots*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectRoots {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectRoots)
 
 %extend IFSelect_SelectRoots {
 	%pythoncode {
@@ -11715,51 +8742,7 @@ class IFSelect_SelectSent : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectSent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSent::Handle_IFSelect_SelectSent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSent;
-class Handle_IFSelect_SelectSent : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSent();
-        Handle_IFSelect_SelectSent(const Handle_IFSelect_SelectSent &aHandle);
-        Handle_IFSelect_SelectSent(const IFSelect_SelectSent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSent {
-    IFSelect_SelectSent* _get_reference() {
-    return (IFSelect_SelectSent*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSent)
 
 %extend IFSelect_SelectSent {
 	%pythoncode {
@@ -11862,51 +8845,7 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectSignature {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSignature(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSignature::Handle_IFSelect_SelectSignature %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSignature;
-class Handle_IFSelect_SelectSignature : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSignature();
-        Handle_IFSelect_SelectSignature(const Handle_IFSelect_SelectSignature &aHandle);
-        Handle_IFSelect_SelectSignature(const IFSelect_SelectSignature *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSignature DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSignature {
-    IFSelect_SelectSignature* _get_reference() {
-    return (IFSelect_SelectSignature*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSignature {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSignature)
 
 %extend IFSelect_SelectSignature {
 	%pythoncode {
@@ -11971,51 +8910,7 @@ class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 };
 
 
-%extend IFSelect_SelectSignedShared {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSignedShared(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSignedShared::Handle_IFSelect_SelectSignedShared %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSignedShared;
-class Handle_IFSelect_SelectSignedShared : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSignedShared();
-        Handle_IFSelect_SelectSignedShared(const Handle_IFSelect_SelectSignedShared &aHandle);
-        Handle_IFSelect_SelectSignedShared(const IFSelect_SelectSignedShared *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSignedShared DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSignedShared {
-    IFSelect_SelectSignedShared* _get_reference() {
-    return (IFSelect_SelectSignedShared*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSignedShared {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSignedShared)
 
 %extend IFSelect_SelectSignedShared {
 	%pythoncode {
@@ -12080,51 +8975,7 @@ class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 };
 
 
-%extend IFSelect_SelectSignedSharing {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectSignedSharing(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectSignedSharing::Handle_IFSelect_SelectSignedSharing %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectSignedSharing;
-class Handle_IFSelect_SelectSignedSharing : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectSignedSharing();
-        Handle_IFSelect_SelectSignedSharing(const Handle_IFSelect_SelectSignedSharing &aHandle);
-        Handle_IFSelect_SelectSignedSharing(const IFSelect_SelectSignedSharing *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectSignedSharing DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectSignedSharing {
-    IFSelect_SelectSignedSharing* _get_reference() {
-    return (IFSelect_SelectSignedSharing*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectSignedSharing {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectSignedSharing)
 
 %extend IFSelect_SelectSignedSharing {
 	%pythoncode {
@@ -12161,51 +9012,7 @@ class IFSelect_SelectUnknownEntities : public IFSelect_SelectExtract {
 };
 
 
-%extend IFSelect_SelectUnknownEntities {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectUnknownEntities(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectUnknownEntities::Handle_IFSelect_SelectUnknownEntities %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectUnknownEntities;
-class Handle_IFSelect_SelectUnknownEntities : public Handle_IFSelect_SelectExtract {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectUnknownEntities();
-        Handle_IFSelect_SelectUnknownEntities(const Handle_IFSelect_SelectUnknownEntities &aHandle);
-        Handle_IFSelect_SelectUnknownEntities(const IFSelect_SelectUnknownEntities *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectUnknownEntities DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectUnknownEntities {
-    IFSelect_SelectUnknownEntities* _get_reference() {
-    return (IFSelect_SelectUnknownEntities*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectUnknownEntities {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectUnknownEntities)
 
 %extend IFSelect_SelectUnknownEntities {
 	%pythoncode {
@@ -12224,51 +9031,7 @@ class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag {
 };
 
 
-%extend IFSelect_SelectIncorrectEntities {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectIncorrectEntities(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectIncorrectEntities::Handle_IFSelect_SelectIncorrectEntities %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectIncorrectEntities;
-class Handle_IFSelect_SelectIncorrectEntities : public Handle_IFSelect_SelectFlag {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectIncorrectEntities();
-        Handle_IFSelect_SelectIncorrectEntities(const Handle_IFSelect_SelectIncorrectEntities &aHandle);
-        Handle_IFSelect_SelectIncorrectEntities(const IFSelect_SelectIncorrectEntities *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectIncorrectEntities DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectIncorrectEntities {
-    IFSelect_SelectIncorrectEntities* _get_reference() {
-    return (IFSelect_SelectIncorrectEntities*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectIncorrectEntities {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectIncorrectEntities)
 
 %extend IFSelect_SelectIncorrectEntities {
 	%pythoncode {
@@ -12315,51 +9078,7 @@ class IFSelect_SelectType : public IFSelect_SelectAnyType {
 };
 
 
-%extend IFSelect_SelectType {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IFSelect_SelectType(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IFSelect_SelectType::Handle_IFSelect_SelectType %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IFSelect_SelectType;
-class Handle_IFSelect_SelectType : public Handle_IFSelect_SelectAnyType {
-
-    public:
-        // constructors
-        Handle_IFSelect_SelectType();
-        Handle_IFSelect_SelectType(const Handle_IFSelect_SelectType &aHandle);
-        Handle_IFSelect_SelectType(const IFSelect_SelectType *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IFSelect_SelectType DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IFSelect_SelectType {
-    IFSelect_SelectType* _get_reference() {
-    return (IFSelect_SelectType*)$self->Access();
-    }
-};
-
-%extend Handle_IFSelect_SelectType {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IFSelect_SelectType)
 
 %extend IFSelect_SelectType {
 	%pythoncode {

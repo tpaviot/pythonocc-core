@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CONTAPDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=CONTAPDOCSTRING) Contap
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Contap_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -72,6 +58,14 @@ enum Contap_TFunction {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
+%wrap_handle(Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch)
+%wrap_handle(Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch)
+%wrap_handle(Contap_SequenceNodeOfTheSequenceOfLine)
+%wrap_handle(Contap_SequenceNodeOfTheSequenceOfPoint)
+%wrap_handle(Contap_TheHSequenceOfPoint)
+%wrap_handle(Contap_TheIWLineOfTheIWalking)
 
 %nodefaultctor Contap_ArcFunction;
 class Contap_ArcFunction : public math_FunctionWithDerivative {
@@ -1162,51 +1156,7 @@ class Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_Se
 };
 
 
-%extend Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking::Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
-class Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking();
-        Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking &aHandle);
-        Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking* _get_reference() {
-    return (Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
 
 %extend Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
 	%pythoncode {
@@ -1233,51 +1183,7 @@ class Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch : public TCollection_S
 };
 
 
-%extend Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch::Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch;
-class Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch();
-        Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch(const Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch &aHandle);
-        Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch(const Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
-    Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch* _get_reference() {
-    return (Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch)
 
 %extend Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
 	%pythoncode {
@@ -1304,51 +1210,7 @@ class Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch : public TCollection_Seq
 };
 
 
-%extend Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch::Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch;
-class Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch();
-        Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch(const Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch &aHandle);
-        Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch(const Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
-    Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch* _get_reference() {
-    return (Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch)
 
 %extend Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
 	%pythoncode {
@@ -1375,51 +1237,7 @@ class Contap_SequenceNodeOfTheSequenceOfLine : public TCollection_SeqNode {
 };
 
 
-%extend Contap_SequenceNodeOfTheSequenceOfLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_SequenceNodeOfTheSequenceOfLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_SequenceNodeOfTheSequenceOfLine::Handle_Contap_SequenceNodeOfTheSequenceOfLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_SequenceNodeOfTheSequenceOfLine;
-class Handle_Contap_SequenceNodeOfTheSequenceOfLine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Contap_SequenceNodeOfTheSequenceOfLine();
-        Handle_Contap_SequenceNodeOfTheSequenceOfLine(const Handle_Contap_SequenceNodeOfTheSequenceOfLine &aHandle);
-        Handle_Contap_SequenceNodeOfTheSequenceOfLine(const Contap_SequenceNodeOfTheSequenceOfLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_SequenceNodeOfTheSequenceOfLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_SequenceNodeOfTheSequenceOfLine {
-    Contap_SequenceNodeOfTheSequenceOfLine* _get_reference() {
-    return (Contap_SequenceNodeOfTheSequenceOfLine*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_SequenceNodeOfTheSequenceOfLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_SequenceNodeOfTheSequenceOfLine)
 
 %extend Contap_SequenceNodeOfTheSequenceOfLine {
 	%pythoncode {
@@ -1446,51 +1264,7 @@ class Contap_SequenceNodeOfTheSequenceOfPoint : public TCollection_SeqNode {
 };
 
 
-%extend Contap_SequenceNodeOfTheSequenceOfPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_SequenceNodeOfTheSequenceOfPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_SequenceNodeOfTheSequenceOfPoint::Handle_Contap_SequenceNodeOfTheSequenceOfPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_SequenceNodeOfTheSequenceOfPoint;
-class Handle_Contap_SequenceNodeOfTheSequenceOfPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Contap_SequenceNodeOfTheSequenceOfPoint();
-        Handle_Contap_SequenceNodeOfTheSequenceOfPoint(const Handle_Contap_SequenceNodeOfTheSequenceOfPoint &aHandle);
-        Handle_Contap_SequenceNodeOfTheSequenceOfPoint(const Contap_SequenceNodeOfTheSequenceOfPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_SequenceNodeOfTheSequenceOfPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_SequenceNodeOfTheSequenceOfPoint {
-    Contap_SequenceNodeOfTheSequenceOfPoint* _get_reference() {
-    return (Contap_SequenceNodeOfTheSequenceOfPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_SequenceNodeOfTheSequenceOfPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_SequenceNodeOfTheSequenceOfPoint)
 
 %extend Contap_SequenceNodeOfTheSequenceOfPoint {
 	%pythoncode {
@@ -2277,51 +2051,7 @@ class Contap_TheHSequenceOfPoint : public MMgt_TShared {
 };
 
 
-%extend Contap_TheHSequenceOfPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_TheHSequenceOfPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_TheHSequenceOfPoint::Handle_Contap_TheHSequenceOfPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_TheHSequenceOfPoint;
-class Handle_Contap_TheHSequenceOfPoint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Contap_TheHSequenceOfPoint();
-        Handle_Contap_TheHSequenceOfPoint(const Handle_Contap_TheHSequenceOfPoint &aHandle);
-        Handle_Contap_TheHSequenceOfPoint(const Contap_TheHSequenceOfPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_TheHSequenceOfPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_TheHSequenceOfPoint {
-    Contap_TheHSequenceOfPoint* _get_reference() {
-    return (Contap_TheHSequenceOfPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_TheHSequenceOfPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_TheHSequenceOfPoint)
 
 %extend Contap_TheHSequenceOfPoint {
 	%pythoncode {
@@ -2498,51 +2228,7 @@ class Contap_TheIWLineOfTheIWalking : public MMgt_TShared {
 };
 
 
-%extend Contap_TheIWLineOfTheIWalking {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Contap_TheIWLineOfTheIWalking(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Contap_TheIWLineOfTheIWalking::Handle_Contap_TheIWLineOfTheIWalking %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Contap_TheIWLineOfTheIWalking;
-class Handle_Contap_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Contap_TheIWLineOfTheIWalking();
-        Handle_Contap_TheIWLineOfTheIWalking(const Handle_Contap_TheIWLineOfTheIWalking &aHandle);
-        Handle_Contap_TheIWLineOfTheIWalking(const Contap_TheIWLineOfTheIWalking *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Contap_TheIWLineOfTheIWalking DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Contap_TheIWLineOfTheIWalking {
-    Contap_TheIWLineOfTheIWalking* _get_reference() {
-    return (Contap_TheIWLineOfTheIWalking*)$self->Access();
-    }
-};
-
-%extend Handle_Contap_TheIWLineOfTheIWalking {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Contap_TheIWLineOfTheIWalking)
 
 %extend Contap_TheIWLineOfTheIWalking {
 	%pythoncode {

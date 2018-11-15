@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBLENDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BREPBLENDDOCSTRING) BRepBlend
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepBlend_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef BlendFunc_Chamfer BRepBlend_Chamfer;
@@ -70,6 +56,14 @@ typedef BlendFunc_EvolRadInv BRepBlend_EvolRadInv;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRepBlend_AppFuncRoot)
+%wrap_handle(BRepBlend_Line)
+%wrap_handle(BRepBlend_SequenceNodeOfSequenceOfLine)
+%wrap_handle(BRepBlend_SequenceNodeOfSequenceOfPointOnRst)
+%wrap_handle(BRepBlend_AppFunc)
+%wrap_handle(BRepBlend_AppFuncRst)
+%wrap_handle(BRepBlend_AppFuncRstRst)
 
 %nodefaultctor BRepBlend_AppFuncRoot;
 class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
@@ -295,51 +289,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 };
 
 
-%extend BRepBlend_AppFuncRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_AppFuncRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_AppFuncRoot::Handle_BRepBlend_AppFuncRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_AppFuncRoot;
-class Handle_BRepBlend_AppFuncRoot : public Handle_Approx_SweepFunction {
-
-    public:
-        // constructors
-        Handle_BRepBlend_AppFuncRoot();
-        Handle_BRepBlend_AppFuncRoot(const Handle_BRepBlend_AppFuncRoot &aHandle);
-        Handle_BRepBlend_AppFuncRoot(const BRepBlend_AppFuncRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_AppFuncRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_AppFuncRoot {
-    BRepBlend_AppFuncRoot* _get_reference() {
-    return (BRepBlend_AppFuncRoot*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_AppFuncRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_AppFuncRoot)
 
 %extend BRepBlend_AppFuncRoot {
 	%pythoncode {
@@ -1409,51 +1359,7 @@ class BRepBlend_Line : public MMgt_TShared {
 };
 
 
-%extend BRepBlend_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_Line::Handle_BRepBlend_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_Line;
-class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepBlend_Line();
-        Handle_BRepBlend_Line(const Handle_BRepBlend_Line &aHandle);
-        Handle_BRepBlend_Line(const BRepBlend_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_Line {
-    BRepBlend_Line* _get_reference() {
-    return (BRepBlend_Line*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_Line)
 
 %extend BRepBlend_Line {
 	%pythoncode {
@@ -2464,51 +2370,7 @@ class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 };
 
 
-%extend BRepBlend_SequenceNodeOfSequenceOfLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_SequenceNodeOfSequenceOfLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_SequenceNodeOfSequenceOfLine::Handle_BRepBlend_SequenceNodeOfSequenceOfLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_SequenceNodeOfSequenceOfLine;
-class Handle_BRepBlend_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepBlend_SequenceNodeOfSequenceOfLine();
-        Handle_BRepBlend_SequenceNodeOfSequenceOfLine(const Handle_BRepBlend_SequenceNodeOfSequenceOfLine &aHandle);
-        Handle_BRepBlend_SequenceNodeOfSequenceOfLine(const BRepBlend_SequenceNodeOfSequenceOfLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_SequenceNodeOfSequenceOfLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
-    BRepBlend_SequenceNodeOfSequenceOfLine* _get_reference() {
-    return (BRepBlend_SequenceNodeOfSequenceOfLine*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_SequenceNodeOfSequenceOfLine)
 
 %extend BRepBlend_SequenceNodeOfSequenceOfLine {
 	%pythoncode {
@@ -2535,51 +2397,7 @@ class BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public TCollection_SeqNode 
 };
 
 
-%extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst::Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst;
-class Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst();
-        Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst(const Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst &aHandle);
-        Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst(const BRepBlend_SequenceNodeOfSequenceOfPointOnRst *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-    BRepBlend_SequenceNodeOfSequenceOfPointOnRst* _get_reference() {
-    return (BRepBlend_SequenceNodeOfSequenceOfPointOnRst*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_SequenceNodeOfSequenceOfPointOnRst)
 
 %extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
 	%pythoncode {
@@ -4356,51 +4174,7 @@ class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 };
 
 
-%extend BRepBlend_AppFunc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_AppFunc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_AppFunc::Handle_BRepBlend_AppFunc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_AppFunc;
-class Handle_BRepBlend_AppFunc : public Handle_BRepBlend_AppFuncRoot {
-
-    public:
-        // constructors
-        Handle_BRepBlend_AppFunc();
-        Handle_BRepBlend_AppFunc(const Handle_BRepBlend_AppFunc &aHandle);
-        Handle_BRepBlend_AppFunc(const BRepBlend_AppFunc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_AppFunc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_AppFunc {
-    BRepBlend_AppFunc* _get_reference() {
-    return (BRepBlend_AppFunc*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_AppFunc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_AppFunc)
 
 %extend BRepBlend_AppFunc {
 	%pythoncode {
@@ -4445,51 +4219,7 @@ class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 };
 
 
-%extend BRepBlend_AppFuncRst {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_AppFuncRst(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_AppFuncRst::Handle_BRepBlend_AppFuncRst %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_AppFuncRst;
-class Handle_BRepBlend_AppFuncRst : public Handle_BRepBlend_AppFuncRoot {
-
-    public:
-        // constructors
-        Handle_BRepBlend_AppFuncRst();
-        Handle_BRepBlend_AppFuncRst(const Handle_BRepBlend_AppFuncRst &aHandle);
-        Handle_BRepBlend_AppFuncRst(const BRepBlend_AppFuncRst *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_AppFuncRst DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_AppFuncRst {
-    BRepBlend_AppFuncRst* _get_reference() {
-    return (BRepBlend_AppFuncRst*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_AppFuncRst {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_AppFuncRst)
 
 %extend BRepBlend_AppFuncRst {
 	%pythoncode {
@@ -4534,51 +4264,7 @@ class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 };
 
 
-%extend BRepBlend_AppFuncRstRst {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepBlend_AppFuncRstRst(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepBlend_AppFuncRstRst::Handle_BRepBlend_AppFuncRstRst %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepBlend_AppFuncRstRst;
-class Handle_BRepBlend_AppFuncRstRst : public Handle_BRepBlend_AppFuncRoot {
-
-    public:
-        // constructors
-        Handle_BRepBlend_AppFuncRstRst();
-        Handle_BRepBlend_AppFuncRstRst(const Handle_BRepBlend_AppFuncRstRst &aHandle);
-        Handle_BRepBlend_AppFuncRstRst(const BRepBlend_AppFuncRstRst *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepBlend_AppFuncRstRst DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepBlend_AppFuncRstRst {
-    BRepBlend_AppFuncRstRst* _get_reference() {
-    return (BRepBlend_AppFuncRstRst*)$self->Access();
-    }
-};
-
-%extend Handle_BRepBlend_AppFuncRstRst {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepBlend_AppFuncRstRst)
 
 %extend BRepBlend_AppFuncRstRst {
 	%pythoncode {

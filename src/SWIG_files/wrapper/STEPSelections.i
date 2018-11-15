@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPSELECTIONSDOCSTRING
-"No docstring provided."
+"-Purpose : Step Selections"
 %enddef
 %module (package="OCC.Core", docstring=STEPSELECTIONSDOCSTRING) STEPSelections
 
@@ -34,30 +34,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include STEPSelections_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(STEPSelections_AssemblyComponent)
+%wrap_handle(STEPSelections_AssemblyLink)
+%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
+%wrap_handle(STEPSelections_SelectAssembly)
+%wrap_handle(STEPSelections_SelectDerived)
+%wrap_handle(STEPSelections_SelectFaces)
+%wrap_handle(STEPSelections_SelectForTransfer)
+%wrap_handle(STEPSelections_SelectGSCurves)
+%wrap_handle(STEPSelections_SelectInstances)
+%wrap_handle(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent)
+%wrap_handle(STEPSelections_SequenceNodeOfSequenceOfAssemblyLink)
 
 %nodefaultctor STEPSelections_AssemblyComponent;
 class STEPSelections_AssemblyComponent : public MMgt_TShared {
@@ -97,51 +95,7 @@ class STEPSelections_AssemblyComponent : public MMgt_TShared {
 };
 
 
-%extend STEPSelections_AssemblyComponent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_AssemblyComponent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_AssemblyComponent::Handle_STEPSelections_AssemblyComponent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_AssemblyComponent;
-class Handle_STEPSelections_AssemblyComponent : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPSelections_AssemblyComponent();
-        Handle_STEPSelections_AssemblyComponent(const Handle_STEPSelections_AssemblyComponent &aHandle);
-        Handle_STEPSelections_AssemblyComponent(const STEPSelections_AssemblyComponent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_AssemblyComponent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_AssemblyComponent {
-    STEPSelections_AssemblyComponent* _get_reference() {
-    return (STEPSelections_AssemblyComponent*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_AssemblyComponent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_AssemblyComponent)
 
 %extend STEPSelections_AssemblyComponent {
 	%pythoncode {
@@ -261,51 +215,7 @@ class STEPSelections_AssemblyLink : public MMgt_TShared {
 };
 
 
-%extend STEPSelections_AssemblyLink {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_AssemblyLink(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_AssemblyLink::Handle_STEPSelections_AssemblyLink %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_AssemblyLink;
-class Handle_STEPSelections_AssemblyLink : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPSelections_AssemblyLink();
-        Handle_STEPSelections_AssemblyLink(const Handle_STEPSelections_AssemblyLink &aHandle);
-        Handle_STEPSelections_AssemblyLink(const STEPSelections_AssemblyLink *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_AssemblyLink DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_AssemblyLink {
-    STEPSelections_AssemblyLink* _get_reference() {
-    return (STEPSelections_AssemblyLink*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_AssemblyLink {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_AssemblyLink)
 
 %extend STEPSelections_AssemblyLink {
 	%pythoncode {
@@ -517,51 +427,7 @@ class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared {
 };
 
 
-%extend STEPSelections_HSequenceOfAssemblyLink {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_HSequenceOfAssemblyLink(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_HSequenceOfAssemblyLink::Handle_STEPSelections_HSequenceOfAssemblyLink %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_HSequenceOfAssemblyLink;
-class Handle_STEPSelections_HSequenceOfAssemblyLink : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_STEPSelections_HSequenceOfAssemblyLink();
-        Handle_STEPSelections_HSequenceOfAssemblyLink(const Handle_STEPSelections_HSequenceOfAssemblyLink &aHandle);
-        Handle_STEPSelections_HSequenceOfAssemblyLink(const STEPSelections_HSequenceOfAssemblyLink *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_HSequenceOfAssemblyLink DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_HSequenceOfAssemblyLink {
-    STEPSelections_HSequenceOfAssemblyLink* _get_reference() {
-    return (STEPSelections_HSequenceOfAssemblyLink*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_HSequenceOfAssemblyLink {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_HSequenceOfAssemblyLink)
 
 %extend STEPSelections_HSequenceOfAssemblyLink {
 	%pythoncode {
@@ -598,51 +464,7 @@ class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 };
 
 
-%extend STEPSelections_SelectAssembly {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectAssembly(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectAssembly::Handle_STEPSelections_SelectAssembly %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectAssembly;
-class Handle_STEPSelections_SelectAssembly : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectAssembly();
-        Handle_STEPSelections_SelectAssembly(const Handle_STEPSelections_SelectAssembly &aHandle);
-        Handle_STEPSelections_SelectAssembly(const STEPSelections_SelectAssembly *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectAssembly DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectAssembly {
-    STEPSelections_SelectAssembly* _get_reference() {
-    return (STEPSelections_SelectAssembly*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectAssembly {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectAssembly)
 
 %extend STEPSelections_SelectAssembly {
 	%pythoncode {
@@ -671,51 +493,7 @@ class STEPSelections_SelectDerived : public StepSelect_StepType {
 };
 
 
-%extend STEPSelections_SelectDerived {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectDerived(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectDerived::Handle_STEPSelections_SelectDerived %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectDerived;
-class Handle_STEPSelections_SelectDerived : public Handle_StepSelect_StepType {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectDerived();
-        Handle_STEPSelections_SelectDerived(const Handle_STEPSelections_SelectDerived &aHandle);
-        Handle_STEPSelections_SelectDerived(const STEPSelections_SelectDerived *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectDerived DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectDerived {
-    STEPSelections_SelectDerived* _get_reference() {
-    return (STEPSelections_SelectDerived*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectDerived {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectDerived)
 
 %extend STEPSelections_SelectDerived {
 	%pythoncode {
@@ -752,51 +530,7 @@ class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 };
 
 
-%extend STEPSelections_SelectFaces {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectFaces(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectFaces::Handle_STEPSelections_SelectFaces %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectFaces;
-class Handle_STEPSelections_SelectFaces : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectFaces();
-        Handle_STEPSelections_SelectFaces(const Handle_STEPSelections_SelectFaces &aHandle);
-        Handle_STEPSelections_SelectFaces(const STEPSelections_SelectFaces *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectFaces DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectFaces {
-    STEPSelections_SelectFaces* _get_reference() {
-    return (STEPSelections_SelectFaces*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectFaces {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectFaces)
 
 %extend STEPSelections_SelectFaces {
 	%pythoncode {
@@ -825,51 +559,7 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 };
 
 
-%extend STEPSelections_SelectForTransfer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectForTransfer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectForTransfer::Handle_STEPSelections_SelectForTransfer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectForTransfer;
-class Handle_STEPSelections_SelectForTransfer : public Handle_XSControl_SelectForTransfer {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectForTransfer();
-        Handle_STEPSelections_SelectForTransfer(const Handle_STEPSelections_SelectForTransfer &aHandle);
-        Handle_STEPSelections_SelectForTransfer(const STEPSelections_SelectForTransfer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectForTransfer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectForTransfer {
-    STEPSelections_SelectForTransfer* _get_reference() {
-    return (STEPSelections_SelectForTransfer*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectForTransfer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectForTransfer)
 
 %extend STEPSelections_SelectForTransfer {
 	%pythoncode {
@@ -904,51 +594,7 @@ class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 };
 
 
-%extend STEPSelections_SelectGSCurves {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectGSCurves(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectGSCurves::Handle_STEPSelections_SelectGSCurves %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectGSCurves;
-class Handle_STEPSelections_SelectGSCurves : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectGSCurves();
-        Handle_STEPSelections_SelectGSCurves(const Handle_STEPSelections_SelectGSCurves &aHandle);
-        Handle_STEPSelections_SelectGSCurves(const STEPSelections_SelectGSCurves *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectGSCurves DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectGSCurves {
-    STEPSelections_SelectGSCurves* _get_reference() {
-    return (STEPSelections_SelectGSCurves*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectGSCurves {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectGSCurves)
 
 %extend STEPSelections_SelectGSCurves {
 	%pythoncode {
@@ -989,51 +635,7 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 };
 
 
-%extend STEPSelections_SelectInstances {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SelectInstances(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SelectInstances::Handle_STEPSelections_SelectInstances %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SelectInstances;
-class Handle_STEPSelections_SelectInstances : public Handle_IFSelect_SelectExplore {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SelectInstances();
-        Handle_STEPSelections_SelectInstances(const Handle_STEPSelections_SelectInstances &aHandle);
-        Handle_STEPSelections_SelectInstances(const STEPSelections_SelectInstances *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SelectInstances DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SelectInstances {
-    STEPSelections_SelectInstances* _get_reference() {
-    return (STEPSelections_SelectInstances*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SelectInstances {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SelectInstances)
 
 %extend STEPSelections_SelectInstances {
 	%pythoncode {
@@ -1060,51 +662,7 @@ class STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public TCollect
 };
 
 
-%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent::Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent;
-class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent();
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent(const Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent &aHandle);
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent(const STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
-    STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent* _get_reference() {
-    return (STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent)
 
 %extend STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
 	%pythoncode {
@@ -1131,51 +689,7 @@ class STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public TCollection_S
 };
 
 
-%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink::Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink;
-class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink();
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink(const Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink &aHandle);
-        Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink(const STEPSelections_SequenceNodeOfSequenceOfAssemblyLink *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
-    STEPSelections_SequenceNodeOfSequenceOfAssemblyLink* _get_reference() {
-    return (STEPSelections_SequenceNodeOfSequenceOfAssemblyLink*)$self->Access();
-    }
-};
-
-%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(STEPSelections_SequenceNodeOfSequenceOfAssemblyLink)
 
 %extend STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
 	%pythoncode {

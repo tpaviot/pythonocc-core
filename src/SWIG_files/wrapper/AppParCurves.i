@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPPARCURVESDOCSTRING
-"No docstring provided."
+"Parallel Approximation in n curves.This package gives all the algorithms used to approximate a MultiLinedescribed by the tool MLineTool.The result of the approximation will be a MultiCurve."
 %enddef
 %module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AppParCurves_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,6 +51,13 @@ enum AppParCurves_Constraint {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(AppParCurves_HArray1OfConstraintCouple)
+%wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
+%wrap_handle(AppParCurves_HArray1OfMultiCurve)
+%wrap_handle(AppParCurves_HArray1OfMultiPoint)
+%wrap_handle(AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve)
+%wrap_handle(AppParCurves_SequenceNodeOfSequenceOfMultiCurve)
 
 %rename(appparcurves) AppParCurves;
 class AppParCurves {
@@ -598,51 +591,7 @@ class AppParCurves_HArray1OfConstraintCouple : public MMgt_TShared {
 };
 
 
-%extend AppParCurves_HArray1OfConstraintCouple {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_HArray1OfConstraintCouple(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_HArray1OfConstraintCouple::Handle_AppParCurves_HArray1OfConstraintCouple %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_HArray1OfConstraintCouple;
-class Handle_AppParCurves_HArray1OfConstraintCouple : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppParCurves_HArray1OfConstraintCouple();
-        Handle_AppParCurves_HArray1OfConstraintCouple(const Handle_AppParCurves_HArray1OfConstraintCouple &aHandle);
-        Handle_AppParCurves_HArray1OfConstraintCouple(const AppParCurves_HArray1OfConstraintCouple *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_HArray1OfConstraintCouple DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_HArray1OfConstraintCouple {
-    AppParCurves_HArray1OfConstraintCouple* _get_reference() {
-    return (AppParCurves_HArray1OfConstraintCouple*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_HArray1OfConstraintCouple {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_HArray1OfConstraintCouple)
 
 %extend AppParCurves_HArray1OfConstraintCouple {
 	%pythoncode {
@@ -719,51 +668,7 @@ class AppParCurves_HArray1OfMultiBSpCurve : public MMgt_TShared {
 };
 
 
-%extend AppParCurves_HArray1OfMultiBSpCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_HArray1OfMultiBSpCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_HArray1OfMultiBSpCurve::Handle_AppParCurves_HArray1OfMultiBSpCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_HArray1OfMultiBSpCurve;
-class Handle_AppParCurves_HArray1OfMultiBSpCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppParCurves_HArray1OfMultiBSpCurve();
-        Handle_AppParCurves_HArray1OfMultiBSpCurve(const Handle_AppParCurves_HArray1OfMultiBSpCurve &aHandle);
-        Handle_AppParCurves_HArray1OfMultiBSpCurve(const AppParCurves_HArray1OfMultiBSpCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_HArray1OfMultiBSpCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_HArray1OfMultiBSpCurve {
-    AppParCurves_HArray1OfMultiBSpCurve* _get_reference() {
-    return (AppParCurves_HArray1OfMultiBSpCurve*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_HArray1OfMultiBSpCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_HArray1OfMultiBSpCurve)
 
 %extend AppParCurves_HArray1OfMultiBSpCurve {
 	%pythoncode {
@@ -840,51 +745,7 @@ class AppParCurves_HArray1OfMultiCurve : public MMgt_TShared {
 };
 
 
-%extend AppParCurves_HArray1OfMultiCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_HArray1OfMultiCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_HArray1OfMultiCurve::Handle_AppParCurves_HArray1OfMultiCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_HArray1OfMultiCurve;
-class Handle_AppParCurves_HArray1OfMultiCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppParCurves_HArray1OfMultiCurve();
-        Handle_AppParCurves_HArray1OfMultiCurve(const Handle_AppParCurves_HArray1OfMultiCurve &aHandle);
-        Handle_AppParCurves_HArray1OfMultiCurve(const AppParCurves_HArray1OfMultiCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_HArray1OfMultiCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_HArray1OfMultiCurve {
-    AppParCurves_HArray1OfMultiCurve* _get_reference() {
-    return (AppParCurves_HArray1OfMultiCurve*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_HArray1OfMultiCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_HArray1OfMultiCurve)
 
 %extend AppParCurves_HArray1OfMultiCurve {
 	%pythoncode {
@@ -961,51 +822,7 @@ class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared {
 };
 
 
-%extend AppParCurves_HArray1OfMultiPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_HArray1OfMultiPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_HArray1OfMultiPoint::Handle_AppParCurves_HArray1OfMultiPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_HArray1OfMultiPoint;
-class Handle_AppParCurves_HArray1OfMultiPoint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_AppParCurves_HArray1OfMultiPoint();
-        Handle_AppParCurves_HArray1OfMultiPoint(const Handle_AppParCurves_HArray1OfMultiPoint &aHandle);
-        Handle_AppParCurves_HArray1OfMultiPoint(const AppParCurves_HArray1OfMultiPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_HArray1OfMultiPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_HArray1OfMultiPoint {
-    AppParCurves_HArray1OfMultiPoint* _get_reference() {
-    return (AppParCurves_HArray1OfMultiPoint*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_HArray1OfMultiPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_HArray1OfMultiPoint)
 
 %extend AppParCurves_HArray1OfMultiPoint {
 	%pythoncode {
@@ -1438,51 +1255,7 @@ class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public TCollection_Se
 };
 
 
-%extend AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve::Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
-class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve();
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve(const Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve &aHandle);
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve(const AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
-    AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve* _get_reference() {
-    return (AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve)
 
 %extend AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
 	%pythoncode {
@@ -1509,51 +1282,7 @@ class AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public TCollection_SeqNo
 };
 
 
-%extend AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve::Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
-class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve();
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve(const Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve &aHandle);
-        Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve(const AppParCurves_SequenceNodeOfSequenceOfMultiCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
-    AppParCurves_SequenceNodeOfSequenceOfMultiCurve* _get_reference() {
-    return (AppParCurves_SequenceNodeOfSequenceOfMultiCurve*)$self->Access();
-    }
-};
-
-%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppParCurves_SequenceNodeOfSequenceOfMultiCurve)
 
 %extend AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
 	%pythoncode {

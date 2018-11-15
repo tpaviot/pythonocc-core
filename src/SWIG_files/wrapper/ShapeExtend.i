@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEEXTENDDOCSTRING
-"No docstring provided."
+"This package provides general tools and data structures commonfor other packages in SHAPEWORKS and extending CAS.CADEstructures.The following items are provided by this package:- enumeration Status used for coding status flags in methodsinside the SHAPEWORKS- enumeration Parametrisation used for setting global parametrisationon the composite surface- class CompositeSurface representing a composite surfacemade of a grid of surface patches- class WireData representing a wire in the form of orderedlist of edges- class MsgRegistrator for attaching messages to the objects- tools for exploring the shapes-    tools for creating    new shapes."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEEXTENDDOCSTRING) ShapeExtend
 
@@ -34,29 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeExtend_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum ShapeExtend_Parametrisation {
+	ShapeExtend_Natural = 0,
+	ShapeExtend_Uniform = 1,
+	ShapeExtend_Unitary = 2,
+};
+
 enum ShapeExtend_Status {
 	ShapeExtend_OK = 0,
 	ShapeExtend_DONE1 = 1,
@@ -79,13 +71,15 @@ enum ShapeExtend_Status {
 	ShapeExtend_FAIL = 18,
 };
 
-enum ShapeExtend_Parametrisation {
-	ShapeExtend_Natural = 0,
-	ShapeExtend_Uniform = 1,
-	ShapeExtend_Unitary = 2,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(ShapeExtend_BasicMsgRegistrator)
+%wrap_handle(ShapeExtend_ComplexCurve)
+%wrap_handle(ShapeExtend_CompositeSurface)
+%wrap_handle(ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg)
+%wrap_handle(ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg)
+%wrap_handle(ShapeExtend_WireData)
+%wrap_handle(ShapeExtend_MsgRegistrator)
 
 %rename(shapeextend) ShapeExtend;
 class ShapeExtend {
@@ -168,51 +162,7 @@ class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
 };
 
 
-%extend ShapeExtend_BasicMsgRegistrator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_BasicMsgRegistrator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_BasicMsgRegistrator::Handle_ShapeExtend_BasicMsgRegistrator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_BasicMsgRegistrator;
-class Handle_ShapeExtend_BasicMsgRegistrator : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_BasicMsgRegistrator();
-        Handle_ShapeExtend_BasicMsgRegistrator(const Handle_ShapeExtend_BasicMsgRegistrator &aHandle);
-        Handle_ShapeExtend_BasicMsgRegistrator(const ShapeExtend_BasicMsgRegistrator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_BasicMsgRegistrator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_BasicMsgRegistrator {
-    ShapeExtend_BasicMsgRegistrator* _get_reference() {
-    return (ShapeExtend_BasicMsgRegistrator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_BasicMsgRegistrator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_BasicMsgRegistrator)
 
 %extend ShapeExtend_BasicMsgRegistrator {
 	%pythoncode {
@@ -383,51 +333,7 @@ class ShapeExtend_ComplexCurve : public Geom_Curve {
 };
 
 
-%extend ShapeExtend_ComplexCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_ComplexCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_ComplexCurve::Handle_ShapeExtend_ComplexCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_ComplexCurve;
-class Handle_ShapeExtend_ComplexCurve : public Handle_Geom_Curve {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_ComplexCurve();
-        Handle_ShapeExtend_ComplexCurve(const Handle_ShapeExtend_ComplexCurve &aHandle);
-        Handle_ShapeExtend_ComplexCurve(const ShapeExtend_ComplexCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_ComplexCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_ComplexCurve {
-    ShapeExtend_ComplexCurve* _get_reference() {
-    return (ShapeExtend_ComplexCurve*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_ComplexCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_ComplexCurve)
 
 %extend ShapeExtend_ComplexCurve {
 	%pythoncode {
@@ -946,51 +852,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 };
 
 
-%extend ShapeExtend_CompositeSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_CompositeSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_CompositeSurface::Handle_ShapeExtend_CompositeSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_CompositeSurface;
-class Handle_ShapeExtend_CompositeSurface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_CompositeSurface();
-        Handle_ShapeExtend_CompositeSurface(const Handle_ShapeExtend_CompositeSurface &aHandle);
-        Handle_ShapeExtend_CompositeSurface(const ShapeExtend_CompositeSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_CompositeSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_CompositeSurface {
-    ShapeExtend_CompositeSurface* _get_reference() {
-    return (ShapeExtend_CompositeSurface*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_CompositeSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_CompositeSurface)
 
 %extend ShapeExtend_CompositeSurface {
 	%pythoncode {
@@ -1091,51 +953,7 @@ class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapN
 };
 
 
-%extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg::Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg;
-class Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg();
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(const Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg &aHandle);
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(const ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-    ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg* _get_reference() {
-    return (ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg)
 
 %extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
 	%pythoncode {
@@ -1166,51 +984,7 @@ class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_
 };
 
 
-%extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg::Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
-class Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg();
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(const Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg &aHandle);
-        Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(const ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-    ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg* _get_reference() {
-    return (ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg)
 
 %extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
 	%pythoncode {
@@ -1735,51 +1509,7 @@ class ShapeExtend_WireData : public MMgt_TShared {
 };
 
 
-%extend ShapeExtend_WireData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_WireData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_WireData::Handle_ShapeExtend_WireData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_WireData;
-class Handle_ShapeExtend_WireData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_WireData();
-        Handle_ShapeExtend_WireData(const Handle_ShapeExtend_WireData &aHandle);
-        Handle_ShapeExtend_WireData(const ShapeExtend_WireData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_WireData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_WireData {
-    ShapeExtend_WireData* _get_reference() {
-    return (ShapeExtend_WireData*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_WireData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_WireData)
 
 %extend ShapeExtend_WireData {
 	%pythoncode {
@@ -1834,51 +1564,7 @@ class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 };
 
 
-%extend ShapeExtend_MsgRegistrator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeExtend_MsgRegistrator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeExtend_MsgRegistrator::Handle_ShapeExtend_MsgRegistrator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeExtend_MsgRegistrator;
-class Handle_ShapeExtend_MsgRegistrator : public Handle_ShapeExtend_BasicMsgRegistrator {
-
-    public:
-        // constructors
-        Handle_ShapeExtend_MsgRegistrator();
-        Handle_ShapeExtend_MsgRegistrator(const Handle_ShapeExtend_MsgRegistrator &aHandle);
-        Handle_ShapeExtend_MsgRegistrator(const ShapeExtend_MsgRegistrator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeExtend_MsgRegistrator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeExtend_MsgRegistrator {
-    ShapeExtend_MsgRegistrator* _get_reference() {
-    return (ShapeExtend_MsgRegistrator*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeExtend_MsgRegistrator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeExtend_MsgRegistrator)
 
 %extend ShapeExtend_MsgRegistrator {
 	%pythoncode {

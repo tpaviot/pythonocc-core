@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMTOOLSDOCSTRING
-"No docstring provided."
+"The GeomTools package provides utilities for Geometry.* SurfaceSet, CurveSet, Curve2dSet : Tools usedfor dumping, writing and reading.* Methods to dump, write, read curves and surfaces."
 %enddef
 %module (package="OCC.Core", docstring=GEOMTOOLSDOCSTRING) GeomTools
 
@@ -34,30 +34,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomTools_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(GeomTools_UndefinedTypeHandler)
 
 %rename(geomtools) GeomTools;
 class GeomTools {
@@ -556,51 +544,7 @@ class GeomTools_UndefinedTypeHandler : public MMgt_TShared {
 };
 
 
-%extend GeomTools_UndefinedTypeHandler {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomTools_UndefinedTypeHandler(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomTools_UndefinedTypeHandler::Handle_GeomTools_UndefinedTypeHandler %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomTools_UndefinedTypeHandler;
-class Handle_GeomTools_UndefinedTypeHandler : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomTools_UndefinedTypeHandler();
-        Handle_GeomTools_UndefinedTypeHandler(const Handle_GeomTools_UndefinedTypeHandler &aHandle);
-        Handle_GeomTools_UndefinedTypeHandler(const GeomTools_UndefinedTypeHandler *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomTools_UndefinedTypeHandler DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomTools_UndefinedTypeHandler {
-    GeomTools_UndefinedTypeHandler* _get_reference() {
-    return (GeomTools_UndefinedTypeHandler*)$self->Access();
-    }
-};
-
-%extend Handle_GeomTools_UndefinedTypeHandler {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomTools_UndefinedTypeHandler)
 
 %extend GeomTools_UndefinedTypeHandler {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFIKPARTDOCSTRING
-"No docstring provided."
+"Fonctions de remplissage pour une SurfData, dansles cas particulers de conges/chanfreins suivants :- cylindre/plan entre 2 surfaces planes,- tore/sphere/cone entre un plan et un cylindre othogonal,- tore/sphere/cone entre un plan et un cone othogonal,- tore/sphere/cone entre un plan et un tore othogonal,- tore/cone entre un plan et une sphere."
 %enddef
 %module (package="OCC.Core", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 
@@ -34,30 +34,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ChFiKPart_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ChFiKPart_DataMapNodeOfRstMap)
 
 class ChFiKPart_ComputeData {
 	public:
@@ -249,51 +237,7 @@ class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
 };
 
 
-%extend ChFiKPart_DataMapNodeOfRstMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiKPart_DataMapNodeOfRstMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiKPart_DataMapNodeOfRstMap::Handle_ChFiKPart_DataMapNodeOfRstMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiKPart_DataMapNodeOfRstMap;
-class Handle_ChFiKPart_DataMapNodeOfRstMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ChFiKPart_DataMapNodeOfRstMap();
-        Handle_ChFiKPart_DataMapNodeOfRstMap(const Handle_ChFiKPart_DataMapNodeOfRstMap &aHandle);
-        Handle_ChFiKPart_DataMapNodeOfRstMap(const ChFiKPart_DataMapNodeOfRstMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiKPart_DataMapNodeOfRstMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiKPart_DataMapNodeOfRstMap {
-    ChFiKPart_DataMapNodeOfRstMap* _get_reference() {
-    return (ChFiKPart_DataMapNodeOfRstMap*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiKPart_DataMapNodeOfRstMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiKPart_DataMapNodeOfRstMap)
 
 %extend ChFiKPart_DataMapNodeOfRstMap {
 	%pythoncode {

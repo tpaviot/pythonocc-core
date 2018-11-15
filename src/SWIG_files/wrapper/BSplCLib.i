@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BSPLCLIBDOCSTRING
-"No docstring provided."
+"BSplCLib  B-spline curve Library.The BSplCLib package is a basic library for BSplines. Itprovides three categories of functions.* Management methods to process knots and multiplicities.* Multi-Dimensions spline methods. BSpline methods wherepoles have an arbitrary number of dimensions. They dividesin two groups :- Global methods modifying the whole set of poles. Thepoles are  described  by an array  of  Reals and aDimension. Example : Inserting knots.- Local methods computing points and derivatives. Thepoles are described by a pointer on a local array ofReals and a Dimension. The local array is modified.* 2D and 3D spline  curves methods.Methods for 2d and 3d BSplines curves rational or notrational.Those methods have the following structure :- They extract the pole informations in a working array.- They   process the working  array  with  themulti-dimension methods. (for example a 3d rationalcurve is processed as a 4 dimension curve).- They get back the result in the original dimension.Note that the bspline  surface methods found  in thepackage BSplSLib uses the same structure and rely onBSplCLib.In the following list of methods the 2d and 3d curvemethods  will be described  with the correspondingmulti-dimension method.The 3d or 2d B-spline curve is defined with :. its control points : TColgp_Array1OfPnt(2d)    Poles. its weights    : TColStd_Array1OfReal     Weights. its knots     : TColStd_Array1OfReal     Knots. its multiplicities : TColStd_Array1OfInteger    Mults. its degree     : Standard_Integer       Degree. its periodicity  : Standard_Boolean       PeriodicWarnings :The bounds of Poles and Weights should be the same.The bounds of Knots and Mults  should be the same.Weights can be a null reference (BSplCLib::NoWeights())the curve is non rational.Mults can be a null reference  (BSplCLib::NoMults())the knots are 'flat' knots.KeyWords :B-spline curve, Functions, LibraryReferences :. A survey of curves and surfaces methods in CADG WolfgangBOHM CAGD 1 (1984). On de Boor-like algorithms and blossoming Wolfgang BOEHMcagd 5 (1988). Blossoming and knot insertion algorithms for B-spline curvesRonald N. GOLDMAN. Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA. Curves and Surfaces for Computer Aided Geometric Design,a practical guide Gerald Farin"
 %enddef
 %module (package="OCC.Core", docstring=BSPLCLIBDOCSTRING) BSplCLib
 
@@ -34,41 +34,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BSplCLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum BSplCLib_KnotDistribution {
+	BSplCLib_NonUniform = 0,
+	BSplCLib_Uniform = 1,
+};
+
 enum BSplCLib_MultDistribution {
 	BSplCLib_NonConstant = 0,
 	BSplCLib_Constant = 1,
 	BSplCLib_QuasiConstant = 2,
 };
 
-enum BSplCLib_KnotDistribution {
-	BSplCLib_NonUniform = 0,
-	BSplCLib_Uniform = 1,
-};
-
 /* end public enums declaration */
+
 
 %rename(bsplclib) BSplCLib;
 class BSplCLib {

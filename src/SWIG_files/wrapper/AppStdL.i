@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPSTDLDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=APPSTDLDOCSTRING) AppStdL
 
@@ -34,30 +34,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AppStdL_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(AppStdL_Application)
 
 %nodefaultctor AppStdL_Application;
 class AppStdL_Application : public TDocStd_Application {
@@ -87,51 +75,7 @@ class AppStdL_Application : public TDocStd_Application {
 };
 
 
-%extend AppStdL_Application {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AppStdL_Application(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AppStdL_Application::Handle_AppStdL_Application %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AppStdL_Application;
-class Handle_AppStdL_Application : public Handle_TDocStd_Application {
-
-    public:
-        // constructors
-        Handle_AppStdL_Application();
-        Handle_AppStdL_Application(const Handle_AppStdL_Application &aHandle);
-        Handle_AppStdL_Application(const AppStdL_Application *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AppStdL_Application DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AppStdL_Application {
-    AppStdL_Application* _get_reference() {
-    return (AppStdL_Application*)$self->Access();
-    }
-};
-
-%extend Handle_AppStdL_Application {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(AppStdL_Application)
 
 %extend AppStdL_Application {
 	%pythoncode {

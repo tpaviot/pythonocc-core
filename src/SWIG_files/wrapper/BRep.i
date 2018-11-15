@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPDOCSTRING
-"No docstring provided."
+"This package describes a Boundary RepresentationData  Structure  inherited from  the abstractTopology  defined in the  TopoDS package. Thegeometric data are provided by the Geom and Geom2dpackages.The TVertex, TEdge, and TFace are redefined inthis package to add geometric information.-Level : PublicAll methods of all classes will be public."
 %enddef
 %module (package="OCC.Core", docstring=BREPDOCSTRING) BRep
 
@@ -34,30 +34,38 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRep_CurveRepresentation)
+%wrap_handle(BRep_ListNodeOfListOfCurveRepresentation)
+%wrap_handle(BRep_ListNodeOfListOfPointRepresentation)
+%wrap_handle(BRep_PointRepresentation)
+%wrap_handle(BRep_TEdge)
+%wrap_handle(BRep_TFace)
+%wrap_handle(BRep_TVertex)
+%wrap_handle(BRep_CurveOn2Surfaces)
+%wrap_handle(BRep_GCurve)
+%wrap_handle(BRep_PointOnCurve)
+%wrap_handle(BRep_PointsOnSurface)
+%wrap_handle(BRep_Polygon3D)
+%wrap_handle(BRep_PolygonOnSurface)
+%wrap_handle(BRep_PolygonOnTriangulation)
+%wrap_handle(BRep_Curve3D)
+%wrap_handle(BRep_CurveOnSurface)
+%wrap_handle(BRep_PointOnCurveOnSurface)
+%wrap_handle(BRep_PointOnSurface)
+%wrap_handle(BRep_PolygonOnClosedSurface)
+%wrap_handle(BRep_PolygonOnClosedTriangulation)
+%wrap_handle(BRep_CurveOnClosedSurface)
 
 class BRep_Builder : public TopoDS_Builder {
 	public:
@@ -965,51 +973,7 @@ class BRep_CurveRepresentation : public MMgt_TShared {
 };
 
 
-%extend BRep_CurveRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_CurveRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_CurveRepresentation::Handle_BRep_CurveRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_CurveRepresentation;
-class Handle_BRep_CurveRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRep_CurveRepresentation();
-        Handle_BRep_CurveRepresentation(const Handle_BRep_CurveRepresentation &aHandle);
-        Handle_BRep_CurveRepresentation(const BRep_CurveRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_CurveRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_CurveRepresentation {
-    BRep_CurveRepresentation* _get_reference() {
-    return (BRep_CurveRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_CurveRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_CurveRepresentation)
 
 %extend BRep_CurveRepresentation {
 	%pythoncode {
@@ -1112,51 +1076,7 @@ class BRep_ListNodeOfListOfCurveRepresentation : public TCollection_MapNode {
 };
 
 
-%extend BRep_ListNodeOfListOfCurveRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_ListNodeOfListOfCurveRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_ListNodeOfListOfCurveRepresentation::Handle_BRep_ListNodeOfListOfCurveRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_ListNodeOfListOfCurveRepresentation;
-class Handle_BRep_ListNodeOfListOfCurveRepresentation : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRep_ListNodeOfListOfCurveRepresentation();
-        Handle_BRep_ListNodeOfListOfCurveRepresentation(const Handle_BRep_ListNodeOfListOfCurveRepresentation &aHandle);
-        Handle_BRep_ListNodeOfListOfCurveRepresentation(const BRep_ListNodeOfListOfCurveRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_ListNodeOfListOfCurveRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_ListNodeOfListOfCurveRepresentation {
-    BRep_ListNodeOfListOfCurveRepresentation* _get_reference() {
-    return (BRep_ListNodeOfListOfCurveRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_ListNodeOfListOfCurveRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_ListNodeOfListOfCurveRepresentation)
 
 %extend BRep_ListNodeOfListOfCurveRepresentation {
 	%pythoncode {
@@ -1181,51 +1101,7 @@ class BRep_ListNodeOfListOfPointRepresentation : public TCollection_MapNode {
 };
 
 
-%extend BRep_ListNodeOfListOfPointRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_ListNodeOfListOfPointRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_ListNodeOfListOfPointRepresentation::Handle_BRep_ListNodeOfListOfPointRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_ListNodeOfListOfPointRepresentation;
-class Handle_BRep_ListNodeOfListOfPointRepresentation : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRep_ListNodeOfListOfPointRepresentation();
-        Handle_BRep_ListNodeOfListOfPointRepresentation(const Handle_BRep_ListNodeOfListOfPointRepresentation &aHandle);
-        Handle_BRep_ListNodeOfListOfPointRepresentation(const BRep_ListNodeOfListOfPointRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_ListNodeOfListOfPointRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_ListNodeOfListOfPointRepresentation {
-    BRep_ListNodeOfListOfPointRepresentation* _get_reference() {
-    return (BRep_ListNodeOfListOfPointRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_ListNodeOfListOfPointRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_ListNodeOfListOfPointRepresentation)
 
 %extend BRep_ListNodeOfListOfPointRepresentation {
 	%pythoncode {
@@ -1618,51 +1494,7 @@ class BRep_PointRepresentation : public MMgt_TShared {
 };
 
 
-%extend BRep_PointRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PointRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PointRepresentation::Handle_BRep_PointRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PointRepresentation;
-class Handle_BRep_PointRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRep_PointRepresentation();
-        Handle_BRep_PointRepresentation(const Handle_BRep_PointRepresentation &aHandle);
-        Handle_BRep_PointRepresentation(const BRep_PointRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PointRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PointRepresentation {
-    BRep_PointRepresentation* _get_reference() {
-    return (BRep_PointRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PointRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PointRepresentation)
 
 %extend BRep_PointRepresentation {
 	%pythoncode {
@@ -1743,51 +1575,7 @@ class BRep_TEdge : public TopoDS_TEdge {
 };
 
 
-%extend BRep_TEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_TEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_TEdge::Handle_BRep_TEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_TEdge;
-class Handle_BRep_TEdge : public Handle_TopoDS_TEdge {
-
-    public:
-        // constructors
-        Handle_BRep_TEdge();
-        Handle_BRep_TEdge(const Handle_BRep_TEdge &aHandle);
-        Handle_BRep_TEdge(const BRep_TEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_TEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_TEdge {
-    BRep_TEdge* _get_reference() {
-    return (BRep_TEdge*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_TEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_TEdge)
 
 %extend BRep_TEdge {
 	%pythoncode {
@@ -1862,51 +1650,7 @@ class BRep_TFace : public TopoDS_TFace {
 };
 
 
-%extend BRep_TFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_TFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_TFace::Handle_BRep_TFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_TFace;
-class Handle_BRep_TFace : public Handle_TopoDS_TFace {
-
-    public:
-        // constructors
-        Handle_BRep_TFace();
-        Handle_BRep_TFace(const Handle_BRep_TFace &aHandle);
-        Handle_BRep_TFace(const BRep_TFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_TFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_TFace {
-    BRep_TFace* _get_reference() {
-    return (BRep_TFace*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_TFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_TFace)
 
 %extend BRep_TFace {
 	%pythoncode {
@@ -1965,51 +1709,7 @@ class BRep_TVertex : public TopoDS_TVertex {
 };
 
 
-%extend BRep_TVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_TVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_TVertex::Handle_BRep_TVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_TVertex;
-class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
-
-    public:
-        // constructors
-        Handle_BRep_TVertex();
-        Handle_BRep_TVertex(const Handle_BRep_TVertex &aHandle);
-        Handle_BRep_TVertex(const BRep_TVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_TVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_TVertex {
-    BRep_TVertex* _get_reference() {
-    return (BRep_TVertex*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_TVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_TVertex)
 
 %extend BRep_TVertex {
 	%pythoncode {
@@ -2656,51 +2356,7 @@ class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 };
 
 
-%extend BRep_CurveOn2Surfaces {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_CurveOn2Surfaces(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_CurveOn2Surfaces::Handle_BRep_CurveOn2Surfaces %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_CurveOn2Surfaces;
-class Handle_BRep_CurveOn2Surfaces : public Handle_BRep_CurveRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_CurveOn2Surfaces();
-        Handle_BRep_CurveOn2Surfaces(const Handle_BRep_CurveOn2Surfaces &aHandle);
-        Handle_BRep_CurveOn2Surfaces(const BRep_CurveOn2Surfaces *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_CurveOn2Surfaces DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_CurveOn2Surfaces {
-    BRep_CurveOn2Surfaces* _get_reference() {
-    return (BRep_CurveOn2Surfaces*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_CurveOn2Surfaces {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_CurveOn2Surfaces)
 
 %extend BRep_CurveOn2Surfaces {
 	%pythoncode {
@@ -2765,51 +2421,7 @@ class BRep_GCurve : public BRep_CurveRepresentation {
 };
 
 
-%extend BRep_GCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_GCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_GCurve::Handle_BRep_GCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_GCurve;
-class Handle_BRep_GCurve : public Handle_BRep_CurveRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_GCurve();
-        Handle_BRep_GCurve(const Handle_BRep_GCurve &aHandle);
-        Handle_BRep_GCurve(const BRep_GCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_GCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_GCurve {
-    BRep_GCurve* _get_reference() {
-    return (BRep_GCurve*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_GCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_GCurve)
 
 %extend BRep_GCurve {
 	%pythoncode {
@@ -2856,51 +2468,7 @@ class BRep_PointOnCurve : public BRep_PointRepresentation {
 };
 
 
-%extend BRep_PointOnCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PointOnCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PointOnCurve::Handle_BRep_PointOnCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PointOnCurve;
-class Handle_BRep_PointOnCurve : public Handle_BRep_PointRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_PointOnCurve();
-        Handle_BRep_PointOnCurve(const Handle_BRep_PointOnCurve &aHandle);
-        Handle_BRep_PointOnCurve(const BRep_PointOnCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PointOnCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PointOnCurve {
-    BRep_PointOnCurve* _get_reference() {
-    return (BRep_PointOnCurve*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PointOnCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PointOnCurve)
 
 %extend BRep_PointOnCurve {
 	%pythoncode {
@@ -2923,51 +2491,7 @@ class BRep_PointsOnSurface : public BRep_PointRepresentation {
 };
 
 
-%extend BRep_PointsOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PointsOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PointsOnSurface::Handle_BRep_PointsOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PointsOnSurface;
-class Handle_BRep_PointsOnSurface : public Handle_BRep_PointRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_PointsOnSurface();
-        Handle_BRep_PointsOnSurface(const Handle_BRep_PointsOnSurface &aHandle);
-        Handle_BRep_PointsOnSurface(const BRep_PointsOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PointsOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PointsOnSurface {
-    BRep_PointsOnSurface* _get_reference() {
-    return (BRep_PointsOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PointsOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PointsOnSurface)
 
 %extend BRep_PointsOnSurface {
 	%pythoncode {
@@ -3010,51 +2534,7 @@ class BRep_Polygon3D : public BRep_CurveRepresentation {
 };
 
 
-%extend BRep_Polygon3D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_Polygon3D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_Polygon3D::Handle_BRep_Polygon3D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_Polygon3D;
-class Handle_BRep_Polygon3D : public Handle_BRep_CurveRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_Polygon3D();
-        Handle_BRep_Polygon3D(const Handle_BRep_Polygon3D &aHandle);
-        Handle_BRep_Polygon3D(const BRep_Polygon3D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_Polygon3D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_Polygon3D {
-    BRep_Polygon3D* _get_reference() {
-    return (BRep_Polygon3D*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_Polygon3D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_Polygon3D)
 
 %extend BRep_Polygon3D {
 	%pythoncode {
@@ -3113,51 +2593,7 @@ class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 };
 
 
-%extend BRep_PolygonOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PolygonOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PolygonOnSurface::Handle_BRep_PolygonOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PolygonOnSurface;
-class Handle_BRep_PolygonOnSurface : public Handle_BRep_CurveRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_PolygonOnSurface();
-        Handle_BRep_PolygonOnSurface(const Handle_BRep_PolygonOnSurface &aHandle);
-        Handle_BRep_PolygonOnSurface(const BRep_PolygonOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PolygonOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PolygonOnSurface {
-    BRep_PolygonOnSurface* _get_reference() {
-    return (BRep_PolygonOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PolygonOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PolygonOnSurface)
 
 %extend BRep_PolygonOnSurface {
 	%pythoncode {
@@ -3218,51 +2654,7 @@ class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 };
 
 
-%extend BRep_PolygonOnTriangulation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PolygonOnTriangulation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PolygonOnTriangulation::Handle_BRep_PolygonOnTriangulation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PolygonOnTriangulation;
-class Handle_BRep_PolygonOnTriangulation : public Handle_BRep_CurveRepresentation {
-
-    public:
-        // constructors
-        Handle_BRep_PolygonOnTriangulation();
-        Handle_BRep_PolygonOnTriangulation(const Handle_BRep_PolygonOnTriangulation &aHandle);
-        Handle_BRep_PolygonOnTriangulation(const BRep_PolygonOnTriangulation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PolygonOnTriangulation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PolygonOnTriangulation {
-    BRep_PolygonOnTriangulation* _get_reference() {
-    return (BRep_PolygonOnTriangulation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PolygonOnTriangulation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PolygonOnTriangulation)
 
 %extend BRep_PolygonOnTriangulation {
 	%pythoncode {
@@ -3315,51 +2707,7 @@ class BRep_Curve3D : public BRep_GCurve {
 };
 
 
-%extend BRep_Curve3D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_Curve3D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_Curve3D::Handle_BRep_Curve3D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_Curve3D;
-class Handle_BRep_Curve3D : public Handle_BRep_GCurve {
-
-    public:
-        // constructors
-        Handle_BRep_Curve3D();
-        Handle_BRep_Curve3D(const Handle_BRep_Curve3D &aHandle);
-        Handle_BRep_Curve3D(const BRep_Curve3D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_Curve3D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_Curve3D {
-    BRep_Curve3D* _get_reference() {
-    return (BRep_Curve3D*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_Curve3D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_Curve3D)
 
 %extend BRep_Curve3D {
 	%pythoncode {
@@ -3450,51 +2798,7 @@ class BRep_CurveOnSurface : public BRep_GCurve {
 };
 
 
-%extend BRep_CurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_CurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_CurveOnSurface::Handle_BRep_CurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_CurveOnSurface;
-class Handle_BRep_CurveOnSurface : public Handle_BRep_GCurve {
-
-    public:
-        // constructors
-        Handle_BRep_CurveOnSurface();
-        Handle_BRep_CurveOnSurface(const Handle_BRep_CurveOnSurface &aHandle);
-        Handle_BRep_CurveOnSurface(const BRep_CurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_CurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_CurveOnSurface {
-    BRep_CurveOnSurface* _get_reference() {
-    return (BRep_CurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_CurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_CurveOnSurface)
 
 %extend BRep_CurveOnSurface {
 	%pythoncode {
@@ -3545,51 +2849,7 @@ class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 };
 
 
-%extend BRep_PointOnCurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PointOnCurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PointOnCurveOnSurface::Handle_BRep_PointOnCurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PointOnCurveOnSurface;
-class Handle_BRep_PointOnCurveOnSurface : public Handle_BRep_PointsOnSurface {
-
-    public:
-        // constructors
-        Handle_BRep_PointOnCurveOnSurface();
-        Handle_BRep_PointOnCurveOnSurface(const Handle_BRep_PointOnCurveOnSurface &aHandle);
-        Handle_BRep_PointOnCurveOnSurface(const BRep_PointOnCurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PointOnCurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PointOnCurveOnSurface {
-    BRep_PointOnCurveOnSurface* _get_reference() {
-    return (BRep_PointOnCurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PointOnCurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PointOnCurveOnSurface)
 
 %extend BRep_PointOnCurveOnSurface {
 	%pythoncode {
@@ -3636,51 +2896,7 @@ class BRep_PointOnSurface : public BRep_PointsOnSurface {
 };
 
 
-%extend BRep_PointOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PointOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PointOnSurface::Handle_BRep_PointOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PointOnSurface;
-class Handle_BRep_PointOnSurface : public Handle_BRep_PointsOnSurface {
-
-    public:
-        // constructors
-        Handle_BRep_PointOnSurface();
-        Handle_BRep_PointOnSurface(const Handle_BRep_PointOnSurface &aHandle);
-        Handle_BRep_PointOnSurface(const BRep_PointOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PointOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PointOnSurface {
-    BRep_PointOnSurface* _get_reference() {
-    return (BRep_PointOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PointOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PointOnSurface)
 
 %extend BRep_PointOnSurface {
 	%pythoncode {
@@ -3727,51 +2943,7 @@ class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 };
 
 
-%extend BRep_PolygonOnClosedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PolygonOnClosedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PolygonOnClosedSurface::Handle_BRep_PolygonOnClosedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PolygonOnClosedSurface;
-class Handle_BRep_PolygonOnClosedSurface : public Handle_BRep_PolygonOnSurface {
-
-    public:
-        // constructors
-        Handle_BRep_PolygonOnClosedSurface();
-        Handle_BRep_PolygonOnClosedSurface(const Handle_BRep_PolygonOnClosedSurface &aHandle);
-        Handle_BRep_PolygonOnClosedSurface(const BRep_PolygonOnClosedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PolygonOnClosedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PolygonOnClosedSurface {
-    BRep_PolygonOnClosedSurface* _get_reference() {
-    return (BRep_PolygonOnClosedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PolygonOnClosedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PolygonOnClosedSurface)
 
 %extend BRep_PolygonOnClosedSurface {
 	%pythoncode {
@@ -3818,51 +2990,7 @@ class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 };
 
 
-%extend BRep_PolygonOnClosedTriangulation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_PolygonOnClosedTriangulation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_PolygonOnClosedTriangulation::Handle_BRep_PolygonOnClosedTriangulation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_PolygonOnClosedTriangulation;
-class Handle_BRep_PolygonOnClosedTriangulation : public Handle_BRep_PolygonOnTriangulation {
-
-    public:
-        // constructors
-        Handle_BRep_PolygonOnClosedTriangulation();
-        Handle_BRep_PolygonOnClosedTriangulation(const Handle_BRep_PolygonOnClosedTriangulation &aHandle);
-        Handle_BRep_PolygonOnClosedTriangulation(const BRep_PolygonOnClosedTriangulation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_PolygonOnClosedTriangulation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_PolygonOnClosedTriangulation {
-    BRep_PolygonOnClosedTriangulation* _get_reference() {
-    return (BRep_PolygonOnClosedTriangulation*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_PolygonOnClosedTriangulation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_PolygonOnClosedTriangulation)
 
 %extend BRep_PolygonOnClosedTriangulation {
 	%pythoncode {
@@ -3975,51 +3103,7 @@ class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 };
 
 
-%extend BRep_CurveOnClosedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRep_CurveOnClosedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRep_CurveOnClosedSurface::Handle_BRep_CurveOnClosedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRep_CurveOnClosedSurface;
-class Handle_BRep_CurveOnClosedSurface : public Handle_BRep_CurveOnSurface {
-
-    public:
-        // constructors
-        Handle_BRep_CurveOnClosedSurface();
-        Handle_BRep_CurveOnClosedSurface(const Handle_BRep_CurveOnClosedSurface &aHandle);
-        Handle_BRep_CurveOnClosedSurface(const BRep_CurveOnClosedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRep_CurveOnClosedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRep_CurveOnClosedSurface {
-    BRep_CurveOnClosedSurface* _get_reference() {
-    return (BRep_CurveOnClosedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_BRep_CurveOnClosedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRep_CurveOnClosedSurface)
 
 %extend BRep_CurveOnClosedSurface {
 	%pythoncode {

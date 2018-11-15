@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSAPIDOCSTRING
-"No docstring provided."
+"The UnitsAPI global functions are used toconvert a value from any unit into another unit.PrinciplesConversion is executed among three unit systems:-  the SI System-  the user's Local System-  the user's Current System.The SI System is the standard international unitsystem. It is indicated by SI in the synopses ofthe UnitsAPI functions.The MDTV System corresponds to the SIinternational standard but the length unit and allits derivatives use millimeters instead of the meters.Both systems are proposed by Open CASCADE;the SI System is the standard option. Byselecting one of these two systems, the userdefines his Local System through theSetLocalSystem function. The Local System isindicated by LS in the synopses of the UnitsAPI functions.The user's Local System units can be modified inthe working environment. The user defines hisCurrent System by modifying its units throughthe SetCurrentUnit function. The CurrentSystem is indicated by Current in the synopsesof the UnitsAPI functions."
 %enddef
 %module (package="OCC.Core", docstring=UNITSAPIDOCSTRING) UnitsAPI
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include UnitsAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +50,7 @@ enum UnitsAPI_SystemUnits {
 };
 
 /* end public enums declaration */
+
 
 %rename(unitsapi) UnitsAPI;
 class UnitsAPI {

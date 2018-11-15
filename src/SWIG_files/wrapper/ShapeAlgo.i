@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEALGODOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=SHAPEALGODOCSTRING) ShapeAlgo
 
@@ -34,30 +34,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeAlgo_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeAlgo_ToolContainer)
 
 %rename(shapealgo) ShapeAlgo;
 class ShapeAlgo {
@@ -114,51 +102,7 @@ class ShapeAlgo_ToolContainer : public MMgt_TShared {
 };
 
 
-%extend ShapeAlgo_ToolContainer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAlgo_ToolContainer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAlgo_ToolContainer::Handle_ShapeAlgo_ToolContainer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAlgo_ToolContainer;
-class Handle_ShapeAlgo_ToolContainer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAlgo_ToolContainer();
-        Handle_ShapeAlgo_ToolContainer(const Handle_ShapeAlgo_ToolContainer &aHandle);
-        Handle_ShapeAlgo_ToolContainer(const ShapeAlgo_ToolContainer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAlgo_ToolContainer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAlgo_ToolContainer {
-    ShapeAlgo_ToolContainer* _get_reference() {
-    return (ShapeAlgo_ToolContainer*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAlgo_ToolContainer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAlgo_ToolContainer)
 
 %extend ShapeAlgo_ToolContainer {
 	%pythoncode {

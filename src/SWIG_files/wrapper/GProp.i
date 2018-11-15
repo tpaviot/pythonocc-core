@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GPROPDOCSTRING
-"No docstring provided."
+"- Purpose:This package defines algorithmes to compute the global propertiesof a set of points, a curve, a surface, a solid (non infiniteregion of space delimited with geometric entities), a compoundgeometric system (heterogeneous composition of the previousentities).Global properties are :. length, area, volume,. centre of mass,. axis of inertia,. moments of inertia,. radius of gyration.It provides also a class to compile the average point orline of a set of points."
 %enddef
 %module (package="OCC.Core", docstring=GPROPDOCSTRING) GProp
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GProp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -80,6 +66,7 @@ enum GProp_ValueType {
 };
 
 /* end public enums declaration */
+
 
 %rename(gprop) GProp;
 class GProp {

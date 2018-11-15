@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMDOCSTRING
-"No docstring provided."
+"- Purpose :This package contains the definition of the geometric objectssuch as point, vector, axis placement, curves, surfaces and thedescription of the geometric transformations available for theseobjects.All these entities are defined in 3D space.This package gives the possibility :. to create geometric objects,. to have information about them,. to modify these objects.This package uses the services of the package gp (Geometricprocessor) which describes non-persistent objects for algebraiccalculus and basic analytic geometry. The purpose of this packageis to create persistent geometric objects and to read geometricinformation about these objects. Complexes geometric algorithmesare not described in this package.   At construction time,elementary verifications are done to verify that the objectsare coherents, but some verifications which require complexalgorithmes (for example to check that a curve has not nulllength or does not self-intersect) must be done before theconstruction of the geometric objects."
 %enddef
 %module (package="OCC.Core", docstring=GEOMDOCSTRING) Geom
 
@@ -34,30 +34,56 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Geom_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Geom_Geometry)
+%wrap_handle(Geom_HSequenceOfBSplineSurface)
+%wrap_handle(Geom_SequenceNodeOfSequenceOfBSplineSurface)
+%wrap_handle(Geom_Transformation)
+%wrap_handle(Geom_AxisPlacement)
+%wrap_handle(Geom_Curve)
+%wrap_handle(Geom_Point)
+%wrap_handle(Geom_Surface)
+%wrap_handle(Geom_Vector)
+%wrap_handle(Geom_Axis1Placement)
+%wrap_handle(Geom_Axis2Placement)
+%wrap_handle(Geom_BoundedCurve)
+%wrap_handle(Geom_BoundedSurface)
+%wrap_handle(Geom_CartesianPoint)
+%wrap_handle(Geom_Conic)
+%wrap_handle(Geom_Direction)
+%wrap_handle(Geom_ElementarySurface)
+%wrap_handle(Geom_Line)
+%wrap_handle(Geom_OffsetCurve)
+%wrap_handle(Geom_OffsetSurface)
+%wrap_handle(Geom_SweptSurface)
+%wrap_handle(Geom_VectorWithMagnitude)
+%wrap_handle(Geom_BSplineCurve)
+%wrap_handle(Geom_BSplineSurface)
+%wrap_handle(Geom_BezierCurve)
+%wrap_handle(Geom_BezierSurface)
+%wrap_handle(Geom_Circle)
+%wrap_handle(Geom_ConicalSurface)
+%wrap_handle(Geom_CylindricalSurface)
+%wrap_handle(Geom_Ellipse)
+%wrap_handle(Geom_Hyperbola)
+%wrap_handle(Geom_Parabola)
+%wrap_handle(Geom_Plane)
+%wrap_handle(Geom_RectangularTrimmedSurface)
+%wrap_handle(Geom_SphericalSurface)
+%wrap_handle(Geom_SurfaceOfLinearExtrusion)
+%wrap_handle(Geom_SurfaceOfRevolution)
+%wrap_handle(Geom_ToroidalSurface)
+%wrap_handle(Geom_TrimmedCurve)
 
 %nodefaultctor Geom_Geometry;
 class Geom_Geometry : public MMgt_TShared {
@@ -195,51 +221,7 @@ class Geom_Geometry : public MMgt_TShared {
 };
 
 
-%extend Geom_Geometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Geometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Geometry::Handle_Geom_Geometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Geometry;
-class Handle_Geom_Geometry : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Geom_Geometry();
-        Handle_Geom_Geometry(const Handle_Geom_Geometry &aHandle);
-        Handle_Geom_Geometry(const Geom_Geometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Geometry DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Geometry {
-    Geom_Geometry* _get_reference() {
-    return (Geom_Geometry*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Geometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Geometry)
 
 %extend Geom_Geometry {
 	%pythoncode {
@@ -384,51 +366,7 @@ class Geom_HSequenceOfBSplineSurface : public MMgt_TShared {
 };
 
 
-%extend Geom_HSequenceOfBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_HSequenceOfBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_HSequenceOfBSplineSurface::Handle_Geom_HSequenceOfBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_HSequenceOfBSplineSurface;
-class Handle_Geom_HSequenceOfBSplineSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Geom_HSequenceOfBSplineSurface();
-        Handle_Geom_HSequenceOfBSplineSurface(const Handle_Geom_HSequenceOfBSplineSurface &aHandle);
-        Handle_Geom_HSequenceOfBSplineSurface(const Geom_HSequenceOfBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_HSequenceOfBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_HSequenceOfBSplineSurface {
-    Geom_HSequenceOfBSplineSurface* _get_reference() {
-    return (Geom_HSequenceOfBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_HSequenceOfBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_HSequenceOfBSplineSurface)
 
 %extend Geom_HSequenceOfBSplineSurface {
 	%pythoncode {
@@ -524,51 +462,7 @@ class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode {
 };
 
 
-%extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface::Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface;
-class Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface();
-        Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface(const Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface &aHandle);
-        Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface(const Geom_SequenceNodeOfSequenceOfBSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface {
-    Geom_SequenceNodeOfSequenceOfBSplineSurface* _get_reference() {
-    return (Geom_SequenceNodeOfSequenceOfBSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_SequenceNodeOfSequenceOfBSplineSurface)
 
 %extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
 	%pythoncode {
@@ -930,51 +824,7 @@ class Geom_Transformation : public MMgt_TShared {
 };
 
 
-%extend Geom_Transformation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Transformation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Transformation::Handle_Geom_Transformation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Transformation;
-class Handle_Geom_Transformation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Geom_Transformation();
-        Handle_Geom_Transformation(const Handle_Geom_Transformation &aHandle);
-        Handle_Geom_Transformation(const Geom_Transformation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Transformation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Transformation {
-    Geom_Transformation* _get_reference() {
-    return (Geom_Transformation*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Transformation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Transformation)
 
 %extend Geom_Transformation {
 	%pythoncode {
@@ -1037,51 +887,7 @@ class Geom_AxisPlacement : public Geom_Geometry {
 };
 
 
-%extend Geom_AxisPlacement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_AxisPlacement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_AxisPlacement::Handle_Geom_AxisPlacement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_AxisPlacement;
-class Handle_Geom_AxisPlacement : public Handle_Geom_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom_AxisPlacement();
-        Handle_Geom_AxisPlacement(const Handle_Geom_AxisPlacement &aHandle);
-        Handle_Geom_AxisPlacement(const Geom_AxisPlacement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_AxisPlacement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_AxisPlacement {
-    Geom_AxisPlacement* _get_reference() {
-    return (Geom_AxisPlacement*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_AxisPlacement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_AxisPlacement)
 
 %extend Geom_AxisPlacement {
 	%pythoncode {
@@ -1246,51 +1052,7 @@ class Geom_Curve : public Geom_Geometry {
 };
 
 
-%extend Geom_Curve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Curve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Curve::Handle_Geom_Curve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Curve;
-class Handle_Geom_Curve : public Handle_Geom_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom_Curve();
-        Handle_Geom_Curve(const Handle_Geom_Curve &aHandle);
-        Handle_Geom_Curve(const Geom_Curve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Curve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Curve {
-    Geom_Curve* _get_reference() {
-    return (Geom_Curve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Curve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Curve)
 
 %extend Geom_Curve {
 	%pythoncode {
@@ -1355,51 +1117,7 @@ class Geom_Point : public Geom_Geometry {
 };
 
 
-%extend Geom_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Point::Handle_Geom_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Point;
-class Handle_Geom_Point : public Handle_Geom_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom_Point();
-        Handle_Geom_Point(const Handle_Geom_Point &aHandle);
-        Handle_Geom_Point(const Geom_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Point DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Point {
-    Geom_Point* _get_reference() {
-    return (Geom_Point*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Point)
 
 %extend Geom_Point {
 	%pythoncode {
@@ -1664,51 +1382,7 @@ class Geom_Surface : public Geom_Geometry {
 };
 
 
-%extend Geom_Surface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Surface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Surface::Handle_Geom_Surface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Surface;
-class Handle_Geom_Surface : public Handle_Geom_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom_Surface();
-        Handle_Geom_Surface(const Handle_Geom_Surface &aHandle);
-        Handle_Geom_Surface(const Geom_Surface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Surface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Surface {
-    Geom_Surface* _get_reference() {
-    return (Geom_Surface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Surface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Surface)
 
 %extend Geom_Surface {
 	%pythoncode {
@@ -1853,51 +1527,7 @@ class Geom_Vector : public Geom_Geometry {
 };
 
 
-%extend Geom_Vector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Vector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Vector::Handle_Geom_Vector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Vector;
-class Handle_Geom_Vector : public Handle_Geom_Geometry {
-
-    public:
-        // constructors
-        Handle_Geom_Vector();
-        Handle_Geom_Vector(const Handle_Geom_Vector &aHandle);
-        Handle_Geom_Vector(const Geom_Vector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Vector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Vector {
-    Geom_Vector* _get_reference() {
-    return (Geom_Vector*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Vector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Vector)
 
 %extend Geom_Vector {
 	%pythoncode {
@@ -1968,51 +1598,7 @@ class Geom_Axis1Placement : public Geom_AxisPlacement {
 };
 
 
-%extend Geom_Axis1Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Axis1Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Axis1Placement::Handle_Geom_Axis1Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Axis1Placement;
-class Handle_Geom_Axis1Placement : public Handle_Geom_AxisPlacement {
-
-    public:
-        // constructors
-        Handle_Geom_Axis1Placement();
-        Handle_Geom_Axis1Placement(const Handle_Geom_Axis1Placement &aHandle);
-        Handle_Geom_Axis1Placement(const Geom_Axis1Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Axis1Placement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Axis1Placement {
-    Geom_Axis1Placement* _get_reference() {
-    return (Geom_Axis1Placement*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Axis1Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Axis1Placement)
 
 %extend Geom_Axis1Placement {
 	%pythoncode {
@@ -2109,51 +1695,7 @@ class Geom_Axis2Placement : public Geom_AxisPlacement {
 };
 
 
-%extend Geom_Axis2Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Axis2Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Axis2Placement::Handle_Geom_Axis2Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Axis2Placement;
-class Handle_Geom_Axis2Placement : public Handle_Geom_AxisPlacement {
-
-    public:
-        // constructors
-        Handle_Geom_Axis2Placement();
-        Handle_Geom_Axis2Placement(const Handle_Geom_Axis2Placement &aHandle);
-        Handle_Geom_Axis2Placement(const Geom_Axis2Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Axis2Placement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Axis2Placement {
-    Geom_Axis2Placement* _get_reference() {
-    return (Geom_Axis2Placement*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Axis2Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Axis2Placement)
 
 %extend Geom_Axis2Placement {
 	%pythoncode {
@@ -2178,51 +1720,7 @@ class Geom_BoundedCurve : public Geom_Curve {
 };
 
 
-%extend Geom_BoundedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BoundedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BoundedCurve::Handle_Geom_BoundedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BoundedCurve;
-class Handle_Geom_BoundedCurve : public Handle_Geom_Curve {
-
-    public:
-        // constructors
-        Handle_Geom_BoundedCurve();
-        Handle_Geom_BoundedCurve(const Handle_Geom_BoundedCurve &aHandle);
-        Handle_Geom_BoundedCurve(const Geom_BoundedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BoundedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BoundedCurve {
-    Geom_BoundedCurve* _get_reference() {
-    return (Geom_BoundedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BoundedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BoundedCurve)
 
 %extend Geom_BoundedCurve {
 	%pythoncode {
@@ -2235,51 +1733,7 @@ class Geom_BoundedSurface : public Geom_Surface {
 };
 
 
-%extend Geom_BoundedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BoundedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BoundedSurface::Handle_Geom_BoundedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BoundedSurface;
-class Handle_Geom_BoundedSurface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_Geom_BoundedSurface();
-        Handle_Geom_BoundedSurface(const Handle_Geom_BoundedSurface &aHandle);
-        Handle_Geom_BoundedSurface(const Geom_BoundedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BoundedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BoundedSurface {
-    Geom_BoundedSurface* _get_reference() {
-    return (Geom_BoundedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BoundedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BoundedSurface)
 
 %extend Geom_BoundedSurface {
 	%pythoncode {
@@ -2406,51 +1860,7 @@ class Geom_CartesianPoint : public Geom_Point {
 };
 
 
-%extend Geom_CartesianPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_CartesianPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_CartesianPoint::Handle_Geom_CartesianPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_CartesianPoint;
-class Handle_Geom_CartesianPoint : public Handle_Geom_Point {
-
-    public:
-        // constructors
-        Handle_Geom_CartesianPoint();
-        Handle_Geom_CartesianPoint(const Handle_Geom_CartesianPoint &aHandle);
-        Handle_Geom_CartesianPoint(const Geom_CartesianPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_CartesianPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_CartesianPoint {
-    Geom_CartesianPoint* _get_reference() {
-    return (Geom_CartesianPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_CartesianPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_CartesianPoint)
 
 %extend Geom_CartesianPoint {
 	%pythoncode {
@@ -2551,51 +1961,7 @@ class Geom_Conic : public Geom_Curve {
 };
 
 
-%extend Geom_Conic {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Conic(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Conic::Handle_Geom_Conic %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Conic;
-class Handle_Geom_Conic : public Handle_Geom_Curve {
-
-    public:
-        // constructors
-        Handle_Geom_Conic();
-        Handle_Geom_Conic(const Handle_Geom_Conic &aHandle);
-        Handle_Geom_Conic(const Geom_Conic *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Conic DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Conic {
-    Geom_Conic* _get_reference() {
-    return (Geom_Conic*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Conic {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Conic)
 
 %extend Geom_Conic {
 	%pythoncode {
@@ -2740,51 +2106,7 @@ class Geom_Direction : public Geom_Vector {
 };
 
 
-%extend Geom_Direction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Direction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Direction::Handle_Geom_Direction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Direction;
-class Handle_Geom_Direction : public Handle_Geom_Vector {
-
-    public:
-        // constructors
-        Handle_Geom_Direction();
-        Handle_Geom_Direction(const Handle_Geom_Direction &aHandle);
-        Handle_Geom_Direction(const Geom_Direction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Direction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Direction {
-    Geom_Direction* _get_reference() {
-    return (Geom_Direction*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Direction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Direction)
 
 %extend Geom_Direction {
 	%pythoncode {
@@ -2889,51 +2211,7 @@ class Geom_ElementarySurface : public Geom_Surface {
 };
 
 
-%extend Geom_ElementarySurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_ElementarySurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_ElementarySurface::Handle_Geom_ElementarySurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_ElementarySurface;
-class Handle_Geom_ElementarySurface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_Geom_ElementarySurface();
-        Handle_Geom_ElementarySurface(const Handle_Geom_ElementarySurface &aHandle);
-        Handle_Geom_ElementarySurface(const Geom_ElementarySurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_ElementarySurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_ElementarySurface {
-    Geom_ElementarySurface* _get_reference() {
-    return (Geom_ElementarySurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_ElementarySurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_ElementarySurface)
 
 %extend Geom_ElementarySurface {
 	%pythoncode {
@@ -3162,51 +2440,7 @@ class Geom_Line : public Geom_Curve {
 };
 
 
-%extend Geom_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Line::Handle_Geom_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Line;
-class Handle_Geom_Line : public Handle_Geom_Curve {
-
-    public:
-        // constructors
-        Handle_Geom_Line();
-        Handle_Geom_Line(const Handle_Geom_Line &aHandle);
-        Handle_Geom_Line(const Geom_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Line {
-    Geom_Line* _get_reference() {
-    return (Geom_Line*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Line)
 
 %extend Geom_Line {
 	%pythoncode {
@@ -3499,51 +2733,7 @@ class Geom_OffsetCurve : public Geom_Curve {
 };
 
 
-%extend Geom_OffsetCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_OffsetCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_OffsetCurve::Handle_Geom_OffsetCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_OffsetCurve;
-class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
-
-    public:
-        // constructors
-        Handle_Geom_OffsetCurve();
-        Handle_Geom_OffsetCurve(const Handle_Geom_OffsetCurve &aHandle);
-        Handle_Geom_OffsetCurve(const Geom_OffsetCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_OffsetCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_OffsetCurve {
-    Geom_OffsetCurve* _get_reference() {
-    return (Geom_OffsetCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_OffsetCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_OffsetCurve)
 
 %extend Geom_OffsetCurve {
 	%pythoncode {
@@ -4074,51 +3264,7 @@ class Geom_OffsetSurface : public Geom_Surface {
 };
 
 
-%extend Geom_OffsetSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_OffsetSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_OffsetSurface::Handle_Geom_OffsetSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_OffsetSurface;
-class Handle_Geom_OffsetSurface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_Geom_OffsetSurface();
-        Handle_Geom_OffsetSurface(const Handle_Geom_OffsetSurface &aHandle);
-        Handle_Geom_OffsetSurface(const Geom_OffsetSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_OffsetSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_OffsetSurface {
-    Geom_OffsetSurface* _get_reference() {
-    return (Geom_OffsetSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_OffsetSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_OffsetSurface)
 
 %extend Geom_OffsetSurface {
 	%pythoncode {
@@ -4149,51 +3295,7 @@ class Geom_SweptSurface : public Geom_Surface {
 };
 
 
-%extend Geom_SweptSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_SweptSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_SweptSurface::Handle_Geom_SweptSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_SweptSurface;
-class Handle_Geom_SweptSurface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_Geom_SweptSurface();
-        Handle_Geom_SweptSurface(const Handle_Geom_SweptSurface &aHandle);
-        Handle_Geom_SweptSurface(const Geom_SweptSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_SweptSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_SweptSurface {
-    Geom_SweptSurface* _get_reference() {
-    return (Geom_SweptSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_SweptSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_SweptSurface)
 
 %extend Geom_SweptSurface {
 	%pythoncode {
@@ -4418,51 +3520,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 };
 
 
-%extend Geom_VectorWithMagnitude {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_VectorWithMagnitude(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_VectorWithMagnitude::Handle_Geom_VectorWithMagnitude %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_VectorWithMagnitude;
-class Handle_Geom_VectorWithMagnitude : public Handle_Geom_Vector {
-
-    public:
-        // constructors
-        Handle_Geom_VectorWithMagnitude();
-        Handle_Geom_VectorWithMagnitude(const Handle_Geom_VectorWithMagnitude &aHandle);
-        Handle_Geom_VectorWithMagnitude(const Geom_VectorWithMagnitude *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_VectorWithMagnitude DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_VectorWithMagnitude {
-    Geom_VectorWithMagnitude* _get_reference() {
-    return (Geom_VectorWithMagnitude*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_VectorWithMagnitude {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_VectorWithMagnitude)
 
 %extend Geom_VectorWithMagnitude {
 	%pythoncode {
@@ -5173,51 +4231,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 };
 
 
-%extend Geom_BSplineCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BSplineCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BSplineCurve::Handle_Geom_BSplineCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BSplineCurve;
-class Handle_Geom_BSplineCurve : public Handle_Geom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom_BSplineCurve();
-        Handle_Geom_BSplineCurve(const Handle_Geom_BSplineCurve &aHandle);
-        Handle_Geom_BSplineCurve(const Geom_BSplineCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BSplineCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BSplineCurve {
-    Geom_BSplineCurve* _get_reference() {
-    return (Geom_BSplineCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BSplineCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BSplineCurve)
 
 %extend Geom_BSplineCurve {
 	%pythoncode {
@@ -6392,51 +5406,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 };
 
 
-%extend Geom_BSplineSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BSplineSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BSplineSurface::Handle_Geom_BSplineSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BSplineSurface;
-class Handle_Geom_BSplineSurface : public Handle_Geom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_Geom_BSplineSurface();
-        Handle_Geom_BSplineSurface(const Handle_Geom_BSplineSurface &aHandle);
-        Handle_Geom_BSplineSurface(const Geom_BSplineSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BSplineSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BSplineSurface {
-    Geom_BSplineSurface* _get_reference() {
-    return (Geom_BSplineSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BSplineSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BSplineSurface)
 
 %extend Geom_BSplineSurface {
 	%pythoncode {
@@ -6769,51 +5739,7 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 };
 
 
-%extend Geom_BezierCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BezierCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BezierCurve::Handle_Geom_BezierCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BezierCurve;
-class Handle_Geom_BezierCurve : public Handle_Geom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom_BezierCurve();
-        Handle_Geom_BezierCurve(const Handle_Geom_BezierCurve &aHandle);
-        Handle_Geom_BezierCurve(const Geom_BezierCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BezierCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BezierCurve {
-    Geom_BezierCurve* _get_reference() {
-    return (Geom_BezierCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BezierCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BezierCurve)
 
 %extend Geom_BezierCurve {
 	%pythoncode {
@@ -7376,51 +6302,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 };
 
 
-%extend Geom_BezierSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_BezierSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_BezierSurface::Handle_Geom_BezierSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_BezierSurface;
-class Handle_Geom_BezierSurface : public Handle_Geom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_Geom_BezierSurface();
-        Handle_Geom_BezierSurface(const Handle_Geom_BezierSurface &aHandle);
-        Handle_Geom_BezierSurface(const Geom_BezierSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_BezierSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_BezierSurface {
-    Geom_BezierSurface* _get_reference() {
-    return (Geom_BezierSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_BezierSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_BezierSurface)
 
 %extend Geom_BezierSurface {
 	%pythoncode {
@@ -7593,51 +6475,7 @@ class Geom_Circle : public Geom_Conic {
 };
 
 
-%extend Geom_Circle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Circle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Circle::Handle_Geom_Circle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Circle;
-class Handle_Geom_Circle : public Handle_Geom_Conic {
-
-    public:
-        // constructors
-        Handle_Geom_Circle();
-        Handle_Geom_Circle(const Handle_Geom_Circle &aHandle);
-        Handle_Geom_Circle(const Geom_Circle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Circle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Circle {
-    Geom_Circle* _get_reference() {
-    return (Geom_Circle*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Circle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Circle)
 
 %extend Geom_Circle {
 	%pythoncode {
@@ -7948,51 +6786,7 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 };
 
 
-%extend Geom_ConicalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_ConicalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_ConicalSurface::Handle_Geom_ConicalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_ConicalSurface;
-class Handle_Geom_ConicalSurface : public Handle_Geom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_Geom_ConicalSurface();
-        Handle_Geom_ConicalSurface(const Handle_Geom_ConicalSurface &aHandle);
-        Handle_Geom_ConicalSurface(const Geom_ConicalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_ConicalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_ConicalSurface {
-    Geom_ConicalSurface* _get_reference() {
-    return (Geom_ConicalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_ConicalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_ConicalSurface)
 
 %extend Geom_ConicalSurface {
 	%pythoncode {
@@ -8275,51 +7069,7 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 };
 
 
-%extend Geom_CylindricalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_CylindricalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_CylindricalSurface::Handle_Geom_CylindricalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_CylindricalSurface;
-class Handle_Geom_CylindricalSurface : public Handle_Geom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_Geom_CylindricalSurface();
-        Handle_Geom_CylindricalSurface(const Handle_Geom_CylindricalSurface &aHandle);
-        Handle_Geom_CylindricalSurface(const Geom_CylindricalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_CylindricalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_CylindricalSurface {
-    Geom_CylindricalSurface* _get_reference() {
-    return (Geom_CylindricalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_CylindricalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_CylindricalSurface)
 
 %extend Geom_CylindricalSurface {
 	%pythoncode {
@@ -8542,51 +7292,7 @@ class Geom_Ellipse : public Geom_Conic {
 };
 
 
-%extend Geom_Ellipse {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Ellipse(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Ellipse::Handle_Geom_Ellipse %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Ellipse;
-class Handle_Geom_Ellipse : public Handle_Geom_Conic {
-
-    public:
-        // constructors
-        Handle_Geom_Ellipse();
-        Handle_Geom_Ellipse(const Handle_Geom_Ellipse &aHandle);
-        Handle_Geom_Ellipse(const Geom_Ellipse *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Ellipse DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Ellipse {
-    Geom_Ellipse* _get_reference() {
-    return (Geom_Ellipse*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Ellipse {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Ellipse)
 
 %extend Geom_Ellipse {
 	%pythoncode {
@@ -8841,51 +7547,7 @@ class Geom_Hyperbola : public Geom_Conic {
 };
 
 
-%extend Geom_Hyperbola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Hyperbola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Hyperbola::Handle_Geom_Hyperbola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Hyperbola;
-class Handle_Geom_Hyperbola : public Handle_Geom_Conic {
-
-    public:
-        // constructors
-        Handle_Geom_Hyperbola();
-        Handle_Geom_Hyperbola(const Handle_Geom_Hyperbola &aHandle);
-        Handle_Geom_Hyperbola(const Geom_Hyperbola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Hyperbola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Hyperbola {
-    Geom_Hyperbola* _get_reference() {
-    return (Geom_Hyperbola*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Hyperbola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Hyperbola)
 
 %extend Geom_Hyperbola {
 	%pythoncode {
@@ -9104,51 +7766,7 @@ class Geom_Parabola : public Geom_Conic {
 };
 
 
-%extend Geom_Parabola {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Parabola(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Parabola::Handle_Geom_Parabola %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Parabola;
-class Handle_Geom_Parabola : public Handle_Geom_Conic {
-
-    public:
-        // constructors
-        Handle_Geom_Parabola();
-        Handle_Geom_Parabola(const Handle_Geom_Parabola &aHandle);
-        Handle_Geom_Parabola(const Geom_Parabola *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Parabola DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Parabola {
-    Geom_Parabola* _get_reference() {
-    return (Geom_Parabola*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Parabola {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Parabola)
 
 %extend Geom_Parabola {
 	%pythoncode {
@@ -9439,51 +8057,7 @@ class Geom_Plane : public Geom_ElementarySurface {
 };
 
 
-%extend Geom_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_Plane::Handle_Geom_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_Plane;
-class Handle_Geom_Plane : public Handle_Geom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_Geom_Plane();
-        Handle_Geom_Plane(const Handle_Geom_Plane &aHandle);
-        Handle_Geom_Plane(const Geom_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_Plane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_Plane {
-    Geom_Plane* _get_reference() {
-    return (Geom_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_Plane)
 
 %extend Geom_Plane {
 	%pythoncode {
@@ -9814,51 +8388,7 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 };
 
 
-%extend Geom_RectangularTrimmedSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_RectangularTrimmedSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_RectangularTrimmedSurface::Handle_Geom_RectangularTrimmedSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_RectangularTrimmedSurface;
-class Handle_Geom_RectangularTrimmedSurface : public Handle_Geom_BoundedSurface {
-
-    public:
-        // constructors
-        Handle_Geom_RectangularTrimmedSurface();
-        Handle_Geom_RectangularTrimmedSurface(const Handle_Geom_RectangularTrimmedSurface &aHandle);
-        Handle_Geom_RectangularTrimmedSurface(const Geom_RectangularTrimmedSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_RectangularTrimmedSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_RectangularTrimmedSurface {
-    Geom_RectangularTrimmedSurface* _get_reference() {
-    return (Geom_RectangularTrimmedSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_RectangularTrimmedSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_RectangularTrimmedSurface)
 
 %extend Geom_RectangularTrimmedSurface {
 	%pythoncode {
@@ -10133,51 +8663,7 @@ class Geom_SphericalSurface : public Geom_ElementarySurface {
 };
 
 
-%extend Geom_SphericalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_SphericalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_SphericalSurface::Handle_Geom_SphericalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_SphericalSurface;
-class Handle_Geom_SphericalSurface : public Handle_Geom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_Geom_SphericalSurface();
-        Handle_Geom_SphericalSurface(const Handle_Geom_SphericalSurface &aHandle);
-        Handle_Geom_SphericalSurface(const Geom_SphericalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_SphericalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_SphericalSurface {
-    Geom_SphericalSurface* _get_reference() {
-    return (Geom_SphericalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_SphericalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_SphericalSurface)
 
 %extend Geom_SphericalSurface {
 	%pythoncode {
@@ -10538,51 +9024,7 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 };
 
 
-%extend Geom_SurfaceOfLinearExtrusion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_SurfaceOfLinearExtrusion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_SurfaceOfLinearExtrusion::Handle_Geom_SurfaceOfLinearExtrusion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_SurfaceOfLinearExtrusion;
-class Handle_Geom_SurfaceOfLinearExtrusion : public Handle_Geom_SweptSurface {
-
-    public:
-        // constructors
-        Handle_Geom_SurfaceOfLinearExtrusion();
-        Handle_Geom_SurfaceOfLinearExtrusion(const Handle_Geom_SurfaceOfLinearExtrusion &aHandle);
-        Handle_Geom_SurfaceOfLinearExtrusion(const Geom_SurfaceOfLinearExtrusion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_SurfaceOfLinearExtrusion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_SurfaceOfLinearExtrusion {
-    Geom_SurfaceOfLinearExtrusion* _get_reference() {
-    return (Geom_SurfaceOfLinearExtrusion*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_SurfaceOfLinearExtrusion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_SurfaceOfLinearExtrusion)
 
 %extend Geom_SurfaceOfLinearExtrusion {
 	%pythoncode {
@@ -10975,51 +9417,7 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 };
 
 
-%extend Geom_SurfaceOfRevolution {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_SurfaceOfRevolution(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_SurfaceOfRevolution::Handle_Geom_SurfaceOfRevolution %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_SurfaceOfRevolution;
-class Handle_Geom_SurfaceOfRevolution : public Handle_Geom_SweptSurface {
-
-    public:
-        // constructors
-        Handle_Geom_SurfaceOfRevolution();
-        Handle_Geom_SurfaceOfRevolution(const Handle_Geom_SurfaceOfRevolution &aHandle);
-        Handle_Geom_SurfaceOfRevolution(const Geom_SurfaceOfRevolution *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_SurfaceOfRevolution DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_SurfaceOfRevolution {
-    Geom_SurfaceOfRevolution* _get_reference() {
-    return (Geom_SurfaceOfRevolution*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_SurfaceOfRevolution {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_SurfaceOfRevolution)
 
 %extend Geom_SurfaceOfRevolution {
 	%pythoncode {
@@ -11292,51 +9690,7 @@ class Geom_ToroidalSurface : public Geom_ElementarySurface {
 };
 
 
-%extend Geom_ToroidalSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_ToroidalSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_ToroidalSurface::Handle_Geom_ToroidalSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_ToroidalSurface;
-class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
-
-    public:
-        // constructors
-        Handle_Geom_ToroidalSurface();
-        Handle_Geom_ToroidalSurface(const Handle_Geom_ToroidalSurface &aHandle);
-        Handle_Geom_ToroidalSurface(const Geom_ToroidalSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_ToroidalSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_ToroidalSurface {
-    Geom_ToroidalSurface* _get_reference() {
-    return (Geom_ToroidalSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_ToroidalSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_ToroidalSurface)
 
 %extend Geom_ToroidalSurface {
 	%pythoncode {
@@ -11549,51 +9903,7 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 };
 
 
-%extend Geom_TrimmedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom_TrimmedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom_TrimmedCurve::Handle_Geom_TrimmedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom_TrimmedCurve;
-class Handle_Geom_TrimmedCurve : public Handle_Geom_BoundedCurve {
-
-    public:
-        // constructors
-        Handle_Geom_TrimmedCurve();
-        Handle_Geom_TrimmedCurve(const Handle_Geom_TrimmedCurve &aHandle);
-        Handle_Geom_TrimmedCurve(const Geom_TrimmedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom_TrimmedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom_TrimmedCurve {
-    Geom_TrimmedCurve* _get_reference() {
-    return (Geom_TrimmedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Geom_TrimmedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom_TrimmedCurve)
 
 %extend Geom_TrimmedCurve {
 	%pythoncode {

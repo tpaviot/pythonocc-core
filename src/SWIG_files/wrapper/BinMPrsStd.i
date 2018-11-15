@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMPRSSTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BINMPRSSTDDOCSTRING) BinMPrsStd
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMPrsStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMPrsStd_AISPresentationDriver)
+%wrap_handle(BinMPrsStd_PositionDriver)
 
 %rename(binmprsstd) BinMPrsStd;
 class BinMPrsStd {
@@ -116,51 +105,7 @@ class BinMPrsStd_AISPresentationDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMPrsStd_AISPresentationDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMPrsStd_AISPresentationDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMPrsStd_AISPresentationDriver::Handle_BinMPrsStd_AISPresentationDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMPrsStd_AISPresentationDriver;
-class Handle_BinMPrsStd_AISPresentationDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMPrsStd_AISPresentationDriver();
-        Handle_BinMPrsStd_AISPresentationDriver(const Handle_BinMPrsStd_AISPresentationDriver &aHandle);
-        Handle_BinMPrsStd_AISPresentationDriver(const BinMPrsStd_AISPresentationDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMPrsStd_AISPresentationDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMPrsStd_AISPresentationDriver {
-    BinMPrsStd_AISPresentationDriver* _get_reference() {
-    return (BinMPrsStd_AISPresentationDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMPrsStd_AISPresentationDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMPrsStd_AISPresentationDriver)
 
 %extend BinMPrsStd_AISPresentationDriver {
 	%pythoncode {
@@ -203,51 +148,7 @@ class BinMPrsStd_PositionDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMPrsStd_PositionDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMPrsStd_PositionDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMPrsStd_PositionDriver::Handle_BinMPrsStd_PositionDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMPrsStd_PositionDriver;
-class Handle_BinMPrsStd_PositionDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMPrsStd_PositionDriver();
-        Handle_BinMPrsStd_PositionDriver(const Handle_BinMPrsStd_PositionDriver &aHandle);
-        Handle_BinMPrsStd_PositionDriver(const BinMPrsStd_PositionDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMPrsStd_PositionDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMPrsStd_PositionDriver {
-    BinMPrsStd_PositionDriver* _get_reference() {
-    return (BinMPrsStd_PositionDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMPrsStd_PositionDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMPrsStd_PositionDriver)
 
 %extend BinMPrsStd_PositionDriver {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CPNTSDOCSTRING
-"No docstring provided."
+"- Purpose :This package contains  the definition of the geometricalgorithms  used to compute characteristic points  onparametrized curves in 3d or 2d space.This package defines the external geometric entities, withtheir requirements, used in the algorithms."
 %enddef
 %module (package="OCC.Core", docstring=CPNTSDOCSTRING) CPnts
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include CPnts_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real , 	 	 	 	 	 const Standard_Address );
@@ -59,6 +45,7 @@ typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real , 	 	 	 	 	
 
 /* public enums */
 /* end public enums declaration */
+
 
 class CPnts_AbscissaPoint {
 	public:

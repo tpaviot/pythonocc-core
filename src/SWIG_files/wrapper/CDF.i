@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CDFDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=CDFDOCSTRING) CDF
 
@@ -34,40 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include CDF_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
-enum CDF_TypeOfActivation {
-	CDF_TOA_New = 0,
-	CDF_TOA_Modified = 1,
-	CDF_TOA_Unchanged = 2,
-};
-
-enum CDF_TryStoreStatus {
-	CDF_TS_OK = 0,
-	CDF_TS_NoCurrentDocument = 1,
-	CDF_TS_NoDriver = 2,
-	CDF_TS_NoSubComponentDriver = 3,
+enum CDF_StoreSetNameStatus {
+	CDF_SSNS_OK = 0,
+	CDF_SSNS_ReplacingAnExistentDocument = 1,
+	CDF_SSNS_OpenDocument = 2,
 };
 
 enum CDF_SubComponentStatus {
@@ -77,13 +56,28 @@ enum CDF_SubComponentStatus {
 	CDF_SCS_Modified = 3,
 };
 
-enum CDF_StoreSetNameStatus {
-	CDF_SSNS_OK = 0,
-	CDF_SSNS_ReplacingAnExistentDocument = 1,
-	CDF_SSNS_OpenDocument = 2,
+enum CDF_TryStoreStatus {
+	CDF_TS_OK = 0,
+	CDF_TS_NoCurrentDocument = 1,
+	CDF_TS_NoDriver = 2,
+	CDF_TS_NoSubComponentDriver = 3,
+};
+
+enum CDF_TypeOfActivation {
+	CDF_TOA_New = 0,
+	CDF_TOA_Modified = 1,
+	CDF_TOA_Unchanged = 2,
 };
 
 /* end public enums declaration */
+
+%wrap_handle(CDF_Application)
+%wrap_handle(CDF_Directory)
+%wrap_handle(CDF_MetaDataDriver)
+%wrap_handle(CDF_MetaDataDriverFactory)
+%wrap_handle(CDF_Session)
+%wrap_handle(CDF_StoreList)
+%wrap_handle(CDF_FWOSDriver)
 
 %rename(cdf) CDF;
 class CDF {
@@ -248,51 +242,7 @@ class CDF_Application : public CDM_Application {
 };
 
 
-%extend CDF_Application {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_Application(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_Application::Handle_CDF_Application %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_Application;
-class Handle_CDF_Application : public Handle_CDM_Application {
-
-    public:
-        // constructors
-        Handle_CDF_Application();
-        Handle_CDF_Application(const Handle_CDF_Application &aHandle);
-        Handle_CDF_Application(const CDF_Application *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_Application DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_Application {
-    CDF_Application* _get_reference() {
-    return (CDF_Application*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_Application {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_Application)
 
 %extend CDF_Application {
 	%pythoncode {
@@ -353,51 +303,7 @@ class CDF_Directory : public Standard_Transient {
 };
 
 
-%extend CDF_Directory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_Directory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_Directory::Handle_CDF_Directory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_Directory;
-class Handle_CDF_Directory : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDF_Directory();
-        Handle_CDF_Directory(const Handle_CDF_Directory &aHandle);
-        Handle_CDF_Directory(const CDF_Directory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_Directory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_Directory {
-    CDF_Directory* _get_reference() {
-    return (CDF_Directory*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_Directory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_Directory)
 
 %extend CDF_Directory {
 	%pythoncode {
@@ -591,51 +497,7 @@ class CDF_MetaDataDriver : public Standard_Transient {
 };
 
 
-%extend CDF_MetaDataDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_MetaDataDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_MetaDataDriver::Handle_CDF_MetaDataDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_MetaDataDriver;
-class Handle_CDF_MetaDataDriver : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDF_MetaDataDriver();
-        Handle_CDF_MetaDataDriver(const Handle_CDF_MetaDataDriver &aHandle);
-        Handle_CDF_MetaDataDriver(const CDF_MetaDataDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_MetaDataDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_MetaDataDriver {
-    CDF_MetaDataDriver* _get_reference() {
-    return (CDF_MetaDataDriver*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_MetaDataDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_MetaDataDriver)
 
 %extend CDF_MetaDataDriver {
 	%pythoncode {
@@ -652,51 +514,7 @@ class CDF_MetaDataDriverFactory : public Standard_Transient {
 };
 
 
-%extend CDF_MetaDataDriverFactory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_MetaDataDriverFactory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_MetaDataDriverFactory::Handle_CDF_MetaDataDriverFactory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_MetaDataDriverFactory;
-class Handle_CDF_MetaDataDriverFactory : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDF_MetaDataDriverFactory();
-        Handle_CDF_MetaDataDriverFactory(const Handle_CDF_MetaDataDriverFactory &aHandle);
-        Handle_CDF_MetaDataDriverFactory(const CDF_MetaDataDriverFactory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_MetaDataDriverFactory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_MetaDataDriverFactory {
-    CDF_MetaDataDriverFactory* _get_reference() {
-    return (CDF_MetaDataDriverFactory*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_MetaDataDriverFactory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_MetaDataDriverFactory)
 
 %extend CDF_MetaDataDriverFactory {
 	%pythoncode {
@@ -757,51 +575,7 @@ class CDF_Session : public Standard_Transient {
 };
 
 
-%extend CDF_Session {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_Session(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_Session::Handle_CDF_Session %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_Session;
-class Handle_CDF_Session : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDF_Session();
-        Handle_CDF_Session(const Handle_CDF_Session &aHandle);
-        Handle_CDF_Session(const CDF_Session *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_Session DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_Session {
-    CDF_Session* _get_reference() {
-    return (CDF_Session*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_Session {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_Session)
 
 %extend CDF_Session {
 	%pythoncode {
@@ -1059,51 +833,7 @@ class CDF_StoreList : public Standard_Transient {
 };
 
 
-%extend CDF_StoreList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_StoreList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_StoreList::Handle_CDF_StoreList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_StoreList;
-class Handle_CDF_StoreList : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_CDF_StoreList();
-        Handle_CDF_StoreList(const Handle_CDF_StoreList &aHandle);
-        Handle_CDF_StoreList(const CDF_StoreList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_StoreList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_StoreList {
-    CDF_StoreList* _get_reference() {
-    return (CDF_StoreList*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_StoreList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_StoreList)
 
 %extend CDF_StoreList {
 	%pythoncode {
@@ -1199,51 +929,7 @@ class CDF_FWOSDriver : public CDF_MetaDataDriver {
 };
 
 
-%extend CDF_FWOSDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_CDF_FWOSDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_CDF_FWOSDriver::Handle_CDF_FWOSDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_CDF_FWOSDriver;
-class Handle_CDF_FWOSDriver : public Handle_CDF_MetaDataDriver {
-
-    public:
-        // constructors
-        Handle_CDF_FWOSDriver();
-        Handle_CDF_FWOSDriver(const Handle_CDF_FWOSDriver &aHandle);
-        Handle_CDF_FWOSDriver(const CDF_FWOSDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_CDF_FWOSDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_CDF_FWOSDriver {
-    CDF_FWOSDriver* _get_reference() {
-    return (CDF_FWOSDriver*)$self->Access();
-    }
-};
-
-%extend Handle_CDF_FWOSDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(CDF_FWOSDriver)
 
 %extend CDF_FWOSDriver {
 	%pythoncode {

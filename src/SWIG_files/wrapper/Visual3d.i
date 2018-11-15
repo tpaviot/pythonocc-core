@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VISUAL3DDOCSTRING
-"No docstring provided."
+"-Version:This package contains the group of classes necessaryfor the implementation of commands for the 3D visualiser.Use of this package is reserved to the visualiser.The visualiser manages the structures, the views, thelight sources, and object picking.-Keywords: View, Light, Pick-Warning:-References:"
 %enddef
 %module (package="OCC.Core", docstring=VISUAL3DDOCSTRING) Visual3d
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Visual3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_List <Handle_Visual3d_LayerItem> Visual3d_NListOfLayerItem;
@@ -61,10 +47,16 @@ typedef NCollection_DataMap <Graphic3d_ZLayerId , Graphic3d_ZLayerSettings> Visu
 /* end typedefs declaration */
 
 /* public enums */
-enum Visual3d_TypeOfSurfaceDetail {
-	Visual3d_TOD_NONE = 0,
-	Visual3d_TOD_ENVIRONMENT = 1,
-	Visual3d_TOD_ALL = 2,
+enum Visual3d_TypeOfAnswer {
+	Visual3d_TOA_YES = 0,
+	Visual3d_TOA_NO = 1,
+	Visual3d_TOA_COMPUTE = 2,
+};
+
+enum Visual3d_TypeOfBackfacingModel {
+	Visual3d_TOBM_AUTOMATIC = 0,
+	Visual3d_TOBM_FORCE = 1,
+	Visual3d_TOBM_DISABLE = 2,
 };
 
 enum Visual3d_TypeOfLightSource {
@@ -74,17 +66,6 @@ enum Visual3d_TypeOfLightSource {
 	Visual3d_TOLS_SPOT = 3,
 };
 
-enum Visual3d_TypeOfVisualization {
-	Visual3d_TOV_WIREFRAME = 0,
-	Visual3d_TOV_SHADING = 1,
-};
-
-enum Visual3d_TypeOfAnswer {
-	Visual3d_TOA_YES = 0,
-	Visual3d_TOA_NO = 1,
-	Visual3d_TOA_COMPUTE = 2,
-};
-
 enum Visual3d_TypeOfModel {
 	Visual3d_TOM_NONE = 0,
 	Visual3d_TOM_FACET = 1,
@@ -92,23 +73,38 @@ enum Visual3d_TypeOfModel {
 	Visual3d_TOM_FRAGMENT = 3,
 };
 
-enum Visual3d_TypeOfProjection {
-	Visual3d_TOP_PERSPECTIVE = 0,
-	Visual3d_TOP_PARALLEL = 1,
-};
-
 enum Visual3d_TypeOfOrder {
 	Visual3d_TOO_TOPFIRST = 0,
 	Visual3d_TOO_BOTTOMFIRST = 1,
 };
 
-enum Visual3d_TypeOfBackfacingModel {
-	Visual3d_TOBM_AUTOMATIC = 0,
-	Visual3d_TOBM_FORCE = 1,
-	Visual3d_TOBM_DISABLE = 2,
+enum Visual3d_TypeOfProjection {
+	Visual3d_TOP_PERSPECTIVE = 0,
+	Visual3d_TOP_PARALLEL = 1,
+};
+
+enum Visual3d_TypeOfSurfaceDetail {
+	Visual3d_TOD_NONE = 0,
+	Visual3d_TOD_ENVIRONMENT = 1,
+	Visual3d_TOD_ALL = 2,
+};
+
+enum Visual3d_TypeOfVisualization {
+	Visual3d_TOV_WIREFRAME = 0,
+	Visual3d_TOV_SHADING = 1,
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Visual3d_HSequenceOfLight)
+%wrap_handle(Visual3d_HSequenceOfView)
+%wrap_handle(Visual3d_Layer)
+%wrap_handle(Visual3d_LayerItem)
+%wrap_handle(Visual3d_Light)
+%wrap_handle(Visual3d_SequenceNodeOfSequenceOfLight)
+%wrap_handle(Visual3d_SequenceNodeOfSequenceOfView)
+%wrap_handle(Visual3d_View)
+%wrap_handle(Visual3d_ViewManager)
 
 %nodefaultctor Visual3d_ContextPick;
 class Visual3d_ContextPick {
@@ -574,51 +570,7 @@ class Visual3d_HSequenceOfLight : public MMgt_TShared {
 };
 
 
-%extend Visual3d_HSequenceOfLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_HSequenceOfLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_HSequenceOfLight::Handle_Visual3d_HSequenceOfLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_HSequenceOfLight;
-class Handle_Visual3d_HSequenceOfLight : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Visual3d_HSequenceOfLight();
-        Handle_Visual3d_HSequenceOfLight(const Handle_Visual3d_HSequenceOfLight &aHandle);
-        Handle_Visual3d_HSequenceOfLight(const Visual3d_HSequenceOfLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_HSequenceOfLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_HSequenceOfLight {
-    Visual3d_HSequenceOfLight* _get_reference() {
-    return (Visual3d_HSequenceOfLight*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_HSequenceOfLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_HSequenceOfLight)
 
 %extend Visual3d_HSequenceOfLight {
 	%pythoncode {
@@ -763,51 +715,7 @@ class Visual3d_HSequenceOfView : public MMgt_TShared {
 };
 
 
-%extend Visual3d_HSequenceOfView {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_HSequenceOfView(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_HSequenceOfView::Handle_Visual3d_HSequenceOfView %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_HSequenceOfView;
-class Handle_Visual3d_HSequenceOfView : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Visual3d_HSequenceOfView();
-        Handle_Visual3d_HSequenceOfView(const Handle_Visual3d_HSequenceOfView &aHandle);
-        Handle_Visual3d_HSequenceOfView(const Visual3d_HSequenceOfView *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_HSequenceOfView DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_HSequenceOfView {
-    Visual3d_HSequenceOfView* _get_reference() {
-    return (Visual3d_HSequenceOfView*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_HSequenceOfView {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_HSequenceOfView)
 
 %extend Visual3d_HSequenceOfView {
 	%pythoncode {
@@ -1022,51 +930,7 @@ class Visual3d_Layer : public MMgt_TShared {
 };
 
 
-%extend Visual3d_Layer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_Layer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_Layer::Handle_Visual3d_Layer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_Layer;
-class Handle_Visual3d_Layer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Visual3d_Layer();
-        Handle_Visual3d_Layer(const Handle_Visual3d_Layer &aHandle);
-        Handle_Visual3d_Layer(const Visual3d_Layer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_Layer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_Layer {
-    Visual3d_Layer* _get_reference() {
-    return (Visual3d_Layer*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_Layer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_Layer)
 
 %extend Visual3d_Layer {
 	%pythoncode {
@@ -1107,51 +971,7 @@ class Visual3d_LayerItem : public MMgt_TShared {
 };
 
 
-%extend Visual3d_LayerItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_LayerItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_LayerItem::Handle_Visual3d_LayerItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_LayerItem;
-class Handle_Visual3d_LayerItem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Visual3d_LayerItem();
-        Handle_Visual3d_LayerItem(const Handle_Visual3d_LayerItem &aHandle);
-        Handle_Visual3d_LayerItem(const Visual3d_LayerItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_LayerItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_LayerItem {
-    Visual3d_LayerItem* _get_reference() {
-    return (Visual3d_LayerItem*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_LayerItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_LayerItem)
 
 %extend Visual3d_LayerItem {
 	%pythoncode {
@@ -1364,51 +1184,7 @@ class Visual3d_Light : public MMgt_TShared {
 };
 
 
-%extend Visual3d_Light {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_Light(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_Light::Handle_Visual3d_Light %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_Light;
-class Handle_Visual3d_Light : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Visual3d_Light();
-        Handle_Visual3d_Light(const Handle_Visual3d_Light &aHandle);
-        Handle_Visual3d_Light(const Visual3d_Light *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_Light DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_Light {
-    Visual3d_Light* _get_reference() {
-    return (Visual3d_Light*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_Light {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_Light)
 
 %extend Visual3d_Light {
 	%pythoncode {
@@ -1435,51 +1211,7 @@ class Visual3d_SequenceNodeOfSequenceOfLight : public TCollection_SeqNode {
 };
 
 
-%extend Visual3d_SequenceNodeOfSequenceOfLight {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_SequenceNodeOfSequenceOfLight(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_SequenceNodeOfSequenceOfLight::Handle_Visual3d_SequenceNodeOfSequenceOfLight %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_SequenceNodeOfSequenceOfLight;
-class Handle_Visual3d_SequenceNodeOfSequenceOfLight : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Visual3d_SequenceNodeOfSequenceOfLight();
-        Handle_Visual3d_SequenceNodeOfSequenceOfLight(const Handle_Visual3d_SequenceNodeOfSequenceOfLight &aHandle);
-        Handle_Visual3d_SequenceNodeOfSequenceOfLight(const Visual3d_SequenceNodeOfSequenceOfLight *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_SequenceNodeOfSequenceOfLight DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_SequenceNodeOfSequenceOfLight {
-    Visual3d_SequenceNodeOfSequenceOfLight* _get_reference() {
-    return (Visual3d_SequenceNodeOfSequenceOfLight*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_SequenceNodeOfSequenceOfLight {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_SequenceNodeOfSequenceOfLight)
 
 %extend Visual3d_SequenceNodeOfSequenceOfLight {
 	%pythoncode {
@@ -1506,51 +1238,7 @@ class Visual3d_SequenceNodeOfSequenceOfView : public TCollection_SeqNode {
 };
 
 
-%extend Visual3d_SequenceNodeOfSequenceOfView {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_SequenceNodeOfSequenceOfView(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_SequenceNodeOfSequenceOfView::Handle_Visual3d_SequenceNodeOfSequenceOfView %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_SequenceNodeOfSequenceOfView;
-class Handle_Visual3d_SequenceNodeOfSequenceOfView : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Visual3d_SequenceNodeOfSequenceOfView();
-        Handle_Visual3d_SequenceNodeOfSequenceOfView(const Handle_Visual3d_SequenceNodeOfSequenceOfView &aHandle);
-        Handle_Visual3d_SequenceNodeOfSequenceOfView(const Visual3d_SequenceNodeOfSequenceOfView *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_SequenceNodeOfSequenceOfView DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_SequenceNodeOfSequenceOfView {
-    Visual3d_SequenceNodeOfSequenceOfView* _get_reference() {
-    return (Visual3d_SequenceNodeOfSequenceOfView*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_SequenceNodeOfSequenceOfView {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_SequenceNodeOfSequenceOfView)
 
 %extend Visual3d_SequenceNodeOfSequenceOfView {
 	%pythoncode {
@@ -2559,51 +2247,7 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 };
 
 
-%extend Visual3d_View {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_View(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_View::Handle_Visual3d_View %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_View;
-class Handle_Visual3d_View : public Handle_Graphic3d_DataStructureManager {
-
-    public:
-        // constructors
-        Handle_Visual3d_View();
-        Handle_Visual3d_View(const Handle_Visual3d_View &aHandle);
-        Handle_Visual3d_View(const Visual3d_View *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_View DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_View {
-    Visual3d_View* _get_reference() {
-    return (Visual3d_View*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_View {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_View)
 
 %extend Visual3d_View {
 	%pythoncode {
@@ -2922,51 +2566,7 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 };
 
 
-%extend Visual3d_ViewManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Visual3d_ViewManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Visual3d_ViewManager::Handle_Visual3d_ViewManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Visual3d_ViewManager;
-class Handle_Visual3d_ViewManager : public Handle_Graphic3d_StructureManager {
-
-    public:
-        // constructors
-        Handle_Visual3d_ViewManager();
-        Handle_Visual3d_ViewManager(const Handle_Visual3d_ViewManager &aHandle);
-        Handle_Visual3d_ViewManager(const Visual3d_ViewManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Visual3d_ViewManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Visual3d_ViewManager {
-    Visual3d_ViewManager* _get_reference() {
-    return (Visual3d_ViewManager*)$self->Access();
-    }
-};
-
-%extend Handle_Visual3d_ViewManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Visual3d_ViewManager)
 
 %extend Visual3d_ViewManager {
 	%pythoncode {

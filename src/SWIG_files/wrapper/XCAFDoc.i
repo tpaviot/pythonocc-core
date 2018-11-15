@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFDOCDOCSTRING
-"No docstring provided."
+"Definition of general structure of DECAF documentand tools to work with itThe document is composed of sections, each sectionstoring its own kind of data and managing by correspondingtoolSome properties can be attached directly to shapes. These properties are:* Name (the standard definition from OCAF) - class TDataStd_Name* Centroid (for the validation of transfer) - class XCAFDoc_Centroid* Volume (for the validation of transfer) - class XCAFDoc_Volume* Area (for the validation of transfer) - class XCafDoc_AreaManagement of these attributes is realized by OCAF. For gettingthe attributes attached to a label the method classTDF_Label::FindAttribute() should be used."
 %enddef
 %module (package="OCC.Core", docstring=XCAFDOCDOCSTRING) XCAFDoc
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XCAFDoc_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +50,25 @@ enum XCAFDoc_ColorType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(XCAFDoc_Area)
+%wrap_handle(XCAFDoc_Centroid)
+%wrap_handle(XCAFDoc_Color)
+%wrap_handle(XCAFDoc_ColorTool)
+%wrap_handle(XCAFDoc_DataMapNodeOfDataMapOfShapeLabel)
+%wrap_handle(XCAFDoc_Datum)
+%wrap_handle(XCAFDoc_DimTol)
+%wrap_handle(XCAFDoc_DimTolTool)
+%wrap_handle(XCAFDoc_DocumentTool)
+%wrap_handle(XCAFDoc_GraphNode)
+%wrap_handle(XCAFDoc_LayerTool)
+%wrap_handle(XCAFDoc_Location)
+%wrap_handle(XCAFDoc_Material)
+%wrap_handle(XCAFDoc_MaterialTool)
+%wrap_handle(XCAFDoc_SequenceNodeOfGraphNodeSequence)
+%wrap_handle(XCAFDoc_ShapeMapTool)
+%wrap_handle(XCAFDoc_ShapeTool)
+%wrap_handle(XCAFDoc_Volume)
 
 %rename(xcafdoc) XCAFDoc;
 class XCAFDoc {
@@ -216,51 +221,7 @@ class XCAFDoc_Area : public TDF_Attribute {
         };
 
 
-%extend XCAFDoc_Area {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Area(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Area::Handle_XCAFDoc_Area %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Area;
-class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Area();
-        Handle_XCAFDoc_Area(const Handle_XCAFDoc_Area &aHandle);
-        Handle_XCAFDoc_Area(const XCAFDoc_Area *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Area DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Area {
-    XCAFDoc_Area* _get_reference() {
-    return (XCAFDoc_Area*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Area {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Area)
 
 %extend XCAFDoc_Area {
 	%pythoncode {
@@ -343,51 +304,7 @@ class XCAFDoc_Centroid : public TDF_Attribute {
         };
 
 
-%extend XCAFDoc_Centroid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Centroid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Centroid::Handle_XCAFDoc_Centroid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Centroid;
-class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Centroid();
-        Handle_XCAFDoc_Centroid(const Handle_XCAFDoc_Centroid &aHandle);
-        Handle_XCAFDoc_Centroid(const XCAFDoc_Centroid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Centroid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Centroid {
-    XCAFDoc_Centroid* _get_reference() {
-    return (XCAFDoc_Centroid*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Centroid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Centroid)
 
 %extend XCAFDoc_Centroid {
 	%pythoncode {
@@ -502,51 +419,7 @@ class XCAFDoc_Color : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_Color {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Color(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Color::Handle_XCAFDoc_Color %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Color;
-class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Color();
-        Handle_XCAFDoc_Color(const Handle_XCAFDoc_Color &aHandle);
-        Handle_XCAFDoc_Color(const XCAFDoc_Color *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Color DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Color {
-    XCAFDoc_Color* _get_reference() {
-    return (XCAFDoc_Color*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Color {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Color)
 
 %extend XCAFDoc_Color {
 	%pythoncode {
@@ -863,51 +736,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_ColorTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_ColorTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_ColorTool::Handle_XCAFDoc_ColorTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_ColorTool;
-class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_ColorTool();
-        Handle_XCAFDoc_ColorTool(const Handle_XCAFDoc_ColorTool &aHandle);
-        Handle_XCAFDoc_ColorTool(const XCAFDoc_ColorTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_ColorTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_ColorTool {
-    XCAFDoc_ColorTool* _get_reference() {
-    return (XCAFDoc_ColorTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_ColorTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_ColorTool)
 
 %extend XCAFDoc_ColorTool {
 	%pythoncode {
@@ -973,51 +802,7 @@ class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
 };
 
 
-%extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel::Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel;
-class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel();
-        Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(const Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel &aHandle);
-        Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(const XCAFDoc_DataMapNodeOfDataMapOfShapeLabel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-    XCAFDoc_DataMapNodeOfDataMapOfShapeLabel* _get_reference() {
-    return (XCAFDoc_DataMapNodeOfDataMapOfShapeLabel*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_DataMapNodeOfDataMapOfShapeLabel)
 
 %extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
 	%pythoncode {
@@ -1177,51 +962,7 @@ class XCAFDoc_Datum : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_Datum {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Datum(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Datum::Handle_XCAFDoc_Datum %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Datum;
-class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Datum();
-        Handle_XCAFDoc_Datum(const Handle_XCAFDoc_Datum &aHandle);
-        Handle_XCAFDoc_Datum(const XCAFDoc_Datum *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Datum DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Datum {
-    XCAFDoc_Datum* _get_reference() {
-    return (XCAFDoc_Datum*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Datum {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Datum)
 
 %extend XCAFDoc_Datum {
 	%pythoncode {
@@ -1306,51 +1047,7 @@ class XCAFDoc_DimTol : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_DimTol {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_DimTol(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_DimTol::Handle_XCAFDoc_DimTol %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_DimTol;
-class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_DimTol();
-        Handle_XCAFDoc_DimTol(const Handle_XCAFDoc_DimTol &aHandle);
-        Handle_XCAFDoc_DimTol(const XCAFDoc_DimTol *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_DimTol DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_DimTol {
-    XCAFDoc_DimTol* _get_reference() {
-    return (XCAFDoc_DimTol*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_DimTol {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_DimTol)
 
 %extend XCAFDoc_DimTol {
 	%pythoncode {
@@ -1627,51 +1324,7 @@ class XCAFDoc_DimTolTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_DimTolTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_DimTolTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_DimTolTool::Handle_XCAFDoc_DimTolTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_DimTolTool;
-class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_DimTolTool();
-        Handle_XCAFDoc_DimTolTool(const Handle_XCAFDoc_DimTolTool &aHandle);
-        Handle_XCAFDoc_DimTolTool(const XCAFDoc_DimTolTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_DimTolTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_DimTolTool {
-    XCAFDoc_DimTolTool* _get_reference() {
-    return (XCAFDoc_DimTolTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_DimTolTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_DimTolTool)
 
 %extend XCAFDoc_DimTolTool {
 	%pythoncode {
@@ -1830,51 +1483,7 @@ class XCAFDoc_DocumentTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_DocumentTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_DocumentTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_DocumentTool::Handle_XCAFDoc_DocumentTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_DocumentTool;
-class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_DocumentTool();
-        Handle_XCAFDoc_DocumentTool(const Handle_XCAFDoc_DocumentTool &aHandle);
-        Handle_XCAFDoc_DocumentTool(const XCAFDoc_DocumentTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_DocumentTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_DocumentTool {
-    XCAFDoc_DocumentTool* _get_reference() {
-    return (XCAFDoc_DocumentTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_DocumentTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_DocumentTool)
 
 %extend XCAFDoc_DocumentTool {
 	%pythoncode {
@@ -2081,51 +1690,7 @@ class XCAFDoc_GraphNode : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_GraphNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_GraphNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_GraphNode::Handle_XCAFDoc_GraphNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_GraphNode;
-class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_GraphNode();
-        Handle_XCAFDoc_GraphNode(const Handle_XCAFDoc_GraphNode &aHandle);
-        Handle_XCAFDoc_GraphNode(const XCAFDoc_GraphNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_GraphNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_GraphNode {
-    XCAFDoc_GraphNode* _get_reference() {
-    return (XCAFDoc_GraphNode*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_GraphNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_GraphNode)
 
 %extend XCAFDoc_GraphNode {
 	%pythoncode {
@@ -2619,51 +2184,7 @@ class XCAFDoc_LayerTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_LayerTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_LayerTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_LayerTool::Handle_XCAFDoc_LayerTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_LayerTool;
-class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_LayerTool();
-        Handle_XCAFDoc_LayerTool(const Handle_XCAFDoc_LayerTool &aHandle);
-        Handle_XCAFDoc_LayerTool(const XCAFDoc_LayerTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_LayerTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_LayerTool {
-    XCAFDoc_LayerTool* _get_reference() {
-    return (XCAFDoc_LayerTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_LayerTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_LayerTool)
 
 %extend XCAFDoc_LayerTool {
 	%pythoncode {
@@ -2730,51 +2251,7 @@ class XCAFDoc_Location : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_Location {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Location(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Location::Handle_XCAFDoc_Location %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Location;
-class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Location();
-        Handle_XCAFDoc_Location(const Handle_XCAFDoc_Location &aHandle);
-        Handle_XCAFDoc_Location(const XCAFDoc_Location *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Location DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Location {
-    XCAFDoc_Location* _get_reference() {
-    return (XCAFDoc_Location*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Location {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Location)
 
 %extend XCAFDoc_Location {
 	%pythoncode {
@@ -2867,51 +2344,7 @@ class XCAFDoc_Material : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_Material {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Material(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Material::Handle_XCAFDoc_Material %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Material;
-class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Material();
-        Handle_XCAFDoc_Material(const Handle_XCAFDoc_Material &aHandle);
-        Handle_XCAFDoc_Material(const XCAFDoc_Material *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Material DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Material {
-    XCAFDoc_Material* _get_reference() {
-    return (XCAFDoc_Material*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Material {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Material)
 
 %extend XCAFDoc_Material {
 	%pythoncode {
@@ -3060,51 +2493,7 @@ class XCAFDoc_MaterialTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_MaterialTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_MaterialTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_MaterialTool::Handle_XCAFDoc_MaterialTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_MaterialTool;
-class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_MaterialTool();
-        Handle_XCAFDoc_MaterialTool(const Handle_XCAFDoc_MaterialTool &aHandle);
-        Handle_XCAFDoc_MaterialTool(const XCAFDoc_MaterialTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_MaterialTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_MaterialTool {
-    XCAFDoc_MaterialTool* _get_reference() {
-    return (XCAFDoc_MaterialTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_MaterialTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_MaterialTool)
 
 %extend XCAFDoc_MaterialTool {
 	%pythoncode {
@@ -3131,51 +2520,7 @@ class XCAFDoc_SequenceNodeOfGraphNodeSequence : public TCollection_SeqNode {
 };
 
 
-%extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence::Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence;
-class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence();
-        Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence(const Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence &aHandle);
-        Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence(const XCAFDoc_SequenceNodeOfGraphNodeSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
-    XCAFDoc_SequenceNodeOfGraphNodeSequence* _get_reference() {
-    return (XCAFDoc_SequenceNodeOfGraphNodeSequence*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_SequenceNodeOfGraphNodeSequence)
 
 %extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
 	%pythoncode {
@@ -3248,51 +2593,7 @@ class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_ShapeMapTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_ShapeMapTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_ShapeMapTool::Handle_XCAFDoc_ShapeMapTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_ShapeMapTool;
-class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_ShapeMapTool();
-        Handle_XCAFDoc_ShapeMapTool(const Handle_XCAFDoc_ShapeMapTool &aHandle);
-        Handle_XCAFDoc_ShapeMapTool(const XCAFDoc_ShapeMapTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_ShapeMapTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_ShapeMapTool {
-    XCAFDoc_ShapeMapTool* _get_reference() {
-    return (XCAFDoc_ShapeMapTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_ShapeMapTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_ShapeMapTool)
 
 %extend XCAFDoc_ShapeMapTool {
 	%pythoncode {
@@ -3889,51 +3190,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 };
 
 
-%extend XCAFDoc_ShapeTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_ShapeTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_ShapeTool::Handle_XCAFDoc_ShapeTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_ShapeTool;
-class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_ShapeTool();
-        Handle_XCAFDoc_ShapeTool(const Handle_XCAFDoc_ShapeTool &aHandle);
-        Handle_XCAFDoc_ShapeTool(const XCAFDoc_ShapeTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_ShapeTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_ShapeTool {
-    XCAFDoc_ShapeTool* _get_reference() {
-    return (XCAFDoc_ShapeTool*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_ShapeTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_ShapeTool)
 
 %extend XCAFDoc_ShapeTool {
 	%pythoncode {
@@ -4018,51 +3275,7 @@ class XCAFDoc_Volume : public TDF_Attribute {
         };
 
 
-%extend XCAFDoc_Volume {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFDoc_Volume(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFDoc_Volume::Handle_XCAFDoc_Volume %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFDoc_Volume;
-class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_XCAFDoc_Volume();
-        Handle_XCAFDoc_Volume(const Handle_XCAFDoc_Volume &aHandle);
-        Handle_XCAFDoc_Volume(const XCAFDoc_Volume *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFDoc_Volume DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFDoc_Volume {
-    XCAFDoc_Volume* _get_reference() {
-    return (XCAFDoc_Volume*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFDoc_Volume {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFDoc_Volume)
 
 %extend XCAFDoc_Volume {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPCHECKDOCSTRING
-"No docstring provided."
+"This package provides tools to check the validityof the BRep."
 %enddef
 %module (package="OCC.Core", docstring=BREPCHECKDOCSTRING) BRepCheck
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepCheck_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -98,6 +84,17 @@ enum BRepCheck_Status {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus)
+%wrap_handle(BRepCheck_DataMapNodeOfDataMapOfShapeResult)
+%wrap_handle(BRepCheck_ListNodeOfListOfStatus)
+%wrap_handle(BRepCheck_Result)
+%wrap_handle(BRepCheck_Edge)
+%wrap_handle(BRepCheck_Face)
+%wrap_handle(BRepCheck_Shell)
+%wrap_handle(BRepCheck_Solid)
+%wrap_handle(BRepCheck_Vertex)
+%wrap_handle(BRepCheck_Wire)
 
 %rename(brepcheck) BRepCheck;
 class BRepCheck {
@@ -283,51 +280,7 @@ class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_Map
 };
 
 
-%extend BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus::Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus;
-class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus();
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus(const Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus &aHandle);
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus(const BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
-    BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus* _get_reference() {
-    return (BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus)
 
 %extend BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
 	%pythoncode {
@@ -358,51 +311,7 @@ class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode {
 };
 
 
-%extend BRepCheck_DataMapNodeOfDataMapOfShapeResult {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult::Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult;
-class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult();
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult(const Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult &aHandle);
-        Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult(const BRepCheck_DataMapNodeOfDataMapOfShapeResult *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult {
-    BRepCheck_DataMapNodeOfDataMapOfShapeResult* _get_reference() {
-    return (BRepCheck_DataMapNodeOfDataMapOfShapeResult*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_DataMapNodeOfDataMapOfShapeResult)
 
 %extend BRepCheck_DataMapNodeOfDataMapOfShapeResult {
 	%pythoncode {
@@ -632,51 +541,7 @@ class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode {
 };
 
 
-%extend BRepCheck_ListNodeOfListOfStatus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_ListNodeOfListOfStatus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_ListNodeOfListOfStatus::Handle_BRepCheck_ListNodeOfListOfStatus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_ListNodeOfListOfStatus;
-class Handle_BRepCheck_ListNodeOfListOfStatus : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepCheck_ListNodeOfListOfStatus();
-        Handle_BRepCheck_ListNodeOfListOfStatus(const Handle_BRepCheck_ListNodeOfListOfStatus &aHandle);
-        Handle_BRepCheck_ListNodeOfListOfStatus(const BRepCheck_ListNodeOfListOfStatus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_ListNodeOfListOfStatus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_ListNodeOfListOfStatus {
-    BRepCheck_ListNodeOfListOfStatus* _get_reference() {
-    return (BRepCheck_ListNodeOfListOfStatus*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_ListNodeOfListOfStatus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_ListNodeOfListOfStatus)
 
 %extend BRepCheck_ListNodeOfListOfStatus {
 	%pythoncode {
@@ -890,51 +755,7 @@ class BRepCheck_Result : public MMgt_TShared {
 };
 
 
-%extend BRepCheck_Result {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Result(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Result::Handle_BRepCheck_Result %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Result;
-class Handle_BRepCheck_Result : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Result();
-        Handle_BRepCheck_Result(const Handle_BRepCheck_Result &aHandle);
-        Handle_BRepCheck_Result(const BRepCheck_Result *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Result DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Result {
-    BRepCheck_Result* _get_reference() {
-    return (BRepCheck_Result*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Result {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Result)
 
 %extend BRepCheck_Result {
 	%pythoncode {
@@ -997,51 +818,7 @@ class BRepCheck_Edge : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Edge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Edge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Edge::Handle_BRepCheck_Edge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Edge;
-class Handle_BRepCheck_Edge : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Edge();
-        Handle_BRepCheck_Edge(const Handle_BRepCheck_Edge &aHandle);
-        Handle_BRepCheck_Edge(const BRepCheck_Edge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Edge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Edge {
-    BRepCheck_Edge* _get_reference() {
-    return (BRepCheck_Edge*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Edge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Edge)
 
 %extend BRepCheck_Edge {
 	%pythoncode {
@@ -1118,51 +895,7 @@ class BRepCheck_Face : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Face {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Face(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Face::Handle_BRepCheck_Face %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Face;
-class Handle_BRepCheck_Face : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Face();
-        Handle_BRepCheck_Face(const Handle_BRepCheck_Face &aHandle);
-        Handle_BRepCheck_Face(const BRepCheck_Face *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Face DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Face {
-    BRepCheck_Face* _get_reference() {
-    return (BRepCheck_Face*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Face {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Face)
 
 %extend BRepCheck_Face {
 	%pythoncode {
@@ -1225,51 +958,7 @@ class BRepCheck_Shell : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Shell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Shell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Shell::Handle_BRepCheck_Shell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Shell;
-class Handle_BRepCheck_Shell : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Shell();
-        Handle_BRepCheck_Shell(const Handle_BRepCheck_Shell &aHandle);
-        Handle_BRepCheck_Shell(const BRepCheck_Shell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Shell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Shell {
-    BRepCheck_Shell* _get_reference() {
-    return (BRepCheck_Shell*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Shell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Shell)
 
 %extend BRepCheck_Shell {
 	%pythoncode {
@@ -1310,51 +999,7 @@ class BRepCheck_Solid : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Solid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Solid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Solid::Handle_BRepCheck_Solid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Solid;
-class Handle_BRepCheck_Solid : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Solid();
-        Handle_BRepCheck_Solid(const Handle_BRepCheck_Solid &aHandle);
-        Handle_BRepCheck_Solid(const BRepCheck_Solid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Solid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Solid {
-    BRepCheck_Solid* _get_reference() {
-    return (BRepCheck_Solid*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Solid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Solid)
 
 %extend BRepCheck_Solid {
 	%pythoncode {
@@ -1391,51 +1036,7 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Vertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Vertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Vertex::Handle_BRepCheck_Vertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Vertex;
-class Handle_BRepCheck_Vertex : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Vertex();
-        Handle_BRepCheck_Vertex(const Handle_BRepCheck_Vertex &aHandle);
-        Handle_BRepCheck_Vertex(const BRepCheck_Vertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Vertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Vertex {
-    BRepCheck_Vertex* _get_reference() {
-    return (BRepCheck_Vertex*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Vertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Vertex)
 
 %extend BRepCheck_Vertex {
 	%pythoncode {
@@ -1538,51 +1139,7 @@ class BRepCheck_Wire : public BRepCheck_Result {
 };
 
 
-%extend BRepCheck_Wire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepCheck_Wire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepCheck_Wire::Handle_BRepCheck_Wire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepCheck_Wire;
-class Handle_BRepCheck_Wire : public Handle_BRepCheck_Result {
-
-    public:
-        // constructors
-        Handle_BRepCheck_Wire();
-        Handle_BRepCheck_Wire(const Handle_BRepCheck_Wire &aHandle);
-        Handle_BRepCheck_Wire(const BRepCheck_Wire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepCheck_Wire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepCheck_Wire {
-    BRepCheck_Wire* _get_reference() {
-    return (BRepCheck_Wire*)$self->Access();
-    }
-};
-
-%extend Handle_BRepCheck_Wire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepCheck_Wire)
 
 %extend BRepCheck_Wire {
 	%pythoncode {

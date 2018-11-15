@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLOBJMGTDOCSTRING
-"No docstring provided."
+"This package defines services to manage the storagegrain of data produced by applications and those classesto manage persistent extern reference."
 %enddef
 %module (package="OCC.Core", docstring=XMLOBJMGTDOCSTRING) XmlObjMgt
 
@@ -34,35 +34,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlObjMgt_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
-typedef TColStd_IndexedMapOfTransient XmlObjMgt_SRelocationTable;
+typedef LDOM_Document XmlObjMgt_Document;
 typedef LDOM_Element XmlObjMgt_Element;
 typedef LDOMString XmlObjMgt_DOMString;
-typedef LDOM_Document XmlObjMgt_Document;
+typedef TColStd_IndexedMapOfTransient XmlObjMgt_SRelocationTable;
 typedef TColStd_DataMapOfIntegerTransient XmlObjMgt_RRelocationTable;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(xmlobjmgt) XmlObjMgt;
 class XmlObjMgt {

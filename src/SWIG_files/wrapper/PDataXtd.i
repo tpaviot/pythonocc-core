@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDATAXTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PDATAXTDDOCSTRING) PDataXtd
 
@@ -34,30 +34,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PDataXtd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(PDataXtd_Axis)
+%wrap_handle(PDataXtd_Constraint)
+%wrap_handle(PDataXtd_Geometry)
+%wrap_handle(PDataXtd_PatternStd)
+%wrap_handle(PDataXtd_Placement)
+%wrap_handle(PDataXtd_Plane)
+%wrap_handle(PDataXtd_Point)
+%wrap_handle(PDataXtd_Position)
+%wrap_handle(PDataXtd_Shape)
 
 %nodefaultctor PDataXtd_Axis;
 class PDataXtd_Axis : public PDF_Attribute {
@@ -75,51 +71,7 @@ class PDataXtd_Axis : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Axis {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Axis(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Axis::Handle_PDataXtd_Axis %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Axis;
-class Handle_PDataXtd_Axis : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Axis();
-        Handle_PDataXtd_Axis(const Handle_PDataXtd_Axis &aHandle);
-        Handle_PDataXtd_Axis(const PDataXtd_Axis *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Axis DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Axis {
-    PDataXtd_Axis* _get_reference() {
-    return (PDataXtd_Axis*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Axis {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Axis)
 
 %extend PDataXtd_Axis {
 	%pythoncode {
@@ -294,51 +246,7 @@ class PDataXtd_Constraint : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Constraint::Handle_PDataXtd_Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Constraint;
-class Handle_PDataXtd_Constraint : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Constraint();
-        Handle_PDataXtd_Constraint(const Handle_PDataXtd_Constraint &aHandle);
-        Handle_PDataXtd_Constraint(const PDataXtd_Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Constraint DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Constraint {
-    PDataXtd_Constraint* _get_reference() {
-    return (PDataXtd_Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Constraint)
 
 %extend PDataXtd_Constraint {
 	%pythoncode {
@@ -387,51 +295,7 @@ class PDataXtd_Geometry : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Geometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Geometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Geometry::Handle_PDataXtd_Geometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Geometry;
-class Handle_PDataXtd_Geometry : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Geometry();
-        Handle_PDataXtd_Geometry(const Handle_PDataXtd_Geometry &aHandle);
-        Handle_PDataXtd_Geometry(const PDataXtd_Geometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Geometry DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Geometry {
-    PDataXtd_Geometry* _get_reference() {
-    return (PDataXtd_Geometry*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Geometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Geometry)
 
 %extend PDataXtd_Geometry {
 	%pythoncode {
@@ -654,51 +518,7 @@ class PDataXtd_PatternStd : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_PatternStd {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_PatternStd(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_PatternStd::Handle_PDataXtd_PatternStd %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_PatternStd;
-class Handle_PDataXtd_PatternStd : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_PatternStd();
-        Handle_PDataXtd_PatternStd(const Handle_PDataXtd_PatternStd &aHandle);
-        Handle_PDataXtd_PatternStd(const PDataXtd_PatternStd *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_PatternStd DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_PatternStd {
-    PDataXtd_PatternStd* _get_reference() {
-    return (PDataXtd_PatternStd*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_PatternStd {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_PatternStd)
 
 %extend PDataXtd_PatternStd {
 	%pythoncode {
@@ -721,51 +541,7 @@ class PDataXtd_Placement : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Placement::Handle_PDataXtd_Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Placement;
-class Handle_PDataXtd_Placement : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Placement();
-        Handle_PDataXtd_Placement(const Handle_PDataXtd_Placement &aHandle);
-        Handle_PDataXtd_Placement(const PDataXtd_Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Placement DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Placement {
-    PDataXtd_Placement* _get_reference() {
-    return (PDataXtd_Placement*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Placement)
 
 %extend PDataXtd_Placement {
 	%pythoncode {
@@ -788,51 +564,7 @@ class PDataXtd_Plane : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Plane::Handle_PDataXtd_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Plane;
-class Handle_PDataXtd_Plane : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Plane();
-        Handle_PDataXtd_Plane(const Handle_PDataXtd_Plane &aHandle);
-        Handle_PDataXtd_Plane(const PDataXtd_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Plane DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Plane {
-    PDataXtd_Plane* _get_reference() {
-    return (PDataXtd_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Plane)
 
 %extend PDataXtd_Plane {
 	%pythoncode {
@@ -855,51 +587,7 @@ class PDataXtd_Point : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Point::Handle_PDataXtd_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Point;
-class Handle_PDataXtd_Point : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Point();
-        Handle_PDataXtd_Point(const Handle_PDataXtd_Point &aHandle);
-        Handle_PDataXtd_Point(const PDataXtd_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Point DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Point {
-    PDataXtd_Point* _get_reference() {
-    return (PDataXtd_Point*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Point)
 
 %extend PDataXtd_Point {
 	%pythoncode {
@@ -936,51 +624,7 @@ class PDataXtd_Position : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Position {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Position(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Position::Handle_PDataXtd_Position %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Position;
-class Handle_PDataXtd_Position : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Position();
-        Handle_PDataXtd_Position(const Handle_PDataXtd_Position &aHandle);
-        Handle_PDataXtd_Position(const PDataXtd_Position *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Position DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Position {
-    PDataXtd_Position* _get_reference() {
-    return (PDataXtd_Position*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Position {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Position)
 
 %extend PDataXtd_Position {
 	%pythoncode {
@@ -1003,51 +647,7 @@ class PDataXtd_Shape : public PDF_Attribute {
 };
 
 
-%extend PDataXtd_Shape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PDataXtd_Shape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PDataXtd_Shape::Handle_PDataXtd_Shape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PDataXtd_Shape;
-class Handle_PDataXtd_Shape : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PDataXtd_Shape();
-        Handle_PDataXtd_Shape(const Handle_PDataXtd_Shape &aHandle);
-        Handle_PDataXtd_Shape(const PDataXtd_Shape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PDataXtd_Shape DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PDataXtd_Shape {
-    PDataXtd_Shape* _get_reference() {
-    return (PDataXtd_Shape*)$self->Access();
-    }
-};
-
-%extend Handle_PDataXtd_Shape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PDataXtd_Shape)
 
 %extend PDataXtd_Shape {
 	%pythoncode {

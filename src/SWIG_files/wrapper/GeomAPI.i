@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMAPIDOCSTRING
-"No docstring provided."
+"The  GeomAPI  package provides an ApplicationProgramming Interface for the Geometry.The API is a set of classes and methods aiming toprovide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.The API provides classes to call the algorithmesof the Geometry* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused by the algorithmes*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to evaluate the distance <D> between apoint <P> and a curve <C>, one can writes :D = GeomAPI_ProjectPointOnCurve(P,C);orGeomAPI_ProjectPointOnCurve PonC(P,C);D = PonC.LowerDistance();"
 %enddef
 %module (package="OCC.Core", docstring=GEOMAPIDOCSTRING) GeomAPI
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(geomapi) GeomAPI;
 class GeomAPI {

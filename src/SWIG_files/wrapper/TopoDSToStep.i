@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPODSTOSTEPDOCSTRING
-"No docstring provided."
+"This package implements the mapping between CAS.CADShape representation and AP214 Shape Representation.The target schema is pms_c4 (a subset of AP214)How to use this Package :Entry point are context dependent. It can be :MakeManifoldSolidBrepMakeBrepWithVoidsMakeFacetedBrepMakeFacetedBrepAndBrepWithVoidsMakeShellBasedSurfaceModelEach of these classes call the BuilderThe class tool centralizes some common informations."
 %enddef
 %module (package="OCC.Core", docstring=TOPODSTOSTEPDOCSTRING) TopoDSToStep
 
@@ -34,39 +34,39 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopoDSToStep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum TopoDSToStep_BuilderError {
+	TopoDSToStep_BuilderDone = 0,
+	TopoDSToStep_NoFaceMapped = 1,
+	TopoDSToStep_BuilderOther = 2,
+};
+
+enum TopoDSToStep_FacetedError {
+	TopoDSToStep_FacetedDone = 0,
+	TopoDSToStep_SurfaceNotPlane = 1,
+	TopoDSToStep_PCurveNotLinear = 2,
+};
+
 enum TopoDSToStep_MakeEdgeError {
 	TopoDSToStep_EdgeDone = 0,
 	TopoDSToStep_NonManifoldEdge = 1,
 	TopoDSToStep_EdgeOther = 2,
 };
 
-enum TopoDSToStep_BuilderError {
-	TopoDSToStep_BuilderDone = 0,
-	TopoDSToStep_NoFaceMapped = 1,
-	TopoDSToStep_BuilderOther = 2,
+enum TopoDSToStep_MakeFaceError {
+	TopoDSToStep_FaceDone = 0,
+	TopoDSToStep_InfiniteFace = 1,
+	TopoDSToStep_NonManifoldFace = 2,
+	TopoDSToStep_NoWireMapped = 3,
+	TopoDSToStep_FaceOther = 4,
 };
 
 enum TopoDSToStep_MakeVertexError {
@@ -80,21 +80,8 @@ enum TopoDSToStep_MakeWireError {
 	TopoDSToStep_WireOther = 2,
 };
 
-enum TopoDSToStep_MakeFaceError {
-	TopoDSToStep_FaceDone = 0,
-	TopoDSToStep_InfiniteFace = 1,
-	TopoDSToStep_NonManifoldFace = 2,
-	TopoDSToStep_NoWireMapped = 3,
-	TopoDSToStep_FaceOther = 4,
-};
-
-enum TopoDSToStep_FacetedError {
-	TopoDSToStep_FacetedDone = 0,
-	TopoDSToStep_SurfaceNotPlane = 1,
-	TopoDSToStep_PCurveNotLinear = 2,
-};
-
 /* end public enums declaration */
+
 
 %rename(topodstostep) TopoDSToStep;
 class TopoDSToStep {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFPRSDOCSTRING
-"No docstring provided."
+"Presentation (visualiation, selection etc.) tools forDECAF documents"
 %enddef
 %module (package="OCC.Core", docstring=XCAFPRSDOCSTRING) XCAFPrs
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XCAFPrs_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfShapeStyle)
+%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfStyleShape)
+%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfStyleTransient)
+%wrap_handle(XCAFPrs_Driver)
 
 %rename(xcafprs) XCAFPrs;
 class XCAFPrs {
@@ -90,71 +81,6 @@ class XCAFPrs {
 
 
 %extend XCAFPrs {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_AISObject;
-class XCAFPrs_AISObject : public AIS_ColoredShape {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_AISObject;
-		%feature("autodoc", "	* Creates an object to visualise the shape label.
-
-	:param theLabel:
-	:type theLabel: TDF_Label &
-	:rtype: None
-") XCAFPrs_AISObject;
-		 XCAFPrs_AISObject (const TDF_Label & theLabel);
-};
-
-
-%extend XCAFPrs_AISObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_AISObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_AISObject::Handle_XCAFPrs_AISObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_AISObject;
-class Handle_XCAFPrs_AISObject : public Handle_AIS_ColoredShape {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_AISObject();
-        Handle_XCAFPrs_AISObject(const Handle_XCAFPrs_AISObject &aHandle);
-        Handle_XCAFPrs_AISObject(const XCAFPrs_AISObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_AISObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_AISObject {
-    XCAFPrs_AISObject* _get_reference() {
-    return (XCAFPrs_AISObject*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFPrs_AISObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend XCAFPrs_AISObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -288,51 +214,7 @@ class XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public TCollection_MapNode {
 };
 
 
-%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle::Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
-class Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle();
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle(const Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle &aHandle);
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle(const XCAFPrs_DataMapNodeOfDataMapOfShapeStyle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-    XCAFPrs_DataMapNodeOfDataMapOfShapeStyle* _get_reference() {
-    return (XCAFPrs_DataMapNodeOfDataMapOfShapeStyle*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFPrs_DataMapNodeOfDataMapOfShapeStyle)
 
 %extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
 	%pythoncode {
@@ -363,51 +245,7 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode {
 };
 
 
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape::Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
-class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape();
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape(const Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape &aHandle);
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape(const XCAFPrs_DataMapNodeOfDataMapOfStyleShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-    XCAFPrs_DataMapNodeOfDataMapOfStyleShape* _get_reference() {
-    return (XCAFPrs_DataMapNodeOfDataMapOfStyleShape*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFPrs_DataMapNodeOfDataMapOfStyleShape)
 
 %extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
 	%pythoncode {
@@ -438,51 +276,7 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode 
 };
 
 
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient::Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
-class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient();
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(const Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient &aHandle);
-        Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(const XCAFPrs_DataMapNodeOfDataMapOfStyleTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-    XCAFPrs_DataMapNodeOfDataMapOfStyleTransient* _get_reference() {
-    return (XCAFPrs_DataMapNodeOfDataMapOfStyleTransient*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFPrs_DataMapNodeOfDataMapOfStyleTransient)
 
 %extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
 	%pythoncode {
@@ -758,51 +552,7 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 };
 
 
-%extend XCAFPrs_Driver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_Driver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_Driver::Handle_XCAFPrs_Driver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_Driver;
-class Handle_XCAFPrs_Driver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_Driver();
-        Handle_XCAFPrs_Driver(const Handle_XCAFPrs_Driver &aHandle);
-        Handle_XCAFPrs_Driver(const XCAFPrs_Driver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_Driver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_Driver {
-    XCAFPrs_Driver* _get_reference() {
-    return (XCAFPrs_Driver*)$self->Access();
-    }
-};
-
-%extend Handle_XCAFPrs_Driver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XCAFPrs_Driver)
 
 %extend XCAFPrs_Driver {
 	%pythoncode {

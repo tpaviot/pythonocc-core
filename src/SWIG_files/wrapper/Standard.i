@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STANDARDDOCSTRING
-"No docstring provided."
+"The package Standard provides the minimum services necessaryfor other toolkits to handle persistent and transient objects.It is the Standard run-time encapsulation of the CAS.CADEdatabase, that is, it defines a single programming interfacefor creating and accessing persistent objects manipulated byhandles."
 %enddef
 %module (package="OCC.Core", docstring=STANDARDDOCSTRING) Standard
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Standard_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef bool Standard_Boolean;
@@ -61,7 +47,7 @@ typedef Standard_ExtCharacter * Standard_PExtCharacter;
 typedef std::time_t Standard_Time;
 typedef unsigned char Standard_Byte;
 typedef void * Standard_Address;
-typedef Standard_Byte * Standard_PByte;
+typedef uint16_t Standard_Utf16Char;
 typedef GUID Standard_UUID;
 typedef short Standard_ExtCharacter;
 typedef unsigned __int8 uint8_t;
@@ -77,7 +63,7 @@ typedef char Standard_Character;
 typedef unsigned char Standard_Utf8UChar;
 typedef uint32_t Standard_Utf32Char;
 typedef std::stringstream Standard_SStream;
-typedef uint16_t Standard_Utf16Char;
+typedef Standard_Byte * Standard_PByte;
 typedef const short * Standard_ExtString;
 typedef unsigned __int32 uint32_t;
 typedef size_t Standard_Size;
@@ -87,23 +73,6 @@ typedef unsigned __int16 uint16_t;
 /* end typedefs declaration */
 
 /* public enums */
-enum Standard_KindOfType {
-	Standard_IsUnKnown = 0,
-	Standard_IsClass = 1,
-	Standard_IsEnumeration = 2,
-	Standard_IsPrimitive = 3,
-	Standard_IsImported = 4,
-	Standard_IsPackage = 5,
-};
-
-enum Standard_WayOfLife {
-	Standard_IsNothing = 0,
-	Standard_IsAddress = 1,
-	Standard_IsTransient = 2,
-	Standard_IsPersistent = 3,
-	Standard_IsNotLoaded = 4,
-};
-
 enum Standard_HandlerStatus {
 	Standard_HandlerVoid = 0,
 	Standard_HandlerJumped = 1,
@@ -127,7 +96,28 @@ enum Standard_InternalType {
 	Standard_Array = 13,
 };
 
+enum Standard_KindOfType {
+	Standard_IsUnKnown = 0,
+	Standard_IsClass = 1,
+	Standard_IsEnumeration = 2,
+	Standard_IsPrimitive = 3,
+	Standard_IsImported = 4,
+	Standard_IsPackage = 5,
+};
+
+enum Standard_WayOfLife {
+	Standard_IsNothing = 0,
+	Standard_IsAddress = 1,
+	Standard_IsTransient = 2,
+	Standard_IsPersistent = 3,
+	Standard_IsNotLoaded = 4,
+};
+
 /* end public enums declaration */
+
+%wrap_handle(Standard_Transient)
+%wrap_handle(Standard_Failure)
+%wrap_handle(Standard_Type)
 
 %rename(standard) Standard;
 class Standard {
@@ -749,97 +739,7 @@ class Standard_Transient {
 };
 
 
-%extend Standard_Transient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Standard_Transient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Standard_Transient::Handle_Standard_Transient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Standard_Transient;
-class Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Standard_Transient();
-        Handle_Standard_Transient(const Handle_Standard_Transient &aHandle);
-        Handle_Standard_Transient(const Standard_Transient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Standard_Transient DownCast(const Handle_Standard_Transient &AnObject);
-
-        %extend{
-            bool __eq_wrapper__(const Handle_Standard_Transient &right) {
-                if (*self==right) return true;
-                else return false;
-            }
-        }
-        %extend{
-            bool __eq_wrapper__(const Standard_Transient *right) {
-                if (*self==right) return true;
-                else return false;
-            }
-        }
-        %extend{
-            bool __ne_wrapper__(const Handle_Standard_Transient &right) {
-                if (*self!=right) return true;
-                else return false;
-            }
-        }
-        %extend{
-            bool __ne_wrapper__(const Standard_Transient *right) {
-                if (*self!=right) return true;
-                else return false;
-            }
-        }
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();
-            }
-        }
-        %pythoncode {
-        def __eq__(self,right):
-            try:
-                return self.__eq_wrapper__(right)
-            except:
-                return False
-        }
-        %pythoncode {
-        def __ne__(self,right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-
-};
-%extend Handle_Standard_Transient {
-    Standard_Transient* _get_reference() {
-    return (Standard_Transient*)$self->Access();
-    }
-};
-
-%extend Handle_Standard_Transient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Standard_Transient)
 
 %extend Standard_Transient {
 	%pythoncode {
@@ -918,51 +818,7 @@ class Standard_Failure : public Standard_Transient {
 };
 
 
-%extend Standard_Failure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Standard_Failure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Standard_Failure::Handle_Standard_Failure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Standard_Failure;
-class Handle_Standard_Failure : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Standard_Failure();
-        Handle_Standard_Failure(const Handle_Standard_Failure &aHandle);
-        Handle_Standard_Failure(const Standard_Failure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Standard_Failure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Standard_Failure {
-    Standard_Failure* _get_reference() {
-    return (Standard_Failure*)$self->Access();
-    }
-};
-
-%extend Handle_Standard_Failure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Standard_Failure)
 
 %extend Standard_Failure {
 	%pythoncode {
@@ -1291,51 +1147,7 @@ class Standard_Type : public Standard_Transient {
         };
 
 
-%extend Standard_Type {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Standard_Type(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Standard_Type::Handle_Standard_Type %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Standard_Type;
-class Handle_Standard_Type : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_Standard_Type();
-        Handle_Standard_Type(const Handle_Standard_Type &aHandle);
-        Handle_Standard_Type(const Standard_Type *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Standard_Type DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Standard_Type {
-    Standard_Type* _get_reference() {
-    return (Standard_Type*)$self->Access();
-    }
-};
-
-%extend Handle_Standard_Type {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Standard_Type)
 
 %extend Standard_Type {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BLENDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BLENDDOCSTRING) Blend
 
@@ -34,29 +34,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Blend_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum Blend_DecrochStatus {
+	Blend_NoDecroch = 0,
+	Blend_DecrochRst1 = 1,
+	Blend_DecrochRst2 = 2,
+	Blend_DecrochBoth = 3,
+};
+
 enum Blend_Status {
 	Blend_StepTooLarge = 0,
 	Blend_StepTooSmall = 1,
@@ -68,14 +61,9 @@ enum Blend_Status {
 	Blend_OK = 7,
 };
 
-enum Blend_DecrochStatus {
-	Blend_NoDecroch = 0,
-	Blend_DecrochRst1 = 1,
-	Blend_DecrochRst2 = 2,
-	Blend_DecrochBoth = 3,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(Blend_SequenceNodeOfSequenceOfPoint)
 
 %nodefaultctor Blend_AppFunction;
 class Blend_AppFunction : public math_FunctionSetWithDerivatives {
@@ -1103,51 +1091,7 @@ class Blend_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode {
 };
 
 
-%extend Blend_SequenceNodeOfSequenceOfPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Blend_SequenceNodeOfSequenceOfPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Blend_SequenceNodeOfSequenceOfPoint::Handle_Blend_SequenceNodeOfSequenceOfPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Blend_SequenceNodeOfSequenceOfPoint;
-class Handle_Blend_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Blend_SequenceNodeOfSequenceOfPoint();
-        Handle_Blend_SequenceNodeOfSequenceOfPoint(const Handle_Blend_SequenceNodeOfSequenceOfPoint &aHandle);
-        Handle_Blend_SequenceNodeOfSequenceOfPoint(const Blend_SequenceNodeOfSequenceOfPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Blend_SequenceNodeOfSequenceOfPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Blend_SequenceNodeOfSequenceOfPoint {
-    Blend_SequenceNodeOfSequenceOfPoint* _get_reference() {
-    return (Blend_SequenceNodeOfSequenceOfPoint*)$self->Access();
-    }
-};
-
-%extend Handle_Blend_SequenceNodeOfSequenceOfPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Blend_SequenceNodeOfSequenceOfPoint)
 
 %extend Blend_SequenceNodeOfSequenceOfPoint {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPCNXDOCSTRING
-"No docstring provided."
+"This algorithm provides algorithms to computestransitions when many interferences occurs at thesame place on a shape.An interference is an intersection on a shape (i.ea vertex on an edge or an edge on a face) withdata about  the transition (how the shape iscrossing the  boundary where the  intersectionoccurs).There   are   three algorithms  to processinterferences :* EdgeFaceTransition : To process interferences onan adge crossing other edges on the boundary of aface.* EdgeSolidTransition : To  process interferenceson an  edge crossing faces  and edges on theboundary of a solid.* FaceSolidTransition : To process interferenceson a face crossing other faces on the boundary ofa solid.This package relies on the TopTrans package forthe geometric computations."
 %enddef
 %module (package="OCC.Core", docstring=TOPCNXDOCSTRING) TopCnx
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopCnx_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor TopCnx_EdgeFaceTransition;
 class TopCnx_EdgeFaceTransition {

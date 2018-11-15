@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PRSMGRDOCSTRING
-"No docstring provided."
+"and is only to be used when you do not want to usethe services provided by AIS.PrsMgr manages display through the following services:-  supplying a graphic structure for the object to be presented-  recalculating presentations when required, e.g. bymoving the object or changing its color-  defining the display mode of the object to bepresented; in the case of AIS_Shape, for example,this determines whether the object is to be displayed in:-  wireframe 0-  shading 1.Note that each new Interactive Object must have all its display modes defined."
 %enddef
 %module (package="OCC.Core", docstring=PRSMGRDOCSTRING) PrsMgr
 
@@ -34,29 +34,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PrsMgr_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
 typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
-typedef PrsMgr_Presentation PrsMgr_Presentation3d;
 typedef PrsMgr_PresentableObject * PrsMgr_PresentableObjectPointer;
+typedef PrsMgr_Presentation PrsMgr_Presentation3d;
 typedef PrsMgr_Presentation * PrsMgr_PresentationPointer;
 typedef NCollection_List <Handle_Prs3d_Presentation> PrsMgr_ListOfPresentations;
 typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
@@ -70,6 +56,12 @@ enum PrsMgr_TypeOfPresentation3d {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(PrsMgr_PresentableObject)
+%wrap_handle(PrsMgr_Presentation)
+%wrap_handle(PrsMgr_PresentationManager)
+%wrap_handle(PrsMgr_Prs)
+%wrap_handle(PrsMgr_SequenceNodeOfPresentations)
 
 %nodefaultctor PrsMgr_ModedPresentation;
 class PrsMgr_ModedPresentation {
@@ -311,51 +303,7 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 };
 
 
-%extend PrsMgr_PresentableObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PrsMgr_PresentableObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PrsMgr_PresentableObject::Handle_PrsMgr_PresentableObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PrsMgr_PresentableObject;
-class Handle_PrsMgr_PresentableObject : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_PrsMgr_PresentableObject();
-        Handle_PrsMgr_PresentableObject(const Handle_PrsMgr_PresentableObject &aHandle);
-        Handle_PrsMgr_PresentableObject(const PrsMgr_PresentableObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PrsMgr_PresentableObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PrsMgr_PresentableObject {
-    PrsMgr_PresentableObject* _get_reference() {
-    return (PrsMgr_PresentableObject*)$self->Access();
-    }
-};
-
-%extend Handle_PrsMgr_PresentableObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PrsMgr_PresentableObject)
 
 %extend PrsMgr_PresentableObject {
 	%pythoncode {
@@ -394,51 +342,7 @@ class PrsMgr_Presentation : public MMgt_TShared {
 };
 
 
-%extend PrsMgr_Presentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PrsMgr_Presentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PrsMgr_Presentation::Handle_PrsMgr_Presentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PrsMgr_Presentation;
-class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_PrsMgr_Presentation();
-        Handle_PrsMgr_Presentation(const Handle_PrsMgr_Presentation &aHandle);
-        Handle_PrsMgr_Presentation(const PrsMgr_Presentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PrsMgr_Presentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PrsMgr_Presentation {
-    PrsMgr_Presentation* _get_reference() {
-    return (PrsMgr_Presentation*)$self->Access();
-    }
-};
-
-%extend Handle_PrsMgr_Presentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PrsMgr_Presentation)
 
 %extend PrsMgr_Presentation {
 	%pythoncode {
@@ -727,51 +631,7 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 };
 
 
-%extend PrsMgr_PresentationManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PrsMgr_PresentationManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PrsMgr_PresentationManager::Handle_PrsMgr_PresentationManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PrsMgr_PresentationManager;
-class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_PrsMgr_PresentationManager();
-        Handle_PrsMgr_PresentationManager(const Handle_PrsMgr_PresentationManager &aHandle);
-        Handle_PrsMgr_PresentationManager(const PrsMgr_PresentationManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PrsMgr_PresentationManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PrsMgr_PresentationManager {
-    PrsMgr_PresentationManager* _get_reference() {
-    return (PrsMgr_PresentationManager*)$self->Access();
-    }
-};
-
-%extend Handle_PrsMgr_PresentationManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PrsMgr_PresentationManager)
 
 %extend PrsMgr_PresentationManager {
 	%pythoncode {
@@ -979,51 +839,7 @@ class PrsMgr_Prs : public Prs3d_Presentation {
 };
 
 
-%extend PrsMgr_Prs {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PrsMgr_Prs(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PrsMgr_Prs::Handle_PrsMgr_Prs %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PrsMgr_Prs;
-class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
-
-    public:
-        // constructors
-        Handle_PrsMgr_Prs();
-        Handle_PrsMgr_Prs(const Handle_PrsMgr_Prs &aHandle);
-        Handle_PrsMgr_Prs(const PrsMgr_Prs *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PrsMgr_Prs DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PrsMgr_Prs {
-    PrsMgr_Prs* _get_reference() {
-    return (PrsMgr_Prs*)$self->Access();
-    }
-};
-
-%extend Handle_PrsMgr_Prs {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PrsMgr_Prs)
 
 %extend PrsMgr_Prs {
 	%pythoncode {
@@ -1050,51 +866,7 @@ class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
 };
 
 
-%extend PrsMgr_SequenceNodeOfPresentations {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PrsMgr_SequenceNodeOfPresentations(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PrsMgr_SequenceNodeOfPresentations::Handle_PrsMgr_SequenceNodeOfPresentations %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PrsMgr_SequenceNodeOfPresentations;
-class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_PrsMgr_SequenceNodeOfPresentations();
-        Handle_PrsMgr_SequenceNodeOfPresentations(const Handle_PrsMgr_SequenceNodeOfPresentations &aHandle);
-        Handle_PrsMgr_SequenceNodeOfPresentations(const PrsMgr_SequenceNodeOfPresentations *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PrsMgr_SequenceNodeOfPresentations DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PrsMgr_SequenceNodeOfPresentations {
-    PrsMgr_SequenceNodeOfPresentations* _get_reference() {
-    return (PrsMgr_SequenceNodeOfPresentations*)$self->Access();
-    }
-};
-
-%extend Handle_PrsMgr_SequenceNodeOfPresentations {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PrsMgr_SequenceNodeOfPresentations)
 
 %extend PrsMgr_SequenceNodeOfPresentations {
 	%pythoncode {

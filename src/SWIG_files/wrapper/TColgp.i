@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLGPDOCSTRING
-"No docstring provided."
+"-Purpose :  This package provides standard and frequentlyused instantiations of generic classes from theTCollection package with geometric objects from the gp package."
 %enddef
 %module (package="OCC.Core", docstring=TCOLGPDOCSTRING) TColgp
 
@@ -34,30 +34,55 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TColgp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TColgp_HArray1OfCirc2d)
+%wrap_handle(TColgp_HArray1OfDir)
+%wrap_handle(TColgp_HArray1OfDir2d)
+%wrap_handle(TColgp_HArray1OfLin2d)
+%wrap_handle(TColgp_HArray1OfPnt)
+%wrap_handle(TColgp_HArray1OfPnt2d)
+%wrap_handle(TColgp_HArray1OfVec)
+%wrap_handle(TColgp_HArray1OfVec2d)
+%wrap_handle(TColgp_HArray1OfXY)
+%wrap_handle(TColgp_HArray1OfXYZ)
+%wrap_handle(TColgp_HArray2OfCirc2d)
+%wrap_handle(TColgp_HArray2OfDir)
+%wrap_handle(TColgp_HArray2OfDir2d)
+%wrap_handle(TColgp_HArray2OfLin2d)
+%wrap_handle(TColgp_HArray2OfPnt)
+%wrap_handle(TColgp_HArray2OfPnt2d)
+%wrap_handle(TColgp_HArray2OfVec)
+%wrap_handle(TColgp_HArray2OfVec2d)
+%wrap_handle(TColgp_HArray2OfXY)
+%wrap_handle(TColgp_HArray2OfXYZ)
+%wrap_handle(TColgp_HSequenceOfDir)
+%wrap_handle(TColgp_HSequenceOfDir2d)
+%wrap_handle(TColgp_HSequenceOfPnt)
+%wrap_handle(TColgp_HSequenceOfPnt2d)
+%wrap_handle(TColgp_HSequenceOfVec)
+%wrap_handle(TColgp_HSequenceOfVec2d)
+%wrap_handle(TColgp_HSequenceOfXY)
+%wrap_handle(TColgp_HSequenceOfXYZ)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfAx1)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfDir)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfDir2d)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfPnt)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfPnt2d)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfVec)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfVec2d)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfXY)
+%wrap_handle(TColgp_SequenceNodeOfSequenceOfXYZ)
 
 %nodefaultctor TColgp_Array1OfCirc2d;
 class TColgp_Array1OfCirc2d {
@@ -2089,51 +2114,7 @@ class TColgp_HArray1OfCirc2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfCirc2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfCirc2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfCirc2d::Handle_TColgp_HArray1OfCirc2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfCirc2d;
-class Handle_TColgp_HArray1OfCirc2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfCirc2d();
-        Handle_TColgp_HArray1OfCirc2d(const Handle_TColgp_HArray1OfCirc2d &aHandle);
-        Handle_TColgp_HArray1OfCirc2d(const TColgp_HArray1OfCirc2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfCirc2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfCirc2d {
-    TColgp_HArray1OfCirc2d* _get_reference() {
-    return (TColgp_HArray1OfCirc2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfCirc2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfCirc2d)
 
 %extend TColgp_HArray1OfCirc2d {
 	%pythoncode {
@@ -2210,51 +2191,7 @@ class TColgp_HArray1OfDir : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfDir {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfDir(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfDir::Handle_TColgp_HArray1OfDir %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfDir;
-class Handle_TColgp_HArray1OfDir : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfDir();
-        Handle_TColgp_HArray1OfDir(const Handle_TColgp_HArray1OfDir &aHandle);
-        Handle_TColgp_HArray1OfDir(const TColgp_HArray1OfDir *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfDir DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfDir {
-    TColgp_HArray1OfDir* _get_reference() {
-    return (TColgp_HArray1OfDir*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfDir {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfDir)
 
 %extend TColgp_HArray1OfDir {
 	%pythoncode {
@@ -2331,51 +2268,7 @@ class TColgp_HArray1OfDir2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfDir2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfDir2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfDir2d::Handle_TColgp_HArray1OfDir2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfDir2d;
-class Handle_TColgp_HArray1OfDir2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfDir2d();
-        Handle_TColgp_HArray1OfDir2d(const Handle_TColgp_HArray1OfDir2d &aHandle);
-        Handle_TColgp_HArray1OfDir2d(const TColgp_HArray1OfDir2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfDir2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfDir2d {
-    TColgp_HArray1OfDir2d* _get_reference() {
-    return (TColgp_HArray1OfDir2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfDir2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfDir2d)
 
 %extend TColgp_HArray1OfDir2d {
 	%pythoncode {
@@ -2452,51 +2345,7 @@ class TColgp_HArray1OfLin2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfLin2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfLin2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfLin2d::Handle_TColgp_HArray1OfLin2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfLin2d;
-class Handle_TColgp_HArray1OfLin2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfLin2d();
-        Handle_TColgp_HArray1OfLin2d(const Handle_TColgp_HArray1OfLin2d &aHandle);
-        Handle_TColgp_HArray1OfLin2d(const TColgp_HArray1OfLin2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfLin2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfLin2d {
-    TColgp_HArray1OfLin2d* _get_reference() {
-    return (TColgp_HArray1OfLin2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfLin2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfLin2d)
 
 %extend TColgp_HArray1OfLin2d {
 	%pythoncode {
@@ -2573,51 +2422,7 @@ class TColgp_HArray1OfPnt : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfPnt::Handle_TColgp_HArray1OfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfPnt;
-class Handle_TColgp_HArray1OfPnt : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfPnt();
-        Handle_TColgp_HArray1OfPnt(const Handle_TColgp_HArray1OfPnt &aHandle);
-        Handle_TColgp_HArray1OfPnt(const TColgp_HArray1OfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfPnt {
-    TColgp_HArray1OfPnt* _get_reference() {
-    return (TColgp_HArray1OfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfPnt)
 
 %extend TColgp_HArray1OfPnt {
 	%pythoncode {
@@ -2694,51 +2499,7 @@ class TColgp_HArray1OfPnt2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfPnt2d::Handle_TColgp_HArray1OfPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfPnt2d;
-class Handle_TColgp_HArray1OfPnt2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfPnt2d();
-        Handle_TColgp_HArray1OfPnt2d(const Handle_TColgp_HArray1OfPnt2d &aHandle);
-        Handle_TColgp_HArray1OfPnt2d(const TColgp_HArray1OfPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfPnt2d {
-    TColgp_HArray1OfPnt2d* _get_reference() {
-    return (TColgp_HArray1OfPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfPnt2d)
 
 %extend TColgp_HArray1OfPnt2d {
 	%pythoncode {
@@ -2815,51 +2576,7 @@ class TColgp_HArray1OfVec : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfVec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfVec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfVec::Handle_TColgp_HArray1OfVec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfVec;
-class Handle_TColgp_HArray1OfVec : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfVec();
-        Handle_TColgp_HArray1OfVec(const Handle_TColgp_HArray1OfVec &aHandle);
-        Handle_TColgp_HArray1OfVec(const TColgp_HArray1OfVec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfVec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfVec {
-    TColgp_HArray1OfVec* _get_reference() {
-    return (TColgp_HArray1OfVec*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfVec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfVec)
 
 %extend TColgp_HArray1OfVec {
 	%pythoncode {
@@ -2936,51 +2653,7 @@ class TColgp_HArray1OfVec2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfVec2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfVec2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfVec2d::Handle_TColgp_HArray1OfVec2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfVec2d;
-class Handle_TColgp_HArray1OfVec2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfVec2d();
-        Handle_TColgp_HArray1OfVec2d(const Handle_TColgp_HArray1OfVec2d &aHandle);
-        Handle_TColgp_HArray1OfVec2d(const TColgp_HArray1OfVec2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfVec2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfVec2d {
-    TColgp_HArray1OfVec2d* _get_reference() {
-    return (TColgp_HArray1OfVec2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfVec2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfVec2d)
 
 %extend TColgp_HArray1OfVec2d {
 	%pythoncode {
@@ -3057,51 +2730,7 @@ class TColgp_HArray1OfXY : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfXY {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfXY(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfXY::Handle_TColgp_HArray1OfXY %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfXY;
-class Handle_TColgp_HArray1OfXY : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfXY();
-        Handle_TColgp_HArray1OfXY(const Handle_TColgp_HArray1OfXY &aHandle);
-        Handle_TColgp_HArray1OfXY(const TColgp_HArray1OfXY *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfXY DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfXY {
-    TColgp_HArray1OfXY* _get_reference() {
-    return (TColgp_HArray1OfXY*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfXY {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfXY)
 
 %extend TColgp_HArray1OfXY {
 	%pythoncode {
@@ -3178,51 +2807,7 @@ class TColgp_HArray1OfXYZ : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray1OfXYZ {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray1OfXYZ(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray1OfXYZ::Handle_TColgp_HArray1OfXYZ %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray1OfXYZ;
-class Handle_TColgp_HArray1OfXYZ : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray1OfXYZ();
-        Handle_TColgp_HArray1OfXYZ(const Handle_TColgp_HArray1OfXYZ &aHandle);
-        Handle_TColgp_HArray1OfXYZ(const TColgp_HArray1OfXYZ *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray1OfXYZ DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray1OfXYZ {
-    TColgp_HArray1OfXYZ* _get_reference() {
-    return (TColgp_HArray1OfXYZ*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray1OfXYZ {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray1OfXYZ)
 
 %extend TColgp_HArray1OfXYZ {
 	%pythoncode {
@@ -3325,51 +2910,7 @@ class TColgp_HArray2OfCirc2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfCirc2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfCirc2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfCirc2d::Handle_TColgp_HArray2OfCirc2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfCirc2d;
-class Handle_TColgp_HArray2OfCirc2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfCirc2d();
-        Handle_TColgp_HArray2OfCirc2d(const Handle_TColgp_HArray2OfCirc2d &aHandle);
-        Handle_TColgp_HArray2OfCirc2d(const TColgp_HArray2OfCirc2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfCirc2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfCirc2d {
-    TColgp_HArray2OfCirc2d* _get_reference() {
-    return (TColgp_HArray2OfCirc2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfCirc2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfCirc2d)
 
 %extend TColgp_HArray2OfCirc2d {
 	%pythoncode {
@@ -3472,51 +3013,7 @@ class TColgp_HArray2OfDir : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfDir {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfDir(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfDir::Handle_TColgp_HArray2OfDir %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfDir;
-class Handle_TColgp_HArray2OfDir : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfDir();
-        Handle_TColgp_HArray2OfDir(const Handle_TColgp_HArray2OfDir &aHandle);
-        Handle_TColgp_HArray2OfDir(const TColgp_HArray2OfDir *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfDir DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfDir {
-    TColgp_HArray2OfDir* _get_reference() {
-    return (TColgp_HArray2OfDir*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfDir {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfDir)
 
 %extend TColgp_HArray2OfDir {
 	%pythoncode {
@@ -3619,51 +3116,7 @@ class TColgp_HArray2OfDir2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfDir2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfDir2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfDir2d::Handle_TColgp_HArray2OfDir2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfDir2d;
-class Handle_TColgp_HArray2OfDir2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfDir2d();
-        Handle_TColgp_HArray2OfDir2d(const Handle_TColgp_HArray2OfDir2d &aHandle);
-        Handle_TColgp_HArray2OfDir2d(const TColgp_HArray2OfDir2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfDir2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfDir2d {
-    TColgp_HArray2OfDir2d* _get_reference() {
-    return (TColgp_HArray2OfDir2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfDir2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfDir2d)
 
 %extend TColgp_HArray2OfDir2d {
 	%pythoncode {
@@ -3766,51 +3219,7 @@ class TColgp_HArray2OfLin2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfLin2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfLin2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfLin2d::Handle_TColgp_HArray2OfLin2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfLin2d;
-class Handle_TColgp_HArray2OfLin2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfLin2d();
-        Handle_TColgp_HArray2OfLin2d(const Handle_TColgp_HArray2OfLin2d &aHandle);
-        Handle_TColgp_HArray2OfLin2d(const TColgp_HArray2OfLin2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfLin2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfLin2d {
-    TColgp_HArray2OfLin2d* _get_reference() {
-    return (TColgp_HArray2OfLin2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfLin2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfLin2d)
 
 %extend TColgp_HArray2OfLin2d {
 	%pythoncode {
@@ -3913,51 +3322,7 @@ class TColgp_HArray2OfPnt : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfPnt::Handle_TColgp_HArray2OfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfPnt;
-class Handle_TColgp_HArray2OfPnt : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfPnt();
-        Handle_TColgp_HArray2OfPnt(const Handle_TColgp_HArray2OfPnt &aHandle);
-        Handle_TColgp_HArray2OfPnt(const TColgp_HArray2OfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfPnt {
-    TColgp_HArray2OfPnt* _get_reference() {
-    return (TColgp_HArray2OfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfPnt)
 
 %extend TColgp_HArray2OfPnt {
 	%pythoncode {
@@ -4060,51 +3425,7 @@ class TColgp_HArray2OfPnt2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfPnt2d::Handle_TColgp_HArray2OfPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfPnt2d;
-class Handle_TColgp_HArray2OfPnt2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfPnt2d();
-        Handle_TColgp_HArray2OfPnt2d(const Handle_TColgp_HArray2OfPnt2d &aHandle);
-        Handle_TColgp_HArray2OfPnt2d(const TColgp_HArray2OfPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfPnt2d {
-    TColgp_HArray2OfPnt2d* _get_reference() {
-    return (TColgp_HArray2OfPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfPnt2d)
 
 %extend TColgp_HArray2OfPnt2d {
 	%pythoncode {
@@ -4207,51 +3528,7 @@ class TColgp_HArray2OfVec : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfVec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfVec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfVec::Handle_TColgp_HArray2OfVec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfVec;
-class Handle_TColgp_HArray2OfVec : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfVec();
-        Handle_TColgp_HArray2OfVec(const Handle_TColgp_HArray2OfVec &aHandle);
-        Handle_TColgp_HArray2OfVec(const TColgp_HArray2OfVec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfVec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfVec {
-    TColgp_HArray2OfVec* _get_reference() {
-    return (TColgp_HArray2OfVec*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfVec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfVec)
 
 %extend TColgp_HArray2OfVec {
 	%pythoncode {
@@ -4354,51 +3631,7 @@ class TColgp_HArray2OfVec2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfVec2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfVec2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfVec2d::Handle_TColgp_HArray2OfVec2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfVec2d;
-class Handle_TColgp_HArray2OfVec2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfVec2d();
-        Handle_TColgp_HArray2OfVec2d(const Handle_TColgp_HArray2OfVec2d &aHandle);
-        Handle_TColgp_HArray2OfVec2d(const TColgp_HArray2OfVec2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfVec2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfVec2d {
-    TColgp_HArray2OfVec2d* _get_reference() {
-    return (TColgp_HArray2OfVec2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfVec2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfVec2d)
 
 %extend TColgp_HArray2OfVec2d {
 	%pythoncode {
@@ -4501,51 +3734,7 @@ class TColgp_HArray2OfXY : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfXY {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfXY(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfXY::Handle_TColgp_HArray2OfXY %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfXY;
-class Handle_TColgp_HArray2OfXY : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfXY();
-        Handle_TColgp_HArray2OfXY(const Handle_TColgp_HArray2OfXY &aHandle);
-        Handle_TColgp_HArray2OfXY(const TColgp_HArray2OfXY *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfXY DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfXY {
-    TColgp_HArray2OfXY* _get_reference() {
-    return (TColgp_HArray2OfXY*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfXY {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfXY)
 
 %extend TColgp_HArray2OfXY {
 	%pythoncode {
@@ -4648,51 +3837,7 @@ class TColgp_HArray2OfXYZ : public MMgt_TShared {
 };
 
 
-%extend TColgp_HArray2OfXYZ {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HArray2OfXYZ(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HArray2OfXYZ::Handle_TColgp_HArray2OfXYZ %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HArray2OfXYZ;
-class Handle_TColgp_HArray2OfXYZ : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HArray2OfXYZ();
-        Handle_TColgp_HArray2OfXYZ(const Handle_TColgp_HArray2OfXYZ &aHandle);
-        Handle_TColgp_HArray2OfXYZ(const TColgp_HArray2OfXYZ *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HArray2OfXYZ DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HArray2OfXYZ {
-    TColgp_HArray2OfXYZ* _get_reference() {
-    return (TColgp_HArray2OfXYZ*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HArray2OfXYZ {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HArray2OfXYZ)
 
 %extend TColgp_HArray2OfXYZ {
 	%pythoncode {
@@ -4837,51 +3982,7 @@ class TColgp_HSequenceOfDir : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfDir {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfDir(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfDir::Handle_TColgp_HSequenceOfDir %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfDir;
-class Handle_TColgp_HSequenceOfDir : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfDir();
-        Handle_TColgp_HSequenceOfDir(const Handle_TColgp_HSequenceOfDir &aHandle);
-        Handle_TColgp_HSequenceOfDir(const TColgp_HSequenceOfDir *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfDir DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfDir {
-    TColgp_HSequenceOfDir* _get_reference() {
-    return (TColgp_HSequenceOfDir*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfDir {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfDir)
 
 %extend TColgp_HSequenceOfDir {
 	%pythoncode {
@@ -5026,51 +4127,7 @@ class TColgp_HSequenceOfDir2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfDir2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfDir2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfDir2d::Handle_TColgp_HSequenceOfDir2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfDir2d;
-class Handle_TColgp_HSequenceOfDir2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfDir2d();
-        Handle_TColgp_HSequenceOfDir2d(const Handle_TColgp_HSequenceOfDir2d &aHandle);
-        Handle_TColgp_HSequenceOfDir2d(const TColgp_HSequenceOfDir2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfDir2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfDir2d {
-    TColgp_HSequenceOfDir2d* _get_reference() {
-    return (TColgp_HSequenceOfDir2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfDir2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfDir2d)
 
 %extend TColgp_HSequenceOfDir2d {
 	%pythoncode {
@@ -5215,51 +4272,7 @@ class TColgp_HSequenceOfPnt : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfPnt::Handle_TColgp_HSequenceOfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfPnt;
-class Handle_TColgp_HSequenceOfPnt : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfPnt();
-        Handle_TColgp_HSequenceOfPnt(const Handle_TColgp_HSequenceOfPnt &aHandle);
-        Handle_TColgp_HSequenceOfPnt(const TColgp_HSequenceOfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfPnt {
-    TColgp_HSequenceOfPnt* _get_reference() {
-    return (TColgp_HSequenceOfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfPnt)
 
 %extend TColgp_HSequenceOfPnt {
 	%pythoncode {
@@ -5404,51 +4417,7 @@ class TColgp_HSequenceOfPnt2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfPnt2d::Handle_TColgp_HSequenceOfPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfPnt2d;
-class Handle_TColgp_HSequenceOfPnt2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfPnt2d();
-        Handle_TColgp_HSequenceOfPnt2d(const Handle_TColgp_HSequenceOfPnt2d &aHandle);
-        Handle_TColgp_HSequenceOfPnt2d(const TColgp_HSequenceOfPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfPnt2d {
-    TColgp_HSequenceOfPnt2d* _get_reference() {
-    return (TColgp_HSequenceOfPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfPnt2d)
 
 %extend TColgp_HSequenceOfPnt2d {
 	%pythoncode {
@@ -5593,51 +4562,7 @@ class TColgp_HSequenceOfVec : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfVec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfVec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfVec::Handle_TColgp_HSequenceOfVec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfVec;
-class Handle_TColgp_HSequenceOfVec : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfVec();
-        Handle_TColgp_HSequenceOfVec(const Handle_TColgp_HSequenceOfVec &aHandle);
-        Handle_TColgp_HSequenceOfVec(const TColgp_HSequenceOfVec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfVec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfVec {
-    TColgp_HSequenceOfVec* _get_reference() {
-    return (TColgp_HSequenceOfVec*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfVec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfVec)
 
 %extend TColgp_HSequenceOfVec {
 	%pythoncode {
@@ -5782,51 +4707,7 @@ class TColgp_HSequenceOfVec2d : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfVec2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfVec2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfVec2d::Handle_TColgp_HSequenceOfVec2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfVec2d;
-class Handle_TColgp_HSequenceOfVec2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfVec2d();
-        Handle_TColgp_HSequenceOfVec2d(const Handle_TColgp_HSequenceOfVec2d &aHandle);
-        Handle_TColgp_HSequenceOfVec2d(const TColgp_HSequenceOfVec2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfVec2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfVec2d {
-    TColgp_HSequenceOfVec2d* _get_reference() {
-    return (TColgp_HSequenceOfVec2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfVec2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfVec2d)
 
 %extend TColgp_HSequenceOfVec2d {
 	%pythoncode {
@@ -5971,51 +4852,7 @@ class TColgp_HSequenceOfXY : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfXY {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfXY(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfXY::Handle_TColgp_HSequenceOfXY %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfXY;
-class Handle_TColgp_HSequenceOfXY : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfXY();
-        Handle_TColgp_HSequenceOfXY(const Handle_TColgp_HSequenceOfXY &aHandle);
-        Handle_TColgp_HSequenceOfXY(const TColgp_HSequenceOfXY *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfXY DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfXY {
-    TColgp_HSequenceOfXY* _get_reference() {
-    return (TColgp_HSequenceOfXY*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfXY {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfXY)
 
 %extend TColgp_HSequenceOfXY {
 	%pythoncode {
@@ -6160,51 +4997,7 @@ class TColgp_HSequenceOfXYZ : public MMgt_TShared {
 };
 
 
-%extend TColgp_HSequenceOfXYZ {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_HSequenceOfXYZ(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_HSequenceOfXYZ::Handle_TColgp_HSequenceOfXYZ %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_HSequenceOfXYZ;
-class Handle_TColgp_HSequenceOfXYZ : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColgp_HSequenceOfXYZ();
-        Handle_TColgp_HSequenceOfXYZ(const Handle_TColgp_HSequenceOfXYZ &aHandle);
-        Handle_TColgp_HSequenceOfXYZ(const TColgp_HSequenceOfXYZ *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_HSequenceOfXYZ DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_HSequenceOfXYZ {
-    TColgp_HSequenceOfXYZ* _get_reference() {
-    return (TColgp_HSequenceOfXYZ*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_HSequenceOfXYZ {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_HSequenceOfXYZ)
 
 %extend TColgp_HSequenceOfXYZ {
 	%pythoncode {
@@ -6231,51 +5024,7 @@ class TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public TCollection_SeqNode 
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d::Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d;
-class Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d();
-        Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d(const Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d(const TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
-    TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d)
 
 %extend TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
 	%pythoncode {
@@ -6302,51 +5051,7 @@ class TColgp_SequenceNodeOfSequenceOfAx1 : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfAx1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfAx1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfAx1::Handle_TColgp_SequenceNodeOfSequenceOfAx1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfAx1;
-class Handle_TColgp_SequenceNodeOfSequenceOfAx1 : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfAx1();
-        Handle_TColgp_SequenceNodeOfSequenceOfAx1(const Handle_TColgp_SequenceNodeOfSequenceOfAx1 &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfAx1(const TColgp_SequenceNodeOfSequenceOfAx1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfAx1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfAx1 {
-    TColgp_SequenceNodeOfSequenceOfAx1* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfAx1*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfAx1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfAx1)
 
 %extend TColgp_SequenceNodeOfSequenceOfAx1 {
 	%pythoncode {
@@ -6373,51 +5078,7 @@ class TColgp_SequenceNodeOfSequenceOfDir : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfDir {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfDir(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfDir::Handle_TColgp_SequenceNodeOfSequenceOfDir %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfDir;
-class Handle_TColgp_SequenceNodeOfSequenceOfDir : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfDir();
-        Handle_TColgp_SequenceNodeOfSequenceOfDir(const Handle_TColgp_SequenceNodeOfSequenceOfDir &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfDir(const TColgp_SequenceNodeOfSequenceOfDir *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfDir DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfDir {
-    TColgp_SequenceNodeOfSequenceOfDir* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfDir*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfDir {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfDir)
 
 %extend TColgp_SequenceNodeOfSequenceOfDir {
 	%pythoncode {
@@ -6444,51 +5105,7 @@ class TColgp_SequenceNodeOfSequenceOfDir2d : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfDir2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfDir2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfDir2d::Handle_TColgp_SequenceNodeOfSequenceOfDir2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfDir2d;
-class Handle_TColgp_SequenceNodeOfSequenceOfDir2d : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfDir2d();
-        Handle_TColgp_SequenceNodeOfSequenceOfDir2d(const Handle_TColgp_SequenceNodeOfSequenceOfDir2d &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfDir2d(const TColgp_SequenceNodeOfSequenceOfDir2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfDir2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfDir2d {
-    TColgp_SequenceNodeOfSequenceOfDir2d* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfDir2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfDir2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfDir2d)
 
 %extend TColgp_SequenceNodeOfSequenceOfDir2d {
 	%pythoncode {
@@ -6515,51 +5132,7 @@ class TColgp_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfPnt::Handle_TColgp_SequenceNodeOfSequenceOfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfPnt;
-class Handle_TColgp_SequenceNodeOfSequenceOfPnt : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt();
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt(const Handle_TColgp_SequenceNodeOfSequenceOfPnt &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt(const TColgp_SequenceNodeOfSequenceOfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt {
-    TColgp_SequenceNodeOfSequenceOfPnt* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfPnt)
 
 %extend TColgp_SequenceNodeOfSequenceOfPnt {
 	%pythoncode {
@@ -6586,51 +5159,7 @@ class TColgp_SequenceNodeOfSequenceOfPnt2d : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfPnt2d::Handle_TColgp_SequenceNodeOfSequenceOfPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfPnt2d;
-class Handle_TColgp_SequenceNodeOfSequenceOfPnt2d : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt2d();
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt2d(const Handle_TColgp_SequenceNodeOfSequenceOfPnt2d &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfPnt2d(const TColgp_SequenceNodeOfSequenceOfPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt2d {
-    TColgp_SequenceNodeOfSequenceOfPnt2d* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfPnt2d)
 
 %extend TColgp_SequenceNodeOfSequenceOfPnt2d {
 	%pythoncode {
@@ -6657,51 +5186,7 @@ class TColgp_SequenceNodeOfSequenceOfVec : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfVec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfVec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfVec::Handle_TColgp_SequenceNodeOfSequenceOfVec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfVec;
-class Handle_TColgp_SequenceNodeOfSequenceOfVec : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfVec();
-        Handle_TColgp_SequenceNodeOfSequenceOfVec(const Handle_TColgp_SequenceNodeOfSequenceOfVec &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfVec(const TColgp_SequenceNodeOfSequenceOfVec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfVec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfVec {
-    TColgp_SequenceNodeOfSequenceOfVec* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfVec*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfVec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfVec)
 
 %extend TColgp_SequenceNodeOfSequenceOfVec {
 	%pythoncode {
@@ -6728,51 +5213,7 @@ class TColgp_SequenceNodeOfSequenceOfVec2d : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfVec2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfVec2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfVec2d::Handle_TColgp_SequenceNodeOfSequenceOfVec2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfVec2d;
-class Handle_TColgp_SequenceNodeOfSequenceOfVec2d : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfVec2d();
-        Handle_TColgp_SequenceNodeOfSequenceOfVec2d(const Handle_TColgp_SequenceNodeOfSequenceOfVec2d &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfVec2d(const TColgp_SequenceNodeOfSequenceOfVec2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfVec2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfVec2d {
-    TColgp_SequenceNodeOfSequenceOfVec2d* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfVec2d*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfVec2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfVec2d)
 
 %extend TColgp_SequenceNodeOfSequenceOfVec2d {
 	%pythoncode {
@@ -6799,51 +5240,7 @@ class TColgp_SequenceNodeOfSequenceOfXY : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfXY {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfXY(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfXY::Handle_TColgp_SequenceNodeOfSequenceOfXY %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfXY;
-class Handle_TColgp_SequenceNodeOfSequenceOfXY : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfXY();
-        Handle_TColgp_SequenceNodeOfSequenceOfXY(const Handle_TColgp_SequenceNodeOfSequenceOfXY &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfXY(const TColgp_SequenceNodeOfSequenceOfXY *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfXY DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfXY {
-    TColgp_SequenceNodeOfSequenceOfXY* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfXY*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfXY {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfXY)
 
 %extend TColgp_SequenceNodeOfSequenceOfXY {
 	%pythoncode {
@@ -6870,51 +5267,7 @@ class TColgp_SequenceNodeOfSequenceOfXYZ : public TCollection_SeqNode {
 };
 
 
-%extend TColgp_SequenceNodeOfSequenceOfXYZ {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfXYZ(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfXYZ::Handle_TColgp_SequenceNodeOfSequenceOfXYZ %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfXYZ;
-class Handle_TColgp_SequenceNodeOfSequenceOfXYZ : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColgp_SequenceNodeOfSequenceOfXYZ();
-        Handle_TColgp_SequenceNodeOfSequenceOfXYZ(const Handle_TColgp_SequenceNodeOfSequenceOfXYZ &aHandle);
-        Handle_TColgp_SequenceNodeOfSequenceOfXYZ(const TColgp_SequenceNodeOfSequenceOfXYZ *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColgp_SequenceNodeOfSequenceOfXYZ DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColgp_SequenceNodeOfSequenceOfXYZ {
-    TColgp_SequenceNodeOfSequenceOfXYZ* _get_reference() {
-    return (TColgp_SequenceNodeOfSequenceOfXYZ*)$self->Access();
-    }
-};
-
-%extend Handle_TColgp_SequenceNodeOfSequenceOfXYZ {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColgp_SequenceNodeOfSequenceOfXYZ)
 
 %extend TColgp_SequenceNodeOfSequenceOfXYZ {
 	%pythoncode {

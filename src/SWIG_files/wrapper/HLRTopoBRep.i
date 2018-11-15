@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRTOPOBREPDOCSTRING
-"No docstring provided."
+"This   Package provides some    topologicalreconstruction services needed by the Hidden LineRemoval Algorithms  using OutLine and  IsoLinefacilities, applied to an object represented by aBRep data structure."
 %enddef
 %module (package="OCC.Core", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include HLRTopoBRep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData)
+%wrap_handle(HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData)
+%wrap_handle(HLRTopoBRep_ListNodeOfListOfVData)
+%wrap_handle(HLRTopoBRep_OutLiner)
 
 class HLRTopoBRep_DSFiller {
 	public:
@@ -426,51 +417,7 @@ class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNo
 };
 
 
-%extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData::Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData;
-class Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData();
-        Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(const Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData &aHandle);
-        Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(const HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-    HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData* _get_reference() {
-    return (HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData)
 
 %extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
 	%pythoncode {
@@ -501,51 +448,7 @@ class HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public TCollection_MapNod
 };
 
 
-%extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData::Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData;
-class Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData();
-        Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData(const Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData &aHandle);
-        Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData(const HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-    HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData* _get_reference() {
-    return (HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData)
 
 %extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
 	%pythoncode {
@@ -787,51 +690,7 @@ class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode {
 };
 
 
-%extend HLRTopoBRep_ListNodeOfListOfVData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRTopoBRep_ListNodeOfListOfVData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRTopoBRep_ListNodeOfListOfVData::Handle_HLRTopoBRep_ListNodeOfListOfVData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRTopoBRep_ListNodeOfListOfVData;
-class Handle_HLRTopoBRep_ListNodeOfListOfVData : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_HLRTopoBRep_ListNodeOfListOfVData();
-        Handle_HLRTopoBRep_ListNodeOfListOfVData(const Handle_HLRTopoBRep_ListNodeOfListOfVData &aHandle);
-        Handle_HLRTopoBRep_ListNodeOfListOfVData(const HLRTopoBRep_ListNodeOfListOfVData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRTopoBRep_ListNodeOfListOfVData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
-    HLRTopoBRep_ListNodeOfListOfVData* _get_reference() {
-    return (HLRTopoBRep_ListNodeOfListOfVData*)$self->Access();
-    }
-};
-
-%extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRTopoBRep_ListNodeOfListOfVData)
 
 %extend HLRTopoBRep_ListNodeOfListOfVData {
 	%pythoncode {
@@ -1114,51 +973,7 @@ class HLRTopoBRep_OutLiner : public MMgt_TShared {
 };
 
 
-%extend HLRTopoBRep_OutLiner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_HLRTopoBRep_OutLiner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_HLRTopoBRep_OutLiner::Handle_HLRTopoBRep_OutLiner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_HLRTopoBRep_OutLiner;
-class Handle_HLRTopoBRep_OutLiner : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_HLRTopoBRep_OutLiner();
-        Handle_HLRTopoBRep_OutLiner(const Handle_HLRTopoBRep_OutLiner &aHandle);
-        Handle_HLRTopoBRep_OutLiner(const HLRTopoBRep_OutLiner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_HLRTopoBRep_OutLiner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_HLRTopoBRep_OutLiner {
-    HLRTopoBRep_OutLiner* _get_reference() {
-    return (HLRTopoBRep_OutLiner*)$self->Access();
-    }
-};
-
-%extend Handle_HLRTopoBRep_OutLiner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(HLRTopoBRep_OutLiner)
 
 %extend HLRTopoBRep_OutLiner {
 	%pythoncode {

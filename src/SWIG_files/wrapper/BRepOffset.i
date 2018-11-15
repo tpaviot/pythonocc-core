@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPOFFSETDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETDOCSTRING) BRepOffset
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepOffset_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -76,6 +62,13 @@ enum BRepOffset_Mode {
 	BRepOffset_RectoVerso = 2,
 };
 
+enum BRepOffset_Status {
+	BRepOffset_Good = 0,
+	BRepOffset_Reversed = 1,
+	BRepOffset_Degenerated = 2,
+	BRepOffset_Unknown = 3,
+};
+
 enum BRepOffset_Type {
 	BRepOffset_Concave = 0,
 	BRepOffset_Convex = 1,
@@ -84,14 +77,12 @@ enum BRepOffset_Type {
 	BRepOffset_Other = 4,
 };
 
-enum BRepOffset_Status {
-	BRepOffset_Good = 0,
-	BRepOffset_Reversed = 1,
-	BRepOffset_Degenerated = 2,
-	BRepOffset_Unknown = 3,
-};
-
 /* end public enums declaration */
+
+%wrap_handle(BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval)
+%wrap_handle(BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape)
+%wrap_handle(BRepOffset_DataMapNodeOfDataMapOfShapeOffset)
+%wrap_handle(BRepOffset_ListNodeOfListOfInterval)
 
 %rename(brepoffset) BRepOffset;
 class BRepOffset {
@@ -390,51 +381,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public TCollection_
 };
 
 
-%extend BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval::Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval;
-class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval();
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval(const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval &aHandle);
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval(const BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
-    BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval* _get_reference() {
-    return (BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval)
 
 %extend BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
 	%pythoncode {
@@ -465,51 +412,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public TCollection_MapN
 };
 
 
-%extend BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape::Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape;
-class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape();
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape(const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape &aHandle);
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape(const BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
-    BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape* _get_reference() {
-    return (BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape)
 
 %extend BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
 	%pythoncode {
@@ -540,51 +443,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public TCollection_MapNode 
 };
 
 
-%extend BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset::Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset;
-class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset();
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset(const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset &aHandle);
-        Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset(const BRepOffset_DataMapNodeOfDataMapOfShapeOffset *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
-    BRepOffset_DataMapNodeOfDataMapOfShapeOffset* _get_reference() {
-    return (BRepOffset_DataMapNodeOfDataMapOfShapeOffset*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffset_DataMapNodeOfDataMapOfShapeOffset)
 
 %extend BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
 	%pythoncode {
@@ -1127,51 +986,7 @@ class BRepOffset_ListNodeOfListOfInterval : public TCollection_MapNode {
 };
 
 
-%extend BRepOffset_ListNodeOfListOfInterval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepOffset_ListNodeOfListOfInterval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepOffset_ListNodeOfListOfInterval::Handle_BRepOffset_ListNodeOfListOfInterval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepOffset_ListNodeOfListOfInterval;
-class Handle_BRepOffset_ListNodeOfListOfInterval : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepOffset_ListNodeOfListOfInterval();
-        Handle_BRepOffset_ListNodeOfListOfInterval(const Handle_BRepOffset_ListNodeOfListOfInterval &aHandle);
-        Handle_BRepOffset_ListNodeOfListOfInterval(const BRepOffset_ListNodeOfListOfInterval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepOffset_ListNodeOfListOfInterval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepOffset_ListNodeOfListOfInterval {
-    BRepOffset_ListNodeOfListOfInterval* _get_reference() {
-    return (BRepOffset_ListNodeOfListOfInterval*)$self->Access();
-    }
-};
-
-%extend Handle_BRepOffset_ListNodeOfListOfInterval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepOffset_ListNodeOfListOfInterval)
 
 %extend BRepOffset_ListNodeOfListOfInterval {
 	%pythoncode {

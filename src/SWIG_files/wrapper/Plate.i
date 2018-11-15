@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PLATEDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PLATEDOCSTRING) Plate
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Plate_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Plate_HArray1OfPinpointConstraint)
+%wrap_handle(Plate_SequenceNodeOfSequenceOfLinearScalarConstraint)
+%wrap_handle(Plate_SequenceNodeOfSequenceOfLinearXYZConstraint)
+%wrap_handle(Plate_SequenceNodeOfSequenceOfPinpointConstraint)
 
 %nodefaultctor Plate_Array1OfPinpointConstraint;
 class Plate_Array1OfPinpointConstraint {
@@ -532,51 +523,7 @@ class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 };
 
 
-%extend Plate_HArray1OfPinpointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Plate_HArray1OfPinpointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Plate_HArray1OfPinpointConstraint::Handle_Plate_HArray1OfPinpointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Plate_HArray1OfPinpointConstraint;
-class Handle_Plate_HArray1OfPinpointConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Plate_HArray1OfPinpointConstraint();
-        Handle_Plate_HArray1OfPinpointConstraint(const Handle_Plate_HArray1OfPinpointConstraint &aHandle);
-        Handle_Plate_HArray1OfPinpointConstraint(const Plate_HArray1OfPinpointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Plate_HArray1OfPinpointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Plate_HArray1OfPinpointConstraint {
-    Plate_HArray1OfPinpointConstraint* _get_reference() {
-    return (Plate_HArray1OfPinpointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_Plate_HArray1OfPinpointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Plate_HArray1OfPinpointConstraint)
 
 %extend Plate_HArray1OfPinpointConstraint {
 	%pythoncode {
@@ -1030,51 +977,7 @@ class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public TCollection_
 };
 
 
-%extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint::Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
-class Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint();
-        Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint(const Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint &aHandle);
-        Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint(const Plate_SequenceNodeOfSequenceOfLinearScalarConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-    Plate_SequenceNodeOfSequenceOfLinearScalarConstraint* _get_reference() {
-    return (Plate_SequenceNodeOfSequenceOfLinearScalarConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Plate_SequenceNodeOfSequenceOfLinearScalarConstraint)
 
 %extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
 	%pythoncode {
@@ -1101,51 +1004,7 @@ class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_Seq
 };
 
 
-%extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint::Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
-class Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint();
-        Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(const Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint &aHandle);
-        Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(const Plate_SequenceNodeOfSequenceOfLinearXYZConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-    Plate_SequenceNodeOfSequenceOfLinearXYZConstraint* _get_reference() {
-    return (Plate_SequenceNodeOfSequenceOfLinearXYZConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Plate_SequenceNodeOfSequenceOfLinearXYZConstraint)
 
 %extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
 	%pythoncode {
@@ -1172,51 +1031,7 @@ class Plate_SequenceNodeOfSequenceOfPinpointConstraint : public TCollection_SeqN
 };
 
 
-%extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint::Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint;
-class Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint();
-        Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint(const Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint &aHandle);
-        Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint(const Plate_SequenceNodeOfSequenceOfPinpointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-    Plate_SequenceNodeOfSequenceOfPinpointConstraint* _get_reference() {
-    return (Plate_SequenceNodeOfSequenceOfPinpointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Plate_SequenceNodeOfSequenceOfPinpointConstraint)
 
 %extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
 	%pythoncode {

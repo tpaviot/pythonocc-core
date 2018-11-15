@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPAPPROXDOCSTRING
-"No docstring provided."
+"This package provides services on intersection curvesdealt by topological operations on BRep objects.Services are approximation services."
 %enddef
 %module (package="OCC.Core", docstring=BREPAPPROXDOCSTRING) BRepApprox
 
@@ -34,30 +34,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepApprox_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRepApprox_ApproxLine)
 
 %nodefaultctor BRepApprox_Approx;
 class BRepApprox_Approx {
@@ -170,51 +158,7 @@ class BRepApprox_ApproxLine : public MMgt_TShared {
 };
 
 
-%extend BRepApprox_ApproxLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepApprox_ApproxLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepApprox_ApproxLine::Handle_BRepApprox_ApproxLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepApprox_ApproxLine;
-class Handle_BRepApprox_ApproxLine : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepApprox_ApproxLine();
-        Handle_BRepApprox_ApproxLine(const Handle_BRepApprox_ApproxLine &aHandle);
-        Handle_BRepApprox_ApproxLine(const BRepApprox_ApproxLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepApprox_ApproxLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepApprox_ApproxLine {
-    BRepApprox_ApproxLine* _get_reference() {
-    return (BRepApprox_ApproxLine*)$self->Access();
-    }
-};
-
-%extend Handle_BRepApprox_ApproxLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepApprox_ApproxLine)
 
 %extend BRepApprox_ApproxLine {
 	%pythoncode {

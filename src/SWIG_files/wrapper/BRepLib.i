@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPLIBDOCSTRING
-"No docstring provided."
+"The BRepLib package provides general utilities forBRep.* FindSurface : Class to compute a surface througha set of edges.* Compute missing 3d curve on an edge."
 %enddef
 %module (package="OCC.Core", docstring=BREPLIBDOCSTRING) BRepLib
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -67,11 +53,12 @@ enum BRepLib_EdgeError {
 	BRepLib_LineThroughIdenticPoints = 6,
 };
 
-enum BRepLib_ShellError {
-	BRepLib_ShellDone = 0,
-	BRepLib_EmptyShell = 1,
-	BRepLib_DisconnectedShell = 2,
-	BRepLib_ShellParametersOutOfRange = 3,
+enum BRepLib_FaceError {
+	BRepLib_FaceDone = 0,
+	BRepLib_NoFace = 1,
+	BRepLib_NotPlanar = 2,
+	BRepLib_CurveProjectionFailed = 3,
+	BRepLib_ParametersOutOfRange = 4,
 };
 
 enum BRepLib_ShapeModification {
@@ -82,6 +69,13 @@ enum BRepLib_ShapeModification {
 	BRepLib_BoundaryModified = 4,
 };
 
+enum BRepLib_ShellError {
+	BRepLib_ShellDone = 0,
+	BRepLib_EmptyShell = 1,
+	BRepLib_DisconnectedShell = 2,
+	BRepLib_ShellParametersOutOfRange = 3,
+};
+
 enum BRepLib_WireError {
 	BRepLib_WireDone = 0,
 	BRepLib_EmptyWire = 1,
@@ -89,15 +83,8 @@ enum BRepLib_WireError {
 	BRepLib_NonManifoldWire = 3,
 };
 
-enum BRepLib_FaceError {
-	BRepLib_FaceDone = 0,
-	BRepLib_NoFace = 1,
-	BRepLib_NotPlanar = 2,
-	BRepLib_CurveProjectionFailed = 3,
-	BRepLib_ParametersOutOfRange = 4,
-};
-
 /* end public enums declaration */
+
 
 %rename(breplib) BRepLib;
 class BRepLib {

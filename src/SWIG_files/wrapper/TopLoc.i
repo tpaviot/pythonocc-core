@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPLOCDOCSTRING
-"No docstring provided."
+"-Level : Public.All methods of all classes will be public.The TopLoc package gives ressources to handle 3D localcoordinate systems called Locations.A Location is a composition of elementary coordinatesystems, each one is called a Datum.  The Locationkeeps track of this composition."
 %enddef
 %module (package="OCC.Core", docstring=TOPLOCDOCSTRING) TopLoc
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopLoc_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TopLoc_Datum3D)
+%wrap_handle(TopLoc_IndexedMapNodeOfIndexedMapOfLocation)
+%wrap_handle(TopLoc_SListNodeOfItemLocation)
+%wrap_handle(TopLoc_StdMapNodeOfMapOfLocation)
 
 %nodefaultctor TopLoc_Datum3D;
 class TopLoc_Datum3D : public MMgt_TShared {
@@ -93,51 +84,7 @@ class TopLoc_Datum3D : public MMgt_TShared {
         };
 
 
-%extend TopLoc_Datum3D {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopLoc_Datum3D(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopLoc_Datum3D::Handle_TopLoc_Datum3D %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopLoc_Datum3D;
-class Handle_TopLoc_Datum3D : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopLoc_Datum3D();
-        Handle_TopLoc_Datum3D(const Handle_TopLoc_Datum3D &aHandle);
-        Handle_TopLoc_Datum3D(const TopLoc_Datum3D *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopLoc_Datum3D DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopLoc_Datum3D {
-    TopLoc_Datum3D* _get_reference() {
-    return (TopLoc_Datum3D*)$self->Access();
-    }
-};
-
-%extend Handle_TopLoc_Datum3D {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopLoc_Datum3D)
 
 %extend TopLoc_Datum3D {
 	%pythoncode {
@@ -183,51 +130,7 @@ class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode {
 };
 
 
-%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation::Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
-class Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation();
-        Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation(const Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation &aHandle);
-        Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation(const TopLoc_IndexedMapNodeOfIndexedMapOfLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-    TopLoc_IndexedMapNodeOfIndexedMapOfLocation* _get_reference() {
-    return (TopLoc_IndexedMapNodeOfIndexedMapOfLocation*)$self->Access();
-    }
-};
-
-%extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopLoc_IndexedMapNodeOfIndexedMapOfLocation)
 
 %extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
 	%pythoncode {
@@ -667,51 +570,7 @@ class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
 };
 
 
-%extend TopLoc_SListNodeOfItemLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopLoc_SListNodeOfItemLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopLoc_SListNodeOfItemLocation::Handle_TopLoc_SListNodeOfItemLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopLoc_SListNodeOfItemLocation;
-class Handle_TopLoc_SListNodeOfItemLocation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopLoc_SListNodeOfItemLocation();
-        Handle_TopLoc_SListNodeOfItemLocation(const Handle_TopLoc_SListNodeOfItemLocation &aHandle);
-        Handle_TopLoc_SListNodeOfItemLocation(const TopLoc_SListNodeOfItemLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopLoc_SListNodeOfItemLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopLoc_SListNodeOfItemLocation {
-    TopLoc_SListNodeOfItemLocation* _get_reference() {
-    return (TopLoc_SListNodeOfItemLocation*)$self->Access();
-    }
-};
-
-%extend Handle_TopLoc_SListNodeOfItemLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopLoc_SListNodeOfItemLocation)
 
 %extend TopLoc_SListNodeOfItemLocation {
 	%pythoncode {
@@ -833,51 +692,7 @@ class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
 };
 
 
-%extend TopLoc_StdMapNodeOfMapOfLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopLoc_StdMapNodeOfMapOfLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopLoc_StdMapNodeOfMapOfLocation::Handle_TopLoc_StdMapNodeOfMapOfLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopLoc_StdMapNodeOfMapOfLocation;
-class Handle_TopLoc_StdMapNodeOfMapOfLocation : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopLoc_StdMapNodeOfMapOfLocation();
-        Handle_TopLoc_StdMapNodeOfMapOfLocation(const Handle_TopLoc_StdMapNodeOfMapOfLocation &aHandle);
-        Handle_TopLoc_StdMapNodeOfMapOfLocation(const TopLoc_StdMapNodeOfMapOfLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopLoc_StdMapNodeOfMapOfLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
-    TopLoc_StdMapNodeOfMapOfLocation* _get_reference() {
-    return (TopLoc_StdMapNodeOfMapOfLocation*)$self->Access();
-    }
-};
-
-%extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopLoc_StdMapNodeOfMapOfLocation)
 
 %extend TopLoc_StdMapNodeOfMapOfLocation {
 	%pythoncode {

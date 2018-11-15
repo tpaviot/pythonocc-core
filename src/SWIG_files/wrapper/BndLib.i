@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BNDLIBDOCSTRING
-"No docstring provided."
+"The BndLib package provides functions to add a geometric primitive to a bounding box.Note: these functions work with gp objects, optionallylimited by parameter values. If the curves and surfacesprovided by the gp package are not explicitlyparameterized, they still have an implicit parameterization,similar to that which they infer for the equivalent Geom or Geom2d objects.Add : Package to compute the bounding boxes for elementaryobjects from gp in 2d and 3d .AddCurve2d : A class to compute the bounding box for a curvein 2d dimensions ;the curve is defined by a toolAddCurve : A class to compute the bounding box for a curvein 3d dimensions ;the curve is defined by a toolAddSurface : A class to compute the bounding box for a surface.The surface is defined by a tool for the geometry and anothertool for the topology (only the edges in 2d dimensions)-Level : Public.All methods of all classes will be public."
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BndLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(bndlib) BndLib;
 class BndLib {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DAPIDOCSTRING
-"No docstring provided."
+"The Geom2dAPI package provides an ApplicationProgramming Interface for the Geometry.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.The API provides classes to call the algorithmesof the Geometry* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused by the algorithmes*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to evaluate the distance <D> between apoint <P> and a curve <C>, one can writes :D = Geom2dAPI_ProjectPointOnCurve(P,C);orGeom2dAPI_ProjectPointOnCurve PonC(P,C);D = PonC.LowerDistance();"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Geom2dAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor Geom2dAPI_ExtremaCurveCurve;
 class Geom2dAPI_ExtremaCurveCurve {

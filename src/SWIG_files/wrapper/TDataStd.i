@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDATASTDDOCSTRING
-"No docstring provided."
+"This package defines  standard attributes formodelling.These allow you to create and modify labelsand attributes for many basic data types.Standard topological and visualizationattributes have also been created.To find an attribute attached to a specific label,you use the GUID of the type of attribute youare looking for. To do this, first find thisinformation using the method GetID as follows: Standard_GUID anID =MyAttributeClass::GetID();Then, use the method Find for the label as follows:Standard_Boolean HasAttribute=aLabel.Find(anID,anAttribute);NoteFor information on the relations between thiscomponent of OCAF and the others, refer to the OCAF User's Guide.- Category: GUID - AttributeID2a96b606-ec8b-11d0-bee7-080009dc3333	TDataStd_Integer2a96b608-ec8b-11d0-bee7-080009dc3333	TDataStd_Name2a96b60f-ec8b-11d0-bee7-080009dc3333	TDataStd_Real2a96b610-ec8b-11d0-bee7-080009dc3333	TDataStd_Reference2a96b616-ec8b-11d0-bee7-080009dc3333	TDataStd_Comment2a96b61c-ec8b-11d0-bee7-080009dc3333  TDataStd_UAttribute2a96b61d-ec8b-11d0-bee7-080009dc3333  TDataStd_IntegerArray2a96b61e-ec8b-11d0-bee7-080009dc3333  TDataStd_RealArray2a96b624-ec8b-11d0-bee7-080009dc3333  TDataStd_ExtStringArray2a96b609-ec8b-11d0-bee7-080009dc3333	TDataStd_NoteBook2a96b61f-ec8b-11d0-bee7-080009dc3333  TDataStd_Directory"
 %enddef
 %module (package="OCC.Core", docstring=TDATASTDDOCSTRING) TDataStd
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TDataStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TDataStd_TreeNode * TDataStd_PtrTreeNode;
@@ -65,6 +51,53 @@ enum TDataStd_RealEnum {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TDataStd_AsciiString)
+%wrap_handle(TDataStd_BooleanArray)
+%wrap_handle(TDataStd_BooleanList)
+%wrap_handle(TDataStd_ByteArray)
+%wrap_handle(TDataStd_Comment)
+%wrap_handle(TDataStd_Current)
+%wrap_handle(TDataStd_DataMapNodeOfDataMapOfStringByte)
+%wrap_handle(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger)
+%wrap_handle(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal)
+%wrap_handle(TDataStd_DataMapNodeOfDataMapOfStringReal)
+%wrap_handle(TDataStd_DataMapNodeOfDataMapOfStringString)
+%wrap_handle(TDataStd_DeltaOnModificationOfByteArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfExtStringArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfIntArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfIntPackedMap)
+%wrap_handle(TDataStd_DeltaOnModificationOfRealArray)
+%wrap_handle(TDataStd_Directory)
+%wrap_handle(TDataStd_Expression)
+%wrap_handle(TDataStd_ExtStringArray)
+%wrap_handle(TDataStd_ExtStringList)
+%wrap_handle(TDataStd_HDataMapOfStringByte)
+%wrap_handle(TDataStd_HDataMapOfStringHArray1OfInteger)
+%wrap_handle(TDataStd_HDataMapOfStringHArray1OfReal)
+%wrap_handle(TDataStd_HDataMapOfStringInteger)
+%wrap_handle(TDataStd_HDataMapOfStringReal)
+%wrap_handle(TDataStd_HDataMapOfStringString)
+%wrap_handle(TDataStd_HLabelArray1)
+%wrap_handle(TDataStd_IntPackedMap)
+%wrap_handle(TDataStd_Integer)
+%wrap_handle(TDataStd_IntegerArray)
+%wrap_handle(TDataStd_IntegerList)
+%wrap_handle(TDataStd_ListNodeOfListOfByte)
+%wrap_handle(TDataStd_ListNodeOfListOfExtendedString)
+%wrap_handle(TDataStd_Name)
+%wrap_handle(TDataStd_NamedData)
+%wrap_handle(TDataStd_NoteBook)
+%wrap_handle(TDataStd_Real)
+%wrap_handle(TDataStd_RealArray)
+%wrap_handle(TDataStd_RealList)
+%wrap_handle(TDataStd_ReferenceArray)
+%wrap_handle(TDataStd_ReferenceList)
+%wrap_handle(TDataStd_Relation)
+%wrap_handle(TDataStd_Tick)
+%wrap_handle(TDataStd_TreeNode)
+%wrap_handle(TDataStd_UAttribute)
+%wrap_handle(TDataStd_Variable)
 
 %rename(tdatastd) TDataStd;
 class TDataStd {
@@ -165,51 +198,7 @@ class TDataStd_AsciiString : public TDF_Attribute {
         };
 
 
-%extend TDataStd_AsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_AsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_AsciiString::Handle_TDataStd_AsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_AsciiString;
-class Handle_TDataStd_AsciiString : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_AsciiString();
-        Handle_TDataStd_AsciiString(const Handle_TDataStd_AsciiString &aHandle);
-        Handle_TDataStd_AsciiString(const TDataStd_AsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_AsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_AsciiString {
-    TDataStd_AsciiString* _get_reference() {
-    return (TDataStd_AsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_AsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_AsciiString)
 
 %extend TDataStd_AsciiString {
 	%pythoncode {
@@ -330,51 +319,7 @@ class TDataStd_BooleanArray : public TDF_Attribute {
         };
 
 
-%extend TDataStd_BooleanArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_BooleanArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_BooleanArray::Handle_TDataStd_BooleanArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_BooleanArray;
-class Handle_TDataStd_BooleanArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_BooleanArray();
-        Handle_TDataStd_BooleanArray(const Handle_TDataStd_BooleanArray &aHandle);
-        Handle_TDataStd_BooleanArray(const TDataStd_BooleanArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_BooleanArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_BooleanArray {
-    TDataStd_BooleanArray* _get_reference() {
-    return (TDataStd_BooleanArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_BooleanArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_BooleanArray)
 
 %extend TDataStd_BooleanArray {
 	%pythoncode {
@@ -473,51 +418,7 @@ class TDataStd_BooleanList : public TDF_Attribute {
         };
 
 
-%extend TDataStd_BooleanList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_BooleanList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_BooleanList::Handle_TDataStd_BooleanList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_BooleanList;
-class Handle_TDataStd_BooleanList : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_BooleanList();
-        Handle_TDataStd_BooleanList(const Handle_TDataStd_BooleanList &aHandle);
-        Handle_TDataStd_BooleanList(const TDataStd_BooleanList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_BooleanList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_BooleanList {
-    TDataStd_BooleanList* _get_reference() {
-    return (TDataStd_BooleanList*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_BooleanList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_BooleanList)
 
 %extend TDataStd_BooleanList {
 	%pythoncode {
@@ -664,51 +565,7 @@ class TDataStd_ByteArray : public TDF_Attribute {
 };
 
 
-%extend TDataStd_ByteArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ByteArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ByteArray::Handle_TDataStd_ByteArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ByteArray;
-class Handle_TDataStd_ByteArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_ByteArray();
-        Handle_TDataStd_ByteArray(const Handle_TDataStd_ByteArray &aHandle);
-        Handle_TDataStd_ByteArray(const TDataStd_ByteArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ByteArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ByteArray {
-    TDataStd_ByteArray* _get_reference() {
-    return (TDataStd_ByteArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ByteArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ByteArray)
 
 %extend TDataStd_ByteArray {
 	%pythoncode {
@@ -858,51 +715,7 @@ class TDataStd_Comment : public TDF_Attribute {
 };
 
 
-%extend TDataStd_Comment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Comment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Comment::Handle_TDataStd_Comment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Comment;
-class Handle_TDataStd_Comment : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Comment();
-        Handle_TDataStd_Comment(const Handle_TDataStd_Comment &aHandle);
-        Handle_TDataStd_Comment(const TDataStd_Comment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Comment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Comment {
-    TDataStd_Comment* _get_reference() {
-    return (TDataStd_Comment*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Comment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Comment)
 
 %extend TDataStd_Comment {
 	%pythoncode {
@@ -989,51 +802,7 @@ class TDataStd_Current : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Current {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Current(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Current::Handle_TDataStd_Current %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Current;
-class Handle_TDataStd_Current : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Current();
-        Handle_TDataStd_Current(const Handle_TDataStd_Current &aHandle);
-        Handle_TDataStd_Current(const TDataStd_Current *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Current DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Current {
-    TDataStd_Current* _get_reference() {
-    return (TDataStd_Current*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Current {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Current)
 
 %extend TDataStd_Current {
 	%pythoncode {
@@ -1239,51 +1008,7 @@ class TDataStd_DataMapNodeOfDataMapOfStringByte : public TCollection_MapNode {
 };
 
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte::Handle_TDataStd_DataMapNodeOfDataMapOfStringByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringByte;
-class Handle_TDataStd_DataMapNodeOfDataMapOfStringByte : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringByte();
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringByte(const Handle_TDataStd_DataMapNodeOfDataMapOfStringByte &aHandle);
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringByte(const TDataStd_DataMapNodeOfDataMapOfStringByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DataMapNodeOfDataMapOfStringByte DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
-    TDataStd_DataMapNodeOfDataMapOfStringByte* _get_reference() {
-    return (TDataStd_DataMapNodeOfDataMapOfStringByte*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DataMapNodeOfDataMapOfStringByte)
 
 %extend TDataStd_DataMapNodeOfDataMapOfStringByte {
 	%pythoncode {
@@ -1314,51 +1039,7 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection
 };
 
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger::Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger;
-class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger();
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(const Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger &aHandle);
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(const TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger* _get_reference() {
-    return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger)
 
 %extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
 	%pythoncode {
@@ -1389,51 +1070,7 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public TCollection_Ma
 };
 
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal::Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal;
-class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal();
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal(const Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal &aHandle);
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal(const TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal* _get_reference() {
-    return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal)
 
 %extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
 	%pythoncode {
@@ -1473,51 +1110,7 @@ class TDataStd_DataMapNodeOfDataMapOfStringReal : public TCollection_MapNode {
             };
 
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal::Handle_TDataStd_DataMapNodeOfDataMapOfStringReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringReal;
-class Handle_TDataStd_DataMapNodeOfDataMapOfStringReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringReal();
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringReal(const Handle_TDataStd_DataMapNodeOfDataMapOfStringReal &aHandle);
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringReal(const TDataStd_DataMapNodeOfDataMapOfStringReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DataMapNodeOfDataMapOfStringReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
-    TDataStd_DataMapNodeOfDataMapOfStringReal* _get_reference() {
-    return (TDataStd_DataMapNodeOfDataMapOfStringReal*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DataMapNodeOfDataMapOfStringReal)
 
 %extend TDataStd_DataMapNodeOfDataMapOfStringReal {
 	%pythoncode {
@@ -1548,51 +1141,7 @@ class TDataStd_DataMapNodeOfDataMapOfStringString : public TCollection_MapNode {
 };
 
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringString::Handle_TDataStd_DataMapNodeOfDataMapOfStringString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringString;
-class Handle_TDataStd_DataMapNodeOfDataMapOfStringString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringString();
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringString(const Handle_TDataStd_DataMapNodeOfDataMapOfStringString &aHandle);
-        Handle_TDataStd_DataMapNodeOfDataMapOfStringString(const TDataStd_DataMapNodeOfDataMapOfStringString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DataMapNodeOfDataMapOfStringString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
-    TDataStd_DataMapNodeOfDataMapOfStringString* _get_reference() {
-    return (TDataStd_DataMapNodeOfDataMapOfStringString*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DataMapNodeOfDataMapOfStringString)
 
 %extend TDataStd_DataMapNodeOfDataMapOfStringString {
 	%pythoncode {
@@ -2034,51 +1583,7 @@ class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 };
 
 
-%extend TDataStd_DeltaOnModificationOfByteArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfByteArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DeltaOnModificationOfByteArray::Handle_TDataStd_DeltaOnModificationOfByteArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DeltaOnModificationOfByteArray;
-class Handle_TDataStd_DeltaOnModificationOfByteArray : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDataStd_DeltaOnModificationOfByteArray();
-        Handle_TDataStd_DeltaOnModificationOfByteArray(const Handle_TDataStd_DeltaOnModificationOfByteArray &aHandle);
-        Handle_TDataStd_DeltaOnModificationOfByteArray(const TDataStd_DeltaOnModificationOfByteArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DeltaOnModificationOfByteArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DeltaOnModificationOfByteArray {
-    TDataStd_DeltaOnModificationOfByteArray* _get_reference() {
-    return (TDataStd_DeltaOnModificationOfByteArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DeltaOnModificationOfByteArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DeltaOnModificationOfByteArray)
 
 %extend TDataStd_DeltaOnModificationOfByteArray {
 	%pythoncode {
@@ -2105,51 +1610,7 @@ class TDataStd_DeltaOnModificationOfExtStringArray : public TDF_DeltaOnModificat
 };
 
 
-%extend TDataStd_DeltaOnModificationOfExtStringArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfExtStringArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DeltaOnModificationOfExtStringArray::Handle_TDataStd_DeltaOnModificationOfExtStringArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DeltaOnModificationOfExtStringArray;
-class Handle_TDataStd_DeltaOnModificationOfExtStringArray : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDataStd_DeltaOnModificationOfExtStringArray();
-        Handle_TDataStd_DeltaOnModificationOfExtStringArray(const Handle_TDataStd_DeltaOnModificationOfExtStringArray &aHandle);
-        Handle_TDataStd_DeltaOnModificationOfExtStringArray(const TDataStd_DeltaOnModificationOfExtStringArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DeltaOnModificationOfExtStringArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
-    TDataStd_DeltaOnModificationOfExtStringArray* _get_reference() {
-    return (TDataStd_DeltaOnModificationOfExtStringArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DeltaOnModificationOfExtStringArray)
 
 %extend TDataStd_DeltaOnModificationOfExtStringArray {
 	%pythoncode {
@@ -2176,51 +1637,7 @@ class TDataStd_DeltaOnModificationOfIntArray : public TDF_DeltaOnModification {
 };
 
 
-%extend TDataStd_DeltaOnModificationOfIntArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfIntArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DeltaOnModificationOfIntArray::Handle_TDataStd_DeltaOnModificationOfIntArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DeltaOnModificationOfIntArray;
-class Handle_TDataStd_DeltaOnModificationOfIntArray : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDataStd_DeltaOnModificationOfIntArray();
-        Handle_TDataStd_DeltaOnModificationOfIntArray(const Handle_TDataStd_DeltaOnModificationOfIntArray &aHandle);
-        Handle_TDataStd_DeltaOnModificationOfIntArray(const TDataStd_DeltaOnModificationOfIntArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DeltaOnModificationOfIntArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DeltaOnModificationOfIntArray {
-    TDataStd_DeltaOnModificationOfIntArray* _get_reference() {
-    return (TDataStd_DeltaOnModificationOfIntArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DeltaOnModificationOfIntArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DeltaOnModificationOfIntArray)
 
 %extend TDataStd_DeltaOnModificationOfIntArray {
 	%pythoncode {
@@ -2247,51 +1664,7 @@ class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModificatio
 };
 
 
-%extend TDataStd_DeltaOnModificationOfIntPackedMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfIntPackedMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DeltaOnModificationOfIntPackedMap::Handle_TDataStd_DeltaOnModificationOfIntPackedMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DeltaOnModificationOfIntPackedMap;
-class Handle_TDataStd_DeltaOnModificationOfIntPackedMap : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDataStd_DeltaOnModificationOfIntPackedMap();
-        Handle_TDataStd_DeltaOnModificationOfIntPackedMap(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap &aHandle);
-        Handle_TDataStd_DeltaOnModificationOfIntPackedMap(const TDataStd_DeltaOnModificationOfIntPackedMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DeltaOnModificationOfIntPackedMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
-    TDataStd_DeltaOnModificationOfIntPackedMap* _get_reference() {
-    return (TDataStd_DeltaOnModificationOfIntPackedMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DeltaOnModificationOfIntPackedMap)
 
 %extend TDataStd_DeltaOnModificationOfIntPackedMap {
 	%pythoncode {
@@ -2318,51 +1691,7 @@ class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
 };
 
 
-%extend TDataStd_DeltaOnModificationOfRealArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfRealArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_DeltaOnModificationOfRealArray::Handle_TDataStd_DeltaOnModificationOfRealArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_DeltaOnModificationOfRealArray;
-class Handle_TDataStd_DeltaOnModificationOfRealArray : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TDataStd_DeltaOnModificationOfRealArray();
-        Handle_TDataStd_DeltaOnModificationOfRealArray(const Handle_TDataStd_DeltaOnModificationOfRealArray &aHandle);
-        Handle_TDataStd_DeltaOnModificationOfRealArray(const TDataStd_DeltaOnModificationOfRealArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_DeltaOnModificationOfRealArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_DeltaOnModificationOfRealArray {
-    TDataStd_DeltaOnModificationOfRealArray* _get_reference() {
-    return (TDataStd_DeltaOnModificationOfRealArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_DeltaOnModificationOfRealArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_DeltaOnModificationOfRealArray)
 
 %extend TDataStd_DeltaOnModificationOfRealArray {
 	%pythoncode {
@@ -2455,51 +1784,7 @@ class TDataStd_Directory : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Directory {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Directory(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Directory::Handle_TDataStd_Directory %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Directory;
-class Handle_TDataStd_Directory : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Directory();
-        Handle_TDataStd_Directory(const Handle_TDataStd_Directory &aHandle);
-        Handle_TDataStd_Directory(const TDataStd_Directory *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Directory DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Directory {
-    TDataStd_Directory* _get_reference() {
-    return (TDataStd_Directory*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Directory {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Directory)
 
 %extend TDataStd_Directory {
 	%pythoncode {
@@ -2580,51 +1865,7 @@ class TDataStd_Expression : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Expression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Expression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Expression::Handle_TDataStd_Expression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Expression;
-class Handle_TDataStd_Expression : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Expression();
-        Handle_TDataStd_Expression(const Handle_TDataStd_Expression &aHandle);
-        Handle_TDataStd_Expression(const TDataStd_Expression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Expression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Expression {
-    TDataStd_Expression* _get_reference() {
-    return (TDataStd_Expression*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Expression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Expression)
 
 %extend TDataStd_Expression {
 	%pythoncode {
@@ -2773,51 +2014,7 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
 };
 
 
-%extend TDataStd_ExtStringArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ExtStringArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ExtStringArray::Handle_TDataStd_ExtStringArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ExtStringArray;
-class Handle_TDataStd_ExtStringArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_ExtStringArray();
-        Handle_TDataStd_ExtStringArray(const Handle_TDataStd_ExtStringArray &aHandle);
-        Handle_TDataStd_ExtStringArray(const TDataStd_ExtStringArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ExtStringArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ExtStringArray {
-    TDataStd_ExtStringArray* _get_reference() {
-    return (TDataStd_ExtStringArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ExtStringArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ExtStringArray)
 
 %extend TDataStd_ExtStringArray {
 	%pythoncode {
@@ -2942,51 +2139,7 @@ class TDataStd_ExtStringList : public TDF_Attribute {
         };
 
 
-%extend TDataStd_ExtStringList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ExtStringList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ExtStringList::Handle_TDataStd_ExtStringList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ExtStringList;
-class Handle_TDataStd_ExtStringList : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_ExtStringList();
-        Handle_TDataStd_ExtStringList(const Handle_TDataStd_ExtStringList &aHandle);
-        Handle_TDataStd_ExtStringList(const TDataStd_ExtStringList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ExtStringList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ExtStringList {
-    TDataStd_ExtStringList* _get_reference() {
-    return (TDataStd_ExtStringList*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ExtStringList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ExtStringList)
 
 %extend TDataStd_ExtStringList {
 	%pythoncode {
@@ -3019,51 +2172,7 @@ class TDataStd_HDataMapOfStringByte : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringByte::Handle_TDataStd_HDataMapOfStringByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringByte;
-class Handle_TDataStd_HDataMapOfStringByte : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringByte();
-        Handle_TDataStd_HDataMapOfStringByte(const Handle_TDataStd_HDataMapOfStringByte &aHandle);
-        Handle_TDataStd_HDataMapOfStringByte(const TDataStd_HDataMapOfStringByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringByte DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringByte {
-    TDataStd_HDataMapOfStringByte* _get_reference() {
-    return (TDataStd_HDataMapOfStringByte*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringByte)
 
 %extend TDataStd_HDataMapOfStringByte {
 	%pythoncode {
@@ -3096,51 +2205,7 @@ class TDataStd_HDataMapOfStringHArray1OfInteger : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringHArray1OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringHArray1OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringHArray1OfInteger::Handle_TDataStd_HDataMapOfStringHArray1OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringHArray1OfInteger;
-class Handle_TDataStd_HDataMapOfStringHArray1OfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringHArray1OfInteger();
-        Handle_TDataStd_HDataMapOfStringHArray1OfInteger(const Handle_TDataStd_HDataMapOfStringHArray1OfInteger &aHandle);
-        Handle_TDataStd_HDataMapOfStringHArray1OfInteger(const TDataStd_HDataMapOfStringHArray1OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringHArray1OfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
-    TDataStd_HDataMapOfStringHArray1OfInteger* _get_reference() {
-    return (TDataStd_HDataMapOfStringHArray1OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringHArray1OfInteger)
 
 %extend TDataStd_HDataMapOfStringHArray1OfInteger {
 	%pythoncode {
@@ -3173,51 +2238,7 @@ class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringHArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringHArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringHArray1OfReal::Handle_TDataStd_HDataMapOfStringHArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringHArray1OfReal;
-class Handle_TDataStd_HDataMapOfStringHArray1OfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringHArray1OfReal();
-        Handle_TDataStd_HDataMapOfStringHArray1OfReal(const Handle_TDataStd_HDataMapOfStringHArray1OfReal &aHandle);
-        Handle_TDataStd_HDataMapOfStringHArray1OfReal(const TDataStd_HDataMapOfStringHArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringHArray1OfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
-    TDataStd_HDataMapOfStringHArray1OfReal* _get_reference() {
-    return (TDataStd_HDataMapOfStringHArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringHArray1OfReal)
 
 %extend TDataStd_HDataMapOfStringHArray1OfReal {
 	%pythoncode {
@@ -3250,51 +2271,7 @@ class TDataStd_HDataMapOfStringInteger : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringInteger::Handle_TDataStd_HDataMapOfStringInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringInteger;
-class Handle_TDataStd_HDataMapOfStringInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringInteger();
-        Handle_TDataStd_HDataMapOfStringInteger(const Handle_TDataStd_HDataMapOfStringInteger &aHandle);
-        Handle_TDataStd_HDataMapOfStringInteger(const TDataStd_HDataMapOfStringInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringInteger {
-    TDataStd_HDataMapOfStringInteger* _get_reference() {
-    return (TDataStd_HDataMapOfStringInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringInteger)
 
 %extend TDataStd_HDataMapOfStringInteger {
 	%pythoncode {
@@ -3327,51 +2304,7 @@ class TDataStd_HDataMapOfStringReal : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringReal::Handle_TDataStd_HDataMapOfStringReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringReal;
-class Handle_TDataStd_HDataMapOfStringReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringReal();
-        Handle_TDataStd_HDataMapOfStringReal(const Handle_TDataStd_HDataMapOfStringReal &aHandle);
-        Handle_TDataStd_HDataMapOfStringReal(const TDataStd_HDataMapOfStringReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringReal {
-    TDataStd_HDataMapOfStringReal* _get_reference() {
-    return (TDataStd_HDataMapOfStringReal*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringReal)
 
 %extend TDataStd_HDataMapOfStringReal {
 	%pythoncode {
@@ -3404,51 +2337,7 @@ class TDataStd_HDataMapOfStringString : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HDataMapOfStringString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HDataMapOfStringString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HDataMapOfStringString::Handle_TDataStd_HDataMapOfStringString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HDataMapOfStringString;
-class Handle_TDataStd_HDataMapOfStringString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HDataMapOfStringString();
-        Handle_TDataStd_HDataMapOfStringString(const Handle_TDataStd_HDataMapOfStringString &aHandle);
-        Handle_TDataStd_HDataMapOfStringString(const TDataStd_HDataMapOfStringString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HDataMapOfStringString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HDataMapOfStringString {
-    TDataStd_HDataMapOfStringString* _get_reference() {
-    return (TDataStd_HDataMapOfStringString*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HDataMapOfStringString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HDataMapOfStringString)
 
 %extend TDataStd_HDataMapOfStringString {
 	%pythoncode {
@@ -3525,51 +2414,7 @@ class TDataStd_HLabelArray1 : public MMgt_TShared {
 };
 
 
-%extend TDataStd_HLabelArray1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_HLabelArray1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_HLabelArray1::Handle_TDataStd_HLabelArray1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_HLabelArray1;
-class Handle_TDataStd_HLabelArray1 : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataStd_HLabelArray1();
-        Handle_TDataStd_HLabelArray1(const Handle_TDataStd_HLabelArray1 &aHandle);
-        Handle_TDataStd_HLabelArray1(const TDataStd_HLabelArray1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_HLabelArray1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_HLabelArray1 {
-    TDataStd_HLabelArray1* _get_reference() {
-    return (TDataStd_HLabelArray1*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_HLabelArray1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_HLabelArray1)
 
 %extend TDataStd_HLabelArray1 {
 	%pythoncode {
@@ -3696,51 +2541,7 @@ class TDataStd_IntPackedMap : public TDF_Attribute {
 };
 
 
-%extend TDataStd_IntPackedMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_IntPackedMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_IntPackedMap::Handle_TDataStd_IntPackedMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_IntPackedMap;
-class Handle_TDataStd_IntPackedMap : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_IntPackedMap();
-        Handle_TDataStd_IntPackedMap(const Handle_TDataStd_IntPackedMap &aHandle);
-        Handle_TDataStd_IntPackedMap(const TDataStd_IntPackedMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_IntPackedMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_IntPackedMap {
-    TDataStd_IntPackedMap* _get_reference() {
-    return (TDataStd_IntPackedMap*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_IntPackedMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_IntPackedMap)
 
 %extend TDataStd_IntPackedMap {
 	%pythoncode {
@@ -3821,51 +2622,7 @@ class TDataStd_Integer : public TDF_Attribute {
 };
 
 
-%extend TDataStd_Integer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Integer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Integer::Handle_TDataStd_Integer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Integer;
-class Handle_TDataStd_Integer : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Integer();
-        Handle_TDataStd_Integer(const Handle_TDataStd_Integer &aHandle);
-        Handle_TDataStd_Integer(const TDataStd_Integer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Integer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Integer {
-    TDataStd_Integer* _get_reference() {
-    return (TDataStd_Integer*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Integer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Integer)
 
 %extend TDataStd_Integer {
 	%pythoncode {
@@ -4016,51 +2773,7 @@ class TDataStd_IntegerArray : public TDF_Attribute {
 };
 
 
-%extend TDataStd_IntegerArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_IntegerArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_IntegerArray::Handle_TDataStd_IntegerArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_IntegerArray;
-class Handle_TDataStd_IntegerArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_IntegerArray();
-        Handle_TDataStd_IntegerArray(const Handle_TDataStd_IntegerArray &aHandle);
-        Handle_TDataStd_IntegerArray(const TDataStd_IntegerArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_IntegerArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_IntegerArray {
-    TDataStd_IntegerArray* _get_reference() {
-    return (TDataStd_IntegerArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_IntegerArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_IntegerArray)
 
 %extend TDataStd_IntegerArray {
 	%pythoncode {
@@ -4185,51 +2898,7 @@ class TDataStd_IntegerList : public TDF_Attribute {
         };
 
 
-%extend TDataStd_IntegerList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_IntegerList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_IntegerList::Handle_TDataStd_IntegerList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_IntegerList;
-class Handle_TDataStd_IntegerList : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_IntegerList();
-        Handle_TDataStd_IntegerList(const Handle_TDataStd_IntegerList &aHandle);
-        Handle_TDataStd_IntegerList(const TDataStd_IntegerList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_IntegerList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_IntegerList {
-    TDataStd_IntegerList* _get_reference() {
-    return (TDataStd_IntegerList*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_IntegerList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_IntegerList)
 
 %extend TDataStd_IntegerList {
 	%pythoncode {
@@ -4419,51 +3088,7 @@ class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode {
 };
 
 
-%extend TDataStd_ListNodeOfListOfByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ListNodeOfListOfByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ListNodeOfListOfByte::Handle_TDataStd_ListNodeOfListOfByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ListNodeOfListOfByte;
-class Handle_TDataStd_ListNodeOfListOfByte : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_ListNodeOfListOfByte();
-        Handle_TDataStd_ListNodeOfListOfByte(const Handle_TDataStd_ListNodeOfListOfByte &aHandle);
-        Handle_TDataStd_ListNodeOfListOfByte(const TDataStd_ListNodeOfListOfByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ListNodeOfListOfByte DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ListNodeOfListOfByte {
-    TDataStd_ListNodeOfListOfByte* _get_reference() {
-    return (TDataStd_ListNodeOfListOfByte*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ListNodeOfListOfByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ListNodeOfListOfByte)
 
 %extend TDataStd_ListNodeOfListOfByte {
 	%pythoncode {
@@ -4488,51 +3113,7 @@ class TDataStd_ListNodeOfListOfExtendedString : public TCollection_MapNode {
 };
 
 
-%extend TDataStd_ListNodeOfListOfExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ListNodeOfListOfExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ListNodeOfListOfExtendedString::Handle_TDataStd_ListNodeOfListOfExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ListNodeOfListOfExtendedString;
-class Handle_TDataStd_ListNodeOfListOfExtendedString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TDataStd_ListNodeOfListOfExtendedString();
-        Handle_TDataStd_ListNodeOfListOfExtendedString(const Handle_TDataStd_ListNodeOfListOfExtendedString &aHandle);
-        Handle_TDataStd_ListNodeOfListOfExtendedString(const TDataStd_ListNodeOfListOfExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ListNodeOfListOfExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ListNodeOfListOfExtendedString {
-    TDataStd_ListNodeOfListOfExtendedString* _get_reference() {
-    return (TDataStd_ListNodeOfListOfExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ListNodeOfListOfExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ListNodeOfListOfExtendedString)
 
 %extend TDataStd_ListNodeOfListOfExtendedString {
 	%pythoncode {
@@ -4879,51 +3460,7 @@ class TDataStd_Name : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Name {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Name(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Name::Handle_TDataStd_Name %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Name;
-class Handle_TDataStd_Name : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Name();
-        Handle_TDataStd_Name(const Handle_TDataStd_Name &aHandle);
-        Handle_TDataStd_Name(const TDataStd_Name *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Name DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Name {
-    TDataStd_Name* _get_reference() {
-    return (TDataStd_Name*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Name {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Name)
 
 %extend TDataStd_Name {
 	%pythoncode {
@@ -5260,51 +3797,7 @@ class TDataStd_NamedData : public TDF_Attribute {
         };
 
 
-%extend TDataStd_NamedData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_NamedData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_NamedData::Handle_TDataStd_NamedData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_NamedData;
-class Handle_TDataStd_NamedData : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_NamedData();
-        Handle_TDataStd_NamedData(const Handle_TDataStd_NamedData &aHandle);
-        Handle_TDataStd_NamedData(const TDataStd_NamedData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_NamedData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_NamedData {
-    TDataStd_NamedData* _get_reference() {
-    return (TDataStd_NamedData*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_NamedData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_NamedData)
 
 %extend TDataStd_NamedData {
 	%pythoncode {
@@ -5395,51 +3888,7 @@ class TDataStd_NoteBook : public TDF_Attribute {
         };
 
 
-%extend TDataStd_NoteBook {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_NoteBook(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_NoteBook::Handle_TDataStd_NoteBook %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_NoteBook;
-class Handle_TDataStd_NoteBook : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_NoteBook();
-        Handle_TDataStd_NoteBook(const Handle_TDataStd_NoteBook &aHandle);
-        Handle_TDataStd_NoteBook(const TDataStd_NoteBook *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_NoteBook DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_NoteBook {
-    TDataStd_NoteBook* _get_reference() {
-    return (TDataStd_NoteBook*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_NoteBook {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_NoteBook)
 
 %extend TDataStd_NoteBook {
 	%pythoncode {
@@ -5532,51 +3981,7 @@ class TDataStd_Real : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Real {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Real(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Real::Handle_TDataStd_Real %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Real;
-class Handle_TDataStd_Real : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Real();
-        Handle_TDataStd_Real(const Handle_TDataStd_Real &aHandle);
-        Handle_TDataStd_Real(const TDataStd_Real *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Real DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Real {
-    TDataStd_Real* _get_reference() {
-    return (TDataStd_Real*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Real {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Real)
 
 %extend TDataStd_Real {
 	%pythoncode {
@@ -5727,51 +4132,7 @@ class TDataStd_RealArray : public TDF_Attribute {
 };
 
 
-%extend TDataStd_RealArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_RealArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_RealArray::Handle_TDataStd_RealArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_RealArray;
-class Handle_TDataStd_RealArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_RealArray();
-        Handle_TDataStd_RealArray(const Handle_TDataStd_RealArray &aHandle);
-        Handle_TDataStd_RealArray(const TDataStd_RealArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_RealArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_RealArray {
-    TDataStd_RealArray* _get_reference() {
-    return (TDataStd_RealArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_RealArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_RealArray)
 
 %extend TDataStd_RealArray {
 	%pythoncode {
@@ -5896,51 +4257,7 @@ class TDataStd_RealList : public TDF_Attribute {
         };
 
 
-%extend TDataStd_RealList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_RealList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_RealList::Handle_TDataStd_RealList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_RealList;
-class Handle_TDataStd_RealList : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_RealList();
-        Handle_TDataStd_RealList(const Handle_TDataStd_RealList &aHandle);
-        Handle_TDataStd_RealList(const TDataStd_RealList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_RealList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_RealList {
-    TDataStd_RealList* _get_reference() {
-    return (TDataStd_RealList*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_RealList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_RealList)
 
 %extend TDataStd_RealList {
 	%pythoncode {
@@ -6069,51 +4386,7 @@ class TDataStd_ReferenceArray : public TDF_Attribute {
         };
 
 
-%extend TDataStd_ReferenceArray {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ReferenceArray(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ReferenceArray::Handle_TDataStd_ReferenceArray %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ReferenceArray;
-class Handle_TDataStd_ReferenceArray : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_ReferenceArray();
-        Handle_TDataStd_ReferenceArray(const Handle_TDataStd_ReferenceArray &aHandle);
-        Handle_TDataStd_ReferenceArray(const TDataStd_ReferenceArray *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ReferenceArray DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ReferenceArray {
-    TDataStd_ReferenceArray* _get_reference() {
-    return (TDataStd_ReferenceArray*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ReferenceArray {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ReferenceArray)
 
 %extend TDataStd_ReferenceArray {
 	%pythoncode {
@@ -6244,51 +4517,7 @@ class TDataStd_ReferenceList : public TDF_Attribute {
         };
 
 
-%extend TDataStd_ReferenceList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_ReferenceList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_ReferenceList::Handle_TDataStd_ReferenceList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_ReferenceList;
-class Handle_TDataStd_ReferenceList : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_ReferenceList();
-        Handle_TDataStd_ReferenceList(const Handle_TDataStd_ReferenceList &aHandle);
-        Handle_TDataStd_ReferenceList(const TDataStd_ReferenceList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_ReferenceList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_ReferenceList {
-    TDataStd_ReferenceList* _get_reference() {
-    return (TDataStd_ReferenceList*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_ReferenceList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_ReferenceList)
 
 %extend TDataStd_ReferenceList {
 	%pythoncode {
@@ -6369,51 +4598,7 @@ class TDataStd_Relation : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Relation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Relation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Relation::Handle_TDataStd_Relation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Relation;
-class Handle_TDataStd_Relation : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Relation();
-        Handle_TDataStd_Relation(const Handle_TDataStd_Relation &aHandle);
-        Handle_TDataStd_Relation(const TDataStd_Relation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Relation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Relation {
-    TDataStd_Relation* _get_reference() {
-    return (TDataStd_Relation*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Relation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Relation)
 
 %extend TDataStd_Relation {
 	%pythoncode {
@@ -6474,51 +4659,7 @@ class TDataStd_Tick : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Tick {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Tick(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Tick::Handle_TDataStd_Tick %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Tick;
-class Handle_TDataStd_Tick : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Tick();
-        Handle_TDataStd_Tick(const Handle_TDataStd_Tick &aHandle);
-        Handle_TDataStd_Tick(const TDataStd_Tick *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Tick DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Tick {
-    TDataStd_Tick* _get_reference() {
-    return (TDataStd_Tick*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Tick {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Tick)
 
 %extend TDataStd_Tick {
 	%pythoncode {
@@ -6845,51 +4986,7 @@ class TDataStd_TreeNode : public TDF_Attribute {
         };
 
 
-%extend TDataStd_TreeNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_TreeNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_TreeNode::Handle_TDataStd_TreeNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_TreeNode;
-class Handle_TDataStd_TreeNode : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_TreeNode();
-        Handle_TDataStd_TreeNode(const Handle_TDataStd_TreeNode &aHandle);
-        Handle_TDataStd_TreeNode(const TDataStd_TreeNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_TreeNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_TreeNode {
-    TDataStd_TreeNode* _get_reference() {
-    return (TDataStd_TreeNode*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_TreeNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_TreeNode)
 
 %extend TDataStd_TreeNode {
 	%pythoncode {
@@ -6958,51 +5055,7 @@ class TDataStd_UAttribute : public TDF_Attribute {
         };
 
 
-%extend TDataStd_UAttribute {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_UAttribute(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_UAttribute::Handle_TDataStd_UAttribute %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_UAttribute;
-class Handle_TDataStd_UAttribute : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_UAttribute();
-        Handle_TDataStd_UAttribute(const Handle_TDataStd_UAttribute &aHandle);
-        Handle_TDataStd_UAttribute(const TDataStd_UAttribute *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_UAttribute DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_UAttribute {
-    TDataStd_UAttribute* _get_reference() {
-    return (TDataStd_UAttribute*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_UAttribute {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_UAttribute)
 
 %extend TDataStd_UAttribute {
 	%pythoncode {
@@ -7169,51 +5222,7 @@ class TDataStd_Variable : public TDF_Attribute {
         };
 
 
-%extend TDataStd_Variable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataStd_Variable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataStd_Variable::Handle_TDataStd_Variable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataStd_Variable;
-class Handle_TDataStd_Variable : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataStd_Variable();
-        Handle_TDataStd_Variable(const Handle_TDataStd_Variable &aHandle);
-        Handle_TDataStd_Variable(const TDataStd_Variable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataStd_Variable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataStd_Variable {
-    TDataStd_Variable* _get_reference() {
-    return (TDataStd_Variable*)$self->Access();
-    }
-};
-
-%extend Handle_TDataStd_Variable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataStd_Variable)
 
 %extend TDataStd_Variable {
 	%pythoncode {

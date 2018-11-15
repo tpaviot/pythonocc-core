@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BOPDSDOCSTRING
-"No docstring provided."
+"The package contains classes that implementsthe data structure forgeneral fuse and boolean operation algorithms"
 %enddef
 %module (package="OCC.Core", docstring=BOPDSDOCSTRING) BOPDS
 
@@ -34,33 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BOPDS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_Map <BOPDS_PassKey , BOPDS_PassKeyMapHasher> BOPDS_MapOfPassKey;
 typedef BOPCol_NCVector <BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
 typedef NCollection_DataMap <Handle_BOPDS_PaveBlock , BOPCol_ListOfInteger , TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfInteger;
 typedef NCollection_List <BOPDS_Pave> BOPDS_ListOfPave;
-typedef BOPDS_DataMapOfPaveBlockListOfPaveBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock;
+typedef BOPDS_Iterator * BOPDS_PIterator;
 typedef BOPCol_NCVector <BOPDS_InterfEZ> BOPDS_VectorOfInterfEZ;
-typedef BOPCol_NCVector <BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
+typedef NCollection_IndexedDataMap <Handle_BOPDS_PaveBlock , BOPCol_ListOfInteger , TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
 typedef BOPCol_NCVector <BOPDS_InterfEE> BOPDS_VectorOfInterfEE;
 typedef BOPCol_NCVector <BOPDS_InterfEF> BOPDS_VectorOfInterfEF;
 typedef BOPDS_IteratorSI * BOPDS_PIteratorSI;
@@ -82,17 +68,17 @@ typedef BOPDS_MapOfPassKeyBoolean::Iterator BOPDS_MapIteratorMapOfPassKeyBoolean
 typedef NCollection_Map <BOPDS_PassKeyBoolean , BOPDS_PassKeyMapHasher> BOPDS_MapOfPassKeyBoolean;
 typedef BOPDS_DS * BOPDS_PDS;
 typedef BOPDS_ListOfPassKeyBoolean::Iterator BOPDS_ListIteratorOfListOfPassKeyBoolean;
-typedef NCollection_IndexedMap <Handle_BOPDS_PaveBlock , TColStd_MapTransientHasher> BOPDS_IndexedMapOfPaveBlock;
-typedef BOPDS_Iterator * BOPDS_PIterator;
-typedef BOPDS_DataMapOfPaveBlockCommonBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock;
 typedef BOPDS_MapOfPassKey::Iterator BOPDS_MapIteratorMapOfPassKey;
+typedef BOPDS_DataMapOfPaveBlockListOfPaveBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock;
+typedef BOPDS_DataMapOfPaveBlockCommonBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock;
+typedef NCollection_IndexedMap <Handle_BOPDS_PaveBlock , TColStd_MapTransientHasher> BOPDS_IndexedMapOfPaveBlock;
 typedef BOPDS_MapOfCommonBlock::Iterator BOPDS_MapIteratorOfMapOfCommonBlock;
 typedef NCollection_DataMap <BOPDS_PassKey , BOPDS_ListOfPaveBlock , BOPDS_PassKeyMapHasher> BOPDS_DataMapOfPassKeyListOfPaveBlock;
 typedef NCollection_Map <Handle_BOPDS_CommonBlock , TColStd_MapTransientHasher> BOPDS_MapOfCommonBlock;
 typedef BOPDS_ListOfPaveBlock::Iterator BOPDS_ListIteratorOfListOfPaveBlock;
 typedef NCollection_Map <BOPDS_Pave , BOPDS_PaveMapHasher> BOPDS_MapOfPave;
 typedef BOPCol_NCVector <BOPDS_ListOfPaveBlock> BOPDS_VectorOfListOfPaveBlock;
-typedef NCollection_IndexedDataMap <Handle_BOPDS_PaveBlock , BOPCol_ListOfInteger , TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
+typedef BOPCol_NCVector <BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
 typedef BOPCol_NCVector <BOPDS_Point> BOPDS_VectorOfPoint;
 typedef BOPDS_DataMapOfPaveBlockListOfInteger::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger;
 typedef NCollection_DataMap <Handle_BOPDS_PaveBlock , BOPDS_ListOfPaveBlock , TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
@@ -109,6 +95,9 @@ typedef NCollection_List <BOPDS_PassKeyBoolean> BOPDS_ListOfPassKeyBoolean;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BOPDS_CommonBlock)
+%wrap_handle(BOPDS_PaveBlock)
 
 %nodefaultctor BOPDS_CommonBlock;
 class BOPDS_CommonBlock : public MMgt_TShared {
@@ -238,51 +227,7 @@ class BOPDS_CommonBlock : public MMgt_TShared {
 };
 
 
-%extend BOPDS_CommonBlock {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BOPDS_CommonBlock(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BOPDS_CommonBlock::Handle_BOPDS_CommonBlock %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BOPDS_CommonBlock;
-class Handle_BOPDS_CommonBlock : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BOPDS_CommonBlock();
-        Handle_BOPDS_CommonBlock(const Handle_BOPDS_CommonBlock &aHandle);
-        Handle_BOPDS_CommonBlock(const BOPDS_CommonBlock *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BOPDS_CommonBlock DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BOPDS_CommonBlock {
-    BOPDS_CommonBlock* _get_reference() {
-    return (BOPDS_CommonBlock*)$self->Access();
-    }
-};
-
-%extend Handle_BOPDS_CommonBlock {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BOPDS_CommonBlock)
 
 %extend BOPDS_CommonBlock {
 	%pythoncode {
@@ -1855,51 +1800,7 @@ class BOPDS_PaveBlock : public MMgt_TShared {
 };
 
 
-%extend BOPDS_PaveBlock {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BOPDS_PaveBlock(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BOPDS_PaveBlock::Handle_BOPDS_PaveBlock %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BOPDS_PaveBlock;
-class Handle_BOPDS_PaveBlock : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BOPDS_PaveBlock();
-        Handle_BOPDS_PaveBlock(const Handle_BOPDS_PaveBlock &aHandle);
-        Handle_BOPDS_PaveBlock(const BOPDS_PaveBlock *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BOPDS_PaveBlock DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BOPDS_PaveBlock {
-    BOPDS_PaveBlock* _get_reference() {
-    return (BOPDS_PaveBlock*)$self->Access();
-    }
-};
-
-%extend Handle_BOPDS_PaveBlock {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BOPDS_PaveBlock)
 
 %extend BOPDS_PaveBlock {
 	%pythoncode {

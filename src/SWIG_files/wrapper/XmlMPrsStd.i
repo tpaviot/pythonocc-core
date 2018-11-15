@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMPRSSTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=XMLMPRSSTDDOCSTRING) XmlMPrsStd
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlMPrsStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlMPrsStd_AISPresentationDriver)
+%wrap_handle(XmlMPrsStd_PositionDriver)
 
 %rename(xmlmprsstd) XmlMPrsStd;
 class XmlMPrsStd {
@@ -116,51 +105,7 @@ class XmlMPrsStd_AISPresentationDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMPrsStd_AISPresentationDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMPrsStd_AISPresentationDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMPrsStd_AISPresentationDriver::Handle_XmlMPrsStd_AISPresentationDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMPrsStd_AISPresentationDriver;
-class Handle_XmlMPrsStd_AISPresentationDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMPrsStd_AISPresentationDriver();
-        Handle_XmlMPrsStd_AISPresentationDriver(const Handle_XmlMPrsStd_AISPresentationDriver &aHandle);
-        Handle_XmlMPrsStd_AISPresentationDriver(const XmlMPrsStd_AISPresentationDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMPrsStd_AISPresentationDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMPrsStd_AISPresentationDriver {
-    XmlMPrsStd_AISPresentationDriver* _get_reference() {
-    return (XmlMPrsStd_AISPresentationDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMPrsStd_AISPresentationDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMPrsStd_AISPresentationDriver)
 
 %extend XmlMPrsStd_AISPresentationDriver {
 	%pythoncode {
@@ -203,51 +148,7 @@ class XmlMPrsStd_PositionDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMPrsStd_PositionDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMPrsStd_PositionDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMPrsStd_PositionDriver::Handle_XmlMPrsStd_PositionDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMPrsStd_PositionDriver;
-class Handle_XmlMPrsStd_PositionDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMPrsStd_PositionDriver();
-        Handle_XmlMPrsStd_PositionDriver(const Handle_XmlMPrsStd_PositionDriver &aHandle);
-        Handle_XmlMPrsStd_PositionDriver(const XmlMPrsStd_PositionDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMPrsStd_PositionDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMPrsStd_PositionDriver {
-    XmlMPrsStd_PositionDriver* _get_reference() {
-    return (XmlMPrsStd_PositionDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMPrsStd_PositionDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMPrsStd_PositionDriver)
 
 %extend XmlMPrsStd_PositionDriver {
 	%pythoncode {

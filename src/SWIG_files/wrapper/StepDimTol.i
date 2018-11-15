@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPDIMTOLDOCSTRING
-"No docstring provided."
+"-Purpose :Collects definition of STEP GD&T entities TR12J"
 %enddef
 %module (package="OCC.Core", docstring=STEPDIMTOLDOCSTRING) StepDimTol
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepDimTol_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +50,34 @@ enum StepDimTol_LimitCondition {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepDimTol_CommonDatum)
+%wrap_handle(StepDimTol_Datum)
+%wrap_handle(StepDimTol_DatumFeature)
+%wrap_handle(StepDimTol_DatumReference)
+%wrap_handle(StepDimTol_DatumTarget)
+%wrap_handle(StepDimTol_GeometricTolerance)
+%wrap_handle(StepDimTol_GeometricToleranceRelationship)
+%wrap_handle(StepDimTol_HArray1OfDatumReference)
+%wrap_handle(StepDimTol_CylindricityTolerance)
+%wrap_handle(StepDimTol_FlatnessTolerance)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol)
+%wrap_handle(StepDimTol_GeometricToleranceWithDatumReference)
+%wrap_handle(StepDimTol_LineProfileTolerance)
+%wrap_handle(StepDimTol_ModifiedGeometricTolerance)
+%wrap_handle(StepDimTol_PlacedDatumTargetFeature)
+%wrap_handle(StepDimTol_PositionTolerance)
+%wrap_handle(StepDimTol_RoundnessTolerance)
+%wrap_handle(StepDimTol_StraightnessTolerance)
+%wrap_handle(StepDimTol_SurfaceProfileTolerance)
+%wrap_handle(StepDimTol_AngularityTolerance)
+%wrap_handle(StepDimTol_CircularRunoutTolerance)
+%wrap_handle(StepDimTol_CoaxialityTolerance)
+%wrap_handle(StepDimTol_ConcentricityTolerance)
+%wrap_handle(StepDimTol_ParallelismTolerance)
+%wrap_handle(StepDimTol_PerpendicularityTolerance)
+%wrap_handle(StepDimTol_SymmetryTolerance)
+%wrap_handle(StepDimTol_TotalRunoutTolerance)
 
 %nodefaultctor StepDimTol_Array1OfDatumReference;
 class StepDimTol_Array1OfDatumReference {
@@ -202,51 +216,7 @@ class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect {
 };
 
 
-%extend StepDimTol_CommonDatum {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_CommonDatum(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_CommonDatum::Handle_StepDimTol_CommonDatum %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_CommonDatum;
-class Handle_StepDimTol_CommonDatum : public Handle_StepRepr_CompositeShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepDimTol_CommonDatum();
-        Handle_StepDimTol_CommonDatum(const Handle_StepDimTol_CommonDatum &aHandle);
-        Handle_StepDimTol_CommonDatum(const StepDimTol_CommonDatum *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_CommonDatum DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_CommonDatum {
-    StepDimTol_CommonDatum* _get_reference() {
-    return (StepDimTol_CommonDatum*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_CommonDatum {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_CommonDatum)
 
 %extend StepDimTol_CommonDatum {
 	%pythoncode {
@@ -295,51 +265,7 @@ class StepDimTol_Datum : public StepRepr_ShapeAspect {
 };
 
 
-%extend StepDimTol_Datum {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_Datum(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_Datum::Handle_StepDimTol_Datum %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_Datum;
-class Handle_StepDimTol_Datum : public Handle_StepRepr_ShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepDimTol_Datum();
-        Handle_StepDimTol_Datum(const Handle_StepDimTol_Datum &aHandle);
-        Handle_StepDimTol_Datum(const StepDimTol_Datum *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_Datum DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_Datum {
-    StepDimTol_Datum* _get_reference() {
-    return (StepDimTol_Datum*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_Datum {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_Datum)
 
 %extend StepDimTol_Datum {
 	%pythoncode {
@@ -358,51 +284,7 @@ class StepDimTol_DatumFeature : public StepRepr_ShapeAspect {
 };
 
 
-%extend StepDimTol_DatumFeature {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_DatumFeature(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_DatumFeature::Handle_StepDimTol_DatumFeature %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_DatumFeature;
-class Handle_StepDimTol_DatumFeature : public Handle_StepRepr_ShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepDimTol_DatumFeature();
-        Handle_StepDimTol_DatumFeature(const Handle_StepDimTol_DatumFeature &aHandle);
-        Handle_StepDimTol_DatumFeature(const StepDimTol_DatumFeature *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_DatumFeature DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_DatumFeature {
-    StepDimTol_DatumFeature* _get_reference() {
-    return (StepDimTol_DatumFeature*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_DatumFeature {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_DatumFeature)
 
 %extend StepDimTol_DatumFeature {
 	%pythoncode {
@@ -459,51 +341,7 @@ class StepDimTol_DatumReference : public MMgt_TShared {
 };
 
 
-%extend StepDimTol_DatumReference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_DatumReference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_DatumReference::Handle_StepDimTol_DatumReference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_DatumReference;
-class Handle_StepDimTol_DatumReference : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepDimTol_DatumReference();
-        Handle_StepDimTol_DatumReference(const Handle_StepDimTol_DatumReference &aHandle);
-        Handle_StepDimTol_DatumReference(const StepDimTol_DatumReference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_DatumReference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_DatumReference {
-    StepDimTol_DatumReference* _get_reference() {
-    return (StepDimTol_DatumReference*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_DatumReference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_DatumReference)
 
 %extend StepDimTol_DatumReference {
 	%pythoncode {
@@ -552,51 +390,7 @@ class StepDimTol_DatumTarget : public StepRepr_ShapeAspect {
 };
 
 
-%extend StepDimTol_DatumTarget {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_DatumTarget(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_DatumTarget::Handle_StepDimTol_DatumTarget %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_DatumTarget;
-class Handle_StepDimTol_DatumTarget : public Handle_StepRepr_ShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepDimTol_DatumTarget();
-        Handle_StepDimTol_DatumTarget(const Handle_StepDimTol_DatumTarget &aHandle);
-        Handle_StepDimTol_DatumTarget(const StepDimTol_DatumTarget *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_DatumTarget DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_DatumTarget {
-    StepDimTol_DatumTarget* _get_reference() {
-    return (StepDimTol_DatumTarget*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_DatumTarget {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_DatumTarget)
 
 %extend StepDimTol_DatumTarget {
 	%pythoncode {
@@ -685,51 +479,7 @@ class StepDimTol_GeometricTolerance : public MMgt_TShared {
 };
 
 
-%extend StepDimTol_GeometricTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_GeometricTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_GeometricTolerance::Handle_StepDimTol_GeometricTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_GeometricTolerance;
-class Handle_StepDimTol_GeometricTolerance : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepDimTol_GeometricTolerance();
-        Handle_StepDimTol_GeometricTolerance(const Handle_StepDimTol_GeometricTolerance &aHandle);
-        Handle_StepDimTol_GeometricTolerance(const StepDimTol_GeometricTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_GeometricTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_GeometricTolerance {
-    StepDimTol_GeometricTolerance* _get_reference() {
-    return (StepDimTol_GeometricTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_GeometricTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_GeometricTolerance)
 
 %extend StepDimTol_GeometricTolerance {
 	%pythoncode {
@@ -818,51 +568,7 @@ class StepDimTol_GeometricToleranceRelationship : public MMgt_TShared {
 };
 
 
-%extend StepDimTol_GeometricToleranceRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_GeometricToleranceRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_GeometricToleranceRelationship::Handle_StepDimTol_GeometricToleranceRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_GeometricToleranceRelationship;
-class Handle_StepDimTol_GeometricToleranceRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepDimTol_GeometricToleranceRelationship();
-        Handle_StepDimTol_GeometricToleranceRelationship(const Handle_StepDimTol_GeometricToleranceRelationship &aHandle);
-        Handle_StepDimTol_GeometricToleranceRelationship(const StepDimTol_GeometricToleranceRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_GeometricToleranceRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_GeometricToleranceRelationship {
-    StepDimTol_GeometricToleranceRelationship* _get_reference() {
-    return (StepDimTol_GeometricToleranceRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_GeometricToleranceRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_GeometricToleranceRelationship)
 
 %extend StepDimTol_GeometricToleranceRelationship {
 	%pythoncode {
@@ -939,51 +645,7 @@ class StepDimTol_HArray1OfDatumReference : public MMgt_TShared {
 };
 
 
-%extend StepDimTol_HArray1OfDatumReference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_HArray1OfDatumReference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_HArray1OfDatumReference::Handle_StepDimTol_HArray1OfDatumReference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_HArray1OfDatumReference;
-class Handle_StepDimTol_HArray1OfDatumReference : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepDimTol_HArray1OfDatumReference();
-        Handle_StepDimTol_HArray1OfDatumReference(const Handle_StepDimTol_HArray1OfDatumReference &aHandle);
-        Handle_StepDimTol_HArray1OfDatumReference(const StepDimTol_HArray1OfDatumReference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_HArray1OfDatumReference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_HArray1OfDatumReference {
-    StepDimTol_HArray1OfDatumReference* _get_reference() {
-    return (StepDimTol_HArray1OfDatumReference*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_HArray1OfDatumReference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_HArray1OfDatumReference)
 
 %extend StepDimTol_HArray1OfDatumReference {
 	%pythoncode {
@@ -1039,51 +701,7 @@ class StepDimTol_CylindricityTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_CylindricityTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_CylindricityTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_CylindricityTolerance::Handle_StepDimTol_CylindricityTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_CylindricityTolerance;
-class Handle_StepDimTol_CylindricityTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_CylindricityTolerance();
-        Handle_StepDimTol_CylindricityTolerance(const Handle_StepDimTol_CylindricityTolerance &aHandle);
-        Handle_StepDimTol_CylindricityTolerance(const StepDimTol_CylindricityTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_CylindricityTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_CylindricityTolerance {
-    StepDimTol_CylindricityTolerance* _get_reference() {
-    return (StepDimTol_CylindricityTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_CylindricityTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_CylindricityTolerance)
 
 %extend StepDimTol_CylindricityTolerance {
 	%pythoncode {
@@ -1102,51 +720,7 @@ class StepDimTol_FlatnessTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_FlatnessTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_FlatnessTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_FlatnessTolerance::Handle_StepDimTol_FlatnessTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_FlatnessTolerance;
-class Handle_StepDimTol_FlatnessTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_FlatnessTolerance();
-        Handle_StepDimTol_FlatnessTolerance(const Handle_StepDimTol_FlatnessTolerance &aHandle);
-        Handle_StepDimTol_FlatnessTolerance(const StepDimTol_FlatnessTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_FlatnessTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_FlatnessTolerance {
-    StepDimTol_FlatnessTolerance* _get_reference() {
-    return (StepDimTol_FlatnessTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_FlatnessTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_FlatnessTolerance)
 
 %extend StepDimTol_FlatnessTolerance {
 	%pythoncode {
@@ -1209,51 +783,7 @@ class StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol : public StepDimT
 };
 
 
-%extend StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol;
-class Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol();
-        Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(const Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol &aHandle);
-        Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(const StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
-    StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol* _get_reference() {
-    return (StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol)
 
 %extend StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
 	%pythoncode {
@@ -1302,51 +832,7 @@ class StepDimTol_GeometricToleranceWithDatumReference : public StepDimTol_Geomet
 };
 
 
-%extend StepDimTol_GeometricToleranceWithDatumReference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_GeometricToleranceWithDatumReference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_GeometricToleranceWithDatumReference::Handle_StepDimTol_GeometricToleranceWithDatumReference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_GeometricToleranceWithDatumReference;
-class Handle_StepDimTol_GeometricToleranceWithDatumReference : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_GeometricToleranceWithDatumReference();
-        Handle_StepDimTol_GeometricToleranceWithDatumReference(const Handle_StepDimTol_GeometricToleranceWithDatumReference &aHandle);
-        Handle_StepDimTol_GeometricToleranceWithDatumReference(const StepDimTol_GeometricToleranceWithDatumReference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_GeometricToleranceWithDatumReference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_GeometricToleranceWithDatumReference {
-    StepDimTol_GeometricToleranceWithDatumReference* _get_reference() {
-    return (StepDimTol_GeometricToleranceWithDatumReference*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_GeometricToleranceWithDatumReference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_GeometricToleranceWithDatumReference)
 
 %extend StepDimTol_GeometricToleranceWithDatumReference {
 	%pythoncode {
@@ -1365,51 +851,7 @@ class StepDimTol_LineProfileTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_LineProfileTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_LineProfileTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_LineProfileTolerance::Handle_StepDimTol_LineProfileTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_LineProfileTolerance;
-class Handle_StepDimTol_LineProfileTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_LineProfileTolerance();
-        Handle_StepDimTol_LineProfileTolerance(const Handle_StepDimTol_LineProfileTolerance &aHandle);
-        Handle_StepDimTol_LineProfileTolerance(const StepDimTol_LineProfileTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_LineProfileTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_LineProfileTolerance {
-    StepDimTol_LineProfileTolerance* _get_reference() {
-    return (StepDimTol_LineProfileTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_LineProfileTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_LineProfileTolerance)
 
 %extend StepDimTol_LineProfileTolerance {
 	%pythoncode {
@@ -1458,51 +900,7 @@ class StepDimTol_ModifiedGeometricTolerance : public StepDimTol_GeometricToleran
 };
 
 
-%extend StepDimTol_ModifiedGeometricTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_ModifiedGeometricTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_ModifiedGeometricTolerance::Handle_StepDimTol_ModifiedGeometricTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_ModifiedGeometricTolerance;
-class Handle_StepDimTol_ModifiedGeometricTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_ModifiedGeometricTolerance();
-        Handle_StepDimTol_ModifiedGeometricTolerance(const Handle_StepDimTol_ModifiedGeometricTolerance &aHandle);
-        Handle_StepDimTol_ModifiedGeometricTolerance(const StepDimTol_ModifiedGeometricTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_ModifiedGeometricTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_ModifiedGeometricTolerance {
-    StepDimTol_ModifiedGeometricTolerance* _get_reference() {
-    return (StepDimTol_ModifiedGeometricTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_ModifiedGeometricTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_ModifiedGeometricTolerance)
 
 %extend StepDimTol_ModifiedGeometricTolerance {
 	%pythoncode {
@@ -1521,51 +919,7 @@ class StepDimTol_PlacedDatumTargetFeature : public StepDimTol_DatumTarget {
 };
 
 
-%extend StepDimTol_PlacedDatumTargetFeature {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_PlacedDatumTargetFeature(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_PlacedDatumTargetFeature::Handle_StepDimTol_PlacedDatumTargetFeature %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_PlacedDatumTargetFeature;
-class Handle_StepDimTol_PlacedDatumTargetFeature : public Handle_StepDimTol_DatumTarget {
-
-    public:
-        // constructors
-        Handle_StepDimTol_PlacedDatumTargetFeature();
-        Handle_StepDimTol_PlacedDatumTargetFeature(const Handle_StepDimTol_PlacedDatumTargetFeature &aHandle);
-        Handle_StepDimTol_PlacedDatumTargetFeature(const StepDimTol_PlacedDatumTargetFeature *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_PlacedDatumTargetFeature DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_PlacedDatumTargetFeature {
-    StepDimTol_PlacedDatumTargetFeature* _get_reference() {
-    return (StepDimTol_PlacedDatumTargetFeature*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_PlacedDatumTargetFeature {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_PlacedDatumTargetFeature)
 
 %extend StepDimTol_PlacedDatumTargetFeature {
 	%pythoncode {
@@ -1584,51 +938,7 @@ class StepDimTol_PositionTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_PositionTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_PositionTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_PositionTolerance::Handle_StepDimTol_PositionTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_PositionTolerance;
-class Handle_StepDimTol_PositionTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_PositionTolerance();
-        Handle_StepDimTol_PositionTolerance(const Handle_StepDimTol_PositionTolerance &aHandle);
-        Handle_StepDimTol_PositionTolerance(const StepDimTol_PositionTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_PositionTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_PositionTolerance {
-    StepDimTol_PositionTolerance* _get_reference() {
-    return (StepDimTol_PositionTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_PositionTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_PositionTolerance)
 
 %extend StepDimTol_PositionTolerance {
 	%pythoncode {
@@ -1647,51 +957,7 @@ class StepDimTol_RoundnessTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_RoundnessTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_RoundnessTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_RoundnessTolerance::Handle_StepDimTol_RoundnessTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_RoundnessTolerance;
-class Handle_StepDimTol_RoundnessTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_RoundnessTolerance();
-        Handle_StepDimTol_RoundnessTolerance(const Handle_StepDimTol_RoundnessTolerance &aHandle);
-        Handle_StepDimTol_RoundnessTolerance(const StepDimTol_RoundnessTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_RoundnessTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_RoundnessTolerance {
-    StepDimTol_RoundnessTolerance* _get_reference() {
-    return (StepDimTol_RoundnessTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_RoundnessTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_RoundnessTolerance)
 
 %extend StepDimTol_RoundnessTolerance {
 	%pythoncode {
@@ -1710,51 +976,7 @@ class StepDimTol_StraightnessTolerance : public StepDimTol_GeometricTolerance {
 };
 
 
-%extend StepDimTol_StraightnessTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_StraightnessTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_StraightnessTolerance::Handle_StepDimTol_StraightnessTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_StraightnessTolerance;
-class Handle_StepDimTol_StraightnessTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_StraightnessTolerance();
-        Handle_StepDimTol_StraightnessTolerance(const Handle_StepDimTol_StraightnessTolerance &aHandle);
-        Handle_StepDimTol_StraightnessTolerance(const StepDimTol_StraightnessTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_StraightnessTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_StraightnessTolerance {
-    StepDimTol_StraightnessTolerance* _get_reference() {
-    return (StepDimTol_StraightnessTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_StraightnessTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_StraightnessTolerance)
 
 %extend StepDimTol_StraightnessTolerance {
 	%pythoncode {
@@ -1773,51 +995,7 @@ class StepDimTol_SurfaceProfileTolerance : public StepDimTol_GeometricTolerance 
 };
 
 
-%extend StepDimTol_SurfaceProfileTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_SurfaceProfileTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_SurfaceProfileTolerance::Handle_StepDimTol_SurfaceProfileTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_SurfaceProfileTolerance;
-class Handle_StepDimTol_SurfaceProfileTolerance : public Handle_StepDimTol_GeometricTolerance {
-
-    public:
-        // constructors
-        Handle_StepDimTol_SurfaceProfileTolerance();
-        Handle_StepDimTol_SurfaceProfileTolerance(const Handle_StepDimTol_SurfaceProfileTolerance &aHandle);
-        Handle_StepDimTol_SurfaceProfileTolerance(const StepDimTol_SurfaceProfileTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_SurfaceProfileTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_SurfaceProfileTolerance {
-    StepDimTol_SurfaceProfileTolerance* _get_reference() {
-    return (StepDimTol_SurfaceProfileTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_SurfaceProfileTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_SurfaceProfileTolerance)
 
 %extend StepDimTol_SurfaceProfileTolerance {
 	%pythoncode {
@@ -1836,51 +1014,7 @@ class StepDimTol_AngularityTolerance : public StepDimTol_GeometricToleranceWithD
 };
 
 
-%extend StepDimTol_AngularityTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_AngularityTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_AngularityTolerance::Handle_StepDimTol_AngularityTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_AngularityTolerance;
-class Handle_StepDimTol_AngularityTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_AngularityTolerance();
-        Handle_StepDimTol_AngularityTolerance(const Handle_StepDimTol_AngularityTolerance &aHandle);
-        Handle_StepDimTol_AngularityTolerance(const StepDimTol_AngularityTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_AngularityTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_AngularityTolerance {
-    StepDimTol_AngularityTolerance* _get_reference() {
-    return (StepDimTol_AngularityTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_AngularityTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_AngularityTolerance)
 
 %extend StepDimTol_AngularityTolerance {
 	%pythoncode {
@@ -1899,51 +1033,7 @@ class StepDimTol_CircularRunoutTolerance : public StepDimTol_GeometricToleranceW
 };
 
 
-%extend StepDimTol_CircularRunoutTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_CircularRunoutTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_CircularRunoutTolerance::Handle_StepDimTol_CircularRunoutTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_CircularRunoutTolerance;
-class Handle_StepDimTol_CircularRunoutTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_CircularRunoutTolerance();
-        Handle_StepDimTol_CircularRunoutTolerance(const Handle_StepDimTol_CircularRunoutTolerance &aHandle);
-        Handle_StepDimTol_CircularRunoutTolerance(const StepDimTol_CircularRunoutTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_CircularRunoutTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_CircularRunoutTolerance {
-    StepDimTol_CircularRunoutTolerance* _get_reference() {
-    return (StepDimTol_CircularRunoutTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_CircularRunoutTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_CircularRunoutTolerance)
 
 %extend StepDimTol_CircularRunoutTolerance {
 	%pythoncode {
@@ -1962,51 +1052,7 @@ class StepDimTol_CoaxialityTolerance : public StepDimTol_GeometricToleranceWithD
 };
 
 
-%extend StepDimTol_CoaxialityTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_CoaxialityTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_CoaxialityTolerance::Handle_StepDimTol_CoaxialityTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_CoaxialityTolerance;
-class Handle_StepDimTol_CoaxialityTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_CoaxialityTolerance();
-        Handle_StepDimTol_CoaxialityTolerance(const Handle_StepDimTol_CoaxialityTolerance &aHandle);
-        Handle_StepDimTol_CoaxialityTolerance(const StepDimTol_CoaxialityTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_CoaxialityTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_CoaxialityTolerance {
-    StepDimTol_CoaxialityTolerance* _get_reference() {
-    return (StepDimTol_CoaxialityTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_CoaxialityTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_CoaxialityTolerance)
 
 %extend StepDimTol_CoaxialityTolerance {
 	%pythoncode {
@@ -2025,51 +1071,7 @@ class StepDimTol_ConcentricityTolerance : public StepDimTol_GeometricToleranceWi
 };
 
 
-%extend StepDimTol_ConcentricityTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_ConcentricityTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_ConcentricityTolerance::Handle_StepDimTol_ConcentricityTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_ConcentricityTolerance;
-class Handle_StepDimTol_ConcentricityTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_ConcentricityTolerance();
-        Handle_StepDimTol_ConcentricityTolerance(const Handle_StepDimTol_ConcentricityTolerance &aHandle);
-        Handle_StepDimTol_ConcentricityTolerance(const StepDimTol_ConcentricityTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_ConcentricityTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_ConcentricityTolerance {
-    StepDimTol_ConcentricityTolerance* _get_reference() {
-    return (StepDimTol_ConcentricityTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_ConcentricityTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_ConcentricityTolerance)
 
 %extend StepDimTol_ConcentricityTolerance {
 	%pythoncode {
@@ -2088,51 +1090,7 @@ class StepDimTol_ParallelismTolerance : public StepDimTol_GeometricToleranceWith
 };
 
 
-%extend StepDimTol_ParallelismTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_ParallelismTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_ParallelismTolerance::Handle_StepDimTol_ParallelismTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_ParallelismTolerance;
-class Handle_StepDimTol_ParallelismTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_ParallelismTolerance();
-        Handle_StepDimTol_ParallelismTolerance(const Handle_StepDimTol_ParallelismTolerance &aHandle);
-        Handle_StepDimTol_ParallelismTolerance(const StepDimTol_ParallelismTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_ParallelismTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_ParallelismTolerance {
-    StepDimTol_ParallelismTolerance* _get_reference() {
-    return (StepDimTol_ParallelismTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_ParallelismTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_ParallelismTolerance)
 
 %extend StepDimTol_ParallelismTolerance {
 	%pythoncode {
@@ -2151,51 +1109,7 @@ class StepDimTol_PerpendicularityTolerance : public StepDimTol_GeometricToleranc
 };
 
 
-%extend StepDimTol_PerpendicularityTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_PerpendicularityTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_PerpendicularityTolerance::Handle_StepDimTol_PerpendicularityTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_PerpendicularityTolerance;
-class Handle_StepDimTol_PerpendicularityTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_PerpendicularityTolerance();
-        Handle_StepDimTol_PerpendicularityTolerance(const Handle_StepDimTol_PerpendicularityTolerance &aHandle);
-        Handle_StepDimTol_PerpendicularityTolerance(const StepDimTol_PerpendicularityTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_PerpendicularityTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_PerpendicularityTolerance {
-    StepDimTol_PerpendicularityTolerance* _get_reference() {
-    return (StepDimTol_PerpendicularityTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_PerpendicularityTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_PerpendicularityTolerance)
 
 %extend StepDimTol_PerpendicularityTolerance {
 	%pythoncode {
@@ -2214,51 +1128,7 @@ class StepDimTol_SymmetryTolerance : public StepDimTol_GeometricToleranceWithDat
 };
 
 
-%extend StepDimTol_SymmetryTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_SymmetryTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_SymmetryTolerance::Handle_StepDimTol_SymmetryTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_SymmetryTolerance;
-class Handle_StepDimTol_SymmetryTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_SymmetryTolerance();
-        Handle_StepDimTol_SymmetryTolerance(const Handle_StepDimTol_SymmetryTolerance &aHandle);
-        Handle_StepDimTol_SymmetryTolerance(const StepDimTol_SymmetryTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_SymmetryTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_SymmetryTolerance {
-    StepDimTol_SymmetryTolerance* _get_reference() {
-    return (StepDimTol_SymmetryTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_SymmetryTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_SymmetryTolerance)
 
 %extend StepDimTol_SymmetryTolerance {
 	%pythoncode {
@@ -2277,51 +1147,7 @@ class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWith
 };
 
 
-%extend StepDimTol_TotalRunoutTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepDimTol_TotalRunoutTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepDimTol_TotalRunoutTolerance::Handle_StepDimTol_TotalRunoutTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepDimTol_TotalRunoutTolerance;
-class Handle_StepDimTol_TotalRunoutTolerance : public Handle_StepDimTol_GeometricToleranceWithDatumReference {
-
-    public:
-        // constructors
-        Handle_StepDimTol_TotalRunoutTolerance();
-        Handle_StepDimTol_TotalRunoutTolerance(const Handle_StepDimTol_TotalRunoutTolerance &aHandle);
-        Handle_StepDimTol_TotalRunoutTolerance(const StepDimTol_TotalRunoutTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepDimTol_TotalRunoutTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepDimTol_TotalRunoutTolerance {
-    StepDimTol_TotalRunoutTolerance* _get_reference() {
-    return (StepDimTol_TotalRunoutTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepDimTol_TotalRunoutTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepDimTol_TotalRunoutTolerance)
 
 %extend StepDimTol_TotalRunoutTolerance {
 	%pythoncode {

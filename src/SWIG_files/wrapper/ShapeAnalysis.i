@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEANALYSISDOCSTRING
-"No docstring provided."
+"This package is intended to analyze geometrical objectsand topological shapes. Analysis domain includes bothexploring geometrical and topological properties ofshapes and checking their conformance to Open CASCADE requirements.The directions of analysis provided by tools of this package are:computing quantities of subshapes,computing parameters of points on curve and surface,computing surface singularities,checking edge and wire consistency,checking edges order in the wire,checking face bounds orientation,checking small faces,analyzing shape tolerances,analyzing of free bounds of the shape."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEANALYSISDOCSTRING) ShapeAnalysis
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeAnalysis_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree;
@@ -59,6 +45,15 @@ typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal)
+%wrap_handle(ShapeAnalysis_FreeBoundData)
+%wrap_handle(ShapeAnalysis_HSequenceOfFreeBounds)
+%wrap_handle(ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds)
+%wrap_handle(ShapeAnalysis_Surface)
+%wrap_handle(ShapeAnalysis_TransferParameters)
+%wrap_handle(ShapeAnalysis_Wire)
+%wrap_handle(ShapeAnalysis_TransferParametersProj)
 
 %rename(shapeanalysis) ShapeAnalysis;
 class ShapeAnalysis {
@@ -695,51 +690,7 @@ class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_M
 };
 
 
-%extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal::Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal;
-class Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal();
-        Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(const Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal &aHandle);
-        Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(const ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-    ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal* _get_reference() {
-    return (ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal)
 
 %extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
 	%pythoncode {
@@ -1312,51 +1263,7 @@ class ShapeAnalysis_FreeBoundData : public MMgt_TShared {
 };
 
 
-%extend ShapeAnalysis_FreeBoundData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_FreeBoundData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_FreeBoundData::Handle_ShapeAnalysis_FreeBoundData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_FreeBoundData;
-class Handle_ShapeAnalysis_FreeBoundData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_FreeBoundData();
-        Handle_ShapeAnalysis_FreeBoundData(const Handle_ShapeAnalysis_FreeBoundData &aHandle);
-        Handle_ShapeAnalysis_FreeBoundData(const ShapeAnalysis_FreeBoundData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_FreeBoundData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_FreeBoundData {
-    ShapeAnalysis_FreeBoundData* _get_reference() {
-    return (ShapeAnalysis_FreeBoundData*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_FreeBoundData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_FreeBoundData)
 
 %extend ShapeAnalysis_FreeBoundData {
 	%pythoncode {
@@ -1849,51 +1756,7 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
 };
 
 
-%extend ShapeAnalysis_HSequenceOfFreeBounds {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_HSequenceOfFreeBounds(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_HSequenceOfFreeBounds::Handle_ShapeAnalysis_HSequenceOfFreeBounds %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_HSequenceOfFreeBounds;
-class Handle_ShapeAnalysis_HSequenceOfFreeBounds : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_HSequenceOfFreeBounds();
-        Handle_ShapeAnalysis_HSequenceOfFreeBounds(const Handle_ShapeAnalysis_HSequenceOfFreeBounds &aHandle);
-        Handle_ShapeAnalysis_HSequenceOfFreeBounds(const ShapeAnalysis_HSequenceOfFreeBounds *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_HSequenceOfFreeBounds DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_HSequenceOfFreeBounds {
-    ShapeAnalysis_HSequenceOfFreeBounds* _get_reference() {
-    return (ShapeAnalysis_HSequenceOfFreeBounds*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_HSequenceOfFreeBounds {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_HSequenceOfFreeBounds)
 
 %extend ShapeAnalysis_HSequenceOfFreeBounds {
 	%pythoncode {
@@ -1920,51 +1783,7 @@ class ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public TCollection_SeqN
 };
 
 
-%extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds::Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds;
-class Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds();
-        Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds(const Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds &aHandle);
-        Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds(const ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-    ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds* _get_reference() {
-    return (ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds)
 
 %extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
 	%pythoncode {
@@ -2866,51 +2685,7 @@ class ShapeAnalysis_Surface : public MMgt_TShared {
 };
 
 
-%extend ShapeAnalysis_Surface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_Surface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_Surface::Handle_ShapeAnalysis_Surface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_Surface;
-class Handle_ShapeAnalysis_Surface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_Surface();
-        Handle_ShapeAnalysis_Surface(const Handle_ShapeAnalysis_Surface &aHandle);
-        Handle_ShapeAnalysis_Surface(const ShapeAnalysis_Surface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_Surface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_Surface {
-    ShapeAnalysis_Surface* _get_reference() {
-    return (ShapeAnalysis_Surface*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_Surface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_Surface)
 
 %extend ShapeAnalysis_Surface {
 	%pythoncode {
@@ -2997,51 +2772,7 @@ class ShapeAnalysis_TransferParameters : public MMgt_TShared {
 };
 
 
-%extend ShapeAnalysis_TransferParameters {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_TransferParameters(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_TransferParameters::Handle_ShapeAnalysis_TransferParameters %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_TransferParameters;
-class Handle_ShapeAnalysis_TransferParameters : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_TransferParameters();
-        Handle_ShapeAnalysis_TransferParameters(const Handle_ShapeAnalysis_TransferParameters &aHandle);
-        Handle_ShapeAnalysis_TransferParameters(const ShapeAnalysis_TransferParameters *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_TransferParameters DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_TransferParameters {
-    ShapeAnalysis_TransferParameters* _get_reference() {
-    return (ShapeAnalysis_TransferParameters*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_TransferParameters {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_TransferParameters)
 
 %extend ShapeAnalysis_TransferParameters {
 	%pythoncode {
@@ -3670,51 +3401,7 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 };
 
 
-%extend ShapeAnalysis_Wire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_Wire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_Wire::Handle_ShapeAnalysis_Wire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_Wire;
-class Handle_ShapeAnalysis_Wire : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_Wire();
-        Handle_ShapeAnalysis_Wire(const Handle_ShapeAnalysis_Wire &aHandle);
-        Handle_ShapeAnalysis_Wire(const ShapeAnalysis_Wire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_Wire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_Wire {
-    ShapeAnalysis_Wire* _get_reference() {
-    return (ShapeAnalysis_Wire*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_Wire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_Wire)
 
 %extend ShapeAnalysis_Wire {
 	%pythoncode {
@@ -4237,51 +3924,7 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 };
 
 
-%extend ShapeAnalysis_TransferParametersProj {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeAnalysis_TransferParametersProj(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeAnalysis_TransferParametersProj::Handle_ShapeAnalysis_TransferParametersProj %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeAnalysis_TransferParametersProj;
-class Handle_ShapeAnalysis_TransferParametersProj : public Handle_ShapeAnalysis_TransferParameters {
-
-    public:
-        // constructors
-        Handle_ShapeAnalysis_TransferParametersProj();
-        Handle_ShapeAnalysis_TransferParametersProj(const Handle_ShapeAnalysis_TransferParametersProj &aHandle);
-        Handle_ShapeAnalysis_TransferParametersProj(const ShapeAnalysis_TransferParametersProj *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeAnalysis_TransferParametersProj DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeAnalysis_TransferParametersProj {
-    ShapeAnalysis_TransferParametersProj* _get_reference() {
-    return (ShapeAnalysis_TransferParametersProj*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeAnalysis_TransferParametersProj {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeAnalysis_TransferParametersProj)
 
 %extend ShapeAnalysis_TransferParametersProj {
 	%pythoncode {

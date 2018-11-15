@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPFEADOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=STEPFEADOCSTRING) StepFEA
 
@@ -34,37 +34,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepFEA_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
-enum StepFEA_ElementVolume {
-	StepFEA_Volume = 0,
-};
-
 enum StepFEA_CoordinateSystemType {
 	StepFEA_Cartesian = 0,
 	StepFEA_Cylindrical = 1,
 	StepFEA_Spherical = 2,
+};
+
+enum StepFEA_CurveEdge {
+	StepFEA_ElementEdge = 0,
+};
+
+enum StepFEA_ElementVolume {
+	StepFEA_Volume = 0,
 };
 
 enum StepFEA_EnumeratedDegreeOfFreedom {
@@ -77,15 +67,81 @@ enum StepFEA_EnumeratedDegreeOfFreedom {
 	StepFEA_Warp = 6,
 };
 
-enum StepFEA_CurveEdge {
-	StepFEA_ElementEdge = 0,
-};
-
 enum StepFEA_UnspecifiedValue {
 	StepFEA_Unspecified = 0,
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepFEA_Curve3dElementProperty)
+%wrap_handle(StepFEA_CurveElementEndOffset)
+%wrap_handle(StepFEA_CurveElementEndRelease)
+%wrap_handle(StepFEA_CurveElementInterval)
+%wrap_handle(StepFEA_CurveElementLocation)
+%wrap_handle(StepFEA_DegreeOfFreedomMember)
+%wrap_handle(StepFEA_ElementGeometricRelationship)
+%wrap_handle(StepFEA_ElementRepresentation)
+%wrap_handle(StepFEA_FeaAxis2Placement3d)
+%wrap_handle(StepFEA_FeaCurveSectionGeometricRelationship)
+%wrap_handle(StepFEA_FeaGroup)
+%wrap_handle(StepFEA_FeaMaterialPropertyRepresentation)
+%wrap_handle(StepFEA_FeaMaterialPropertyRepresentationItem)
+%wrap_handle(StepFEA_FeaModel)
+%wrap_handle(StepFEA_FeaModelDefinition)
+%wrap_handle(StepFEA_FeaParametricPoint)
+%wrap_handle(StepFEA_FeaRepresentationItem)
+%wrap_handle(StepFEA_FeaSurfaceSectionGeometricRelationship)
+%wrap_handle(StepFEA_FreedomAndCoefficient)
+%wrap_handle(StepFEA_FreedomsList)
+%wrap_handle(StepFEA_HArray1OfCurveElementEndOffset)
+%wrap_handle(StepFEA_HArray1OfCurveElementEndRelease)
+%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
+%wrap_handle(StepFEA_HArray1OfDegreeOfFreedom)
+%wrap_handle(StepFEA_HArray1OfElementRepresentation)
+%wrap_handle(StepFEA_HArray1OfNodeRepresentation)
+%wrap_handle(StepFEA_HSequenceOfCurve3dElementProperty)
+%wrap_handle(StepFEA_HSequenceOfElementGeometricRelationship)
+%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
+%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
+%wrap_handle(StepFEA_NodeDefinition)
+%wrap_handle(StepFEA_NodeRepresentation)
+%wrap_handle(StepFEA_NodeSet)
+%wrap_handle(StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty)
+%wrap_handle(StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship)
+%wrap_handle(StepFEA_SequenceNodeOfSequenceOfElementRepresentation)
+%wrap_handle(StepFEA_SequenceNodeOfSequenceOfNodeRepresentation)
+%wrap_handle(StepFEA_SymmetricTensor23dMember)
+%wrap_handle(StepFEA_SymmetricTensor43dMember)
+%wrap_handle(StepFEA_AlignedCurve3dElementCoordinateSystem)
+%wrap_handle(StepFEA_AlignedSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ConstantSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_Curve3dElementRepresentation)
+%wrap_handle(StepFEA_CurveElementIntervalConstant)
+%wrap_handle(StepFEA_CurveElementIntervalLinearlyVarying)
+%wrap_handle(StepFEA_DummyNode)
+%wrap_handle(StepFEA_ElementGroup)
+%wrap_handle(StepFEA_FeaAreaDensity)
+%wrap_handle(StepFEA_FeaLinearElasticity)
+%wrap_handle(StepFEA_FeaMassDensity)
+%wrap_handle(StepFEA_FeaModel3d)
+%wrap_handle(StepFEA_FeaMoistureAbsorption)
+%wrap_handle(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
+%wrap_handle(StepFEA_FeaShellBendingStiffness)
+%wrap_handle(StepFEA_FeaShellMembraneBendingCouplingStiffness)
+%wrap_handle(StepFEA_FeaShellMembraneStiffness)
+%wrap_handle(StepFEA_FeaShellShearStiffness)
+%wrap_handle(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
+%wrap_handle(StepFEA_GeometricNode)
+%wrap_handle(StepFEA_Node)
+%wrap_handle(StepFEA_NodeGroup)
+%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateDirection)
+%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ParametricSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_Surface3dElementRepresentation)
+%wrap_handle(StepFEA_Volume3dElementRepresentation)
+%wrap_handle(StepFEA_NodeWithSolutionCoordinateSystem)
+%wrap_handle(StepFEA_NodeWithVector)
 
 %nodefaultctor StepFEA_Array1OfCurveElementEndOffset;
 class StepFEA_Array1OfCurveElementEndOffset {
@@ -707,51 +763,7 @@ class StepFEA_Curve3dElementProperty : public MMgt_TShared {
 };
 
 
-%extend StepFEA_Curve3dElementProperty {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_Curve3dElementProperty(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_Curve3dElementProperty::Handle_StepFEA_Curve3dElementProperty %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_Curve3dElementProperty;
-class Handle_StepFEA_Curve3dElementProperty : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_Curve3dElementProperty();
-        Handle_StepFEA_Curve3dElementProperty(const Handle_StepFEA_Curve3dElementProperty &aHandle);
-        Handle_StepFEA_Curve3dElementProperty(const StepFEA_Curve3dElementProperty *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_Curve3dElementProperty DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_Curve3dElementProperty {
-    StepFEA_Curve3dElementProperty* _get_reference() {
-    return (StepFEA_Curve3dElementProperty*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_Curve3dElementProperty {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_Curve3dElementProperty)
 
 %extend StepFEA_Curve3dElementProperty {
 	%pythoncode {
@@ -851,51 +863,7 @@ class StepFEA_CurveElementEndOffset : public MMgt_TShared {
 };
 
 
-%extend StepFEA_CurveElementEndOffset {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementEndOffset(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementEndOffset::Handle_StepFEA_CurveElementEndOffset %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementEndOffset;
-class Handle_StepFEA_CurveElementEndOffset : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementEndOffset();
-        Handle_StepFEA_CurveElementEndOffset(const Handle_StepFEA_CurveElementEndOffset &aHandle);
-        Handle_StepFEA_CurveElementEndOffset(const StepFEA_CurveElementEndOffset *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementEndOffset DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementEndOffset {
-    StepFEA_CurveElementEndOffset* _get_reference() {
-    return (StepFEA_CurveElementEndOffset*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementEndOffset {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementEndOffset)
 
 %extend StepFEA_CurveElementEndOffset {
 	%pythoncode {
@@ -952,51 +920,7 @@ class StepFEA_CurveElementEndRelease : public MMgt_TShared {
 };
 
 
-%extend StepFEA_CurveElementEndRelease {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementEndRelease(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementEndRelease::Handle_StepFEA_CurveElementEndRelease %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementEndRelease;
-class Handle_StepFEA_CurveElementEndRelease : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementEndRelease();
-        Handle_StepFEA_CurveElementEndRelease(const Handle_StepFEA_CurveElementEndRelease &aHandle);
-        Handle_StepFEA_CurveElementEndRelease(const StepFEA_CurveElementEndRelease *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementEndRelease DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementEndRelease {
-    StepFEA_CurveElementEndRelease* _get_reference() {
-    return (StepFEA_CurveElementEndRelease*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementEndRelease {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementEndRelease)
 
 %extend StepFEA_CurveElementEndRelease {
 	%pythoncode {
@@ -1053,51 +977,7 @@ class StepFEA_CurveElementInterval : public MMgt_TShared {
 };
 
 
-%extend StepFEA_CurveElementInterval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementInterval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementInterval::Handle_StepFEA_CurveElementInterval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementInterval;
-class Handle_StepFEA_CurveElementInterval : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementInterval();
-        Handle_StepFEA_CurveElementInterval(const Handle_StepFEA_CurveElementInterval &aHandle);
-        Handle_StepFEA_CurveElementInterval(const StepFEA_CurveElementInterval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementInterval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementInterval {
-    StepFEA_CurveElementInterval* _get_reference() {
-    return (StepFEA_CurveElementInterval*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementInterval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementInterval)
 
 %extend StepFEA_CurveElementInterval {
 	%pythoncode {
@@ -1138,51 +1018,7 @@ class StepFEA_CurveElementLocation : public MMgt_TShared {
 };
 
 
-%extend StepFEA_CurveElementLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementLocation::Handle_StepFEA_CurveElementLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementLocation;
-class Handle_StepFEA_CurveElementLocation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementLocation();
-        Handle_StepFEA_CurveElementLocation(const Handle_StepFEA_CurveElementLocation &aHandle);
-        Handle_StepFEA_CurveElementLocation(const StepFEA_CurveElementLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementLocation {
-    StepFEA_CurveElementLocation* _get_reference() {
-    return (StepFEA_CurveElementLocation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementLocation)
 
 %extend StepFEA_CurveElementLocation {
 	%pythoncode {
@@ -1296,51 +1132,7 @@ class StepFEA_DegreeOfFreedomMember : public StepData_SelectNamed {
 };
 
 
-%extend StepFEA_DegreeOfFreedomMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_DegreeOfFreedomMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_DegreeOfFreedomMember::Handle_StepFEA_DegreeOfFreedomMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_DegreeOfFreedomMember;
-class Handle_StepFEA_DegreeOfFreedomMember : public Handle_StepData_SelectNamed {
-
-    public:
-        // constructors
-        Handle_StepFEA_DegreeOfFreedomMember();
-        Handle_StepFEA_DegreeOfFreedomMember(const Handle_StepFEA_DegreeOfFreedomMember &aHandle);
-        Handle_StepFEA_DegreeOfFreedomMember(const StepFEA_DegreeOfFreedomMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_DegreeOfFreedomMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_DegreeOfFreedomMember {
-    StepFEA_DegreeOfFreedomMember* _get_reference() {
-    return (StepFEA_DegreeOfFreedomMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_DegreeOfFreedomMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_DegreeOfFreedomMember)
 
 %extend StepFEA_DegreeOfFreedomMember {
 	%pythoncode {
@@ -1413,51 +1205,7 @@ class StepFEA_ElementGeometricRelationship : public MMgt_TShared {
 };
 
 
-%extend StepFEA_ElementGeometricRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ElementGeometricRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ElementGeometricRelationship::Handle_StepFEA_ElementGeometricRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ElementGeometricRelationship;
-class Handle_StepFEA_ElementGeometricRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_ElementGeometricRelationship();
-        Handle_StepFEA_ElementGeometricRelationship(const Handle_StepFEA_ElementGeometricRelationship &aHandle);
-        Handle_StepFEA_ElementGeometricRelationship(const StepFEA_ElementGeometricRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ElementGeometricRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ElementGeometricRelationship {
-    StepFEA_ElementGeometricRelationship* _get_reference() {
-    return (StepFEA_ElementGeometricRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ElementGeometricRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ElementGeometricRelationship)
 
 %extend StepFEA_ElementGeometricRelationship {
 	%pythoncode {
@@ -1541,51 +1289,7 @@ class StepFEA_ElementRepresentation : public StepRepr_Representation {
 };
 
 
-%extend StepFEA_ElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ElementRepresentation::Handle_StepFEA_ElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ElementRepresentation;
-class Handle_StepFEA_ElementRepresentation : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepFEA_ElementRepresentation();
-        Handle_StepFEA_ElementRepresentation(const Handle_StepFEA_ElementRepresentation &aHandle);
-        Handle_StepFEA_ElementRepresentation(const StepFEA_ElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ElementRepresentation {
-    StepFEA_ElementRepresentation* _get_reference() {
-    return (StepFEA_ElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ElementRepresentation)
 
 %extend StepFEA_ElementRepresentation {
 	%pythoncode {
@@ -1654,51 +1358,7 @@ class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 };
 
 
-%extend StepFEA_FeaAxis2Placement3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaAxis2Placement3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaAxis2Placement3d::Handle_StepFEA_FeaAxis2Placement3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaAxis2Placement3d;
-class Handle_StepFEA_FeaAxis2Placement3d : public Handle_StepGeom_Axis2Placement3d {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaAxis2Placement3d();
-        Handle_StepFEA_FeaAxis2Placement3d(const Handle_StepFEA_FeaAxis2Placement3d &aHandle);
-        Handle_StepFEA_FeaAxis2Placement3d(const StepFEA_FeaAxis2Placement3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaAxis2Placement3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaAxis2Placement3d {
-    StepFEA_FeaAxis2Placement3d* _get_reference() {
-    return (StepFEA_FeaAxis2Placement3d*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaAxis2Placement3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaAxis2Placement3d)
 
 %extend StepFEA_FeaAxis2Placement3d {
 	%pythoncode {
@@ -1755,51 +1415,7 @@ class StepFEA_FeaCurveSectionGeometricRelationship : public MMgt_TShared {
 };
 
 
-%extend StepFEA_FeaCurveSectionGeometricRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaCurveSectionGeometricRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaCurveSectionGeometricRelationship::Handle_StepFEA_FeaCurveSectionGeometricRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaCurveSectionGeometricRelationship;
-class Handle_StepFEA_FeaCurveSectionGeometricRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaCurveSectionGeometricRelationship();
-        Handle_StepFEA_FeaCurveSectionGeometricRelationship(const Handle_StepFEA_FeaCurveSectionGeometricRelationship &aHandle);
-        Handle_StepFEA_FeaCurveSectionGeometricRelationship(const StepFEA_FeaCurveSectionGeometricRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaCurveSectionGeometricRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaCurveSectionGeometricRelationship {
-    StepFEA_FeaCurveSectionGeometricRelationship* _get_reference() {
-    return (StepFEA_FeaCurveSectionGeometricRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaCurveSectionGeometricRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaCurveSectionGeometricRelationship)
 
 %extend StepFEA_FeaCurveSectionGeometricRelationship {
 	%pythoncode {
@@ -1844,51 +1460,7 @@ class StepFEA_FeaGroup : public StepBasic_Group {
 };
 
 
-%extend StepFEA_FeaGroup {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaGroup(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaGroup::Handle_StepFEA_FeaGroup %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaGroup;
-class Handle_StepFEA_FeaGroup : public Handle_StepBasic_Group {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaGroup();
-        Handle_StepFEA_FeaGroup(const Handle_StepFEA_FeaGroup &aHandle);
-        Handle_StepFEA_FeaGroup(const StepFEA_FeaGroup *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaGroup DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaGroup {
-    StepFEA_FeaGroup* _get_reference() {
-    return (StepFEA_FeaGroup*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaGroup {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaGroup)
 
 %extend StepFEA_FeaGroup {
 	%pythoncode {
@@ -1907,51 +1479,7 @@ class StepFEA_FeaMaterialPropertyRepresentation : public StepRepr_MaterialProper
 };
 
 
-%extend StepFEA_FeaMaterialPropertyRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaMaterialPropertyRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaMaterialPropertyRepresentation::Handle_StepFEA_FeaMaterialPropertyRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaMaterialPropertyRepresentation;
-class Handle_StepFEA_FeaMaterialPropertyRepresentation : public Handle_StepRepr_MaterialPropertyRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaMaterialPropertyRepresentation();
-        Handle_StepFEA_FeaMaterialPropertyRepresentation(const Handle_StepFEA_FeaMaterialPropertyRepresentation &aHandle);
-        Handle_StepFEA_FeaMaterialPropertyRepresentation(const StepFEA_FeaMaterialPropertyRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaMaterialPropertyRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaMaterialPropertyRepresentation {
-    StepFEA_FeaMaterialPropertyRepresentation* _get_reference() {
-    return (StepFEA_FeaMaterialPropertyRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaMaterialPropertyRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaMaterialPropertyRepresentation)
 
 %extend StepFEA_FeaMaterialPropertyRepresentation {
 	%pythoncode {
@@ -1970,51 +1498,7 @@ class StepFEA_FeaMaterialPropertyRepresentationItem : public StepRepr_Representa
 };
 
 
-%extend StepFEA_FeaMaterialPropertyRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaMaterialPropertyRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaMaterialPropertyRepresentationItem::Handle_StepFEA_FeaMaterialPropertyRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaMaterialPropertyRepresentationItem;
-class Handle_StepFEA_FeaMaterialPropertyRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaMaterialPropertyRepresentationItem();
-        Handle_StepFEA_FeaMaterialPropertyRepresentationItem(const Handle_StepFEA_FeaMaterialPropertyRepresentationItem &aHandle);
-        Handle_StepFEA_FeaMaterialPropertyRepresentationItem(const StepFEA_FeaMaterialPropertyRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaMaterialPropertyRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-    StepFEA_FeaMaterialPropertyRepresentationItem* _get_reference() {
-    return (StepFEA_FeaMaterialPropertyRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaMaterialPropertyRepresentationItem)
 
 %extend StepFEA_FeaMaterialPropertyRepresentationItem {
 	%pythoncode {
@@ -2109,51 +1593,7 @@ class StepFEA_FeaModel : public StepRepr_Representation {
 };
 
 
-%extend StepFEA_FeaModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaModel::Handle_StepFEA_FeaModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaModel;
-class Handle_StepFEA_FeaModel : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaModel();
-        Handle_StepFEA_FeaModel(const Handle_StepFEA_FeaModel &aHandle);
-        Handle_StepFEA_FeaModel(const StepFEA_FeaModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaModel {
-    StepFEA_FeaModel* _get_reference() {
-    return (StepFEA_FeaModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaModel)
 
 %extend StepFEA_FeaModel {
 	%pythoncode {
@@ -2172,51 +1612,7 @@ class StepFEA_FeaModelDefinition : public StepRepr_ShapeAspect {
 };
 
 
-%extend StepFEA_FeaModelDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaModelDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaModelDefinition::Handle_StepFEA_FeaModelDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaModelDefinition;
-class Handle_StepFEA_FeaModelDefinition : public Handle_StepRepr_ShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaModelDefinition();
-        Handle_StepFEA_FeaModelDefinition(const Handle_StepFEA_FeaModelDefinition &aHandle);
-        Handle_StepFEA_FeaModelDefinition(const StepFEA_FeaModelDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaModelDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaModelDefinition {
-    StepFEA_FeaModelDefinition* _get_reference() {
-    return (StepFEA_FeaModelDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaModelDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaModelDefinition)
 
 %extend StepFEA_FeaModelDefinition {
 	%pythoncode {
@@ -2259,51 +1655,7 @@ class StepFEA_FeaParametricPoint : public StepGeom_Point {
 };
 
 
-%extend StepFEA_FeaParametricPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaParametricPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaParametricPoint::Handle_StepFEA_FeaParametricPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaParametricPoint;
-class Handle_StepFEA_FeaParametricPoint : public Handle_StepGeom_Point {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaParametricPoint();
-        Handle_StepFEA_FeaParametricPoint(const Handle_StepFEA_FeaParametricPoint &aHandle);
-        Handle_StepFEA_FeaParametricPoint(const StepFEA_FeaParametricPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaParametricPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaParametricPoint {
-    StepFEA_FeaParametricPoint* _get_reference() {
-    return (StepFEA_FeaParametricPoint*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaParametricPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaParametricPoint)
 
 %extend StepFEA_FeaParametricPoint {
 	%pythoncode {
@@ -2322,51 +1674,7 @@ class StepFEA_FeaRepresentationItem : public StepRepr_RepresentationItem {
 };
 
 
-%extend StepFEA_FeaRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaRepresentationItem::Handle_StepFEA_FeaRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaRepresentationItem;
-class Handle_StepFEA_FeaRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaRepresentationItem();
-        Handle_StepFEA_FeaRepresentationItem(const Handle_StepFEA_FeaRepresentationItem &aHandle);
-        Handle_StepFEA_FeaRepresentationItem(const StepFEA_FeaRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaRepresentationItem {
-    StepFEA_FeaRepresentationItem* _get_reference() {
-    return (StepFEA_FeaRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaRepresentationItem)
 
 %extend StepFEA_FeaRepresentationItem {
 	%pythoncode {
@@ -2423,51 +1731,7 @@ class StepFEA_FeaSurfaceSectionGeometricRelationship : public MMgt_TShared {
 };
 
 
-%extend StepFEA_FeaSurfaceSectionGeometricRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaSurfaceSectionGeometricRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaSurfaceSectionGeometricRelationship::Handle_StepFEA_FeaSurfaceSectionGeometricRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaSurfaceSectionGeometricRelationship;
-class Handle_StepFEA_FeaSurfaceSectionGeometricRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaSurfaceSectionGeometricRelationship();
-        Handle_StepFEA_FeaSurfaceSectionGeometricRelationship(const Handle_StepFEA_FeaSurfaceSectionGeometricRelationship &aHandle);
-        Handle_StepFEA_FeaSurfaceSectionGeometricRelationship(const StepFEA_FeaSurfaceSectionGeometricRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaSurfaceSectionGeometricRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaSurfaceSectionGeometricRelationship {
-    StepFEA_FeaSurfaceSectionGeometricRelationship* _get_reference() {
-    return (StepFEA_FeaSurfaceSectionGeometricRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaSurfaceSectionGeometricRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaSurfaceSectionGeometricRelationship)
 
 %extend StepFEA_FeaSurfaceSectionGeometricRelationship {
 	%pythoncode {
@@ -2524,51 +1788,7 @@ class StepFEA_FreedomAndCoefficient : public MMgt_TShared {
 };
 
 
-%extend StepFEA_FreedomAndCoefficient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FreedomAndCoefficient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FreedomAndCoefficient::Handle_StepFEA_FreedomAndCoefficient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FreedomAndCoefficient;
-class Handle_StepFEA_FreedomAndCoefficient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_FreedomAndCoefficient();
-        Handle_StepFEA_FreedomAndCoefficient(const Handle_StepFEA_FreedomAndCoefficient &aHandle);
-        Handle_StepFEA_FreedomAndCoefficient(const StepFEA_FreedomAndCoefficient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FreedomAndCoefficient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FreedomAndCoefficient {
-    StepFEA_FreedomAndCoefficient* _get_reference() {
-    return (StepFEA_FreedomAndCoefficient*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FreedomAndCoefficient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FreedomAndCoefficient)
 
 %extend StepFEA_FreedomAndCoefficient {
 	%pythoncode {
@@ -2609,51 +1829,7 @@ class StepFEA_FreedomsList : public MMgt_TShared {
 };
 
 
-%extend StepFEA_FreedomsList {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FreedomsList(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FreedomsList::Handle_StepFEA_FreedomsList %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FreedomsList;
-class Handle_StepFEA_FreedomsList : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_FreedomsList();
-        Handle_StepFEA_FreedomsList(const Handle_StepFEA_FreedomsList &aHandle);
-        Handle_StepFEA_FreedomsList(const StepFEA_FreedomsList *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FreedomsList DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FreedomsList {
-    StepFEA_FreedomsList* _get_reference() {
-    return (StepFEA_FreedomsList*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FreedomsList {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FreedomsList)
 
 %extend StepFEA_FreedomsList {
 	%pythoncode {
@@ -2730,51 +1906,7 @@ class StepFEA_HArray1OfCurveElementEndOffset : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfCurveElementEndOffset {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfCurveElementEndOffset(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfCurveElementEndOffset::Handle_StepFEA_HArray1OfCurveElementEndOffset %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfCurveElementEndOffset;
-class Handle_StepFEA_HArray1OfCurveElementEndOffset : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfCurveElementEndOffset();
-        Handle_StepFEA_HArray1OfCurveElementEndOffset(const Handle_StepFEA_HArray1OfCurveElementEndOffset &aHandle);
-        Handle_StepFEA_HArray1OfCurveElementEndOffset(const StepFEA_HArray1OfCurveElementEndOffset *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfCurveElementEndOffset DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfCurveElementEndOffset {
-    StepFEA_HArray1OfCurveElementEndOffset* _get_reference() {
-    return (StepFEA_HArray1OfCurveElementEndOffset*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfCurveElementEndOffset {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfCurveElementEndOffset)
 
 %extend StepFEA_HArray1OfCurveElementEndOffset {
 	%pythoncode {
@@ -2851,51 +1983,7 @@ class StepFEA_HArray1OfCurveElementEndRelease : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfCurveElementEndRelease {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfCurveElementEndRelease(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfCurveElementEndRelease::Handle_StepFEA_HArray1OfCurveElementEndRelease %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfCurveElementEndRelease;
-class Handle_StepFEA_HArray1OfCurveElementEndRelease : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfCurveElementEndRelease();
-        Handle_StepFEA_HArray1OfCurveElementEndRelease(const Handle_StepFEA_HArray1OfCurveElementEndRelease &aHandle);
-        Handle_StepFEA_HArray1OfCurveElementEndRelease(const StepFEA_HArray1OfCurveElementEndRelease *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfCurveElementEndRelease DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfCurveElementEndRelease {
-    StepFEA_HArray1OfCurveElementEndRelease* _get_reference() {
-    return (StepFEA_HArray1OfCurveElementEndRelease*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfCurveElementEndRelease {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfCurveElementEndRelease)
 
 %extend StepFEA_HArray1OfCurveElementEndRelease {
 	%pythoncode {
@@ -2972,51 +2060,7 @@ class StepFEA_HArray1OfCurveElementInterval : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfCurveElementInterval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfCurveElementInterval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfCurveElementInterval::Handle_StepFEA_HArray1OfCurveElementInterval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfCurveElementInterval;
-class Handle_StepFEA_HArray1OfCurveElementInterval : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfCurveElementInterval();
-        Handle_StepFEA_HArray1OfCurveElementInterval(const Handle_StepFEA_HArray1OfCurveElementInterval &aHandle);
-        Handle_StepFEA_HArray1OfCurveElementInterval(const StepFEA_HArray1OfCurveElementInterval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfCurveElementInterval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfCurveElementInterval {
-    StepFEA_HArray1OfCurveElementInterval* _get_reference() {
-    return (StepFEA_HArray1OfCurveElementInterval*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfCurveElementInterval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfCurveElementInterval)
 
 %extend StepFEA_HArray1OfCurveElementInterval {
 	%pythoncode {
@@ -3093,51 +2137,7 @@ class StepFEA_HArray1OfDegreeOfFreedom : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfDegreeOfFreedom {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfDegreeOfFreedom(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfDegreeOfFreedom::Handle_StepFEA_HArray1OfDegreeOfFreedom %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfDegreeOfFreedom;
-class Handle_StepFEA_HArray1OfDegreeOfFreedom : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfDegreeOfFreedom();
-        Handle_StepFEA_HArray1OfDegreeOfFreedom(const Handle_StepFEA_HArray1OfDegreeOfFreedom &aHandle);
-        Handle_StepFEA_HArray1OfDegreeOfFreedom(const StepFEA_HArray1OfDegreeOfFreedom *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfDegreeOfFreedom DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfDegreeOfFreedom {
-    StepFEA_HArray1OfDegreeOfFreedom* _get_reference() {
-    return (StepFEA_HArray1OfDegreeOfFreedom*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfDegreeOfFreedom {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfDegreeOfFreedom)
 
 %extend StepFEA_HArray1OfDegreeOfFreedom {
 	%pythoncode {
@@ -3214,51 +2214,7 @@ class StepFEA_HArray1OfElementRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfElementRepresentation::Handle_StepFEA_HArray1OfElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfElementRepresentation;
-class Handle_StepFEA_HArray1OfElementRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfElementRepresentation();
-        Handle_StepFEA_HArray1OfElementRepresentation(const Handle_StepFEA_HArray1OfElementRepresentation &aHandle);
-        Handle_StepFEA_HArray1OfElementRepresentation(const StepFEA_HArray1OfElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfElementRepresentation {
-    StepFEA_HArray1OfElementRepresentation* _get_reference() {
-    return (StepFEA_HArray1OfElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfElementRepresentation)
 
 %extend StepFEA_HArray1OfElementRepresentation {
 	%pythoncode {
@@ -3335,51 +2291,7 @@ class StepFEA_HArray1OfNodeRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HArray1OfNodeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HArray1OfNodeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HArray1OfNodeRepresentation::Handle_StepFEA_HArray1OfNodeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HArray1OfNodeRepresentation;
-class Handle_StepFEA_HArray1OfNodeRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HArray1OfNodeRepresentation();
-        Handle_StepFEA_HArray1OfNodeRepresentation(const Handle_StepFEA_HArray1OfNodeRepresentation &aHandle);
-        Handle_StepFEA_HArray1OfNodeRepresentation(const StepFEA_HArray1OfNodeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HArray1OfNodeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HArray1OfNodeRepresentation {
-    StepFEA_HArray1OfNodeRepresentation* _get_reference() {
-    return (StepFEA_HArray1OfNodeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HArray1OfNodeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HArray1OfNodeRepresentation)
 
 %extend StepFEA_HArray1OfNodeRepresentation {
 	%pythoncode {
@@ -3524,51 +2436,7 @@ class StepFEA_HSequenceOfCurve3dElementProperty : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HSequenceOfCurve3dElementProperty {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HSequenceOfCurve3dElementProperty(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HSequenceOfCurve3dElementProperty::Handle_StepFEA_HSequenceOfCurve3dElementProperty %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HSequenceOfCurve3dElementProperty;
-class Handle_StepFEA_HSequenceOfCurve3dElementProperty : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HSequenceOfCurve3dElementProperty();
-        Handle_StepFEA_HSequenceOfCurve3dElementProperty(const Handle_StepFEA_HSequenceOfCurve3dElementProperty &aHandle);
-        Handle_StepFEA_HSequenceOfCurve3dElementProperty(const StepFEA_HSequenceOfCurve3dElementProperty *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HSequenceOfCurve3dElementProperty DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HSequenceOfCurve3dElementProperty {
-    StepFEA_HSequenceOfCurve3dElementProperty* _get_reference() {
-    return (StepFEA_HSequenceOfCurve3dElementProperty*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HSequenceOfCurve3dElementProperty {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HSequenceOfCurve3dElementProperty)
 
 %extend StepFEA_HSequenceOfCurve3dElementProperty {
 	%pythoncode {
@@ -3713,51 +2581,7 @@ class StepFEA_HSequenceOfElementGeometricRelationship : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HSequenceOfElementGeometricRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HSequenceOfElementGeometricRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HSequenceOfElementGeometricRelationship::Handle_StepFEA_HSequenceOfElementGeometricRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HSequenceOfElementGeometricRelationship;
-class Handle_StepFEA_HSequenceOfElementGeometricRelationship : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HSequenceOfElementGeometricRelationship();
-        Handle_StepFEA_HSequenceOfElementGeometricRelationship(const Handle_StepFEA_HSequenceOfElementGeometricRelationship &aHandle);
-        Handle_StepFEA_HSequenceOfElementGeometricRelationship(const StepFEA_HSequenceOfElementGeometricRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HSequenceOfElementGeometricRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HSequenceOfElementGeometricRelationship {
-    StepFEA_HSequenceOfElementGeometricRelationship* _get_reference() {
-    return (StepFEA_HSequenceOfElementGeometricRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HSequenceOfElementGeometricRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HSequenceOfElementGeometricRelationship)
 
 %extend StepFEA_HSequenceOfElementGeometricRelationship {
 	%pythoncode {
@@ -3902,51 +2726,7 @@ class StepFEA_HSequenceOfElementRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HSequenceOfElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HSequenceOfElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HSequenceOfElementRepresentation::Handle_StepFEA_HSequenceOfElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HSequenceOfElementRepresentation;
-class Handle_StepFEA_HSequenceOfElementRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HSequenceOfElementRepresentation();
-        Handle_StepFEA_HSequenceOfElementRepresentation(const Handle_StepFEA_HSequenceOfElementRepresentation &aHandle);
-        Handle_StepFEA_HSequenceOfElementRepresentation(const StepFEA_HSequenceOfElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HSequenceOfElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HSequenceOfElementRepresentation {
-    StepFEA_HSequenceOfElementRepresentation* _get_reference() {
-    return (StepFEA_HSequenceOfElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HSequenceOfElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HSequenceOfElementRepresentation)
 
 %extend StepFEA_HSequenceOfElementRepresentation {
 	%pythoncode {
@@ -4091,51 +2871,7 @@ class StepFEA_HSequenceOfNodeRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepFEA_HSequenceOfNodeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_HSequenceOfNodeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_HSequenceOfNodeRepresentation::Handle_StepFEA_HSequenceOfNodeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_HSequenceOfNodeRepresentation;
-class Handle_StepFEA_HSequenceOfNodeRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepFEA_HSequenceOfNodeRepresentation();
-        Handle_StepFEA_HSequenceOfNodeRepresentation(const Handle_StepFEA_HSequenceOfNodeRepresentation &aHandle);
-        Handle_StepFEA_HSequenceOfNodeRepresentation(const StepFEA_HSequenceOfNodeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_HSequenceOfNodeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_HSequenceOfNodeRepresentation {
-    StepFEA_HSequenceOfNodeRepresentation* _get_reference() {
-    return (StepFEA_HSequenceOfNodeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_HSequenceOfNodeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_HSequenceOfNodeRepresentation)
 
 %extend StepFEA_HSequenceOfNodeRepresentation {
 	%pythoncode {
@@ -4154,51 +2890,7 @@ class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
 };
 
 
-%extend StepFEA_NodeDefinition {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeDefinition(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeDefinition::Handle_StepFEA_NodeDefinition %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeDefinition;
-class Handle_StepFEA_NodeDefinition : public Handle_StepRepr_ShapeAspect {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeDefinition();
-        Handle_StepFEA_NodeDefinition(const Handle_StepFEA_NodeDefinition &aHandle);
-        Handle_StepFEA_NodeDefinition(const StepFEA_NodeDefinition *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeDefinition DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeDefinition {
-    StepFEA_NodeDefinition* _get_reference() {
-    return (StepFEA_NodeDefinition*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeDefinition {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeDefinition)
 
 %extend StepFEA_NodeDefinition {
 	%pythoncode {
@@ -4245,51 +2937,7 @@ class StepFEA_NodeRepresentation : public StepRepr_Representation {
 };
 
 
-%extend StepFEA_NodeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeRepresentation::Handle_StepFEA_NodeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeRepresentation;
-class Handle_StepFEA_NodeRepresentation : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeRepresentation();
-        Handle_StepFEA_NodeRepresentation(const Handle_StepFEA_NodeRepresentation &aHandle);
-        Handle_StepFEA_NodeRepresentation(const StepFEA_NodeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeRepresentation {
-    StepFEA_NodeRepresentation* _get_reference() {
-    return (StepFEA_NodeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeRepresentation)
 
 %extend StepFEA_NodeRepresentation {
 	%pythoncode {
@@ -4332,51 +2980,7 @@ class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepFEA_NodeSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeSet::Handle_StepFEA_NodeSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeSet;
-class Handle_StepFEA_NodeSet : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeSet();
-        Handle_StepFEA_NodeSet(const Handle_StepFEA_NodeSet &aHandle);
-        Handle_StepFEA_NodeSet(const StepFEA_NodeSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeSet {
-    StepFEA_NodeSet* _get_reference() {
-    return (StepFEA_NodeSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeSet)
 
 %extend StepFEA_NodeSet {
 	%pythoncode {
@@ -4403,51 +3007,7 @@ class StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty : public TCollectio
 };
 
 
-%extend StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty::Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty;
-class Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty();
-        Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty(const Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty &aHandle);
-        Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty(const StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty {
-    StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty* _get_reference() {
-    return (StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty)
 
 %extend StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty {
 	%pythoncode {
@@ -4474,51 +3034,7 @@ class StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship : public TCol
 };
 
 
-%extend StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship::Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship;
-class Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship();
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship(const Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship &aHandle);
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship(const StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship {
-    StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship* _get_reference() {
-    return (StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship)
 
 %extend StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship {
 	%pythoncode {
@@ -4545,51 +3061,7 @@ class StepFEA_SequenceNodeOfSequenceOfElementRepresentation : public TCollection
 };
 
 
-%extend StepFEA_SequenceNodeOfSequenceOfElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation::Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation;
-class Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation();
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation(const Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation &aHandle);
-        Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation(const StepFEA_SequenceNodeOfSequenceOfElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation {
-    StepFEA_SequenceNodeOfSequenceOfElementRepresentation* _get_reference() {
-    return (StepFEA_SequenceNodeOfSequenceOfElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SequenceNodeOfSequenceOfElementRepresentation)
 
 %extend StepFEA_SequenceNodeOfSequenceOfElementRepresentation {
 	%pythoncode {
@@ -4616,51 +3088,7 @@ class StepFEA_SequenceNodeOfSequenceOfNodeRepresentation : public TCollection_Se
 };
 
 
-%extend StepFEA_SequenceNodeOfSequenceOfNodeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation::Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation;
-class Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation();
-        Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation(const Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation &aHandle);
-        Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation(const StepFEA_SequenceNodeOfSequenceOfNodeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation {
-    StepFEA_SequenceNodeOfSequenceOfNodeRepresentation* _get_reference() {
-    return (StepFEA_SequenceNodeOfSequenceOfNodeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SequenceNodeOfSequenceOfNodeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SequenceNodeOfSequenceOfNodeRepresentation)
 
 %extend StepFEA_SequenceNodeOfSequenceOfNodeRepresentation {
 	%pythoncode {
@@ -5391,51 +3819,7 @@ class StepFEA_SymmetricTensor23dMember : public StepData_SelectArrReal {
 };
 
 
-%extend StepFEA_SymmetricTensor23dMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SymmetricTensor23dMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SymmetricTensor23dMember::Handle_StepFEA_SymmetricTensor23dMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SymmetricTensor23dMember;
-class Handle_StepFEA_SymmetricTensor23dMember : public Handle_StepData_SelectArrReal {
-
-    public:
-        // constructors
-        Handle_StepFEA_SymmetricTensor23dMember();
-        Handle_StepFEA_SymmetricTensor23dMember(const Handle_StepFEA_SymmetricTensor23dMember &aHandle);
-        Handle_StepFEA_SymmetricTensor23dMember(const StepFEA_SymmetricTensor23dMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SymmetricTensor23dMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SymmetricTensor23dMember {
-    StepFEA_SymmetricTensor23dMember* _get_reference() {
-    return (StepFEA_SymmetricTensor23dMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SymmetricTensor23dMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SymmetricTensor23dMember)
 
 %extend StepFEA_SymmetricTensor23dMember {
 	%pythoncode {
@@ -5580,51 +3964,7 @@ class StepFEA_SymmetricTensor43dMember : public StepData_SelectArrReal {
 };
 
 
-%extend StepFEA_SymmetricTensor43dMember {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_SymmetricTensor43dMember(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_SymmetricTensor43dMember::Handle_StepFEA_SymmetricTensor43dMember %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_SymmetricTensor43dMember;
-class Handle_StepFEA_SymmetricTensor43dMember : public Handle_StepData_SelectArrReal {
-
-    public:
-        // constructors
-        Handle_StepFEA_SymmetricTensor43dMember();
-        Handle_StepFEA_SymmetricTensor43dMember(const Handle_StepFEA_SymmetricTensor43dMember &aHandle);
-        Handle_StepFEA_SymmetricTensor43dMember(const StepFEA_SymmetricTensor43dMember *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_SymmetricTensor43dMember DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_SymmetricTensor43dMember {
-    StepFEA_SymmetricTensor43dMember* _get_reference() {
-    return (StepFEA_SymmetricTensor43dMember*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_SymmetricTensor43dMember {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_SymmetricTensor43dMember)
 
 %extend StepFEA_SymmetricTensor43dMember {
 	%pythoncode {
@@ -5667,51 +4007,7 @@ class StepFEA_AlignedCurve3dElementCoordinateSystem : public StepFEA_FeaRepresen
 };
 
 
-%extend StepFEA_AlignedCurve3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_AlignedCurve3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_AlignedCurve3dElementCoordinateSystem::Handle_StepFEA_AlignedCurve3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_AlignedCurve3dElementCoordinateSystem;
-class Handle_StepFEA_AlignedCurve3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_AlignedCurve3dElementCoordinateSystem();
-        Handle_StepFEA_AlignedCurve3dElementCoordinateSystem(const Handle_StepFEA_AlignedCurve3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_AlignedCurve3dElementCoordinateSystem(const StepFEA_AlignedCurve3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_AlignedCurve3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_AlignedCurve3dElementCoordinateSystem {
-    StepFEA_AlignedCurve3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_AlignedCurve3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_AlignedCurve3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_AlignedCurve3dElementCoordinateSystem)
 
 %extend StepFEA_AlignedCurve3dElementCoordinateSystem {
 	%pythoncode {
@@ -5754,51 +4050,7 @@ class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepres
 };
 
 
-%extend StepFEA_AlignedSurface3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_AlignedSurface3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_AlignedSurface3dElementCoordinateSystem::Handle_StepFEA_AlignedSurface3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_AlignedSurface3dElementCoordinateSystem;
-class Handle_StepFEA_AlignedSurface3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_AlignedSurface3dElementCoordinateSystem();
-        Handle_StepFEA_AlignedSurface3dElementCoordinateSystem(const Handle_StepFEA_AlignedSurface3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_AlignedSurface3dElementCoordinateSystem(const StepFEA_AlignedSurface3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_AlignedSurface3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_AlignedSurface3dElementCoordinateSystem {
-    StepFEA_AlignedSurface3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_AlignedSurface3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_AlignedSurface3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_AlignedSurface3dElementCoordinateSystem)
 
 %extend StepFEA_AlignedSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -5841,51 +4093,7 @@ class StepFEA_ArbitraryVolume3dElementCoordinateSystem : public StepFEA_FeaRepre
 };
 
 
-%extend StepFEA_ArbitraryVolume3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem::Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem;
-class Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem();
-        Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem(const Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem(const StepFEA_ArbitraryVolume3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem {
-    StepFEA_ArbitraryVolume3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_ArbitraryVolume3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ArbitraryVolume3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
 
 %extend StepFEA_ArbitraryVolume3dElementCoordinateSystem {
 	%pythoncode {
@@ -5944,51 +4152,7 @@ class StepFEA_ConstantSurface3dElementCoordinateSystem : public StepFEA_FeaRepre
 };
 
 
-%extend StepFEA_ConstantSurface3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ConstantSurface3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ConstantSurface3dElementCoordinateSystem::Handle_StepFEA_ConstantSurface3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ConstantSurface3dElementCoordinateSystem;
-class Handle_StepFEA_ConstantSurface3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_ConstantSurface3dElementCoordinateSystem();
-        Handle_StepFEA_ConstantSurface3dElementCoordinateSystem(const Handle_StepFEA_ConstantSurface3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_ConstantSurface3dElementCoordinateSystem(const StepFEA_ConstantSurface3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ConstantSurface3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ConstantSurface3dElementCoordinateSystem {
-    StepFEA_ConstantSurface3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_ConstantSurface3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ConstantSurface3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ConstantSurface3dElementCoordinateSystem)
 
 %extend StepFEA_ConstantSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -6085,51 +4249,7 @@ class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentatio
 };
 
 
-%extend StepFEA_Curve3dElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_Curve3dElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_Curve3dElementRepresentation::Handle_StepFEA_Curve3dElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_Curve3dElementRepresentation;
-class Handle_StepFEA_Curve3dElementRepresentation : public Handle_StepFEA_ElementRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_Curve3dElementRepresentation();
-        Handle_StepFEA_Curve3dElementRepresentation(const Handle_StepFEA_Curve3dElementRepresentation &aHandle);
-        Handle_StepFEA_Curve3dElementRepresentation(const StepFEA_Curve3dElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_Curve3dElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_Curve3dElementRepresentation {
-    StepFEA_Curve3dElementRepresentation* _get_reference() {
-    return (StepFEA_Curve3dElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_Curve3dElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_Curve3dElementRepresentation)
 
 %extend StepFEA_Curve3dElementRepresentation {
 	%pythoncode {
@@ -6174,51 +4294,7 @@ class StepFEA_CurveElementIntervalConstant : public StepFEA_CurveElementInterval
 };
 
 
-%extend StepFEA_CurveElementIntervalConstant {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementIntervalConstant(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementIntervalConstant::Handle_StepFEA_CurveElementIntervalConstant %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementIntervalConstant;
-class Handle_StepFEA_CurveElementIntervalConstant : public Handle_StepFEA_CurveElementInterval {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementIntervalConstant();
-        Handle_StepFEA_CurveElementIntervalConstant(const Handle_StepFEA_CurveElementIntervalConstant &aHandle);
-        Handle_StepFEA_CurveElementIntervalConstant(const StepFEA_CurveElementIntervalConstant *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementIntervalConstant DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementIntervalConstant {
-    StepFEA_CurveElementIntervalConstant* _get_reference() {
-    return (StepFEA_CurveElementIntervalConstant*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementIntervalConstant {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementIntervalConstant)
 
 %extend StepFEA_CurveElementIntervalConstant {
 	%pythoncode {
@@ -6263,51 +4339,7 @@ class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementI
 };
 
 
-%extend StepFEA_CurveElementIntervalLinearlyVarying {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_CurveElementIntervalLinearlyVarying(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_CurveElementIntervalLinearlyVarying::Handle_StepFEA_CurveElementIntervalLinearlyVarying %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_CurveElementIntervalLinearlyVarying;
-class Handle_StepFEA_CurveElementIntervalLinearlyVarying : public Handle_StepFEA_CurveElementInterval {
-
-    public:
-        // constructors
-        Handle_StepFEA_CurveElementIntervalLinearlyVarying();
-        Handle_StepFEA_CurveElementIntervalLinearlyVarying(const Handle_StepFEA_CurveElementIntervalLinearlyVarying &aHandle);
-        Handle_StepFEA_CurveElementIntervalLinearlyVarying(const StepFEA_CurveElementIntervalLinearlyVarying *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_CurveElementIntervalLinearlyVarying DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_CurveElementIntervalLinearlyVarying {
-    StepFEA_CurveElementIntervalLinearlyVarying* _get_reference() {
-    return (StepFEA_CurveElementIntervalLinearlyVarying*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_CurveElementIntervalLinearlyVarying {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_CurveElementIntervalLinearlyVarying)
 
 %extend StepFEA_CurveElementIntervalLinearlyVarying {
 	%pythoncode {
@@ -6326,51 +4358,7 @@ class StepFEA_DummyNode : public StepFEA_NodeRepresentation {
 };
 
 
-%extend StepFEA_DummyNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_DummyNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_DummyNode::Handle_StepFEA_DummyNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_DummyNode;
-class Handle_StepFEA_DummyNode : public Handle_StepFEA_NodeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_DummyNode();
-        Handle_StepFEA_DummyNode(const Handle_StepFEA_DummyNode &aHandle);
-        Handle_StepFEA_DummyNode(const StepFEA_DummyNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_DummyNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_DummyNode {
-    StepFEA_DummyNode* _get_reference() {
-    return (StepFEA_DummyNode*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_DummyNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_DummyNode)
 
 %extend StepFEA_DummyNode {
 	%pythoncode {
@@ -6417,51 +4405,7 @@ class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 };
 
 
-%extend StepFEA_ElementGroup {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ElementGroup(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ElementGroup::Handle_StepFEA_ElementGroup %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ElementGroup;
-class Handle_StepFEA_ElementGroup : public Handle_StepFEA_FeaGroup {
-
-    public:
-        // constructors
-        Handle_StepFEA_ElementGroup();
-        Handle_StepFEA_ElementGroup(const Handle_StepFEA_ElementGroup &aHandle);
-        Handle_StepFEA_ElementGroup(const StepFEA_ElementGroup *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ElementGroup DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ElementGroup {
-    StepFEA_ElementGroup* _get_reference() {
-    return (StepFEA_ElementGroup*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ElementGroup {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ElementGroup)
 
 %extend StepFEA_ElementGroup {
 	%pythoncode {
@@ -6504,51 +4448,7 @@ class StepFEA_FeaAreaDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 };
 
 
-%extend StepFEA_FeaAreaDensity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaAreaDensity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaAreaDensity::Handle_StepFEA_FeaAreaDensity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaAreaDensity;
-class Handle_StepFEA_FeaAreaDensity : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaAreaDensity();
-        Handle_StepFEA_FeaAreaDensity(const Handle_StepFEA_FeaAreaDensity &aHandle);
-        Handle_StepFEA_FeaAreaDensity(const StepFEA_FeaAreaDensity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaAreaDensity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaAreaDensity {
-    StepFEA_FeaAreaDensity* _get_reference() {
-    return (StepFEA_FeaAreaDensity*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaAreaDensity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaAreaDensity)
 
 %extend StepFEA_FeaAreaDensity {
 	%pythoncode {
@@ -6591,51 +4491,7 @@ class StepFEA_FeaLinearElasticity : public StepFEA_FeaMaterialPropertyRepresenta
 };
 
 
-%extend StepFEA_FeaLinearElasticity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaLinearElasticity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaLinearElasticity::Handle_StepFEA_FeaLinearElasticity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaLinearElasticity;
-class Handle_StepFEA_FeaLinearElasticity : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaLinearElasticity();
-        Handle_StepFEA_FeaLinearElasticity(const Handle_StepFEA_FeaLinearElasticity &aHandle);
-        Handle_StepFEA_FeaLinearElasticity(const StepFEA_FeaLinearElasticity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaLinearElasticity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaLinearElasticity {
-    StepFEA_FeaLinearElasticity* _get_reference() {
-    return (StepFEA_FeaLinearElasticity*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaLinearElasticity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaLinearElasticity)
 
 %extend StepFEA_FeaLinearElasticity {
 	%pythoncode {
@@ -6678,51 +4534,7 @@ class StepFEA_FeaMassDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 };
 
 
-%extend StepFEA_FeaMassDensity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaMassDensity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaMassDensity::Handle_StepFEA_FeaMassDensity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaMassDensity;
-class Handle_StepFEA_FeaMassDensity : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaMassDensity();
-        Handle_StepFEA_FeaMassDensity(const Handle_StepFEA_FeaMassDensity &aHandle);
-        Handle_StepFEA_FeaMassDensity(const StepFEA_FeaMassDensity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaMassDensity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaMassDensity {
-    StepFEA_FeaMassDensity* _get_reference() {
-    return (StepFEA_FeaMassDensity*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaMassDensity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaMassDensity)
 
 %extend StepFEA_FeaMassDensity {
 	%pythoncode {
@@ -6741,51 +4553,7 @@ class StepFEA_FeaModel3d : public StepFEA_FeaModel {
 };
 
 
-%extend StepFEA_FeaModel3d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaModel3d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaModel3d::Handle_StepFEA_FeaModel3d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaModel3d;
-class Handle_StepFEA_FeaModel3d : public Handle_StepFEA_FeaModel {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaModel3d();
-        Handle_StepFEA_FeaModel3d(const Handle_StepFEA_FeaModel3d &aHandle);
-        Handle_StepFEA_FeaModel3d(const StepFEA_FeaModel3d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaModel3d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaModel3d {
-    StepFEA_FeaModel3d* _get_reference() {
-    return (StepFEA_FeaModel3d*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaModel3d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaModel3d)
 
 %extend StepFEA_FeaModel3d {
 	%pythoncode {
@@ -6828,51 +4596,7 @@ class StepFEA_FeaMoistureAbsorption : public StepFEA_FeaMaterialPropertyRepresen
 };
 
 
-%extend StepFEA_FeaMoistureAbsorption {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaMoistureAbsorption(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaMoistureAbsorption::Handle_StepFEA_FeaMoistureAbsorption %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaMoistureAbsorption;
-class Handle_StepFEA_FeaMoistureAbsorption : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaMoistureAbsorption();
-        Handle_StepFEA_FeaMoistureAbsorption(const Handle_StepFEA_FeaMoistureAbsorption &aHandle);
-        Handle_StepFEA_FeaMoistureAbsorption(const StepFEA_FeaMoistureAbsorption *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaMoistureAbsorption DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaMoistureAbsorption {
-    StepFEA_FeaMoistureAbsorption* _get_reference() {
-    return (StepFEA_FeaMoistureAbsorption*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaMoistureAbsorption {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaMoistureAbsorption)
 
 %extend StepFEA_FeaMoistureAbsorption {
 	%pythoncode {
@@ -6931,51 +4655,7 @@ class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public StepFEA_FeaM
 };
 
 
-%extend StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
-class Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion();
-        Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion(const Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion &aHandle);
-        Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion(const StepFEA_FeaSecantCoefficientOfLinearThermalExpansion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
-    StepFEA_FeaSecantCoefficientOfLinearThermalExpansion* _get_reference() {
-    return (StepFEA_FeaSecantCoefficientOfLinearThermalExpansion*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
 
 %extend StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
 	%pythoncode {
@@ -7018,51 +4698,7 @@ class StepFEA_FeaShellBendingStiffness : public StepFEA_FeaMaterialPropertyRepre
 };
 
 
-%extend StepFEA_FeaShellBendingStiffness {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaShellBendingStiffness(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaShellBendingStiffness::Handle_StepFEA_FeaShellBendingStiffness %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaShellBendingStiffness;
-class Handle_StepFEA_FeaShellBendingStiffness : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaShellBendingStiffness();
-        Handle_StepFEA_FeaShellBendingStiffness(const Handle_StepFEA_FeaShellBendingStiffness &aHandle);
-        Handle_StepFEA_FeaShellBendingStiffness(const StepFEA_FeaShellBendingStiffness *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaShellBendingStiffness DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaShellBendingStiffness {
-    StepFEA_FeaShellBendingStiffness* _get_reference() {
-    return (StepFEA_FeaShellBendingStiffness*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaShellBendingStiffness {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaShellBendingStiffness)
 
 %extend StepFEA_FeaShellBendingStiffness {
 	%pythoncode {
@@ -7105,51 +4741,7 @@ class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMater
 };
 
 
-%extend StepFEA_FeaShellMembraneBendingCouplingStiffness {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness::Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness;
-class Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness();
-        Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness(const Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness &aHandle);
-        Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness(const StepFEA_FeaShellMembraneBendingCouplingStiffness *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness {
-    StepFEA_FeaShellMembraneBendingCouplingStiffness* _get_reference() {
-    return (StepFEA_FeaShellMembraneBendingCouplingStiffness*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaShellMembraneBendingCouplingStiffness)
 
 %extend StepFEA_FeaShellMembraneBendingCouplingStiffness {
 	%pythoncode {
@@ -7192,51 +4784,7 @@ class StepFEA_FeaShellMembraneStiffness : public StepFEA_FeaMaterialPropertyRepr
 };
 
 
-%extend StepFEA_FeaShellMembraneStiffness {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaShellMembraneStiffness(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaShellMembraneStiffness::Handle_StepFEA_FeaShellMembraneStiffness %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaShellMembraneStiffness;
-class Handle_StepFEA_FeaShellMembraneStiffness : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaShellMembraneStiffness();
-        Handle_StepFEA_FeaShellMembraneStiffness(const Handle_StepFEA_FeaShellMembraneStiffness &aHandle);
-        Handle_StepFEA_FeaShellMembraneStiffness(const StepFEA_FeaShellMembraneStiffness *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaShellMembraneStiffness DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaShellMembraneStiffness {
-    StepFEA_FeaShellMembraneStiffness* _get_reference() {
-    return (StepFEA_FeaShellMembraneStiffness*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaShellMembraneStiffness {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaShellMembraneStiffness)
 
 %extend StepFEA_FeaShellMembraneStiffness {
 	%pythoncode {
@@ -7279,51 +4827,7 @@ class StepFEA_FeaShellShearStiffness : public StepFEA_FeaMaterialPropertyReprese
 };
 
 
-%extend StepFEA_FeaShellShearStiffness {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaShellShearStiffness(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaShellShearStiffness::Handle_StepFEA_FeaShellShearStiffness %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaShellShearStiffness;
-class Handle_StepFEA_FeaShellShearStiffness : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaShellShearStiffness();
-        Handle_StepFEA_FeaShellShearStiffness(const Handle_StepFEA_FeaShellShearStiffness &aHandle);
-        Handle_StepFEA_FeaShellShearStiffness(const StepFEA_FeaShellShearStiffness *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaShellShearStiffness DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaShellShearStiffness {
-    StepFEA_FeaShellShearStiffness* _get_reference() {
-    return (StepFEA_FeaShellShearStiffness*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaShellShearStiffness {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaShellShearStiffness)
 
 %extend StepFEA_FeaShellShearStiffness {
 	%pythoncode {
@@ -7366,51 +4870,7 @@ class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_
 };
 
 
-%extend StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion::Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
-class Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public Handle_StepFEA_FeaMaterialPropertyRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion();
-        Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion(const Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion &aHandle);
-        Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion(const StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion {
-    StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion* _get_reference() {
-    return (StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
 
 %extend StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion {
 	%pythoncode {
@@ -7429,51 +4889,7 @@ class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
 };
 
 
-%extend StepFEA_GeometricNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_GeometricNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_GeometricNode::Handle_StepFEA_GeometricNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_GeometricNode;
-class Handle_StepFEA_GeometricNode : public Handle_StepFEA_NodeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_GeometricNode();
-        Handle_StepFEA_GeometricNode(const Handle_StepFEA_GeometricNode &aHandle);
-        Handle_StepFEA_GeometricNode(const StepFEA_GeometricNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_GeometricNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_GeometricNode {
-    StepFEA_GeometricNode* _get_reference() {
-    return (StepFEA_GeometricNode*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_GeometricNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_GeometricNode)
 
 %extend StepFEA_GeometricNode {
 	%pythoncode {
@@ -7492,51 +4908,7 @@ class StepFEA_Node : public StepFEA_NodeRepresentation {
 };
 
 
-%extend StepFEA_Node {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_Node(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_Node::Handle_StepFEA_Node %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_Node;
-class Handle_StepFEA_Node : public Handle_StepFEA_NodeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_Node();
-        Handle_StepFEA_Node(const Handle_StepFEA_Node &aHandle);
-        Handle_StepFEA_Node(const StepFEA_Node *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_Node DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_Node {
-    StepFEA_Node* _get_reference() {
-    return (StepFEA_Node*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_Node {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_Node)
 
 %extend StepFEA_Node {
 	%pythoncode {
@@ -7583,51 +4955,7 @@ class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 };
 
 
-%extend StepFEA_NodeGroup {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeGroup(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeGroup::Handle_StepFEA_NodeGroup %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeGroup;
-class Handle_StepFEA_NodeGroup : public Handle_StepFEA_FeaGroup {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeGroup();
-        Handle_StepFEA_NodeGroup(const Handle_StepFEA_NodeGroup &aHandle);
-        Handle_StepFEA_NodeGroup(const StepFEA_NodeGroup *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeGroup DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeGroup {
-    StepFEA_NodeGroup* _get_reference() {
-    return (StepFEA_NodeGroup*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeGroup {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeGroup)
 
 %extend StepFEA_NodeGroup {
 	%pythoncode {
@@ -7670,51 +4998,7 @@ class StepFEA_ParametricCurve3dElementCoordinateDirection : public StepFEA_FeaRe
 };
 
 
-%extend StepFEA_ParametricCurve3dElementCoordinateDirection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ParametricCurve3dElementCoordinateDirection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ParametricCurve3dElementCoordinateDirection::Handle_StepFEA_ParametricCurve3dElementCoordinateDirection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ParametricCurve3dElementCoordinateDirection;
-class Handle_StepFEA_ParametricCurve3dElementCoordinateDirection : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_ParametricCurve3dElementCoordinateDirection();
-        Handle_StepFEA_ParametricCurve3dElementCoordinateDirection(const Handle_StepFEA_ParametricCurve3dElementCoordinateDirection &aHandle);
-        Handle_StepFEA_ParametricCurve3dElementCoordinateDirection(const StepFEA_ParametricCurve3dElementCoordinateDirection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ParametricCurve3dElementCoordinateDirection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ParametricCurve3dElementCoordinateDirection {
-    StepFEA_ParametricCurve3dElementCoordinateDirection* _get_reference() {
-    return (StepFEA_ParametricCurve3dElementCoordinateDirection*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ParametricCurve3dElementCoordinateDirection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ParametricCurve3dElementCoordinateDirection)
 
 %extend StepFEA_ParametricCurve3dElementCoordinateDirection {
 	%pythoncode {
@@ -7757,51 +5041,7 @@ class StepFEA_ParametricCurve3dElementCoordinateSystem : public StepFEA_FeaRepre
 };
 
 
-%extend StepFEA_ParametricCurve3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ParametricCurve3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ParametricCurve3dElementCoordinateSystem::Handle_StepFEA_ParametricCurve3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ParametricCurve3dElementCoordinateSystem;
-class Handle_StepFEA_ParametricCurve3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_ParametricCurve3dElementCoordinateSystem();
-        Handle_StepFEA_ParametricCurve3dElementCoordinateSystem(const Handle_StepFEA_ParametricCurve3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_ParametricCurve3dElementCoordinateSystem(const StepFEA_ParametricCurve3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ParametricCurve3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ParametricCurve3dElementCoordinateSystem {
-    StepFEA_ParametricCurve3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_ParametricCurve3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ParametricCurve3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ParametricCurve3dElementCoordinateSystem)
 
 %extend StepFEA_ParametricCurve3dElementCoordinateSystem {
 	%pythoncode {
@@ -7860,51 +5100,7 @@ class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRep
 };
 
 
-%extend StepFEA_ParametricSurface3dElementCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_ParametricSurface3dElementCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_ParametricSurface3dElementCoordinateSystem::Handle_StepFEA_ParametricSurface3dElementCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_ParametricSurface3dElementCoordinateSystem;
-class Handle_StepFEA_ParametricSurface3dElementCoordinateSystem : public Handle_StepFEA_FeaRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepFEA_ParametricSurface3dElementCoordinateSystem();
-        Handle_StepFEA_ParametricSurface3dElementCoordinateSystem(const Handle_StepFEA_ParametricSurface3dElementCoordinateSystem &aHandle);
-        Handle_StepFEA_ParametricSurface3dElementCoordinateSystem(const StepFEA_ParametricSurface3dElementCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_ParametricSurface3dElementCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_ParametricSurface3dElementCoordinateSystem {
-    StepFEA_ParametricSurface3dElementCoordinateSystem* _get_reference() {
-    return (StepFEA_ParametricSurface3dElementCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_ParametricSurface3dElementCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_ParametricSurface3dElementCoordinateSystem)
 
 %extend StepFEA_ParametricSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -8001,51 +5197,7 @@ class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentat
 };
 
 
-%extend StepFEA_Surface3dElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_Surface3dElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_Surface3dElementRepresentation::Handle_StepFEA_Surface3dElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_Surface3dElementRepresentation;
-class Handle_StepFEA_Surface3dElementRepresentation : public Handle_StepFEA_ElementRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_Surface3dElementRepresentation();
-        Handle_StepFEA_Surface3dElementRepresentation(const Handle_StepFEA_Surface3dElementRepresentation &aHandle);
-        Handle_StepFEA_Surface3dElementRepresentation(const StepFEA_Surface3dElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_Surface3dElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_Surface3dElementRepresentation {
-    StepFEA_Surface3dElementRepresentation* _get_reference() {
-    return (StepFEA_Surface3dElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_Surface3dElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_Surface3dElementRepresentation)
 
 %extend StepFEA_Surface3dElementRepresentation {
 	%pythoncode {
@@ -8126,51 +5278,7 @@ class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentati
 };
 
 
-%extend StepFEA_Volume3dElementRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_Volume3dElementRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_Volume3dElementRepresentation::Handle_StepFEA_Volume3dElementRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_Volume3dElementRepresentation;
-class Handle_StepFEA_Volume3dElementRepresentation : public Handle_StepFEA_ElementRepresentation {
-
-    public:
-        // constructors
-        Handle_StepFEA_Volume3dElementRepresentation();
-        Handle_StepFEA_Volume3dElementRepresentation(const Handle_StepFEA_Volume3dElementRepresentation &aHandle);
-        Handle_StepFEA_Volume3dElementRepresentation(const StepFEA_Volume3dElementRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_Volume3dElementRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_Volume3dElementRepresentation {
-    StepFEA_Volume3dElementRepresentation* _get_reference() {
-    return (StepFEA_Volume3dElementRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_Volume3dElementRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_Volume3dElementRepresentation)
 
 %extend StepFEA_Volume3dElementRepresentation {
 	%pythoncode {
@@ -8189,51 +5297,7 @@ class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
 };
 
 
-%extend StepFEA_NodeWithSolutionCoordinateSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeWithSolutionCoordinateSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeWithSolutionCoordinateSystem::Handle_StepFEA_NodeWithSolutionCoordinateSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeWithSolutionCoordinateSystem;
-class Handle_StepFEA_NodeWithSolutionCoordinateSystem : public Handle_StepFEA_Node {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeWithSolutionCoordinateSystem();
-        Handle_StepFEA_NodeWithSolutionCoordinateSystem(const Handle_StepFEA_NodeWithSolutionCoordinateSystem &aHandle);
-        Handle_StepFEA_NodeWithSolutionCoordinateSystem(const StepFEA_NodeWithSolutionCoordinateSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeWithSolutionCoordinateSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeWithSolutionCoordinateSystem {
-    StepFEA_NodeWithSolutionCoordinateSystem* _get_reference() {
-    return (StepFEA_NodeWithSolutionCoordinateSystem*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeWithSolutionCoordinateSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeWithSolutionCoordinateSystem)
 
 %extend StepFEA_NodeWithSolutionCoordinateSystem {
 	%pythoncode {
@@ -8252,51 +5316,7 @@ class StepFEA_NodeWithVector : public StepFEA_Node {
 };
 
 
-%extend StepFEA_NodeWithVector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepFEA_NodeWithVector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepFEA_NodeWithVector::Handle_StepFEA_NodeWithVector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepFEA_NodeWithVector;
-class Handle_StepFEA_NodeWithVector : public Handle_StepFEA_Node {
-
-    public:
-        // constructors
-        Handle_StepFEA_NodeWithVector();
-        Handle_StepFEA_NodeWithVector(const Handle_StepFEA_NodeWithVector &aHandle);
-        Handle_StepFEA_NodeWithVector(const StepFEA_NodeWithVector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepFEA_NodeWithVector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepFEA_NodeWithVector {
-    StepFEA_NodeWithVector* _get_reference() {
-    return (StepFEA_NodeWithVector*)$self->Access();
-    }
-};
-
-%extend Handle_StepFEA_NodeWithVector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepFEA_NodeWithVector)
 
 %extend StepFEA_NodeWithVector {
 	%pythoncode {

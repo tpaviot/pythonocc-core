@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSDOCSTRING
-"No docstring provided."
+"This package provides all the facilities to createand question a dictionary of units, and also tomanipulate measurements which are real values withunits."
 %enddef
 %module (package="OCC.Core", docstring=UNITSDOCSTRING) Units
 
@@ -34,30 +34,31 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Units_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Units_Lexicon)
+%wrap_handle(Units_QuantitiesSequence)
+%wrap_handle(Units_SequenceNodeOfQtsSequence)
+%wrap_handle(Units_SequenceNodeOfTksSequence)
+%wrap_handle(Units_SequenceNodeOfUtsSequence)
+%wrap_handle(Units_Token)
+%wrap_handle(Units_TokensSequence)
+%wrap_handle(Units_Unit)
+%wrap_handle(Units_UnitsDictionary)
+%wrap_handle(Units_UnitsSequence)
+%wrap_handle(Units_UnitsSystem)
+%wrap_handle(Units_ShiftedToken)
+%wrap_handle(Units_ShiftedUnit)
+%wrap_handle(Units_UnitsLexicon)
 
 %rename(units) Units;
 class Units {
@@ -373,51 +374,7 @@ class Units_Lexicon : public MMgt_TShared {
 };
 
 
-%extend Units_Lexicon {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_Lexicon(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_Lexicon::Handle_Units_Lexicon %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_Lexicon;
-class Handle_Units_Lexicon : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_Lexicon();
-        Handle_Units_Lexicon(const Handle_Units_Lexicon &aHandle);
-        Handle_Units_Lexicon(const Units_Lexicon *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_Lexicon DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_Lexicon {
-    Units_Lexicon* _get_reference() {
-    return (Units_Lexicon*)$self->Access();
-    }
-};
-
-%extend Handle_Units_Lexicon {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_Lexicon)
 
 %extend Units_Lexicon {
 	%pythoncode {
@@ -876,51 +833,7 @@ class Units_QuantitiesSequence : public MMgt_TShared {
 };
 
 
-%extend Units_QuantitiesSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_QuantitiesSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_QuantitiesSequence::Handle_Units_QuantitiesSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_QuantitiesSequence;
-class Handle_Units_QuantitiesSequence : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_QuantitiesSequence();
-        Handle_Units_QuantitiesSequence(const Handle_Units_QuantitiesSequence &aHandle);
-        Handle_Units_QuantitiesSequence(const Units_QuantitiesSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_QuantitiesSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_QuantitiesSequence {
-    Units_QuantitiesSequence* _get_reference() {
-    return (Units_QuantitiesSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_QuantitiesSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_QuantitiesSequence)
 
 %extend Units_QuantitiesSequence {
 	%pythoncode {
@@ -1006,51 +919,7 @@ class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode {
 };
 
 
-%extend Units_SequenceNodeOfQtsSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_SequenceNodeOfQtsSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_SequenceNodeOfQtsSequence::Handle_Units_SequenceNodeOfQtsSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_SequenceNodeOfQtsSequence;
-class Handle_Units_SequenceNodeOfQtsSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Units_SequenceNodeOfQtsSequence();
-        Handle_Units_SequenceNodeOfQtsSequence(const Handle_Units_SequenceNodeOfQtsSequence &aHandle);
-        Handle_Units_SequenceNodeOfQtsSequence(const Units_SequenceNodeOfQtsSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_SequenceNodeOfQtsSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_SequenceNodeOfQtsSequence {
-    Units_SequenceNodeOfQtsSequence* _get_reference() {
-    return (Units_SequenceNodeOfQtsSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_SequenceNodeOfQtsSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_SequenceNodeOfQtsSequence)
 
 %extend Units_SequenceNodeOfQtsSequence {
 	%pythoncode {
@@ -1077,51 +946,7 @@ class Units_SequenceNodeOfTksSequence : public TCollection_SeqNode {
 };
 
 
-%extend Units_SequenceNodeOfTksSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_SequenceNodeOfTksSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_SequenceNodeOfTksSequence::Handle_Units_SequenceNodeOfTksSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_SequenceNodeOfTksSequence;
-class Handle_Units_SequenceNodeOfTksSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Units_SequenceNodeOfTksSequence();
-        Handle_Units_SequenceNodeOfTksSequence(const Handle_Units_SequenceNodeOfTksSequence &aHandle);
-        Handle_Units_SequenceNodeOfTksSequence(const Units_SequenceNodeOfTksSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_SequenceNodeOfTksSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_SequenceNodeOfTksSequence {
-    Units_SequenceNodeOfTksSequence* _get_reference() {
-    return (Units_SequenceNodeOfTksSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_SequenceNodeOfTksSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_SequenceNodeOfTksSequence)
 
 %extend Units_SequenceNodeOfTksSequence {
 	%pythoncode {
@@ -1148,51 +973,7 @@ class Units_SequenceNodeOfUtsSequence : public TCollection_SeqNode {
 };
 
 
-%extend Units_SequenceNodeOfUtsSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_SequenceNodeOfUtsSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_SequenceNodeOfUtsSequence::Handle_Units_SequenceNodeOfUtsSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_SequenceNodeOfUtsSequence;
-class Handle_Units_SequenceNodeOfUtsSequence : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Units_SequenceNodeOfUtsSequence();
-        Handle_Units_SequenceNodeOfUtsSequence(const Handle_Units_SequenceNodeOfUtsSequence &aHandle);
-        Handle_Units_SequenceNodeOfUtsSequence(const Units_SequenceNodeOfUtsSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_SequenceNodeOfUtsSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_SequenceNodeOfUtsSequence {
-    Units_SequenceNodeOfUtsSequence* _get_reference() {
-    return (Units_SequenceNodeOfUtsSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_SequenceNodeOfUtsSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_SequenceNodeOfUtsSequence)
 
 %extend Units_SequenceNodeOfUtsSequence {
 	%pythoncode {
@@ -1632,51 +1413,7 @@ class Units_Token : public MMgt_TShared {
 };
 
 
-%extend Units_Token {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_Token(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_Token::Handle_Units_Token %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_Token;
-class Handle_Units_Token : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_Token();
-        Handle_Units_Token(const Handle_Units_Token &aHandle);
-        Handle_Units_Token(const Units_Token *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_Token DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_Token {
-    Units_Token* _get_reference() {
-    return (Units_Token*)$self->Access();
-    }
-};
-
-%extend Handle_Units_Token {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_Token)
 
 %extend Units_Token {
 	%pythoncode {
@@ -1821,51 +1558,7 @@ class Units_TokensSequence : public MMgt_TShared {
 };
 
 
-%extend Units_TokensSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_TokensSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_TokensSequence::Handle_Units_TokensSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_TokensSequence;
-class Handle_Units_TokensSequence : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_TokensSequence();
-        Handle_Units_TokensSequence(const Handle_Units_TokensSequence &aHandle);
-        Handle_Units_TokensSequence(const Units_TokensSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_TokensSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_TokensSequence {
-    Units_TokensSequence* _get_reference() {
-    return (Units_TokensSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_TokensSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_TokensSequence)
 
 %extend Units_TokensSequence {
 	%pythoncode {
@@ -1982,51 +1675,7 @@ class Units_Unit : public MMgt_TShared {
 };
 
 
-%extend Units_Unit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_Unit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_Unit::Handle_Units_Unit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_Unit;
-class Handle_Units_Unit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_Unit();
-        Handle_Units_Unit(const Handle_Units_Unit &aHandle);
-        Handle_Units_Unit(const Units_Unit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_Unit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_Unit {
-    Units_Unit* _get_reference() {
-    return (Units_Unit*)$self->Access();
-    }
-};
-
-%extend Handle_Units_Unit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_Unit)
 
 %extend Units_Unit {
 	%pythoncode {
@@ -2089,51 +1738,7 @@ class Units_UnitsDictionary : public MMgt_TShared {
 };
 
 
-%extend Units_UnitsDictionary {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_UnitsDictionary(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_UnitsDictionary::Handle_Units_UnitsDictionary %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_UnitsDictionary;
-class Handle_Units_UnitsDictionary : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_UnitsDictionary();
-        Handle_Units_UnitsDictionary(const Handle_Units_UnitsDictionary &aHandle);
-        Handle_Units_UnitsDictionary(const Units_UnitsDictionary *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_UnitsDictionary DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_UnitsDictionary {
-    Units_UnitsDictionary* _get_reference() {
-    return (Units_UnitsDictionary*)$self->Access();
-    }
-};
-
-%extend Handle_Units_UnitsDictionary {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_UnitsDictionary)
 
 %extend Units_UnitsDictionary {
 	%pythoncode {
@@ -2278,51 +1883,7 @@ class Units_UnitsSequence : public MMgt_TShared {
 };
 
 
-%extend Units_UnitsSequence {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_UnitsSequence(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_UnitsSequence::Handle_Units_UnitsSequence %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_UnitsSequence;
-class Handle_Units_UnitsSequence : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_UnitsSequence();
-        Handle_Units_UnitsSequence(const Handle_Units_UnitsSequence &aHandle);
-        Handle_Units_UnitsSequence(const Units_UnitsSequence *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_UnitsSequence DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_UnitsSequence {
-    Units_UnitsSequence* _get_reference() {
-    return (Units_UnitsSequence*)$self->Access();
-    }
-};
-
-%extend Handle_Units_UnitsSequence {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_UnitsSequence)
 
 %extend Units_UnitsSequence {
 	%pythoncode {
@@ -2449,51 +2010,7 @@ class Units_UnitsSystem : public MMgt_TShared {
 };
 
 
-%extend Units_UnitsSystem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_UnitsSystem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_UnitsSystem::Handle_Units_UnitsSystem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_UnitsSystem;
-class Handle_Units_UnitsSystem : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Units_UnitsSystem();
-        Handle_Units_UnitsSystem(const Handle_Units_UnitsSystem &aHandle);
-        Handle_Units_UnitsSystem(const Units_UnitsSystem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_UnitsSystem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_UnitsSystem {
-    Units_UnitsSystem* _get_reference() {
-    return (Units_UnitsSystem*)$self->Access();
-    }
-};
-
-%extend Handle_Units_UnitsSystem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_UnitsSystem)
 
 %extend Units_UnitsSystem {
 	%pythoncode {
@@ -2726,51 +2243,7 @@ class Units_ShiftedToken : public Units_Token {
 };
 
 
-%extend Units_ShiftedToken {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_ShiftedToken(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_ShiftedToken::Handle_Units_ShiftedToken %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_ShiftedToken;
-class Handle_Units_ShiftedToken : public Handle_Units_Token {
-
-    public:
-        // constructors
-        Handle_Units_ShiftedToken();
-        Handle_Units_ShiftedToken(const Handle_Units_ShiftedToken &aHandle);
-        Handle_Units_ShiftedToken(const Units_ShiftedToken *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_ShiftedToken DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_ShiftedToken {
-    Units_ShiftedToken* _get_reference() {
-    return (Units_ShiftedToken*)$self->Access();
-    }
-};
-
-%extend Handle_Units_ShiftedToken {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_ShiftedToken)
 
 %extend Units_ShiftedToken {
 	%pythoncode {
@@ -2845,51 +2318,7 @@ class Units_ShiftedUnit : public Units_Unit {
 };
 
 
-%extend Units_ShiftedUnit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_ShiftedUnit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_ShiftedUnit::Handle_Units_ShiftedUnit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_ShiftedUnit;
-class Handle_Units_ShiftedUnit : public Handle_Units_Unit {
-
-    public:
-        // constructors
-        Handle_Units_ShiftedUnit();
-        Handle_Units_ShiftedUnit(const Handle_Units_ShiftedUnit &aHandle);
-        Handle_Units_ShiftedUnit(const Units_ShiftedUnit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_ShiftedUnit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_ShiftedUnit {
-    Units_ShiftedUnit* _get_reference() {
-    return (Units_ShiftedUnit*)$self->Access();
-    }
-};
-
-%extend Handle_Units_ShiftedUnit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_ShiftedUnit)
 
 %extend Units_ShiftedUnit {
 	%pythoncode {
@@ -2981,51 +2410,7 @@ class Units_UnitsLexicon : public Units_Lexicon {
 };
 
 
-%extend Units_UnitsLexicon {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Units_UnitsLexicon(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Units_UnitsLexicon::Handle_Units_UnitsLexicon %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Units_UnitsLexicon;
-class Handle_Units_UnitsLexicon : public Handle_Units_Lexicon {
-
-    public:
-        // constructors
-        Handle_Units_UnitsLexicon();
-        Handle_Units_UnitsLexicon(const Handle_Units_UnitsLexicon &aHandle);
-        Handle_Units_UnitsLexicon(const Units_UnitsLexicon *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Units_UnitsLexicon DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Units_UnitsLexicon {
-    Units_UnitsLexicon* _get_reference() {
-    return (Units_UnitsLexicon*)$self->Access();
-    }
-};
-
-%extend Handle_Units_UnitsLexicon {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Units_UnitsLexicon)
 
 %extend Units_UnitsLexicon {
 	%pythoncode {

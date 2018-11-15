@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include VrmlData_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_Map <Handle_VrmlData_Node> VrmlData_MapOfNode;
@@ -81,6 +67,26 @@ enum VrmlData_ErrorStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(VrmlData_Node)
+%wrap_handle(VrmlData_Appearance)
+%wrap_handle(VrmlData_Geometry)
+%wrap_handle(VrmlData_Group)
+%wrap_handle(VrmlData_Material)
+%wrap_handle(VrmlData_ShapeNode)
+%wrap_handle(VrmlData_TextureCoordinate)
+%wrap_handle(VrmlData_UnknownNode)
+%wrap_handle(VrmlData_WorldInfo)
+%wrap_handle(VrmlData_Box)
+%wrap_handle(VrmlData_Color)
+%wrap_handle(VrmlData_Cone)
+%wrap_handle(VrmlData_Coordinate)
+%wrap_handle(VrmlData_Cylinder)
+%wrap_handle(VrmlData_ImageTexture)
+%wrap_handle(VrmlData_IndexedLineSet)
+%wrap_handle(VrmlData_Normal)
+%wrap_handle(VrmlData_Sphere)
+%wrap_handle(VrmlData_IndexedFaceSet)
 
 %nodefaultctor VrmlData_Node;
 class VrmlData_Node : public Standard_Transient {
@@ -208,51 +214,7 @@ class VrmlData_Node : public Standard_Transient {
 };
 
 
-%extend VrmlData_Node {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Node(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Node::Handle_VrmlData_Node %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Node;
-class Handle_VrmlData_Node : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_VrmlData_Node();
-        Handle_VrmlData_Node(const Handle_VrmlData_Node &aHandle);
-        Handle_VrmlData_Node(const VrmlData_Node *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Node DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Node {
-    VrmlData_Node* _get_reference() {
-    return (VrmlData_Node*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Node {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Node)
 
 %extend VrmlData_Node {
 	%pythoncode {
@@ -660,51 +622,7 @@ class VrmlData_Appearance : public VrmlData_Node {
 };
 
 
-%extend VrmlData_Appearance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Appearance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Appearance::Handle_VrmlData_Appearance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Appearance;
-class Handle_VrmlData_Appearance : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_Appearance();
-        Handle_VrmlData_Appearance(const Handle_VrmlData_Appearance &aHandle);
-        Handle_VrmlData_Appearance(const VrmlData_Appearance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Appearance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Appearance {
-    VrmlData_Appearance* _get_reference() {
-    return (VrmlData_Appearance*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Appearance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Appearance)
 
 %extend VrmlData_Appearance {
 	%pythoncode {
@@ -723,51 +641,7 @@ class VrmlData_Geometry : public VrmlData_Node {
 };
 
 
-%extend VrmlData_Geometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Geometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Geometry::Handle_VrmlData_Geometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Geometry;
-class Handle_VrmlData_Geometry : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_Geometry();
-        Handle_VrmlData_Geometry(const Handle_VrmlData_Geometry &aHandle);
-        Handle_VrmlData_Geometry(const VrmlData_Geometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Geometry DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Geometry {
-    VrmlData_Geometry* _get_reference() {
-    return (VrmlData_Geometry*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Geometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Geometry)
 
 %extend VrmlData_Geometry {
 	%pythoncode {
@@ -901,51 +775,7 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
 };
 
 
-%extend VrmlData_Group {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Group(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Group::Handle_VrmlData_Group %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Group;
-class Handle_VrmlData_Group : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_Group();
-        Handle_VrmlData_Group(const Handle_VrmlData_Group &aHandle);
-        Handle_VrmlData_Group(const VrmlData_Group *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Group DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Group {
-    VrmlData_Group* _get_reference() {
-    return (VrmlData_Group*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Group {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Group)
 
 %extend VrmlData_Group {
 	%pythoncode {
@@ -1094,51 +924,7 @@ class VrmlData_Material : public VrmlData_Node {
 };
 
 
-%extend VrmlData_Material {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Material(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Material::Handle_VrmlData_Material %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Material;
-class Handle_VrmlData_Material : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_Material();
-        Handle_VrmlData_Material(const Handle_VrmlData_Material &aHandle);
-        Handle_VrmlData_Material(const VrmlData_Material *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Material DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Material {
-    VrmlData_Material* _get_reference() {
-    return (VrmlData_Material*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Material {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Material)
 
 %extend VrmlData_Material {
 	%pythoncode {
@@ -1225,51 +1011,7 @@ class VrmlData_ShapeNode : public VrmlData_Node {
 };
 
 
-%extend VrmlData_ShapeNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_ShapeNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_ShapeNode::Handle_VrmlData_ShapeNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_ShapeNode;
-class Handle_VrmlData_ShapeNode : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_ShapeNode();
-        Handle_VrmlData_ShapeNode(const Handle_VrmlData_ShapeNode &aHandle);
-        Handle_VrmlData_ShapeNode(const VrmlData_ShapeNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_ShapeNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_ShapeNode {
-    VrmlData_ShapeNode* _get_reference() {
-    return (VrmlData_ShapeNode*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_ShapeNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_ShapeNode)
 
 %extend VrmlData_ShapeNode {
 	%pythoncode {
@@ -1348,51 +1090,7 @@ class VrmlData_TextureCoordinate : public VrmlData_Node {
 };
 
 
-%extend VrmlData_TextureCoordinate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_TextureCoordinate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_TextureCoordinate::Handle_VrmlData_TextureCoordinate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_TextureCoordinate;
-class Handle_VrmlData_TextureCoordinate : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_TextureCoordinate();
-        Handle_VrmlData_TextureCoordinate(const Handle_VrmlData_TextureCoordinate &aHandle);
-        Handle_VrmlData_TextureCoordinate(const VrmlData_TextureCoordinate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_TextureCoordinate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_TextureCoordinate {
-    VrmlData_TextureCoordinate* _get_reference() {
-    return (VrmlData_TextureCoordinate*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_TextureCoordinate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_TextureCoordinate)
 
 %extend VrmlData_TextureCoordinate {
 	%pythoncode {
@@ -1443,51 +1141,7 @@ class VrmlData_UnknownNode : public VrmlData_Node {
 };
 
 
-%extend VrmlData_UnknownNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_UnknownNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_UnknownNode::Handle_VrmlData_UnknownNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_UnknownNode;
-class Handle_VrmlData_UnknownNode : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_UnknownNode();
-        Handle_VrmlData_UnknownNode(const Handle_VrmlData_UnknownNode &aHandle);
-        Handle_VrmlData_UnknownNode(const VrmlData_UnknownNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_UnknownNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_UnknownNode {
-    VrmlData_UnknownNode* _get_reference() {
-    return (VrmlData_UnknownNode*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_UnknownNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_UnknownNode)
 
 %extend VrmlData_UnknownNode {
 	%pythoncode {
@@ -1576,51 +1230,7 @@ class VrmlData_WorldInfo : public VrmlData_Node {
 };
 
 
-%extend VrmlData_WorldInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_WorldInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_WorldInfo::Handle_VrmlData_WorldInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_WorldInfo;
-class Handle_VrmlData_WorldInfo : public Handle_VrmlData_Node {
-
-    public:
-        // constructors
-        Handle_VrmlData_WorldInfo();
-        Handle_VrmlData_WorldInfo(const Handle_VrmlData_WorldInfo &aHandle);
-        Handle_VrmlData_WorldInfo(const VrmlData_WorldInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_WorldInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_WorldInfo {
-    VrmlData_WorldInfo* _get_reference() {
-    return (VrmlData_WorldInfo*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_WorldInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_WorldInfo)
 
 %extend VrmlData_WorldInfo {
 	%pythoncode {
@@ -1699,51 +1309,7 @@ class VrmlData_Box : public VrmlData_Geometry {
 };
 
 
-%extend VrmlData_Box {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Box(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Box::Handle_VrmlData_Box %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Box;
-class Handle_VrmlData_Box : public Handle_VrmlData_Geometry {
-
-    public:
-        // constructors
-        Handle_VrmlData_Box();
-        Handle_VrmlData_Box(const Handle_VrmlData_Box &aHandle);
-        Handle_VrmlData_Box(const VrmlData_Box *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Box DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Box {
-    VrmlData_Box* _get_reference() {
-    return (VrmlData_Box*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Box {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Box)
 
 %extend VrmlData_Box {
 	%pythoncode {
@@ -1818,51 +1384,7 @@ class VrmlData_Color : public VrmlData_ArrayVec3d {
 };
 
 
-%extend VrmlData_Color {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Color(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Color::Handle_VrmlData_Color %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Color;
-class Handle_VrmlData_Color : public Handle_VrmlData_ArrayVec3d {
-
-    public:
-        // constructors
-        Handle_VrmlData_Color();
-        Handle_VrmlData_Color(const Handle_VrmlData_Color &aHandle);
-        Handle_VrmlData_Color(const VrmlData_Color *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Color DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Color {
-    VrmlData_Color* _get_reference() {
-    return (VrmlData_Color*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Color {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Color)
 
 %extend VrmlData_Color {
 	%pythoncode {
@@ -1975,51 +1497,7 @@ class VrmlData_Cone : public VrmlData_Geometry {
 };
 
 
-%extend VrmlData_Cone {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Cone(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Cone::Handle_VrmlData_Cone %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Cone;
-class Handle_VrmlData_Cone : public Handle_VrmlData_Geometry {
-
-    public:
-        // constructors
-        Handle_VrmlData_Cone();
-        Handle_VrmlData_Cone(const Handle_VrmlData_Cone &aHandle);
-        Handle_VrmlData_Cone(const VrmlData_Cone *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Cone DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Cone {
-    VrmlData_Cone* _get_reference() {
-    return (VrmlData_Cone*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Cone {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Cone)
 
 %extend VrmlData_Cone {
 	%pythoncode {
@@ -2084,51 +1562,7 @@ class VrmlData_Coordinate : public VrmlData_ArrayVec3d {
 };
 
 
-%extend VrmlData_Coordinate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Coordinate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Coordinate::Handle_VrmlData_Coordinate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Coordinate;
-class Handle_VrmlData_Coordinate : public Handle_VrmlData_ArrayVec3d {
-
-    public:
-        // constructors
-        Handle_VrmlData_Coordinate();
-        Handle_VrmlData_Coordinate(const Handle_VrmlData_Coordinate &aHandle);
-        Handle_VrmlData_Coordinate(const VrmlData_Coordinate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Coordinate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Coordinate {
-    VrmlData_Coordinate* _get_reference() {
-    return (VrmlData_Coordinate*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Coordinate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Coordinate)
 
 %extend VrmlData_Coordinate {
 	%pythoncode {
@@ -2249,51 +1683,7 @@ class VrmlData_Cylinder : public VrmlData_Geometry {
 };
 
 
-%extend VrmlData_Cylinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Cylinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Cylinder::Handle_VrmlData_Cylinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Cylinder;
-class Handle_VrmlData_Cylinder : public Handle_VrmlData_Geometry {
-
-    public:
-        // constructors
-        Handle_VrmlData_Cylinder();
-        Handle_VrmlData_Cylinder(const Handle_VrmlData_Cylinder &aHandle);
-        Handle_VrmlData_Cylinder(const VrmlData_Cylinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Cylinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Cylinder {
-    VrmlData_Cylinder* _get_reference() {
-    return (VrmlData_Cylinder*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Cylinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Cylinder)
 
 %extend VrmlData_Cylinder {
 	%pythoncode {
@@ -2358,51 +1748,7 @@ class VrmlData_ImageTexture : public VrmlData_Texture {
 };
 
 
-%extend VrmlData_ImageTexture {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_ImageTexture(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_ImageTexture::Handle_VrmlData_ImageTexture %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_ImageTexture;
-class Handle_VrmlData_ImageTexture : public Handle_VrmlData_Texture {
-
-    public:
-        // constructors
-        Handle_VrmlData_ImageTexture();
-        Handle_VrmlData_ImageTexture(const Handle_VrmlData_ImageTexture &aHandle);
-        Handle_VrmlData_ImageTexture(const VrmlData_ImageTexture *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_ImageTexture DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_ImageTexture {
-    VrmlData_ImageTexture* _get_reference() {
-    return (VrmlData_ImageTexture*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_ImageTexture {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_ImageTexture)
 
 %extend VrmlData_ImageTexture {
 	%pythoncode {
@@ -2561,51 +1907,7 @@ class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 };
 
 
-%extend VrmlData_IndexedLineSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_IndexedLineSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_IndexedLineSet::Handle_VrmlData_IndexedLineSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_IndexedLineSet;
-class Handle_VrmlData_IndexedLineSet : public Handle_VrmlData_Geometry {
-
-    public:
-        // constructors
-        Handle_VrmlData_IndexedLineSet();
-        Handle_VrmlData_IndexedLineSet(const Handle_VrmlData_IndexedLineSet &aHandle);
-        Handle_VrmlData_IndexedLineSet(const VrmlData_IndexedLineSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_IndexedLineSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_IndexedLineSet {
-    VrmlData_IndexedLineSet* _get_reference() {
-    return (VrmlData_IndexedLineSet*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_IndexedLineSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_IndexedLineSet)
 
 %extend VrmlData_IndexedLineSet {
 	%pythoncode {
@@ -2670,51 +1972,7 @@ class VrmlData_Normal : public VrmlData_ArrayVec3d {
 };
 
 
-%extend VrmlData_Normal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Normal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Normal::Handle_VrmlData_Normal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Normal;
-class Handle_VrmlData_Normal : public Handle_VrmlData_ArrayVec3d {
-
-    public:
-        // constructors
-        Handle_VrmlData_Normal();
-        Handle_VrmlData_Normal(const Handle_VrmlData_Normal &aHandle);
-        Handle_VrmlData_Normal(const VrmlData_Normal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Normal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Normal {
-    VrmlData_Normal* _get_reference() {
-    return (VrmlData_Normal*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Normal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Normal)
 
 %extend VrmlData_Normal {
 	%pythoncode {
@@ -2789,51 +2047,7 @@ class VrmlData_Sphere : public VrmlData_Geometry {
 };
 
 
-%extend VrmlData_Sphere {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_Sphere(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_Sphere::Handle_VrmlData_Sphere %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_Sphere;
-class Handle_VrmlData_Sphere : public Handle_VrmlData_Geometry {
-
-    public:
-        // constructors
-        Handle_VrmlData_Sphere();
-        Handle_VrmlData_Sphere(const Handle_VrmlData_Sphere &aHandle);
-        Handle_VrmlData_Sphere(const VrmlData_Sphere *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_Sphere DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_Sphere {
-    VrmlData_Sphere* _get_reference() {
-    return (VrmlData_Sphere*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_Sphere {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_Sphere)
 
 %extend VrmlData_Sphere {
 	%pythoncode {
@@ -3090,51 +2304,7 @@ class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 };
 
 
-%extend VrmlData_IndexedFaceSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_VrmlData_IndexedFaceSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_VrmlData_IndexedFaceSet::Handle_VrmlData_IndexedFaceSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_VrmlData_IndexedFaceSet;
-class Handle_VrmlData_IndexedFaceSet : public Handle_VrmlData_Faceted {
-
-    public:
-        // constructors
-        Handle_VrmlData_IndexedFaceSet();
-        Handle_VrmlData_IndexedFaceSet(const Handle_VrmlData_IndexedFaceSet &aHandle);
-        Handle_VrmlData_IndexedFaceSet(const VrmlData_IndexedFaceSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_VrmlData_IndexedFaceSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_VrmlData_IndexedFaceSet {
-    VrmlData_IndexedFaceSet* _get_reference() {
-    return (VrmlData_IndexedFaceSet*)$self->Access();
-    }
-};
-
-%extend Handle_VrmlData_IndexedFaceSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(VrmlData_IndexedFaceSet)
 
 %extend VrmlData_IndexedFaceSet {
 	%pythoncode {

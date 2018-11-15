@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMADAPTORDOCSTRING
-"No docstring provided."
+"this package contains the geometric definition ofcurve and surface necessary to use algorithmes."
 %enddef
 %module (package="OCC.Core", docstring=GEOMADAPTORDOCSTRING) GeomAdaptor
 
@@ -34,30 +34,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomAdaptor_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(GeomAdaptor_GHCurve)
+%wrap_handle(GeomAdaptor_GHSurface)
+%wrap_handle(GeomAdaptor_HCurve)
+%wrap_handle(GeomAdaptor_HSurface)
 
 %rename(geomadaptor) GeomAdaptor;
 class GeomAdaptor {
@@ -371,51 +362,7 @@ class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 };
 
 
-%extend GeomAdaptor_GHCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomAdaptor_GHCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomAdaptor_GHCurve::Handle_GeomAdaptor_GHCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomAdaptor_GHCurve;
-class Handle_GeomAdaptor_GHCurve : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_GeomAdaptor_GHCurve();
-        Handle_GeomAdaptor_GHCurve(const Handle_GeomAdaptor_GHCurve &aHandle);
-        Handle_GeomAdaptor_GHCurve(const GeomAdaptor_GHCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomAdaptor_GHCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomAdaptor_GHCurve {
-    GeomAdaptor_GHCurve* _get_reference() {
-    return (GeomAdaptor_GHCurve*)$self->Access();
-    }
-};
-
-%extend Handle_GeomAdaptor_GHCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomAdaptor_GHCurve)
 
 %extend GeomAdaptor_GHCurve {
 	%pythoncode {
@@ -452,51 +399,7 @@ class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 };
 
 
-%extend GeomAdaptor_GHSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomAdaptor_GHSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomAdaptor_GHSurface::Handle_GeomAdaptor_GHSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomAdaptor_GHSurface;
-class Handle_GeomAdaptor_GHSurface : public Handle_Adaptor3d_HSurface {
-
-    public:
-        // constructors
-        Handle_GeomAdaptor_GHSurface();
-        Handle_GeomAdaptor_GHSurface(const Handle_GeomAdaptor_GHSurface &aHandle);
-        Handle_GeomAdaptor_GHSurface(const GeomAdaptor_GHSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomAdaptor_GHSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomAdaptor_GHSurface {
-    GeomAdaptor_GHSurface* _get_reference() {
-    return (GeomAdaptor_GHSurface*)$self->Access();
-    }
-};
-
-%extend Handle_GeomAdaptor_GHSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomAdaptor_GHSurface)
 
 %extend GeomAdaptor_GHSurface {
 	%pythoncode {
@@ -926,51 +829,7 @@ class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 };
 
 
-%extend GeomAdaptor_HCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomAdaptor_HCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomAdaptor_HCurve::Handle_GeomAdaptor_HCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomAdaptor_HCurve;
-class Handle_GeomAdaptor_HCurve : public Handle_GeomAdaptor_GHCurve {
-
-    public:
-        // constructors
-        Handle_GeomAdaptor_HCurve();
-        Handle_GeomAdaptor_HCurve(const Handle_GeomAdaptor_HCurve &aHandle);
-        Handle_GeomAdaptor_HCurve(const GeomAdaptor_HCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomAdaptor_HCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomAdaptor_HCurve {
-    GeomAdaptor_HCurve* _get_reference() {
-    return (GeomAdaptor_HCurve*)$self->Access();
-    }
-};
-
-%extend Handle_GeomAdaptor_HCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomAdaptor_HCurve)
 
 %extend GeomAdaptor_HCurve {
 	%pythoncode {
@@ -1019,51 +878,7 @@ class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 };
 
 
-%extend GeomAdaptor_HSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomAdaptor_HSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomAdaptor_HSurface::Handle_GeomAdaptor_HSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomAdaptor_HSurface;
-class Handle_GeomAdaptor_HSurface : public Handle_GeomAdaptor_GHSurface {
-
-    public:
-        // constructors
-        Handle_GeomAdaptor_HSurface();
-        Handle_GeomAdaptor_HSurface(const Handle_GeomAdaptor_HSurface &aHandle);
-        Handle_GeomAdaptor_HSurface(const GeomAdaptor_HSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomAdaptor_HSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomAdaptor_HSurface {
-    GeomAdaptor_HSurface* _get_reference() {
-    return (GeomAdaptor_HSurface*)$self->Access();
-    }
-};
-
-%extend Handle_GeomAdaptor_HSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomAdaptor_HSurface)
 
 %extend GeomAdaptor_HSurface {
 	%pythoncode {

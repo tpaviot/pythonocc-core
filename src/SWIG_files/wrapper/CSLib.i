@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CSLIBDOCSTRING
-"No docstring provided."
+"This package implements functions for basis geometriccomputation on curves and surfaces.The tolerance criterions used in this package areResolution from package gp and RealEpsilon from classReal of package Standard."
 %enddef
 %module (package="OCC.Core", docstring=CSLIBDOCSTRING) CSLib
 
@@ -34,29 +34,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include CSLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
+enum CSLib_DerivativeStatus {
+	CSLib_Done = 0,
+	CSLib_D1uIsNull = 1,
+	CSLib_D1vIsNull = 2,
+	CSLib_D1IsNull = 3,
+	CSLib_D1uD1vRatioIsNull = 4,
+	CSLib_D1vD1uRatioIsNull = 5,
+	CSLib_D1uIsParallelD1v = 6,
+};
+
 enum CSLib_NormalStatus {
 	CSLib_Singular = 0,
 	CSLib_Defined = 1,
@@ -69,17 +65,8 @@ enum CSLib_NormalStatus {
 	CSLib_D1NuIsParallelD1Nv = 8,
 };
 
-enum CSLib_DerivativeStatus {
-	CSLib_Done = 0,
-	CSLib_D1uIsNull = 1,
-	CSLib_D1vIsNull = 2,
-	CSLib_D1IsNull = 3,
-	CSLib_D1uD1vRatioIsNull = 4,
-	CSLib_D1vD1uRatioIsNull = 5,
-	CSLib_D1uIsParallelD1v = 6,
-};
-
 /* end public enums declaration */
+
 
 %rename(cslib) CSLib;
 class CSLib {

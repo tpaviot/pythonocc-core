@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPRIMDOCSTRING
-"No docstring provided."
+"this package implements the primitives of thePrimitives package with the BRep TopologyContains :a Builder implementing the Template from PrimitivesThe instantiations of the algorithms :OneAxisWedgeThe rotational primitives inherited from OneAxisRevolutionCylinderConeSphereTorusThe class FaceBuilder is a tool to build a facefrom a Geom surface."
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMDOCSTRING) BRepPrim
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepPrim_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -67,6 +53,7 @@ enum BRepPrim_Direction {
 };
 
 /* end public enums declaration */
+
 
 %nodefaultctor BRepPrim_Builder;
 class BRepPrim_Builder {

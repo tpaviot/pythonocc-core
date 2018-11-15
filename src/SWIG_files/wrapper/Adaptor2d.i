@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADAPTOR2DDOCSTRING
-"No docstring provided."
+"The Adaptor2d package  is used to help definingreusable geometric algorithms. i.e. that can beused on curves and surfaces.It defines general services for objects :- the 2d curve.   Curve2dThe services are :- Usual services found in Geom or Geom2d :* parameter range, value and derivatives, etc...- Continuity breakout services :* Allows to divide a curve or a surfaces inparts with a given derivation order.- Special geometries detection services :* Allows to test for special cases that canbe processed more easily :- Conics, Quadrics, Bezier, BSpline ...And to get the correponding data form thepackage gp or  Geom.  The special typeOtherCurve means that no special case hasbeen detected and the algorithm may useonly the evaluation methods (D0, D1, ...)For  each category Curve2d, Curve,  Surface wedefine  three classes, we illustrate now theprinciples with the Curve, the same applies toCurve2d and Surface.The class Curve is the  abstract root for allCurves used by algorithms, it is handled by valueand  provides as deferred methods the servicesdescribed above.Some services (breakout) requires to create newcurves,   this  leads  to  memory allocationconsiderations (who create the curve, who deletesit ?). To solve this problem elegantly the curvewill return a HCurve, the  HCurve is a  curvehandled by reference  so it will  be deallocatedautomatically when it is not used.A third class GenHCurve is provided, this class isgeneric and its utility  is to provide automaticgeneration of the HCurve class when you havewritten the Curve class.* Let us show an example (with 2d curves) :Imagine an algorithm to intersect curves, thisalgorithms is written to process Curve2d fromAdaptor2d :A method may look like :Intersect(C1,C2 : Curve2d from Adaptor2d);Which will look like in C++Intersect(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2){// you can call any methodStandard_Real first1 = C1.FirstParameter();// but avoid to copy in an Adaptor2d_Curve which// is an Abstract class, use a reference or a pointerconst Adaptor2d_Curve& C = C1;const Adaptor2d_Curve *pC = &C1;// If you are interseted in Intervals you must// store them in a HCurve to ensure they are kept// in memory. Then a referrence may be used.Handle(Adaptor2d_HCurve) HCI = C1.Interval(1);const Adaptor2d_Curve& CI = HCI->Curve();pC = &(HCI->Curve());* The  Adaptor2d provides also Generic classesimplementing algorithmic curves and surfaces.- IsoCurve    : Isoparametric curve on a surface.- CurveOnSurface : 2D curve in the parametricspace of a surface.- OffsetCurve2d : 2d offset curve- ProjectedCurve : 3d curve projected on a plane- SurfaceOfLinearExtrusion- SurfaceOfRevolutionThey are instantiated with HCurve, HSurface, HCurved2d"
 %enddef
 %module (package="OCC.Core", docstring=ADAPTOR2DDOCSTRING) Adaptor2d
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Adaptor2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Adaptor2d_Curve2d * Adaptor2d_Curve2dPtr;
@@ -59,6 +45,9 @@ typedef Adaptor2d_Curve2d * Adaptor2d_Curve2dPtr;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Adaptor2d_HCurve2d)
+%wrap_handle(Adaptor2d_HLine2d)
 
 class Adaptor2d_Curve2d {
 	public:
@@ -430,51 +419,7 @@ class Adaptor2d_HCurve2d : public MMgt_TShared {
 };
 
 
-%extend Adaptor2d_HCurve2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor2d_HCurve2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor2d_HCurve2d::Handle_Adaptor2d_HCurve2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor2d_HCurve2d;
-class Handle_Adaptor2d_HCurve2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Adaptor2d_HCurve2d();
-        Handle_Adaptor2d_HCurve2d(const Handle_Adaptor2d_HCurve2d &aHandle);
-        Handle_Adaptor2d_HCurve2d(const Adaptor2d_HCurve2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor2d_HCurve2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor2d_HCurve2d {
-    Adaptor2d_HCurve2d* _get_reference() {
-    return (Adaptor2d_HCurve2d*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor2d_HCurve2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor2d_HCurve2d)
 
 %extend Adaptor2d_HCurve2d {
 	%pythoncode {
@@ -511,51 +456,7 @@ class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 };
 
 
-%extend Adaptor2d_HLine2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor2d_HLine2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor2d_HLine2d::Handle_Adaptor2d_HLine2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor2d_HLine2d;
-class Handle_Adaptor2d_HLine2d : public Handle_Adaptor2d_HCurve2d {
-
-    public:
-        // constructors
-        Handle_Adaptor2d_HLine2d();
-        Handle_Adaptor2d_HLine2d(const Handle_Adaptor2d_HLine2d &aHandle);
-        Handle_Adaptor2d_HLine2d(const Adaptor2d_HLine2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor2d_HLine2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor2d_HLine2d {
-    Adaptor2d_HLine2d* _get_reference() {
-    return (Adaptor2d_HLine2d*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor2d_HLine2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor2d_HLine2d)
 
 %extend Adaptor2d_HLine2d {
 	%pythoncode {

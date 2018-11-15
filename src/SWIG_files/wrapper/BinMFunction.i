@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMFUNCTIONDOCSTRING
-"No docstring provided."
+"Storage and Retrieval drivers for TFunction modelling attributes."
 %enddef
 %module (package="OCC.Core", docstring=BINMFUNCTIONDOCSTRING) BinMFunction
 
@@ -34,30 +34,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMFunction_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMFunction_FunctionDriver)
+%wrap_handle(BinMFunction_GraphNodeDriver)
+%wrap_handle(BinMFunction_ScopeDriver)
 
 %rename(binmfunction) BinMFunction;
 class BinMFunction {
@@ -116,51 +106,7 @@ class BinMFunction_FunctionDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMFunction_FunctionDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMFunction_FunctionDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMFunction_FunctionDriver::Handle_BinMFunction_FunctionDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMFunction_FunctionDriver;
-class Handle_BinMFunction_FunctionDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMFunction_FunctionDriver();
-        Handle_BinMFunction_FunctionDriver(const Handle_BinMFunction_FunctionDriver &aHandle);
-        Handle_BinMFunction_FunctionDriver(const BinMFunction_FunctionDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMFunction_FunctionDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMFunction_FunctionDriver {
-    BinMFunction_FunctionDriver* _get_reference() {
-    return (BinMFunction_FunctionDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMFunction_FunctionDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMFunction_FunctionDriver)
 
 %extend BinMFunction_FunctionDriver {
 	%pythoncode {
@@ -203,51 +149,7 @@ class BinMFunction_GraphNodeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMFunction_GraphNodeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMFunction_GraphNodeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMFunction_GraphNodeDriver::Handle_BinMFunction_GraphNodeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMFunction_GraphNodeDriver;
-class Handle_BinMFunction_GraphNodeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMFunction_GraphNodeDriver();
-        Handle_BinMFunction_GraphNodeDriver(const Handle_BinMFunction_GraphNodeDriver &aHandle);
-        Handle_BinMFunction_GraphNodeDriver(const BinMFunction_GraphNodeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMFunction_GraphNodeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMFunction_GraphNodeDriver {
-    BinMFunction_GraphNodeDriver* _get_reference() {
-    return (BinMFunction_GraphNodeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMFunction_GraphNodeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMFunction_GraphNodeDriver)
 
 %extend BinMFunction_GraphNodeDriver {
 	%pythoncode {
@@ -290,51 +192,7 @@ class BinMFunction_ScopeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMFunction_ScopeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMFunction_ScopeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMFunction_ScopeDriver::Handle_BinMFunction_ScopeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMFunction_ScopeDriver;
-class Handle_BinMFunction_ScopeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMFunction_ScopeDriver();
-        Handle_BinMFunction_ScopeDriver(const Handle_BinMFunction_ScopeDriver &aHandle);
-        Handle_BinMFunction_ScopeDriver(const BinMFunction_ScopeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMFunction_ScopeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMFunction_ScopeDriver {
-    BinMFunction_ScopeDriver* _get_reference() {
-    return (BinMFunction_ScopeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMFunction_ScopeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMFunction_ScopeDriver)
 
 %extend BinMFunction_ScopeDriver {
 	%pythoncode {

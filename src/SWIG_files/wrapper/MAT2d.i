@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MAT2DDOCSTRING
-"No docstring provided."
+"-Purpose : Package of computation of Bisector locus on aSet of geometrys from Geom2d."
 %enddef
 %module (package="OCC.Core", docstring=MAT2DDOCSTRING) MAT2d
 
@@ -34,30 +34,29 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MAT2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MAT2d_Circuit)
+%wrap_handle(MAT2d_Connexion)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfBiIntInteger)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfIntegerBisec)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfIntegerConnexion)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion)
+%wrap_handle(MAT2d_DataMapNodeOfDataMapOfIntegerVec2d)
+%wrap_handle(MAT2d_SequenceNodeOfSequenceOfConnexion)
+%wrap_handle(MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve)
+%wrap_handle(MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry)
 
 %nodefaultctor MAT2d_Array2OfConnexion;
 class MAT2d_Array2OfConnexion {
@@ -301,51 +300,7 @@ class MAT2d_Circuit : public MMgt_TShared {
 };
 
 
-%extend MAT2d_Circuit {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_Circuit(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_Circuit::Handle_MAT2d_Circuit %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_Circuit;
-class Handle_MAT2d_Circuit : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT2d_Circuit();
-        Handle_MAT2d_Circuit(const Handle_MAT2d_Circuit &aHandle);
-        Handle_MAT2d_Circuit(const MAT2d_Circuit *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_Circuit DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_Circuit {
-    MAT2d_Circuit* _get_reference() {
-    return (MAT2d_Circuit*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_Circuit {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_Circuit)
 
 %extend MAT2d_Circuit {
 	%pythoncode {
@@ -518,51 +473,7 @@ class MAT2d_Connexion : public MMgt_TShared {
 };
 
 
-%extend MAT2d_Connexion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_Connexion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_Connexion::Handle_MAT2d_Connexion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_Connexion;
-class Handle_MAT2d_Connexion : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT2d_Connexion();
-        Handle_MAT2d_Connexion(const Handle_MAT2d_Connexion &aHandle);
-        Handle_MAT2d_Connexion(const MAT2d_Connexion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_Connexion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_Connexion {
-    MAT2d_Connexion* _get_reference() {
-    return (MAT2d_Connexion*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_Connexion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_Connexion)
 
 %extend MAT2d_Connexion {
 	%pythoncode {
@@ -847,51 +758,7 @@ class MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public TCollection_MapNode {
             };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger::Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger;
-class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger();
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger(const Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger(const MAT2d_DataMapNodeOfDataMapOfBiIntInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
-    MAT2d_DataMapNodeOfDataMapOfBiIntInteger* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfBiIntInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfBiIntInteger)
 
 %extend MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
 	%pythoncode {
@@ -922,51 +789,7 @@ class MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public TCollection_Ma
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger::Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger;
-class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger();
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger(const Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger(const MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
-    MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger)
 
 %extend MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
 	%pythoncode {
@@ -1006,51 +829,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public TCollection_MapNode {
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec::Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec;
-class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec();
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec(const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec(const MAT2d_DataMapNodeOfDataMapOfIntegerBisec *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
-    MAT2d_DataMapNodeOfDataMapOfIntegerBisec* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfIntegerBisec*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfIntegerBisec)
 
 %extend MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
 	%pythoncode {
@@ -1090,51 +869,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public TCollection_MapNode 
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion::Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion;
-class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion();
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion(const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion(const MAT2d_DataMapNodeOfDataMapOfIntegerConnexion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
-    MAT2d_DataMapNodeOfDataMapOfIntegerConnexion* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfIntegerConnexion*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfIntegerConnexion)
 
 %extend MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
 	%pythoncode {
@@ -1174,51 +909,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public TCollection_MapNode {
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d::Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d;
-class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d();
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d(const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d(const MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
-    MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d)
 
 %extend MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
 	%pythoncode {
@@ -1258,51 +949,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public TCollectio
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion::Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion;
-class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion();
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion(const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion(const MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
-    MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion)
 
 %extend MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
 	%pythoncode {
@@ -1342,51 +989,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public TCollection_MapNode {
 };
 
 
-%extend MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d::Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d;
-class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d();
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d(const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d &aHandle);
-        Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d(const MAT2d_DataMapNodeOfDataMapOfIntegerVec2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
-    MAT2d_DataMapNodeOfDataMapOfIntegerVec2d* _get_reference() {
-    return (MAT2d_DataMapNodeOfDataMapOfIntegerVec2d*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_DataMapNodeOfDataMapOfIntegerVec2d)
 
 %extend MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
 	%pythoncode {
@@ -2168,51 +1771,7 @@ class MAT2d_SequenceNodeOfSequenceOfConnexion : public TCollection_SeqNode {
 };
 
 
-%extend MAT2d_SequenceNodeOfSequenceOfConnexion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_SequenceNodeOfSequenceOfConnexion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_SequenceNodeOfSequenceOfConnexion::Handle_MAT2d_SequenceNodeOfSequenceOfConnexion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_SequenceNodeOfSequenceOfConnexion;
-class Handle_MAT2d_SequenceNodeOfSequenceOfConnexion : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_SequenceNodeOfSequenceOfConnexion();
-        Handle_MAT2d_SequenceNodeOfSequenceOfConnexion(const Handle_MAT2d_SequenceNodeOfSequenceOfConnexion &aHandle);
-        Handle_MAT2d_SequenceNodeOfSequenceOfConnexion(const MAT2d_SequenceNodeOfSequenceOfConnexion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_SequenceNodeOfSequenceOfConnexion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfConnexion {
-    MAT2d_SequenceNodeOfSequenceOfConnexion* _get_reference() {
-    return (MAT2d_SequenceNodeOfSequenceOfConnexion*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfConnexion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_SequenceNodeOfSequenceOfConnexion)
 
 %extend MAT2d_SequenceNodeOfSequenceOfConnexion {
 	%pythoncode {
@@ -2239,51 +1798,7 @@ class MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public TCollection_SeqNode
 };
 
 
-%extend MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve::Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve;
-class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve();
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve(const Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve &aHandle);
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve(const MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
-    MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve* _get_reference() {
-    return (MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve)
 
 %extend MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
 	%pythoncode {
@@ -2310,51 +1825,7 @@ class MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public TCollection_SeqN
 };
 
 
-%extend MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry::Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry;
-class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry();
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry(const Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry &aHandle);
-        Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry(const MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
-    MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry* _get_reference() {
-    return (MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry*)$self->Access();
-    }
-};
-
-%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry)
 
 %extend MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
 	%pythoncode {

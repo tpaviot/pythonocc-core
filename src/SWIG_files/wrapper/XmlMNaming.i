@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMNAMINGDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=XMLMNAMINGDOCSTRING) XmlMNaming
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlMNaming_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlMNaming_NamedShapeDriver)
+%wrap_handle(XmlMNaming_NamingDriver)
 
 %rename(xmlmnaming) XmlMNaming;
 class XmlMNaming {
@@ -154,51 +143,7 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMNaming_NamedShapeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMNaming_NamedShapeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMNaming_NamedShapeDriver::Handle_XmlMNaming_NamedShapeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMNaming_NamedShapeDriver;
-class Handle_XmlMNaming_NamedShapeDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMNaming_NamedShapeDriver();
-        Handle_XmlMNaming_NamedShapeDriver(const Handle_XmlMNaming_NamedShapeDriver &aHandle);
-        Handle_XmlMNaming_NamedShapeDriver(const XmlMNaming_NamedShapeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMNaming_NamedShapeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMNaming_NamedShapeDriver {
-    XmlMNaming_NamedShapeDriver* _get_reference() {
-    return (XmlMNaming_NamedShapeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMNaming_NamedShapeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMNaming_NamedShapeDriver)
 
 %extend XmlMNaming_NamedShapeDriver {
 	%pythoncode {
@@ -241,51 +186,7 @@ class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMNaming_NamingDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMNaming_NamingDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMNaming_NamingDriver::Handle_XmlMNaming_NamingDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMNaming_NamingDriver;
-class Handle_XmlMNaming_NamingDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMNaming_NamingDriver();
-        Handle_XmlMNaming_NamingDriver(const Handle_XmlMNaming_NamingDriver &aHandle);
-        Handle_XmlMNaming_NamingDriver(const XmlMNaming_NamingDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMNaming_NamingDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMNaming_NamingDriver {
-    XmlMNaming_NamingDriver* _get_reference() {
-    return (XmlMNaming_NamingDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMNaming_NamingDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMNaming_NamingDriver)
 
 %extend XmlMNaming_NamingDriver {
 	%pythoncode {

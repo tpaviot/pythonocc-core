@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GPDOCSTRING
-"No docstring provided."
+"- Purpose :The geometric processor package, called gp, provides animplementation of entities used :. for algebraic calculation such as 'XYZ' coordinates, 'Mat'matrix. for basis analytic geometry such as Transformations, point,vector, line, plane, axis placement, conics, and elementarysurfaces.These entities are defined in 2d and 3d space.All the classes of this package are non-persistent."
 %enddef
 %module (package="OCC.Core", docstring=GPDOCSTRING) gp
 
@@ -34,41 +34,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include gp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
-enum gp_TrsfForm {
-	gp_Identity = 0,
-	gp_Rotation = 1,
-	gp_Translation = 2,
-	gp_PntMirror = 3,
-	gp_Ax1Mirror = 4,
-	gp_Ax2Mirror = 5,
-	gp_Scale = 6,
-	gp_CompoundTrsf = 7,
-	gp_Other = 8,
-};
-
 enum gp_EulerSequence {
 	gp_EulerAngles = 0,
 	gp_YawPitchRoll = 1,
@@ -98,7 +72,20 @@ enum gp_EulerSequence {
 	gp_Intrinsic_ZYZ = 25,
 };
 
+enum gp_TrsfForm {
+	gp_Identity = 0,
+	gp_Rotation = 1,
+	gp_Translation = 2,
+	gp_PntMirror = 3,
+	gp_Ax1Mirror = 4,
+	gp_Ax2Mirror = 5,
+	gp_Scale = 6,
+	gp_CompoundTrsf = 7,
+	gp_Other = 8,
+};
+
 /* end public enums declaration */
+
 
 %rename(gp) gp;
 class gp {

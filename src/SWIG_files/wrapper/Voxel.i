@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VOXELDOCSTRING
-"No docstring provided."
+"Data structuire and visualization engine for voxel modeling."
 %enddef
 %module (package="OCC.Core", docstring=VOXELDOCSTRING) Voxel
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Voxel_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_DataMap <iXYZ , Standard_Byte> iXYZBool;
@@ -59,11 +45,6 @@ typedef NCollection_DataMap <iXYZ , Standard_Integer> iXYZIndex;
 /* end typedefs declaration */
 
 /* public enums */
-enum Voxel_VoxelFileFormat {
-	Voxel_VFF_ASCII = 0,
-	Voxel_VFF_BINARY = 1,
-};
-
 enum Voxel_VoxelDisplayMode {
 	Voxel_VDM_POINTS = 0,
 	Voxel_VDM_NEARESTPOINTS = 1,
@@ -71,7 +52,14 @@ enum Voxel_VoxelDisplayMode {
 	Voxel_VDM_NEARESTBOXES = 3,
 };
 
+enum Voxel_VoxelFileFormat {
+	Voxel_VFF_ASCII = 0,
+	Voxel_VFF_BINARY = 1,
+};
+
 /* end public enums declaration */
+
+%wrap_handle(Voxel_Prs)
 
 %nodefaultctor Voxel_BooleanOperation;
 class Voxel_BooleanOperation {
@@ -747,51 +735,7 @@ class Voxel_Prs : public AIS_InteractiveObject {
 };
 
 
-%extend Voxel_Prs {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Voxel_Prs(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Voxel_Prs::Handle_Voxel_Prs %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Voxel_Prs;
-class Handle_Voxel_Prs : public Handle_AIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_Voxel_Prs();
-        Handle_Voxel_Prs(const Handle_Voxel_Prs &aHandle);
-        Handle_Voxel_Prs(const Voxel_Prs *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Voxel_Prs DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Voxel_Prs {
-    Voxel_Prs* _get_reference() {
-    return (Voxel_Prs*)$self->Access();
-    }
-};
-
-%extend Handle_Voxel_Prs {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Voxel_Prs)
 
 %extend Voxel_Prs {
 	%pythoncode {

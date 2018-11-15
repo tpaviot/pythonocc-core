@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPEXTREMADOCSTRING
-"No docstring provided."
+"This package gives  tools to compute extrema betweenShapes from BRep."
 %enddef
 %module (package="OCC.Core", docstring=BREPEXTREMADOCSTRING) BRepExtrema
 
@@ -34,28 +34,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepExtrema_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
-typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
 typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
+typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
 typedef NCollection_Vector <TopoDS_Face> BRepExtrema_ShapeList;
 /* end typedefs declaration */
 
@@ -67,6 +53,7 @@ enum BRepExtrema_SupportType {
 };
 
 /* end public enums declaration */
+
 
 %nodefaultctor BRepExtrema_DistShapeShape;
 class BRepExtrema_DistShapeShape {

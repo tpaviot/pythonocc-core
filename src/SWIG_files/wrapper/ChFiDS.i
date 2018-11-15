@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFIDSDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=CHFIDSDOCSTRING) ChFiDS
 
@@ -34,39 +34,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ChFiDS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
-enum ChFiDS_State {
-	ChFiDS_OnSame = 0,
-	ChFiDS_OnDiff = 1,
-	ChFiDS_AllSame = 2,
-	ChFiDS_BreakPoint = 3,
-	ChFiDS_FreeBoundary = 4,
-	ChFiDS_Closed = 5,
-	ChFiDS_Tangent = 6,
-};
-
 enum ChFiDS_ChamfMethod {
 	ChFiDS_Sym = 0,
 	ChFiDS_TwoDist = 1,
@@ -81,7 +57,32 @@ enum ChFiDS_ErrorStatus {
 	ChFiDS_TwistedSurface = 4,
 };
 
+enum ChFiDS_State {
+	ChFiDS_OnSame = 0,
+	ChFiDS_OnDiff = 1,
+	ChFiDS_AllSame = 2,
+	ChFiDS_BreakPoint = 3,
+	ChFiDS_FreeBoundary = 4,
+	ChFiDS_Closed = 5,
+	ChFiDS_Tangent = 6,
+};
+
 /* end public enums declaration */
+
+%wrap_handle(ChFiDS_HData)
+%wrap_handle(ChFiDS_HElSpine)
+%wrap_handle(ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe)
+%wrap_handle(ChFiDS_ListNodeOfListOfHElSpine)
+%wrap_handle(ChFiDS_ListNodeOfListOfStripe)
+%wrap_handle(ChFiDS_ListNodeOfRegularities)
+%wrap_handle(ChFiDS_SecHArray1)
+%wrap_handle(ChFiDS_SequenceNodeOfSequenceOfSpine)
+%wrap_handle(ChFiDS_SequenceNodeOfSequenceOfSurfData)
+%wrap_handle(ChFiDS_Spine)
+%wrap_handle(ChFiDS_Stripe)
+%wrap_handle(ChFiDS_SurfData)
+%wrap_handle(ChFiDS_ChamfSpine)
+%wrap_handle(ChFiDS_FilSpine)
 
 %nodefaultctor ChFiDS_CircSection;
 class ChFiDS_CircSection {
@@ -775,51 +776,7 @@ class ChFiDS_HData : public MMgt_TShared {
 };
 
 
-%extend ChFiDS_HData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_HData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_HData::Handle_ChFiDS_HData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_HData;
-class Handle_ChFiDS_HData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ChFiDS_HData();
-        Handle_ChFiDS_HData(const Handle_ChFiDS_HData &aHandle);
-        Handle_ChFiDS_HData(const ChFiDS_HData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_HData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_HData {
-    ChFiDS_HData* _get_reference() {
-    return (ChFiDS_HData*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_HData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_HData)
 
 %extend ChFiDS_HData {
 	%pythoncode {
@@ -860,51 +817,7 @@ class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 };
 
 
-%extend ChFiDS_HElSpine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_HElSpine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_HElSpine::Handle_ChFiDS_HElSpine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_HElSpine;
-class Handle_ChFiDS_HElSpine : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_ChFiDS_HElSpine();
-        Handle_ChFiDS_HElSpine(const Handle_ChFiDS_HElSpine &aHandle);
-        Handle_ChFiDS_HElSpine(const ChFiDS_HElSpine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_HElSpine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_HElSpine {
-    ChFiDS_HElSpine* _get_reference() {
-    return (ChFiDS_HElSpine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_HElSpine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_HElSpine)
 
 %extend ChFiDS_HElSpine {
 	%pythoncode {
@@ -956,51 +869,7 @@ class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCo
 };
 
 
-%extend ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe::Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
-class Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe();
-        Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe(const Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe &aHandle);
-        Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe(const ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
-    ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe* _get_reference() {
-    return (ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe)
 
 %extend ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
 	%pythoncode {
@@ -1257,51 +1126,7 @@ class ChFiDS_ListNodeOfListOfHElSpine : public TCollection_MapNode {
 };
 
 
-%extend ChFiDS_ListNodeOfListOfHElSpine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_ListNodeOfListOfHElSpine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_ListNodeOfListOfHElSpine::Handle_ChFiDS_ListNodeOfListOfHElSpine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_ListNodeOfListOfHElSpine;
-class Handle_ChFiDS_ListNodeOfListOfHElSpine : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_ListNodeOfListOfHElSpine();
-        Handle_ChFiDS_ListNodeOfListOfHElSpine(const Handle_ChFiDS_ListNodeOfListOfHElSpine &aHandle);
-        Handle_ChFiDS_ListNodeOfListOfHElSpine(const ChFiDS_ListNodeOfListOfHElSpine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_ListNodeOfListOfHElSpine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_ListNodeOfListOfHElSpine {
-    ChFiDS_ListNodeOfListOfHElSpine* _get_reference() {
-    return (ChFiDS_ListNodeOfListOfHElSpine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_ListNodeOfListOfHElSpine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_ListNodeOfListOfHElSpine)
 
 %extend ChFiDS_ListNodeOfListOfHElSpine {
 	%pythoncode {
@@ -1326,51 +1151,7 @@ class ChFiDS_ListNodeOfListOfStripe : public TCollection_MapNode {
 };
 
 
-%extend ChFiDS_ListNodeOfListOfStripe {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_ListNodeOfListOfStripe(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_ListNodeOfListOfStripe::Handle_ChFiDS_ListNodeOfListOfStripe %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_ListNodeOfListOfStripe;
-class Handle_ChFiDS_ListNodeOfListOfStripe : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_ListNodeOfListOfStripe();
-        Handle_ChFiDS_ListNodeOfListOfStripe(const Handle_ChFiDS_ListNodeOfListOfStripe &aHandle);
-        Handle_ChFiDS_ListNodeOfListOfStripe(const ChFiDS_ListNodeOfListOfStripe *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_ListNodeOfListOfStripe DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_ListNodeOfListOfStripe {
-    ChFiDS_ListNodeOfListOfStripe* _get_reference() {
-    return (ChFiDS_ListNodeOfListOfStripe*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_ListNodeOfListOfStripe {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_ListNodeOfListOfStripe)
 
 %extend ChFiDS_ListNodeOfListOfStripe {
 	%pythoncode {
@@ -1395,51 +1176,7 @@ class ChFiDS_ListNodeOfRegularities : public TCollection_MapNode {
 };
 
 
-%extend ChFiDS_ListNodeOfRegularities {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_ListNodeOfRegularities(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_ListNodeOfRegularities::Handle_ChFiDS_ListNodeOfRegularities %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_ListNodeOfRegularities;
-class Handle_ChFiDS_ListNodeOfRegularities : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_ListNodeOfRegularities();
-        Handle_ChFiDS_ListNodeOfRegularities(const Handle_ChFiDS_ListNodeOfRegularities &aHandle);
-        Handle_ChFiDS_ListNodeOfRegularities(const ChFiDS_ListNodeOfRegularities *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_ListNodeOfRegularities DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_ListNodeOfRegularities {
-    ChFiDS_ListNodeOfRegularities* _get_reference() {
-    return (ChFiDS_ListNodeOfRegularities*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_ListNodeOfRegularities {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_ListNodeOfRegularities)
 
 %extend ChFiDS_ListNodeOfRegularities {
 	%pythoncode {
@@ -2112,51 +1849,7 @@ class ChFiDS_SecHArray1 : public MMgt_TShared {
 };
 
 
-%extend ChFiDS_SecHArray1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_SecHArray1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_SecHArray1::Handle_ChFiDS_SecHArray1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_SecHArray1;
-class Handle_ChFiDS_SecHArray1 : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ChFiDS_SecHArray1();
-        Handle_ChFiDS_SecHArray1(const Handle_ChFiDS_SecHArray1 &aHandle);
-        Handle_ChFiDS_SecHArray1(const ChFiDS_SecHArray1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_SecHArray1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_SecHArray1 {
-    ChFiDS_SecHArray1* _get_reference() {
-    return (ChFiDS_SecHArray1*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_SecHArray1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_SecHArray1)
 
 %extend ChFiDS_SecHArray1 {
 	%pythoncode {
@@ -2183,51 +1876,7 @@ class ChFiDS_SequenceNodeOfSequenceOfSpine : public TCollection_SeqNode {
 };
 
 
-%extend ChFiDS_SequenceNodeOfSequenceOfSpine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_SequenceNodeOfSequenceOfSpine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_SequenceNodeOfSequenceOfSpine::Handle_ChFiDS_SequenceNodeOfSequenceOfSpine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_SequenceNodeOfSequenceOfSpine;
-class Handle_ChFiDS_SequenceNodeOfSequenceOfSpine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSpine();
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSpine(const Handle_ChFiDS_SequenceNodeOfSequenceOfSpine &aHandle);
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSpine(const ChFiDS_SequenceNodeOfSequenceOfSpine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_SequenceNodeOfSequenceOfSpine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSpine {
-    ChFiDS_SequenceNodeOfSequenceOfSpine* _get_reference() {
-    return (ChFiDS_SequenceNodeOfSequenceOfSpine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSpine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_SequenceNodeOfSequenceOfSpine)
 
 %extend ChFiDS_SequenceNodeOfSequenceOfSpine {
 	%pythoncode {
@@ -2254,51 +1903,7 @@ class ChFiDS_SequenceNodeOfSequenceOfSurfData : public TCollection_SeqNode {
 };
 
 
-%extend ChFiDS_SequenceNodeOfSequenceOfSurfData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData::Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData;
-class Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData();
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData(const Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData &aHandle);
-        Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData(const ChFiDS_SequenceNodeOfSequenceOfSurfData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData {
-    ChFiDS_SequenceNodeOfSequenceOfSurfData* _get_reference() {
-    return (ChFiDS_SequenceNodeOfSequenceOfSurfData*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_SequenceNodeOfSequenceOfSurfData)
 
 %extend ChFiDS_SequenceNodeOfSequenceOfSurfData {
 	%pythoncode {
@@ -2983,51 +2588,7 @@ class ChFiDS_Spine : public MMgt_TShared {
 };
 
 
-%extend ChFiDS_Spine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_Spine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_Spine::Handle_ChFiDS_Spine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_Spine;
-class Handle_ChFiDS_Spine : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ChFiDS_Spine();
-        Handle_ChFiDS_Spine(const Handle_ChFiDS_Spine &aHandle);
-        Handle_ChFiDS_Spine(const ChFiDS_Spine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_Spine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_Spine {
-    ChFiDS_Spine* _get_reference() {
-    return (ChFiDS_Spine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_Spine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_Spine)
 
 %extend ChFiDS_Spine {
 	%pythoncode {
@@ -3344,51 +2905,7 @@ class ChFiDS_Stripe : public MMgt_TShared {
 };
 
 
-%extend ChFiDS_Stripe {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_Stripe(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_Stripe::Handle_ChFiDS_Stripe %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_Stripe;
-class Handle_ChFiDS_Stripe : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ChFiDS_Stripe();
-        Handle_ChFiDS_Stripe(const Handle_ChFiDS_Stripe &aHandle);
-        Handle_ChFiDS_Stripe(const ChFiDS_Stripe *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_Stripe DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_Stripe {
-    ChFiDS_Stripe* _get_reference() {
-    return (ChFiDS_Stripe*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_Stripe {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_Stripe)
 
 %extend ChFiDS_Stripe {
 	%pythoncode {
@@ -3817,51 +3334,7 @@ class ChFiDS_SurfData : public MMgt_TShared {
 };
 
 
-%extend ChFiDS_SurfData {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_SurfData(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_SurfData::Handle_ChFiDS_SurfData %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_SurfData;
-class Handle_ChFiDS_SurfData : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ChFiDS_SurfData();
-        Handle_ChFiDS_SurfData(const Handle_ChFiDS_SurfData &aHandle);
-        Handle_ChFiDS_SurfData(const ChFiDS_SurfData *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_SurfData DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_SurfData {
-    ChFiDS_SurfData* _get_reference() {
-    return (ChFiDS_SurfData*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_SurfData {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_SurfData)
 
 %extend ChFiDS_SurfData {
 	%pythoncode {
@@ -3938,51 +3411,7 @@ class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 };
 
 
-%extend ChFiDS_ChamfSpine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_ChamfSpine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_ChamfSpine::Handle_ChFiDS_ChamfSpine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_ChamfSpine;
-class Handle_ChFiDS_ChamfSpine : public Handle_ChFiDS_Spine {
-
-    public:
-        // constructors
-        Handle_ChFiDS_ChamfSpine();
-        Handle_ChFiDS_ChamfSpine(const Handle_ChFiDS_ChamfSpine &aHandle);
-        Handle_ChFiDS_ChamfSpine(const ChFiDS_ChamfSpine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_ChamfSpine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_ChamfSpine {
-    ChFiDS_ChamfSpine* _get_reference() {
-    return (ChFiDS_ChamfSpine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_ChamfSpine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_ChamfSpine)
 
 %extend ChFiDS_ChamfSpine {
 	%pythoncode {
@@ -4137,51 +3566,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 };
 
 
-%extend ChFiDS_FilSpine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ChFiDS_FilSpine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ChFiDS_FilSpine::Handle_ChFiDS_FilSpine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ChFiDS_FilSpine;
-class Handle_ChFiDS_FilSpine : public Handle_ChFiDS_Spine {
-
-    public:
-        // constructors
-        Handle_ChFiDS_FilSpine();
-        Handle_ChFiDS_FilSpine(const Handle_ChFiDS_FilSpine &aHandle);
-        Handle_ChFiDS_FilSpine(const ChFiDS_FilSpine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ChFiDS_FilSpine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ChFiDS_FilSpine {
-    ChFiDS_FilSpine* _get_reference() {
-    return (ChFiDS_FilSpine*)$self->Access();
-    }
-};
-
-%extend Handle_ChFiDS_FilSpine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ChFiDS_FilSpine)
 
 %extend ChFiDS_FilSpine {
 	%pythoncode {

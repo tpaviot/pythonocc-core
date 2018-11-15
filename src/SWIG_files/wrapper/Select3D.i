@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECT3DDOCSTRING
-"No docstring provided."
+"The Select3D package provides the following services-  definition of standard  3D sensitive primitives such as points, curves and faces.-  recovery of the bounding boxes in the 2D graphic selection space, if required.-  a 3D-2D projector."
 %enddef
 %module (package="OCC.Core", docstring=SELECT3DDOCSTRING) Select3D
 
@@ -34,31 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Select3D_headers.i
 
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
-
 /* typedefs */
 typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity> Select3D_EntitySequence;
-typedef BVH_Box <Standard_Real , 3> Select3D_BndBox3d;
+typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity>::Iterator Select3D_EntitySequenceIter;
 typedef NCollection_Vec3 <Standard_Real> Select3D_Vec3;
 typedef NCollection_Vector <Handle_Select3D_SensitivePoly> Select3D_VectorOfHPoly;
-typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity>::Iterator Select3D_EntitySequenceIter;
+typedef BVH_Box <Standard_Real , 3> Select3D_BndBox3d;
 /* end typedefs declaration */
 
 /* public enums */
@@ -68,6 +54,18 @@ enum Select3D_TypeOfSensitivity {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Select3D_SensitiveBox)
+%wrap_handle(Select3D_SensitiveFace)
+%wrap_handle(Select3D_SensitivePoint)
+%wrap_handle(Select3D_SensitiveSegment)
+%wrap_handle(Select3D_SensitiveTriangle)
+%wrap_handle(Select3D_InteriorSensitivePointSet)
+%wrap_handle(Select3D_SensitiveGroup)
+%wrap_handle(Select3D_SensitivePoly)
+%wrap_handle(Select3D_SensitiveWire)
+%wrap_handle(Select3D_SensitiveCircle)
+%wrap_handle(Select3D_SensitiveCurve)
 
 %nodefaultctor Select3D_Pnt;
 class Select3D_Pnt {
@@ -214,51 +212,7 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 };
 
 
-%extend Select3D_SensitiveBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveBox::Handle_Select3D_SensitiveBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveBox;
-class Handle_Select3D_SensitiveBox : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveBox();
-        Handle_Select3D_SensitiveBox(const Handle_Select3D_SensitiveBox &aHandle);
-        Handle_Select3D_SensitiveBox(const Select3D_SensitiveBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveBox {
-    Select3D_SensitiveBox* _get_reference() {
-    return (Select3D_SensitiveBox*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveBox)
 
 %extend Select3D_SensitiveBox {
 	%pythoncode {
@@ -341,51 +295,7 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 };
 
 
-%extend Select3D_SensitiveFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveFace::Handle_Select3D_SensitiveFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveFace;
-class Handle_Select3D_SensitiveFace : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveFace();
-        Handle_Select3D_SensitiveFace(const Handle_Select3D_SensitiveFace &aHandle);
-        Handle_Select3D_SensitiveFace(const Select3D_SensitiveFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveFace {
-    Select3D_SensitiveFace* _get_reference() {
-    return (Select3D_SensitiveFace*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveFace)
 
 %extend Select3D_SensitiveFace {
 	%pythoncode {
@@ -446,51 +356,7 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 };
 
 
-%extend Select3D_SensitivePoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitivePoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitivePoint::Handle_Select3D_SensitivePoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitivePoint;
-class Handle_Select3D_SensitivePoint : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitivePoint();
-        Handle_Select3D_SensitivePoint(const Handle_Select3D_SensitivePoint &aHandle);
-        Handle_Select3D_SensitivePoint(const Select3D_SensitivePoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitivePoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitivePoint {
-    Select3D_SensitivePoint* _get_reference() {
-    return (Select3D_SensitivePoint*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitivePoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitivePoint)
 
 %extend Select3D_SensitivePoint {
 	%pythoncode {
@@ -575,190 +441,9 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 };
 
 
-%extend Select3D_SensitiveSegment {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveSegment(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveSegment::Handle_Select3D_SensitiveSegment %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveSegment;
-class Handle_Select3D_SensitiveSegment : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveSegment();
-        Handle_Select3D_SensitiveSegment(const Handle_Select3D_SensitiveSegment &aHandle);
-        Handle_Select3D_SensitiveSegment(const Select3D_SensitiveSegment *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveSegment DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveSegment {
-    Select3D_SensitiveSegment* _get_reference() {
-    return (Select3D_SensitiveSegment*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveSegment {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveSegment)
 
 %extend Select3D_SensitiveSegment {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Select3D_SensitiveSet;
-class Select3D_SensitiveSet : public Select3D_SensitiveEntity {
-	public:
-		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "	* Returns the amount of sub-entities of the complex entity
-
-	:rtype: int
-") Size;
-		Standard_Integer Size ();
-		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "	* Returns bounding box of sub-entity with index theIdx in sub-entity list
-
-	:param theIdx:
-	:type theIdx: int
-	:rtype: Select3D_BndBox3d
-") Box;
-		Select3D_BndBox3d Box (const Standard_Integer theIdx);
-		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	* Returns geometry center of sensitive entity index theIdx along the given axis theAxis
-
-	:param theIdx:
-	:type theIdx: int
-	:param theAxis:
-	:type theAxis: int
-	:rtype: float
-") Center;
-		Standard_Real Center (const Standard_Integer theIdx,const Standard_Integer theAxis);
-		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "	* Swaps items with indexes theIdx1 and theIdx2
-
-	:param theIdx1:
-	:type theIdx1: int
-	:param theIdx2:
-	:type theIdx2: int
-	:rtype: None
-") Swap;
-		void Swap (const Standard_Integer theIdx1,const Standard_Integer theIdx2);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Checks whether one or more entities of the set overlap current selecting volume. Implements the traverse of BVH tree built for the set
-
-	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
-	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
-		%feature("compactdefaultargs") BVH;
-		%feature("autodoc", "	* Builds BVH tree for sensitive set. Must be called manually to build BVH tree for any sensitive set in case if its content was initialized not in a constructor, but element by element
-
-	:rtype: None
-") BVH;
-		void BVH ();
-		%feature("compactdefaultargs") MarkDirty;
-		%feature("autodoc", "	* Marks BVH tree of the set as outdated. It will be rebuild at the next call of BVH()
-
-	:rtype: None
-") MarkDirty;
-		void MarkDirty ();
-		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "	* Returns bounding box of the whole set. This method should be redefined in Select3D_SensitiveSet descendants
-
-	:rtype: Select3D_BndBox3d
-") BoundingBox;
-		virtual Select3D_BndBox3d BoundingBox ();
-		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "	* Returns center of the whole set. This method should be redefined in Select3D_SensitiveSet descendants
-
-	:rtype: gp_Pnt
-") CenterOfGeometry;
-		virtual gp_Pnt CenterOfGeometry ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Destroys cross-reference to avoid memory leak
-
-	:rtype: void
-") Clear;
-		virtual void Clear ();
-		%feature("compactdefaultargs") GetLeafNodeSize;
-		%feature("autodoc", "	* Returns a number of nodes in 1 BVH leaf
-
-	:rtype: int
-") GetLeafNodeSize;
-		Standard_Integer GetLeafNodeSize ();
-};
-
-
-%extend Select3D_SensitiveSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveSet::Handle_Select3D_SensitiveSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveSet;
-class Handle_Select3D_SensitiveSet : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveSet();
-        Handle_Select3D_SensitiveSet(const Handle_Select3D_SensitiveSet &aHandle);
-        Handle_Select3D_SensitiveSet(const Select3D_SensitiveSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveSet {
-    Select3D_SensitiveSet* _get_reference() {
-    return (Select3D_SensitiveSet*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend Select3D_SensitiveSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -835,51 +520,7 @@ class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 };
 
 
-%extend Select3D_SensitiveTriangle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveTriangle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveTriangle::Handle_Select3D_SensitiveTriangle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveTriangle;
-class Handle_Select3D_SensitiveTriangle : public Handle_Select3D_SensitiveEntity {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveTriangle();
-        Handle_Select3D_SensitiveTriangle(const Handle_Select3D_SensitiveTriangle &aHandle);
-        Handle_Select3D_SensitiveTriangle(const Select3D_SensitiveTriangle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveTriangle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveTriangle {
-    Select3D_SensitiveTriangle* _get_reference() {
-    return (Select3D_SensitiveTriangle*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveTriangle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveTriangle)
 
 %extend Select3D_SensitiveTriangle {
 	%pythoncode {
@@ -962,51 +603,7 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 };
 
 
-%extend Select3D_InteriorSensitivePointSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_InteriorSensitivePointSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_InteriorSensitivePointSet::Handle_Select3D_InteriorSensitivePointSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_InteriorSensitivePointSet;
-class Handle_Select3D_InteriorSensitivePointSet : public Handle_Select3D_SensitiveSet {
-
-    public:
-        // constructors
-        Handle_Select3D_InteriorSensitivePointSet();
-        Handle_Select3D_InteriorSensitivePointSet(const Handle_Select3D_InteriorSensitivePointSet &aHandle);
-        Handle_Select3D_InteriorSensitivePointSet(const Select3D_InteriorSensitivePointSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_InteriorSensitivePointSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_InteriorSensitivePointSet {
-    Select3D_InteriorSensitivePointSet* _get_reference() {
-    return (Select3D_InteriorSensitivePointSet*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_InteriorSensitivePointSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_InteriorSensitivePointSet)
 
 %extend Select3D_InteriorSensitivePointSet {
 	%pythoncode {
@@ -1171,51 +768,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 };
 
 
-%extend Select3D_SensitiveGroup {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveGroup(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveGroup::Handle_Select3D_SensitiveGroup %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveGroup;
-class Handle_Select3D_SensitiveGroup : public Handle_Select3D_SensitiveSet {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveGroup();
-        Handle_Select3D_SensitiveGroup(const Handle_Select3D_SensitiveGroup &aHandle);
-        Handle_Select3D_SensitiveGroup(const Select3D_SensitiveGroup *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveGroup DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveGroup {
-    Select3D_SensitiveGroup* _get_reference() {
-    return (Select3D_SensitiveGroup*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveGroup {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveGroup)
 
 %extend Select3D_SensitiveGroup {
 	%pythoncode {
@@ -1324,51 +877,7 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 };
 
 
-%extend Select3D_SensitivePoly {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitivePoly(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitivePoly::Handle_Select3D_SensitivePoly %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitivePoly;
-class Handle_Select3D_SensitivePoly : public Handle_Select3D_SensitiveSet {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitivePoly();
-        Handle_Select3D_SensitivePoly(const Handle_Select3D_SensitivePoly &aHandle);
-        Handle_Select3D_SensitivePoly(const Select3D_SensitivePoly *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitivePoly DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitivePoly {
-    Select3D_SensitivePoly* _get_reference() {
-    return (Select3D_SensitivePoly*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitivePoly {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitivePoly)
 
 %extend Select3D_SensitivePoly {
 	%pythoncode {
@@ -1471,51 +980,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 };
 
 
-%extend Select3D_SensitiveWire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveWire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveWire::Handle_Select3D_SensitiveWire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveWire;
-class Handle_Select3D_SensitiveWire : public Handle_Select3D_SensitiveSet {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveWire();
-        Handle_Select3D_SensitiveWire(const Handle_Select3D_SensitiveWire &aHandle);
-        Handle_Select3D_SensitiveWire(const Select3D_SensitiveWire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveWire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveWire {
-    Select3D_SensitiveWire* _get_reference() {
-    return (Select3D_SensitiveWire*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveWire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveWire)
 
 %extend Select3D_SensitiveWire {
 	%pythoncode {
@@ -1624,51 +1089,7 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 };
 
 
-%extend Select3D_SensitiveCircle {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveCircle(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveCircle::Handle_Select3D_SensitiveCircle %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveCircle;
-class Handle_Select3D_SensitiveCircle : public Handle_Select3D_SensitivePoly {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveCircle();
-        Handle_Select3D_SensitiveCircle(const Handle_Select3D_SensitiveCircle &aHandle);
-        Handle_Select3D_SensitiveCircle(const Select3D_SensitiveCircle *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveCircle DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveCircle {
-    Select3D_SensitiveCircle* _get_reference() {
-    return (Select3D_SensitiveCircle*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveCircle {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveCircle)
 
 %extend Select3D_SensitiveCircle {
 	%pythoncode {
@@ -1719,51 +1140,7 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 };
 
 
-%extend Select3D_SensitiveCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Select3D_SensitiveCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Select3D_SensitiveCurve::Handle_Select3D_SensitiveCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Select3D_SensitiveCurve;
-class Handle_Select3D_SensitiveCurve : public Handle_Select3D_SensitivePoly {
-
-    public:
-        // constructors
-        Handle_Select3D_SensitiveCurve();
-        Handle_Select3D_SensitiveCurve(const Handle_Select3D_SensitiveCurve &aHandle);
-        Handle_Select3D_SensitiveCurve(const Select3D_SensitiveCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Select3D_SensitiveCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Select3D_SensitiveCurve {
-    Select3D_SensitiveCurve* _get_reference() {
-    return (Select3D_SensitiveCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Select3D_SensitiveCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Select3D_SensitiveCurve)
 
 %extend Select3D_SensitiveCurve {
 	%pythoncode {

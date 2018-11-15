@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPODSDOCSTRING
-"No docstring provided."
+"Provides methods to cast objects of classTopoDS_Shape to be onjects of more specializedsub-classes. Types are verified, thus in the examplebelow, the first two blocks are correct but the third isrejected by the compiler."
 %enddef
 %module (package="OCC.Core", docstring=TOPODSDOCSTRING) TopoDS
 
@@ -34,30 +34,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopoDS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TopoDS_HShape)
+%wrap_handle(TopoDS_ListNodeOfListOfShape)
+%wrap_handle(TopoDS_TShape)
+%wrap_handle(TopoDS_TCompSolid)
+%wrap_handle(TopoDS_TCompound)
+%wrap_handle(TopoDS_TEdge)
+%wrap_handle(TopoDS_TFace)
+%wrap_handle(TopoDS_TShell)
+%wrap_handle(TopoDS_TSolid)
+%wrap_handle(TopoDS_TVertex)
+%wrap_handle(TopoDS_TWire)
 
 %rename(topods) TopoDS;
 class TopoDS {
@@ -292,51 +290,7 @@ class TopoDS_HShape : public MMgt_TShared {
 };
 
 
-%extend TopoDS_HShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_HShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_HShape::Handle_TopoDS_HShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_HShape;
-class Handle_TopoDS_HShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopoDS_HShape();
-        Handle_TopoDS_HShape(const Handle_TopoDS_HShape &aHandle);
-        Handle_TopoDS_HShape(const TopoDS_HShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_HShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_HShape {
-    TopoDS_HShape* _get_reference() {
-    return (TopoDS_HShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_HShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_HShape)
 
 %extend TopoDS_HShape {
 	%pythoncode {
@@ -459,51 +413,7 @@ class TopoDS_ListNodeOfListOfShape : public TCollection_MapNode {
 };
 
 
-%extend TopoDS_ListNodeOfListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_ListNodeOfListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_ListNodeOfListOfShape::Handle_TopoDS_ListNodeOfListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_ListNodeOfListOfShape;
-class Handle_TopoDS_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopoDS_ListNodeOfListOfShape();
-        Handle_TopoDS_ListNodeOfListOfShape(const Handle_TopoDS_ListNodeOfListOfShape &aHandle);
-        Handle_TopoDS_ListNodeOfListOfShape(const TopoDS_ListNodeOfListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_ListNodeOfListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_ListNodeOfListOfShape {
-    TopoDS_ListNodeOfListOfShape* _get_reference() {
-    return (TopoDS_ListNodeOfListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_ListNodeOfListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_ListNodeOfListOfShape)
 
 %extend TopoDS_ListNodeOfListOfShape {
 	%pythoncode {
@@ -1140,51 +1050,7 @@ class TopoDS_TShape : public MMgt_TShared {
 };
 
 
-%extend TopoDS_TShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TShape::Handle_TopoDS_TShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TShape;
-class Handle_TopoDS_TShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopoDS_TShape();
-        Handle_TopoDS_TShape(const Handle_TopoDS_TShape &aHandle);
-        Handle_TopoDS_TShape(const TopoDS_TShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TShape {
-    TopoDS_TShape* _get_reference() {
-    return (TopoDS_TShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TShape)
 
 %extend TopoDS_TShape {
 	%pythoncode {
@@ -1317,51 +1183,7 @@ class TopoDS_TCompSolid : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TCompSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TCompSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TCompSolid::Handle_TopoDS_TCompSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TCompSolid;
-class Handle_TopoDS_TCompSolid : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TCompSolid();
-        Handle_TopoDS_TCompSolid(const Handle_TopoDS_TCompSolid &aHandle);
-        Handle_TopoDS_TCompSolid(const TopoDS_TCompSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TCompSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TCompSolid {
-    TopoDS_TCompSolid* _get_reference() {
-    return (TopoDS_TCompSolid*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TCompSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TCompSolid)
 
 %extend TopoDS_TCompSolid {
 	%pythoncode {
@@ -1392,51 +1214,7 @@ class TopoDS_TCompound : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TCompound {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TCompound(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TCompound::Handle_TopoDS_TCompound %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TCompound;
-class Handle_TopoDS_TCompound : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TCompound();
-        Handle_TopoDS_TCompound(const Handle_TopoDS_TCompound &aHandle);
-        Handle_TopoDS_TCompound(const TopoDS_TCompound *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TCompound DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TCompound {
-    TopoDS_TCompound* _get_reference() {
-    return (TopoDS_TCompound*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TCompound {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TCompound)
 
 %extend TopoDS_TCompound {
 	%pythoncode {
@@ -1455,51 +1233,7 @@ class TopoDS_TEdge : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TEdge::Handle_TopoDS_TEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TEdge;
-class Handle_TopoDS_TEdge : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TEdge();
-        Handle_TopoDS_TEdge(const Handle_TopoDS_TEdge &aHandle);
-        Handle_TopoDS_TEdge(const TopoDS_TEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TEdge {
-    TopoDS_TEdge* _get_reference() {
-    return (TopoDS_TEdge*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TEdge)
 
 %extend TopoDS_TEdge {
 	%pythoncode {
@@ -1530,51 +1264,7 @@ class TopoDS_TFace : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TFace::Handle_TopoDS_TFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TFace;
-class Handle_TopoDS_TFace : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TFace();
-        Handle_TopoDS_TFace(const Handle_TopoDS_TFace &aHandle);
-        Handle_TopoDS_TFace(const TopoDS_TFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TFace {
-    TopoDS_TFace* _get_reference() {
-    return (TopoDS_TFace*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TFace)
 
 %extend TopoDS_TFace {
 	%pythoncode {
@@ -1605,51 +1295,7 @@ class TopoDS_TShell : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TShell::Handle_TopoDS_TShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TShell;
-class Handle_TopoDS_TShell : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TShell();
-        Handle_TopoDS_TShell(const Handle_TopoDS_TShell &aHandle);
-        Handle_TopoDS_TShell(const TopoDS_TShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TShell {
-    TopoDS_TShell* _get_reference() {
-    return (TopoDS_TShell*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TShell)
 
 %extend TopoDS_TShell {
 	%pythoncode {
@@ -1680,51 +1326,7 @@ class TopoDS_TSolid : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TSolid::Handle_TopoDS_TSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TSolid;
-class Handle_TopoDS_TSolid : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TSolid();
-        Handle_TopoDS_TSolid(const Handle_TopoDS_TSolid &aHandle);
-        Handle_TopoDS_TSolid(const TopoDS_TSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TSolid {
-    TopoDS_TSolid* _get_reference() {
-    return (TopoDS_TSolid*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TSolid)
 
 %extend TopoDS_TSolid {
 	%pythoncode {
@@ -1743,51 +1345,7 @@ class TopoDS_TVertex : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TVertex::Handle_TopoDS_TVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TVertex;
-class Handle_TopoDS_TVertex : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TVertex();
-        Handle_TopoDS_TVertex(const Handle_TopoDS_TVertex &aHandle);
-        Handle_TopoDS_TVertex(const TopoDS_TVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TVertex {
-    TopoDS_TVertex* _get_reference() {
-    return (TopoDS_TVertex*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TVertex)
 
 %extend TopoDS_TVertex {
 	%pythoncode {
@@ -1818,51 +1376,7 @@ class TopoDS_TWire : public TopoDS_TShape {
 };
 
 
-%extend TopoDS_TWire {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopoDS_TWire(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopoDS_TWire::Handle_TopoDS_TWire %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopoDS_TWire;
-class Handle_TopoDS_TWire : public Handle_TopoDS_TShape {
-
-    public:
-        // constructors
-        Handle_TopoDS_TWire();
-        Handle_TopoDS_TWire(const Handle_TopoDS_TWire &aHandle);
-        Handle_TopoDS_TWire(const TopoDS_TWire *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopoDS_TWire DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopoDS_TWire {
-    TopoDS_TWire* _get_reference() {
-    return (TopoDS_TWire*)$self->Access();
-    }
-};
-
-%extend Handle_TopoDS_TWire {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopoDS_TWire)
 
 %extend TopoDS_TWire {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CONVERTDOCSTRING
-"No docstring provided."
+"- Purpose:The Convert package provides algorithms to convert the following into a BSpline curve or surface:-  a bounded curve based on an elementary 2D curve (line, circle or conic) from the gp package,-  a bounded surface based on an elementary surface (cylinder, cone, sphere or torus) from the gp package,-  a series of adjacent 2D or 3D Bezier curves defined by their poles.These algorithms compute the data needed to define the resulting BSpline curve or surface.This elementary data (degrees, periodic characteristics, poles and weights, knots andmultiplicities) may then be used directly in an algorithm, or can be used to construct the curveor the surface by calling the appropriate constructor provided by the classesGeom2d_BSplineCurve, Geom_BSplineCurve or Geom_BSplineSurface."
 %enddef
 %module (package="OCC.Core", docstring=CONVERTDOCSTRING) Convert
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Convert_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef void Convert_CosAndSinEvalFunction ( Standard_Real , 	 	 	 	 	 const Standard_Integer , 	 	 	 	 	 const TColgp_Array1OfPnt2d & , 	 	 	 	 	 const TColStd_Array1OfReal & , 	 	 	 	 	 const TColStd_Array1OfInteger & , 	 	 	 	 	 Standard_Real Result [ 2 ] );
@@ -71,6 +57,8 @@ enum Convert_ParameterisationType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Convert_SequenceNodeOfSequenceOfArray1OfPoles)
 
 %nodefaultctor Convert_CompBezierCurves2dToBSplineCurve2d;
 class Convert_CompBezierCurves2dToBSplineCurve2d {
@@ -698,51 +686,7 @@ class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode
 };
 
 
-%extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles::Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles;
-class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles();
-        Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles(const Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles &aHandle);
-        Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles(const Convert_SequenceNodeOfSequenceOfArray1OfPoles *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-    Convert_SequenceNodeOfSequenceOfArray1OfPoles* _get_reference() {
-    return (Convert_SequenceNodeOfSequenceOfArray1OfPoles*)$self->Access();
-    }
-};
-
-%extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Convert_SequenceNodeOfSequenceOfArray1OfPoles)
 
 %extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
 	%pythoncode {

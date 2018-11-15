@@ -34,30 +34,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinTObjDrivers_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinTObjDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinTObjDrivers_DocumentStorageDriver)
+%wrap_handle(BinTObjDrivers_IntSparseArrayDriver)
+%wrap_handle(BinTObjDrivers_ModelDriver)
+%wrap_handle(BinTObjDrivers_ObjectDriver)
+%wrap_handle(BinTObjDrivers_ReferenceDriver)
+%wrap_handle(BinTObjDrivers_XYZDriver)
 
 %rename(bintobjdrivers) BinTObjDrivers;
 %nodefaultctor BinTObjDrivers;
@@ -101,51 +95,7 @@ class BinTObjDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrie
 };
 
 
-%extend BinTObjDrivers_DocumentRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_DocumentRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_DocumentRetrievalDriver::Handle_BinTObjDrivers_DocumentRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_DocumentRetrievalDriver;
-class Handle_BinTObjDrivers_DocumentRetrievalDriver : public Handle_BinLDrivers_DocumentRetrievalDriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_DocumentRetrievalDriver();
-        Handle_BinTObjDrivers_DocumentRetrievalDriver(const Handle_BinTObjDrivers_DocumentRetrievalDriver &aHandle);
-        Handle_BinTObjDrivers_DocumentRetrievalDriver(const BinTObjDrivers_DocumentRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_DocumentRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_DocumentRetrievalDriver {
-    BinTObjDrivers_DocumentRetrievalDriver* _get_reference() {
-    return (BinTObjDrivers_DocumentRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_DocumentRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_DocumentRetrievalDriver)
 
 %extend BinTObjDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -168,51 +118,7 @@ class BinTObjDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageD
 };
 
 
-%extend BinTObjDrivers_DocumentStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_DocumentStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_DocumentStorageDriver::Handle_BinTObjDrivers_DocumentStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_DocumentStorageDriver;
-class Handle_BinTObjDrivers_DocumentStorageDriver : public Handle_BinLDrivers_DocumentStorageDriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_DocumentStorageDriver();
-        Handle_BinTObjDrivers_DocumentStorageDriver(const Handle_BinTObjDrivers_DocumentStorageDriver &aHandle);
-        Handle_BinTObjDrivers_DocumentStorageDriver(const BinTObjDrivers_DocumentStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_DocumentStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_DocumentStorageDriver {
-    BinTObjDrivers_DocumentStorageDriver* _get_reference() {
-    return (BinTObjDrivers_DocumentStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_DocumentStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_DocumentStorageDriver)
 
 %extend BinTObjDrivers_DocumentStorageDriver {
 	%pythoncode {
@@ -255,51 +161,7 @@ class BinTObjDrivers_IntSparseArrayDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinTObjDrivers_IntSparseArrayDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_IntSparseArrayDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_IntSparseArrayDriver::Handle_BinTObjDrivers_IntSparseArrayDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_IntSparseArrayDriver;
-class Handle_BinTObjDrivers_IntSparseArrayDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_IntSparseArrayDriver();
-        Handle_BinTObjDrivers_IntSparseArrayDriver(const Handle_BinTObjDrivers_IntSparseArrayDriver &aHandle);
-        Handle_BinTObjDrivers_IntSparseArrayDriver(const BinTObjDrivers_IntSparseArrayDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_IntSparseArrayDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_IntSparseArrayDriver {
-    BinTObjDrivers_IntSparseArrayDriver* _get_reference() {
-    return (BinTObjDrivers_IntSparseArrayDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_IntSparseArrayDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_IntSparseArrayDriver)
 
 %extend BinTObjDrivers_IntSparseArrayDriver {
 	%pythoncode {
@@ -342,51 +204,7 @@ class BinTObjDrivers_ModelDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinTObjDrivers_ModelDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_ModelDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_ModelDriver::Handle_BinTObjDrivers_ModelDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_ModelDriver;
-class Handle_BinTObjDrivers_ModelDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_ModelDriver();
-        Handle_BinTObjDrivers_ModelDriver(const Handle_BinTObjDrivers_ModelDriver &aHandle);
-        Handle_BinTObjDrivers_ModelDriver(const BinTObjDrivers_ModelDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_ModelDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_ModelDriver {
-    BinTObjDrivers_ModelDriver* _get_reference() {
-    return (BinTObjDrivers_ModelDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_ModelDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_ModelDriver)
 
 %extend BinTObjDrivers_ModelDriver {
 	%pythoncode {
@@ -429,51 +247,7 @@ class BinTObjDrivers_ObjectDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinTObjDrivers_ObjectDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_ObjectDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_ObjectDriver::Handle_BinTObjDrivers_ObjectDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_ObjectDriver;
-class Handle_BinTObjDrivers_ObjectDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_ObjectDriver();
-        Handle_BinTObjDrivers_ObjectDriver(const Handle_BinTObjDrivers_ObjectDriver &aHandle);
-        Handle_BinTObjDrivers_ObjectDriver(const BinTObjDrivers_ObjectDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_ObjectDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_ObjectDriver {
-    BinTObjDrivers_ObjectDriver* _get_reference() {
-    return (BinTObjDrivers_ObjectDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_ObjectDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_ObjectDriver)
 
 %extend BinTObjDrivers_ObjectDriver {
 	%pythoncode {
@@ -516,51 +290,7 @@ class BinTObjDrivers_ReferenceDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinTObjDrivers_ReferenceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_ReferenceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_ReferenceDriver::Handle_BinTObjDrivers_ReferenceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_ReferenceDriver;
-class Handle_BinTObjDrivers_ReferenceDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_ReferenceDriver();
-        Handle_BinTObjDrivers_ReferenceDriver(const Handle_BinTObjDrivers_ReferenceDriver &aHandle);
-        Handle_BinTObjDrivers_ReferenceDriver(const BinTObjDrivers_ReferenceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_ReferenceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_ReferenceDriver {
-    BinTObjDrivers_ReferenceDriver* _get_reference() {
-    return (BinTObjDrivers_ReferenceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_ReferenceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_ReferenceDriver)
 
 %extend BinTObjDrivers_ReferenceDriver {
 	%pythoncode {
@@ -603,51 +333,7 @@ class BinTObjDrivers_XYZDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinTObjDrivers_XYZDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinTObjDrivers_XYZDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinTObjDrivers_XYZDriver::Handle_BinTObjDrivers_XYZDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinTObjDrivers_XYZDriver;
-class Handle_BinTObjDrivers_XYZDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinTObjDrivers_XYZDriver();
-        Handle_BinTObjDrivers_XYZDriver(const Handle_BinTObjDrivers_XYZDriver &aHandle);
-        Handle_BinTObjDrivers_XYZDriver(const BinTObjDrivers_XYZDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinTObjDrivers_XYZDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinTObjDrivers_XYZDriver {
-    BinTObjDrivers_XYZDriver* _get_reference() {
-    return (BinTObjDrivers_XYZDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinTObjDrivers_XYZDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinTObjDrivers_XYZDriver)
 
 %extend BinTObjDrivers_XYZDriver {
 	%pythoncode {

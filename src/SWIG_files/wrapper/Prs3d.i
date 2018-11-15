@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PRS3DDOCSTRING
-"No docstring provided."
+"The Prs3d package provides the following services-  a presentation object (the context for allmodifications to the display, its presentation will bedisplayed in every view of an active viewer)-  an attribute manager governing how objects suchas color, width, and type of line are displayed;these are generic objects, whereas those inStdPrs are specific geometries and topologies.-  generic  algorithms providing default settings forobjects such as points, curves, surfaces and shapes-  a root object which provides the abstractframework for the DsgPrs definitions at work indisplay of dimensions, relations and trihedra."
 %enddef
 %module (package="OCC.Core", docstring=PRS3DDOCSTRING) Prs3d
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Prs3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_List <Handle_TColgp_HSequenceOfPnt> Prs3d_NListOfSequenceOfPnt;
@@ -59,16 +45,10 @@ typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequence
 /* end typedefs declaration */
 
 /* public enums */
-enum Prs3d_DimensionTextVerticalPosition {
-	Prs3d_DTVP_Above = 0,
-	Prs3d_DTVP_Below = 1,
-	Prs3d_DTVP_Center = 2,
-};
-
-enum Prs3d_VertexDrawMode {
-	Prs3d_VDM_Isolated = 0,
-	Prs3d_VDM_All = 1,
-	Prs3d_VDM_Inherited = 2,
+enum Prs3d_DimensionArrowOrientation {
+	Prs3d_DAO_Internal = 0,
+	Prs3d_DAO_External = 1,
+	Prs3d_DAO_Fit = 2,
 };
 
 enum Prs3d_DimensionTextHorizontalPosition {
@@ -78,9 +58,10 @@ enum Prs3d_DimensionTextHorizontalPosition {
 	Prs3d_DTHP_Fit = 3,
 };
 
-enum Prs3d_TypeOfLinePicking {
-	Prs3d_TOLP_Point = 0,
-	Prs3d_TOLP_Segment = 1,
+enum Prs3d_DimensionTextVerticalPosition {
+	Prs3d_DTVP_Above = 0,
+	Prs3d_DTVP_Below = 1,
+	Prs3d_DTVP_Center = 2,
 };
 
 enum Prs3d_TypeOfHLR {
@@ -89,13 +70,33 @@ enum Prs3d_TypeOfHLR {
 	Prs3d_TOH_Algo = 2,
 };
 
-enum Prs3d_DimensionArrowOrientation {
-	Prs3d_DAO_Internal = 0,
-	Prs3d_DAO_External = 1,
-	Prs3d_DAO_Fit = 2,
+enum Prs3d_TypeOfLinePicking {
+	Prs3d_TOLP_Point = 0,
+	Prs3d_TOLP_Segment = 1,
+};
+
+enum Prs3d_VertexDrawMode {
+	Prs3d_VDM_Isolated = 0,
+	Prs3d_VDM_All = 1,
+	Prs3d_VDM_Inherited = 2,
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Prs3d_BasicAspect)
+%wrap_handle(Prs3d_Drawer)
+%wrap_handle(Prs3d_PlaneSet)
+%wrap_handle(Prs3d_Presentation)
+%wrap_handle(Prs3d_Projector)
+%wrap_handle(Prs3d_ArrowAspect)
+%wrap_handle(Prs3d_DatumAspect)
+%wrap_handle(Prs3d_DimensionAspect)
+%wrap_handle(Prs3d_LineAspect)
+%wrap_handle(Prs3d_PlaneAspect)
+%wrap_handle(Prs3d_PointAspect)
+%wrap_handle(Prs3d_ShadingAspect)
+%wrap_handle(Prs3d_TextAspect)
+%wrap_handle(Prs3d_IsoAspect)
 
 %rename(prs3d) Prs3d;
 class Prs3d {
@@ -144,51 +145,7 @@ class Prs3d_BasicAspect : public MMgt_TShared {
 };
 
 
-%extend Prs3d_BasicAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_BasicAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_BasicAspect::Handle_Prs3d_BasicAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_BasicAspect;
-class Handle_Prs3d_BasicAspect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Prs3d_BasicAspect();
-        Handle_Prs3d_BasicAspect(const Handle_Prs3d_BasicAspect &aHandle);
-        Handle_Prs3d_BasicAspect(const Prs3d_BasicAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_BasicAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_BasicAspect {
-    Prs3d_BasicAspect* _get_reference() {
-    return (Prs3d_BasicAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_BasicAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_BasicAspect)
 
 %extend Prs3d_BasicAspect {
 	%pythoncode {
@@ -1154,51 +1111,7 @@ class Prs3d_Drawer : public MMgt_TShared {
 };
 
 
-%extend Prs3d_Drawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_Drawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_Drawer::Handle_Prs3d_Drawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_Drawer;
-class Handle_Prs3d_Drawer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Prs3d_Drawer();
-        Handle_Prs3d_Drawer(const Handle_Prs3d_Drawer &aHandle);
-        Handle_Prs3d_Drawer(const Prs3d_Drawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_Drawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_Drawer {
-    Prs3d_Drawer* _get_reference() {
-    return (Prs3d_Drawer*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_Drawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_Drawer)
 
 %extend Prs3d_Drawer {
 	%pythoncode {
@@ -1283,51 +1196,7 @@ class Prs3d_PlaneSet : public MMgt_TShared {
 };
 
 
-%extend Prs3d_PlaneSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_PlaneSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_PlaneSet::Handle_Prs3d_PlaneSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_PlaneSet;
-class Handle_Prs3d_PlaneSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Prs3d_PlaneSet();
-        Handle_Prs3d_PlaneSet(const Handle_Prs3d_PlaneSet &aHandle);
-        Handle_Prs3d_PlaneSet(const Prs3d_PlaneSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_PlaneSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_PlaneSet {
-    Prs3d_PlaneSet* _get_reference() {
-    return (Prs3d_PlaneSet*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_PlaneSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_PlaneSet)
 
 %extend Prs3d_PlaneSet {
 	%pythoncode {
@@ -1456,51 +1325,7 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 };
 
 
-%extend Prs3d_Presentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_Presentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_Presentation::Handle_Prs3d_Presentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_Presentation;
-class Handle_Prs3d_Presentation : public Handle_Graphic3d_Structure {
-
-    public:
-        // constructors
-        Handle_Prs3d_Presentation();
-        Handle_Prs3d_Presentation(const Handle_Prs3d_Presentation &aHandle);
-        Handle_Prs3d_Presentation(const Prs3d_Presentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_Presentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_Presentation {
-    Prs3d_Presentation* _get_reference() {
-    return (Prs3d_Presentation*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_Presentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_Presentation)
 
 %extend Prs3d_Presentation {
 	%pythoncode {
@@ -1553,51 +1378,7 @@ class Prs3d_Projector : public MMgt_TShared {
 };
 
 
-%extend Prs3d_Projector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_Projector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_Projector::Handle_Prs3d_Projector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_Projector;
-class Handle_Prs3d_Projector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Prs3d_Projector();
-        Handle_Prs3d_Projector(const Handle_Prs3d_Projector &aHandle);
-        Handle_Prs3d_Projector(const Prs3d_Projector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_Projector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_Projector {
-    Prs3d_Projector* _get_reference() {
-    return (Prs3d_Projector*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_Projector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_Projector)
 
 %extend Prs3d_Projector {
 	%pythoncode {
@@ -1869,51 +1650,7 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_ArrowAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_ArrowAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_ArrowAspect::Handle_Prs3d_ArrowAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_ArrowAspect;
-class Handle_Prs3d_ArrowAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_ArrowAspect();
-        Handle_Prs3d_ArrowAspect(const Handle_Prs3d_ArrowAspect &aHandle);
-        Handle_Prs3d_ArrowAspect(const Prs3d_ArrowAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_ArrowAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_ArrowAspect {
-    Prs3d_ArrowAspect* _get_reference() {
-    return (Prs3d_ArrowAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_ArrowAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_ArrowAspect)
 
 %extend Prs3d_ArrowAspect {
 	%pythoncode {
@@ -2008,51 +1745,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_DatumAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_DatumAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_DatumAspect::Handle_Prs3d_DatumAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_DatumAspect;
-class Handle_Prs3d_DatumAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_DatumAspect();
-        Handle_Prs3d_DatumAspect(const Handle_Prs3d_DatumAspect &aHandle);
-        Handle_Prs3d_DatumAspect(const Prs3d_DatumAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_DatumAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_DatumAspect {
-    Prs3d_DatumAspect* _get_reference() {
-    return (Prs3d_DatumAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_DatumAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_DatumAspect)
 
 %extend Prs3d_DatumAspect {
 	%pythoncode {
@@ -2261,51 +1954,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_DimensionAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_DimensionAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_DimensionAspect::Handle_Prs3d_DimensionAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_DimensionAspect;
-class Handle_Prs3d_DimensionAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_DimensionAspect();
-        Handle_Prs3d_DimensionAspect(const Handle_Prs3d_DimensionAspect &aHandle);
-        Handle_Prs3d_DimensionAspect(const Prs3d_DimensionAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_DimensionAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_DimensionAspect {
-    Prs3d_DimensionAspect* _get_reference() {
-    return (Prs3d_DimensionAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_DimensionAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_DimensionAspect)
 
 %extend Prs3d_DimensionAspect {
 	%pythoncode {
@@ -2388,51 +2037,7 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_LineAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_LineAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_LineAspect::Handle_Prs3d_LineAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_LineAspect;
-class Handle_Prs3d_LineAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_LineAspect();
-        Handle_Prs3d_LineAspect(const Handle_Prs3d_LineAspect &aHandle);
-        Handle_Prs3d_LineAspect(const Prs3d_LineAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_LineAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_LineAspect {
-    Prs3d_LineAspect* _get_reference() {
-    return (Prs3d_LineAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_LineAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_LineAspect)
 
 %extend Prs3d_LineAspect {
 	%pythoncode {
@@ -2595,51 +2200,7 @@ class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_PlaneAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_PlaneAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_PlaneAspect::Handle_Prs3d_PlaneAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_PlaneAspect;
-class Handle_Prs3d_PlaneAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_PlaneAspect();
-        Handle_Prs3d_PlaneAspect(const Handle_Prs3d_PlaneAspect &aHandle);
-        Handle_Prs3d_PlaneAspect(const Prs3d_PlaneAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_PlaneAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_PlaneAspect {
-    Prs3d_PlaneAspect* _get_reference() {
-    return (Prs3d_PlaneAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_PlaneAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_PlaneAspect)
 
 %extend Prs3d_PlaneAspect {
 	%pythoncode {
@@ -2748,120 +2309,9 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_PointAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_PointAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_PointAspect::Handle_Prs3d_PointAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_PointAspect;
-class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_PointAspect();
-        Handle_Prs3d_PointAspect(const Handle_Prs3d_PointAspect &aHandle);
-        Handle_Prs3d_PointAspect(const Prs3d_PointAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_PointAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_PointAspect {
-    Prs3d_PointAspect* _get_reference() {
-    return (Prs3d_PointAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_PointAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_PointAspect)
 
 %extend Prs3d_PointAspect {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Prs3d_PresentationShadow;
-class Prs3d_PresentationShadow : public Prs3d_Presentation {
-	public:
-		%feature("compactdefaultargs") Prs3d_PresentationShadow;
-		%feature("autodoc", "	* Constructs a shadow of existing presentation object.
-
-	:param theViewer:
-	:type theViewer: Handle_Graphic3d_StructureManager &
-	:param thePrs:
-	:type thePrs: Handle_Prs3d_Presentation &
-	:rtype: None
-") Prs3d_PresentationShadow;
-		 Prs3d_PresentationShadow (const Handle_Graphic3d_StructureManager & theViewer,const Handle_Prs3d_Presentation & thePrs);
-};
-
-
-%extend Prs3d_PresentationShadow {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_PresentationShadow(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_PresentationShadow::Handle_Prs3d_PresentationShadow %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_PresentationShadow;
-class Handle_Prs3d_PresentationShadow : public Handle_Prs3d_Presentation {
-
-    public:
-        // constructors
-        Handle_Prs3d_PresentationShadow();
-        Handle_Prs3d_PresentationShadow(const Handle_Prs3d_PresentationShadow &aHandle);
-        Handle_Prs3d_PresentationShadow(const Prs3d_PresentationShadow *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_PresentationShadow DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_PresentationShadow {
-    Prs3d_PresentationShadow* _get_reference() {
-    return (Prs3d_PresentationShadow*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_PresentationShadow {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend Prs3d_PresentationShadow {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2968,51 +2418,7 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_ShadingAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_ShadingAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_ShadingAspect::Handle_Prs3d_ShadingAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_ShadingAspect;
-class Handle_Prs3d_ShadingAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_ShadingAspect();
-        Handle_Prs3d_ShadingAspect(const Handle_Prs3d_ShadingAspect &aHandle);
-        Handle_Prs3d_ShadingAspect(const Prs3d_ShadingAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_ShadingAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_ShadingAspect {
-    Prs3d_ShadingAspect* _get_reference() {
-    return (Prs3d_ShadingAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_ShadingAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_ShadingAspect)
 
 %extend Prs3d_ShadingAspect {
 	%pythoncode {
@@ -3195,51 +2601,7 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 };
 
 
-%extend Prs3d_TextAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_TextAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_TextAspect::Handle_Prs3d_TextAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_TextAspect;
-class Handle_Prs3d_TextAspect : public Handle_Prs3d_BasicAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_TextAspect();
-        Handle_Prs3d_TextAspect(const Handle_Prs3d_TextAspect &aHandle);
-        Handle_Prs3d_TextAspect(const Prs3d_TextAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_TextAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_TextAspect {
-    Prs3d_TextAspect* _get_reference() {
-    return (Prs3d_TextAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_TextAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_TextAspect)
 
 %extend Prs3d_TextAspect {
 	%pythoncode {
@@ -3292,51 +2654,7 @@ class Prs3d_IsoAspect : public Prs3d_LineAspect {
 };
 
 
-%extend Prs3d_IsoAspect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Prs3d_IsoAspect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Prs3d_IsoAspect::Handle_Prs3d_IsoAspect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Prs3d_IsoAspect;
-class Handle_Prs3d_IsoAspect : public Handle_Prs3d_LineAspect {
-
-    public:
-        // constructors
-        Handle_Prs3d_IsoAspect();
-        Handle_Prs3d_IsoAspect(const Handle_Prs3d_IsoAspect &aHandle);
-        Handle_Prs3d_IsoAspect(const Prs3d_IsoAspect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Prs3d_IsoAspect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Prs3d_IsoAspect {
-    Prs3d_IsoAspect* _get_reference() {
-    return (Prs3d_IsoAspect*)$self->Access();
-    }
-};
-
-%extend Handle_Prs3d_IsoAspect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Prs3d_IsoAspect)
 
 %extend Prs3d_IsoAspect {
 	%pythoncode {
