@@ -50,6 +50,19 @@ from OCC.Core.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
 from OCC.Core.BRep import BRep_Tool_Curve
 
+import warnings
+from contextlib import contextmanager
+
+@contextmanager
+def assert_warns_deprecated():
+    with warnings.catch_warnings(record=True) as w:
+        warnings.simplefilter("always")
+        yield w
+        # Verify some things
+        assert issubclass(w[-1].category, DeprecationWarning)
+        assert "deprecated" in str(w[-1].message)
+
+
 
 class TestWrapperFeatures(unittest.TestCase):
     def test_hash(self):
@@ -530,7 +543,7 @@ class TestWrapperFeatures(unittest.TestCase):
         """ since pythonocc-0.18.2. import OCC.* changed to import OCC.Core.*
         Such deprecated import raises a DeprecatedWarning
         """
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             from OCC.gp import gp_Pln
 
     def test_deprecation_get_handle(self):
@@ -538,7 +551,7 @@ class TestWrapperFeatures(unittest.TestCase):
         not required anymore.
         """
         t = Standard_Transient()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             t.GetHandle()
 
     def test_deprecation_handle_class(self):
@@ -546,7 +559,7 @@ class TestWrapperFeatures(unittest.TestCase):
         not required anymore.
         """
         t = Standard_Transient()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             h = Handle_Standard_Transient(t)
 
     def test_deprecation_get_object(self):
@@ -554,12 +567,12 @@ class TestWrapperFeatures(unittest.TestCase):
         not required anymore.
         """
         t = Standard_Transient()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             t.GetObject()
     
     def test_deprecation_downcasts(self):
         t = Standard_Transient()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             Handle_Standard_Transient.DownCast(t)
 
 def suite():
