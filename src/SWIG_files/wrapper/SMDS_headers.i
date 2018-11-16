@@ -18,6 +18,38 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<SMDS_EdgePosition.hxx>
+#include<SMDS_ElemIterator.hxx>
+#include<SMDS_FaceOfEdges.hxx>
+#include<SMDS_FaceOfNodes.hxx>
+#include<SMDS_FacePosition.hxx>
+#include<SMDS_Iterator.hxx>
+#include<SMDS_IteratorOfElements.hxx>
+#include<SMDS_Mesh.hxx>
+#include<SMDS_Mesh0DElement.hxx>
+#include<SMDS_MeshEdge.hxx>
+#include<SMDS_MeshElement.hxx>
+#include<SMDS_MeshElementIDFactory.hxx>
+#include<SMDS_MeshFace.hxx>
+#include<SMDS_MeshGroup.hxx>
+#include<SMDS_MeshIDFactory.hxx>
+#include<SMDS_MeshInfo.hxx>
+#include<SMDS_MeshNode.hxx>
+#include<SMDS_MeshObject.hxx>
+#include<SMDS_MeshVolume.hxx>
+#include<SMDS_PolygonalFaceOfNodes.hxx>
+#include<SMDS_PolyhedralVolumeOfNodes.hxx>
+#include<SMDS_Position.hxx>
+#include<SMDS_QuadraticEdge.hxx>
+#include<SMDS_QuadraticFaceOfNodes.hxx>
+#include<SMDS_QuadraticVolumeOfNodes.hxx>
+#include<SMDS_SpacePosition.hxx>
+#include<SMDS_TypeOfPosition.hxx>
+#include<SMDS_VertexPosition.hxx>
+#include<SMDS_VolumeOfFaces.hxx>
+#include<SMDS_VolumeOfNodes.hxx>
+#include<SMDS_VolumeTool.hxx>
+#include<SMDSAbs_ElementType.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -259,3 +291,4 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>
 %};
+%import SMDSAbs.i
