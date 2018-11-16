@@ -45,7 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PFunction_Function)
 
 %nodefaultctor PFunction_Function;
 class PFunction_Function : public PDF_Attribute {
@@ -96,8 +95,6 @@ class PFunction_Function : public PDF_Attribute {
 		void _CSFDB_SetPFunction_FunctionmyFailure (const Standard_Integer p);
 };
 
-
-%make_alias(PFunction_Function)
 
 %extend PFunction_Function {
 	%pythoncode {

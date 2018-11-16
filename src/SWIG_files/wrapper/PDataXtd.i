@@ -45,15 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PDataXtd_Axis)
-%wrap_handle(PDataXtd_Constraint)
-%wrap_handle(PDataXtd_Geometry)
-%wrap_handle(PDataXtd_PatternStd)
-%wrap_handle(PDataXtd_Placement)
-%wrap_handle(PDataXtd_Plane)
-%wrap_handle(PDataXtd_Point)
-%wrap_handle(PDataXtd_Position)
-%wrap_handle(PDataXtd_Shape)
 
 %nodefaultctor PDataXtd_Axis;
 class PDataXtd_Axis : public PDF_Attribute {
@@ -70,8 +61,6 @@ class PDataXtd_Axis : public PDF_Attribute {
 		 PDataXtd_Axis (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataXtd_Axis)
 
 %extend PDataXtd_Axis {
 	%pythoncode {
@@ -246,8 +235,6 @@ class PDataXtd_Constraint : public PDF_Attribute {
 };
 
 
-%make_alias(PDataXtd_Constraint)
-
 %extend PDataXtd_Constraint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -294,8 +281,6 @@ class PDataXtd_Geometry : public PDF_Attribute {
 		void _CSFDB_SetPDataXtd_GeometrymyType (const Standard_Integer p);
 };
 
-
-%make_alias(PDataXtd_Geometry)
 
 %extend PDataXtd_Geometry {
 	%pythoncode {
@@ -518,8 +503,6 @@ class PDataXtd_PatternStd : public PDF_Attribute {
 };
 
 
-%make_alias(PDataXtd_PatternStd)
-
 %extend PDataXtd_PatternStd {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -540,8 +523,6 @@ class PDataXtd_Placement : public PDF_Attribute {
 		 PDataXtd_Placement (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataXtd_Placement)
 
 %extend PDataXtd_Placement {
 	%pythoncode {
@@ -564,8 +545,6 @@ class PDataXtd_Plane : public PDF_Attribute {
 };
 
 
-%make_alias(PDataXtd_Plane)
-
 %extend PDataXtd_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -586,8 +565,6 @@ class PDataXtd_Point : public PDF_Attribute {
 		 PDataXtd_Point (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataXtd_Point)
 
 %extend PDataXtd_Point {
 	%pythoncode {
@@ -624,8 +601,6 @@ class PDataXtd_Position : public PDF_Attribute {
 };
 
 
-%make_alias(PDataXtd_Position)
-
 %extend PDataXtd_Position {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -646,8 +621,6 @@ class PDataXtd_Shape : public PDF_Attribute {
 		 PDataXtd_Shape (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataXtd_Shape)
 
 %extend PDataXtd_Shape {
 	%pythoncode {

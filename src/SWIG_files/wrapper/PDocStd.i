@@ -45,8 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PDocStd_Document)
-%wrap_handle(PDocStd_XLink)
 
 %nodefaultctor PDocStd_Document;
 class PDocStd_Document : public PCDM_Document {
@@ -89,8 +87,6 @@ class PDocStd_Document : public PCDM_Document {
 		void _CSFDB_SetPDocStd_DocumentmyData (const Handle_PDF_Data & p);
 };
 
-
-%make_alias(PDocStd_Document)
 
 %extend PDocStd_Document {
 	%pythoncode {
@@ -162,8 +158,6 @@ class PDocStd_XLink : public PDF_Attribute {
 		void _CSFDB_SetPDocStd_XLinkmyLabEntry (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%make_alias(PDocStd_XLink)
 
 %extend PDocStd_XLink {
 	%pythoncode {

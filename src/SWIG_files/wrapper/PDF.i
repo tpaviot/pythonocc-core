@@ -45,12 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PDF_Attribute)
-%wrap_handle(PDF_Data)
-%wrap_handle(PDF_HAttributeArray1)
-%wrap_handle(PDF_VArrayNodeOfFieldOfHAttributeArray1)
-%wrap_handle(PDF_Reference)
-%wrap_handle(PDF_TagSource)
 
 %nodefaultctor PDF_Attribute;
 class PDF_Attribute : public Standard_Persistent {
@@ -67,8 +61,6 @@ class PDF_Attribute : public Standard_Persistent {
 		 PDF_Attribute ();
 };
 
-
-%make_alias(PDF_Attribute)
 
 %extend PDF_Attribute {
 	%pythoncode {
@@ -160,8 +152,6 @@ class PDF_Data : public Standard_Persistent {
 		void _CSFDB_SetPDF_DatamyAttributes (const Handle_PDF_HAttributeArray1 & p);
 };
 
-
-%make_alias(PDF_Data)
 
 %extend PDF_Data {
 	%pythoncode {
@@ -315,8 +305,6 @@ class PDF_HAttributeArray1 : public Standard_Persistent {
 };
 
 
-%make_alias(PDF_HAttributeArray1)
-
 %extend PDF_HAttributeArray1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -363,8 +351,6 @@ class PDF_VArrayNodeOfFieldOfHAttributeArray1 : public PStandard_ArrayNode {
 		void _CSFDB_SetPDF_VArrayNodeOfFieldOfHAttributeArray1myValue (const Handle_PDF_Attribute & p);
 };
 
-
-%make_alias(PDF_VArrayNodeOfFieldOfHAttributeArray1)
 
 %extend PDF_VArrayNodeOfFieldOfHAttributeArray1 {
 	%pythoncode {
@@ -444,8 +430,6 @@ class PDF_Reference : public PDF_Attribute {
 };
 
 
-%make_alias(PDF_Reference)
-
 %extend PDF_Reference {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -492,8 +476,6 @@ class PDF_TagSource : public PDF_Attribute {
 		void _CSFDB_SetPDF_TagSourcemyValue (const Standard_Integer p);
 };
 
-
-%make_alias(PDF_TagSource)
 
 %extend PDF_TagSource {
 	%pythoncode {

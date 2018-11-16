@@ -45,15 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PNaming_HArray1OfNamedShape)
-%wrap_handle(PNaming_Name)
-%wrap_handle(PNaming_Name_1)
-%wrap_handle(PNaming_Name_2)
-%wrap_handle(PNaming_NamedShape)
-%wrap_handle(PNaming_Naming)
-%wrap_handle(PNaming_Naming_1)
-%wrap_handle(PNaming_Naming_2)
-%wrap_handle(PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape)
 
 %nodefaultctor PNaming_FieldOfHArray1OfNamedShape;
 class PNaming_FieldOfHArray1OfNamedShape : public DBC_BaseArray {
@@ -202,8 +193,6 @@ class PNaming_HArray1OfNamedShape : public Standard_Persistent {
 };
 
 
-%make_alias(PNaming_HArray1OfNamedShape)
-
 %extend PNaming_HArray1OfNamedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -324,8 +313,6 @@ class PNaming_Name : public Standard_Persistent {
 		void _CSFDB_SetPNaming_NamemyIndex (const Standard_Integer p);
 };
 
-
-%make_alias(PNaming_Name)
 
 %extend PNaming_Name {
 	%pythoncode {
@@ -467,8 +454,6 @@ class PNaming_Name_1 : public Standard_Persistent {
 		void _CSFDB_SetPNaming_Name_1myContextLabel (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%make_alias(PNaming_Name_1)
 
 %extend PNaming_Name_1 {
 	%pythoncode {
@@ -631,8 +616,6 @@ class PNaming_Name_2 : public Standard_Persistent {
 };
 
 
-%make_alias(PNaming_Name_2)
-
 %extend PNaming_Name_2 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -758,8 +741,6 @@ class PNaming_NamedShape : public PDF_Attribute {
 };
 
 
-%make_alias(PNaming_NamedShape)
-
 %extend PNaming_NamedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -800,8 +781,6 @@ class PNaming_Naming : public PDF_Attribute {
 		void _CSFDB_SetPNaming_NamingmyName (const Handle_PNaming_Name & p);
 };
 
-
-%make_alias(PNaming_Naming)
 
 %extend PNaming_Naming {
 	%pythoncode {
@@ -844,8 +823,6 @@ class PNaming_Naming_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PNaming_Naming_1)
-
 %extend PNaming_Naming_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -886,8 +863,6 @@ class PNaming_Naming_2 : public PDF_Attribute {
 		void _CSFDB_SetPNaming_Naming_2myName (const Handle_PNaming_Name_2 & p);
 };
 
-
-%make_alias(PNaming_Naming_2)
 
 %extend PNaming_Naming_2 {
 	%pythoncode {
@@ -935,8 +910,6 @@ class PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape : public PStandard_ArrayNod
 		void _CSFDB_SetPNaming_VArrayNodeOfFieldOfHArray1OfNamedShapemyValue (const Handle_PNaming_NamedShape & p);
 };
 
-
-%make_alias(PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape)
 
 %extend PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape {
 	%pythoncode {

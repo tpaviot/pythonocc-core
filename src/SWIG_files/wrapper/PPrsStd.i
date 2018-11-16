@@ -45,8 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PPrsStd_AISPresentation)
-%wrap_handle(PPrsStd_AISPresentation_1)
 
 %nodefaultctor PPrsStd_AISPresentation;
 class PPrsStd_AISPresentation : public PDF_Attribute {
@@ -183,8 +181,6 @@ class PPrsStd_AISPresentation : public PDF_Attribute {
 		void _CSFDB_SetPPrsStd_AISPresentationmyWidth (const Standard_Real p);
 };
 
-
-%make_alias(PPrsStd_AISPresentation)
 
 %extend PPrsStd_AISPresentation {
 	%pythoncode {
@@ -346,8 +342,6 @@ class PPrsStd_AISPresentation_1 : public PDF_Attribute {
 		void _CSFDB_SetPPrsStd_AISPresentation_1myMode (const Standard_Integer p);
 };
 
-
-%make_alias(PPrsStd_AISPresentation_1)
 
 %extend PPrsStd_AISPresentation_1 {
 	%pythoncode {

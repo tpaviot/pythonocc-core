@@ -45,45 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(PDataStd_AsciiString)
-%wrap_handle(PDataStd_BooleanArray)
-%wrap_handle(PDataStd_BooleanList)
-%wrap_handle(PDataStd_ByteArray)
-%wrap_handle(PDataStd_ByteArray_1)
-%wrap_handle(PDataStd_Comment)
-%wrap_handle(PDataStd_Directory)
-%wrap_handle(PDataStd_Expression)
-%wrap_handle(PDataStd_ExtStringArray)
-%wrap_handle(PDataStd_ExtStringArray_1)
-%wrap_handle(PDataStd_ExtStringList)
-%wrap_handle(PDataStd_HArray1OfByte)
-%wrap_handle(PDataStd_HArray1OfHArray1OfInteger)
-%wrap_handle(PDataStd_HArray1OfHArray1OfReal)
-%wrap_handle(PDataStd_HArray1OfHAsciiString)
-%wrap_handle(PDataStd_IntPackedMap)
-%wrap_handle(PDataStd_IntPackedMap_1)
-%wrap_handle(PDataStd_Integer)
-%wrap_handle(PDataStd_IntegerArray)
-%wrap_handle(PDataStd_IntegerArray_1)
-%wrap_handle(PDataStd_IntegerList)
-%wrap_handle(PDataStd_Name)
-%wrap_handle(PDataStd_NamedData)
-%wrap_handle(PDataStd_NoteBook)
-%wrap_handle(PDataStd_Real)
-%wrap_handle(PDataStd_RealArray)
-%wrap_handle(PDataStd_RealArray_1)
-%wrap_handle(PDataStd_RealList)
-%wrap_handle(PDataStd_ReferenceArray)
-%wrap_handle(PDataStd_ReferenceList)
-%wrap_handle(PDataStd_Relation)
-%wrap_handle(PDataStd_Tick)
-%wrap_handle(PDataStd_TreeNode)
-%wrap_handle(PDataStd_UAttribute)
-%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfByte)
-%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger)
-%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal)
-%wrap_handle(PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString)
-%wrap_handle(PDataStd_Variable)
 
 %nodefaultctor PDataStd_AsciiString;
 class PDataStd_AsciiString : public PDF_Attribute {
@@ -126,8 +87,6 @@ class PDataStd_AsciiString : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_AsciiStringmyValue (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%make_alias(PDataStd_AsciiString)
 
 %extend PDataStd_AsciiString {
 	%pythoncode {
@@ -210,8 +169,6 @@ class PDataStd_BooleanArray : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_BooleanArray)
-
 %extend PDataStd_BooleanArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -273,8 +230,6 @@ class PDataStd_BooleanList : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_BooleanList)
-
 %extend PDataStd_BooleanList {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -315,8 +270,6 @@ class PDataStd_ByteArray : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_ByteArraymyValues (const Handle_PColStd_HArray1OfInteger & p);
 };
 
-
-%make_alias(PDataStd_ByteArray)
 
 %extend PDataStd_ByteArray {
 	%pythoncode {
@@ -379,8 +332,6 @@ class PDataStd_ByteArray_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_ByteArray_1)
-
 %extend PDataStd_ByteArray_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -428,8 +379,6 @@ class PDataStd_Comment : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_Comment)
-
 %extend PDataStd_Comment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -450,8 +399,6 @@ class PDataStd_Directory : public PDF_Attribute {
 		 PDataStd_Directory (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataStd_Directory)
 
 %extend PDataStd_Directory {
 	%pythoncode {
@@ -520,8 +467,6 @@ class PDataStd_Expression : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_Expression)
-
 %extend PDataStd_Expression {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -582,8 +527,6 @@ class PDataStd_ExtStringArray : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_ExtStringArraymyValue (const Handle_PColStd_HArray1OfExtendedString & p);
 };
 
-
-%make_alias(PDataStd_ExtStringArray)
 
 %extend PDataStd_ExtStringArray {
 	%pythoncode {
@@ -666,8 +609,6 @@ class PDataStd_ExtStringArray_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_ExtStringArray_1)
-
 %extend PDataStd_ExtStringArray_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -728,8 +669,6 @@ class PDataStd_ExtStringList : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_ExtStringListmyValue (const Handle_PColStd_HArray1OfExtendedString & p);
 };
 
-
-%make_alias(PDataStd_ExtStringList)
 
 %extend PDataStd_ExtStringList {
 	%pythoncode {
@@ -1072,8 +1011,6 @@ class PDataStd_HArray1OfByte : public Standard_Persistent {
 };
 
 
-%make_alias(PDataStd_HArray1OfByte)
-
 %extend PDataStd_HArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1162,8 +1099,6 @@ class PDataStd_HArray1OfHArray1OfInteger : public Standard_Persistent {
 		const PDataStd_FieldOfHArray1OfHArray1OfInteger & _CSFDB_GetPDataStd_HArray1OfHArray1OfIntegerData ();
 };
 
-
-%make_alias(PDataStd_HArray1OfHArray1OfInteger)
 
 %extend PDataStd_HArray1OfHArray1OfInteger {
 	%pythoncode {
@@ -1254,8 +1189,6 @@ class PDataStd_HArray1OfHArray1OfReal : public Standard_Persistent {
 };
 
 
-%make_alias(PDataStd_HArray1OfHArray1OfReal)
-
 %extend PDataStd_HArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1345,8 +1278,6 @@ class PDataStd_HArray1OfHAsciiString : public Standard_Persistent {
 };
 
 
-%make_alias(PDataStd_HArray1OfHAsciiString)
-
 %extend PDataStd_HArray1OfHAsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1419,8 +1350,6 @@ class PDataStd_IntPackedMap : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_IntPackedMapmyIntValues (const Handle_PColStd_HArray1OfInteger & p);
 };
 
-
-%make_alias(PDataStd_IntPackedMap)
 
 %extend PDataStd_IntPackedMap {
 	%pythoncode {
@@ -1515,8 +1444,6 @@ class PDataStd_IntPackedMap_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_IntPackedMap_1)
-
 %extend PDataStd_IntPackedMap_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1563,8 +1490,6 @@ class PDataStd_Integer : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_IntegermyValue (const Standard_Integer p);
 };
 
-
-%make_alias(PDataStd_Integer)
 
 %extend PDataStd_Integer {
 	%pythoncode {
@@ -1626,8 +1551,6 @@ class PDataStd_IntegerArray : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_IntegerArraymyValue (const Handle_PColStd_HArray1OfInteger & p);
 };
 
-
-%make_alias(PDataStd_IntegerArray)
 
 %extend PDataStd_IntegerArray {
 	%pythoncode {
@@ -1710,8 +1633,6 @@ class PDataStd_IntegerArray_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_IntegerArray_1)
-
 %extend PDataStd_IntegerArray_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1773,8 +1694,6 @@ class PDataStd_IntegerList : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_IntegerList)
-
 %extend PDataStd_IntegerList {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1821,8 +1740,6 @@ class PDataStd_Name : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_NamemyValue (const Handle_PCollection_HExtendedString & p);
 };
 
-
-%make_alias(PDataStd_Name)
 
 %extend PDataStd_Name {
 	%pythoncode {
@@ -2175,8 +2092,6 @@ class PDataStd_NamedData : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_NamedData)
-
 %extend PDataStd_NamedData {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2197,8 +2112,6 @@ class PDataStd_NoteBook : public PDF_Attribute {
 		 PDataStd_NoteBook (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataStd_NoteBook)
 
 %extend PDataStd_NoteBook {
 	%pythoncode {
@@ -2269,8 +2182,6 @@ class PDataStd_Real : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_Real)
-
 %extend PDataStd_Real {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2331,8 +2242,6 @@ class PDataStd_RealArray : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_RealArraymyValue (const Handle_PColStd_HArray1OfReal & p);
 };
 
-
-%make_alias(PDataStd_RealArray)
 
 %extend PDataStd_RealArray {
 	%pythoncode {
@@ -2415,8 +2324,6 @@ class PDataStd_RealArray_1 : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_RealArray_1)
-
 %extend PDataStd_RealArray_1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2477,8 +2384,6 @@ class PDataStd_RealList : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_RealListmyValue (const Handle_PColStd_HArray1OfReal & p);
 };
 
-
-%make_alias(PDataStd_RealList)
 
 %extend PDataStd_RealList {
 	%pythoncode {
@@ -2541,8 +2446,6 @@ class PDataStd_ReferenceArray : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_ReferenceArray)
-
 %extend PDataStd_ReferenceArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2603,8 +2506,6 @@ class PDataStd_ReferenceList : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_ReferenceListmyValue (const Handle_PColStd_HArray1OfExtendedString & p);
 };
 
-
-%make_alias(PDataStd_ReferenceList)
 
 %extend PDataStd_ReferenceList {
 	%pythoncode {
@@ -2673,8 +2574,6 @@ class PDataStd_Relation : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_Relation)
-
 %extend PDataStd_Relation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2695,8 +2594,6 @@ class PDataStd_Tick : public PDF_Attribute {
 		 PDataStd_Tick (const Storage_stCONSTclCOM & a);
 };
 
-
-%make_alias(PDataStd_Tick)
 
 %extend PDataStd_Tick {
 	%pythoncode {
@@ -2773,8 +2670,6 @@ class PDataStd_TreeNode : public PDF_Attribute {
 };
 
 
-%make_alias(PDataStd_TreeNode)
-
 %extend PDataStd_TreeNode {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2815,8 +2710,6 @@ class PDataStd_UAttribute : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_UAttributemyID (const Handle_PCollection_HExtendedString & p);
 };
 
-
-%make_alias(PDataStd_UAttribute)
 
 %extend PDataStd_UAttribute {
 	%pythoncode {
@@ -2865,8 +2758,6 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfByte : public PStandard_ArrayNode {
 };
 
 
-%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfByte)
-
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2913,8 +2804,6 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger : public PStandard_A
 		void _CSFDB_SetPDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfIntegermyValue (const Handle_PColStd_HArray1OfInteger & p);
 };
 
-
-%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
 	%pythoncode {
@@ -2963,8 +2852,6 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal : public PStandard_Arra
 };
 
 
-%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal)
-
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3011,8 +2898,6 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public PStandard_Array
 		void _CSFDB_SetPDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiStringmyValue (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%make_alias(PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString)
 
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
 	%pythoncode {
@@ -3204,8 +3089,6 @@ class PDataStd_Variable : public PDF_Attribute {
 		void _CSFDB_SetPDataStd_VariablemyUnit (const Handle_PCollection_HAsciiString & p);
 };
 
-
-%make_alias(PDataStd_Variable)
 
 %extend PDataStd_Variable {
 	%pythoncode {
