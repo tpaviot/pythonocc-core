@@ -1,5 +1,4 @@
 import warnings
-import functools
 
 def deprecated(message):
   def deprecated_decorator(func):
