@@ -37,6 +37,7 @@ requirements:
     - tbb >=2018_20171205
     - freetype >=2.7
     - smesh ==6.7.6
+    - six
 
 test:
   requires:

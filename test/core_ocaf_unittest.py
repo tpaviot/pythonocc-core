@@ -37,13 +37,24 @@ from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
+import warnings
+from contextlib import contextmanager
+
+@contextmanager
+def assert_warns_deprecated():
+    with warnings.catch_warnings(record=True) as w:
+        warnings.simplefilter("always")
+        yield w
+        # Verify some things
+        assert issubclass(w[-1].category, DeprecationWarning)
+        assert "deprecated" in str(w[-1].message)
 
 class TestOCAF(unittest.TestCase):
     def test_create_app(self):
         ''' Creates an OCAF app and an empty document '''
         # create an handle to a document
         doc = Handle_TDocStd_Document()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             assert(doc.IsNull())
         # Create the application
         app = XCAFApp_Application.GetApplication()
@@ -53,13 +64,13 @@ class TestOCAF(unittest.TestCase):
         ''' Exports a colored box into a STEP file '''
         ### initialisation
         doc = Handle_TDocStd_Document()
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             assert(doc.IsNull())
         # Create the application
         app = XCAFApp_Application.GetApplication()
         app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
 
-        with self.assertWarns(DeprecationWarning):
+        with assert_warns_deprecated():
             assert(not doc.IsNull())
 
         # Get root assembly
