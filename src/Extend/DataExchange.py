@@ -26,7 +26,7 @@ from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
 from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Core.Interface import Interface_Static_SetCVal
 from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-from OCC.Core.TDocStd import Handle_TDocStd_Document
+from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFApp import XCAFApp_Application
 from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
                               XCAFDoc_DocumentTool_ColorTool,
@@ -34,7 +34,7 @@ from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
                               XCAFDoc_DocumentTool_MaterialTool)
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label, TDF_Tool
-from OCC.Core.TDataStd import Handle_TDataStd_Name, TDataStd_Name_GetID
+from OCC.Core.TDataStd import TDataStd_Name, TDataStd_Name_GetID
 from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Core.Quantity import Quantity_Color
 from OCC.Core.TopLoc import TopLoc_Location
@@ -110,18 +110,13 @@ def read_step_file_with_names_colors(filename):
     # the list:
     output_shapes = []
     # create an handle to a document
-    h_doc = Handle_TDocStd_Document()
-
-    # Create the application
-    app = XCAFApp_Application.GetApplication().GetObject()
-    app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), h_doc)
+    doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
 
     # Get root assembly
-    doc = h_doc.GetObject()
-    h_shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
-    h_color_tool = XCAFDoc_DocumentTool_ColorTool(doc.Main())
-    h_layer_tool = XCAFDoc_DocumentTool_LayerTool(doc.Main())
-    h_mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
+    shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
+    color_tool = XCAFDoc_DocumentTool_ColorTool(doc.Main())
+    layer_tool = XCAFDoc_DocumentTool_LayerTool(doc.Main())
+    mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
 
     step_reader = STEPCAFControl_Reader()
     step_reader.SetColorMode(True)
@@ -131,13 +126,11 @@ def read_step_file_with_names_colors(filename):
 
     status = step_reader.ReadFile(filename)
     if status == IFSelect_RetDone:
-        step_reader.Transfer(doc.GetHandle())
+        step_reader.Transfer(doc)
 
-    shape_tool = h_shape_tool.GetObject()
     shape_tool.SetAutoNaming(True)
 
-    color_tool = h_color_tool.GetObject()
-
+    
     #lvl = 0
     locs = []
     #cnt = 0
@@ -145,9 +138,8 @@ def read_step_file_with_names_colors(filename):
     def _get_label_name(lab):
         entry = TCollection_AsciiString()
         TDF_Tool.Entry(lab, entry)
-        N = Handle_TDataStd_Name()
-        lab.FindAttribute(TDataStd_Name_GetID(), N)
-        n = N.GetObject()
+        n = TDataStd_Name()
+        lab.FindAttribute(TDataStd_Name_GetID(), n)
         if n:
             return n.Get().PrintToString()
         return "No Name"
@@ -290,7 +282,7 @@ def read_step_file_with_names_colors(filename):
 
     def _get_shapes():
         labels = TDF_LabelSequence()
-        h_shape_tool.GetObject().GetFreeShapes(labels)
+        shape_tool.GetFreeShapes(labels)
         #global cnt
         #cnt += 1
 
