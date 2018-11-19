@@ -24,11 +24,10 @@ import os
 
 from OCC.Core.TCollection import TCollection_ExtendedString
 
-from OCC.Core.TDocStd import Handle_TDocStd_Document
-from OCC.Core.XCAFApp import XCAFApp_Application
+from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
-                         XCAFDoc_DocumentTool_ColorTool,
-                         XCAFDoc_ColorGen)
+                              XCAFDoc_DocumentTool_ColorTool,
+                              XCAFDoc_ColorGen)
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.Quantity import Quantity_Color
@@ -50,28 +49,17 @@ def assert_warns_deprecated():
         assert "deprecated" in str(w[-1].message)
 
 class TestOCAF(unittest.TestCase):
-    def test_create_app(self):
+    def test_create_doc(self):
         ''' Creates an OCAF app and an empty document '''
         # create an handle to a document
-        doc = Handle_TDocStd_Document()
-        with assert_warns_deprecated():
-            assert(doc.IsNull())
-        # Create the application
-        app = XCAFApp_Application.GetApplication()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
+        doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
+        assert not doc.IsNull()
 
     def test_write_step_file(self):
         ''' Exports a colored box into a STEP file '''
         ### initialisation
-        doc = Handle_TDocStd_Document()
-        with assert_warns_deprecated():
-            assert(doc.IsNull())
-        # Create the application
-        app = XCAFApp_Application.GetApplication()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
-
-        with assert_warns_deprecated():
-            assert(not doc.IsNull())
+        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+        assert doc is not None
 
         # Get root assembly
         shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
@@ -97,10 +85,7 @@ class TestOCAF(unittest.TestCase):
     def test_read_step_file(self):
         ''' Reads the previous step file '''
         # create an handle to a document
-        doc = Handle_TDocStd_Document()
-        # Create the application
-        app = XCAFApp_Application.GetApplication()
-        app.NewDocument(TCollection_ExtendedString("MDTV-CAF"), doc)
+        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
         # Get root assembly
         shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
         l_colors = XCAFDoc_DocumentTool_ColorTool(doc.Main())
@@ -118,18 +103,18 @@ class TestOCAF(unittest.TestCase):
 
         shape_tool.GetFreeShapes(labels)
 
-        assert(labels.Length() == 1)
+        assert labels.Length() == 1
         sub_shapes_labels = TDF_LabelSequence()
-        assert(not shape_tool.IsAssembly(labels.Value(1)))
+        assert not shape_tool.IsAssembly(labels.Value(1))
         shape_tool.GetSubShapes(labels.Value(1), sub_shapes_labels)
-        assert(sub_shapes_labels.Length() == 0)
+        assert sub_shapes_labels.Length() == 0
 
         l_colors.GetColors(color_labels)
-        assert(color_labels.Length() == 1)
+        assert color_labels.Length() == 1
 
         label_shp = labels.Value(1)
         a_shape = shape_tool.GetShape(label_shp)
-        assert(not a_shape.IsNull())
+        assert not a_shape.IsNull()
 
 
 def suite():

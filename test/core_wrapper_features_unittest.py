@@ -21,13 +21,15 @@ import pickle
 import unittest
 import os
 from math import sqrt
+import warnings
+from contextlib import contextmanager
 
 from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
-                                BRepBuilderAPI_MakeEdge)
+                                     BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
-                    gp_Quaternion, gp_QuaternionSLerp)
+                         gp_Quaternion, gp_QuaternionSLerp)
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -45,13 +47,10 @@ from OCC.Core.BRep import BRep_Builder
 from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
 from OCC.Core.Graphic3d import Graphic3d_RenderingParams
 from OCC.Core.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
-                           BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
-                           BRepCheck_EmptyWire)
+                                BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
+                                BRepCheck_EmptyWire)
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
 from OCC.Core.BRep import BRep_Tool_Curve
-
-import warnings
-from contextlib import contextmanager
 
 @contextmanager
 def assert_warns_deprecated():
