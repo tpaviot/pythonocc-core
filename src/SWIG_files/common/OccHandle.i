@@ -50,7 +50,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %pythoncode {
     from six import with_metaclass
     import warnings
-    from OCC.utils import Proxy, deprecated
+    from OCC.Wrapper.wrapper_utils import Proxy, deprecated
 }
 
 %{
