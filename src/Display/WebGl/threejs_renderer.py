@@ -442,7 +442,7 @@ class ThreejsRenderer(object):
             with open(wire_full_path, "w") as wire_file:
                 wire_file.write(str_to_write)
             # store this edge hash
-            self._3js_edges[edge_hash] = [color, line_width]
+            self._3js_edges[wire_hash] = [color, line_width]
             return True
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
