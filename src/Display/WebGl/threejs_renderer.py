@@ -440,7 +440,7 @@ class ThreejsRenderer(object):
             str_to_write = export_edgedata_to_json(wire_hash, pnts)
             wire_full_path = os.path.join(self._path, wire_hash + '.json')
             with open(wire_full_path, "w") as wire_file:
-                edge_file.write(str_to_write)
+                wire_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[edge_hash] = [color, line_width]
             return True
