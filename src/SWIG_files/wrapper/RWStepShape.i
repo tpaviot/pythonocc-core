@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPSHAPEDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPSHAPEDOCSTRING) RWStepShape
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include RWStepShape_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor RWStepShape_RWAdvancedBrepShapeRepresentation;
 class RWStepShape_RWAdvancedBrepShapeRepresentation {

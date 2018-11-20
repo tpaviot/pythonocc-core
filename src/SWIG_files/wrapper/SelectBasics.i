@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECTBASICSDOCSTRING
-"No docstring provided."
+"interface class for dynamic selection
+"
 %enddef
 %module (package="OCC.Core", docstring=SELECTBASICSDOCSTRING) SelectBasics
 
@@ -34,30 +35,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include SelectBasics_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(SelectBasics_EntityOwner)
+%wrap_handle(SelectBasics_SensitiveEntity)
 
 %rename(selectbasics) SelectBasics;
 class SelectBasics {
@@ -116,51 +106,7 @@ class SelectBasics_EntityOwner : public MMgt_TShared {
 };
 
 
-%extend SelectBasics_EntityOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectBasics_EntityOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectBasics_EntityOwner::Handle_SelectBasics_EntityOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectBasics_EntityOwner;
-class Handle_SelectBasics_EntityOwner : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectBasics_EntityOwner();
-        Handle_SelectBasics_EntityOwner(const Handle_SelectBasics_EntityOwner &aHandle);
-        Handle_SelectBasics_EntityOwner(const SelectBasics_EntityOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectBasics_EntityOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectBasics_EntityOwner {
-    SelectBasics_EntityOwner* _get_reference() {
-    return (SelectBasics_EntityOwner*)$self->Access();
-    }
-};
-
-%extend Handle_SelectBasics_EntityOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectBasics_EntityOwner)
 
 %extend SelectBasics_EntityOwner {
 	%pythoncode {
@@ -403,51 +349,7 @@ class SelectBasics_SensitiveEntity : public MMgt_TShared {
 };
 
 
-%extend SelectBasics_SensitiveEntity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectBasics_SensitiveEntity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectBasics_SensitiveEntity::Handle_SelectBasics_SensitiveEntity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectBasics_SensitiveEntity;
-class Handle_SelectBasics_SensitiveEntity : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectBasics_SensitiveEntity();
-        Handle_SelectBasics_SensitiveEntity(const Handle_SelectBasics_SensitiveEntity &aHandle);
-        Handle_SelectBasics_SensitiveEntity(const SelectBasics_SensitiveEntity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectBasics_SensitiveEntity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectBasics_SensitiveEntity {
-    SelectBasics_SensitiveEntity* _get_reference() {
-    return (SelectBasics_SensitiveEntity*)$self->Access();
-    }
-};
-
-%extend Handle_SelectBasics_SensitiveEntity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectBasics_SensitiveEntity)
 
 %extend SelectBasics_SensitiveEntity {
 	%pythoncode {

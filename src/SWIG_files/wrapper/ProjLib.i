@@ -18,7 +18,45 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PROJLIBDOCSTRING
-"No docstring provided."
+"
+The projLib package first provides projection of
+curves on a  plane along a given Direction. The
+result will be a 3D curve.
+
+
+The ProjLib package provides projection of curves
+on surfaces to compute the curve in the parametric
+space.
+
+It is assumed that the curve is on the surface.
+
+It provides :
+
+* Package methods to handle the easiest cases :
+
+- Line, Circle, Ellipse, Parabola, Hyperbola on plane.
+
+- Line, Circle on cylinder.
+
+- Line, Circle on cone.
+
+* Classes to handle the general cases :
+
+- Plane.
+
+- Cylinder.
+
+- Cone.
+
+- Sphere.
+
+- Torus.
+
+
+* A generic class to handle a Curve from Adaptor3d
+on a Surface from Adaptor3d.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=PROJLIBDOCSTRING) ProjLib
 
@@ -34,30 +72,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ProjLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ProjLib_HCompProjectedCurve)
+%wrap_handle(ProjLib_HProjectedCurve)
+%wrap_handle(ProjLib_HSequenceOfHSequenceOfPnt)
+%wrap_handle(ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt)
 
 %rename(projlib) ProjLib;
 class ProjLib {
@@ -601,51 +630,7 @@ class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%extend ProjLib_HCompProjectedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ProjLib_HCompProjectedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ProjLib_HCompProjectedCurve::Handle_ProjLib_HCompProjectedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ProjLib_HCompProjectedCurve;
-class Handle_ProjLib_HCompProjectedCurve : public Handle_Adaptor2d_HCurve2d {
-
-    public:
-        // constructors
-        Handle_ProjLib_HCompProjectedCurve();
-        Handle_ProjLib_HCompProjectedCurve(const Handle_ProjLib_HCompProjectedCurve &aHandle);
-        Handle_ProjLib_HCompProjectedCurve(const ProjLib_HCompProjectedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ProjLib_HCompProjectedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ProjLib_HCompProjectedCurve {
-    ProjLib_HCompProjectedCurve* _get_reference() {
-    return (ProjLib_HCompProjectedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_ProjLib_HCompProjectedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ProjLib_HCompProjectedCurve)
 
 %extend ProjLib_HCompProjectedCurve {
 	%pythoncode {
@@ -682,51 +667,7 @@ class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%extend ProjLib_HProjectedCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ProjLib_HProjectedCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ProjLib_HProjectedCurve::Handle_ProjLib_HProjectedCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ProjLib_HProjectedCurve;
-class Handle_ProjLib_HProjectedCurve : public Handle_Adaptor2d_HCurve2d {
-
-    public:
-        // constructors
-        Handle_ProjLib_HProjectedCurve();
-        Handle_ProjLib_HProjectedCurve(const Handle_ProjLib_HProjectedCurve &aHandle);
-        Handle_ProjLib_HProjectedCurve(const ProjLib_HProjectedCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ProjLib_HProjectedCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ProjLib_HProjectedCurve {
-    ProjLib_HProjectedCurve* _get_reference() {
-    return (ProjLib_HProjectedCurve*)$self->Access();
-    }
-};
-
-%extend Handle_ProjLib_HProjectedCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ProjLib_HProjectedCurve)
 
 %extend ProjLib_HProjectedCurve {
 	%pythoncode {
@@ -871,51 +812,7 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 };
 
 
-%extend ProjLib_HSequenceOfHSequenceOfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ProjLib_HSequenceOfHSequenceOfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ProjLib_HSequenceOfHSequenceOfPnt::Handle_ProjLib_HSequenceOfHSequenceOfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ProjLib_HSequenceOfHSequenceOfPnt;
-class Handle_ProjLib_HSequenceOfHSequenceOfPnt : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ProjLib_HSequenceOfHSequenceOfPnt();
-        Handle_ProjLib_HSequenceOfHSequenceOfPnt(const Handle_ProjLib_HSequenceOfHSequenceOfPnt &aHandle);
-        Handle_ProjLib_HSequenceOfHSequenceOfPnt(const ProjLib_HSequenceOfHSequenceOfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ProjLib_HSequenceOfHSequenceOfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
-    ProjLib_HSequenceOfHSequenceOfPnt* _get_reference() {
-    return (ProjLib_HSequenceOfHSequenceOfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ProjLib_HSequenceOfHSequenceOfPnt)
 
 %extend ProjLib_HSequenceOfHSequenceOfPnt {
 	%pythoncode {
@@ -1734,51 +1631,7 @@ class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNod
 };
 
 
-%extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt::Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
-class Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt();
-        Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(const Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt &aHandle);
-        Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(const ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-    ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt* _get_reference() {
-    return (ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt*)$self->Access();
-    }
-};
-
-%extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt)
 
 %extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
 	%pythoncode {

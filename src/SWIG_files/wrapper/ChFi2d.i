@@ -18,7 +18,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFI2DDOCSTRING
-"No docstring provided."
+"This package contains the algorithms used to build
+fillets or chamfers on planar wire.
+
+This package provides two algorithms for 2D fillets:
+ChFi2d_Builder - it constructs a fillet or chamfer
+for linear and circular edges of a face.
+ChFi2d_FilletAPI - it encapsulates two algorithms:
+ChFi2d_AnaFilletAlgo - analytical constructor of the fillet.
+It works only for linear and circular edges,
+having a common point.
+ChFi2d_FilletAlgo - iteration recursive method constructing
+the fillet edge for any type of edges including
+ellipses and b-splines.
+The edges may even have no common point.
+ChFi2d_ChamferAPI - an algoroithm for construction of chamfers
+between two linear edges of a plane.
+
+The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly
+or via the interface class ChFi2d_FilletAPI.
+"
 %enddef
 %module (package="OCC.Core", docstring=CHFI2DDOCSTRING) ChFi2d
 
@@ -34,24 +53,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ChFi2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -74,6 +79,7 @@ enum ChFi2d_ConstructionError {
 };
 
 /* end public enums declaration */
+
 
 %rename(chfi2d) ChFi2d;
 %nodefaultctor ChFi2d;

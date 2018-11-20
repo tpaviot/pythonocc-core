@@ -18,7 +18,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTPATCHDOCSTRING
-"No docstring provided."
+"Intersection between two patches.
+The class PatchIntersection implements the algorithmes
+of intersection.
+The classes IntPoint, PointOnDomain, Line, ILin, a.s.o...
+describe the results of the algorithmes.
+
+-Level: Internal
+
+All the methods of the classes of this package are Internal.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTPATCHDOCSTRING) IntPatch
 
@@ -34,24 +44,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntPatch_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Intf_InterferencePolygon2d IntPatch_SearchPnt;
@@ -70,6 +66,19 @@ enum IntPatch_IType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(IntPatch_Line)
+%wrap_handle(IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
+%wrap_handle(IntPatch_SequenceNodeOfSequenceOfLine)
+%wrap_handle(IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds)
+%wrap_handle(IntPatch_SequenceNodeOfSequenceOfPoint)
+%wrap_handle(IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds)
+%wrap_handle(IntPatch_TheIWLineOfTheIWalking)
+%wrap_handle(IntPatch_ALine)
+%wrap_handle(IntPatch_GLine)
+%wrap_handle(IntPatch_PointLine)
+%wrap_handle(IntPatch_RLine)
+%wrap_handle(IntPatch_WLine)
 
 %nodefaultctor IntPatch_ALineToWLine;
 class IntPatch_ALineToWLine {
@@ -1420,51 +1429,7 @@ class IntPatch_Line : public MMgt_TShared {
 };
 
 
-%extend IntPatch_Line {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_Line(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_Line::Handle_IntPatch_Line %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_Line;
-class Handle_IntPatch_Line : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IntPatch_Line();
-        Handle_IntPatch_Line(const Handle_IntPatch_Line &aHandle);
-        Handle_IntPatch_Line(const IntPatch_Line *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_Line DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_Line {
-    IntPatch_Line* _get_reference() {
-    return (IntPatch_Line*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_Line {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_Line)
 
 %extend IntPatch_Line {
 	%pythoncode {
@@ -2304,51 +2269,7 @@ class IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_
 };
 
 
-%extend IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking::Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
-class Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking();
-        Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking &aHandle);
-        Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking* _get_reference() {
-    return (IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
 
 %extend IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
 	%pythoncode {
@@ -2375,51 +2296,7 @@ class IntPatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 };
 
 
-%extend IntPatch_SequenceNodeOfSequenceOfLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_SequenceNodeOfSequenceOfLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_SequenceNodeOfSequenceOfLine::Handle_IntPatch_SequenceNodeOfSequenceOfLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_SequenceNodeOfSequenceOfLine;
-class Handle_IntPatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPatch_SequenceNodeOfSequenceOfLine();
-        Handle_IntPatch_SequenceNodeOfSequenceOfLine(const Handle_IntPatch_SequenceNodeOfSequenceOfLine &aHandle);
-        Handle_IntPatch_SequenceNodeOfSequenceOfLine(const IntPatch_SequenceNodeOfSequenceOfLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_SequenceNodeOfSequenceOfLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfLine {
-    IntPatch_SequenceNodeOfSequenceOfLine* _get_reference() {
-    return (IntPatch_SequenceNodeOfSequenceOfLine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_SequenceNodeOfSequenceOfLine)
 
 %extend IntPatch_SequenceNodeOfSequenceOfLine {
 	%pythoncode {
@@ -2446,51 +2323,7 @@ class IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds : public TCollect
 };
 
 
-%extend IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds::Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds;
-class Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds();
-        Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds(const Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds &aHandle);
-        Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds(const IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
-    IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds* _get_reference() {
-    return (IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds)
 
 %extend IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
 	%pythoncode {
@@ -2517,51 +2350,7 @@ class IntPatch_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode {
 };
 
 
-%extend IntPatch_SequenceNodeOfSequenceOfPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_SequenceNodeOfSequenceOfPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_SequenceNodeOfSequenceOfPoint::Handle_IntPatch_SequenceNodeOfSequenceOfPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_SequenceNodeOfSequenceOfPoint;
-class Handle_IntPatch_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPatch_SequenceNodeOfSequenceOfPoint();
-        Handle_IntPatch_SequenceNodeOfSequenceOfPoint(const Handle_IntPatch_SequenceNodeOfSequenceOfPoint &aHandle);
-        Handle_IntPatch_SequenceNodeOfSequenceOfPoint(const IntPatch_SequenceNodeOfSequenceOfPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_SequenceNodeOfSequenceOfPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfPoint {
-    IntPatch_SequenceNodeOfSequenceOfPoint* _get_reference() {
-    return (IntPatch_SequenceNodeOfSequenceOfPoint*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_SequenceNodeOfSequenceOfPoint)
 
 %extend IntPatch_SequenceNodeOfSequenceOfPoint {
 	%pythoncode {
@@ -2588,51 +2377,7 @@ class IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public TCollectio
 };
 
 
-%extend IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds::Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds;
-class Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds();
-        Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds(const Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds &aHandle);
-        Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds(const IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
-    IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds* _get_reference() {
-    return (IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds)
 
 %extend IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
 	%pythoncode {
@@ -3524,51 +3269,7 @@ class IntPatch_TheIWLineOfTheIWalking : public MMgt_TShared {
 };
 
 
-%extend IntPatch_TheIWLineOfTheIWalking {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_TheIWLineOfTheIWalking(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_TheIWLineOfTheIWalking::Handle_IntPatch_TheIWLineOfTheIWalking %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_TheIWLineOfTheIWalking;
-class Handle_IntPatch_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_IntPatch_TheIWLineOfTheIWalking();
-        Handle_IntPatch_TheIWLineOfTheIWalking(const Handle_IntPatch_TheIWLineOfTheIWalking &aHandle);
-        Handle_IntPatch_TheIWLineOfTheIWalking(const IntPatch_TheIWLineOfTheIWalking *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_TheIWLineOfTheIWalking DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_TheIWLineOfTheIWalking {
-    IntPatch_TheIWLineOfTheIWalking* _get_reference() {
-    return (IntPatch_TheIWLineOfTheIWalking*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_TheIWLineOfTheIWalking {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_TheIWLineOfTheIWalking)
 
 %extend IntPatch_TheIWLineOfTheIWalking {
 	%pythoncode {
@@ -4199,51 +3900,7 @@ class IntPatch_ALine : public IntPatch_Line {
 };
 
 
-%extend IntPatch_ALine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_ALine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_ALine::Handle_IntPatch_ALine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_ALine;
-class Handle_IntPatch_ALine : public Handle_IntPatch_Line {
-
-    public:
-        // constructors
-        Handle_IntPatch_ALine();
-        Handle_IntPatch_ALine(const Handle_IntPatch_ALine &aHandle);
-        Handle_IntPatch_ALine(const IntPatch_ALine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_ALine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_ALine {
-    IntPatch_ALine* _get_reference() {
-    return (IntPatch_ALine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_ALine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_ALine)
 
 %extend IntPatch_ALine {
 	%pythoncode {
@@ -4550,51 +4207,7 @@ class IntPatch_GLine : public IntPatch_Line {
 };
 
 
-%extend IntPatch_GLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_GLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_GLine::Handle_IntPatch_GLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_GLine;
-class Handle_IntPatch_GLine : public Handle_IntPatch_Line {
-
-    public:
-        // constructors
-        Handle_IntPatch_GLine();
-        Handle_IntPatch_GLine(const Handle_IntPatch_GLine &aHandle);
-        Handle_IntPatch_GLine(const IntPatch_GLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_GLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_GLine {
-    IntPatch_GLine* _get_reference() {
-    return (IntPatch_GLine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_GLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_GLine)
 
 %extend IntPatch_GLine {
 	%pythoncode {
@@ -4621,51 +4234,7 @@ class IntPatch_PointLine : public IntPatch_Line {
 };
 
 
-%extend IntPatch_PointLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_PointLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_PointLine::Handle_IntPatch_PointLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_PointLine;
-class Handle_IntPatch_PointLine : public Handle_IntPatch_Line {
-
-    public:
-        // constructors
-        Handle_IntPatch_PointLine();
-        Handle_IntPatch_PointLine(const Handle_IntPatch_PointLine &aHandle);
-        Handle_IntPatch_PointLine(const IntPatch_PointLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_PointLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_PointLine {
-    IntPatch_PointLine* _get_reference() {
-    return (IntPatch_PointLine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_PointLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_PointLine)
 
 %extend IntPatch_PointLine {
 	%pythoncode {
@@ -4976,51 +4545,7 @@ class IntPatch_RLine : public IntPatch_PointLine {
 };
 
 
-%extend IntPatch_RLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_RLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_RLine::Handle_IntPatch_RLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_RLine;
-class Handle_IntPatch_RLine : public Handle_IntPatch_PointLine {
-
-    public:
-        // constructors
-        Handle_IntPatch_RLine();
-        Handle_IntPatch_RLine(const Handle_IntPatch_RLine &aHandle);
-        Handle_IntPatch_RLine(const IntPatch_RLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_RLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_RLine {
-    IntPatch_RLine* _get_reference() {
-    return (IntPatch_RLine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_RLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_RLine)
 
 %extend IntPatch_RLine {
 	%pythoncode {
@@ -5287,51 +4812,7 @@ class IntPatch_WLine : public IntPatch_PointLine {
 };
 
 
-%extend IntPatch_WLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPatch_WLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPatch_WLine::Handle_IntPatch_WLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPatch_WLine;
-class Handle_IntPatch_WLine : public Handle_IntPatch_PointLine {
-
-    public:
-        // constructors
-        Handle_IntPatch_WLine();
-        Handle_IntPatch_WLine(const Handle_IntPatch_WLine &aHandle);
-        Handle_IntPatch_WLine(const IntPatch_WLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPatch_WLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPatch_WLine {
-    IntPatch_WLine* _get_reference() {
-    return (IntPatch_WLine*)$self->Access();
-    }
-};
-
-%extend Handle_IntPatch_WLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPatch_WLine)
 
 %extend IntPatch_WLine {
 	%pythoncode {

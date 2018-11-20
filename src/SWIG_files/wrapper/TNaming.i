@@ -18,7 +18,69 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TNAMINGDOCSTRING
-"No docstring provided."
+"A topological attribute can be seen as a hook
+into the topological structure. To this hook,
+data can be attached and references defined.
+It is used for keeping and access to
+topological objects and their evolution. All
+topological objects are stored in the one
+user-protected TNaming_UsedShapes
+attribute at the root label of the data
+framework. This attribute contains map with all
+topological shapes, used in this document.
+To all other labels TNaming_NamedShape
+attribute can be added. This attribute contains
+references (hooks) to shapes from the
+TNaming_UsedShapes attribute and evolution
+of these shapes. TNaming_NamedShape
+attribute contains a set of pairs of hooks: old
+shape and new shape (see the figure below).
+It allows not only get the topological shapes by
+the labels, but also trace evolution of the
+shapes and correctly resolve dependent
+shapes by the changed one.
+If shape is just-created, then the old shape for
+accorded named shape is an empty shape. If
+a shape is deleted, then the new shape in this named shape is empty.
+Different algorithms may dispose sub-shapes
+of the result shape at the individual label depending on necessity:
+- If a sub-shape must have some extra attributes (material of
+each face or color of each edge). In this case a specific sub-shape is
+placed to the separate label (usually, sub-label of the result shape label)
+with all attributes of this sub-shape.
+- If topological naming is needed, a necessary and sufficient
+(for selected sub-shapes identification) set of sub-shapes is
+placed to the child labels of the result
+shape label. As usual, as far as basic solids and closed shells are
+concerned, all faces of the shape are disposed. Edges and vertices
+sub-shapes can be identified as intersection of contiguous faces.
+Modified/generated shapes may be placed to one named shape and
+identified as this named shape and source named shape that also can be
+identified with used algorithms.
+TNaming_NamedShape may contain a few
+pairs of hooks with the same evolution. In this
+case topology shape, which belongs to the
+named shape, is a compound of new shapes.
+The data model contains both the topology
+and the hooks, and functions handle both
+topological entities and hooks. Consider the
+case of a box function, which creates a solid
+with six faces and six hooks. Each hook is
+attached to a face. If you want, you can also
+have this function create hooks for edges and
+vertices as well as for faces. For the sake of
+simplicity though, let's limit the example.
+Not all functions can define explicit hooks for
+all topological entities they create, but all
+topological entities can be turned into hooks
+when necessary. This is where topological naming is necessary.
+
+
+-Category: GUID
+c4ef4200-568f-11d1-8940-080009dc3333	TNaming_NamedShape
+c4ef4201-568f-11d1-8940-080009dc3333	TNaming_UsedShapes
+
+"
 %enddef
 %module (package="OCC.Core", docstring=TNAMINGDOCSTRING) TNaming
 
@@ -34,24 +96,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TNaming_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TNaming_RefShape * TNaming_PtrRefShape;
@@ -90,6 +138,19 @@ enum TNaming_NameType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TNaming_DataMapNodeOfDataMapOfShapePtrRefShape)
+%wrap_handle(TNaming_DataMapNodeOfDataMapOfShapeShapesSet)
+%wrap_handle(TNaming_DeltaOnModification)
+%wrap_handle(TNaming_DeltaOnRemoval)
+%wrap_handle(TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape)
+%wrap_handle(TNaming_ListNodeOfListOfMapOfShape)
+%wrap_handle(TNaming_ListNodeOfListOfNamedShape)
+%wrap_handle(TNaming_NamedShape)
+%wrap_handle(TNaming_Naming)
+%wrap_handle(TNaming_StdMapNodeOfMapOfNamedShape)
+%wrap_handle(TNaming_TranslateTool)
+%wrap_handle(TNaming_UsedShapes)
 
 %rename(tnaming) TNaming;
 class TNaming {
@@ -491,51 +552,7 @@ class TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public TCollection_MapNod
 };
 
 
-%extend TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape::Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape;
-class Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape();
-        Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape(const Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape &aHandle);
-        Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape(const TNaming_DataMapNodeOfDataMapOfShapePtrRefShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
-    TNaming_DataMapNodeOfDataMapOfShapePtrRefShape* _get_reference() {
-    return (TNaming_DataMapNodeOfDataMapOfShapePtrRefShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_DataMapNodeOfDataMapOfShapePtrRefShape)
 
 %extend TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
 	%pythoncode {
@@ -566,51 +583,7 @@ class TNaming_DataMapNodeOfDataMapOfShapeShapesSet : public TCollection_MapNode 
 };
 
 
-%extend TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet::Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet;
-class Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet();
-        Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet(const Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet &aHandle);
-        Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet(const TNaming_DataMapNodeOfDataMapOfShapeShapesSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
-    TNaming_DataMapNodeOfDataMapOfShapeShapesSet* _get_reference() {
-    return (TNaming_DataMapNodeOfDataMapOfShapeShapesSet*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_DataMapNodeOfDataMapOfShapeShapesSet)
 
 %extend TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
 	%pythoncode {
@@ -803,51 +776,7 @@ class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 };
 
 
-%extend TNaming_DeltaOnModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_DeltaOnModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_DeltaOnModification::Handle_TNaming_DeltaOnModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_DeltaOnModification;
-class Handle_TNaming_DeltaOnModification : public Handle_TDF_DeltaOnModification {
-
-    public:
-        // constructors
-        Handle_TNaming_DeltaOnModification();
-        Handle_TNaming_DeltaOnModification(const Handle_TNaming_DeltaOnModification &aHandle);
-        Handle_TNaming_DeltaOnModification(const TNaming_DeltaOnModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_DeltaOnModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_DeltaOnModification {
-    TNaming_DeltaOnModification* _get_reference() {
-    return (TNaming_DeltaOnModification*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_DeltaOnModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_DeltaOnModification)
 
 %extend TNaming_DeltaOnModification {
 	%pythoncode {
@@ -874,51 +803,7 @@ class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 };
 
 
-%extend TNaming_DeltaOnRemoval {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_DeltaOnRemoval(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_DeltaOnRemoval::Handle_TNaming_DeltaOnRemoval %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_DeltaOnRemoval;
-class Handle_TNaming_DeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
-
-    public:
-        // constructors
-        Handle_TNaming_DeltaOnRemoval();
-        Handle_TNaming_DeltaOnRemoval(const Handle_TNaming_DeltaOnRemoval &aHandle);
-        Handle_TNaming_DeltaOnRemoval(const TNaming_DeltaOnRemoval *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_DeltaOnRemoval DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_DeltaOnRemoval {
-    TNaming_DeltaOnRemoval* _get_reference() {
-    return (TNaming_DeltaOnRemoval*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_DeltaOnRemoval {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_DeltaOnRemoval)
 
 %extend TNaming_DeltaOnRemoval {
 	%pythoncode {
@@ -1291,51 +1176,7 @@ class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public TCollect
 };
 
 
-%extend TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape::Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape;
-class Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape();
-        Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape(const Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape &aHandle);
-        Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape(const TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
-    TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape* _get_reference() {
-    return (TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape)
 
 %extend TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
 	%pythoncode {
@@ -1360,51 +1201,7 @@ class TNaming_ListNodeOfListOfMapOfShape : public TCollection_MapNode {
 };
 
 
-%extend TNaming_ListNodeOfListOfMapOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_ListNodeOfListOfMapOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_ListNodeOfListOfMapOfShape::Handle_TNaming_ListNodeOfListOfMapOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_ListNodeOfListOfMapOfShape;
-class Handle_TNaming_ListNodeOfListOfMapOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_ListNodeOfListOfMapOfShape();
-        Handle_TNaming_ListNodeOfListOfMapOfShape(const Handle_TNaming_ListNodeOfListOfMapOfShape &aHandle);
-        Handle_TNaming_ListNodeOfListOfMapOfShape(const TNaming_ListNodeOfListOfMapOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_ListNodeOfListOfMapOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_ListNodeOfListOfMapOfShape {
-    TNaming_ListNodeOfListOfMapOfShape* _get_reference() {
-    return (TNaming_ListNodeOfListOfMapOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_ListNodeOfListOfMapOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_ListNodeOfListOfMapOfShape)
 
 %extend TNaming_ListNodeOfListOfMapOfShape {
 	%pythoncode {
@@ -1429,51 +1226,7 @@ class TNaming_ListNodeOfListOfNamedShape : public TCollection_MapNode {
 };
 
 
-%extend TNaming_ListNodeOfListOfNamedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_ListNodeOfListOfNamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_ListNodeOfListOfNamedShape::Handle_TNaming_ListNodeOfListOfNamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_ListNodeOfListOfNamedShape;
-class Handle_TNaming_ListNodeOfListOfNamedShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_ListNodeOfListOfNamedShape();
-        Handle_TNaming_ListNodeOfListOfNamedShape(const Handle_TNaming_ListNodeOfListOfNamedShape &aHandle);
-        Handle_TNaming_ListNodeOfListOfNamedShape(const TNaming_ListNodeOfListOfNamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_ListNodeOfListOfNamedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_ListNodeOfListOfNamedShape {
-    TNaming_ListNodeOfListOfNamedShape* _get_reference() {
-    return (TNaming_ListNodeOfListOfNamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_ListNodeOfListOfNamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_ListNodeOfListOfNamedShape)
 
 %extend TNaming_ListNodeOfListOfNamedShape {
 	%pythoncode {
@@ -2353,51 +2106,7 @@ class TNaming_NamedShape : public TDF_Attribute {
         };
 
 
-%extend TNaming_NamedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_NamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_NamedShape::Handle_TNaming_NamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_NamedShape;
-class Handle_TNaming_NamedShape : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TNaming_NamedShape();
-        Handle_TNaming_NamedShape(const Handle_TNaming_NamedShape &aHandle);
-        Handle_TNaming_NamedShape(const TNaming_NamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_NamedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_NamedShape {
-    TNaming_NamedShape* _get_reference() {
-    return (TNaming_NamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_NamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_NamedShape)
 
 %extend TNaming_NamedShape {
 	%pythoncode {
@@ -2546,51 +2255,7 @@ class TNaming_Naming : public TDF_Attribute {
 };
 
 
-%extend TNaming_Naming {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_Naming(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_Naming::Handle_TNaming_Naming %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_Naming;
-class Handle_TNaming_Naming : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TNaming_Naming();
-        Handle_TNaming_Naming(const Handle_TNaming_Naming &aHandle);
-        Handle_TNaming_Naming(const TNaming_Naming *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_Naming DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_Naming {
-    TNaming_Naming* _get_reference() {
-    return (TNaming_Naming*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_Naming {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_Naming)
 
 %extend TNaming_Naming {
 	%pythoncode {
@@ -3153,51 +2818,7 @@ class TNaming_StdMapNodeOfMapOfNamedShape : public TCollection_MapNode {
 };
 
 
-%extend TNaming_StdMapNodeOfMapOfNamedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_StdMapNodeOfMapOfNamedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_StdMapNodeOfMapOfNamedShape::Handle_TNaming_StdMapNodeOfMapOfNamedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_StdMapNodeOfMapOfNamedShape;
-class Handle_TNaming_StdMapNodeOfMapOfNamedShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TNaming_StdMapNodeOfMapOfNamedShape();
-        Handle_TNaming_StdMapNodeOfMapOfNamedShape(const Handle_TNaming_StdMapNodeOfMapOfNamedShape &aHandle);
-        Handle_TNaming_StdMapNodeOfMapOfNamedShape(const TNaming_StdMapNodeOfMapOfNamedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_StdMapNodeOfMapOfNamedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_StdMapNodeOfMapOfNamedShape {
-    TNaming_StdMapNodeOfMapOfNamedShape* _get_reference() {
-    return (TNaming_StdMapNodeOfMapOfNamedShape*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_StdMapNodeOfMapOfNamedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_StdMapNodeOfMapOfNamedShape)
 
 %extend TNaming_StdMapNodeOfMapOfNamedShape {
 	%pythoncode {
@@ -3454,51 +3075,7 @@ class TNaming_TranslateTool : public MMgt_TShared {
 };
 
 
-%extend TNaming_TranslateTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_TranslateTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_TranslateTool::Handle_TNaming_TranslateTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_TranslateTool;
-class Handle_TNaming_TranslateTool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TNaming_TranslateTool();
-        Handle_TNaming_TranslateTool(const Handle_TNaming_TranslateTool &aHandle);
-        Handle_TNaming_TranslateTool(const TNaming_TranslateTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_TranslateTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_TranslateTool {
-    TNaming_TranslateTool* _get_reference() {
-    return (TNaming_TranslateTool*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_TranslateTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_TranslateTool)
 
 %extend TNaming_TranslateTool {
 	%pythoncode {
@@ -3654,51 +3231,7 @@ class TNaming_UsedShapes : public TDF_Attribute {
         };
 
 
-%extend TNaming_UsedShapes {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TNaming_UsedShapes(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TNaming_UsedShapes::Handle_TNaming_UsedShapes %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TNaming_UsedShapes;
-class Handle_TNaming_UsedShapes : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TNaming_UsedShapes();
-        Handle_TNaming_UsedShapes(const Handle_TNaming_UsedShapes &aHandle);
-        Handle_TNaming_UsedShapes(const TNaming_UsedShapes *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TNaming_UsedShapes DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TNaming_UsedShapes {
-    TNaming_UsedShapes* _get_reference() {
-    return (TNaming_UsedShapes*)$self->Access();
-    }
-};
-
-%extend Handle_TNaming_UsedShapes {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TNaming_UsedShapes)
 
 %extend TNaming_UsedShapes {
 	%pythoncode {

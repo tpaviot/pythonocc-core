@@ -18,7 +18,69 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPRIMAPIDOCSTRING
-"No docstring provided."
+"The BRepBuilderAPI package  provides an  Application
+Programming Interface for the BRep topology data
+structure.
+
+The API is a set of classes aiming to provide :
+
+* High level and simple calls for the most common
+operations.
+
+*  Keeping  an  access on  the  low-level
+implementation of high-level calls.
+
+* Examples of programming of high-level operations
+from low-level operations.
+
+* A complete coverage of modelling :
+
+- Creating vertices ,edges, faces, solids.
+
+- Sweeping operations.
+
+- Boolean operations.
+
+- Global properties computation.
+
+
+The API provides classes to build objects:
+
+* The constructors of the classes provides the
+different constructions methods.
+
+* The class keeps as fields the  different tools
+used to build the object.
+
+*  The class provides a casting method to get
+automatically the result with a  function-like
+call.
+
+For example to make a vertex <V> from a point <P>
+one can writes :
+
+V = BRepBuilderAPI_MakeVertex(P);
+
+or
+
+BRepBuilderAPI_MakeVertex MV(P);
+V = MV.Vertex();
+
+
+For tolerances a default precision is used which
+can  be  changed  by  the  packahe method
+BRepBuilderAPI::Precision.
+
+For error handling the BRepBuilderAPI commands raise only
+the NotDone error. When Done is false on a command
+the error description can be asked to the command.
+
+In theory the comands can be  called with any
+arguments, argument checking is performed by the
+command.
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 
@@ -34,30 +96,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepPrimAPI_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor BRepPrimAPI_MakeBox;
 class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {

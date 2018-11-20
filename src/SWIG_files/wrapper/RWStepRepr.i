@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPREPRDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPREPRDOCSTRING) RWStepRepr
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include RWStepRepr_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor RWStepRepr_RWAssemblyComponentUsage;
 class RWStepRepr_RWAssemblyComponentUsage {

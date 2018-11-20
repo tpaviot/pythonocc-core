@@ -18,7 +18,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define EXPRDOCSTRING
-"No docstring provided."
+"This package describes the data structure of any
+expression, relation or function used in mathematics.
+It also describes the assignment of variables. Standard
+mathematical functions are implemented such as
+trigonometrics, hyperbolics, and log functions.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=EXPRDOCSTRING) Expr
 
@@ -34,30 +40,67 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Expr_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Expr_GeneralExpression)
+%wrap_handle(Expr_GeneralFunction)
+%wrap_handle(Expr_GeneralRelation)
+%wrap_handle(Expr_IndexedMapNodeOfMapOfNamedUnknown)
+%wrap_handle(Expr_SequenceNodeOfSequenceOfGeneralExpression)
+%wrap_handle(Expr_SequenceNodeOfSequenceOfGeneralRelation)
+%wrap_handle(Expr_BinaryExpression)
+%wrap_handle(Expr_FunctionDerivative)
+%wrap_handle(Expr_NamedExpression)
+%wrap_handle(Expr_NamedFunction)
+%wrap_handle(Expr_NumericValue)
+%wrap_handle(Expr_PolyExpression)
+%wrap_handle(Expr_SingleRelation)
+%wrap_handle(Expr_SystemRelation)
+%wrap_handle(Expr_UnaryExpression)
+%wrap_handle(Expr_Absolute)
+%wrap_handle(Expr_ArcCosine)
+%wrap_handle(Expr_ArcSine)
+%wrap_handle(Expr_ArcTangent)
+%wrap_handle(Expr_ArgCosh)
+%wrap_handle(Expr_ArgSinh)
+%wrap_handle(Expr_ArgTanh)
+%wrap_handle(Expr_BinaryFunction)
+%wrap_handle(Expr_Cosh)
+%wrap_handle(Expr_Cosine)
+%wrap_handle(Expr_Difference)
+%wrap_handle(Expr_Different)
+%wrap_handle(Expr_Division)
+%wrap_handle(Expr_Equal)
+%wrap_handle(Expr_Exponential)
+%wrap_handle(Expr_Exponentiate)
+%wrap_handle(Expr_GreaterThan)
+%wrap_handle(Expr_GreaterThanOrEqual)
+%wrap_handle(Expr_LessThan)
+%wrap_handle(Expr_LessThanOrEqual)
+%wrap_handle(Expr_LogOf10)
+%wrap_handle(Expr_LogOfe)
+%wrap_handle(Expr_NamedConstant)
+%wrap_handle(Expr_NamedUnknown)
+%wrap_handle(Expr_PolyFunction)
+%wrap_handle(Expr_Product)
+%wrap_handle(Expr_Sine)
+%wrap_handle(Expr_Sinh)
+%wrap_handle(Expr_Square)
+%wrap_handle(Expr_SquareRoot)
+%wrap_handle(Expr_Sum)
+%wrap_handle(Expr_Tangent)
+%wrap_handle(Expr_Tanh)
+%wrap_handle(Expr_UnaryFunction)
+%wrap_handle(Expr_UnaryMinus)
 
 %rename(expr) Expr;
 class Expr {
@@ -477,51 +520,7 @@ class Expr_GeneralExpression : public MMgt_TShared {
 };
 
 
-%extend Expr_GeneralExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_GeneralExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_GeneralExpression::Handle_Expr_GeneralExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_GeneralExpression;
-class Handle_Expr_GeneralExpression : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Expr_GeneralExpression();
-        Handle_Expr_GeneralExpression(const Handle_Expr_GeneralExpression &aHandle);
-        Handle_Expr_GeneralExpression(const Expr_GeneralExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_GeneralExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_GeneralExpression {
-    Expr_GeneralExpression* _get_reference() {
-    return (Expr_GeneralExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_GeneralExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_GeneralExpression)
 
 %extend Expr_GeneralExpression {
 	%pythoncode {
@@ -602,51 +601,7 @@ class Expr_GeneralFunction : public MMgt_TShared {
 };
 
 
-%extend Expr_GeneralFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_GeneralFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_GeneralFunction::Handle_Expr_GeneralFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_GeneralFunction;
-class Handle_Expr_GeneralFunction : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Expr_GeneralFunction();
-        Handle_Expr_GeneralFunction(const Handle_Expr_GeneralFunction &aHandle);
-        Handle_Expr_GeneralFunction(const Expr_GeneralFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_GeneralFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_GeneralFunction {
-    Expr_GeneralFunction* _get_reference() {
-    return (Expr_GeneralFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_GeneralFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_GeneralFunction)
 
 %extend Expr_GeneralFunction {
 	%pythoncode {
@@ -733,51 +688,7 @@ class Expr_GeneralRelation : public MMgt_TShared {
 };
 
 
-%extend Expr_GeneralRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_GeneralRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_GeneralRelation::Handle_Expr_GeneralRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_GeneralRelation;
-class Handle_Expr_GeneralRelation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Expr_GeneralRelation();
-        Handle_Expr_GeneralRelation(const Handle_Expr_GeneralRelation &aHandle);
-        Handle_Expr_GeneralRelation(const Expr_GeneralRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_GeneralRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_GeneralRelation {
-    Expr_GeneralRelation* _get_reference() {
-    return (Expr_GeneralRelation*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_GeneralRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_GeneralRelation)
 
 %extend Expr_GeneralRelation {
 	%pythoncode {
@@ -823,51 +734,7 @@ class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode {
 };
 
 
-%extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown::Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown;
-class Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown();
-        Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown(const Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown &aHandle);
-        Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown(const Expr_IndexedMapNodeOfMapOfNamedUnknown *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
-    Expr_IndexedMapNodeOfMapOfNamedUnknown* _get_reference() {
-    return (Expr_IndexedMapNodeOfMapOfNamedUnknown*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_IndexedMapNodeOfMapOfNamedUnknown)
 
 %extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
 	%pythoncode {
@@ -1043,51 +910,7 @@ class Expr_SequenceNodeOfSequenceOfGeneralExpression : public TCollection_SeqNod
 };
 
 
-%extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression::Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression;
-class Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression();
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression(const Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression &aHandle);
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression(const Expr_SequenceNodeOfSequenceOfGeneralExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression {
-    Expr_SequenceNodeOfSequenceOfGeneralExpression* _get_reference() {
-    return (Expr_SequenceNodeOfSequenceOfGeneralExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_SequenceNodeOfSequenceOfGeneralExpression)
 
 %extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
 	%pythoncode {
@@ -1114,51 +937,7 @@ class Expr_SequenceNodeOfSequenceOfGeneralRelation : public TCollection_SeqNode 
 };
 
 
-%extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation::Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation;
-class Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation();
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation(const Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation &aHandle);
-        Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation(const Expr_SequenceNodeOfSequenceOfGeneralRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
-    Expr_SequenceNodeOfSequenceOfGeneralRelation* _get_reference() {
-    return (Expr_SequenceNodeOfSequenceOfGeneralRelation*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_SequenceNodeOfSequenceOfGeneralRelation)
 
 %extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
 	%pythoncode {
@@ -1554,51 +1333,7 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 };
 
 
-%extend Expr_BinaryExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_BinaryExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_BinaryExpression::Handle_Expr_BinaryExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_BinaryExpression;
-class Handle_Expr_BinaryExpression : public Handle_Expr_GeneralExpression {
-
-    public:
-        // constructors
-        Handle_Expr_BinaryExpression();
-        Handle_Expr_BinaryExpression(const Handle_Expr_BinaryExpression &aHandle);
-        Handle_Expr_BinaryExpression(const Expr_BinaryExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_BinaryExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_BinaryExpression {
-    Expr_BinaryExpression* _get_reference() {
-    return (Expr_BinaryExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_BinaryExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_BinaryExpression)
 
 %extend Expr_BinaryExpression {
 	%pythoncode {
@@ -1717,51 +1452,7 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 };
 
 
-%extend Expr_FunctionDerivative {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_FunctionDerivative(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_FunctionDerivative::Handle_Expr_FunctionDerivative %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_FunctionDerivative;
-class Handle_Expr_FunctionDerivative : public Handle_Expr_GeneralFunction {
-
-    public:
-        // constructors
-        Handle_Expr_FunctionDerivative();
-        Handle_Expr_FunctionDerivative(const Handle_Expr_FunctionDerivative &aHandle);
-        Handle_Expr_FunctionDerivative(const Expr_FunctionDerivative *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_FunctionDerivative DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_FunctionDerivative {
-    Expr_FunctionDerivative* _get_reference() {
-    return (Expr_FunctionDerivative*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_FunctionDerivative {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_FunctionDerivative)
 
 %extend Expr_FunctionDerivative {
 	%pythoncode {
@@ -1804,51 +1495,7 @@ class Expr_NamedExpression : public Expr_GeneralExpression {
 };
 
 
-%extend Expr_NamedExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_NamedExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_NamedExpression::Handle_Expr_NamedExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_NamedExpression;
-class Handle_Expr_NamedExpression : public Handle_Expr_GeneralExpression {
-
-    public:
-        // constructors
-        Handle_Expr_NamedExpression();
-        Handle_Expr_NamedExpression(const Handle_Expr_NamedExpression &aHandle);
-        Handle_Expr_NamedExpression(const Expr_NamedExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_NamedExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_NamedExpression {
-    Expr_NamedExpression* _get_reference() {
-    return (Expr_NamedExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_NamedExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_NamedExpression)
 
 %extend Expr_NamedExpression {
 	%pythoncode {
@@ -1969,51 +1616,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 };
 
 
-%extend Expr_NamedFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_NamedFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_NamedFunction::Handle_Expr_NamedFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_NamedFunction;
-class Handle_Expr_NamedFunction : public Handle_Expr_GeneralFunction {
-
-    public:
-        // constructors
-        Handle_Expr_NamedFunction();
-        Handle_Expr_NamedFunction(const Handle_Expr_NamedFunction &aHandle);
-        Handle_Expr_NamedFunction(const Expr_NamedFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_NamedFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_NamedFunction {
-    Expr_NamedFunction* _get_reference() {
-    return (Expr_NamedFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_NamedFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_NamedFunction)
 
 %extend Expr_NamedFunction {
 	%pythoncode {
@@ -2144,51 +1747,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 };
 
 
-%extend Expr_NumericValue {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_NumericValue(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_NumericValue::Handle_Expr_NumericValue %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_NumericValue;
-class Handle_Expr_NumericValue : public Handle_Expr_GeneralExpression {
-
-    public:
-        // constructors
-        Handle_Expr_NumericValue();
-        Handle_Expr_NumericValue(const Handle_Expr_NumericValue &aHandle);
-        Handle_Expr_NumericValue(const Expr_NumericValue *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_NumericValue DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_NumericValue {
-    Expr_NumericValue* _get_reference() {
-    return (Expr_NumericValue*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_NumericValue {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_NumericValue)
 
 %extend Expr_NumericValue {
 	%pythoncode {
@@ -2269,51 +1828,7 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 };
 
 
-%extend Expr_PolyExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_PolyExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_PolyExpression::Handle_Expr_PolyExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_PolyExpression;
-class Handle_Expr_PolyExpression : public Handle_Expr_GeneralExpression {
-
-    public:
-        // constructors
-        Handle_Expr_PolyExpression();
-        Handle_Expr_PolyExpression(const Handle_Expr_PolyExpression &aHandle);
-        Handle_Expr_PolyExpression(const Expr_PolyExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_PolyExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_PolyExpression {
-    Expr_PolyExpression* _get_reference() {
-    return (Expr_PolyExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_PolyExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_PolyExpression)
 
 %extend Expr_PolyExpression {
 	%pythoncode {
@@ -2398,51 +1913,7 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 };
 
 
-%extend Expr_SingleRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_SingleRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_SingleRelation::Handle_Expr_SingleRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_SingleRelation;
-class Handle_Expr_SingleRelation : public Handle_Expr_GeneralRelation {
-
-    public:
-        // constructors
-        Handle_Expr_SingleRelation();
-        Handle_Expr_SingleRelation(const Handle_Expr_SingleRelation &aHandle);
-        Handle_Expr_SingleRelation(const Expr_SingleRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_SingleRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_SingleRelation {
-    Expr_SingleRelation* _get_reference() {
-    return (Expr_SingleRelation*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_SingleRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_SingleRelation)
 
 %extend Expr_SingleRelation {
 	%pythoncode {
@@ -2549,51 +2020,7 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 };
 
 
-%extend Expr_SystemRelation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_SystemRelation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_SystemRelation::Handle_Expr_SystemRelation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_SystemRelation;
-class Handle_Expr_SystemRelation : public Handle_Expr_GeneralRelation {
-
-    public:
-        // constructors
-        Handle_Expr_SystemRelation();
-        Handle_Expr_SystemRelation(const Handle_Expr_SystemRelation &aHandle);
-        Handle_Expr_SystemRelation(const Expr_SystemRelation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_SystemRelation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_SystemRelation {
-    Expr_SystemRelation* _get_reference() {
-    return (Expr_SystemRelation*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_SystemRelation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_SystemRelation)
 
 %extend Expr_SystemRelation {
 	%pythoncode {
@@ -2664,51 +2091,7 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 };
 
 
-%extend Expr_UnaryExpression {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_UnaryExpression(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_UnaryExpression::Handle_Expr_UnaryExpression %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_UnaryExpression;
-class Handle_Expr_UnaryExpression : public Handle_Expr_GeneralExpression {
-
-    public:
-        // constructors
-        Handle_Expr_UnaryExpression();
-        Handle_Expr_UnaryExpression(const Handle_Expr_UnaryExpression &aHandle);
-        Handle_Expr_UnaryExpression(const Expr_UnaryExpression *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_UnaryExpression DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_UnaryExpression {
-    Expr_UnaryExpression* _get_reference() {
-    return (Expr_UnaryExpression*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_UnaryExpression {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_UnaryExpression)
 
 %extend Expr_UnaryExpression {
 	%pythoncode {
@@ -2777,51 +2160,7 @@ class Expr_Absolute : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Absolute {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Absolute(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Absolute::Handle_Expr_Absolute %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Absolute;
-class Handle_Expr_Absolute : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Absolute();
-        Handle_Expr_Absolute(const Handle_Expr_Absolute &aHandle);
-        Handle_Expr_Absolute(const Expr_Absolute *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Absolute DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Absolute {
-    Expr_Absolute* _get_reference() {
-    return (Expr_Absolute*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Absolute {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Absolute)
 
 %extend Expr_Absolute {
 	%pythoncode {
@@ -2890,51 +2229,7 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArcCosine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArcCosine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArcCosine::Handle_Expr_ArcCosine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArcCosine;
-class Handle_Expr_ArcCosine : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArcCosine();
-        Handle_Expr_ArcCosine(const Handle_Expr_ArcCosine &aHandle);
-        Handle_Expr_ArcCosine(const Expr_ArcCosine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArcCosine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArcCosine {
-    Expr_ArcCosine* _get_reference() {
-    return (Expr_ArcCosine*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArcCosine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArcCosine)
 
 %extend Expr_ArcCosine {
 	%pythoncode {
@@ -3003,51 +2298,7 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArcSine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArcSine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArcSine::Handle_Expr_ArcSine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArcSine;
-class Handle_Expr_ArcSine : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArcSine();
-        Handle_Expr_ArcSine(const Handle_Expr_ArcSine &aHandle);
-        Handle_Expr_ArcSine(const Expr_ArcSine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArcSine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArcSine {
-    Expr_ArcSine* _get_reference() {
-    return (Expr_ArcSine*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArcSine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArcSine)
 
 %extend Expr_ArcSine {
 	%pythoncode {
@@ -3116,51 +2367,7 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArcTangent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArcTangent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArcTangent::Handle_Expr_ArcTangent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArcTangent;
-class Handle_Expr_ArcTangent : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArcTangent();
-        Handle_Expr_ArcTangent(const Handle_Expr_ArcTangent &aHandle);
-        Handle_Expr_ArcTangent(const Expr_ArcTangent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArcTangent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArcTangent {
-    Expr_ArcTangent* _get_reference() {
-    return (Expr_ArcTangent*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArcTangent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArcTangent)
 
 %extend Expr_ArcTangent {
 	%pythoncode {
@@ -3229,51 +2436,7 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArgCosh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArgCosh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArgCosh::Handle_Expr_ArgCosh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArgCosh;
-class Handle_Expr_ArgCosh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArgCosh();
-        Handle_Expr_ArgCosh(const Handle_Expr_ArgCosh &aHandle);
-        Handle_Expr_ArgCosh(const Expr_ArgCosh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArgCosh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArgCosh {
-    Expr_ArgCosh* _get_reference() {
-    return (Expr_ArgCosh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArgCosh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArgCosh)
 
 %extend Expr_ArgCosh {
 	%pythoncode {
@@ -3342,51 +2505,7 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArgSinh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArgSinh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArgSinh::Handle_Expr_ArgSinh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArgSinh;
-class Handle_Expr_ArgSinh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArgSinh();
-        Handle_Expr_ArgSinh(const Handle_Expr_ArgSinh &aHandle);
-        Handle_Expr_ArgSinh(const Expr_ArgSinh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArgSinh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArgSinh {
-    Expr_ArgSinh* _get_reference() {
-    return (Expr_ArgSinh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArgSinh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArgSinh)
 
 %extend Expr_ArgSinh {
 	%pythoncode {
@@ -3455,51 +2574,7 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_ArgTanh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_ArgTanh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_ArgTanh::Handle_Expr_ArgTanh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_ArgTanh;
-class Handle_Expr_ArgTanh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_ArgTanh();
-        Handle_Expr_ArgTanh(const Handle_Expr_ArgTanh &aHandle);
-        Handle_Expr_ArgTanh(const Expr_ArgTanh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_ArgTanh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_ArgTanh {
-    Expr_ArgTanh* _get_reference() {
-    return (Expr_ArgTanh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_ArgTanh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_ArgTanh)
 
 %extend Expr_ArgTanh {
 	%pythoncode {
@@ -3578,51 +2653,7 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 };
 
 
-%extend Expr_BinaryFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_BinaryFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_BinaryFunction::Handle_Expr_BinaryFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_BinaryFunction;
-class Handle_Expr_BinaryFunction : public Handle_Expr_BinaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_BinaryFunction();
-        Handle_Expr_BinaryFunction(const Handle_Expr_BinaryFunction &aHandle);
-        Handle_Expr_BinaryFunction(const Expr_BinaryFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_BinaryFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_BinaryFunction {
-    Expr_BinaryFunction* _get_reference() {
-    return (Expr_BinaryFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_BinaryFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_BinaryFunction)
 
 %extend Expr_BinaryFunction {
 	%pythoncode {
@@ -3691,51 +2722,7 @@ class Expr_Cosh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Cosh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Cosh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Cosh::Handle_Expr_Cosh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Cosh;
-class Handle_Expr_Cosh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Cosh();
-        Handle_Expr_Cosh(const Handle_Expr_Cosh &aHandle);
-        Handle_Expr_Cosh(const Expr_Cosh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Cosh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Cosh {
-    Expr_Cosh* _get_reference() {
-    return (Expr_Cosh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Cosh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Cosh)
 
 %extend Expr_Cosh {
 	%pythoncode {
@@ -3804,51 +2791,7 @@ class Expr_Cosine : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Cosine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Cosine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Cosine::Handle_Expr_Cosine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Cosine;
-class Handle_Expr_Cosine : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Cosine();
-        Handle_Expr_Cosine(const Handle_Expr_Cosine &aHandle);
-        Handle_Expr_Cosine(const Expr_Cosine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Cosine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Cosine {
-    Expr_Cosine* _get_reference() {
-    return (Expr_Cosine*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Cosine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Cosine)
 
 %extend Expr_Cosine {
 	%pythoncode {
@@ -3929,51 +2872,7 @@ class Expr_Difference : public Expr_BinaryExpression {
 };
 
 
-%extend Expr_Difference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Difference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Difference::Handle_Expr_Difference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Difference;
-class Handle_Expr_Difference : public Handle_Expr_BinaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Difference();
-        Handle_Expr_Difference(const Handle_Expr_Difference &aHandle);
-        Handle_Expr_Difference(const Expr_Difference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Difference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Difference {
-    Expr_Difference* _get_reference() {
-    return (Expr_Difference*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Difference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Difference)
 
 %extend Expr_Difference {
 	%pythoncode {
@@ -4024,51 +2923,7 @@ class Expr_Different : public Expr_SingleRelation {
 };
 
 
-%extend Expr_Different {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Different(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Different::Handle_Expr_Different %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Different;
-class Handle_Expr_Different : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_Different();
-        Handle_Expr_Different(const Handle_Expr_Different &aHandle);
-        Handle_Expr_Different(const Expr_Different *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Different DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Different {
-    Expr_Different* _get_reference() {
-    return (Expr_Different*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Different {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Different)
 
 %extend Expr_Different {
 	%pythoncode {
@@ -4139,51 +2994,7 @@ class Expr_Division : public Expr_BinaryExpression {
 };
 
 
-%extend Expr_Division {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Division(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Division::Handle_Expr_Division %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Division;
-class Handle_Expr_Division : public Handle_Expr_BinaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Division();
-        Handle_Expr_Division(const Handle_Expr_Division &aHandle);
-        Handle_Expr_Division(const Expr_Division *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Division DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Division {
-    Expr_Division* _get_reference() {
-    return (Expr_Division*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Division {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Division)
 
 %extend Expr_Division {
 	%pythoncode {
@@ -4234,51 +3045,7 @@ class Expr_Equal : public Expr_SingleRelation {
 };
 
 
-%extend Expr_Equal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Equal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Equal::Handle_Expr_Equal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Equal;
-class Handle_Expr_Equal : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_Equal();
-        Handle_Expr_Equal(const Handle_Expr_Equal &aHandle);
-        Handle_Expr_Equal(const Expr_Equal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Equal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Equal {
-    Expr_Equal* _get_reference() {
-    return (Expr_Equal*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Equal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Equal)
 
 %extend Expr_Equal {
 	%pythoncode {
@@ -4347,51 +3114,7 @@ class Expr_Exponential : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Exponential {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Exponential(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Exponential::Handle_Expr_Exponential %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Exponential;
-class Handle_Expr_Exponential : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Exponential();
-        Handle_Expr_Exponential(const Handle_Expr_Exponential &aHandle);
-        Handle_Expr_Exponential(const Expr_Exponential *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Exponential DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Exponential {
-    Expr_Exponential* _get_reference() {
-    return (Expr_Exponential*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Exponential {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Exponential)
 
 %extend Expr_Exponential {
 	%pythoncode {
@@ -4462,51 +3185,7 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 };
 
 
-%extend Expr_Exponentiate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Exponentiate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Exponentiate::Handle_Expr_Exponentiate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Exponentiate;
-class Handle_Expr_Exponentiate : public Handle_Expr_BinaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Exponentiate();
-        Handle_Expr_Exponentiate(const Handle_Expr_Exponentiate &aHandle);
-        Handle_Expr_Exponentiate(const Expr_Exponentiate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Exponentiate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Exponentiate {
-    Expr_Exponentiate* _get_reference() {
-    return (Expr_Exponentiate*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Exponentiate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Exponentiate)
 
 %extend Expr_Exponentiate {
 	%pythoncode {
@@ -4557,51 +3236,7 @@ class Expr_GreaterThan : public Expr_SingleRelation {
 };
 
 
-%extend Expr_GreaterThan {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_GreaterThan(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_GreaterThan::Handle_Expr_GreaterThan %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_GreaterThan;
-class Handle_Expr_GreaterThan : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_GreaterThan();
-        Handle_Expr_GreaterThan(const Handle_Expr_GreaterThan &aHandle);
-        Handle_Expr_GreaterThan(const Expr_GreaterThan *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_GreaterThan DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_GreaterThan {
-    Expr_GreaterThan* _get_reference() {
-    return (Expr_GreaterThan*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_GreaterThan {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_GreaterThan)
 
 %extend Expr_GreaterThan {
 	%pythoncode {
@@ -4652,51 +3287,7 @@ class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 };
 
 
-%extend Expr_GreaterThanOrEqual {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_GreaterThanOrEqual(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_GreaterThanOrEqual::Handle_Expr_GreaterThanOrEqual %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_GreaterThanOrEqual;
-class Handle_Expr_GreaterThanOrEqual : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_GreaterThanOrEqual();
-        Handle_Expr_GreaterThanOrEqual(const Handle_Expr_GreaterThanOrEqual &aHandle);
-        Handle_Expr_GreaterThanOrEqual(const Expr_GreaterThanOrEqual *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_GreaterThanOrEqual DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_GreaterThanOrEqual {
-    Expr_GreaterThanOrEqual* _get_reference() {
-    return (Expr_GreaterThanOrEqual*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_GreaterThanOrEqual {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_GreaterThanOrEqual)
 
 %extend Expr_GreaterThanOrEqual {
 	%pythoncode {
@@ -4747,51 +3338,7 @@ class Expr_LessThan : public Expr_SingleRelation {
 };
 
 
-%extend Expr_LessThan {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_LessThan(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_LessThan::Handle_Expr_LessThan %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_LessThan;
-class Handle_Expr_LessThan : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_LessThan();
-        Handle_Expr_LessThan(const Handle_Expr_LessThan &aHandle);
-        Handle_Expr_LessThan(const Expr_LessThan *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_LessThan DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_LessThan {
-    Expr_LessThan* _get_reference() {
-    return (Expr_LessThan*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_LessThan {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_LessThan)
 
 %extend Expr_LessThan {
 	%pythoncode {
@@ -4842,51 +3389,7 @@ class Expr_LessThanOrEqual : public Expr_SingleRelation {
 };
 
 
-%extend Expr_LessThanOrEqual {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_LessThanOrEqual(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_LessThanOrEqual::Handle_Expr_LessThanOrEqual %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_LessThanOrEqual;
-class Handle_Expr_LessThanOrEqual : public Handle_Expr_SingleRelation {
-
-    public:
-        // constructors
-        Handle_Expr_LessThanOrEqual();
-        Handle_Expr_LessThanOrEqual(const Handle_Expr_LessThanOrEqual &aHandle);
-        Handle_Expr_LessThanOrEqual(const Expr_LessThanOrEqual *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_LessThanOrEqual DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_LessThanOrEqual {
-    Expr_LessThanOrEqual* _get_reference() {
-    return (Expr_LessThanOrEqual*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_LessThanOrEqual {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_LessThanOrEqual)
 
 %extend Expr_LessThanOrEqual {
 	%pythoncode {
@@ -4955,51 +3458,7 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_LogOf10 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_LogOf10(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_LogOf10::Handle_Expr_LogOf10 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_LogOf10;
-class Handle_Expr_LogOf10 : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_LogOf10();
-        Handle_Expr_LogOf10(const Handle_Expr_LogOf10 &aHandle);
-        Handle_Expr_LogOf10(const Expr_LogOf10 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_LogOf10 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_LogOf10 {
-    Expr_LogOf10* _get_reference() {
-    return (Expr_LogOf10*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_LogOf10 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_LogOf10)
 
 %extend Expr_LogOf10 {
 	%pythoncode {
@@ -5068,51 +3527,7 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_LogOfe {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_LogOfe(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_LogOfe::Handle_Expr_LogOfe %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_LogOfe;
-class Handle_Expr_LogOfe : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_LogOfe();
-        Handle_Expr_LogOfe(const Handle_Expr_LogOfe &aHandle);
-        Handle_Expr_LogOfe(const Expr_LogOfe *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_LogOfe DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_LogOfe {
-    Expr_LogOfe* _get_reference() {
-    return (Expr_LogOfe*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_LogOfe {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_LogOfe)
 
 %extend Expr_LogOfe {
 	%pythoncode {
@@ -5227,51 +3642,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 };
 
 
-%extend Expr_NamedConstant {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_NamedConstant(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_NamedConstant::Handle_Expr_NamedConstant %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_NamedConstant;
-class Handle_Expr_NamedConstant : public Handle_Expr_NamedExpression {
-
-    public:
-        // constructors
-        Handle_Expr_NamedConstant();
-        Handle_Expr_NamedConstant(const Handle_Expr_NamedConstant &aHandle);
-        Handle_Expr_NamedConstant(const Expr_NamedConstant *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_NamedConstant DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_NamedConstant {
-    Expr_NamedConstant* _get_reference() {
-    return (Expr_NamedConstant*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_NamedConstant {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_NamedConstant)
 
 %extend Expr_NamedConstant {
 	%pythoncode {
@@ -5394,51 +3765,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 };
 
 
-%extend Expr_NamedUnknown {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_NamedUnknown(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_NamedUnknown::Handle_Expr_NamedUnknown %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_NamedUnknown;
-class Handle_Expr_NamedUnknown : public Handle_Expr_NamedExpression {
-
-    public:
-        // constructors
-        Handle_Expr_NamedUnknown();
-        Handle_Expr_NamedUnknown(const Handle_Expr_NamedUnknown &aHandle);
-        Handle_Expr_NamedUnknown(const Expr_NamedUnknown *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_NamedUnknown DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_NamedUnknown {
-    Expr_NamedUnknown* _get_reference() {
-    return (Expr_NamedUnknown*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_NamedUnknown {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_NamedUnknown)
 
 %extend Expr_NamedUnknown {
 	%pythoncode {
@@ -5515,51 +3842,7 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 };
 
 
-%extend Expr_PolyFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_PolyFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_PolyFunction::Handle_Expr_PolyFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_PolyFunction;
-class Handle_Expr_PolyFunction : public Handle_Expr_PolyExpression {
-
-    public:
-        // constructors
-        Handle_Expr_PolyFunction();
-        Handle_Expr_PolyFunction(const Handle_Expr_PolyFunction &aHandle);
-        Handle_Expr_PolyFunction(const Expr_PolyFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_PolyFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_PolyFunction {
-    Expr_PolyFunction* _get_reference() {
-    return (Expr_PolyFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_PolyFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_PolyFunction)
 
 %extend Expr_PolyFunction {
 	%pythoncode {
@@ -5638,51 +3921,7 @@ class Expr_Product : public Expr_PolyExpression {
 };
 
 
-%extend Expr_Product {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Product(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Product::Handle_Expr_Product %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Product;
-class Handle_Expr_Product : public Handle_Expr_PolyExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Product();
-        Handle_Expr_Product(const Handle_Expr_Product &aHandle);
-        Handle_Expr_Product(const Expr_Product *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Product DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Product {
-    Expr_Product* _get_reference() {
-    return (Expr_Product*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Product {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Product)
 
 %extend Expr_Product {
 	%pythoncode {
@@ -5751,51 +3990,7 @@ class Expr_Sine : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Sine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Sine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Sine::Handle_Expr_Sine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Sine;
-class Handle_Expr_Sine : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Sine();
-        Handle_Expr_Sine(const Handle_Expr_Sine &aHandle);
-        Handle_Expr_Sine(const Expr_Sine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Sine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Sine {
-    Expr_Sine* _get_reference() {
-    return (Expr_Sine*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Sine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Sine)
 
 %extend Expr_Sine {
 	%pythoncode {
@@ -5864,51 +4059,7 @@ class Expr_Sinh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Sinh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Sinh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Sinh::Handle_Expr_Sinh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Sinh;
-class Handle_Expr_Sinh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Sinh();
-        Handle_Expr_Sinh(const Handle_Expr_Sinh &aHandle);
-        Handle_Expr_Sinh(const Expr_Sinh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Sinh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Sinh {
-    Expr_Sinh* _get_reference() {
-    return (Expr_Sinh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Sinh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Sinh)
 
 %extend Expr_Sinh {
 	%pythoncode {
@@ -5977,51 +4128,7 @@ class Expr_Square : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Square {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Square(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Square::Handle_Expr_Square %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Square;
-class Handle_Expr_Square : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Square();
-        Handle_Expr_Square(const Handle_Expr_Square &aHandle);
-        Handle_Expr_Square(const Expr_Square *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Square DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Square {
-    Expr_Square* _get_reference() {
-    return (Expr_Square*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Square {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Square)
 
 %extend Expr_Square {
 	%pythoncode {
@@ -6090,51 +4197,7 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_SquareRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_SquareRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_SquareRoot::Handle_Expr_SquareRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_SquareRoot;
-class Handle_Expr_SquareRoot : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_SquareRoot();
-        Handle_Expr_SquareRoot(const Handle_Expr_SquareRoot &aHandle);
-        Handle_Expr_SquareRoot(const Expr_SquareRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_SquareRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_SquareRoot {
-    Expr_SquareRoot* _get_reference() {
-    return (Expr_SquareRoot*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_SquareRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_SquareRoot)
 
 %extend Expr_SquareRoot {
 	%pythoncode {
@@ -6223,51 +4286,7 @@ class Expr_Sum : public Expr_PolyExpression {
 };
 
 
-%extend Expr_Sum {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Sum(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Sum::Handle_Expr_Sum %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Sum;
-class Handle_Expr_Sum : public Handle_Expr_PolyExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Sum();
-        Handle_Expr_Sum(const Handle_Expr_Sum &aHandle);
-        Handle_Expr_Sum(const Expr_Sum *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Sum DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Sum {
-    Expr_Sum* _get_reference() {
-    return (Expr_Sum*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Sum {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Sum)
 
 %extend Expr_Sum {
 	%pythoncode {
@@ -6336,51 +4355,7 @@ class Expr_Tangent : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Tangent {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Tangent(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Tangent::Handle_Expr_Tangent %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Tangent;
-class Handle_Expr_Tangent : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Tangent();
-        Handle_Expr_Tangent(const Handle_Expr_Tangent &aHandle);
-        Handle_Expr_Tangent(const Expr_Tangent *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Tangent DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Tangent {
-    Expr_Tangent* _get_reference() {
-    return (Expr_Tangent*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Tangent {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Tangent)
 
 %extend Expr_Tangent {
 	%pythoncode {
@@ -6449,51 +4424,7 @@ class Expr_Tanh : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_Tanh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_Tanh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_Tanh::Handle_Expr_Tanh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_Tanh;
-class Handle_Expr_Tanh : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_Tanh();
-        Handle_Expr_Tanh(const Handle_Expr_Tanh &aHandle);
-        Handle_Expr_Tanh(const Expr_Tanh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_Tanh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_Tanh {
-    Expr_Tanh* _get_reference() {
-    return (Expr_Tanh*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_Tanh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_Tanh)
 
 %extend Expr_Tanh {
 	%pythoncode {
@@ -6570,51 +4501,7 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_UnaryFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_UnaryFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_UnaryFunction::Handle_Expr_UnaryFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_UnaryFunction;
-class Handle_Expr_UnaryFunction : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_UnaryFunction();
-        Handle_Expr_UnaryFunction(const Handle_Expr_UnaryFunction &aHandle);
-        Handle_Expr_UnaryFunction(const Expr_UnaryFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_UnaryFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_UnaryFunction {
-    Expr_UnaryFunction* _get_reference() {
-    return (Expr_UnaryFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_UnaryFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_UnaryFunction)
 
 %extend Expr_UnaryFunction {
 	%pythoncode {
@@ -6693,51 +4580,7 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 };
 
 
-%extend Expr_UnaryMinus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Expr_UnaryMinus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Expr_UnaryMinus::Handle_Expr_UnaryMinus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Expr_UnaryMinus;
-class Handle_Expr_UnaryMinus : public Handle_Expr_UnaryExpression {
-
-    public:
-        // constructors
-        Handle_Expr_UnaryMinus();
-        Handle_Expr_UnaryMinus(const Handle_Expr_UnaryMinus &aHandle);
-        Handle_Expr_UnaryMinus(const Expr_UnaryMinus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Expr_UnaryMinus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Expr_UnaryMinus {
-    Expr_UnaryMinus* _get_reference() {
-    return (Expr_UnaryMinus*)$self->Access();
-    }
-};
-
-%extend Handle_Expr_UnaryMinus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Expr_UnaryMinus)
 
 %extend Expr_UnaryMinus {
 	%pythoncode {

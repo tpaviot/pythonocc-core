@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepMesh_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef BRepMesh::NCollection_DataMap <Handle_Poly_Triangulation , Standard_Boolean> BRepMesh::DMapOfTriangulationBool;
@@ -131,6 +117,13 @@ enum BRepMesh_DegreeOfFreedom {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(BRepMesh_DataStructureOfDelaun)
+%wrap_handle(BRepMesh_DiscretRoot)
+%wrap_handle(BRepMesh_FastDiscret)
+%wrap_handle(BRepMesh_FastDiscretFace)
+%wrap_handle(BRepMesh_IEdgeTool)
+%wrap_handle(BRepMesh_IncrementalMesh)
 
 %nodefaultctor BRepMesh_Circle;
 class BRepMesh_Circle {
@@ -681,51 +674,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 };
 
 
-%extend BRepMesh_DataStructureOfDelaun {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_DataStructureOfDelaun(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_DataStructureOfDelaun::Handle_BRepMesh_DataStructureOfDelaun %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_DataStructureOfDelaun;
-class Handle_BRepMesh_DataStructureOfDelaun : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepMesh_DataStructureOfDelaun();
-        Handle_BRepMesh_DataStructureOfDelaun(const Handle_BRepMesh_DataStructureOfDelaun &aHandle);
-        Handle_BRepMesh_DataStructureOfDelaun(const BRepMesh_DataStructureOfDelaun *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_DataStructureOfDelaun DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_DataStructureOfDelaun {
-    BRepMesh_DataStructureOfDelaun* _get_reference() {
-    return (BRepMesh_DataStructureOfDelaun*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_DataStructureOfDelaun {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_DataStructureOfDelaun)
 
 %extend BRepMesh_DataStructureOfDelaun {
 	%pythoncode {
@@ -989,51 +938,7 @@ class BRepMesh_DiscretRoot : public Standard_Transient {
 };
 
 
-%extend BRepMesh_DiscretRoot {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_DiscretRoot(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_DiscretRoot::Handle_BRepMesh_DiscretRoot %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_DiscretRoot;
-class Handle_BRepMesh_DiscretRoot : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepMesh_DiscretRoot();
-        Handle_BRepMesh_DiscretRoot(const Handle_BRepMesh_DiscretRoot &aHandle);
-        Handle_BRepMesh_DiscretRoot(const BRepMesh_DiscretRoot *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_DiscretRoot DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_DiscretRoot {
-    BRepMesh_DiscretRoot* _get_reference() {
-    return (BRepMesh_DiscretRoot*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_DiscretRoot {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_DiscretRoot)
 
 %extend BRepMesh_DiscretRoot {
 	%pythoncode {
@@ -1142,51 +1047,7 @@ class BRepMesh_FastDiscret : public Standard_Transient {
 };
 
 
-%extend BRepMesh_FastDiscret {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_FastDiscret(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_FastDiscret::Handle_BRepMesh_FastDiscret %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_FastDiscret;
-class Handle_BRepMesh_FastDiscret : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepMesh_FastDiscret();
-        Handle_BRepMesh_FastDiscret(const Handle_BRepMesh_FastDiscret &aHandle);
-        Handle_BRepMesh_FastDiscret(const BRepMesh_FastDiscret *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_FastDiscret DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_FastDiscret {
-    BRepMesh_FastDiscret* _get_reference() {
-    return (BRepMesh_FastDiscret*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_FastDiscret {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_FastDiscret)
 
 %extend BRepMesh_FastDiscret {
 	%pythoncode {
@@ -1219,51 +1080,7 @@ class BRepMesh_FastDiscretFace : public Standard_Transient {
 };
 
 
-%extend BRepMesh_FastDiscretFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_FastDiscretFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_FastDiscretFace::Handle_BRepMesh_FastDiscretFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_FastDiscretFace;
-class Handle_BRepMesh_FastDiscretFace : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepMesh_FastDiscretFace();
-        Handle_BRepMesh_FastDiscretFace(const Handle_BRepMesh_FastDiscretFace &aHandle);
-        Handle_BRepMesh_FastDiscretFace(const BRepMesh_FastDiscretFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_FastDiscretFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_FastDiscretFace {
-    BRepMesh_FastDiscretFace* _get_reference() {
-    return (BRepMesh_FastDiscretFace*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_FastDiscretFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_FastDiscretFace)
 
 %extend BRepMesh_FastDiscretFace {
 	%pythoncode {
@@ -1423,51 +1240,7 @@ class BRepMesh_IEdgeTool : public Standard_Transient {
 };
 
 
-%extend BRepMesh_IEdgeTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_IEdgeTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_IEdgeTool::Handle_BRepMesh_IEdgeTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_IEdgeTool;
-class Handle_BRepMesh_IEdgeTool : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_BRepMesh_IEdgeTool();
-        Handle_BRepMesh_IEdgeTool(const Handle_BRepMesh_IEdgeTool &aHandle);
-        Handle_BRepMesh_IEdgeTool(const BRepMesh_IEdgeTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_IEdgeTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_IEdgeTool {
-    BRepMesh_IEdgeTool* _get_reference() {
-    return (BRepMesh_IEdgeTool*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_IEdgeTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_IEdgeTool)
 
 %extend BRepMesh_IEdgeTool {
 	%pythoncode {
@@ -2715,51 +2488,7 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 };
 
 
-%extend BRepMesh_IncrementalMesh {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMesh_IncrementalMesh(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMesh_IncrementalMesh::Handle_BRepMesh_IncrementalMesh %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMesh_IncrementalMesh;
-class Handle_BRepMesh_IncrementalMesh : public Handle_BRepMesh_DiscretRoot {
-
-    public:
-        // constructors
-        Handle_BRepMesh_IncrementalMesh();
-        Handle_BRepMesh_IncrementalMesh(const Handle_BRepMesh_IncrementalMesh &aHandle);
-        Handle_BRepMesh_IncrementalMesh(const BRepMesh_IncrementalMesh *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMesh_IncrementalMesh DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMesh_IncrementalMesh {
-    BRepMesh_IncrementalMesh* _get_reference() {
-    return (BRepMesh_IncrementalMesh*)$self->Access();
-    }
-};
-
-%extend Handle_BRepMesh_IncrementalMesh {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepMesh_IncrementalMesh)
 
 %extend BRepMesh_IncrementalMesh {
 	%pythoncode {

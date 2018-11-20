@@ -18,7 +18,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPBUILDDOCSTRING
-"No docstring provided."
+"
+This package describes algorithms and dedicated tools
+involved in topological operation on BRep shapes.
+These 'builders' works on a data structure that must have been
+previously filled (by a 'filler') according to the
+topological operation rules defined in class DataStructure
+from TopOpeBRepDS.
+The DSFiller must be considered as a 'linking' tool
+dealing with geometric data as an input and a DS as an
+output.
+These geometric data may be seen as the result of 3D
+intersection between BRep shapes.
+"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPBUILDDOCSTRING) TopOpeBRepBuild
 
@@ -34,24 +46,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopOpeBRepBuild_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopOpeBRepBuild_GTopo * TopOpeBRepBuild_PGTopo;
@@ -67,6 +65,16 @@ enum TopOpeBRepBuild_LoopEnum {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape)
+%wrap_handle(TopOpeBRepBuild_HBuilder)
+%wrap_handle(TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo)
+%wrap_handle(TopOpeBRepBuild_ListNodeOfListOfListOfLoop)
+%wrap_handle(TopOpeBRepBuild_ListNodeOfListOfLoop)
+%wrap_handle(TopOpeBRepBuild_ListNodeOfListOfPave)
+%wrap_handle(TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape)
+%wrap_handle(TopOpeBRepBuild_Loop)
+%wrap_handle(TopOpeBRepBuild_Pave)
 
 %nodefaultctor TopOpeBRepBuild_AreaBuilder;
 class TopOpeBRepBuild_AreaBuilder {
@@ -542,51 +550,7 @@ class TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public
 };
 
 
-%extend TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape::Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape;
-class Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape();
-        Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape(const Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape &aHandle);
-        Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape(const TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
-    TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape* _get_reference() {
-    return (TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape)
 
 %extend TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
 	%pythoncode {
@@ -1560,51 +1524,7 @@ class TopOpeBRepBuild_HBuilder : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepBuild_HBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_HBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_HBuilder::Handle_TopOpeBRepBuild_HBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_HBuilder;
-class Handle_TopOpeBRepBuild_HBuilder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_HBuilder();
-        Handle_TopOpeBRepBuild_HBuilder(const Handle_TopOpeBRepBuild_HBuilder &aHandle);
-        Handle_TopOpeBRepBuild_HBuilder(const TopOpeBRepBuild_HBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_HBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_HBuilder {
-    TopOpeBRepBuild_HBuilder* _get_reference() {
-    return (TopOpeBRepBuild_HBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_HBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_HBuilder)
 
 %extend TopOpeBRepBuild_HBuilder {
 	%pythoncode {
@@ -1656,51 +1576,7 @@ class TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo : publ
 };
 
 
-%extend TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo::Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo;
-class Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo();
-        Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo(const Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo &aHandle);
-        Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo(const TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
-    TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo* _get_reference() {
-    return (TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo)
 
 %extend TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
 	%pythoncode {
@@ -1996,51 +1872,7 @@ class TopOpeBRepBuild_ListNodeOfListOfListOfLoop : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop::Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop;
-class Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop();
-        Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop(const Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop &aHandle);
-        Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop(const TopOpeBRepBuild_ListNodeOfListOfListOfLoop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
-    TopOpeBRepBuild_ListNodeOfListOfListOfLoop* _get_reference() {
-    return (TopOpeBRepBuild_ListNodeOfListOfListOfLoop*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_ListNodeOfListOfListOfLoop)
 
 %extend TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
 	%pythoncode {
@@ -2065,51 +1897,7 @@ class TopOpeBRepBuild_ListNodeOfListOfLoop : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepBuild_ListNodeOfListOfLoop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_ListNodeOfListOfLoop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_ListNodeOfListOfLoop::Handle_TopOpeBRepBuild_ListNodeOfListOfLoop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_ListNodeOfListOfLoop;
-class Handle_TopOpeBRepBuild_ListNodeOfListOfLoop : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_ListNodeOfListOfLoop();
-        Handle_TopOpeBRepBuild_ListNodeOfListOfLoop(const Handle_TopOpeBRepBuild_ListNodeOfListOfLoop &aHandle);
-        Handle_TopOpeBRepBuild_ListNodeOfListOfLoop(const TopOpeBRepBuild_ListNodeOfListOfLoop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_ListNodeOfListOfLoop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfLoop {
-    TopOpeBRepBuild_ListNodeOfListOfLoop* _get_reference() {
-    return (TopOpeBRepBuild_ListNodeOfListOfLoop*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfLoop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_ListNodeOfListOfLoop)
 
 %extend TopOpeBRepBuild_ListNodeOfListOfLoop {
 	%pythoncode {
@@ -2134,51 +1922,7 @@ class TopOpeBRepBuild_ListNodeOfListOfPave : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepBuild_ListNodeOfListOfPave {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_ListNodeOfListOfPave(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_ListNodeOfListOfPave::Handle_TopOpeBRepBuild_ListNodeOfListOfPave %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_ListNodeOfListOfPave;
-class Handle_TopOpeBRepBuild_ListNodeOfListOfPave : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_ListNodeOfListOfPave();
-        Handle_TopOpeBRepBuild_ListNodeOfListOfPave(const Handle_TopOpeBRepBuild_ListNodeOfListOfPave &aHandle);
-        Handle_TopOpeBRepBuild_ListNodeOfListOfPave(const TopOpeBRepBuild_ListNodeOfListOfPave *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_ListNodeOfListOfPave DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfPave {
-    TopOpeBRepBuild_ListNodeOfListOfPave* _get_reference() {
-    return (TopOpeBRepBuild_ListNodeOfListOfPave*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfPave {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_ListNodeOfListOfPave)
 
 %extend TopOpeBRepBuild_ListNodeOfListOfPave {
 	%pythoncode {
@@ -2203,51 +1947,7 @@ class TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public TCollection_MapN
 };
 
 
-%extend TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape::Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape;
-class Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape();
-        Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape(const Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape &aHandle);
-        Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape(const TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
-    TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape* _get_reference() {
-    return (TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape)
 
 %extend TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
 	%pythoncode {
@@ -2828,51 +2528,7 @@ class TopOpeBRepBuild_Loop : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepBuild_Loop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_Loop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_Loop::Handle_TopOpeBRepBuild_Loop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_Loop;
-class Handle_TopOpeBRepBuild_Loop : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_Loop();
-        Handle_TopOpeBRepBuild_Loop(const Handle_TopOpeBRepBuild_Loop &aHandle);
-        Handle_TopOpeBRepBuild_Loop(const TopOpeBRepBuild_Loop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_Loop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_Loop {
-    TopOpeBRepBuild_Loop* _get_reference() {
-    return (TopOpeBRepBuild_Loop*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_Loop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_Loop)
 
 %extend TopOpeBRepBuild_Loop {
 	%pythoncode {
@@ -4316,51 +3972,7 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 };
 
 
-%extend TopOpeBRepBuild_Pave {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepBuild_Pave(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepBuild_Pave::Handle_TopOpeBRepBuild_Pave %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepBuild_Pave;
-class Handle_TopOpeBRepBuild_Pave : public Handle_TopOpeBRepBuild_Loop {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepBuild_Pave();
-        Handle_TopOpeBRepBuild_Pave(const Handle_TopOpeBRepBuild_Pave &aHandle);
-        Handle_TopOpeBRepBuild_Pave(const TopOpeBRepBuild_Pave *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepBuild_Pave DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepBuild_Pave {
-    TopOpeBRepBuild_Pave* _get_reference() {
-    return (TopOpeBRepBuild_Pave*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepBuild_Pave {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepBuild_Pave)
 
 %extend TopOpeBRepBuild_Pave {
 	%pythoncode {

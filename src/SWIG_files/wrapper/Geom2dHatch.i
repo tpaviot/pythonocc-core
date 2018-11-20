@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DHATCHDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DHATCHDOCSTRING) Geom2dHatch
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Geom2dHatch_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Geom2dHatch_DataMapNodeOfHatchings)
+%wrap_handle(Geom2dHatch_DataMapNodeOfMapOfElements)
 
 %nodefaultctor Geom2dHatch_Classifier;
 class Geom2dHatch_Classifier {
@@ -221,51 +210,7 @@ class Geom2dHatch_DataMapNodeOfHatchings : public TCollection_MapNode {
 };
 
 
-%extend Geom2dHatch_DataMapNodeOfHatchings {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2dHatch_DataMapNodeOfHatchings(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2dHatch_DataMapNodeOfHatchings::Handle_Geom2dHatch_DataMapNodeOfHatchings %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2dHatch_DataMapNodeOfHatchings;
-class Handle_Geom2dHatch_DataMapNodeOfHatchings : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Geom2dHatch_DataMapNodeOfHatchings();
-        Handle_Geom2dHatch_DataMapNodeOfHatchings(const Handle_Geom2dHatch_DataMapNodeOfHatchings &aHandle);
-        Handle_Geom2dHatch_DataMapNodeOfHatchings(const Geom2dHatch_DataMapNodeOfHatchings *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2dHatch_DataMapNodeOfHatchings DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2dHatch_DataMapNodeOfHatchings {
-    Geom2dHatch_DataMapNodeOfHatchings* _get_reference() {
-    return (Geom2dHatch_DataMapNodeOfHatchings*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2dHatch_DataMapNodeOfHatchings {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2dHatch_DataMapNodeOfHatchings)
 
 %extend Geom2dHatch_DataMapNodeOfHatchings {
 	%pythoncode {
@@ -305,51 +250,7 @@ class Geom2dHatch_DataMapNodeOfMapOfElements : public TCollection_MapNode {
 };
 
 
-%extend Geom2dHatch_DataMapNodeOfMapOfElements {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Geom2dHatch_DataMapNodeOfMapOfElements(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Geom2dHatch_DataMapNodeOfMapOfElements::Handle_Geom2dHatch_DataMapNodeOfMapOfElements %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Geom2dHatch_DataMapNodeOfMapOfElements;
-class Handle_Geom2dHatch_DataMapNodeOfMapOfElements : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Geom2dHatch_DataMapNodeOfMapOfElements();
-        Handle_Geom2dHatch_DataMapNodeOfMapOfElements(const Handle_Geom2dHatch_DataMapNodeOfMapOfElements &aHandle);
-        Handle_Geom2dHatch_DataMapNodeOfMapOfElements(const Geom2dHatch_DataMapNodeOfMapOfElements *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Geom2dHatch_DataMapNodeOfMapOfElements DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Geom2dHatch_DataMapNodeOfMapOfElements {
-    Geom2dHatch_DataMapNodeOfMapOfElements* _get_reference() {
-    return (Geom2dHatch_DataMapNodeOfMapOfElements*)$self->Access();
-    }
-};
-
-%extend Handle_Geom2dHatch_DataMapNodeOfMapOfElements {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Geom2dHatch_DataMapNodeOfMapOfElements)
 
 %extend Geom2dHatch_DataMapNodeOfMapOfElements {
 	%pythoncode {

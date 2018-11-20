@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PCDMDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PCDMDOCSTRING) PCDM
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PCDM_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Storage_BaseDriver * PCDM_BaseDriverPointer;
@@ -100,6 +86,16 @@ enum PCDM_ReaderStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(PCDM_ReadWriter)
+%wrap_handle(PCDM_Reader)
+%wrap_handle(PCDM_ReferenceIterator)
+%wrap_handle(PCDM_SequenceNodeOfSequenceOfDocument)
+%wrap_handle(PCDM_SequenceNodeOfSequenceOfReference)
+%wrap_handle(PCDM_Writer)
+%wrap_handle(PCDM_ReadWriter_1)
+%wrap_handle(PCDM_RetrievalDriver)
+%wrap_handle(PCDM_StorageDriver)
 
 %rename(pcdm) PCDM;
 class PCDM {
@@ -151,52 +147,6 @@ class PCDM_Document : public Standard_Persistent {
 		 PCDM_Document ();
 };
 
-
-%extend PCDM_Document {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_Document(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_Document::Handle_PCDM_Document %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_Document;
-class Handle_PCDM_Document : public Handle_Standard_Persistent {
-
-    public:
-        // constructors
-        Handle_PCDM_Document();
-        Handle_PCDM_Document(const Handle_PCDM_Document &aHandle);
-        Handle_PCDM_Document(const PCDM_Document *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_Document DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PCDM_Document {
-    PCDM_Document* _get_reference() {
-    return (PCDM_Document*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_Document {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PCDM_Document {
 	%pythoncode {
@@ -323,51 +273,7 @@ class PCDM_ReadWriter : public Standard_Transient {
 };
 
 
-%extend PCDM_ReadWriter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_ReadWriter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_ReadWriter::Handle_PCDM_ReadWriter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_ReadWriter;
-class Handle_PCDM_ReadWriter : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_PCDM_ReadWriter();
-        Handle_PCDM_ReadWriter(const Handle_PCDM_ReadWriter &aHandle);
-        Handle_PCDM_ReadWriter(const PCDM_ReadWriter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_ReadWriter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_ReadWriter {
-    PCDM_ReadWriter* _get_reference() {
-    return (PCDM_ReadWriter*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_ReadWriter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_ReadWriter)
 
 %extend PCDM_ReadWriter {
 	%pythoncode {
@@ -402,51 +308,7 @@ class PCDM_Reader : public Standard_Transient {
 };
 
 
-%extend PCDM_Reader {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_Reader(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_Reader::Handle_PCDM_Reader %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_Reader;
-class Handle_PCDM_Reader : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_PCDM_Reader();
-        Handle_PCDM_Reader(const Handle_PCDM_Reader &aHandle);
-        Handle_PCDM_Reader(const PCDM_Reader *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_Reader DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_Reader {
-    PCDM_Reader* _get_reference() {
-    return (PCDM_Reader*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_Reader {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_Reader)
 
 %extend PCDM_Reader {
 	%pythoncode {
@@ -522,51 +384,7 @@ class PCDM_ReferenceIterator : public Standard_Transient {
 };
 
 
-%extend PCDM_ReferenceIterator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_ReferenceIterator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_ReferenceIterator::Handle_PCDM_ReferenceIterator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_ReferenceIterator;
-class Handle_PCDM_ReferenceIterator : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_PCDM_ReferenceIterator();
-        Handle_PCDM_ReferenceIterator(const Handle_PCDM_ReferenceIterator &aHandle);
-        Handle_PCDM_ReferenceIterator(const PCDM_ReferenceIterator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_ReferenceIterator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_ReferenceIterator {
-    PCDM_ReferenceIterator* _get_reference() {
-    return (PCDM_ReferenceIterator*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_ReferenceIterator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_ReferenceIterator)
 
 %extend PCDM_ReferenceIterator {
 	%pythoncode {
@@ -593,51 +411,7 @@ class PCDM_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode {
 };
 
 
-%extend PCDM_SequenceNodeOfSequenceOfDocument {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_SequenceNodeOfSequenceOfDocument(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_SequenceNodeOfSequenceOfDocument::Handle_PCDM_SequenceNodeOfSequenceOfDocument %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_SequenceNodeOfSequenceOfDocument;
-class Handle_PCDM_SequenceNodeOfSequenceOfDocument : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_PCDM_SequenceNodeOfSequenceOfDocument();
-        Handle_PCDM_SequenceNodeOfSequenceOfDocument(const Handle_PCDM_SequenceNodeOfSequenceOfDocument &aHandle);
-        Handle_PCDM_SequenceNodeOfSequenceOfDocument(const PCDM_SequenceNodeOfSequenceOfDocument *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_SequenceNodeOfSequenceOfDocument DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_SequenceNodeOfSequenceOfDocument {
-    PCDM_SequenceNodeOfSequenceOfDocument* _get_reference() {
-    return (PCDM_SequenceNodeOfSequenceOfDocument*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_SequenceNodeOfSequenceOfDocument {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_SequenceNodeOfSequenceOfDocument)
 
 %extend PCDM_SequenceNodeOfSequenceOfDocument {
 	%pythoncode {
@@ -664,51 +438,7 @@ class PCDM_SequenceNodeOfSequenceOfReference : public TCollection_SeqNode {
 };
 
 
-%extend PCDM_SequenceNodeOfSequenceOfReference {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_SequenceNodeOfSequenceOfReference(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_SequenceNodeOfSequenceOfReference::Handle_PCDM_SequenceNodeOfSequenceOfReference %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_SequenceNodeOfSequenceOfReference;
-class Handle_PCDM_SequenceNodeOfSequenceOfReference : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_PCDM_SequenceNodeOfSequenceOfReference();
-        Handle_PCDM_SequenceNodeOfSequenceOfReference(const Handle_PCDM_SequenceNodeOfSequenceOfReference &aHandle);
-        Handle_PCDM_SequenceNodeOfSequenceOfReference(const PCDM_SequenceNodeOfSequenceOfReference *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_SequenceNodeOfSequenceOfReference DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_SequenceNodeOfSequenceOfReference {
-    PCDM_SequenceNodeOfSequenceOfReference* _get_reference() {
-    return (PCDM_SequenceNodeOfSequenceOfReference*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_SequenceNodeOfSequenceOfReference {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_SequenceNodeOfSequenceOfReference)
 
 %extend PCDM_SequenceNodeOfSequenceOfReference {
 	%pythoncode {
@@ -1015,51 +745,7 @@ class PCDM_Writer : public Standard_Transient {
 };
 
 
-%extend PCDM_Writer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_Writer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_Writer::Handle_PCDM_Writer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_Writer;
-class Handle_PCDM_Writer : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_PCDM_Writer();
-        Handle_PCDM_Writer(const Handle_PCDM_Writer &aHandle);
-        Handle_PCDM_Writer(const PCDM_Writer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_Writer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_Writer {
-    PCDM_Writer* _get_reference() {
-    return (PCDM_Writer*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_Writer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_Writer)
 
 %extend PCDM_Writer {
 	%pythoncode {
@@ -1152,51 +838,7 @@ class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
 };
 
 
-%extend PCDM_ReadWriter_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_ReadWriter_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_ReadWriter_1::Handle_PCDM_ReadWriter_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_ReadWriter_1;
-class Handle_PCDM_ReadWriter_1 : public Handle_PCDM_ReadWriter {
-
-    public:
-        // constructors
-        Handle_PCDM_ReadWriter_1();
-        Handle_PCDM_ReadWriter_1(const Handle_PCDM_ReadWriter_1 &aHandle);
-        Handle_PCDM_ReadWriter_1(const PCDM_ReadWriter_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_ReadWriter_1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_ReadWriter_1 {
-    PCDM_ReadWriter_1* _get_reference() {
-    return (PCDM_ReadWriter_1*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_ReadWriter_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_ReadWriter_1)
 
 %extend PCDM_ReadWriter_1 {
 	%pythoncode {
@@ -1277,51 +919,7 @@ class PCDM_RetrievalDriver : public PCDM_Reader {
 };
 
 
-%extend PCDM_RetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_RetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_RetrievalDriver::Handle_PCDM_RetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_RetrievalDriver;
-class Handle_PCDM_RetrievalDriver : public Handle_PCDM_Reader {
-
-    public:
-        // constructors
-        Handle_PCDM_RetrievalDriver();
-        Handle_PCDM_RetrievalDriver(const Handle_PCDM_RetrievalDriver &aHandle);
-        Handle_PCDM_RetrievalDriver(const PCDM_RetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_RetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_RetrievalDriver {
-    PCDM_RetrievalDriver* _get_reference() {
-    return (PCDM_RetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_RetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_RetrievalDriver)
 
 %extend PCDM_RetrievalDriver {
 	%pythoncode {
@@ -1404,51 +1002,7 @@ class PCDM_StorageDriver : public PCDM_Writer {
 };
 
 
-%extend PCDM_StorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PCDM_StorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PCDM_StorageDriver::Handle_PCDM_StorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PCDM_StorageDriver;
-class Handle_PCDM_StorageDriver : public Handle_PCDM_Writer {
-
-    public:
-        // constructors
-        Handle_PCDM_StorageDriver();
-        Handle_PCDM_StorageDriver(const Handle_PCDM_StorageDriver &aHandle);
-        Handle_PCDM_StorageDriver(const PCDM_StorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PCDM_StorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PCDM_StorageDriver {
-    PCDM_StorageDriver* _get_reference() {
-    return (PCDM_StorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_PCDM_StorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PCDM_StorageDriver)
 
 %extend PCDM_StorageDriver {
 	%pythoncode {

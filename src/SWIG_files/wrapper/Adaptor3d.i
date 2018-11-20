@@ -18,7 +18,113 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADAPTOR3DDOCSTRING
-"No docstring provided."
+"The Adaptor3d package  is used to help defining
+reusable geometric algorithms. i.e. that can be
+used on curves and surfaces.
+
+It defines general services for 3 kind of objects :
+
+- the 2d curve.   Curve2d
+- the 3d curve.   Curve
+- the 3d surface.  Surface
+
+The services are :
+
+- Usual services found in Geom or Geom2d :
+
+* parameter range, value and derivatives, etc...
+
+- Continuity breakout services :
+
+* Allows to divide a curve or a surfaces in
+parts with a given derivation order.
+
+- Special geometries detection services :
+
+* Allows to test for special cases that can
+be processed more easily :
+- Conics, Quadrics, Bezier, BSpline ...
+
+And to get the correponding data form the
+package gp or  Geom.  The special type
+OtherCurve means that no special case has
+been detected and the algorithm may use
+only the evaluation methods (D0, D1, ...)
+
+
+For  each category Curve2d, Curve,  Surface we
+define  three classes, we illustrate now the
+principles with the Curve, the same applies to
+Curve2d and Surface.
+
+The class Curve is the  abstract root for all
+Curves used by algorithms, it is handled by value
+and  provides as deferred methods the services
+described above.
+
+Some services (breakout) requires to create new
+curves,   this  leads  to  memory allocation
+considerations (who create the curve, who deletes
+it ?). To solve this problem elegantly the curve
+will return a HCurve, the  HCurve is a  curve
+handled by reference  so it will  be deallocated
+automatically when it is not used.
+
+A third class GenHCurve is provided, this class is
+generic and its utility  is to provide automatic
+generation of the HCurve class when you have
+written the Curve class.
+
+
+* Let us show an example (with 2d curves) :
+
+Imagine an algorithm to intersect curves, this
+algorithms is written to process Curve2d from
+Adaptor3d :
+
+A method may look like :
+
+Intersect(C1,C2 : Curve2d from Adaptor3d);
+
+Which will look like in C++
+
+Intersect(const Adaptor2d_Curve2d& C1,
+const Adaptor2d_Curve2d& C2)
+{
+// you can call any method
+Standard_Real first1 = C1.FirstParameter();
+
+// but avoid to copy in an Adaptor3d_Curve which
+// is an Abstract class, use a reference or a pointer
+
+const Adaptor3d_Curve& C = C1;
+const Adaptor3d_Curve *pC = &C1;
+
+// If you are interseted in Intervals you must
+// store them in a HCurve to ensure they are kept
+// in memory. Then a referrence may be used.
+
+Handle(Adaptor3d_HCurve) HCI = C1.Interval(1);
+
+const Adaptor3d_Curve& CI = HCI->Curve();
+pC = &(HCI->Curve());
+
+
+* The  Adaptor3d provides also Generic classes
+implementing algorithmic curves and surfaces.
+
+- IsoCurve    : Isoparametric curve on a surface.
+- CurveOnSurface : 2D curve in the parametric
+space of a surface.
+
+
+- OffsetCurve2d : 2d offset curve
+- ProjectedCurve : 3d curve projected on a plane
+- SurfaceOfLinearExtrusion
+- SurfaceOfRevolution
+
+They are instantiated with HCurve, HSurface, HCurved2d
+"
 %enddef
 %module (package="OCC.Core", docstring=ADAPTOR3DDOCSTRING) Adaptor3d
 
@@ -34,24 +140,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Adaptor3d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Adaptor3d_Surface * Adaptor3d_SurfacePtr;
@@ -61,6 +153,16 @@ typedef Adaptor3d_CurveOnSurface * Adaptor3d_CurveOnSurfacePtr;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(Adaptor3d_HCurve)
+%wrap_handle(Adaptor3d_HOffsetCurve)
+%wrap_handle(Adaptor3d_HSurface)
+%wrap_handle(Adaptor3d_HVertex)
+%wrap_handle(Adaptor3d_TopolTool)
+%wrap_handle(Adaptor3d_HCurveOnSurface)
+%wrap_handle(Adaptor3d_HIsoCurve)
+%wrap_handle(Adaptor3d_HSurfaceOfLinearExtrusion)
+%wrap_handle(Adaptor3d_HSurfaceOfRevolution)
 
 class Adaptor3d_Curve {
 	public:
@@ -436,51 +538,7 @@ class Adaptor3d_HCurve : public MMgt_TShared {
 };
 
 
-%extend Adaptor3d_HCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HCurve::Handle_Adaptor3d_HCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HCurve;
-class Handle_Adaptor3d_HCurve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HCurve();
-        Handle_Adaptor3d_HCurve(const Handle_Adaptor3d_HCurve &aHandle);
-        Handle_Adaptor3d_HCurve(const Adaptor3d_HCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HCurve {
-    Adaptor3d_HCurve* _get_reference() {
-    return (Adaptor3d_HCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HCurve)
 
 %extend Adaptor3d_HCurve {
 	%pythoncode {
@@ -517,51 +575,7 @@ class Adaptor3d_HOffsetCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%extend Adaptor3d_HOffsetCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HOffsetCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HOffsetCurve::Handle_Adaptor3d_HOffsetCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HOffsetCurve;
-class Handle_Adaptor3d_HOffsetCurve : public Handle_Adaptor2d_HCurve2d {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HOffsetCurve();
-        Handle_Adaptor3d_HOffsetCurve(const Handle_Adaptor3d_HOffsetCurve &aHandle);
-        Handle_Adaptor3d_HOffsetCurve(const Adaptor3d_HOffsetCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HOffsetCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HOffsetCurve {
-    Adaptor3d_HOffsetCurve* _get_reference() {
-    return (Adaptor3d_HOffsetCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HOffsetCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HOffsetCurve)
 
 %extend Adaptor3d_HOffsetCurve {
 	%pythoncode {
@@ -864,51 +878,7 @@ class Adaptor3d_HSurface : public MMgt_TShared {
 };
 
 
-%extend Adaptor3d_HSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HSurface::Handle_Adaptor3d_HSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HSurface;
-class Handle_Adaptor3d_HSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HSurface();
-        Handle_Adaptor3d_HSurface(const Handle_Adaptor3d_HSurface &aHandle);
-        Handle_Adaptor3d_HSurface(const Adaptor3d_HSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HSurface {
-    Adaptor3d_HSurface* _get_reference() {
-    return (Adaptor3d_HSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HSurface)
 
 %extend Adaptor3d_HSurface {
 	%pythoncode {
@@ -1327,51 +1297,7 @@ class Adaptor3d_HVertex : public MMgt_TShared {
 };
 
 
-%extend Adaptor3d_HVertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HVertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HVertex::Handle_Adaptor3d_HVertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HVertex;
-class Handle_Adaptor3d_HVertex : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HVertex();
-        Handle_Adaptor3d_HVertex(const Handle_Adaptor3d_HVertex &aHandle);
-        Handle_Adaptor3d_HVertex(const Adaptor3d_HVertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HVertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HVertex {
-    Adaptor3d_HVertex* _get_reference() {
-    return (Adaptor3d_HVertex*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HVertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HVertex)
 
 %extend Adaptor3d_HVertex {
 	%pythoncode {
@@ -2250,51 +2176,7 @@ class Adaptor3d_TopolTool : public MMgt_TShared {
 };
 
 
-%extend Adaptor3d_TopolTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_TopolTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_TopolTool::Handle_Adaptor3d_TopolTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_TopolTool;
-class Handle_Adaptor3d_TopolTool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_TopolTool();
-        Handle_Adaptor3d_TopolTool(const Handle_Adaptor3d_TopolTool &aHandle);
-        Handle_Adaptor3d_TopolTool(const Adaptor3d_TopolTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_TopolTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_TopolTool {
-    Adaptor3d_TopolTool* _get_reference() {
-    return (Adaptor3d_TopolTool*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_TopolTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_TopolTool)
 
 %extend Adaptor3d_TopolTool {
 	%pythoncode {
@@ -2580,51 +2462,7 @@ class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 };
 
 
-%extend Adaptor3d_HCurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HCurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HCurveOnSurface::Handle_Adaptor3d_HCurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HCurveOnSurface;
-class Handle_Adaptor3d_HCurveOnSurface : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HCurveOnSurface();
-        Handle_Adaptor3d_HCurveOnSurface(const Handle_Adaptor3d_HCurveOnSurface &aHandle);
-        Handle_Adaptor3d_HCurveOnSurface(const Adaptor3d_HCurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HCurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HCurveOnSurface {
-    Adaptor3d_HCurveOnSurface* _get_reference() {
-    return (Adaptor3d_HCurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HCurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HCurveOnSurface)
 
 %extend Adaptor3d_HCurveOnSurface {
 	%pythoncode {
@@ -2665,51 +2503,7 @@ class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 };
 
 
-%extend Adaptor3d_HIsoCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HIsoCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HIsoCurve::Handle_Adaptor3d_HIsoCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HIsoCurve;
-class Handle_Adaptor3d_HIsoCurve : public Handle_Adaptor3d_HCurve {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HIsoCurve();
-        Handle_Adaptor3d_HIsoCurve(const Handle_Adaptor3d_HIsoCurve &aHandle);
-        Handle_Adaptor3d_HIsoCurve(const Adaptor3d_HIsoCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HIsoCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HIsoCurve {
-    Adaptor3d_HIsoCurve* _get_reference() {
-    return (Adaptor3d_HIsoCurve*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HIsoCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HIsoCurve)
 
 %extend Adaptor3d_HIsoCurve {
 	%pythoncode {
@@ -2746,51 +2540,7 @@ class Adaptor3d_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 };
 
 
-%extend Adaptor3d_HSurfaceOfLinearExtrusion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HSurfaceOfLinearExtrusion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HSurfaceOfLinearExtrusion::Handle_Adaptor3d_HSurfaceOfLinearExtrusion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HSurfaceOfLinearExtrusion;
-class Handle_Adaptor3d_HSurfaceOfLinearExtrusion : public Handle_Adaptor3d_HSurface {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HSurfaceOfLinearExtrusion();
-        Handle_Adaptor3d_HSurfaceOfLinearExtrusion(const Handle_Adaptor3d_HSurfaceOfLinearExtrusion &aHandle);
-        Handle_Adaptor3d_HSurfaceOfLinearExtrusion(const Adaptor3d_HSurfaceOfLinearExtrusion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HSurfaceOfLinearExtrusion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HSurfaceOfLinearExtrusion {
-    Adaptor3d_HSurfaceOfLinearExtrusion* _get_reference() {
-    return (Adaptor3d_HSurfaceOfLinearExtrusion*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HSurfaceOfLinearExtrusion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HSurfaceOfLinearExtrusion)
 
 %extend Adaptor3d_HSurfaceOfLinearExtrusion {
 	%pythoncode {
@@ -2827,51 +2577,7 @@ class Adaptor3d_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 };
 
 
-%extend Adaptor3d_HSurfaceOfRevolution {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Adaptor3d_HSurfaceOfRevolution(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Adaptor3d_HSurfaceOfRevolution::Handle_Adaptor3d_HSurfaceOfRevolution %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Adaptor3d_HSurfaceOfRevolution;
-class Handle_Adaptor3d_HSurfaceOfRevolution : public Handle_Adaptor3d_HSurface {
-
-    public:
-        // constructors
-        Handle_Adaptor3d_HSurfaceOfRevolution();
-        Handle_Adaptor3d_HSurfaceOfRevolution(const Handle_Adaptor3d_HSurfaceOfRevolution &aHandle);
-        Handle_Adaptor3d_HSurfaceOfRevolution(const Adaptor3d_HSurfaceOfRevolution *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Adaptor3d_HSurfaceOfRevolution DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Adaptor3d_HSurfaceOfRevolution {
-    Adaptor3d_HSurfaceOfRevolution* _get_reference() {
-    return (Adaptor3d_HSurfaceOfRevolution*)$self->Access();
-    }
-};
-
-%extend Handle_Adaptor3d_HSurfaceOfRevolution {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Adaptor3d_HSurfaceOfRevolution)
 
 %extend Adaptor3d_HSurfaceOfRevolution {
 	%pythoncode {

@@ -529,6 +529,50 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_ToroidalSurface.hxx>
 #include<Geom_Circle.hxx>
 #include<Geom_Hyperbola.hxx>
+#include<Transfer_IteratorOfProcessForFinder.hxx>
+#include<Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
+#include<Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
+#include<Transfer_ResultFromModel.hxx>
+#include<Transfer_ResultFromTransient.hxx>
+#include<Transfer_ActorOfFinderProcess.hxx>
+#include<Transfer_TransferMapOfProcessForTransient.hxx>
+#include<Transfer_DispatchControl.hxx>
+#include<Transfer_FinderProcess.hxx>
+#include<Transfer_SequenceOfBinder.hxx>
+#include<Transfer_TransferInput.hxx>
+#include<Transfer_TransferDispatch.hxx>
+#include<Transfer_MultipleBinder.hxx>
+#include<Transfer_StatusExec.hxx>
+#include<Transfer_DataInfo.hxx>
+#include<Transfer_Finder.hxx>
+#include<Transfer_TransferIterator.hxx>
+#include<Transfer_TransferFailure.hxx>
+#include<Transfer_TransferOutput.hxx>
+#include<Transfer_VoidBinder.hxx>
+#include<Transfer_FindHasher.hxx>
+#include<Transfer_TransientMapper.hxx>
+#include<Transfer_SimpleBinderOfTransient.hxx>
+#include<Transfer_IteratorOfProcessForTransient.hxx>
+#include<Transfer_SequenceOfFinder.hxx>
+#include<Transfer_HSequenceOfBinder.hxx>
+#include<Transfer_ActorOfProcessForTransient.hxx>
+#include<Transfer_ActorDispatch.hxx>
+#include<Transfer_MapContainer.hxx>
+#include<Transfer_BinderOfTransientInteger.hxx>
+#include<Transfer_SequenceNodeOfSequenceOfBinder.hxx>
+#include<Transfer_UndefMode.hxx>
+#include<Transfer_TransferDeadLoop.hxx>
+#include<Transfer_TransferMapOfProcessForFinder.hxx>
+#include<Transfer_HSequenceOfFinder.hxx>
+#include<Transfer_TransientProcess.hxx>
+#include<Transfer_ProcessForTransient.hxx>
+#include<Transfer_StatusResult.hxx>
+#include<Transfer_ActorOfProcessForFinder.hxx>
+#include<Transfer_Binder.hxx>
+#include<Transfer_SequenceNodeOfSequenceOfFinder.hxx>
+#include<Transfer_ActorOfTransientProcess.hxx>
+#include<Transfer_ProcessForFinder.hxx>
+#include<Transfer_TransientListBinder.hxx>
 #include<Geom2d_AxisPlacement.hxx>
 #include<Geom2d_Direction.hxx>
 #include<Geom2d_Ellipse.hxx>
@@ -856,6 +900,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
+#include<Dico_IteratorOfDictionaryOfTransient.hxx>
+#include<Dico_StackItemOfDictionaryOfTransient.hxx>
+#include<Dico_IteratorOfDictionaryOfInteger.hxx>
+#include<Dico_DictionaryOfTransient.hxx>
+#include<Dico_StackItemOfDictionaryOfInteger.hxx>
+#include<Dico_DictionaryOfInteger.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_Array2OfXYZ.hxx>
 #include<TColgp_SequenceOfVec.hxx>
@@ -1104,5 +1154,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TopoDS.i
 %import StepShape.i
 %import Geom.i
+%import Transfer.i
 %import Geom2d.i
 %import gp.i

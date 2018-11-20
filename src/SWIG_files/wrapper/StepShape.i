@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPSHAPEDOCSTRING
-"No docstring provided."
+"Collects definitions of STEP topological entities
+from Part 42 of ISO10303 (topology_schema)
+"
 %enddef
 %module (package="OCC.Core", docstring=STEPSHAPEDOCSTRING) StepShape
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepShape_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -70,6 +58,108 @@ enum StepShape_BooleanOperator {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepShape_Block)
+%wrap_handle(StepShape_BooleanResult)
+%wrap_handle(StepShape_BoxDomain)
+%wrap_handle(StepShape_ConnectedFaceShapeRepresentation)
+%wrap_handle(StepShape_ContextDependentShapeRepresentation)
+%wrap_handle(StepShape_DefinitionalRepresentationAndShapeRepresentation)
+%wrap_handle(StepShape_DimensionalCharacteristicRepresentation)
+%wrap_handle(StepShape_DimensionalLocation)
+%wrap_handle(StepShape_DimensionalSize)
+%wrap_handle(StepShape_EdgeBasedWireframeModel)
+%wrap_handle(StepShape_FaceBasedSurfaceModel)
+%wrap_handle(StepShape_GeometricSet)
+%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
+%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
+%wrap_handle(StepShape_HArray1OfEdge)
+%wrap_handle(StepShape_HArray1OfFace)
+%wrap_handle(StepShape_HArray1OfFaceBound)
+%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
+%wrap_handle(StepShape_HArray1OfOrientedClosedShell)
+%wrap_handle(StepShape_HArray1OfOrientedEdge)
+%wrap_handle(StepShape_HArray1OfShell)
+%wrap_handle(StepShape_HArray1OfValueQualifier)
+%wrap_handle(StepShape_HalfSpaceSolid)
+%wrap_handle(StepShape_LimitsAndFits)
+%wrap_handle(StepShape_MeasureQualification)
+%wrap_handle(StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem)
+%wrap_handle(StepShape_PlusMinusTolerance)
+%wrap_handle(StepShape_PrecisionQualifier)
+%wrap_handle(StepShape_QualifiedRepresentationItem)
+%wrap_handle(StepShape_RightAngularWedge)
+%wrap_handle(StepShape_RightCircularCone)
+%wrap_handle(StepShape_RightCircularCylinder)
+%wrap_handle(StepShape_ShapeDefinitionRepresentation)
+%wrap_handle(StepShape_ShapeRepresentation)
+%wrap_handle(StepShape_ShellBasedSurfaceModel)
+%wrap_handle(StepShape_SolidModel)
+%wrap_handle(StepShape_Sphere)
+%wrap_handle(StepShape_ToleranceValue)
+%wrap_handle(StepShape_TopologicalRepresentationItem)
+%wrap_handle(StepShape_Torus)
+%wrap_handle(StepShape_TypeQualifier)
+%wrap_handle(StepShape_AdvancedBrepShapeRepresentation)
+%wrap_handle(StepShape_AngularLocation)
+%wrap_handle(StepShape_AngularSize)
+%wrap_handle(StepShape_BoxedHalfSpace)
+%wrap_handle(StepShape_CompoundShapeRepresentation)
+%wrap_handle(StepShape_ConnectedEdgeSet)
+%wrap_handle(StepShape_ConnectedFaceSet)
+%wrap_handle(StepShape_CsgShapeRepresentation)
+%wrap_handle(StepShape_CsgSolid)
+%wrap_handle(StepShape_DimensionalLocationWithPath)
+%wrap_handle(StepShape_DimensionalSizeWithPath)
+%wrap_handle(StepShape_DirectedDimensionalLocation)
+%wrap_handle(StepShape_Edge)
+%wrap_handle(StepShape_EdgeBasedWireframeShapeRepresentation)
+%wrap_handle(StepShape_Face)
+%wrap_handle(StepShape_FaceBound)
+%wrap_handle(StepShape_FacetedBrepShapeRepresentation)
+%wrap_handle(StepShape_GeometricCurveSet)
+%wrap_handle(StepShape_GeometricallyBoundedSurfaceShapeRepresentation)
+%wrap_handle(StepShape_GeometricallyBoundedWireframeShapeRepresentation)
+%wrap_handle(StepShape_Loop)
+%wrap_handle(StepShape_LoopAndPath)
+%wrap_handle(StepShape_ManifoldSolidBrep)
+%wrap_handle(StepShape_ManifoldSurfaceShapeRepresentation)
+%wrap_handle(StepShape_NonManifoldSurfaceShapeRepresentation)
+%wrap_handle(StepShape_Path)
+%wrap_handle(StepShape_PointRepresentation)
+%wrap_handle(StepShape_ShapeDimensionRepresentation)
+%wrap_handle(StepShape_ShapeRepresentationWithParameters)
+%wrap_handle(StepShape_SolidReplica)
+%wrap_handle(StepShape_SweptAreaSolid)
+%wrap_handle(StepShape_SweptFaceSolid)
+%wrap_handle(StepShape_TransitionalShapeRepresentation)
+%wrap_handle(StepShape_Vertex)
+%wrap_handle(StepShape_BrepWithVoids)
+%wrap_handle(StepShape_ClosedShell)
+%wrap_handle(StepShape_ConnectedFaceSubSet)
+%wrap_handle(StepShape_EdgeCurve)
+%wrap_handle(StepShape_EdgeLoop)
+%wrap_handle(StepShape_ExtrudedAreaSolid)
+%wrap_handle(StepShape_ExtrudedFaceSolid)
+%wrap_handle(StepShape_FaceOuterBound)
+%wrap_handle(StepShape_FaceSurface)
+%wrap_handle(StepShape_FacetedBrep)
+%wrap_handle(StepShape_FacetedBrepAndBrepWithVoids)
+%wrap_handle(StepShape_OpenShell)
+%wrap_handle(StepShape_OrientedEdge)
+%wrap_handle(StepShape_OrientedFace)
+%wrap_handle(StepShape_OrientedPath)
+%wrap_handle(StepShape_PolyLoop)
+%wrap_handle(StepShape_RevolvedAreaSolid)
+%wrap_handle(StepShape_RevolvedFaceSolid)
+%wrap_handle(StepShape_Subedge)
+%wrap_handle(StepShape_Subface)
+%wrap_handle(StepShape_VertexLoop)
+%wrap_handle(StepShape_VertexPoint)
+%wrap_handle(StepShape_AdvancedFace)
+%wrap_handle(StepShape_OrientedClosedShell)
+%wrap_handle(StepShape_OrientedOpenShell)
+%wrap_handle(StepShape_SeamEdge)
 
 %nodefaultctor StepShape_Array1OfConnectedEdgeSet;
 class StepShape_Array1OfConnectedEdgeSet {
@@ -1013,51 +1103,7 @@ class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_Block {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Block(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Block::Handle_StepShape_Block %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Block;
-class Handle_StepShape_Block : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Block();
-        Handle_StepShape_Block(const Handle_StepShape_Block &aHandle);
-        Handle_StepShape_Block(const StepShape_Block *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Block DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Block {
-    StepShape_Block* _get_reference() {
-    return (StepShape_Block*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Block {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Block)
 
 %extend StepShape_Block {
 	%pythoncode {
@@ -1199,51 +1245,7 @@ class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_BooleanResult {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_BooleanResult(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_BooleanResult::Handle_StepShape_BooleanResult %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_BooleanResult;
-class Handle_StepShape_BooleanResult : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_BooleanResult();
-        Handle_StepShape_BooleanResult(const Handle_StepShape_BooleanResult &aHandle);
-        Handle_StepShape_BooleanResult(const StepShape_BooleanResult *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_BooleanResult DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_BooleanResult {
-    StepShape_BooleanResult* _get_reference() {
-    return (StepShape_BooleanResult*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_BooleanResult {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_BooleanResult)
 
 %extend StepShape_BooleanResult {
 	%pythoncode {
@@ -1314,51 +1316,7 @@ class StepShape_BoxDomain : public MMgt_TShared {
 };
 
 
-%extend StepShape_BoxDomain {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_BoxDomain(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_BoxDomain::Handle_StepShape_BoxDomain %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_BoxDomain;
-class Handle_StepShape_BoxDomain : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_BoxDomain();
-        Handle_StepShape_BoxDomain(const Handle_StepShape_BoxDomain &aHandle);
-        Handle_StepShape_BoxDomain(const StepShape_BoxDomain *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_BoxDomain DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_BoxDomain {
-    StepShape_BoxDomain* _get_reference() {
-    return (StepShape_BoxDomain*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_BoxDomain {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_BoxDomain)
 
 %extend StepShape_BoxDomain {
 	%pythoncode {
@@ -1377,51 +1335,7 @@ class StepShape_ConnectedFaceShapeRepresentation : public StepRepr_Representatio
 };
 
 
-%extend StepShape_ConnectedFaceShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ConnectedFaceShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ConnectedFaceShapeRepresentation::Handle_StepShape_ConnectedFaceShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ConnectedFaceShapeRepresentation;
-class Handle_StepShape_ConnectedFaceShapeRepresentation : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepShape_ConnectedFaceShapeRepresentation();
-        Handle_StepShape_ConnectedFaceShapeRepresentation(const Handle_StepShape_ConnectedFaceShapeRepresentation &aHandle);
-        Handle_StepShape_ConnectedFaceShapeRepresentation(const StepShape_ConnectedFaceShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ConnectedFaceShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ConnectedFaceShapeRepresentation {
-    StepShape_ConnectedFaceShapeRepresentation* _get_reference() {
-    return (StepShape_ConnectedFaceShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ConnectedFaceShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ConnectedFaceShapeRepresentation)
 
 %extend StepShape_ConnectedFaceShapeRepresentation {
 	%pythoncode {
@@ -1466,51 +1380,7 @@ class StepShape_ContextDependentShapeRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepShape_ContextDependentShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ContextDependentShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ContextDependentShapeRepresentation::Handle_StepShape_ContextDependentShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ContextDependentShapeRepresentation;
-class Handle_StepShape_ContextDependentShapeRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_ContextDependentShapeRepresentation();
-        Handle_StepShape_ContextDependentShapeRepresentation(const Handle_StepShape_ContextDependentShapeRepresentation &aHandle);
-        Handle_StepShape_ContextDependentShapeRepresentation(const StepShape_ContextDependentShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ContextDependentShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ContextDependentShapeRepresentation {
-    StepShape_ContextDependentShapeRepresentation* _get_reference() {
-    return (StepShape_ContextDependentShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ContextDependentShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ContextDependentShapeRepresentation)
 
 %extend StepShape_ContextDependentShapeRepresentation {
 	%pythoncode {
@@ -1639,51 +1509,7 @@ class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRe
 };
 
 
-%extend StepShape_DefinitionalRepresentationAndShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation::Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation;
-class Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation : public Handle_StepRepr_DefinitionalRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation();
-        Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation(const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation &aHandle);
-        Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation(const StepShape_DefinitionalRepresentationAndShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation {
-    StepShape_DefinitionalRepresentationAndShapeRepresentation* _get_reference() {
-    return (StepShape_DefinitionalRepresentationAndShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DefinitionalRepresentationAndShapeRepresentation)
 
 %extend StepShape_DefinitionalRepresentationAndShapeRepresentation {
 	%pythoncode {
@@ -1777,51 +1603,7 @@ class StepShape_DimensionalCharacteristicRepresentation : public MMgt_TShared {
 };
 
 
-%extend StepShape_DimensionalCharacteristicRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DimensionalCharacteristicRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DimensionalCharacteristicRepresentation::Handle_StepShape_DimensionalCharacteristicRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DimensionalCharacteristicRepresentation;
-class Handle_StepShape_DimensionalCharacteristicRepresentation : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_DimensionalCharacteristicRepresentation();
-        Handle_StepShape_DimensionalCharacteristicRepresentation(const Handle_StepShape_DimensionalCharacteristicRepresentation &aHandle);
-        Handle_StepShape_DimensionalCharacteristicRepresentation(const StepShape_DimensionalCharacteristicRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DimensionalCharacteristicRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DimensionalCharacteristicRepresentation {
-    StepShape_DimensionalCharacteristicRepresentation* _get_reference() {
-    return (StepShape_DimensionalCharacteristicRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DimensionalCharacteristicRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DimensionalCharacteristicRepresentation)
 
 %extend StepShape_DimensionalCharacteristicRepresentation {
 	%pythoncode {
@@ -1840,51 +1622,7 @@ class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship {
 };
 
 
-%extend StepShape_DimensionalLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DimensionalLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DimensionalLocation::Handle_StepShape_DimensionalLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DimensionalLocation;
-class Handle_StepShape_DimensionalLocation : public Handle_StepRepr_ShapeAspectRelationship {
-
-    public:
-        // constructors
-        Handle_StepShape_DimensionalLocation();
-        Handle_StepShape_DimensionalLocation(const Handle_StepShape_DimensionalLocation &aHandle);
-        Handle_StepShape_DimensionalLocation(const StepShape_DimensionalLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DimensionalLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DimensionalLocation {
-    StepShape_DimensionalLocation* _get_reference() {
-    return (StepShape_DimensionalLocation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DimensionalLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DimensionalLocation)
 
 %extend StepShape_DimensionalLocation {
 	%pythoncode {
@@ -1941,51 +1679,7 @@ class StepShape_DimensionalSize : public MMgt_TShared {
 };
 
 
-%extend StepShape_DimensionalSize {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DimensionalSize(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DimensionalSize::Handle_StepShape_DimensionalSize %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DimensionalSize;
-class Handle_StepShape_DimensionalSize : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_DimensionalSize();
-        Handle_StepShape_DimensionalSize(const Handle_StepShape_DimensionalSize &aHandle);
-        Handle_StepShape_DimensionalSize(const StepShape_DimensionalSize *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DimensionalSize DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DimensionalSize {
-    StepShape_DimensionalSize* _get_reference() {
-    return (StepShape_DimensionalSize*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DimensionalSize {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DimensionalSize)
 
 %extend StepShape_DimensionalSize {
 	%pythoncode {
@@ -2028,51 +1722,7 @@ class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentatio
 };
 
 
-%extend StepShape_EdgeBasedWireframeModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_EdgeBasedWireframeModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_EdgeBasedWireframeModel::Handle_StepShape_EdgeBasedWireframeModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_EdgeBasedWireframeModel;
-class Handle_StepShape_EdgeBasedWireframeModel : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_EdgeBasedWireframeModel();
-        Handle_StepShape_EdgeBasedWireframeModel(const Handle_StepShape_EdgeBasedWireframeModel &aHandle);
-        Handle_StepShape_EdgeBasedWireframeModel(const StepShape_EdgeBasedWireframeModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_EdgeBasedWireframeModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_EdgeBasedWireframeModel {
-    StepShape_EdgeBasedWireframeModel* _get_reference() {
-    return (StepShape_EdgeBasedWireframeModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_EdgeBasedWireframeModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_EdgeBasedWireframeModel)
 
 %extend StepShape_EdgeBasedWireframeModel {
 	%pythoncode {
@@ -2115,51 +1765,7 @@ class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationI
 };
 
 
-%extend StepShape_FaceBasedSurfaceModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FaceBasedSurfaceModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FaceBasedSurfaceModel::Handle_StepShape_FaceBasedSurfaceModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FaceBasedSurfaceModel;
-class Handle_StepShape_FaceBasedSurfaceModel : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_FaceBasedSurfaceModel();
-        Handle_StepShape_FaceBasedSurfaceModel(const Handle_StepShape_FaceBasedSurfaceModel &aHandle);
-        Handle_StepShape_FaceBasedSurfaceModel(const StepShape_FaceBasedSurfaceModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FaceBasedSurfaceModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FaceBasedSurfaceModel {
-    StepShape_FaceBasedSurfaceModel* _get_reference() {
-    return (StepShape_FaceBasedSurfaceModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FaceBasedSurfaceModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FaceBasedSurfaceModel)
 
 %extend StepShape_FaceBasedSurfaceModel {
 	%pythoncode {
@@ -2212,51 +1818,7 @@ class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_GeometricSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_GeometricSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_GeometricSet::Handle_StepShape_GeometricSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_GeometricSet;
-class Handle_StepShape_GeometricSet : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_GeometricSet();
-        Handle_StepShape_GeometricSet(const Handle_StepShape_GeometricSet &aHandle);
-        Handle_StepShape_GeometricSet(const StepShape_GeometricSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_GeometricSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_GeometricSet {
-    StepShape_GeometricSet* _get_reference() {
-    return (StepShape_GeometricSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_GeometricSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_GeometricSet)
 
 %extend StepShape_GeometricSet {
 	%pythoncode {
@@ -2376,51 +1938,7 @@ class StepShape_HArray1OfConnectedEdgeSet : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfConnectedEdgeSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfConnectedEdgeSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfConnectedEdgeSet::Handle_StepShape_HArray1OfConnectedEdgeSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfConnectedEdgeSet;
-class Handle_StepShape_HArray1OfConnectedEdgeSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfConnectedEdgeSet();
-        Handle_StepShape_HArray1OfConnectedEdgeSet(const Handle_StepShape_HArray1OfConnectedEdgeSet &aHandle);
-        Handle_StepShape_HArray1OfConnectedEdgeSet(const StepShape_HArray1OfConnectedEdgeSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfConnectedEdgeSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfConnectedEdgeSet {
-    StepShape_HArray1OfConnectedEdgeSet* _get_reference() {
-    return (StepShape_HArray1OfConnectedEdgeSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfConnectedEdgeSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfConnectedEdgeSet)
 
 %extend StepShape_HArray1OfConnectedEdgeSet {
 	%pythoncode {
@@ -2497,51 +2015,7 @@ class StepShape_HArray1OfConnectedFaceSet : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfConnectedFaceSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfConnectedFaceSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfConnectedFaceSet::Handle_StepShape_HArray1OfConnectedFaceSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfConnectedFaceSet;
-class Handle_StepShape_HArray1OfConnectedFaceSet : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfConnectedFaceSet();
-        Handle_StepShape_HArray1OfConnectedFaceSet(const Handle_StepShape_HArray1OfConnectedFaceSet &aHandle);
-        Handle_StepShape_HArray1OfConnectedFaceSet(const StepShape_HArray1OfConnectedFaceSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfConnectedFaceSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfConnectedFaceSet {
-    StepShape_HArray1OfConnectedFaceSet* _get_reference() {
-    return (StepShape_HArray1OfConnectedFaceSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfConnectedFaceSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfConnectedFaceSet)
 
 %extend StepShape_HArray1OfConnectedFaceSet {
 	%pythoncode {
@@ -2618,51 +2092,7 @@ class StepShape_HArray1OfEdge : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfEdge::Handle_StepShape_HArray1OfEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfEdge;
-class Handle_StepShape_HArray1OfEdge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfEdge();
-        Handle_StepShape_HArray1OfEdge(const Handle_StepShape_HArray1OfEdge &aHandle);
-        Handle_StepShape_HArray1OfEdge(const StepShape_HArray1OfEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfEdge {
-    StepShape_HArray1OfEdge* _get_reference() {
-    return (StepShape_HArray1OfEdge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfEdge)
 
 %extend StepShape_HArray1OfEdge {
 	%pythoncode {
@@ -2739,51 +2169,7 @@ class StepShape_HArray1OfFace : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfFace::Handle_StepShape_HArray1OfFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfFace;
-class Handle_StepShape_HArray1OfFace : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfFace();
-        Handle_StepShape_HArray1OfFace(const Handle_StepShape_HArray1OfFace &aHandle);
-        Handle_StepShape_HArray1OfFace(const StepShape_HArray1OfFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfFace {
-    StepShape_HArray1OfFace* _get_reference() {
-    return (StepShape_HArray1OfFace*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfFace)
 
 %extend StepShape_HArray1OfFace {
 	%pythoncode {
@@ -2860,51 +2246,7 @@ class StepShape_HArray1OfFaceBound : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfFaceBound {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfFaceBound(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfFaceBound::Handle_StepShape_HArray1OfFaceBound %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfFaceBound;
-class Handle_StepShape_HArray1OfFaceBound : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfFaceBound();
-        Handle_StepShape_HArray1OfFaceBound(const Handle_StepShape_HArray1OfFaceBound &aHandle);
-        Handle_StepShape_HArray1OfFaceBound(const StepShape_HArray1OfFaceBound *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfFaceBound DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfFaceBound {
-    StepShape_HArray1OfFaceBound* _get_reference() {
-    return (StepShape_HArray1OfFaceBound*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfFaceBound {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfFaceBound)
 
 %extend StepShape_HArray1OfFaceBound {
 	%pythoncode {
@@ -2981,51 +2323,7 @@ class StepShape_HArray1OfGeometricSetSelect : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfGeometricSetSelect {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfGeometricSetSelect(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfGeometricSetSelect::Handle_StepShape_HArray1OfGeometricSetSelect %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfGeometricSetSelect;
-class Handle_StepShape_HArray1OfGeometricSetSelect : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfGeometricSetSelect();
-        Handle_StepShape_HArray1OfGeometricSetSelect(const Handle_StepShape_HArray1OfGeometricSetSelect &aHandle);
-        Handle_StepShape_HArray1OfGeometricSetSelect(const StepShape_HArray1OfGeometricSetSelect *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfGeometricSetSelect DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfGeometricSetSelect {
-    StepShape_HArray1OfGeometricSetSelect* _get_reference() {
-    return (StepShape_HArray1OfGeometricSetSelect*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfGeometricSetSelect {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfGeometricSetSelect)
 
 %extend StepShape_HArray1OfGeometricSetSelect {
 	%pythoncode {
@@ -3102,51 +2400,7 @@ class StepShape_HArray1OfOrientedClosedShell : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfOrientedClosedShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfOrientedClosedShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfOrientedClosedShell::Handle_StepShape_HArray1OfOrientedClosedShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfOrientedClosedShell;
-class Handle_StepShape_HArray1OfOrientedClosedShell : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfOrientedClosedShell();
-        Handle_StepShape_HArray1OfOrientedClosedShell(const Handle_StepShape_HArray1OfOrientedClosedShell &aHandle);
-        Handle_StepShape_HArray1OfOrientedClosedShell(const StepShape_HArray1OfOrientedClosedShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfOrientedClosedShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfOrientedClosedShell {
-    StepShape_HArray1OfOrientedClosedShell* _get_reference() {
-    return (StepShape_HArray1OfOrientedClosedShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfOrientedClosedShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfOrientedClosedShell)
 
 %extend StepShape_HArray1OfOrientedClosedShell {
 	%pythoncode {
@@ -3223,51 +2477,7 @@ class StepShape_HArray1OfOrientedEdge : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfOrientedEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfOrientedEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfOrientedEdge::Handle_StepShape_HArray1OfOrientedEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfOrientedEdge;
-class Handle_StepShape_HArray1OfOrientedEdge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfOrientedEdge();
-        Handle_StepShape_HArray1OfOrientedEdge(const Handle_StepShape_HArray1OfOrientedEdge &aHandle);
-        Handle_StepShape_HArray1OfOrientedEdge(const StepShape_HArray1OfOrientedEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfOrientedEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfOrientedEdge {
-    StepShape_HArray1OfOrientedEdge* _get_reference() {
-    return (StepShape_HArray1OfOrientedEdge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfOrientedEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfOrientedEdge)
 
 %extend StepShape_HArray1OfOrientedEdge {
 	%pythoncode {
@@ -3344,51 +2554,7 @@ class StepShape_HArray1OfShell : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfShell::Handle_StepShape_HArray1OfShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfShell;
-class Handle_StepShape_HArray1OfShell : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfShell();
-        Handle_StepShape_HArray1OfShell(const Handle_StepShape_HArray1OfShell &aHandle);
-        Handle_StepShape_HArray1OfShell(const StepShape_HArray1OfShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfShell {
-    StepShape_HArray1OfShell* _get_reference() {
-    return (StepShape_HArray1OfShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfShell)
 
 %extend StepShape_HArray1OfShell {
 	%pythoncode {
@@ -3465,51 +2631,7 @@ class StepShape_HArray1OfValueQualifier : public MMgt_TShared {
 };
 
 
-%extend StepShape_HArray1OfValueQualifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HArray1OfValueQualifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HArray1OfValueQualifier::Handle_StepShape_HArray1OfValueQualifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HArray1OfValueQualifier;
-class Handle_StepShape_HArray1OfValueQualifier : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_HArray1OfValueQualifier();
-        Handle_StepShape_HArray1OfValueQualifier(const Handle_StepShape_HArray1OfValueQualifier &aHandle);
-        Handle_StepShape_HArray1OfValueQualifier(const StepShape_HArray1OfValueQualifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HArray1OfValueQualifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HArray1OfValueQualifier {
-    StepShape_HArray1OfValueQualifier* _get_reference() {
-    return (StepShape_HArray1OfValueQualifier*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HArray1OfValueQualifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HArray1OfValueQualifier)
 
 %extend StepShape_HArray1OfValueQualifier {
 	%pythoncode {
@@ -3564,51 +2686,7 @@ class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_HalfSpaceSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_HalfSpaceSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_HalfSpaceSolid::Handle_StepShape_HalfSpaceSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_HalfSpaceSolid;
-class Handle_StepShape_HalfSpaceSolid : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_HalfSpaceSolid();
-        Handle_StepShape_HalfSpaceSolid(const Handle_StepShape_HalfSpaceSolid &aHandle);
-        Handle_StepShape_HalfSpaceSolid(const StepShape_HalfSpaceSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_HalfSpaceSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_HalfSpaceSolid {
-    StepShape_HalfSpaceSolid* _get_reference() {
-    return (StepShape_HalfSpaceSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_HalfSpaceSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_HalfSpaceSolid)
 
 %extend StepShape_HalfSpaceSolid {
 	%pythoncode {
@@ -3677,51 +2755,7 @@ class StepShape_LimitsAndFits : public MMgt_TShared {
 };
 
 
-%extend StepShape_LimitsAndFits {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_LimitsAndFits(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_LimitsAndFits::Handle_StepShape_LimitsAndFits %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_LimitsAndFits;
-class Handle_StepShape_LimitsAndFits : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_LimitsAndFits();
-        Handle_StepShape_LimitsAndFits(const Handle_StepShape_LimitsAndFits &aHandle);
-        Handle_StepShape_LimitsAndFits(const StepShape_LimitsAndFits *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_LimitsAndFits DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_LimitsAndFits {
-    StepShape_LimitsAndFits* _get_reference() {
-    return (StepShape_LimitsAndFits*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_LimitsAndFits {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_LimitsAndFits)
 
 %extend StepShape_LimitsAndFits {
 	%pythoncode {
@@ -3808,51 +2842,7 @@ class StepShape_MeasureQualification : public MMgt_TShared {
 };
 
 
-%extend StepShape_MeasureQualification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_MeasureQualification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_MeasureQualification::Handle_StepShape_MeasureQualification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_MeasureQualification;
-class Handle_StepShape_MeasureQualification : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_MeasureQualification();
-        Handle_StepShape_MeasureQualification(const Handle_StepShape_MeasureQualification &aHandle);
-        Handle_StepShape_MeasureQualification(const StepShape_MeasureQualification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_MeasureQualification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_MeasureQualification {
-    StepShape_MeasureQualification* _get_reference() {
-    return (StepShape_MeasureQualification*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_MeasureQualification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_MeasureQualification)
 
 %extend StepShape_MeasureQualification {
 	%pythoncode {
@@ -3919,51 +2909,7 @@ class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public
 };
 
 
-%extend StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem;
-class Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem();
-        Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem(const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem &aHandle);
-        Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem(const StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem {
-    StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem* _get_reference() {
-    return (StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem)
 
 %extend StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem {
 	%pythoncode {
@@ -4008,51 +2954,7 @@ class StepShape_PlusMinusTolerance : public MMgt_TShared {
 };
 
 
-%extend StepShape_PlusMinusTolerance {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_PlusMinusTolerance(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_PlusMinusTolerance::Handle_StepShape_PlusMinusTolerance %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_PlusMinusTolerance;
-class Handle_StepShape_PlusMinusTolerance : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_PlusMinusTolerance();
-        Handle_StepShape_PlusMinusTolerance(const Handle_StepShape_PlusMinusTolerance &aHandle);
-        Handle_StepShape_PlusMinusTolerance(const StepShape_PlusMinusTolerance *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_PlusMinusTolerance DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_PlusMinusTolerance {
-    StepShape_PlusMinusTolerance* _get_reference() {
-    return (StepShape_PlusMinusTolerance*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_PlusMinusTolerance {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_PlusMinusTolerance)
 
 %extend StepShape_PlusMinusTolerance {
 	%pythoncode {
@@ -4085,51 +2987,7 @@ class StepShape_PrecisionQualifier : public MMgt_TShared {
 };
 
 
-%extend StepShape_PrecisionQualifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_PrecisionQualifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_PrecisionQualifier::Handle_StepShape_PrecisionQualifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_PrecisionQualifier;
-class Handle_StepShape_PrecisionQualifier : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_PrecisionQualifier();
-        Handle_StepShape_PrecisionQualifier(const Handle_StepShape_PrecisionQualifier &aHandle);
-        Handle_StepShape_PrecisionQualifier(const StepShape_PrecisionQualifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_PrecisionQualifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_PrecisionQualifier {
-    StepShape_PrecisionQualifier* _get_reference() {
-    return (StepShape_PrecisionQualifier*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_PrecisionQualifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_PrecisionQualifier)
 
 %extend StepShape_PrecisionQualifier {
 	%pythoncode {
@@ -4182,51 +3040,7 @@ class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
 };
 
 
-%extend StepShape_QualifiedRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_QualifiedRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_QualifiedRepresentationItem::Handle_StepShape_QualifiedRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_QualifiedRepresentationItem;
-class Handle_StepShape_QualifiedRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_QualifiedRepresentationItem();
-        Handle_StepShape_QualifiedRepresentationItem(const Handle_StepShape_QualifiedRepresentationItem &aHandle);
-        Handle_StepShape_QualifiedRepresentationItem(const StepShape_QualifiedRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_QualifiedRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_QualifiedRepresentationItem {
-    StepShape_QualifiedRepresentationItem* _get_reference() {
-    return (StepShape_QualifiedRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_QualifiedRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_QualifiedRepresentationItem)
 
 %extend StepShape_QualifiedRepresentationItem {
 	%pythoncode {
@@ -4378,51 +3192,7 @@ class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem 
 };
 
 
-%extend StepShape_RightAngularWedge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_RightAngularWedge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_RightAngularWedge::Handle_StepShape_RightAngularWedge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_RightAngularWedge;
-class Handle_StepShape_RightAngularWedge : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_RightAngularWedge();
-        Handle_StepShape_RightAngularWedge(const Handle_StepShape_RightAngularWedge &aHandle);
-        Handle_StepShape_RightAngularWedge(const StepShape_RightAngularWedge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_RightAngularWedge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_RightAngularWedge {
-    StepShape_RightAngularWedge* _get_reference() {
-    return (StepShape_RightAngularWedge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_RightAngularWedge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_RightAngularWedge)
 
 %extend StepShape_RightAngularWedge {
 	%pythoncode {
@@ -4501,51 +3271,7 @@ class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem 
 };
 
 
-%extend StepShape_RightCircularCone {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_RightCircularCone(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_RightCircularCone::Handle_StepShape_RightCircularCone %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_RightCircularCone;
-class Handle_StepShape_RightCircularCone : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_RightCircularCone();
-        Handle_StepShape_RightCircularCone(const Handle_StepShape_RightCircularCone &aHandle);
-        Handle_StepShape_RightCircularCone(const StepShape_RightCircularCone *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_RightCircularCone DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_RightCircularCone {
-    StepShape_RightCircularCone* _get_reference() {
-    return (StepShape_RightCircularCone*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_RightCircularCone {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_RightCircularCone)
 
 %extend StepShape_RightCircularCone {
 	%pythoncode {
@@ -4612,51 +3338,7 @@ class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationI
 };
 
 
-%extend StepShape_RightCircularCylinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_RightCircularCylinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_RightCircularCylinder::Handle_StepShape_RightCircularCylinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_RightCircularCylinder;
-class Handle_StepShape_RightCircularCylinder : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_RightCircularCylinder();
-        Handle_StepShape_RightCircularCylinder(const Handle_StepShape_RightCircularCylinder &aHandle);
-        Handle_StepShape_RightCircularCylinder(const StepShape_RightCircularCylinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_RightCircularCylinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_RightCircularCylinder {
-    StepShape_RightCircularCylinder* _get_reference() {
-    return (StepShape_RightCircularCylinder*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_RightCircularCylinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_RightCircularCylinder)
 
 %extend StepShape_RightCircularCylinder {
 	%pythoncode {
@@ -4675,51 +3357,7 @@ class StepShape_ShapeDefinitionRepresentation : public StepRepr_PropertyDefiniti
 };
 
 
-%extend StepShape_ShapeDefinitionRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ShapeDefinitionRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ShapeDefinitionRepresentation::Handle_StepShape_ShapeDefinitionRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ShapeDefinitionRepresentation;
-class Handle_StepShape_ShapeDefinitionRepresentation : public Handle_StepRepr_PropertyDefinitionRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_ShapeDefinitionRepresentation();
-        Handle_StepShape_ShapeDefinitionRepresentation(const Handle_StepShape_ShapeDefinitionRepresentation &aHandle);
-        Handle_StepShape_ShapeDefinitionRepresentation(const StepShape_ShapeDefinitionRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ShapeDefinitionRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ShapeDefinitionRepresentation {
-    StepShape_ShapeDefinitionRepresentation* _get_reference() {
-    return (StepShape_ShapeDefinitionRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ShapeDefinitionRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ShapeDefinitionRepresentation)
 
 %extend StepShape_ShapeDefinitionRepresentation {
 	%pythoncode {
@@ -4738,51 +3376,7 @@ class StepShape_ShapeRepresentation : public StepRepr_Representation {
 };
 
 
-%extend StepShape_ShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ShapeRepresentation::Handle_StepShape_ShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ShapeRepresentation;
-class Handle_StepShape_ShapeRepresentation : public Handle_StepRepr_Representation {
-
-    public:
-        // constructors
-        Handle_StepShape_ShapeRepresentation();
-        Handle_StepShape_ShapeRepresentation(const Handle_StepShape_ShapeRepresentation &aHandle);
-        Handle_StepShape_ShapeRepresentation(const StepShape_ShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ShapeRepresentation {
-    StepShape_ShapeRepresentation* _get_reference() {
-    return (StepShape_ShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ShapeRepresentation)
 
 %extend StepShape_ShapeRepresentation {
 	%pythoncode {
@@ -4872,51 +3466,7 @@ class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentation
 };
 
 
-%extend StepShape_ShellBasedSurfaceModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ShellBasedSurfaceModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ShellBasedSurfaceModel::Handle_StepShape_ShellBasedSurfaceModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ShellBasedSurfaceModel;
-class Handle_StepShape_ShellBasedSurfaceModel : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_ShellBasedSurfaceModel();
-        Handle_StepShape_ShellBasedSurfaceModel(const Handle_StepShape_ShellBasedSurfaceModel &aHandle);
-        Handle_StepShape_ShellBasedSurfaceModel(const StepShape_ShellBasedSurfaceModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ShellBasedSurfaceModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ShellBasedSurfaceModel {
-    StepShape_ShellBasedSurfaceModel* _get_reference() {
-    return (StepShape_ShellBasedSurfaceModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ShellBasedSurfaceModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ShellBasedSurfaceModel)
 
 %extend StepShape_ShellBasedSurfaceModel {
 	%pythoncode {
@@ -4935,51 +3485,7 @@ class StepShape_SolidModel : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_SolidModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_SolidModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_SolidModel::Handle_StepShape_SolidModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_SolidModel;
-class Handle_StepShape_SolidModel : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_SolidModel();
-        Handle_StepShape_SolidModel(const Handle_StepShape_SolidModel &aHandle);
-        Handle_StepShape_SolidModel(const StepShape_SolidModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_SolidModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_SolidModel {
-    StepShape_SolidModel* _get_reference() {
-    return (StepShape_SolidModel*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_SolidModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_SolidModel)
 
 %extend StepShape_SolidModel {
 	%pythoncode {
@@ -5034,51 +3540,7 @@ class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_Sphere {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Sphere(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Sphere::Handle_StepShape_Sphere %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Sphere;
-class Handle_StepShape_Sphere : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Sphere();
-        Handle_StepShape_Sphere(const Handle_StepShape_Sphere &aHandle);
-        Handle_StepShape_Sphere(const StepShape_Sphere *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Sphere DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Sphere {
-    StepShape_Sphere* _get_reference() {
-    return (StepShape_Sphere*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Sphere {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Sphere)
 
 %extend StepShape_Sphere {
 	%pythoncode {
@@ -5189,51 +3651,7 @@ class StepShape_ToleranceValue : public MMgt_TShared {
 };
 
 
-%extend StepShape_ToleranceValue {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ToleranceValue(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ToleranceValue::Handle_StepShape_ToleranceValue %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ToleranceValue;
-class Handle_StepShape_ToleranceValue : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_ToleranceValue();
-        Handle_StepShape_ToleranceValue(const Handle_StepShape_ToleranceValue &aHandle);
-        Handle_StepShape_ToleranceValue(const StepShape_ToleranceValue *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ToleranceValue DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ToleranceValue {
-    StepShape_ToleranceValue* _get_reference() {
-    return (StepShape_ToleranceValue*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ToleranceValue {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ToleranceValue)
 
 %extend StepShape_ToleranceValue {
 	%pythoncode {
@@ -5252,51 +3670,7 @@ class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationIt
 };
 
 
-%extend StepShape_TopologicalRepresentationItem {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_TopologicalRepresentationItem(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_TopologicalRepresentationItem::Handle_StepShape_TopologicalRepresentationItem %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_TopologicalRepresentationItem;
-class Handle_StepShape_TopologicalRepresentationItem : public Handle_StepRepr_RepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_TopologicalRepresentationItem();
-        Handle_StepShape_TopologicalRepresentationItem(const Handle_StepShape_TopologicalRepresentationItem &aHandle);
-        Handle_StepShape_TopologicalRepresentationItem(const StepShape_TopologicalRepresentationItem *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_TopologicalRepresentationItem DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_TopologicalRepresentationItem {
-    StepShape_TopologicalRepresentationItem* _get_reference() {
-    return (StepShape_TopologicalRepresentationItem*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_TopologicalRepresentationItem {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_TopologicalRepresentationItem)
 
 %extend StepShape_TopologicalRepresentationItem {
 	%pythoncode {
@@ -5363,51 +3737,7 @@ class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 };
 
 
-%extend StepShape_Torus {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Torus(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Torus::Handle_StepShape_Torus %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Torus;
-class Handle_StepShape_Torus : public Handle_StepGeom_GeometricRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Torus();
-        Handle_StepShape_Torus(const Handle_StepShape_Torus &aHandle);
-        Handle_StepShape_Torus(const StepShape_Torus *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Torus DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Torus {
-    StepShape_Torus* _get_reference() {
-    return (StepShape_Torus*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Torus {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Torus)
 
 %extend StepShape_Torus {
 	%pythoncode {
@@ -5440,51 +3770,7 @@ class StepShape_TypeQualifier : public MMgt_TShared {
 };
 
 
-%extend StepShape_TypeQualifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_TypeQualifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_TypeQualifier::Handle_StepShape_TypeQualifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_TypeQualifier;
-class Handle_StepShape_TypeQualifier : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_StepShape_TypeQualifier();
-        Handle_StepShape_TypeQualifier(const Handle_StepShape_TypeQualifier &aHandle);
-        Handle_StepShape_TypeQualifier(const StepShape_TypeQualifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_TypeQualifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_TypeQualifier {
-    StepShape_TypeQualifier* _get_reference() {
-    return (StepShape_TypeQualifier*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_TypeQualifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_TypeQualifier)
 
 %extend StepShape_TypeQualifier {
 	%pythoncode {
@@ -5538,51 +3824,7 @@ class StepShape_AdvancedBrepShapeRepresentation : public StepShape_ShapeRepresen
 };
 
 
-%extend StepShape_AdvancedBrepShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_AdvancedBrepShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_AdvancedBrepShapeRepresentation::Handle_StepShape_AdvancedBrepShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_AdvancedBrepShapeRepresentation;
-class Handle_StepShape_AdvancedBrepShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_AdvancedBrepShapeRepresentation();
-        Handle_StepShape_AdvancedBrepShapeRepresentation(const Handle_StepShape_AdvancedBrepShapeRepresentation &aHandle);
-        Handle_StepShape_AdvancedBrepShapeRepresentation(const StepShape_AdvancedBrepShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_AdvancedBrepShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_AdvancedBrepShapeRepresentation {
-    StepShape_AdvancedBrepShapeRepresentation* _get_reference() {
-    return (StepShape_AdvancedBrepShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_AdvancedBrepShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_AdvancedBrepShapeRepresentation)
 
 %extend StepShape_AdvancedBrepShapeRepresentation {
 	%pythoncode {
@@ -5633,51 +3875,7 @@ class StepShape_AngularLocation : public StepShape_DimensionalLocation {
 };
 
 
-%extend StepShape_AngularLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_AngularLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_AngularLocation::Handle_StepShape_AngularLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_AngularLocation;
-class Handle_StepShape_AngularLocation : public Handle_StepShape_DimensionalLocation {
-
-    public:
-        // constructors
-        Handle_StepShape_AngularLocation();
-        Handle_StepShape_AngularLocation(const Handle_StepShape_AngularLocation &aHandle);
-        Handle_StepShape_AngularLocation(const StepShape_AngularLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_AngularLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_AngularLocation {
-    StepShape_AngularLocation* _get_reference() {
-    return (StepShape_AngularLocation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_AngularLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_AngularLocation)
 
 %extend StepShape_AngularLocation {
 	%pythoncode {
@@ -5722,51 +3920,7 @@ class StepShape_AngularSize : public StepShape_DimensionalSize {
 };
 
 
-%extend StepShape_AngularSize {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_AngularSize(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_AngularSize::Handle_StepShape_AngularSize %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_AngularSize;
-class Handle_StepShape_AngularSize : public Handle_StepShape_DimensionalSize {
-
-    public:
-        // constructors
-        Handle_StepShape_AngularSize();
-        Handle_StepShape_AngularSize(const Handle_StepShape_AngularSize &aHandle);
-        Handle_StepShape_AngularSize(const StepShape_AngularSize *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_AngularSize DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_AngularSize {
-    StepShape_AngularSize* _get_reference() {
-    return (StepShape_AngularSize*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_AngularSize {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_AngularSize)
 
 %extend StepShape_AngularSize {
 	%pythoncode {
@@ -5817,51 +3971,7 @@ class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
 };
 
 
-%extend StepShape_BoxedHalfSpace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_BoxedHalfSpace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_BoxedHalfSpace::Handle_StepShape_BoxedHalfSpace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_BoxedHalfSpace;
-class Handle_StepShape_BoxedHalfSpace : public Handle_StepShape_HalfSpaceSolid {
-
-    public:
-        // constructors
-        Handle_StepShape_BoxedHalfSpace();
-        Handle_StepShape_BoxedHalfSpace(const Handle_StepShape_BoxedHalfSpace &aHandle);
-        Handle_StepShape_BoxedHalfSpace(const StepShape_BoxedHalfSpace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_BoxedHalfSpace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_BoxedHalfSpace {
-    StepShape_BoxedHalfSpace* _get_reference() {
-    return (StepShape_BoxedHalfSpace*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_BoxedHalfSpace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_BoxedHalfSpace)
 
 %extend StepShape_BoxedHalfSpace {
 	%pythoncode {
@@ -5880,51 +3990,7 @@ class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentati
 };
 
 
-%extend StepShape_CompoundShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_CompoundShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_CompoundShapeRepresentation::Handle_StepShape_CompoundShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_CompoundShapeRepresentation;
-class Handle_StepShape_CompoundShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_CompoundShapeRepresentation();
-        Handle_StepShape_CompoundShapeRepresentation(const Handle_StepShape_CompoundShapeRepresentation &aHandle);
-        Handle_StepShape_CompoundShapeRepresentation(const StepShape_CompoundShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_CompoundShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_CompoundShapeRepresentation {
-    StepShape_CompoundShapeRepresentation* _get_reference() {
-    return (StepShape_CompoundShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_CompoundShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_CompoundShapeRepresentation)
 
 %extend StepShape_CompoundShapeRepresentation {
 	%pythoncode {
@@ -5967,51 +4033,7 @@ class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationIte
 };
 
 
-%extend StepShape_ConnectedEdgeSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ConnectedEdgeSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ConnectedEdgeSet::Handle_StepShape_ConnectedEdgeSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ConnectedEdgeSet;
-class Handle_StepShape_ConnectedEdgeSet : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_ConnectedEdgeSet();
-        Handle_StepShape_ConnectedEdgeSet(const Handle_StepShape_ConnectedEdgeSet &aHandle);
-        Handle_StepShape_ConnectedEdgeSet(const StepShape_ConnectedEdgeSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ConnectedEdgeSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ConnectedEdgeSet {
-    StepShape_ConnectedEdgeSet* _get_reference() {
-    return (StepShape_ConnectedEdgeSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ConnectedEdgeSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ConnectedEdgeSet)
 
 %extend StepShape_ConnectedEdgeSet {
 	%pythoncode {
@@ -6064,51 +4086,7 @@ class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationIte
 };
 
 
-%extend StepShape_ConnectedFaceSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ConnectedFaceSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ConnectedFaceSet::Handle_StepShape_ConnectedFaceSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ConnectedFaceSet;
-class Handle_StepShape_ConnectedFaceSet : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_ConnectedFaceSet();
-        Handle_StepShape_ConnectedFaceSet(const Handle_StepShape_ConnectedFaceSet &aHandle);
-        Handle_StepShape_ConnectedFaceSet(const StepShape_ConnectedFaceSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ConnectedFaceSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ConnectedFaceSet {
-    StepShape_ConnectedFaceSet* _get_reference() {
-    return (StepShape_ConnectedFaceSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ConnectedFaceSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ConnectedFaceSet)
 
 %extend StepShape_ConnectedFaceSet {
 	%pythoncode {
@@ -6127,51 +4105,7 @@ class StepShape_CsgShapeRepresentation : public StepShape_ShapeRepresentation {
 };
 
 
-%extend StepShape_CsgShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_CsgShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_CsgShapeRepresentation::Handle_StepShape_CsgShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_CsgShapeRepresentation;
-class Handle_StepShape_CsgShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_CsgShapeRepresentation();
-        Handle_StepShape_CsgShapeRepresentation(const Handle_StepShape_CsgShapeRepresentation &aHandle);
-        Handle_StepShape_CsgShapeRepresentation(const StepShape_CsgShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_CsgShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_CsgShapeRepresentation {
-    StepShape_CsgShapeRepresentation* _get_reference() {
-    return (StepShape_CsgShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_CsgShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_CsgShapeRepresentation)
 
 %extend StepShape_CsgShapeRepresentation {
 	%pythoncode {
@@ -6214,51 +4148,7 @@ class StepShape_CsgSolid : public StepShape_SolidModel {
 };
 
 
-%extend StepShape_CsgSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_CsgSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_CsgSolid::Handle_StepShape_CsgSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_CsgSolid;
-class Handle_StepShape_CsgSolid : public Handle_StepShape_SolidModel {
-
-    public:
-        // constructors
-        Handle_StepShape_CsgSolid();
-        Handle_StepShape_CsgSolid(const Handle_StepShape_CsgSolid &aHandle);
-        Handle_StepShape_CsgSolid(const StepShape_CsgSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_CsgSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_CsgSolid {
-    StepShape_CsgSolid* _get_reference() {
-    return (StepShape_CsgSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_CsgSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_CsgSolid)
 
 %extend StepShape_CsgSolid {
 	%pythoncode {
@@ -6309,51 +4199,7 @@ class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocati
 };
 
 
-%extend StepShape_DimensionalLocationWithPath {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DimensionalLocationWithPath(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DimensionalLocationWithPath::Handle_StepShape_DimensionalLocationWithPath %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DimensionalLocationWithPath;
-class Handle_StepShape_DimensionalLocationWithPath : public Handle_StepShape_DimensionalLocation {
-
-    public:
-        // constructors
-        Handle_StepShape_DimensionalLocationWithPath();
-        Handle_StepShape_DimensionalLocationWithPath(const Handle_StepShape_DimensionalLocationWithPath &aHandle);
-        Handle_StepShape_DimensionalLocationWithPath(const StepShape_DimensionalLocationWithPath *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DimensionalLocationWithPath DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DimensionalLocationWithPath {
-    StepShape_DimensionalLocationWithPath* _get_reference() {
-    return (StepShape_DimensionalLocationWithPath*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DimensionalLocationWithPath {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DimensionalLocationWithPath)
 
 %extend StepShape_DimensionalLocationWithPath {
 	%pythoncode {
@@ -6398,51 +4244,7 @@ class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 };
 
 
-%extend StepShape_DimensionalSizeWithPath {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DimensionalSizeWithPath(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DimensionalSizeWithPath::Handle_StepShape_DimensionalSizeWithPath %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DimensionalSizeWithPath;
-class Handle_StepShape_DimensionalSizeWithPath : public Handle_StepShape_DimensionalSize {
-
-    public:
-        // constructors
-        Handle_StepShape_DimensionalSizeWithPath();
-        Handle_StepShape_DimensionalSizeWithPath(const Handle_StepShape_DimensionalSizeWithPath &aHandle);
-        Handle_StepShape_DimensionalSizeWithPath(const StepShape_DimensionalSizeWithPath *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DimensionalSizeWithPath DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DimensionalSizeWithPath {
-    StepShape_DimensionalSizeWithPath* _get_reference() {
-    return (StepShape_DimensionalSizeWithPath*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DimensionalSizeWithPath {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DimensionalSizeWithPath)
 
 %extend StepShape_DimensionalSizeWithPath {
 	%pythoncode {
@@ -6461,51 +4263,7 @@ class StepShape_DirectedDimensionalLocation : public StepShape_DimensionalLocati
 };
 
 
-%extend StepShape_DirectedDimensionalLocation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_DirectedDimensionalLocation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_DirectedDimensionalLocation::Handle_StepShape_DirectedDimensionalLocation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_DirectedDimensionalLocation;
-class Handle_StepShape_DirectedDimensionalLocation : public Handle_StepShape_DimensionalLocation {
-
-    public:
-        // constructors
-        Handle_StepShape_DirectedDimensionalLocation();
-        Handle_StepShape_DirectedDimensionalLocation(const Handle_StepShape_DirectedDimensionalLocation &aHandle);
-        Handle_StepShape_DirectedDimensionalLocation(const StepShape_DirectedDimensionalLocation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_DirectedDimensionalLocation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_DirectedDimensionalLocation {
-    StepShape_DirectedDimensionalLocation* _get_reference() {
-    return (StepShape_DirectedDimensionalLocation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_DirectedDimensionalLocation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_DirectedDimensionalLocation)
 
 %extend StepShape_DirectedDimensionalLocation {
 	%pythoncode {
@@ -6560,51 +4318,7 @@ class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_Edge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Edge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Edge::Handle_StepShape_Edge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Edge;
-class Handle_StepShape_Edge : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Edge();
-        Handle_StepShape_Edge(const Handle_StepShape_Edge &aHandle);
-        Handle_StepShape_Edge(const StepShape_Edge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Edge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Edge {
-    StepShape_Edge* _get_reference() {
-    return (StepShape_Edge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Edge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Edge)
 
 %extend StepShape_Edge {
 	%pythoncode {
@@ -6623,51 +4337,7 @@ class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRe
 };
 
 
-%extend StepShape_EdgeBasedWireframeShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_EdgeBasedWireframeShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_EdgeBasedWireframeShapeRepresentation::Handle_StepShape_EdgeBasedWireframeShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_EdgeBasedWireframeShapeRepresentation;
-class Handle_StepShape_EdgeBasedWireframeShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_EdgeBasedWireframeShapeRepresentation();
-        Handle_StepShape_EdgeBasedWireframeShapeRepresentation(const Handle_StepShape_EdgeBasedWireframeShapeRepresentation &aHandle);
-        Handle_StepShape_EdgeBasedWireframeShapeRepresentation(const StepShape_EdgeBasedWireframeShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_EdgeBasedWireframeShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_EdgeBasedWireframeShapeRepresentation {
-    StepShape_EdgeBasedWireframeShapeRepresentation* _get_reference() {
-    return (StepShape_EdgeBasedWireframeShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_EdgeBasedWireframeShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_EdgeBasedWireframeShapeRepresentation)
 
 %extend StepShape_EdgeBasedWireframeShapeRepresentation {
 	%pythoncode {
@@ -6720,51 +4390,7 @@ class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_Face {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Face(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Face::Handle_StepShape_Face %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Face;
-class Handle_StepShape_Face : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Face();
-        Handle_StepShape_Face(const Handle_StepShape_Face &aHandle);
-        Handle_StepShape_Face(const StepShape_Face *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Face DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Face {
-    StepShape_Face* _get_reference() {
-    return (StepShape_Face*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Face {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Face)
 
 %extend StepShape_Face {
 	%pythoncode {
@@ -6819,51 +4445,7 @@ class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_FaceBound {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FaceBound(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FaceBound::Handle_StepShape_FaceBound %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FaceBound;
-class Handle_StepShape_FaceBound : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_FaceBound();
-        Handle_StepShape_FaceBound(const Handle_StepShape_FaceBound &aHandle);
-        Handle_StepShape_FaceBound(const StepShape_FaceBound *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FaceBound DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FaceBound {
-    StepShape_FaceBound* _get_reference() {
-    return (StepShape_FaceBound*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FaceBound {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FaceBound)
 
 %extend StepShape_FaceBound {
 	%pythoncode {
@@ -6882,51 +4464,7 @@ class StepShape_FacetedBrepShapeRepresentation : public StepShape_ShapeRepresent
 };
 
 
-%extend StepShape_FacetedBrepShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FacetedBrepShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FacetedBrepShapeRepresentation::Handle_StepShape_FacetedBrepShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FacetedBrepShapeRepresentation;
-class Handle_StepShape_FacetedBrepShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_FacetedBrepShapeRepresentation();
-        Handle_StepShape_FacetedBrepShapeRepresentation(const Handle_StepShape_FacetedBrepShapeRepresentation &aHandle);
-        Handle_StepShape_FacetedBrepShapeRepresentation(const StepShape_FacetedBrepShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FacetedBrepShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FacetedBrepShapeRepresentation {
-    StepShape_FacetedBrepShapeRepresentation* _get_reference() {
-    return (StepShape_FacetedBrepShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FacetedBrepShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FacetedBrepShapeRepresentation)
 
 %extend StepShape_FacetedBrepShapeRepresentation {
 	%pythoncode {
@@ -6945,51 +4483,7 @@ class StepShape_GeometricCurveSet : public StepShape_GeometricSet {
 };
 
 
-%extend StepShape_GeometricCurveSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_GeometricCurveSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_GeometricCurveSet::Handle_StepShape_GeometricCurveSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_GeometricCurveSet;
-class Handle_StepShape_GeometricCurveSet : public Handle_StepShape_GeometricSet {
-
-    public:
-        // constructors
-        Handle_StepShape_GeometricCurveSet();
-        Handle_StepShape_GeometricCurveSet(const Handle_StepShape_GeometricCurveSet &aHandle);
-        Handle_StepShape_GeometricCurveSet(const StepShape_GeometricCurveSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_GeometricCurveSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_GeometricCurveSet {
-    StepShape_GeometricCurveSet* _get_reference() {
-    return (StepShape_GeometricCurveSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_GeometricCurveSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_GeometricCurveSet)
 
 %extend StepShape_GeometricCurveSet {
 	%pythoncode {
@@ -7008,51 +4502,7 @@ class StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public StepShap
 };
 
 
-%extend StepShape_GeometricallyBoundedSurfaceShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation::Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation;
-class Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation();
-        Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation(const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation &aHandle);
-        Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation(const StepShape_GeometricallyBoundedSurfaceShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation {
-    StepShape_GeometricallyBoundedSurfaceShapeRepresentation* _get_reference() {
-    return (StepShape_GeometricallyBoundedSurfaceShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_GeometricallyBoundedSurfaceShapeRepresentation)
 
 %extend StepShape_GeometricallyBoundedSurfaceShapeRepresentation {
 	%pythoncode {
@@ -7071,51 +4521,7 @@ class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepSh
 };
 
 
-%extend StepShape_GeometricallyBoundedWireframeShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation::Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation;
-class Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation();
-        Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation(const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation &aHandle);
-        Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation(const StepShape_GeometricallyBoundedWireframeShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation {
-    StepShape_GeometricallyBoundedWireframeShapeRepresentation* _get_reference() {
-    return (StepShape_GeometricallyBoundedWireframeShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_GeometricallyBoundedWireframeShapeRepresentation)
 
 %extend StepShape_GeometricallyBoundedWireframeShapeRepresentation {
 	%pythoncode {
@@ -7134,51 +4540,7 @@ class StepShape_Loop : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_Loop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Loop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Loop::Handle_StepShape_Loop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Loop;
-class Handle_StepShape_Loop : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Loop();
-        Handle_StepShape_Loop(const Handle_StepShape_Loop &aHandle);
-        Handle_StepShape_Loop(const StepShape_Loop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Loop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Loop {
-    StepShape_Loop* _get_reference() {
-    return (StepShape_Loop*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Loop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Loop)
 
 %extend StepShape_Loop {
 	%pythoncode {
@@ -7261,51 +4623,7 @@ class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_LoopAndPath {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_LoopAndPath(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_LoopAndPath::Handle_StepShape_LoopAndPath %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_LoopAndPath;
-class Handle_StepShape_LoopAndPath : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_LoopAndPath();
-        Handle_StepShape_LoopAndPath(const Handle_StepShape_LoopAndPath &aHandle);
-        Handle_StepShape_LoopAndPath(const StepShape_LoopAndPath *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_LoopAndPath DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_LoopAndPath {
-    StepShape_LoopAndPath* _get_reference() {
-    return (StepShape_LoopAndPath*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_LoopAndPath {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_LoopAndPath)
 
 %extend StepShape_LoopAndPath {
 	%pythoncode {
@@ -7356,51 +4674,7 @@ class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 };
 
 
-%extend StepShape_ManifoldSolidBrep {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ManifoldSolidBrep(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ManifoldSolidBrep::Handle_StepShape_ManifoldSolidBrep %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ManifoldSolidBrep;
-class Handle_StepShape_ManifoldSolidBrep : public Handle_StepShape_SolidModel {
-
-    public:
-        // constructors
-        Handle_StepShape_ManifoldSolidBrep();
-        Handle_StepShape_ManifoldSolidBrep(const Handle_StepShape_ManifoldSolidBrep &aHandle);
-        Handle_StepShape_ManifoldSolidBrep(const StepShape_ManifoldSolidBrep *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ManifoldSolidBrep DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ManifoldSolidBrep {
-    StepShape_ManifoldSolidBrep* _get_reference() {
-    return (StepShape_ManifoldSolidBrep*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ManifoldSolidBrep {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ManifoldSolidBrep)
 
 %extend StepShape_ManifoldSolidBrep {
 	%pythoncode {
@@ -7419,51 +4693,7 @@ class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepre
 };
 
 
-%extend StepShape_ManifoldSurfaceShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ManifoldSurfaceShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ManifoldSurfaceShapeRepresentation::Handle_StepShape_ManifoldSurfaceShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ManifoldSurfaceShapeRepresentation;
-class Handle_StepShape_ManifoldSurfaceShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_ManifoldSurfaceShapeRepresentation();
-        Handle_StepShape_ManifoldSurfaceShapeRepresentation(const Handle_StepShape_ManifoldSurfaceShapeRepresentation &aHandle);
-        Handle_StepShape_ManifoldSurfaceShapeRepresentation(const StepShape_ManifoldSurfaceShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ManifoldSurfaceShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ManifoldSurfaceShapeRepresentation {
-    StepShape_ManifoldSurfaceShapeRepresentation* _get_reference() {
-    return (StepShape_ManifoldSurfaceShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ManifoldSurfaceShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ManifoldSurfaceShapeRepresentation)
 
 %extend StepShape_ManifoldSurfaceShapeRepresentation {
 	%pythoncode {
@@ -7482,51 +4712,7 @@ class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRe
 };
 
 
-%extend StepShape_NonManifoldSurfaceShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_NonManifoldSurfaceShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_NonManifoldSurfaceShapeRepresentation::Handle_StepShape_NonManifoldSurfaceShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_NonManifoldSurfaceShapeRepresentation;
-class Handle_StepShape_NonManifoldSurfaceShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_NonManifoldSurfaceShapeRepresentation();
-        Handle_StepShape_NonManifoldSurfaceShapeRepresentation(const Handle_StepShape_NonManifoldSurfaceShapeRepresentation &aHandle);
-        Handle_StepShape_NonManifoldSurfaceShapeRepresentation(const StepShape_NonManifoldSurfaceShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_NonManifoldSurfaceShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_NonManifoldSurfaceShapeRepresentation {
-    StepShape_NonManifoldSurfaceShapeRepresentation* _get_reference() {
-    return (StepShape_NonManifoldSurfaceShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_NonManifoldSurfaceShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_NonManifoldSurfaceShapeRepresentation)
 
 %extend StepShape_NonManifoldSurfaceShapeRepresentation {
 	%pythoncode {
@@ -7579,51 +4765,7 @@ class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_Path {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Path(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Path::Handle_StepShape_Path %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Path;
-class Handle_StepShape_Path : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Path();
-        Handle_StepShape_Path(const Handle_StepShape_Path &aHandle);
-        Handle_StepShape_Path(const StepShape_Path *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Path DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Path {
-    StepShape_Path* _get_reference() {
-    return (StepShape_Path*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Path {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Path)
 
 %extend StepShape_Path {
 	%pythoncode {
@@ -7642,51 +4784,7 @@ class StepShape_PointRepresentation : public StepShape_ShapeRepresentation {
 };
 
 
-%extend StepShape_PointRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_PointRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_PointRepresentation::Handle_StepShape_PointRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_PointRepresentation;
-class Handle_StepShape_PointRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_PointRepresentation();
-        Handle_StepShape_PointRepresentation(const Handle_StepShape_PointRepresentation &aHandle);
-        Handle_StepShape_PointRepresentation(const StepShape_PointRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_PointRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_PointRepresentation {
-    StepShape_PointRepresentation* _get_reference() {
-    return (StepShape_PointRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_PointRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_PointRepresentation)
 
 %extend StepShape_PointRepresentation {
 	%pythoncode {
@@ -7705,51 +4803,7 @@ class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentat
 };
 
 
-%extend StepShape_ShapeDimensionRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ShapeDimensionRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ShapeDimensionRepresentation::Handle_StepShape_ShapeDimensionRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ShapeDimensionRepresentation;
-class Handle_StepShape_ShapeDimensionRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_ShapeDimensionRepresentation();
-        Handle_StepShape_ShapeDimensionRepresentation(const Handle_StepShape_ShapeDimensionRepresentation &aHandle);
-        Handle_StepShape_ShapeDimensionRepresentation(const StepShape_ShapeDimensionRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ShapeDimensionRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ShapeDimensionRepresentation {
-    StepShape_ShapeDimensionRepresentation* _get_reference() {
-    return (StepShape_ShapeDimensionRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ShapeDimensionRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ShapeDimensionRepresentation)
 
 %extend StepShape_ShapeDimensionRepresentation {
 	%pythoncode {
@@ -7768,51 +4822,7 @@ class StepShape_ShapeRepresentationWithParameters : public StepShape_ShapeRepres
 };
 
 
-%extend StepShape_ShapeRepresentationWithParameters {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ShapeRepresentationWithParameters(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ShapeRepresentationWithParameters::Handle_StepShape_ShapeRepresentationWithParameters %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ShapeRepresentationWithParameters;
-class Handle_StepShape_ShapeRepresentationWithParameters : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_ShapeRepresentationWithParameters();
-        Handle_StepShape_ShapeRepresentationWithParameters(const Handle_StepShape_ShapeRepresentationWithParameters &aHandle);
-        Handle_StepShape_ShapeRepresentationWithParameters(const StepShape_ShapeRepresentationWithParameters *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ShapeRepresentationWithParameters DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ShapeRepresentationWithParameters {
-    StepShape_ShapeRepresentationWithParameters* _get_reference() {
-    return (StepShape_ShapeRepresentationWithParameters*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ShapeRepresentationWithParameters {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ShapeRepresentationWithParameters)
 
 %extend StepShape_ShapeRepresentationWithParameters {
 	%pythoncode {
@@ -7867,51 +4877,7 @@ class StepShape_SolidReplica : public StepShape_SolidModel {
 };
 
 
-%extend StepShape_SolidReplica {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_SolidReplica(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_SolidReplica::Handle_StepShape_SolidReplica %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_SolidReplica;
-class Handle_StepShape_SolidReplica : public Handle_StepShape_SolidModel {
-
-    public:
-        // constructors
-        Handle_StepShape_SolidReplica();
-        Handle_StepShape_SolidReplica(const Handle_StepShape_SolidReplica &aHandle);
-        Handle_StepShape_SolidReplica(const StepShape_SolidReplica *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_SolidReplica DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_SolidReplica {
-    StepShape_SolidReplica* _get_reference() {
-    return (StepShape_SolidReplica*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_SolidReplica {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_SolidReplica)
 
 %extend StepShape_SolidReplica {
 	%pythoncode {
@@ -7954,51 +4920,7 @@ class StepShape_SweptAreaSolid : public StepShape_SolidModel {
 };
 
 
-%extend StepShape_SweptAreaSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_SweptAreaSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_SweptAreaSolid::Handle_StepShape_SweptAreaSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_SweptAreaSolid;
-class Handle_StepShape_SweptAreaSolid : public Handle_StepShape_SolidModel {
-
-    public:
-        // constructors
-        Handle_StepShape_SweptAreaSolid();
-        Handle_StepShape_SweptAreaSolid(const Handle_StepShape_SweptAreaSolid &aHandle);
-        Handle_StepShape_SweptAreaSolid(const StepShape_SweptAreaSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_SweptAreaSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_SweptAreaSolid {
-    StepShape_SweptAreaSolid* _get_reference() {
-    return (StepShape_SweptAreaSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_SweptAreaSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_SweptAreaSolid)
 
 %extend StepShape_SweptAreaSolid {
 	%pythoncode {
@@ -8041,51 +4963,7 @@ class StepShape_SweptFaceSolid : public StepShape_SolidModel {
 };
 
 
-%extend StepShape_SweptFaceSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_SweptFaceSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_SweptFaceSolid::Handle_StepShape_SweptFaceSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_SweptFaceSolid;
-class Handle_StepShape_SweptFaceSolid : public Handle_StepShape_SolidModel {
-
-    public:
-        // constructors
-        Handle_StepShape_SweptFaceSolid();
-        Handle_StepShape_SweptFaceSolid(const Handle_StepShape_SweptFaceSolid &aHandle);
-        Handle_StepShape_SweptFaceSolid(const StepShape_SweptFaceSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_SweptFaceSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_SweptFaceSolid {
-    StepShape_SweptFaceSolid* _get_reference() {
-    return (StepShape_SweptFaceSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_SweptFaceSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_SweptFaceSolid)
 
 %extend StepShape_SweptFaceSolid {
 	%pythoncode {
@@ -8104,51 +4982,7 @@ class StepShape_TransitionalShapeRepresentation : public StepShape_ShapeRepresen
 };
 
 
-%extend StepShape_TransitionalShapeRepresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_TransitionalShapeRepresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_TransitionalShapeRepresentation::Handle_StepShape_TransitionalShapeRepresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_TransitionalShapeRepresentation;
-class Handle_StepShape_TransitionalShapeRepresentation : public Handle_StepShape_ShapeRepresentation {
-
-    public:
-        // constructors
-        Handle_StepShape_TransitionalShapeRepresentation();
-        Handle_StepShape_TransitionalShapeRepresentation(const Handle_StepShape_TransitionalShapeRepresentation &aHandle);
-        Handle_StepShape_TransitionalShapeRepresentation(const StepShape_TransitionalShapeRepresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_TransitionalShapeRepresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_TransitionalShapeRepresentation {
-    StepShape_TransitionalShapeRepresentation* _get_reference() {
-    return (StepShape_TransitionalShapeRepresentation*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_TransitionalShapeRepresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_TransitionalShapeRepresentation)
 
 %extend StepShape_TransitionalShapeRepresentation {
 	%pythoncode {
@@ -8167,51 +5001,7 @@ class StepShape_Vertex : public StepShape_TopologicalRepresentationItem {
 };
 
 
-%extend StepShape_Vertex {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Vertex(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Vertex::Handle_StepShape_Vertex %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Vertex;
-class Handle_StepShape_Vertex : public Handle_StepShape_TopologicalRepresentationItem {
-
-    public:
-        // constructors
-        Handle_StepShape_Vertex();
-        Handle_StepShape_Vertex(const Handle_StepShape_Vertex &aHandle);
-        Handle_StepShape_Vertex(const StepShape_Vertex *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Vertex DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Vertex {
-    StepShape_Vertex* _get_reference() {
-    return (StepShape_Vertex*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Vertex {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Vertex)
 
 %extend StepShape_Vertex {
 	%pythoncode {
@@ -8268,51 +5058,7 @@ class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 };
 
 
-%extend StepShape_BrepWithVoids {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_BrepWithVoids(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_BrepWithVoids::Handle_StepShape_BrepWithVoids %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_BrepWithVoids;
-class Handle_StepShape_BrepWithVoids : public Handle_StepShape_ManifoldSolidBrep {
-
-    public:
-        // constructors
-        Handle_StepShape_BrepWithVoids();
-        Handle_StepShape_BrepWithVoids(const Handle_StepShape_BrepWithVoids &aHandle);
-        Handle_StepShape_BrepWithVoids(const StepShape_BrepWithVoids *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_BrepWithVoids DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_BrepWithVoids {
-    StepShape_BrepWithVoids* _get_reference() {
-    return (StepShape_BrepWithVoids*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_BrepWithVoids {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_BrepWithVoids)
 
 %extend StepShape_BrepWithVoids {
 	%pythoncode {
@@ -8331,51 +5077,7 @@ class StepShape_ClosedShell : public StepShape_ConnectedFaceSet {
 };
 
 
-%extend StepShape_ClosedShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ClosedShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ClosedShell::Handle_StepShape_ClosedShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ClosedShell;
-class Handle_StepShape_ClosedShell : public Handle_StepShape_ConnectedFaceSet {
-
-    public:
-        // constructors
-        Handle_StepShape_ClosedShell();
-        Handle_StepShape_ClosedShell(const Handle_StepShape_ClosedShell &aHandle);
-        Handle_StepShape_ClosedShell(const StepShape_ClosedShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ClosedShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ClosedShell {
-    StepShape_ClosedShell* _get_reference() {
-    return (StepShape_ClosedShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ClosedShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ClosedShell)
 
 %extend StepShape_ClosedShell {
 	%pythoncode {
@@ -8420,51 +5122,7 @@ class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 };
 
 
-%extend StepShape_ConnectedFaceSubSet {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ConnectedFaceSubSet(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ConnectedFaceSubSet::Handle_StepShape_ConnectedFaceSubSet %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ConnectedFaceSubSet;
-class Handle_StepShape_ConnectedFaceSubSet : public Handle_StepShape_ConnectedFaceSet {
-
-    public:
-        // constructors
-        Handle_StepShape_ConnectedFaceSubSet();
-        Handle_StepShape_ConnectedFaceSubSet(const Handle_StepShape_ConnectedFaceSubSet &aHandle);
-        Handle_StepShape_ConnectedFaceSubSet(const StepShape_ConnectedFaceSubSet *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ConnectedFaceSubSet DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ConnectedFaceSubSet {
-    StepShape_ConnectedFaceSubSet* _get_reference() {
-    return (StepShape_ConnectedFaceSubSet*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ConnectedFaceSubSet {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ConnectedFaceSubSet)
 
 %extend StepShape_ConnectedFaceSubSet {
 	%pythoncode {
@@ -8527,51 +5185,7 @@ class StepShape_EdgeCurve : public StepShape_Edge {
 };
 
 
-%extend StepShape_EdgeCurve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_EdgeCurve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_EdgeCurve::Handle_StepShape_EdgeCurve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_EdgeCurve;
-class Handle_StepShape_EdgeCurve : public Handle_StepShape_Edge {
-
-    public:
-        // constructors
-        Handle_StepShape_EdgeCurve();
-        Handle_StepShape_EdgeCurve(const Handle_StepShape_EdgeCurve &aHandle);
-        Handle_StepShape_EdgeCurve(const StepShape_EdgeCurve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_EdgeCurve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_EdgeCurve {
-    StepShape_EdgeCurve* _get_reference() {
-    return (StepShape_EdgeCurve*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_EdgeCurve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_EdgeCurve)
 
 %extend StepShape_EdgeCurve {
 	%pythoncode {
@@ -8624,51 +5238,7 @@ class StepShape_EdgeLoop : public StepShape_Loop {
 };
 
 
-%extend StepShape_EdgeLoop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_EdgeLoop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_EdgeLoop::Handle_StepShape_EdgeLoop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_EdgeLoop;
-class Handle_StepShape_EdgeLoop : public Handle_StepShape_Loop {
-
-    public:
-        // constructors
-        Handle_StepShape_EdgeLoop();
-        Handle_StepShape_EdgeLoop(const Handle_StepShape_EdgeLoop &aHandle);
-        Handle_StepShape_EdgeLoop(const StepShape_EdgeLoop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_EdgeLoop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_EdgeLoop {
-    StepShape_EdgeLoop* _get_reference() {
-    return (StepShape_EdgeLoop*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_EdgeLoop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_EdgeLoop)
 
 %extend StepShape_EdgeLoop {
 	%pythoncode {
@@ -8727,51 +5297,7 @@ class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 };
 
 
-%extend StepShape_ExtrudedAreaSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ExtrudedAreaSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ExtrudedAreaSolid::Handle_StepShape_ExtrudedAreaSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ExtrudedAreaSolid;
-class Handle_StepShape_ExtrudedAreaSolid : public Handle_StepShape_SweptAreaSolid {
-
-    public:
-        // constructors
-        Handle_StepShape_ExtrudedAreaSolid();
-        Handle_StepShape_ExtrudedAreaSolid(const Handle_StepShape_ExtrudedAreaSolid &aHandle);
-        Handle_StepShape_ExtrudedAreaSolid(const StepShape_ExtrudedAreaSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ExtrudedAreaSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ExtrudedAreaSolid {
-    StepShape_ExtrudedAreaSolid* _get_reference() {
-    return (StepShape_ExtrudedAreaSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ExtrudedAreaSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ExtrudedAreaSolid)
 
 %extend StepShape_ExtrudedAreaSolid {
 	%pythoncode {
@@ -8830,51 +5356,7 @@ class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 };
 
 
-%extend StepShape_ExtrudedFaceSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_ExtrudedFaceSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_ExtrudedFaceSolid::Handle_StepShape_ExtrudedFaceSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_ExtrudedFaceSolid;
-class Handle_StepShape_ExtrudedFaceSolid : public Handle_StepShape_SweptFaceSolid {
-
-    public:
-        // constructors
-        Handle_StepShape_ExtrudedFaceSolid();
-        Handle_StepShape_ExtrudedFaceSolid(const Handle_StepShape_ExtrudedFaceSolid &aHandle);
-        Handle_StepShape_ExtrudedFaceSolid(const StepShape_ExtrudedFaceSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_ExtrudedFaceSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_ExtrudedFaceSolid {
-    StepShape_ExtrudedFaceSolid* _get_reference() {
-    return (StepShape_ExtrudedFaceSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_ExtrudedFaceSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_ExtrudedFaceSolid)
 
 %extend StepShape_ExtrudedFaceSolid {
 	%pythoncode {
@@ -8893,51 +5375,7 @@ class StepShape_FaceOuterBound : public StepShape_FaceBound {
 };
 
 
-%extend StepShape_FaceOuterBound {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FaceOuterBound(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FaceOuterBound::Handle_StepShape_FaceOuterBound %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FaceOuterBound;
-class Handle_StepShape_FaceOuterBound : public Handle_StepShape_FaceBound {
-
-    public:
-        // constructors
-        Handle_StepShape_FaceOuterBound();
-        Handle_StepShape_FaceOuterBound(const Handle_StepShape_FaceOuterBound &aHandle);
-        Handle_StepShape_FaceOuterBound(const StepShape_FaceOuterBound *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FaceOuterBound DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FaceOuterBound {
-    StepShape_FaceOuterBound* _get_reference() {
-    return (StepShape_FaceOuterBound*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FaceOuterBound {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FaceOuterBound)
 
 %extend StepShape_FaceOuterBound {
 	%pythoncode {
@@ -8996,51 +5434,7 @@ class StepShape_FaceSurface : public StepShape_Face {
 };
 
 
-%extend StepShape_FaceSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FaceSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FaceSurface::Handle_StepShape_FaceSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FaceSurface;
-class Handle_StepShape_FaceSurface : public Handle_StepShape_Face {
-
-    public:
-        // constructors
-        Handle_StepShape_FaceSurface();
-        Handle_StepShape_FaceSurface(const Handle_StepShape_FaceSurface &aHandle);
-        Handle_StepShape_FaceSurface(const StepShape_FaceSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FaceSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FaceSurface {
-    StepShape_FaceSurface* _get_reference() {
-    return (StepShape_FaceSurface*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FaceSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FaceSurface)
 
 %extend StepShape_FaceSurface {
 	%pythoncode {
@@ -9059,51 +5453,7 @@ class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep {
 };
 
 
-%extend StepShape_FacetedBrep {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FacetedBrep(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FacetedBrep::Handle_StepShape_FacetedBrep %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FacetedBrep;
-class Handle_StepShape_FacetedBrep : public Handle_StepShape_ManifoldSolidBrep {
-
-    public:
-        // constructors
-        Handle_StepShape_FacetedBrep();
-        Handle_StepShape_FacetedBrep(const Handle_StepShape_FacetedBrep &aHandle);
-        Handle_StepShape_FacetedBrep(const StepShape_FacetedBrep *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FacetedBrep DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FacetedBrep {
-    StepShape_FacetedBrep* _get_reference() {
-    return (StepShape_FacetedBrep*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FacetedBrep {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FacetedBrep)
 
 %extend StepShape_FacetedBrep {
 	%pythoncode {
@@ -9192,51 +5542,7 @@ class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep
 };
 
 
-%extend StepShape_FacetedBrepAndBrepWithVoids {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_FacetedBrepAndBrepWithVoids(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_FacetedBrepAndBrepWithVoids::Handle_StepShape_FacetedBrepAndBrepWithVoids %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_FacetedBrepAndBrepWithVoids;
-class Handle_StepShape_FacetedBrepAndBrepWithVoids : public Handle_StepShape_ManifoldSolidBrep {
-
-    public:
-        // constructors
-        Handle_StepShape_FacetedBrepAndBrepWithVoids();
-        Handle_StepShape_FacetedBrepAndBrepWithVoids(const Handle_StepShape_FacetedBrepAndBrepWithVoids &aHandle);
-        Handle_StepShape_FacetedBrepAndBrepWithVoids(const StepShape_FacetedBrepAndBrepWithVoids *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_FacetedBrepAndBrepWithVoids DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_FacetedBrepAndBrepWithVoids {
-    StepShape_FacetedBrepAndBrepWithVoids* _get_reference() {
-    return (StepShape_FacetedBrepAndBrepWithVoids*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_FacetedBrepAndBrepWithVoids {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_FacetedBrepAndBrepWithVoids)
 
 %extend StepShape_FacetedBrepAndBrepWithVoids {
 	%pythoncode {
@@ -9255,51 +5561,7 @@ class StepShape_OpenShell : public StepShape_ConnectedFaceSet {
 };
 
 
-%extend StepShape_OpenShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OpenShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OpenShell::Handle_StepShape_OpenShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OpenShell;
-class Handle_StepShape_OpenShell : public Handle_StepShape_ConnectedFaceSet {
-
-    public:
-        // constructors
-        Handle_StepShape_OpenShell();
-        Handle_StepShape_OpenShell(const Handle_StepShape_OpenShell &aHandle);
-        Handle_StepShape_OpenShell(const StepShape_OpenShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OpenShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OpenShell {
-    StepShape_OpenShell* _get_reference() {
-    return (StepShape_OpenShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OpenShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OpenShell)
 
 %extend StepShape_OpenShell {
 	%pythoncode {
@@ -9368,51 +5630,7 @@ class StepShape_OrientedEdge : public StepShape_Edge {
 };
 
 
-%extend StepShape_OrientedEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OrientedEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OrientedEdge::Handle_StepShape_OrientedEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OrientedEdge;
-class Handle_StepShape_OrientedEdge : public Handle_StepShape_Edge {
-
-    public:
-        // constructors
-        Handle_StepShape_OrientedEdge();
-        Handle_StepShape_OrientedEdge(const Handle_StepShape_OrientedEdge &aHandle);
-        Handle_StepShape_OrientedEdge(const StepShape_OrientedEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OrientedEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OrientedEdge {
-    StepShape_OrientedEdge* _get_reference() {
-    return (StepShape_OrientedEdge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OrientedEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OrientedEdge)
 
 %extend StepShape_OrientedEdge {
 	%pythoncode {
@@ -9489,51 +5707,7 @@ class StepShape_OrientedFace : public StepShape_Face {
 };
 
 
-%extend StepShape_OrientedFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OrientedFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OrientedFace::Handle_StepShape_OrientedFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OrientedFace;
-class Handle_StepShape_OrientedFace : public Handle_StepShape_Face {
-
-    public:
-        // constructors
-        Handle_StepShape_OrientedFace();
-        Handle_StepShape_OrientedFace(const Handle_StepShape_OrientedFace &aHandle);
-        Handle_StepShape_OrientedFace(const StepShape_OrientedFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OrientedFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OrientedFace {
-    StepShape_OrientedFace* _get_reference() {
-    return (StepShape_OrientedFace*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OrientedFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OrientedFace)
 
 %extend StepShape_OrientedFace {
 	%pythoncode {
@@ -9610,51 +5784,7 @@ class StepShape_OrientedPath : public StepShape_Path {
 };
 
 
-%extend StepShape_OrientedPath {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OrientedPath(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OrientedPath::Handle_StepShape_OrientedPath %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OrientedPath;
-class Handle_StepShape_OrientedPath : public Handle_StepShape_Path {
-
-    public:
-        // constructors
-        Handle_StepShape_OrientedPath();
-        Handle_StepShape_OrientedPath(const Handle_StepShape_OrientedPath &aHandle);
-        Handle_StepShape_OrientedPath(const StepShape_OrientedPath *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OrientedPath DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OrientedPath {
-    StepShape_OrientedPath* _get_reference() {
-    return (StepShape_OrientedPath*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OrientedPath {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OrientedPath)
 
 %extend StepShape_OrientedPath {
 	%pythoncode {
@@ -9707,51 +5837,7 @@ class StepShape_PolyLoop : public StepShape_Loop {
 };
 
 
-%extend StepShape_PolyLoop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_PolyLoop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_PolyLoop::Handle_StepShape_PolyLoop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_PolyLoop;
-class Handle_StepShape_PolyLoop : public Handle_StepShape_Loop {
-
-    public:
-        // constructors
-        Handle_StepShape_PolyLoop();
-        Handle_StepShape_PolyLoop(const Handle_StepShape_PolyLoop &aHandle);
-        Handle_StepShape_PolyLoop(const StepShape_PolyLoop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_PolyLoop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_PolyLoop {
-    StepShape_PolyLoop* _get_reference() {
-    return (StepShape_PolyLoop*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_PolyLoop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_PolyLoop)
 
 %extend StepShape_PolyLoop {
 	%pythoncode {
@@ -9810,51 +5896,7 @@ class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 };
 
 
-%extend StepShape_RevolvedAreaSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_RevolvedAreaSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_RevolvedAreaSolid::Handle_StepShape_RevolvedAreaSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_RevolvedAreaSolid;
-class Handle_StepShape_RevolvedAreaSolid : public Handle_StepShape_SweptAreaSolid {
-
-    public:
-        // constructors
-        Handle_StepShape_RevolvedAreaSolid();
-        Handle_StepShape_RevolvedAreaSolid(const Handle_StepShape_RevolvedAreaSolid &aHandle);
-        Handle_StepShape_RevolvedAreaSolid(const StepShape_RevolvedAreaSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_RevolvedAreaSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_RevolvedAreaSolid {
-    StepShape_RevolvedAreaSolid* _get_reference() {
-    return (StepShape_RevolvedAreaSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_RevolvedAreaSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_RevolvedAreaSolid)
 
 %extend StepShape_RevolvedAreaSolid {
 	%pythoncode {
@@ -9913,51 +5955,7 @@ class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 };
 
 
-%extend StepShape_RevolvedFaceSolid {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_RevolvedFaceSolid(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_RevolvedFaceSolid::Handle_StepShape_RevolvedFaceSolid %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_RevolvedFaceSolid;
-class Handle_StepShape_RevolvedFaceSolid : public Handle_StepShape_SweptFaceSolid {
-
-    public:
-        // constructors
-        Handle_StepShape_RevolvedFaceSolid();
-        Handle_StepShape_RevolvedFaceSolid(const Handle_StepShape_RevolvedFaceSolid &aHandle);
-        Handle_StepShape_RevolvedFaceSolid(const StepShape_RevolvedFaceSolid *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_RevolvedFaceSolid DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_RevolvedFaceSolid {
-    StepShape_RevolvedFaceSolid* _get_reference() {
-    return (StepShape_RevolvedFaceSolid*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_RevolvedFaceSolid {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_RevolvedFaceSolid)
 
 %extend StepShape_RevolvedFaceSolid {
 	%pythoncode {
@@ -10004,51 +6002,7 @@ class StepShape_Subedge : public StepShape_Edge {
 };
 
 
-%extend StepShape_Subedge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Subedge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Subedge::Handle_StepShape_Subedge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Subedge;
-class Handle_StepShape_Subedge : public Handle_StepShape_Edge {
-
-    public:
-        // constructors
-        Handle_StepShape_Subedge();
-        Handle_StepShape_Subedge(const Handle_StepShape_Subedge &aHandle);
-        Handle_StepShape_Subedge(const StepShape_Subedge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Subedge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Subedge {
-    StepShape_Subedge* _get_reference() {
-    return (StepShape_Subedge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Subedge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Subedge)
 
 %extend StepShape_Subedge {
 	%pythoncode {
@@ -10093,51 +6047,7 @@ class StepShape_Subface : public StepShape_Face {
 };
 
 
-%extend StepShape_Subface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_Subface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_Subface::Handle_StepShape_Subface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_Subface;
-class Handle_StepShape_Subface : public Handle_StepShape_Face {
-
-    public:
-        // constructors
-        Handle_StepShape_Subface();
-        Handle_StepShape_Subface(const Handle_StepShape_Subface &aHandle);
-        Handle_StepShape_Subface(const StepShape_Subface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_Subface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_Subface {
-    StepShape_Subface* _get_reference() {
-    return (StepShape_Subface*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_Subface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_Subface)
 
 %extend StepShape_Subface {
 	%pythoncode {
@@ -10180,51 +6090,7 @@ class StepShape_VertexLoop : public StepShape_Loop {
 };
 
 
-%extend StepShape_VertexLoop {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_VertexLoop(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_VertexLoop::Handle_StepShape_VertexLoop %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_VertexLoop;
-class Handle_StepShape_VertexLoop : public Handle_StepShape_Loop {
-
-    public:
-        // constructors
-        Handle_StepShape_VertexLoop();
-        Handle_StepShape_VertexLoop(const Handle_StepShape_VertexLoop &aHandle);
-        Handle_StepShape_VertexLoop(const StepShape_VertexLoop *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_VertexLoop DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_VertexLoop {
-    StepShape_VertexLoop* _get_reference() {
-    return (StepShape_VertexLoop*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_VertexLoop {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_VertexLoop)
 
 %extend StepShape_VertexLoop {
 	%pythoncode {
@@ -10267,51 +6133,7 @@ class StepShape_VertexPoint : public StepShape_Vertex {
 };
 
 
-%extend StepShape_VertexPoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_VertexPoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_VertexPoint::Handle_StepShape_VertexPoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_VertexPoint;
-class Handle_StepShape_VertexPoint : public Handle_StepShape_Vertex {
-
-    public:
-        // constructors
-        Handle_StepShape_VertexPoint();
-        Handle_StepShape_VertexPoint(const Handle_StepShape_VertexPoint &aHandle);
-        Handle_StepShape_VertexPoint(const StepShape_VertexPoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_VertexPoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_VertexPoint {
-    StepShape_VertexPoint* _get_reference() {
-    return (StepShape_VertexPoint*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_VertexPoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_VertexPoint)
 
 %extend StepShape_VertexPoint {
 	%pythoncode {
@@ -10330,51 +6152,7 @@ class StepShape_AdvancedFace : public StepShape_FaceSurface {
 };
 
 
-%extend StepShape_AdvancedFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_AdvancedFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_AdvancedFace::Handle_StepShape_AdvancedFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_AdvancedFace;
-class Handle_StepShape_AdvancedFace : public Handle_StepShape_FaceSurface {
-
-    public:
-        // constructors
-        Handle_StepShape_AdvancedFace();
-        Handle_StepShape_AdvancedFace(const Handle_StepShape_AdvancedFace &aHandle);
-        Handle_StepShape_AdvancedFace(const StepShape_AdvancedFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_AdvancedFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_AdvancedFace {
-    StepShape_AdvancedFace* _get_reference() {
-    return (StepShape_AdvancedFace*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_AdvancedFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_AdvancedFace)
 
 %extend StepShape_AdvancedFace {
 	%pythoncode {
@@ -10451,51 +6229,7 @@ class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 };
 
 
-%extend StepShape_OrientedClosedShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OrientedClosedShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OrientedClosedShell::Handle_StepShape_OrientedClosedShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OrientedClosedShell;
-class Handle_StepShape_OrientedClosedShell : public Handle_StepShape_ClosedShell {
-
-    public:
-        // constructors
-        Handle_StepShape_OrientedClosedShell();
-        Handle_StepShape_OrientedClosedShell(const Handle_StepShape_OrientedClosedShell &aHandle);
-        Handle_StepShape_OrientedClosedShell(const StepShape_OrientedClosedShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OrientedClosedShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OrientedClosedShell {
-    StepShape_OrientedClosedShell* _get_reference() {
-    return (StepShape_OrientedClosedShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OrientedClosedShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OrientedClosedShell)
 
 %extend StepShape_OrientedClosedShell {
 	%pythoncode {
@@ -10572,51 +6306,7 @@ class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 };
 
 
-%extend StepShape_OrientedOpenShell {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_OrientedOpenShell(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_OrientedOpenShell::Handle_StepShape_OrientedOpenShell %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_OrientedOpenShell;
-class Handle_StepShape_OrientedOpenShell : public Handle_StepShape_OpenShell {
-
-    public:
-        // constructors
-        Handle_StepShape_OrientedOpenShell();
-        Handle_StepShape_OrientedOpenShell(const Handle_StepShape_OrientedOpenShell &aHandle);
-        Handle_StepShape_OrientedOpenShell(const StepShape_OrientedOpenShell *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_OrientedOpenShell DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_OrientedOpenShell {
-    StepShape_OrientedOpenShell* _get_reference() {
-    return (StepShape_OrientedOpenShell*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_OrientedOpenShell {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_OrientedOpenShell)
 
 %extend StepShape_OrientedOpenShell {
 	%pythoncode {
@@ -10663,51 +6353,7 @@ class StepShape_SeamEdge : public StepShape_OrientedEdge {
 };
 
 
-%extend StepShape_SeamEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepShape_SeamEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepShape_SeamEdge::Handle_StepShape_SeamEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepShape_SeamEdge;
-class Handle_StepShape_SeamEdge : public Handle_StepShape_OrientedEdge {
-
-    public:
-        // constructors
-        Handle_StepShape_SeamEdge();
-        Handle_StepShape_SeamEdge(const Handle_StepShape_SeamEdge &aHandle);
-        Handle_StepShape_SeamEdge(const StepShape_SeamEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepShape_SeamEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepShape_SeamEdge {
-    StepShape_SeamEdge* _get_reference() {
-    return (StepShape_SeamEdge*)$self->Access();
-    }
-};
-
-%extend Handle_StepShape_SeamEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepShape_SeamEdge)
 
 %extend StepShape_SeamEdge {
 	%pythoncode {

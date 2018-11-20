@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define FEMTOOLDOCSTRING
-"No docstring provided."
+"Tool to Finite Element methods
+
+-Level: Advanced"
 %enddef
 %module (package="OCC.Core", docstring=FEMTOOLDOCSTRING) FEmTool
 
@@ -34,30 +36,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include FEmTool_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(FEmTool_Curve)
+%wrap_handle(FEmTool_ElementaryCriterion)
+%wrap_handle(FEmTool_HAssemblyTable)
+%wrap_handle(FEmTool_ListNodeOfListOfVectors)
+%wrap_handle(FEmTool_SequenceNodeOfSeqOfLinConstr)
+%wrap_handle(FEmTool_SparseMatrix)
+%wrap_handle(FEmTool_LinearFlexion)
+%wrap_handle(FEmTool_LinearJerk)
+%wrap_handle(FEmTool_LinearTension)
+%wrap_handle(FEmTool_ProfileMatrix)
 
 %nodefaultctor FEmTool_Assembly;
 class FEmTool_Assembly {
@@ -391,51 +390,7 @@ class FEmTool_Curve : public MMgt_TShared {
 };
 
 
-%extend FEmTool_Curve {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_Curve(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_Curve::Handle_FEmTool_Curve %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_Curve;
-class Handle_FEmTool_Curve : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_FEmTool_Curve();
-        Handle_FEmTool_Curve(const Handle_FEmTool_Curve &aHandle);
-        Handle_FEmTool_Curve(const FEmTool_Curve *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_Curve DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_Curve {
-    FEmTool_Curve* _get_reference() {
-    return (FEmTool_Curve*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_Curve {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_Curve)
 
 %extend FEmTool_Curve {
 	%pythoncode {
@@ -500,51 +455,7 @@ class FEmTool_ElementaryCriterion : public MMgt_TShared {
 };
 
 
-%extend FEmTool_ElementaryCriterion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_ElementaryCriterion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_ElementaryCriterion::Handle_FEmTool_ElementaryCriterion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_ElementaryCriterion;
-class Handle_FEmTool_ElementaryCriterion : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_FEmTool_ElementaryCriterion();
-        Handle_FEmTool_ElementaryCriterion(const Handle_FEmTool_ElementaryCriterion &aHandle);
-        Handle_FEmTool_ElementaryCriterion(const FEmTool_ElementaryCriterion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_ElementaryCriterion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_ElementaryCriterion {
-    FEmTool_ElementaryCriterion* _get_reference() {
-    return (FEmTool_ElementaryCriterion*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_ElementaryCriterion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_ElementaryCriterion)
 
 %extend FEmTool_ElementaryCriterion {
 	%pythoncode {
@@ -688,51 +599,7 @@ class FEmTool_HAssemblyTable : public MMgt_TShared {
 };
 
 
-%extend FEmTool_HAssemblyTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_HAssemblyTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_HAssemblyTable::Handle_FEmTool_HAssemblyTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_HAssemblyTable;
-class Handle_FEmTool_HAssemblyTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_FEmTool_HAssemblyTable();
-        Handle_FEmTool_HAssemblyTable(const Handle_FEmTool_HAssemblyTable &aHandle);
-        Handle_FEmTool_HAssemblyTable(const FEmTool_HAssemblyTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_HAssemblyTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_HAssemblyTable {
-    FEmTool_HAssemblyTable* _get_reference() {
-    return (FEmTool_HAssemblyTable*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_HAssemblyTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_HAssemblyTable)
 
 %extend FEmTool_HAssemblyTable {
 	%pythoncode {
@@ -796,51 +663,7 @@ class FEmTool_ListNodeOfListOfVectors : public TCollection_MapNode {
 };
 
 
-%extend FEmTool_ListNodeOfListOfVectors {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_ListNodeOfListOfVectors(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_ListNodeOfListOfVectors::Handle_FEmTool_ListNodeOfListOfVectors %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_ListNodeOfListOfVectors;
-class Handle_FEmTool_ListNodeOfListOfVectors : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_FEmTool_ListNodeOfListOfVectors();
-        Handle_FEmTool_ListNodeOfListOfVectors(const Handle_FEmTool_ListNodeOfListOfVectors &aHandle);
-        Handle_FEmTool_ListNodeOfListOfVectors(const FEmTool_ListNodeOfListOfVectors *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_ListNodeOfListOfVectors DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_ListNodeOfListOfVectors {
-    FEmTool_ListNodeOfListOfVectors* _get_reference() {
-    return (FEmTool_ListNodeOfListOfVectors*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_ListNodeOfListOfVectors {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_ListNodeOfListOfVectors)
 
 %extend FEmTool_ListNodeOfListOfVectors {
 	%pythoncode {
@@ -1145,51 +968,7 @@ class FEmTool_SequenceNodeOfSeqOfLinConstr : public TCollection_SeqNode {
 };
 
 
-%extend FEmTool_SequenceNodeOfSeqOfLinConstr {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_SequenceNodeOfSeqOfLinConstr(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_SequenceNodeOfSeqOfLinConstr::Handle_FEmTool_SequenceNodeOfSeqOfLinConstr %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_SequenceNodeOfSeqOfLinConstr;
-class Handle_FEmTool_SequenceNodeOfSeqOfLinConstr : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_FEmTool_SequenceNodeOfSeqOfLinConstr();
-        Handle_FEmTool_SequenceNodeOfSeqOfLinConstr(const Handle_FEmTool_SequenceNodeOfSeqOfLinConstr &aHandle);
-        Handle_FEmTool_SequenceNodeOfSeqOfLinConstr(const FEmTool_SequenceNodeOfSeqOfLinConstr *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_SequenceNodeOfSeqOfLinConstr DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_SequenceNodeOfSeqOfLinConstr {
-    FEmTool_SequenceNodeOfSeqOfLinConstr* _get_reference() {
-    return (FEmTool_SequenceNodeOfSeqOfLinConstr*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_SequenceNodeOfSeqOfLinConstr {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_SequenceNodeOfSeqOfLinConstr)
 
 %extend FEmTool_SequenceNodeOfSeqOfLinConstr {
 	%pythoncode {
@@ -1278,51 +1057,7 @@ class FEmTool_SparseMatrix : public MMgt_TShared {
 };
 
 
-%extend FEmTool_SparseMatrix {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_SparseMatrix(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_SparseMatrix::Handle_FEmTool_SparseMatrix %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_SparseMatrix;
-class Handle_FEmTool_SparseMatrix : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_FEmTool_SparseMatrix();
-        Handle_FEmTool_SparseMatrix(const Handle_FEmTool_SparseMatrix &aHandle);
-        Handle_FEmTool_SparseMatrix(const FEmTool_SparseMatrix *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_SparseMatrix DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_SparseMatrix {
-    FEmTool_SparseMatrix* _get_reference() {
-    return (FEmTool_SparseMatrix*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_SparseMatrix {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_SparseMatrix)
 
 %extend FEmTool_SparseMatrix {
 	%pythoncode {
@@ -1369,51 +1104,7 @@ class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 };
 
 
-%extend FEmTool_LinearFlexion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_LinearFlexion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_LinearFlexion::Handle_FEmTool_LinearFlexion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_LinearFlexion;
-class Handle_FEmTool_LinearFlexion : public Handle_FEmTool_ElementaryCriterion {
-
-    public:
-        // constructors
-        Handle_FEmTool_LinearFlexion();
-        Handle_FEmTool_LinearFlexion(const Handle_FEmTool_LinearFlexion &aHandle);
-        Handle_FEmTool_LinearFlexion(const FEmTool_LinearFlexion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_LinearFlexion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_LinearFlexion {
-    FEmTool_LinearFlexion* _get_reference() {
-    return (FEmTool_LinearFlexion*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_LinearFlexion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_LinearFlexion)
 
 %extend FEmTool_LinearFlexion {
 	%pythoncode {
@@ -1460,51 +1151,7 @@ class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 };
 
 
-%extend FEmTool_LinearJerk {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_LinearJerk(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_LinearJerk::Handle_FEmTool_LinearJerk %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_LinearJerk;
-class Handle_FEmTool_LinearJerk : public Handle_FEmTool_ElementaryCriterion {
-
-    public:
-        // constructors
-        Handle_FEmTool_LinearJerk();
-        Handle_FEmTool_LinearJerk(const Handle_FEmTool_LinearJerk &aHandle);
-        Handle_FEmTool_LinearJerk(const FEmTool_LinearJerk *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_LinearJerk DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_LinearJerk {
-    FEmTool_LinearJerk* _get_reference() {
-    return (FEmTool_LinearJerk*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_LinearJerk {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_LinearJerk)
 
 %extend FEmTool_LinearJerk {
 	%pythoncode {
@@ -1551,51 +1198,7 @@ class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 };
 
 
-%extend FEmTool_LinearTension {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_LinearTension(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_LinearTension::Handle_FEmTool_LinearTension %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_LinearTension;
-class Handle_FEmTool_LinearTension : public Handle_FEmTool_ElementaryCriterion {
-
-    public:
-        // constructors
-        Handle_FEmTool_LinearTension();
-        Handle_FEmTool_LinearTension(const Handle_FEmTool_LinearTension &aHandle);
-        Handle_FEmTool_LinearTension(const FEmTool_LinearTension *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_LinearTension DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_LinearTension {
-    FEmTool_LinearTension* _get_reference() {
-    return (FEmTool_LinearTension*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_LinearTension {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_LinearTension)
 
 %extend FEmTool_LinearTension {
 	%pythoncode {
@@ -1706,51 +1309,7 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 };
 
 
-%extend FEmTool_ProfileMatrix {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_FEmTool_ProfileMatrix(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_FEmTool_ProfileMatrix::Handle_FEmTool_ProfileMatrix %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_FEmTool_ProfileMatrix;
-class Handle_FEmTool_ProfileMatrix : public Handle_FEmTool_SparseMatrix {
-
-    public:
-        // constructors
-        Handle_FEmTool_ProfileMatrix();
-        Handle_FEmTool_ProfileMatrix(const Handle_FEmTool_ProfileMatrix &aHandle);
-        Handle_FEmTool_ProfileMatrix(const FEmTool_ProfileMatrix *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_FEmTool_ProfileMatrix DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_FEmTool_ProfileMatrix {
-    FEmTool_ProfileMatrix* _get_reference() {
-    return (FEmTool_ProfileMatrix*)$self->Access();
-    }
-};
-
-%extend Handle_FEmTool_ProfileMatrix {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(FEmTool_ProfileMatrix)
 
 %extend FEmTool_ProfileMatrix {
 	%pythoncode {

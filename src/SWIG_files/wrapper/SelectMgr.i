@@ -18,7 +18,148 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECTMGRDOCSTRING
-"No docstring provided."
+"SelectMgr manages the process of dynamic
+selection through the following services:
+-  activating and deactivating selection modes for Interactive Objects
+-  adding and removing viewer selectors
+-  definitions of abstract filter classes
+The principle of graphic selection consists in
+representing the objects which you want to select
+by a bounding box in the selection view. The object
+is selected when you use the mouse to designate
+the zone produced by the object.
+To realize this, the application creates a selection
+structure which is independent of the point of view.
+This structure is made up of sensitive primitives
+which have one owner object associated to each of
+them. The role of the sensitive primitive is to reply
+to the requests of the selection algorithm whereas
+the owner's purpose is to make the link between
+the sensitive primitive and the object to be selected.
+Each selection structure corresponds to a selection
+mode which defines the elements that can be selected.
+For example, to select a complete geometric model,
+the application can create a sensitive primitive for
+each face of the interactive object representing the
+geometric model. In this case, all the primitives
+share the same owner. On the other hand, to select
+an edge in a model, the application must create
+one sensitive primitive per edge.
+Example
+void
+InteractiveBox::ComputeSelection
+(const Handle(SelectMgr_Selection)& Sel,
+const Standard_Integer Mode){ switch(Mode){ case 0:
+// locating the whole box by making its faces sensitive ...
+{
+Handle(SelectMgr_EntityOwner)
+Ownr = new
+SelectMgr_EntityOwner(this,5);
+for(Standard_Integer
+I=1;I<=Nbfaces;I++){Sel->Add(new Select3D_SensitiveFace
+(Ownr,[array of the vertices] face I);
+break;
+}
+case 1:     // locates the  edges
+{
+for(Standard_Integer
+i=1;i<=12;i++){
+// 1 owner per edge...
+Handle(mypk_EdgeOwner)
+Ownr = new
+mypk_EdgeOwner(this,i,6);
+// 6->priority
+Sel->Add(new
+Select3D_SensitiveSegment
+(Ownr,firstpt(i),lastpt(i));
+}
+}
+}
+The algorithms for creating selection structures
+store the sensitive primitives in a
+SelectMgr_Selection object. To do this, a set of
+ready-made sensitive primitives is supplied in the
+Select2D and Select3D packages. New sensitive
+primitives can be defined through inheritance
+from  SensitiveEntity. For the application to make
+its own objects selectable, it must define owner
+classes inheriting SelectMgr_EntityOwner.
+For any object inheriting from
+AIS_InteractiveObject, you redefine its
+ComputeSelection functions. In the example below
+there are different modes of selection on the
+topological shape contained within the interactive
+object -selection of the shape itself, the vertices,
+the edges, the wires, the faces.
+Example
+void
+MyPack_MyClass::ComputeSelection(
+const Handle(SelectMgr_Selection)& aSelection,
+const Standard_Integer aMode)
+{
+switch(aMode){
+case 0:
+StdSelect_BRepSelectionTool::Load(
+aSelection,this,myShape,TopAbs_SHAPE);
+break;
+}
+case 1:
+StdSelect_BRepSelectionTool::Load(
+aSelection,this,myShape,TopAbs_VERTEX);
+break;
+}
+case 2:
+StdSelect_BRepSelectionTool::Load(
+aSelection,this,myShape,TopAbs_EDGE);
+break;
+}
+case 3:
+StdSelect_BRepSelectionTool::Load(
+aSelection,this,myShape,TopAbs_WIRE);
+break;
+}
+case 4:
+StdSelect_BRepSelectionTool::Load(
+aSelection,this,myShape,TopAbs_FACE);
+break;
+}
+}
+The StdSelect_BRepSelectionTool object
+provides a high level service which will make the
+shape 'myShape' selectable when the
+AIS_InteractiveContext is asked to display your object.
+Note: The traditional way of highlighting selected entity
+owners adopted by the Open CASCADE library assumes that
+each entity owner highlights itself on its own. This approach
+has two drawbacks:
+-   each entity owner has to maintain its own
+Prs3d_Presentation object, that results in
+large memory overhead for thousands of owners;
+-   drawing selected owners one by one is not
+efficient from the OpenGL usage viewpoint.
+That is why a different method has been introduced. On the basis of
+SelectMgr_EntityOwner::IsAutoHilight() return value an AIS_LocalContext
+object either uses the traditional way of highlighting
+(IsAutoHilight() returned true) or groups such owners according
+to their Selectable Objects and finally calls
+SelectMgr_SelectableObject::HilightSelected()
+or ClearSelected(), passing a group of owners as an argument.
+Hence, an application can derive its own interactive object and
+redefine HilightSelected(), ClearSelected() and
+HilightOwnerWithColor() virtual methods to take advantage of
+such OpenGL technique as arrays of primitives. In any case,
+these methods should at least have empty implementation.
+The AIS_LocalContext::UpdateSelected(const Handle(AIS_InteratciveObject)&,
+Standard_Boolean) method can be used for efficient redrawing a
+selection presentation for a given interactive object from an
+application code.
+Additionally, the SelectMgr_SelectableObject::ClearSelections()
+method now accepts an optional boolean argument. This parameter
+defines whether all object selections should be flagged for
+further update or not. This improved method can be used to
+re-compute an object selection (without redisplaying the object
+completely) when some selection mode is activated not for the first time.
+"
 %enddef
 %module (package="OCC.Core", docstring=SELECTMGRDOCSTRING) SelectMgr
 
@@ -34,24 +175,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include SelectMgr_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_DataMap <Handle_SelectMgr_EntityOwner , Standard_Integer> SelectMgr_MapOfOwnerDetectedEntities;
@@ -96,6 +223,23 @@ enum SelectMgr_StateOfSelection {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(SelectMgr_DataMapNodeOfDataMapOfObjectSelectors)
+%wrap_handle(SelectMgr_EntityOwner)
+%wrap_handle(SelectMgr_Filter)
+%wrap_handle(SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion)
+%wrap_handle(SelectMgr_ListNodeOfListOfFilter)
+%wrap_handle(SelectMgr_SelectableObject)
+%wrap_handle(SelectMgr_Selection)
+%wrap_handle(SelectMgr_SelectionManager)
+%wrap_handle(SelectMgr_SensitiveEntity)
+%wrap_handle(SelectMgr_SequenceNodeOfSequenceOfFilter)
+%wrap_handle(SelectMgr_SequenceNodeOfSequenceOfOwner)
+%wrap_handle(SelectMgr_SequenceNodeOfSequenceOfSelector)
+%wrap_handle(SelectMgr_ViewerSelector)
+%wrap_handle(SelectMgr_CompositionFilter)
+%wrap_handle(SelectMgr_AndFilter)
+%wrap_handle(SelectMgr_OrFilter)
 
 %nodefaultctor SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors;
 class SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors : public TCollection_BasicMapIterator {
@@ -156,51 +300,7 @@ class SelectMgr_DataMapNodeOfDataMapOfObjectSelectors : public TCollection_MapNo
 };
 
 
-%extend SelectMgr_DataMapNodeOfDataMapOfObjectSelectors {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors::Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors;
-class Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors();
-        Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors(const Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors &aHandle);
-        Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors(const SelectMgr_DataMapNodeOfDataMapOfObjectSelectors *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors {
-    SelectMgr_DataMapNodeOfDataMapOfObjectSelectors* _get_reference() {
-    return (SelectMgr_DataMapNodeOfDataMapOfObjectSelectors*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_DataMapNodeOfDataMapOfObjectSelectors)
 
 %extend SelectMgr_DataMapNodeOfDataMapOfObjectSelectors {
 	%pythoncode {
@@ -464,51 +564,7 @@ class SelectMgr_EntityOwner : public SelectBasics_EntityOwner {
 };
 
 
-%extend SelectMgr_EntityOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_EntityOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_EntityOwner::Handle_SelectMgr_EntityOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_EntityOwner;
-class Handle_SelectMgr_EntityOwner : public Handle_SelectBasics_EntityOwner {
-
-    public:
-        // constructors
-        Handle_SelectMgr_EntityOwner();
-        Handle_SelectMgr_EntityOwner(const Handle_SelectMgr_EntityOwner &aHandle);
-        Handle_SelectMgr_EntityOwner(const SelectMgr_EntityOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_EntityOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_EntityOwner {
-    SelectMgr_EntityOwner* _get_reference() {
-    return (SelectMgr_EntityOwner*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_EntityOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_EntityOwner)
 
 %extend SelectMgr_EntityOwner {
 	%pythoncode {
@@ -537,51 +593,7 @@ class SelectMgr_Filter : public MMgt_TShared {
 };
 
 
-%extend SelectMgr_Filter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_Filter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_Filter::Handle_SelectMgr_Filter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_Filter;
-class Handle_SelectMgr_Filter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectMgr_Filter();
-        Handle_SelectMgr_Filter(const Handle_SelectMgr_Filter &aHandle);
-        Handle_SelectMgr_Filter(const SelectMgr_Filter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_Filter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_Filter {
-    SelectMgr_Filter* _get_reference() {
-    return (SelectMgr_Filter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_Filter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_Filter)
 
 %extend SelectMgr_Filter {
 	%pythoncode {
@@ -633,51 +645,7 @@ class SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion : public TCol
 };
 
 
-%extend SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion::Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion;
-class Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion();
-        Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion(const Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion &aHandle);
-        Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion(const SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion {
-    SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion* _get_reference() {
-    return (SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion)
 
 %extend SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion {
 	%pythoncode {
@@ -856,51 +824,7 @@ class SelectMgr_ListNodeOfListOfFilter : public TCollection_MapNode {
 };
 
 
-%extend SelectMgr_ListNodeOfListOfFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_ListNodeOfListOfFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_ListNodeOfListOfFilter::Handle_SelectMgr_ListNodeOfListOfFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_ListNodeOfListOfFilter;
-class Handle_SelectMgr_ListNodeOfListOfFilter : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_ListNodeOfListOfFilter();
-        Handle_SelectMgr_ListNodeOfListOfFilter(const Handle_SelectMgr_ListNodeOfListOfFilter &aHandle);
-        Handle_SelectMgr_ListNodeOfListOfFilter(const SelectMgr_ListNodeOfListOfFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_ListNodeOfListOfFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_ListNodeOfListOfFilter {
-    SelectMgr_ListNodeOfListOfFilter* _get_reference() {
-    return (SelectMgr_ListNodeOfListOfFilter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_ListNodeOfListOfFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_ListNodeOfListOfFilter)
 
 %extend SelectMgr_ListNodeOfListOfFilter {
 	%pythoncode {
@@ -1298,51 +1222,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 };
 
 
-%extend SelectMgr_SelectableObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SelectableObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SelectableObject::Handle_SelectMgr_SelectableObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SelectableObject;
-class Handle_SelectMgr_SelectableObject : public Handle_PrsMgr_PresentableObject {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SelectableObject();
-        Handle_SelectMgr_SelectableObject(const Handle_SelectMgr_SelectableObject &aHandle);
-        Handle_SelectMgr_SelectableObject(const SelectMgr_SelectableObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SelectableObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SelectableObject {
-    SelectMgr_SelectableObject* _get_reference() {
-    return (SelectMgr_SelectableObject*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SelectableObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SelectableObject)
 
 %extend SelectMgr_SelectableObject {
 	%pythoncode {
@@ -1718,51 +1598,7 @@ class SelectMgr_Selection : public MMgt_TShared {
 };
 
 
-%extend SelectMgr_Selection {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_Selection(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_Selection::Handle_SelectMgr_Selection %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_Selection;
-class Handle_SelectMgr_Selection : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectMgr_Selection();
-        Handle_SelectMgr_Selection(const Handle_SelectMgr_Selection &aHandle);
-        Handle_SelectMgr_Selection(const SelectMgr_Selection *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_Selection DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_Selection {
-    SelectMgr_Selection* _get_reference() {
-    return (SelectMgr_Selection*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_Selection {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_Selection)
 
 %extend SelectMgr_Selection {
 	%pythoncode {
@@ -1981,51 +1817,7 @@ class SelectMgr_SelectionManager : public MMgt_TShared {
 };
 
 
-%extend SelectMgr_SelectionManager {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SelectionManager(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SelectionManager::Handle_SelectMgr_SelectionManager %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SelectionManager;
-class Handle_SelectMgr_SelectionManager : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SelectionManager();
-        Handle_SelectMgr_SelectionManager(const Handle_SelectMgr_SelectionManager &aHandle);
-        Handle_SelectMgr_SelectionManager(const SelectMgr_SelectionManager *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SelectionManager DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SelectionManager {
-    SelectMgr_SelectionManager* _get_reference() {
-    return (SelectMgr_SelectionManager*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SelectionManager {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SelectionManager)
 
 %extend SelectMgr_SelectionManager {
 	%pythoncode {
@@ -2076,51 +1868,7 @@ class SelectMgr_SensitiveEntity : public Standard_Transient {
 };
 
 
-%extend SelectMgr_SensitiveEntity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SensitiveEntity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SensitiveEntity::Handle_SelectMgr_SensitiveEntity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SensitiveEntity;
-class Handle_SelectMgr_SensitiveEntity : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SensitiveEntity();
-        Handle_SelectMgr_SensitiveEntity(const Handle_SelectMgr_SensitiveEntity &aHandle);
-        Handle_SelectMgr_SensitiveEntity(const SelectMgr_SensitiveEntity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SensitiveEntity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SensitiveEntity {
-    SelectMgr_SensitiveEntity* _get_reference() {
-    return (SelectMgr_SensitiveEntity*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SensitiveEntity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SensitiveEntity)
 
 %extend SelectMgr_SensitiveEntity {
 	%pythoncode {
@@ -2147,51 +1895,7 @@ class SelectMgr_SequenceNodeOfSequenceOfFilter : public TCollection_SeqNode {
 };
 
 
-%extend SelectMgr_SequenceNodeOfSequenceOfFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SequenceNodeOfSequenceOfFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SequenceNodeOfSequenceOfFilter::Handle_SelectMgr_SequenceNodeOfSequenceOfFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SequenceNodeOfSequenceOfFilter;
-class Handle_SelectMgr_SequenceNodeOfSequenceOfFilter : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SequenceNodeOfSequenceOfFilter();
-        Handle_SelectMgr_SequenceNodeOfSequenceOfFilter(const Handle_SelectMgr_SequenceNodeOfSequenceOfFilter &aHandle);
-        Handle_SelectMgr_SequenceNodeOfSequenceOfFilter(const SelectMgr_SequenceNodeOfSequenceOfFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SequenceNodeOfSequenceOfFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfFilter {
-    SelectMgr_SequenceNodeOfSequenceOfFilter* _get_reference() {
-    return (SelectMgr_SequenceNodeOfSequenceOfFilter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SequenceNodeOfSequenceOfFilter)
 
 %extend SelectMgr_SequenceNodeOfSequenceOfFilter {
 	%pythoncode {
@@ -2218,51 +1922,7 @@ class SelectMgr_SequenceNodeOfSequenceOfOwner : public TCollection_SeqNode {
 };
 
 
-%extend SelectMgr_SequenceNodeOfSequenceOfOwner {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SequenceNodeOfSequenceOfOwner(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SequenceNodeOfSequenceOfOwner::Handle_SelectMgr_SequenceNodeOfSequenceOfOwner %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SequenceNodeOfSequenceOfOwner;
-class Handle_SelectMgr_SequenceNodeOfSequenceOfOwner : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SequenceNodeOfSequenceOfOwner();
-        Handle_SelectMgr_SequenceNodeOfSequenceOfOwner(const Handle_SelectMgr_SequenceNodeOfSequenceOfOwner &aHandle);
-        Handle_SelectMgr_SequenceNodeOfSequenceOfOwner(const SelectMgr_SequenceNodeOfSequenceOfOwner *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SequenceNodeOfSequenceOfOwner DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfOwner {
-    SelectMgr_SequenceNodeOfSequenceOfOwner* _get_reference() {
-    return (SelectMgr_SequenceNodeOfSequenceOfOwner*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfOwner {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SequenceNodeOfSequenceOfOwner)
 
 %extend SelectMgr_SequenceNodeOfSequenceOfOwner {
 	%pythoncode {
@@ -2289,51 +1949,7 @@ class SelectMgr_SequenceNodeOfSequenceOfSelector : public TCollection_SeqNode {
 };
 
 
-%extend SelectMgr_SequenceNodeOfSequenceOfSelector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_SequenceNodeOfSequenceOfSelector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_SequenceNodeOfSequenceOfSelector::Handle_SelectMgr_SequenceNodeOfSequenceOfSelector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_SequenceNodeOfSequenceOfSelector;
-class Handle_SelectMgr_SequenceNodeOfSequenceOfSelector : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_SelectMgr_SequenceNodeOfSequenceOfSelector();
-        Handle_SelectMgr_SequenceNodeOfSequenceOfSelector(const Handle_SelectMgr_SequenceNodeOfSequenceOfSelector &aHandle);
-        Handle_SelectMgr_SequenceNodeOfSequenceOfSelector(const SelectMgr_SequenceNodeOfSequenceOfSelector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_SequenceNodeOfSequenceOfSelector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfSelector {
-    SelectMgr_SequenceNodeOfSequenceOfSelector* _get_reference() {
-    return (SelectMgr_SequenceNodeOfSequenceOfSelector*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_SequenceNodeOfSequenceOfSelector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_SequenceNodeOfSequenceOfSelector)
 
 %extend SelectMgr_SequenceNodeOfSequenceOfSelector {
 	%pythoncode {
@@ -3084,51 +2700,7 @@ class SelectMgr_ViewerSelector : public MMgt_TShared {
 };
 
 
-%extend SelectMgr_ViewerSelector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_ViewerSelector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_ViewerSelector::Handle_SelectMgr_ViewerSelector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_ViewerSelector;
-class Handle_SelectMgr_ViewerSelector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_SelectMgr_ViewerSelector();
-        Handle_SelectMgr_ViewerSelector(const Handle_SelectMgr_ViewerSelector &aHandle);
-        Handle_SelectMgr_ViewerSelector(const SelectMgr_ViewerSelector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_ViewerSelector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_ViewerSelector {
-    SelectMgr_ViewerSelector* _get_reference() {
-    return (SelectMgr_ViewerSelector*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_ViewerSelector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_ViewerSelector)
 
 %extend SelectMgr_ViewerSelector {
 	%pythoncode {
@@ -3189,51 +2761,7 @@ class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 };
 
 
-%extend SelectMgr_CompositionFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_CompositionFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_CompositionFilter::Handle_SelectMgr_CompositionFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_CompositionFilter;
-class Handle_SelectMgr_CompositionFilter : public Handle_SelectMgr_Filter {
-
-    public:
-        // constructors
-        Handle_SelectMgr_CompositionFilter();
-        Handle_SelectMgr_CompositionFilter(const Handle_SelectMgr_CompositionFilter &aHandle);
-        Handle_SelectMgr_CompositionFilter(const SelectMgr_CompositionFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_CompositionFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_CompositionFilter {
-    SelectMgr_CompositionFilter* _get_reference() {
-    return (SelectMgr_CompositionFilter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_CompositionFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_CompositionFilter)
 
 %extend SelectMgr_CompositionFilter {
 	%pythoncode {
@@ -3258,51 +2786,7 @@ class SelectMgr_AndFilter : public SelectMgr_CompositionFilter {
 };
 
 
-%extend SelectMgr_AndFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_AndFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_AndFilter::Handle_SelectMgr_AndFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_AndFilter;
-class Handle_SelectMgr_AndFilter : public Handle_SelectMgr_CompositionFilter {
-
-    public:
-        // constructors
-        Handle_SelectMgr_AndFilter();
-        Handle_SelectMgr_AndFilter(const Handle_SelectMgr_AndFilter &aHandle);
-        Handle_SelectMgr_AndFilter(const SelectMgr_AndFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_AndFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_AndFilter {
-    SelectMgr_AndFilter* _get_reference() {
-    return (SelectMgr_AndFilter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_AndFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_AndFilter)
 
 %extend SelectMgr_AndFilter {
 	%pythoncode {
@@ -3335,51 +2819,7 @@ class SelectMgr_OrFilter : public SelectMgr_CompositionFilter {
 };
 
 
-%extend SelectMgr_OrFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_SelectMgr_OrFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_SelectMgr_OrFilter::Handle_SelectMgr_OrFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_SelectMgr_OrFilter;
-class Handle_SelectMgr_OrFilter : public Handle_SelectMgr_CompositionFilter {
-
-    public:
-        // constructors
-        Handle_SelectMgr_OrFilter();
-        Handle_SelectMgr_OrFilter(const Handle_SelectMgr_OrFilter &aHandle);
-        Handle_SelectMgr_OrFilter(const SelectMgr_OrFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_SelectMgr_OrFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_SelectMgr_OrFilter {
-    SelectMgr_OrFilter* _get_reference() {
-    return (SelectMgr_OrFilter*)$self->Access();
-    }
-};
-
-%extend Handle_SelectMgr_OrFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(SelectMgr_OrFilter)
 
 %extend SelectMgr_OrFilter {
 	%pythoncode {

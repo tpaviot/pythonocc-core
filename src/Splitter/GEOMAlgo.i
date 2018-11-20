@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GEOMAlgo
+%define GEOMALGODOCSTRING
+"No docstring provided."
+%enddef
+%module (package="OCC.Core", docstring=GEOMALGODOCSTRING) GEOMAlgo
 
 #pragma SWIG nowarn=504,325,503
 
@@ -31,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include ../SWIG_files/common/FunctionTransformers.i
 %include ../SWIG_files/common/Operators.i
+%include ../SWIG_files/common/OccHandle.i
 
 
 %include GEOMAlgo_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor GEOMAlgo_Splitter;
 class GEOMAlgo_Splitter : public BOPAlgo_Builder {

@@ -18,7 +18,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HATCHDOCSTRING
-"No docstring provided."
+"The Hatch package provides  algorithm to compute
+cross-hatchings on a 2D face.
+
+The Hatcher algorithms stores a  set of lines in
+the 2D plane.
+
+The user stores lines in the Hatcher and afterward
+trim them with other lines.
+
+At any moment when trimming the user can ask for
+any line if  it is intersected and how  many
+intervals are defined on the line by the trim.
+"
 %enddef
 %module (package="OCC.Core", docstring=HATCHDOCSTRING) Hatch
 
@@ -34,24 +46,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Hatch_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +62,9 @@ enum Hatch_LineForm {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Hatch_SequenceNodeOfSequenceOfLine)
+%wrap_handle(Hatch_SequenceNodeOfSequenceOfParameter)
 
 %nodefaultctor Hatch_Hatcher;
 class Hatch_Hatcher {
@@ -362,51 +363,7 @@ class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 };
 
 
-%extend Hatch_SequenceNodeOfSequenceOfLine {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Hatch_SequenceNodeOfSequenceOfLine(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Hatch_SequenceNodeOfSequenceOfLine::Handle_Hatch_SequenceNodeOfSequenceOfLine %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Hatch_SequenceNodeOfSequenceOfLine;
-class Handle_Hatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Hatch_SequenceNodeOfSequenceOfLine();
-        Handle_Hatch_SequenceNodeOfSequenceOfLine(const Handle_Hatch_SequenceNodeOfSequenceOfLine &aHandle);
-        Handle_Hatch_SequenceNodeOfSequenceOfLine(const Hatch_SequenceNodeOfSequenceOfLine *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Hatch_SequenceNodeOfSequenceOfLine DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Hatch_SequenceNodeOfSequenceOfLine {
-    Hatch_SequenceNodeOfSequenceOfLine* _get_reference() {
-    return (Hatch_SequenceNodeOfSequenceOfLine*)$self->Access();
-    }
-};
-
-%extend Handle_Hatch_SequenceNodeOfSequenceOfLine {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Hatch_SequenceNodeOfSequenceOfLine)
 
 %extend Hatch_SequenceNodeOfSequenceOfLine {
 	%pythoncode {
@@ -433,51 +390,7 @@ class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode {
 };
 
 
-%extend Hatch_SequenceNodeOfSequenceOfParameter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Hatch_SequenceNodeOfSequenceOfParameter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Hatch_SequenceNodeOfSequenceOfParameter::Handle_Hatch_SequenceNodeOfSequenceOfParameter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Hatch_SequenceNodeOfSequenceOfParameter;
-class Handle_Hatch_SequenceNodeOfSequenceOfParameter : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Hatch_SequenceNodeOfSequenceOfParameter();
-        Handle_Hatch_SequenceNodeOfSequenceOfParameter(const Handle_Hatch_SequenceNodeOfSequenceOfParameter &aHandle);
-        Handle_Hatch_SequenceNodeOfSequenceOfParameter(const Hatch_SequenceNodeOfSequenceOfParameter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Hatch_SequenceNodeOfSequenceOfParameter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Hatch_SequenceNodeOfSequenceOfParameter {
-    Hatch_SequenceNodeOfSequenceOfParameter* _get_reference() {
-    return (Hatch_SequenceNodeOfSequenceOfParameter*)$self->Access();
-    }
-};
-
-%extend Handle_Hatch_SequenceNodeOfSequenceOfParameter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Hatch_SequenceNodeOfSequenceOfParameter)
 
 %extend Hatch_SequenceNodeOfSequenceOfParameter {
 	%pythoncode {

@@ -18,7 +18,50 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTCURVEDOCSTRING
-"No docstring provided."
+"This package provides algorithmes to intersect 2D curves,
+with domains.
+
+class IntConicConic : Algorithm used to intersect 2 conics
+from gp with domains.
+
+class IntConicCurveGen : Generic algorithm used to intersect
+a conic from gp, and a parametrised
+curve.
+The parametrised Curve can
+not be a Composite curve and
+can not be a conic.
+
+class IntCurveCurveGen : Generic algorithm used to intersect 2
+curves. The resources on a curve are
+discribed in the class CurveTool.
+
+class UserIntConicCurveGen: Generic algorithm used to
+intersect a Conic from gp
+and a parametrised curve.
+This curve can be either a
+composite curve or a conic.
+
+
+
+-Level: Advanced
+
+The Classes <PConicTool,
+IConicTool,
+PConic,
+ProjectOnPConicTool,
+IntConicCurveGen,
+ProjPCurGen,
+UserIntConicCurveGen,
+IntPolyPolyGen,
+Polygon2dGen,
+DistBetweenPCurvesGen>  are Internal
+
+The Classe  <IntCurveCurveGen>    is  Advanced
+
+
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVEDOCSTRING) IntCurve
 
@@ -34,30 +77,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntCurve_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor IntCurve_IConicTool;
 class IntCurve_IConicTool {

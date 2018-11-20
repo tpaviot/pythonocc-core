@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADVAPPROXDOCSTRING
-"No docstring provided."
+"This package provides algorithms approximating a function
+that can be multidimensional creating in the end a
+BSpline function with the required continuity
+
+"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPPROXDOCSTRING) AdvApprox
 
@@ -34,30 +38,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include AdvApprox_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor AdvApprox_ApproxAFunction;
 class AdvApprox_ApproxAFunction {

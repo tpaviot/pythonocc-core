@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MNAMINGDOCSTRING
-"No docstring provided."
+"
+"
 %enddef
 %module (package="OCC.Core", docstring=MNAMINGDOCSTRING) MNaming
 
@@ -34,30 +35,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MNaming_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MNaming_NamedShapeRetrievalDriver)
+%wrap_handle(MNaming_NamedShapeStorageDriver)
+%wrap_handle(MNaming_NamingRetrievalDriver)
+%wrap_handle(MNaming_NamingRetrievalDriver_1)
+%wrap_handle(MNaming_NamingRetrievalDriver_2)
+%wrap_handle(MNaming_NamingStorageDriver)
 
 %rename(mnaming) MNaming;
 class MNaming {
@@ -128,51 +122,7 @@ class MNaming_NamedShapeRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MNaming_NamedShapeRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamedShapeRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamedShapeRetrievalDriver::Handle_MNaming_NamedShapeRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamedShapeRetrievalDriver;
-class Handle_MNaming_NamedShapeRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamedShapeRetrievalDriver();
-        Handle_MNaming_NamedShapeRetrievalDriver(const Handle_MNaming_NamedShapeRetrievalDriver &aHandle);
-        Handle_MNaming_NamedShapeRetrievalDriver(const MNaming_NamedShapeRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamedShapeRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamedShapeRetrievalDriver {
-    MNaming_NamedShapeRetrievalDriver* _get_reference() {
-    return (MNaming_NamedShapeRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamedShapeRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamedShapeRetrievalDriver)
 
 %extend MNaming_NamedShapeRetrievalDriver {
 	%pythoncode {
@@ -217,51 +167,7 @@ class MNaming_NamedShapeStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MNaming_NamedShapeStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamedShapeStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamedShapeStorageDriver::Handle_MNaming_NamedShapeStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamedShapeStorageDriver;
-class Handle_MNaming_NamedShapeStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamedShapeStorageDriver();
-        Handle_MNaming_NamedShapeStorageDriver(const Handle_MNaming_NamedShapeStorageDriver &aHandle);
-        Handle_MNaming_NamedShapeStorageDriver(const MNaming_NamedShapeStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamedShapeStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamedShapeStorageDriver {
-    MNaming_NamedShapeStorageDriver* _get_reference() {
-    return (MNaming_NamedShapeStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamedShapeStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamedShapeStorageDriver)
 
 %extend MNaming_NamedShapeStorageDriver {
 	%pythoncode {
@@ -306,51 +212,7 @@ class MNaming_NamingRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MNaming_NamingRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamingRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamingRetrievalDriver::Handle_MNaming_NamingRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamingRetrievalDriver;
-class Handle_MNaming_NamingRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamingRetrievalDriver();
-        Handle_MNaming_NamingRetrievalDriver(const Handle_MNaming_NamingRetrievalDriver &aHandle);
-        Handle_MNaming_NamingRetrievalDriver(const MNaming_NamingRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamingRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamingRetrievalDriver {
-    MNaming_NamingRetrievalDriver* _get_reference() {
-    return (MNaming_NamingRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamingRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamingRetrievalDriver)
 
 %extend MNaming_NamingRetrievalDriver {
 	%pythoncode {
@@ -395,51 +257,7 @@ class MNaming_NamingRetrievalDriver_1 : public MDF_ARDriver {
 };
 
 
-%extend MNaming_NamingRetrievalDriver_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamingRetrievalDriver_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamingRetrievalDriver_1::Handle_MNaming_NamingRetrievalDriver_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamingRetrievalDriver_1;
-class Handle_MNaming_NamingRetrievalDriver_1 : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamingRetrievalDriver_1();
-        Handle_MNaming_NamingRetrievalDriver_1(const Handle_MNaming_NamingRetrievalDriver_1 &aHandle);
-        Handle_MNaming_NamingRetrievalDriver_1(const MNaming_NamingRetrievalDriver_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamingRetrievalDriver_1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamingRetrievalDriver_1 {
-    MNaming_NamingRetrievalDriver_1* _get_reference() {
-    return (MNaming_NamingRetrievalDriver_1*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamingRetrievalDriver_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamingRetrievalDriver_1)
 
 %extend MNaming_NamingRetrievalDriver_1 {
 	%pythoncode {
@@ -484,51 +302,7 @@ class MNaming_NamingRetrievalDriver_2 : public MDF_ARDriver {
 };
 
 
-%extend MNaming_NamingRetrievalDriver_2 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamingRetrievalDriver_2(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamingRetrievalDriver_2::Handle_MNaming_NamingRetrievalDriver_2 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamingRetrievalDriver_2;
-class Handle_MNaming_NamingRetrievalDriver_2 : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamingRetrievalDriver_2();
-        Handle_MNaming_NamingRetrievalDriver_2(const Handle_MNaming_NamingRetrievalDriver_2 &aHandle);
-        Handle_MNaming_NamingRetrievalDriver_2(const MNaming_NamingRetrievalDriver_2 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamingRetrievalDriver_2 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamingRetrievalDriver_2 {
-    MNaming_NamingRetrievalDriver_2* _get_reference() {
-    return (MNaming_NamingRetrievalDriver_2*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamingRetrievalDriver_2 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamingRetrievalDriver_2)
 
 %extend MNaming_NamingRetrievalDriver_2 {
 	%pythoncode {
@@ -573,51 +347,7 @@ class MNaming_NamingStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MNaming_NamingStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MNaming_NamingStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MNaming_NamingStorageDriver::Handle_MNaming_NamingStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MNaming_NamingStorageDriver;
-class Handle_MNaming_NamingStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MNaming_NamingStorageDriver();
-        Handle_MNaming_NamingStorageDriver(const Handle_MNaming_NamingStorageDriver &aHandle);
-        Handle_MNaming_NamingStorageDriver(const MNaming_NamingStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MNaming_NamingStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MNaming_NamingStorageDriver {
-    MNaming_NamingStorageDriver* _get_reference() {
-    return (MNaming_NamingStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MNaming_NamingStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MNaming_NamingStorageDriver)
 
 %extend MNaming_NamingStorageDriver {
 	%pythoncode {

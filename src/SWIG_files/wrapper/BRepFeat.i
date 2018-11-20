@@ -18,7 +18,50 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPFEATDOCSTRING
-"No docstring provided."
+"BRepFeat is necessary for the
+creation and manipulation of both form and mechanical features in a
+Boundary Representation framework. Form features can be depressions or
+protrusions and include the following types:
+-     Cylinder
+-     Draft Prism
+-     Prism
+-     Revolved feature
+-     Pipe
+Depending on whether you wish to make a depression or a protrusion,
+you can choose your operation type between the following:
+- removing matter (a Boolean cut: Fuse setting 0)
+- adding matter (Boolean fusion: Fuse setting 1)
+The semantics of form feature creation is based on the
+construction of shapes:
+-     for a certain length in a certain direction
+-     up to a limiting face
+-     from a limiting face at a height
+-     above and/or below a plane
+The shape defining the construction of a feature can be either a
+supporting edge or a concerned area of a face.
+In case of supporting edge, this contour can be attached to a face
+of the basis shape by binding. When the contour is bound to this face,
+the information that the contour will slide on the face becomes
+available to the relevant class methods. In case of the concerned
+area of a face, you could, for example, cut it out and move it at
+a different height, which will define the limiting face of a
+protrusion or depression. Topological definition with local
+operations of this sort makes calculations simpler and faster
+than a global operation. The latter would entail a second phase of
+removing unwanted matter to get the same result.
+Mechanical features include ribs - protrusions - and grooves (or
+slots) - depressions along planar (linear) surfaces or revolution surfaces.
+The semantics of mechanical features is based on giving
+thickness to a contour. This thickness can either be unilateral
+- on one side of the contour - or bilateral - on both sides. As in
+the semantics of form features, the thickness is defined by
+construction of shapes in specific contexts.
+However, in case of mechanical features, development contexts
+differ. Here they include extrusion:
+-     to a limiting face of the basis shape
+-     to or from a limiting plane
+-     to a height.
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPFEATDOCSTRING) BRepFeat
 
@@ -34,24 +77,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepFeat_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -103,6 +132,7 @@ enum BRepFeat_PerfSelection {
 };
 
 /* end public enums declaration */
+
 
 %rename(brepfeat) BRepFeat;
 class BRepFeat {

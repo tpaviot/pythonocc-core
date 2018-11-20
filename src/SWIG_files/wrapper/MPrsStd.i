@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MPRSSTDDOCSTRING
-"No docstring provided."
+"Storage  and Retrieval drivers  for graphic
+attributes.  Transient attributes are defined in
+package TPrsStd and persistent one are defined in
+package PPrsStd
+"
 %enddef
 %module (package="OCC.Core", docstring=MPRSSTDDOCSTRING) MPrsStd
 
@@ -34,30 +38,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MPrsStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MPrsStd_AISPresentationRetrievalDriver)
+%wrap_handle(MPrsStd_AISPresentationRetrievalDriver_1)
+%wrap_handle(MPrsStd_AISPresentationStorageDriver)
+%wrap_handle(MPrsStd_PositionRetrievalDriver)
+%wrap_handle(MPrsStd_PositionStorageDriver)
 
 %rename(mprsstd) MPrsStd;
 class MPrsStd {
@@ -128,51 +124,7 @@ class MPrsStd_AISPresentationRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MPrsStd_AISPresentationRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MPrsStd_AISPresentationRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MPrsStd_AISPresentationRetrievalDriver::Handle_MPrsStd_AISPresentationRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MPrsStd_AISPresentationRetrievalDriver;
-class Handle_MPrsStd_AISPresentationRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MPrsStd_AISPresentationRetrievalDriver();
-        Handle_MPrsStd_AISPresentationRetrievalDriver(const Handle_MPrsStd_AISPresentationRetrievalDriver &aHandle);
-        Handle_MPrsStd_AISPresentationRetrievalDriver(const MPrsStd_AISPresentationRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MPrsStd_AISPresentationRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MPrsStd_AISPresentationRetrievalDriver {
-    MPrsStd_AISPresentationRetrievalDriver* _get_reference() {
-    return (MPrsStd_AISPresentationRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MPrsStd_AISPresentationRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MPrsStd_AISPresentationRetrievalDriver)
 
 %extend MPrsStd_AISPresentationRetrievalDriver {
 	%pythoncode {
@@ -217,51 +169,7 @@ class MPrsStd_AISPresentationRetrievalDriver_1 : public MDF_ARDriver {
 };
 
 
-%extend MPrsStd_AISPresentationRetrievalDriver_1 {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MPrsStd_AISPresentationRetrievalDriver_1(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MPrsStd_AISPresentationRetrievalDriver_1::Handle_MPrsStd_AISPresentationRetrievalDriver_1 %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MPrsStd_AISPresentationRetrievalDriver_1;
-class Handle_MPrsStd_AISPresentationRetrievalDriver_1 : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MPrsStd_AISPresentationRetrievalDriver_1();
-        Handle_MPrsStd_AISPresentationRetrievalDriver_1(const Handle_MPrsStd_AISPresentationRetrievalDriver_1 &aHandle);
-        Handle_MPrsStd_AISPresentationRetrievalDriver_1(const MPrsStd_AISPresentationRetrievalDriver_1 *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MPrsStd_AISPresentationRetrievalDriver_1 DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MPrsStd_AISPresentationRetrievalDriver_1 {
-    MPrsStd_AISPresentationRetrievalDriver_1* _get_reference() {
-    return (MPrsStd_AISPresentationRetrievalDriver_1*)$self->Access();
-    }
-};
-
-%extend Handle_MPrsStd_AISPresentationRetrievalDriver_1 {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MPrsStd_AISPresentationRetrievalDriver_1)
 
 %extend MPrsStd_AISPresentationRetrievalDriver_1 {
 	%pythoncode {
@@ -306,51 +214,7 @@ class MPrsStd_AISPresentationStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MPrsStd_AISPresentationStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MPrsStd_AISPresentationStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MPrsStd_AISPresentationStorageDriver::Handle_MPrsStd_AISPresentationStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MPrsStd_AISPresentationStorageDriver;
-class Handle_MPrsStd_AISPresentationStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MPrsStd_AISPresentationStorageDriver();
-        Handle_MPrsStd_AISPresentationStorageDriver(const Handle_MPrsStd_AISPresentationStorageDriver &aHandle);
-        Handle_MPrsStd_AISPresentationStorageDriver(const MPrsStd_AISPresentationStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MPrsStd_AISPresentationStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MPrsStd_AISPresentationStorageDriver {
-    MPrsStd_AISPresentationStorageDriver* _get_reference() {
-    return (MPrsStd_AISPresentationStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MPrsStd_AISPresentationStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MPrsStd_AISPresentationStorageDriver)
 
 %extend MPrsStd_AISPresentationStorageDriver {
 	%pythoncode {
@@ -395,51 +259,7 @@ class MPrsStd_PositionRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MPrsStd_PositionRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MPrsStd_PositionRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MPrsStd_PositionRetrievalDriver::Handle_MPrsStd_PositionRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MPrsStd_PositionRetrievalDriver;
-class Handle_MPrsStd_PositionRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MPrsStd_PositionRetrievalDriver();
-        Handle_MPrsStd_PositionRetrievalDriver(const Handle_MPrsStd_PositionRetrievalDriver &aHandle);
-        Handle_MPrsStd_PositionRetrievalDriver(const MPrsStd_PositionRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MPrsStd_PositionRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MPrsStd_PositionRetrievalDriver {
-    MPrsStd_PositionRetrievalDriver* _get_reference() {
-    return (MPrsStd_PositionRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MPrsStd_PositionRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MPrsStd_PositionRetrievalDriver)
 
 %extend MPrsStd_PositionRetrievalDriver {
 	%pythoncode {
@@ -484,51 +304,7 @@ class MPrsStd_PositionStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MPrsStd_PositionStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MPrsStd_PositionStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MPrsStd_PositionStorageDriver::Handle_MPrsStd_PositionStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MPrsStd_PositionStorageDriver;
-class Handle_MPrsStd_PositionStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MPrsStd_PositionStorageDriver();
-        Handle_MPrsStd_PositionStorageDriver(const Handle_MPrsStd_PositionStorageDriver &aHandle);
-        Handle_MPrsStd_PositionStorageDriver(const MPrsStd_PositionStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MPrsStd_PositionStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MPrsStd_PositionStorageDriver {
-    MPrsStd_PositionStorageDriver* _get_reference() {
-    return (MPrsStd_PositionStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MPrsStd_PositionStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MPrsStd_PositionStorageDriver)
 
 %extend MPrsStd_PositionStorageDriver {
 	%pythoncode {

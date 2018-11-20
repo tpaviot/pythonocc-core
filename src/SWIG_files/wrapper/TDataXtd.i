@@ -18,7 +18,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDATAXTDDOCSTRING
-"No docstring provided."
+"This package defines extension of standard attributes for
+modelling (mainly for work with geometry).
+
+- Category: GUID - AttributeID
+
+2a96b602-ec8b-11d0-bee7-080009dc3333	TDataXtd_Constraint
+2a96b618-ec8b-11d0-bee7-080009dc3333	TDataXtd_Pattern
+2a96b61b-ec8b-11d0-bee7-080009dc3333	TDataXtd_PatternStd
+2a96b620-ec8b-11d0-bee7-080009dc3333    TDataXtd_Shape
+2a96b60d-ec8b-11d0-bee7-080009dc3333	TDataXtd_Point
+2a96b601-ec8b-11d0-bee7-080009dc3333	TDataXtd_Axis
+2a96b60c-ec8b-11d0-bee7-080009dc3333	TDataXtd_Plane
+2a96b604-ec8b-11d0-bee7-080009dc3333	TDataXtd_Geometry
+2a96b60b-ec8b-11d0-bee7-080009dc3333    TDataXtd_Placement"
 %enddef
 %module (package="OCC.Core", docstring=TDATAXTDDOCSTRING) TDataXtd
 
@@ -34,24 +47,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TDataXtd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -98,6 +97,18 @@ enum TDataXtd_GeometryEnum {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TDataXtd_Axis)
+%wrap_handle(TDataXtd_Constraint)
+%wrap_handle(TDataXtd_Geometry)
+%wrap_handle(TDataXtd_HArray1OfTrsf)
+%wrap_handle(TDataXtd_Pattern)
+%wrap_handle(TDataXtd_Placement)
+%wrap_handle(TDataXtd_Plane)
+%wrap_handle(TDataXtd_Point)
+%wrap_handle(TDataXtd_Position)
+%wrap_handle(TDataXtd_Shape)
+%wrap_handle(TDataXtd_PatternStd)
 
 %rename(tdataxtd) TDataXtd;
 class TDataXtd {
@@ -289,51 +300,7 @@ class TDataXtd_Axis : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Axis {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Axis(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Axis::Handle_TDataXtd_Axis %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Axis;
-class Handle_TDataXtd_Axis : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Axis();
-        Handle_TDataXtd_Axis(const Handle_TDataXtd_Axis &aHandle);
-        Handle_TDataXtd_Axis(const TDataXtd_Axis *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Axis DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Axis {
-    TDataXtd_Axis* _get_reference() {
-    return (TDataXtd_Axis*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Axis {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Axis)
 
 %extend TDataXtd_Axis {
 	%pythoncode {
@@ -580,51 +547,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 };
 
 
-%extend TDataXtd_Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Constraint::Handle_TDataXtd_Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Constraint;
-class Handle_TDataXtd_Constraint : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Constraint();
-        Handle_TDataXtd_Constraint(const Handle_TDataXtd_Constraint &aHandle);
-        Handle_TDataXtd_Constraint(const TDataXtd_Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Constraint {
-    TDataXtd_Constraint* _get_reference() {
-    return (TDataXtd_Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Constraint)
 
 %extend TDataXtd_Constraint {
 	%pythoncode {
@@ -857,51 +780,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Geometry {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Geometry(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Geometry::Handle_TDataXtd_Geometry %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Geometry;
-class Handle_TDataXtd_Geometry : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Geometry();
-        Handle_TDataXtd_Geometry(const Handle_TDataXtd_Geometry &aHandle);
-        Handle_TDataXtd_Geometry(const TDataXtd_Geometry *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Geometry DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Geometry {
-    TDataXtd_Geometry* _get_reference() {
-    return (TDataXtd_Geometry*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Geometry {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Geometry)
 
 %extend TDataXtd_Geometry {
 	%pythoncode {
@@ -978,51 +857,7 @@ class TDataXtd_HArray1OfTrsf : public MMgt_TShared {
 };
 
 
-%extend TDataXtd_HArray1OfTrsf {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_HArray1OfTrsf(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_HArray1OfTrsf::Handle_TDataXtd_HArray1OfTrsf %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_HArray1OfTrsf;
-class Handle_TDataXtd_HArray1OfTrsf : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TDataXtd_HArray1OfTrsf();
-        Handle_TDataXtd_HArray1OfTrsf(const Handle_TDataXtd_HArray1OfTrsf &aHandle);
-        Handle_TDataXtd_HArray1OfTrsf(const TDataXtd_HArray1OfTrsf *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_HArray1OfTrsf DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_HArray1OfTrsf {
-    TDataXtd_HArray1OfTrsf* _get_reference() {
-    return (TDataXtd_HArray1OfTrsf*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_HArray1OfTrsf {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_HArray1OfTrsf)
 
 %extend TDataXtd_HArray1OfTrsf {
 	%pythoncode {
@@ -1065,51 +900,7 @@ class TDataXtd_Pattern : public TDF_Attribute {
 };
 
 
-%extend TDataXtd_Pattern {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Pattern(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Pattern::Handle_TDataXtd_Pattern %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Pattern;
-class Handle_TDataXtd_Pattern : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Pattern();
-        Handle_TDataXtd_Pattern(const Handle_TDataXtd_Pattern &aHandle);
-        Handle_TDataXtd_Pattern(const TDataXtd_Pattern *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Pattern DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Pattern {
-    TDataXtd_Pattern* _get_reference() {
-    return (TDataXtd_Pattern*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Pattern {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Pattern)
 
 %extend TDataXtd_Pattern {
 	%pythoncode {
@@ -1170,51 +961,7 @@ class TDataXtd_Placement : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Placement {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Placement(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Placement::Handle_TDataXtd_Placement %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Placement;
-class Handle_TDataXtd_Placement : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Placement();
-        Handle_TDataXtd_Placement(const Handle_TDataXtd_Placement &aHandle);
-        Handle_TDataXtd_Placement(const TDataXtd_Placement *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Placement DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Placement {
-    TDataXtd_Placement* _get_reference() {
-    return (TDataXtd_Placement*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Placement {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Placement)
 
 %extend TDataXtd_Placement {
 	%pythoncode {
@@ -1285,51 +1032,7 @@ class TDataXtd_Plane : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Plane {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Plane(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Plane::Handle_TDataXtd_Plane %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Plane;
-class Handle_TDataXtd_Plane : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Plane();
-        Handle_TDataXtd_Plane(const Handle_TDataXtd_Plane &aHandle);
-        Handle_TDataXtd_Plane(const TDataXtd_Plane *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Plane DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Plane {
-    TDataXtd_Plane* _get_reference() {
-    return (TDataXtd_Plane*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Plane {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Plane)
 
 %extend TDataXtd_Plane {
 	%pythoncode {
@@ -1400,51 +1103,7 @@ class TDataXtd_Point : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Point {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Point(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Point::Handle_TDataXtd_Point %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Point;
-class Handle_TDataXtd_Point : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Point();
-        Handle_TDataXtd_Point(const Handle_TDataXtd_Point &aHandle);
-        Handle_TDataXtd_Point(const TDataXtd_Point *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Point DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Point {
-    TDataXtd_Point* _get_reference() {
-    return (TDataXtd_Point*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Point {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Point)
 
 %extend TDataXtd_Point {
 	%pythoncode {
@@ -1535,51 +1194,7 @@ class TDataXtd_Position : public TDF_Attribute {
 };
 
 
-%extend TDataXtd_Position {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Position(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Position::Handle_TDataXtd_Position %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Position;
-class Handle_TDataXtd_Position : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Position();
-        Handle_TDataXtd_Position(const Handle_TDataXtd_Position &aHandle);
-        Handle_TDataXtd_Position(const TDataXtd_Position *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Position DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Position {
-    TDataXtd_Position* _get_reference() {
-    return (TDataXtd_Position*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Position {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Position)
 
 %extend TDataXtd_Position {
 	%pythoncode {
@@ -1674,51 +1289,7 @@ class TDataXtd_Shape : public TDF_Attribute {
         };
 
 
-%extend TDataXtd_Shape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_Shape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_Shape::Handle_TDataXtd_Shape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_Shape;
-class Handle_TDataXtd_Shape : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TDataXtd_Shape();
-        Handle_TDataXtd_Shape(const Handle_TDataXtd_Shape &aHandle);
-        Handle_TDataXtd_Shape(const TDataXtd_Shape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_Shape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_Shape {
-    TDataXtd_Shape* _get_reference() {
-    return (TDataXtd_Shape*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_Shape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_Shape)
 
 %extend TDataXtd_Shape {
 	%pythoncode {
@@ -1893,51 +1464,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
         };
 
 
-%extend TDataXtd_PatternStd {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TDataXtd_PatternStd(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TDataXtd_PatternStd::Handle_TDataXtd_PatternStd %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TDataXtd_PatternStd;
-class Handle_TDataXtd_PatternStd : public Handle_TDataXtd_Pattern {
-
-    public:
-        // constructors
-        Handle_TDataXtd_PatternStd();
-        Handle_TDataXtd_PatternStd(const Handle_TDataXtd_PatternStd &aHandle);
-        Handle_TDataXtd_PatternStd(const TDataXtd_PatternStd *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TDataXtd_PatternStd DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TDataXtd_PatternStd {
-    TDataXtd_PatternStd* _get_reference() {
-    return (TDataXtd_PatternStd*)$self->Access();
-    }
-};
-
-%extend Handle_TDataXtd_PatternStd {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TDataXtd_PatternStd)
 
 %extend TDataXtd_PatternStd {
 	%pythoncode {

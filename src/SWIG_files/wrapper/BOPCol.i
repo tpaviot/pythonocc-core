@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BOPCOLDOCSTRING
-"No docstring provided."
+"
+The package contains collection classes
+that are used by
+partition and boolean operation algorithms"
 %enddef
 %module (package="OCC.Core", docstring=BOPCOLDOCSTRING) BOPCol
 
@@ -34,24 +37,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BOPCol_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef NCollection_Map <Standard_Integer , TColStd_MapIntegerHasher> BOPCol_MapOfInteger;
@@ -110,6 +99,7 @@ typedef NCollection_IndexedMap <TopoDS_Shape , TopTools_OrientedShapeMapHasher> 
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor BOPCol_Box2DBndTreeSelector;
 class BOPCol_Box2DBndTreeSelector : public BOPCol_Box2DBndTree::Selector {

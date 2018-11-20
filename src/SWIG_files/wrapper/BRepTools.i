@@ -18,7 +18,43 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPTOOLSDOCSTRING
-"No docstring provided."
+"-Level : Public.
+All methods of all classes will be public.
+
+The BRepTools package provides utilities for BRep
+data structures.
+
+* WireExplorer : A tool to explore the topology of
+a wire in the order of the edges.
+
+* ShapeSet : Tools used for dumping, writing and
+reading.
+
+* UVBounds : Methods to compute the limits of the
+boundary of a face, a wire or  an edge in the
+parametric space of a face.
+
+* Update : Methods to call when  a topology has
+been created to compute all missing data.
+
+* UpdateFaceUVPoints : Method to update the UV
+points stored  with the edges  on a face. This
+method ensure that connected edges have the same
+UV point on their common extremity.
+
+* Compare : Method to compare two vertices.
+
+* Compare : Method to compare two edges.
+
+* OuterWire : A method to find the outer wire of a
+face.
+
+* Map3DEdges : A method to map all the 3D Edges of
+a Shape.
+
+* Dump : A method to dump a BRep object.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=BREPTOOLSDOCSTRING) BRepTools
 
@@ -34,30 +70,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BRepTools_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BRepTools_DataMapNodeOfMapOfVertexPnt2d)
+%wrap_handle(BRepTools_Modification)
+%wrap_handle(BRepTools_ReShape)
+%wrap_handle(BRepTools_GTrsfModification)
+%wrap_handle(BRepTools_NurbsConvertModification)
+%wrap_handle(BRepTools_TrsfModification)
 
 %rename(breptools) BRepTools;
 class BRepTools {
@@ -431,51 +460,7 @@ class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
 };
 
 
-%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d::Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d;
-class Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d();
-        Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d(const Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d &aHandle);
-        Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d(const BRepTools_DataMapNodeOfMapOfVertexPnt2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-    BRepTools_DataMapNodeOfMapOfVertexPnt2d* _get_reference() {
-    return (BRepTools_DataMapNodeOfMapOfVertexPnt2d*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_DataMapNodeOfMapOfVertexPnt2d)
 
 %extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
 	%pythoncode {
@@ -675,51 +660,7 @@ class BRepTools_Modification : public MMgt_TShared {
 };
 
 
-%extend BRepTools_Modification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_Modification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_Modification::Handle_BRepTools_Modification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_Modification;
-class Handle_BRepTools_Modification : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepTools_Modification();
-        Handle_BRepTools_Modification(const Handle_BRepTools_Modification &aHandle);
-        Handle_BRepTools_Modification(const BRepTools_Modification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_Modification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_Modification {
-    BRepTools_Modification* _get_reference() {
-    return (BRepTools_Modification*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_Modification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_Modification)
 
 %extend BRepTools_Modification {
 	%pythoncode {
@@ -960,51 +901,7 @@ class BRepTools_ReShape : public MMgt_TShared {
 };
 
 
-%extend BRepTools_ReShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_ReShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_ReShape::Handle_BRepTools_ReShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_ReShape;
-class Handle_BRepTools_ReShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_BRepTools_ReShape();
-        Handle_BRepTools_ReShape(const Handle_BRepTools_ReShape &aHandle);
-        Handle_BRepTools_ReShape(const BRepTools_ReShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_ReShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_ReShape {
-    BRepTools_ReShape* _get_reference() {
-    return (BRepTools_ReShape*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_ReShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_ReShape)
 
 %extend BRepTools_ReShape {
 	%pythoncode {
@@ -1458,51 +1355,7 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 };
 
 
-%extend BRepTools_GTrsfModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_GTrsfModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_GTrsfModification::Handle_BRepTools_GTrsfModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_GTrsfModification;
-class Handle_BRepTools_GTrsfModification : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_BRepTools_GTrsfModification();
-        Handle_BRepTools_GTrsfModification(const Handle_BRepTools_GTrsfModification &aHandle);
-        Handle_BRepTools_GTrsfModification(const BRepTools_GTrsfModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_GTrsfModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_GTrsfModification {
-    BRepTools_GTrsfModification* _get_reference() {
-    return (BRepTools_GTrsfModification*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_GTrsfModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_GTrsfModification)
 
 %extend BRepTools_GTrsfModification {
 	%pythoncode {
@@ -1613,51 +1466,7 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 };
 
 
-%extend BRepTools_NurbsConvertModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_NurbsConvertModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_NurbsConvertModification::Handle_BRepTools_NurbsConvertModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_NurbsConvertModification;
-class Handle_BRepTools_NurbsConvertModification : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_BRepTools_NurbsConvertModification();
-        Handle_BRepTools_NurbsConvertModification(const Handle_BRepTools_NurbsConvertModification &aHandle);
-        Handle_BRepTools_NurbsConvertModification(const BRepTools_NurbsConvertModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_NurbsConvertModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_NurbsConvertModification {
-    BRepTools_NurbsConvertModification* _get_reference() {
-    return (BRepTools_NurbsConvertModification*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_NurbsConvertModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_NurbsConvertModification)
 
 %extend BRepTools_NurbsConvertModification {
 	%pythoncode {
@@ -1776,51 +1585,7 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 };
 
 
-%extend BRepTools_TrsfModification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepTools_TrsfModification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepTools_TrsfModification::Handle_BRepTools_TrsfModification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepTools_TrsfModification;
-class Handle_BRepTools_TrsfModification : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_BRepTools_TrsfModification();
-        Handle_BRepTools_TrsfModification(const Handle_BRepTools_TrsfModification &aHandle);
-        Handle_BRepTools_TrsfModification(const BRepTools_TrsfModification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepTools_TrsfModification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepTools_TrsfModification {
-    BRepTools_TrsfModification* _get_reference() {
-    return (BRepTools_TrsfModification*)$self->Access();
-    }
-};
-
-%extend Handle_BRepTools_TrsfModification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BRepTools_TrsfModification)
 
 %extend BRepTools_TrsfModification {
 	%pythoncode {

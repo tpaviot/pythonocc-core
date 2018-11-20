@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPTOOLDOCSTRING
-"No docstring provided."
+"This package provides services used by the TopOpeBRep
+package performing topological operations on the BRep
+data structure.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPTOOLDOCSTRING) TopOpeBRepTool
 
@@ -34,24 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopOpeBRepTool_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopOpeBRepTool_ShapeClassifier * TopOpeBRepTool_PShapeClassifier;
@@ -67,6 +57,16 @@ enum TopOpeBRepTool_OutCurveType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF)
+%wrap_handle(TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF)
+%wrap_handle(TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface)
+%wrap_handle(TopOpeBRepTool_HBoxTool)
+%wrap_handle(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox)
+%wrap_handle(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d)
+%wrap_handle(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity)
+%wrap_handle(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier)
+%wrap_handle(TopOpeBRepTool_ListNodeOfListOfC2DF)
 
 %rename(topopebreptool) TopOpeBRepTool;
 class TopOpeBRepTool {
@@ -897,51 +897,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public TCollectio
 };
 
 
-%extend TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF::Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF;
-class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF();
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF(const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF &aHandle);
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF(const TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF* _get_reference() {
-    return (TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF)
 
 %extend TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
 	%pythoncode {
@@ -972,51 +928,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public TCollection_
 };
 
 
-%extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF::Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF;
-class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF();
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF(const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF &aHandle);
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF(const TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF* _get_reference() {
-    return (TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF)
 
 %extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
 	%pythoncode {
@@ -1047,51 +959,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public TCollection_MapNod
 };
 
 
-%extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface::Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface;
-class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface();
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface(const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface &aHandle);
-        Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface(const TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface* _get_reference() {
-    return (TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface)
 
 %extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
 	%pythoncode {
@@ -1641,51 +1509,7 @@ class TopOpeBRepTool_HBoxTool : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRepTool_HBoxTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_HBoxTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_HBoxTool::Handle_TopOpeBRepTool_HBoxTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_HBoxTool;
-class Handle_TopOpeBRepTool_HBoxTool : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_HBoxTool();
-        Handle_TopOpeBRepTool_HBoxTool(const Handle_TopOpeBRepTool_HBoxTool &aHandle);
-        Handle_TopOpeBRepTool_HBoxTool(const TopOpeBRepTool_HBoxTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_HBoxTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_HBoxTool {
-    TopOpeBRepTool_HBoxTool* _get_reference() {
-    return (TopOpeBRepTool_HBoxTool*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_HBoxTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_HBoxTool)
 
 %extend TopOpeBRepTool_HBoxTool {
 	%pythoncode {
@@ -1737,51 +1561,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : public TColl
 };
 
 
-%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox::Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox;
-class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox();
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox(const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox &aHandle);
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox(const TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox* _get_reference() {
-    return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox)
 
 %extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
 	%pythoncode {
@@ -1833,51 +1613,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : public TCo
 };
 
 
-%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d::Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d;
-class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d();
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d(const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d &aHandle);
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d(const TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d* _get_reference() {
-    return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d)
 
 %extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
 	%pythoncode {
@@ -1929,51 +1665,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public
 };
 
 
-%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity::Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity;
-class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity();
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity(const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity &aHandle);
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity(const TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity* _get_reference() {
-    return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity)
 
 %extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
 	%pythoncode {
@@ -2025,51 +1717,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : publi
 };
 
 
-%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier::Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier;
-class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier();
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier(const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier &aHandle);
-        Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier(const TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier* _get_reference() {
-    return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier)
 
 %extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
 	%pythoncode {
@@ -2593,51 +2241,7 @@ class TopOpeBRepTool_ListNodeOfListOfC2DF : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRepTool_ListNodeOfListOfC2DF {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRepTool_ListNodeOfListOfC2DF(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRepTool_ListNodeOfListOfC2DF::Handle_TopOpeBRepTool_ListNodeOfListOfC2DF %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRepTool_ListNodeOfListOfC2DF;
-class Handle_TopOpeBRepTool_ListNodeOfListOfC2DF : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRepTool_ListNodeOfListOfC2DF();
-        Handle_TopOpeBRepTool_ListNodeOfListOfC2DF(const Handle_TopOpeBRepTool_ListNodeOfListOfC2DF &aHandle);
-        Handle_TopOpeBRepTool_ListNodeOfListOfC2DF(const TopOpeBRepTool_ListNodeOfListOfC2DF *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRepTool_ListNodeOfListOfC2DF DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRepTool_ListNodeOfListOfC2DF {
-    TopOpeBRepTool_ListNodeOfListOfC2DF* _get_reference() {
-    return (TopOpeBRepTool_ListNodeOfListOfC2DF*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRepTool_ListNodeOfListOfC2DF {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRepTool_ListNodeOfListOfC2DF)
 
 %extend TopOpeBRepTool_ListNodeOfListOfC2DF {
 	%pythoncode {

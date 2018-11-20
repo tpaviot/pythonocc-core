@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define DRAFTDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=DRAFTDOCSTRING) Draft
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Draft_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,6 +51,11 @@ enum Draft_ErrorStatus {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo)
+%wrap_handle(Draft_DataMapNodeOfDataMapOfFaceFaceInfo)
+%wrap_handle(Draft_DataMapNodeOfDataMapOfVertexVertexInfo)
+%wrap_handle(Draft_Modification)
 
 %rename(draft) Draft;
 class Draft {
@@ -216,51 +207,7 @@ class Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public TCollection_MapNode {
 };
 
 
-%extend Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo::Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo;
-class Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo();
-        Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo(const Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo &aHandle);
-        Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo(const Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
-    Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo* _get_reference() {
-    return (Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo*)$self->Access();
-    }
-};
-
-%extend Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo)
 
 %extend Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
 	%pythoncode {
@@ -291,51 +238,7 @@ class Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public TCollection_MapNode {
 };
 
 
-%extend Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo::Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo;
-class Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo();
-        Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo(const Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo &aHandle);
-        Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo(const Draft_DataMapNodeOfDataMapOfFaceFaceInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
-    Draft_DataMapNodeOfDataMapOfFaceFaceInfo* _get_reference() {
-    return (Draft_DataMapNodeOfDataMapOfFaceFaceInfo*)$self->Access();
-    }
-};
-
-%extend Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Draft_DataMapNodeOfDataMapOfFaceFaceInfo)
 
 %extend Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
 	%pythoncode {
@@ -366,51 +269,7 @@ class Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public TCollection_MapNode 
 };
 
 
-%extend Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo::Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo;
-class Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo();
-        Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo(const Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo &aHandle);
-        Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo(const Draft_DataMapNodeOfDataMapOfVertexVertexInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
-    Draft_DataMapNodeOfDataMapOfVertexVertexInfo* _get_reference() {
-    return (Draft_DataMapNodeOfDataMapOfVertexVertexInfo*)$self->Access();
-    }
-};
-
-%extend Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Draft_DataMapNodeOfDataMapOfVertexVertexInfo)
 
 %extend Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
 	%pythoncode {
@@ -1014,51 +873,7 @@ class Draft_Modification : public BRepTools_Modification {
 };
 
 
-%extend Draft_Modification {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Draft_Modification(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Draft_Modification::Handle_Draft_Modification %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Draft_Modification;
-class Handle_Draft_Modification : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_Draft_Modification();
-        Handle_Draft_Modification(const Handle_Draft_Modification &aHandle);
-        Handle_Draft_Modification(const Draft_Modification *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Draft_Modification DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Draft_Modification {
-    Draft_Modification* _get_reference() {
-    return (Draft_Modification*)$self->Access();
-    }
-};
-
-%extend Handle_Draft_Modification {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Draft_Modification)
 
 %extend Draft_Modification {
 	%pythoncode {

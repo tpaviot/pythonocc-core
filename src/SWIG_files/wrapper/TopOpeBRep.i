@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPDOCSTRING
-"No docstring provided."
+"This package provides the topological operations
+on the BRep data structure.
+"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopOpeBRep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopOpeBRep_FacesIntersector * TopOpeBRep_PFacesIntersector;
@@ -85,6 +73,15 @@ enum TopOpeBRep_TypeLineCurve {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(TopOpeBRep_DataMapNodeOfDataMapOfTopolTool)
+%wrap_handle(TopOpeBRep_FFDumper)
+%wrap_handle(TopOpeBRep_HArray1OfLineInter)
+%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
+%wrap_handle(TopOpeBRep_Hctxee2d)
+%wrap_handle(TopOpeBRep_Hctxff2d)
+%wrap_handle(TopOpeBRep_ListNodeOfListOfBipoint)
+%wrap_handle(TopOpeBRep_SequenceNodeOfSequenceOfPoint2d)
 
 %rename(topopebrep) TopOpeBRep;
 class TopOpeBRep {
@@ -550,51 +547,7 @@ class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool::Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
-class Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool();
-        Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(const Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool &aHandle);
-        Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(const TopOpeBRep_DataMapNodeOfDataMapOfTopolTool *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-    TopOpeBRep_DataMapNodeOfDataMapOfTopolTool* _get_reference() {
-    return (TopOpeBRep_DataMapNodeOfDataMapOfTopolTool*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_DataMapNodeOfDataMapOfTopolTool)
 
 %extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
 	%pythoncode {
@@ -982,51 +935,7 @@ class TopOpeBRep_FFDumper : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRep_FFDumper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_FFDumper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_FFDumper::Handle_TopOpeBRep_FFDumper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_FFDumper;
-class Handle_TopOpeBRep_FFDumper : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_FFDumper();
-        Handle_TopOpeBRep_FFDumper(const Handle_TopOpeBRep_FFDumper &aHandle);
-        Handle_TopOpeBRep_FFDumper(const TopOpeBRep_FFDumper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_FFDumper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_FFDumper {
-    TopOpeBRep_FFDumper* _get_reference() {
-    return (TopOpeBRep_FFDumper*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_FFDumper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_FFDumper)
 
 %extend TopOpeBRep_FFDumper {
 	%pythoncode {
@@ -1947,51 +1856,7 @@ class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRep_HArray1OfLineInter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_HArray1OfLineInter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_HArray1OfLineInter::Handle_TopOpeBRep_HArray1OfLineInter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_HArray1OfLineInter;
-class Handle_TopOpeBRep_HArray1OfLineInter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_HArray1OfLineInter();
-        Handle_TopOpeBRep_HArray1OfLineInter(const Handle_TopOpeBRep_HArray1OfLineInter &aHandle);
-        Handle_TopOpeBRep_HArray1OfLineInter(const TopOpeBRep_HArray1OfLineInter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_HArray1OfLineInter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_HArray1OfLineInter {
-    TopOpeBRep_HArray1OfLineInter* _get_reference() {
-    return (TopOpeBRep_HArray1OfLineInter*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_HArray1OfLineInter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_HArray1OfLineInter)
 
 %extend TopOpeBRep_HArray1OfLineInter {
 	%pythoncode {
@@ -2068,51 +1933,7 @@ class TopOpeBRep_HArray1OfVPointInter : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRep_HArray1OfVPointInter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_HArray1OfVPointInter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_HArray1OfVPointInter::Handle_TopOpeBRep_HArray1OfVPointInter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_HArray1OfVPointInter;
-class Handle_TopOpeBRep_HArray1OfVPointInter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_HArray1OfVPointInter();
-        Handle_TopOpeBRep_HArray1OfVPointInter(const Handle_TopOpeBRep_HArray1OfVPointInter &aHandle);
-        Handle_TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_HArray1OfVPointInter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_HArray1OfVPointInter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_HArray1OfVPointInter {
-    TopOpeBRep_HArray1OfVPointInter* _get_reference() {
-    return (TopOpeBRep_HArray1OfVPointInter*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_HArray1OfVPointInter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_HArray1OfVPointInter)
 
 %extend TopOpeBRep_HArray1OfVPointInter {
 	%pythoncode {
@@ -2159,51 +1980,7 @@ class TopOpeBRep_Hctxee2d : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRep_Hctxee2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_Hctxee2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_Hctxee2d::Handle_TopOpeBRep_Hctxee2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_Hctxee2d;
-class Handle_TopOpeBRep_Hctxee2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_Hctxee2d();
-        Handle_TopOpeBRep_Hctxee2d(const Handle_TopOpeBRep_Hctxee2d &aHandle);
-        Handle_TopOpeBRep_Hctxee2d(const TopOpeBRep_Hctxee2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_Hctxee2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_Hctxee2d {
-    TopOpeBRep_Hctxee2d* _get_reference() {
-    return (TopOpeBRep_Hctxee2d*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_Hctxee2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_Hctxee2d)
 
 %extend TopOpeBRep_Hctxee2d {
 	%pythoncode {
@@ -2282,51 +2059,7 @@ class TopOpeBRep_Hctxff2d : public MMgt_TShared {
 };
 
 
-%extend TopOpeBRep_Hctxff2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_Hctxff2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_Hctxff2d::Handle_TopOpeBRep_Hctxff2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_Hctxff2d;
-class Handle_TopOpeBRep_Hctxff2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_Hctxff2d();
-        Handle_TopOpeBRep_Hctxff2d(const Handle_TopOpeBRep_Hctxff2d &aHandle);
-        Handle_TopOpeBRep_Hctxff2d(const TopOpeBRep_Hctxff2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_Hctxff2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_Hctxff2d {
-    TopOpeBRep_Hctxff2d* _get_reference() {
-    return (TopOpeBRep_Hctxff2d*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_Hctxff2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_Hctxff2d)
 
 %extend TopOpeBRep_Hctxff2d {
 	%pythoncode {
@@ -2651,51 +2384,7 @@ class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
 };
 
 
-%extend TopOpeBRep_ListNodeOfListOfBipoint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_ListNodeOfListOfBipoint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_ListNodeOfListOfBipoint::Handle_TopOpeBRep_ListNodeOfListOfBipoint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_ListNodeOfListOfBipoint;
-class Handle_TopOpeBRep_ListNodeOfListOfBipoint : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_ListNodeOfListOfBipoint();
-        Handle_TopOpeBRep_ListNodeOfListOfBipoint(const Handle_TopOpeBRep_ListNodeOfListOfBipoint &aHandle);
-        Handle_TopOpeBRep_ListNodeOfListOfBipoint(const TopOpeBRep_ListNodeOfListOfBipoint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_ListNodeOfListOfBipoint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
-    TopOpeBRep_ListNodeOfListOfBipoint* _get_reference() {
-    return (TopOpeBRep_ListNodeOfListOfBipoint*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_ListNodeOfListOfBipoint)
 
 %extend TopOpeBRep_ListNodeOfListOfBipoint {
 	%pythoncode {
@@ -3155,51 +2844,7 @@ class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
 };
 
 
-%extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d::Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
-class Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d();
-        Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(const Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d &aHandle);
-        Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(const TopOpeBRep_SequenceNodeOfSequenceOfPoint2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-    TopOpeBRep_SequenceNodeOfSequenceOfPoint2d* _get_reference() {
-    return (TopOpeBRep_SequenceNodeOfSequenceOfPoint2d*)$self->Access();
-    }
-};
-
-%extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TopOpeBRep_SequenceNodeOfSequenceOfPoint2d)
 
 %extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
 	%pythoncode {

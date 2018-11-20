@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLSTDDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=TCOLSTDDOCSTRING) TColStd
 
@@ -34,30 +34,67 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TColStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfAsciiStringInteger)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfIntegerInteger)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfIntegerReal)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfIntegerTransient)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfStringInteger)
+%wrap_handle(TColStd_DataMapNodeOfDataMapOfTransientTransient)
+%wrap_handle(TColStd_HArray1OfAsciiString)
+%wrap_handle(TColStd_HArray1OfBoolean)
+%wrap_handle(TColStd_HArray1OfByte)
+%wrap_handle(TColStd_HArray1OfCharacter)
+%wrap_handle(TColStd_HArray1OfExtendedString)
+%wrap_handle(TColStd_HArray1OfInteger)
+%wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfTransient)
+%wrap_handle(TColStd_HArray2OfBoolean)
+%wrap_handle(TColStd_HArray2OfCharacter)
+%wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HPackedMapOfInteger)
+%wrap_handle(TColStd_HSequenceOfAsciiString)
+%wrap_handle(TColStd_HSequenceOfExtendedString)
+%wrap_handle(TColStd_HSequenceOfHAsciiString)
+%wrap_handle(TColStd_HSequenceOfHExtendedString)
+%wrap_handle(TColStd_HSequenceOfInteger)
+%wrap_handle(TColStd_HSequenceOfReal)
+%wrap_handle(TColStd_HSequenceOfTransient)
+%wrap_handle(TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient)
+%wrap_handle(TColStd_IndexedMapNodeOfIndexedMapOfInteger)
+%wrap_handle(TColStd_IndexedMapNodeOfIndexedMapOfReal)
+%wrap_handle(TColStd_IndexedMapNodeOfIndexedMapOfTransient)
+%wrap_handle(TColStd_ListNodeOfListOfAsciiString)
+%wrap_handle(TColStd_ListNodeOfListOfInteger)
+%wrap_handle(TColStd_ListNodeOfListOfReal)
+%wrap_handle(TColStd_ListNodeOfListOfTransient)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfAddress)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfAsciiString)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfBoolean)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfExtendedString)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfHAsciiString)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfHExtendedString)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfInteger)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfReal)
+%wrap_handle(TColStd_SequenceNodeOfSequenceOfTransient)
+%wrap_handle(TColStd_StdMapNodeOfMapOfAsciiString)
+%wrap_handle(TColStd_StdMapNodeOfMapOfInteger)
+%wrap_handle(TColStd_StdMapNodeOfMapOfReal)
+%wrap_handle(TColStd_StdMapNodeOfMapOfTransient)
 
 %nodefaultctor TColStd_Array1OfAsciiString;
 class TColStd_Array1OfAsciiString {
@@ -1665,51 +1702,7 @@ class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapN
             };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger::Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
-class Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger();
-        Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger(const Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger(const TColStd_DataMapNodeOfDataMapOfAsciiStringInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-    TColStd_DataMapNodeOfDataMapOfAsciiStringInteger* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfAsciiStringInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfAsciiStringInteger)
 
 %extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
 	%pythoncode {
@@ -1758,51 +1751,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode 
             };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger::Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger;
-class Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger();
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger(const Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger(const TColStd_DataMapNodeOfDataMapOfIntegerInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-    TColStd_DataMapNodeOfDataMapOfIntegerInteger* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfIntegerInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfIntegerInteger)
 
 %extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
 	%pythoncode {
@@ -1842,51 +1791,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_Ma
 };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger::Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
-class Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger();
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(const Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(const TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-    TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger)
 
 %extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
 	%pythoncode {
@@ -1935,51 +1840,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerReal : public TCollection_MapNode {
             };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal::Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal;
-class Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal();
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal(const Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal(const TColStd_DataMapNodeOfDataMapOfIntegerReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
-    TColStd_DataMapNodeOfDataMapOfIntegerReal* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfIntegerReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfIntegerReal)
 
 %extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
 	%pythoncode {
@@ -2019,51 +1880,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNod
 };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient::Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient;
-class Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient();
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient(const Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient(const TColStd_DataMapNodeOfDataMapOfIntegerTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-    TColStd_DataMapNodeOfDataMapOfIntegerTransient* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfIntegerTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfIntegerTransient)
 
 %extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
 	%pythoncode {
@@ -2103,51 +1920,7 @@ class TColStd_DataMapNodeOfDataMapOfStringInteger : public TCollection_MapNode {
             };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfStringInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfStringInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger::Handle_TColStd_DataMapNodeOfDataMapOfStringInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfStringInteger;
-class Handle_TColStd_DataMapNodeOfDataMapOfStringInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfStringInteger();
-        Handle_TColStd_DataMapNodeOfDataMapOfStringInteger(const Handle_TColStd_DataMapNodeOfDataMapOfStringInteger &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfStringInteger(const TColStd_DataMapNodeOfDataMapOfStringInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfStringInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger {
-    TColStd_DataMapNodeOfDataMapOfStringInteger* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfStringInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfStringInteger)
 
 %extend TColStd_DataMapNodeOfDataMapOfStringInteger {
 	%pythoncode {
@@ -2178,51 +1951,7 @@ class TColStd_DataMapNodeOfDataMapOfTransientTransient : public TCollection_MapN
 };
 
 
-%extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient::Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient;
-class Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient();
-        Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient(const Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient &aHandle);
-        Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient(const TColStd_DataMapNodeOfDataMapOfTransientTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
-    TColStd_DataMapNodeOfDataMapOfTransientTransient* _get_reference() {
-    return (TColStd_DataMapNodeOfDataMapOfTransientTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_DataMapNodeOfDataMapOfTransientTransient)
 
 %extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
 	%pythoncode {
@@ -2880,51 +2609,7 @@ class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfAsciiString::Handle_TColStd_HArray1OfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfAsciiString;
-class Handle_TColStd_HArray1OfAsciiString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfAsciiString();
-        Handle_TColStd_HArray1OfAsciiString(const Handle_TColStd_HArray1OfAsciiString &aHandle);
-        Handle_TColStd_HArray1OfAsciiString(const TColStd_HArray1OfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfAsciiString {
-    TColStd_HArray1OfAsciiString* _get_reference() {
-    return (TColStd_HArray1OfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfAsciiString)
 
 %extend TColStd_HArray1OfAsciiString {
 	%pythoncode {
@@ -3001,51 +2686,7 @@ class TColStd_HArray1OfBoolean : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfBoolean {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfBoolean(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfBoolean::Handle_TColStd_HArray1OfBoolean %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfBoolean;
-class Handle_TColStd_HArray1OfBoolean : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfBoolean();
-        Handle_TColStd_HArray1OfBoolean(const Handle_TColStd_HArray1OfBoolean &aHandle);
-        Handle_TColStd_HArray1OfBoolean(const TColStd_HArray1OfBoolean *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfBoolean DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfBoolean {
-    TColStd_HArray1OfBoolean* _get_reference() {
-    return (TColStd_HArray1OfBoolean*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfBoolean {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfBoolean)
 
 %extend TColStd_HArray1OfBoolean {
 	%pythoncode {
@@ -3122,51 +2763,7 @@ class TColStd_HArray1OfByte : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfByte {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfByte(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfByte::Handle_TColStd_HArray1OfByte %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfByte;
-class Handle_TColStd_HArray1OfByte : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfByte();
-        Handle_TColStd_HArray1OfByte(const Handle_TColStd_HArray1OfByte &aHandle);
-        Handle_TColStd_HArray1OfByte(const TColStd_HArray1OfByte *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfByte DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfByte {
-    TColStd_HArray1OfByte* _get_reference() {
-    return (TColStd_HArray1OfByte*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfByte {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfByte)
 
 %extend TColStd_HArray1OfByte {
 	%pythoncode {
@@ -3243,51 +2840,7 @@ class TColStd_HArray1OfCharacter : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfCharacter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfCharacter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfCharacter::Handle_TColStd_HArray1OfCharacter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfCharacter;
-class Handle_TColStd_HArray1OfCharacter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfCharacter();
-        Handle_TColStd_HArray1OfCharacter(const Handle_TColStd_HArray1OfCharacter &aHandle);
-        Handle_TColStd_HArray1OfCharacter(const TColStd_HArray1OfCharacter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfCharacter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfCharacter {
-    TColStd_HArray1OfCharacter* _get_reference() {
-    return (TColStd_HArray1OfCharacter*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfCharacter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfCharacter)
 
 %extend TColStd_HArray1OfCharacter {
 	%pythoncode {
@@ -3364,51 +2917,7 @@ class TColStd_HArray1OfExtendedString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfExtendedString::Handle_TColStd_HArray1OfExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfExtendedString;
-class Handle_TColStd_HArray1OfExtendedString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfExtendedString();
-        Handle_TColStd_HArray1OfExtendedString(const Handle_TColStd_HArray1OfExtendedString &aHandle);
-        Handle_TColStd_HArray1OfExtendedString(const TColStd_HArray1OfExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfExtendedString {
-    TColStd_HArray1OfExtendedString* _get_reference() {
-    return (TColStd_HArray1OfExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfExtendedString)
 
 %extend TColStd_HArray1OfExtendedString {
 	%pythoncode {
@@ -3485,51 +2994,7 @@ class TColStd_HArray1OfInteger : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfInteger::Handle_TColStd_HArray1OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfInteger;
-class Handle_TColStd_HArray1OfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfInteger();
-        Handle_TColStd_HArray1OfInteger(const Handle_TColStd_HArray1OfInteger &aHandle);
-        Handle_TColStd_HArray1OfInteger(const TColStd_HArray1OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfInteger {
-    TColStd_HArray1OfInteger* _get_reference() {
-    return (TColStd_HArray1OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfInteger)
 
 %extend TColStd_HArray1OfInteger {
 	%pythoncode {
@@ -3606,51 +3071,7 @@ class TColStd_HArray1OfListOfInteger : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfListOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfListOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfListOfInteger::Handle_TColStd_HArray1OfListOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfListOfInteger;
-class Handle_TColStd_HArray1OfListOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfListOfInteger();
-        Handle_TColStd_HArray1OfListOfInteger(const Handle_TColStd_HArray1OfListOfInteger &aHandle);
-        Handle_TColStd_HArray1OfListOfInteger(const TColStd_HArray1OfListOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfListOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfListOfInteger {
-    TColStd_HArray1OfListOfInteger* _get_reference() {
-    return (TColStd_HArray1OfListOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfListOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfListOfInteger)
 
 %extend TColStd_HArray1OfListOfInteger {
 	%pythoncode {
@@ -3727,51 +3148,7 @@ class TColStd_HArray1OfReal : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfReal::Handle_TColStd_HArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfReal;
-class Handle_TColStd_HArray1OfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfReal();
-        Handle_TColStd_HArray1OfReal(const Handle_TColStd_HArray1OfReal &aHandle);
-        Handle_TColStd_HArray1OfReal(const TColStd_HArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfReal {
-    TColStd_HArray1OfReal* _get_reference() {
-    return (TColStd_HArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfReal)
 
 %extend TColStd_HArray1OfReal {
 	%pythoncode {
@@ -3848,51 +3225,7 @@ class TColStd_HArray1OfTransient : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray1OfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray1OfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray1OfTransient::Handle_TColStd_HArray1OfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray1OfTransient;
-class Handle_TColStd_HArray1OfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray1OfTransient();
-        Handle_TColStd_HArray1OfTransient(const Handle_TColStd_HArray1OfTransient &aHandle);
-        Handle_TColStd_HArray1OfTransient(const TColStd_HArray1OfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray1OfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray1OfTransient {
-    TColStd_HArray1OfTransient* _get_reference() {
-    return (TColStd_HArray1OfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray1OfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray1OfTransient)
 
 %extend TColStd_HArray1OfTransient {
 	%pythoncode {
@@ -3995,51 +3328,7 @@ class TColStd_HArray2OfBoolean : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray2OfBoolean {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray2OfBoolean(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray2OfBoolean::Handle_TColStd_HArray2OfBoolean %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray2OfBoolean;
-class Handle_TColStd_HArray2OfBoolean : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray2OfBoolean();
-        Handle_TColStd_HArray2OfBoolean(const Handle_TColStd_HArray2OfBoolean &aHandle);
-        Handle_TColStd_HArray2OfBoolean(const TColStd_HArray2OfBoolean *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray2OfBoolean DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray2OfBoolean {
-    TColStd_HArray2OfBoolean* _get_reference() {
-    return (TColStd_HArray2OfBoolean*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray2OfBoolean {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray2OfBoolean)
 
 %extend TColStd_HArray2OfBoolean {
 	%pythoncode {
@@ -4142,51 +3431,7 @@ class TColStd_HArray2OfCharacter : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray2OfCharacter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray2OfCharacter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray2OfCharacter::Handle_TColStd_HArray2OfCharacter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray2OfCharacter;
-class Handle_TColStd_HArray2OfCharacter : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray2OfCharacter();
-        Handle_TColStd_HArray2OfCharacter(const Handle_TColStd_HArray2OfCharacter &aHandle);
-        Handle_TColStd_HArray2OfCharacter(const TColStd_HArray2OfCharacter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray2OfCharacter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray2OfCharacter {
-    TColStd_HArray2OfCharacter* _get_reference() {
-    return (TColStd_HArray2OfCharacter*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray2OfCharacter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray2OfCharacter)
 
 %extend TColStd_HArray2OfCharacter {
 	%pythoncode {
@@ -4289,51 +3534,7 @@ class TColStd_HArray2OfInteger : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray2OfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray2OfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray2OfInteger::Handle_TColStd_HArray2OfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray2OfInteger;
-class Handle_TColStd_HArray2OfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray2OfInteger();
-        Handle_TColStd_HArray2OfInteger(const Handle_TColStd_HArray2OfInteger &aHandle);
-        Handle_TColStd_HArray2OfInteger(const TColStd_HArray2OfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray2OfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray2OfInteger {
-    TColStd_HArray2OfInteger* _get_reference() {
-    return (TColStd_HArray2OfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray2OfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray2OfInteger)
 
 %extend TColStd_HArray2OfInteger {
 	%pythoncode {
@@ -4436,51 +3637,7 @@ class TColStd_HArray2OfReal : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray2OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray2OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray2OfReal::Handle_TColStd_HArray2OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray2OfReal;
-class Handle_TColStd_HArray2OfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray2OfReal();
-        Handle_TColStd_HArray2OfReal(const Handle_TColStd_HArray2OfReal &aHandle);
-        Handle_TColStd_HArray2OfReal(const TColStd_HArray2OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray2OfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray2OfReal {
-    TColStd_HArray2OfReal* _get_reference() {
-    return (TColStd_HArray2OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray2OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray2OfReal)
 
 %extend TColStd_HArray2OfReal {
 	%pythoncode {
@@ -4583,51 +3740,7 @@ class TColStd_HArray2OfTransient : public MMgt_TShared {
 };
 
 
-%extend TColStd_HArray2OfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HArray2OfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HArray2OfTransient::Handle_TColStd_HArray2OfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HArray2OfTransient;
-class Handle_TColStd_HArray2OfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HArray2OfTransient();
-        Handle_TColStd_HArray2OfTransient(const Handle_TColStd_HArray2OfTransient &aHandle);
-        Handle_TColStd_HArray2OfTransient(const TColStd_HArray2OfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HArray2OfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HArray2OfTransient {
-    TColStd_HArray2OfTransient* _get_reference() {
-    return (TColStd_HArray2OfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HArray2OfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HArray2OfTransient)
 
 %extend TColStd_HArray2OfTransient {
 	%pythoncode {
@@ -4660,51 +3773,7 @@ class TColStd_HPackedMapOfInteger : public MMgt_TShared {
 };
 
 
-%extend TColStd_HPackedMapOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HPackedMapOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HPackedMapOfInteger::Handle_TColStd_HPackedMapOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HPackedMapOfInteger;
-class Handle_TColStd_HPackedMapOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HPackedMapOfInteger();
-        Handle_TColStd_HPackedMapOfInteger(const Handle_TColStd_HPackedMapOfInteger &aHandle);
-        Handle_TColStd_HPackedMapOfInteger(const TColStd_HPackedMapOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HPackedMapOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HPackedMapOfInteger {
-    TColStd_HPackedMapOfInteger* _get_reference() {
-    return (TColStd_HPackedMapOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HPackedMapOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HPackedMapOfInteger)
 
 %extend TColStd_HPackedMapOfInteger {
 	%pythoncode {
@@ -4849,51 +3918,7 @@ class TColStd_HSequenceOfAsciiString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfAsciiString::Handle_TColStd_HSequenceOfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfAsciiString;
-class Handle_TColStd_HSequenceOfAsciiString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfAsciiString();
-        Handle_TColStd_HSequenceOfAsciiString(const Handle_TColStd_HSequenceOfAsciiString &aHandle);
-        Handle_TColStd_HSequenceOfAsciiString(const TColStd_HSequenceOfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfAsciiString {
-    TColStd_HSequenceOfAsciiString* _get_reference() {
-    return (TColStd_HSequenceOfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfAsciiString)
 
 %extend TColStd_HSequenceOfAsciiString {
 	%pythoncode {
@@ -5038,51 +4063,7 @@ class TColStd_HSequenceOfExtendedString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfExtendedString::Handle_TColStd_HSequenceOfExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfExtendedString;
-class Handle_TColStd_HSequenceOfExtendedString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfExtendedString();
-        Handle_TColStd_HSequenceOfExtendedString(const Handle_TColStd_HSequenceOfExtendedString &aHandle);
-        Handle_TColStd_HSequenceOfExtendedString(const TColStd_HSequenceOfExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfExtendedString {
-    TColStd_HSequenceOfExtendedString* _get_reference() {
-    return (TColStd_HSequenceOfExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfExtendedString)
 
 %extend TColStd_HSequenceOfExtendedString {
 	%pythoncode {
@@ -5227,51 +4208,7 @@ class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfHAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfHAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfHAsciiString::Handle_TColStd_HSequenceOfHAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfHAsciiString;
-class Handle_TColStd_HSequenceOfHAsciiString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfHAsciiString();
-        Handle_TColStd_HSequenceOfHAsciiString(const Handle_TColStd_HSequenceOfHAsciiString &aHandle);
-        Handle_TColStd_HSequenceOfHAsciiString(const TColStd_HSequenceOfHAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfHAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfHAsciiString {
-    TColStd_HSequenceOfHAsciiString* _get_reference() {
-    return (TColStd_HSequenceOfHAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfHAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfHAsciiString)
 
 %extend TColStd_HSequenceOfHAsciiString {
 	%pythoncode {
@@ -5416,51 +4353,7 @@ class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfHExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfHExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfHExtendedString::Handle_TColStd_HSequenceOfHExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfHExtendedString;
-class Handle_TColStd_HSequenceOfHExtendedString : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfHExtendedString();
-        Handle_TColStd_HSequenceOfHExtendedString(const Handle_TColStd_HSequenceOfHExtendedString &aHandle);
-        Handle_TColStd_HSequenceOfHExtendedString(const TColStd_HSequenceOfHExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfHExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfHExtendedString {
-    TColStd_HSequenceOfHExtendedString* _get_reference() {
-    return (TColStd_HSequenceOfHExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfHExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfHExtendedString)
 
 %extend TColStd_HSequenceOfHExtendedString {
 	%pythoncode {
@@ -5605,51 +4498,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfInteger::Handle_TColStd_HSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfInteger;
-class Handle_TColStd_HSequenceOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfInteger();
-        Handle_TColStd_HSequenceOfInteger(const Handle_TColStd_HSequenceOfInteger &aHandle);
-        Handle_TColStd_HSequenceOfInteger(const TColStd_HSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfInteger {
-    TColStd_HSequenceOfInteger* _get_reference() {
-    return (TColStd_HSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfInteger)
 
 %extend TColStd_HSequenceOfInteger {
 	%pythoncode {
@@ -5794,51 +4643,7 @@ class TColStd_HSequenceOfReal : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfReal::Handle_TColStd_HSequenceOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfReal;
-class Handle_TColStd_HSequenceOfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfReal();
-        Handle_TColStd_HSequenceOfReal(const Handle_TColStd_HSequenceOfReal &aHandle);
-        Handle_TColStd_HSequenceOfReal(const TColStd_HSequenceOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfReal {
-    TColStd_HSequenceOfReal* _get_reference() {
-    return (TColStd_HSequenceOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfReal)
 
 %extend TColStd_HSequenceOfReal {
 	%pythoncode {
@@ -5983,51 +4788,7 @@ class TColStd_HSequenceOfTransient : public MMgt_TShared {
 };
 
 
-%extend TColStd_HSequenceOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSequenceOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSequenceOfTransient::Handle_TColStd_HSequenceOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSequenceOfTransient;
-class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSequenceOfTransient();
-        Handle_TColStd_HSequenceOfTransient(const Handle_TColStd_HSequenceOfTransient &aHandle);
-        Handle_TColStd_HSequenceOfTransient(const TColStd_HSequenceOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSequenceOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSequenceOfTransient {
-    TColStd_HSequenceOfTransient* _get_reference() {
-    return (TColStd_HSequenceOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_HSequenceOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_HSequenceOfTransient)
 
 %extend TColStd_HSequenceOfTransient {
 	%pythoncode {
@@ -6079,51 +4840,7 @@ class TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public TC
 };
 
 
-%extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient::Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
-class Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient();
-        Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient(const Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient &aHandle);
-        Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient(const TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-    TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient* _get_reference() {
-    return (TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient)
 
 %extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
 	%pythoncode {
@@ -6293,51 +5010,7 @@ class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 };
 
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger::Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger;
-class Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger();
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger(const Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger &aHandle);
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger(const TColStd_IndexedMapNodeOfIndexedMapOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-    TColStd_IndexedMapNodeOfIndexedMapOfInteger* _get_reference() {
-    return (TColStd_IndexedMapNodeOfIndexedMapOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_IndexedMapNodeOfIndexedMapOfInteger)
 
 %extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
 	%pythoncode {
@@ -6392,51 +5065,7 @@ class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode {
 };
 
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal::Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal;
-class Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal();
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal(const Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal &aHandle);
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal(const TColStd_IndexedMapNodeOfIndexedMapOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
-    TColStd_IndexedMapNodeOfIndexedMapOfReal* _get_reference() {
-    return (TColStd_IndexedMapNodeOfIndexedMapOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_IndexedMapNodeOfIndexedMapOfReal)
 
 %extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
 	%pythoncode {
@@ -6482,51 +5111,7 @@ class TColStd_IndexedMapNodeOfIndexedMapOfTransient : public TCollection_MapNode
 };
 
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient::Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient;
-class Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient();
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient(const Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient &aHandle);
-        Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient(const TColStd_IndexedMapNodeOfIndexedMapOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-    TColStd_IndexedMapNodeOfIndexedMapOfTransient* _get_reference() {
-    return (TColStd_IndexedMapNodeOfIndexedMapOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_IndexedMapNodeOfIndexedMapOfTransient)
 
 %extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
 	%pythoncode {
@@ -6968,51 +5553,7 @@ class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
 };
 
 
-%extend TColStd_ListNodeOfListOfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfListOfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfListOfAsciiString::Handle_TColStd_ListNodeOfListOfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfListOfAsciiString;
-class Handle_TColStd_ListNodeOfListOfAsciiString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfListOfAsciiString();
-        Handle_TColStd_ListNodeOfListOfAsciiString(const Handle_TColStd_ListNodeOfListOfAsciiString &aHandle);
-        Handle_TColStd_ListNodeOfListOfAsciiString(const TColStd_ListNodeOfListOfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfListOfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfListOfAsciiString {
-    TColStd_ListNodeOfListOfAsciiString* _get_reference() {
-    return (TColStd_ListNodeOfListOfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_ListNodeOfListOfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_ListNodeOfListOfAsciiString)
 
 %extend TColStd_ListNodeOfListOfAsciiString {
 	%pythoncode {
@@ -7046,51 +5587,7 @@ class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
             };
 
 
-%extend TColStd_ListNodeOfListOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfListOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfListOfInteger::Handle_TColStd_ListNodeOfListOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfListOfInteger;
-class Handle_TColStd_ListNodeOfListOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfListOfInteger();
-        Handle_TColStd_ListNodeOfListOfInteger(const Handle_TColStd_ListNodeOfListOfInteger &aHandle);
-        Handle_TColStd_ListNodeOfListOfInteger(const TColStd_ListNodeOfListOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfListOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfListOfInteger {
-    TColStd_ListNodeOfListOfInteger* _get_reference() {
-    return (TColStd_ListNodeOfListOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_ListNodeOfListOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_ListNodeOfListOfInteger)
 
 %extend TColStd_ListNodeOfListOfInteger {
 	%pythoncode {
@@ -7124,51 +5621,7 @@ class TColStd_ListNodeOfListOfReal : public TCollection_MapNode {
             };
 
 
-%extend TColStd_ListNodeOfListOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfListOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfListOfReal::Handle_TColStd_ListNodeOfListOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfListOfReal;
-class Handle_TColStd_ListNodeOfListOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfListOfReal();
-        Handle_TColStd_ListNodeOfListOfReal(const Handle_TColStd_ListNodeOfListOfReal &aHandle);
-        Handle_TColStd_ListNodeOfListOfReal(const TColStd_ListNodeOfListOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfListOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfListOfReal {
-    TColStd_ListNodeOfListOfReal* _get_reference() {
-    return (TColStd_ListNodeOfListOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_ListNodeOfListOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_ListNodeOfListOfReal)
 
 %extend TColStd_ListNodeOfListOfReal {
 	%pythoncode {
@@ -7193,51 +5646,7 @@ class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
 };
 
 
-%extend TColStd_ListNodeOfListOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfListOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfListOfTransient::Handle_TColStd_ListNodeOfListOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfListOfTransient;
-class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfListOfTransient();
-        Handle_TColStd_ListNodeOfListOfTransient(const Handle_TColStd_ListNodeOfListOfTransient &aHandle);
-        Handle_TColStd_ListNodeOfListOfTransient(const TColStd_ListNodeOfListOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfListOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfListOfTransient {
-    TColStd_ListNodeOfListOfTransient* _get_reference() {
-    return (TColStd_ListNodeOfListOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_ListNodeOfListOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_ListNodeOfListOfTransient)
 
 %extend TColStd_ListNodeOfListOfTransient {
 	%pythoncode {
@@ -8345,51 +6754,7 @@ class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfAddress {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfAddress(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfAddress::Handle_TColStd_SequenceNodeOfSequenceOfAddress %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfAddress;
-class Handle_TColStd_SequenceNodeOfSequenceOfAddress : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfAddress();
-        Handle_TColStd_SequenceNodeOfSequenceOfAddress(const Handle_TColStd_SequenceNodeOfSequenceOfAddress &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfAddress(const TColStd_SequenceNodeOfSequenceOfAddress *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfAddress DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
-    TColStd_SequenceNodeOfSequenceOfAddress* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfAddress*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfAddress)
 
 %extend TColStd_SequenceNodeOfSequenceOfAddress {
 	%pythoncode {
@@ -8416,51 +6781,7 @@ class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode {
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString::Handle_TColStd_SequenceNodeOfSequenceOfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfAsciiString;
-class Handle_TColStd_SequenceNodeOfSequenceOfAsciiString : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfAsciiString();
-        Handle_TColStd_SequenceNodeOfSequenceOfAsciiString(const Handle_TColStd_SequenceNodeOfSequenceOfAsciiString &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfAsciiString(const TColStd_SequenceNodeOfSequenceOfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
-    TColStd_SequenceNodeOfSequenceOfAsciiString* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfAsciiString)
 
 %extend TColStd_SequenceNodeOfSequenceOfAsciiString {
 	%pythoncode {
@@ -8496,51 +6817,7 @@ class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode {
             };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfBoolean {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfBoolean(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfBoolean::Handle_TColStd_SequenceNodeOfSequenceOfBoolean %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfBoolean;
-class Handle_TColStd_SequenceNodeOfSequenceOfBoolean : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfBoolean();
-        Handle_TColStd_SequenceNodeOfSequenceOfBoolean(const Handle_TColStd_SequenceNodeOfSequenceOfBoolean &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfBoolean(const TColStd_SequenceNodeOfSequenceOfBoolean *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfBoolean DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
-    TColStd_SequenceNodeOfSequenceOfBoolean* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfBoolean*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfBoolean)
 
 %extend TColStd_SequenceNodeOfSequenceOfBoolean {
 	%pythoncode {
@@ -8567,51 +6844,7 @@ class TColStd_SequenceNodeOfSequenceOfExtendedString : public TCollection_SeqNod
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString::Handle_TColStd_SequenceNodeOfSequenceOfExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfExtendedString;
-class Handle_TColStd_SequenceNodeOfSequenceOfExtendedString : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfExtendedString();
-        Handle_TColStd_SequenceNodeOfSequenceOfExtendedString(const Handle_TColStd_SequenceNodeOfSequenceOfExtendedString &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfExtendedString(const TColStd_SequenceNodeOfSequenceOfExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString {
-    TColStd_SequenceNodeOfSequenceOfExtendedString* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfExtendedString)
 
 %extend TColStd_SequenceNodeOfSequenceOfExtendedString {
 	%pythoncode {
@@ -8638,51 +6871,7 @@ class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode 
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString::Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString;
-class Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString();
-        Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString(const Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString(const TColStd_SequenceNodeOfSequenceOfHAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString {
-    TColStd_SequenceNodeOfSequenceOfHAsciiString* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfHAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfHAsciiString)
 
 %extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
 	%pythoncode {
@@ -8709,51 +6898,7 @@ class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNo
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString::Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString;
-class Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString();
-        Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString(const Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString(const TColStd_SequenceNodeOfSequenceOfHExtendedString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
-    TColStd_SequenceNodeOfSequenceOfHExtendedString* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfHExtendedString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfHExtendedString)
 
 %extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
 	%pythoncode {
@@ -8789,51 +6934,7 @@ class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
             };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfInteger::Handle_TColStd_SequenceNodeOfSequenceOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfInteger;
-class Handle_TColStd_SequenceNodeOfSequenceOfInteger : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfInteger();
-        Handle_TColStd_SequenceNodeOfSequenceOfInteger(const Handle_TColStd_SequenceNodeOfSequenceOfInteger &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfInteger(const TColStd_SequenceNodeOfSequenceOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
-    TColStd_SequenceNodeOfSequenceOfInteger* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfInteger)
 
 %extend TColStd_SequenceNodeOfSequenceOfInteger {
 	%pythoncode {
@@ -8869,51 +6970,7 @@ class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode {
             };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfReal::Handle_TColStd_SequenceNodeOfSequenceOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfReal;
-class Handle_TColStd_SequenceNodeOfSequenceOfReal : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfReal();
-        Handle_TColStd_SequenceNodeOfSequenceOfReal(const Handle_TColStd_SequenceNodeOfSequenceOfReal &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfReal(const TColStd_SequenceNodeOfSequenceOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfReal {
-    TColStd_SequenceNodeOfSequenceOfReal* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfReal)
 
 %extend TColStd_SequenceNodeOfSequenceOfReal {
 	%pythoncode {
@@ -8940,51 +6997,7 @@ class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
 };
 
 
-%extend TColStd_SequenceNodeOfSequenceOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfTransient::Handle_TColStd_SequenceNodeOfSequenceOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfTransient;
-class Handle_TColStd_SequenceNodeOfSequenceOfTransient : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TColStd_SequenceNodeOfSequenceOfTransient();
-        Handle_TColStd_SequenceNodeOfSequenceOfTransient(const Handle_TColStd_SequenceNodeOfSequenceOfTransient &aHandle);
-        Handle_TColStd_SequenceNodeOfSequenceOfTransient(const TColStd_SequenceNodeOfSequenceOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_SequenceNodeOfSequenceOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
-    TColStd_SequenceNodeOfSequenceOfTransient* _get_reference() {
-    return (TColStd_SequenceNodeOfSequenceOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_SequenceNodeOfSequenceOfTransient)
 
 %extend TColStd_SequenceNodeOfSequenceOfTransient {
 	%pythoncode {
@@ -10296,51 +8309,7 @@ class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
 };
 
 
-%extend TColStd_StdMapNodeOfMapOfAsciiString {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfAsciiString(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StdMapNodeOfMapOfAsciiString::Handle_TColStd_StdMapNodeOfMapOfAsciiString %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StdMapNodeOfMapOfAsciiString;
-class Handle_TColStd_StdMapNodeOfMapOfAsciiString : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StdMapNodeOfMapOfAsciiString();
-        Handle_TColStd_StdMapNodeOfMapOfAsciiString(const Handle_TColStd_StdMapNodeOfMapOfAsciiString &aHandle);
-        Handle_TColStd_StdMapNodeOfMapOfAsciiString(const TColStd_StdMapNodeOfMapOfAsciiString *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StdMapNodeOfMapOfAsciiString DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
-    TColStd_StdMapNodeOfMapOfAsciiString* _get_reference() {
-    return (TColStd_StdMapNodeOfMapOfAsciiString*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_StdMapNodeOfMapOfAsciiString)
 
 %extend TColStd_StdMapNodeOfMapOfAsciiString {
 	%pythoncode {
@@ -10374,51 +8343,7 @@ class TColStd_StdMapNodeOfMapOfInteger : public TCollection_MapNode {
             };
 
 
-%extend TColStd_StdMapNodeOfMapOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StdMapNodeOfMapOfInteger::Handle_TColStd_StdMapNodeOfMapOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StdMapNodeOfMapOfInteger;
-class Handle_TColStd_StdMapNodeOfMapOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StdMapNodeOfMapOfInteger();
-        Handle_TColStd_StdMapNodeOfMapOfInteger(const Handle_TColStd_StdMapNodeOfMapOfInteger &aHandle);
-        Handle_TColStd_StdMapNodeOfMapOfInteger(const TColStd_StdMapNodeOfMapOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StdMapNodeOfMapOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StdMapNodeOfMapOfInteger {
-    TColStd_StdMapNodeOfMapOfInteger* _get_reference() {
-    return (TColStd_StdMapNodeOfMapOfInteger*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_StdMapNodeOfMapOfInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_StdMapNodeOfMapOfInteger)
 
 %extend TColStd_StdMapNodeOfMapOfInteger {
 	%pythoncode {
@@ -10452,51 +8377,7 @@ class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode {
             };
 
 
-%extend TColStd_StdMapNodeOfMapOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StdMapNodeOfMapOfReal::Handle_TColStd_StdMapNodeOfMapOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StdMapNodeOfMapOfReal;
-class Handle_TColStd_StdMapNodeOfMapOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StdMapNodeOfMapOfReal();
-        Handle_TColStd_StdMapNodeOfMapOfReal(const Handle_TColStd_StdMapNodeOfMapOfReal &aHandle);
-        Handle_TColStd_StdMapNodeOfMapOfReal(const TColStd_StdMapNodeOfMapOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StdMapNodeOfMapOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StdMapNodeOfMapOfReal {
-    TColStd_StdMapNodeOfMapOfReal* _get_reference() {
-    return (TColStd_StdMapNodeOfMapOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_StdMapNodeOfMapOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_StdMapNodeOfMapOfReal)
 
 %extend TColStd_StdMapNodeOfMapOfReal {
 	%pythoncode {
@@ -10521,51 +8402,7 @@ class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
 };
 
 
-%extend TColStd_StdMapNodeOfMapOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StdMapNodeOfMapOfTransient::Handle_TColStd_StdMapNodeOfMapOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StdMapNodeOfMapOfTransient;
-class Handle_TColStd_StdMapNodeOfMapOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StdMapNodeOfMapOfTransient();
-        Handle_TColStd_StdMapNodeOfMapOfTransient(const Handle_TColStd_StdMapNodeOfMapOfTransient &aHandle);
-        Handle_TColStd_StdMapNodeOfMapOfTransient(const TColStd_StdMapNodeOfMapOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StdMapNodeOfMapOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StdMapNodeOfMapOfTransient {
-    TColStd_StdMapNodeOfMapOfTransient* _get_reference() {
-    return (TColStd_StdMapNodeOfMapOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_TColStd_StdMapNodeOfMapOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TColStd_StdMapNodeOfMapOfTransient)
 
 %extend TColStd_StdMapNodeOfMapOfTransient {
 	%pythoncode {

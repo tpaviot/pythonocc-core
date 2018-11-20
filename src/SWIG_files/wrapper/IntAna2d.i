@@ -18,7 +18,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTANA2DDOCSTRING
-"No docstring provided."
+"
+This package defines the intersection between two elements of
+the geometric processor : Line, Circle, Ellipse, Parabola and
+Hyperbola; One of these elements is known with his real type,
+the other one is known by an implicit quadratic equation (see
+class Conic).
+A particular case has been made for the intersection between
+two Lin2d, two Circ2d, a Lin2d and a Circ2d.
+"
 %enddef
 %module (package="OCC.Core", docstring=INTANA2DDOCSTRING) IntAna2d
 
@@ -34,30 +42,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntAna2d_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor IntAna2d_AnaIntersection;
 class IntAna2d_AnaIntersection {

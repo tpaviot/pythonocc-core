@@ -18,7 +18,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HERMITDOCSTRING
-"No docstring provided."
+"This is used to reparameterize Rational BSpline
+Curves so that we can  concatenate them later to
+build C1 Curves It builds and 1D-reparameterizing
+function starting from an Hermite interpolation and
+adding knots and modifying poles of the 1D BSpline
+obtained that way. The goal is to build a(u) so that
+if we consider a BSpline curve
+N(u)
+f(u) = -
+D(u)
+
+the function a(u)D(u) has value 1 at the umin and umax
+and has 0.0e0 derivative value a umin and umax.
+The details of the computation occuring in this package
+can be found by reading :
+' Etude sur la concatenation de NURBS en vue du
+balayage de surfaces' PFE n S85 Ensam Lille"
 %enddef
 %module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 
@@ -34,30 +50,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Hermit_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(hermit) Hermit;
 class Hermit {

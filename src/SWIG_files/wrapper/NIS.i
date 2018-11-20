@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define NISDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=NISDOCSTRING) NIS
 
@@ -34,30 +34,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include NIS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(NIS_Allocator)
+%wrap_handle(NIS_InteractiveContext)
+%wrap_handle(NIS_InteractiveObject)
+%wrap_handle(NIS_SelectFilter)
+%wrap_handle(NIS_View)
+%wrap_handle(NIS_Surface)
+%wrap_handle(NIS_SurfaceDrawer)
+%wrap_handle(NIS_TriangulatedDrawer)
 
 %nodefaultctor NIS_Allocator;
 class NIS_Allocator : public NCollection_IncAllocator {
@@ -105,51 +100,7 @@ class NIS_Allocator : public NCollection_IncAllocator {
 };
 
 
-%extend NIS_Allocator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_Allocator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_Allocator::Handle_NIS_Allocator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_Allocator;
-class Handle_NIS_Allocator : public Handle_NCollection_IncAllocator {
-
-    public:
-        // constructors
-        Handle_NIS_Allocator();
-        Handle_NIS_Allocator(const Handle_NIS_Allocator &aHandle);
-        Handle_NIS_Allocator(const NIS_Allocator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_Allocator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_Allocator {
-    NIS_Allocator* _get_reference() {
-    return (NIS_Allocator*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_Allocator {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_Allocator)
 
 %extend NIS_Allocator {
 	%pythoncode {
@@ -418,51 +369,7 @@ enum SelectionMode {
 };
 
 
-%extend NIS_InteractiveContext {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_InteractiveContext(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_InteractiveContext::Handle_NIS_InteractiveContext %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_InteractiveContext;
-class Handle_NIS_InteractiveContext : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_NIS_InteractiveContext();
-        Handle_NIS_InteractiveContext(const Handle_NIS_InteractiveContext &aHandle);
-        Handle_NIS_InteractiveContext(const NIS_InteractiveContext *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_InteractiveContext DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_InteractiveContext {
-    NIS_InteractiveContext* _get_reference() {
-    return (NIS_InteractiveContext*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_InteractiveContext {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_InteractiveContext)
 
 %extend NIS_InteractiveContext {
 	%pythoncode {
@@ -643,51 +550,7 @@ class NIS_InteractiveObject : public Standard_Transient {
 };
 
 
-%extend NIS_InteractiveObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_InteractiveObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_InteractiveObject::Handle_NIS_InteractiveObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_InteractiveObject;
-class Handle_NIS_InteractiveObject : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_NIS_InteractiveObject();
-        Handle_NIS_InteractiveObject(const Handle_NIS_InteractiveObject &aHandle);
-        Handle_NIS_InteractiveObject(const NIS_InteractiveObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_InteractiveObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_InteractiveObject {
-    NIS_InteractiveObject* _get_reference() {
-    return (NIS_InteractiveObject*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_InteractiveObject {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_InteractiveObject)
 
 %extend NIS_InteractiveObject {
 	%pythoncode {
@@ -767,51 +630,7 @@ class NIS_SelectFilter : public Standard_Transient {
 };
 
 
-%extend NIS_SelectFilter {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_SelectFilter(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_SelectFilter::Handle_NIS_SelectFilter %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_SelectFilter;
-class Handle_NIS_SelectFilter : public Handle_Standard_Transient {
-
-    public:
-        // constructors
-        Handle_NIS_SelectFilter();
-        Handle_NIS_SelectFilter(const Handle_NIS_SelectFilter &aHandle);
-        Handle_NIS_SelectFilter(const NIS_SelectFilter *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_SelectFilter DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_SelectFilter {
-    NIS_SelectFilter* _get_reference() {
-    return (NIS_SelectFilter*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_SelectFilter {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_SelectFilter)
 
 %extend NIS_SelectFilter {
 	%pythoncode {
@@ -992,51 +811,7 @@ class NIS_View : public V3d_View {
 };
 
 
-%extend NIS_View {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_View(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_View::Handle_NIS_View %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_View;
-class Handle_NIS_View : public Handle_V3d_View {
-
-    public:
-        // constructors
-        Handle_NIS_View();
-        Handle_NIS_View(const Handle_NIS_View &aHandle);
-        Handle_NIS_View(const NIS_View *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_View DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_View {
-    NIS_View* _get_reference() {
-    return (NIS_View*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_View {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_View)
 
 %extend NIS_View {
 	%pythoncode {
@@ -1235,51 +1010,7 @@ enum DisplayMode {
 };
 
 
-%extend NIS_Surface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_Surface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_Surface::Handle_NIS_Surface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_Surface;
-class Handle_NIS_Surface : public Handle_NIS_InteractiveObject {
-
-    public:
-        // constructors
-        Handle_NIS_Surface();
-        Handle_NIS_Surface(const Handle_NIS_Surface &aHandle);
-        Handle_NIS_Surface(const NIS_Surface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_Surface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_Surface {
-    NIS_Surface* _get_reference() {
-    return (NIS_Surface*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_Surface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_Surface)
 
 %extend NIS_Surface {
 	%pythoncode {
@@ -1396,51 +1127,7 @@ class NIS_SurfaceDrawer : public NIS_Drawer {
 };
 
 
-%extend NIS_SurfaceDrawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_SurfaceDrawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_SurfaceDrawer::Handle_NIS_SurfaceDrawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_SurfaceDrawer;
-class Handle_NIS_SurfaceDrawer : public Handle_NIS_Drawer {
-
-    public:
-        // constructors
-        Handle_NIS_SurfaceDrawer();
-        Handle_NIS_SurfaceDrawer(const Handle_NIS_SurfaceDrawer &aHandle);
-        Handle_NIS_SurfaceDrawer(const NIS_SurfaceDrawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_SurfaceDrawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_SurfaceDrawer {
-    NIS_SurfaceDrawer* _get_reference() {
-    return (NIS_SurfaceDrawer*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_SurfaceDrawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_SurfaceDrawer)
 
 %extend NIS_SurfaceDrawer {
 	%pythoncode {
@@ -1513,51 +1200,7 @@ class NIS_TriangulatedDrawer : public NIS_Drawer {
 };
 
 
-%extend NIS_TriangulatedDrawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NIS_TriangulatedDrawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NIS_TriangulatedDrawer::Handle_NIS_TriangulatedDrawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NIS_TriangulatedDrawer;
-class Handle_NIS_TriangulatedDrawer : public Handle_NIS_Drawer {
-
-    public:
-        // constructors
-        Handle_NIS_TriangulatedDrawer();
-        Handle_NIS_TriangulatedDrawer(const Handle_NIS_TriangulatedDrawer &aHandle);
-        Handle_NIS_TriangulatedDrawer(const NIS_TriangulatedDrawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NIS_TriangulatedDrawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NIS_TriangulatedDrawer {
-    NIS_TriangulatedDrawer* _get_reference() {
-    return (NIS_TriangulatedDrawer*)$self->Access();
-    }
-};
-
-%extend Handle_NIS_TriangulatedDrawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NIS_TriangulatedDrawer)
 
 %extend NIS_TriangulatedDrawer {
 	%pythoncode {

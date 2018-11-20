@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MFUNCTIONDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=MFUNCTIONDOCSTRING) MFunction
 
@@ -34,30 +34,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MFunction_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(MFunction_FunctionRetrievalDriver)
+%wrap_handle(MFunction_FunctionStorageDriver)
 
 %rename(mfunction) MFunction;
 class MFunction {
@@ -126,51 +115,7 @@ class MFunction_FunctionRetrievalDriver : public MDF_ARDriver {
 };
 
 
-%extend MFunction_FunctionRetrievalDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MFunction_FunctionRetrievalDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MFunction_FunctionRetrievalDriver::Handle_MFunction_FunctionRetrievalDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MFunction_FunctionRetrievalDriver;
-class Handle_MFunction_FunctionRetrievalDriver : public Handle_MDF_ARDriver {
-
-    public:
-        // constructors
-        Handle_MFunction_FunctionRetrievalDriver();
-        Handle_MFunction_FunctionRetrievalDriver(const Handle_MFunction_FunctionRetrievalDriver &aHandle);
-        Handle_MFunction_FunctionRetrievalDriver(const MFunction_FunctionRetrievalDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MFunction_FunctionRetrievalDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MFunction_FunctionRetrievalDriver {
-    MFunction_FunctionRetrievalDriver* _get_reference() {
-    return (MFunction_FunctionRetrievalDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MFunction_FunctionRetrievalDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MFunction_FunctionRetrievalDriver)
 
 %extend MFunction_FunctionRetrievalDriver {
 	%pythoncode {
@@ -213,51 +158,7 @@ class MFunction_FunctionStorageDriver : public MDF_ASDriver {
 };
 
 
-%extend MFunction_FunctionStorageDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MFunction_FunctionStorageDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MFunction_FunctionStorageDriver::Handle_MFunction_FunctionStorageDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MFunction_FunctionStorageDriver;
-class Handle_MFunction_FunctionStorageDriver : public Handle_MDF_ASDriver {
-
-    public:
-        // constructors
-        Handle_MFunction_FunctionStorageDriver();
-        Handle_MFunction_FunctionStorageDriver(const Handle_MFunction_FunctionStorageDriver &aHandle);
-        Handle_MFunction_FunctionStorageDriver(const MFunction_FunctionStorageDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MFunction_FunctionStorageDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MFunction_FunctionStorageDriver {
-    MFunction_FunctionStorageDriver* _get_reference() {
-    return (MFunction_FunctionStorageDriver*)$self->Access();
-    }
-};
-
-%extend Handle_MFunction_FunctionStorageDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MFunction_FunctionStorageDriver)
 
 %extend MFunction_FunctionStorageDriver {
 	%pythoncode {

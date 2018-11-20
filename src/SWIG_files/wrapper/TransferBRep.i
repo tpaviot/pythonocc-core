@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TRANSFERBREPDOCSTRING
-"-Purpose : This package gathers services to simply read files and convertthem to Shapes from CasCade. IE. it can be used in conjunctionwith purely CasCade software"
+"-Purpose : This package gathers services to simply read files and convert
+them to Shapes from CasCade. IE. it can be used in conjunction
+with purely CasCade software
+"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERBREPDOCSTRING) TransferBRep
 
@@ -34,30 +37,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TransferBRep_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TransferBRep_BinderOfShape)
+%wrap_handle(TransferBRep_HSequenceOfTransferResultInfo)
+%wrap_handle(TransferBRep_OrientedShapeMapper)
+%wrap_handle(TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo)
+%wrap_handle(TransferBRep_ShapeListBinder)
+%wrap_handle(TransferBRep_ShapeMapper)
+%wrap_handle(TransferBRep_TransferResultInfo)
+%wrap_handle(TransferBRep_ShapeBinder)
 
 %rename(transferbrep) TransferBRep;
 class TransferBRep {
@@ -302,51 +300,7 @@ class TransferBRep_BinderOfShape : public Transfer_Binder {
 };
 
 
-%extend TransferBRep_BinderOfShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_BinderOfShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_BinderOfShape::Handle_TransferBRep_BinderOfShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_BinderOfShape;
-class Handle_TransferBRep_BinderOfShape : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_TransferBRep_BinderOfShape();
-        Handle_TransferBRep_BinderOfShape(const Handle_TransferBRep_BinderOfShape &aHandle);
-        Handle_TransferBRep_BinderOfShape(const TransferBRep_BinderOfShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_BinderOfShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_BinderOfShape {
-    TransferBRep_BinderOfShape* _get_reference() {
-    return (TransferBRep_BinderOfShape*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_BinderOfShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_BinderOfShape)
 
 %extend TransferBRep_BinderOfShape {
 	%pythoncode {
@@ -491,51 +445,7 @@ class TransferBRep_HSequenceOfTransferResultInfo : public MMgt_TShared {
 };
 
 
-%extend TransferBRep_HSequenceOfTransferResultInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_HSequenceOfTransferResultInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_HSequenceOfTransferResultInfo::Handle_TransferBRep_HSequenceOfTransferResultInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_HSequenceOfTransferResultInfo;
-class Handle_TransferBRep_HSequenceOfTransferResultInfo : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TransferBRep_HSequenceOfTransferResultInfo();
-        Handle_TransferBRep_HSequenceOfTransferResultInfo(const Handle_TransferBRep_HSequenceOfTransferResultInfo &aHandle);
-        Handle_TransferBRep_HSequenceOfTransferResultInfo(const TransferBRep_HSequenceOfTransferResultInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_HSequenceOfTransferResultInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_HSequenceOfTransferResultInfo {
-    TransferBRep_HSequenceOfTransferResultInfo* _get_reference() {
-    return (TransferBRep_HSequenceOfTransferResultInfo*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_HSequenceOfTransferResultInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_HSequenceOfTransferResultInfo)
 
 %extend TransferBRep_HSequenceOfTransferResultInfo {
 	%pythoncode {
@@ -572,51 +482,7 @@ class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
 };
 
 
-%extend TransferBRep_OrientedShapeMapper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_OrientedShapeMapper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_OrientedShapeMapper::Handle_TransferBRep_OrientedShapeMapper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_OrientedShapeMapper;
-class Handle_TransferBRep_OrientedShapeMapper : public Handle_Transfer_Finder {
-
-    public:
-        // constructors
-        Handle_TransferBRep_OrientedShapeMapper();
-        Handle_TransferBRep_OrientedShapeMapper(const Handle_TransferBRep_OrientedShapeMapper &aHandle);
-        Handle_TransferBRep_OrientedShapeMapper(const TransferBRep_OrientedShapeMapper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_OrientedShapeMapper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_OrientedShapeMapper {
-    TransferBRep_OrientedShapeMapper* _get_reference() {
-    return (TransferBRep_OrientedShapeMapper*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_OrientedShapeMapper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_OrientedShapeMapper)
 
 %extend TransferBRep_OrientedShapeMapper {
 	%pythoncode {
@@ -885,51 +751,7 @@ class TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo : public TCollecti
 };
 
 
-%extend TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo::Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo;
-class Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo();
-        Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo(const Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo &aHandle);
-        Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo(const TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo {
-    TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo* _get_reference() {
-    return (TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo)
 
 %extend TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo {
 	%pythoncode {
@@ -1219,51 +1041,7 @@ class TransferBRep_ShapeListBinder : public Transfer_Binder {
 };
 
 
-%extend TransferBRep_ShapeListBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_ShapeListBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_ShapeListBinder::Handle_TransferBRep_ShapeListBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_ShapeListBinder;
-class Handle_TransferBRep_ShapeListBinder : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_TransferBRep_ShapeListBinder();
-        Handle_TransferBRep_ShapeListBinder(const Handle_TransferBRep_ShapeListBinder &aHandle);
-        Handle_TransferBRep_ShapeListBinder(const TransferBRep_ShapeListBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_ShapeListBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_ShapeListBinder {
-    TransferBRep_ShapeListBinder* _get_reference() {
-    return (TransferBRep_ShapeListBinder*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_ShapeListBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_ShapeListBinder)
 
 %extend TransferBRep_ShapeListBinder {
 	%pythoncode {
@@ -1300,51 +1078,7 @@ class TransferBRep_ShapeMapper : public Transfer_Finder {
 };
 
 
-%extend TransferBRep_ShapeMapper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_ShapeMapper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_ShapeMapper::Handle_TransferBRep_ShapeMapper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_ShapeMapper;
-class Handle_TransferBRep_ShapeMapper : public Handle_Transfer_Finder {
-
-    public:
-        // constructors
-        Handle_TransferBRep_ShapeMapper();
-        Handle_TransferBRep_ShapeMapper(const Handle_TransferBRep_ShapeMapper &aHandle);
-        Handle_TransferBRep_ShapeMapper(const TransferBRep_ShapeMapper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_ShapeMapper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_ShapeMapper {
-    TransferBRep_ShapeMapper* _get_reference() {
-    return (TransferBRep_ShapeMapper*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_ShapeMapper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_ShapeMapper)
 
 %extend TransferBRep_ShapeMapper {
 	%pythoncode {
@@ -1473,51 +1207,7 @@ class TransferBRep_TransferResultInfo : public MMgt_TShared {
             };
 
 
-%extend TransferBRep_TransferResultInfo {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_TransferResultInfo(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_TransferResultInfo::Handle_TransferBRep_TransferResultInfo %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_TransferResultInfo;
-class Handle_TransferBRep_TransferResultInfo : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TransferBRep_TransferResultInfo();
-        Handle_TransferBRep_TransferResultInfo(const Handle_TransferBRep_TransferResultInfo &aHandle);
-        Handle_TransferBRep_TransferResultInfo(const TransferBRep_TransferResultInfo *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_TransferResultInfo DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_TransferResultInfo {
-    TransferBRep_TransferResultInfo* _get_reference() {
-    return (TransferBRep_TransferResultInfo*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_TransferResultInfo {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_TransferResultInfo)
 
 %extend TransferBRep_TransferResultInfo {
 	%pythoncode {
@@ -1582,51 +1272,7 @@ class TransferBRep_ShapeBinder : public TransferBRep_BinderOfShape {
 };
 
 
-%extend TransferBRep_ShapeBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TransferBRep_ShapeBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TransferBRep_ShapeBinder::Handle_TransferBRep_ShapeBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TransferBRep_ShapeBinder;
-class Handle_TransferBRep_ShapeBinder : public Handle_TransferBRep_BinderOfShape {
-
-    public:
-        // constructors
-        Handle_TransferBRep_ShapeBinder();
-        Handle_TransferBRep_ShapeBinder(const Handle_TransferBRep_ShapeBinder &aHandle);
-        Handle_TransferBRep_ShapeBinder(const TransferBRep_ShapeBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TransferBRep_ShapeBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TransferBRep_ShapeBinder {
-    TransferBRep_ShapeBinder* _get_reference() {
-    return (TransferBRep_ShapeBinder*)$self->Access();
-    }
-};
-
-%extend Handle_TransferBRep_ShapeBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TransferBRep_ShapeBinder)
 
 %extend TransferBRep_ShapeBinder {
 	%pythoncode {

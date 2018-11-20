@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define NLPLATEDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=NLPLATEDOCSTRING) NLPlate
 
@@ -34,30 +34,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include NLPlate_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(NLPlate_HGPPConstraint)
+%wrap_handle(NLPlate_ListNodeOfStackOfPlate)
+%wrap_handle(NLPlate_SequenceNodeOfSequenceOfHGPPConstraint)
+%wrap_handle(NLPlate_HPG0Constraint)
+%wrap_handle(NLPlate_HPG1Constraint)
+%wrap_handle(NLPlate_HPG0G1Constraint)
+%wrap_handle(NLPlate_HPG2Constraint)
+%wrap_handle(NLPlate_HPG0G2Constraint)
+%wrap_handle(NLPlate_HPG3Constraint)
+%wrap_handle(NLPlate_HPG0G3Constraint)
 
 %nodefaultctor NLPlate_HGPPConstraint;
 class NLPlate_HGPPConstraint : public MMgt_TShared {
@@ -175,51 +172,7 @@ class NLPlate_HGPPConstraint : public MMgt_TShared {
 };
 
 
-%extend NLPlate_HGPPConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HGPPConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HGPPConstraint::Handle_NLPlate_HGPPConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HGPPConstraint;
-class Handle_NLPlate_HGPPConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_NLPlate_HGPPConstraint();
-        Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HGPPConstraint &aHandle);
-        Handle_NLPlate_HGPPConstraint(const NLPlate_HGPPConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HGPPConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HGPPConstraint {
-    NLPlate_HGPPConstraint* _get_reference() {
-    return (NLPlate_HGPPConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HGPPConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HGPPConstraint)
 
 %extend NLPlate_HGPPConstraint {
 	%pythoncode {
@@ -283,51 +236,7 @@ class NLPlate_ListNodeOfStackOfPlate : public TCollection_MapNode {
 };
 
 
-%extend NLPlate_ListNodeOfStackOfPlate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_ListNodeOfStackOfPlate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_ListNodeOfStackOfPlate::Handle_NLPlate_ListNodeOfStackOfPlate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_ListNodeOfStackOfPlate;
-class Handle_NLPlate_ListNodeOfStackOfPlate : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_NLPlate_ListNodeOfStackOfPlate();
-        Handle_NLPlate_ListNodeOfStackOfPlate(const Handle_NLPlate_ListNodeOfStackOfPlate &aHandle);
-        Handle_NLPlate_ListNodeOfStackOfPlate(const NLPlate_ListNodeOfStackOfPlate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_ListNodeOfStackOfPlate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_ListNodeOfStackOfPlate {
-    NLPlate_ListNodeOfStackOfPlate* _get_reference() {
-    return (NLPlate_ListNodeOfStackOfPlate*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_ListNodeOfStackOfPlate {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_ListNodeOfStackOfPlate)
 
 %extend NLPlate_ListNodeOfStackOfPlate {
 	%pythoncode {
@@ -451,51 +360,7 @@ class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public TCollection_SeqNod
 };
 
 
-%extend NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint::Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
-class Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint();
-        Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint(const Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint &aHandle);
-        Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint(const NLPlate_SequenceNodeOfSequenceOfHGPPConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
-    NLPlate_SequenceNodeOfSequenceOfHGPPConstraint* _get_reference() {
-    return (NLPlate_SequenceNodeOfSequenceOfHGPPConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_SequenceNodeOfSequenceOfHGPPConstraint)
 
 %extend NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
 	%pythoncode {
@@ -826,51 +691,7 @@ class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 };
 
 
-%extend NLPlate_HPG0Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG0Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG0Constraint::Handle_NLPlate_HPG0Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG0Constraint;
-class Handle_NLPlate_HPG0Constraint : public Handle_NLPlate_HGPPConstraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG0Constraint();
-        Handle_NLPlate_HPG0Constraint(const Handle_NLPlate_HPG0Constraint &aHandle);
-        Handle_NLPlate_HPG0Constraint(const NLPlate_HPG0Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG0Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG0Constraint {
-    NLPlate_HPG0Constraint* _get_reference() {
-    return (NLPlate_HPG0Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG0Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG0Constraint)
 
 %extend NLPlate_HPG0Constraint {
 	%pythoncode {
@@ -923,51 +744,7 @@ class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 };
 
 
-%extend NLPlate_HPG1Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG1Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG1Constraint::Handle_NLPlate_HPG1Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG1Constraint;
-class Handle_NLPlate_HPG1Constraint : public Handle_NLPlate_HGPPConstraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG1Constraint();
-        Handle_NLPlate_HPG1Constraint(const Handle_NLPlate_HPG1Constraint &aHandle);
-        Handle_NLPlate_HPG1Constraint(const NLPlate_HPG1Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG1Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG1Constraint {
-    NLPlate_HPG1Constraint* _get_reference() {
-    return (NLPlate_HPG1Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG1Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG1Constraint)
 
 %extend NLPlate_HPG1Constraint {
 	%pythoncode {
@@ -1008,51 +785,7 @@ class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 };
 
 
-%extend NLPlate_HPG0G1Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG0G1Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG0G1Constraint::Handle_NLPlate_HPG0G1Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG0G1Constraint;
-class Handle_NLPlate_HPG0G1Constraint : public Handle_NLPlate_HPG0Constraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG0G1Constraint();
-        Handle_NLPlate_HPG0G1Constraint(const Handle_NLPlate_HPG0G1Constraint &aHandle);
-        Handle_NLPlate_HPG0G1Constraint(const NLPlate_HPG0G1Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG0G1Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG0G1Constraint {
-    NLPlate_HPG0G1Constraint* _get_reference() {
-    return (NLPlate_HPG0G1Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG0G1Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG0G1Constraint)
 
 %extend NLPlate_HPG0G1Constraint {
 	%pythoncode {
@@ -1083,51 +816,7 @@ class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 };
 
 
-%extend NLPlate_HPG2Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG2Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG2Constraint::Handle_NLPlate_HPG2Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG2Constraint;
-class Handle_NLPlate_HPG2Constraint : public Handle_NLPlate_HPG1Constraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG2Constraint();
-        Handle_NLPlate_HPG2Constraint(const Handle_NLPlate_HPG2Constraint &aHandle);
-        Handle_NLPlate_HPG2Constraint(const NLPlate_HPG2Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG2Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG2Constraint {
-    NLPlate_HPG2Constraint* _get_reference() {
-    return (NLPlate_HPG2Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG2Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG2Constraint)
 
 %extend NLPlate_HPG2Constraint {
 	%pythoncode {
@@ -1160,51 +849,7 @@ class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 };
 
 
-%extend NLPlate_HPG0G2Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG0G2Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG0G2Constraint::Handle_NLPlate_HPG0G2Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG0G2Constraint;
-class Handle_NLPlate_HPG0G2Constraint : public Handle_NLPlate_HPG0G1Constraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG0G2Constraint();
-        Handle_NLPlate_HPG0G2Constraint(const Handle_NLPlate_HPG0G2Constraint &aHandle);
-        Handle_NLPlate_HPG0G2Constraint(const NLPlate_HPG0G2Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG0G2Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG0G2Constraint {
-    NLPlate_HPG0G2Constraint* _get_reference() {
-    return (NLPlate_HPG0G2Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG0G2Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG0G2Constraint)
 
 %extend NLPlate_HPG0G2Constraint {
 	%pythoncode {
@@ -1237,51 +882,7 @@ class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 };
 
 
-%extend NLPlate_HPG3Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG3Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG3Constraint::Handle_NLPlate_HPG3Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG3Constraint;
-class Handle_NLPlate_HPG3Constraint : public Handle_NLPlate_HPG2Constraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG3Constraint();
-        Handle_NLPlate_HPG3Constraint(const Handle_NLPlate_HPG3Constraint &aHandle);
-        Handle_NLPlate_HPG3Constraint(const NLPlate_HPG3Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG3Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG3Constraint {
-    NLPlate_HPG3Constraint* _get_reference() {
-    return (NLPlate_HPG3Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG3Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG3Constraint)
 
 %extend NLPlate_HPG3Constraint {
 	%pythoncode {
@@ -1316,51 +917,7 @@ class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
 };
 
 
-%extend NLPlate_HPG0G3Constraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_HPG0G3Constraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_HPG0G3Constraint::Handle_NLPlate_HPG0G3Constraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_HPG0G3Constraint;
-class Handle_NLPlate_HPG0G3Constraint : public Handle_NLPlate_HPG0G2Constraint {
-
-    public:
-        // constructors
-        Handle_NLPlate_HPG0G3Constraint();
-        Handle_NLPlate_HPG0G3Constraint(const Handle_NLPlate_HPG0G3Constraint &aHandle);
-        Handle_NLPlate_HPG0G3Constraint(const NLPlate_HPG0G3Constraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_HPG0G3Constraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_HPG0G3Constraint {
-    NLPlate_HPG0G3Constraint* _get_reference() {
-    return (NLPlate_HPG0G3Constraint*)$self->Access();
-    }
-};
-
-%extend Handle_NLPlate_HPG0G3Constraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(NLPlate_HPG0G3Constraint)
 
 %extend NLPlate_HPG0G3Constraint {
 	%pythoncode {

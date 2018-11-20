@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPROXDOCSTRING
-"No docstring provided."
+"Tis package provides algorithms approximating a set of
+points or curves with the possibility of dividing into
+one or many bezier curves.
+It also provides an instantiation for approximating
+a continous function f(t) into one or many curves.
+"
 %enddef
 %module (package="OCC.Core", docstring=APPROXDOCSTRING) Approx
 
@@ -34,24 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Approx_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -70,6 +61,12 @@ enum Approx_ParametrizationType {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Approx_CurvlinFunc)
+%wrap_handle(Approx_HArray1OfAdHSurface)
+%wrap_handle(Approx_HArray1OfGTrsf2d)
+%wrap_handle(Approx_SequenceNodeOfSequenceOfHArray1OfReal)
+%wrap_handle(Approx_SweepFunction)
 
 %nodefaultctor Approx_Array1OfAdHSurface;
 class Approx_Array1OfAdHSurface {
@@ -699,51 +696,7 @@ class Approx_CurvlinFunc : public MMgt_TShared {
 };
 
 
-%extend Approx_CurvlinFunc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Approx_CurvlinFunc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Approx_CurvlinFunc::Handle_Approx_CurvlinFunc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Approx_CurvlinFunc;
-class Handle_Approx_CurvlinFunc : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Approx_CurvlinFunc();
-        Handle_Approx_CurvlinFunc(const Handle_Approx_CurvlinFunc &aHandle);
-        Handle_Approx_CurvlinFunc(const Approx_CurvlinFunc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Approx_CurvlinFunc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Approx_CurvlinFunc {
-    Approx_CurvlinFunc* _get_reference() {
-    return (Approx_CurvlinFunc*)$self->Access();
-    }
-};
-
-%extend Handle_Approx_CurvlinFunc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Approx_CurvlinFunc)
 
 %extend Approx_CurvlinFunc {
 	%pythoncode {
@@ -1054,51 +1007,7 @@ class Approx_HArray1OfAdHSurface : public MMgt_TShared {
 };
 
 
-%extend Approx_HArray1OfAdHSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Approx_HArray1OfAdHSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Approx_HArray1OfAdHSurface::Handle_Approx_HArray1OfAdHSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Approx_HArray1OfAdHSurface;
-class Handle_Approx_HArray1OfAdHSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Approx_HArray1OfAdHSurface();
-        Handle_Approx_HArray1OfAdHSurface(const Handle_Approx_HArray1OfAdHSurface &aHandle);
-        Handle_Approx_HArray1OfAdHSurface(const Approx_HArray1OfAdHSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Approx_HArray1OfAdHSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Approx_HArray1OfAdHSurface {
-    Approx_HArray1OfAdHSurface* _get_reference() {
-    return (Approx_HArray1OfAdHSurface*)$self->Access();
-    }
-};
-
-%extend Handle_Approx_HArray1OfAdHSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Approx_HArray1OfAdHSurface)
 
 %extend Approx_HArray1OfAdHSurface {
 	%pythoncode {
@@ -1175,51 +1084,7 @@ class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
 };
 
 
-%extend Approx_HArray1OfGTrsf2d {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Approx_HArray1OfGTrsf2d(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Approx_HArray1OfGTrsf2d::Handle_Approx_HArray1OfGTrsf2d %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Approx_HArray1OfGTrsf2d;
-class Handle_Approx_HArray1OfGTrsf2d : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Approx_HArray1OfGTrsf2d();
-        Handle_Approx_HArray1OfGTrsf2d(const Handle_Approx_HArray1OfGTrsf2d &aHandle);
-        Handle_Approx_HArray1OfGTrsf2d(const Approx_HArray1OfGTrsf2d *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Approx_HArray1OfGTrsf2d DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Approx_HArray1OfGTrsf2d {
-    Approx_HArray1OfGTrsf2d* _get_reference() {
-    return (Approx_HArray1OfGTrsf2d*)$self->Access();
-    }
-};
-
-%extend Handle_Approx_HArray1OfGTrsf2d {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Approx_HArray1OfGTrsf2d)
 
 %extend Approx_HArray1OfGTrsf2d {
 	%pythoncode {
@@ -1364,51 +1229,7 @@ class Approx_SequenceNodeOfSequenceOfHArray1OfReal : public TCollection_SeqNode 
 };
 
 
-%extend Approx_SequenceNodeOfSequenceOfHArray1OfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal::Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal;
-class Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal();
-        Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal(const Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal &aHandle);
-        Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal(const Approx_SequenceNodeOfSequenceOfHArray1OfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal {
-    Approx_SequenceNodeOfSequenceOfHArray1OfReal* _get_reference() {
-    return (Approx_SequenceNodeOfSequenceOfHArray1OfReal*)$self->Access();
-    }
-};
-
-%extend Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Approx_SequenceNodeOfSequenceOfHArray1OfReal)
 
 %extend Approx_SequenceNodeOfSequenceOfHArray1OfReal {
 	%pythoncode {
@@ -1977,51 +1798,7 @@ class Approx_SweepFunction : public MMgt_TShared {
 };
 
 
-%extend Approx_SweepFunction {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Approx_SweepFunction(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Approx_SweepFunction::Handle_Approx_SweepFunction %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Approx_SweepFunction;
-class Handle_Approx_SweepFunction : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Approx_SweepFunction();
-        Handle_Approx_SweepFunction(const Handle_Approx_SweepFunction &aHandle);
-        Handle_Approx_SweepFunction(const Approx_SweepFunction *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Approx_SweepFunction DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Approx_SweepFunction {
-    Approx_SweepFunction* _get_reference() {
-    return (Approx_SweepFunction*)$self->Access();
-    }
-};
-
-%extend Handle_Approx_SweepFunction {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Approx_SweepFunction)
 
 %extend Approx_SweepFunction {
 	%pythoncode {

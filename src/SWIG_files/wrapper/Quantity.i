@@ -18,7 +18,36 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define QUANTITYDOCSTRING
-"No docstring provided."
+"The Quantities component deals with
+mathematical and physical quantities.
+A mathematical quantity is characterized by its value. It is a real value.
+A physical quantity is characterized by:
+-  its value, which is also a real value, and
+-  the unit in which it is expressed. This unit may
+be either an international unit complying with
+the International Unit System (SI) or a user
+defined unit. The unit is managed by the
+physical quantity user.
+Each mathematical or physical quantity is
+described by its name. This ensures distinction
+between two different quantities.
+Moreover, both physical and mathematical
+quantities are also manipulated as real values:
+-  They are defined as aliases of reals, so all
+functions provided by the Standard_Real
+class are available on each quantity.
+-  You may also mix several physical quantities
+in a mathematical or physical formula involving real values.
+Associated with the physical quantities, a range
+of functions provides tools to manage unit conversions.
+The physical quantities described in this chapter
+are commonly used basic physical quantities.
+Nevertheless, the Quantity package includes all
+physical quantities you may require.
+The Quantities component also provides
+resources to manage time information (dates and
+periods) and color definition.
+"
 %enddef
 %module (package="OCC.Core", docstring=QUANTITYDOCSTRING) Quantity
 
@@ -34,24 +63,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Quantity_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Real Quantity_Resistivity;
@@ -733,6 +748,8 @@ enum Quantity_PhysicalQuantity {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Quantity_HArray1OfColor)
 
 %nodefaultctor Quantity_Array1OfCoefficient;
 class Quantity_Array1OfCoefficient {
@@ -1766,51 +1783,7 @@ class Quantity_HArray1OfColor : public MMgt_TShared {
 };
 
 
-%extend Quantity_HArray1OfColor {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Quantity_HArray1OfColor(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Quantity_HArray1OfColor::Handle_Quantity_HArray1OfColor %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Quantity_HArray1OfColor;
-class Handle_Quantity_HArray1OfColor : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Quantity_HArray1OfColor();
-        Handle_Quantity_HArray1OfColor(const Handle_Quantity_HArray1OfColor &aHandle);
-        Handle_Quantity_HArray1OfColor(const Quantity_HArray1OfColor *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Quantity_HArray1OfColor DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Quantity_HArray1OfColor {
-    Quantity_HArray1OfColor* _get_reference() {
-    return (Quantity_HArray1OfColor*)$self->Access();
-    }
-};
-
-%extend Handle_Quantity_HArray1OfColor {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Quantity_HArray1OfColor)
 
 %extend Quantity_HArray1OfColor {
 	%pythoncode {

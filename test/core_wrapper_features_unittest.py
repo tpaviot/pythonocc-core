@@ -21,13 +21,15 @@ import pickle
 import unittest
 import os
 from math import sqrt
+import warnings
+from contextlib import contextmanager
 
 from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
-                                BRepBuilderAPI_MakeEdge)
+                                     BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
-                    gp_Quaternion, gp_QuaternionSLerp)
+                         gp_Quaternion, gp_QuaternionSLerp)
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -44,12 +46,22 @@ from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
 from OCC.Core.Graphic3d import Graphic3d_RenderingParams
-from OCC.Core.AIS import (Handle_AIS_Shape, Handle_AIS_Shape_DownCast,
-                     Handle_AIS_InteractiveObject,
-                     AIS_InteractiveObject)
 from OCC.Core.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
-                           BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
-                           BRepCheck_EmptyWire)
+                                BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
+                                BRepCheck_EmptyWire)
+from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
+from OCC.Core.BRep import BRep_Tool_Curve
+
+@contextmanager
+def assert_warns_deprecated():
+    with warnings.catch_warnings(record=True) as w:
+        warnings.simplefilter("always")
+        yield w
+        # Verify some things
+        assert issubclass(w[-1].category, DeprecationWarning)
+        assert "deprecated" in str(w[-1].message)
+
+
 
 class TestWrapperFeatures(unittest.TestCase):
     def test_hash(self):
@@ -81,7 +93,8 @@ class TestWrapperFeatures(unittest.TestCase):
 
     def test_handle_standard_transient_copy(self):
         def evil_function(t):
-            handle = Handle_Standard_Transient(t)
+            handle = Standard_Transient(t)
+            return handle
         t = Standard_Transient()
         evil_function(t)
 
@@ -164,7 +177,7 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         vX = gp_Vec(12, 0, 0)
         vY = gp_Vec(0, 12, 0)
-        v45 = (gp_Vec(1, 1, 1).Normalized() * 12)
+
         q = gp_Quaternion()
         q1 = gp_Quaternion(vX, vX)
         q2 = gp_Quaternion(vX, vY)
@@ -373,19 +386,16 @@ class TestWrapperFeatures(unittest.TestCase):
         # since the OCC.Geom2d module
         # is *not* manually imported
         returned_object_type = '%s' % type(returned_object)
-        self.assertEqual(returned_object_type, "<class 'OCC.Core.Geom2d.Handle_Geom2d_TrimmedCurve'>")
+        self.assertEqual(returned_object_type, "<class 'OCC.Core.Geom2d.Geom2d_TrimmedCurve'>")
 
     def test_hash_eq_operator(self):
         ''' test that the == wrapper is ok
         '''
         # test Standard
-        h1 = Handle_Standard_Transient()
         s = Standard_Transient()
-        h2 = s.GetHandle()
-        self.assertTrue(h1 == h1)
-        self.assertFalse(h1 == h2)
-        self.assertFalse(h1 == 10)
-        self.assertTrue(h2 == s)
+        s2 = Standard_Transient()
+        self.assertFalse(s == s2)
+        self.assertTrue(s == s)
         # test list.index, that uses __eq__ method
         p1 = gp_Pnt(0., 0., 0.)
         line = gp_Lin(p1, gp_Dir(1., 0., 0.))
@@ -402,13 +412,10 @@ class TestWrapperFeatures(unittest.TestCase):
 
     def test_neq_operator(self):
          # test Standard
-        h1 = Handle_Standard_Transient()
         s = Standard_Transient()
-        h2 = s.GetHandle()
-        self.assertFalse(h1 != h1)
-        self.assertTrue(h1 != h2)
-        self.assertTrue(h1 != 10)
-        self.assertFalse(h2 != s)
+        s2 = Standard_Transient()
+        self.assertTrue(s != s2)
+        self.assertFalse(s != s)
         shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         self.assertTrue(shape_1 != shape_2)
@@ -475,13 +482,12 @@ class TestWrapperFeatures(unittest.TestCase):
         """
         a = gp_Pnt(0., 0., 0.)
         b = gp_Pnt(100., 100., 100.)
-        line3 = GC_MakeSegment(a, b).Value().GetObject()
+        line3 = GC_MakeSegment(a, b).Value()
         assert line3.FirstParameter() == 0.
-        assert GC_MakeSegment(a, b).Value().GetObject().FirstParameter() == 0.
-        assert GC_MakeSegment(a, b).Value().GetObject().GetHandle().GetObject().GetHandle().GetObject().FirstParameter() == 0.
+        assert GC_MakeSegment(a, b).Value().FirstParameter() == 0.
         assert b.IsEqual(line3.EndPoint(), 0.01)
-        assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().EndPoint(), 0.01)
-        assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().GetHandle().GetObject().GetHandle().GetObject().EndPoint(), 0.01)
+        assert b.IsEqual(GC_MakeSegment(a, b).Value().EndPoint(), 0.01)
+
 
 
     def test_local_properties(self):
@@ -500,13 +506,19 @@ class TestWrapperFeatures(unittest.TestCase):
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         assert "class<'TopoDS_Shape'; Type:Solid; id:" in str(shp)
 
-    def test_downcast_ais_shape(self):
-        """ Test if an AIS_Shape can be donwcasted to a TopoDS_Shape
+    def test_downcast_curve(self):
+        """ Test if a GeomCurve can be DownCasted to a GeomLine
         """
-        ais_interactive_object_handle = Handle_AIS_InteractiveObject()
-        ais_shape_handle = Handle_AIS_Shape_DownCast(ais_interactive_object_handle)
-        assert isinstance(ais_shape_handle, Handle_AIS_Shape)
-        assert ais_shape_handle.IsNull()
+        
+        edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0,0,0), gp_Pnt(1,0,0)).Edge()
+        curve, _, _ = BRep_Tool_Curve(edge)
+        assert isinstance(curve, Geom_Curve)
+        # The edge is internally a line, so we should be able to downcast it
+        line = Geom_Line.DownCast(curve)
+        assert isinstance(curve, Geom_Curve)
+        # Hence, it should not be possible to downcast it as a B-Spline curve
+        bspline = Geom_BSplineCurve.DownCast(curve)
+        assert bspline is None
 
     def test_return_enum(self):
         """ Check that returned enums are properly handled, wether they're returned
@@ -531,13 +543,37 @@ class TestWrapperFeatures(unittest.TestCase):
         """ since pythonocc-0.18.2. import OCC.* changed to import OCC.Core.*
         Such deprecated import raises a DeprecatedWarning
         """
-        import warnings
-        catched = False
-        with warnings.catch_warnings():
+        with assert_warns_deprecated():
             from OCC.gp import gp_Pln
-            catched = True
-        assert catched
 
+    def test_deprecation_get_handle(self):
+        """ Handles are now completely transparent. The GetHandle method is
+        not required anymore.
+        """
+        t = Standard_Transient()
+        with assert_warns_deprecated():
+            t.GetHandle()
+
+    def test_deprecation_handle_class(self):
+        """ Handles are now completely transparent. The Handle_* constructor is
+        not required anymore.
+        """
+        t = Standard_Transient()
+        with assert_warns_deprecated():
+            h = Handle_Standard_Transient(t)
+
+    def test_deprecation_get_object(self):
+        """ Handles are now completely transparent. The GetObject method is
+        not required anymore.
+        """
+        t = Standard_Transient()
+        with assert_warns_deprecated():
+            t.GetObject()
+    
+    def test_deprecation_downcasts(self):
+        t = Standard_Transient()
+        with assert_warns_deprecated():
+            Handle_Standard_Transient.DownCast(t)
 
 def suite():
     test_suite = unittest.TestSuite()

@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TRANSFERDOCSTRING
-"-Purpose : Defines general Transfer engine, which provides tools andworkframe for all kinds of file (non-direct) Interfaces.Works on the basis of data provided by package Interface(especially InterfaceModel)."
+"-Purpose : Defines general Transfer engine, which provides tools and
+workframe for all kinds of file (non-direct) Interfaces.
+Works on the basis of data provided by package Interface
+(especially InterfaceModel).
+"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERDOCSTRING) Transfer
 
@@ -34,24 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include Transfer_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -79,6 +69,34 @@ enum Transfer_StatusResult {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(Transfer_ActorOfProcessForFinder)
+%wrap_handle(Transfer_ActorOfProcessForTransient)
+%wrap_handle(Transfer_Binder)
+%wrap_handle(Transfer_DispatchControl)
+%wrap_handle(Transfer_Finder)
+%wrap_handle(Transfer_HSequenceOfBinder)
+%wrap_handle(Transfer_HSequenceOfFinder)
+%wrap_handle(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder)
+%wrap_handle(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient)
+%wrap_handle(Transfer_MapContainer)
+%wrap_handle(Transfer_ProcessForFinder)
+%wrap_handle(Transfer_ProcessForTransient)
+%wrap_handle(Transfer_ResultFromModel)
+%wrap_handle(Transfer_ResultFromTransient)
+%wrap_handle(Transfer_SequenceNodeOfSequenceOfBinder)
+%wrap_handle(Transfer_SequenceNodeOfSequenceOfFinder)
+%wrap_handle(Transfer_ActorOfFinderProcess)
+%wrap_handle(Transfer_ActorOfTransientProcess)
+%wrap_handle(Transfer_FinderProcess)
+%wrap_handle(Transfer_MultipleBinder)
+%wrap_handle(Transfer_SimpleBinderOfTransient)
+%wrap_handle(Transfer_TransientListBinder)
+%wrap_handle(Transfer_TransientMapper)
+%wrap_handle(Transfer_TransientProcess)
+%wrap_handle(Transfer_VoidBinder)
+%wrap_handle(Transfer_ActorDispatch)
+%wrap_handle(Transfer_BinderOfTransientInteger)
 
 %nodefaultctor Transfer_ActorOfProcessForFinder;
 class Transfer_ActorOfProcessForFinder : public MMgt_TShared {
@@ -134,51 +152,7 @@ class Transfer_ActorOfProcessForFinder : public MMgt_TShared {
 };
 
 
-%extend Transfer_ActorOfProcessForFinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ActorOfProcessForFinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ActorOfProcessForFinder::Handle_Transfer_ActorOfProcessForFinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ActorOfProcessForFinder;
-class Handle_Transfer_ActorOfProcessForFinder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ActorOfProcessForFinder();
-        Handle_Transfer_ActorOfProcessForFinder(const Handle_Transfer_ActorOfProcessForFinder &aHandle);
-        Handle_Transfer_ActorOfProcessForFinder(const Transfer_ActorOfProcessForFinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ActorOfProcessForFinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ActorOfProcessForFinder {
-    Transfer_ActorOfProcessForFinder* _get_reference() {
-    return (Transfer_ActorOfProcessForFinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ActorOfProcessForFinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ActorOfProcessForFinder)
 
 %extend Transfer_ActorOfProcessForFinder {
 	%pythoncode {
@@ -239,51 +213,7 @@ class Transfer_ActorOfProcessForTransient : public MMgt_TShared {
 };
 
 
-%extend Transfer_ActorOfProcessForTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ActorOfProcessForTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ActorOfProcessForTransient::Handle_Transfer_ActorOfProcessForTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ActorOfProcessForTransient;
-class Handle_Transfer_ActorOfProcessForTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ActorOfProcessForTransient();
-        Handle_Transfer_ActorOfProcessForTransient(const Handle_Transfer_ActorOfProcessForTransient &aHandle);
-        Handle_Transfer_ActorOfProcessForTransient(const Transfer_ActorOfProcessForTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ActorOfProcessForTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ActorOfProcessForTransient {
-    Transfer_ActorOfProcessForTransient* _get_reference() {
-    return (Transfer_ActorOfProcessForTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ActorOfProcessForTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ActorOfProcessForTransient)
 
 %extend Transfer_ActorOfProcessForTransient {
 	%pythoncode {
@@ -400,51 +330,7 @@ class Transfer_Binder : public MMgt_TShared {
 };
 
 
-%extend Transfer_Binder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_Binder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_Binder::Handle_Transfer_Binder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_Binder;
-class Handle_Transfer_Binder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_Binder();
-        Handle_Transfer_Binder(const Handle_Transfer_Binder &aHandle);
-        Handle_Transfer_Binder(const Transfer_Binder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_Binder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_Binder {
-    Transfer_Binder* _get_reference() {
-    return (Transfer_Binder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_Binder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_Binder)
 
 %extend Transfer_Binder {
 	%pythoncode {
@@ -531,51 +417,7 @@ class Transfer_DispatchControl : public Interface_CopyControl {
 };
 
 
-%extend Transfer_DispatchControl {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_DispatchControl(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_DispatchControl::Handle_Transfer_DispatchControl %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_DispatchControl;
-class Handle_Transfer_DispatchControl : public Handle_Interface_CopyControl {
-
-    public:
-        // constructors
-        Handle_Transfer_DispatchControl();
-        Handle_Transfer_DispatchControl(const Handle_Transfer_DispatchControl &aHandle);
-        Handle_Transfer_DispatchControl(const Transfer_DispatchControl *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_DispatchControl DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_DispatchControl {
-    Transfer_DispatchControl* _get_reference() {
-    return (Transfer_DispatchControl*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_DispatchControl {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_DispatchControl)
 
 %extend Transfer_DispatchControl {
 	%pythoncode {
@@ -800,51 +642,7 @@ class Transfer_Finder : public MMgt_TShared {
 };
 
 
-%extend Transfer_Finder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_Finder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_Finder::Handle_Transfer_Finder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_Finder;
-class Handle_Transfer_Finder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_Finder();
-        Handle_Transfer_Finder(const Handle_Transfer_Finder &aHandle);
-        Handle_Transfer_Finder(const Transfer_Finder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_Finder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_Finder {
-    Transfer_Finder* _get_reference() {
-    return (Transfer_Finder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_Finder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_Finder)
 
 %extend Transfer_Finder {
 	%pythoncode {
@@ -989,51 +787,7 @@ class Transfer_HSequenceOfBinder : public MMgt_TShared {
 };
 
 
-%extend Transfer_HSequenceOfBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_HSequenceOfBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_HSequenceOfBinder::Handle_Transfer_HSequenceOfBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_HSequenceOfBinder;
-class Handle_Transfer_HSequenceOfBinder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_HSequenceOfBinder();
-        Handle_Transfer_HSequenceOfBinder(const Handle_Transfer_HSequenceOfBinder &aHandle);
-        Handle_Transfer_HSequenceOfBinder(const Transfer_HSequenceOfBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_HSequenceOfBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_HSequenceOfBinder {
-    Transfer_HSequenceOfBinder* _get_reference() {
-    return (Transfer_HSequenceOfBinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_HSequenceOfBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_HSequenceOfBinder)
 
 %extend Transfer_HSequenceOfBinder {
 	%pythoncode {
@@ -1178,51 +932,7 @@ class Transfer_HSequenceOfFinder : public MMgt_TShared {
 };
 
 
-%extend Transfer_HSequenceOfFinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_HSequenceOfFinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_HSequenceOfFinder::Handle_Transfer_HSequenceOfFinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_HSequenceOfFinder;
-class Handle_Transfer_HSequenceOfFinder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_HSequenceOfFinder();
-        Handle_Transfer_HSequenceOfFinder(const Handle_Transfer_HSequenceOfFinder &aHandle);
-        Handle_Transfer_HSequenceOfFinder(const Transfer_HSequenceOfFinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_HSequenceOfFinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_HSequenceOfFinder {
-    Transfer_HSequenceOfFinder* _get_reference() {
-    return (Transfer_HSequenceOfFinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_HSequenceOfFinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_HSequenceOfFinder)
 
 %extend Transfer_HSequenceOfFinder {
 	%pythoncode {
@@ -1274,51 +984,7 @@ class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder : public TColle
 };
 
 
-%extend Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder::Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder;
-class Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder();
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder(const Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder &aHandle);
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder(const Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder {
-    Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder* _get_reference() {
-    return (Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder)
 
 %extend Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder {
 	%pythoncode {
@@ -1370,51 +1036,7 @@ class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient : public TCo
 };
 
 
-%extend Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient::Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient;
-class Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient();
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient(const Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient &aHandle);
-        Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient(const Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient {
-    Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient* _get_reference() {
-    return (Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient)
 
 %extend Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient {
 	%pythoncode {
@@ -1445,51 +1067,7 @@ class Transfer_MapContainer : public MMgt_TShared {
 };
 
 
-%extend Transfer_MapContainer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_MapContainer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_MapContainer::Handle_Transfer_MapContainer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_MapContainer;
-class Handle_Transfer_MapContainer : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_MapContainer();
-        Handle_Transfer_MapContainer(const Handle_Transfer_MapContainer &aHandle);
-        Handle_Transfer_MapContainer(const Transfer_MapContainer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_MapContainer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_MapContainer {
-    Transfer_MapContainer* _get_reference() {
-    return (Transfer_MapContainer*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_MapContainer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_MapContainer)
 
 %extend Transfer_MapContainer {
 	%pythoncode {
@@ -1924,51 +1502,7 @@ class Transfer_ProcessForFinder : public MMgt_TShared {
 };
 
 
-%extend Transfer_ProcessForFinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ProcessForFinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ProcessForFinder::Handle_Transfer_ProcessForFinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ProcessForFinder;
-class Handle_Transfer_ProcessForFinder : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ProcessForFinder();
-        Handle_Transfer_ProcessForFinder(const Handle_Transfer_ProcessForFinder &aHandle);
-        Handle_Transfer_ProcessForFinder(const Transfer_ProcessForFinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ProcessForFinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ProcessForFinder {
-    Transfer_ProcessForFinder* _get_reference() {
-    return (Transfer_ProcessForFinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ProcessForFinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ProcessForFinder)
 
 %extend Transfer_ProcessForFinder {
 	%pythoncode {
@@ -2403,51 +1937,7 @@ class Transfer_ProcessForTransient : public MMgt_TShared {
 };
 
 
-%extend Transfer_ProcessForTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ProcessForTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ProcessForTransient::Handle_Transfer_ProcessForTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ProcessForTransient;
-class Handle_Transfer_ProcessForTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ProcessForTransient();
-        Handle_Transfer_ProcessForTransient(const Handle_Transfer_ProcessForTransient &aHandle);
-        Handle_Transfer_ProcessForTransient(const Transfer_ProcessForTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ProcessForTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ProcessForTransient {
-    Transfer_ProcessForTransient* _get_reference() {
-    return (Transfer_ProcessForTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ProcessForTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ProcessForTransient)
 
 %extend Transfer_ProcessForTransient {
 	%pythoncode {
@@ -2610,51 +2100,7 @@ class Transfer_ResultFromModel : public MMgt_TShared {
 };
 
 
-%extend Transfer_ResultFromModel {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ResultFromModel(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ResultFromModel::Handle_Transfer_ResultFromModel %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ResultFromModel;
-class Handle_Transfer_ResultFromModel : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ResultFromModel();
-        Handle_Transfer_ResultFromModel(const Handle_Transfer_ResultFromModel &aHandle);
-        Handle_Transfer_ResultFromModel(const Transfer_ResultFromModel *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ResultFromModel DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ResultFromModel {
-    Transfer_ResultFromModel* _get_reference() {
-    return (Transfer_ResultFromModel*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ResultFromModel {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ResultFromModel)
 
 %extend Transfer_ResultFromModel {
 	%pythoncode {
@@ -2785,51 +2231,7 @@ class Transfer_ResultFromTransient : public MMgt_TShared {
 };
 
 
-%extend Transfer_ResultFromTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ResultFromTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ResultFromTransient::Handle_Transfer_ResultFromTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ResultFromTransient;
-class Handle_Transfer_ResultFromTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_Transfer_ResultFromTransient();
-        Handle_Transfer_ResultFromTransient(const Handle_Transfer_ResultFromTransient &aHandle);
-        Handle_Transfer_ResultFromTransient(const Transfer_ResultFromTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ResultFromTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ResultFromTransient {
-    Transfer_ResultFromTransient* _get_reference() {
-    return (Transfer_ResultFromTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ResultFromTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ResultFromTransient)
 
 %extend Transfer_ResultFromTransient {
 	%pythoncode {
@@ -2856,51 +2258,7 @@ class Transfer_SequenceNodeOfSequenceOfBinder : public TCollection_SeqNode {
 };
 
 
-%extend Transfer_SequenceNodeOfSequenceOfBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_SequenceNodeOfSequenceOfBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_SequenceNodeOfSequenceOfBinder::Handle_Transfer_SequenceNodeOfSequenceOfBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_SequenceNodeOfSequenceOfBinder;
-class Handle_Transfer_SequenceNodeOfSequenceOfBinder : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Transfer_SequenceNodeOfSequenceOfBinder();
-        Handle_Transfer_SequenceNodeOfSequenceOfBinder(const Handle_Transfer_SequenceNodeOfSequenceOfBinder &aHandle);
-        Handle_Transfer_SequenceNodeOfSequenceOfBinder(const Transfer_SequenceNodeOfSequenceOfBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_SequenceNodeOfSequenceOfBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_SequenceNodeOfSequenceOfBinder {
-    Transfer_SequenceNodeOfSequenceOfBinder* _get_reference() {
-    return (Transfer_SequenceNodeOfSequenceOfBinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_SequenceNodeOfSequenceOfBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_SequenceNodeOfSequenceOfBinder)
 
 %extend Transfer_SequenceNodeOfSequenceOfBinder {
 	%pythoncode {
@@ -2927,51 +2285,7 @@ class Transfer_SequenceNodeOfSequenceOfFinder : public TCollection_SeqNode {
 };
 
 
-%extend Transfer_SequenceNodeOfSequenceOfFinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_SequenceNodeOfSequenceOfFinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_SequenceNodeOfSequenceOfFinder::Handle_Transfer_SequenceNodeOfSequenceOfFinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_SequenceNodeOfSequenceOfFinder;
-class Handle_Transfer_SequenceNodeOfSequenceOfFinder : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_Transfer_SequenceNodeOfSequenceOfFinder();
-        Handle_Transfer_SequenceNodeOfSequenceOfFinder(const Handle_Transfer_SequenceNodeOfSequenceOfFinder &aHandle);
-        Handle_Transfer_SequenceNodeOfSequenceOfFinder(const Transfer_SequenceNodeOfSequenceOfFinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_SequenceNodeOfSequenceOfFinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_SequenceNodeOfSequenceOfFinder {
-    Transfer_SequenceNodeOfSequenceOfFinder* _get_reference() {
-    return (Transfer_SequenceNodeOfSequenceOfFinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_SequenceNodeOfSequenceOfFinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_SequenceNodeOfSequenceOfFinder)
 
 %extend Transfer_SequenceNodeOfSequenceOfFinder {
 	%pythoncode {
@@ -3915,51 +3229,7 @@ class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 };
 
 
-%extend Transfer_ActorOfFinderProcess {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ActorOfFinderProcess(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ActorOfFinderProcess::Handle_Transfer_ActorOfFinderProcess %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ActorOfFinderProcess;
-class Handle_Transfer_ActorOfFinderProcess : public Handle_Transfer_ActorOfProcessForFinder {
-
-    public:
-        // constructors
-        Handle_Transfer_ActorOfFinderProcess();
-        Handle_Transfer_ActorOfFinderProcess(const Handle_Transfer_ActorOfFinderProcess &aHandle);
-        Handle_Transfer_ActorOfFinderProcess(const Transfer_ActorOfFinderProcess *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ActorOfFinderProcess DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ActorOfFinderProcess {
-    Transfer_ActorOfFinderProcess* _get_reference() {
-    return (Transfer_ActorOfFinderProcess*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ActorOfFinderProcess {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ActorOfFinderProcess)
 
 %extend Transfer_ActorOfFinderProcess {
 	%pythoncode {
@@ -4000,51 +3270,7 @@ class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransi
 };
 
 
-%extend Transfer_ActorOfTransientProcess {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ActorOfTransientProcess(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ActorOfTransientProcess::Handle_Transfer_ActorOfTransientProcess %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ActorOfTransientProcess;
-class Handle_Transfer_ActorOfTransientProcess : public Handle_Transfer_ActorOfProcessForTransient {
-
-    public:
-        // constructors
-        Handle_Transfer_ActorOfTransientProcess();
-        Handle_Transfer_ActorOfTransientProcess(const Handle_Transfer_ActorOfTransientProcess &aHandle);
-        Handle_Transfer_ActorOfTransientProcess(const Transfer_ActorOfTransientProcess *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ActorOfTransientProcess DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ActorOfTransientProcess {
-    Transfer_ActorOfTransientProcess* _get_reference() {
-    return (Transfer_ActorOfTransientProcess*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ActorOfTransientProcess {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ActorOfTransientProcess)
 
 %extend Transfer_ActorOfTransientProcess {
 	%pythoncode {
@@ -4117,51 +3343,7 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 };
 
 
-%extend Transfer_FinderProcess {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_FinderProcess(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_FinderProcess::Handle_Transfer_FinderProcess %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_FinderProcess;
-class Handle_Transfer_FinderProcess : public Handle_Transfer_ProcessForFinder {
-
-    public:
-        // constructors
-        Handle_Transfer_FinderProcess();
-        Handle_Transfer_FinderProcess(const Handle_Transfer_FinderProcess &aHandle);
-        Handle_Transfer_FinderProcess(const Transfer_FinderProcess *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_FinderProcess DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_FinderProcess {
-    Transfer_FinderProcess* _get_reference() {
-    return (Transfer_FinderProcess*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_FinderProcess {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_FinderProcess)
 
 %extend Transfer_FinderProcess {
 	%pythoncode {
@@ -4328,51 +3510,7 @@ class Transfer_MultipleBinder : public Transfer_Binder {
 };
 
 
-%extend Transfer_MultipleBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_MultipleBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_MultipleBinder::Handle_Transfer_MultipleBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_MultipleBinder;
-class Handle_Transfer_MultipleBinder : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_Transfer_MultipleBinder();
-        Handle_Transfer_MultipleBinder(const Handle_Transfer_MultipleBinder &aHandle);
-        Handle_Transfer_MultipleBinder(const Transfer_MultipleBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_MultipleBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_MultipleBinder {
-    Transfer_MultipleBinder* _get_reference() {
-    return (Transfer_MultipleBinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_MultipleBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_MultipleBinder)
 
 %extend Transfer_MultipleBinder {
 	%pythoncode {
@@ -4429,51 +3567,7 @@ class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 };
 
 
-%extend Transfer_SimpleBinderOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_SimpleBinderOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_SimpleBinderOfTransient::Handle_Transfer_SimpleBinderOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_SimpleBinderOfTransient;
-class Handle_Transfer_SimpleBinderOfTransient : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_Transfer_SimpleBinderOfTransient();
-        Handle_Transfer_SimpleBinderOfTransient(const Handle_Transfer_SimpleBinderOfTransient &aHandle);
-        Handle_Transfer_SimpleBinderOfTransient(const Transfer_SimpleBinderOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_SimpleBinderOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_SimpleBinderOfTransient {
-    Transfer_SimpleBinderOfTransient* _get_reference() {
-    return (Transfer_SimpleBinderOfTransient*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_SimpleBinderOfTransient {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_SimpleBinderOfTransient)
 
 %extend Transfer_SimpleBinderOfTransient {
 	%pythoncode {
@@ -4540,51 +3634,7 @@ class Transfer_TransientListBinder : public Transfer_Binder {
 };
 
 
-%extend Transfer_TransientListBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_TransientListBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_TransientListBinder::Handle_Transfer_TransientListBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_TransientListBinder;
-class Handle_Transfer_TransientListBinder : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_Transfer_TransientListBinder();
-        Handle_Transfer_TransientListBinder(const Handle_Transfer_TransientListBinder &aHandle);
-        Handle_Transfer_TransientListBinder(const Transfer_TransientListBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_TransientListBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_TransientListBinder {
-    Transfer_TransientListBinder* _get_reference() {
-    return (Transfer_TransientListBinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_TransientListBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_TransientListBinder)
 
 %extend Transfer_TransientListBinder {
 	%pythoncode {
@@ -4621,51 +3671,7 @@ class Transfer_TransientMapper : public Transfer_Finder {
 };
 
 
-%extend Transfer_TransientMapper {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_TransientMapper(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_TransientMapper::Handle_Transfer_TransientMapper %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_TransientMapper;
-class Handle_Transfer_TransientMapper : public Handle_Transfer_Finder {
-
-    public:
-        // constructors
-        Handle_Transfer_TransientMapper();
-        Handle_Transfer_TransientMapper(const Handle_Transfer_TransientMapper &aHandle);
-        Handle_Transfer_TransientMapper(const Transfer_TransientMapper *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_TransientMapper DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_TransientMapper {
-    Transfer_TransientMapper* _get_reference() {
-    return (Transfer_TransientMapper*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_TransientMapper {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_TransientMapper)
 
 %extend Transfer_TransientMapper {
 	%pythoncode {
@@ -4806,51 +3812,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 };
 
 
-%extend Transfer_TransientProcess {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_TransientProcess(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_TransientProcess::Handle_Transfer_TransientProcess %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_TransientProcess;
-class Handle_Transfer_TransientProcess : public Handle_Transfer_ProcessForTransient {
-
-    public:
-        // constructors
-        Handle_Transfer_TransientProcess();
-        Handle_Transfer_TransientProcess(const Handle_Transfer_TransientProcess &aHandle);
-        Handle_Transfer_TransientProcess(const Transfer_TransientProcess *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_TransientProcess DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_TransientProcess {
-    Transfer_TransientProcess* _get_reference() {
-    return (Transfer_TransientProcess*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_TransientProcess {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_TransientProcess)
 
 %extend Transfer_TransientProcess {
 	%pythoncode {
@@ -4881,51 +3843,7 @@ class Transfer_VoidBinder : public Transfer_Binder {
 };
 
 
-%extend Transfer_VoidBinder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_VoidBinder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_VoidBinder::Handle_Transfer_VoidBinder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_VoidBinder;
-class Handle_Transfer_VoidBinder : public Handle_Transfer_Binder {
-
-    public:
-        // constructors
-        Handle_Transfer_VoidBinder();
-        Handle_Transfer_VoidBinder(const Handle_Transfer_VoidBinder &aHandle);
-        Handle_Transfer_VoidBinder(const Transfer_VoidBinder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_VoidBinder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_VoidBinder {
-    Transfer_VoidBinder* _get_reference() {
-    return (Transfer_VoidBinder*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_VoidBinder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_VoidBinder)
 
 %extend Transfer_VoidBinder {
 	%pythoncode {
@@ -4990,51 +3908,7 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 };
 
 
-%extend Transfer_ActorDispatch {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_ActorDispatch(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_ActorDispatch::Handle_Transfer_ActorDispatch %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_ActorDispatch;
-class Handle_Transfer_ActorDispatch : public Handle_Transfer_ActorOfTransientProcess {
-
-    public:
-        // constructors
-        Handle_Transfer_ActorDispatch();
-        Handle_Transfer_ActorDispatch(const Handle_Transfer_ActorDispatch &aHandle);
-        Handle_Transfer_ActorDispatch(const Transfer_ActorDispatch *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_ActorDispatch DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_ActorDispatch {
-    Transfer_ActorDispatch* _get_reference() {
-    return (Transfer_ActorDispatch*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_ActorDispatch {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_ActorDispatch)
 
 %extend Transfer_ActorDispatch {
 	%pythoncode {
@@ -5067,51 +3941,7 @@ class Transfer_BinderOfTransientInteger : public Transfer_SimpleBinderOfTransien
 };
 
 
-%extend Transfer_BinderOfTransientInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Transfer_BinderOfTransientInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Transfer_BinderOfTransientInteger::Handle_Transfer_BinderOfTransientInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Transfer_BinderOfTransientInteger;
-class Handle_Transfer_BinderOfTransientInteger : public Handle_Transfer_SimpleBinderOfTransient {
-
-    public:
-        // constructors
-        Handle_Transfer_BinderOfTransientInteger();
-        Handle_Transfer_BinderOfTransientInteger(const Handle_Transfer_BinderOfTransientInteger &aHandle);
-        Handle_Transfer_BinderOfTransientInteger(const Transfer_BinderOfTransientInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Transfer_BinderOfTransientInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Transfer_BinderOfTransientInteger {
-    Transfer_BinderOfTransientInteger* _get_reference() {
-    return (Transfer_BinderOfTransientInteger*)$self->Access();
-    }
-};
-
-%extend Handle_Transfer_BinderOfTransientInteger {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(Transfer_BinderOfTransientInteger)
 
 %extend Transfer_BinderOfTransientInteger {
 	%pythoncode {

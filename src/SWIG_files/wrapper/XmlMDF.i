@@ -18,7 +18,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMDFDOCSTRING
-"No docstring provided."
+"This package provides classes and methods to
+translate a transient DF into a persistent one and
+vice versa.
+
+Driver
+
+A driver is a tool used to translate a transient
+attribute into a persistent one and vice versa.
+
+Driver Table
+
+A driver table is an object building links between
+object types and object drivers. In the
+translation process, a driver table is asked to
+give a translation driver for each current object
+to be translated.
+"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDFDOCSTRING) XmlMDF
 
@@ -34,30 +50,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include XmlMDF_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(XmlMDF_ADriver)
+%wrap_handle(XmlMDF_ADriverTable)
+%wrap_handle(XmlMDF_DataMapNodeOfMapOfDriver)
+%wrap_handle(XmlMDF_DataMapNodeOfTypeADriverMap)
+%wrap_handle(XmlMDF_ReferenceDriver)
+%wrap_handle(XmlMDF_TagSourceDriver)
 
 %rename(xmlmdf) XmlMDF;
 class XmlMDF {
@@ -170,51 +179,7 @@ class XmlMDF_ADriver : public MMgt_TShared {
 };
 
 
-%extend XmlMDF_ADriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_ADriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_ADriver::Handle_XmlMDF_ADriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_ADriver;
-class Handle_XmlMDF_ADriver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_XmlMDF_ADriver();
-        Handle_XmlMDF_ADriver(const Handle_XmlMDF_ADriver &aHandle);
-        Handle_XmlMDF_ADriver(const XmlMDF_ADriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_ADriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_ADriver {
-    XmlMDF_ADriver* _get_reference() {
-    return (XmlMDF_ADriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_ADriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_ADriver)
 
 %extend XmlMDF_ADriver {
 	%pythoncode {
@@ -257,51 +222,7 @@ class XmlMDF_ADriverTable : public MMgt_TShared {
 };
 
 
-%extend XmlMDF_ADriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_ADriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_ADriverTable::Handle_XmlMDF_ADriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_ADriverTable;
-class Handle_XmlMDF_ADriverTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_XmlMDF_ADriverTable();
-        Handle_XmlMDF_ADriverTable(const Handle_XmlMDF_ADriverTable &aHandle);
-        Handle_XmlMDF_ADriverTable(const XmlMDF_ADriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_ADriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_ADriverTable {
-    XmlMDF_ADriverTable* _get_reference() {
-    return (XmlMDF_ADriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_ADriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_ADriverTable)
 
 %extend XmlMDF_ADriverTable {
 	%pythoncode {
@@ -402,51 +323,7 @@ class XmlMDF_DataMapNodeOfMapOfDriver : public TCollection_MapNode {
 };
 
 
-%extend XmlMDF_DataMapNodeOfMapOfDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_DataMapNodeOfMapOfDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_DataMapNodeOfMapOfDriver::Handle_XmlMDF_DataMapNodeOfMapOfDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_DataMapNodeOfMapOfDriver;
-class Handle_XmlMDF_DataMapNodeOfMapOfDriver : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XmlMDF_DataMapNodeOfMapOfDriver();
-        Handle_XmlMDF_DataMapNodeOfMapOfDriver(const Handle_XmlMDF_DataMapNodeOfMapOfDriver &aHandle);
-        Handle_XmlMDF_DataMapNodeOfMapOfDriver(const XmlMDF_DataMapNodeOfMapOfDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_DataMapNodeOfMapOfDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_DataMapNodeOfMapOfDriver {
-    XmlMDF_DataMapNodeOfMapOfDriver* _get_reference() {
-    return (XmlMDF_DataMapNodeOfMapOfDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_DataMapNodeOfMapOfDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_DataMapNodeOfMapOfDriver)
 
 %extend XmlMDF_DataMapNodeOfMapOfDriver {
 	%pythoncode {
@@ -477,51 +354,7 @@ class XmlMDF_DataMapNodeOfTypeADriverMap : public TCollection_MapNode {
 };
 
 
-%extend XmlMDF_DataMapNodeOfTypeADriverMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_DataMapNodeOfTypeADriverMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_DataMapNodeOfTypeADriverMap::Handle_XmlMDF_DataMapNodeOfTypeADriverMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_DataMapNodeOfTypeADriverMap;
-class Handle_XmlMDF_DataMapNodeOfTypeADriverMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_XmlMDF_DataMapNodeOfTypeADriverMap();
-        Handle_XmlMDF_DataMapNodeOfTypeADriverMap(const Handle_XmlMDF_DataMapNodeOfTypeADriverMap &aHandle);
-        Handle_XmlMDF_DataMapNodeOfTypeADriverMap(const XmlMDF_DataMapNodeOfTypeADriverMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_DataMapNodeOfTypeADriverMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_DataMapNodeOfTypeADriverMap {
-    XmlMDF_DataMapNodeOfTypeADriverMap* _get_reference() {
-    return (XmlMDF_DataMapNodeOfTypeADriverMap*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_DataMapNodeOfTypeADriverMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_DataMapNodeOfTypeADriverMap)
 
 %extend XmlMDF_DataMapNodeOfTypeADriverMap {
 	%pythoncode {
@@ -730,51 +563,7 @@ class XmlMDF_ReferenceDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDF_ReferenceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_ReferenceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_ReferenceDriver::Handle_XmlMDF_ReferenceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_ReferenceDriver;
-class Handle_XmlMDF_ReferenceDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDF_ReferenceDriver();
-        Handle_XmlMDF_ReferenceDriver(const Handle_XmlMDF_ReferenceDriver &aHandle);
-        Handle_XmlMDF_ReferenceDriver(const XmlMDF_ReferenceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_ReferenceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_ReferenceDriver {
-    XmlMDF_ReferenceDriver* _get_reference() {
-    return (XmlMDF_ReferenceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_ReferenceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_ReferenceDriver)
 
 %extend XmlMDF_ReferenceDriver {
 	%pythoncode {
@@ -817,51 +606,7 @@ class XmlMDF_TagSourceDriver : public XmlMDF_ADriver {
 };
 
 
-%extend XmlMDF_TagSourceDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XmlMDF_TagSourceDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XmlMDF_TagSourceDriver::Handle_XmlMDF_TagSourceDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XmlMDF_TagSourceDriver;
-class Handle_XmlMDF_TagSourceDriver : public Handle_XmlMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_XmlMDF_TagSourceDriver();
-        Handle_XmlMDF_TagSourceDriver(const Handle_XmlMDF_TagSourceDriver &aHandle);
-        Handle_XmlMDF_TagSourceDriver(const XmlMDF_TagSourceDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XmlMDF_TagSourceDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XmlMDF_TagSourceDriver {
-    XmlMDF_TagSourceDriver* _get_reference() {
-    return (XmlMDF_TagSourceDriver*)$self->Access();
-    }
-};
-
-%extend Handle_XmlMDF_TagSourceDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(XmlMDF_TagSourceDriver)
 
 %extend XmlMDF_TagSourceDriver {
 	%pythoncode {

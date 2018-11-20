@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PFUNCTIONDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=PFUNCTIONDOCSTRING) PFunction
 
@@ -34,30 +34,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PFunction_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
 
 %nodefaultctor PFunction_Function;
 class PFunction_Function : public PDF_Attribute {
@@ -108,52 +95,6 @@ class PFunction_Function : public PDF_Attribute {
 		void _CSFDB_SetPFunction_FunctionmyFailure (const Standard_Integer p);
 };
 
-
-%extend PFunction_Function {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PFunction_Function(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PFunction_Function::Handle_PFunction_Function %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PFunction_Function;
-class Handle_PFunction_Function : public Handle_PDF_Attribute {
-
-    public:
-        // constructors
-        Handle_PFunction_Function();
-        Handle_PFunction_Function(const Handle_PFunction_Function &aHandle);
-        Handle_PFunction_Function(const PFunction_Function *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PFunction_Function DownCast(const Handle_Standard_Persistent &AnObject);
-
-};
-%extend Handle_PFunction_Function {
-    PFunction_Function* _get_reference() {
-    return (PFunction_Function*)$self->Access();
-    }
-};
-
-%extend Handle_PFunction_Function {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
 
 %extend PFunction_Function {
 	%pythoncode {

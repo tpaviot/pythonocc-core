@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LOCOPEDOCSTRING
-"No docstring provided."
+"Provides tools to implement local   topological
+operations on a shape.
+"
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
@@ -34,24 +36,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include LocOpe_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,6 +52,15 @@ enum LocOpe_Operation {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(LocOpe_DataMapNodeOfDataMapOfShapePnt)
+%wrap_handle(LocOpe_GeneratedShape)
+%wrap_handle(LocOpe_HBuilder)
+%wrap_handle(LocOpe_SequenceNodeOfSequenceOfCirc)
+%wrap_handle(LocOpe_SequenceNodeOfSequenceOfLin)
+%wrap_handle(LocOpe_SequenceNodeOfSequenceOfPntFace)
+%wrap_handle(LocOpe_WiresOnShape)
+%wrap_handle(LocOpe_GluedShape)
 
 %rename(locope) LocOpe;
 class LocOpe {
@@ -606,51 +603,7 @@ class LocOpe_DataMapNodeOfDataMapOfShapePnt : public TCollection_MapNode {
 };
 
 
-%extend LocOpe_DataMapNodeOfDataMapOfShapePnt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt::Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt;
-class Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt();
-        Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt(const Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt &aHandle);
-        Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt(const LocOpe_DataMapNodeOfDataMapOfShapePnt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt {
-    LocOpe_DataMapNodeOfDataMapOfShapePnt* _get_reference() {
-    return (LocOpe_DataMapNodeOfDataMapOfShapePnt*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_DataMapNodeOfDataMapOfShapePnt)
 
 %extend LocOpe_DataMapNodeOfDataMapOfShapePnt {
 	%pythoncode {
@@ -870,51 +823,7 @@ class LocOpe_GeneratedShape : public MMgt_TShared {
 };
 
 
-%extend LocOpe_GeneratedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_GeneratedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_GeneratedShape::Handle_LocOpe_GeneratedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_GeneratedShape;
-class Handle_LocOpe_GeneratedShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_LocOpe_GeneratedShape();
-        Handle_LocOpe_GeneratedShape(const Handle_LocOpe_GeneratedShape &aHandle);
-        Handle_LocOpe_GeneratedShape(const LocOpe_GeneratedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_GeneratedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_GeneratedShape {
-    LocOpe_GeneratedShape* _get_reference() {
-    return (LocOpe_GeneratedShape*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_GeneratedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_GeneratedShape)
 
 %extend LocOpe_GeneratedShape {
 	%pythoncode {
@@ -1091,51 +1000,7 @@ class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder {
 };
 
 
-%extend LocOpe_HBuilder {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_HBuilder(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_HBuilder::Handle_LocOpe_HBuilder %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_HBuilder;
-class Handle_LocOpe_HBuilder : public Handle_TopOpeBRepBuild_HBuilder {
-
-    public:
-        // constructors
-        Handle_LocOpe_HBuilder();
-        Handle_LocOpe_HBuilder(const Handle_LocOpe_HBuilder &aHandle);
-        Handle_LocOpe_HBuilder(const LocOpe_HBuilder *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_HBuilder DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_HBuilder {
-    LocOpe_HBuilder* _get_reference() {
-    return (LocOpe_HBuilder*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_HBuilder {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_HBuilder)
 
 %extend LocOpe_HBuilder {
 	%pythoncode {
@@ -1442,51 +1307,7 @@ class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
 };
 
 
-%extend LocOpe_SequenceNodeOfSequenceOfCirc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_SequenceNodeOfSequenceOfCirc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_SequenceNodeOfSequenceOfCirc::Handle_LocOpe_SequenceNodeOfSequenceOfCirc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_SequenceNodeOfSequenceOfCirc;
-class Handle_LocOpe_SequenceNodeOfSequenceOfCirc : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_LocOpe_SequenceNodeOfSequenceOfCirc();
-        Handle_LocOpe_SequenceNodeOfSequenceOfCirc(const Handle_LocOpe_SequenceNodeOfSequenceOfCirc &aHandle);
-        Handle_LocOpe_SequenceNodeOfSequenceOfCirc(const LocOpe_SequenceNodeOfSequenceOfCirc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_SequenceNodeOfSequenceOfCirc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfCirc {
-    LocOpe_SequenceNodeOfSequenceOfCirc* _get_reference() {
-    return (LocOpe_SequenceNodeOfSequenceOfCirc*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfCirc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_SequenceNodeOfSequenceOfCirc)
 
 %extend LocOpe_SequenceNodeOfSequenceOfCirc {
 	%pythoncode {
@@ -1513,51 +1334,7 @@ class LocOpe_SequenceNodeOfSequenceOfLin : public TCollection_SeqNode {
 };
 
 
-%extend LocOpe_SequenceNodeOfSequenceOfLin {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_SequenceNodeOfSequenceOfLin(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_SequenceNodeOfSequenceOfLin::Handle_LocOpe_SequenceNodeOfSequenceOfLin %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_SequenceNodeOfSequenceOfLin;
-class Handle_LocOpe_SequenceNodeOfSequenceOfLin : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_LocOpe_SequenceNodeOfSequenceOfLin();
-        Handle_LocOpe_SequenceNodeOfSequenceOfLin(const Handle_LocOpe_SequenceNodeOfSequenceOfLin &aHandle);
-        Handle_LocOpe_SequenceNodeOfSequenceOfLin(const LocOpe_SequenceNodeOfSequenceOfLin *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_SequenceNodeOfSequenceOfLin DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfLin {
-    LocOpe_SequenceNodeOfSequenceOfLin* _get_reference() {
-    return (LocOpe_SequenceNodeOfSequenceOfLin*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfLin {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_SequenceNodeOfSequenceOfLin)
 
 %extend LocOpe_SequenceNodeOfSequenceOfLin {
 	%pythoncode {
@@ -1584,51 +1361,7 @@ class LocOpe_SequenceNodeOfSequenceOfPntFace : public TCollection_SeqNode {
 };
 
 
-%extend LocOpe_SequenceNodeOfSequenceOfPntFace {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_SequenceNodeOfSequenceOfPntFace(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_SequenceNodeOfSequenceOfPntFace::Handle_LocOpe_SequenceNodeOfSequenceOfPntFace %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_SequenceNodeOfSequenceOfPntFace;
-class Handle_LocOpe_SequenceNodeOfSequenceOfPntFace : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_LocOpe_SequenceNodeOfSequenceOfPntFace();
-        Handle_LocOpe_SequenceNodeOfSequenceOfPntFace(const Handle_LocOpe_SequenceNodeOfSequenceOfPntFace &aHandle);
-        Handle_LocOpe_SequenceNodeOfSequenceOfPntFace(const LocOpe_SequenceNodeOfSequenceOfPntFace *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_SequenceNodeOfSequenceOfPntFace DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfPntFace {
-    LocOpe_SequenceNodeOfSequenceOfPntFace* _get_reference() {
-    return (LocOpe_SequenceNodeOfSequenceOfPntFace*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_SequenceNodeOfSequenceOfPntFace {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_SequenceNodeOfSequenceOfPntFace)
 
 %extend LocOpe_SequenceNodeOfSequenceOfPntFace {
 	%pythoncode {
@@ -2473,51 +2206,7 @@ class LocOpe_WiresOnShape : public MMgt_TShared {
 };
 
 
-%extend LocOpe_WiresOnShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_WiresOnShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_WiresOnShape::Handle_LocOpe_WiresOnShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_WiresOnShape;
-class Handle_LocOpe_WiresOnShape : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_LocOpe_WiresOnShape();
-        Handle_LocOpe_WiresOnShape(const Handle_LocOpe_WiresOnShape &aHandle);
-        Handle_LocOpe_WiresOnShape(const LocOpe_WiresOnShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_WiresOnShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_WiresOnShape {
-    LocOpe_WiresOnShape* _get_reference() {
-    return (LocOpe_WiresOnShape*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_WiresOnShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_WiresOnShape)
 
 %extend LocOpe_WiresOnShape {
 	%pythoncode {
@@ -2578,51 +2267,7 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 };
 
 
-%extend LocOpe_GluedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_GluedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_GluedShape::Handle_LocOpe_GluedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_GluedShape;
-class Handle_LocOpe_GluedShape : public Handle_LocOpe_GeneratedShape {
-
-    public:
-        // constructors
-        Handle_LocOpe_GluedShape();
-        Handle_LocOpe_GluedShape(const Handle_LocOpe_GluedShape &aHandle);
-        Handle_LocOpe_GluedShape(const LocOpe_GluedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_GluedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_GluedShape {
-    LocOpe_GluedShape* _get_reference() {
-    return (LocOpe_GluedShape*)$self->Access();
-    }
-};
-
-%extend Handle_LocOpe_GluedShape {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(LocOpe_GluedShape)
 
 %extend LocOpe_GluedShape {
 	%pythoncode {

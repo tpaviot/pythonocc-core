@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PLIBDOCSTRING
-"No docstring provided."
+"PLib means Polynomial functions library. This pk
+provides basic    computation  functions for
+polynomial functions.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=PLIBDOCSTRING) PLib
 
@@ -34,30 +38,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include PLib_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(PLib_Base)
+%wrap_handle(PLib_HermitJacobi)
+%wrap_handle(PLib_JacobiPolynomial)
 
 %rename(plib) PLib;
 class PLib {
@@ -652,51 +646,7 @@ class PLib_Base : public MMgt_TShared {
 };
 
 
-%extend PLib_Base {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PLib_Base(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PLib_Base::Handle_PLib_Base %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PLib_Base;
-class Handle_PLib_Base : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_PLib_Base();
-        Handle_PLib_Base(const Handle_PLib_Base &aHandle);
-        Handle_PLib_Base(const PLib_Base *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PLib_Base DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PLib_Base {
-    PLib_Base* _get_reference() {
-    return (PLib_Base*)$self->Access();
-    }
-};
-
-%extend Handle_PLib_Base {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PLib_Base)
 
 %extend PLib_Base {
 	%pythoncode {
@@ -986,51 +936,7 @@ class PLib_HermitJacobi : public PLib_Base {
 };
 
 
-%extend PLib_HermitJacobi {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PLib_HermitJacobi(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PLib_HermitJacobi::Handle_PLib_HermitJacobi %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PLib_HermitJacobi;
-class Handle_PLib_HermitJacobi : public Handle_PLib_Base {
-
-    public:
-        // constructors
-        Handle_PLib_HermitJacobi();
-        Handle_PLib_HermitJacobi(const Handle_PLib_HermitJacobi &aHandle);
-        Handle_PLib_HermitJacobi(const PLib_HermitJacobi *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PLib_HermitJacobi DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PLib_HermitJacobi {
-    PLib_HermitJacobi* _get_reference() {
-    return (PLib_HermitJacobi*)$self->Access();
-    }
-};
-
-%extend Handle_PLib_HermitJacobi {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PLib_HermitJacobi)
 
 %extend PLib_HermitJacobi {
 	%pythoncode {
@@ -1199,51 +1105,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 };
 
 
-%extend PLib_JacobiPolynomial {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_PLib_JacobiPolynomial(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_PLib_JacobiPolynomial::Handle_PLib_JacobiPolynomial %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_PLib_JacobiPolynomial;
-class Handle_PLib_JacobiPolynomial : public Handle_PLib_Base {
-
-    public:
-        // constructors
-        Handle_PLib_JacobiPolynomial();
-        Handle_PLib_JacobiPolynomial(const Handle_PLib_JacobiPolynomial &aHandle);
-        Handle_PLib_JacobiPolynomial(const PLib_JacobiPolynomial *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_PLib_JacobiPolynomial DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_PLib_JacobiPolynomial {
-    PLib_JacobiPolynomial* _get_reference() {
-    return (PLib_JacobiPolynomial*)$self->Access();
-    }
-};
-
-%extend Handle_PLib_JacobiPolynomial {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(PLib_JacobiPolynomial)
 
 %extend PLib_JacobiPolynomial {
 	%pythoncode {

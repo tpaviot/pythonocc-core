@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMPLATEDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=GEOMPLATEDOCSTRING) GeomPlate
 
@@ -34,30 +34,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include GeomPlate_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(GeomPlate_CurveConstraint)
+%wrap_handle(GeomPlate_HArray1OfHCurveOnSurface)
+%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
+%wrap_handle(GeomPlate_HSequenceOfCurveConstraint)
+%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
+%wrap_handle(GeomPlate_PointConstraint)
+%wrap_handle(GeomPlate_SequenceNodeOfSequenceOfAij)
+%wrap_handle(GeomPlate_SequenceNodeOfSequenceOfCurveConstraint)
+%wrap_handle(GeomPlate_SequenceNodeOfSequenceOfPointConstraint)
+%wrap_handle(GeomPlate_Surface)
 
 %nodefaultctor GeomPlate_Aij;
 class GeomPlate_Aij {
@@ -792,51 +789,7 @@ class GeomPlate_CurveConstraint : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_CurveConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_CurveConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_CurveConstraint::Handle_GeomPlate_CurveConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_CurveConstraint;
-class Handle_GeomPlate_CurveConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_CurveConstraint();
-        Handle_GeomPlate_CurveConstraint(const Handle_GeomPlate_CurveConstraint &aHandle);
-        Handle_GeomPlate_CurveConstraint(const GeomPlate_CurveConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_CurveConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_CurveConstraint {
-    GeomPlate_CurveConstraint* _get_reference() {
-    return (GeomPlate_CurveConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_CurveConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_CurveConstraint)
 
 %extend GeomPlate_CurveConstraint {
 	%pythoncode {
@@ -913,51 +866,7 @@ class GeomPlate_HArray1OfHCurveOnSurface : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_HArray1OfHCurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_HArray1OfHCurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_HArray1OfHCurveOnSurface::Handle_GeomPlate_HArray1OfHCurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_HArray1OfHCurveOnSurface;
-class Handle_GeomPlate_HArray1OfHCurveOnSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_HArray1OfHCurveOnSurface();
-        Handle_GeomPlate_HArray1OfHCurveOnSurface(const Handle_GeomPlate_HArray1OfHCurveOnSurface &aHandle);
-        Handle_GeomPlate_HArray1OfHCurveOnSurface(const GeomPlate_HArray1OfHCurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_HArray1OfHCurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_HArray1OfHCurveOnSurface {
-    GeomPlate_HArray1OfHCurveOnSurface* _get_reference() {
-    return (GeomPlate_HArray1OfHCurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_HArray1OfHCurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_HArray1OfHCurveOnSurface)
 
 %extend GeomPlate_HArray1OfHCurveOnSurface {
 	%pythoncode {
@@ -1034,51 +943,7 @@ class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_HArray1OfSequenceOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_HArray1OfSequenceOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_HArray1OfSequenceOfReal::Handle_GeomPlate_HArray1OfSequenceOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_HArray1OfSequenceOfReal;
-class Handle_GeomPlate_HArray1OfSequenceOfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_HArray1OfSequenceOfReal();
-        Handle_GeomPlate_HArray1OfSequenceOfReal(const Handle_GeomPlate_HArray1OfSequenceOfReal &aHandle);
-        Handle_GeomPlate_HArray1OfSequenceOfReal(const GeomPlate_HArray1OfSequenceOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_HArray1OfSequenceOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_HArray1OfSequenceOfReal {
-    GeomPlate_HArray1OfSequenceOfReal* _get_reference() {
-    return (GeomPlate_HArray1OfSequenceOfReal*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_HArray1OfSequenceOfReal {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_HArray1OfSequenceOfReal)
 
 %extend GeomPlate_HArray1OfSequenceOfReal {
 	%pythoncode {
@@ -1223,51 +1088,7 @@ class GeomPlate_HSequenceOfCurveConstraint : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_HSequenceOfCurveConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_HSequenceOfCurveConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_HSequenceOfCurveConstraint::Handle_GeomPlate_HSequenceOfCurveConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_HSequenceOfCurveConstraint;
-class Handle_GeomPlate_HSequenceOfCurveConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_HSequenceOfCurveConstraint();
-        Handle_GeomPlate_HSequenceOfCurveConstraint(const Handle_GeomPlate_HSequenceOfCurveConstraint &aHandle);
-        Handle_GeomPlate_HSequenceOfCurveConstraint(const GeomPlate_HSequenceOfCurveConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_HSequenceOfCurveConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_HSequenceOfCurveConstraint {
-    GeomPlate_HSequenceOfCurveConstraint* _get_reference() {
-    return (GeomPlate_HSequenceOfCurveConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_HSequenceOfCurveConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_HSequenceOfCurveConstraint)
 
 %extend GeomPlate_HSequenceOfCurveConstraint {
 	%pythoncode {
@@ -1412,51 +1233,7 @@ class GeomPlate_HSequenceOfPointConstraint : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_HSequenceOfPointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_HSequenceOfPointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_HSequenceOfPointConstraint::Handle_GeomPlate_HSequenceOfPointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_HSequenceOfPointConstraint;
-class Handle_GeomPlate_HSequenceOfPointConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_HSequenceOfPointConstraint();
-        Handle_GeomPlate_HSequenceOfPointConstraint(const Handle_GeomPlate_HSequenceOfPointConstraint &aHandle);
-        Handle_GeomPlate_HSequenceOfPointConstraint(const GeomPlate_HSequenceOfPointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_HSequenceOfPointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_HSequenceOfPointConstraint {
-    GeomPlate_HSequenceOfPointConstraint* _get_reference() {
-    return (GeomPlate_HSequenceOfPointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_HSequenceOfPointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_HSequenceOfPointConstraint)
 
 %extend GeomPlate_HSequenceOfPointConstraint {
 	%pythoncode {
@@ -1754,51 +1531,7 @@ class GeomPlate_PointConstraint : public MMgt_TShared {
 };
 
 
-%extend GeomPlate_PointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_PointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_PointConstraint::Handle_GeomPlate_PointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_PointConstraint;
-class Handle_GeomPlate_PointConstraint : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_GeomPlate_PointConstraint();
-        Handle_GeomPlate_PointConstraint(const Handle_GeomPlate_PointConstraint &aHandle);
-        Handle_GeomPlate_PointConstraint(const GeomPlate_PointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_PointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_PointConstraint {
-    GeomPlate_PointConstraint* _get_reference() {
-    return (GeomPlate_PointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_PointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_PointConstraint)
 
 %extend GeomPlate_PointConstraint {
 	%pythoncode {
@@ -1825,51 +1558,7 @@ class GeomPlate_SequenceNodeOfSequenceOfAij : public TCollection_SeqNode {
 };
 
 
-%extend GeomPlate_SequenceNodeOfSequenceOfAij {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_SequenceNodeOfSequenceOfAij(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_SequenceNodeOfSequenceOfAij::Handle_GeomPlate_SequenceNodeOfSequenceOfAij %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_SequenceNodeOfSequenceOfAij;
-class Handle_GeomPlate_SequenceNodeOfSequenceOfAij : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_GeomPlate_SequenceNodeOfSequenceOfAij();
-        Handle_GeomPlate_SequenceNodeOfSequenceOfAij(const Handle_GeomPlate_SequenceNodeOfSequenceOfAij &aHandle);
-        Handle_GeomPlate_SequenceNodeOfSequenceOfAij(const GeomPlate_SequenceNodeOfSequenceOfAij *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_SequenceNodeOfSequenceOfAij DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfAij {
-    GeomPlate_SequenceNodeOfSequenceOfAij* _get_reference() {
-    return (GeomPlate_SequenceNodeOfSequenceOfAij*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfAij {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_SequenceNodeOfSequenceOfAij)
 
 %extend GeomPlate_SequenceNodeOfSequenceOfAij {
 	%pythoncode {
@@ -1896,51 +1585,7 @@ class GeomPlate_SequenceNodeOfSequenceOfCurveConstraint : public TCollection_Seq
 };
 
 
-%extend GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint::Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint;
-class Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint();
-        Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint(const Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint &aHandle);
-        Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint(const GeomPlate_SequenceNodeOfSequenceOfCurveConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
-    GeomPlate_SequenceNodeOfSequenceOfCurveConstraint* _get_reference() {
-    return (GeomPlate_SequenceNodeOfSequenceOfCurveConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_SequenceNodeOfSequenceOfCurveConstraint)
 
 %extend GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
 	%pythoncode {
@@ -1967,51 +1612,7 @@ class GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public TCollection_Seq
 };
 
 
-%extend GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint::Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint;
-class Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint();
-        Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint(const Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint &aHandle);
-        Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint(const GeomPlate_SequenceNodeOfSequenceOfPointConstraint *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
-    GeomPlate_SequenceNodeOfSequenceOfPointConstraint* _get_reference() {
-    return (GeomPlate_SequenceNodeOfSequenceOfPointConstraint*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_SequenceNodeOfSequenceOfPointConstraint)
 
 %extend GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
 	%pythoncode {
@@ -2735,51 +2336,7 @@ class GeomPlate_Surface : public Geom_Surface {
 };
 
 
-%extend GeomPlate_Surface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_GeomPlate_Surface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_GeomPlate_Surface::Handle_GeomPlate_Surface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_GeomPlate_Surface;
-class Handle_GeomPlate_Surface : public Handle_Geom_Surface {
-
-    public:
-        // constructors
-        Handle_GeomPlate_Surface();
-        Handle_GeomPlate_Surface(const Handle_GeomPlate_Surface &aHandle);
-        Handle_GeomPlate_Surface(const GeomPlate_Surface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_GeomPlate_Surface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_GeomPlate_Surface {
-    GeomPlate_Surface* _get_reference() {
-    return (GeomPlate_Surface*)$self->Access();
-    }
-};
-
-%extend Handle_GeomPlate_Surface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(GeomPlate_Surface)
 
 %extend GeomPlate_Surface {
 	%pythoncode {

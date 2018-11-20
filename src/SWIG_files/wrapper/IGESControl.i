@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IGESCONTROLDOCSTRING
-"No docstring provided."
+"-Purpose : This package provide external access and control to use IGES
+See also IGESToBRep for reading IGES to Shapes
+"
 %enddef
 %module (package="OCC.Core", docstring=IGESCONTROLDOCSTRING) IGESControl
 
@@ -34,30 +36,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IGESControl_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(IGESControl_ActorWrite)
+%wrap_handle(IGESControl_AlgoContainer)
+%wrap_handle(IGESControl_Controller)
+%wrap_handle(IGESControl_IGESBoundary)
+%wrap_handle(IGESControl_ToolContainer)
 
 %nodefaultctor IGESControl_ActorWrite;
 class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
@@ -87,51 +81,7 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 };
 
 
-%extend IGESControl_ActorWrite {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IGESControl_ActorWrite(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IGESControl_ActorWrite::Handle_IGESControl_ActorWrite %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IGESControl_ActorWrite;
-class Handle_IGESControl_ActorWrite : public Handle_Transfer_ActorOfFinderProcess {
-
-    public:
-        // constructors
-        Handle_IGESControl_ActorWrite();
-        Handle_IGESControl_ActorWrite(const Handle_IGESControl_ActorWrite &aHandle);
-        Handle_IGESControl_ActorWrite(const IGESControl_ActorWrite *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IGESControl_ActorWrite DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IGESControl_ActorWrite {
-    IGESControl_ActorWrite* _get_reference() {
-    return (IGESControl_ActorWrite*)$self->Access();
-    }
-};
-
-%extend Handle_IGESControl_ActorWrite {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IGESControl_ActorWrite)
 
 %extend IGESControl_ActorWrite {
 	%pythoncode {
@@ -150,51 +100,7 @@ class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 };
 
 
-%extend IGESControl_AlgoContainer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IGESControl_AlgoContainer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IGESControl_AlgoContainer::Handle_IGESControl_AlgoContainer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IGESControl_AlgoContainer;
-class Handle_IGESControl_AlgoContainer : public Handle_IGESToBRep_AlgoContainer {
-
-    public:
-        // constructors
-        Handle_IGESControl_AlgoContainer();
-        Handle_IGESControl_AlgoContainer(const Handle_IGESControl_AlgoContainer &aHandle);
-        Handle_IGESControl_AlgoContainer(const IGESControl_AlgoContainer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IGESControl_AlgoContainer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IGESControl_AlgoContainer {
-    IGESControl_AlgoContainer* _get_reference() {
-    return (IGESControl_AlgoContainer*)$self->Access();
-    }
-};
-
-%extend Handle_IGESControl_AlgoContainer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IGESControl_AlgoContainer)
 
 %extend IGESControl_AlgoContainer {
 	%pythoncode {
@@ -255,51 +161,7 @@ class IGESControl_Controller : public XSControl_Controller {
 };
 
 
-%extend IGESControl_Controller {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IGESControl_Controller(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IGESControl_Controller::Handle_IGESControl_Controller %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IGESControl_Controller;
-class Handle_IGESControl_Controller : public Handle_XSControl_Controller {
-
-    public:
-        // constructors
-        Handle_IGESControl_Controller();
-        Handle_IGESControl_Controller(const Handle_IGESControl_Controller &aHandle);
-        Handle_IGESControl_Controller(const IGESControl_Controller *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IGESControl_Controller DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IGESControl_Controller {
-    IGESControl_Controller* _get_reference() {
-    return (IGESControl_Controller*)$self->Access();
-    }
-};
-
-%extend Handle_IGESControl_Controller {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IGESControl_Controller)
 
 %extend IGESControl_Controller {
 	%pythoncode {
@@ -340,51 +202,7 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 };
 
 
-%extend IGESControl_IGESBoundary {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IGESControl_IGESBoundary(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IGESControl_IGESBoundary::Handle_IGESControl_IGESBoundary %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IGESControl_IGESBoundary;
-class Handle_IGESControl_IGESBoundary : public Handle_IGESToBRep_IGESBoundary {
-
-    public:
-        // constructors
-        Handle_IGESControl_IGESBoundary();
-        Handle_IGESControl_IGESBoundary(const Handle_IGESControl_IGESBoundary &aHandle);
-        Handle_IGESControl_IGESBoundary(const IGESControl_IGESBoundary *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IGESControl_IGESBoundary DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IGESControl_IGESBoundary {
-    IGESControl_IGESBoundary* _get_reference() {
-    return (IGESControl_IGESBoundary*)$self->Access();
-    }
-};
-
-%extend Handle_IGESControl_IGESBoundary {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IGESControl_IGESBoundary)
 
 %extend IGESControl_IGESBoundary {
 	%pythoncode {
@@ -470,51 +288,7 @@ class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 };
 
 
-%extend IGESControl_ToolContainer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IGESControl_ToolContainer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IGESControl_ToolContainer::Handle_IGESControl_ToolContainer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IGESControl_ToolContainer;
-class Handle_IGESControl_ToolContainer : public Handle_IGESToBRep_ToolContainer {
-
-    public:
-        // constructors
-        Handle_IGESControl_ToolContainer();
-        Handle_IGESControl_ToolContainer(const Handle_IGESControl_ToolContainer &aHandle);
-        Handle_IGESControl_ToolContainer(const IGESControl_ToolContainer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IGESControl_ToolContainer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IGESControl_ToolContainer {
-    IGESControl_ToolContainer* _get_reference() {
-    return (IGESControl_ToolContainer*)$self->Access();
-    }
-};
-
-%extend Handle_IGESControl_ToolContainer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IGESControl_ToolContainer)
 
 %extend IGESControl_ToolContainer {
 	%pythoncode {

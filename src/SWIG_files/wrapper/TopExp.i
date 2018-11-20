@@ -18,7 +18,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPEXPDOCSTRING
-"No docstring provided."
+"This package  provides basic tools to  explore the
+topological data structures.
+
+* Explorer : A tool to find all sub-shapes of a given
+type. e.g. all faces of a solid.
+
+* Package methods to map sub-shapes of a shape.
+
+Level : Public
+All methods of all classes will be public.
+
+"
 %enddef
 %module (package="OCC.Core", docstring=TOPEXPDOCSTRING) TopExp
 
@@ -34,24 +45,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TopExp_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef TopoDS_Iterator * TopExp_Stack;
@@ -59,6 +56,7 @@ typedef TopoDS_Iterator * TopExp_Stack;
 
 /* public enums */
 /* end public enums declaration */
+
 
 %rename(topexp) TopExp;
 class TopExp {

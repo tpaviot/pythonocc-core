@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPTOTOPODSDOCSTRING
-"No docstring provided."
+"- Purpose: This package implements the mapping between AP214
+Shape representation and CAS.CAD Shape Representation.
+The source schema is Part42 (which is included in AP214)
+"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOTOPODSDOCSTRING) StepToTopoDS
 
@@ -34,24 +37,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include StepToTopoDS_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -107,6 +96,12 @@ enum StepToTopoDS_TranslateVertexError {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(StepToTopoDS_DataMapNodeOfDataMapOfRI)
+%wrap_handle(StepToTopoDS_DataMapNodeOfDataMapOfRINames)
+%wrap_handle(StepToTopoDS_DataMapNodeOfDataMapOfTRI)
+%wrap_handle(StepToTopoDS_DataMapNodeOfPointEdgeMap)
+%wrap_handle(StepToTopoDS_DataMapNodeOfPointVertexMap)
 
 %rename(steptotopods) StepToTopoDS;
 class StepToTopoDS {
@@ -396,51 +391,7 @@ class StepToTopoDS_DataMapNodeOfDataMapOfRI : public TCollection_MapNode {
 };
 
 
-%extend StepToTopoDS_DataMapNodeOfDataMapOfRI {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI::Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI;
-class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI();
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI(const Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI &aHandle);
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI(const StepToTopoDS_DataMapNodeOfDataMapOfRI *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI {
-    StepToTopoDS_DataMapNodeOfDataMapOfRI* _get_reference() {
-    return (StepToTopoDS_DataMapNodeOfDataMapOfRI*)$self->Access();
-    }
-};
-
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepToTopoDS_DataMapNodeOfDataMapOfRI)
 
 %extend StepToTopoDS_DataMapNodeOfDataMapOfRI {
 	%pythoncode {
@@ -471,51 +422,7 @@ class StepToTopoDS_DataMapNodeOfDataMapOfRINames : public TCollection_MapNode {
 };
 
 
-%extend StepToTopoDS_DataMapNodeOfDataMapOfRINames {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames::Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames;
-class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames();
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames(const Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames &aHandle);
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames(const StepToTopoDS_DataMapNodeOfDataMapOfRINames *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames {
-    StepToTopoDS_DataMapNodeOfDataMapOfRINames* _get_reference() {
-    return (StepToTopoDS_DataMapNodeOfDataMapOfRINames*)$self->Access();
-    }
-};
-
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepToTopoDS_DataMapNodeOfDataMapOfRINames)
 
 %extend StepToTopoDS_DataMapNodeOfDataMapOfRINames {
 	%pythoncode {
@@ -546,51 +453,7 @@ class StepToTopoDS_DataMapNodeOfDataMapOfTRI : public TCollection_MapNode {
 };
 
 
-%extend StepToTopoDS_DataMapNodeOfDataMapOfTRI {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI::Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI;
-class Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI();
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI(const Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI &aHandle);
-        Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI(const StepToTopoDS_DataMapNodeOfDataMapOfTRI *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI {
-    StepToTopoDS_DataMapNodeOfDataMapOfTRI* _get_reference() {
-    return (StepToTopoDS_DataMapNodeOfDataMapOfTRI*)$self->Access();
-    }
-};
-
-%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepToTopoDS_DataMapNodeOfDataMapOfTRI)
 
 %extend StepToTopoDS_DataMapNodeOfDataMapOfTRI {
 	%pythoncode {
@@ -621,51 +484,7 @@ class StepToTopoDS_DataMapNodeOfPointEdgeMap : public TCollection_MapNode {
 };
 
 
-%extend StepToTopoDS_DataMapNodeOfPointEdgeMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap::Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap;
-class Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap();
-        Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap(const Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap &aHandle);
-        Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap(const StepToTopoDS_DataMapNodeOfPointEdgeMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap {
-    StepToTopoDS_DataMapNodeOfPointEdgeMap* _get_reference() {
-    return (StepToTopoDS_DataMapNodeOfPointEdgeMap*)$self->Access();
-    }
-};
-
-%extend Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepToTopoDS_DataMapNodeOfPointEdgeMap)
 
 %extend StepToTopoDS_DataMapNodeOfPointEdgeMap {
 	%pythoncode {
@@ -696,51 +515,7 @@ class StepToTopoDS_DataMapNodeOfPointVertexMap : public TCollection_MapNode {
 };
 
 
-%extend StepToTopoDS_DataMapNodeOfPointVertexMap {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_StepToTopoDS_DataMapNodeOfPointVertexMap(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_StepToTopoDS_DataMapNodeOfPointVertexMap::Handle_StepToTopoDS_DataMapNodeOfPointVertexMap %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_StepToTopoDS_DataMapNodeOfPointVertexMap;
-class Handle_StepToTopoDS_DataMapNodeOfPointVertexMap : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_StepToTopoDS_DataMapNodeOfPointVertexMap();
-        Handle_StepToTopoDS_DataMapNodeOfPointVertexMap(const Handle_StepToTopoDS_DataMapNodeOfPointVertexMap &aHandle);
-        Handle_StepToTopoDS_DataMapNodeOfPointVertexMap(const StepToTopoDS_DataMapNodeOfPointVertexMap *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_StepToTopoDS_DataMapNodeOfPointVertexMap DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_StepToTopoDS_DataMapNodeOfPointVertexMap {
-    StepToTopoDS_DataMapNodeOfPointVertexMap* _get_reference() {
-    return (StepToTopoDS_DataMapNodeOfPointVertexMap*)$self->Access();
-    }
-};
-
-%extend Handle_StepToTopoDS_DataMapNodeOfPointVertexMap {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(StepToTopoDS_DataMapNodeOfPointVertexMap)
 
 %extend StepToTopoDS_DataMapNodeOfPointVertexMap {
 	%pythoncode {

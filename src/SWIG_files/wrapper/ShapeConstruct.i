@@ -18,7 +18,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPECONSTRUCTDOCSTRING
-"No docstring provided."
+"This package provides new algorithms for constructing
+new geometrical objects and topological shapes. It
+complements and extends algorithms available in Open
+CASCADE topological and geometrical toolkist.
+The functionality provided by this package are the
+following:
+projecting curves on surface,
+adjusting curve to have given start and end points. P"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
@@ -34,30 +41,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include ShapeConstruct_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(ShapeConstruct_ProjectCurveOnSurface)
 
 %rename(shapeconstruct) ShapeConstruct;
 class ShapeConstruct {
@@ -589,51 +584,7 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 };
 
 
-%extend ShapeConstruct_ProjectCurveOnSurface {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeConstruct_ProjectCurveOnSurface(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeConstruct_ProjectCurveOnSurface::Handle_ShapeConstruct_ProjectCurveOnSurface %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeConstruct_ProjectCurveOnSurface;
-class Handle_ShapeConstruct_ProjectCurveOnSurface : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_ShapeConstruct_ProjectCurveOnSurface();
-        Handle_ShapeConstruct_ProjectCurveOnSurface(const Handle_ShapeConstruct_ProjectCurveOnSurface &aHandle);
-        Handle_ShapeConstruct_ProjectCurveOnSurface(const ShapeConstruct_ProjectCurveOnSurface *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeConstruct_ProjectCurveOnSurface DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeConstruct_ProjectCurveOnSurface {
-    ShapeConstruct_ProjectCurveOnSurface* _get_reference() {
-    return (ShapeConstruct_ProjectCurveOnSurface*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeConstruct_ProjectCurveOnSurface {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(ShapeConstruct_ProjectCurveOnSurface)
 
 %extend ShapeConstruct_ProjectCurveOnSurface {
 	%pythoncode {

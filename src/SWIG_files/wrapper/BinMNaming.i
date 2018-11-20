@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMNAMINGDOCSTRING
-"No docstring provided."
+"Storage/Retrieval drivers for TNaming attributes
+"
 %enddef
 %module (package="OCC.Core", docstring=BINMNAMINGDOCSTRING) BinMNaming
 
@@ -34,30 +35,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include BinMNaming_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(BinMNaming_NamedShapeDriver)
+%wrap_handle(BinMNaming_NamingDriver)
 
 %rename(binmnaming) BinMNaming;
 class BinMNaming {
@@ -175,51 +165,7 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMNaming_NamedShapeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMNaming_NamedShapeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMNaming_NamedShapeDriver::Handle_BinMNaming_NamedShapeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMNaming_NamedShapeDriver;
-class Handle_BinMNaming_NamedShapeDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMNaming_NamedShapeDriver();
-        Handle_BinMNaming_NamedShapeDriver(const Handle_BinMNaming_NamedShapeDriver &aHandle);
-        Handle_BinMNaming_NamedShapeDriver(const BinMNaming_NamedShapeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMNaming_NamedShapeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMNaming_NamedShapeDriver {
-    BinMNaming_NamedShapeDriver* _get_reference() {
-    return (BinMNaming_NamedShapeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMNaming_NamedShapeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMNaming_NamedShapeDriver)
 
 %extend BinMNaming_NamedShapeDriver {
 	%pythoncode {
@@ -262,51 +208,7 @@ class BinMNaming_NamingDriver : public BinMDF_ADriver {
 };
 
 
-%extend BinMNaming_NamingDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BinMNaming_NamingDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BinMNaming_NamingDriver::Handle_BinMNaming_NamingDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BinMNaming_NamingDriver;
-class Handle_BinMNaming_NamingDriver : public Handle_BinMDF_ADriver {
-
-    public:
-        // constructors
-        Handle_BinMNaming_NamingDriver();
-        Handle_BinMNaming_NamingDriver(const Handle_BinMNaming_NamingDriver &aHandle);
-        Handle_BinMNaming_NamingDriver(const BinMNaming_NamingDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BinMNaming_NamingDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BinMNaming_NamingDriver {
-    BinMNaming_NamingDriver* _get_reference() {
-    return (BinMNaming_NamingDriver*)$self->Access();
-    }
-};
-
-%extend Handle_BinMNaming_NamingDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(BinMNaming_NamingDriver)
 
 %extend BinMNaming_NamingDriver {
 	%pythoncode {

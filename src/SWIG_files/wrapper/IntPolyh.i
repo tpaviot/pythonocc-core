@@ -18,7 +18,35 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTPOLYHDOCSTRING
-"No docstring provided."
+"This  package provides algorithms  to compute
+starting  points for  the   surface surface
+intersection packages. Those starting points are
+used if  the two  surfaces are bi-parametric
+surfaces (bezier, nurbs, algorithm surfaces ...)
+
+This package provides methods
+
+to compute meshes on the two surfaces. The meshes can
+be refined if necessary. It is the major improvement
+to the Intf package which  gives the same kind of
+ressources.
+
+to intersect the two meshes
+
+to give approximated starting-points. Those points are
+organised in lines, when the points belong to a same
+section line, or returned as isolated points when they
+can neither define a new line nor be linked to an
+existant line.
+
+A starting-point  contains 3d  information, parametric
+ionformation and quality criterion. (i.e.  X,Y,Z, U1,V1,
+U2,V2, Incidence). Incidence is a real wich  gives an
+estimated  angle  between the two  surfaces near the
+intersection point.
+
+
+"
 %enddef
 %module (package="OCC.Core", docstring=INTPOLYHDOCSTRING) IntPolyh
 
@@ -34,24 +62,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include IntPolyh_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef IntPolyh_Array <IntPolyh_Edge> IntPolyh_ArrayOfEdges;
@@ -66,6 +80,8 @@ typedef IntPolyh_Array <IntPolyh_SectionLine> IntPolyh_ArrayOfSectionLines;
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(IntPolyh_SequenceNodeOfSeqOfStartPoints)
 
 %nodefaultctor IntPolyh_Couple;
 class IntPolyh_Couple {
@@ -821,51 +837,7 @@ class IntPolyh_SequenceNodeOfSeqOfStartPoints : public TCollection_SeqNode {
 };
 
 
-%extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints::Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints;
-class Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints();
-        Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints(const Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints &aHandle);
-        Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints(const IntPolyh_SequenceNodeOfSeqOfStartPoints *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
-    IntPolyh_SequenceNodeOfSeqOfStartPoints* _get_reference() {
-    return (IntPolyh_SequenceNodeOfSeqOfStartPoints*)$self->Access();
-    }
-};
-
-%extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(IntPolyh_SequenceNodeOfSeqOfStartPoints)
 
 %extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
 	%pythoncode {

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MATDOCSTRING
-"No docstring provided."
+""
 %enddef
 %module (package="OCC.Core", docstring=MATDOCSTRING) MAT
 
@@ -34,24 +34,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include MAT_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -63,6 +49,24 @@ enum MAT_Side {
 };
 
 /* end public enums declaration */
+
+%wrap_handle(MAT_Arc)
+%wrap_handle(MAT_BasicElt)
+%wrap_handle(MAT_Bisector)
+%wrap_handle(MAT_DataMapNodeOfDataMapOfIntegerArc)
+%wrap_handle(MAT_DataMapNodeOfDataMapOfIntegerBasicElt)
+%wrap_handle(MAT_DataMapNodeOfDataMapOfIntegerBisector)
+%wrap_handle(MAT_DataMapNodeOfDataMapOfIntegerNode)
+%wrap_handle(MAT_Edge)
+%wrap_handle(MAT_Graph)
+%wrap_handle(MAT_ListOfBisector)
+%wrap_handle(MAT_ListOfEdge)
+%wrap_handle(MAT_Node)
+%wrap_handle(MAT_SequenceNodeOfSequenceOfArc)
+%wrap_handle(MAT_SequenceNodeOfSequenceOfBasicElt)
+%wrap_handle(MAT_TListNodeOfListOfBisector)
+%wrap_handle(MAT_TListNodeOfListOfEdge)
+%wrap_handle(MAT_Zone)
 
 %nodefaultctor MAT_Arc;
 class MAT_Arc : public MMgt_TShared {
@@ -208,51 +212,7 @@ class MAT_Arc : public MMgt_TShared {
 };
 
 
-%extend MAT_Arc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Arc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Arc::Handle_MAT_Arc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Arc;
-class Handle_MAT_Arc : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Arc();
-        Handle_MAT_Arc(const Handle_MAT_Arc &aHandle);
-        Handle_MAT_Arc(const MAT_Arc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Arc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Arc {
-    MAT_Arc* _get_reference() {
-    return (MAT_Arc*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Arc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Arc)
 
 %extend MAT_Arc {
 	%pythoncode {
@@ -321,51 +281,7 @@ class MAT_BasicElt : public MMgt_TShared {
 };
 
 
-%extend MAT_BasicElt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_BasicElt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_BasicElt::Handle_MAT_BasicElt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_BasicElt;
-class Handle_MAT_BasicElt : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_BasicElt();
-        Handle_MAT_BasicElt(const Handle_MAT_BasicElt &aHandle);
-        Handle_MAT_BasicElt(const MAT_BasicElt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_BasicElt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_BasicElt {
-    MAT_BasicElt* _get_reference() {
-    return (MAT_BasicElt*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_BasicElt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_BasicElt)
 
 %extend MAT_BasicElt {
 	%pythoncode {
@@ -528,51 +444,7 @@ class MAT_Bisector : public MMgt_TShared {
 };
 
 
-%extend MAT_Bisector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Bisector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Bisector::Handle_MAT_Bisector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Bisector;
-class Handle_MAT_Bisector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Bisector();
-        Handle_MAT_Bisector(const Handle_MAT_Bisector &aHandle);
-        Handle_MAT_Bisector(const MAT_Bisector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Bisector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Bisector {
-    MAT_Bisector* _get_reference() {
-    return (MAT_Bisector*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Bisector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Bisector)
 
 %extend MAT_Bisector {
 	%pythoncode {
@@ -752,51 +624,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerArc : public TCollection_MapNode {
 };
 
 
-%extend MAT_DataMapNodeOfDataMapOfIntegerArc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_DataMapNodeOfDataMapOfIntegerArc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_DataMapNodeOfDataMapOfIntegerArc::Handle_MAT_DataMapNodeOfDataMapOfIntegerArc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_DataMapNodeOfDataMapOfIntegerArc;
-class Handle_MAT_DataMapNodeOfDataMapOfIntegerArc : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerArc();
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerArc(const Handle_MAT_DataMapNodeOfDataMapOfIntegerArc &aHandle);
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerArc(const MAT_DataMapNodeOfDataMapOfIntegerArc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_DataMapNodeOfDataMapOfIntegerArc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerArc {
-    MAT_DataMapNodeOfDataMapOfIntegerArc* _get_reference() {
-    return (MAT_DataMapNodeOfDataMapOfIntegerArc*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerArc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_DataMapNodeOfDataMapOfIntegerArc)
 
 %extend MAT_DataMapNodeOfDataMapOfIntegerArc {
 	%pythoncode {
@@ -836,51 +664,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode {
 };
 
 
-%extend MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt::Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
-class Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt();
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt(const Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt &aHandle);
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt(const MAT_DataMapNodeOfDataMapOfIntegerBasicElt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
-    MAT_DataMapNodeOfDataMapOfIntegerBasicElt* _get_reference() {
-    return (MAT_DataMapNodeOfDataMapOfIntegerBasicElt*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_DataMapNodeOfDataMapOfIntegerBasicElt)
 
 %extend MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
 	%pythoncode {
@@ -920,51 +704,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerBisector : public TCollection_MapNode {
 };
 
 
-%extend MAT_DataMapNodeOfDataMapOfIntegerBisector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector::Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector;
-class Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector();
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector(const Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector &aHandle);
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector(const MAT_DataMapNodeOfDataMapOfIntegerBisector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector {
-    MAT_DataMapNodeOfDataMapOfIntegerBisector* _get_reference() {
-    return (MAT_DataMapNodeOfDataMapOfIntegerBisector*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_DataMapNodeOfDataMapOfIntegerBisector)
 
 %extend MAT_DataMapNodeOfDataMapOfIntegerBisector {
 	%pythoncode {
@@ -1004,51 +744,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode {
 };
 
 
-%extend MAT_DataMapNodeOfDataMapOfIntegerNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_DataMapNodeOfDataMapOfIntegerNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_DataMapNodeOfDataMapOfIntegerNode::Handle_MAT_DataMapNodeOfDataMapOfIntegerNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_DataMapNodeOfDataMapOfIntegerNode;
-class Handle_MAT_DataMapNodeOfDataMapOfIntegerNode : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerNode();
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerNode(const Handle_MAT_DataMapNodeOfDataMapOfIntegerNode &aHandle);
-        Handle_MAT_DataMapNodeOfDataMapOfIntegerNode(const MAT_DataMapNodeOfDataMapOfIntegerNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_DataMapNodeOfDataMapOfIntegerNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerNode {
-    MAT_DataMapNodeOfDataMapOfIntegerNode* _get_reference() {
-    return (MAT_DataMapNodeOfDataMapOfIntegerNode*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerNode {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_DataMapNodeOfDataMapOfIntegerNode)
 
 %extend MAT_DataMapNodeOfDataMapOfIntegerNode {
 	%pythoncode {
@@ -1455,51 +1151,7 @@ class MAT_Edge : public MMgt_TShared {
 };
 
 
-%extend MAT_Edge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Edge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Edge::Handle_MAT_Edge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Edge;
-class Handle_MAT_Edge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Edge();
-        Handle_MAT_Edge(const Handle_MAT_Edge &aHandle);
-        Handle_MAT_Edge(const MAT_Edge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Edge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Edge {
-    MAT_Edge* _get_reference() {
-    return (MAT_Edge*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Edge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Edge)
 
 %extend MAT_Edge {
 	%pythoncode {
@@ -1622,51 +1274,7 @@ class MAT_Graph : public MMgt_TShared {
 };
 
 
-%extend MAT_Graph {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Graph(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Graph::Handle_MAT_Graph %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Graph;
-class Handle_MAT_Graph : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Graph();
-        Handle_MAT_Graph(const Handle_MAT_Graph &aHandle);
-        Handle_MAT_Graph(const MAT_Graph *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Graph DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Graph {
-    MAT_Graph* _get_reference() {
-    return (MAT_Graph*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Graph {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Graph)
 
 %extend MAT_Graph {
 	%pythoncode {
@@ -1797,51 +1405,7 @@ class MAT_ListOfBisector : public MMgt_TShared {
 };
 
 
-%extend MAT_ListOfBisector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_ListOfBisector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_ListOfBisector::Handle_MAT_ListOfBisector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_ListOfBisector;
-class Handle_MAT_ListOfBisector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_ListOfBisector();
-        Handle_MAT_ListOfBisector(const Handle_MAT_ListOfBisector &aHandle);
-        Handle_MAT_ListOfBisector(const MAT_ListOfBisector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_ListOfBisector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_ListOfBisector {
-    MAT_ListOfBisector* _get_reference() {
-    return (MAT_ListOfBisector*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_ListOfBisector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_ListOfBisector)
 
 %extend MAT_ListOfBisector {
 	%pythoncode {
@@ -1972,51 +1536,7 @@ class MAT_ListOfEdge : public MMgt_TShared {
 };
 
 
-%extend MAT_ListOfEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_ListOfEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_ListOfEdge::Handle_MAT_ListOfEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_ListOfEdge;
-class Handle_MAT_ListOfEdge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_ListOfEdge();
-        Handle_MAT_ListOfEdge(const Handle_MAT_ListOfEdge &aHandle);
-        Handle_MAT_ListOfEdge(const MAT_ListOfEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_ListOfEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_ListOfEdge {
-    MAT_ListOfEdge* _get_reference() {
-    return (MAT_ListOfEdge*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_ListOfEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_ListOfEdge)
 
 %extend MAT_ListOfEdge {
 	%pythoncode {
@@ -2103,51 +1623,7 @@ class MAT_Node : public MMgt_TShared {
 };
 
 
-%extend MAT_Node {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Node(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Node::Handle_MAT_Node %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Node;
-class Handle_MAT_Node : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Node();
-        Handle_MAT_Node(const Handle_MAT_Node &aHandle);
-        Handle_MAT_Node(const MAT_Node *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Node DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Node {
-    MAT_Node* _get_reference() {
-    return (MAT_Node*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Node {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Node)
 
 %extend MAT_Node {
 	%pythoncode {
@@ -2174,51 +1650,7 @@ class MAT_SequenceNodeOfSequenceOfArc : public TCollection_SeqNode {
 };
 
 
-%extend MAT_SequenceNodeOfSequenceOfArc {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_SequenceNodeOfSequenceOfArc(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_SequenceNodeOfSequenceOfArc::Handle_MAT_SequenceNodeOfSequenceOfArc %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_SequenceNodeOfSequenceOfArc;
-class Handle_MAT_SequenceNodeOfSequenceOfArc : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MAT_SequenceNodeOfSequenceOfArc();
-        Handle_MAT_SequenceNodeOfSequenceOfArc(const Handle_MAT_SequenceNodeOfSequenceOfArc &aHandle);
-        Handle_MAT_SequenceNodeOfSequenceOfArc(const MAT_SequenceNodeOfSequenceOfArc *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_SequenceNodeOfSequenceOfArc DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_SequenceNodeOfSequenceOfArc {
-    MAT_SequenceNodeOfSequenceOfArc* _get_reference() {
-    return (MAT_SequenceNodeOfSequenceOfArc*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_SequenceNodeOfSequenceOfArc {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_SequenceNodeOfSequenceOfArc)
 
 %extend MAT_SequenceNodeOfSequenceOfArc {
 	%pythoncode {
@@ -2245,51 +1677,7 @@ class MAT_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
 };
 
 
-%extend MAT_SequenceNodeOfSequenceOfBasicElt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_SequenceNodeOfSequenceOfBasicElt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_SequenceNodeOfSequenceOfBasicElt::Handle_MAT_SequenceNodeOfSequenceOfBasicElt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_SequenceNodeOfSequenceOfBasicElt;
-class Handle_MAT_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_MAT_SequenceNodeOfSequenceOfBasicElt();
-        Handle_MAT_SequenceNodeOfSequenceOfBasicElt(const Handle_MAT_SequenceNodeOfSequenceOfBasicElt &aHandle);
-        Handle_MAT_SequenceNodeOfSequenceOfBasicElt(const MAT_SequenceNodeOfSequenceOfBasicElt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_SequenceNodeOfSequenceOfBasicElt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_SequenceNodeOfSequenceOfBasicElt {
-    MAT_SequenceNodeOfSequenceOfBasicElt* _get_reference() {
-    return (MAT_SequenceNodeOfSequenceOfBasicElt*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_SequenceNodeOfSequenceOfBasicElt {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_SequenceNodeOfSequenceOfBasicElt)
 
 %extend MAT_SequenceNodeOfSequenceOfBasicElt {
 	%pythoncode {
@@ -2632,51 +2020,7 @@ class MAT_TListNodeOfListOfBisector : public MMgt_TShared {
 };
 
 
-%extend MAT_TListNodeOfListOfBisector {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_TListNodeOfListOfBisector(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_TListNodeOfListOfBisector::Handle_MAT_TListNodeOfListOfBisector %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_TListNodeOfListOfBisector;
-class Handle_MAT_TListNodeOfListOfBisector : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_TListNodeOfListOfBisector();
-        Handle_MAT_TListNodeOfListOfBisector(const Handle_MAT_TListNodeOfListOfBisector &aHandle);
-        Handle_MAT_TListNodeOfListOfBisector(const MAT_TListNodeOfListOfBisector *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_TListNodeOfListOfBisector DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_TListNodeOfListOfBisector {
-    MAT_TListNodeOfListOfBisector* _get_reference() {
-    return (MAT_TListNodeOfListOfBisector*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_TListNodeOfListOfBisector {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_TListNodeOfListOfBisector)
 
 %extend MAT_TListNodeOfListOfBisector {
 	%pythoncode {
@@ -2733,51 +2077,7 @@ class MAT_TListNodeOfListOfEdge : public MMgt_TShared {
 };
 
 
-%extend MAT_TListNodeOfListOfEdge {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_TListNodeOfListOfEdge(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_TListNodeOfListOfEdge::Handle_MAT_TListNodeOfListOfEdge %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_TListNodeOfListOfEdge;
-class Handle_MAT_TListNodeOfListOfEdge : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_TListNodeOfListOfEdge();
-        Handle_MAT_TListNodeOfListOfEdge(const Handle_MAT_TListNodeOfListOfEdge &aHandle);
-        Handle_MAT_TListNodeOfListOfEdge(const MAT_TListNodeOfListOfEdge *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_TListNodeOfListOfEdge DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_TListNodeOfListOfEdge {
-    MAT_TListNodeOfListOfEdge* _get_reference() {
-    return (MAT_TListNodeOfListOfEdge*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_TListNodeOfListOfEdge {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_TListNodeOfListOfEdge)
 
 %extend MAT_TListNodeOfListOfEdge {
 	%pythoncode {
@@ -2836,51 +2136,7 @@ class MAT_Zone : public MMgt_TShared {
 };
 
 
-%extend MAT_Zone {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_MAT_Zone(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_MAT_Zone::Handle_MAT_Zone %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_MAT_Zone;
-class Handle_MAT_Zone : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_MAT_Zone();
-        Handle_MAT_Zone(const Handle_MAT_Zone &aHandle);
-        Handle_MAT_Zone(const MAT_Zone *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_MAT_Zone DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_MAT_Zone {
-    MAT_Zone* _get_reference() {
-    return (MAT_Zone*)$self->Access();
-    }
-};
-
-%extend Handle_MAT_Zone {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(MAT_Zone)
 
 %extend MAT_Zone {
 	%pythoncode {

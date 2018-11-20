@@ -18,7 +18,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define OSDDOCSTRING
-"No docstring provided."
+"-History:
+Version  Date    Purpose
+1.1  24/06/92  Operating System Dependent tools
+1.2
+2.0
+3.0
+Windows NT 30/09/96 ( EUG )
+Set of Operating Sytem Dependent Tools
+(O)perating (S)ystem (D)ependent
+"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
@@ -34,24 +43,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include OSD_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );

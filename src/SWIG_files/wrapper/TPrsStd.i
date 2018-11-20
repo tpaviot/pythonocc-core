@@ -18,7 +18,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TPRSSTDDOCSTRING
-"No docstring provided."
+"The visualization attribute implements the
+Application Interactive Services in the context
+of Open CASCADE Application Framework.
+
+
+-Category: GUID
+04fb4d05-5690-11d1-8940-080009dc3333  TPrsStd_AISViewer
+04fb4d00-5690-11d1-8940-080009dc3333	TPrsStd_AISPresentation
+"
 %enddef
 %module (package="OCC.Core", docstring=TPRSSTDDOCSTRING) TPrsStd
 
@@ -34,30 +42,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
+%include ../common/OccHandle.i
 
 
 %include TPrsStd_headers.i
-
-
-%pythoncode {
-def register_handle(handle, base_object):
-    """
-    Inserts the handle into the base object to
-    prevent memory corruption in certain cases
-    """
-    try:
-        if base_object.IsKind("Standard_Transient"):
-            base_object.thisHandle = handle
-            base_object.thisown = False
-    except:
-        pass
-};
 
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
+
+%wrap_handle(TPrsStd_AISPresentation)
+%wrap_handle(TPrsStd_AISViewer)
+%wrap_handle(TPrsStd_DataMapNodeOfDataMapOfGUIDDriver)
+%wrap_handle(TPrsStd_Driver)
+%wrap_handle(TPrsStd_DriverTable)
+%wrap_handle(TPrsStd_AxisDriver)
+%wrap_handle(TPrsStd_ConstraintDriver)
+%wrap_handle(TPrsStd_GeometryDriver)
+%wrap_handle(TPrsStd_NamedShapeDriver)
+%wrap_handle(TPrsStd_PlaneDriver)
+%wrap_handle(TPrsStd_PointDriver)
 
 %nodefaultctor TPrsStd_AISPresentation;
 class TPrsStd_AISPresentation : public TDF_Attribute {
@@ -345,51 +351,7 @@ class TPrsStd_AISPresentation : public TDF_Attribute {
 };
 
 
-%extend TPrsStd_AISPresentation {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_AISPresentation(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_AISPresentation::Handle_TPrsStd_AISPresentation %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_AISPresentation;
-class Handle_TPrsStd_AISPresentation : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TPrsStd_AISPresentation();
-        Handle_TPrsStd_AISPresentation(const Handle_TPrsStd_AISPresentation &aHandle);
-        Handle_TPrsStd_AISPresentation(const TPrsStd_AISPresentation *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_AISPresentation DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_AISPresentation {
-    TPrsStd_AISPresentation* _get_reference() {
-    return (TPrsStd_AISPresentation*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_AISPresentation {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_AISPresentation)
 
 %extend TPrsStd_AISPresentation {
 	%pythoncode {
@@ -516,51 +478,7 @@ class TPrsStd_AISViewer : public TDF_Attribute {
 };
 
 
-%extend TPrsStd_AISViewer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_AISViewer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_AISViewer::Handle_TPrsStd_AISViewer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_AISViewer;
-class Handle_TPrsStd_AISViewer : public Handle_TDF_Attribute {
-
-    public:
-        // constructors
-        Handle_TPrsStd_AISViewer();
-        Handle_TPrsStd_AISViewer(const Handle_TPrsStd_AISViewer &aHandle);
-        Handle_TPrsStd_AISViewer(const TPrsStd_AISViewer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_AISViewer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_AISViewer {
-    TPrsStd_AISViewer* _get_reference() {
-    return (TPrsStd_AISViewer*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_AISViewer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_AISViewer)
 
 %extend TPrsStd_AISViewer {
 	%pythoncode {
@@ -824,51 +742,7 @@ class TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode {
 };
 
 
-%extend TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver::Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver;
-class Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver();
-        Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver(const Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver &aHandle);
-        Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver(const TPrsStd_DataMapNodeOfDataMapOfGUIDDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
-    TPrsStd_DataMapNodeOfDataMapOfGUIDDriver* _get_reference() {
-    return (TPrsStd_DataMapNodeOfDataMapOfGUIDDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_DataMapNodeOfDataMapOfGUIDDriver)
 
 %extend TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
 	%pythoncode {
@@ -974,51 +848,7 @@ class TPrsStd_Driver : public MMgt_TShared {
 };
 
 
-%extend TPrsStd_Driver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_Driver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_Driver::Handle_TPrsStd_Driver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_Driver;
-class Handle_TPrsStd_Driver : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TPrsStd_Driver();
-        Handle_TPrsStd_Driver(const Handle_TPrsStd_Driver &aHandle);
-        Handle_TPrsStd_Driver(const TPrsStd_Driver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_Driver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_Driver {
-    TPrsStd_Driver* _get_reference() {
-    return (TPrsStd_Driver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_Driver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_Driver)
 
 %extend TPrsStd_Driver {
 	%pythoncode {
@@ -1083,51 +913,7 @@ class TPrsStd_DriverTable : public MMgt_TShared {
 };
 
 
-%extend TPrsStd_DriverTable {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_DriverTable(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_DriverTable::Handle_TPrsStd_DriverTable %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_DriverTable;
-class Handle_TPrsStd_DriverTable : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TPrsStd_DriverTable();
-        Handle_TPrsStd_DriverTable(const Handle_TPrsStd_DriverTable &aHandle);
-        Handle_TPrsStd_DriverTable(const TPrsStd_DriverTable *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_DriverTable DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_DriverTable {
-    TPrsStd_DriverTable* _get_reference() {
-    return (TPrsStd_DriverTable*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_DriverTable {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_DriverTable)
 
 %extend TPrsStd_DriverTable {
 	%pythoncode {
@@ -1156,51 +942,7 @@ class TPrsStd_AxisDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_AxisDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_AxisDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_AxisDriver::Handle_TPrsStd_AxisDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_AxisDriver;
-class Handle_TPrsStd_AxisDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_AxisDriver();
-        Handle_TPrsStd_AxisDriver(const Handle_TPrsStd_AxisDriver &aHandle);
-        Handle_TPrsStd_AxisDriver(const TPrsStd_AxisDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_AxisDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_AxisDriver {
-    TPrsStd_AxisDriver* _get_reference() {
-    return (TPrsStd_AxisDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_AxisDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_AxisDriver)
 
 %extend TPrsStd_AxisDriver {
 	%pythoncode {
@@ -1229,51 +971,7 @@ class TPrsStd_ConstraintDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_ConstraintDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_ConstraintDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_ConstraintDriver::Handle_TPrsStd_ConstraintDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_ConstraintDriver;
-class Handle_TPrsStd_ConstraintDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_ConstraintDriver();
-        Handle_TPrsStd_ConstraintDriver(const Handle_TPrsStd_ConstraintDriver &aHandle);
-        Handle_TPrsStd_ConstraintDriver(const TPrsStd_ConstraintDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_ConstraintDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_ConstraintDriver {
-    TPrsStd_ConstraintDriver* _get_reference() {
-    return (TPrsStd_ConstraintDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_ConstraintDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_ConstraintDriver)
 
 %extend TPrsStd_ConstraintDriver {
 	%pythoncode {
@@ -1302,51 +1000,7 @@ class TPrsStd_GeometryDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_GeometryDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_GeometryDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_GeometryDriver::Handle_TPrsStd_GeometryDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_GeometryDriver;
-class Handle_TPrsStd_GeometryDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_GeometryDriver();
-        Handle_TPrsStd_GeometryDriver(const Handle_TPrsStd_GeometryDriver &aHandle);
-        Handle_TPrsStd_GeometryDriver(const TPrsStd_GeometryDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_GeometryDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_GeometryDriver {
-    TPrsStd_GeometryDriver* _get_reference() {
-    return (TPrsStd_GeometryDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_GeometryDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_GeometryDriver)
 
 %extend TPrsStd_GeometryDriver {
 	%pythoncode {
@@ -1375,51 +1029,7 @@ class TPrsStd_NamedShapeDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_NamedShapeDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_NamedShapeDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_NamedShapeDriver::Handle_TPrsStd_NamedShapeDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_NamedShapeDriver;
-class Handle_TPrsStd_NamedShapeDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_NamedShapeDriver();
-        Handle_TPrsStd_NamedShapeDriver(const Handle_TPrsStd_NamedShapeDriver &aHandle);
-        Handle_TPrsStd_NamedShapeDriver(const TPrsStd_NamedShapeDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_NamedShapeDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_NamedShapeDriver {
-    TPrsStd_NamedShapeDriver* _get_reference() {
-    return (TPrsStd_NamedShapeDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_NamedShapeDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_NamedShapeDriver)
 
 %extend TPrsStd_NamedShapeDriver {
 	%pythoncode {
@@ -1448,51 +1058,7 @@ class TPrsStd_PlaneDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_PlaneDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_PlaneDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_PlaneDriver::Handle_TPrsStd_PlaneDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_PlaneDriver;
-class Handle_TPrsStd_PlaneDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_PlaneDriver();
-        Handle_TPrsStd_PlaneDriver(const Handle_TPrsStd_PlaneDriver &aHandle);
-        Handle_TPrsStd_PlaneDriver(const TPrsStd_PlaneDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_PlaneDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_PlaneDriver {
-    TPrsStd_PlaneDriver* _get_reference() {
-    return (TPrsStd_PlaneDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_PlaneDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_PlaneDriver)
 
 %extend TPrsStd_PlaneDriver {
 	%pythoncode {
@@ -1521,51 +1087,7 @@ class TPrsStd_PointDriver : public TPrsStd_Driver {
 };
 
 
-%extend TPrsStd_PointDriver {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TPrsStd_PointDriver(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TPrsStd_PointDriver::Handle_TPrsStd_PointDriver %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TPrsStd_PointDriver;
-class Handle_TPrsStd_PointDriver : public Handle_TPrsStd_Driver {
-
-    public:
-        // constructors
-        Handle_TPrsStd_PointDriver();
-        Handle_TPrsStd_PointDriver(const Handle_TPrsStd_PointDriver &aHandle);
-        Handle_TPrsStd_PointDriver(const TPrsStd_PointDriver *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TPrsStd_PointDriver DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TPrsStd_PointDriver {
-    TPrsStd_PointDriver* _get_reference() {
-    return (TPrsStd_PointDriver*)$self->Access();
-    }
-};
-
-%extend Handle_TPrsStd_PointDriver {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
+%make_alias(TPrsStd_PointDriver)
 
 %extend TPrsStd_PointDriver {
 	%pythoncode {

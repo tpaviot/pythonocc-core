@@ -22,6 +22,7 @@ import unittest
 import core_wrapper_features_unittest
 import core_geometry_unittest
 import core_visualization_unittest
+import core_extend_topology_unittest
 try:
     import core_ocaf_unittest
     HAVE_OCAF = True
@@ -49,6 +50,9 @@ tests.append(suite5)
 if HAVE_SMESH:
     suite6 = core_smesh_unittest.suite()
     tests.append(suite6)
+suite7 = core_extend_topology_unittest.suite()
+tests.append(suite7)
+
 # Add test cases
 suite.addTests(tests)
 
