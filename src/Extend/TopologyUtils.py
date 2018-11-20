@@ -496,7 +496,7 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     while it.More() and level < 5:  # LEVEL MAX
         shp = it.Value()
         it.Next()
-        print(dump_topology_to_string(shp, level + 1, buffer))
+        dump_topology_to_string(shp, level + 1, buffer)
 
 #
 # Edge and wire discretizers
