@@ -94,6 +94,7 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_handle_standard_transient_copy(self):
         def evil_function(t):
             handle = Standard_Transient(t)
+            return handle
         t = Standard_Transient()
         evil_function(t)
 
@@ -176,7 +177,7 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         vX = gp_Vec(12, 0, 0)
         vY = gp_Vec(0, 12, 0)
-        v45 = (gp_Vec(1, 1, 1).Normalized() * 12)
+
         q = gp_Quaternion()
         q1 = gp_Quaternion(vX, vX)
         q2 = gp_Quaternion(vX, vY)

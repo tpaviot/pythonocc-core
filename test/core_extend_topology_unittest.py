@@ -17,12 +17,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import pickle
 import unittest
-import os
-from math import sqrt
-import warnings
-from contextlib import contextmanager
 
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
 from OCC.Extend.TopologyUtils import (TopologyExplorer, WireExplorer,
@@ -42,7 +37,7 @@ assert topo
 
 
 class TestExtendTopology(unittest.TestCase):
-    
+
     def test_discretize_edge(self):
         tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
         topo = TopologyExplorer(tor)
@@ -60,7 +55,7 @@ class TestExtendTopology(unittest.TestCase):
         i = 0
         for face in topo.faces():
             i += 1
-            assert(isinstance(face, TopoDS_Face))
+            assert isinstance(face, TopoDS_Face)
         assert i == 6
 
 
@@ -68,7 +63,7 @@ class TestExtendTopology(unittest.TestCase):
         i = 0
         for face in topo.edges():
             i += 1
-            assert(isinstance(face, TopoDS_Edge))
+            assert isinstance(face, TopoDS_Edge)
         assert i == 12
 
 

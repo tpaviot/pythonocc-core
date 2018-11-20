@@ -21,9 +21,10 @@ from __future__ import print_function
 
 import unittest
 import os
+import warnings
+from contextlib import contextmanager
 
 from OCC.Core.TCollection import TCollection_ExtendedString
-
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
                               XCAFDoc_DocumentTool_ColorTool,
@@ -36,8 +37,6 @@ from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
-import warnings
-from contextlib import contextmanager
 
 @contextmanager
 def assert_warns_deprecated():
