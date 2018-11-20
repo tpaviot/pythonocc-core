@@ -24,12 +24,15 @@ import os
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
 from OCC.Display.WebGl import threejs_renderer, x3dom_renderer
 
+from OCC.Extend.TopologyUtils import TopologyExplorer
+
+torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
 
 class TestWebGL(unittest.TestCase):
+    
     def test_threejs_render_torus(self):
         """ Render a simple torus in threejs
         """
-        torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
         my_threejs_renderer = threejs_renderer.ThreejsRenderer()
         my_threejs_renderer.DisplayShape(torus_shp)
 
@@ -47,7 +50,7 @@ class TestWebGL(unittest.TestCase):
         """ Test: threejs 10 random boxes
         """
         my_threejs_renderer = threejs_renderer.ThreejsRenderer()
-        torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
+        #torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
         my_threejs_renderer.DisplayShape(torus_shp, mesh_quality=1.0)
         my_threejs_renderer.DisplayShape(torus_shp, mesh_quality=0.8)
         my_threejs_renderer.DisplayShape(torus_shp, mesh_quality=2.0)
@@ -55,7 +58,6 @@ class TestWebGL(unittest.TestCase):
     def test_x3dom_render_torus(self):
         """ Render a simple torus using x3dom
         """
-        torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
         my_x3dom_renderer = x3dom_renderer.X3DomRenderer()
         my_x3dom_renderer.DisplayShape(torus_shp)
 
@@ -73,10 +75,24 @@ class TestWebGL(unittest.TestCase):
         """ Test: threejs 10 random boxes
         """
         my_x3dom_renderer = x3dom_renderer.X3DomRenderer()
-        torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=1.0)
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=0.8)
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=2.0)
+
+    def test_threejs_edge(self):
+        """ Test: threejs 10 random boxes
+        """
+        my_threejs_renderer = threejs_renderer.ThreejsRenderer()
+        for edg in TopologyExplorer(torus_shp).edges():
+            my_threejs_renderer.DisplayShape(edg, mesh_quality=1.0)
+
+    def test_threejs_wire(self):
+        """ Test: threejs 10 random boxes
+        """
+        my_threejs_renderer = threejs_renderer.ThreejsRenderer()
+        for wire in TopologyExplorer(torus_shp).wires():
+            my_threejs_renderer.DisplayShape(wire, mesh_quality=1.0)
+
 
 def suite():
     suite = unittest.TestSuite()
