@@ -24,14 +24,12 @@ def require_pythonocc_version(required_version):
     if len(spl) == 3:
         major, minor, patch_dev = spl
         if '-' in patch_dev:
-            patch, dev = patch_dev.split('-')
+            patch = patch_dev.split('-')[0]
         else:
             patch = patch_dev
-            dev = ''
     elif len(spl) == 2:
         major, minor = spl
         patch = 0
-        dev = ''
     
     if ((int(major) > PYTHONOCC_VERSION_MAJOR) or
        (int(major) == PYTHONOCC_VERSION_MAJOR and int(minor) > PYTHONOCC_VERSION_MINOR) or

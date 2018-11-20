@@ -15,7 +15,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function, absolute_import
+from __future__ import print_function, absolute_import, division
 
 import os
 import sys
@@ -187,7 +187,7 @@ class HTMLBody(object):
         cur_shp = 1
         for shp_uid in self._x3d_shapes:
             sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor), 
-                                                        int(cur_shp / nb_shape * 100)))
+                                                              int(cur_shp / nb_shape * 100)))
             sys.stdout.flush()
             # TODO: here is the code related to orientation/translation
             # trans, ori = self._x3d_shapes_dict[shp]

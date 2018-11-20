@@ -63,8 +63,10 @@ def read_step_file(filename, return_as_shapes=False, verbosity=False):
             failsonly = False
             step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
             step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-        ok = step_reader.TransferRoot(1)
+        transfer_result = step_reader.TransferRoot(1)
+        assert transfer_result
         _nbs = step_reader.NbShapes()
+        assert _nbs == 1
         shape_to_return = step_reader.Shape(1)  # a compound
         assert not shape_to_return.IsNull()
     else:
@@ -114,8 +116,8 @@ def read_step_file_with_names_colors(filename):
     # Get root assembly
     shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
     color_tool = XCAFDoc_DocumentTool_ColorTool(doc.Main())
-    layer_tool = XCAFDoc_DocumentTool_LayerTool(doc.Main())
-    mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
+    #layer_tool = XCAFDoc_DocumentTool_LayerTool(doc.Main())
+    #mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
 
     step_reader = STEPCAFControl_Reader()
     step_reader.SetColorMode(True)
@@ -158,8 +160,8 @@ def read_step_file_with_names_colors(filename):
         #print("Is SimpleShape :", shape_tool.IsSimpleShape(lab))
         #print("Is Reference   :", shape_tool.IsReference(lab))
 
-        users = TDF_LabelSequence()
-        users_cnt = shape_tool.GetUsers(lab, users)
+        #users = TDF_LabelSequence()
+        #users_cnt = shape_tool.GetUsers(lab, users)
         #print("Nr Users       :", users_cnt)
 
         l_subss = TDF_LabelSequence()
