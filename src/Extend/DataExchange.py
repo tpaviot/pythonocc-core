@@ -28,9 +28,7 @@ from OCC.Core.Interface import Interface_Static_SetCVal
 from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
-                              XCAFDoc_DocumentTool_ColorTool,
-                              XCAFDoc_DocumentTool_LayerTool,
-                              XCAFDoc_DocumentTool_MaterialTool)
+                              XCAFDoc_DocumentTool_ColorTool)
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label, TDF_Tool
 from OCC.Core.TDataStd import TDataStd_Name, TDataStd_Name_GetID

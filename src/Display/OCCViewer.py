@@ -507,10 +507,7 @@ class Viewer3d(Display3d):
         else:
             self.Context.Display(shape_to_display, False)
 
-        if SOLO:
-            return ais_shapes[0]
-        else:
-            return shape_to_display
+        return shape_to_display
 
     def DisplayColoredShape(self, shapes, color='YELLOW', update=False, ):
         if isinstance(color, str):

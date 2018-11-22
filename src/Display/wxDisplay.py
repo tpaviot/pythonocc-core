@@ -165,7 +165,7 @@ class wxViewer3d(wxBaseViewer):
         code = evt.GetKeyCode()
         try:
             self._key_map[code]()
-        except:
+        except KeyError:
             print('unrecognized key %i' % evt.GetKeyCode())
 
     def OnMaximize(self, event):
@@ -214,7 +214,7 @@ class wxViewer3d(wxBaseViewer):
         pt = evt.GetPosition()
         if self._select_area:
             [Xmin, Ymin, dx, dy] = self._drawbox
-            selected_shapes = self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
+            self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
             self._select_area = False
         else:
             self._display.Select(pt.x, pt.y)
@@ -270,8 +270,6 @@ class wxViewer3d(wxBaseViewer):
 
         # ROTATE
         if evt.LeftIsDown() and not evt.ShiftDown():
-            dx = pt.x - self.dragStartPos.x
-            dy = pt.y - self.dragStartPos.y
             self._display.Rotation(pt.x, pt.y)
             self._drawbox = False
         # DYNAMIC ZOOM

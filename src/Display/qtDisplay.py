@@ -281,8 +281,6 @@ class qtViewer3d(qtBaseViewer):
         # ROTATE
         if (buttons == QtCore.Qt.LeftButton and
                 not modifiers == QtCore.Qt.ShiftModifier):
-            dx = pt.x() - self.dragStartPos.x()
-            dy = pt.y() - self.dragStartPos.y()
             self.cursor = "rotate"
             self._display.Rotation(pt.x(), pt.y())
             self._drawbox = False

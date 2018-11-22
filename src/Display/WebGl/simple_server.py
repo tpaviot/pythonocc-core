@@ -62,7 +62,7 @@ def start_server(port=8080, path='.', open_webbrowser=False):
         try:
             from SimpleHTTPServer import SimpleHTTPRequestHandler as handler
             from BaseHTTPServer import HTTPServer as server
-        except:
+        except ImportError:
             from http.server import (SimpleHTTPRequestHandler as handler,
                                      HTTPServer as server)
         os.chdir(path)

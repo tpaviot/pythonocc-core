@@ -186,8 +186,8 @@ class JupyterRenderer(object):
         self._picker.observe(click)
 
         # key press and related events
-        def key_pressed(widget):
-            print("key pressed")
+        #def key_pressed(widget):
+        #    print("key pressed")
         #self._picker2 = Picker(event='keypress')
         #self._picker.observe(key_pressed)
 
