@@ -120,19 +120,6 @@ class TopologyExplorer(object):
         """
         self.myShape = myShape
         self.ignore_orientation = ignore_orientation
-
-        # the topoFactory dicts maps topology types and functions that can
-        # create this topology
-        self.topoFactory = {
-            TopAbs_VERTEX: topods.Vertex,
-            TopAbs_EDGE: topods.Edge,
-            TopAbs_FACE: topods.Face,
-            TopAbs_WIRE: topods.Wire,
-            TopAbs_SHELL: topods.Shell,
-            TopAbs_SOLID: topods.Solid,
-            TopAbs_COMPOUND: topods.Compound,
-            TopAbs_COMPSOLID: topods.CompSolid
-        }
         self.topExp = TopExp_Explorer()
 
     def _loop_topo(self, topologyType, topologicalEntity=None, topologyTypeToAvoid=None):
@@ -178,8 +165,7 @@ class TopologyExplorer(object):
         # Convert occ_seq to python list
         occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
         while occ_iterator.More():
-            topo_to_add = self.topoFactory[topologyType](occ_iterator.Value())
-            seq.append(topo_to_add)
+            seq.append(occ_iterator.Value())
             occ_iterator.Next()
 
         if self.ignore_orientation:
@@ -205,10 +191,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_FACE)
 
     def _number_of_topo(self, iterable):
-        n = 0
-        for i in iterable:
-            n += 1
-        return n
+        return sum(1 for _ in iterable)
 
     def number_of_faces(self):
         return self._number_of_topo(self.faces())
@@ -313,7 +296,7 @@ class TopologyExplorer(object):
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
         while topology_iterator.More():
 
-            topo_entity = self.topoFactory[topoTypeB](topology_iterator.Value())
+            topo_entity = topology_iterator.Value()
 
             # return the entity if not in set
             # to assure we're not returning entities several times
@@ -381,10 +364,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_EDGE, face)
 
     def number_of_edges_from_face(self, face):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_EDGE, face):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_EDGE, face))
 
     # ======================================================================
     # VERTEX <-> EDGE
@@ -393,10 +373,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_VERTEX, edg)
 
     def number_of_vertices_from_edge(self, edg):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_VERTEX, edg):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, edg))
 
     def edges_from_vertex(self, vertex):
         return self._map_shapes_and_ancestors(TopAbs_VERTEX, TopAbs_EDGE, vertex)
@@ -411,10 +388,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_EDGE, wire)
 
     def number_of_edges_from_wire(self, wire):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_EDGE, wire):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_EDGE, wire))
 
     def wires_from_edge(self, edg):
         return self._map_shapes_and_ancestors(TopAbs_EDGE, TopAbs_WIRE, edg)
@@ -432,10 +406,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_WIRE, face)
 
     def number_of_wires_from_face(self, face):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_WIRE, face):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_WIRE, face))
 
     def faces_from_wire(self, wire):
         return self._map_shapes_and_ancestors(TopAbs_WIRE, TopAbs_FACE, wire)
@@ -456,10 +427,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_VERTEX, face)
 
     def number_of_vertices_from_face(self, face):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_VERTEX, face):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, face))
 
     # ======================================================================
     # FACE <-> SOLID
@@ -474,10 +442,7 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_FACE, solid)
 
     def number_of_faces_from_solids(self, solid):
-        cnt = 0
-        for i in self._loop_topo(TopAbs_FACE, solid):
-            cnt += 1
-        return cnt
+        return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
 
 
 def dump_topology_to_string(shape, level=0, buffer=""):
@@ -491,7 +456,7 @@ def dump_topology_to_string(shape, level=0, buffer=""):
         print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
     else:
         print(".." * level, end="")
-        print(shape_type_string(shape))
+        print(shape)
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
         shp = it.Value()
@@ -523,48 +488,28 @@ def discretize_edge(a_topods_edge, deflection=0.5):
     """
     if not is_edge(a_topods_edge):
         raise AssertionError("You must provide a TopoDS_Edge to the discretize_edge function.")
-    edg = topods_Edge(a_topods_edge)
-    if edg.IsNull():
+    if a_topods_edge.IsNull():
         print("Warning : TopoDS_Edge is null. discretize_edge will return an empty list of points.")
         return []
-    curve_adaptator = BRepAdaptor_Curve(edg)
+    curve_adaptator = BRepAdaptor_Curve(a_topods_edge)
     first = curve_adaptator.FirstParameter()
     last = curve_adaptator.LastParameter()
-    
+
     discretizer = GCPnts_UniformAbscissa()
     discretizer.Initialize(curve_adaptator, deflection, first, last)
 
-    assert discretizer.IsDone ()
-    assert discretizer.NbPoints () > 0
-    
+    assert discretizer.IsDone()
+    assert discretizer.NbPoints() > 0
+
     points = []
     for i in range(1, discretizer.NbPoints() + 1):
-        p = curve_adaptator.Value (discretizer.Parameter (i))
+        p = curve_adaptator.Value(discretizer.Parameter(i))
         points.append(p.Coord())
     return points
 
 #
 # TopoDS_Shape type utils
 #
-def shape_type_string(shape):
-    """ Returns the type and id of any topods_shape
-    shape: a TopoDS_Shape
-    returns a tuple
-    the shape type, as a string
-    the shape id, as a string
-    """
-    shape_type = shape.ShapeType()
-    types = {TopAbs_VERTEX: "Vertex",
-             TopAbs_SOLID: "Solid",
-             TopAbs_EDGE: "Edge",
-             TopAbs_FACE: "Face",
-             TopAbs_SHELL: "Shell",
-             TopAbs_WIRE: "Wire",
-             TopAbs_COMPOUND: "Compound",
-             TopAbs_COMPSOLID: "Compsolid"}
-    return "%s (id %s)" % (types[shape_type], hash(shape))
-
-
 def is_vertex(topods_shape):
     return topods_shape.ShapeType() == TopAbs_VERTEX
 
@@ -595,4 +540,3 @@ def is_compound(topods_shape):
 
 def is_compsolid(topods_shape):
     return topods_shape.ShapeType() == TopAbs_COMPSOLID
-
