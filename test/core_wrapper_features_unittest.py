@@ -504,7 +504,7 @@ class TestWrapperFeatures(unittest.TestCase):
         p = gp_Pnt(1,2,3)
         assert str(p) == "class<'gp_Pnt'>"
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        assert "class<'TopoDS_Shape'; Type:Solid; id:" in str(shp)
+        assert "class<'TopoDS_Solid'; id:" in str(shp)
 
     def test_downcast_curve(self):
         """ Test if a GeomCurve can be DownCasted to a GeomLine

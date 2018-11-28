@@ -126,3 +126,46 @@ FairCurve_Analysis & function transformation
 %typemap(in,numinputs=0) FairCurve_AnalysisCode &OutValue(FairCurve_AnalysisCode temp) {
     $1 = &temp;
 }
+
+%typemap(out) TopoDS_Shape {
+    TopAbs_ShapeEnum shape_type = $1.ShapeType();
+    PyObject *resultobj = 0;
+    switch (shape_type)
+    {
+      case TopAbs_COMPOUND:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Compound(static_cast< const TopoDS_Compound& >($1))),
+                                        SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_COMPSOLID:
+        resultobj = SWIG_NewPointerObj((new TopoDS_CompSolid(static_cast< const TopoDS_CompSolid& >($1))),
+                                        SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SOLID:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Solid(static_cast< const TopoDS_Solid& >($1))),
+                                        SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SHELL:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Shell(static_cast< const TopoDS_Shell& >($1))),
+                                        SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_FACE:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Face(static_cast< const TopoDS_Face& >($1))),
+                                        SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_WIRE:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Wire(static_cast< const TopoDS_Wire& >($1))),
+                                        SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_EDGE:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Edge(static_cast< const TopoDS_Edge& >($1))),
+                                        SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_VERTEX:
+        resultobj = SWIG_NewPointerObj((new TopoDS_Vertex(static_cast< const TopoDS_Vertex& >($1))),
+                                        SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+        break;
+      default:
+        break;
+    }
+    return resultobj;
+}
