@@ -575,6 +575,27 @@ class TestWrapperFeatures(unittest.TestCase):
         with assert_warns_deprecated():
             Handle_Standard_Transient.DownCast(t)
 
+    def test_array_iterator(self):
+        P0 =  gp_Pnt(1,2,3)
+        list_of_points = TColgp_Array1OfPnt(5, 8)
+        assert len(list_of_points) == 4
+
+        # set item
+        list_of_points[1] = P0
+
+        # then get item
+        assert list_of_points[1].Coord() == (1.0, 2.0, 3.0)
+        with self.assertRaises(IndexError):
+            list_of_points[4]
+        # iterator creation
+        it = iter(list_of_points)
+        next(it)
+
+        # test loop over iterable
+        for pnt in list_of_points:
+            assert isinstance(pnt, gp_Pnt)
+
+
 def suite():
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestWrapperFeatures))
