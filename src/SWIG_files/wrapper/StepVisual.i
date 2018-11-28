@@ -341,6 +341,41 @@ class StepVisual_Array1OfBoxCharacteristicSelect {
 };
 
 
+
+%extend StepVisual_Array1OfBoxCharacteristicSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfBoxCharacteristicSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -428,6 +463,41 @@ class StepVisual_Array1OfCurveStyleFontPattern {
 };
 
 
+
+%extend StepVisual_Array1OfCurveStyleFontPattern {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfCurveStyleFontPattern {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -515,6 +585,41 @@ class StepVisual_Array1OfDirectionCountSelect {
 };
 
 
+
+%extend StepVisual_Array1OfDirectionCountSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfDirectionCountSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -602,6 +707,41 @@ class StepVisual_Array1OfFillStyleSelect {
 };
 
 
+
+%extend StepVisual_Array1OfFillStyleSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfFillStyleSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -689,6 +829,41 @@ class StepVisual_Array1OfInvisibleItem {
 };
 
 
+
+%extend StepVisual_Array1OfInvisibleItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfInvisibleItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -776,6 +951,41 @@ class StepVisual_Array1OfLayeredItem {
 };
 
 
+
+%extend StepVisual_Array1OfLayeredItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfLayeredItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -863,6 +1073,41 @@ class StepVisual_Array1OfPresentationStyleAssignment {
 };
 
 
+
+%extend StepVisual_Array1OfPresentationStyleAssignment {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfPresentationStyleAssignment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -950,6 +1195,41 @@ class StepVisual_Array1OfPresentationStyleSelect {
 };
 
 
+
+%extend StepVisual_Array1OfPresentationStyleSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfPresentationStyleSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1037,6 +1317,41 @@ class StepVisual_Array1OfStyleContextSelect {
 };
 
 
+
+%extend StepVisual_Array1OfStyleContextSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfStyleContextSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1124,6 +1439,41 @@ class StepVisual_Array1OfSurfaceStyleElementSelect {
 };
 
 
+
+%extend StepVisual_Array1OfSurfaceStyleElementSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfSurfaceStyleElementSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1211,6 +1561,41 @@ class StepVisual_Array1OfTextOrCharacter {
 };
 
 
+
+%extend StepVisual_Array1OfTextOrCharacter {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_Array1OfTextOrCharacter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1944,6 +2329,41 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
 
+
+%extend StepVisual_HArray1OfBoxCharacteristicSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfBoxCharacteristicSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2021,6 +2441,41 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
 
+
+%extend StepVisual_HArray1OfCurveStyleFontPattern {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfCurveStyleFontPattern {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2098,6 +2553,41 @@ class StepVisual_HArray1OfDirectionCountSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfDirectionCountSelect)
 
+
+%extend StepVisual_HArray1OfDirectionCountSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfDirectionCountSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2175,6 +2665,41 @@ class StepVisual_HArray1OfFillStyleSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfFillStyleSelect)
 
+
+%extend StepVisual_HArray1OfFillStyleSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfFillStyleSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2252,6 +2777,41 @@ class StepVisual_HArray1OfInvisibleItem : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfInvisibleItem)
 
+
+%extend StepVisual_HArray1OfInvisibleItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfInvisibleItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2329,6 +2889,41 @@ class StepVisual_HArray1OfLayeredItem : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfLayeredItem)
 
+
+%extend StepVisual_HArray1OfLayeredItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfLayeredItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2406,6 +3001,41 @@ class StepVisual_HArray1OfPresentationStyleAssignment : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
 
+
+%extend StepVisual_HArray1OfPresentationStyleAssignment {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfPresentationStyleAssignment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2483,6 +3113,41 @@ class StepVisual_HArray1OfPresentationStyleSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfPresentationStyleSelect)
 
+
+%extend StepVisual_HArray1OfPresentationStyleSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfPresentationStyleSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2560,6 +3225,41 @@ class StepVisual_HArray1OfStyleContextSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfStyleContextSelect)
 
+
+%extend StepVisual_HArray1OfStyleContextSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfStyleContextSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2637,6 +3337,41 @@ class StepVisual_HArray1OfSurfaceStyleElementSelect : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
 
+
+%extend StepVisual_HArray1OfSurfaceStyleElementSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfSurfaceStyleElementSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2714,6 +3449,41 @@ class StepVisual_HArray1OfTextOrCharacter : public MMgt_TShared {
 
 %make_alias(StepVisual_HArray1OfTextOrCharacter)
 
+
+%extend StepVisual_HArray1OfTextOrCharacter {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepVisual_HArray1OfTextOrCharacter {
 	%pythoncode {
 	__repr__ = _dumps_object

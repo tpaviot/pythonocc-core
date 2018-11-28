@@ -189,6 +189,41 @@ class StepRepr_Array1OfMaterialPropertyRepresentation {
 };
 
 
+
+%extend StepRepr_Array1OfMaterialPropertyRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_Array1OfMaterialPropertyRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -276,6 +311,41 @@ class StepRepr_Array1OfPropertyDefinitionRepresentation {
 };
 
 
+
+%extend StepRepr_Array1OfPropertyDefinitionRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_Array1OfPropertyDefinitionRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -363,6 +433,41 @@ class StepRepr_Array1OfRepresentationItem {
 };
 
 
+
+%extend StepRepr_Array1OfRepresentationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_Array1OfRepresentationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -956,6 +1061,41 @@ class StepRepr_HArray1OfMaterialPropertyRepresentation : public MMgt_TShared {
 
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
+
+%extend StepRepr_HArray1OfMaterialPropertyRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_HArray1OfMaterialPropertyRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1033,6 +1173,41 @@ class StepRepr_HArray1OfPropertyDefinitionRepresentation : public MMgt_TShared {
 
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
 
+
+%extend StepRepr_HArray1OfPropertyDefinitionRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_HArray1OfPropertyDefinitionRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1110,6 +1285,41 @@ class StepRepr_HArray1OfRepresentationItem : public MMgt_TShared {
 
 %make_alias(StepRepr_HArray1OfRepresentationItem)
 
+
+%extend StepRepr_HArray1OfRepresentationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepRepr_HArray1OfRepresentationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
