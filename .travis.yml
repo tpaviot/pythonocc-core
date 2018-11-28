@@ -104,11 +104,7 @@ before_install:
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
   # method which is quite loooong to process
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      conda install conda-build;
-      else
-      conda install conda-build==3.2.0;
-    fi;
+  - conda install conda-build==3.2.0
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
