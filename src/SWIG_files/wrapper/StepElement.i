@@ -320,6 +320,41 @@ class StepElement_Array1OfCurveElementEndReleasePacket {
 };
 
 
+
+%extend StepElement_Array1OfCurveElementEndReleasePacket {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfCurveElementEndReleasePacket {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -407,6 +442,41 @@ class StepElement_Array1OfCurveElementSectionDefinition {
 };
 
 
+
+%extend StepElement_Array1OfCurveElementSectionDefinition {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfCurveElementSectionDefinition {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -494,6 +564,41 @@ class StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
 };
 
 
+
+%extend StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -581,6 +686,41 @@ class StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
 };
 
 
+
+%extend StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -668,6 +808,41 @@ class StepElement_Array1OfMeasureOrUnspecifiedValue {
 };
 
 
+
+%extend StepElement_Array1OfMeasureOrUnspecifiedValue {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfMeasureOrUnspecifiedValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -755,6 +930,41 @@ class StepElement_Array1OfSurfaceSection {
 };
 
 
+
+%extend StepElement_Array1OfSurfaceSection {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfSurfaceSection {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -842,6 +1052,41 @@ class StepElement_Array1OfVolumeElementPurpose {
 };
 
 
+
+%extend StepElement_Array1OfVolumeElementPurpose {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfVolumeElementPurpose {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -929,6 +1174,41 @@ class StepElement_Array1OfVolumeElementPurposeMember {
 };
 
 
+
+%extend StepElement_Array1OfVolumeElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_Array1OfVolumeElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2031,6 +2311,41 @@ class StepElement_HArray1OfCurveElementEndReleasePacket : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfCurveElementEndReleasePacket)
 
+
+%extend StepElement_HArray1OfCurveElementEndReleasePacket {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfCurveElementEndReleasePacket {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2108,6 +2423,41 @@ class StepElement_HArray1OfCurveElementSectionDefinition : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfCurveElementSectionDefinition)
 
+
+%extend StepElement_HArray1OfCurveElementSectionDefinition {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfCurveElementSectionDefinition {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2185,6 +2535,41 @@ class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public MMgt_TS
 
 %make_alias(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)
 
+
+%extend StepElement_HArray1OfHSequenceOfCurveElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfHSequenceOfCurveElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2262,6 +2647,41 @@ class StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember : public MMgt_
 
 %make_alias(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
 
+
+%extend StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2339,6 +2759,41 @@ class StepElement_HArray1OfMeasureOrUnspecifiedValue : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfMeasureOrUnspecifiedValue)
 
+
+%extend StepElement_HArray1OfMeasureOrUnspecifiedValue {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfMeasureOrUnspecifiedValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2416,6 +2871,41 @@ class StepElement_HArray1OfSurfaceSection : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfSurfaceSection)
 
+
+%extend StepElement_HArray1OfSurfaceSection {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfSurfaceSection {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2493,6 +2983,41 @@ class StepElement_HArray1OfVolumeElementPurpose : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfVolumeElementPurpose)
 
+
+%extend StepElement_HArray1OfVolumeElementPurpose {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfVolumeElementPurpose {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2570,6 +3095,41 @@ class StepElement_HArray1OfVolumeElementPurposeMember : public MMgt_TShared {
 
 %make_alias(StepElement_HArray1OfVolumeElementPurposeMember)
 
+
+%extend StepElement_HArray1OfVolumeElementPurposeMember {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepElement_HArray1OfVolumeElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object

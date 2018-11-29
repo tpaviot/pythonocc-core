@@ -38,6 +38,7 @@ from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
 from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
+from OCC.Core.TColgp import TColgp_Array1OfPnt
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE
 from OCC.Core.GProp import GProp_GProps
@@ -194,8 +195,8 @@ class TestWrapperFeatures(unittest.TestCase):
             else:
                 self.assertEqual(q.X(), 0.)
                 self.assertEqual(q.Y(), 0.)
-                assert q.Z() > 0.
-                assert q.W() < 1.
+                self.assertGreater(q.Z(), 0.)
+                self.assertLess(q.W(), 1.)
 
 
     def test_traverse_box_topology(self):
@@ -310,7 +311,7 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         cs = ChFiDS_ChamfSpine()
         cs.SetDistAngle(1., 45, True)
-        assert cs.GetDistAngle() == (1.0, 45.0, True)
+        self.assertEqual(cs.GetDistAngle(), (1.0, 45.0, True))
 
     def test_dump_to_string(self):
         '''
@@ -323,7 +324,7 @@ class TestWrapperFeatures(unittest.TestCase):
         output = open("./test_io/box_shape_generated.brep", "wb")
         output.write(shp_dump)
         output.close()
-        assert os.path.isfile("./test_io/box_shape_generated.brep")
+        self.assertTrue(os.path.isfile("./test_io/box_shape_generated.brep"))
 
     def test_pickle_from_file(self):
         '''
@@ -374,7 +375,6 @@ class TestWrapperFeatures(unittest.TestCase):
     def testProtectedConstructor(self):
         """ Test: protected constructor """
         # 1st, class with no subclass
-        from OCC.Core.TopoDS import TopoDS_Builder
         tds_builder = TopoDS_Builder()
         self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
@@ -423,20 +423,18 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(shape_1 != "some_string")
 
     def test_inherit_topods_shape(self):
-        at = self.assertTrue
-        af = self.assertFalse
-
+        t = self
         class InheritEdge(TopoDS_Edge):
             def __init__(self, edge):
                 # following constructor creates an empy TopoDS_Edge
                 super(InheritEdge, self).__init__()
                 # we need to copy the base shape using the following three
                 # lines
-                at(self.IsNull())
+                t.assertTrue(self.IsNull())
                 self.TShape(edge.TShape())
                 self.Location(edge.Location())
                 self.Orientation(edge.Orientation())
-                af(self.IsNull())
+                t.assertFalse(self.IsNull())
                 # then it becomes possible to extend the base class
         # create a line, compute its length
         base_edge = BRepBuilderAPI_MakeEdge(gp_Pnt(100., 0., 0.),
@@ -483,10 +481,10 @@ class TestWrapperFeatures(unittest.TestCase):
         a = gp_Pnt(0., 0., 0.)
         b = gp_Pnt(100., 100., 100.)
         line3 = GC_MakeSegment(a, b).Value()
-        assert line3.FirstParameter() == 0.
-        assert GC_MakeSegment(a, b).Value().FirstParameter() == 0.
-        assert b.IsEqual(line3.EndPoint(), 0.01)
-        assert b.IsEqual(GC_MakeSegment(a, b).Value().EndPoint(), 0.01)
+        self.assertEqual(line3.FirstParameter(), 0.)
+        self.assertEqual(GC_MakeSegment(a, b).Value().FirstParameter(), 0.)
+        self.assertTrue(b.IsEqual(line3.EndPoint(), 0.01))
+        self.assertTrue(b.IsEqual(GC_MakeSegment(a, b).Value().EndPoint(), 0.01))
 
 
 
@@ -494,31 +492,31 @@ class TestWrapperFeatures(unittest.TestCase):
         """ Get and modify class local properties
         """
         graphic_params = Graphic3d_RenderingParams()
-        assert graphic_params.RaytracingDepth == 3
+        self.assertEqual(graphic_params.RaytracingDepth, 3)
         graphic_params.RaytracingDepth = 5
-        assert graphic_params.RaytracingDepth == 5
+        self.assertEqual(graphic_params.RaytracingDepth, 5)
 
     def test_repr_overload(self):
         """ Test if repr string is properly returned
         """
-        p = gp_Pnt(1,2,3)
-        assert str(p) == "class<'gp_Pnt'>"
+        p = gp_Pnt(1, 2, 3)
+        self.assertEqual(str(p), "class<'gp_Pnt'>")
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        assert "class<'TopoDS_Solid'; id:" in str(shp)
+        self.assertTrue("class<'TopoDS_Solid'; id:" in str(shp))
 
     def test_downcast_curve(self):
         """ Test if a GeomCurve can be DownCasted to a GeomLine
         """
-        
-        edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0,0,0), gp_Pnt(1,0,0)).Edge()
+        edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0),
+                                       gp_Pnt(1, 0, 0)).Edge()
         curve, _, _ = BRep_Tool_Curve(edge)
-        assert isinstance(curve, Geom_Curve)
+        self.assertTrue(isinstance(curve, Geom_Curve))
         # The edge is internally a line, so we should be able to downcast it
         line = Geom_Line.DownCast(curve)
-        assert isinstance(curve, Geom_Curve)
+        self.assertTrue(isinstance(curve, Geom_Curve))
         # Hence, it should not be possible to downcast it as a B-Spline curve
         bspline = Geom_BSplineCurve.DownCast(curve)
-        assert bspline is None
+        self.assertTrue(bspline is None)
 
     def test_return_enum(self):
         """ Check that returned enums are properly handled, wether they're returned
@@ -528,15 +526,15 @@ class TestWrapperFeatures(unittest.TestCase):
         los1 = BRepCheck_ListOfStatus()
         los1.Append(BRepCheck_Multiple3DCurve)
         los1.Append(BRepCheck_EmptyWire)
-        assert los1.First() == BRepCheck_Multiple3DCurve
-        assert los1.Last() == BRepCheck_EmptyWire
+        self.assertEqual(los1.First(), BRepCheck_Multiple3DCurve)
+        self.assertEqual(los1.Last(), BRepCheck_EmptyWire)
         # then check with an iterator
         los2 = BRepCheck_ListOfStatus()
         los2.Append(BRepCheck_Multiple3DCurve)
         los2.Append(BRepCheck_EmptyWire)
         it = BRepCheck_ListIteratorOfListOfStatus(los2)
         while it.More():
-            assert isinstance(it.Value(), int)
+            self.assertTrue(isinstance(it.Value(), int))
             it.Next()
 
     def test_deprecation_warning(self):
@@ -569,11 +567,32 @@ class TestWrapperFeatures(unittest.TestCase):
         t = Standard_Transient()
         with assert_warns_deprecated():
             t.GetObject()
-    
+
     def test_deprecation_downcasts(self):
         t = Standard_Transient()
         with assert_warns_deprecated():
             Handle_Standard_Transient.DownCast(t)
+
+    def test_array_iterator(self):
+        P0 = gp_Pnt(1, 2, 3)
+        list_of_points = TColgp_Array1OfPnt(5, 8)
+        self.assertEqual(len(list_of_points), 4)
+
+        # set item
+        list_of_points[1] = P0
+
+        # then get item
+        self.assertEqual(list_of_points[1].Coord(), (1.0, 2.0, 3.0))
+        with self.assertRaises(IndexError):
+            list_of_points[4]
+        # iterator creation
+        it = iter(list_of_points)
+        next(it)
+
+        # test loop over iterable
+        for pnt in list_of_points:
+            self.assertTrue(isinstance(pnt, gp_Pnt))
+
 
 def suite():
     test_suite = unittest.TestSuite()

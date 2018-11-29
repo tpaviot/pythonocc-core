@@ -225,6 +225,41 @@ class StepFEA_Array1OfCurveElementEndOffset {
 };
 
 
+
+%extend StepFEA_Array1OfCurveElementEndOffset {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfCurveElementEndOffset {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -312,6 +347,41 @@ class StepFEA_Array1OfCurveElementEndRelease {
 };
 
 
+
+%extend StepFEA_Array1OfCurveElementEndRelease {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfCurveElementEndRelease {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -399,6 +469,41 @@ class StepFEA_Array1OfCurveElementInterval {
 };
 
 
+
+%extend StepFEA_Array1OfCurveElementInterval {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfCurveElementInterval {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -486,6 +591,41 @@ class StepFEA_Array1OfDegreeOfFreedom {
 };
 
 
+
+%extend StepFEA_Array1OfDegreeOfFreedom {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfDegreeOfFreedom {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -573,6 +713,41 @@ class StepFEA_Array1OfElementRepresentation {
 };
 
 
+
+%extend StepFEA_Array1OfElementRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfElementRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -660,6 +835,41 @@ class StepFEA_Array1OfNodeRepresentation {
 };
 
 
+
+%extend StepFEA_Array1OfNodeRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_Array1OfNodeRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1908,6 +2118,41 @@ class StepFEA_HArray1OfCurveElementEndOffset : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfCurveElementEndOffset)
 
+
+%extend StepFEA_HArray1OfCurveElementEndOffset {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfCurveElementEndOffset {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1985,6 +2230,41 @@ class StepFEA_HArray1OfCurveElementEndRelease : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfCurveElementEndRelease)
 
+
+%extend StepFEA_HArray1OfCurveElementEndRelease {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfCurveElementEndRelease {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2062,6 +2342,41 @@ class StepFEA_HArray1OfCurveElementInterval : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfCurveElementInterval)
 
+
+%extend StepFEA_HArray1OfCurveElementInterval {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfCurveElementInterval {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2139,6 +2454,41 @@ class StepFEA_HArray1OfDegreeOfFreedom : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfDegreeOfFreedom)
 
+
+%extend StepFEA_HArray1OfDegreeOfFreedom {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfDegreeOfFreedom {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2216,6 +2566,41 @@ class StepFEA_HArray1OfElementRepresentation : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfElementRepresentation)
 
+
+%extend StepFEA_HArray1OfElementRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfElementRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2293,6 +2678,41 @@ class StepFEA_HArray1OfNodeRepresentation : public MMgt_TShared {
 
 %make_alias(StepFEA_HArray1OfNodeRepresentation)
 
+
+%extend StepFEA_HArray1OfNodeRepresentation {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepFEA_HArray1OfNodeRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object

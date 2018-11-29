@@ -277,6 +277,41 @@ class Poly_Array1OfTriangle {
 };
 
 
+
+%extend Poly_Array1OfTriangle {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend Poly_Array1OfTriangle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -764,6 +799,41 @@ class Poly_HArray1OfTriangle : public MMgt_TShared {
 
 %make_alias(Poly_HArray1OfTriangle)
 
+
+%extend Poly_HArray1OfTriangle {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend Poly_HArray1OfTriangle {
 	%pythoncode {
 	__repr__ = _dumps_object

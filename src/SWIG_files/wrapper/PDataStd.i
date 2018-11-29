@@ -735,6 +735,41 @@ class PDataStd_FieldOfHArray1OfByte : public DBC_BaseArray {
 };
 
 
+
+%extend PDataStd_FieldOfHArray1OfByte {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_FieldOfHArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -798,6 +833,41 @@ class PDataStd_FieldOfHArray1OfHArray1OfInteger : public DBC_BaseArray {
 };
 
 
+
+%extend PDataStd_FieldOfHArray1OfHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_FieldOfHArray1OfHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -861,6 +931,41 @@ class PDataStd_FieldOfHArray1OfHArray1OfReal : public DBC_BaseArray {
 };
 
 
+
+%extend PDataStd_FieldOfHArray1OfHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_FieldOfHArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -924,6 +1029,41 @@ class PDataStd_FieldOfHArray1OfHAsciiString : public DBC_BaseArray {
 };
 
 
+
+%extend PDataStd_FieldOfHArray1OfHAsciiString {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_FieldOfHArray1OfHAsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1013,6 +1153,41 @@ class PDataStd_HArray1OfByte : public Standard_Persistent {
 };
 
 
+
+%extend PDataStd_HArray1OfByte {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_HArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1102,6 +1277,41 @@ class PDataStd_HArray1OfHArray1OfInteger : public Standard_Persistent {
 };
 
 
+
+%extend PDataStd_HArray1OfHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_HArray1OfHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1191,6 +1401,41 @@ class PDataStd_HArray1OfHArray1OfReal : public Standard_Persistent {
 };
 
 
+
+%extend PDataStd_HArray1OfHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_HArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1280,6 +1525,41 @@ class PDataStd_HArray1OfHAsciiString : public Standard_Persistent {
 };
 
 
+
+%extend PDataStd_HArray1OfHAsciiString {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_HArray1OfHAsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2760,6 +3040,41 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfByte : public PStandard_ArrayNode {
 };
 
 
+
+%extend PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2807,6 +3122,41 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger : public PStandard_A
 };
 
 
+
+%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2854,6 +3204,41 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal : public PStandard_Arra
 };
 
 
+
+%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2901,6 +3286,41 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public PStandard_Array
 };
 
 
+
+%extend PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2932,6 +3352,41 @@ class PDataStd_VArrayTNodeOfFieldOfHArray1OfByte {
 };
 
 
+
+%extend PDataStd_VArrayTNodeOfFieldOfHArray1OfByte {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayTNodeOfFieldOfHArray1OfByte {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2963,6 +3418,41 @@ class PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger {
 };
 
 
+
+%extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2994,6 +3484,41 @@ class PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal {
 };
 
 
+
+%extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3025,6 +3550,41 @@ class PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString {
 };
 
 
+
+%extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object

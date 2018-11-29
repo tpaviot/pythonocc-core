@@ -260,6 +260,41 @@ class HLRAlgo_Array1OfPHDat {
 };
 
 
+
+%extend HLRAlgo_Array1OfPHDat {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_Array1OfPHDat {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -347,6 +382,41 @@ class HLRAlgo_Array1OfPINod {
 };
 
 
+
+%extend HLRAlgo_Array1OfPINod {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_Array1OfPINod {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -434,6 +504,41 @@ class HLRAlgo_Array1OfPISeg {
 };
 
 
+
+%extend HLRAlgo_Array1OfPISeg {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_Array1OfPISeg {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -521,6 +626,41 @@ class HLRAlgo_Array1OfTData {
 };
 
 
+
+%extend HLRAlgo_Array1OfTData {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_Array1OfTData {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1279,6 +1419,41 @@ class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 
 %make_alias(HLRAlgo_HArray1OfPHDat)
 
+
+%extend HLRAlgo_HArray1OfPHDat {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_HArray1OfPHDat {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1356,6 +1531,41 @@ class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 
 %make_alias(HLRAlgo_HArray1OfPINod)
 
+
+%extend HLRAlgo_HArray1OfPINod {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_HArray1OfPINod {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1433,6 +1643,41 @@ class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 
 %make_alias(HLRAlgo_HArray1OfPISeg)
 
+
+%extend HLRAlgo_HArray1OfPISeg {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_HArray1OfPISeg {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1510,6 +1755,41 @@ class HLRAlgo_HArray1OfTData : public MMgt_TShared {
 
 %make_alias(HLRAlgo_HArray1OfTData)
 
+
+%extend HLRAlgo_HArray1OfTData {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend HLRAlgo_HArray1OfTData {
 	%pythoncode {
 	__repr__ = _dumps_object

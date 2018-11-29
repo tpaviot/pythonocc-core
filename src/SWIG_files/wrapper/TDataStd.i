@@ -909,6 +909,41 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger : public TCollec
 };
 
 
+
+%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -944,6 +979,41 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal : public TCollectio
 };
 
 
+
+%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1076,6 +1146,41 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection
 
 %make_alias(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger)
 
+
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1107,6 +1212,41 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public TCollection_Ma
 
 %make_alias(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal)
 
+
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1344,6 +1484,41 @@ class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 };
 
 
+
+%extend TDataStd_DataMapOfStringHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapOfStringHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1427,6 +1602,41 @@ class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 };
 
 
+
+%extend TDataStd_DataMapOfStringHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_DataMapOfStringHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2242,6 +2452,41 @@ class TDataStd_HDataMapOfStringHArray1OfInteger : public MMgt_TShared {
 
 %make_alias(TDataStd_HDataMapOfStringHArray1OfInteger)
 
+
+%extend TDataStd_HDataMapOfStringHArray1OfInteger {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_HDataMapOfStringHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2275,6 +2520,41 @@ class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared {
 
 %make_alias(TDataStd_HDataMapOfStringHArray1OfReal)
 
+
+%extend TDataStd_HDataMapOfStringHArray1OfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_HDataMapOfStringHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2451,6 +2731,41 @@ class TDataStd_HLabelArray1 : public MMgt_TShared {
 
 %make_alias(TDataStd_HLabelArray1)
 
+
+%extend TDataStd_HLabelArray1 {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_HLabelArray1 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3022,6 +3337,41 @@ class TDataStd_LabelArray1 {
 };
 
 
+
+%extend TDataStd_LabelArray1 {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend TDataStd_LabelArray1 {
 	%pythoncode {
 	__repr__ = _dumps_object

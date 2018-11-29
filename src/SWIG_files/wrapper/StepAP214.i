@@ -805,6 +805,41 @@ class StepAP214_Array1OfApprovalItem {
 };
 
 
+
+%extend StepAP214_Array1OfApprovalItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfApprovalItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -892,6 +927,41 @@ class StepAP214_Array1OfAutoDesignDateAndPersonItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignDateAndPersonItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignDateAndPersonItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -979,6 +1049,41 @@ class StepAP214_Array1OfAutoDesignDateAndTimeItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignDateAndTimeItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignDateAndTimeItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1066,6 +1171,41 @@ class StepAP214_Array1OfAutoDesignDatedItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignDatedItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignDatedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1153,6 +1293,41 @@ class StepAP214_Array1OfAutoDesignGeneralOrgItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignGeneralOrgItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignGeneralOrgItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1240,6 +1415,41 @@ class StepAP214_Array1OfAutoDesignGroupedItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignGroupedItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignGroupedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1327,6 +1537,41 @@ class StepAP214_Array1OfAutoDesignPresentedItemSelect {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignPresentedItemSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignPresentedItemSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1414,6 +1659,41 @@ class StepAP214_Array1OfAutoDesignReferencingItem {
 };
 
 
+
+%extend StepAP214_Array1OfAutoDesignReferencingItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfAutoDesignReferencingItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1501,6 +1781,41 @@ class StepAP214_Array1OfDateAndTimeItem {
 };
 
 
+
+%extend StepAP214_Array1OfDateAndTimeItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfDateAndTimeItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1588,6 +1903,41 @@ class StepAP214_Array1OfDateItem {
 };
 
 
+
+%extend StepAP214_Array1OfDateItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfDateItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1675,6 +2025,41 @@ class StepAP214_Array1OfDocumentReferenceItem {
 };
 
 
+
+%extend StepAP214_Array1OfDocumentReferenceItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfDocumentReferenceItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1762,6 +2147,41 @@ class StepAP214_Array1OfExternalIdentificationItem {
 };
 
 
+
+%extend StepAP214_Array1OfExternalIdentificationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfExternalIdentificationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1849,6 +2269,41 @@ class StepAP214_Array1OfGroupItem {
 };
 
 
+
+%extend StepAP214_Array1OfGroupItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfGroupItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1936,6 +2391,41 @@ class StepAP214_Array1OfOrganizationItem {
 };
 
 
+
+%extend StepAP214_Array1OfOrganizationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfOrganizationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2023,6 +2513,41 @@ class StepAP214_Array1OfPersonAndOrganizationItem {
 };
 
 
+
+%extend StepAP214_Array1OfPersonAndOrganizationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfPersonAndOrganizationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2110,6 +2635,41 @@ class StepAP214_Array1OfPresentedItemSelect {
 };
 
 
+
+%extend StepAP214_Array1OfPresentedItemSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfPresentedItemSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2197,6 +2757,41 @@ class StepAP214_Array1OfSecurityClassificationItem {
 };
 
 
+
+%extend StepAP214_Array1OfSecurityClassificationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_Array1OfSecurityClassificationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3596,6 +4191,41 @@ class StepAP214_HArray1OfApprovalItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfApprovalItem)
 
+
+%extend StepAP214_HArray1OfApprovalItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfApprovalItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3673,6 +4303,41 @@ class StepAP214_HArray1OfAutoDesignDateAndPersonItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndPersonItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignDateAndPersonItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignDateAndPersonItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3750,6 +4415,41 @@ class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndTimeItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignDateAndTimeItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignDateAndTimeItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3827,6 +4527,41 @@ class StepAP214_HArray1OfAutoDesignDatedItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignDatedItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignDatedItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignDatedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3904,6 +4639,41 @@ class StepAP214_HArray1OfAutoDesignGeneralOrgItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignGeneralOrgItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignGeneralOrgItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignGeneralOrgItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3981,6 +4751,41 @@ class StepAP214_HArray1OfAutoDesignGroupedItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignGroupedItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignGroupedItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignGroupedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4058,6 +4863,41 @@ class StepAP214_HArray1OfAutoDesignPresentedItemSelect : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignPresentedItemSelect)
 
+
+%extend StepAP214_HArray1OfAutoDesignPresentedItemSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignPresentedItemSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4135,6 +4975,41 @@ class StepAP214_HArray1OfAutoDesignReferencingItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfAutoDesignReferencingItem)
 
+
+%extend StepAP214_HArray1OfAutoDesignReferencingItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfAutoDesignReferencingItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4212,6 +5087,41 @@ class StepAP214_HArray1OfDateAndTimeItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfDateAndTimeItem)
 
+
+%extend StepAP214_HArray1OfDateAndTimeItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfDateAndTimeItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4289,6 +5199,41 @@ class StepAP214_HArray1OfDateItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfDateItem)
 
+
+%extend StepAP214_HArray1OfDateItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfDateItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4366,6 +5311,41 @@ class StepAP214_HArray1OfDocumentReferenceItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfDocumentReferenceItem)
 
+
+%extend StepAP214_HArray1OfDocumentReferenceItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfDocumentReferenceItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4443,6 +5423,41 @@ class StepAP214_HArray1OfExternalIdentificationItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfExternalIdentificationItem)
 
+
+%extend StepAP214_HArray1OfExternalIdentificationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfExternalIdentificationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4520,6 +5535,41 @@ class StepAP214_HArray1OfGroupItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfGroupItem)
 
+
+%extend StepAP214_HArray1OfGroupItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfGroupItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4597,6 +5647,41 @@ class StepAP214_HArray1OfOrganizationItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfOrganizationItem)
 
+
+%extend StepAP214_HArray1OfOrganizationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfOrganizationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4674,6 +5759,41 @@ class StepAP214_HArray1OfPersonAndOrganizationItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfPersonAndOrganizationItem)
 
+
+%extend StepAP214_HArray1OfPersonAndOrganizationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfPersonAndOrganizationItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4751,6 +5871,41 @@ class StepAP214_HArray1OfPresentedItemSelect : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfPresentedItemSelect)
 
+
+%extend StepAP214_HArray1OfPresentedItemSelect {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfPresentedItemSelect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4828,6 +5983,41 @@ class StepAP214_HArray1OfSecurityClassificationItem : public MMgt_TShared {
 
 %make_alias(StepAP214_HArray1OfSecurityClassificationItem)
 
+
+%extend StepAP214_HArray1OfSecurityClassificationItem {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend StepAP214_HArray1OfSecurityClassificationItem {
 	%pythoncode {
 	__repr__ = _dumps_object

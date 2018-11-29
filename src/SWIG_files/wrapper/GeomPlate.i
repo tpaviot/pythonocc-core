@@ -163,6 +163,41 @@ class GeomPlate_Array1OfHCurveOnSurface {
 };
 
 
+
+%extend GeomPlate_Array1OfHCurveOnSurface {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend GeomPlate_Array1OfHCurveOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -250,6 +285,41 @@ class GeomPlate_Array1OfSequenceOfReal {
 };
 
 
+
+%extend GeomPlate_Array1OfSequenceOfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend GeomPlate_Array1OfSequenceOfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -868,6 +938,41 @@ class GeomPlate_HArray1OfHCurveOnSurface : public MMgt_TShared {
 
 %make_alias(GeomPlate_HArray1OfHCurveOnSurface)
 
+
+%extend GeomPlate_HArray1OfHCurveOnSurface {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend GeomPlate_HArray1OfHCurveOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -945,6 +1050,41 @@ class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared {
 
 %make_alias(GeomPlate_HArray1OfSequenceOfReal)
 
+
+%extend GeomPlate_HArray1OfSequenceOfReal {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current +=1
+        return self.Value(self.current)
+
+    __next__ = next
+
+    }
+};
 %extend GeomPlate_HArray1OfSequenceOfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
