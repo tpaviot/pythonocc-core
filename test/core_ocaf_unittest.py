@@ -52,13 +52,13 @@ class TestOCAF(unittest.TestCase):
         ''' Creates an OCAF app and an empty document '''
         # create an handle to a document
         doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
-        assert not doc.IsNull()
+        self.assertFalse(doc.IsNull())
 
     def test_write_step_file(self):
         ''' Exports a colored box into a STEP file '''
         ### initialisation
         doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
-        assert doc is not None
+        self.assertTrue(doc is not None)
 
         # Get root assembly
         shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
@@ -78,8 +78,8 @@ class TestOCAF(unittest.TestCase):
         writer = STEPCAFControl_Writer(WS, False)
         writer.Transfer(doc, STEPControl_AsIs)
         status = writer.Write("./test_io/test_ocaf_generated.stp")
-        assert status
-        assert os.path.isfile("./test_io/test_ocaf_generated.stp")
+        self.assertTrue(status)
+        self.assertTrue(os.path.isfile("./test_io/test_ocaf_generated.stp"))
 
     def test_read_step_file(self):
         ''' Reads the previous step file '''
@@ -102,18 +102,18 @@ class TestOCAF(unittest.TestCase):
 
         shape_tool.GetFreeShapes(labels)
 
-        assert labels.Length() == 1
+        self.assertEqual(labels.Length(), 1)
         sub_shapes_labels = TDF_LabelSequence()
-        assert not shape_tool.IsAssembly(labels.Value(1))
+        self.assertFalse(shape_tool.IsAssembly(labels.Value(1)))
         shape_tool.GetSubShapes(labels.Value(1), sub_shapes_labels)
-        assert sub_shapes_labels.Length() == 0
+        self.assertEqual(sub_shapes_labels.Length(), 0)
 
         l_colors.GetColors(color_labels)
-        assert color_labels.Length() == 1
+        self.assertEqual(color_labels.Length(), 1)
 
         label_shp = labels.Value(1)
         a_shape = shape_tool.GetShape(label_shp)
-        assert not a_shape.IsNull()
+        self.assertFalse(a_shape.IsNull())
 
 
 def suite():
