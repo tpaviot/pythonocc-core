@@ -28,7 +28,7 @@ from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
 from OCC.Core.TopTools import (TopTools_ListOfShape,
                                TopTools_ListIteratorOfListOfShape,
                                TopTools_IndexedDataMapOfShapeListOfShape)
-from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
+from OCC.Core.TopoDS import (TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
                              TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
                              TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
                              topods_Vertex, TopoDS_Iterator)
