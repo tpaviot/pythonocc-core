@@ -70,14 +70,6 @@ class TestWebGL(unittest.TestCase):
             rnd_color = (random.random(), random.random(), random.random())
             rnd_export_edges = bool(random.random() > 0.5)
             my_x3dom_renderer.DisplayShape(box_shp, export_edges=True, color=rnd_color, transparency=random.random())
-   
-    def test_x3dom_random_mesh_quality(self):
-        """ Test: threejs 10 random boxes
-        """
-        my_x3dom_renderer = x3dom_renderer.X3DomRenderer()
-        my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=1.0)
-        my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=0.8)
-        my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=2.0)
 
     def test_threejs_edge(self):
         """ Test: threejs 10 random boxes
