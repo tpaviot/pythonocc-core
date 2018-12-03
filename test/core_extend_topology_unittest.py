@@ -33,9 +33,6 @@ def get_test_sphere_shape():
     return BRepPrimAPI_MakeSphere(10.).Shape()
 
 topo = TopologyExplorer(get_test_box_shape())
-if topo.IsNull():
-    raise AssertionError("box shape is null")
-
 
 class TestExtendTopology(unittest.TestCase):
 
