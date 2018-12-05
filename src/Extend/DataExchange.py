@@ -48,7 +48,7 @@ def read_step_file(filename, return_as_shapes=False, verbosity=False):
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
                       else returns a single compound
-    verbosity: optionl, False by default.
+    verbosity: optional, False by default.
     """
     if not os.path.isfile(filename):
         raise FileNotFoundError("%s not found." % filename)
@@ -62,11 +62,14 @@ def read_step_file(filename, return_as_shapes=False, verbosity=False):
             step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
             step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
         transfer_result = step_reader.TransferRoot(1)
-        assert transfer_result
+        if not transfer_result:
+            raise AssertionError("Transfer failed.")
         _nbs = step_reader.NbShapes()
-        assert _nbs == 1
+        if _nbs != 1:
+            raise AssertionError("Number of shapes is not one.")
         shape_to_return = step_reader.Shape(1)  # a compound
-        assert not shape_to_return.IsNull()
+        if shape_to_return.IsNull():
+            raise AssertionError("Shape is null.")
     else:
         raise AssertionError("Error: can't read file.")
     if return_as_shapes:
@@ -307,15 +310,18 @@ def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angul
     linear_deflection: optional, default to 0.001. Lower, more occurate mesh
     angular_deflection: optional, default to 0.5. Lower, more accurate_mesh
     """
-    assert not a_shape.IsNull()
-    assert mode in ["ascii", "binary"]
+    if a_shape.IsNull():
+        raise AssertionError("Shape is null.")
+    if mode not in ["ascii", "binary"]:
+        raise AssertionError("mode should be either ascii or binary")
     if os.path.isfile(filename):
         print("Warning: %s file already exists and will be replaced" % filename)
     # first mesh the shape
     mesh = BRepMesh_IncrementalMesh(a_shape, linear_deflection, False, angular_deflection, True)
     #mesh.SetDeflection(0.05)
     mesh.Perform()
-    assert mesh.IsDone()
+    if not mesh.IsDone():
+        raise AssertionError("Mesh is not done.")
 
     stl_exporter = StlAPI_Writer()
     if mode == "ascii":
@@ -324,35 +330,40 @@ def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angul
         stl_exporter.SetASCIIMode(False)
     stl_exporter.Write(a_shape, filename)
 
-    assert os.path.isfile(filename)
+    if not os.path.isfile(filename):
+        raise IOError("File not written to disk.")
 
 
 def read_stl_file(filename):
     """ opens a stl file, reads the content, and returns a BRep topods_shape object
     """
-    assert os.path.isfile(filename)
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("%s not found." % filename)
 
     stl_reader = StlAPI_Reader()
     the_shape = TopoDS_Shape()
     stl_reader.Read(the_shape, filename)
 
-    assert not the_shape.IsNull()
+    if the_shape.IsNull():
+        raise AssertionError("Shape is null.")
 
     return the_shape
 
 ######################
 # IGES import/export #
 ######################
-def read_iges_file(filename, return_as_shapes=False, verbosity=False):
+def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_only=False):
     """ read the IGES file and returns a compound
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
                       else returns a single compound
     verbosity: optionl, False by default.
     """
-    assert os.path.isfile(filename)
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("%s not found." % filename)
 
     iges_reader = IGESControl_Reader()
+    iges_reader.SetReadVisible(visible_only)
     status = iges_reader.ReadFile(filename)
 
     _shapes = []
@@ -399,7 +410,8 @@ def write_iges_file(a_shape, filename):
     application protocol: "AP203" or "AP214"
     """
     # a few checks
-    assert not a_shape.IsNull()
+    if a_shape.IsNull():
+        raise AssertionError("Shape is null.")
     if os.path.isfile(filename):
         print("Warning: %s file already exists and will be replaced" % filename)
     # creates and initialise the step exporter
@@ -407,8 +419,10 @@ def write_iges_file(a_shape, filename):
     iges_writer.AddShape(a_shape)
     status = iges_writer.Write(filename)
 
-    assert status == IFSelect_RetDone
-    assert os.path.isfile(filename)
+    if status != IFSelect_RetDone:
+        raise AssertionError("Not done.")
+    if not os.path.isfile(filename):
+        raise IOError("File not written to disk.")
 
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
