@@ -22,7 +22,6 @@ import sys
 import tempfile
 
 from OCC.Core.Visualization import Tesselator
-from OCC.Core.gp import gp_Vec
 from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
@@ -186,7 +185,7 @@ class HTMLBody(object):
         nb_shape = len(self._x3d_shapes)
         cur_shp = 1
         for shp_uid in self._x3d_shapes:
-            sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor), 
+            sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor),
                                                               int(cur_shp / nb_shape * 100)))
             sys.stdout.flush()
             # TODO: here is the code related to orientation/translation
@@ -312,7 +311,7 @@ class X3DExporter(object):
             x3dfile_str += "</Switch>\n"
         x3dfile_str += '</Scene>\n</X3D>\n'
         return x3dfile_str
-   
+
     def write_to_file(self, filename, shape_id):
         with open(filename, "w") as f:
             f.write(self.to_x3dfile_string(shape_id))

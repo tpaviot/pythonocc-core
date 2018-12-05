@@ -77,7 +77,8 @@ def make_wire(*args):
 
 def make_face(*args):
     face = BRepBuilderAPI_MakeFace(*args)
-    assert face.IsDone()
+    if not face.IsDone():
+        raise AssertionError("Face not done")
     result = face.Face()
     return result
 

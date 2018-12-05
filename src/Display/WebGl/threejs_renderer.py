@@ -42,9 +42,8 @@ def color_to_hex(rgb_color):
     Returns a hex. Useful to convert occ colors to web color code
     """
     r, g, b = rgb_color
-    assert 0 <= r <= 1.
-    assert 0 <= g <= 1.
-    assert 0 <= b <= 1.
+    if not (0 <= r <= 1. and 0 <= g <= 1. and 0 <= b <= 1.):
+        raise AssertionError("rgb values must be between 0.0 and 1.0")
     rh = int(r * 255.)
     gh = int(g * 255.)
     bh = int(b * 255.)

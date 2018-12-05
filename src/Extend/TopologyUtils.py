@@ -40,7 +40,8 @@ class WireExplorer(object):
     Wire traversal
     '''
     def __init__(self, wire):
-        assert isinstance(wire, TopoDS_Wire), 'not a TopoDS_Wire'
+        if not isinstance(wire, TopoDS_Wire):
+            raise AssertionError('not a TopoDS_Wire')
         self.wire = wire
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
@@ -138,7 +139,8 @@ class TopologyExplorer(object):
                      TopAbs_COMPOUND: TopoDS_Compound,
                      TopAbs_COMPSOLID: TopoDS_CompSolid}
 
-        assert topologyType in topoTypes.keys(), '%s not one of %s' % (topologyType, topoTypes.keys())
+        if not topologyType in topoTypes.keys():
+            raise AssertionError('%s not one of %s' % (topologyType, topoTypes.keys()))
         # use self.myShape if nothing is specified
         if topologicalEntity is None and topologyTypeToAvoid is None:
             self.topExp.Init(self.myShape, topologyType)
@@ -498,8 +500,10 @@ def discretize_edge(a_topods_edge, deflection=0.5):
     discretizer = GCPnts_UniformAbscissa()
     discretizer.Initialize(curve_adaptator, deflection, first, last)
 
-    assert discretizer.IsDone()
-    assert discretizer.NbPoints() > 0
+    if not discretizer.IsDone():
+        raise AssertionError("Discretizer not done.")
+    if not discretizer.NbPoints() > 0:
+        raise AssertionError("Discretizer nb points not > 0.")
 
     points = []
     for i in range(1, discretizer.NbPoints() + 1):
