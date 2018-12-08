@@ -6,7 +6,7 @@ else
     MY_PY_VER="${PY_VER}"
 fi
 
-if [ `uname` == Darwin ]; then
+if [ $(uname) == Darwin ]; then
     PY_LIB="libpython${MY_PY_VER}.dylib"
 else
     PY_LIB="libpython${MY_PY_VER}.so"

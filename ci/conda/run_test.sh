@@ -1,7 +1,7 @@
 cd ../work/test
 python run_tests.py
 python core_webgl_unittest.py
-if [ `uname` == Linux ]; then
+if [ $(uname) == Linux ]; then
     # start xvfb
     export DISPLAY=:99.0
     sh -e /etc/init.d/xvfb start
