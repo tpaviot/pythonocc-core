@@ -232,8 +232,10 @@ class qtViewer3d(qtBaseViewer):
 
     def mousePressEvent(self, event):
         self.setFocus()
-        self.dragStartPos = event.pos()
-        self._display.StartRotation(self.dragStartPos.x(), self.dragStartPos.y())
+        ev = event.pos()
+        self.dragStartPosX = ev.x()
+        self.dragStartPosY = ev.y()
+        self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
     def mouseReleaseEvent(self, event):
         pt = event.pos()
@@ -267,11 +269,11 @@ class qtViewer3d(qtBaseViewer):
     def DrawBox(self, event):
         tolerance = 2
         pt = event.pos()
-        dx = pt.x() - self.dragStartPos.x()
-        dy = pt.y() - self.dragStartPos.y()
+        dx = pt.x() - self.dragStartPosX
+        dy = pt.y() - self.dragStartPosY
         if abs(dx) <= tolerance and abs(dy) <= tolerance:
             return
-        self._drawbox = [self.dragStartPos.x(), self.dragStartPos.y(), dx, dy]
+        self._drawbox = [self.dragStartPosX, self.dragStartPosY, dx, dy]
         self.update()
 
     def mouseMoveEvent(self, evt):
@@ -289,18 +291,18 @@ class qtViewer3d(qtBaseViewer):
               not modifiers == QtCore.Qt.ShiftModifier):
             self.cursor = "zoom"
             self._display.Repaint()
-            self._display.DynamicZoom(abs(self.dragStartPos.x()),
-                                      abs(self.dragStartPos.y()), abs(pt.x()),
+            self._display.DynamicZoom(abs(self.dragStartPosX),
+                                      abs(self.dragStartPosY), abs(pt.x()),
                                       abs(pt.y()))
-            self.dragStartPos.x = pt.x()
-            self.dragStartPos.y = pt.y()
+            self.dragStartPosX = pt.x()
+            self.dragStartPosY = pt.y()
             self._drawbox = False
         # PAN
         elif buttons == QtCore.Qt.MidButton:
-            dx = pt.x - self.dragStartPos.x()
-            dy = pt.y - self.dragStartPos.y()
-            self.dragStartPos.x = pt.x()
-            self.dragStartPos.y = pt.y()
+            dx = pt.x() - self.dragStartPosX
+            dy = pt.y() - self.dragStartPosY
+            self.dragStartPosX = pt.x()
+            self.dragStartPosY = pt.y()
             self.cursor = "pan"
             self._display.Pan(dx, -dy)
             self._drawbox = False
