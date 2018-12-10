@@ -188,13 +188,10 @@ class qtViewer3d(qtBaseViewer):
             self.swapBuffers()
 
         if self._drawbox:
-            self.makeCurrent()
             painter = QtGui.QPainter(self)
             painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
-            painter.end()
-            self.doneCurrent()
 
     def ZoomAll(self, evt):
         self._display.FitAll()
