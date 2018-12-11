@@ -140,6 +140,7 @@ class TestGeometry(unittest.TestCase):
         self.assertIsInstance(N, gp_Pnt)
         NbResults = PPC.NbPoints()
         edg = make_edge(C)
+        self.assertFalse(edg.IsNull())
 
         if NbResults > 0:
             for i in range(1, NbResults+1):
@@ -163,10 +164,12 @@ class TestGeometry(unittest.TestCase):
         SP = Geom_SphericalSurface(gp_Ax3(gp_XOY()), radius)
         PPS = GeomAPI_ProjectPointOnSurf(P, SP)
         N = PPS.NearestPoint()
+        self.assertTrue(isinstance(N, gp_Pnt))
         NbResults = PPS.NbPoints()
         if NbResults > 0:
             for i in range(1, NbResults+1):
                 Q = PPS.Point(i)
+                self.assertTrue(isinstance(Q, gp_Pnt))
                 distance = PPS.Distance(i)
         pstring = "N  : at Distance : " + repr(PPS.LowerDistance())
         if NbResults > 0:
@@ -215,6 +218,7 @@ class TestGeometry(unittest.TestCase):
         D = gp_Dir(4, 5, 6)
         A = gp_Ax3(P1, D)
         IsDirectA = A.Direct()
+        self.assertTrue(IsDirectA)
         AXDirection = A.XDirection()
         AYDirection = A.YDirection()
         P2 = gp_Pnt(5, 3, 4)
@@ -222,8 +226,11 @@ class TestGeometry(unittest.TestCase):
         A2.YReverse()
         # axis3 is now left handed
         IsDirectA2 = A2.Direct()
+        self.assertTrue(IsDirectA)
         A2XDirection = A2.XDirection()
+        self.assertTrue(isinstance(A2XDirection, gp_Dir))
         A2YDirection = A2.YDirection()
+        self.assertTrue(isinstance(A2XDirection, gp_Dir))
 
     def test_bspline(self):
         '''Test: bspline'''
@@ -236,6 +243,7 @@ class TestGeometry(unittest.TestCase):
 
         xxx = point2d_list_to_TColgp_Array1OfPnt2d(array)
         SPL1 = Geom2dAPI_PointsToBSpline(xxx).Curve()
+        self.assertTrue(SPL1 is not None)
 
         harray = TColgp_HArray1OfPnt2d(1, 5)
         harray.SetValue(1, gp_Pnt2d(7 + 0, 0))
@@ -247,6 +255,7 @@ class TestGeometry(unittest.TestCase):
         anInterpolation = Geom2dAPI_Interpolate(harray, False, 0.01)
         anInterpolation.Perform()
         SPL2 = anInterpolation.Curve()
+        self.assertTrue(SPL2 is not None)
 
         harray2 = TColgp_HArray1OfPnt2d(1, 5)
         harray2.SetValue(1, gp_Pnt2d(11 + 0, 0))
@@ -258,20 +267,18 @@ class TestGeometry(unittest.TestCase):
         anInterpolation2 = Geom2dAPI_Interpolate(harray2, True, 0.01)
         anInterpolation2.Perform()
         SPL3 = anInterpolation2.Curve()
+        self.assertTrue(SPL3 is not None)
         i = 0
         for P in array:
             i = i+1
-            pstring = 'array%i' % i
             make_vertex(P)
         for j in range(harray.Lower(), harray.Upper()+1):
             i = i+1
-            pstring = 'harray%i' % i
             P = harray.Value(j)
             make_vertex(P)
 
         for j in range(harray2.Lower(), harray2.Upper()+1):
             i = i+1
-            pstring = 'harray2%i' % i
             P = harray2.Value(j)
             make_vertex(P)
 
@@ -283,6 +290,7 @@ class TestGeometry(unittest.TestCase):
         E = ell.Value()
         TC = Geom2d_TrimmedCurve(E, -1, 2, True)
         SPL = geom2dconvert_CurveToBSplineCurve(TC, Convert_TgtThetaOver2)
+        self.assertTrue(SPL is not None)
 
     def test_curves2d_from_offset(self):
         '''Test: curves 2d from offset'''
@@ -295,6 +303,7 @@ class TestGeometry(unittest.TestCase):
 
         xxx = point2d_list_to_TColgp_Array1OfPnt2d(array)
         SPL1 = Geom2dAPI_PointsToBSpline(xxx).Curve()
+        self.assertTrue(SPL1 is not None)
 
         dist = 1
         OC = Geom2d_OffsetCurve(SPL1, dist)
@@ -303,6 +312,7 @@ class TestGeometry(unittest.TestCase):
         dist2 = 1.5
         OC2 = Geom2d_OffsetCurve(SPL1, dist2)
         result2 = OC2.IsCN(2)
+        self.assertTrue(result2)
 
     def test_circles2d_from_curves(self):
         '''Test: circles2d from curves'''
@@ -383,8 +393,11 @@ class TestGeometry(unittest.TestCase):
                                             GeomFill_CurvedStyle)
 
         aBSplineSurface1 = aGeomFill1.Surface()
+        self.assertTrue(aBSplineSurface1 is not None)
         aBSplineSurface2 = aGeomFill2.Surface()
+        self.assertTrue(aBSplineSurface1 is not None)
         aBSplineSurface3 = aGeomFill3.Surface()
+        self.assertTrue(aBSplineSurface1 is not None)
 
     def test_pipes(self):
         '''Test: pipes'''
@@ -528,9 +541,13 @@ class TestGeometry(unittest.TestCase):
         GOS2 = Geom_OffsetSurface(aGeomSurface, offset)
 
         face1 = make_face(aGeomSurface)
+        self.assertTrue(face1 is not None)
         face2 = make_face(GOS)
+        self.assertTrue(face2 is not None)
         face3 = make_face(GOS1)
+        self.assertTrue(face3 is not None)
         face4 = make_face(GOS2)
+        self.assertTrue(face4 is not None)
 
     def test_surfaces_from_revolution(self):
         '''Test: surfaces from revolution'''
@@ -600,6 +617,8 @@ class TestGeometry(unittest.TestCase):
         aSurf2 = GeomAPI_PointsToBSplineSurface(array3).Surface()
         ESS = GeomAPI_ExtremaSurfaceSurface(aSurf1, aSurf2)
         dist = ESS.LowerDistance()
+        self.assertGreater(dist, 1.25)
+        self.assertLess(dist, 1.26)
         a, b = gp_Pnt(), gp_Pnt()
         ESS.NearestPoints(a, b)
 
