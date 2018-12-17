@@ -1,40 +1,20 @@
-import random
 import os
 import os.path
-import sys
 import time
 
-from OCC.Core.STEPControl import STEPControl_Reader
-from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 from OCC.Core.Visualization import Tesselator
+
 from OCC.Extend.TopologyUtils import TopologyExplorer
-
-def read_step_file(filename):
-    """ read the STEP file and returns a compound
-    """
-    print("loading STEP file... ")
-    step_reader = STEPControl_Reader()
-    status = step_reader.ReadFile(filename)
-
-    if status == IFSelect_RetDone:  # check status
-        failsonly = False
-
-        ok = step_reader.TransferRoot(1)
-        _nbs = step_reader.NbShapes()
-        aResShape = step_reader.Shape(1)
-    else:
-        print("Error: can't read file.")
-        sys.exit(0)
-    print("done.")
-    return aResShape
+from OCC.Extend.DataExchange import read_step_file
 
 # TEST 1 : one big STEP file into one single compound
 # loads the step file
 # load twice, not a copy/paste typo. It's because meshes are stored
 # the second time, meshing time is much faster
 print("TEST 1 ===")
-shp = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
-shp2 = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
+step_file = os.path.join('..', 'demos', 'assets', 'models', 'RC_Buggy_2_front_suspension.stp')
+shp = read_step_file(step_file)
+shp2 = read_step_file(step_file)
 
 # tesselate in single thread mode
 print("Tesselate in single thread mode")
@@ -59,8 +39,8 @@ print("  * muti/single=%.2f%%" % (delta_multi / delta_single * 100))
 
 # TEST 2 : other step, with a loop over each subshape
 print("TEST 2 ===")
-shp3 = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
-shp4 = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
+shp3 = read_step_file(step_file)
+shp4 = read_step_file(step_file)
 
 topo1 = TopologyExplorer(shp3)
 t4 = time.monotonic()

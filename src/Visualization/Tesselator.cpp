@@ -445,17 +445,13 @@ void Tesselator::ComputeEdges()
 std::string formatFloatNumber(float f) 
 {
   // returns string representation of the float number f.
-  // set precision to 4 digits
   // set epsilon to 1e-3
   float epsilon = 1e-3;
   std::stringstream formatted_float;
   if (std::abs(f) < epsilon) {
     f = 0.;
   }
-  formatted_float << std::setprecision(4) << f;
-  // 4 is perfect for the default quality
-  // for lower quality, it can be down to 3 or 2
-  // for better quality, up to 5 or 6
+  formatted_float << f;
   return formatted_float.str();
 }
 

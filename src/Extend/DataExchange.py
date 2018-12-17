@@ -109,6 +109,8 @@ def read_step_file_with_names_colors(filename):
     """ Returns list of tuples (topods_shape, label, color)
     Use OCAF.
     """
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("%s not found." % filename)
     # the list:
     output_shapes = []
     # create an handle to a document
@@ -233,51 +235,54 @@ def read_step_file_with_names_colors(filename):
             shape = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
 
             c = Quantity_Color()
-            # colorSet = False
-            # if (color_tool.GetInstanceColor(shape, 0, c) or
-            #         color_tool.GetInstanceColor(shape, 1, c) or
-            #         color_tool.GetInstanceColor(shape, 2, c)):
-            #     for i in (0, 1, 2):
-            #         color_tool.SetInstanceColor(shape, i, c)
-            #     colorSet = True
-            #     n = c.Name(c.Red(), c.Green(), c.Blue())
-            #     #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+            colorSet = False
+            if (color_tool.GetInstanceColor(shape, 0, c) or
+                    color_tool.GetInstanceColor(shape, 1, c) or
+                    color_tool.GetInstanceColor(shape, 2, c)):
+                for i in (0, 1, 2):
+                    color_tool.SetInstanceColor(shape, i, c)
+                colorSet = True
+                n = c.Name(c.Red(), c.Green(), c.Blue())
+                #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
-            # if not colorSet:
-            color_tool.GetColor(lab, 0, c)
-            color_tool.GetColor(lab, 1, c)
-            color_tool.GetColor(lab, 2, c)
-                #for i in (0, 1, 2):
-                #    color_tool.SetInstanceColor(shape, i, c)
+            if not colorSet:
+                if (color_tool.GetColor(lab, 0, c) or
+                        color_tool.GetColor(lab, 1, c) or
+                        color_tool.GetColor(lab, 2, c)):
+                    for i in (0, 1, 2):
+                        color_tool.SetInstanceColor(shape, i, c)
+
+                    n = c.Name(c.Red(), c.Green(), c.Blue())
+                    print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
                 #n = c.Name(c.Red(), c.Green(), c.Blue())
                 #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
-            # for i in range(l_subss.Length()):
-            #     lab = l_subss.Value(i+1)
-            #     print("\n########  simpleshape subshape label :", lab)
-            #     shape_sub = shape_tool.GetShape(lab)
+            for i in range(l_subss.Length()):
+                lab = l_subss.Value(i+1)
+                print("\n########  simpleshape subshape label :", lab)
+                shape_sub = shape_tool.GetShape(lab)
 
-            #     c = Quantity_Color()
-            #     colorSet = False
-            #     if (color_tool.GetInstanceColor(shape_sub, 0, c) or
-            #             color_tool.GetInstanceColor(shape_sub, 1, c) or
-            #             color_tool.GetInstanceColor(shape_sub, 2, c)):
-            #         for i in (0, 1, 2):
-            #             color_tool.SetInstanceColor(shape_sub, i, c)
-            #         colorSet = True
-            #         n = c.Name(c.Red(), c.Green(), c.Blue())
-            #         #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+                c = Quantity_Color()
+                colorSet = False
+                if (color_tool.GetInstanceColor(shape_sub, 0, c) or
+                        color_tool.GetInstanceColor(shape_sub, 1, c) or
+                        color_tool.GetInstanceColor(shape_sub, 2, c)):
+                    for i in (0, 1, 2):
+                        color_tool.SetInstanceColor(shape_sub, i, c)
+                    colorSet = True
+                    n = c.Name(c.Red(), c.Green(), c.Blue())
+                    #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
-            #     if not colorSet:
-            #         if (color_tool.GetColor(lab, 0, c) or
-            #                 color_tool.GetColor(lab, 1, c) or
-            #                 color_tool.GetColor(lab, 2, c)):
-            #             for i in (0, 1, 2):
-            #                 color_tool.SetInstanceColor(shape, i, c)
+                if not colorSet:
+                    if (color_tool.GetColor(lab, 0, c) or
+                            color_tool.GetColor(lab, 1, c) or
+                            color_tool.GetColor(lab, 2, c)):
+                        for i in (0, 1, 2):
+                            color_tool.SetInstanceColor(shape, i, c)
 
-            #             n = c.Name(c.Red(), c.Green(), c.Blue())
-            #             #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+                        n = c.Name(c.Red(), c.Green(), c.Blue())
+                        #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
             output_shapes.append([shape, _get_label_name(lab), c])
 
