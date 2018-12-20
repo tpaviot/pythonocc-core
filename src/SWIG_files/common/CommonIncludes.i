@@ -42,6 +42,9 @@ def _dumps_object(klass):
     repr_string = "class<'" + klass_name + "'"
     # for TopoDS_Shape, we also look for the base type
     if klass_name == "TopoDS_Shape":
+        if klass.IsNull():
+            repr_string += " : Null>"
+            return repr_string
         st = klass.ShapeType()
         types = {OCC.Core.TopAbs.TopAbs_VERTEX: "Vertex",
                  OCC.Core.TopAbs.TopAbs_SOLID: "Solid",
@@ -57,6 +60,8 @@ def _dumps_object(klass):
     if hasattr(klass, "HashCode"):
         klass_id = hash(klass)
         repr_string += "; id:%s" % klass_id
+    if klass.IsNull():
+        repr_string += "; Null"
     repr_string += ">"
     return repr_string
 %}

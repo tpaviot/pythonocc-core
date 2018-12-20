@@ -35,7 +35,7 @@ from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.Core.GCE2d import GCE2d_MakeSegment
 from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
-from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge
+from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge, TopoDS_Vertex, TopoDS_Shape
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.Core.TColgp import TColgp_Array1OfPnt
@@ -593,6 +593,12 @@ class TestWrapperFeatures(unittest.TestCase):
         for pnt in list_of_points:
             self.assertTrue(isinstance(pnt, gp_Pnt))
 
+    def test_repr_for_null_topods_shapes(self):
+        # create null vertex and shape
+        v = TopoDS_Vertex()
+        s = TopoDS_Shape()
+        self.assertTrue('Null' in v.__repr__())
+        self.assertTrue('Null' in s.__repr__())
 
 def suite():
     test_suite = unittest.TestSuite()
