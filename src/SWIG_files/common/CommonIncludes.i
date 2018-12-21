@@ -60,8 +60,9 @@ def _dumps_object(klass):
     if hasattr(klass, "HashCode"):
         klass_id = hash(klass)
         repr_string += "; id:%s" % klass_id
-    if klass.IsNull():
-        repr_string += "; Null"
+    if hasattr(klass, "IsNull"):
+        if klass.IsNull():
+            repr_string += "; Null"
     repr_string += ">"
     return repr_string
 %}
