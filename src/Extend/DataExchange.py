@@ -33,7 +33,7 @@ from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label, TDF_Tool
 from OCC.Core.TDataStd import TDataStd_Name, TDataStd_Name_GetID
 from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
-from OCC.Core.Quantity import Quantity_Color
+from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 
@@ -43,7 +43,7 @@ from OCC.Extend.TopologyUtils import TopologyExplorer
 ##########################
 # Step import and export #
 ##########################
-def read_step_file(filename, return_as_shapes=False, verbosity=False):
+def read_step_file(filename, return_as_shapes=False, verbosity=True):
     """ read the STEP file and returns a compound
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
@@ -112,7 +112,8 @@ def read_step_file_with_names_colors(filename):
     if not os.path.isfile(filename):
         raise FileNotFoundError("%s not found." % filename)
     # the list:
-    output_shapes = []
+    output_shapes = {}
+
     # create an handle to a document
     doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
 
@@ -127,14 +128,13 @@ def read_step_file_with_names_colors(filename):
     step_reader.SetLayerMode(True)
     step_reader.SetNameMode(True)
     step_reader.SetMatMode(True)
+    step_reader.SetGDTMode(True)
 
     status = step_reader.ReadFile(filename)
     if status == IFSelect_RetDone:
         step_reader.Transfer(doc)
 
-    shape_tool.SetAutoNaming(True)
 
-    
     #lvl = 0
     locs = []
     #cnt = 0
@@ -144,7 +144,7 @@ def read_step_file_with_names_colors(filename):
         TDF_Tool.Entry(lab, entry)
         n = TDataStd_Name()
         lab.FindAttribute(TDataStd_Name_GetID(), n)
-        if n:
+        if n is not None:
             return n.Get().PrintToString()
         return "No Name"
 
@@ -174,6 +174,8 @@ def read_step_file_with_names_colors(filename):
         shape_tool.GetComponents(lab, l_comps)
         #print("Nb components  :", l_comps.Length())
         #print()
+        name = _get_label_name(lab)
+        print("Name :", name)
 
         if shape_tool.IsAssembly(lab):
             l_c = TDF_LabelSequence()
@@ -232,9 +234,7 @@ def read_step_file_with_names_colors(filename):
             #print("    X            :", tran.X())
             #print("    Y            :", tran.Y())
             #print("    Z            :", tran.Z())
-            shape = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
-
-            c = Quantity_Color()
+            c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
             colorSet = False
             if (color_tool.GetInstanceColor(shape, 0, c) or
                     color_tool.GetInstanceColor(shape, 1, c) or
@@ -258,12 +258,15 @@ def read_step_file_with_names_colors(filename):
                 #n = c.Name(c.Red(), c.Green(), c.Blue())
                 #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
+            shape_disp = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
+            if not shape_disp in output_shapes:
+                output_shapes[shape_disp] = [_get_label_name(lab), c]
             for i in range(l_subss.Length()):
                 lab = l_subss.Value(i+1)
-                print("\n########  simpleshape subshape label :", lab)
+                #print("\n########  simpleshape subshape label :", lab)
                 shape_sub = shape_tool.GetShape(lab)
 
-                c = Quantity_Color()
+                c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
                 colorSet = False
                 if (color_tool.GetInstanceColor(shape_sub, 0, c) or
                         color_tool.GetInstanceColor(shape_sub, 1, c) or
@@ -283,8 +286,10 @@ def read_step_file_with_names_colors(filename):
 
                         n = c.Name(c.Red(), c.Green(), c.Blue())
                         #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
-
-            output_shapes.append([shape, _get_label_name(lab), c])
+                shape_to_disp = BRepBuilderAPI_Transform(shape_sub, loc.Transformation()).Shape()
+                # position the subshape to display
+                if not shape_to_disp in output_shapes:
+                    output_shapes[shape_to_disp] = [_get_label_name(lab), c]
 
 
     def _get_shapes():
@@ -296,9 +301,9 @@ def read_step_file_with_names_colors(filename):
         print()
         print("Number of shapes at root :", labels.Length())
         print()
-        root = labels.Value(1)
-
-        _get_sub_shapes(root, None)
+        for i in range(labels.Length()):
+            root_item = labels.Value(i+1)
+            _get_sub_shapes(root_item, None)
     _get_shapes()
     return output_shapes
 
