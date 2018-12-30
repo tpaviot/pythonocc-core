@@ -74,8 +74,6 @@ platform:
     - x64
 
 install:
-    # fetch git submodules, to update the demos/ folder
-    - cmd: git submodule update --init --remote --recursive
     # Set the CONDA_NPY, although it has no impact on the actual build. We need this because of a test within conda-build.
     - cmd: set CONDA_NPY=19
     # Remove cygwin (and therefore the git that comes with it).
