@@ -116,7 +116,8 @@ if(DEFINED OCE_INCLUDE_PATH)
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
   find_package(OCE 0.18 REQUIRED)
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DOCC_VERSION_HEX=0x060901) # oce0.17.2
+  # OCE 0.18 relies on OCC 6.9.1
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DOCC_VERSION_HEX=0x060901)
   if(OCE_FOUND)
     message(STATUS "OpenCASCADE Community Edition (OCE) found.")
     include_directories(${OCE_INCLUDE_DIRS})
