@@ -1428,13 +1428,18 @@ class BOPTools_ShapeSet {
 	:rtype: None
 ") Subtract;
 		void Subtract (const BOPTools_ShapeSet & theSet);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param theSet:
-	:type theSet: BOPTools_ShapeSet &
-	:rtype: None
-") operator -=;
-		void operator -= (const BOPTools_ShapeSet & theSet);
-		%feature("compactdefaultargs") Clear;
+
+        %extend{
+            void __isub_wrapper__(const BOPTools_ShapeSet  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();

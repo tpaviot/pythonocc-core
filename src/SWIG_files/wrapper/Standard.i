@@ -343,7 +343,7 @@ class Standard_GUID {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -363,7 +363,7 @@ class Standard_GUID {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:
@@ -641,7 +641,7 @@ class Standard_Storable {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:

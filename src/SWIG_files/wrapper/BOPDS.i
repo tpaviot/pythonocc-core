@@ -1572,7 +1572,7 @@ class BOPDS_Pave {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:

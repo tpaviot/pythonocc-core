@@ -195,13 +195,18 @@ class TCollection_AsciiString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const Standard_Character other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: Standard_Character
-	:rtype: None
-") operator +=;
-		void operator += (const Standard_Character other);
-		%feature("compactdefaultargs") AssignCat;
+
+        %extend{
+            void __iadd_wrapper__(const Standard_Character other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
 
 	:param other:
@@ -209,13 +214,18 @@ class TCollection_AsciiString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const Standard_Integer other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: int
-	:rtype: None
-") operator +=;
-		void operator += (const Standard_Integer other);
-		%feature("compactdefaultargs") AssignCat;
+
+        %extend{
+            void __iadd_wrapper__(const Standard_Integer other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
 
 	:param other:
@@ -223,13 +233,18 @@ class TCollection_AsciiString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const Standard_Real other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: float
-	:rtype: None
-") operator +=;
-		void operator += (const Standard_Real other);
-		%feature("compactdefaultargs") AssignCat;
+
+        %extend{
+            void __iadd_wrapper__(const Standard_Real other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
 
 	:param other:
@@ -237,13 +252,18 @@ class TCollection_AsciiString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const char * other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: char *
-	:rtype: None
-") operator +=;
-		void operator += (const char * other);
-		%feature("compactdefaultargs") AssignCat;
+
+        %extend{
+            void __iadd_wrapper__(const Standard_CString other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. Example: aString += anotherString
 
 	:param other:
@@ -251,13 +271,18 @@ class TCollection_AsciiString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: None
-") operator +=;
-		void operator += (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") Capitalize;
+
+        %extend{
+            void __iadd_wrapper__(const TCollection_AsciiString  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Capitalize;
 		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '
 
 	:rtype: None
@@ -491,7 +516,7 @@ class TCollection_AsciiString {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -513,7 +538,7 @@ class TCollection_AsciiString {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -535,7 +560,7 @@ class TCollection_AsciiString {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:
@@ -557,7 +582,7 @@ class TCollection_AsciiString {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:
@@ -1130,13 +1155,18 @@ class TCollection_ExtendedString {
 	:rtype: None
 ") AssignCat;
 		void AssignCat (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: None
-") operator +=;
-		void operator += (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") Cat;
+
+        %extend{
+            void __iadd_wrapper__(const TCollection_ExtendedString  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me.
 
 	:param other:
@@ -1228,7 +1258,7 @@ class TCollection_ExtendedString {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1250,7 +1280,7 @@ class TCollection_ExtendedString {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1272,7 +1302,7 @@ class TCollection_ExtendedString {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:
@@ -1294,7 +1324,7 @@ class TCollection_ExtendedString {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:

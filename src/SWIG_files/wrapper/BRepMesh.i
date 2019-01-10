@@ -1308,7 +1308,7 @@ class BRepMesh_OrientedEdge {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1814,7 +1814,7 @@ class BRepMesh_Triangle {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1935,7 +1935,7 @@ class BRepMesh_Vertex {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -2330,7 +2330,7 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:

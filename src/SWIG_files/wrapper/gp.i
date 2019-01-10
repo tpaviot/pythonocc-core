@@ -2922,12 +2922,6 @@ class gp_Dir {
 	:rtype: None
 ") Cross;
 		void Cross (const gp_Dir & Right);
-		%feature("compactdefaultargs") operator ^=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Dir
-	:rtype: None
-") operator ^=;
-		void operator ^= (const gp_Dir & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* Computes the triple vector product. <self> ^ (V1 ^ V2) Raises the exception ConstructionError if V1 and V2 are parallel or <self> and (V1^V2) are parallel because the computed vector can't be normalized to create a direction.
 
@@ -2936,12 +2930,6 @@ class gp_Dir {
 	:rtype: gp_Dir
 ") Crossed;
 		gp_Dir Crossed (const gp_Dir & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Dir
-	:rtype: gp_Dir
-") operator ^;
-		gp_Dir operator ^ (const gp_Dir & Right);
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "	:param V1:
 	:type V1: gp_Dir
@@ -3255,12 +3243,6 @@ class gp_Dir2d {
 	:rtype: float
 ") Crossed;
 		Standard_Real Crossed (const gp_Dir2d & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Dir2d
-	:rtype: float
-") operator ^;
-		Standard_Real operator ^ (const gp_Dir2d & Right);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes the scalar product
 
@@ -4164,13 +4146,18 @@ class gp_GTrsf {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_GTrsf & T);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param T:
-	:type T: gp_GTrsf
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_GTrsf & T);
-		%feature("compactdefaultargs") PreMultiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_GTrsf  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the product of the transformation T and this transformation and assigns the result to this transformation. this = T * this
 
 	:param T:
@@ -4393,13 +4380,18 @@ class gp_GTrsf2d {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_GTrsf2d & T);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param T:
-	:type T: gp_GTrsf2d
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_GTrsf2d & T);
-		%feature("compactdefaultargs") PreMultiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_GTrsf2d  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the product of the transformation T and this transformation, and assigns the result to this transformation: this = T * this
 
 	:param T:
@@ -5950,13 +5942,18 @@ class gp_Mat {
 	:rtype: None
 ") Add;
 		void Add (const gp_Mat & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Mat
-	:rtype: None
-") operator +=;
-		void operator += (const gp_Mat & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_Mat  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this matrix and the matrix Other for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j)
 
 	:param Other:
@@ -5976,13 +5973,18 @@ class gp_Mat {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides all the coefficients of the matrix by Scalar
 
 	:param Scalar:
@@ -6028,13 +6030,18 @@ class gp_Mat {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Mat & Other);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Mat
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Mat & Other);
-		%feature("compactdefaultargs") PreMultiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_Mat  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: None
@@ -6060,13 +6067,18 @@ class gp_Mat {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Power;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	:param N:
 	:type N: int
 	:rtype: None
@@ -6086,13 +6098,18 @@ class gp_Mat {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_Mat & Other);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Mat
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_Mat & Other);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_Mat  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* cOmputes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
 
 	:param Other:
@@ -6295,13 +6312,18 @@ class gp_Mat2d {
 	:rtype: None
 ") Add;
 		void Add (const gp_Mat2d & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Mat2d
-	:rtype: None
-") operator +=;
-		void operator += (const gp_Mat2d & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_Mat2d  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this matrix and the matrix Other.for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j) Note: - operator += assigns the result to this matrix, while - operator + creates a new one.
 
 	:param Other:
@@ -6321,13 +6343,18 @@ class gp_Mat2d {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides all the coefficients of the matrix by a scalar.
 
 	:param Scalar:
@@ -6399,13 +6426,18 @@ class gp_Mat2d {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Power;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	:param N:
 	:type N: int
 	:rtype: None
@@ -6425,13 +6457,18 @@ class gp_Mat2d {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_Mat2d & Other);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Mat2d
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_Mat2d & Other);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_Mat2d  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Computes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
 
 	:param Other:
@@ -8185,13 +8222,18 @@ class gp_Quaternion {
 	:rtype: None
 ") Scale;
 		void Scale (const Standard_Real theScale);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param theScale:
-	:type theScale: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real theScale);
-		%feature("compactdefaultargs") Scaled;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Scaled;
 		%feature("autodoc", "	* Returns scaled quaternion
 
 	:param theScale:
@@ -8283,13 +8325,18 @@ class gp_Quaternion {
 	:rtype: None
 ") Add;
 		void Add (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param theOther:
-	:type theOther: gp_Quaternion
-	:rtype: None
-") operator +=;
-		void operator += (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") Subtract;
+
+        %extend{
+            void __iadd_wrapper__(const gp_Quaternion  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* Subtracts componnets of other quaternion; result is 'rotations mix'
 
 	:param theOther:
@@ -8297,13 +8344,18 @@ class gp_Quaternion {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param theOther:
-	:type theOther: gp_Quaternion
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") Multiply;
+
+        %extend{
+            void __isub_wrapper__(const gp_Quaternion  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Adds rotation by multiplication
 
 	:param theOther:
@@ -8311,13 +8363,18 @@ class gp_Quaternion {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param theOther:
-	:type theOther: gp_Quaternion
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Quaternion & theOther);
-		%feature("compactdefaultargs") Dot;
+
+        %extend{
+            void __imul_wrapper__(const gp_Quaternion  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes inner product / scalar product / Dot
 
 	:param theOther:
@@ -9288,13 +9345,18 @@ class gp_Trsf {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Trsf & T);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Trsf
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Trsf & T);
-		%feature("compactdefaultargs") PreMultiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_Trsf  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the transformation composed with <self> and T. <self> = T * <self>
 
 	:param T:
@@ -9557,13 +9619,18 @@ class gp_Trsf2d {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Trsf2d & T);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Trsf2d
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Trsf2d & T);
-		%feature("compactdefaultargs") PreMultiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_Trsf2d  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the transformation composed from <self> and T. <self> = T * <self>
 
 	:param T:
@@ -9880,13 +9947,18 @@ class gp_Vec {
 	:rtype: None
 ") Add;
 		void Add (const gp_Vec & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Vec
-	:rtype: None
-") operator +=;
-		void operator += (const gp_Vec & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_Vec  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Adds two vectors
 
 	:param Other:
@@ -9908,13 +9980,18 @@ class gp_Vec {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_Vec & Right);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Vec
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_Vec & Right);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_Vec  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts two vectors
 
 	:param Right:
@@ -9936,13 +10013,18 @@ class gp_Vec {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Multiplies a vector by a scalar
 
 	:param Scalar:
@@ -9964,13 +10046,18 @@ class gp_Vec {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides a vector by a scalar
 
 	:param Scalar:
@@ -9992,12 +10079,6 @@ class gp_Vec {
 	:rtype: None
 ") Cross;
 		void Cross (const gp_Vec & Right);
-		%feature("compactdefaultargs") operator ^=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Vec
-	:rtype: None
-") operator ^=;
-		void operator ^= (const gp_Vec & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* computes the cross product between two vectors
 
@@ -10006,12 +10087,6 @@ class gp_Vec {
 	:rtype: gp_Vec
 ") Crossed;
 		gp_Vec Crossed (const gp_Vec & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Vec
-	:rtype: gp_Vec
-") operator ^;
-		gp_Vec operator ^ (const gp_Vec & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
 
@@ -10485,13 +10560,18 @@ class gp_Vec2d {
 	:rtype: None
 ") Add;
 		void Add (const gp_Vec2d & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_Vec2d
-	:rtype: None
-") operator +=;
-		void operator += (const gp_Vec2d & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_Vec2d  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Adds two vectors
 
 	:param Other:
@@ -10513,12 +10593,6 @@ class gp_Vec2d {
 	:rtype: float
 ") Crossed;
 		Standard_Real Crossed (const gp_Vec2d & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Vec2d
-	:rtype: float
-") operator ^;
-		Standard_Real operator ^ (const gp_Vec2d & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
 
@@ -10541,13 +10615,18 @@ class gp_Vec2d {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides a vector by a scalar
 
 	:param Scalar:
@@ -10585,13 +10664,18 @@ class gp_Vec2d {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp.
 
 	:param Scalar:
@@ -10637,13 +10721,18 @@ class gp_Vec2d {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_Vec2d & Right);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_Vec2d
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_Vec2d & Right);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_Vec2d  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts two vectors
 
 	:param Right:
@@ -10916,13 +11005,18 @@ class gp_XY {
 	:rtype: None
 ") Add;
 		void Add (const gp_XY & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_XY
-	:rtype: None
-") operator +=;
-		void operator += (const gp_XY & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_XY  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this number pair and number pair Other new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y()
 
 	:param Other:
@@ -10944,12 +11038,6 @@ class gp_XY {
 	:rtype: float
 ") Crossed;
 		Standard_Real Crossed (const gp_XY & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_XY
-	:rtype: float
-") operator ^;
-		Standard_Real operator ^ (const gp_XY & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
 
@@ -10974,13 +11062,18 @@ class gp_XY {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides <self> by a real.
 
 	:param Scalar:
@@ -11016,13 +11109,18 @@ class gp_XY {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Multiply;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self>.X() = <self>.X() * Other.X(); <self>.Y() = <self>.Y() * Other.Y();
 
 	:param Other:
@@ -11030,13 +11128,18 @@ class gp_XY {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_XY & Other);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_XY
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_XY & Other);
-		%feature("compactdefaultargs") Multiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_XY  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self> = Matrix * <self>
 
 	:param Matrix:
@@ -11044,13 +11147,18 @@ class gp_XY {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Mat2d & Matrix);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Matrix:
-	:type Matrix: gp_Mat2d
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Mat2d & Matrix);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const gp_Mat2d  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar;
 
 	:param Scalar:
@@ -11174,13 +11282,18 @@ class gp_XY {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_XY & Right);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_XY
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_XY & Right);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_XY  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y()
 
 	:param Right:
@@ -11373,13 +11486,18 @@ class gp_XYZ {
 	:rtype: None
 ") Add;
 		void Add (const gp_XYZ & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_XYZ
-	:rtype: None
-") operator +=;
-		void operator += (const gp_XYZ & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const gp_XYZ  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y() new.Z() = <self>.Z() + Other.Z()
 
 	:param Other:
@@ -11401,12 +11519,6 @@ class gp_XYZ {
 	:rtype: None
 ") Cross;
 		void Cross (const gp_XYZ & Right);
-		%feature("compactdefaultargs") operator ^=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_XYZ
-	:rtype: None
-") operator ^=;
-		void operator ^= (const gp_XYZ & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* new.X() = <self>.Y() * Other.Z() - <self>.Z() * Other.Y() new.Y() = <self>.Z() * Other.X() - <self>.X() * Other.Z() new.Z() = <self>.X() * Other.Y() - <self>.Y() * Other.X()
 
@@ -11415,12 +11527,6 @@ class gp_XYZ {
 	:rtype: gp_XYZ
 ") Crossed;
 		gp_XYZ Crossed (const gp_XYZ & Right);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_XYZ
-	:rtype: gp_XYZ
-") operator ^;
-		gp_XYZ operator ^ (const gp_XYZ & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
 
@@ -11465,13 +11571,18 @@ class gp_XYZ {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides <self> by a real.
 
 	:param Scalar:
@@ -11517,13 +11628,18 @@ class gp_XYZ {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Multiply;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self>.X() = <self>.X() * Other.X(); <self>.Y() = <self>.Y() * Other.Y(); <self>.Z() = <self>.Z() * Other.Z();
 
 	:param Other:
@@ -11531,13 +11647,18 @@ class gp_XYZ {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_XYZ & Other);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Other:
-	:type Other: gp_XYZ
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_XYZ & Other);
-		%feature("compactdefaultargs") Multiply;
+
+        %extend{
+            void __imul_wrapper__(const gp_XYZ  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self> = Matrix * <self>
 
 	:param Matrix:
@@ -11545,13 +11666,18 @@ class gp_XYZ {
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_Mat & Matrix);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Matrix:
-	:type Matrix: gp_Mat
-	:rtype: None
-") operator *=;
-		void operator *= (const gp_Mat & Matrix);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const gp_Mat  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar; New.Z() = <self>.Z() * Scalar;
 
 	:param Scalar:
@@ -11619,13 +11745,18 @@ class gp_XYZ {
 	:rtype: None
 ") Subtract;
 		void Subtract (const gp_XYZ & Right);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Right:
-	:type Right: gp_XYZ
-	:rtype: None
-") operator -=;
-		void operator -= (const gp_XYZ & Right);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const gp_XYZ  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y() new.Z() = <self>.Z() - Other.Z()
 
 	:param Right:
