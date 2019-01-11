@@ -1249,7 +1249,7 @@ class Quantity_Color {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:
@@ -1271,7 +1271,7 @@ class Quantity_Color {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1691,7 +1691,7 @@ class Quantity_Date {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -2026,7 +2026,7 @@ class Quantity_Period {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:

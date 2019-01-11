@@ -3320,7 +3320,7 @@ class TDF_Label {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -3340,7 +3340,7 @@ class TDF_Label {
             }
         }
         %pythoncode {
-        def __ne__(self,right):
+        def __ne__(self, right):
             try:
                 return self.__ne_wrapper__(right)
             except:

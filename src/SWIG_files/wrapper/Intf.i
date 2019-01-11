@@ -414,7 +414,7 @@ class Intf_SectionLine {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -594,7 +594,7 @@ class Intf_SectionPoint {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:
@@ -1224,7 +1224,7 @@ class Intf_TangentZone {
             }
         }
         %pythoncode {
-        def __eq__(self,right):
+        def __eq__(self, right):
             try:
                 return self.__eq_wrapper__(right)
             except:

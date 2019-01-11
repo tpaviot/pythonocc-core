@@ -29,7 +29,7 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
-                         gp_Quaternion, gp_QuaternionSLerp)
+                         gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -599,6 +599,65 @@ class TestWrapperFeatures(unittest.TestCase):
         s = TopoDS_Shape()
         self.assertTrue('Null' in v.__repr__())
         self.assertTrue('Null' in s.__repr__())
+
+    def test_in_place_operators(self):
+        # operator +=
+        a = gp_XYZ(1., 2., 3.)
+        self.assertEqual(a.X(), 1.)
+        self.assertEqual(a.Y(), 2.)
+        self.assertEqual(a.Z(), 3.)
+        a += gp_XYZ(4., 5., 6.)
+        self.assertEqual(a.X(), 5.)
+        self.assertEqual(a.Y(), 7.)
+        self.assertEqual(a.Z(), 9.)
+        # operator *= with a scalar
+        b1 = gp_XYZ(2., 4., 5.)
+        self.assertEqual(b1.X(), 2.)
+        self.assertEqual(b1.Y(), 4.)
+        self.assertEqual(b1.Z(), 5.)
+        b1 *= 2
+        self.assertEqual(b1.X(), 4.)
+        self.assertEqual(b1.Y(), 8.)
+        self.assertEqual(b1.Z(), 10.)
+        # operator *= with a gp_XYZ
+        b2 = gp_XYZ(4., 5., 6.)
+        self.assertEqual(b2.X(), 4.)
+        self.assertEqual(b2.Y(), 5.)
+        self.assertEqual(b2.Z(), 6.)
+        b2 *= gp_XYZ(3., 6., 7.)
+        self.assertEqual(b2.X(), 12.)
+        self.assertEqual(b2.Y(), 30.)
+        self.assertEqual(b2.Z(), 42.)
+        # operator *= with a gp_Mat
+        b3 = gp_XYZ(1., 2., 3.)
+        self.assertEqual(b3.X(), 1.)
+        self.assertEqual(b3.Y(), 2.)
+        self.assertEqual(b3.Z(), 3.)
+        m_ident = gp_Mat()
+        m_ident.SetIdentity()
+        b3 *= m_ident
+        self.assertEqual(b3.X(), 1.)
+        self.assertEqual(b3.Y(), 2.)
+        self.assertEqual(b3.Z(), 3.)
+        # operator -=
+        c = gp_XYZ(3., 2., 1.)
+        self.assertEqual(c.X(), 3.)
+        self.assertEqual(c.Y(), 2.)
+        self.assertEqual(c.Z(), 1.)
+        c -= gp_XYZ(1., 0.5, 1.5)
+        self.assertEqual(c.X(), 2.)
+        self.assertEqual(c.Y(), 1.5)
+        self.assertEqual(c.Z(), -0.5)
+        # operator /=
+        d = gp_XYZ(12., 14., 18.)
+        self.assertEqual(d.X(), 12.)
+        self.assertEqual(d.Y(), 14.)
+        self.assertEqual(d.Z(), 18.)
+        d /= 2.
+        self.assertEqual(d.X(), 6.)
+        self.assertEqual(d.Y(), 7.)
+        self.assertEqual(d.Z(), 9.)
+
 
 def suite():
     test_suite = unittest.TestSuite()

@@ -380,13 +380,18 @@ class Geom2d_Transformation : public MMgt_TShared {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Handle_Geom2d_Transformation & Other);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Other:
-	:type Other: Handle_Geom2d_Transformation &
-	:rtype: None
-") operator *=;
-		void operator *= (const Handle_Geom2d_Transformation & Other);
-		%feature("compactdefaultargs") Power;
+
+        %extend{
+            void __imul_wrapper__(const Handle_Geom2d_Transformation  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	* Raised if N < 0 and if the transformation is not inversible
 
 	:param N:
@@ -1160,12 +1165,6 @@ class Geom2d_Direction : public Geom2d_Vector {
 	:rtype: float
 ") Crossed;
 		Standard_Real Crossed (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Other:
-	:type Other: Handle_Geom2d_Vector &
-	:rtype: float
-") operator ^;
-		Standard_Real operator ^ (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	* Applies the transformation T to this unit vector, then normalizes it.
 
@@ -1785,13 +1784,18 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	:rtype: None
 ") Add;
 		void Add (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Other:
-	:type Other: Handle_Geom2d_Vector &
-	:rtype: None
-") operator +=;
-		void operator += (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const Handle_Geom2d_Vector  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Adds the vector Other to <self>.
 
 	:param Other:
@@ -1813,12 +1817,6 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	:rtype: float
 ") Crossed;
 		Standard_Real Crossed (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") operator ^;
-		%feature("autodoc", "	:param Other:
-	:type Other: Handle_Geom2d_Vector &
-	:rtype: float
-") operator ^;
-		Standard_Real operator ^ (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	* Divides <self> by a scalar.
 
@@ -1827,13 +1825,18 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides <self> by a scalar. A new vector is returned.
 
 	:param Scalar:
@@ -1863,13 +1866,18 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Scalar);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Scalar:
-	:type Scalar: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Scalar);
-		%feature("compactdefaultargs") Normalize;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "	* Normalizes <self>. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
 
 	:rtype: None
@@ -1889,13 +1897,18 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	:rtype: None
 ") Subtract;
 		void Subtract (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Other:
-	:type Other: Handle_Geom2d_Vector &
-	:rtype: None
-") operator -=;
-		void operator -= (const Handle_Geom2d_Vector & Other);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const Handle_Geom2d_Vector  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts the vector Other to <self>. A new vector is returned.
 
 	:param Other:

@@ -2288,13 +2288,18 @@ class math_IntegerVector {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Integer theRight);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: int
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Integer theRight);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Integer other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the product of an IntegerVector by an integer value.
 
 	:param theRight:
@@ -2324,13 +2329,18 @@ class math_IntegerVector {
 	:rtype: None
 ") Add;
 		void Add (const math_IntegerVector & theRight);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: math_IntegerVector &
-	:rtype: None
-") operator +=;
-		void operator += (const math_IntegerVector & theRight);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const math_IntegerVector  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the IntegerVector 'theRight' to an IntegerVector. An exception is raised if the IntegerVectors have not the same length. An exception is raised if the lengths are not equal.
 
 	:param theRight:
@@ -2418,13 +2428,18 @@ class math_IntegerVector {
 	:rtype: None
 ") Subtract;
 		void Subtract (const math_IntegerVector & theRight);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: math_IntegerVector &
-	:rtype: None
-") operator -=;
-		void operator -= (const math_IntegerVector & theRight);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const math_IntegerVector  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the IntegerVectors have not the same length.
 
 	:param theRight:
@@ -2793,13 +2808,18 @@ class math_Matrix {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real Right);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Right:
-	:type Right: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real Right);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* multiplies all the elements of a matrix by the value <Right>.
 
 	:param Right:
@@ -2829,13 +2849,18 @@ class math_Matrix {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real Right);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param Right:
-	:type Right: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real Right);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
 
 	:param Right:
@@ -2857,13 +2882,18 @@ class math_Matrix {
 	:rtype: None
 ") Add;
 		void Add (const math_Matrix & Right);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param Right:
-	:type Right: math_Matrix &
-	:rtype: None
-") operator +=;
-		void operator += (const math_Matrix & Right);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const math_Matrix  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
 
 	:param Right:
@@ -2895,13 +2925,18 @@ class math_Matrix {
 	:rtype: None
 ") Subtract;
 		void Subtract (const math_Matrix & Right);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param Right:
-	:type Right: math_Matrix &
-	:rtype: None
-") operator -=;
-		void operator -= (const math_Matrix & Right);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const math_Matrix  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Returns the result of the subtraction of <Right> from <self>. An exception is raised if the dimensions are different.
 
 	:param Right:
@@ -3087,13 +3122,18 @@ class math_Matrix {
 	:rtype: None
 ") Multiply;
 		void Multiply (const math_Matrix & Right);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param Right:
-	:type Right: math_Matrix &
-	:rtype: None
-") operator *=;
-		void operator *= (const math_Matrix & Right);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const math_Matrix  other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Returns the product of 2 matrices. An exception is raised if the dimensions are different.
 
 	:param Right:
@@ -4199,13 +4239,18 @@ class math_Vector {
 	:rtype: None
 ") Multiply;
 		void Multiply (const Standard_Real theRight);
-		%feature("compactdefaultargs") operator *=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: float
-	:rtype: None
-") operator *=;
-		void operator *= (const Standard_Real theRight);
-		%feature("compactdefaultargs") Multiplied;
+
+        %extend{
+            void __imul_wrapper__(const Standard_Real other) {
+            *self *= other;
+            }
+        }
+        %pythoncode {
+        def __imul__(self, right):
+            self.__imul_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the product of a vector and a real value.
 
 	:param theRight:
@@ -4235,13 +4280,18 @@ class math_Vector {
 	:rtype: None
 ") Divide;
 		void Divide (const Standard_Real theRight);
-		%feature("compactdefaultargs") operator /=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: float
-	:rtype: None
-") operator /=;
-		void operator /= (const Standard_Real theRight);
-		%feature("compactdefaultargs") Divided;
+
+        %extend{
+            void __itruediv_wrapper__(const Standard_Real other) {
+            *self /= other;
+            }
+        }
+        %pythoncode {
+        def __itruediv__(self, right):
+            self.__itruediv_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides a vector by the value 'theRight'. An exception is raised if 'theRight' = 0.
 
 	:param theRight:
@@ -4263,13 +4313,18 @@ class math_Vector {
 	:rtype: None
 ") Add;
 		void Add (const math_Vector & theRight);
-		%feature("compactdefaultargs") operator +=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: math_Vector &
-	:rtype: None
-") operator +=;
-		void operator += (const math_Vector & theRight);
-		%feature("compactdefaultargs") Added;
+
+        %extend{
+            void __iadd_wrapper__(const math_Vector  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the vector theRight to a vector. An exception is raised if the vectors have not the same length. An exception is raised if the lengths are not equal.
 
 	:param theRight:
@@ -4411,13 +4466,18 @@ class math_Vector {
 	:rtype: None
 ") Subtract;
 		void Subtract (const math_Vector & theRight);
-		%feature("compactdefaultargs") operator -=;
-		%feature("autodoc", "	:param theRight:
-	:type theRight: math_Vector &
-	:rtype: None
-") operator -=;
-		void operator -= (const math_Vector & theRight);
-		%feature("compactdefaultargs") Subtracted;
+
+        %extend{
+            void __isub_wrapper__(const math_Vector  other) {
+            *self -= other;
+            }
+        }
+        %pythoncode {
+        def __isub__(self, right):
+            self.__isub_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
 
 	:param theRight:
