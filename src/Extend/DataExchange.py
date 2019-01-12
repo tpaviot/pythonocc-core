@@ -446,7 +446,11 @@ if __name__ == "__main__":
     read_stl_file("s_stl_precise_ascii.stl")
     # iges test
     write_iges_file(sphere_shape, "s_iges.igs")
+    # write IGES with special character
+    write_iges_file(sphere_shape, "sphère.igs")
+    read_iges_file("sphère.igs")
     read_iges_file("s_iges.igs")
     read_iges_file("s_iges.igs", return_as_shapes=True)
     # test step with colors
     read_step_file_with_names_colors("s_214.stp")
+
