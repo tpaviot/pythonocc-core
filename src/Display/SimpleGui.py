@@ -74,7 +74,7 @@ def init_display(backend_str=None, size=(1024, 768)):
     # wxPython based simple GUI
     if used_backend == 'wx':
         import wx
-        from wxDisplay import wxViewer3d
+        from OCC.Display.wxDisplay import wxViewer3d
 
         class AppFrame(wx.Frame):
 
