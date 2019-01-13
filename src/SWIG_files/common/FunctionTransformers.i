@@ -129,7 +129,9 @@ FairCurve_Analysis & function transformation
 
 %typemap(out) TopoDS_Shape {
     PyObject *resultobj = 0;
-    if(!$1.IsNull()){
+    if($1.IsNull()){
+        Py_RETURN_NONE;
+    } else {
         TopAbs_ShapeEnum shape_type = $1.ShapeType();
         switch (shape_type)
         {
