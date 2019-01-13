@@ -28,7 +28,7 @@ from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
-from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
+from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
@@ -52,6 +52,8 @@ from OCC.Core.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
                                 BRepCheck_EmptyWire)
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
 from OCC.Core.BRep import BRep_Tool_Curve
+from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
+from OCC.Core.HLRAlgo import HLRAlgo_Projector
 
 @contextmanager
 def assert_warns_deprecated():
@@ -658,6 +660,20 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(d.Y(), 7.)
         self.assertEqual(d.Z(), 9.)
 
+    def test_shape_conversion_as_py_none(self):
+        # see issue #600 and PR #614
+        # a null topods_shape should be returned as Py_None by the TopoDS transformer
+        # the following test case returns a null topods_shape
+        box = BRepPrimAPI_MakeBox(1., 1., 1.).Shape()
+        hlr = HLRBRep_Algo()
+        hlr.Add(box)
+        projector = HLRAlgo_Projector(gp_Ax2(gp_Pnt(), gp_Dir(-1.75, 1.1, 5)))
+        hlr.Projector(projector)
+        hlr.Update()
+        hlr.Hide()
+        hlr_shapes = HLRBRep_HLRToShape(hlr)
+        visible_smooth_edges = hlr_shapes.Rg1LineVCompound()
+        self.assertTrue(visible_smooth_edges is None)
 
 def suite():
     test_suite = unittest.TestSuite()
