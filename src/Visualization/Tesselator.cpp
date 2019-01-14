@@ -52,6 +52,10 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
                        Standard_Real                    aScaleV,
                        Standard_Real                    aRotationAngle) :
   //set local variables
+  myShape(aShape),
+  myTxtMapType(aTxtMapType),
+  myAutoScaleSizeOnU(anAutoScaleSizeOnU),
+  myAutoScaleSizeOnV(anAutoScaleSizeOnV),
   myDeviation(aDeviation),
   myUOrigin(aUOrigin),
   myVOrigin(aVOrigin),
@@ -59,10 +63,6 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
   myVRepeat(aVRepeat),
   myScaleU(aScaleU),
   myScaleV(aScaleV),
-  myAutoScaleSizeOnU(anAutoScaleSizeOnU),
-  myAutoScaleSizeOnV(anAutoScaleSizeOnV),
-  myTxtMapType(aTxtMapType),
-  myShape(aShape),
   myRotationAngle(aRotationAngle)
 {
   //prepare bbox tex coords
@@ -361,7 +361,7 @@ void Tesselator::ComputeDefaultDeviation()
     Standard_Real yDim = std::abs((long)aYmax - (long)aYmin);
     Standard_Real zDim = std::abs((long)aZmax - (long)aZmin);
 
-    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
+    Standard_Real adeviation = std::max(xDim, std::max(yDim, zDim)) * 2e-2 ;
     myDeviation = adeviation;
 }
 
@@ -446,7 +446,7 @@ std::string formatFloatNumber(float f)
 {
   // returns string representation of the float number f.
   // set epsilon to 1e-3
-  float epsilon = 1e-3;
+  float epsilon = 1e-3f;
   std::stringstream formatted_float;
   if (std::abs(f) < epsilon) {
     f = 0.;
@@ -524,28 +524,28 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
       // First Vertex
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]]) << " ";
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+1]) <<" ";
-      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+2]) <<"\n";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+2]) <<" ";
       // Second vertex
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]]) << " ";
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+1]) << " ";
-      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+2]) << "\n";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+2]) << " ";
       // Third vertex
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]]) << " ";
       str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+1]) << " ";
-      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+2]) << "\n";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+2]) << " ";
       // NORMALS
       // First normal
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]]) << " ";
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+1]) << " ";
-      str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+2]) << "\n";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+2]) << " ";
       // Second normal
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]]) << " ";
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+1]) << " ";
-      str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+2]) << "\n";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+2]) << " ";
       // Third normal
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]]) << " ";
       str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+1]) << " ";
-      str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+2]) << "\n";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+2]) << " ";
   }
   str_ifs << "<TriangleSet solid='false'>\n";
   // write points coordinates
@@ -577,11 +577,11 @@ void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int dif
     X3Dfile << "<Head>";
     X3Dfile << "<meta name='generator' content='pythonOCC, http://www.pythonocc.org'/>";
     X3Dfile << "</Head>";
-    X3Dfile << "<Scene><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.65' ";
-    X3Dfile << "shininess='0.9' specularColor='1 1 1'></Material></Appearance>";
+    X3Dfile << "<Scene><Transform scale='1 1 1'><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.7' ";
+    X3Dfile << "specularColor='0.2 0.2 0.2'></Material></Appearance>";
     // write tesselation
     X3Dfile << ExportShapeToX3DIndexedFaceSet();
-    X3Dfile << "</Shape></Scene></X3D>\n";
+    X3Dfile << "</Shape></Transform></Scene></X3D>\n";
     X3Dfile.close();
 
 }

@@ -263,23 +263,19 @@ class X3DExporter(object):
 <Scene>
         """ % (OCC_VERSION, OCC_VERSION, OCC_VERSION)
         for triangle_set in self._triangle_sets:
-            x3dfile_str += '<Shape DEF="shape%i" onclick="' % shape_id
+            x3dfile_str += "<Switch whichChoice='0' id='swBRP'><Transform scale='1 1 1'><Shape DEF='shape%i' onclick='" % shape_id
             x3dfile_str += "select(this);"
-            x3dfile_str += '"><Appearance>\n'
+            x3dfile_str += "'><Appearance>\n"
             #
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
                 x3dfile_str += "<Material id='color' diffuseColor="
-                x3dfile_str += "'%g %g %g'" % (self._color[0],
-                                        self._color[1],
-                                        self._color[2])
+                x3dfile_str += "'%g %g %g'" % (self._color[0], self._color[1], self._color[2])
                 x3dfile_str += " shininess="
                 x3dfile_str += "'%g'" % self._shininess
                 x3dfile_str += " specularColor="
-                x3dfile_str += "'%g %g %g'" % (self._specular_color[0],
-                                        self._specular_color[1],
-                                        self._specular_color[2])
+                x3dfile_str += "'%g %g %g'" % (self._specular_color[0], self._specular_color[1], self._specular_color[2])
                 x3dfile_str += " transparency='%g'>\n" % self._transparency
                 x3dfile_str += "</Material>\n"
             else:  # set shaders
@@ -292,20 +288,20 @@ class X3DExporter(object):
             x3dfile_str += '</Appearance>\n'
             # export triangles
             x3dfile_str += triangle_set
-            x3dfile_str += "</Shape>\n"
+            x3dfile_str += "</Shape></Transform></Switch>\n"
         # and now, process edges
         if self._export_edges:
             edge_id = 0
             # below '0' means show all
             # -1 means doesn't show line
             # the "Switch" node selects the group to be displayed
-            x3dfile_str += "<Switch whichChoice='0'>\n"
+            x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
             x3dfile_str += "\t<Group>\n"
             for line_set in self._line_sets:
-                x3dfile_str += '\t\t<Shape DEF="edg%i">\n' % edge_id
-                x3dfile_str += '\t\t\t<Appearance><Material emissiveColor="0 0 0"/></Appearance>\n\t\t'  # empty appearance, but the x3d validator complains if nothing set
+                x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%i'>\n" % edge_id
+                x3dfile_str += "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"  # empty appearance, but the x3d validator complains if nothing set
                 x3dfile_str += line_set
-                x3dfile_str += "\t\t</Shape>\n"
+                x3dfile_str += "\t\t</Shape></Transform>\n"
                 edge_id += 1
             x3dfile_str += "\t</Group>\n"
             x3dfile_str += "</Switch>\n"
@@ -332,8 +328,8 @@ class X3DomRenderer(object):
                      vertex_shader=None,
                      fragment_shader=None,
                      export_edges=False,
-                     color=(0.65, 0.65, 0.65),
-                     specular_color=(1, 1, 1),
+                     color=(0.65, 0.65, 0.7),
+                     specular_color=(0.2, 0.2, 0.2),
                      shininess=0.9,
                      transparency=0.,
                      line_color=(0, 0., 0.),
