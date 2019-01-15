@@ -413,8 +413,8 @@ class ThreejsRenderer(object):
     def DisplayShape(self,
                      shape,
                      export_edges=False,
-                     color=(0.65, 0.65, 0.65),
-                     specular_color=(1, 1, 1),
+                     color=(0.65, 0.65, 0.7),
+                     specular_color=(0.2, 0.2, 0.2),
                      shininess=0.9,
                      transparency=0.,
                      line_color=(0, 0., 0.),
@@ -431,7 +431,7 @@ class ThreejsRenderer(object):
                 edge_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[edge_hash] = [color, line_width]
-            return True
+            return self._3js_shapes, self._3js_edges
         elif is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
@@ -442,7 +442,7 @@ class ThreejsRenderer(object):
                 wire_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width]
-            return True
+            return self._3js_shapes, self._3js_edges
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
         # tesselate
