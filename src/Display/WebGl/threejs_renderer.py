@@ -486,6 +486,8 @@ class ThreejsRenderer(object):
                     edge_file.write(str_to_write)
                 # store this edge hash, with black color
                 self._3js_edges[hash] = [(0, 0, 0), line_width]
+        return self._3js_shapes, self._3js_edges
+
 
     def generate_html_file(self):
         """ Generate the HTML file to be rendered by the web browser
