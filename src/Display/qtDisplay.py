@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2019 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -50,6 +50,10 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         # Strong focus
         self.setFocusPolicy(QtCore.Qt.WheelFocus)
 
+        # required for overpainting the widget
+        self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
+        self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
+
         self.setAutoFillBackground(False)
 
     def GetHandle(self):
@@ -57,7 +61,6 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         It must be an integer
         '''
         win_id = self.winId()  # this returns either an int or voitptr
-        print(dir(self))
         if "%s" % type(win_id) == "<type 'PyCObject'>":  # PySide
             ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
@@ -173,7 +176,7 @@ class qtViewer3d(qtBaseViewer):
             self._display.Repaint()
             self._display.Repaint()
             painter = QtGui.QPainter(self)
-            painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
+            painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 2))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
 
