@@ -20,18 +20,30 @@ from __future__ import print_function, absolute_import, division
 import os
 import sys
 import tempfile
+import uuid
 
 from OCC.Core.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
 
-from .simple_server import start_server
-
+from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Display.WebGl.simple_server import start_server
 
 def spinning_cursor():
     while True:
         for cursor in '|/-\\':
             yield cursor
 
+X3DFILE_HEADER = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
+<head>
+    <meta name="generator" content="pythonocc-%s X3D exporter (www.pythonocc.org)"/>
+    <meta name="creator" content="pythonocc-%s generator"/>
+    <meta name="identifier" content="http://www.pythonocc.org"/>
+    <meta name="description" content="pythonocc-%s x3dom based shape rendering"/>
+</head>
+<Scene>
+""" % (OCC_VERSION, OCC_VERSION, OCC_VERSION)
 
 HEADER = """
 <head>
@@ -158,6 +170,32 @@ def ExportEdgeToILS(edge_point_set):
     return str_x3d_to_return
 
 
+def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id=0):
+    """ takes an str_lineset, coming for instance from export_curve_to_ils,
+    and export to an X3D string"""
+    if header:
+        x3dfile_str = X3DFILE_HEADER
+    else:
+        x3dfile_str = ""
+    x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
+    x3dfile_str += "\t<Group>\n"
+
+    ils_id = 0
+    for str_lineset in str_linesets:
+        x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%s'>\n" % ils_id
+        x3dfile_str += "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"  # empty appearance, but the x3d validator complains if nothing set
+        x3dfile_str += str_lineset
+        x3dfile_str += "\t\t</Shape></Transform>\n"
+        ils_id += 1
+
+    x3dfile_str += "\t</Group>\n"
+    x3dfile_str += "</Switch>\n"
+    if footer:
+        x3dfile_str += '</Scene>\n</X3D>\n'
+
+    return x3dfile_str
+
+
 class HTMLHeader(object):
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
         self._bg_gradient_color1 = bg_gradient_color1
@@ -192,7 +230,7 @@ class HTMLBody(object):
             # trans, ori = self._x3d_shapes_dict[shp]
             # vx, vy, vz = trans
             # ori_vx, ori_vy, ori_vz, angle = ori
-            x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="shp%s.x3d"></Inline>\n' % shp_uid
+            x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n' % shp_uid
             cur_shp += 1
         x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
         body_str = body_str.replace('@X3DSCENE@', x3dcontent)
@@ -250,18 +288,7 @@ class X3DExporter(object):
                 self._line_sets.append(ils)
 
     def to_x3dfile_string(self, shape_id):
-        x3dfile_str = """<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
-<head>
-    <meta name="generator" content="pythonocc-%s X3D exporter (www.pythonocc.org)"/>
-    <meta name="title" content="shape-export.x3d"/>
-    <meta name="creator" content="pythonocc-%s generator"/>
-    <meta name="identifier" content="http://www.pythonocc.org"/>
-    <meta name="description" content="pythonocc-%s x3dom based shape rendering"/>
-</head>
-<Scene>
-        """ % (OCC_VERSION, OCC_VERSION, OCC_VERSION)
+        x3dfile_str = X3DFILE_HEADER
         for triangle_set in self._triangle_sets:
             x3dfile_str += "<Switch whichChoice='0' id='swBRP'><Transform scale='1 1 1'><Shape DEF='shape%i' onclick='" % shape_id
             x3dfile_str += "select(this);"
@@ -291,20 +318,11 @@ class X3DExporter(object):
             x3dfile_str += "</Shape></Transform></Switch>\n"
         # and now, process edges
         if self._export_edges:
-            edge_id = 0
             # below '0' means show all
             # -1 means doesn't show line
             # the "Switch" node selects the group to be displayed
-            x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
-            x3dfile_str += "\t<Group>\n"
-            for line_set in self._line_sets:
-                x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%i'>\n" % edge_id
-                x3dfile_str += "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"  # empty appearance, but the x3d validator complains if nothing set
-                x3dfile_str += line_set
-                x3dfile_str += "\t\t</Shape></Transform>\n"
-                edge_id += 1
-            x3dfile_str += "\t</Group>\n"
-            x3dfile_str += "</Switch>\n"
+
+            x3dfile_str += indexed_lineset_to_x3d_string(self._line_sets, header=False, footer=False)
         x3dfile_str += '</Scene>\n</X3D>\n'
         return x3dfile_str
 
@@ -320,7 +338,8 @@ class X3DomRenderer(object):
         else:
             self._path = path
         self._html_filename = os.path.join(self._path, 'index.html')
-        self._x3d_shapes = []
+        self._x3d_shapes = {}
+        self._x3d_edges = {}
         print("## x3dom webgl renderer")
 
     def DisplayShape(self,
@@ -337,13 +356,39 @@ class X3DomRenderer(object):
                      mesh_quality=1.):
         """ Adds a shape to the rendering buffer. This class computes the x3d file
         """
-        shape_hash = hash(shape)
+        # if the shape is an edge or a wire, use the related functions
+        if is_edge(shape):
+            print("X3D exporter, discretize an edge")
+            pnts = discretize_edge(shape)
+            edge_hash = "edg%s" % uuid.uuid4().hex
+            line_set = ExportEdgeToILS(pnts)
+            x3dfile_content = indexed_lineset_to_x3d_string([line_set], ils_id=edge_hash)
+            edge_full_path = os.path.join(self._path, edge_hash + '.x3d')
+            with open(edge_full_path, "w") as edge_file:
+                edge_file.write(x3dfile_content)
+            # store this edge hash
+            self._x3d_edges[edge_hash] = [color, line_width]
+            return self._x3d_shapes, self._x3d_edges
+        elif is_wire(shape):
+            print("X3D exporter, discretize a wire")
+            pnts = discretize_wire(shape)
+            wire_hash = "wir%s" % uuid.uuid4().hex
+            line_set = ExportEdgeToILS(pnts)
+            x3dfile_content = indexed_lineset_to_x3d_string([line_set], ils_id=wire_hash)
+            wire_full_path = os.path.join(self._path, wire_hash + '.x3d')
+            with open(wire_full_path, "w") as wire_file:
+                wire_file.write(x3dfile_content)
+            # store this edge hash
+            self._x3d_edges[wire_hash] = [color, line_width]
+            return self._x3d_shapes, self._x3d_edges
+        shape_uuid = uuid.uuid4().hex
+        shape_hash = "shp%s" % shape_uuid
         x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader,
                                    export_edges, color,
                                    specular_color, shininess, transparency,
                                    line_color, line_width, mesh_quality)
         x3d_exporter.compute()
-        x3d_filename = os.path.join(self._path, "shp%s.x3d" % shape_hash)
+        x3d_filename = os.path.join(self._path, "%s.x3d" % shape_hash)
         # the x3d filename is computed from the shape hash
         shape_id = len(self._x3d_shapes)
         x3d_exporter.write_to_file(x3d_filename, shape_id)
@@ -355,7 +400,8 @@ class X3DomRenderer(object):
         # ori = (v.X(), v.Y(), v.Z(), angle)  # angles
         # fill the shape dictionnary with shape hash, translation and orientation
         #  self._x3d_shapes[shape_hash] = [trans, ori]
-        self._x3d_shapes.append(shape_hash)
+        self._x3d_shapes[shape_hash] = [export_edges, color, specular_color, shininess, transparency, line_color, line_width]
+        return self._x3d_shapes, self._x3d_edges
 
     def render(self, server_port=8080, open_webbrowser=False):
         """ Call the render() method to display the X3D scene.
@@ -374,7 +420,9 @@ class X3DomRenderer(object):
             # header
             fp.write(HTMLHeader().get_str())
             # body
-            fp.write(HTMLBody(self._x3d_shapes).get_str())
+            # merge shapes and edges keys
+            all_shapes = list(self._x3d_shapes) + list(self._x3d_edges)
+            fp.write(HTMLBody(all_shapes).get_str())
             fp.write("</html>\n")
 
 

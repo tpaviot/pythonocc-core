@@ -39,7 +39,8 @@ $ conda install -c conda-forge pythreejs"""
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.Visualization import Tesselator
-from OCC.Extend.TopologyUtils import TopologyExplorer
+
+from OCC.Extend.TopologyUtils import TopologyExplorer, is_edge, is_wire, discretize_edge, discretize_wire
 
 # smesh
 try:
@@ -136,9 +137,9 @@ class JupyterRenderer(object):
 
         self.html = HTML("Selected shape : None")
         # the default camera object
-        self._camera = None
         self._camera_target = [0., 0., 0.]  # the point to look at
         self._camera_position = [0, 0., 100.]  # the camera initial position
+        self._camera = None
 
         # a dictionnary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
@@ -363,9 +364,11 @@ class JupyterRenderer(object):
         transparency: optional, False by default (opaque).
         opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
                  0. is fully opaque, 1. is fully transparent.
-        detail_level: "default" by default. The value should be either "compound", "shape", "vertex".
+        topo_level: "default" by default. The value should be either "compound", "shape", "vertex".
         update: optional, False by default. If True, render all the shapes.
         """
+        if is_wire(shp) or is_edge(shp):
+            self.AddCurveToScene(shp, shape_color)
         if topo_level != "default":
             t = TopologyExplorer(shp)
             map_type_and_methods = {"Solid": t.solids, "Face": t.faces, "Shell": t.shells,
@@ -376,9 +379,28 @@ class JupyterRenderer(object):
         else:
             self.AddShapeToScene(shp, shape_color, render_edges, edge_color, compute_uv_coords, quality,
                                  transparency, opacity)
-
         if update:
             self.Display()
+
+
+    def AddCurveToScene(self, shp, color):
+        """ shp is either a TopoDS_Wire or a TopodS_Edge.
+        """
+        if is_edge(shp):
+            pnts = discretize_edge(shp)
+        elif is_wire(shp):
+            pnts = discretize_wire(shp)
+        np_edge_vertices = np.array(pnts, dtype=np.float32)
+        np_edge_indices = np.arange(np_edge_vertices.shape[0], dtype=np.uint32)
+        edge_geometry = BufferGeometry(attributes={
+            'position': BufferAttribute(np_edge_vertices),
+            'index'   : BufferAttribute(np_edge_indices)
+        })
+        edge_material = LineBasicMaterial(color=color, linewidth=2, fog=True)
+        edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
+
+        # Add geometries to pickable or non pickable objects
+        self._displayed_pickable_objects.add(edge_lines)
 
 
     def AddShapeToScene(self,

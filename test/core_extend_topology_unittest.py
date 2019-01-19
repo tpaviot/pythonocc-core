@@ -40,13 +40,16 @@ class TestExtendTopology(unittest.TestCase):
         tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
         topo = TopologyExplorer(tor)
         for edge in topo.edges():
-            discretize_edge(edge)
+            pnts = discretize_edge(edge)
+            self.assertTrue(pnts)
+
 
     def test_discretize_wire(self):
         tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
         topo = TopologyExplorer(tor)
         for wire in topo.wires():
-            discretize_wire(wire)
+            pnts = discretize_wire(wire)
+            self.assertTrue(pnts)
 
 
     def test_loop_faces(self):
