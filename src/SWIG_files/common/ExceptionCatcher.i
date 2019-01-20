@@ -36,14 +36,16 @@ Exception handling
     } 
     catch(Standard_Failure)
     {
-	    Handle(Standard_Failure) error = Standard_Failure::Caught ();
+	    Handle(Standard_Failure) error = Standard_Failure::Caught();
 	    char *error_name = (char*) error->DynamicType()->Name();
 	    char *error_message = (char*) error->GetMessageString();
 	    std::string message;
 	    if (error_name) message += std::string(error_name) + "\n";
 	    if (error_message) message += std::string(error_message);
+	    // log SWIG specific debug information
+	    message += "\nwrapper details:\n  * symname: $symname\n  * wrapname: $wrapname\n  * fulldecl: $fulldecl";
 	    // raise the python exception
 	    PyErr_SetString(PyExc_RuntimeError, message.c_str());
-	    return NULL;
+	    SWIG_fail;
     }
 }
