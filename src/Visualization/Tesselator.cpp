@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
-#include <StdPrs_ToolShadedShape.hxx>
+#include <StdPrs_ToolTriangulatedShape.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <TopoDS.hxx>
 #include <Poly_Connect.hxx>
@@ -146,7 +146,7 @@ void Tesselator::SetDeviation(Standard_Real aDeviation)
 void Tesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer       ExpFace;
-    StdPrs_ToolShadedShape   SST;
+    StdPrs_ToolTriangulatedShape   SST;
 
     gp_Dir d;
     gp_Pnt p;
@@ -239,7 +239,7 @@ void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality, b
   Standard_Real dVmax;
 
   TopExp_Explorer       ExpFace;
-  StdPrs_ToolShadedShape   SST;
+  StdPrs_ToolTriangulatedShape   SST;
 
   gp_Dir d;
   gp_Pnt p;
