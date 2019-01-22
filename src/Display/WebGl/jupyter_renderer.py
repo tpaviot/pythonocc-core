@@ -259,12 +259,13 @@ class JupyterRenderer(object):
         if not HAVE_SMESH:
             print("SMESH not installed, DisplayMesh method unavailable.")
             return
-        assert isinstance(mesh, SMESH_Mesh)
+        if not isinstance(mesh, SMESH_Mesh):
+            raise AssertionError("You mush provide an SMESH_Mesh instance")
         mesh_ds = mesh.GetMeshDS()  # the mesh data source
         face_iter = mesh_ds.facesIterator()
         # vertices positions are stored to a liste
         vertices_position = []
-        for i in range(mesh_ds.NbFaces()-1):
+        for _ in range(mesh_ds.NbFaces()-1):
             face = face_iter.next()
             #print('Face %i, type %i' % (i, face.GetType()))
             #print(dir(face))
@@ -425,8 +426,10 @@ class JupyterRenderer(object):
         number_of_vertices = len(vertices_position)
 
         # number of vertices should be a multiple of 3
-        assert number_of_vertices % 3 == 0
-        assert number_of_triangles * 9 == number_of_vertices
+        if number_of_vertices % 3 != 0:
+            raise AssertionError("Wrong number of vertices")
+        if number_of_triangles * 9 != number_of_vertices:
+            raise AssertionError("Wrong number of triangles")
 
         # then we build the vertex and faces collections as numpy ndarrays
         np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
@@ -442,7 +445,8 @@ class JupyterRenderer(object):
             # as a list of floats
             np_normals = np.array(tess.GetNormalsAsTuple(), dtype='float32').reshape(-1, 3)
             # quick check
-            assert np_normals.shape == np_vertices.shape
+            if np_normals.shape != np_vertices.shape:
+                raise AssertionError("Wrong number of normals/shapes")
             buffer_geometry_properties['normal'] = BufferAttribute(np_normals)
 
         # build a BufferGeometry instance
