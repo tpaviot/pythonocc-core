@@ -66,7 +66,8 @@ if sys.platform == "win32":
         casroot_path = os.environ["CASROOT"]
         # raise an error, force the user to correctly set the variable
         err_msg = "Please set the CASROOT env variable (%s is not ok)" % casroot_path
-        assert os.path.isdir(casroot_path), err_msg
+        if not os.path.isdir(casroot_path):
+        	raise AssertionError(err_msg)
     else:  # on miniconda or anaconda or whatever conda
         occ_package_path = os.path.dirname(OCC.__file__)
         casroot_path = os.path.join(occ_package_path, '..', '..', '..',
@@ -665,11 +666,13 @@ class OffscreenRenderer(Viewer3d):
                                                      timestamp.replace(" ", "-"))
             if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
                 path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
-                assert os.path.isdir(path)
+                if not os.path.isdir(path):
+                	raise IOError("%s is not a valid path" % path)
             else:
                 path = os.getcwd()
             image_full_name = os.path.join(path, image_filename)
             self.View.Dump(image_full_name)
-            assert os.path.isfile(image_full_name)
+            if not os.path.isfile(image_full_name):
+            	raise IOError("OffscreenRenderer failed to render image to file")
             print("OffscreenRenderer content dumped to %s" % image_full_name)
         return r
