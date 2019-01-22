@@ -39,9 +39,9 @@ static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()
 // Function : WClass
 // Purpose  :
 //=========================================================
-static const Handle(MMgt_TShared)& WClass()
+static const Handle(Standard_Transient)& WClass()
 {
-  static Handle(MMgt_TShared) aWindowClass;
+  static Handle(Standard_Transient) aWindowClass;
 #ifdef WNT
   if (aWindowClass.IsNull())
   {
@@ -70,7 +70,7 @@ Standard_Boolean Display3d::InitOffscreen(int size_x, int size_y)
   }
   printf("Graphic_Driver created.\n");
   // Create V3dViewer and V3d_View
-  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
+  myV3dViewer = new V3d_Viewer(GetGraphicDriver());
   printf("V3d_Viewer created.\n");
   // Create AISInteractiveViewer
   myAISContext = new AIS_InteractiveContext(myV3dViewer);
@@ -164,7 +164,7 @@ void Display3d::Init(long window_handle)
   }
   printf("Graphic_Driver created.\n");
   // Create V3dViewer and V3d_View
-  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
+  myV3dViewer = new V3d_Viewer(GetGraphicDriver());
   printf("V3d_Viewer created.\n");
   // Create AISInteractiveViewer
   myAISContext = new AIS_InteractiveContext(myV3dViewer);
@@ -241,7 +241,7 @@ void Display3d::Test()
 {
       BRepPrimAPI_MakeBox S(100,50,40);
       Handle(AIS_Shape) anAISShape = new AIS_Shape(S.Shape());
-      myAISContext->Display(anAISShape);
+      myAISContext->Display(anAISShape, Standard_False);
       myV3dView->ZFitAll();
       myV3dView->FitAll();
 }

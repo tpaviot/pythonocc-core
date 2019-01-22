@@ -35,7 +35,6 @@
 #include <V3d_Viewer.hxx>
 #include <V3d_View.hxx>
 #include <AIS_Shape.hxx>
-#include <Handle_Graphic3d_GraphicDriver.hxx>
 #include <Graphic3d_Camera.hxx>
 #include <Graphic3d_RenderingParams.hxx>
 #include <Graphic3d_RenderingMode.hxx>
