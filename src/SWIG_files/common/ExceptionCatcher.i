@@ -1,6 +1,6 @@
 /*
 
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 
@@ -34,11 +34,10 @@ Exception handling
         OCC_CATCH_SIGNALS
         $action
     } 
-    catch(Standard_Failure)
+    catch(Standard_Failure const& error)
     {
-	    Handle(Standard_Failure) error = Standard_Failure::Caught();
-	    char *error_name = (char*) error->DynamicType()->Name();
-	    char *error_message = (char*) error->GetMessageString();
+	    char *error_name = (char*) error.DynamicType()->Name();
+	    char *error_message = (char*) error.GetMessageString();
 	    std::string message;
 	    if (error_name) message += std::string(error_name) + "\n";
 	    if (error_message) message += std::string(error_message);
