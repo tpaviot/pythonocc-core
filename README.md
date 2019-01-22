@@ -46,35 +46,36 @@ Online resources
 ----------------
 
 We use the following online resources:
-  * Homepage
-       http://www.pythonocc.org
-  * Sources
-       https://github.com/tpaviot/pythonocc-core
-  * API documentation
-       https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18.1/
-  * Bug tracker
-       https://github.com/tpaviot/pythonocc-core/issues
-  * Mailing list
-       http://groups.google.com/group/pythonocc
-  * Appveyor
-       https://ci.appveyor.com/project/tpaviot/pythonocc-core
-  * Travic-CI
-       https://travis-ci.org/tpaviot/pythonocc-core
-  * Twitter
-       https://twitter.com/pythonocc
-  * Anaconda cloud repository for official releases
-       https://anaconda.org/pythonocc
-  * Anaconda cloud repository for nightly builds
-       https://anaconda.org/tpaviot/pythonocc-core
-  * LGTM code quality review
-       https://lgtm.com/projects/g/tpaviot/pythonocc-core/
+* Homepage: http://www.pythonocc.org
+
+* Sources: https://github.com/tpaviot/pythonocc-core
+
+* Anaconda cloud repository for official releases: https://anaconda.org/pythonocc
+
+* Anaconda cloud repository for nightly builds: https://anaconda.org/tpaviot/pythonocc-core
+
+* API documentation: https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18.1/
+
+* Issue/bug tracker: https://github.com/tpaviot/pythonocc-core/issues
+
+* Mailing list: http://groups.google.com/group/pythonocc
+
+* Twitter : https://twitter.com/pythonocc
+
+* Appveyor Continuous Integration Service: https://ci.appveyor.com/project/tpaviot/pythonocc-core
+
+* Travis Continuous Integration Service: https://travis-ci.org/tpaviot/pythonocc-core
+
+* LGTM code quality review: https://lgtm.com/projects/g/tpaviot/honocc-core/
+
+* Codacy quality checker: https://app.codacy.com/app/tpaviot/pythonocc-core
 
 oce and pythonocc
 -----------------
 
-The basis of pythonocc is python wrapper for the 
+The basis of pythonocc is a python wrapper for the 
 [oce C++ library / CAD kernel](https://github.com/tpaviot/oce), aka pythonocc-core.
-pythonocc-core version number correspond to oce library releases its wrapping.
+pythonocc-core version number matches the oce library releases its wrapping.
  
 For example; the current pythonocc-core release, 0.18, requires any of the [OCE
  0.18.x](https://github.com/tpaviot/oce/releases) releases. Here, the __Major__ 
