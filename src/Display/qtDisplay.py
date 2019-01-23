@@ -35,7 +35,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.ERROR)
 log = logging.getLogger(__name__)
 
 
-class qtBaseViewer(QtWidgets.QOpenGLWidget):
+class qtBaseViewer(QtWidgets.QWidget):
     ''' The base Qt Widget for an OCC viewer
     '''
 
@@ -48,6 +48,9 @@ class qtBaseViewer(QtWidgets.QOpenGLWidget):
         self.setMouseTracking(True)
         # Strong focus
         self.setFocusPolicy(QtCore.Qt.WheelFocus)
+        
+        # force creation of native window
+        self.setAttribute(QtCore.Qt.WA_NativeWindow)
 
         # required for overpainting the widget
         self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
@@ -185,7 +188,7 @@ class qtViewer3d(qtBaseViewer):
         if self._inited:
             self._display.Context.UpdateCurrentViewer()
             # important to allow overpainting of the OCC OpenGL context in Qt
-            self.swapBuffers()
+            # self.context().swapBuffers()
 
         if self._drawbox:
             painter = QtGui.QPainter(self)
