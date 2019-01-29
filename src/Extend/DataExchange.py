@@ -19,10 +19,12 @@ import os
 
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
-from OCC.Core.StlAPI import StlAPI_Reader, StlAPI_Writer
+from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
+# TODO : ugly, the following line must be imported for STEPControl to be imported
+from OCC.Core.StepShape import StepShape_Shell
 from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Core.Interface import Interface_Static_SetCVal
 from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
@@ -350,9 +352,8 @@ def read_stl_file(filename):
     if not os.path.isfile(filename):
         raise FileNotFoundError("%s not found." % filename)
 
-    stl_reader = StlAPI_Reader()
     the_shape = TopoDS_Shape()
-    stl_reader.Read(the_shape, filename)
+    stlapi_Read(the_shape, filename)
 
     if the_shape.IsNull():
         raise AssertionError("Shape is null.")
