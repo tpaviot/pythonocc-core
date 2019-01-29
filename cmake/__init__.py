@@ -1,8 +1,8 @@
 import unittest
 
 PYTHONOCC_VERSION_MAJOR = 0
-PYTHONOCC_VERSION_MINOR = 18
-PYTHONOCC_VERSION_PATCH = 2
+PYTHONOCC_VERSION_MINOR = 19
+PYTHONOCC_VERSION_PATCH = 0
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 PYTHONOCC_VERSION_DEVEL = ''
 
