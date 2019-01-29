@@ -19,29 +19,30 @@
 
 from __future__ import print_function
 
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
-                             TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
-                             TopAbs_COMPSOLID)
+                        TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
+                        TopAbs_COMPSOLID)
 from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
 from OCC.Core.TopTools import (TopTools_ListOfShape,
-                               TopTools_ListIteratorOfListOfShape,
-                               TopTools_IndexedDataMapOfShapeListOfShape)
-from OCC.Core.TopoDS import (TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
-                             TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
-                             TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
-                             topods_Vertex, TopoDS_Iterator)
+                          TopTools_ListIteratorOfListOfShape,
+                          TopTools_IndexedDataMapOfShapeListOfShape)
+from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
+                        TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
+                        TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
+                        topods_Vertex, TopoDS_Iterator)
 from OCC.Core.GCPnts import GCPnts_UniformAbscissa
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
+
 
 class WireExplorer(object):
     '''
     Wire traversal
     '''
     def __init__(self, wire):
-        if not isinstance(wire, TopoDS_Wire):
-            raise AssertionError('not a TopoDS_Wire')
+        assert isinstance(wire, TopoDS_Wire), 'not a TopoDS_Wire'
         self.wire = wire
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
@@ -56,7 +57,7 @@ class WireExplorer(object):
         topologyType = topods_Edge if edges else topods_Vertex
         seq = []
         hashes = []  # list that stores hashes to avoid redundancy
-        occ_seq = TopTools_ListOfShape()
+        occ_seq = []
         while self.wire_explorer.More():
             # loop edges
             if edges:
@@ -64,18 +65,19 @@ class WireExplorer(object):
             # loop vertices
             else:
                 current_item = self.wire_explorer.CurrentVertex()
-            current_item_hash = current_item.__hash__()
-            if not current_item_hash in hashes:
-                hashes.append(current_item_hash)
-                occ_seq.Append(current_item)
+            #current_item_hash = current_item.__hash__()
+            #if not current_item_hash in hashes:
+            #    hashes.append(current_item_hash)
+            #    occ_seq.Append(current_item)
+            occ_seq.append(current_item)
             self.wire_explorer.Next()
 
         # Convert occ_seq to python list
-        occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
-        while occ_iterator.More():
-            topo_to_add = topologyType(occ_iterator.Value())
+        #occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
+        for elem in occ_seq:#while occ_iterator.More():
+            topo_to_add = topologyType(elem)#occ_iterator.Value())
             seq.append(topo_to_add)
-            occ_iterator.Next()
+            #occ_iterator.Next()
         self.done = True
         return iter(seq)
 
@@ -91,7 +93,7 @@ class TopologyExplorer(object):
     Topology traversal
     '''
 
-    def __init__(self, myShape, ignore_orientation=False):
+    def __init__(self, myShape, ignore_orientation=True):
         """
 
         implements topology traversal from any TopoDS_Shape
@@ -121,6 +123,19 @@ class TopologyExplorer(object):
         """
         self.myShape = myShape
         self.ignore_orientation = ignore_orientation
+
+        # the topoFactory dicts maps topology types and functions that can
+        # create this topology
+        self.topoFactory = {
+            TopAbs_VERTEX: topods.Vertex,
+            TopAbs_EDGE: topods.Edge,
+            TopAbs_FACE: topods.Face,
+            TopAbs_WIRE: topods.Wire,
+            TopAbs_SHELL: topods.Shell,
+            TopAbs_SOLID: topods.Solid,
+            TopAbs_COMPOUND: topods.Compound,
+            TopAbs_COMPSOLID: topods.CompSolid
+        }
         self.topExp = TopExp_Explorer()
 
     def _loop_topo(self, topologyType, topologicalEntity=None, topologyTypeToAvoid=None):
@@ -139,8 +154,7 @@ class TopologyExplorer(object):
                      TopAbs_COMPOUND: TopoDS_Compound,
                      TopAbs_COMPSOLID: TopoDS_CompSolid}
 
-        if not topologyType in topoTypes.keys():
-            raise AssertionError('%s not one of %s' % (topologyType, topoTypes.keys()))
+        assert topologyType in topoTypes.keys(), '%s not one of %s' % (topologyType, topoTypes.keys())
         # use self.myShape if nothing is specified
         if topologicalEntity is None and topologyTypeToAvoid is None:
             self.topExp.Init(self.myShape, topologyType)
@@ -153,22 +167,24 @@ class TopologyExplorer(object):
                              topologyType,
                              topologyTypeToAvoid)
         seq = []
-        hashes = []  # list that stores hashes to avoid redundancy
-        occ_seq = TopTools_ListOfShape()
+        #hashes = []  # list that stores hashes to avoid redundancy
+        #occ_seq = [] #TopTools_ListOfShape()
         while self.topExp.More():
             current_item = self.topExp.Current()
-            current_item_hash = current_item.__hash__()
-
-            if not current_item_hash in hashes:
-                hashes.append(current_item_hash)
-                occ_seq.Append(current_item)
+            #current_item_hash = current_item.__hash__()
+            topo_to_add = self.topoFactory[topologyType](current_item)
+            seq.append(topo_to_add)
+            #if not current_item_hash in hashes:
+            #hashes.append(current_item_hash)
+            #occ_seq.append(current_item)
 
             self.topExp.Next()
         # Convert occ_seq to python list
-        occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
-        while occ_iterator.More():
-            seq.append(occ_iterator.Value())
-            occ_iterator.Next()
+        #occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
+        #for elem in occ_seq:#while occ_iterator.More():
+        #    topo_to_add = self.topoFactory[topologyType](elem)
+        #    seq.append(topo_to_add)
+        #    #occ_iterator.Next()
 
         if self.ignore_orientation:
             # filter out those entities that share the same TShape
@@ -182,7 +198,7 @@ class TopologyExplorer(object):
                         break
                 if _present is False:
                     filter_orientation_seq.append(i)
-            return filter_orientation_seq
+            return iter(filter_orientation_seq)
         else:
             return iter(seq)
 
@@ -193,7 +209,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_FACE)
 
     def _number_of_topo(self, iterable):
-        return sum(1 for _ in iterable)
+        n = 0
+        for i in iterable:
+            n += 1
+        return n
 
     def number_of_faces(self):
         return self._number_of_topo(self.faces())
@@ -292,13 +311,12 @@ class TopologyExplorer(object):
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
         topexp_MapShapesAndAncestors(self.myShape, topoTypeA, topoTypeB, _map)
         results = _map.FindFromKey(topologicalEntity)
-        if results.IsEmpty():
+        if results.Size() == 0:
             yield None
 
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
         while topology_iterator.More():
-
-            topo_entity = topology_iterator.Value()
+            topo_entity = self.topoFactory[topoTypeB](topology_iterator.Value())
 
             # return the entity if not in set
             # to assure we're not returning entities several times
@@ -330,7 +348,7 @@ class TopologyExplorer(object):
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
         topexp_MapShapesAndAncestors(self.myShape, topoTypeA, topoTypeB, _map)
         results = _map.FindFromKey(topologicalEntity)
-        if results.IsEmpty():
+        if results.Size() == 0:
             return None
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
         while topology_iterator.More():
@@ -366,7 +384,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_EDGE, face)
 
     def number_of_edges_from_face(self, face):
-        return sum(1 for _ in self._loop_topo(TopAbs_EDGE, face))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_EDGE, face):
+            cnt += 1
+        return cnt
 
     # ======================================================================
     # VERTEX <-> EDGE
@@ -375,7 +396,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_VERTEX, edg)
 
     def number_of_vertices_from_edge(self, edg):
-        return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, edg))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_VERTEX, edg):
+            cnt += 1
+        return cnt
 
     def edges_from_vertex(self, vertex):
         return self._map_shapes_and_ancestors(TopAbs_VERTEX, TopAbs_EDGE, vertex)
@@ -390,7 +414,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_EDGE, wire)
 
     def number_of_edges_from_wire(self, wire):
-        return sum(1 for _ in self._loop_topo(TopAbs_EDGE, wire))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_EDGE, wire):
+            cnt += 1
+        return cnt
 
     def wires_from_edge(self, edg):
         return self._map_shapes_and_ancestors(TopAbs_EDGE, TopAbs_WIRE, edg)
@@ -408,7 +435,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_WIRE, face)
 
     def number_of_wires_from_face(self, face):
-        return sum(1 for _ in self._loop_topo(TopAbs_WIRE, face))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_WIRE, face):
+            cnt += 1
+        return cnt
 
     def faces_from_wire(self, wire):
         return self._map_shapes_and_ancestors(TopAbs_WIRE, TopAbs_FACE, wire)
@@ -429,7 +459,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_VERTEX, face)
 
     def number_of_vertices_from_face(self, face):
-        return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, face))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_VERTEX, face):
+            cnt += 1
+        return cnt
 
     # ======================================================================
     # FACE <-> SOLID
@@ -444,7 +477,10 @@ class TopologyExplorer(object):
         return self._loop_topo(TopAbs_FACE, solid)
 
     def number_of_faces_from_solids(self, solid):
-        return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
+        cnt = 0
+        for i in self._loop_topo(TopAbs_FACE, solid):
+            cnt += 1
+        return cnt
 
 
 def dump_topology_to_string(shape, level=0, buffer=""):
@@ -455,15 +491,15 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
+        print( ".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
     else:
-        print(".." * level, end="")
-        print(shape)
+        print(".." * level, end ="")
+        print(shape_type_string(shape))
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
         shp = it.Value()
         it.Next()
-        dump_topology_to_string(shp, level + 1, buffer)
+        print(dump_topology_to_string(shp, level + 1, buffer))
 
 #
 # Edge and wire discretizers

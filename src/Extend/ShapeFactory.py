@@ -44,7 +44,6 @@ def make_edge(*args):
 def make_edge2d(*args):
     edge = BRepBuilderAPI_MakeEdge2d(*args)
     result = edge.Edge()
-    edge.Delete()
     return result
 
 
