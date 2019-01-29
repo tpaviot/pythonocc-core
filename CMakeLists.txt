@@ -154,10 +154,11 @@ set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install 
 # TODO: this should be build from the module list
 set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
     TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
-set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl TKVoxel TKNIS TKV3d)
+set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl TKV3d)
 set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
-    TKSTEP TKVRML TKXSBase)
-set(OCE_OCAF_LIBRARIES TKCAF TKCDF TKLCAF TKXCAF TKXDESTEP TKXDEIGES)
+                     TKSTEP TKVRML TKXSBase)
+set(OCE_OCAF_LIBRARIES TKCAF TKCDF TKLCAF TKBin TKBinL TKBinTObj TKBinXCAF TKXml TKXmlL TKXmlTObj
+                       TKXmlXCAF TKTObj TKXCAF TKXDESTEP TKXDEIGES)
 
 ######################################################
 # Configure Build settings according to the platform #
@@ -334,56 +335,12 @@ endif(PYTHONOCC_WRAP_VISU)
 ##########
 # Addons #
 ##########
-execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Addons)
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i PROPERTIES CPLUSPLUS ON)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
-set(ADDONS_SOURCE_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
-)
 
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
-endif()
-
-swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-if (APPLE)
-  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  swig_link_libraries(Addons ${OPENGL_LIBRARIES})
-else(APPLE)
-  swig_link_libraries(Addons ${PYTHON_LIBRARIES})
-endif(APPLE)
 
 ############
 # Splitter #
 ############
-execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Splitter)
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i PROPERTIES CPLUSPLUS ON)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter)
-set(SPLITTER_SOURCE_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i
-${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo_Splitter.cxx
-)
 
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(GEOMAlgo python ${SPLITTER_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(GEOMAlgo LANGUAGE python SOURCES ${SPLITTER_SOURCE_FILES} TYPE MODULE)
-endif()
-
-swig_link_libraries(GEOMAlgo ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-if (APPLE)
-  set_target_properties(${SWIG_MODULE_GEOMAlgo_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-  set_target_properties(${SWIG_MODULE_GEOMAlgo_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-else(APPLE)
-  swig_link_libraries(GEOMAlgo ${PYTHON_LIBRARIES})
-endif(APPLE)
 
 ################
 # DataExchange #
@@ -511,9 +468,7 @@ foreach(SMESH_MODULE ${SMESH_TOOLKIT})
 endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
-# install addons
-install(FILES ${BUILD_DIR}/Addons.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(TARGETS _Addons DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+# install Display
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 
 # install LICENSE file
@@ -525,10 +480,6 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTAL
 # install __init__.py file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-
-# install Splitter to Core
-install(FILES ${BUILD_DIR}/GEOMAlgo.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(TARGETS _GEOMAlgo DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
 
 # install Extend
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
