@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,27 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLCONVERTERDOCSTRING
-"-Purpose:
-Computes different kinds of presentation and converts CasCade objects
-( points, curves, surfaces, shapes ... ) into nodes of VRML format
-( package Vrml ), into specific geometry shapes ( AsciiText, Cone,
-IndexedFaceSet, IndexedLineSet, .... ) for requested (or default) properties
-of the geometry and its appearance ( Material, Normal, Texture2, ... )
-and requested (or default) properties of cameras and lights ( OrthograpicCamera,
-PerspectiveCamera, DirectionalLight, SpotLight ).
-
-All requested properties of a current representation are specified
-in aDrawer of Drawer class, which qualifies how the presentation
-algorithms compute the presentation of a specific kind of object.
-This includes for example color, maximal chordial deviation, etc... with default values.
-
-In the result the classes of this package Add a corresponding VRML
-description to anOStream.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -54,6 +38,10 @@ description to anOStream.
 
 
 %include VrmlConverter_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -234,38 +222,84 @@ class VrmlConverter_DeflectionCurve {
 	}
 };
 %nodefaultctor VrmlConverter_Drawer;
-class VrmlConverter_Drawer : public MMgt_TShared {
+class VrmlConverter_Drawer : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") VrmlConverter_Drawer;
-		%feature("autodoc", "	:rtype: None
-") VrmlConverter_Drawer;
-		 VrmlConverter_Drawer ();
-		%feature("compactdefaultargs") SetTypeOfDeflection;
-		%feature("autodoc", "	* by default: TOD_Relative; however, except for the shapes, the drawing will be made using the absolute deviation.
+		%feature("compactdefaultargs") DeviationCoefficient;
+		%feature("autodoc", "	:rtype: float
+") DeviationCoefficient;
+		Standard_Real DeviationCoefficient ();
+		%feature("compactdefaultargs") DisableDrawHiddenLine;
+		%feature("autodoc", "	* sets DrawHiddenLine = Standard_False - the hidden lines are not drawn.
 
-	:param aTypeOfDeflection:
-	:type aTypeOfDeflection: Aspect_TypeOfDeflection
 	:rtype: None
-") SetTypeOfDeflection;
-		void SetTypeOfDeflection (const Aspect_TypeOfDeflection aTypeOfDeflection);
-		%feature("compactdefaultargs") TypeOfDeflection;
-		%feature("autodoc", "	:rtype: Aspect_TypeOfDeflection
-") TypeOfDeflection;
-		Aspect_TypeOfDeflection TypeOfDeflection ();
-		%feature("compactdefaultargs") SetMaximalChordialDeviation;
-		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape
+") DisableDrawHiddenLine;
+		void DisableDrawHiddenLine ();
+		%feature("compactdefaultargs") Discretisation;
+		%feature("autodoc", "	:rtype: int
+") Discretisation;
+		Standard_Integer Discretisation ();
+		%feature("compactdefaultargs") DrawHiddenLine;
+		%feature("autodoc", "	* returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 
-	:param aChordialDeviation:
-	:type aChordialDeviation: Quantity_Length
+	:rtype: bool
+") DrawHiddenLine;
+		Standard_Boolean DrawHiddenLine ();
+		%feature("compactdefaultargs") EnableDrawHiddenLine;
+		%feature("autodoc", "	* sets DrawHiddenLine = Standard_True - the hidden lines are drawn.
+
 	:rtype: None
-") SetMaximalChordialDeviation;
-		void SetMaximalChordialDeviation (const Quantity_Length aChordialDeviation);
+") EnableDrawHiddenLine;
+		void EnableDrawHiddenLine ();
+		%feature("compactdefaultargs") FreeBoundaryAspect;
+		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
+
+	:rtype: Handle_VrmlConverter_LineAspect
+") FreeBoundaryAspect;
+		Handle_VrmlConverter_LineAspect FreeBoundaryAspect ();
+		%feature("compactdefaultargs") FreeBoundaryDraw;
+		%feature("autodoc", "	* returns True if the drawing of the free boundaries is enabled.
+
+	:rtype: bool
+") FreeBoundaryDraw;
+		Standard_Boolean FreeBoundaryDraw ();
+		%feature("compactdefaultargs") HiddenLineAspect;
+		%feature("autodoc", "	* returns LineAspect for the hidden lines. The default values are the same default values from Vrml package.
+
+	:rtype: Handle_VrmlConverter_LineAspect
+") HiddenLineAspect;
+		Handle_VrmlConverter_LineAspect HiddenLineAspect ();
+		%feature("compactdefaultargs") IsoOnPlane;
+		%feature("autodoc", "	* returns True if the drawing of isos on planes is enabled.
+
+	:rtype: bool
+") IsoOnPlane;
+		Standard_Boolean IsoOnPlane ();
+		%feature("compactdefaultargs") LineAspect;
+		%feature("autodoc", "	* The default values are the same default values from Vrml package.
+
+	:rtype: Handle_VrmlConverter_LineAspect
+") LineAspect;
+		Handle_VrmlConverter_LineAspect LineAspect ();
 		%feature("compactdefaultargs") MaximalChordialDeviation;
 		%feature("autodoc", "	* returns the maximal chordial deviation. Default value: 0.1
 
-	:rtype: Quantity_Length
+	:rtype: float
 ") MaximalChordialDeviation;
-		Quantity_Length MaximalChordialDeviation ();
+		Standard_Real MaximalChordialDeviation ();
+		%feature("compactdefaultargs") MaximalParameterValue;
+		%feature("autodoc", "	:rtype: float
+") MaximalParameterValue;
+		Standard_Real MaximalParameterValue ();
+		%feature("compactdefaultargs") PointAspect;
+		%feature("autodoc", "	:rtype: Handle_VrmlConverter_PointAspect
+") PointAspect;
+		Handle_VrmlConverter_PointAspect PointAspect ();
+		%feature("compactdefaultargs") SeenLineAspect;
+		%feature("autodoc", "	* returns LineAspect for the seen lines. The default values are the same default values from Vrml package.
+
+	:rtype: Handle_VrmlConverter_LineAspect
+") SeenLineAspect;
+		Handle_VrmlConverter_LineAspect SeenLineAspect ();
 		%feature("compactdefaultargs") SetDeviationCoefficient;
 		%feature("autodoc", "	* default 0.001
 
@@ -274,10 +308,6 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 	:rtype: None
 ") SetDeviationCoefficient;
 		void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("compactdefaultargs") DeviationCoefficient;
-		%feature("autodoc", "	:rtype: float
-") DeviationCoefficient;
-		Standard_Real DeviationCoefficient ();
 		%feature("compactdefaultargs") SetDiscretisation;
 		%feature("autodoc", "	* default: 17 points. Defines the Discretisation (myNbPoints) when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
 
@@ -286,66 +316,6 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 	:rtype: None
 ") SetDiscretisation;
 		void SetDiscretisation (const Standard_Integer d);
-		%feature("compactdefaultargs") Discretisation;
-		%feature("autodoc", "	:rtype: int
-") Discretisation;
-		Standard_Integer Discretisation ();
-		%feature("compactdefaultargs") SetMaximalParameterValue;
-		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500. VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
-
-	:param Value:
-	:type Value: float
-	:rtype: None
-") SetMaximalParameterValue;
-		void SetMaximalParameterValue (const Standard_Real Value);
-		%feature("compactdefaultargs") MaximalParameterValue;
-		%feature("autodoc", "	:rtype: float
-") MaximalParameterValue;
-		Standard_Real MaximalParameterValue ();
-		%feature("compactdefaultargs") SetIsoOnPlane;
-		%feature("autodoc", "	* enables the drawing of isos on planes. By default there are no isos on planes.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: None
-") SetIsoOnPlane;
-		void SetIsoOnPlane (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") IsoOnPlane;
-		%feature("autodoc", "	* returns True if the drawing of isos on planes is enabled.
-
-	:rtype: bool
-") IsoOnPlane;
-		Standard_Boolean IsoOnPlane ();
-		%feature("compactdefaultargs") UIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace
-
-	:rtype: Handle_VrmlConverter_IsoAspect
-") UIsoAspect;
-		Handle_VrmlConverter_IsoAspect UIsoAspect ();
-		%feature("compactdefaultargs") SetUIsoAspect;
-		%feature("autodoc", "	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_IsoAspect &
-	:rtype: None
-") SetUIsoAspect;
-		void SetUIsoAspect (const Handle_VrmlConverter_IsoAspect & anAspect);
-		%feature("compactdefaultargs") VIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace
-
-	:rtype: Handle_VrmlConverter_IsoAspect
-") VIsoAspect;
-		Handle_VrmlConverter_IsoAspect VIsoAspect ();
-		%feature("compactdefaultargs") SetVIsoAspect;
-		%feature("autodoc", "	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_IsoAspect &
-	:rtype: None
-") SetVIsoAspect;
-		void SetVIsoAspect (const Handle_VrmlConverter_IsoAspect & anAspect);
-		%feature("compactdefaultargs") FreeBoundaryAspect;
-		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
-
-	:rtype: Handle_VrmlConverter_LineAspect
-") FreeBoundaryAspect;
-		Handle_VrmlConverter_LineAspect FreeBoundaryAspect ();
 		%feature("compactdefaultargs") SetFreeBoundaryAspect;
 		%feature("autodoc", "	:param anAspect:
 	:type anAspect: Handle_VrmlConverter_LineAspect &
@@ -360,44 +330,78 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 	:rtype: None
 ") SetFreeBoundaryDraw;
 		void SetFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") FreeBoundaryDraw;
-		%feature("autodoc", "	* returns True if the drawing of the free boundaries is enabled.
+		%feature("compactdefaultargs") SetHiddenLineAspect;
+		%feature("autodoc", "	* sets LineAspect for the hidden lines.
 
-	:rtype: bool
-") FreeBoundaryDraw;
-		Standard_Boolean FreeBoundaryDraw ();
-		%feature("compactdefaultargs") WireAspect;
-		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
-
-	:rtype: Handle_VrmlConverter_LineAspect
-") WireAspect;
-		Handle_VrmlConverter_LineAspect WireAspect ();
-		%feature("compactdefaultargs") SetWireAspect;
-		%feature("autodoc", "	:param anAspect:
+	:param anAspect:
 	:type anAspect: Handle_VrmlConverter_LineAspect &
 	:rtype: None
-") SetWireAspect;
-		void SetWireAspect (const Handle_VrmlConverter_LineAspect & anAspect);
-		%feature("compactdefaultargs") SetWireDraw;
-		%feature("autodoc", "	* enables the drawing the wire By default the wire are drawn.
+") SetHiddenLineAspect;
+		void SetHiddenLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
+		%feature("compactdefaultargs") SetIsoOnPlane;
+		%feature("autodoc", "	* enables the drawing of isos on planes. By default there are no isos on planes.
 
 	:param OnOff:
 	:type OnOff: bool
 	:rtype: None
-") SetWireDraw;
-		void SetWireDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") WireDraw;
-		%feature("autodoc", "	* returns True if the drawing of the wire is enabled.
+") SetIsoOnPlane;
+		void SetIsoOnPlane (const Standard_Boolean OnOff);
+		%feature("compactdefaultargs") SetLineAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_LineAspect &
+	:rtype: None
+") SetLineAspect;
+		void SetLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
+		%feature("compactdefaultargs") SetMaximalChordialDeviation;
+		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape
 
-	:rtype: bool
-") WireDraw;
-		Standard_Boolean WireDraw ();
-		%feature("compactdefaultargs") UnFreeBoundaryAspect;
-		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
+	:param aChordialDeviation:
+	:type aChordialDeviation: float
+	:rtype: None
+") SetMaximalChordialDeviation;
+		void SetMaximalChordialDeviation (const Standard_Real aChordialDeviation);
+		%feature("compactdefaultargs") SetMaximalParameterValue;
+		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500. VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
 
-	:rtype: Handle_VrmlConverter_LineAspect
-") UnFreeBoundaryAspect;
-		Handle_VrmlConverter_LineAspect UnFreeBoundaryAspect ();
+	:param Value:
+	:type Value: float
+	:rtype: None
+") SetMaximalParameterValue;
+		void SetMaximalParameterValue (const Standard_Real Value);
+		%feature("compactdefaultargs") SetPointAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_PointAspect &
+	:rtype: None
+") SetPointAspect;
+		void SetPointAspect (const Handle_VrmlConverter_PointAspect & anAspect);
+		%feature("compactdefaultargs") SetSeenLineAspect;
+		%feature("autodoc", "	* sets LineAspect for the seen lines.
+
+	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_LineAspect &
+	:rtype: None
+") SetSeenLineAspect;
+		void SetSeenLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
+		%feature("compactdefaultargs") SetShadingAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_ShadingAspect &
+	:rtype: None
+") SetShadingAspect;
+		void SetShadingAspect (const Handle_VrmlConverter_ShadingAspect & anAspect);
+		%feature("compactdefaultargs") SetTypeOfDeflection;
+		%feature("autodoc", "	* by default: TOD_Relative; however, except for the shapes, the drawing will be made using the absolute deviation.
+
+	:param aTypeOfDeflection:
+	:type aTypeOfDeflection: Aspect_TypeOfDeflection
+	:rtype: None
+") SetTypeOfDeflection;
+		void SetTypeOfDeflection (const Aspect_TypeOfDeflection aTypeOfDeflection);
+		%feature("compactdefaultargs") SetUIsoAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_IsoAspect &
+	:rtype: None
+") SetUIsoAspect;
+		void SetUIsoAspect (const Handle_VrmlConverter_IsoAspect & anAspect);
 		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
 		%feature("autodoc", "	:param anAspect:
 	:type anAspect: Handle_VrmlConverter_LineAspect &
@@ -412,92 +416,76 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 	:rtype: None
 ") SetUnFreeBoundaryDraw;
 		void SetUnFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") UnFreeBoundaryDraw;
-		%feature("autodoc", "	* returns True if the drawing of the unfree boundaries is enabled.
-
-	:rtype: bool
-") UnFreeBoundaryDraw;
-		Standard_Boolean UnFreeBoundaryDraw ();
-		%feature("compactdefaultargs") LineAspect;
-		%feature("autodoc", "	* The default values are the same default values from Vrml package.
-
-	:rtype: Handle_VrmlConverter_LineAspect
-") LineAspect;
-		Handle_VrmlConverter_LineAspect LineAspect ();
-		%feature("compactdefaultargs") SetLineAspect;
+		%feature("compactdefaultargs") SetVIsoAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_VrmlConverter_IsoAspect &
+	:rtype: None
+") SetVIsoAspect;
+		void SetVIsoAspect (const Handle_VrmlConverter_IsoAspect & anAspect);
+		%feature("compactdefaultargs") SetWireAspect;
 		%feature("autodoc", "	:param anAspect:
 	:type anAspect: Handle_VrmlConverter_LineAspect &
 	:rtype: None
-") SetLineAspect;
-		void SetLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
-		%feature("compactdefaultargs") PointAspect;
-		%feature("autodoc", "	:rtype: Handle_VrmlConverter_PointAspect
-") PointAspect;
-		Handle_VrmlConverter_PointAspect PointAspect ();
-		%feature("compactdefaultargs") SetPointAspect;
-		%feature("autodoc", "	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_PointAspect &
+") SetWireAspect;
+		void SetWireAspect (const Handle_VrmlConverter_LineAspect & anAspect);
+		%feature("compactdefaultargs") SetWireDraw;
+		%feature("autodoc", "	* enables the drawing the wire By default the wire are drawn.
+
+	:param OnOff:
+	:type OnOff: bool
 	:rtype: None
-") SetPointAspect;
-		void SetPointAspect (const Handle_VrmlConverter_PointAspect & anAspect);
+") SetWireDraw;
+		void SetWireDraw (const Standard_Boolean OnOff);
 		%feature("compactdefaultargs") ShadingAspect;
 		%feature("autodoc", "	* The default values are the same default values from Vrml package.
 
 	:rtype: Handle_VrmlConverter_ShadingAspect
 ") ShadingAspect;
 		Handle_VrmlConverter_ShadingAspect ShadingAspect ();
-		%feature("compactdefaultargs") SetShadingAspect;
-		%feature("autodoc", "	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_ShadingAspect &
-	:rtype: None
-") SetShadingAspect;
-		void SetShadingAspect (const Handle_VrmlConverter_ShadingAspect & anAspect);
-		%feature("compactdefaultargs") DrawHiddenLine;
-		%feature("autodoc", "	* returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
+		%feature("compactdefaultargs") TypeOfDeflection;
+		%feature("autodoc", "	:rtype: Aspect_TypeOfDeflection
+") TypeOfDeflection;
+		Aspect_TypeOfDeflection TypeOfDeflection ();
+		%feature("compactdefaultargs") UIsoAspect;
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace
+
+	:rtype: Handle_VrmlConverter_IsoAspect
+") UIsoAspect;
+		Handle_VrmlConverter_IsoAspect UIsoAspect ();
+		%feature("compactdefaultargs") UnFreeBoundaryAspect;
+		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
+
+	:rtype: Handle_VrmlConverter_LineAspect
+") UnFreeBoundaryAspect;
+		Handle_VrmlConverter_LineAspect UnFreeBoundaryAspect ();
+		%feature("compactdefaultargs") UnFreeBoundaryDraw;
+		%feature("autodoc", "	* returns True if the drawing of the unfree boundaries is enabled.
 
 	:rtype: bool
-") DrawHiddenLine;
-		Standard_Boolean DrawHiddenLine ();
-		%feature("compactdefaultargs") EnableDrawHiddenLine;
-		%feature("autodoc", "	* sets DrawHiddenLine = Standard_True - the hidden lines are drawn.
+") UnFreeBoundaryDraw;
+		Standard_Boolean UnFreeBoundaryDraw ();
+		%feature("compactdefaultargs") VIsoAspect;
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace
 
-	:rtype: None
-") EnableDrawHiddenLine;
-		void EnableDrawHiddenLine ();
-		%feature("compactdefaultargs") DisableDrawHiddenLine;
-		%feature("autodoc", "	* sets DrawHiddenLine = Standard_False - the hidden lines are not drawn.
-
-	:rtype: None
-") DisableDrawHiddenLine;
-		void DisableDrawHiddenLine ();
-		%feature("compactdefaultargs") HiddenLineAspect;
-		%feature("autodoc", "	* returns LineAspect for the hidden lines. The default values are the same default values from Vrml package.
+	:rtype: Handle_VrmlConverter_IsoAspect
+") VIsoAspect;
+		Handle_VrmlConverter_IsoAspect VIsoAspect ();
+		%feature("compactdefaultargs") VrmlConverter_Drawer;
+		%feature("autodoc", "	:rtype: None
+") VrmlConverter_Drawer;
+		 VrmlConverter_Drawer ();
+		%feature("compactdefaultargs") WireAspect;
+		%feature("autodoc", "	* The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape
 
 	:rtype: Handle_VrmlConverter_LineAspect
-") HiddenLineAspect;
-		Handle_VrmlConverter_LineAspect HiddenLineAspect ();
-		%feature("compactdefaultargs") SetHiddenLineAspect;
-		%feature("autodoc", "	* sets LineAspect for the hidden lines.
+") WireAspect;
+		Handle_VrmlConverter_LineAspect WireAspect ();
+		%feature("compactdefaultargs") WireDraw;
+		%feature("autodoc", "	* returns True if the drawing of the wire is enabled.
 
-	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_LineAspect &
-	:rtype: None
-") SetHiddenLineAspect;
-		void SetHiddenLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
-		%feature("compactdefaultargs") SeenLineAspect;
-		%feature("autodoc", "	* returns LineAspect for the seen lines. The default values are the same default values from Vrml package.
-
-	:rtype: Handle_VrmlConverter_LineAspect
-") SeenLineAspect;
-		Handle_VrmlConverter_LineAspect SeenLineAspect ();
-		%feature("compactdefaultargs") SetSeenLineAspect;
-		%feature("autodoc", "	* sets LineAspect for the seen lines.
-
-	:param anAspect:
-	:type anAspect: Handle_VrmlConverter_LineAspect &
-	:rtype: None
-") SetSeenLineAspect;
-		void SetSeenLineAspect (const Handle_VrmlConverter_LineAspect & anAspect);
+	:rtype: bool
+") WireDraw;
+		Standard_Boolean WireDraw ();
 };
 
 
@@ -531,8 +519,32 @@ class VrmlConverter_HLRShape {
 	}
 };
 %nodefaultctor VrmlConverter_LineAspect;
-class VrmlConverter_LineAspect : public MMgt_TShared {
+class VrmlConverter_LineAspect : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") HasMaterial;
+		%feature("autodoc", "	* returns True if the materials is writing into OStream.
+
+	:rtype: bool
+") HasMaterial;
+		Standard_Boolean HasMaterial ();
+		%feature("compactdefaultargs") Material;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") Material;
+		Handle_Vrml_Material Material ();
+		%feature("compactdefaultargs") SetHasMaterial;
+		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
+
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: None
+") SetHasMaterial;
+		void SetHasMaterial (const Standard_Boolean OnOff);
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:rtype: None
+") SetMaterial;
+		void SetMaterial (const Handle_Vrml_Material & aMaterial);
 		%feature("compactdefaultargs") VrmlConverter_LineAspect;
 		%feature("autodoc", "	* create a default LineAspect. Default value: HasMaterial = False - a line hasn't own material (color)
 
@@ -547,12 +559,25 @@ class VrmlConverter_LineAspect : public MMgt_TShared {
 	:rtype: None
 ") VrmlConverter_LineAspect;
 		 VrmlConverter_LineAspect (const Handle_Vrml_Material & aMaterial,const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:rtype: None
-") SetMaterial;
-		void SetMaterial (const Handle_Vrml_Material & aMaterial);
+};
+
+
+%make_alias(VrmlConverter_LineAspect)
+
+%extend VrmlConverter_LineAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor VrmlConverter_PointAspect;
+class VrmlConverter_PointAspect : public Standard_Transient {
+	public:
+		%feature("compactdefaultargs") HasMaterial;
+		%feature("autodoc", "	* returns True if the materials is writing into OStream.
+
+	:rtype: bool
+") HasMaterial;
+		Standard_Boolean HasMaterial ();
 		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	:rtype: Handle_Vrml_Material
 ") Material;
@@ -565,25 +590,12 @@ class VrmlConverter_LineAspect : public MMgt_TShared {
 	:rtype: None
 ") SetHasMaterial;
 		void SetHasMaterial (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") HasMaterial;
-		%feature("autodoc", "	* returns True if the materials is writing into OStream.
-
-	:rtype: bool
-") HasMaterial;
-		Standard_Boolean HasMaterial ();
-};
-
-
-%make_alias(VrmlConverter_LineAspect)
-
-%extend VrmlConverter_LineAspect {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor VrmlConverter_PointAspect;
-class VrmlConverter_PointAspect : public MMgt_TShared {
-	public:
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:rtype: None
+") SetMaterial;
+		void SetMaterial (const Handle_Vrml_Material & aMaterial);
 		%feature("compactdefaultargs") VrmlConverter_PointAspect;
 		%feature("autodoc", "	* create a default PointAspect. Default value: HasMaterial = False - a line hasn't own material (color)
 
@@ -598,30 +610,6 @@ class VrmlConverter_PointAspect : public MMgt_TShared {
 	:rtype: None
 ") VrmlConverter_PointAspect;
 		 VrmlConverter_PointAspect (const Handle_Vrml_Material & aMaterial,const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:rtype: None
-") SetMaterial;
-		void SetMaterial (const Handle_Vrml_Material & aMaterial);
-		%feature("compactdefaultargs") Material;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") Material;
-		Handle_Vrml_Material Material ();
-		%feature("compactdefaultargs") SetHasMaterial;
-		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: None
-") SetHasMaterial;
-		void SetHasMaterial (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") HasMaterial;
-		%feature("autodoc", "	* returns True if the materials is writing into OStream.
-
-	:rtype: bool
-") HasMaterial;
-		Standard_Boolean HasMaterial ();
 };
 
 
@@ -633,52 +621,8 @@ class VrmlConverter_PointAspect : public MMgt_TShared {
 	}
 };
 %nodefaultctor VrmlConverter_Projector;
-class VrmlConverter_Projector : public MMgt_TShared {
+class VrmlConverter_Projector : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") VrmlConverter_Projector;
-		%feature("autodoc", "	:param Shapes:
-	:type Shapes: TopTools_Array1OfShape &
-	:param Focus:
-	:type Focus: Quantity_Length
-	:param DX:
-	:type DX: Quantity_Length
-	:param DY:
-	:type DY: Quantity_Length
-	:param DZ:
-	:type DZ: Quantity_Length
-	:param XUp:
-	:type XUp: Quantity_Length
-	:param YUp:
-	:type YUp: Quantity_Length
-	:param ZUp:
-	:type ZUp: Quantity_Length
-	:param Camera: default value is VrmlConverter_NoCamera
-	:type Camera: VrmlConverter_TypeOfCamera
-	:param Light: default value is VrmlConverter_NoLight
-	:type Light: VrmlConverter_TypeOfLight
-	:rtype: None
-") VrmlConverter_Projector;
-		 VrmlConverter_Projector (const TopTools_Array1OfShape & Shapes,const Quantity_Length Focus,const Quantity_Length DX,const Quantity_Length DY,const Quantity_Length DZ,const Quantity_Length XUp,const Quantity_Length YUp,const Quantity_Length ZUp,const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera,const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
-		%feature("compactdefaultargs") SetCamera;
-		%feature("autodoc", "	:param aCamera:
-	:type aCamera: VrmlConverter_TypeOfCamera
-	:rtype: None
-") SetCamera;
-		void SetCamera (const VrmlConverter_TypeOfCamera aCamera);
-		%feature("compactdefaultargs") Camera;
-		%feature("autodoc", "	:rtype: VrmlConverter_TypeOfCamera
-") Camera;
-		VrmlConverter_TypeOfCamera Camera ();
-		%feature("compactdefaultargs") SetLight;
-		%feature("autodoc", "	:param aLight:
-	:type aLight: VrmlConverter_TypeOfLight
-	:rtype: None
-") SetLight;
-		void SetLight (const VrmlConverter_TypeOfLight aLight);
-		%feature("compactdefaultargs") Light;
-		%feature("autodoc", "	:rtype: VrmlConverter_TypeOfLight
-") Light;
-		VrmlConverter_TypeOfLight Light ();
 
         %feature("autodoc", "1");
         %extend{
@@ -687,10 +631,54 @@ class VrmlConverter_Projector : public MMgt_TShared {
             self->Add(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") Projector;
+        		%feature("compactdefaultargs") Camera;
+		%feature("autodoc", "	:rtype: VrmlConverter_TypeOfCamera
+") Camera;
+		VrmlConverter_TypeOfCamera Camera ();
+		%feature("compactdefaultargs") Light;
+		%feature("autodoc", "	:rtype: VrmlConverter_TypeOfLight
+") Light;
+		VrmlConverter_TypeOfLight Light ();
+		%feature("compactdefaultargs") Projector;
 		%feature("autodoc", "	:rtype: HLRAlgo_Projector
 ") Projector;
 		HLRAlgo_Projector Projector ();
+		%feature("compactdefaultargs") SetCamera;
+		%feature("autodoc", "	:param aCamera:
+	:type aCamera: VrmlConverter_TypeOfCamera
+	:rtype: None
+") SetCamera;
+		void SetCamera (const VrmlConverter_TypeOfCamera aCamera);
+		%feature("compactdefaultargs") SetLight;
+		%feature("autodoc", "	:param aLight:
+	:type aLight: VrmlConverter_TypeOfLight
+	:rtype: None
+") SetLight;
+		void SetLight (const VrmlConverter_TypeOfLight aLight);
+		%feature("compactdefaultargs") VrmlConverter_Projector;
+		%feature("autodoc", "	:param Shapes:
+	:type Shapes: TopTools_Array1OfShape &
+	:param Focus:
+	:type Focus: float
+	:param DX:
+	:type DX: float
+	:param DY:
+	:type DY: float
+	:param DZ:
+	:type DZ: float
+	:param XUp:
+	:type XUp: float
+	:param YUp:
+	:type YUp: float
+	:param ZUp:
+	:type ZUp: float
+	:param Camera: default value is VrmlConverter_NoCamera
+	:type Camera: VrmlConverter_TypeOfCamera
+	:param Light: default value is VrmlConverter_NoLight
+	:type Light: VrmlConverter_TypeOfLight
+	:rtype: None
+") VrmlConverter_Projector;
+		 VrmlConverter_Projector (const TopTools_Array1OfShape & Shapes,const Standard_Real Focus,const Standard_Real DX,const Standard_Real DY,const Standard_Real DZ,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp,const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera,const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
 };
 
 
@@ -732,24 +720,46 @@ class VrmlConverter_ShadedShape {
 	}
 };
 %nodefaultctor VrmlConverter_ShadingAspect;
-class VrmlConverter_ShadingAspect : public MMgt_TShared {
+class VrmlConverter_ShadingAspect : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") VrmlConverter_ShadingAspect;
-		%feature("autodoc", "	* create a default ShadingAspect.
+		%feature("compactdefaultargs") FrontMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") FrontMaterial;
+		Handle_Vrml_Material FrontMaterial ();
+		%feature("compactdefaultargs") HasMaterial;
+		%feature("autodoc", "	* returns True if the materials is writing into OStream.
 
-	:rtype: None
-") VrmlConverter_ShadingAspect;
-		 VrmlConverter_ShadingAspect ();
+	:rtype: bool
+") HasMaterial;
+		Standard_Boolean HasMaterial ();
+		%feature("compactdefaultargs") HasNormals;
+		%feature("autodoc", "	* returns True if the normals are calculating
+
+	:rtype: bool
+") HasNormals;
+		Standard_Boolean HasNormals ();
 		%feature("compactdefaultargs") SetFrontMaterial;
 		%feature("autodoc", "	:param aMaterial:
 	:type aMaterial: Handle_Vrml_Material &
 	:rtype: None
 ") SetFrontMaterial;
 		void SetFrontMaterial (const Handle_Vrml_Material & aMaterial);
-		%feature("compactdefaultargs") FrontMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") FrontMaterial;
-		Handle_Vrml_Material FrontMaterial ();
+		%feature("compactdefaultargs") SetHasMaterial;
+		%feature("autodoc", "	* defines necessary of writing Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
+
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: None
+") SetHasMaterial;
+		void SetHasMaterial (const Standard_Boolean OnOff);
+		%feature("compactdefaultargs") SetHasNormals;
+		%feature("autodoc", "	* defines necessary of a calculation of normals for ShadedShape to more accurately display curved surfaces, pacticularly when smoooth or phong shading is used in VRML viewer. By default False - the normals are not calculated, True - the normals are calculated. Warning: If normals are calculated the resulting VRML file will be substantially lager.
+
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: None
+") SetHasNormals;
+		void SetHasNormals (const Standard_Boolean OnOff);
 		%feature("compactdefaultargs") SetShapeHints;
 		%feature("autodoc", "	:param aShapeHints:
 	:type aShapeHints: Vrml_ShapeHints &
@@ -760,34 +770,12 @@ class VrmlConverter_ShadingAspect : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Vrml_ShapeHints
 ") ShapeHints;
 		Vrml_ShapeHints ShapeHints ();
-		%feature("compactdefaultargs") SetHasNormals;
-		%feature("autodoc", "	* defines necessary of a calculation of normals for ShadedShape to more accurately display curved surfaces, pacticularly when smoooth or phong shading is used in VRML viewer. By default False - the normals are not calculated, True - the normals are calculated. Warning: If normals are calculated the resulting VRML file will be substantially lager.
+		%feature("compactdefaultargs") VrmlConverter_ShadingAspect;
+		%feature("autodoc", "	* create a default ShadingAspect.
 
-	:param OnOff:
-	:type OnOff: bool
 	:rtype: None
-") SetHasNormals;
-		void SetHasNormals (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") HasNormals;
-		%feature("autodoc", "	* returns True if the normals are calculating
-
-	:rtype: bool
-") HasNormals;
-		Standard_Boolean HasNormals ();
-		%feature("compactdefaultargs") SetHasMaterial;
-		%feature("autodoc", "	* defines necessary of writing Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: None
-") SetHasMaterial;
-		void SetHasMaterial (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") HasMaterial;
-		%feature("autodoc", "	* returns True if the materials is writing into OStream.
-
-	:rtype: bool
-") HasMaterial;
-		Standard_Boolean HasMaterial ();
+") VrmlConverter_ShadingAspect;
+		 VrmlConverter_ShadingAspect ();
 };
 
 
@@ -810,6 +798,26 @@ class VrmlConverter_WFDeflectionRestrictedFace {
 	:rtype: void
 ") Add;
 		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Handle_VrmlConverter_Drawer & aDrawer);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	:param anOStream:
+	:type anOStream: Standard_OStream &
+	:param aFace:
+	:type aFace: Handle_BRepAdaptor_HSurface &
+	:param DrawUIso:
+	:type DrawUIso: bool
+	:param DrawVIso:
+	:type DrawVIso: bool
+	:param Deflection:
+	:type Deflection: float
+	:param NBUiso:
+	:type NBUiso: int
+	:param NBViso:
+	:type NBViso: int
+	:param aDrawer:
+	:type aDrawer: Handle_VrmlConverter_Drawer &
+	:rtype: void
+") Add;
+		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Standard_Real Deflection,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle_VrmlConverter_Drawer & aDrawer);
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", "	:param anOStream:
 	:type anOStream: Standard_OStream &
@@ -830,26 +838,6 @@ class VrmlConverter_WFDeflectionRestrictedFace {
 	:rtype: void
 ") AddVIso;
 		static void AddVIso (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Handle_VrmlConverter_Drawer & aDrawer);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param anOStream:
-	:type anOStream: Standard_OStream &
-	:param aFace:
-	:type aFace: Handle_BRepAdaptor_HSurface &
-	:param DrawUIso:
-	:type DrawUIso: bool
-	:param DrawVIso:
-	:type DrawVIso: bool
-	:param Deflection:
-	:type Deflection: Quantity_Length
-	:param NBUiso:
-	:type NBUiso: int
-	:param NBViso:
-	:type NBViso: int
-	:param aDrawer:
-	:type aDrawer: Handle_VrmlConverter_Drawer &
-	:rtype: void
-") Add;
-		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Quantity_Length Deflection,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle_VrmlConverter_Drawer & aDrawer);
 };
 
 
@@ -890,6 +878,24 @@ class VrmlConverter_WFRestrictedFace {
 	:rtype: void
 ") Add;
 		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Handle_VrmlConverter_Drawer & aDrawer);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	:param anOStream:
+	:type anOStream: Standard_OStream &
+	:param aFace:
+	:type aFace: Handle_BRepAdaptor_HSurface &
+	:param DrawUIso:
+	:type DrawUIso: bool
+	:param DrawVIso:
+	:type DrawVIso: bool
+	:param NBUiso:
+	:type NBUiso: int
+	:param NBViso:
+	:type NBViso: int
+	:param aDrawer:
+	:type aDrawer: Handle_VrmlConverter_Drawer &
+	:rtype: void
+") Add;
+		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle_VrmlConverter_Drawer & aDrawer);
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", "	:param anOStream:
 	:type anOStream: Standard_OStream &
@@ -910,24 +916,6 @@ class VrmlConverter_WFRestrictedFace {
 	:rtype: void
 ") AddVIso;
 		static void AddVIso (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Handle_VrmlConverter_Drawer & aDrawer);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param anOStream:
-	:type anOStream: Standard_OStream &
-	:param aFace:
-	:type aFace: Handle_BRepAdaptor_HSurface &
-	:param DrawUIso:
-	:type DrawUIso: bool
-	:param DrawVIso:
-	:type DrawVIso: bool
-	:param NBUiso:
-	:type NBUiso: int
-	:param NBViso:
-	:type NBViso: int
-	:param aDrawer:
-	:type aDrawer: Handle_VrmlConverter_Drawer &
-	:rtype: void
-") Add;
-		static void Add (Standard_OStream & anOStream,const Handle_BRepAdaptor_HSurface & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle_VrmlConverter_Drawer & aDrawer);
 };
 
 
@@ -959,6 +947,18 @@ class VrmlConverter_WFShape {
 %nodefaultctor VrmlConverter_IsoAspect;
 class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 	public:
+		%feature("compactdefaultargs") Number;
+		%feature("autodoc", "	* returns the number of U or V isoparametric curves drawn for a single face.
+
+	:rtype: int
+") Number;
+		Standard_Integer Number ();
+		%feature("compactdefaultargs") SetNumber;
+		%feature("autodoc", "	:param aNumber:
+	:type aNumber: int
+	:rtype: None
+") SetNumber;
+		void SetNumber (const Standard_Integer aNumber);
 		%feature("compactdefaultargs") VrmlConverter_IsoAspect;
 		%feature("autodoc", "	* create a default IsoAspect. Default value: myNumber - 10.
 
@@ -975,18 +975,6 @@ class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 	:rtype: None
 ") VrmlConverter_IsoAspect;
 		 VrmlConverter_IsoAspect (const Handle_Vrml_Material & aMaterial,const Standard_Boolean OnOff,const Standard_Integer aNumber);
-		%feature("compactdefaultargs") SetNumber;
-		%feature("autodoc", "	:param aNumber:
-	:type aNumber: int
-	:rtype: None
-") SetNumber;
-		void SetNumber (const Standard_Integer aNumber);
-		%feature("compactdefaultargs") Number;
-		%feature("autodoc", "	* returns the number of U or V isoparametric curves drawn for a single face.
-
-	:rtype: int
-") Number;
-		Standard_Integer Number ();
 };
 
 
@@ -997,3 +985,6 @@ class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

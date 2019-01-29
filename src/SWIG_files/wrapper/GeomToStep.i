@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,14 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMTOSTEPDOCSTRING
-"- Purpose: Creation des entites geometriques du schema PmsAp2Demo3d a
-partir des entites de Geom ou de gp.
-Update : mise a jour pour traiter le schema StepGeom, pour demo de 94
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GEOMTOSTEPDOCSTRING) GeomToStep
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,6 +38,10 @@ Update : mise a jour pour traiter le schema StepGeom, pour demo de 94
 
 
 %include GeomToStep_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -910,3 +911,6 @@ class GeomToStep_MakeVector : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,27 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HERMITDOCSTRING
-"This is used to reparameterize Rational BSpline
-Curves so that we can  concatenate them later to
-build C1 Curves It builds and 1D-reparameterizing
-function starting from an Hermite interpolation and
-adding knots and modifying poles of the 1D BSpline
-obtained that way. The goal is to build a(u) so that
-if we consider a BSpline curve
-N(u)
-f(u) = -
-D(u)
-
-the function a(u)D(u) has value 1 at the umin and umax
-and has 0.0e0 derivative value a umin and umax.
-The details of the computation occuring in this package
-can be found by reading :
-' Etude sur la concatenation de NURBS en vue du
-balayage de surfaces' PFE n S85 Ensam Lille"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -54,6 +38,10 @@ balayage de surfaces' PFE n S85 Ensam Lille"
 
 
 %include Hermit_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -113,3 +101,6 @@ class Hermit {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

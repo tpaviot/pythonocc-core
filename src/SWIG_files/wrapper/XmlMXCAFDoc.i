@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMXCAFDOCDOCSTRING
-"Storage and Retrieval drivers for modelling attributes.
-Transient attributes are defined in package XCAFDoc
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,6 +39,10 @@ Transient attributes are defined in package XCAFDoc
 
 %include XmlMXCAFDoc_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -48,7 +50,9 @@ Transient attributes are defined in package XCAFDoc
 /* end public enums declaration */
 
 %wrap_handle(XmlMXCAFDoc_AreaDriver)
+%wrap_handle(XmlMXCAFDoc_AssemblyItemRefDriver)
 %wrap_handle(XmlMXCAFDoc_CentroidDriver)
+%wrap_handle(XmlMXCAFDoc_ClippingPlaneToolDriver)
 %wrap_handle(XmlMXCAFDoc_ColorDriver)
 %wrap_handle(XmlMXCAFDoc_ColorToolDriver)
 %wrap_handle(XmlMXCAFDoc_DatumDriver)
@@ -60,8 +64,14 @@ Transient attributes are defined in package XCAFDoc
 %wrap_handle(XmlMXCAFDoc_LocationDriver)
 %wrap_handle(XmlMXCAFDoc_MaterialDriver)
 %wrap_handle(XmlMXCAFDoc_MaterialToolDriver)
+%wrap_handle(XmlMXCAFDoc_NoteDriver)
+%wrap_handle(XmlMXCAFDoc_NotesToolDriver)
 %wrap_handle(XmlMXCAFDoc_ShapeToolDriver)
+%wrap_handle(XmlMXCAFDoc_ViewToolDriver)
 %wrap_handle(XmlMXCAFDoc_VolumeDriver)
+%wrap_handle(XmlMXCAFDoc_NoteBinDataDriver)
+%wrap_handle(XmlMXCAFDoc_NoteCommentDriver)
+%wrap_handle(XmlMXCAFDoc_NoteBalloonDriver)
 
 %rename(xmlmxcafdoc) XmlMXCAFDoc;
 class XmlMXCAFDoc {
@@ -87,12 +97,6 @@ class XmlMXCAFDoc {
 %nodefaultctor XmlMXCAFDoc_AreaDriver;
 class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_AreaDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_AreaDriver;
-		 XmlMXCAFDoc_AreaDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -117,6 +121,12 @@ class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_AreaDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_AreaDriver;
+		 XmlMXCAFDoc_AreaDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -127,15 +137,52 @@ class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor XmlMXCAFDoc_CentroidDriver;
-class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
+%nodefaultctor XmlMXCAFDoc_AssemblyItemRefDriver;
+class XmlMXCAFDoc_AssemblyItemRefDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_CentroidDriver;
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_AssemblyItemRefDriver;
 		%feature("autodoc", "	:param theMessageDriver:
 	:type theMessageDriver: Handle_CDM_MessageDriver &
 	:rtype: None
-") XmlMXCAFDoc_CentroidDriver;
-		 XmlMXCAFDoc_CentroidDriver (const Handle_CDM_MessageDriver & theMessageDriver);
+") XmlMXCAFDoc_AssemblyItemRefDriver;
+		 XmlMXCAFDoc_AssemblyItemRefDriver (const Handle_CDM_MessageDriver & theMessageDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_AssemblyItemRefDriver)
+
+%extend XmlMXCAFDoc_AssemblyItemRefDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor XmlMXCAFDoc_CentroidDriver;
+class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
+	public:
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -160,6 +207,12 @@ class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_CentroidDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_CentroidDriver;
+		 XmlMXCAFDoc_CentroidDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -170,15 +223,52 @@ class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor XmlMXCAFDoc_ClippingPlaneToolDriver;
+class XmlMXCAFDoc_ClippingPlaneToolDriver : public XmlMDF_ADriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		virtual Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_ClippingPlaneToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_ClippingPlaneToolDriver;
+		 XmlMXCAFDoc_ClippingPlaneToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_ClippingPlaneToolDriver)
+
+%extend XmlMXCAFDoc_ClippingPlaneToolDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XmlMXCAFDoc_ColorDriver;
 class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_ColorDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_ColorDriver;
-		 XmlMXCAFDoc_ColorDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -203,6 +293,12 @@ class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_ColorDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_ColorDriver;
+		 XmlMXCAFDoc_ColorDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -216,12 +312,6 @@ class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_ColorToolDriver;
 class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_ColorToolDriver;
-		%feature("autodoc", "	:param theMsgDriver:
-	:type theMsgDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_ColorToolDriver;
-		 XmlMXCAFDoc_ColorToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -246,6 +336,12 @@ class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_ColorToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_ColorToolDriver;
+		 XmlMXCAFDoc_ColorToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -259,12 +355,6 @@ class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_DatumDriver;
 class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_DatumDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_DatumDriver;
-		 XmlMXCAFDoc_DatumDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -289,6 +379,12 @@ class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_DatumDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_DatumDriver;
+		 XmlMXCAFDoc_DatumDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -302,12 +398,6 @@ class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_DimTolDriver;
 class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_DimTolDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_DimTolDriver;
-		 XmlMXCAFDoc_DimTolDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -332,6 +422,12 @@ class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_DimTolDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_DimTolDriver;
+		 XmlMXCAFDoc_DimTolDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -345,12 +441,6 @@ class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_DimTolToolDriver;
 class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_DimTolToolDriver;
-		%feature("autodoc", "	:param theMsgDriver:
-	:type theMsgDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_DimTolToolDriver;
-		 XmlMXCAFDoc_DimTolToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -375,6 +465,12 @@ class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_DimTolToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_DimTolToolDriver;
+		 XmlMXCAFDoc_DimTolToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -388,12 +484,6 @@ class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_DocumentToolDriver;
 class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_DocumentToolDriver;
-		%feature("autodoc", "	:param theMsgDriver:
-	:type theMsgDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_DocumentToolDriver;
-		 XmlMXCAFDoc_DocumentToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -418,6 +508,12 @@ class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_DocumentToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_DocumentToolDriver;
+		 XmlMXCAFDoc_DocumentToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -431,12 +527,6 @@ class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_GraphNodeDriver;
 class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_GraphNodeDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_GraphNodeDriver;
-		 XmlMXCAFDoc_GraphNodeDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -461,6 +551,12 @@ class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_GraphNodeDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_GraphNodeDriver;
+		 XmlMXCAFDoc_GraphNodeDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -474,12 +570,6 @@ class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_LayerToolDriver;
 class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_LayerToolDriver;
-		%feature("autodoc", "	:param theMsgDriver:
-	:type theMsgDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_LayerToolDriver;
-		 XmlMXCAFDoc_LayerToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -504,6 +594,12 @@ class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_LayerToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_LayerToolDriver;
+		 XmlMXCAFDoc_LayerToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -517,12 +613,6 @@ class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_LocationDriver;
 class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_LocationDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_LocationDriver;
-		 XmlMXCAFDoc_LocationDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -547,6 +637,12 @@ class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") SetSharedLocations;
+		%feature("autodoc", "	:param theLocations:
+	:type theLocations: TopTools_LocationSetPtr &
+	:rtype: None
+") SetSharedLocations;
+		void SetSharedLocations (const TopTools_LocationSetPtr & theLocations);
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "	* Translate a non storable Location to a storable Location.
 
@@ -571,12 +667,12 @@ class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 	:rtype: bool
 ") Translate;
 		Standard_Boolean Translate (const XmlObjMgt_Element & theParent,TopLoc_Location & theLoc,XmlObjMgt_RRelocationTable & theMap);
-		%feature("compactdefaultargs") SetSharedLocations;
-		%feature("autodoc", "	:param theLocations:
-	:type theLocations: TopTools_LocationSetPtr &
+		%feature("compactdefaultargs") XmlMXCAFDoc_LocationDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
 	:rtype: None
-") SetSharedLocations;
-		void SetSharedLocations (const TopTools_LocationSetPtr & theLocations);
+") XmlMXCAFDoc_LocationDriver;
+		 XmlMXCAFDoc_LocationDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -590,12 +686,6 @@ class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_MaterialDriver;
 class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_MaterialDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_MaterialDriver;
-		 XmlMXCAFDoc_MaterialDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -620,6 +710,12 @@ class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_MaterialDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_MaterialDriver;
+		 XmlMXCAFDoc_MaterialDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -633,12 +729,6 @@ class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMXCAFDoc_MaterialToolDriver;
 class XmlMXCAFDoc_MaterialToolDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_MaterialToolDriver;
-		%feature("autodoc", "	:param theMsgDriver:
-	:type theMsgDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_MaterialToolDriver;
-		 XmlMXCAFDoc_MaterialToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -663,6 +753,12 @@ class XmlMXCAFDoc_MaterialToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_MaterialToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_MaterialToolDriver;
+		 XmlMXCAFDoc_MaterialToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -673,15 +769,85 @@ class XmlMXCAFDoc_MaterialToolDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor XmlMXCAFDoc_ShapeToolDriver;
-class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
+%nodefaultctor XmlMXCAFDoc_NoteDriver;
+class XmlMXCAFDoc_NoteDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_ShapeToolDriver;
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+};
+
+
+%make_alias(XmlMXCAFDoc_NoteDriver)
+
+%extend XmlMXCAFDoc_NoteDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor XmlMXCAFDoc_NotesToolDriver;
+class XmlMXCAFDoc_NotesToolDriver : public XmlMDF_ADriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_NotesToolDriver;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: None
-") XmlMXCAFDoc_ShapeToolDriver;
-		 XmlMXCAFDoc_ShapeToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
+") XmlMXCAFDoc_NotesToolDriver;
+		 XmlMXCAFDoc_NotesToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_NotesToolDriver)
+
+%extend XmlMXCAFDoc_NotesToolDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor XmlMXCAFDoc_ShapeToolDriver;
+class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
+	public:
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -706,6 +872,12 @@ class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_ShapeToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_ShapeToolDriver;
+		 XmlMXCAFDoc_ShapeToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
 };
 
 
@@ -716,15 +888,52 @@ class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor XmlMXCAFDoc_ViewToolDriver;
+class XmlMXCAFDoc_ViewToolDriver : public XmlMDF_ADriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		virtual Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_ViewToolDriver;
+		%feature("autodoc", "	:param theMsgDriver:
+	:type theMsgDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_ViewToolDriver;
+		 XmlMXCAFDoc_ViewToolDriver (const Handle_CDM_MessageDriver & theMsgDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_ViewToolDriver)
+
+%extend XmlMXCAFDoc_ViewToolDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XmlMXCAFDoc_VolumeDriver;
 class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMXCAFDoc_VolumeDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMXCAFDoc_VolumeDriver;
-		 XmlMXCAFDoc_VolumeDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -749,6 +958,12 @@ class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_VolumeDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_VolumeDriver;
+		 XmlMXCAFDoc_VolumeDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -759,3 +974,115 @@ class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor XmlMXCAFDoc_NoteBinDataDriver;
+class XmlMXCAFDoc_NoteBinDataDriver : public XmlMXCAFDoc_NoteDriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_NoteBinDataDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_NoteBinDataDriver;
+		 XmlMXCAFDoc_NoteBinDataDriver (const Handle_CDM_MessageDriver & theMessageDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_NoteBinDataDriver)
+
+%extend XmlMXCAFDoc_NoteBinDataDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor XmlMXCAFDoc_NoteCommentDriver;
+class XmlMXCAFDoc_NoteCommentDriver : public XmlMXCAFDoc_NoteDriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: XmlObjMgt_Persistent &
+	:param theTarget:
+	:type theTarget: Handle_TDF_Attribute &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:rtype: bool
+") Paste;
+		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const Handle_TDF_Attribute & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param theSource:
+	:type theSource: Handle_TDF_Attribute &
+	:param theTarget:
+	:type theTarget: XmlObjMgt_Persistent &
+	:param theRelocTable:
+	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMXCAFDoc_NoteCommentDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_NoteCommentDriver;
+		 XmlMXCAFDoc_NoteCommentDriver (const Handle_CDM_MessageDriver & theMessageDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_NoteCommentDriver)
+
+%extend XmlMXCAFDoc_NoteCommentDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor XmlMXCAFDoc_NoteBalloonDriver;
+class XmlMXCAFDoc_NoteBalloonDriver : public XmlMXCAFDoc_NoteCommentDriver {
+	public:
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") XmlMXCAFDoc_NoteBalloonDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMXCAFDoc_NoteBalloonDriver;
+		 XmlMXCAFDoc_NoteBalloonDriver (const Handle_CDM_MessageDriver & theMessageDriver);
+};
+
+
+%make_alias(XmlMXCAFDoc_NoteBalloonDriver)
+
+%extend XmlMXCAFDoc_NoteBalloonDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

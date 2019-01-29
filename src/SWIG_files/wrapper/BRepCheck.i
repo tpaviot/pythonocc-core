@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPCHECKDOCSTRING
-"This package provides tools to check the validity
-of the BRep.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPCHECKDOCSTRING) BRepCheck
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,7 +39,21 @@ of the BRep.
 
 %include BRepCheck_headers.i
 
+/* templates */
+%template(BRepCheck_ListOfStatus) NCollection_List <BRepCheck_Status>;
+%template(BRepCheck_ListIteratorOfListOfStatus) NCollection_TListIterator<BRepCheck_Status>;
+%template(BRepCheck_DataMapOfShapeListOfStatus) NCollection_DataMap <TopoDS_Shape , BRepCheck_ListOfStatus , TopTools_ShapeMapHasher>;
+%template(BRepCheck_DataMapOfShapeResult) NCollection_DataMap <TopoDS_Shape , Handle_BRepCheck_Result , TopTools_OrientedShapeMapHasher>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_List <BRepCheck_Status> BRepCheck_ListOfStatus;
+typedef NCollection_List <BRepCheck_Status>::Iterator BRepCheck_ListIteratorOfListOfStatus;
+typedef NCollection_DataMap <TopoDS_Shape , BRepCheck_ListOfStatus , TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
+typedef NCollection_DataMap <TopoDS_Shape , BRepCheck_ListOfStatus , TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
+typedef NCollection_DataMap <TopoDS_Shape , Handle_BRepCheck_Result , TopTools_OrientedShapeMapHasher> BRepCheck_DataMapOfShapeResult;
+typedef NCollection_DataMap <TopoDS_Shape , Handle_BRepCheck_Result , TopTools_OrientedShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
 /* end typedefs declaration */
 
 /* public enums */
@@ -87,9 +99,6 @@ enum BRepCheck_Status {
 
 /* end public enums declaration */
 
-%wrap_handle(BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus)
-%wrap_handle(BRepCheck_DataMapNodeOfDataMapOfShapeResult)
-%wrap_handle(BRepCheck_ListNodeOfListOfStatus)
 %wrap_handle(BRepCheck_Result)
 %wrap_handle(BRepCheck_Edge)
 %wrap_handle(BRepCheck_Face)
@@ -188,526 +197,53 @@ class BRepCheck_Analyzer {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-class BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-		%feature("autodoc", "	:rtype: None
-") BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-		 BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus ();
-		%feature("compactdefaultargs") BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepCheck_DataMapOfShapeListOfStatus &
-	:rtype: None
-") BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-		 BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus (const BRepCheck_DataMapOfShapeListOfStatus & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepCheck_DataMapOfShapeListOfStatus &
-	:rtype: None
-") Initialize;
-		void Initialize (const BRepCheck_DataMapOfShapeListOfStatus & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
-") Value;
-		const BRepCheck_ListOfStatus & Value ();
-};
-
-
-%extend BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-class BRepCheck_DataMapIteratorOfDataMapOfShapeResult : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-		%feature("autodoc", "	:rtype: None
-") BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-		 BRepCheck_DataMapIteratorOfDataMapOfShapeResult ();
-		%feature("compactdefaultargs") BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepCheck_DataMapOfShapeResult &
-	:rtype: None
-") BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-		 BRepCheck_DataMapIteratorOfDataMapOfShapeResult (const BRepCheck_DataMapOfShapeResult & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepCheck_DataMapOfShapeResult &
-	:rtype: None
-") Initialize;
-		void Initialize (const BRepCheck_DataMapOfShapeResult & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_BRepCheck_Result
-") Value;
-		Handle_BRepCheck_Result Value ();
-};
-
-
-%extend BRepCheck_DataMapIteratorOfDataMapOfShapeResult {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus;
-class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: BRepCheck_ListOfStatus &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus;
-		 BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus (const TopoDS_Shape & K,const BRepCheck_ListOfStatus & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
-") Value;
-		BRepCheck_ListOfStatus & Value ();
-};
-
-
-%make_alias(BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus)
-
-%extend BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_DataMapNodeOfDataMapOfShapeResult;
-class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapNodeOfDataMapOfShapeResult;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_BRepCheck_Result &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") BRepCheck_DataMapNodeOfDataMapOfShapeResult;
-		 BRepCheck_DataMapNodeOfDataMapOfShapeResult (const TopoDS_Shape & K,const Handle_BRepCheck_Result & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_BRepCheck_Result
-") Value;
-		Handle_BRepCheck_Result Value ();
-};
-
-
-%make_alias(BRepCheck_DataMapNodeOfDataMapOfShapeResult)
-
-%extend BRepCheck_DataMapNodeOfDataMapOfShapeResult {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_DataMapOfShapeListOfStatus;
-class BRepCheck_DataMapOfShapeListOfStatus : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapOfShapeListOfStatus;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") BRepCheck_DataMapOfShapeListOfStatus;
-		 BRepCheck_DataMapOfShapeListOfStatus (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_DataMapOfShapeListOfStatus &
-	:rtype: BRepCheck_DataMapOfShapeListOfStatus
-") Assign;
-		BRepCheck_DataMapOfShapeListOfStatus & Assign (const BRepCheck_DataMapOfShapeListOfStatus & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_DataMapOfShapeListOfStatus &
-	:rtype: BRepCheck_DataMapOfShapeListOfStatus
-") operator =;
-		BRepCheck_DataMapOfShapeListOfStatus & operator = (const BRepCheck_DataMapOfShapeListOfStatus & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: BRepCheck_ListOfStatus &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const BRepCheck_ListOfStatus & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: BRepCheck_ListOfStatus
-") Find;
-		const BRepCheck_ListOfStatus & Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: BRepCheck_ListOfStatus
-") ChangeFind;
-		BRepCheck_ListOfStatus & ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend BRepCheck_DataMapOfShapeListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_DataMapOfShapeResult;
-class BRepCheck_DataMapOfShapeResult : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") BRepCheck_DataMapOfShapeResult;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") BRepCheck_DataMapOfShapeResult;
-		 BRepCheck_DataMapOfShapeResult (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_DataMapOfShapeResult &
-	:rtype: BRepCheck_DataMapOfShapeResult
-") Assign;
-		BRepCheck_DataMapOfShapeResult & Assign (const BRepCheck_DataMapOfShapeResult & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_DataMapOfShapeResult &
-	:rtype: BRepCheck_DataMapOfShapeResult
-") operator =;
-		BRepCheck_DataMapOfShapeResult & operator = (const BRepCheck_DataMapOfShapeResult & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_BRepCheck_Result &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const Handle_BRepCheck_Result & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_BRepCheck_Result
-") Find;
-		Handle_BRepCheck_Result Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_BRepCheck_Result
-") ChangeFind;
-		Handle_BRepCheck_Result ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend BRepCheck_DataMapOfShapeResult {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_ListIteratorOfListOfStatus;
-class BRepCheck_ListIteratorOfListOfStatus {
-	public:
-		%feature("compactdefaultargs") BRepCheck_ListIteratorOfListOfStatus;
-		%feature("autodoc", "	:rtype: None
-") BRepCheck_ListIteratorOfListOfStatus;
-		 BRepCheck_ListIteratorOfListOfStatus ();
-		%feature("compactdefaultargs") BRepCheck_ListIteratorOfListOfStatus;
-		%feature("autodoc", "	:param L:
-	:type L: BRepCheck_ListOfStatus &
-	:rtype: None
-") BRepCheck_ListIteratorOfListOfStatus;
-		 BRepCheck_ListIteratorOfListOfStatus (const BRepCheck_ListOfStatus & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: BRepCheck_ListOfStatus &
-	:rtype: None
-") Initialize;
-		void Initialize (const BRepCheck_ListOfStatus & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepCheck_Status
-") Value;
-		BRepCheck_Status  Value ();
-};
-
-
-%extend BRepCheck_ListIteratorOfListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_ListNodeOfListOfStatus;
-class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") BRepCheck_ListNodeOfListOfStatus;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") BRepCheck_ListNodeOfListOfStatus;
-		 BRepCheck_ListNodeOfListOfStatus (const BRepCheck_Status & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepCheck_Status
-") Value;
-		BRepCheck_Status  Value ();
-};
-
-
-%make_alias(BRepCheck_ListNodeOfListOfStatus)
-
-%extend BRepCheck_ListNodeOfListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepCheck_ListOfStatus;
-class BRepCheck_ListOfStatus {
-	public:
-		%feature("compactdefaultargs") BRepCheck_ListOfStatus;
-		%feature("autodoc", "	:rtype: None
-") BRepCheck_ListOfStatus;
-		 BRepCheck_ListOfStatus ();
-		%feature("compactdefaultargs") BRepCheck_ListOfStatus;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:rtype: None
-") BRepCheck_ListOfStatus;
-		 BRepCheck_ListOfStatus (const BRepCheck_ListOfStatus & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:rtype: None
-") Assign;
-		void Assign (const BRepCheck_ListOfStatus & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:rtype: None
-") operator =;
-		void operator = (const BRepCheck_ListOfStatus & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:rtype: None
-") Prepend;
-		void Prepend (const BRepCheck_Status & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:param theIt:
-	:type theIt: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") Prepend;
-		void Prepend (const BRepCheck_Status & I,BRepCheck_ListIteratorOfListOfStatus & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:rtype: None
-") Prepend;
-		void Prepend (BRepCheck_ListOfStatus & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:rtype: None
-") Append;
-		void Append (const BRepCheck_Status & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:param theIt:
-	:type theIt: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") Append;
-		void Append (const BRepCheck_Status & I,BRepCheck_ListIteratorOfListOfStatus & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:rtype: None
-") Append;
-		void Append (BRepCheck_ListOfStatus & Other);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: BRepCheck_Status
-") First;
-		BRepCheck_Status  First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: BRepCheck_Status
-") Last;
-		BRepCheck_Status  Last ();
-		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") Remove;
-		void Remove (BRepCheck_ListIteratorOfListOfStatus & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:param It:
-	:type It: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const BRepCheck_Status & I,BRepCheck_ListIteratorOfListOfStatus & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:param It:
-	:type It: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (BRepCheck_ListOfStatus & Other,BRepCheck_ListIteratorOfListOfStatus & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: BRepCheck_Status &
-	:param It:
-	:type It: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const BRepCheck_Status & I,BRepCheck_ListIteratorOfListOfStatus & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepCheck_ListOfStatus &
-	:param It:
-	:type It: BRepCheck_ListIteratorOfListOfStatus &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (BRepCheck_ListOfStatus & Other,BRepCheck_ListIteratorOfListOfStatus & It);
-};
-
-
-%extend BRepCheck_ListOfStatus {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BRepCheck_Result;
-class BRepCheck_Result : public MMgt_TShared {
+class BRepCheck_Result : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Blind;
+		%feature("autodoc", "	:rtype: void
+") Blind;
+		virtual void Blind ();
+		%feature("compactdefaultargs") ContextualShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") ContextualShape;
+		const TopoDS_Shape  ContextualShape ();
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", "	:param ContextShape:
 	:type ContextShape: TopoDS_Shape &
 	:rtype: void
 ") InContext;
 		virtual void InContext (const TopoDS_Shape & ContextShape);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") InitContextIterator;
+		%feature("autodoc", "	:rtype: None
+") InitContextIterator;
+		void InitContextIterator ();
+		%feature("compactdefaultargs") IsBlind;
+		%feature("autodoc", "	:rtype: bool
+") IsBlind;
+		Standard_Boolean IsBlind ();
+		%feature("compactdefaultargs") IsMinimum;
+		%feature("autodoc", "	:rtype: bool
+") IsMinimum;
+		Standard_Boolean IsMinimum ();
 		%feature("compactdefaultargs") Minimum;
 		%feature("autodoc", "	:rtype: void
 ") Minimum;
 		virtual void Minimum ();
-		%feature("compactdefaultargs") Blind;
-		%feature("autodoc", "	:rtype: void
-") Blind;
-		virtual void Blind ();
+		%feature("compactdefaultargs") MoreShapeInContext;
+		%feature("autodoc", "	:rtype: bool
+") MoreShapeInContext;
+		Standard_Boolean MoreShapeInContext ();
+		%feature("compactdefaultargs") NextShapeInContext;
+		%feature("autodoc", "	:rtype: None
+") NextShapeInContext;
+		void NextShapeInContext ();
 		%feature("compactdefaultargs") SetFailStatus;
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
@@ -718,14 +254,6 @@ class BRepCheck_Result : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
 ") Status;
 		const BRepCheck_ListOfStatus & Status ();
-		%feature("compactdefaultargs") IsMinimum;
-		%feature("autodoc", "	:rtype: bool
-") IsMinimum;
-		Standard_Boolean IsMinimum ();
-		%feature("compactdefaultargs") IsBlind;
-		%feature("autodoc", "	:rtype: bool
-") IsBlind;
-		Standard_Boolean IsBlind ();
 		%feature("compactdefaultargs") StatusOnShape;
 		%feature("autodoc", "	* If not already done, performs the InContext control and returns the list of status.
 
@@ -734,26 +262,10 @@ class BRepCheck_Result : public MMgt_TShared {
 	:rtype: BRepCheck_ListOfStatus
 ") StatusOnShape;
 		const BRepCheck_ListOfStatus & StatusOnShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") InitContextIterator;
-		%feature("autodoc", "	:rtype: None
-") InitContextIterator;
-		void InitContextIterator ();
-		%feature("compactdefaultargs") MoreShapeInContext;
-		%feature("autodoc", "	:rtype: bool
-") MoreShapeInContext;
-		Standard_Boolean MoreShapeInContext ();
-		%feature("compactdefaultargs") ContextualShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") ContextualShape;
-		const TopoDS_Shape  ContextualShape ();
 		%feature("compactdefaultargs") StatusOnShape;
 		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
 ") StatusOnShape;
 		const BRepCheck_ListOfStatus & StatusOnShape ();
-		%feature("compactdefaultargs") NextShapeInContext;
-		%feature("autodoc", "	:rtype: None
-") NextShapeInContext;
-		void NextShapeInContext ();
 };
 
 
@@ -773,20 +285,18 @@ class BRepCheck_Edge : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Edge;
 		 BRepCheck_Edge (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") InContext;
-		%feature("autodoc", "	:param ContextShape:
-	:type ContextShape: TopoDS_Shape &
-	:rtype: None
-") InContext;
-		void InContext (const TopoDS_Shape & ContextShape);
-		%feature("compactdefaultargs") Minimum;
-		%feature("autodoc", "	:rtype: None
-") Minimum;
-		void Minimum ();
 		%feature("compactdefaultargs") Blind;
 		%feature("autodoc", "	:rtype: None
 ") Blind;
 		void Blind ();
+		%feature("compactdefaultargs") CheckPolygonOnTriangulation;
+		%feature("autodoc", "	* Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.
+
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: BRepCheck_Status
+") CheckPolygonOnTriangulation;
+		BRepCheck_Status CheckPolygonOnTriangulation (const TopoDS_Edge & theEdge);
 		%feature("compactdefaultargs") GeometricControls;
 		%feature("autodoc", "	:rtype: bool
 ") GeometricControls;
@@ -797,10 +307,16 @@ class BRepCheck_Edge : public BRepCheck_Result {
 	:rtype: None
 ") GeometricControls;
 		void GeometricControls (const Standard_Boolean B);
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "	:rtype: float
-") Tolerance;
-		Standard_Real Tolerance ();
+		%feature("compactdefaultargs") InContext;
+		%feature("autodoc", "	:param ContextShape:
+	:type ContextShape: TopoDS_Shape &
+	:rtype: None
+") InContext;
+		void InContext (const TopoDS_Shape & ContextShape);
+		%feature("compactdefaultargs") Minimum;
+		%feature("autodoc", "	:rtype: None
+") Minimum;
+		void Minimum ();
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "	* Sets status of Edge;
 
@@ -809,14 +325,10 @@ class BRepCheck_Edge : public BRepCheck_Result {
 	:rtype: None
 ") SetStatus;
 		void SetStatus (const BRepCheck_Status theStatus);
-		%feature("compactdefaultargs") CheckPolygonOnTriangulation;
-		%feature("autodoc", "	* Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.
-
-	:param theEdge:
-	:type theEdge: TopoDS_Edge &
-	:rtype: BRepCheck_Status
-") CheckPolygonOnTriangulation;
-		BRepCheck_Status CheckPolygonOnTriangulation (const TopoDS_Edge & theEdge);
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	:rtype: float
+") Tolerance;
+		Standard_Real Tolerance ();
 };
 
 
@@ -836,54 +348,16 @@ class BRepCheck_Face : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Face;
 		 BRepCheck_Face (const TopoDS_Face & F);
-		%feature("compactdefaultargs") InContext;
-		%feature("autodoc", "	:param ContextShape:
-	:type ContextShape: TopoDS_Shape &
-	:rtype: None
-") InContext;
-		void InContext (const TopoDS_Shape & ContextShape);
-		%feature("compactdefaultargs") Minimum;
-		%feature("autodoc", "	:rtype: None
-") Minimum;
-		void Minimum ();
 		%feature("compactdefaultargs") Blind;
 		%feature("autodoc", "	:rtype: None
 ") Blind;
 		void Blind ();
-		%feature("compactdefaultargs") IntersectWires;
-		%feature("autodoc", "	:param Update: default value is Standard_False
-	:type Update: bool
-	:rtype: BRepCheck_Status
-") IntersectWires;
-		BRepCheck_Status IntersectWires (const Standard_Boolean Update = Standard_False);
 		%feature("compactdefaultargs") ClassifyWires;
 		%feature("autodoc", "	:param Update: default value is Standard_False
 	:type Update: bool
 	:rtype: BRepCheck_Status
 ") ClassifyWires;
 		BRepCheck_Status ClassifyWires (const Standard_Boolean Update = Standard_False);
-		%feature("compactdefaultargs") OrientationOfWires;
-		%feature("autodoc", "	:param Update: default value is Standard_False
-	:type Update: bool
-	:rtype: BRepCheck_Status
-") OrientationOfWires;
-		BRepCheck_Status OrientationOfWires (const Standard_Boolean Update = Standard_False);
-		%feature("compactdefaultargs") SetUnorientable;
-		%feature("autodoc", "	:rtype: None
-") SetUnorientable;
-		void SetUnorientable ();
-		%feature("compactdefaultargs") SetStatus;
-		%feature("autodoc", "	* Sets status of Face;
-
-	:param theStatus:
-	:type theStatus: BRepCheck_Status
-	:rtype: None
-") SetStatus;
-		void SetStatus (const BRepCheck_Status theStatus);
-		%feature("compactdefaultargs") IsUnorientable;
-		%feature("autodoc", "	:rtype: bool
-") IsUnorientable;
-		Standard_Boolean IsUnorientable ();
 		%feature("compactdefaultargs") GeometricControls;
 		%feature("autodoc", "	:rtype: bool
 ") GeometricControls;
@@ -894,6 +368,44 @@ class BRepCheck_Face : public BRepCheck_Result {
 	:rtype: None
 ") GeometricControls;
 		void GeometricControls (const Standard_Boolean B);
+		%feature("compactdefaultargs") InContext;
+		%feature("autodoc", "	:param ContextShape:
+	:type ContextShape: TopoDS_Shape &
+	:rtype: None
+") InContext;
+		void InContext (const TopoDS_Shape & ContextShape);
+		%feature("compactdefaultargs") IntersectWires;
+		%feature("autodoc", "	:param Update: default value is Standard_False
+	:type Update: bool
+	:rtype: BRepCheck_Status
+") IntersectWires;
+		BRepCheck_Status IntersectWires (const Standard_Boolean Update = Standard_False);
+		%feature("compactdefaultargs") IsUnorientable;
+		%feature("autodoc", "	:rtype: bool
+") IsUnorientable;
+		Standard_Boolean IsUnorientable ();
+		%feature("compactdefaultargs") Minimum;
+		%feature("autodoc", "	:rtype: None
+") Minimum;
+		void Minimum ();
+		%feature("compactdefaultargs") OrientationOfWires;
+		%feature("autodoc", "	:param Update: default value is Standard_False
+	:type Update: bool
+	:rtype: BRepCheck_Status
+") OrientationOfWires;
+		BRepCheck_Status OrientationOfWires (const Standard_Boolean Update = Standard_False);
+		%feature("compactdefaultargs") SetStatus;
+		%feature("autodoc", "	* Sets status of Face;
+
+	:param theStatus:
+	:type theStatus: BRepCheck_Status
+	:rtype: None
+") SetStatus;
+		void SetStatus (const BRepCheck_Status theStatus);
+		%feature("compactdefaultargs") SetUnorientable;
+		%feature("autodoc", "	:rtype: None
+") SetUnorientable;
+		void SetUnorientable ();
 };
 
 
@@ -913,16 +425,6 @@ class BRepCheck_Shell : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Shell;
 		 BRepCheck_Shell (const TopoDS_Shell & S);
-		%feature("compactdefaultargs") InContext;
-		%feature("autodoc", "	:param ContextShape:
-	:type ContextShape: TopoDS_Shape &
-	:rtype: None
-") InContext;
-		void InContext (const TopoDS_Shape & ContextShape);
-		%feature("compactdefaultargs") Minimum;
-		%feature("autodoc", "	:rtype: None
-") Minimum;
-		void Minimum ();
 		%feature("compactdefaultargs") Blind;
 		%feature("autodoc", "	:rtype: None
 ") Blind;
@@ -935,6 +437,26 @@ class BRepCheck_Shell : public BRepCheck_Result {
 	:rtype: BRepCheck_Status
 ") Closed;
 		BRepCheck_Status Closed (const Standard_Boolean Update = Standard_False);
+		%feature("compactdefaultargs") InContext;
+		%feature("autodoc", "	:param ContextShape:
+	:type ContextShape: TopoDS_Shape &
+	:rtype: None
+") InContext;
+		void InContext (const TopoDS_Shape & ContextShape);
+		%feature("compactdefaultargs") IsUnorientable;
+		%feature("autodoc", "	:rtype: bool
+") IsUnorientable;
+		Standard_Boolean IsUnorientable ();
+		%feature("compactdefaultargs") Minimum;
+		%feature("autodoc", "	:rtype: None
+") Minimum;
+		void Minimum ();
+		%feature("compactdefaultargs") NbConnectedSet;
+		%feature("autodoc", "	:param theSets:
+	:type theSets: TopTools_ListOfShape &
+	:rtype: int
+") NbConnectedSet;
+		Standard_Integer NbConnectedSet (TopTools_ListOfShape & theSets);
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	* Checks if the oriented faces of the shell are correctly oriented. An internal call is made to the method Closed. If <Update> is set to Standard_True, registers the status in the list.
 
@@ -947,16 +469,6 @@ class BRepCheck_Shell : public BRepCheck_Result {
 		%feature("autodoc", "	:rtype: None
 ") SetUnorientable;
 		void SetUnorientable ();
-		%feature("compactdefaultargs") IsUnorientable;
-		%feature("autodoc", "	:rtype: bool
-") IsUnorientable;
-		Standard_Boolean IsUnorientable ();
-		%feature("compactdefaultargs") NbConnectedSet;
-		%feature("autodoc", "	:param theSets:
-	:type theSets: TopTools_ListOfShape &
-	:rtype: int
-") NbConnectedSet;
-		Standard_Integer NbConnectedSet (TopTools_ListOfShape & theSets);
 };
 
 
@@ -978,6 +490,12 @@ class BRepCheck_Solid : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Solid;
 		 BRepCheck_Solid (const TopoDS_Solid & theS);
+		%feature("compactdefaultargs") Blind;
+		%feature("autodoc", "	* see the parent class for more details
+
+	:rtype: void
+") Blind;
+		virtual void Blind ();
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", "	* Checks the solid in context of the shape <theContextShape>
 
@@ -992,12 +510,6 @@ class BRepCheck_Solid : public BRepCheck_Result {
 	:rtype: void
 ") Minimum;
 		virtual void Minimum ();
-		%feature("compactdefaultargs") Blind;
-		%feature("autodoc", "	* see the parent class for more details
-
-	:rtype: void
-") Blind;
-		virtual void Blind ();
 };
 
 
@@ -1017,6 +529,10 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Vertex;
 		 BRepCheck_Vertex (const TopoDS_Vertex & V);
+		%feature("compactdefaultargs") Blind;
+		%feature("autodoc", "	:rtype: None
+") Blind;
+		void Blind ();
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", "	:param ContextShape:
 	:type ContextShape: TopoDS_Shape &
@@ -1027,10 +543,6 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 		%feature("autodoc", "	:rtype: None
 ") Minimum;
 		void Minimum ();
-		%feature("compactdefaultargs") Blind;
-		%feature("autodoc", "	:rtype: None
-") Blind;
-		void Blind ();
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
@@ -1054,20 +566,6 @@ class BRepCheck_Wire : public BRepCheck_Result {
 	:rtype: None
 ") BRepCheck_Wire;
 		 BRepCheck_Wire (const TopoDS_Wire & W);
-		%feature("compactdefaultargs") InContext;
-		%feature("autodoc", "	* if <ContextShape> is a face, consequently checks SelfIntersect(), Closed(), Orientation() and Closed2d until faulty is found
-
-	:param ContextShape:
-	:type ContextShape: TopoDS_Shape &
-	:rtype: None
-") InContext;
-		void InContext (const TopoDS_Shape & ContextShape);
-		%feature("compactdefaultargs") Minimum;
-		%feature("autodoc", "	* checks that the wire is not empty and 'connex'. Called by constructor
-
-	:rtype: None
-") Minimum;
-		void Minimum ();
 		%feature("compactdefaultargs") Blind;
 		%feature("autodoc", "	* Does nothing
 
@@ -1092,6 +590,34 @@ class BRepCheck_Wire : public BRepCheck_Result {
 	:rtype: BRepCheck_Status
 ") Closed2d;
 		BRepCheck_Status Closed2d (const TopoDS_Face & F,const Standard_Boolean Update = Standard_False);
+		%feature("compactdefaultargs") GeometricControls;
+		%feature("autodoc", "	* report SelfIntersect() check would be (is) done
+
+	:rtype: bool
+") GeometricControls;
+		Standard_Boolean GeometricControls ();
+		%feature("compactdefaultargs") GeometricControls;
+		%feature("autodoc", "	* set SelfIntersect() to be checked
+
+	:param B:
+	:type B: bool
+	:rtype: None
+") GeometricControls;
+		void GeometricControls (const Standard_Boolean B);
+		%feature("compactdefaultargs") InContext;
+		%feature("autodoc", "	* if <ContextShape> is a face, consequently checks SelfIntersect(), Closed(), Orientation() and Closed2d until faulty is found
+
+	:param ContextShape:
+	:type ContextShape: TopoDS_Shape &
+	:rtype: None
+") InContext;
+		void InContext (const TopoDS_Shape & ContextShape);
+		%feature("compactdefaultargs") Minimum;
+		%feature("autodoc", "	* checks that the wire is not empty and 'connex'. Called by constructor
+
+	:rtype: None
+") Minimum;
+		void Minimum ();
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	* Checks if the oriented edges of the wire are correctly oriented. An internal call is made to the method Closed. If no face exists, call the method with a null face (TopoDS_face()). If <Update> is set to Standard_True, registers the status in the list. May return (and registers): BRepCheck_InvalidDegeneratedFlag, BRepCheck_BadOrientationOfSubshape, BRepCheck_NotClosed, BRepCheck_NoError
 
@@ -1116,20 +642,6 @@ class BRepCheck_Wire : public BRepCheck_Result {
 	:rtype: BRepCheck_Status
 ") SelfIntersect;
 		BRepCheck_Status SelfIntersect (const TopoDS_Face & F,TopoDS_Edge & E1,TopoDS_Edge & E2,const Standard_Boolean Update = Standard_False);
-		%feature("compactdefaultargs") GeometricControls;
-		%feature("autodoc", "	* report SelfIntersect() check would be (is) done
-
-	:rtype: bool
-") GeometricControls;
-		Standard_Boolean GeometricControls ();
-		%feature("compactdefaultargs") GeometricControls;
-		%feature("autodoc", "	* set SelfIntersect() to be checked
-
-	:param B:
-	:type B: bool
-	:rtype: None
-") GeometricControls;
-		void GeometricControls (const Standard_Boolean B);
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "	* Sets status of Wire;
 
@@ -1148,3 +660,6 @@ class BRepCheck_Wire : public BRepCheck_Result {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

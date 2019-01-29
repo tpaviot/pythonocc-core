@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PLUGINDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=PLUGINDOCSTRING) Plugin
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,9 +39,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include Plugin_headers.i
 
+/* templates */
+%template(Plugin_MapOfFunctions) NCollection_DataMap <TCollection_AsciiString , OSD_Function , TCollection_AsciiString>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_DataMap <TCollection_AsciiString , OSD_Function , TCollection_AsciiString> Plugin_MapOfFunctions;
+typedef NCollection_DataMap <TCollection_AsciiString , OSD_Function , TCollection_AsciiString>::Iterator Plugin_DataMapIteratorOfMapOfFunctions;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
 
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

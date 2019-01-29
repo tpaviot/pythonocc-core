@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,47 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPTOOLSDOCSTRING
-"-Level : Public.
-All methods of all classes will be public.
-
-The BRepTools package provides utilities for BRep
-data structures.
-
-* WireExplorer : A tool to explore the topology of
-a wire in the order of the edges.
-
-* ShapeSet : Tools used for dumping, writing and
-reading.
-
-* UVBounds : Methods to compute the limits of the
-boundary of a face, a wire or  an edge in the
-parametric space of a face.
-
-* Update : Methods to call when  a topology has
-been created to compute all missing data.
-
-* UpdateFaceUVPoints : Method to update the UV
-points stored  with the edges  on a face. This
-method ensure that connected edges have the same
-UV point on their common extremity.
-
-* Compare : Method to compare two vertices.
-
-* Compare : Method to compare two edges.
-
-* OuterWire : A method to find the outer wire of a
-face.
-
-* Map3DEdges : A method to map all the 3D Edges of
-a Shape.
-
-* Dump : A method to dump a BRep object.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPTOOLSDOCSTRING) BRepTools
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -75,13 +39,20 @@ a Shape.
 
 %include BRepTools_headers.i
 
+/* templates */
+%template(BRepTools_MapOfVertexPnt2d) NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher> BRepTools_MapOfVertexPnt2d;
+typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>::Iterator BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(BRepTools_DataMapNodeOfMapOfVertexPnt2d)
+%wrap_handle(BRepTools_History)
 %wrap_handle(BRepTools_Modification)
 %wrap_handle(BRepTools_ReShape)
 %wrap_handle(BRepTools_GTrsfModification)
@@ -91,6 +62,170 @@ a Shape.
 %rename(breptools) BRepTools;
 class BRepTools {
 	public:
+		%feature("compactdefaultargs") AddUVBounds;
+		%feature("autodoc", "	* Adds to the box <B> the bounding values in the parametric space of F.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param B:
+	:type B: Bnd_Box2d &
+	:rtype: void
+") AddUVBounds;
+		static void AddUVBounds (const TopoDS_Face & F,Bnd_Box2d & B);
+		%feature("compactdefaultargs") AddUVBounds;
+		%feature("autodoc", "	* Adds to the box <B> the bounding values of the wire in the parametric space of F.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param W:
+	:type W: TopoDS_Wire &
+	:param B:
+	:type B: Bnd_Box2d &
+	:rtype: void
+") AddUVBounds;
+		static void AddUVBounds (const TopoDS_Face & F,const TopoDS_Wire & W,Bnd_Box2d & B);
+		%feature("compactdefaultargs") AddUVBounds;
+		%feature("autodoc", "	* Adds to the box <B> the bounding values of the edge in the parametric space of F.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param B:
+	:type B: Bnd_Box2d &
+	:rtype: void
+") AddUVBounds;
+		static void AddUVBounds (const TopoDS_Face & F,const TopoDS_Edge & E,Bnd_Box2d & B);
+		%feature("compactdefaultargs") Clean;
+		%feature("autodoc", "	* Removes all the triangulations of the faces of <S> and removes all polygons on triangulations of the edges.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") Clean;
+		static void Clean (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Compare;
+		%feature("autodoc", "	* Returns True if the distance between the two vertices is lower than their tolerance.
+
+	:param V1:
+	:type V1: TopoDS_Vertex &
+	:param V2:
+	:type V2: TopoDS_Vertex &
+	:rtype: bool
+") Compare;
+		static Standard_Boolean Compare (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
+		%feature("compactdefaultargs") Compare;
+		%feature("autodoc", "	* Returns True if the distance between the two edges is lower than their tolerance.
+
+	:param E1:
+	:type E1: TopoDS_Edge &
+	:param E2:
+	:type E2: TopoDS_Edge &
+	:rtype: bool
+") Compare;
+		static Standard_Boolean Compare (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	* Dumps the topological structure and the geometry of <Sh> on the stream <S>.
+
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param S:
+	:type S: Standard_OStream &
+	:rtype: void
+") Dump;
+		static void Dump (const TopoDS_Shape & Sh,Standard_OStream & S);
+		%feature("compactdefaultargs") EvalAndUpdateTol;
+		%feature("autodoc", "	* Evals real tolerance of edge <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge
+
+	:param theE:
+	:type theE: TopoDS_Edge &
+	:param theC3d:
+	:type theC3d: Handle_Geom_Curve &
+	:param theC2d:
+	:type theC2d: Handle_Geom2d_Curve
+	:param theS:
+	:type theS: Handle_Geom_Surface &
+	:param theF:
+	:type theF: float
+	:param theL:
+	:type theL: float
+	:rtype: float
+") EvalAndUpdateTol;
+		static Standard_Real EvalAndUpdateTol (const TopoDS_Edge & theE,const Handle_Geom_Curve & theC3d,const Handle_Geom2d_Curve theC2d,const Handle_Geom_Surface & theS,const Standard_Real theF,const Standard_Real theL);
+		%feature("compactdefaultargs") IsReallyClosed;
+		%feature("autodoc", "	* Verifies that the edge <E> is found two times on the face <F> before calling BRep_Tool::IsClosed.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: bool
+") IsReallyClosed;
+		static Standard_Boolean IsReallyClosed (const TopoDS_Edge & E,const TopoDS_Face & F);
+		%feature("compactdefaultargs") Map3DEdges;
+		%feature("autodoc", "	* Stores in the map <M> all the 3D topology edges of <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:param M:
+	:type M: TopTools_IndexedMapOfShape &
+	:rtype: void
+") Map3DEdges;
+		static void Map3DEdges (const TopoDS_Shape & S,TopTools_IndexedMapOfShape & M);
+		%feature("compactdefaultargs") OuterWire;
+		%feature("autodoc", "	* Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopoDS_Wire
+") OuterWire;
+		static TopoDS_Wire OuterWire (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "	* Reads a Shape from <S> in returns it in <Sh>. <B> is used to build the shape.
+
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param S:
+	:type S: Standard_IStream &
+	:param B:
+	:type B: BRep_Builder &
+	:param PR: default value is NULL
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: void
+") Read;
+		static void Read (TopoDS_Shape & Sh,Standard_IStream & S,const BRep_Builder & B,const Handle_Message_ProgressIndicator & PR = NULL);
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "	* Reads a Shape from <File>, returns it in <Sh>. <B> is used to build the shape.
+
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param File:
+	:type File: char *
+	:param B:
+	:type B: BRep_Builder &
+	:param PR: default value is NULL
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: bool
+") Read;
+		static Standard_Boolean Read (TopoDS_Shape & Sh,const char * File,const BRep_Builder & B,const Handle_Message_ProgressIndicator & PR = NULL);
+		%feature("compactdefaultargs") RemoveUnusedPCurves;
+		%feature("autodoc", "	* Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") RemoveUnusedPCurves;
+		static void RemoveUnusedPCurves (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Triangulation;
+		%feature("autodoc", "	* verifies that each face from the shape <S> has got a triangulation with a deflection <= deflec and the edges a discretisation on this triangulation.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:param deflec:
+	:type deflec: float
+	:rtype: bool
+") Triangulation;
+		static Standard_Boolean Triangulation (const TopoDS_Shape & S,const Standard_Real deflec);
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "	* Returns in UMin, UMax, VMin, VMax the bounding values in the parametric space of F.
 
@@ -143,40 +278,6 @@ class BRepTools {
 	:rtype: void
 ") UVBounds;
 		static void UVBounds (const TopoDS_Face & F,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") AddUVBounds;
-		%feature("autodoc", "	* Adds to the box <B> the bounding values in the parametric space of F.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param B:
-	:type B: Bnd_Box2d &
-	:rtype: void
-") AddUVBounds;
-		static void AddUVBounds (const TopoDS_Face & F,Bnd_Box2d & B);
-		%feature("compactdefaultargs") AddUVBounds;
-		%feature("autodoc", "	* Adds to the box <B> the bounding values of the wire in the parametric space of F.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param W:
-	:type W: TopoDS_Wire &
-	:param B:
-	:type B: Bnd_Box2d &
-	:rtype: void
-") AddUVBounds;
-		static void AddUVBounds (const TopoDS_Face & F,const TopoDS_Wire & W,Bnd_Box2d & B);
-		%feature("compactdefaultargs") AddUVBounds;
-		%feature("autodoc", "	* Adds to the box <B> the bounding values of the edge in the parametric space of F.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param E:
-	:type E: TopoDS_Edge &
-	:param B:
-	:type B: Bnd_Box2d &
-	:rtype: void
-") AddUVBounds;
-		static void AddUVBounds (const TopoDS_Face & F,const TopoDS_Edge & E,Bnd_Box2d & B);
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "	* Update a vertex (nothing is done)
 
@@ -257,90 +358,6 @@ class BRepTools {
 	:rtype: void
 ") UpdateFaceUVPoints;
 		static void UpdateFaceUVPoints (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Clean;
-		%feature("autodoc", "	* Removes all the triangulations of the faces of <S> and removes all polygons on triangulations of the edges.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: void
-") Clean;
-		static void Clean (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") RemoveUnusedPCurves;
-		%feature("autodoc", "	* Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: void
-") RemoveUnusedPCurves;
-		static void RemoveUnusedPCurves (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "	* verifies that each face from the shape <S> has got a triangulation with a deflection <= deflec and the edges a discretisation on this triangulation.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:param deflec:
-	:type deflec: float
-	:rtype: bool
-") Triangulation;
-		static Standard_Boolean Triangulation (const TopoDS_Shape & S,const Standard_Real deflec);
-		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "	* Returns True if the distance between the two vertices is lower than their tolerance.
-
-	:param V1:
-	:type V1: TopoDS_Vertex &
-	:param V2:
-	:type V2: TopoDS_Vertex &
-	:rtype: bool
-") Compare;
-		static Standard_Boolean Compare (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
-		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "	* Returns True if the distance between the two edges is lower than their tolerance.
-
-	:param E1:
-	:type E1: TopoDS_Edge &
-	:param E2:
-	:type E2: TopoDS_Edge &
-	:rtype: bool
-") Compare;
-		static Standard_Boolean Compare (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
-		%feature("compactdefaultargs") OuterWire;
-		%feature("autodoc", "	* Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: TopoDS_Wire
-") OuterWire;
-		static TopoDS_Wire OuterWire (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Map3DEdges;
-		%feature("autodoc", "	* Stores in the map <M> all the 3D topology edges of <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:param M:
-	:type M: TopTools_IndexedMapOfShape &
-	:rtype: void
-") Map3DEdges;
-		static void Map3DEdges (const TopoDS_Shape & S,TopTools_IndexedMapOfShape & M);
-		%feature("compactdefaultargs") IsReallyClosed;
-		%feature("autodoc", "	* Verifies that the edge <E> is found two times on the face <F> before calling BRep_Tool::IsClosed.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: bool
-") IsReallyClosed;
-		static Standard_Boolean IsReallyClosed (const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* Dumps the topological structure and the geometry of <Sh> on the stream <S>.
-
-	:param Sh:
-	:type Sh: TopoDS_Shape &
-	:param S:
-	:type S: Standard_OStream &
-	:rtype: void
-") Dump;
-		static void Dump (const TopoDS_Shape & Sh,Standard_OStream & S);
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Writes <Sh> on <S> in an ASCII format.
 
@@ -353,20 +370,6 @@ class BRepTools {
 	:rtype: void
 ") Write;
 		static void Write (const TopoDS_Shape & Sh,Standard_OStream & S,const Handle_Message_ProgressIndicator & PR = NULL);
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Reads a Shape from <S> in returns it in <Sh>. <B> is used to build the shape.
-
-	:param Sh:
-	:type Sh: TopoDS_Shape &
-	:param S:
-	:type S: Standard_IStream &
-	:param B:
-	:type B: BRep_Builder &
-	:param PR: default value is NULL
-	:type PR: Handle_Message_ProgressIndicator &
-	:rtype: void
-") Read;
-		static void Read (TopoDS_Shape & Sh,Standard_IStream & S,const BRep_Builder & B,const Handle_Message_ProgressIndicator & PR = NULL);
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Writes <Sh> in <File>.
 
@@ -379,20 +382,6 @@ class BRepTools {
 	:rtype: bool
 ") Write;
 		static Standard_Boolean Write (const TopoDS_Shape & Sh,const char * File,const Handle_Message_ProgressIndicator & PR = NULL);
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Reads a Shape from <File>, returns it in <Sh>. <B> is used to build the shape.
-
-	:param Sh:
-	:type Sh: TopoDS_Shape &
-	:param File:
-	:type File: char *
-	:param B:
-	:type B: BRep_Builder &
-	:param PR: default value is NULL
-	:type PR: Handle_Message_ProgressIndicator &
-	:rtype: bool
-") Read;
-		static Standard_Boolean Read (TopoDS_Shape & Sh,const char * File,const BRep_Builder & B,const Handle_Message_ProgressIndicator & PR = NULL);
 };
 
 
@@ -401,186 +390,143 @@ class BRepTools {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapIterator {
+%nodefaultctor BRepTools_History;
+class BRepTools_History : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-		%feature("autodoc", "	:rtype: None
-") BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-		 BRepTools_DataMapIteratorOfMapOfVertexPnt2d ();
-		%feature("compactdefaultargs") BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepTools_MapOfVertexPnt2d &
-	:rtype: None
-") BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-		 BRepTools_DataMapIteratorOfMapOfVertexPnt2d (const BRepTools_MapOfVertexPnt2d & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: BRepTools_MapOfVertexPnt2d &
-	:rtype: None
-") Initialize;
-		void Initialize (const BRepTools_MapOfVertexPnt2d & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt2d
-") Value;
-		const TColgp_SequenceOfPnt2d & Value ();
+/* public enums */
+enum TRelationType {
+	TRelationType_Removed = 0,
+	TRelationType_Generated = 1,
+	TRelationType_Modified = 2,
 };
 
+/* end public enums declaration */
 
-%extend BRepTools_DataMapIteratorOfMapOfVertexPnt2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepTools_DataMapNodeOfMapOfVertexPnt2d;
-class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") BRepTools_DataMapNodeOfMapOfVertexPnt2d;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: TColgp_SequenceOfPnt2d
-	:param n:
-	:type n: TCollection_MapNodePtr &
+		%feature("compactdefaultargs") AddGenerated;
+		%feature("autodoc", "	* Methods to set the history. Set the second shape as generated one from the first shape.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:param theGenerated:
+	:type theGenerated: TopoDS_Shape &
 	:rtype: None
-") BRepTools_DataMapNodeOfMapOfVertexPnt2d;
-		 BRepTools_DataMapNodeOfMapOfVertexPnt2d (const TopoDS_Shape & K,const TColgp_SequenceOfPnt2d & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt2d
-") Value;
-		TColgp_SequenceOfPnt2d & Value ();
-};
+") AddGenerated;
+		void AddGenerated (const TopoDS_Shape & theInitial,const TopoDS_Shape & theGenerated);
+		%feature("compactdefaultargs") AddModified;
+		%feature("autodoc", "	* Set the second shape as modified one from the first shape.
 
-
-%make_alias(BRepTools_DataMapNodeOfMapOfVertexPnt2d)
-
-%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepTools_MapOfVertexPnt2d;
-class BRepTools_MapOfVertexPnt2d : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") BRepTools_MapOfVertexPnt2d;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:param theModified:
+	:type theModified: TopoDS_Shape &
 	:rtype: None
-") BRepTools_MapOfVertexPnt2d;
-		 BRepTools_MapOfVertexPnt2d (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepTools_MapOfVertexPnt2d &
-	:rtype: BRepTools_MapOfVertexPnt2d
-") Assign;
-		BRepTools_MapOfVertexPnt2d & Assign (const BRepTools_MapOfVertexPnt2d & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepTools_MapOfVertexPnt2d &
-	:rtype: BRepTools_MapOfVertexPnt2d
-") operator =;
-		BRepTools_MapOfVertexPnt2d & operator = (const BRepTools_MapOfVertexPnt2d & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
+") AddModified;
+		void AddModified (const TopoDS_Shape & theInitial,const TopoDS_Shape & theModified);
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Clears the history.
+
+	:rtype: None
 ") Clear;
 		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: TColgp_SequenceOfPnt2d
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Methods to read the history. Returns all shapes generated from the shape.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		const TopTools_ListOfShape & Generated (const TopoDS_Shape & theInitial);
+		%feature("compactdefaultargs") IsRemoved;
+		%feature("autodoc", "	* Returns 'true' if the shape is removed.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
 	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const TColgp_SequenceOfPnt2d & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
+") IsRemoved;
+		Standard_Boolean IsRemoved (const TopoDS_Shape & theInitial);
+		%feature("compactdefaultargs") IsSupportedType;
+		%feature("autodoc", "	* Returns 'true' if the type of the shape is supported by the history.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
 	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: TColgp_SequenceOfPnt2d
-") Find;
-		const TColgp_SequenceOfPnt2d & Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: TColgp_SequenceOfPnt2d
-") ChangeFind;
-		TColgp_SequenceOfPnt2d & ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
+") IsSupportedType;
+		static Standard_Boolean IsSupportedType (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Merge;
+		%feature("autodoc", "	* A method to merge a next history to this history. Merges the next history to this history.
+
+	:param theHistory23:
+	:type theHistory23: Handle_BRepTools_History &
+	:rtype: None
+") Merge;
+		void Merge (const Handle_BRepTools_History & theHistory23);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns all shapes modified from the shape.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		const TopTools_ListOfShape & Modified (const TopoDS_Shape & theInitial);
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Set the shape as removed one.
+
+	:param theRemoved:
+	:type theRemoved: TopoDS_Shape &
+	:rtype: None
+") Remove;
+		void Remove (const TopoDS_Shape & theRemoved);
+		%feature("compactdefaultargs") ReplaceGenerated;
+		%feature("autodoc", "	* Set the second shape as the only generated one from the first one.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:param theGenerated:
+	:type theGenerated: TopoDS_Shape &
+	:rtype: None
+") ReplaceGenerated;
+		void ReplaceGenerated (const TopoDS_Shape & theInitial,const TopoDS_Shape & theGenerated);
+		%feature("compactdefaultargs") ReplaceModified;
+		%feature("autodoc", "	* Set the second shape as the only modified one from the first one.
+
+	:param theInitial:
+	:type theInitial: TopoDS_Shape &
+	:param theModified:
+	:type theModified: TopoDS_Shape &
+	:rtype: None
+") ReplaceModified;
+		void ReplaceModified (const TopoDS_Shape & theInitial,const TopoDS_Shape & theModified);
 };
 
 
-%extend BRepTools_MapOfVertexPnt2d {
+%make_alias(BRepTools_History)
+
+%extend BRepTools_History {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
 %nodefaultctor BRepTools_Modification;
-class BRepTools_Modification : public MMgt_TShared {
+class BRepTools_Modification : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns true if the face, F, has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. The flag, RevWires, is set to true when the modification reverses the normal of the surface, (i.e. the wires have to be reversed). The flag, RevFace, is set to true if the orientation of the modified face changes in the shells which contain it. If the face has not been modified this function returns false, and the values of S, L, Tol, RevWires and RevFace are not significant.
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		virtual Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
-		%feature("compactdefaultargs") NewTriangulation;
-		%feature("autodoc", "	* Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param T:
-	:type T: Handle_Poly_Triangulation &
-	:rtype: bool
-") NewTriangulation;
-		virtual Standard_Boolean NewTriangulation (const TopoDS_Face & F,Handle_Poly_Triangulation & T);
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		virtual GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "	* Returns true if the edge, E, has been modified. If the edge has been modified: - C is the new geometry associated with the edge, - L is its new location, and - Tol is the new tolerance. If the edge has not been modified, this function returns false, and the values of C, L and Tol are not significant.
 
@@ -595,18 +541,6 @@ class BRepTools_Modification : public MMgt_TShared {
 	:rtype: bool
 ") NewCurve;
 		virtual Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns true if the vertex V has been modified. If V has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		virtual Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "	* Returns true if the edge, E, has a new curve on surface on the face, F. If a new curve exists: - C is the new geometry of the edge, - L is the new location, and - Tol is the new tolerance. NewE is the new edge created from E, and NewF is the new face created from F. If there is no new curve on the face, this function returns false, and the values of C, L and Tol are not significant.
 
@@ -639,24 +573,68 @@ class BRepTools_Modification : public MMgt_TShared {
 	:rtype: bool
 ") NewParameter;
 		virtual Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns true if the vertex V has been modified. If V has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		virtual Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewPolygon;
+		%feature("autodoc", "	* Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - P is a new polygon
 
 	:param E:
 	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		virtual GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+	:param P:
+	:type P: Handle_Poly_Polygon3D &
+	:rtype: bool
+") NewPolygon;
+		virtual Standard_Boolean NewPolygon (const TopoDS_Edge & E,Handle_Poly_Polygon3D & P);
+		%feature("compactdefaultargs") NewPolygonOnTriangulation;
+		%feature("autodoc", "	* Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - P is a new polygon on triangulation
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: Handle_Poly_PolygonOnTriangulation &
+	:rtype: bool
+") NewPolygonOnTriangulation;
+		virtual Standard_Boolean NewPolygonOnTriangulation (const TopoDS_Edge & E,const TopoDS_Face & F,Handle_Poly_PolygonOnTriangulation & P);
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns true if the face, F, has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. The flag, RevWires, is set to true when the modification reverses the normal of the surface, (i.e. the wires have to be reversed). The flag, RevFace, is set to true if the orientation of the modified face changes in the shells which contain it. If the face has not been modified this function returns false, and the values of S, L, Tol, RevWires and RevFace are not significant.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		virtual Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "	* Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param T:
+	:type T: Handle_Poly_Triangulation &
+	:rtype: bool
+") NewTriangulation;
+		virtual Standard_Boolean NewTriangulation (const TopoDS_Face & F,Handle_Poly_Triangulation & T);
 };
 
 
@@ -670,12 +648,16 @@ class BRepTools_Modification : public MMgt_TShared {
 %nodefaultctor BRepTools_Modifier;
 class BRepTools_Modifier {
 	public:
+		class NewCurveInfo {};
+		class NewSurfaceInfo {};
 		%feature("compactdefaultargs") BRepTools_Modifier;
 		%feature("autodoc", "	* Creates an empty Modifier.
 
+	:param theMutableInput: default value is Standard_False
+	:type theMutableInput: bool
 	:rtype: None
 ") BRepTools_Modifier;
-		 BRepTools_Modifier ();
+		 BRepTools_Modifier (Standard_Boolean theMutableInput = Standard_False);
 		%feature("compactdefaultargs") BRepTools_Modifier;
 		%feature("autodoc", "	* Creates a modifier on the shape <S>.
 
@@ -702,6 +684,26 @@ class BRepTools_Modifier {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns Standard_True if the modification has been computed successfully.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") IsMutableInput;
+		%feature("autodoc", "	* Returns the current mutable input state
+
+	:rtype: bool
+") IsMutableInput;
+		Standard_Boolean IsMutableInput ();
+		%feature("compactdefaultargs") ModifiedShape;
+		%feature("autodoc", "	* Returns the modified shape corresponding to <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ModifiedShape;
+		const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the modifications described by <M>.
 
@@ -712,20 +714,14 @@ class BRepTools_Modifier {
 	:rtype: None
 ") Perform;
 		void Perform (const Handle_BRepTools_Modification & M,const Handle_Message_ProgressIndicator & aProgress = NULL);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns Standard_True if the modification has been computed successfully.
+		%feature("compactdefaultargs") SetMutableInput;
+		%feature("autodoc", "	* Sets the mutable input state If true then the input (original) shape can be modified during modification process
 
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") ModifiedShape;
-		%feature("autodoc", "	* Returns the modified shape corresponding to <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") ModifiedShape;
-		const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
+	:param theMutableInput:
+	:type theMutableInput: bool
+	:rtype: None
+") SetMutableInput;
+		void SetMutableInput (Standard_Boolean theMutableInput);
 };
 
 
@@ -737,6 +733,14 @@ class BRepTools_Modifier {
 %nodefaultctor BRepTools_Quilt;
 class BRepTools_Quilt {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Add the faces of <S> to the Quilt, the faces containing bounded edges are copied.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") BRepTools_Quilt;
 		%feature("autodoc", "	:rtype: None
 ") BRepTools_Quilt;
@@ -761,22 +765,6 @@ class BRepTools_Quilt {
 	:rtype: None
 ") Bind;
 		void Bind (const TopoDS_Vertex & Vold,const TopoDS_Vertex & Vnew);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Add the faces of <S> to the Quilt, the faces containing bounded edges are copied.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") IsCopied;
-		%feature("autodoc", "	* Returns True if <S> has been copied (<S> is a vertex, an edge or a face)
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: bool
-") IsCopied;
-		Standard_Boolean IsCopied (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "	* Returns the shape substitued to <S> in the Quilt.
 
@@ -785,6 +773,14 @@ class BRepTools_Quilt {
 	:rtype: TopoDS_Shape
 ") Copy;
 		const TopoDS_Shape  Copy (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsCopied;
+		%feature("autodoc", "	* Returns True if <S> has been copied (<S> is a vertex, an edge or a face)
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsCopied;
+		Standard_Boolean IsCopied (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Shells;
 		%feature("autodoc", "	* Returns a Compound of shells made from the current set of faces. The shells will be flagged as closed or not closed.
 
@@ -800,8 +796,19 @@ class BRepTools_Quilt {
 	}
 };
 %nodefaultctor BRepTools_ReShape;
-class BRepTools_ReShape : public MMgt_TShared {
+class BRepTools_ReShape : public Standard_Transient {
 	public:
+		class TReplacement {};
+		%feature("compactdefaultargs") Apply;
+		%feature("autodoc", "	* Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param until: default value is TopAbs_SHAPE
+	:type until: TopAbs_ShapeEnum
+	:rtype: TopoDS_Shape
+") Apply;
+		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
 		%feature("compactdefaultargs") BRepTools_ReShape;
 		%feature("autodoc", "	* Returns an empty Reshape
 
@@ -814,28 +821,42 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:rtype: void
 ") Clear;
 		virtual void Clear ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Sets a request to Remove a Shape If <oriented> is True, only for a shape with the SAME orientation. Else, whatever the orientation
+		%feature("compactdefaultargs") CopyVertex;
+		%feature("autodoc", "	* Returns modified copy of vertex if original one is not recorded or returns modified original vertex otherwise.
 
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param oriented: default value is Standard_False
-	:type oriented: bool
-	:rtype: void
-") Remove;
-		virtual void Remove (const TopoDS_Shape & shape,const Standard_Boolean oriented = Standard_False);
-		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "	* Sets a request to Replace a Shape by a new one If <oriented> is True, only if the orientation is the same Else, whatever the orientation, and the new shape takes the same orientation as <newshape> if the replaced one has the same as <shape>, else it is reversed
+	:param theV:
+	:type theV: TopoDS_Vertex &
+	:param theTol: default value is -1.0
+	:type theTol: float
+	:rtype: TopoDS_Vertex
+") CopyVertex;
+		TopoDS_Vertex CopyVertex (const TopoDS_Vertex & theV,const Standard_Real theTol = -1.0);
+		%feature("compactdefaultargs") CopyVertex;
+		%feature("autodoc", "	* Returns modified copy of vertex if original one is not recorded or returns modified original vertex otherwise.
 
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param newshape:
-	:type newshape: TopoDS_Shape &
-	:param oriented: default value is Standard_False
-	:type oriented: bool
-	:rtype: void
-") Replace;
-		virtual void Replace (const TopoDS_Shape & shape,const TopoDS_Shape & newshape,const Standard_Boolean oriented = Standard_False);
+	:param theV:
+	:type theV: TopoDS_Vertex &
+	:param theNewPos:
+	:type theNewPos: gp_Pnt
+	:param aTol:
+	:type aTol: float
+	:rtype: TopoDS_Vertex
+") CopyVertex;
+		TopoDS_Vertex CopyVertex (const TopoDS_Vertex & theV,const gp_Pnt & theNewPos,const Standard_Real aTol);
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "	* Returns the history of the substituted shapes.
+
+	:rtype: Handle_BRepTools_History
+") History;
+		Handle_BRepTools_History History ();
+		%feature("compactdefaultargs") IsNewShape;
+		%feature("autodoc", "	* Checks if shape has been recorded by reshaper as a value
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: bool
+") IsNewShape;
+		Standard_Boolean IsNewShape (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") IsRecorded;
 		%feature("autodoc", "	* Tells if a shape is recorded for Replace/Remove
 
@@ -844,14 +865,37 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:rtype: bool
 ") IsRecorded;
 		virtual Standard_Boolean IsRecorded (const TopoDS_Shape & shape);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
+
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModeConsiderLocation() {
+                return (Standard_Boolean) $self->ModeConsiderLocation();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModeConsiderLocation(Standard_Boolean value ) {
+                $self->ModeConsiderLocation()=value;
+                }
+            };
+            		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Sets a request to Remove a Shape whatever the orientation
 
 	:param shape:
 	:type shape: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") Value;
-		virtual TopoDS_Shape Value (const TopoDS_Shape & shape);
+	:rtype: void
+") Remove;
+		virtual void Remove (const TopoDS_Shape & shape);
+		%feature("compactdefaultargs") Replace;
+		%feature("autodoc", "	* Sets a request to Replace a Shape by a new one.
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param newshape:
+	:type newshape: TopoDS_Shape &
+	:rtype: None
+") Replace;
+		void Replace (const TopoDS_Shape & shape,const TopoDS_Shape & newshape);
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns a complete substitution status for a shape 0 : not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 
@@ -864,40 +908,14 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:rtype: int
 ") Status;
 		virtual Standard_Integer Status (const TopoDS_Shape & shape,TopoDS_Shape & newsh,const Standard_Boolean last = Standard_False);
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	* Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE //! <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
 
 	:param shape:
 	:type shape: TopoDS_Shape &
-	:param until:
-	:type until: TopAbs_ShapeEnum
-	:param buildmode:
-	:type buildmode: int
 	:rtype: TopoDS_Shape
-") Apply;
-		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until,const Standard_Integer buildmode);
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	* Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param until: default value is TopAbs_SHAPE
-	:type until: TopAbs_ShapeEnum
-	:rtype: TopoDS_Shape
-") Apply;
-		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
-		%feature("compactdefaultargs") ModeConsiderLocation;
-		%feature("autodoc", "	* Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
-
-	:rtype: bool
-") ModeConsiderLocation;
-		virtual Standard_Boolean & ModeConsiderLocation ();
-		%feature("compactdefaultargs") ModeConsiderOrientation;
-		%feature("autodoc", "	* Returns (modifiable) the flag which defines whether Orientation of shape take into account during replacing shapes.
-
-	:rtype: bool
-") ModeConsiderOrientation;
-		virtual Standard_Boolean & ModeConsiderOrientation ();
+") Value;
+		virtual TopoDS_Shape Value (const TopoDS_Shape & shape);
 };
 
 
@@ -911,6 +929,24 @@ class BRepTools_ReShape : public MMgt_TShared {
 %nodefaultctor BRepTools_ShapeSet;
 class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	public:
+		%feature("compactdefaultargs") AddGeometry;
+		%feature("autodoc", "	* Stores the goemetry of <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") AddGeometry;
+		virtual void AddGeometry (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") AddShapes;
+		%feature("autodoc", "	* Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
+
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: void
+") AddShapes;
+		virtual void AddShapes (TopoDS_Shape & S1,const TopoDS_Shape & S2);
 		%feature("compactdefaultargs") BRepTools_ShapeSet;
 		%feature("autodoc", "	* Builds an empty ShapeSet. Parameter <isWithTriangles> is added for XML Persistence
 
@@ -929,20 +965,20 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	:rtype: None
 ") BRepTools_ShapeSet;
 		 BRepTools_ShapeSet (const BRep_Builder & B,const Standard_Boolean isWithTriangles = Standard_True);
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param T:
+	:type T: TopAbs_ShapeEnum
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") Check;
+		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Clears the content of the set.
 
 	:rtype: void
 ") Clear;
 		virtual void Clear ();
-		%feature("compactdefaultargs") AddGeometry;
-		%feature("autodoc", "	* Stores the goemetry of <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: void
-") AddGeometry;
-		virtual void AddGeometry (const TopoDS_Shape & S);
 
         %feature("autodoc", "1");
         %extend{
@@ -950,21 +986,6 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
             std::stringstream s;
             self->DumpGeometry(s);
             return s.str();}
-        };
-        
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteGeometryToString() {
-            std::stringstream s;
-            self->WriteGeometry(s);
-            return s.str();}
-        };
-        
-        %feature("autodoc", "1");
-        %extend{
-            void ReadGeometryFromString(std::string src) {
-            std::stringstream s(src);
-            self->ReadGeometry(s);}
         };
         		%feature("compactdefaultargs") DumpGeometry;
 		%feature("autodoc", "	* Dumps the geometry of <S> on the stream <OS>.
@@ -976,63 +997,6 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	:rtype: void
 ") DumpGeometry;
 		virtual void DumpGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("compactdefaultargs") WriteGeometry;
-		%feature("autodoc", "	* Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:param OS:
-	:type OS: Standard_OStream &
-	:rtype: void
-") WriteGeometry;
-		virtual void WriteGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("compactdefaultargs") ReadGeometry;
-		%feature("autodoc", "	* Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
-
-	:param T:
-	:type T: TopAbs_ShapeEnum
-	:param IS:
-	:type IS: Standard_IStream &
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: void
-") ReadGeometry;
-		virtual void ReadGeometry (const TopAbs_ShapeEnum T,Standard_IStream & IS,TopoDS_Shape & S);
-		%feature("compactdefaultargs") AddShapes;
-		%feature("autodoc", "	* Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
-
-	:param S1:
-	:type S1: TopoDS_Shape &
-	:param S2:
-	:type S2: TopoDS_Shape &
-	:rtype: void
-") AddShapes;
-		virtual void AddShapes (TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param T:
-	:type T: TopAbs_ShapeEnum
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: void
-") Check;
-		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
-
-        %feature("autodoc", "1");
-        %extend{
-            void ReadPolygon3DFromString(std::string src) {
-            std::stringstream s(src);
-            self->ReadPolygon3D(s);}
-        };
-        		%feature("compactdefaultargs") WritePolygon3D;
-		%feature("autodoc", "	* Writes the 3d polygons on the stream <OS> in a format that can be read back by Read.
-
-	:param OS:
-	:type OS: Standard_OStream &
-	:param Compact: default value is Standard_True
-	:type Compact: bool
-	:rtype: None
-") WritePolygon3D;
-		void WritePolygon3D (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
 
         %feature("autodoc", "1");
         %extend{
@@ -1044,21 +1008,12 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
         
         %feature("autodoc", "1");
         %extend{
-            void ReadTriangulationFromString(std::string src) {
-            std::stringstream s(src);
-            self->ReadTriangulation(s);}
+            std::string DumpPolygonOnTriangulationToString() {
+            std::stringstream s;
+            self->DumpPolygonOnTriangulation(s);
+            return s.str();}
         };
-        		%feature("compactdefaultargs") WriteTriangulation;
-		%feature("autodoc", "	* Writes the triangulation on the stream <OS> in a format that can be read back by Read.
-
-	:param OS:
-	:type OS: Standard_OStream &
-	:param Compact: default value is Standard_True
-	:type Compact: bool
-	:rtype: None
-") WriteTriangulation;
-		void WriteTriangulation (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
-
+        
         %feature("autodoc", "1");
         %extend{
             std::string DumpTriangulationToString() {
@@ -1069,11 +1024,72 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
         
         %feature("autodoc", "1");
         %extend{
+            void ReadGeometryFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadGeometry(s);}
+        };
+        		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "	* Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
+
+	:param T:
+	:type T: TopAbs_ShapeEnum
+	:param IS:
+	:type IS: Standard_IStream &
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") ReadGeometry;
+		virtual void ReadGeometry (const TopAbs_ShapeEnum T,Standard_IStream & IS,TopoDS_Shape & S);
+
+        %feature("autodoc", "1");
+        %extend{
+            void ReadPolygon3DFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadPolygon3D(s);}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
             void ReadPolygonOnTriangulationFromString(std::string src) {
             std::stringstream s(src);
             self->ReadPolygonOnTriangulation(s);}
         };
-        		%feature("compactdefaultargs") WritePolygonOnTriangulation;
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadTriangulationFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadTriangulation(s);}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteGeometryToString() {
+            std::stringstream s;
+            self->WriteGeometry(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "	* Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") WriteGeometry;
+		virtual void WriteGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
+		%feature("compactdefaultargs") WritePolygon3D;
+		%feature("autodoc", "	* Writes the 3d polygons on the stream <OS> in a format that can be read back by Read.
+
+	:param OS:
+	:type OS: Standard_OStream &
+	:param Compact: default value is Standard_True
+	:type Compact: bool
+	:rtype: None
+") WritePolygon3D;
+		void WritePolygon3D (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
+		%feature("compactdefaultargs") WritePolygonOnTriangulation;
 		%feature("autodoc", "	* Writes the polygons on triangulation on the stream <OS> in a format that can be read back by Read.
 
 	:param OS:
@@ -1083,15 +1099,17 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	:rtype: None
 ") WritePolygonOnTriangulation;
 		void WritePolygonOnTriangulation (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
+		%feature("compactdefaultargs") WriteTriangulation;
+		%feature("autodoc", "	* Writes the triangulation on the stream <OS> in a format that can be read back by Read.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpPolygonOnTriangulationToString() {
-            std::stringstream s;
-            self->DumpPolygonOnTriangulation(s);
-            return s.str();}
-        };
-        };
+	:param OS:
+	:type OS: Standard_OStream &
+	:param Compact: default value is Standard_True
+	:type Compact: bool
+	:rtype: None
+") WriteTriangulation;
+		void WriteTriangulation (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
+};
 
 
 %extend BRepTools_ShapeSet {
@@ -1106,12 +1124,36 @@ class BRepTools_Substitution {
 		%feature("autodoc", "	:rtype: None
 ") BRepTools_Substitution;
 		 BRepTools_Substitution ();
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Build NewShape from <S> if its subshapes has modified. //! The methods <IsCopied> and <Copy> allows you to keep the resul of <Build>
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Build;
+		void Build (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Reset all the fields.
 
 	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Returns the set of shapes substitued to <S> .
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Copy;
+		const TopTools_ListOfShape & Copy (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsCopied;
+		%feature("autodoc", "	* Returns True if <S> has been replaced .
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsCopied;
+		Standard_Boolean IsCopied (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Substitute;
 		%feature("autodoc", "	* <Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty , in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
 
@@ -1122,30 +1164,6 @@ class BRepTools_Substitution {
 	:rtype: None
 ") Substitute;
 		void Substitute (const TopoDS_Shape & OldShape,const TopTools_ListOfShape & NewShapes);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Build NewShape from <S> if its subshapes has modified. //! The methods <IsCopied> and <Copy> allows you to keep the resul of <Build>
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Build;
-		void Build (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") IsCopied;
-		%feature("autodoc", "	* Returns True if <S> has been replaced .
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: bool
-") IsCopied;
-		Standard_Boolean IsCopied (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Returns the set of shapes substitued to <S> .
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Copy;
-		const TopTools_ListOfShape & Copy (const TopoDS_Shape & S);
 };
 
 
@@ -1181,6 +1199,24 @@ class BRepTools_WireExplorer {
 	:rtype: None
 ") BRepTools_WireExplorer;
 		 BRepTools_WireExplorer (const TopoDS_Wire & W,const TopoDS_Face & F);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Clears the content of the explorer.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Current;
+		%feature("autodoc", "	* Returns the current edge.
+
+	:rtype: TopoDS_Edge
+") Current;
+		const TopoDS_Edge  Current ();
+		%feature("compactdefaultargs") CurrentVertex;
+		%feature("autodoc", "	* Returns the vertex connecting the current edge to the previous one.
+
+	:rtype: TopoDS_Vertex
+") CurrentVertex;
+		const TopoDS_Vertex  CurrentVertex ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes an exploration of the wire <W>.
 
@@ -1211,30 +1247,12 @@ class BRepTools_WireExplorer {
 	:rtype: None
 ") Next;
 		void Next ();
-		%feature("compactdefaultargs") Current;
-		%feature("autodoc", "	* Returns the current edge.
-
-	:rtype: TopoDS_Edge
-") Current;
-		const TopoDS_Edge  Current ();
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	* Returns an Orientation for the current edge.
 
 	:rtype: TopAbs_Orientation
 ") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("compactdefaultargs") CurrentVertex;
-		%feature("autodoc", "	* Returns the vertex connecting the current edge to the previous one.
-
-	:rtype: TopoDS_Vertex
-") CurrentVertex;
-		const TopoDS_Vertex  CurrentVertex ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clears the content of the explorer.
-
-	:rtype: None
-") Clear;
-		void Clear ();
 };
 
 
@@ -1252,30 +1270,30 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 	:rtype: None
 ") BRepTools_GTrsfModification;
 		 BRepTools_GTrsfModification (const gp_GTrsf & T);
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 		%feature("compactdefaultargs") GTrsf;
 		%feature("autodoc", "	* Gives an access on the GTrsf.
 
 	:rtype: gp_GTrsf
 ") GTrsf;
 		gp_GTrsf  GTrsf ();
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 
@@ -1290,18 +1308,6 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 
@@ -1334,24 +1340,36 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
 };
 
 
@@ -1369,24 +1387,28 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 		%feature("autodoc", "	:rtype: None
 ") BRepTools_NurbsConvertModification;
 		 BRepTools_NurbsConvertModification ();
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+		%feature("compactdefaultargs") GetUpdatedEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GetUpdatedEdges;
+		const TopTools_ListOfShape & GetUpdatedEdges ();
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 
@@ -1401,18 +1423,6 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 
@@ -1445,24 +1455,36 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
 };
 
 
@@ -1482,30 +1504,24 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 	:rtype: None
 ") BRepTools_TrsfModification;
 		 BRepTools_TrsfModification (const gp_Trsf & T);
-		%feature("compactdefaultargs") Trsf;
-		%feature("autodoc", "	* Provides access to the gp_Trsf associated with this modification. The transformation can be changed.
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
-	:rtype: gp_Trsf
-") Trsf;
-		gp_Trsf  Trsf ();
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns true if the face F has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. RevWires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). RevFace is set to true if the orientation of the modified face changes in the shells which contain it. For this class, RevFace returns true if the gp_Trsf associated with this modification is negative.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "	* Returns true if the edge E has been modified. If the edge has been modified: - C is the new geometric support of the edge, - L is the new location, and - Tol is the new tolerance. If the edge has not been modified, this function returns false, and the values of C, L and Tol are not significant.
 
@@ -1520,18 +1536,6 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns true if the vertex V has been modified. If the vertex has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "	* Returns true if the edge E has a new curve on surface on the face F. If a new curve exists: - C is the new geometric support of the edge, - L is the new location, and - Tol the new tolerance. If no new curve exists, this function returns false, and the values of C, L and Tol are not significant.
 
@@ -1564,24 +1568,42 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 	:rtype: bool
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns true if the vertex V has been modified. If the vertex has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
 
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns true if the face F has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. RevWires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). RevFace is set to true if the orientation of the modified face changes in the shells which contain it. For this class, RevFace returns true if the gp_Trsf associated with this modification is negative.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") Trsf;
+		%feature("autodoc", "	* Provides access to the gp_Trsf associated with this modification. The transformation can be changed.
+
+	:rtype: gp_Trsf
+") Trsf;
+		gp_Trsf  Trsf ();
 };
 
 
@@ -1592,3 +1614,6 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

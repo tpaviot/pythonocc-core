@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,20 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define OSDDOCSTRING
-"-History:
-Version  Date    Purpose
-1.1  24/06/92  Operating System Dependent tools
-1.2
-2.0
-3.0
-Windows NT 30/09/96 ( EUG )
-Set of Operating Sytem Dependent Tools
-(O)perating (S)ystem (D)ependent
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -47,6 +38,10 @@ Set of Operating Sytem Dependent Tools
 
 
 %include OSD_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
@@ -102,8 +97,7 @@ enum OSD_WhoAmI {
 	OSD_WChronometer = 11,
 	OSD_WTimer = 12,
 	OSD_WPackage = 13,
-	OSD_WPrinter = 14,
-	OSD_WEnvironmentIterator = 15,
+	OSD_WEnvironmentIterator = 14,
 };
 
 enum OSD_SysType {
@@ -156,3 +150,6 @@ enum OSD_SingleProtection {
 
 /* end public enums declaration */
 
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

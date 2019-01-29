@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLLECTIONDOCSTRING
-"The package <TCollection> provides the services for the
-transient basic data structures.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,9 +39,13 @@ transient basic data structures.
 
 %include TCollection_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
-typedef TCollection_SeqNode * TCollection_SeqNodePtr;
 typedef TCollection_MapNode * TCollection_MapNodePtr;
+typedef TCollection_SeqNode * TCollection_SeqNodePtr;
 /* end typedefs declaration */
 
 /* public enums */
@@ -81,6 +83,569 @@ class TCollection {
 %nodefaultctor TCollection_AsciiString;
 class TCollection_AsciiString {
 	public:
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
+
+	:param other:
+	:type other: Standard_Character
+	:rtype: None
+") AssignCat;
+		void AssignCat (const Standard_Character other);
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
+
+	:param other:
+	:type other: int
+	:rtype: None
+") AssignCat;
+		void AssignCat (const Standard_Integer other);
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
+
+	:param other:
+	:type other: float
+	:rtype: None
+") AssignCat;
+		void AssignCat (const Standard_Real other);
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
+
+	:param other:
+	:type other: char *
+	:rtype: None
+") AssignCat;
+		void AssignCat (const char * other);
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. Example: aString += anotherString
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") AssignCat;
+		void AssignCat (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") Capitalize;
+		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '
+
+	:rtype: None
+") Capitalize;
+		void Capitalize ();
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
+
+	:param other:
+	:type other: Standard_Character
+	:rtype: TCollection_AsciiString
+") Cat;
+		TCollection_AsciiString Cat (const Standard_Character other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15; Example: aString contains 'I say ' gives 'I say 15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
+
+	:param other:
+	:type other: int
+	:rtype: TCollection_AsciiString
+") Cat;
+		TCollection_AsciiString Cat (const Standard_Integer other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15.15; Example: aString contains 'I say ' gives 'I say 15.15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
+
+	:param other:
+	:type other: float
+	:rtype: TCollection_AsciiString
+") Cat;
+		TCollection_AsciiString Cat (const Standard_Real other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
+
+	:param other:
+	:type other: char *
+	:rtype: TCollection_AsciiString
+") Cat;
+		TCollection_AsciiString Cat (const char * other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me. Example: aString = aString + anotherString
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: TCollection_AsciiString
+") Cat;
+		TCollection_AsciiString Cat (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") Center;
+		%feature("autodoc", "	* Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example TCollection_AsciiString myAlphabet('abcdef'); myAlphabet.Center(9,' '); assert ( myAlphabet == ' abcdef ' );
+
+	:param Width:
+	:type Width: int
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") Center;
+		void Center (const Standard_Integer Width,const Standard_Character Filler);
+		%feature("compactdefaultargs") ChangeAll;
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the AsciiString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not. Example: me = 'Histake' -> ChangeAll('H','M',Standard_True) gives me = 'Mistake'
+
+	:param aChar:
+	:type aChar: Standard_Character
+	:param NewChar:
+	:type NewChar: Standard_Character
+	:param CaseSensitive: default value is Standard_True
+	:type CaseSensitive: bool
+	:rtype: None
+") ChangeAll;
+		void ChangeAll (const Standard_Character aChar,const Standard_Character NewChar,const Standard_Boolean CaseSensitive = Standard_True);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty AsciiString.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherCString;
+
+	:param fromwhere:
+	:type fromwhere: char *
+	:rtype: None
+") Copy;
+		void Copy (const char * fromwhere);
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherString;
+
+	:param fromwhere:
+	:type fromwhere: TCollection_AsciiString &
+	:rtype: None
+") Copy;
+		void Copy (const TCollection_AsciiString & fromwhere);
+		%feature("compactdefaultargs") EndsWith;
+		%feature("autodoc", "	* Determines whether the end of this string instance matches the specified string.
+
+	:param theEndString:
+	:type theEndString: TCollection_AsciiString &
+	:rtype: bool
+") EndsWith;
+		Standard_Boolean EndsWith (const TCollection_AsciiString & theEndString);
+		%feature("compactdefaultargs") FirstLocationInSet;
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1
+
+	:param Set:
+	:type Set: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: int
+") FirstLocationInSet;
+		Standard_Integer FirstLocationInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+		%feature("compactdefaultargs") FirstLocationNotInSet;
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3
+
+	:param Set:
+	:type Set: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: int
+") FirstLocationNotInSet;
+		Standard_Integer FirstLocationNotInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	* Hash function for AsciiString (returns the same Integer value that the hash function for ExtendedString)
+
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:param Upper:
+	:type Upper: int
+	:rtype: int
+") HashCode;
+		static Standard_Integer HashCode (const TCollection_AsciiString & astring,const Standard_Integer Upper);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Inserts a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const Standard_Character what);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Inserts a CString at position <where>. Example: aString contains 'O more' aString.Insert(2,'nce'); gives 'Once more'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: char *
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const char * what);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Inserts a AsciiString at position <where>.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const TCollection_AsciiString & what);
+		%feature("compactdefaultargs") InsertAfter;
+		%feature("autodoc", "	* Pushing a string after a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'
+
+	:param Index:
+	:type Index: int
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "	* Pushing a string before a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'
+
+	:param Index:
+	:type Index: int
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") IntegerValue;
+		%feature("autodoc", "	* Converts a AsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
+
+	:rtype: int
+") IntegerValue;
+		Standard_Integer IntegerValue ();
+		%feature("compactdefaultargs") IsAscii;
+		%feature("autodoc", "	* Returns True if the AsciiString contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
+
+	:rtype: bool
+") IsAscii;
+		Standard_Boolean IsAscii ();
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
+
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsDifferent;
+		Standard_Boolean IsDifferent (const char * other);
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsDifferent;
+		Standard_Boolean IsDifferent (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character.
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
+
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const char * other);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
+
+	:param string1:
+	:type string1: TCollection_AsciiString &
+	:param string2:
+	:type string2: TCollection_AsciiString &
+	:rtype: bool
+") IsEqual;
+		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const TCollection_AsciiString & string2);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
+
+	:param string1:
+	:type string1: TCollection_AsciiString &
+	:param string2:
+	:type string2: char *
+	:rtype: bool
+") IsEqual;
+		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const char * string2);
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
+
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const char * other);
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") IsIntegerValue;
+		%feature("autodoc", "	* Returns True if the AsciiString contains an integer value. Note: an integer value is considered to be a real value as well.
+
+	:rtype: bool
+") IsIntegerValue;
+		Standard_Boolean IsIntegerValue ();
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
+
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const char * other);
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") IsRealValue;
+		%feature("autodoc", "	* Returns True if the AsciiString contains a real value. Note: an integer value is considered to be a real value as well.
+
+	:rtype: bool
+") IsRealValue;
+		Standard_Boolean IsRealValue ();
+		%feature("compactdefaultargs") IsSameString;
+		%feature("autodoc", "	* Returns True if the strings contain same characters.
+
+	:param theString1:
+	:type theString1: TCollection_AsciiString &
+	:param theString2:
+	:type theString2: TCollection_AsciiString &
+	:param theIsCaseSensitive:
+	:type theIsCaseSensitive: bool
+	:rtype: bool
+") IsSameString;
+		static Standard_Boolean IsSameString (const TCollection_AsciiString & theString1,const TCollection_AsciiString & theString2,const Standard_Boolean theIsCaseSensitive);
+		%feature("compactdefaultargs") LeftAdjust;
+		%feature("autodoc", "	* Removes all space characters in the begining of the string.
+
+	:rtype: None
+") LeftAdjust;
+		void LeftAdjust ();
+		%feature("compactdefaultargs") LeftJustify;
+		%feature("autodoc", "	* left justify Length becomes equal to Width and the new characters are equal to Filler. If Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '
+
+	:param Width:
+	:type Width: int
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") LeftJustify;
+		void LeftJustify (const Standard_Integer Width,const Standard_Character Filler);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C. Example TCollection_AsciiString myAlphabet('abcdef'); assert ( myAlphabet.Length() == 6 ); - 1 is the position of the first character in this string. - The length of this string gives the position of its last character. - Positions less than or equal to zero, or greater than the length of this string are invalid in functions which identify a character of this string by its position.
+
+	:rtype: int
+") Length;
+		Standard_Integer Length ();
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "	* Returns an index in the string <self> of the first occurence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: int
+") Location;
+		Standard_Integer Location (const TCollection_AsciiString & other,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "	* Returns the index of the nth occurence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5
+
+	:param N:
+	:type N: int
+	:param C:
+	:type C: Standard_Character
+	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: int
+") Location;
+		Standard_Integer Location (const Standard_Integer N,const Standard_Character C,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+		%feature("compactdefaultargs") LowerCase;
+		%feature("autodoc", "	* Converts <self> to its lower-case equivalent. Example TCollection_AsciiString myString('Hello Dolly'); myString.UpperCase(); assert ( myString == 'HELLO DOLLY' ); myString.LowerCase(); assert ( myString == 'hello dolly' );
+
+	:rtype: None
+") LowerCase;
+		void LowerCase ();
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	* Inserts the string other at the beginning of this ASCII string. Example TCollection_AsciiString myAlphabet('cde'); TCollection_AsciiString myBegin('ab'); myAlphabet.Prepend(myBegin); assert ( myAlphabet == 'abcde' );
+
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") Prepend;
+		void Prepend (const TCollection_AsciiString & other);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
+        		%feature("compactdefaultargs") RealValue;
+		%feature("autodoc", "	* Converts an AsciiString containing a numeric expression. to a Real. Example: ex: '215' returns 215.0. ex: '3.14159267' returns 3.14159267.
+
+	:rtype: float
+") RealValue;
+		Standard_Real RealValue ();
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Remove(2,2) erases 2 characters from position 2 This gives 'Hlo'.
+
+	:param where:
+	:type where: int
+	:param ahowmany: default value is 1
+	:type ahowmany: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
+		%feature("compactdefaultargs") RemoveAll;
+		%feature("autodoc", "	* Remove all the occurences of the character C in the string. Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'
+
+	:param C:
+	:type C: Standard_Character
+	:param CaseSensitive:
+	:type CaseSensitive: bool
+	:rtype: None
+") RemoveAll;
+		void RemoveAll (const Standard_Character C,const Standard_Boolean CaseSensitive);
+		%feature("compactdefaultargs") RemoveAll;
+		%feature("autodoc", "	* Removes every <what> characters from <self>.
+
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") RemoveAll;
+		void RemoveAll (const Standard_Character what);
+		%feature("compactdefaultargs") RightAdjust;
+		%feature("autodoc", "	* Removes all space characters at the end of the string.
+
+	:rtype: None
+") RightAdjust;
+		void RightAdjust ();
+		%feature("compactdefaultargs") RightJustify;
+		%feature("autodoc", "	* Right justify. Length becomes equal to Width and the new characters are equal to Filler. if Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'
+
+	:param Width:
+	:type Width: int
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") RightJustify;
+		void RightJustify (const Standard_Integer Width,const Standard_Character Filler);
+		%feature("compactdefaultargs") Search;
+		%feature("autodoc", "	* Searches a CString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5
+
+	:param what:
+	:type what: char *
+	:rtype: int
+") Search;
+		Standard_Integer Search (const char * what);
+		%feature("compactdefaultargs") Search;
+		%feature("autodoc", "	* Searches an AsciiString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
+
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: int
+") Search;
+		Standard_Integer Search (const TCollection_AsciiString & what);
+		%feature("compactdefaultargs") SearchFromEnd;
+		%feature("autodoc", "	* Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12
+
+	:param what:
+	:type what: char *
+	:rtype: int
+") SearchFromEnd;
+		Standard_Integer SearchFromEnd (const char * what);
+		%feature("compactdefaultargs") SearchFromEnd;
+		%feature("autodoc", "	* Searches a AsciiString in another AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
+
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: int
+") SearchFromEnd;
+		Standard_Integer SearchFromEnd (const TCollection_AsciiString & what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces one character in the AsciiString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const Standard_Character what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces a part of <self> by a CString. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'abcde' aString.SetValue(4,'1234567') gives <self> = 'abc1234567'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: char *
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const char * what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces a part of <self> by another AsciiString.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const TCollection_AsciiString & what);
+		%feature("compactdefaultargs") Split;
+		%feature("autodoc", "	* Splits a AsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
+
+	:param where:
+	:type where: int
+	:rtype: TCollection_AsciiString
+") Split;
+		TCollection_AsciiString Split (const Standard_Integer where);
+		%feature("compactdefaultargs") StartsWith;
+		%feature("autodoc", "	* Determines whether the beginning of this string instance matches the specified string.
+
+	:param theStartString:
+	:type theStartString: TCollection_AsciiString &
+	:rtype: bool
+") StartsWith;
+		Standard_Boolean StartsWith (const TCollection_AsciiString & theStartString);
+		%feature("compactdefaultargs") SubString;
+		%feature("autodoc", "	* Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'
+
+	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: TCollection_AsciiString
+") SubString;
+		TCollection_AsciiString SubString (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "	* Initializes a AsciiString to an empty AsciiString.
 
@@ -187,694 +752,14 @@ class TCollection_AsciiString {
 	:rtype: None
 ") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_ExtendedString & astring,const Standard_Character replaceNonAscii = 0);
-		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
+		%feature("compactdefaultargs") TCollection_AsciiString;
+		%feature("autodoc", "	* Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16). //! This constructor is unavailable if application is built with deprecated msvc option '-Zc:wchar_t-', since OCCT itself is never built with this option.
 
-	:param other:
-	:type other: Standard_Character
+	:param theStringUtf:
+	:type theStringUtf: Standard_WideChar *
 	:rtype: None
-") AssignCat;
-		void AssignCat (const Standard_Character other);
-
-        %extend{
-            void __iadd_wrapper__(const Standard_Character other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
-
-	:param other:
-	:type other: int
-	:rtype: None
-") AssignCat;
-		void AssignCat (const Standard_Integer other);
-
-        %extend{
-            void __iadd_wrapper__(const Standard_Integer other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
-
-	:param other:
-	:type other: float
-	:rtype: None
-") AssignCat;
-		void AssignCat (const Standard_Real other);
-
-        %extend{
-            void __iadd_wrapper__(const Standard_Real other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
-
-	:param other:
-	:type other: char *
-	:rtype: None
-") AssignCat;
-		void AssignCat (const char * other);
-
-        %extend{
-            void __iadd_wrapper__(const Standard_CString other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. Example: aString += anotherString
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: None
-") AssignCat;
-		void AssignCat (const TCollection_AsciiString & other);
-
-        %extend{
-            void __iadd_wrapper__(const TCollection_AsciiString  other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") Capitalize;
-		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '
-
-	:rtype: None
-") Capitalize;
-		void Capitalize ();
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
-
-	:param other:
-	:type other: Standard_Character
-	:rtype: TCollection_AsciiString
-") Cat;
-		TCollection_AsciiString Cat (const Standard_Character other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: Standard_Character
-	:rtype: TCollection_AsciiString
-") operator +;
-		TCollection_AsciiString operator + (const Standard_Character other);
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15; Example: aString contains 'I say ' gives 'I say 15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
-
-	:param other:
-	:type other: int
-	:rtype: TCollection_AsciiString
-") Cat;
-		TCollection_AsciiString Cat (const Standard_Integer other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: int
-	:rtype: TCollection_AsciiString
-") operator +;
-		TCollection_AsciiString operator + (const Standard_Integer other);
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15.15; Example: aString contains 'I say ' gives 'I say 15.15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
-
-	:param other:
-	:type other: float
-	:rtype: TCollection_AsciiString
-") Cat;
-		TCollection_AsciiString Cat (const Standard_Real other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: float
-	:rtype: TCollection_AsciiString
-") operator +;
-		TCollection_AsciiString operator + (const Standard_Real other);
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
-
-	:param other:
-	:type other: char *
-	:rtype: TCollection_AsciiString
-") Cat;
-		TCollection_AsciiString Cat (const char * other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: char *
-	:rtype: TCollection_AsciiString
-") operator +;
-		TCollection_AsciiString operator + (const char * other);
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me. Example: aString = aString + anotherString
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: TCollection_AsciiString
-") Cat;
-		TCollection_AsciiString Cat (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: TCollection_AsciiString
-") operator +;
-		TCollection_AsciiString operator + (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	* Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example TCollection_AsciiString myAlphabet('abcdef'); myAlphabet.Center(9,' '); assert ( myAlphabet == ' abcdef ' );
-
-	:param Width:
-	:type Width: int
-	:param Filler:
-	:type Filler: Standard_Character
-	:rtype: None
-") Center;
-		void Center (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("compactdefaultargs") ChangeAll;
-		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the AsciiString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not. Example: me = 'Histake' -> ChangeAll('H','M',Standard_True) gives me = 'Mistake'
-
-	:param aChar:
-	:type aChar: Standard_Character
-	:param NewChar:
-	:type NewChar: Standard_Character
-	:param CaseSensitive: default value is Standard_True
-	:type CaseSensitive: bool
-	:rtype: None
-") ChangeAll;
-		void ChangeAll (const Standard_Character aChar,const Standard_Character NewChar,const Standard_Boolean CaseSensitive = Standard_True);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty AsciiString.
-
-	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherCString;
-
-	:param fromwhere:
-	:type fromwhere: char *
-	:rtype: None
-") Copy;
-		void Copy (const char * fromwhere);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param fromwhere:
-	:type fromwhere: char *
-	:rtype: None
-") operator =;
-		void operator = (const char * fromwhere);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherString;
-
-	:param fromwhere:
-	:type fromwhere: TCollection_AsciiString &
-	:rtype: None
-") Copy;
-		void Copy (const TCollection_AsciiString & fromwhere);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param fromwhere:
-	:type fromwhere: TCollection_AsciiString &
-	:rtype: None
-") operator =;
-		void operator = (const TCollection_AsciiString & fromwhere);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	* Frees memory allocated by AsciiString.
-
-	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") FirstLocationInSet;
-		%feature("autodoc", "	* Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1
-
-	:param Set:
-	:type Set: TCollection_AsciiString &
-	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: int
-") FirstLocationInSet;
-		Standard_Integer FirstLocationInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("compactdefaultargs") FirstLocationNotInSet;
-		%feature("autodoc", "	* Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3
-
-	:param Set:
-	:type Set: TCollection_AsciiString &
-	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: int
-") FirstLocationNotInSet;
-		Standard_Integer FirstLocationNotInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Inserts a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_Character
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const Standard_Character what);
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Inserts a CString at position <where>. Example: aString contains 'O more' aString.Insert(2,'nce'); gives 'Once more'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: char *
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const char * what);
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Inserts a AsciiString at position <where>.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: TCollection_AsciiString &
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const TCollection_AsciiString & what);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	* Pushing a string after a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'
-
-	:param Index:
-	:type Index: int
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	* Pushing a string before a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'
-
-	:param Index:
-	:type Index: int
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	* Returns True if the string <self> contains zero character.
-
-	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
-
-	:param other:
-	:type other: char *
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const char * other);
-
-        %extend{
-            bool __eq_wrapper__(const Standard_CString other) {
-            if (*self==other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __eq__(self, right):
-            try:
-                return self.__eq_wrapper__(right)
-            except:
-                return False
-        }
-        		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const TCollection_AsciiString & other);
-
-        %extend{
-            bool __eq_wrapper__(const TCollection_AsciiString  other) {
-            if (*self==other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __eq__(self, right):
-            try:
-                return self.__eq_wrapper__(right)
-            except:
-                return False
-        }
-        		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
-
-	:param other:
-	:type other: char *
-	:rtype: bool
-") IsDifferent;
-		Standard_Boolean IsDifferent (const char * other);
-
-        %extend{
-            bool __ne_wrapper__(const Standard_CString other) {
-            if (*self!=other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __ne__(self, right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-        		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") IsDifferent;
-		Standard_Boolean IsDifferent (const TCollection_AsciiString & other);
-
-        %extend{
-            bool __ne_wrapper__(const TCollection_AsciiString  other) {
-            if (*self!=other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __ne__(self, right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-        		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
-
-	:param other:
-	:type other: char *
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const char * other);
-		%feature("compactdefaultargs") operator <;
-		%feature("autodoc", "	:param other:
-	:type other: char *
-	:rtype: bool
-") operator <;
-		Standard_Boolean operator < (const char * other);
-		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") operator <;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") operator <;
-		Standard_Boolean operator < (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
-
-	:param other:
-	:type other: char *
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const char * other);
-		%feature("compactdefaultargs") operator >;
-		%feature("autodoc", "	:param other:
-	:type other: char *
-	:rtype: bool
-") operator >;
-		Standard_Boolean operator > (const char * other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") operator >;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: bool
-") operator >;
-		Standard_Boolean operator > (const TCollection_AsciiString & other);
-		%feature("compactdefaultargs") IntegerValue;
-		%feature("autodoc", "	* Converts a AsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
-
-	:rtype: int
-") IntegerValue;
-		Standard_Integer IntegerValue ();
-		%feature("compactdefaultargs") IsIntegerValue;
-		%feature("autodoc", "	* Returns True if the AsciiString contains an integer value. Note: an integer value is considered to be a real value as well.
-
-	:rtype: bool
-") IsIntegerValue;
-		Standard_Boolean IsIntegerValue ();
-		%feature("compactdefaultargs") IsRealValue;
-		%feature("autodoc", "	* Returns True if the AsciiString contains a real value. Note: an integer value is considered to be a real value as well.
-
-	:rtype: bool
-") IsRealValue;
-		Standard_Boolean IsRealValue ();
-		%feature("compactdefaultargs") IsAscii;
-		%feature("autodoc", "	* Returns True if the AsciiString contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
-
-	:rtype: bool
-") IsAscii;
-		Standard_Boolean IsAscii ();
-		%feature("compactdefaultargs") LeftAdjust;
-		%feature("autodoc", "	* Removes all space characters in the begining of the string.
-
-	:rtype: None
-") LeftAdjust;
-		void LeftAdjust ();
-		%feature("compactdefaultargs") LeftJustify;
-		%feature("autodoc", "	* left justify Length becomes equal to Width and the new characters are equal to Filler. If Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '
-
-	:param Width:
-	:type Width: int
-	:param Filler:
-	:type Filler: Standard_Character
-	:rtype: None
-") LeftJustify;
-		void LeftJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C. Example TCollection_AsciiString myAlphabet('abcdef'); assert ( myAlphabet.Length() == 6 ); - 1 is the position of the first character in this string. - The length of this string gives the position of its last character. - Positions less than or equal to zero, or greater than the length of this string are invalid in functions which identify a character of this string by its position.
-
-	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	* Returns an index in the string <self> of the first occurence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: int
-") Location;
-		Standard_Integer Location (const TCollection_AsciiString & other,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	* Returns the index of the nth occurence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5
-
-	:param N:
-	:type N: int
-	:param C:
-	:type C: Standard_Character
-	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: int
-") Location;
-		Standard_Integer Location (const Standard_Integer N,const Standard_Character C,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("compactdefaultargs") LowerCase;
-		%feature("autodoc", "	* Converts <self> to its lower-case equivalent. Example TCollection_AsciiString myString('Hello Dolly'); myString.UpperCase(); assert ( myString == 'HELLO DOLLY' ); myString.LowerCase(); assert ( myString == 'hello dolly' );
-
-	:rtype: None
-") LowerCase;
-		void LowerCase ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	* Inserts the string other at the beginning of this ASCII string. Example TCollection_AsciiString myAlphabet('cde'); TCollection_AsciiString myBegin('ab'); myAlphabet.Prepend(myBegin); assert ( myAlphabet == 'abcde' );
-
-	:param other:
-	:type other: TCollection_AsciiString &
-	:rtype: None
-") Prepend;
-		void Prepend (const TCollection_AsciiString & other);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        
-        %feature("autodoc", "1");
-        %extend{
-            void ReadFromString(std::string src) {
-            std::stringstream s(src);
-            self->Read(s);}
-        };
-        		%feature("compactdefaultargs") RealValue;
-		%feature("autodoc", "	* Converts an AsciiString containing a numeric expression. to a Real. Example: ex: '215' returns 215.0. ex: '3.14159267' returns 3.14159267.
-
-	:rtype: float
-") RealValue;
-		Standard_Real RealValue ();
-		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "	* Remove all the occurences of the character C in the string. Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'
-
-	:param C:
-	:type C: Standard_Character
-	:param CaseSensitive:
-	:type CaseSensitive: bool
-	:rtype: None
-") RemoveAll;
-		void RemoveAll (const Standard_Character C,const Standard_Boolean CaseSensitive);
-		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "	* Removes every <what> characters from <self>.
-
-	:param what:
-	:type what: Standard_Character
-	:rtype: None
-") RemoveAll;
-		void RemoveAll (const Standard_Character what);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Remove(2,2) erases 2 characters from position 2 This gives 'Hlo'.
-
-	:param where:
-	:type where: int
-	:param ahowmany: default value is 1
-	:type ahowmany: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("compactdefaultargs") RightAdjust;
-		%feature("autodoc", "	* Removes all space characters at the end of the string.
-
-	:rtype: None
-") RightAdjust;
-		void RightAdjust ();
-		%feature("compactdefaultargs") RightJustify;
-		%feature("autodoc", "	* Right justify. Length becomes equal to Width and the new characters are equal to Filler. if Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'
-
-	:param Width:
-	:type Width: int
-	:param Filler:
-	:type Filler: Standard_Character
-	:rtype: None
-") RightJustify;
-		void RightJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("compactdefaultargs") Search;
-		%feature("autodoc", "	* Searches a CString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5
-
-	:param what:
-	:type what: char *
-	:rtype: int
-") Search;
-		Standard_Integer Search (const char * what);
-		%feature("compactdefaultargs") Search;
-		%feature("autodoc", "	* Searches an AsciiString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
-
-	:param what:
-	:type what: TCollection_AsciiString &
-	:rtype: int
-") Search;
-		Standard_Integer Search (const TCollection_AsciiString & what);
-		%feature("compactdefaultargs") SearchFromEnd;
-		%feature("autodoc", "	* Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12
-
-	:param what:
-	:type what: char *
-	:rtype: int
-") SearchFromEnd;
-		Standard_Integer SearchFromEnd (const char * what);
-		%feature("compactdefaultargs") SearchFromEnd;
-		%feature("autodoc", "	* Searches a AsciiString in another AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
-
-	:param what:
-	:type what: TCollection_AsciiString &
-	:rtype: int
-") SearchFromEnd;
-		Standard_Integer SearchFromEnd (const TCollection_AsciiString & what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces one character in the AsciiString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_Character
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const Standard_Character what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces a part of <self> by a CString. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'abcde' aString.SetValue(4,'1234567') gives <self> = 'abc1234567'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: char *
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const char * what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces a part of <self> by another AsciiString.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: TCollection_AsciiString &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const TCollection_AsciiString & what);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	* Splits a AsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
-
-	:param where:
-	:type where: int
-	:rtype: TCollection_AsciiString
-") Split;
-		TCollection_AsciiString Split (const Standard_Integer where);
-		%feature("compactdefaultargs") SubString;
-		%feature("autodoc", "	* Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'
-
-	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: TCollection_AsciiString
-") SubString;
-		TCollection_AsciiString SubString (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+") TCollection_AsciiString;
+		 TCollection_AsciiString (const Standard_WideChar * theStringUtf);
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "	* Returns pointer to AsciiString (char *). This is useful for some casual manipulations. Warning: Because this 'char *' is 'const', you can't modify its contents.
 
@@ -919,36 +804,183 @@ class TCollection_AsciiString {
 	:rtype: Standard_Character
 ") Value;
 		Standard_Character Value (const Standard_Integer where);
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Hash function for AsciiString (returns the same Integer value that the hash function for ExtendedString)
 
-	:param astring:
-	:type astring: TCollection_AsciiString &
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const TCollection_AsciiString & astring,const Standard_Integer Upper);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
+        %extend{
+            bool __ne_wrapper__(const Standard_CString other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self, right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        
+        %extend{
+            bool __ne_wrapper__(const TCollection_AsciiString  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self, right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_Character
+	:rtype: TCollection_AsciiString
+") operator +;
+		TCollection_AsciiString operator + (const Standard_Character other);
+		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: int
+	:rtype: TCollection_AsciiString
+") operator +;
+		TCollection_AsciiString operator + (const Standard_Integer other);
+		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: float
+	:rtype: TCollection_AsciiString
+") operator +;
+		TCollection_AsciiString operator + (const Standard_Real other);
+		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: TCollection_AsciiString
+") operator +;
+		TCollection_AsciiString operator + (const char * other);
+		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: TCollection_AsciiString
+") operator +;
+		TCollection_AsciiString operator + (const TCollection_AsciiString & other);
 
-	:param string1:
-	:type string1: TCollection_AsciiString &
-	:param string2:
-	:type string2: TCollection_AsciiString &
+        %extend{
+            void __iadd_wrapper__(const Standard_Character other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        
+        %extend{
+            void __iadd_wrapper__(const Standard_Integer other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        
+        %extend{
+            void __iadd_wrapper__(const Standard_Real other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        
+        %extend{
+            void __iadd_wrapper__(const Standard_CString other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        
+        %extend{
+            void __iadd_wrapper__(const TCollection_AsciiString  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") operator <;
+		%feature("autodoc", "	:param other:
+	:type other: char *
 	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const TCollection_AsciiString & string2);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
-
-	:param string1:
-	:type string1: TCollection_AsciiString &
-	:param string2:
-	:type string2: char *
+") operator <;
+		Standard_Boolean operator < (const char * other);
+		%feature("compactdefaultargs") operator <;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
 	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const char * string2);
+") operator <;
+		Standard_Boolean operator < (const TCollection_AsciiString & other);
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: char *
+	:rtype: None
+") operator =;
+		void operator = (const char * fromwhere);
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: TCollection_AsciiString &
+	:rtype: None
+") operator =;
+		void operator = (const TCollection_AsciiString & fromwhere);
+
+        %extend{
+            bool __eq_wrapper__(const Standard_CString other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self, right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        
+        %extend{
+            bool __eq_wrapper__(const TCollection_AsciiString  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self, right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("compactdefaultargs") operator >;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: bool
+") operator >;
+		Standard_Boolean operator > (const char * other);
+		%feature("compactdefaultargs") operator >;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") operator >;
+		Standard_Boolean operator > (const TCollection_AsciiString & other);
 };
 
 
@@ -960,6 +992,16 @@ class TCollection_AsciiString {
 %nodefaultctor TCollection_BaseSequence;
 class TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Exchange;
+		%feature("autodoc", "	* Swaps elements which are located at positions <I> and <J> in <self>. Raises an exception if I or J is out of bound. Example: before me = (A B C), I = 1, J = 3 after me = (C B A)
+
+	:param I:
+	:type I: int
+	:param J:
+	:type J: int
+	:rtype: None
+") Exchange;
+		void Exchange (const Standard_Integer I,const Standard_Integer J);
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	* returns True if the sequence <self> contains no elements.
 
@@ -978,16 +1020,6 @@ class TCollection_BaseSequence {
 	:rtype: None
 ") Reverse;
 		void Reverse ();
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "	* Swaps elements which are located at positions <I> and <J> in <self>. Raises an exception if I or J is out of bound. Example: before me = (A B C), I = 1, J = 3 after me = (C B A)
-
-	:param I:
-	:type I: int
-	:param J:
-	:type J: int
-	:rtype: None
-") Exchange;
-		void Exchange (const Standard_Integer I,const Standard_Integer J);
 };
 
 
@@ -999,12 +1031,6 @@ class TCollection_BaseSequence {
 %nodefaultctor TCollection_BasicMap;
 class TCollection_BasicMap {
 	public:
-		%feature("compactdefaultargs") NbBuckets;
-		%feature("autodoc", "	* Returns the number of buckets in <self>.
-
-	:rtype: int
-") NbBuckets;
-		Standard_Integer NbBuckets ();
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	* Returns the number of keys already stored in <self>.
 
@@ -1017,6 +1043,12 @@ class TCollection_BasicMap {
 	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") NbBuckets;
+		%feature("autodoc", "	* Returns the number of buckets in <self>.
+
+	:rtype: int
+") NbBuckets;
+		Standard_Integer NbBuckets ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1036,12 +1068,6 @@ class TCollection_BasicMap {
 %nodefaultctor TCollection_BasicMapIterator;
 class TCollection_BasicMapIterator {
 	public:
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Resets the iterator to the first node.
-
-	:rtype: None
-") Reset;
-		void Reset ();
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* Returns true if there is a current entry for this iterator in the map. Use the function Next to set this iterator to the position of the next entry, if it exists.
 
@@ -1054,6 +1080,12 @@ class TCollection_BasicMapIterator {
 	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "	* Resets the iterator to the first node.
+
+	:rtype: None
+") Reset;
+		void Reset ();
 };
 
 
@@ -1065,6 +1097,260 @@ class TCollection_BasicMapIterator {
 %nodefaultctor TCollection_ExtendedString;
 class TCollection_ExtendedString {
 	public:
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: None
+") AssignCat;
+		void AssignCat (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Appends <other> to me.
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: TCollection_ExtendedString
+") Cat;
+		TCollection_ExtendedString Cat (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") ChangeAll;
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the ExtendedString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not.
+
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:param NewChar:
+	:type NewChar: Standard_ExtCharacter
+	:rtype: None
+") ChangeAll;
+		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator =
+
+	:param fromwhere:
+	:type fromwhere: TCollection_ExtendedString &
+	:rtype: None
+") Copy;
+		void Copy (const TCollection_ExtendedString & fromwhere);
+		%feature("compactdefaultargs") EndsWith;
+		%feature("autodoc", "	* Determines whether the end of this string instance matches the specified string.
+
+	:param theEndString:
+	:type theEndString: TCollection_ExtendedString &
+	:rtype: bool
+") EndsWith;
+		Standard_Boolean EndsWith (const TCollection_ExtendedString & theEndString);
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	* Returns a hashed value for the extended string within the range 1..theUpper. Note: if string is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters.
+
+	:param theString:
+	:type theString: TCollection_ExtendedString &
+	:param theUpper:
+	:type theUpper: int
+	:rtype: int
+") HashCode;
+		static Standard_Integer HashCode (const TCollection_ExtendedString & theString,const Standard_Integer theUpper);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Insert a Character at position <where>.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Insert a ExtendedString at position <where>.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const TCollection_ExtendedString & what);
+		%feature("compactdefaultargs") IsAscii;
+		%feature("autodoc", "	* Returns True if the ExtendedString contains only 'Ascii Range' characters .
+
+	:rtype: bool
+") IsAscii;
+		Standard_Boolean IsAscii ();
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
+
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsDifferent;
+		Standard_Boolean IsDifferent (const Standard_ExtString other);
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsDifferent;
+		Standard_Boolean IsDifferent (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True if this string contains no characters.
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
+
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const Standard_ExtString other);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
+
+	:param theString1:
+	:type theString1: TCollection_ExtendedString &
+	:param theString2:
+	:type theString2: TCollection_ExtendedString &
+	:rtype: bool
+") IsEqual;
+		static Standard_Boolean IsEqual (const TCollection_ExtendedString & theString1,const TCollection_ExtendedString & theString2);
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
+
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const Standard_ExtString other);
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is less than <other>.
+
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const Standard_ExtString other);
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is less than <other>.
+
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Returns the number of 16-bit code units (might be greater than number of Unicode symbols if string contains surrogate pairs).
+
+	:rtype: int
+") Length;
+		Standard_Integer Length ();
+		%feature("compactdefaultargs") LengthOfCString;
+		%feature("autodoc", "	* Returns expected CString length in UTF8 coding. It can be used for memory calculation before converting to CString containing symbols in UTF8 coding.
+
+	:rtype: int
+") LengthOfCString;
+		Standard_Integer LengthOfCString ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>,<where> included.
+
+	:param where:
+	:type where: int
+	:param ahowmany: default value is 1
+	:type ahowmany: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
+		%feature("compactdefaultargs") RemoveAll;
+		%feature("autodoc", "	* Removes every <what> characters from <self>.
+
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") RemoveAll;
+		void RemoveAll (const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") Search;
+		%feature("autodoc", "	* Searches a ExtendedString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
+
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: int
+") Search;
+		Standard_Integer Search (const TCollection_ExtendedString & what);
+		%feature("compactdefaultargs") SearchFromEnd;
+		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found.
+
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: int
+") SearchFromEnd;
+		Standard_Integer SearchFromEnd (const TCollection_ExtendedString & what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces one character in the ExtendedString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces a part of <self> by another ExtendedString see above.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const TCollection_ExtendedString & what);
+		%feature("compactdefaultargs") Split;
+		%feature("autodoc", "	* Splits this extended string into two sub-strings at position where. - The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. - this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
+
+	:param where:
+	:type where: int
+	:rtype: TCollection_ExtendedString
+") Split;
+		TCollection_ExtendedString Split (const Standard_Integer where);
+		%feature("compactdefaultargs") StartsWith;
+		%feature("autodoc", "	* Determines whether the beginning of this string instance matches the specified string.
+
+	:param theStartString:
+	:type theStartString: TCollection_ExtendedString &
+	:rtype: bool
+") StartsWith;
+		Standard_Boolean StartsWith (const TCollection_ExtendedString & theStartString);
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "	* Initializes a ExtendedString to an empty ExtendedString.
 
@@ -1089,6 +1375,14 @@ class TCollection_ExtendedString {
 	:rtype: None
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_ExtString astring);
+		%feature("compactdefaultargs") TCollection_ExtendedString;
+		%feature("autodoc", "	* Initialize from wide-char string considering it as Unicode string (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16). //! This constructor is unavailable if application is built with deprecated msvc option '-Zc:wchar_t-', since OCCT itself is never built with this option.
+
+	:param theStringUtf:
+	:type theStringUtf: Standard_WideChar *
+	:rtype: None
+") TCollection_ExtendedString;
+		 TCollection_ExtendedString (const Standard_WideChar * theStringUtf);
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "	* Initializes a AsciiString with a single character.
 
@@ -1147,327 +1441,20 @@ class TCollection_ExtendedString {
 	:rtype: None
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const TCollection_AsciiString & astring);
-		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString
+		%feature("compactdefaultargs") ToExtString;
+		%feature("autodoc", "	* Returns pointer to ExtString
 
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: None
-") AssignCat;
-		void AssignCat (const TCollection_ExtendedString & other);
+	:rtype: Standard_ExtString
+") ToExtString;
+		Standard_ExtString ToExtString ();
+		%feature("compactdefaultargs") ToUTF8CString;
+		%feature("autodoc", "	* Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!
 
-        %extend{
-            void __iadd_wrapper__(const TCollection_ExtendedString  other) {
-            *self += other;
-            }
-        }
-        %pythoncode {
-        def __iadd__(self, right):
-            self.__iadd_wrapper__(right)
-            return self
-        }
-        		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Appends <other> to me.
-
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: TCollection_ExtendedString
-") Cat;
-		TCollection_ExtendedString Cat (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: TCollection_ExtendedString
-") operator +;
-		TCollection_ExtendedString operator + (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") ChangeAll;
-		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the ExtendedString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not.
-
-	:param aChar:
-	:type aChar: Standard_ExtCharacter
-	:param NewChar:
-	:type NewChar: Standard_ExtCharacter
-	:rtype: None
-") ChangeAll;
-		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
-
-	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator =
-
-	:param fromwhere:
-	:type fromwhere: TCollection_ExtendedString &
-	:rtype: None
-") Copy;
-		void Copy (const TCollection_ExtendedString & fromwhere);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param fromwhere:
-	:type fromwhere: TCollection_ExtendedString &
-	:rtype: None
-") operator =;
-		void operator = (const TCollection_ExtendedString & fromwhere);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	* Frees memory allocated by ExtendedString.
-
-	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Insert a Character at position <where>.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Insert a ExtendedString at position <where>.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: TCollection_ExtendedString &
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const TCollection_ExtendedString & what);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	* Returns True if this string contains no characters.
-
-	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
-
-	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const Standard_ExtString other);
-
-        %extend{
-            bool __eq_wrapper__(const Standard_ExtString other) {
-            if (*self==other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __eq__(self, right):
-            try:
-                return self.__eq_wrapper__(right)
-            except:
-                return False
-        }
-        		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
-
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const TCollection_ExtendedString & other);
-
-        %extend{
-            bool __eq_wrapper__(const TCollection_ExtendedString  other) {
-            if (*self==other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __eq__(self, right):
-            try:
-                return self.__eq_wrapper__(right)
-            except:
-                return False
-        }
-        		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
-
-	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") IsDifferent;
-		Standard_Boolean IsDifferent (const Standard_ExtString other);
-
-        %extend{
-            bool __ne_wrapper__(const Standard_ExtString other) {
-            if (*self!=other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __ne__(self, right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-        		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
-
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") IsDifferent;
-		Standard_Boolean IsDifferent (const TCollection_ExtendedString & other);
-
-        %extend{
-            bool __ne_wrapper__(const TCollection_ExtendedString  other) {
-            if (*self!=other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __ne__(self, right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-        		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is less than <other>.
-
-	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const Standard_ExtString other);
-		%feature("compactdefaultargs") operator <;
-		%feature("autodoc", "	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") operator <;
-		Standard_Boolean operator < (const Standard_ExtString other);
-		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is less than <other>.
-
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") operator <;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") operator <;
-		Standard_Boolean operator < (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
-
-	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const Standard_ExtString other);
-		%feature("compactdefaultargs") operator >;
-		%feature("autodoc", "	:param other:
-	:type other: Standard_ExtString
-	:rtype: bool
-") operator >;
-		Standard_Boolean operator > (const Standard_ExtString other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
-
-	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") operator >;
-		%feature("autodoc", "	:param other:
-	:type other: TCollection_ExtendedString &
-	:rtype: bool
-") operator >;
-		Standard_Boolean operator > (const TCollection_ExtendedString & other);
-		%feature("compactdefaultargs") IsAscii;
-		%feature("autodoc", "	* Returns True if the ExtendedString contains only 'Ascii Range' characters .
-
-	:rtype: bool
-") IsAscii;
-		Standard_Boolean IsAscii ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
-
+	:param theCString:
+	:type theCString: Standard_PCharacter &
 	:rtype: int
-") Length;
-		Standard_Integer Length ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "	* Removes every <what> characters from <self>.
-
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") RemoveAll;
-		void RemoveAll (const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>,<where> included.
-
-	:param where:
-	:type where: int
-	:param ahowmany: default value is 1
-	:type ahowmany: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("compactdefaultargs") Search;
-		%feature("autodoc", "	* Searches a ExtendedString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
-
-	:param what:
-	:type what: TCollection_ExtendedString &
-	:rtype: int
-") Search;
-		Standard_Integer Search (const TCollection_ExtendedString & what);
-		%feature("compactdefaultargs") SearchFromEnd;
-		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found.
-
-	:param what:
-	:type what: TCollection_ExtendedString &
-	:rtype: int
-") SearchFromEnd;
-		Standard_Integer SearchFromEnd (const TCollection_ExtendedString & what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces one character in the ExtendedString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces a part of <self> by another ExtendedString see above.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: TCollection_ExtendedString &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const TCollection_ExtendedString & what);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	* Splits this extended string into two sub-strings at position where. - The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. - this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
-
-	:param where:
-	:type where: int
-	:rtype: TCollection_ExtendedString
-") Split;
-		TCollection_ExtendedString Split (const Standard_Integer where);
+") ToUTF8CString;
+		Standard_Integer ToUTF8CString (Standard_PCharacter & theCString);
 		%feature("compactdefaultargs") Token;
 		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed : aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
@@ -1478,12 +1465,6 @@ class TCollection_ExtendedString {
 	:rtype: TCollection_ExtendedString
 ") Token;
 		TCollection_ExtendedString Token (const Standard_ExtString separators,const Standard_Integer whichone = 1);
-		%feature("compactdefaultargs") ToExtString;
-		%feature("autodoc", "	* Returns pointer to ExtString
-
-	:rtype: Standard_ExtString
-") ToExtString;
-		Standard_ExtString ToExtString ();
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel' Exceptions Standard_OutOfRange if ahowmany is greater than the length of this string.
 
@@ -1500,40 +1481,109 @@ class TCollection_ExtendedString {
 	:rtype: Standard_ExtCharacter
 ") Value;
 		Standard_ExtCharacter Value (const Standard_Integer where);
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Returns a hashed value for the extended string astring within the range 1..Upper. Note: if astring is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters
 
-	:param astring:
-	:type astring: TCollection_ExtendedString &
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const TCollection_ExtendedString & astring,const Standard_Integer Upper);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
+        %extend{
+            bool __ne_wrapper__(const Standard_ExtString other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self, right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        
+        %extend{
+            bool __ne_wrapper__(const TCollection_ExtendedString  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self, right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("compactdefaultargs") operator +;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: TCollection_ExtendedString
+") operator +;
+		TCollection_ExtendedString operator + (const TCollection_ExtendedString & other);
 
-	:param string1:
-	:type string1: TCollection_ExtendedString &
-	:param string2:
-	:type string2: TCollection_ExtendedString &
+        %extend{
+            void __iadd_wrapper__(const TCollection_ExtendedString  other) {
+            *self += other;
+            }
+        }
+        %pythoncode {
+        def __iadd__(self, right):
+            self.__iadd_wrapper__(right)
+            return self
+        }
+        		%feature("compactdefaultargs") operator <;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_ExtString
 	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const TCollection_ExtendedString & string1,const TCollection_ExtendedString & string2);
-		%feature("compactdefaultargs") ToUTF8CString;
-		%feature("autodoc", "	* Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!
+") operator <;
+		Standard_Boolean operator < (const Standard_ExtString other);
+		%feature("compactdefaultargs") operator <;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") operator <;
+		Standard_Boolean operator < (const TCollection_ExtendedString & other);
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: TCollection_ExtendedString &
+	:rtype: None
+") operator =;
+		void operator = (const TCollection_ExtendedString & fromwhere);
 
-	:param theCString:
-	:type theCString: Standard_PCharacter &
-	:rtype: int
-") ToUTF8CString;
-		Standard_Integer ToUTF8CString (Standard_PCharacter & theCString);
-		%feature("compactdefaultargs") LengthOfCString;
-		%feature("autodoc", "	* Returns expected CString length in UTF8 coding. It can be used for memory calculation before converting to CString containing symbols in UTF8 coding.
-
-	:rtype: int
-") LengthOfCString;
-		Standard_Integer LengthOfCString ();
+        %extend{
+            bool __eq_wrapper__(const Standard_ExtString other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self, right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        
+        %extend{
+            bool __eq_wrapper__(const TCollection_ExtendedString  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self, right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("compactdefaultargs") operator >;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") operator >;
+		Standard_Boolean operator > (const Standard_ExtString other);
+		%feature("compactdefaultargs") operator >;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") operator >;
+		Standard_Boolean operator > (const TCollection_ExtendedString & other);
 };
 
 
@@ -1543,82 +1593,8 @@ class TCollection_ExtendedString {
 	}
 };
 %nodefaultctor TCollection_HAsciiString;
-class TCollection_HAsciiString : public MMgt_TShared {
+class TCollection_HAsciiString : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString to an empty AsciiString.
-
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString ();
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a CString.
-
-	:param message:
-	:type message: char *
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const char * message);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a single character.
-
-	:param aChar:
-	:type aChar: Standard_Character
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Standard_Character aChar);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with <length> space allocated. and filled with <filler>.This is useful for buffers.
-
-	:param length:
-	:type length: int
-	:param filler:
-	:type filler: Standard_Character
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Standard_Integer length,const Standard_Character filler);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with an integer value
-
-	:param value:
-	:type value: int
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Standard_Integer value);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a real value
-
-	:param value:
-	:type value: float
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Standard_Real value);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
-
-	:param aString:
-	:type aString: TCollection_AsciiString &
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const TCollection_AsciiString & aString);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
-
-	:param aString:
-	:type aString: Handle_TCollection_HAsciiString &
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Handle_TCollection_HAsciiString & aString);
-		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, raises OutOfRange exception if at least one character in the source string is not in the 'Ascii range'.
-
-	:param aString:
-	:type aString: Handle_TCollection_HExtendedString &
-	:param replaceNonAscii:
-	:type replaceNonAscii: Standard_Character
-	:rtype: None
-") TCollection_HAsciiString;
-		 TCollection_HAsciiString (const Handle_TCollection_HExtendedString & aString,const Standard_Character replaceNonAscii);
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me.
 
@@ -1759,46 +1735,12 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TCollection_HAsciiString & other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	* Returns True if the string <self> contains zero character
-
-	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
-
-	:param other:
-	:type other: Handle_TCollection_HAsciiString &
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const Handle_TCollection_HAsciiString & other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
-
-	:param other:
-	:type other: Handle_TCollection_HAsciiString &
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const Handle_TCollection_HAsciiString & other);
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "	* Converts a HAsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
 
 	:rtype: int
 ") IntegerValue;
 		Standard_Integer IntegerValue ();
-		%feature("compactdefaultargs") IsIntegerValue;
-		%feature("autodoc", "	* Returns True if the string contains an integer value.
-
-	:rtype: bool
-") IsIntegerValue;
-		Standard_Boolean IsIntegerValue ();
-		%feature("compactdefaultargs") IsRealValue;
-		%feature("autodoc", "	* Returns True if the string contains a real value.
-
-	:rtype: bool
-") IsRealValue;
-		Standard_Boolean IsRealValue ();
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "	* Returns True if the string contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
 
@@ -1813,6 +1755,46 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: bool
 ") IsDifferent;
 		Standard_Boolean IsDifferent (const Handle_TCollection_HAsciiString & S);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
+
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const Handle_TCollection_HAsciiString & other);
+		%feature("compactdefaultargs") IsIntegerValue;
+		%feature("autodoc", "	* Returns True if the string contains an integer value.
+
+	:rtype: bool
+") IsIntegerValue;
+		Standard_Boolean IsIntegerValue ();
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
+
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const Handle_TCollection_HAsciiString & other);
+		%feature("compactdefaultargs") IsRealValue;
+		%feature("autodoc", "	* Returns True if the string contains a real value.
+
+	:rtype: bool
+") IsRealValue;
+		Standard_Boolean IsRealValue ();
+		%feature("compactdefaultargs") IsSameState;
+		%feature("autodoc", "	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsSameState;
+		Standard_Boolean IsSameState (const Handle_TCollection_HAsciiString & other);
 		%feature("compactdefaultargs") IsSameString;
 		%feature("autodoc", "	* Returns True if the string S contains same characters than the string <self>.
 
@@ -1907,6 +1889,16 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: float
 ") RealValue;
 		Standard_Real RealValue ();
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
+
+	:param where:
+	:type where: int
+	:param ahowmany: default value is 1
+	:type ahowmany: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "	* Remove all the occurences of the character C in the string Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'
 
@@ -1925,16 +1917,6 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: None
 ") RemoveAll;
 		void RemoveAll (const Standard_Character what);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
-
-	:param where:
-	:type where: int
-	:param ahowmany: default value is 1
-	:type ahowmany: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
 		%feature("compactdefaultargs") RightAdjust;
 		%feature("autodoc", "	* Removes all space characters at the end of the string.
 
@@ -2021,6 +2003,12 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: Handle_TCollection_HAsciiString
 ") Split;
 		Handle_TCollection_HAsciiString Split (const Standard_Integer where);
+		%feature("compactdefaultargs") String;
+		%feature("autodoc", "	* Returns the field myString.
+
+	:rtype: TCollection_AsciiString
+") String;
+		const TCollection_AsciiString & String ();
 		%feature("compactdefaultargs") SubString;
 		%feature("autodoc", "	* Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'
 
@@ -2031,6 +2019,80 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: Handle_TCollection_HAsciiString
 ") SubString;
 		Handle_TCollection_HAsciiString SubString (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString to an empty AsciiString.
+
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString ();
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a CString.
+
+	:param message:
+	:type message: char *
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const char * message);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a single character.
+
+	:param aChar:
+	:type aChar: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Standard_Character aChar);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with <length> space allocated. and filled with <filler>.This is useful for buffers.
+
+	:param length:
+	:type length: int
+	:param filler:
+	:type filler: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Standard_Integer length,const Standard_Character filler);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with an integer value
+
+	:param value:
+	:type value: int
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Standard_Integer value);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a real value
+
+	:param value:
+	:type value: float
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Standard_Real value);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
+
+	:param aString:
+	:type aString: TCollection_AsciiString &
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const TCollection_AsciiString & aString);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
+
+	:param aString:
+	:type aString: Handle_TCollection_HAsciiString &
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Handle_TCollection_HAsciiString & aString);
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, raises OutOfRange exception if at least one character in the source string is not in the 'Ascii range'.
+
+	:param aString:
+	:type aString: Handle_TCollection_HExtendedString &
+	:param replaceNonAscii:
+	:type replaceNonAscii: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString (const Handle_TCollection_HExtendedString & aString,const Standard_Character replaceNonAscii);
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "	* Returns pointer to string (char *) This is useful for some casual manipulations Because this 'char *' is 'const', you can't modify its contents.
 
@@ -2075,18 +2137,6 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: Standard_Character
 ") Value;
 		Standard_Character Value (const Standard_Integer where);
-		%feature("compactdefaultargs") String;
-		%feature("autodoc", "	* Returns the field myString.
-
-	:rtype: TCollection_AsciiString
-") String;
-		const TCollection_AsciiString & String ();
-		%feature("compactdefaultargs") IsSameState;
-		%feature("autodoc", "	:param other:
-	:type other: Handle_TCollection_HAsciiString &
-	:rtype: bool
-") IsSameState;
-		Standard_Boolean IsSameState (const Handle_TCollection_HAsciiString & other);
 };
 
 
@@ -2098,8 +2148,176 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	}
 };
 %nodefaultctor TCollection_HExtendedString;
-class TCollection_HExtendedString : public MMgt_TShared {
+class TCollection_HExtendedString : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "	* Appends <other> to me.
+
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: None
+") AssignCat;
+		void AssignCat (const Handle_TCollection_HExtendedString & other);
+		%feature("compactdefaultargs") Cat;
+		%feature("autodoc", "	* Returns a string appending <other> to me.
+
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: Handle_TCollection_HExtendedString
+") Cat;
+		Handle_TCollection_HExtendedString Cat (const Handle_TCollection_HExtendedString & other);
+		%feature("compactdefaultargs") ChangeAll;
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the string <self>.
+
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:param NewChar:
+	:type NewChar: Standard_ExtCharacter
+	:rtype: None
+") ChangeAll;
+		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Insert a ExtCharacter at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") Insert;
+		%feature("autodoc", "	* Insert a HExtendedString at position <where>.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Insert;
+		void Insert (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
+		%feature("compactdefaultargs") IsAscii;
+		%feature("autodoc", "	* Returns True if the string contains only 'Ascii Range' characters
+
+	:rtype: bool
+") IsAscii;
+		Standard_Boolean IsAscii ();
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsGreater;
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
+
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsGreater;
+		Standard_Boolean IsGreater (const Handle_TCollection_HExtendedString & other);
+		%feature("compactdefaultargs") IsLess;
+		%feature("autodoc", "	* Returns True if <self> is less than <other>.
+
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsLess;
+		Standard_Boolean IsLess (const Handle_TCollection_HExtendedString & other);
+		%feature("compactdefaultargs") IsSameState;
+		%feature("autodoc", "	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsSameState;
+		Standard_Boolean IsSameState (const Handle_TCollection_HExtendedString & other);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
+
+	:rtype: int
+") Length;
+		Standard_Integer Length ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
+
+	:param where:
+	:type where: int
+	:param ahowmany: default value is 1
+	:type ahowmany: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
+		%feature("compactdefaultargs") RemoveAll;
+		%feature("autodoc", "	* Removes every <what> characters from <self>.
+
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") RemoveAll;
+		void RemoveAll (const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") Search;
+		%feature("autodoc", "	* Searches a String in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
+
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: int
+") Search;
+		Standard_Integer Search (const Handle_TCollection_HExtendedString & what);
+		%feature("compactdefaultargs") SearchFromEnd;
+		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. It returns -1 if not found.
+
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: int
+") SearchFromEnd;
+		Standard_Integer SearchFromEnd (const Handle_TCollection_HExtendedString & what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Replaces a part of <self> by another string.
+
+	:param where:
+	:type where: int
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
+		%feature("compactdefaultargs") Split;
+		%feature("autodoc", "	* Splits a ExtendedString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
+
+	:param where:
+	:type where: int
+	:rtype: Handle_TCollection_HExtendedString
+") Split;
+		Handle_TCollection_HExtendedString Split (const Standard_Integer where);
+		%feature("compactdefaultargs") String;
+		%feature("autodoc", "	* Returns the field myString
+
+	:rtype: TCollection_ExtendedString
+") String;
+		const TCollection_ExtendedString & String ();
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "	* Initializes a HExtendedString to an empty ExtendedString.
 
@@ -2164,154 +2382,6 @@ class TCollection_HExtendedString : public MMgt_TShared {
 	:rtype: None
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Handle_TCollection_HExtendedString & aString);
-		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "	* Appends <other> to me.
-
-	:param other:
-	:type other: Handle_TCollection_HExtendedString &
-	:rtype: None
-") AssignCat;
-		void AssignCat (const Handle_TCollection_HExtendedString & other);
-		%feature("compactdefaultargs") Cat;
-		%feature("autodoc", "	* Returns a string appending <other> to me.
-
-	:param other:
-	:type other: Handle_TCollection_HExtendedString &
-	:rtype: Handle_TCollection_HExtendedString
-") Cat;
-		Handle_TCollection_HExtendedString Cat (const Handle_TCollection_HExtendedString & other);
-		%feature("compactdefaultargs") ChangeAll;
-		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the string <self>.
-
-	:param aChar:
-	:type aChar: Standard_ExtCharacter
-	:param NewChar:
-	:type NewChar: Standard_ExtCharacter
-	:rtype: None
-") ChangeAll;
-		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
-
-	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	* Returns True if the string <self> contains zero character
-
-	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Insert a ExtCharacter at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Insert a HExtendedString at position <where>.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Handle_TCollection_HExtendedString &
-	:rtype: None
-") Insert;
-		void Insert (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
-		%feature("compactdefaultargs") IsLess;
-		%feature("autodoc", "	* Returns True if <self> is less than <other>.
-
-	:param other:
-	:type other: Handle_TCollection_HExtendedString &
-	:rtype: bool
-") IsLess;
-		Standard_Boolean IsLess (const Handle_TCollection_HExtendedString & other);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
-
-	:param other:
-	:type other: Handle_TCollection_HExtendedString &
-	:rtype: bool
-") IsGreater;
-		Standard_Boolean IsGreater (const Handle_TCollection_HExtendedString & other);
-		%feature("compactdefaultargs") IsAscii;
-		%feature("autodoc", "	* Returns True if the string contains only 'Ascii Range' characters
-
-	:rtype: bool
-") IsAscii;
-		Standard_Boolean IsAscii ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
-
-	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
-
-	:param where:
-	:type where: int
-	:param ahowmany: default value is 1
-	:type ahowmany: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "	* Removes every <what> characters from <self>.
-
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") RemoveAll;
-		void RemoveAll (const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Standard_ExtCharacter
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Replaces a part of <self> by another string.
-
-	:param where:
-	:type where: int
-	:param what:
-	:type what: Handle_TCollection_HExtendedString &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	* Splits a ExtendedString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
-
-	:param where:
-	:type where: int
-	:rtype: Handle_TCollection_HExtendedString
-") Split;
-		Handle_TCollection_HExtendedString Split (const Standard_Integer where);
-		%feature("compactdefaultargs") Search;
-		%feature("autodoc", "	* Searches a String in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
-
-	:param what:
-	:type what: Handle_TCollection_HExtendedString &
-	:rtype: int
-") Search;
-		Standard_Integer Search (const Handle_TCollection_HExtendedString & what);
-		%feature("compactdefaultargs") SearchFromEnd;
-		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. It returns -1 if not found.
-
-	:param what:
-	:type what: Handle_TCollection_HExtendedString &
-	:rtype: int
-") SearchFromEnd;
-		Standard_Integer SearchFromEnd (const Handle_TCollection_HExtendedString & what);
 		%feature("compactdefaultargs") ToExtString;
 		%feature("autodoc", "	* Returns pointer to ExtString
 
@@ -2344,26 +2414,6 @@ class TCollection_HExtendedString : public MMgt_TShared {
 	:rtype: Standard_ExtCharacter
 ") Value;
 		Standard_ExtCharacter Value (const Standard_Integer where);
-		%feature("compactdefaultargs") String;
-		%feature("autodoc", "	* Returns the field myString
-
-	:rtype: TCollection_ExtendedString
-") String;
-		const TCollection_ExtendedString & String ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") IsSameState;
-		%feature("autodoc", "	:param other:
-	:type other: Handle_TCollection_HExtendedString &
-	:rtype: bool
-") IsSameState;
-		Standard_Boolean IsSameState (const Handle_TCollection_HExtendedString & other);
 };
 
 
@@ -2375,18 +2425,18 @@ class TCollection_HExtendedString : public MMgt_TShared {
 	}
 };
 %nodefaultctor TCollection_MapNode;
-class TCollection_MapNode : public MMgt_TShared {
+class TCollection_MapNode : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next;
+		TCollection_MapNodePtr & Next ();
 		%feature("compactdefaultargs") TCollection_MapNode;
 		%feature("autodoc", "	:param n:
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TCollection_MapNode;
 		 TCollection_MapNode (const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
-") Next;
-		TCollection_MapNodePtr & Next ();
 };
 
 
@@ -2397,85 +2447,9 @@ class TCollection_MapNode : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-class TCollection_PrivCompareOfInteger {
-	public:
-		%feature("compactdefaultargs") IsLower;
-		%feature("autodoc", "	:param Left:
-	:type Left: int &
-	:param Right:
-	:type Right: int &
-	:rtype: bool
-") IsLower;
-		virtual Standard_Boolean IsLower (const Standard_Integer & Left,const Standard_Integer & Right);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	:param Left:
-	:type Left: int &
-	:param Right:
-	:type Right: int &
-	:rtype: bool
-") IsGreater;
-		virtual Standard_Boolean IsGreater (const Standard_Integer & Left,const Standard_Integer & Right);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param Left:
-	:type Left: int &
-	:param Right:
-	:type Right: int &
-	:rtype: bool
-") IsEqual;
-		virtual Standard_Boolean IsEqual (const Standard_Integer & Left,const Standard_Integer & Right);
-};
-
-
-%extend TCollection_PrivCompareOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class TCollection_PrivCompareOfReal {
-	public:
-		%feature("compactdefaultargs") IsLower;
-		%feature("autodoc", "	:param Left:
-	:type Left: float &
-	:param Right:
-	:type Right: float &
-	:rtype: bool
-") IsLower;
-		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	:param Left:
-	:type Left: float &
-	:param Right:
-	:type Right: float &
-	:rtype: bool
-") IsGreater;
-		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param Left:
-	:type Left: float &
-	:param Right:
-	:type Right: float &
-	:rtype: bool
-") IsEqual;
-		virtual Standard_Boolean IsEqual (const Standard_Real & Left,const Standard_Real & Right);
-};
-
-
-%extend TCollection_PrivCompareOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TCollection_SeqNode;
-class TCollection_SeqNode : public MMgt_TShared {
+class TCollection_SeqNode : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") TCollection_SeqNode;
-		%feature("autodoc", "	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") TCollection_SeqNode;
-		 TCollection_SeqNode (const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: TCollection_SeqNodePtr
 ") Next;
@@ -2484,6 +2458,14 @@ class TCollection_SeqNode : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TCollection_SeqNodePtr
 ") Previous;
 		TCollection_SeqNodePtr & Previous ();
+		%feature("compactdefaultargs") TCollection_SeqNode;
+		%feature("autodoc", "	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TCollection_SeqNode;
+		 TCollection_SeqNode (const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 };
 
 
@@ -2494,73 +2476,6 @@ class TCollection_SeqNode : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TCollection_CompareOfInteger;
-class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
-	public:
-		%feature("compactdefaultargs") TCollection_CompareOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TCollection_CompareOfInteger;
-		 TCollection_CompareOfInteger ();
-		%feature("compactdefaultargs") IsLower;
-		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
-
-	:param Left:
-	:type Left: int &
-	:param Right:
-	:type Right: int &
-	:rtype: bool
-") IsLower;
-		virtual Standard_Boolean IsLower (const Standard_Integer & Left,const Standard_Integer & Right);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
-
-	:param Left:
-	:type Left: int &
-	:param Right:
-	:type Right: int &
-	:rtype: bool
-") IsGreater;
-		virtual Standard_Boolean IsGreater (const Standard_Integer & Left,const Standard_Integer & Right);
-};
-
-
-%extend TCollection_CompareOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TCollection_CompareOfReal;
-class TCollection_CompareOfReal : public TCollection_PrivCompareOfReal {
-	public:
-		%feature("compactdefaultargs") TCollection_CompareOfReal;
-		%feature("autodoc", "	:rtype: None
-") TCollection_CompareOfReal;
-		 TCollection_CompareOfReal ();
-		%feature("compactdefaultargs") IsLower;
-		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
-
-	:param Left:
-	:type Left: float &
-	:param Right:
-	:type Right: float &
-	:rtype: bool
-") IsLower;
-		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
-
-	:param Left:
-	:type Left: float &
-	:param Right:
-	:type Right: float &
-	:rtype: bool
-") IsGreater;
-		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
-};
-
-
-%extend TCollection_CompareOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

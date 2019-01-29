@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,76 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPALGOAPIDOCSTRING
-"The BRepAlgoAPI package provides a full range of
-services to perform Boolean Operations on arguments (shapes
-that are defined in the BRep data structures). The
-implemented new algorithm is intended to replace the Old
-Boolean Operations algorithm in the BRepAlgoAPI package.
-The New algorithm is free of a large number of weak spots
-and limitations characteristics of the Old algorithm.
-It is more powerful and flexible.
-It can process arguments the Old algorithm was not adapted for.
-The new algorithm is based on a new approach to operations
-with interfered shapes. The advantages of the new algorithm
-include an ability to treat arguments that have shared
-entities. It can properly process two solids with shared
-faces (in terms of TopoDS_Shape::IsSame()), two
-faces that have shared edges and so on. Now the New Boolean
-Operation algorithm can treat a wide range of shapes while the
-Old one fails on them.
-A generalization of treatment of same-domain faces
-was included into the New algorithm. Two faces that share
-the same domain are processed according to the common rule
-even if the underlying surfaces are of different types. This
-allows to execute Boolean Operations properly for the same
-domain faces. It also concerns solids and shells that have the
-same domain faces. It is quite frequent when two faces share
-the same domain. And the New algorithm successfully copes
-with it in contrast to the Old one.
-Generalization oftreatment of degenerated edges
-gives a possibility to process them properly. Although there
-are still some difficulties with processing faces in areas close
-to degenerated edges.
-Now the processing of arguments having internal sub-shapes gives
-a correct result. Internal sub-shape means a sub-shape of a
-shape with the orientation TopAbs_INTERNAL and is located
-inside the shape boundaries. The New algorithm processes faces
-with internal edges properly. The new API of the Boolean
-Operations (in addition to the old API) allows to reuse the
-already computed interference between arguments in different
-types of Boolean Operations. It is possible to use once computed
-interference in FUSE, CUT and COMMON operations on given
-arguments. So there is no need to re-compute the interference
-between the arguments. It allows to reduce time for more than one
-operation on given arguments.
-The shape type of a Boolean Operation result and types of the arguments:
--   For arguments with the same shape type (e.g. SOLID /
-SOLID) the type of the resulting shape will be a
-COMPOUND, containing shapes of this type;
--   For arguments with different shape types (e.g.
-SHELL / SOLID) the type of the resulting shape will be a
-COMPOUND, containing shapes of the type that is the same as
-that of the low type of the argument. Example: For
-SHELL/SOLID the result is a COMPOUND of SHELLs.
--   For arguments with different shape types some of
-Boolean Operations can not be done using the default
-implementation, because of a non-manifold type of the
-result. Example: the FUSE operation for SHELL and SOLID
-can not be done, but the CUT operation can be done, where
-SHELL is the object and SOLID is the tool.
-It is possible to perform Boolean Operations on arguments
-of the COMPOUND shape type. In this case each compound must not
-be heterogeneous, i.e. it must contain equidimensional shapes
-(EDGEs or/and WIREs, FACEs or/and SHELLs, SOLIDs). SOLIDs
-inside the COMPOUND must not contact (intersect or touch)
-each other. The same condition is true for SHELLs or FACEs,
-WIREs or EDGEs.
-It does not support Boolean Operations for COMPSOLID type of shape.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPALGOAPIDOCSTRING) BRepAlgoAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -104,6 +39,12 @@ It does not support Boolean Operations for COMPSOLID type of shape.
 
 %include BRepAlgoAPI_headers.i
 
+
+%include "BRepAlgoAPI_Algo.hxx";
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -111,63 +52,15 @@ It does not support Boolean Operations for COMPSOLID type of shape.
 /* end public enums declaration */
 
 
-%nodefaultctor BRepAlgoAPI_Algo;
-%ignore BRepAlgoAPI_Algo::~BRepAlgoAPI_Algo();
-class BRepAlgoAPI_Algo : public BRepBuilderAPI_MakeShape {
-	public:
-		%feature("compactdefaultargs") ErrorStatus;
-		%feature("autodoc", "	* Returns error status of the algorithm ==0 - no errors occured !=0 - is in the event of various error conditions
-
-	:rtype: int
-") ErrorStatus;
-		Standard_Integer ErrorStatus ();
-		%feature("compactdefaultargs") WarningStatus;
-		%feature("autodoc", "	* Returns warning status of the algorithm ==0 - no warning occured !=0 - is in the event of various warning conditions
-
-	:rtype: int
-") WarningStatus;
-		Standard_Integer WarningStatus ();
-		%feature("compactdefaultargs") Allocator;
-		%feature("autodoc", "	:rtype: BOPCol_BaseAllocator
-") Allocator;
-		const BOPCol_BaseAllocator & Allocator ();
-		%feature("compactdefaultargs") SetRunParallel;
-		%feature("autodoc", "	* Set the flag of parallel processing if <theFlag> is true the parallel processing is switched on if <theFlag> is false the parallel processing is switched off
-
-	:param theFlag:
-	:type theFlag: bool
-	:rtype: None
-") SetRunParallel;
-		void SetRunParallel (const Standard_Boolean theFlag);
-		%feature("compactdefaultargs") RunParallel;
-		%feature("autodoc", "	* Returns the flag of parallel processing
-
-	:rtype: bool
-") RunParallel;
-		Standard_Boolean RunParallel ();
-		%feature("compactdefaultargs") SetProgressIndicator;
-		%feature("autodoc", "	* Set the Progress Indicator object.
-
-	:param theObj:
-	:type theObj: Handle_Message_ProgressIndicator &
-	:rtype: None
-") SetProgressIndicator;
-		void SetProgressIndicator (const Handle_Message_ProgressIndicator & theObj);
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Shape;
-		virtual const TopoDS_Shape  Shape ();
-};
-
-
-%extend BRepAlgoAPI_Algo {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BRepAlgoAPI_BuilderAlgo;
 class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 	public:
+		%feature("compactdefaultargs") Arguments;
+		%feature("autodoc", "	* Gets the arguments
+
+	:rtype: TopTools_ListOfShape
+") Arguments;
+		const TopTools_ListOfShape & Arguments ();
 		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
 		%feature("autodoc", "	* Empty constructor
 
@@ -182,56 +75,24 @@ class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 	:rtype: None
 ") BRepAlgoAPI_BuilderAlgo;
 		 BRepAlgoAPI_BuilderAlgo (const BOPAlgo_PaveFiller & thePF);
-		%feature("compactdefaultargs") SetFuzzyValue;
-		%feature("autodoc", "	* Sets the additional tolerance
-
-	:param theFuzz:
-	:type theFuzz: float
-	:rtype: None
-") SetFuzzyValue;
-		void SetFuzzyValue (const Standard_Real theFuzz);
-		%feature("compactdefaultargs") FuzzyValue;
-		%feature("autodoc", "	* Returns the additional tolerance
-
-	:rtype: float
-") FuzzyValue;
-		Standard_Real FuzzyValue ();
-		%feature("compactdefaultargs") SetArguments;
-		%feature("autodoc", "	* Sets the arguments
-
-	:param theLS:
-	:type theLS: TopTools_ListOfShape &
-	:rtype: None
-") SetArguments;
-		void SetArguments (const TopTools_ListOfShape & theLS);
-		%feature("compactdefaultargs") Arguments;
-		%feature("autodoc", "	* Gets the arguments
-
-	:rtype: TopTools_ListOfShape
-") Arguments;
-		const TopTools_ListOfShape & Arguments ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Performs the algorithm //! H I S T O R Y
 
 	:rtype: void
 ") Build;
 		virtual void Build ();
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+		%feature("compactdefaultargs") Builder;
+		%feature("autodoc", "	* Returns the Building tool
 
-	:param aS:
-	:type aS: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Modified;
-		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & aS);
-		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "	* Returns true if the shape S has been deleted. The result shape of the operation does not contain the shape S.
+	:rtype: BOPAlgo_PBuilder
+") Builder;
+		const BOPAlgo_PBuilder & Builder ();
+		%feature("compactdefaultargs") DSFiller;
+		%feature("autodoc", "	* Returns the Intersection tool
 
-	:param aS:
-	:type aS: TopoDS_Shape &
-	:rtype: bool
-") IsDeleted;
-		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
+	:rtype: BOPAlgo_PPaveFiller
+") DSFiller;
+		const BOPAlgo_PPaveFiller & DSFiller ();
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>. For use in BRepNaming.
 
@@ -240,24 +101,76 @@ class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 	:rtype: TopTools_ListOfShape
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") HasModified;
-		%feature("autodoc", "	* Returns true if there is at least one modified shape. For use in BRepNaming.
+		%feature("compactdefaultargs") Glue;
+		%feature("autodoc", "	* Returns the glue option of the algorithm
 
-	:rtype: bool
-") HasModified;
-		virtual Standard_Boolean HasModified ();
-		%feature("compactdefaultargs") HasGenerated;
-		%feature("autodoc", "	* Returns true if there is at least one generated shape. For use in BRepNaming.
-
-	:rtype: bool
-") HasGenerated;
-		virtual Standard_Boolean HasGenerated ();
+	:rtype: BOPAlgo_GlueEnum
+") Glue;
+		BOPAlgo_GlueEnum Glue ();
 		%feature("compactdefaultargs") HasDeleted;
 		%feature("autodoc", "	* Returns true if there is at least one deleted shape. For use in BRepNaming. //! protected methods
 
 	:rtype: bool
 ") HasDeleted;
 		virtual Standard_Boolean HasDeleted ();
+		%feature("compactdefaultargs") HasGenerated;
+		%feature("autodoc", "	* Returns true if there is at least one generated shape. For use in BRepNaming.
+
+	:rtype: bool
+") HasGenerated;
+		virtual Standard_Boolean HasGenerated ();
+		%feature("compactdefaultargs") HasModified;
+		%feature("autodoc", "	* Returns true if there is at least one modified shape. For use in BRepNaming.
+
+	:rtype: bool
+") HasModified;
+		virtual Standard_Boolean HasModified ();
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape S has been deleted. The result shape of the operation does not contain the shape S.
+
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & aS);
+		%feature("compactdefaultargs") NonDestructive;
+		%feature("autodoc", "	* Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+
+	:rtype: bool
+") NonDestructive;
+		Standard_Boolean NonDestructive ();
+		%feature("compactdefaultargs") SetArguments;
+		%feature("autodoc", "	* Sets the arguments
+
+	:param theLS:
+	:type theLS: TopTools_ListOfShape &
+	:rtype: None
+") SetArguments;
+		void SetArguments (const TopTools_ListOfShape & theLS);
+		%feature("compactdefaultargs") SetGlue;
+		%feature("autodoc", "	* Sets the glue option for the algorithm
+
+	:param theGlue:
+	:type theGlue: BOPAlgo_GlueEnum
+	:rtype: None
+") SetGlue;
+		void SetGlue (const BOPAlgo_GlueEnum theGlue);
+		%feature("compactdefaultargs") SetNonDestructive;
+		%feature("autodoc", "	* Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+
+	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetNonDestructive;
+		void SetNonDestructive (const Standard_Boolean theFlag);
 };
 
 
@@ -303,6 +216,30 @@ class BRepAlgoAPI_Check : public BRepAlgoAPI_Algo {
 	:rtype: None
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check (const TopoDS_Shape & theS1,const TopoDS_Shape & theS2,const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
+		%feature("compactdefaultargs") FuzzyValue;
+		%feature("autodoc", "	* Returns the additional tolerance
+
+	:rtype: float
+") FuzzyValue;
+		Standard_Real FuzzyValue ();
+		%feature("compactdefaultargs") IsValid;
+		%feature("autodoc", "	* Shows whether shape(s) valid or not.
+
+	:rtype: bool
+") IsValid;
+		Standard_Boolean IsValid ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs the check.
+
+	:rtype: None
+") Perform;
+		void Perform ();
+		%feature("compactdefaultargs") Result;
+		%feature("autodoc", "	* Returns faulty shapes.
+
+	:rtype: BOPAlgo_ListOfCheckResult
+") Result;
+		const BOPAlgo_ListOfCheckResult & Result ();
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "	* Sets data for check by Init method. The method provides alternative way for checking single shape.
 
@@ -331,24 +268,6 @@ class BRepAlgoAPI_Check : public BRepAlgoAPI_Algo {
 	:rtype: None
 ") SetData;
 		void SetData (const TopoDS_Shape & theS1,const TopoDS_Shape & theS2,const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the check.
-
-	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Shows whether shape(s) valid or not.
-
-	:rtype: bool
-") IsValid;
-		Standard_Boolean IsValid ();
-		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "	* Returns faulty shapes.
-
-	:rtype: BOPAlgo_ListOfCheckResult
-") Result;
-		const BOPAlgo_ListOfCheckResult & Result ();
 		%feature("compactdefaultargs") SetFuzzyValue;
 		%feature("autodoc", "	* Sets the additional tolerance
 
@@ -357,12 +276,6 @@ class BRepAlgoAPI_Check : public BRepAlgoAPI_Algo {
 	:rtype: None
 ") SetFuzzyValue;
 		void SetFuzzyValue (const Standard_Real theFuzz);
-		%feature("compactdefaultargs") FuzzyValue;
-		%feature("autodoc", "	* Returns the additional tolerance
-
-	:rtype: float
-") FuzzyValue;
-		Standard_Real FuzzyValue ();
 };
 
 
@@ -374,46 +287,6 @@ class BRepAlgoAPI_Check : public BRepAlgoAPI_Algo {
 %nodefaultctor BRepAlgoAPI_BooleanOperation;
 class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 	public:
-		%feature("compactdefaultargs") Shape1;
-		%feature("autodoc", "	* Returns the first argument involved in this Boolean operation. Obsolete
-
-	:rtype: TopoDS_Shape
-") Shape1;
-		const TopoDS_Shape  Shape1 ();
-		%feature("compactdefaultargs") Shape2;
-		%feature("autodoc", "	* Returns the second argument involved in this Boolean operation. Obsolete
-
-	:rtype: TopoDS_Shape
-") Shape2;
-		const TopoDS_Shape  Shape2 ();
-		%feature("compactdefaultargs") SetTools;
-		%feature("autodoc", "	* Sets the tools
-
-	:param theLS:
-	:type theLS: TopTools_ListOfShape &
-	:rtype: None
-") SetTools;
-		void SetTools (const TopTools_ListOfShape & theLS);
-		%feature("compactdefaultargs") Tools;
-		%feature("autodoc", "	* Gets the tools
-
-	:rtype: TopTools_ListOfShape
-") Tools;
-		const TopTools_ListOfShape & Tools ();
-		%feature("compactdefaultargs") SetOperation;
-		%feature("autodoc", "	* Sets the type of Boolean operation
-
-	:param anOp:
-	:type anOp: BOPAlgo_Operation
-	:rtype: None
-") SetOperation;
-		void SetOperation (const BOPAlgo_Operation anOp);
-		%feature("compactdefaultargs") Operation;
-		%feature("autodoc", "	* Returns the type of Boolean Operation
-
-	:rtype: BOPAlgo_Operation
-") Operation;
-		BOPAlgo_Operation Operation ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Performs the algorithm Filling interference Data Structure (if it is necessary) Building the result of the operation.
 
@@ -432,6 +305,54 @@ class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 	:rtype: bool
 ") FuseEdges;
 		Standard_Boolean FuseEdges ();
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>. For use in BRepNaming.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") HasDeleted;
+		%feature("autodoc", "	* Returns true if there is at least one deleted shape. For use in BRepNaming.
+
+	:rtype: bool
+") HasDeleted;
+		virtual Standard_Boolean HasDeleted ();
+		%feature("compactdefaultargs") HasGenerated;
+		%feature("autodoc", "	* Returns true if there is at least one generated shape. For use in BRepNaming.
+
+	:rtype: bool
+") HasGenerated;
+		virtual Standard_Boolean HasGenerated ();
+		%feature("compactdefaultargs") HasModified;
+		%feature("autodoc", "	* Returns true if there is at least one modified shape. For use in BRepNaming.
+
+	:rtype: bool
+") HasModified;
+		virtual Standard_Boolean HasModified ();
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape S has been deleted. The result shape of the operation does not contain the shape S.
+
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & aS);
+		%feature("compactdefaultargs") Operation;
+		%feature("autodoc", "	* Returns the type of Boolean Operation
+
+	:rtype: BOPAlgo_Operation
+") Operation;
+		BOPAlgo_Operation Operation ();
 		%feature("compactdefaultargs") RefineEdges;
 		%feature("autodoc", "	* Fuse C1 edges
 
@@ -444,52 +365,89 @@ class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 	:rtype: TopTools_ListOfShape
 ") SectionEdges;
 		const TopTools_ListOfShape & SectionEdges ();
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+		%feature("compactdefaultargs") SetOperation;
+		%feature("autodoc", "	* Sets the type of Boolean operation
 
-	:param aS:
-	:type aS: TopoDS_Shape &
+	:param anOp:
+	:type anOp: BOPAlgo_Operation
+	:rtype: None
+") SetOperation;
+		void SetOperation (const BOPAlgo_Operation anOp);
+		%feature("compactdefaultargs") SetTools;
+		%feature("autodoc", "	* Sets the tools
+
+	:param theLS:
+	:type theLS: TopTools_ListOfShape &
+	:rtype: None
+") SetTools;
+		void SetTools (const TopTools_ListOfShape & theLS);
+		%feature("compactdefaultargs") Shape1;
+		%feature("autodoc", "	* Returns the first argument involved in this Boolean operation. Obsolete
+
+	:rtype: TopoDS_Shape
+") Shape1;
+		const TopoDS_Shape  Shape1 ();
+		%feature("compactdefaultargs") Shape2;
+		%feature("autodoc", "	* Returns the second argument involved in this Boolean operation. Obsolete
+
+	:rtype: TopoDS_Shape
+") Shape2;
+		const TopoDS_Shape  Shape2 ();
+		%feature("compactdefaultargs") Tools;
+		%feature("autodoc", "	* Gets the tools
+
 	:rtype: TopTools_ListOfShape
-") Modified;
-		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & aS);
-		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "	* Returns true if the shape S has been deleted. The result shape of the operation does not contain the shape S.
-
-	:param aS:
-	:type aS: TopoDS_Shape &
-	:rtype: bool
-") IsDeleted;
-		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>. For use in BRepNaming.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Generated;
-		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") HasModified;
-		%feature("autodoc", "	* Returns true if there is at least one modified shape. For use in BRepNaming.
-
-	:rtype: bool
-") HasModified;
-		virtual Standard_Boolean HasModified ();
-		%feature("compactdefaultargs") HasGenerated;
-		%feature("autodoc", "	* Returns true if there is at least one generated shape. For use in BRepNaming.
-
-	:rtype: bool
-") HasGenerated;
-		virtual Standard_Boolean HasGenerated ();
-		%feature("compactdefaultargs") HasDeleted;
-		%feature("autodoc", "	* Returns true if there is at least one deleted shape. For use in BRepNaming.
-
-	:rtype: bool
-") HasDeleted;
-		virtual Standard_Boolean HasDeleted ();
+") Tools;
+		const TopTools_ListOfShape & Tools ();
 };
 
 
 %extend BRepAlgoAPI_BooleanOperation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepAlgoAPI_Splitter;
+class BRepAlgoAPI_Splitter : public BRepAlgoAPI_BuilderAlgo {
+	public:
+		%feature("compactdefaultargs") BRepAlgoAPI_Splitter;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") BRepAlgoAPI_Splitter;
+		 BRepAlgoAPI_Splitter ();
+		%feature("compactdefaultargs") BRepAlgoAPI_Splitter;
+		%feature("autodoc", "	* Constructor with already filled PaveFiller
+
+	:param thePF:
+	:type thePF: BOPAlgo_PaveFiller &
+	:rtype: None
+") BRepAlgoAPI_Splitter;
+		 BRepAlgoAPI_Splitter (const BOPAlgo_PaveFiller & thePF);
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Performs the algorithm. Performs the intersection of the objects with tools and build the result of the operation.
+
+	:rtype: void
+") Build;
+		virtual void Build ();
+		%feature("compactdefaultargs") SetTools;
+		%feature("autodoc", "	* Sets the tools
+
+	:param theLS:
+	:type theLS: TopTools_ListOfShape &
+	:rtype: None
+") SetTools;
+		void SetTools (const TopTools_ListOfShape & theLS);
+		%feature("compactdefaultargs") Tools;
+		%feature("autodoc", "	* Gets the tools
+
+	:rtype: TopTools_ListOfShape
+") Tools;
+		const TopTools_ListOfShape & Tools ();
+};
+
+
+%extend BRepAlgoAPI_Splitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -640,6 +598,12 @@ class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 %nodefaultctor BRepAlgoAPI_Section;
 class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	public:
+		%feature("compactdefaultargs") Approximation;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") Approximation;
+		void Approximation (const Standard_Boolean B);
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "	* Empty constructor
 
@@ -728,6 +692,48 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	:rtype: None
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const Handle_Geom_Surface & Sf1,const Handle_Geom_Surface & Sf2,const Standard_Boolean PerformNow = Standard_True);
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Performs the algorithm Filling interference Data Structure (if it is necessary) Building the result of the operation.
+
+	:rtype: void
+") Build;
+		virtual void Build ();
+		%feature("compactdefaultargs") ComputePCurveOn1;
+		%feature("autodoc", "	* Indicates whether the P-Curve should be (or not) performed on the argument. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the argument to the constructed edges. Obsolete
+
+	:param B:
+	:type B: bool
+	:rtype: None
+") ComputePCurveOn1;
+		void ComputePCurveOn1 (const Standard_Boolean B);
+		%feature("compactdefaultargs") ComputePCurveOn2;
+		%feature("autodoc", "	* Indicates whether the P-Curve should be (or not) performed on the tool. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the tool to the constructed edges. Obsolete
+
+	:param B:
+	:type B: bool
+	:rtype: None
+") ComputePCurveOn2;
+		void ComputePCurveOn2 (const Standard_Boolean B);
+		%feature("compactdefaultargs") HasAncestorFaceOn1;
+		%feature("autodoc", "	* get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() metwod. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> is not the result of common edges) When False, F remains untouched. Obsolete
+
+	:param E:
+	:type E: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: bool
+") HasAncestorFaceOn1;
+		Standard_Boolean HasAncestorFaceOn1 (const TopoDS_Shape & E,TopoDS_Shape & F);
+		%feature("compactdefaultargs") HasAncestorFaceOn2;
+		%feature("autodoc", "	* Identifies the ancestor faces of the intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and - HasAncestorFaceOn2 gives the ancestor face in the second shape. These functions return true if an ancestor face F is found, or false if not. An ancestor face is identifiable for the edge E if the following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true. Obsolete
+
+	:param E:
+	:type E: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: bool
+") HasAncestorFaceOn2;
+		Standard_Boolean HasAncestorFaceOn2 (const TopoDS_Shape & E,TopoDS_Shape & F);
 		%feature("compactdefaultargs") Init1;
 		%feature("autodoc", "	* initialize the argument <S1> - argument Obsolete
 
@@ -776,54 +782,6 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	:rtype: None
 ") Init2;
 		void Init2 (const Handle_Geom_Surface & Sf);
-		%feature("compactdefaultargs") Approximation;
-		%feature("autodoc", "	:param B:
-	:type B: bool
-	:rtype: None
-") Approximation;
-		void Approximation (const Standard_Boolean B);
-		%feature("compactdefaultargs") ComputePCurveOn1;
-		%feature("autodoc", "	* Indicates whether the P-Curve should be (or not) performed on the argument. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the argument to the constructed edges. Obsolete
-
-	:param B:
-	:type B: bool
-	:rtype: None
-") ComputePCurveOn1;
-		void ComputePCurveOn1 (const Standard_Boolean B);
-		%feature("compactdefaultargs") ComputePCurveOn2;
-		%feature("autodoc", "	* Indicates whether the P-Curve should be (or not) performed on the tool. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the tool to the constructed edges. Obsolete
-
-	:param B:
-	:type B: bool
-	:rtype: None
-") ComputePCurveOn2;
-		void ComputePCurveOn2 (const Standard_Boolean B);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Performs the algorithm Filling interference Data Structure (if it is necessary) Building the result of the operation.
-
-	:rtype: void
-") Build;
-		virtual void Build ();
-		%feature("compactdefaultargs") HasAncestorFaceOn1;
-		%feature("autodoc", "	* get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() metwod. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> is not the result of common edges) When False, F remains untouched. Obsolete
-
-	:param E:
-	:type E: TopoDS_Shape &
-	:param F:
-	:type F: TopoDS_Shape &
-	:rtype: bool
-") HasAncestorFaceOn1;
-		Standard_Boolean HasAncestorFaceOn1 (const TopoDS_Shape & E,TopoDS_Shape & F);
-		%feature("compactdefaultargs") HasAncestorFaceOn2;
-		%feature("autodoc", "	* Identifies the ancestor faces of the intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and - HasAncestorFaceOn2 gives the ancestor face in the second shape. These functions return true if an ancestor face F is found, or false if not. An ancestor face is identifiable for the edge E if the following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true. Obsolete
-
-	:param E:
-	:type E: TopoDS_Shape &
-	:param F:
-	:type F: TopoDS_Shape &
-	:rtype: bool
-") HasAncestorFaceOn2;
-		Standard_Boolean HasAncestorFaceOn2 (const TopoDS_Shape & E,TopoDS_Shape & F);
 };
 
 
@@ -832,3 +790,6 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

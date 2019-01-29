@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMDOCSTDDOCSTRING
-"Driver for TDocStd_XLink
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XMLMDOCSTDDOCSTRING) XmlMDocStd
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include XmlMDocStd_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -72,12 +75,6 @@ class XmlMDocStd {
 %nodefaultctor XmlMDocStd_XLinkDriver;
 class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMDocStd_XLinkDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMDocStd_XLinkDriver;
-		 XmlMDocStd_XLinkDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -102,6 +99,12 @@ class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlMDocStd_XLinkDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMDocStd_XLinkDriver;
+		 XmlMDocStd_XLinkDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -112,3 +115,6 @@ class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

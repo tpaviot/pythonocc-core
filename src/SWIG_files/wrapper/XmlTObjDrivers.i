@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -22,7 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %enddef
 %module (package="OCC.Core", docstring=XMLTOBJDRIVERSDOCSTRING) XmlTObjDrivers
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include XmlTObjDrivers_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -57,12 +61,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor XmlTObjDrivers;
 class XmlTObjDrivers {
 	public:
-		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	:param aGUID:
-	:type aGUID: Standard_GUID &
-	:rtype: Handle_Standard_Transient
-") Factory;
-		static Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "	:param aDriverTable:
 	:type aDriverTable: Handle_XmlMDF_ADriverTable &
@@ -71,6 +69,22 @@ class XmlTObjDrivers {
 	:rtype: void
 ") AddDrivers;
 		static void AddDrivers (const Handle_XmlMDF_ADriverTable & aDriverTable,const Handle_CDM_MessageDriver & anMsgDrv);
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "	* Defines format 'TObjXml' and registers its read and write drivers in the specified application
+
+	:param theApp:
+	:type theApp: Handle_TDocStd_Application &
+	:rtype: void
+") DefineFormat;
+		static void DefineFormat (const Handle_TDocStd_Application & theApp);
+		%feature("compactdefaultargs") Factory;
+		%feature("autodoc", "	* Returns a driver corresponding to <aGUID>. Used for plugin.
+
+	:param aGUID:
+	:type aGUID: Standard_GUID &
+	:rtype: Handle_Standard_Transient
+") Factory;
+		Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
 };
 
 
@@ -82,16 +96,16 @@ class XmlTObjDrivers {
 %nodefaultctor XmlTObjDrivers_DocumentRetrievalDriver;
 class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	:rtype: None
-") XmlTObjDrivers_DocumentRetrievalDriver;
-		 XmlTObjDrivers_DocumentRetrievalDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_XmlMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_XmlMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") XmlTObjDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", "	:rtype: None
+") XmlTObjDrivers_DocumentRetrievalDriver;
+		 XmlTObjDrivers_DocumentRetrievalDriver ();
 };
 
 
@@ -105,18 +119,18 @@ class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrie
 %nodefaultctor XmlTObjDrivers_DocumentStorageDriver;
 class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	:param theCopyright:
-	:type theCopyright: TCollection_ExtendedString &
-	:rtype: None
-") XmlTObjDrivers_DocumentStorageDriver;
-		 XmlTObjDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_XmlMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_XmlMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") XmlTObjDrivers_DocumentStorageDriver;
+		%feature("autodoc", "	:param theCopyright:
+	:type theCopyright: TCollection_ExtendedString &
+	:rtype: None
+") XmlTObjDrivers_DocumentStorageDriver;
+		 XmlTObjDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
 };
 
 
@@ -130,12 +144,6 @@ class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageD
 %nodefaultctor XmlTObjDrivers_IntSparseArrayDriver;
 class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_IntSparseArrayDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlTObjDrivers_IntSparseArrayDriver;
-		 XmlTObjDrivers_IntSparseArrayDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -160,6 +168,12 @@ class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlTObjDrivers_IntSparseArrayDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlTObjDrivers_IntSparseArrayDriver;
+		 XmlTObjDrivers_IntSparseArrayDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -173,12 +187,6 @@ class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlTObjDrivers_ModelDriver;
 class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_ModelDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlTObjDrivers_ModelDriver;
-		 XmlTObjDrivers_ModelDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -203,6 +211,12 @@ class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlTObjDrivers_ModelDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlTObjDrivers_ModelDriver;
+		 XmlTObjDrivers_ModelDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -216,12 +230,6 @@ class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlTObjDrivers_ObjectDriver;
 class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_ObjectDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlTObjDrivers_ObjectDriver;
-		 XmlTObjDrivers_ObjectDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -246,6 +254,12 @@ class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlTObjDrivers_ObjectDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlTObjDrivers_ObjectDriver;
+		 XmlTObjDrivers_ObjectDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -259,12 +273,6 @@ class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlTObjDrivers_ReferenceDriver;
 class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_ReferenceDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlTObjDrivers_ReferenceDriver;
-		 XmlTObjDrivers_ReferenceDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -289,6 +297,12 @@ class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlTObjDrivers_ReferenceDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlTObjDrivers_ReferenceDriver;
+		 XmlTObjDrivers_ReferenceDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -302,12 +316,6 @@ class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlTObjDrivers_XYZDriver;
 class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlTObjDrivers_XYZDriver;
-		%feature("autodoc", "	:param theMessageDriver:
-	:type theMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlTObjDrivers_XYZDriver;
-		 XmlTObjDrivers_XYZDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -332,6 +340,12 @@ class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+		%feature("compactdefaultargs") XmlTObjDrivers_XYZDriver;
+		%feature("autodoc", "	:param theMessageDriver:
+	:type theMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlTObjDrivers_XYZDriver;
+		 XmlTObjDrivers_XYZDriver (const Handle_CDM_MessageDriver & theMessageDriver);
 };
 
 
@@ -342,3 +356,6 @@ class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

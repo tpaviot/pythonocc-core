@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,36 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSAPIDOCSTRING
-"The UnitsAPI global functions are used to
-convert a value from any unit into another unit.
-Principles
-Conversion is executed among three unit systems:
--  the SI System
--  the user's Local System
--  the user's Current System.
-The SI System is the standard international unit
-system. It is indicated by SI in the synopses of
-the UnitsAPI functions.
-The MDTV System corresponds to the SI
-international standard but the length unit and all
-its derivatives use millimeters instead of the meters.
-Both systems are proposed by Open CASCADE;
-the SI System is the standard option. By
-selecting one of these two systems, the user
-defines his Local System through the
-SetLocalSystem function. The Local System is
-indicated by LS in the synopses of the UnitsAPI functions.
-The user's Local System units can be modified in
-the working environment. The user defines his
-Current System by modifying its units through
-the SetCurrentUnit function. The Current
-System is indicated by Current in the synopses
-of the UnitsAPI functions.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=UNITSAPIDOCSTRING) UnitsAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -63,6 +38,10 @@ of the UnitsAPI functions.
 
 
 %include UnitsAPI_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -80,46 +59,38 @@ enum UnitsAPI_SystemUnits {
 %rename(unitsapi) UnitsAPI;
 class UnitsAPI {
 	public:
-		%feature("compactdefaultargs") CurrentToLS;
-		%feature("autodoc", "	* Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.
+		%feature("compactdefaultargs") AnyFromLS;
+		%feature("autodoc", "	* Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV. Note: aUnit is also used to identify the type of physical quantity to convert.
 
 	:param aData:
 	:type aData: float
-	:param aQuantity:
-	:type aQuantity: char *
+	:param aUnit:
+	:type aUnit: char *
 	:rtype: float
-") CurrentToLS;
-		static Standard_Real CurrentToLS (const Standard_Real aData,const char * aQuantity);
-		%feature("compactdefaultargs") CurrentToSI;
-		%feature("autodoc", "	* Converts the current unit value to the SI system units value. Example: CurrentToSI(1.,'LENGTH') returns 0.001 if current length unit is millimeter.
+") AnyFromLS;
+		static Standard_Real AnyFromLS (const Standard_Real aData,const char * aUnit);
+		%feature("compactdefaultargs") AnyFromSI;
+		%feature("autodoc", "	* Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001 Note: aUnit is also used to identify the type of physical quantity to convert.
 
 	:param aData:
 	:type aData: float
-	:param aQuantity:
-	:type aQuantity: char *
+	:param aUnit:
+	:type aUnit: char *
 	:rtype: float
-") CurrentToSI;
-		static Standard_Real CurrentToSI (const Standard_Real aData,const char * aQuantity);
-		%feature("compactdefaultargs") CurrentFromLS;
-		%feature("autodoc", "	* Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and LocalSystem is MDTV.
+") AnyFromSI;
+		static Standard_Real AnyFromSI (const Standard_Real aData,const char * aUnit);
+		%feature("compactdefaultargs") AnyToAny;
+		%feature("autodoc", "	* Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','millimeter') returns 1. ;
 
 	:param aData:
 	:type aData: float
-	:param aQuantity:
-	:type aQuantity: char *
+	:param aUnit1:
+	:type aUnit1: char *
+	:param aUnit2:
+	:type aUnit2: char *
 	:rtype: float
-") CurrentFromLS;
-		static Standard_Real CurrentFromLS (const Standard_Real aData,const char * aQuantity);
-		%feature("compactdefaultargs") CurrentFromSI;
-		%feature("autodoc", "	* Converts the SI system units value to the current unit value. Example: CurrentFromSI(0.001,'LENGTH') returns 1 if current length unit is millimeter.
-
-	:param aData:
-	:type aData: float
-	:param aQuantity:
-	:type aQuantity: char *
-	:rtype: float
-") CurrentFromSI;
-		static Standard_Real CurrentFromSI (const Standard_Real aData,const char * aQuantity);
+") AnyToAny;
+		static Standard_Real AnyToAny (const Standard_Real aData,const char * aUnit1,const char * aUnit2);
 		%feature("compactdefaultargs") AnyToLS;
 		%feature("autodoc", "	* Converts the local unit value to the local system units value. Example: AnyToLS(1.,'in.') returns 25.4 if the LocalSystem is MDTV.
 
@@ -164,38 +135,16 @@ class UnitsAPI {
 	:rtype: float
 ") AnyToSI;
 		static Standard_Real AnyToSI (const Standard_Real aData,const char * aUnit,Handle_Units_Dimensions & aDim);
-		%feature("compactdefaultargs") AnyFromLS;
-		%feature("autodoc", "	* Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV. Note: aUnit is also used to identify the type of physical quantity to convert.
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	* Checks the coherence between the quantity <aQuantity> and the unit <aUnits> in the current system and returns False when it's WRONG.
 
-	:param aData:
-	:type aData: float
-	:param aUnit:
-	:type aUnit: char *
-	:rtype: float
-") AnyFromLS;
-		static Standard_Real AnyFromLS (const Standard_Real aData,const char * aUnit);
-		%feature("compactdefaultargs") AnyFromSI;
-		%feature("autodoc", "	* Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001 Note: aUnit is also used to identify the type of physical quantity to convert.
-
-	:param aData:
-	:type aData: float
-	:param aUnit:
-	:type aUnit: char *
-	:rtype: float
-") AnyFromSI;
-		static Standard_Real AnyFromSI (const Standard_Real aData,const char * aUnit);
-		%feature("compactdefaultargs") CurrentToAny;
-		%feature("autodoc", "	* Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function, into the unit aUnit.
-
-	:param aData:
-	:type aData: float
 	:param aQuantity:
 	:type aQuantity: char *
 	:param aUnit:
 	:type aUnit: char *
-	:rtype: float
-") CurrentToAny;
-		static Standard_Real CurrentToAny (const Standard_Real aData,const char * aQuantity,const char * aUnit);
+	:rtype: bool
+") Check;
+		static Standard_Boolean Check (const char * aQuantity,const char * aUnit);
 		%feature("compactdefaultargs") CurrentFromAny;
 		%feature("autodoc", "	* Converts the aData value expressed in the unit aUnit, into the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function.
 
@@ -208,62 +157,58 @@ class UnitsAPI {
 	:rtype: float
 ") CurrentFromAny;
 		static Standard_Real CurrentFromAny (const Standard_Real aData,const char * aQuantity,const char * aUnit);
-		%feature("compactdefaultargs") AnyToAny;
-		%feature("autodoc", "	* Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','millimeter') returns 1. ;
-
-	:param aData:
-	:type aData: float
-	:param aUnit1:
-	:type aUnit1: char *
-	:param aUnit2:
-	:type aUnit2: char *
-	:rtype: float
-") AnyToAny;
-		static Standard_Real AnyToAny (const Standard_Real aData,const char * aUnit1,const char * aUnit2);
-		%feature("compactdefaultargs") LSToSI;
-		%feature("autodoc", "	* Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit is millimeter.
+		%feature("compactdefaultargs") CurrentFromLS;
+		%feature("autodoc", "	* Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and LocalSystem is MDTV.
 
 	:param aData:
 	:type aData: float
 	:param aQuantity:
 	:type aQuantity: char *
 	:rtype: float
-") LSToSI;
-		static Standard_Real LSToSI (const Standard_Real aData,const char * aQuantity);
-		%feature("compactdefaultargs") SIToLS;
-		%feature("autodoc", "	* Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000. if the local system length unit is millimeter.
+") CurrentFromLS;
+		static Standard_Real CurrentFromLS (const Standard_Real aData,const char * aQuantity);
+		%feature("compactdefaultargs") CurrentFromSI;
+		%feature("autodoc", "	* Converts the SI system units value to the current unit value. Example: CurrentFromSI(0.001,'LENGTH') returns 1 if current length unit is millimeter.
 
 	:param aData:
 	:type aData: float
 	:param aQuantity:
 	:type aQuantity: char *
 	:rtype: float
-") SIToLS;
-		static Standard_Real SIToLS (const Standard_Real aData,const char * aQuantity);
-		%feature("compactdefaultargs") SetLocalSystem;
-		%feature("autodoc", "	* Sets the local system units. Example: SetLocalSystem(UnitsAPI_MDTV)
+") CurrentFromSI;
+		static Standard_Real CurrentFromSI (const Standard_Real aData,const char * aQuantity);
+		%feature("compactdefaultargs") CurrentToAny;
+		%feature("autodoc", "	* Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function, into the unit aUnit.
 
-	:param aSystemUnit: default value is UnitsAPI_SI
-	:type aSystemUnit: UnitsAPI_SystemUnits
-	:rtype: void
-") SetLocalSystem;
-		static void SetLocalSystem (const UnitsAPI_SystemUnits aSystemUnit = UnitsAPI_SI);
-		%feature("compactdefaultargs") LocalSystem;
-		%feature("autodoc", "	* Returns the current local system units.
-
-	:rtype: UnitsAPI_SystemUnits
-") LocalSystem;
-		static UnitsAPI_SystemUnits LocalSystem ();
-		%feature("compactdefaultargs") SetCurrentUnit;
-		%feature("autodoc", "	* Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','millimeter')
-
+	:param aData:
+	:type aData: float
 	:param aQuantity:
 	:type aQuantity: char *
 	:param aUnit:
 	:type aUnit: char *
-	:rtype: void
-") SetCurrentUnit;
-		static void SetCurrentUnit (const char * aQuantity,const char * aUnit);
+	:rtype: float
+") CurrentToAny;
+		static Standard_Real CurrentToAny (const Standard_Real aData,const char * aQuantity,const char * aUnit);
+		%feature("compactdefaultargs") CurrentToLS;
+		%feature("autodoc", "	* Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.
+
+	:param aData:
+	:type aData: float
+	:param aQuantity:
+	:type aQuantity: char *
+	:rtype: float
+") CurrentToLS;
+		static Standard_Real CurrentToLS (const Standard_Real aData,const char * aQuantity);
+		%feature("compactdefaultargs") CurrentToSI;
+		%feature("autodoc", "	* Converts the current unit value to the SI system units value. Example: CurrentToSI(1.,'LENGTH') returns 0.001 if current length unit is millimeter.
+
+	:param aData:
+	:type aData: float
+	:param aQuantity:
+	:type aQuantity: char *
+	:rtype: float
+") CurrentToSI;
+		static Standard_Real CurrentToSI (const Standard_Real aData,const char * aQuantity);
 		%feature("compactdefaultargs") CurrentUnit;
 		%feature("autodoc", "	* Returns the current unit dimension <aUnit> from the unit quantity <aQuantity>.
 
@@ -272,56 +217,30 @@ class UnitsAPI {
 	:rtype: char *
 ") CurrentUnit;
 		static const char * CurrentUnit (const char * aQuantity);
-		%feature("compactdefaultargs") Save;
-		%feature("autodoc", "	* saves the units in the file .CurrentUnits of the directory pointed by the CSF_CurrentUnitsUserDefaults environment variable.
-
-	:rtype: void
-") Save;
-		static void Save ();
-		%feature("compactdefaultargs") Reload;
-		%feature("autodoc", "	:rtype: void
-") Reload;
-		static void Reload ();
-		%feature("compactdefaultargs") Dimensions;
-		%feature("autodoc", "	* return the dimension associated to the quantity
-
-	:param aQuantity:
-	:type aQuantity: char *
-	:rtype: Handle_Units_Dimensions
-") Dimensions;
-		static Handle_Units_Dimensions Dimensions (const char * aQuantity);
-		%feature("compactdefaultargs") DimensionLess;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionLess;
-		static Handle_Units_Dimensions DimensionLess ();
-		%feature("compactdefaultargs") DimensionMass;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionMass;
-		static Handle_Units_Dimensions DimensionMass ();
-		%feature("compactdefaultargs") DimensionLength;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionLength;
-		static Handle_Units_Dimensions DimensionLength ();
-		%feature("compactdefaultargs") DimensionTime;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionTime;
-		static Handle_Units_Dimensions DimensionTime ();
-		%feature("compactdefaultargs") DimensionElectricCurrent;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionElectricCurrent;
-		static Handle_Units_Dimensions DimensionElectricCurrent ();
-		%feature("compactdefaultargs") DimensionThermodynamicTemperature;
-		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
-") DimensionThermodynamicTemperature;
-		static Handle_Units_Dimensions DimensionThermodynamicTemperature ();
 		%feature("compactdefaultargs") DimensionAmountOfSubstance;
 		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
 ") DimensionAmountOfSubstance;
 		static Handle_Units_Dimensions DimensionAmountOfSubstance ();
+		%feature("compactdefaultargs") DimensionElectricCurrent;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionElectricCurrent;
+		static Handle_Units_Dimensions DimensionElectricCurrent ();
+		%feature("compactdefaultargs") DimensionLength;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionLength;
+		static Handle_Units_Dimensions DimensionLength ();
+		%feature("compactdefaultargs") DimensionLess;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionLess;
+		static Handle_Units_Dimensions DimensionLess ();
 		%feature("compactdefaultargs") DimensionLuminousIntensity;
 		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
 ") DimensionLuminousIntensity;
 		static Handle_Units_Dimensions DimensionLuminousIntensity ();
+		%feature("compactdefaultargs") DimensionMass;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionMass;
+		static Handle_Units_Dimensions DimensionMass ();
 		%feature("compactdefaultargs") DimensionPlaneAngle;
 		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
 ") DimensionPlaneAngle;
@@ -332,16 +251,76 @@ class UnitsAPI {
 	:rtype: Handle_Units_Dimensions
 ") DimensionSolidAngle;
 		static Handle_Units_Dimensions DimensionSolidAngle ();
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	* Checks the coherence between the quantity <aQuantity> and the unit <aUnits> in the current system and returns False when it's WRONG.
+		%feature("compactdefaultargs") DimensionThermodynamicTemperature;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionThermodynamicTemperature;
+		static Handle_Units_Dimensions DimensionThermodynamicTemperature ();
+		%feature("compactdefaultargs") DimensionTime;
+		%feature("autodoc", "	:rtype: Handle_Units_Dimensions
+") DimensionTime;
+		static Handle_Units_Dimensions DimensionTime ();
+		%feature("compactdefaultargs") Dimensions;
+		%feature("autodoc", "	* return the dimension associated to the quantity
+
+	:param aQuantity:
+	:type aQuantity: char *
+	:rtype: Handle_Units_Dimensions
+") Dimensions;
+		static Handle_Units_Dimensions Dimensions (const char * aQuantity);
+		%feature("compactdefaultargs") LSToSI;
+		%feature("autodoc", "	* Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit is millimeter.
+
+	:param aData:
+	:type aData: float
+	:param aQuantity:
+	:type aQuantity: char *
+	:rtype: float
+") LSToSI;
+		static Standard_Real LSToSI (const Standard_Real aData,const char * aQuantity);
+		%feature("compactdefaultargs") LocalSystem;
+		%feature("autodoc", "	* Returns the current local system units.
+
+	:rtype: UnitsAPI_SystemUnits
+") LocalSystem;
+		static UnitsAPI_SystemUnits LocalSystem ();
+		%feature("compactdefaultargs") Reload;
+		%feature("autodoc", "	:rtype: void
+") Reload;
+		static void Reload ();
+		%feature("compactdefaultargs") SIToLS;
+		%feature("autodoc", "	* Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000. if the local system length unit is millimeter.
+
+	:param aData:
+	:type aData: float
+	:param aQuantity:
+	:type aQuantity: char *
+	:rtype: float
+") SIToLS;
+		static Standard_Real SIToLS (const Standard_Real aData,const char * aQuantity);
+		%feature("compactdefaultargs") Save;
+		%feature("autodoc", "	* saves the units in the file .CurrentUnits of the directory pointed by the CSF_CurrentUnitsUserDefaults environment variable.
+
+	:rtype: void
+") Save;
+		static void Save ();
+		%feature("compactdefaultargs") SetCurrentUnit;
+		%feature("autodoc", "	* Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','millimeter')
 
 	:param aQuantity:
 	:type aQuantity: char *
 	:param aUnit:
 	:type aUnit: char *
-	:rtype: bool
-") Check;
-		static Standard_Boolean Check (const char * aQuantity,const char * aUnit);
+	:rtype: void
+") SetCurrentUnit;
+		static void SetCurrentUnit (const char * aQuantity,const char * aUnit);
+		%feature("compactdefaultargs") SetLocalSystem;
+		%feature("autodoc", "	* Sets the local system units. Example: SetLocalSystem(UnitsAPI_MDTV)
+
+	:param aSystemUnit: default value is UnitsAPI_SI
+	:type aSystemUnit: UnitsAPI_SystemUnits
+	:rtype: void
+") SetLocalSystem;
+		static void SetLocalSystem (const UnitsAPI_SystemUnits aSystemUnit = UnitsAPI_SI);
 };
 
 
@@ -350,3 +329,6 @@ class UnitsAPI {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

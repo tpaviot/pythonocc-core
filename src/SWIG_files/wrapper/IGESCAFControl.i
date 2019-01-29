@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IGESCAFCONTROLDOCSTRING
-"Provides high-level API to translate IGES file
-to and from DECAF document
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=IGESCAFCONTROLDOCSTRING) IGESCAFControl
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,6 +38,10 @@ to and from DECAF document
 
 
 %include IGESCAFControl_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -78,6 +80,18 @@ class IGESCAFControl {
 %nodefaultctor IGESCAFControl_Reader;
 class IGESCAFControl_Reader : public IGESControl_Reader {
 	public:
+		%feature("compactdefaultargs") GetColorMode;
+		%feature("autodoc", "	:rtype: bool
+") GetColorMode;
+		Standard_Boolean GetColorMode ();
+		%feature("compactdefaultargs") GetLayerMode;
+		%feature("autodoc", "	:rtype: bool
+") GetLayerMode;
+		Standard_Boolean GetLayerMode ();
+		%feature("compactdefaultargs") GetNameMode;
+		%feature("autodoc", "	:rtype: bool
+") GetNameMode;
+		Standard_Boolean GetNameMode ();
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "	* Creates a reader with an empty IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
 
@@ -87,75 +101,63 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "	* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES
 
-	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:param scratch: default value is Standard_True
-	:type scratch: bool
+	:param theWS:
+	:type theWS: Handle_XSControl_WorkSession &
+	:param FromScratch: default value is Standard_True
+	:type FromScratch: bool
 	:rtype: None
 ") IGESCAFControl_Reader;
-		 IGESCAFControl_Reader (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	* Translates currently loaded IGES file into the document Returns True if succeeded, and False in case of fail
-
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") Transfer;
-		Standard_Boolean Transfer (Handle_TDocStd_Document & doc);
+		 IGESCAFControl_Reader (const Handle_XSControl_WorkSession & theWS,const Standard_Boolean FromScratch = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param filename:
-	:type filename: TCollection_AsciiString &
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
+		%feature("autodoc", "	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:param theDoc:
+	:type theDoc: Handle_TDocStd_Document &
 	:rtype: bool
 ") Perform;
-		Standard_Boolean Perform (const TCollection_AsciiString & filename,Handle_TDocStd_Document & doc);
+		Standard_Boolean Perform (const TCollection_AsciiString & theFileName,Handle_TDocStd_Document & theDoc);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Translate IGES file given by filename into the document Return True if succeeded, and False in case of fail
 
-	:param filename:
-	:type filename: char *
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
+	:param theFileName:
+	:type theFileName: char *
+	:param theDoc:
+	:type theDoc: Handle_TDocStd_Document &
 	:rtype: bool
 ") Perform;
-		Standard_Boolean Perform (const char * filename,Handle_TDocStd_Document & doc);
+		Standard_Boolean Perform (const char * theFileName,Handle_TDocStd_Document & theDoc);
 		%feature("compactdefaultargs") SetColorMode;
 		%feature("autodoc", "	* Set ColorMode for indicate read Colors or not.
 
-	:param colormode:
-	:type colormode: bool
+	:param theMode:
+	:type theMode: bool
 	:rtype: None
 ") SetColorMode;
-		void SetColorMode (const Standard_Boolean colormode);
-		%feature("compactdefaultargs") GetColorMode;
-		%feature("autodoc", "	:rtype: bool
-") GetColorMode;
-		Standard_Boolean GetColorMode ();
-		%feature("compactdefaultargs") SetNameMode;
-		%feature("autodoc", "	* Set NameMode for indicate read Name or not.
-
-	:param namemode:
-	:type namemode: bool
-	:rtype: None
-") SetNameMode;
-		void SetNameMode (const Standard_Boolean namemode);
-		%feature("compactdefaultargs") GetNameMode;
-		%feature("autodoc", "	:rtype: bool
-") GetNameMode;
-		Standard_Boolean GetNameMode ();
+		void SetColorMode (const Standard_Boolean theMode);
 		%feature("compactdefaultargs") SetLayerMode;
 		%feature("autodoc", "	* Set LayerMode for indicate read Layers or not.
 
-	:param layermode:
-	:type layermode: bool
+	:param theMode:
+	:type theMode: bool
 	:rtype: None
 ") SetLayerMode;
-		void SetLayerMode (const Standard_Boolean layermode);
-		%feature("compactdefaultargs") GetLayerMode;
-		%feature("autodoc", "	:rtype: bool
-") GetLayerMode;
-		Standard_Boolean GetLayerMode ();
+		void SetLayerMode (const Standard_Boolean theMode);
+		%feature("compactdefaultargs") SetNameMode;
+		%feature("autodoc", "	* Set NameMode for indicate read Name or not.
+
+	:param theMode:
+	:type theMode: bool
+	:rtype: None
+") SetNameMode;
+		void SetNameMode (const Standard_Boolean theMode);
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "	* Translates currently loaded IGES file into the document Returns True if succeeded, and False in case of fail
+
+	:param theDoc:
+	:type theDoc: Handle_TDocStd_Document &
+	:rtype: bool
+") Transfer;
+		Standard_Boolean Transfer (Handle_TDocStd_Document & theDoc);
 };
 
 
@@ -167,6 +169,18 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 %nodefaultctor IGESCAFControl_Writer;
 class IGESCAFControl_Writer : public IGESControl_Writer {
 	public:
+		%feature("compactdefaultargs") GetColorMode;
+		%feature("autodoc", "	:rtype: bool
+") GetColorMode;
+		Standard_Boolean GetColorMode ();
+		%feature("compactdefaultargs") GetLayerMode;
+		%feature("autodoc", "	:rtype: bool
+") GetLayerMode;
+		Standard_Boolean GetLayerMode ();
+		%feature("compactdefaultargs") GetNameMode;
+		%feature("autodoc", "	:rtype: bool
+") GetNameMode;
+		Standard_Boolean GetNameMode ();
 		%feature("compactdefaultargs") IGESCAFControl_Writer;
 		%feature("autodoc", "	* Creates a writer with an empty IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
 
@@ -183,14 +197,6 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 	:rtype: None
 ") IGESCAFControl_Writer;
 		 IGESCAFControl_Writer (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	* Transfers a document to a IGES model Returns True if translation is OK
-
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") Transfer;
-		Standard_Boolean Transfer (const Handle_TDocStd_Document & doc);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param doc:
 	:type doc: Handle_TDocStd_Document &
@@ -217,22 +223,6 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 	:rtype: None
 ") SetColorMode;
 		void SetColorMode (const Standard_Boolean colormode);
-		%feature("compactdefaultargs") GetColorMode;
-		%feature("autodoc", "	:rtype: bool
-") GetColorMode;
-		Standard_Boolean GetColorMode ();
-		%feature("compactdefaultargs") SetNameMode;
-		%feature("autodoc", "	* Set NameMode for indicate write Name or not.
-
-	:param namemode:
-	:type namemode: bool
-	:rtype: None
-") SetNameMode;
-		void SetNameMode (const Standard_Boolean namemode);
-		%feature("compactdefaultargs") GetNameMode;
-		%feature("autodoc", "	:rtype: bool
-") GetNameMode;
-		Standard_Boolean GetNameMode ();
 		%feature("compactdefaultargs") SetLayerMode;
 		%feature("autodoc", "	* Set LayerMode for indicate write Layers or not.
 
@@ -241,10 +231,38 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 	:rtype: None
 ") SetLayerMode;
 		void SetLayerMode (const Standard_Boolean layermode);
-		%feature("compactdefaultargs") GetLayerMode;
-		%feature("autodoc", "	:rtype: bool
-") GetLayerMode;
-		Standard_Boolean GetLayerMode ();
+		%feature("compactdefaultargs") SetNameMode;
+		%feature("autodoc", "	* Set NameMode for indicate write Name or not.
+
+	:param namemode:
+	:type namemode: bool
+	:rtype: None
+") SetNameMode;
+		void SetNameMode (const Standard_Boolean namemode);
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "	* Transfers a document to a IGES model Returns True if translation is OK
+
+	:param doc:
+	:type doc: Handle_TDocStd_Document &
+	:rtype: bool
+") Transfer;
+		Standard_Boolean Transfer (const Handle_TDocStd_Document & doc);
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "	* Transfers labels to a IGES model Returns True if translation is OK
+
+	:param labels:
+	:type labels: TDF_LabelSequence &
+	:rtype: bool
+") Transfer;
+		Standard_Boolean Transfer (const TDF_LabelSequence & labels);
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "	* Transfers label to a IGES model Returns True if translation is OK
+
+	:param label:
+	:type label: TDF_Label &
+	:rtype: bool
+") Transfer;
+		Standard_Boolean Transfer (const TDF_Label & label);
 };
 
 
@@ -253,3 +271,6 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINXCAFDRIVERSDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BINXCAFDRIVERSDOCSTRING) BinXCAFDrivers
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include BinXCAFDrivers_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -49,14 +53,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %wrap_handle(BinXCAFDrivers_DocumentStorageDriver)
 
 %rename(binxcafdrivers) BinXCAFDrivers;
+%nodefaultctor BinXCAFDrivers;
 class BinXCAFDrivers {
 	public:
-		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	:param theGUID:
-	:type theGUID: Standard_GUID &
-	:rtype: Handle_Standard_Transient
-") Factory;
-		static Handle_Standard_Transient Factory (const Standard_GUID & theGUID);
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	* Creates the table of drivers of types supported
 
@@ -65,6 +64,20 @@ class BinXCAFDrivers {
 	:rtype: Handle_BinMDF_ADriverTable
 ") AttributeDrivers;
 		static Handle_BinMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & MsgDrv);
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "	* Defines format 'BinXCAF' and registers its read and write drivers in the specified application
+
+	:param theApp:
+	:type theApp: Handle_TDocStd_Application &
+	:rtype: void
+") DefineFormat;
+		static void DefineFormat (const Handle_TDocStd_Application & theApp);
+		%feature("compactdefaultargs") Factory;
+		%feature("autodoc", "	:param theGUID:
+	:type theGUID: Standard_GUID &
+	:rtype: Handle_Standard_Transient
+") Factory;
+		Handle_Standard_Transient Factory (const Standard_GUID & theGUID);
 };
 
 
@@ -76,18 +89,18 @@ class BinXCAFDrivers {
 %nodefaultctor BinXCAFDrivers_DocumentRetrievalDriver;
 class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetrievalDriver {
 	public:
-		%feature("compactdefaultargs") BinXCAFDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	* Constructor
-
-	:rtype: None
-") BinXCAFDrivers_DocumentRetrievalDriver;
-		 BinXCAFDrivers_DocumentRetrievalDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_BinMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_BinMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") BinXCAFDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", "	* Constructor
+
+	:rtype: None
+") BinXCAFDrivers_DocumentRetrievalDriver;
+		 BinXCAFDrivers_DocumentRetrievalDriver ();
 };
 
 
@@ -101,18 +114,18 @@ class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetriev
 %nodefaultctor BinXCAFDrivers_DocumentStorageDriver;
 class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver {
 	public:
-		%feature("compactdefaultargs") BinXCAFDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	* Constructor
-
-	:rtype: None
-") BinXCAFDrivers_DocumentStorageDriver;
-		 BinXCAFDrivers_DocumentStorageDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_BinMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_BinMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") BinXCAFDrivers_DocumentStorageDriver;
+		%feature("autodoc", "	* Constructor
+
+	:rtype: None
+") BinXCAFDrivers_DocumentStorageDriver;
+		 BinXCAFDrivers_DocumentStorageDriver ();
 };
 
 
@@ -123,3 +136,6 @@ class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDr
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

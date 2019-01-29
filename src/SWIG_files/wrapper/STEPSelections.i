@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPSELECTIONSDOCSTRING
-"-Purpose : Step Selections
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=STEPSELECTIONSDOCSTRING) STEPSelections
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,7 +39,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include STEPSelections_headers.i
 
+/* templates */
+%template(STEPSelections_SequenceOfAssemblyLink) NCollection_Sequence <Handle_STEPSelections_AssemblyLink>;
+%template(STEPSelections_SequenceOfAssemblyComponent) NCollection_Sequence <Handle_STEPSelections_AssemblyComponent>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_Sequence <Handle_STEPSelections_AssemblyLink> STEPSelections_SequenceOfAssemblyLink;
+typedef NCollection_Sequence <Handle_STEPSelections_AssemblyComponent> STEPSelections_SequenceOfAssemblyComponent;
 /* end typedefs declaration */
 
 /* public enums */
@@ -48,19 +55,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %wrap_handle(STEPSelections_AssemblyComponent)
 %wrap_handle(STEPSelections_AssemblyLink)
-%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
 %wrap_handle(STEPSelections_SelectAssembly)
 %wrap_handle(STEPSelections_SelectDerived)
 %wrap_handle(STEPSelections_SelectFaces)
 %wrap_handle(STEPSelections_SelectForTransfer)
 %wrap_handle(STEPSelections_SelectGSCurves)
 %wrap_handle(STEPSelections_SelectInstances)
-%wrap_handle(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent)
-%wrap_handle(STEPSelections_SequenceNodeOfSequenceOfAssemblyLink)
 
 %nodefaultctor STEPSelections_AssemblyComponent;
-class STEPSelections_AssemblyComponent : public MMgt_TShared {
+class STEPSelections_AssemblyComponent : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") GetList;
+		%feature("autodoc", "	:rtype: Handle_STEPSelections_HSequenceOfAssemblyLink
+") GetList;
+		Handle_STEPSelections_HSequenceOfAssemblyLink GetList ();
+		%feature("compactdefaultargs") GetSDR;
+		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
+") GetSDR;
+		Handle_StepShape_ShapeDefinitionRepresentation GetSDR ();
 		%feature("compactdefaultargs") STEPSelections_AssemblyComponent;
 		%feature("autodoc", "	:rtype: None
 ") STEPSelections_AssemblyComponent;
@@ -73,26 +85,18 @@ class STEPSelections_AssemblyComponent : public MMgt_TShared {
 	:rtype: None
 ") STEPSelections_AssemblyComponent;
 		 STEPSelections_AssemblyComponent (const Handle_StepShape_ShapeDefinitionRepresentation & sdr,const Handle_STEPSelections_HSequenceOfAssemblyLink & list);
-		%feature("compactdefaultargs") GetSDR;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") GetSDR;
-		Handle_StepShape_ShapeDefinitionRepresentation GetSDR ();
-		%feature("compactdefaultargs") GetList;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_HSequenceOfAssemblyLink
-") GetList;
-		Handle_STEPSelections_HSequenceOfAssemblyLink GetList ();
-		%feature("compactdefaultargs") SetSDR;
-		%feature("autodoc", "	:param sdr:
-	:type sdr: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: None
-") SetSDR;
-		void SetSDR (const Handle_StepShape_ShapeDefinitionRepresentation & sdr);
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "	:param list:
 	:type list: Handle_STEPSelections_HSequenceOfAssemblyLink &
 	:rtype: None
 ") SetList;
 		void SetList (const Handle_STEPSelections_HSequenceOfAssemblyLink & list);
+		%feature("compactdefaultargs") SetSDR;
+		%feature("autodoc", "	:param sdr:
+	:type sdr: Handle_StepShape_ShapeDefinitionRepresentation &
+	:rtype: None
+") SetSDR;
+		void SetSDR (const Handle_StepShape_ShapeDefinitionRepresentation & sdr);
 };
 
 
@@ -106,18 +110,6 @@ class STEPSelections_AssemblyComponent : public MMgt_TShared {
 %nodefaultctor STEPSelections_AssemblyExplorer;
 class STEPSelections_AssemblyExplorer {
 	public:
-		%feature("compactdefaultargs") STEPSelections_AssemblyExplorer;
-		%feature("autodoc", "	:param G:
-	:type G: Interface_Graph &
-	:rtype: None
-") STEPSelections_AssemblyExplorer;
-		 STEPSelections_AssemblyExplorer (const Interface_Graph & G);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param G:
-	:type G: Interface_Graph &
-	:rtype: None
-") Init;
-		void Init (const Interface_Graph & G);
 
         %feature("autodoc", "1");
         %extend{
@@ -126,13 +118,7 @@ class STEPSelections_AssemblyExplorer {
             self->Dump(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") FindSDRWithProduct;
-		%feature("autodoc", "	:param product:
-	:type product: Handle_StepBasic_ProductDefinition &
-	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") FindSDRWithProduct;
-		Handle_StepShape_ShapeDefinitionRepresentation FindSDRWithProduct (const Handle_StepBasic_ProductDefinition & product);
-		%feature("compactdefaultargs") FillListWithGraph;
+        		%feature("compactdefaultargs") FillListWithGraph;
 		%feature("autodoc", "	:param cmp:
 	:type cmp: Handle_STEPSelections_AssemblyComponent &
 	:rtype: None
@@ -144,6 +130,18 @@ class STEPSelections_AssemblyExplorer {
 	:rtype: Handle_Standard_Transient
 ") FindItemWithNAUO;
 		Handle_Standard_Transient FindItemWithNAUO (const Handle_StepRepr_NextAssemblyUsageOccurrence & nauo);
+		%feature("compactdefaultargs") FindSDRWithProduct;
+		%feature("autodoc", "	:param product:
+	:type product: Handle_StepBasic_ProductDefinition &
+	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
+") FindSDRWithProduct;
+		Handle_StepShape_ShapeDefinitionRepresentation FindSDRWithProduct (const Handle_StepBasic_ProductDefinition & product);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param G:
+	:type G: Interface_Graph &
+	:rtype: None
+") Init;
+		void Init (const Interface_Graph & G);
 		%feature("compactdefaultargs") NbAssemblies;
 		%feature("autodoc", "	* Returns the number of root assemblies;
 
@@ -158,6 +156,12 @@ class STEPSelections_AssemblyExplorer {
 	:rtype: Handle_STEPSelections_AssemblyComponent
 ") Root;
 		Handle_STEPSelections_AssemblyComponent Root (const Standard_Integer rank = 1);
+		%feature("compactdefaultargs") STEPSelections_AssemblyExplorer;
+		%feature("autodoc", "	:param G:
+	:type G: Interface_Graph &
+	:rtype: None
+") STEPSelections_AssemblyExplorer;
+		 STEPSelections_AssemblyExplorer (const Interface_Graph & G);
 };
 
 
@@ -167,8 +171,20 @@ class STEPSelections_AssemblyExplorer {
 	}
 };
 %nodefaultctor STEPSelections_AssemblyLink;
-class STEPSelections_AssemblyLink : public MMgt_TShared {
+class STEPSelections_AssemblyLink : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") GetComponent;
+		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyComponent
+") GetComponent;
+		Handle_STEPSelections_AssemblyComponent GetComponent ();
+		%feature("compactdefaultargs") GetItem;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") GetItem;
+		Handle_Standard_Transient GetItem ();
+		%feature("compactdefaultargs") GetNAUO;
+		%feature("autodoc", "	:rtype: Handle_StepRepr_NextAssemblyUsageOccurrence
+") GetNAUO;
+		Handle_StepRepr_NextAssemblyUsageOccurrence GetNAUO ();
 		%feature("compactdefaultargs") STEPSelections_AssemblyLink;
 		%feature("autodoc", "	:rtype: None
 ") STEPSelections_AssemblyLink;
@@ -183,36 +199,24 @@ class STEPSelections_AssemblyLink : public MMgt_TShared {
 	:rtype: None
 ") STEPSelections_AssemblyLink;
 		 STEPSelections_AssemblyLink (const Handle_StepRepr_NextAssemblyUsageOccurrence & nauo,const Handle_Standard_Transient & item,const Handle_STEPSelections_AssemblyComponent & part);
-		%feature("compactdefaultargs") GetNAUO;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_NextAssemblyUsageOccurrence
-") GetNAUO;
-		Handle_StepRepr_NextAssemblyUsageOccurrence GetNAUO ();
-		%feature("compactdefaultargs") GetItem;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") GetItem;
-		Handle_Standard_Transient GetItem ();
-		%feature("compactdefaultargs") GetComponent;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyComponent
-") GetComponent;
-		Handle_STEPSelections_AssemblyComponent GetComponent ();
-		%feature("compactdefaultargs") SetNAUO;
-		%feature("autodoc", "	:param nauo:
-	:type nauo: Handle_StepRepr_NextAssemblyUsageOccurrence &
-	:rtype: None
-") SetNAUO;
-		void SetNAUO (const Handle_StepRepr_NextAssemblyUsageOccurrence & nauo);
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	:param item:
-	:type item: Handle_Standard_Transient &
-	:rtype: None
-") SetItem;
-		void SetItem (const Handle_Standard_Transient & item);
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "	:param part:
 	:type part: Handle_STEPSelections_AssemblyComponent &
 	:rtype: None
 ") SetComponent;
 		void SetComponent (const Handle_STEPSelections_AssemblyComponent & part);
+		%feature("compactdefaultargs") SetItem;
+		%feature("autodoc", "	:param item:
+	:type item: Handle_Standard_Transient &
+	:rtype: None
+") SetItem;
+		void SetItem (const Handle_Standard_Transient & item);
+		%feature("compactdefaultargs") SetNAUO;
+		%feature("autodoc", "	:param nauo:
+	:type nauo: Handle_StepRepr_NextAssemblyUsageOccurrence &
+	:rtype: None
+") SetNAUO;
+		void SetNAUO (const Handle_StepRepr_NextAssemblyUsageOccurrence & nauo);
 };
 
 
@@ -226,10 +230,10 @@ class STEPSelections_AssemblyLink : public MMgt_TShared {
 %nodefaultctor STEPSelections_Counter;
 class STEPSelections_Counter {
 	public:
-		%feature("compactdefaultargs") STEPSelections_Counter;
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
-") STEPSelections_Counter;
-		 STEPSelections_Counter ();
+") Clear;
+		void Clear ();
 		%feature("compactdefaultargs") Count;
 		%feature("autodoc", "	:param graph:
 	:type graph: Interface_Graph &
@@ -238,10 +242,10 @@ class STEPSelections_Counter {
 	:rtype: None
 ") Count;
 		void Count (const Interface_Graph & graph,const Handle_Standard_Transient & start);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
+		%feature("compactdefaultargs") NbInstancesOfEdges;
+		%feature("autodoc", "	:rtype: int
+") NbInstancesOfEdges;
+		Standard_Integer NbInstancesOfEdges ();
 		%feature("compactdefaultargs") NbInstancesOfFaces;
 		%feature("autodoc", "	:rtype: int
 ") NbInstancesOfFaces;
@@ -254,14 +258,14 @@ class STEPSelections_Counter {
 		%feature("autodoc", "	:rtype: int
 ") NbInstancesOfSolids;
 		Standard_Integer NbInstancesOfSolids ();
-		%feature("compactdefaultargs") NbInstancesOfEdges;
-		%feature("autodoc", "	:rtype: int
-") NbInstancesOfEdges;
-		Standard_Integer NbInstancesOfEdges ();
 		%feature("compactdefaultargs") NbInstancesOfWires;
 		%feature("autodoc", "	:rtype: int
 ") NbInstancesOfWires;
 		Standard_Integer NbInstancesOfWires ();
+		%feature("compactdefaultargs") NbSourceEdges;
+		%feature("autodoc", "	:rtype: int
+") NbSourceEdges;
+		Standard_Integer NbSourceEdges ();
 		%feature("compactdefaultargs") NbSourceFaces;
 		%feature("autodoc", "	:rtype: int
 ") NbSourceFaces;
@@ -274,14 +278,14 @@ class STEPSelections_Counter {
 		%feature("autodoc", "	:rtype: int
 ") NbSourceSolids;
 		Standard_Integer NbSourceSolids ();
-		%feature("compactdefaultargs") NbSourceEdges;
-		%feature("autodoc", "	:rtype: int
-") NbSourceEdges;
-		Standard_Integer NbSourceEdges ();
 		%feature("compactdefaultargs") NbSourceWires;
 		%feature("autodoc", "	:rtype: int
 ") NbSourceWires;
 		Standard_Integer NbSourceWires ();
+		%feature("compactdefaultargs") STEPSelections_Counter;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_Counter;
+		 STEPSelections_Counter ();
 };
 
 
@@ -290,158 +294,9 @@ class STEPSelections_Counter {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor STEPSelections_HSequenceOfAssemblyLink;
-class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") STEPSelections_HSequenceOfAssemblyLink;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_HSequenceOfAssemblyLink;
-		 STEPSelections_HSequenceOfAssemblyLink ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") Append;
-		void Append (const Handle_STEPSelections_AssemblyLink & anItem);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_STEPSelections_HSequenceOfAssemblyLink &
-	:rtype: None
-") Append;
-		void Append (const Handle_STEPSelections_HSequenceOfAssemblyLink & aSequence);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_STEPSelections_AssemblyLink & anItem);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_STEPSelections_HSequenceOfAssemblyLink &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_STEPSelections_HSequenceOfAssemblyLink & aSequence);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_STEPSelections_AssemblyLink & anItem);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_STEPSelections_HSequenceOfAssemblyLink &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_STEPSelections_HSequenceOfAssemblyLink & aSequence);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_STEPSelections_AssemblyLink & anItem);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_STEPSelections_HSequenceOfAssemblyLink &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_STEPSelections_HSequenceOfAssemblyLink & aSequence);
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anOtherIndex:
-	:type anOtherIndex: int
-	:rtype: None
-") Exchange;
-		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_STEPSelections_HSequenceOfAssemblyLink
-") Split;
-		Handle_STEPSelections_HSequenceOfAssemblyLink Split (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer anIndex,const Handle_STEPSelections_AssemblyLink & anItem);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_STEPSelections_AssemblyLink
-") Value;
-		Handle_STEPSelections_AssemblyLink Value (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_STEPSelections_AssemblyLink
-") ChangeValue;
-		Handle_STEPSelections_AssemblyLink ChangeValue (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: int
-	:param toIndex:
-	:type toIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("compactdefaultargs") Sequence;
-		%feature("autodoc", "	:rtype: STEPSelections_SequenceOfAssemblyLink
-") Sequence;
-		const STEPSelections_SequenceOfAssemblyLink & Sequence ();
-		%feature("compactdefaultargs") ChangeSequence;
-		%feature("autodoc", "	:rtype: STEPSelections_SequenceOfAssemblyLink
-") ChangeSequence;
-		STEPSelections_SequenceOfAssemblyLink & ChangeSequence ();
-};
-
-
-%make_alias(STEPSelections_HSequenceOfAssemblyLink)
-
-%extend STEPSelections_HSequenceOfAssemblyLink {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor STEPSelections_SelectAssembly;
 class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 	public:
-		%feature("compactdefaultargs") STEPSelections_SelectAssembly;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SelectAssembly;
-		 STEPSelections_SelectAssembly ();
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "	* Explores an entity, to take its faces Works recursively
 
@@ -462,6 +317,10 @@ class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 	:rtype: TCollection_AsciiString
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel ();
+		%feature("compactdefaultargs") STEPSelections_SelectAssembly;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_SelectAssembly;
+		 STEPSelections_SelectAssembly ();
 };
 
 
@@ -475,10 +334,6 @@ class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 %nodefaultctor STEPSelections_SelectDerived;
 class STEPSelections_SelectDerived : public StepSelect_StepType {
 	public:
-		%feature("compactdefaultargs") STEPSelections_SelectDerived;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SelectDerived;
-		 STEPSelections_SelectDerived ();
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -491,6 +346,10 @@ class STEPSelections_SelectDerived : public StepSelect_StepType {
 	:rtype: bool
 ") Matches;
 		virtual Standard_Boolean Matches (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model,const TCollection_AsciiString & text,const Standard_Boolean exact);
+		%feature("compactdefaultargs") STEPSelections_SelectDerived;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_SelectDerived;
+		 STEPSelections_SelectDerived ();
 };
 
 
@@ -504,10 +363,6 @@ class STEPSelections_SelectDerived : public StepSelect_StepType {
 %nodefaultctor STEPSelections_SelectFaces;
 class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 	public:
-		%feature("compactdefaultargs") STEPSelections_SelectFaces;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SelectFaces;
-		 STEPSelections_SelectFaces ();
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "	* Explores an entity, to take its faces Works recursively
 
@@ -528,6 +383,10 @@ class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 	:rtype: TCollection_AsciiString
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel ();
+		%feature("compactdefaultargs") STEPSelections_SelectFaces;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_SelectFaces;
+		 STEPSelections_SelectFaces ();
 };
 
 
@@ -541,6 +400,12 @@ class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 %nodefaultctor STEPSelections_SelectForTransfer;
 class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 	public:
+		%feature("compactdefaultargs") RootResult;
+		%feature("autodoc", "	:param G:
+	:type G: Interface_Graph &
+	:rtype: Interface_EntityIterator
+") RootResult;
+		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 		%feature("compactdefaultargs") STEPSelections_SelectForTransfer;
 		%feature("autodoc", "	:rtype: None
 ") STEPSelections_SelectForTransfer;
@@ -551,12 +416,6 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 	:rtype: None
 ") STEPSelections_SelectForTransfer;
 		 STEPSelections_SelectForTransfer (const Handle_XSControl_TransferReader & TR);
-		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "	:param G:
-	:type G: Interface_Graph &
-	:rtype: Interface_EntityIterator
-") RootResult;
-		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 };
 
 
@@ -570,10 +429,6 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 %nodefaultctor STEPSelections_SelectGSCurves;
 class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 	public:
-		%feature("compactdefaultargs") STEPSelections_SelectGSCurves;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SelectGSCurves;
-		 STEPSelections_SelectGSCurves ();
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "	:param level:
 	:type level: int
@@ -592,6 +447,10 @@ class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 	:rtype: TCollection_AsciiString
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel ();
+		%feature("compactdefaultargs") STEPSelections_SelectGSCurves;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_SelectGSCurves;
+		 STEPSelections_SelectGSCurves ();
 };
 
 
@@ -605,16 +464,6 @@ class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 %nodefaultctor STEPSelections_SelectInstances;
 class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	public:
-		%feature("compactdefaultargs") STEPSelections_SelectInstances;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SelectInstances;
-		 STEPSelections_SelectInstances ();
-		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "	:param G:
-	:type G: Interface_Graph &
-	:rtype: Interface_EntityIterator
-") RootResult;
-		Interface_EntityIterator RootResult (const Interface_Graph & G);
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "	:param level:
 	:type level: int
@@ -633,6 +482,16 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	:rtype: TCollection_AsciiString
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel ();
+		%feature("compactdefaultargs") RootResult;
+		%feature("autodoc", "	:param G:
+	:type G: Interface_Graph &
+	:rtype: Interface_EntityIterator
+") RootResult;
+		Interface_EntityIterator RootResult (const Interface_Graph & G);
+		%feature("compactdefaultargs") STEPSelections_SelectInstances;
+		%feature("autodoc", "	:rtype: None
+") STEPSelections_SelectInstances;
+		 STEPSelections_SelectInstances ();
 };
 
 
@@ -643,343 +502,18 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent;
-class STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_STEPSelections_AssemblyComponent &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent;
-		 STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent (const Handle_STEPSelections_AssemblyComponent & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyComponent
-") Value;
-		Handle_STEPSelections_AssemblyComponent Value ();
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */
+%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
+class STEPSelections_HSequenceOfAssemblyLink : public  STEPSelections_SequenceOfAssemblyLink, public Standard_Transient {
+    STEPSelections_HSequenceOfAssemblyLink();
+    STEPSelections_HSequenceOfAssemblyLink(const  STEPSelections_SequenceOfAssemblyLink& theOther);
+    const  STEPSelections_SequenceOfAssemblyLink& Sequence();
+    void Append (const  STEPSelections_SequenceOfAssemblyLink::value_type& theItem);
+    void Append ( STEPSelections_SequenceOfAssemblyLink& theSequence);
+     STEPSelections_SequenceOfAssemblyLink& ChangeSequence();
 };
+%make_alias(STEPSelections_HSequenceOfAssemblyLink)
 
 
-%make_alias(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent)
-
-%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPSelections_SequenceNodeOfSequenceOfAssemblyLink;
-class STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") STEPSelections_SequenceNodeOfSequenceOfAssemblyLink;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_STEPSelections_AssemblyLink &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") STEPSelections_SequenceNodeOfSequenceOfAssemblyLink;
-		 STEPSelections_SequenceNodeOfSequenceOfAssemblyLink (const Handle_STEPSelections_AssemblyLink & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyLink
-") Value;
-		Handle_STEPSelections_AssemblyLink Value ();
-};
-
-
-%make_alias(STEPSelections_SequenceNodeOfSequenceOfAssemblyLink)
-
-%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPSelections_SequenceOfAssemblyComponent;
-class STEPSelections_SequenceOfAssemblyComponent : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyComponent;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SequenceOfAssemblyComponent;
-		 STEPSelections_SequenceOfAssemblyComponent ();
-		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyComponent;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") STEPSelections_SequenceOfAssemblyComponent;
-		 STEPSelections_SequenceOfAssemblyComponent (const STEPSelections_SequenceOfAssemblyComponent & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: STEPSelections_SequenceOfAssemblyComponent
-") Assign;
-		const STEPSelections_SequenceOfAssemblyComponent & Assign (const STEPSelections_SequenceOfAssemblyComponent & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: STEPSelections_SequenceOfAssemblyComponent
-") operator =;
-		const STEPSelections_SequenceOfAssemblyComponent & operator = (const STEPSelections_SequenceOfAssemblyComponent & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_STEPSelections_AssemblyComponent &
-	:rtype: None
-") Append;
-		void Append (const Handle_STEPSelections_AssemblyComponent & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") Append;
-		void Append (STEPSelections_SequenceOfAssemblyComponent & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_STEPSelections_AssemblyComponent &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_STEPSelections_AssemblyComponent & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") Prepend;
-		void Prepend (STEPSelections_SequenceOfAssemblyComponent & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_STEPSelections_AssemblyComponent &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Handle_STEPSelections_AssemblyComponent & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyComponent & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_STEPSelections_AssemblyComponent &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Handle_STEPSelections_AssemblyComponent & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyComponent & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyComponent
-") First;
-		Handle_STEPSelections_AssemblyComponent First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyComponent
-") Last;
-		Handle_STEPSelections_AssemblyComponent Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: STEPSelections_SequenceOfAssemblyComponent &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyComponent & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_STEPSelections_AssemblyComponent
-") Value;
-		Handle_STEPSelections_AssemblyComponent Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Handle_STEPSelections_AssemblyComponent &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_STEPSelections_AssemblyComponent & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_STEPSelections_AssemblyComponent
-") ChangeValue;
-		Handle_STEPSelections_AssemblyComponent ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend STEPSelections_SequenceOfAssemblyComponent {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPSelections_SequenceOfAssemblyLink;
-class STEPSelections_SequenceOfAssemblyLink : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyLink;
-		%feature("autodoc", "	:rtype: None
-") STEPSelections_SequenceOfAssemblyLink;
-		 STEPSelections_SequenceOfAssemblyLink ();
-		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyLink;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") STEPSelections_SequenceOfAssemblyLink;
-		 STEPSelections_SequenceOfAssemblyLink (const STEPSelections_SequenceOfAssemblyLink & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: STEPSelections_SequenceOfAssemblyLink
-") Assign;
-		const STEPSelections_SequenceOfAssemblyLink & Assign (const STEPSelections_SequenceOfAssemblyLink & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: STEPSelections_SequenceOfAssemblyLink
-") operator =;
-		const STEPSelections_SequenceOfAssemblyLink & operator = (const STEPSelections_SequenceOfAssemblyLink & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") Append;
-		void Append (const Handle_STEPSelections_AssemblyLink & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") Append;
-		void Append (STEPSelections_SequenceOfAssemblyLink & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_STEPSelections_AssemblyLink & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") Prepend;
-		void Prepend (STEPSelections_SequenceOfAssemblyLink & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Handle_STEPSelections_AssemblyLink & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyLink & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Handle_STEPSelections_AssemblyLink & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyLink & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyLink
-") First;
-		Handle_STEPSelections_AssemblyLink First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_AssemblyLink
-") Last;
-		Handle_STEPSelections_AssemblyLink Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: STEPSelections_SequenceOfAssemblyLink &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,STEPSelections_SequenceOfAssemblyLink & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_STEPSelections_AssemblyLink
-") Value;
-		Handle_STEPSelections_AssemblyLink Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Handle_STEPSelections_AssemblyLink &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_STEPSelections_AssemblyLink & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_STEPSelections_AssemblyLink
-") ChangeValue;
-		Handle_STEPSelections_AssemblyLink ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend STEPSelections_SequenceOfAssemblyLink {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};

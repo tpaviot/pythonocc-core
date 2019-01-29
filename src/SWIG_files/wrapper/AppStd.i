@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPSTDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=APPSTDDOCSTRING) AppStd
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include AppStd_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -50,22 +54,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor AppStd_Application;
 class AppStd_Application : public TDocStd_Application {
 	public:
-		%feature("compactdefaultargs") AppStd_Application;
-		%feature("autodoc", "	:rtype: None
-") AppStd_Application;
-		 AppStd_Application ();
-		%feature("compactdefaultargs") MessageDriver;
-		%feature("autodoc", "	:rtype: Handle_CDM_MessageDriver
-") MessageDriver;
-		virtual Handle_CDM_MessageDriver MessageDriver ();
-		%feature("compactdefaultargs") Formats;
-		%feature("autodoc", "	* returns supported format for application documents.
-
-	:param theFormats:
-	:type theFormats: TColStd_SequenceOfExtendedString &
-	:rtype: void
-") Formats;
-		virtual void Formats (TColStd_SequenceOfExtendedString & theFormats);
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "	* returns the file name which contains application resources
 
@@ -82,3 +70,6 @@ class AppStd_Application : public TDocStd_Application {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

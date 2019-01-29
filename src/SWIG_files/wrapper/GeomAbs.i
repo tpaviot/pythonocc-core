@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,33 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMABSDOCSTRING
-"This package gives resources for Geometric applications
-
-it contains :
-CurveType enumeration to describe the different type of
-curves
-
-SurfaceType enumeration to describe the different type of
-surfaces
-
-Shape enumeration to describe the continuity of curve
-or surface
-
-CurveForm enumeration to describe the specific form of
-curve
-
-SurfaceForm enumeration to describe the specific form of
-surface
-
-BSplKnotDistribution enumeration to describe the
-repartition of set of knots
-
-UVSense enumeration to describe the orientation of
-the parametric surface"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GEOMABSDOCSTRING) GeomAbs
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -60,6 +38,10 @@ the parametric surface"
 
 
 %include GeomAbs_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -99,7 +81,8 @@ enum GeomAbs_CurveType {
 	GeomAbs_Parabola = 4,
 	GeomAbs_BezierCurve = 5,
 	GeomAbs_BSplineCurve = 6,
-	GeomAbs_OtherCurve = 7,
+	GeomAbs_OffsetCurve = 7,
+	GeomAbs_OtherCurve = 8,
 };
 
 enum GeomAbs_SurfaceForm {
@@ -150,3 +133,6 @@ enum GeomAbs_UVSense {
 /* end public enums declaration */
 
 
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

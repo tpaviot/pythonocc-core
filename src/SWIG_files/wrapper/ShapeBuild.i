@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEBUILDDOCSTRING
-"This package provides basic building tools for other packages in ShapeHealing.
-These tools are rather internal for ShapeHealing .
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,6 +38,10 @@ These tools are rather internal for ShapeHealing .
 
 
 %include ShapeBuild_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -68,18 +70,34 @@ class ShapeBuild {
 };
 class ShapeBuild_Edge {
 	public:
-		%feature("compactdefaultargs") CopyReplaceVertices;
-		%feature("autodoc", "	* Copy edge and replace one or both its vertices to a given one(s). Vertex V1 replaces FORWARD vertex, and V2 - REVERSED, as they are found by TopoDS_Iterator. If V1 or V2 is NULL, the original vertex is taken
+		%feature("compactdefaultargs") BuildCurve3d;
+		%feature("autodoc", "	* Calls BRepTools::BuildCurve3D
 
 	:param edge:
 	:type edge: TopoDS_Edge &
-	:param V1:
-	:type V1: TopoDS_Vertex &
-	:param V2:
-	:type V2: TopoDS_Vertex &
+	:rtype: bool
+") BuildCurve3d;
+		Standard_Boolean BuildCurve3d (const TopoDS_Edge & edge);
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Make a copy of <edge> by call to CopyReplaceVertices() (i.e. construct new TEdge with the same pcurves and vertices). If <sharepcurves> is False, pcurves are also replaced by their copies with help of method CopyPCurves
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param sharepcurves: default value is Standard_True
+	:type sharepcurves: bool
 	:rtype: TopoDS_Edge
-") CopyReplaceVertices;
-		TopoDS_Edge CopyReplaceVertices (const TopoDS_Edge & edge,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
+") Copy;
+		TopoDS_Edge Copy (const TopoDS_Edge & edge,const Standard_Boolean sharepcurves = Standard_True);
+		%feature("compactdefaultargs") CopyPCurves;
+		%feature("autodoc", "	* Makes a copy of pcurves from edge <fromedge> into edge <toedge>. Pcurves which are already present in <toedge>, are replaced by copies, other are copied. Ranges are also copied.
+
+	:param toedge:
+	:type toedge: TopoDS_Edge &
+	:param fromedge:
+	:type fromedge: TopoDS_Edge &
+	:rtype: None
+") CopyPCurves;
+		void CopyPCurves (const TopoDS_Edge & toedge,const TopoDS_Edge & fromedge);
 		%feature("compactdefaultargs") CopyRanges;
 		%feature("autodoc", "	* Copies ranges for curve3d and all common pcurves from edge <fromedge> into edge <toedge>.
 
@@ -94,126 +112,18 @@ class ShapeBuild_Edge {
 	:rtype: None
 ") CopyRanges;
 		void CopyRanges (const TopoDS_Edge & toedge,const TopoDS_Edge & fromedge,const Standard_Real alpha = 0,const Standard_Real beta = 1);
-		%feature("compactdefaultargs") SetRange3d;
-		%feature("autodoc", "	* Sets range on 3d curve only.
+		%feature("compactdefaultargs") CopyReplaceVertices;
+		%feature("autodoc", "	* Copy edge and replace one or both its vertices to a given one(s). Vertex V1 replaces FORWARD vertex, and V2 - REVERSED, as they are found by TopoDS_Iterator. If V1 or V2 is NULL, the original vertex is taken
 
 	:param edge:
 	:type edge: TopoDS_Edge &
-	:param first:
-	:type first: float
-	:param last:
-	:type last: float
-	:rtype: None
-") SetRange3d;
-		void SetRange3d (const TopoDS_Edge & edge,const Standard_Real first,const Standard_Real last);
-		%feature("compactdefaultargs") CopyPCurves;
-		%feature("autodoc", "	* Makes a copy of pcurves from edge <fromedge> into edge <toedge>. Pcurves which are already present in <toedge>, are replaced by copies, other are copied. Ranges are also copied.
-
-	:param toedge:
-	:type toedge: TopoDS_Edge &
-	:param fromedge:
-	:type fromedge: TopoDS_Edge &
-	:rtype: None
-") CopyPCurves;
-		void CopyPCurves (const TopoDS_Edge & toedge,const TopoDS_Edge & fromedge);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Make a copy of <edge> by call to CopyReplaceVertices() (i.e. construct new TEdge with the same pcurves and vertices). If <sharepcurves> is False, pcurves are also replaced by their copies with help of method CopyPCurves
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param sharepcurves: default value is Standard_True
-	:type sharepcurves: bool
+	:param V1:
+	:type V1: TopoDS_Vertex &
+	:param V2:
+	:type V2: TopoDS_Vertex &
 	:rtype: TopoDS_Edge
-") Copy;
-		TopoDS_Edge Copy (const TopoDS_Edge & edge,const Standard_Boolean sharepcurves = Standard_True);
-		%feature("compactdefaultargs") RemovePCurve;
-		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Face
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param face:
-	:type face: TopoDS_Face &
-	:rtype: None
-") RemovePCurve;
-		void RemovePCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
-		%feature("compactdefaultargs") RemovePCurve;
-		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Surface
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param surf:
-	:type surf: Handle_Geom_Surface &
-	:rtype: None
-") RemovePCurve;
-		void RemovePCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surf);
-		%feature("compactdefaultargs") RemovePCurve;
-		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Surface, with given Location
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param surf:
-	:type surf: Handle_Geom_Surface &
-	:param loc:
-	:type loc: TopLoc_Location &
-	:rtype: None
-") RemovePCurve;
-		void RemovePCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surf,const TopLoc_Location & loc);
-		%feature("compactdefaultargs") ReplacePCurve;
-		%feature("autodoc", "	* Replace the PCurve in an Edge for the given Face In case if edge is seam, i.e. has 2 pcurves on that face, only pcurve corresponding to the orientation of the edge is replaced
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param pcurve:
-	:type pcurve: Handle_Geom2d_Curve &
-	:param face:
-	:type face: TopoDS_Face &
-	:rtype: None
-") ReplacePCurve;
-		void ReplacePCurve (const TopoDS_Edge & edge,const Handle_Geom2d_Curve & pcurve,const TopoDS_Face & face);
-		%feature("compactdefaultargs") ReassignPCurve;
-		%feature("autodoc", "	* Reassign edge pcurve lying on face <old> to another face <sub>. If edge has two pcurves on <old> face, only one of them will be reassigned, and other will left alone. Similarly, if edge already had a pcurve on face <sub>, it will have two pcurves on it. Returns True if succeeded, False if no pcurve lying on <old> found.
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param old:
-	:type old: TopoDS_Face &
-	:param sub:
-	:type sub: TopoDS_Face &
-	:rtype: bool
-") ReassignPCurve;
-		Standard_Boolean ReassignPCurve (const TopoDS_Edge & edge,const TopoDS_Face & old,const TopoDS_Face & sub);
-		%feature("compactdefaultargs") TransformPCurve;
-		%feature("autodoc", "	* Transforms the PCurve with given matrix and affinity U factor.
-
-	:param pcurve:
-	:type pcurve: Handle_Geom2d_Curve &
-	:param trans:
-	:type trans: gp_Trsf2d
-	:param uFact:
-	:type uFact: float
-	:param aFirst:
-	:type aFirst: float &
-	:param aLast:
-	:type aLast: float &
-	:rtype: Handle_Geom2d_Curve
-") TransformPCurve;
-		Handle_Geom2d_Curve TransformPCurve (const Handle_Geom2d_Curve & pcurve,const gp_Trsf2d & trans,const Standard_Real uFact,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") RemoveCurve3d;
-		%feature("autodoc", "	* Removes the Curve3D recorded in an Edge
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:rtype: None
-") RemoveCurve3d;
-		void RemoveCurve3d (const TopoDS_Edge & edge);
-		%feature("compactdefaultargs") BuildCurve3d;
-		%feature("autodoc", "	* Calls BRepTools::BuildCurve3D
-
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:rtype: bool
-") BuildCurve3d;
-		Standard_Boolean BuildCurve3d (const TopoDS_Edge & edge);
+") CopyReplaceVertices;
+		TopoDS_Edge CopyReplaceVertices (const TopoDS_Edge & edge,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "	* Makes edge with curve and location
 
@@ -302,6 +212,98 @@ class ShapeBuild_Edge {
 	:rtype: None
 ") MakeEdge;
 		void MakeEdge (TopoDS_Edge & edge,const Handle_Geom2d_Curve & pcurve,const Handle_Geom_Surface & S,const TopLoc_Location & L,const Standard_Real p1,const Standard_Real p2);
+		%feature("compactdefaultargs") ReassignPCurve;
+		%feature("autodoc", "	* Reassign edge pcurve lying on face <old> to another face <sub>. If edge has two pcurves on <old> face, only one of them will be reassigned, and other will left alone. Similarly, if edge already had a pcurve on face <sub>, it will have two pcurves on it. Returns True if succeeded, False if no pcurve lying on <old> found.
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param old:
+	:type old: TopoDS_Face &
+	:param sub:
+	:type sub: TopoDS_Face &
+	:rtype: bool
+") ReassignPCurve;
+		Standard_Boolean ReassignPCurve (const TopoDS_Edge & edge,const TopoDS_Face & old,const TopoDS_Face & sub);
+		%feature("compactdefaultargs") RemoveCurve3d;
+		%feature("autodoc", "	* Removes the Curve3D recorded in an Edge
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:rtype: None
+") RemoveCurve3d;
+		void RemoveCurve3d (const TopoDS_Edge & edge);
+		%feature("compactdefaultargs") RemovePCurve;
+		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Face
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") RemovePCurve;
+		void RemovePCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
+		%feature("compactdefaultargs") RemovePCurve;
+		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Surface
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surf:
+	:type surf: Handle_Geom_Surface &
+	:rtype: None
+") RemovePCurve;
+		void RemovePCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surf);
+		%feature("compactdefaultargs") RemovePCurve;
+		%feature("autodoc", "	* Removes the PCurve(s) which could be recorded in an Edge for the given Surface, with given Location
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surf:
+	:type surf: Handle_Geom_Surface &
+	:param loc:
+	:type loc: TopLoc_Location &
+	:rtype: None
+") RemovePCurve;
+		void RemovePCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surf,const TopLoc_Location & loc);
+		%feature("compactdefaultargs") ReplacePCurve;
+		%feature("autodoc", "	* Replace the PCurve in an Edge for the given Face In case if edge is seam, i.e. has 2 pcurves on that face, only pcurve corresponding to the orientation of the edge is replaced
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param pcurve:
+	:type pcurve: Handle_Geom2d_Curve &
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") ReplacePCurve;
+		void ReplacePCurve (const TopoDS_Edge & edge,const Handle_Geom2d_Curve & pcurve,const TopoDS_Face & face);
+		%feature("compactdefaultargs") SetRange3d;
+		%feature("autodoc", "	* Sets range on 3d curve only.
+
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param first:
+	:type first: float
+	:param last:
+	:type last: float
+	:rtype: None
+") SetRange3d;
+		void SetRange3d (const TopoDS_Edge & edge,const Standard_Real first,const Standard_Real last);
+		%feature("compactdefaultargs") TransformPCurve;
+		%feature("autodoc", "	* Transforms the PCurve with given matrix and affinity U factor.
+
+	:param pcurve:
+	:type pcurve: Handle_Geom2d_Curve &
+	:param trans:
+	:type trans: gp_Trsf2d
+	:param uFact:
+	:type uFact: float
+	:param aFirst:
+	:type aFirst: float &
+	:param aLast:
+	:type aLast: float &
+	:rtype: Handle_Geom2d_Curve
+") TransformPCurve;
+		Handle_Geom2d_Curve TransformPCurve (const Handle_Geom2d_Curve & pcurve,const gp_Trsf2d & trans,const Standard_Real uFact,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
 
@@ -313,12 +315,6 @@ class ShapeBuild_Edge {
 %nodefaultctor ShapeBuild_ReShape;
 class ShapeBuild_ReShape : public BRepTools_ReShape {
 	public:
-		%feature("compactdefaultargs") ShapeBuild_ReShape;
-		%feature("autodoc", "	* Returns an empty Reshape
-
-	:rtype: None
-") ShapeBuild_ReShape;
-		 ShapeBuild_ReShape ();
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "	* Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE //! <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape
 
@@ -341,6 +337,12 @@ class ShapeBuild_ReShape : public BRepTools_ReShape {
 	:rtype: TopoDS_Shape
 ") Apply;
 		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		%feature("compactdefaultargs") ShapeBuild_ReShape;
+		%feature("autodoc", "	* Returns an empty Reshape
+
+	:rtype: None
+") ShapeBuild_ReShape;
+		 ShapeBuild_ReShape ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns a complete substitution status for a shape 0 : not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 
@@ -409,3 +411,6 @@ class ShapeBuild_Vertex {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

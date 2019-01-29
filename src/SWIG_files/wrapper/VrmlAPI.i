@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLAPIDOCSTRING
-"API for writing to VRML 1.0
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=VRMLAPIDOCSTRING) VrmlAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include VrmlAPI_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -79,24 +82,64 @@ class VrmlAPI {
 %nodefaultctor VrmlAPI_Writer;
 class VrmlAPI_Writer {
 	public:
-		%feature("compactdefaultargs") VrmlAPI_Writer;
-		%feature("autodoc", "	* Creates a writer object with default parameters.
-
-	:rtype: None
-") VrmlAPI_Writer;
-		 VrmlAPI_Writer ();
-		%feature("compactdefaultargs") ResetToDefaults;
-		%feature("autodoc", "	* Resets all parameters (representation, deflection) to their default values..
-
-	:rtype: None
-") ResetToDefaults;
-		void ResetToDefaults ();
 		%feature("compactdefaultargs") Drawer;
 		%feature("autodoc", "	* Returns drawer object
 
 	:rtype: Handle_VrmlConverter_Drawer
 ") Drawer;
 		Handle_VrmlConverter_Drawer Drawer ();
+		%feature("compactdefaultargs") GetFreeBoundsMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetFreeBoundsMaterial;
+		Handle_Vrml_Material GetFreeBoundsMaterial ();
+		%feature("compactdefaultargs") GetFrontMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetFrontMaterial;
+		Handle_Vrml_Material GetFrontMaterial ();
+		%feature("compactdefaultargs") GetLineMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetLineMaterial;
+		Handle_Vrml_Material GetLineMaterial ();
+		%feature("compactdefaultargs") GetPointsMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetPointsMaterial;
+		Handle_Vrml_Material GetPointsMaterial ();
+		%feature("compactdefaultargs") GetRepresentation;
+		%feature("autodoc", "	* Returns the representation of the shape which is written to the VRML file. Types of representation are set through the VrmlAPI_RepresentationOfShape enumeration.
+
+	:rtype: VrmlAPI_RepresentationOfShape
+") GetRepresentation;
+		VrmlAPI_RepresentationOfShape GetRepresentation ();
+		%feature("compactdefaultargs") GetUisoMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetUisoMaterial;
+		Handle_Vrml_Material GetUisoMaterial ();
+		%feature("compactdefaultargs") GetUnfreeBoundsMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetUnfreeBoundsMaterial;
+		Handle_Vrml_Material GetUnfreeBoundsMaterial ();
+		%feature("compactdefaultargs") GetVisoMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetVisoMaterial;
+		Handle_Vrml_Material GetVisoMaterial ();
+		%feature("compactdefaultargs") GetWireMaterial;
+		%feature("autodoc", "	:rtype: Handle_Vrml_Material
+") GetWireMaterial;
+		Handle_Vrml_Material GetWireMaterial ();
+		%feature("compactdefaultargs") ResetToDefaults;
+		%feature("autodoc", "	* Resets all parameters (representation, deflection) to their default values..
+
+	:rtype: None
+") ResetToDefaults;
+		void ResetToDefaults ();
+		%feature("compactdefaultargs") SetAmbientColorToMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:param Color:
+	:type Color: Handle_Quantity_HArray1OfColor &
+	:rtype: None
+") SetAmbientColorToMaterial;
+		void SetAmbientColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
 		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "	* Sets the deflection aDef of the mesh algorithm which is used to compute the shaded representation of the translated shape. The default value is -1. When the deflection value is less than 0, the deflection is calculated from the relative size of the shaped.
 
@@ -105,6 +148,22 @@ class VrmlAPI_Writer {
 	:rtype: None
 ") SetDeflection;
 		void SetDeflection (const Standard_Real aDef);
+		%feature("compactdefaultargs") SetDiffuseColorToMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:param Color:
+	:type Color: Handle_Quantity_HArray1OfColor &
+	:rtype: None
+") SetDiffuseColorToMaterial;
+		void SetDiffuseColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
+		%feature("compactdefaultargs") SetEmissiveColorToMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:param Color:
+	:type Color: Handle_Quantity_HArray1OfColor &
+	:rtype: None
+") SetEmissiveColorToMaterial;
+		void SetEmissiveColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
 		%feature("compactdefaultargs") SetRepresentation;
 		%feature("autodoc", "	* Sets the representation of the shape aRep which is written to the VRML file. The three options are : - shaded - wireframe - both shaded and wireframe (default) defined through the VrmlAPI_RepresentationOfShape enumeration.
 
@@ -113,6 +172,22 @@ class VrmlAPI_Writer {
 	:rtype: None
 ") SetRepresentation;
 		void SetRepresentation (const VrmlAPI_RepresentationOfShape aRep);
+		%feature("compactdefaultargs") SetShininessToMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:param aShininess:
+	:type aShininess: float
+	:rtype: None
+") SetShininessToMaterial;
+		void SetShininessToMaterial (Handle_Vrml_Material & aMaterial,const Standard_Real aShininess);
+		%feature("compactdefaultargs") SetSpecularColorToMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Handle_Vrml_Material &
+	:param Color:
+	:type Color: Handle_Quantity_HArray1OfColor &
+	:rtype: None
+") SetSpecularColorToMaterial;
+		void SetSpecularColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
 		%feature("compactdefaultargs") SetTransparencyToMaterial;
 		%feature("autodoc", "	* Set transparency to given material
 
@@ -123,84 +198,12 @@ class VrmlAPI_Writer {
 	:rtype: None
 ") SetTransparencyToMaterial;
 		void SetTransparencyToMaterial (Handle_Vrml_Material & aMaterial,const Standard_Real aTransparency);
-		%feature("compactdefaultargs") SetShininessToMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:param aShininess:
-	:type aShininess: float
-	:rtype: None
-") SetShininessToMaterial;
-		void SetShininessToMaterial (Handle_Vrml_Material & aMaterial,const Standard_Real aShininess);
-		%feature("compactdefaultargs") SetAmbientColorToMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:param Color:
-	:type Color: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetAmbientColorToMaterial;
-		void SetAmbientColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
-		%feature("compactdefaultargs") SetDiffuseColorToMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:param Color:
-	:type Color: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetDiffuseColorToMaterial;
-		void SetDiffuseColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
-		%feature("compactdefaultargs") SetSpecularColorToMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:param Color:
-	:type Color: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetSpecularColorToMaterial;
-		void SetSpecularColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
-		%feature("compactdefaultargs") SetEmissiveColorToMaterial;
-		%feature("autodoc", "	:param aMaterial:
-	:type aMaterial: Handle_Vrml_Material &
-	:param Color:
-	:type Color: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetEmissiveColorToMaterial;
-		void SetEmissiveColorToMaterial (Handle_Vrml_Material & aMaterial,const Handle_Quantity_HArray1OfColor & Color);
-		%feature("compactdefaultargs") GetRepresentation;
-		%feature("autodoc", "	* Returns the representation of the shape which is written to the VRML file. Types of representation are set through the VrmlAPI_RepresentationOfShape enumeration.
+		%feature("compactdefaultargs") VrmlAPI_Writer;
+		%feature("autodoc", "	* Creates a writer object with default parameters.
 
-	:rtype: VrmlAPI_RepresentationOfShape
-") GetRepresentation;
-		VrmlAPI_RepresentationOfShape GetRepresentation ();
-		%feature("compactdefaultargs") GetFrontMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetFrontMaterial;
-		Handle_Vrml_Material GetFrontMaterial ();
-		%feature("compactdefaultargs") GetPointsMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetPointsMaterial;
-		Handle_Vrml_Material GetPointsMaterial ();
-		%feature("compactdefaultargs") GetUisoMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetUisoMaterial;
-		Handle_Vrml_Material GetUisoMaterial ();
-		%feature("compactdefaultargs") GetVisoMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetVisoMaterial;
-		Handle_Vrml_Material GetVisoMaterial ();
-		%feature("compactdefaultargs") GetLineMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetLineMaterial;
-		Handle_Vrml_Material GetLineMaterial ();
-		%feature("compactdefaultargs") GetWireMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetWireMaterial;
-		Handle_Vrml_Material GetWireMaterial ();
-		%feature("compactdefaultargs") GetFreeBoundsMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetFreeBoundsMaterial;
-		Handle_Vrml_Material GetFreeBoundsMaterial ();
-		%feature("compactdefaultargs") GetUnfreeBoundsMaterial;
-		%feature("autodoc", "	:rtype: Handle_Vrml_Material
-") GetUnfreeBoundsMaterial;
-		Handle_Vrml_Material GetUnfreeBoundsMaterial ();
+	:rtype: None
+") VrmlAPI_Writer;
+		 VrmlAPI_Writer ();
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFile.
 
@@ -221,3 +224,6 @@ class VrmlAPI_Writer {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

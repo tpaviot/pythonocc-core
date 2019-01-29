@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LAWDOCSTRING
-"Multiple services concerning 1d functions.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=LAWDOCSTRING) Law
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,7 +39,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include Law_headers.i
 
+/* templates */
+%template(Law_Laws) NCollection_List <Handle_Law_Function>;
+%template(Law_ListIteratorOfLaws) NCollection_TListIterator<Handle_Law_Function>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_List <Handle_Law_Function> Law_Laws;
+typedef NCollection_List <Handle_Law_Function>::Iterator Law_ListIteratorOfLaws;
 /* end typedefs declaration */
 
 /* public enums */
@@ -48,7 +55,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %wrap_handle(Law_BSpline)
 %wrap_handle(Law_Function)
-%wrap_handle(Law_ListNodeOfLaws)
 %wrap_handle(Law_BSpFunc)
 %wrap_handle(Law_Composite)
 %wrap_handle(Law_Constant)
@@ -164,42 +170,96 @@ class Law {
 	}
 };
 %nodefaultctor Law_BSpline;
-class Law_BSpline : public MMgt_TShared {
+class Law_BSpline : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Law_BSpline;
-		%feature("autodoc", "	* Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the global continuity of the curve : C0 : only geometric continuity, C1 : continuity of the first derivative all along the Curve, C2 : continuity of the second derivative all along the Curve, C3 : continuity of the third derivative all along the Curve, CN : the order of continuity is infinite. For a B-spline curve of degree d if a knot Ui has a multiplicity p the B-spline curve is only Cd-p continuous at Ui. So the global continuity of the curve can't be greater than Cd-p where p is the maximum multiplicity of the interior Knots. In the interior of a knot span the curve is infinitely continuously differentiable.
 
-	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
-	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
-	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
-	:param Degree:
-	:type Degree: int
-	:param Periodic: default value is Standard_False
-	:type Periodic: bool
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	:rtype: Handle_Law_BSpline
+") Copy;
+		Handle_Law_BSpline Copy ();
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: float &
 	:rtype: None
-") Law_BSpline;
-		 Law_BSpline (const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Multiplicities,const Standard_Integer Degree,const Standard_Boolean Periodic = Standard_False);
-		%feature("compactdefaultargs") Law_BSpline;
-		%feature("autodoc", "	* Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
+") D0;
+		void D0 (const Standard_Real U,Standard_Real &OutValue);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: float &
+	:param V1:
+	:type V1: float &
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: float &
+	:param V1:
+	:type V1: float &
+	:param V2:
+	:type V2: float &
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: float &
+	:param V1:
+	:type V1: float &
+	:param V2:
+	:type V2: float &
+	:param V3:
+	:type V3: float &
+	:rtype: None
+") D3;
+		void D3 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "	* The following functions computes the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
 
-	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
-	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
-	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
-	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
-	:param Degree:
-	:type Degree: int
-	:param Periodic: default value is Standard_False
-	:type Periodic: bool
-	:rtype: None
-") Law_BSpline;
-		 Law_BSpline (const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Multiplicities,const Standard_Integer Degree,const Standard_Boolean Periodic = Standard_False);
+	:param U:
+	:type U: float
+	:param N:
+	:type N: int
+	:rtype: float
+") DN;
+		Standard_Real DN (const Standard_Real U,const Standard_Integer N);
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "	* Computation of value and derivatives
+
+	:rtype: int
+") Degree;
+		Standard_Integer Degree ();
+		%feature("compactdefaultargs") EndPoint;
+		%feature("autodoc", "	* Returns the last point of the curve. Warnings : The last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than Degree.
+
+	:rtype: float
+") EndPoint;
+		Standard_Real EndPoint ();
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	* Computes the parametric value of the start point of the curve. It is a knot value.
+
+	:rtype: float
+") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") FirstUKnotIndex;
+		%feature("autodoc", "	* For a B-spline curve the first parameter (which gives the start point of the curve) is a knot value but if the multiplicity of the first knot index is lower than Degree + 1 it is not the first knot of the curve. This method computes the index of the knot corresponding to the first parameter.
+
+	:rtype: int
+") FirstUKnotIndex;
+		Standard_Integer FirstUKnotIndex ();
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "	* Increase the degree to <Degree>. Nothing is done if <Degree> is lower or equal to the current degree.
 
@@ -270,132 +330,6 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: None
 ") InsertKnots;
 		void InsertKnots (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const Standard_Real ParametricTolerance = 0.0,const Standard_Boolean Add = Standard_False);
-		%feature("compactdefaultargs") RemoveKnot;
-		%feature("autodoc", "	* Decrement the knots multiplicity to <M>. If M is 0 the knot is removed. The Poles sequence is modified. //! As there are two ways to compute the new poles the average is computed if the distance is lower than the <Tolerance>, else False is returned. //! A low tolerance is used to prevent the modification of the curve. //! A high tolerance is used to 'smooth' the curve. //! Raised if Index is not in the range [FirstUKnotIndex, LastUKnotIndex] pole insertion and pole removing this operation is limited to the Uniform or QuasiUniform BSplineCurve. The knot values are modified . If the BSpline is NonUniform or Piecewise Bezier an exception Construction error is raised.
-
-	:param Index:
-	:type Index: int
-	:param M:
-	:type M: int
-	:param Tolerance:
-	:type Tolerance: float
-	:rtype: bool
-") RemoveKnot;
-		Standard_Boolean RemoveKnot (const Standard_Integer Index,const Standard_Integer M,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	* Changes the direction of parametrization of <self>. The Knot sequence is modified, the FirstParameter and the LastParameter are not modified. The StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
-
-	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns UFirst + ULast - U
-
-	:param U:
-	:type U: float
-	:rtype: float
-") ReversedParameter;
-		Standard_Real ReversedParameter (const Standard_Real U);
-		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "	* Segments the curve between U1 and U2. The control points are modified, the first and the last point are not the same. Warnings : Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the curve <self> or if the curve makes loop. After the segmentation the length of a curve can be null. raises if U2 < U1.
-
-	:param U1:
-	:type U1: float
-	:param U2:
-	:type U2: float
-	:rtype: None
-") Segment;
-		void Segment (const Standard_Real U1,const Standard_Real U2);
-		%feature("compactdefaultargs") SetKnot;
-		%feature("autodoc", "	* Changes the knot of range Index. The multiplicity of the knot is not modified. Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if Index < 1 || Index > NbKnots
-
-	:param Index:
-	:type Index: int
-	:param K:
-	:type K: float
-	:rtype: None
-") SetKnot;
-		void SetKnot (const Standard_Integer Index,const Standard_Real K);
-		%feature("compactdefaultargs") SetKnots;
-		%feature("autodoc", "	* Changes all the knots of the curve The multiplicity of the knots are not modified. //! Raised if there is an index such that K (Index+1) <= K (Index). //! Raised if K.Lower() < 1 or K.Upper() > NbKnots
-
-	:param K:
-	:type K: TColStd_Array1OfReal &
-	:rtype: None
-") SetKnots;
-		void SetKnots (const TColStd_Array1OfReal & K);
-		%feature("compactdefaultargs") SetKnot;
-		%feature("autodoc", "	* Changes the knot of range Index with its multiplicity. You can increase the multiplicity of a knot but it is not allowed to decrease the multiplicity of an existing knot. //! Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if M is greater than Degree or lower than the previous multiplicity of knot of range Index. Raised if Index < 1 || Index > NbKnots
-
-	:param Index:
-	:type Index: int
-	:param K:
-	:type K: float
-	:param M:
-	:type M: int
-	:rtype: None
-") SetKnot;
-		void SetKnot (const Standard_Integer Index,const Standard_Real K,const Standard_Integer M);
-		%feature("compactdefaultargs") PeriodicNormalization;
-		%feature("autodoc", "	* returns the parameter normalized within the period if the curve is periodic : otherwise does not do anything
-
-	:param U:
-	:type U: float &
-	:rtype: None
-") PeriodicNormalization;
-		void PeriodicNormalization (Standard_Real &OutValue);
-		%feature("compactdefaultargs") SetPeriodic;
-		%feature("autodoc", "	* Makes a closed B-spline into a periodic curve. The curve is periodic if the knot sequence is periodic and if the curve is closed (The tolerance criterion is Resolution from gp). The period T is equal to Knot(LastUKnotIndex) - Knot(FirstUKnotIndex). A periodic B-spline can be uniform or not. Raised if the curve is not closed.
-
-	:rtype: None
-") SetPeriodic;
-		void SetPeriodic ();
-		%feature("compactdefaultargs") SetOrigin;
-		%feature("autodoc", "	* Set the origin of a periodic curve at Knot(index) KnotVector and poles are modified. Raised if the curve is not periodic Raised if index not in the range [FirstUKnotIndex , LastUKnotIndex]
-
-	:param Index:
-	:type Index: int
-	:rtype: None
-") SetOrigin;
-		void SetOrigin (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetNotPeriodic;
-		%feature("autodoc", "	* Makes a non periodic curve. If the curve was non periodic the curve is not modified.
-
-	:rtype: None
-") SetNotPeriodic;
-		void SetNotPeriodic ();
-		%feature("compactdefaultargs") SetPole;
-		%feature("autodoc", "	* Substitutes the Pole of range Index with P. //! Raised if Index < 1 || Index > NbPoles
-
-	:param Index:
-	:type Index: int
-	:param P:
-	:type P: float
-	:rtype: None
-") SetPole;
-		void SetPole (const Standard_Integer Index,const Standard_Real P);
-		%feature("compactdefaultargs") SetPole;
-		%feature("autodoc", "	* Substitutes the pole and the weight of range Index. If the curve <self> is not rational it can become rational If the curve was rational it can become non rational //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0
-
-	:param Index:
-	:type Index: int
-	:param P:
-	:type P: float
-	:param Weight:
-	:type Weight: float
-	:rtype: None
-") SetPole;
-		void SetPole (const Standard_Integer Index,const Standard_Real P,const Standard_Real Weight);
-		%feature("compactdefaultargs") SetWeight;
-		%feature("autodoc", "	* Changes the weight for the pole of range Index. If the curve was non rational it can become rational. If the curve was rational it can become non rational. //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0
-
-	:param Index:
-	:type Index: int
-	:param Weight:
-	:type Weight: float
-	:rtype: None
-") SetWeight;
-		void SetWeight (const Standard_Integer Index,const Standard_Real Weight);
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "	* Returns the continuity of the curve, the curve is at least C0. Raised if N < 0.
 
@@ -422,88 +356,82 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: bool
 ") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the global continuity of the curve : C0 : only geometric continuity, C1 : continuity of the first derivative all along the Curve, C2 : continuity of the second derivative all along the Curve, C3 : continuity of the third derivative all along the Curve, CN : the order of continuity is infinite. For a B-spline curve of degree d if a knot Ui has a multiplicity p the B-spline curve is only Cd-p continuous at Ui. So the global continuity of the curve can't be greater than Cd-p where p is the maximum multiplicity of the interior Knots. In the interior of a knot span the curve is infinitely continuously differentiable.
+		%feature("compactdefaultargs") Knot;
+		%feature("autodoc", "	* Returns the knot of range Index. When there is a knot with a multiplicity greater than 1 the knot is not repeated. The method Multiplicity can be used to get the multiplicity of the Knot. Raised if Index < 1 or Index > NbKnots
 
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	* Computation of value and derivatives
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Knot;
+		Standard_Real Knot (const Standard_Integer Index);
+		%feature("compactdefaultargs") KnotDistribution;
+		%feature("autodoc", "	* Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the knots differ by a positive constant from the preceding knot the BSpline Curve can be : - Uniform if all the knots are of multiplicity 1, - QuasiUniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity Degree + 1, - PiecewiseBezier if the first and last knots have multiplicity Degree + 1 and if interior knots have multiplicity Degree A piecewise Bezier with only two knots is a BezierCurve. else the curve is non uniform. The tolerance criterion is Epsilon from class Real.
+
+	:rtype: GeomAbs_BSplKnotDistribution
+") KnotDistribution;
+		GeomAbs_BSplKnotDistribution KnotDistribution ();
+		%feature("compactdefaultargs") KnotSequence;
+		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1
+
+	:param K:
+	:type K: TColStd_Array1OfReal &
+	:rtype: None
+") KnotSequence;
+		void KnotSequence (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "	* returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
+
+	:param K:
+	:type K: TColStd_Array1OfReal &
+	:rtype: None
+") Knots;
+		void Knots (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	* Computes the parametric value of the end point of the curve. It is a knot value.
+
+	:rtype: float
+") LastParameter;
+		Standard_Real LastParameter ();
+		%feature("compactdefaultargs") LastUKnotIndex;
+		%feature("autodoc", "	* For a BSpline curve the last parameter (which gives the end point of the curve) is a knot value but if the multiplicity of the last knot index is lower than Degree + 1 it is not the last knot of the curve. This method computes the index of the knot corresponding to the last parameter.
 
 	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:rtype: float
-") Value;
-		Standard_Real Value (const Standard_Real U);
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: float &
-	:rtype: None
-") D0;
-		void D0 (const Standard_Real U,Standard_Real &OutValue);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: float &
-	:param V1:
-	:type V1: float &
-	:rtype: None
-") D1;
-		void D1 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: float &
-	:param V1:
-	:type V1: float &
-	:param V2:
-	:type V2: float &
-	:rtype: None
-") D2;
-		void D2 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: float &
-	:param V1:
-	:type V1: float &
-	:param V2:
-	:type V2: float &
-	:param V3:
-	:type V3: float &
-	:rtype: None
-") D3;
-		void D3 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* The following functions computes the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
+") LastUKnotIndex;
+		Standard_Integer LastUKnotIndex ();
+		%feature("compactdefaultargs") Law_BSpline;
+		%feature("autodoc", "	* Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 
-	:param U:
-	:type U: float
-	:param N:
-	:type N: int
-	:rtype: float
-") DN;
-		Standard_Real DN (const Standard_Real U,const Standard_Integer N);
-		%feature("compactdefaultargs") LocalValue;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param FromK1:
-	:type FromK1: int
-	:param ToK2:
-	:type ToK2: int
-	:rtype: float
-") LocalValue;
-		Standard_Real LocalValue (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2);
+	:param Poles:
+	:type Poles: TColStd_Array1OfReal &
+	:param Knots:
+	:type Knots: TColStd_Array1OfReal &
+	:param Multiplicities:
+	:type Multiplicities: TColStd_Array1OfInteger &
+	:param Degree:
+	:type Degree: int
+	:param Periodic: default value is Standard_False
+	:type Periodic: bool
+	:rtype: None
+") Law_BSpline;
+		 Law_BSpline (const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Multiplicities,const Standard_Integer Degree,const Standard_Boolean Periodic = Standard_False);
+		%feature("compactdefaultargs") Law_BSpline;
+		%feature("autodoc", "	* Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
+
+	:param Poles:
+	:type Poles: TColStd_Array1OfReal &
+	:param Weights:
+	:type Weights: TColStd_Array1OfReal &
+	:param Knots:
+	:type Knots: TColStd_Array1OfReal &
+	:param Multiplicities:
+	:type Multiplicities: TColStd_Array1OfInteger &
+	:param Degree:
+	:type Degree: int
+	:param Periodic: default value is Standard_False
+	:type Periodic: bool
+	:rtype: None
+") Law_BSpline;
+		 Law_BSpline (const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Multiplicities,const Standard_Integer Degree,const Standard_Boolean Periodic = Standard_False);
 		%feature("compactdefaultargs") LocalD0;
 		%feature("autodoc", "	:param U:
 	:type U: float
@@ -576,66 +504,16 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: float
 ") LocalDN;
 		Standard_Real LocalDN (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Integer N);
-		%feature("compactdefaultargs") EndPoint;
-		%feature("autodoc", "	* Returns the last point of the curve. Warnings : The last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than Degree.
-
+		%feature("compactdefaultargs") LocalValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param FromK1:
+	:type FromK1: int
+	:param ToK2:
+	:type ToK2: int
 	:rtype: float
-") EndPoint;
-		Standard_Real EndPoint ();
-		%feature("compactdefaultargs") FirstUKnotIndex;
-		%feature("autodoc", "	* For a B-spline curve the first parameter (which gives the start point of the curve) is a knot value but if the multiplicity of the first knot index is lower than Degree + 1 it is not the first knot of the curve. This method computes the index of the knot corresponding to the first parameter.
-
-	:rtype: int
-") FirstUKnotIndex;
-		Standard_Integer FirstUKnotIndex ();
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* Computes the parametric value of the start point of the curve. It is a knot value.
-
-	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") Knot;
-		%feature("autodoc", "	* Returns the knot of range Index. When there is a knot with a multiplicity greater than 1 the knot is not repeated. The method Multiplicity can be used to get the multiplicity of the Knot. Raised if Index < 1 or Index > NbKnots
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") Knot;
-		Standard_Real Knot (const Standard_Integer Index);
-		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	* returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
-
-	:param K:
-	:type K: TColStd_Array1OfReal &
-	:rtype: None
-") Knots;
-		void Knots (TColStd_Array1OfReal & K);
-		%feature("compactdefaultargs") KnotSequence;
-		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1
-
-	:param K:
-	:type K: TColStd_Array1OfReal &
-	:rtype: None
-") KnotSequence;
-		void KnotSequence (TColStd_Array1OfReal & K);
-		%feature("compactdefaultargs") KnotDistribution;
-		%feature("autodoc", "	* Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the knots differ by a positive constant from the preceding knot the BSpline Curve can be : - Uniform if all the knots are of multiplicity 1, - QuasiUniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity Degree + 1, - PiecewiseBezier if the first and last knots have multiplicity Degree + 1 and if interior knots have multiplicity Degree A piecewise Bezier with only two knots is a BezierCurve. else the curve is non uniform. The tolerance criterion is Epsilon from class Real.
-
-	:rtype: GeomAbs_BSplKnotDistribution
-") KnotDistribution;
-		GeomAbs_BSplKnotDistribution KnotDistribution ();
-		%feature("compactdefaultargs") LastUKnotIndex;
-		%feature("autodoc", "	* For a BSpline curve the last parameter (which gives the end point of the curve) is a knot value but if the multiplicity of the last knot index is lower than Degree + 1 it is not the last knot of the curve. This method computes the index of the knot corresponding to the last parameter.
-
-	:rtype: int
-") LastUKnotIndex;
-		Standard_Integer LastUKnotIndex ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* Computes the parametric value of the end point of the curve. It is a knot value.
-
-	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
+") LocalValue;
+		Standard_Real LocalValue (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2);
 		%feature("compactdefaultargs") LocateU;
 		%feature("autodoc", "	* Locates the parametric value U in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. Knots (I1) <= U <= Knots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < Knots (1) - Abs(ParametricTolerance) . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
 
@@ -652,72 +530,6 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: None
 ") LocateU;
 		void LocateU (const Standard_Real U,const Standard_Real ParametricTolerance,Standard_Integer &OutValue,Standard_Integer &OutValue,const Standard_Boolean WithKnotRepetition = Standard_False);
-		%feature("compactdefaultargs") Multiplicity;
-		%feature("autodoc", "	* Returns the multiplicity of the knots of range Index. Raised if Index < 1 or Index > NbKnots
-
-	:param Index:
-	:type Index: int
-	:rtype: int
-") Multiplicity;
-		Standard_Integer Multiplicity (const Standard_Integer Index);
-		%feature("compactdefaultargs") Multiplicities;
-		%feature("autodoc", "	* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
-
-	:param M:
-	:type M: TColStd_Array1OfInteger &
-	:rtype: None
-") Multiplicities;
-		void Multiplicities (TColStd_Array1OfInteger & M);
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	* Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
-
-	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	* Returns the number of poles
-
-	:rtype: int
-") NbPoles;
-		Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") Pole;
-		%feature("autodoc", "	* Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") Pole;
-		Standard_Real Pole (const Standard_Integer Index);
-		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "	* Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
-
-	:param P:
-	:type P: TColStd_Array1OfReal &
-	:rtype: None
-") Poles;
-		void Poles (TColStd_Array1OfReal & P);
-		%feature("compactdefaultargs") StartPoint;
-		%feature("autodoc", "	* Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree.
-
-	:rtype: float
-") StartPoint;
-		Standard_Real StartPoint ();
-		%feature("compactdefaultargs") Weight;
-		%feature("autodoc", "	* Returns the weight of the pole of range Index . Raised if Index < 1 or Index > NbPoles.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") Weight;
-		Standard_Real Weight (const Standard_Integer Index);
-		%feature("compactdefaultargs") Weights;
-		%feature("autodoc", "	* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
-
-	:param W:
-	:type W: TColStd_Array1OfReal &
-	:rtype: None
-") Weights;
-		void Weights (TColStd_Array1OfReal & W);
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "	* Returns the value of the maximum degree of the normalized B-spline basis functions in this package.
 
@@ -744,6 +556,70 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: None
 ") MovePointAndTangent;
 		void MovePointAndTangent (const Standard_Real U,const Standard_Real NewValue,const Standard_Real Derivative,const Standard_Real Tolerance,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "	* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
+
+	:param M:
+	:type M: TColStd_Array1OfInteger &
+	:rtype: None
+") Multiplicities;
+		void Multiplicities (TColStd_Array1OfInteger & M);
+		%feature("compactdefaultargs") Multiplicity;
+		%feature("autodoc", "	* Returns the multiplicity of the knots of range Index. Raised if Index < 1 or Index > NbKnots
+
+	:param Index:
+	:type Index: int
+	:rtype: int
+") Multiplicity;
+		Standard_Integer Multiplicity (const Standard_Integer Index);
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", "	* Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
+
+	:rtype: int
+") NbKnots;
+		Standard_Integer NbKnots ();
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", "	* Returns the number of poles
+
+	:rtype: int
+") NbPoles;
+		Standard_Integer NbPoles ();
+		%feature("compactdefaultargs") PeriodicNormalization;
+		%feature("autodoc", "	* returns the parameter normalized within the period if the curve is periodic : otherwise does not do anything
+
+	:param U:
+	:type U: float &
+	:rtype: None
+") PeriodicNormalization;
+		void PeriodicNormalization (Standard_Real &OutValue);
+		%feature("compactdefaultargs") Pole;
+		%feature("autodoc", "	* Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Pole;
+		Standard_Real Pole (const Standard_Integer Index);
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
+
+	:param P:
+	:type P: TColStd_Array1OfReal &
+	:rtype: None
+") Poles;
+		void Poles (TColStd_Array1OfReal & P);
+		%feature("compactdefaultargs") RemoveKnot;
+		%feature("autodoc", "	* Decrement the knots multiplicity to <M>. If M is 0 the knot is removed. The Poles sequence is modified. //! As there are two ways to compute the new poles the average is computed if the distance is lower than the <Tolerance>, else False is returned. //! A low tolerance is used to prevent the modification of the curve. //! A high tolerance is used to 'smooth' the curve. //! Raised if Index is not in the range [FirstUKnotIndex, LastUKnotIndex] pole insertion and pole removing this operation is limited to the Uniform or QuasiUniform BSplineCurve. The knot values are modified . If the BSpline is NonUniform or Piecewise Bezier an exception Construction error is raised.
+
+	:param Index:
+	:type Index: int
+	:param M:
+	:type M: int
+	:param Tolerance:
+	:type Tolerance: float
+	:rtype: bool
+") RemoveKnot;
+		Standard_Boolean RemoveKnot (const Standard_Integer Index,const Standard_Integer M,const Standard_Real Tolerance);
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "	* given Tolerance3D returns UTolerance such that if f(t) is the curve we have | t1 - t0| < Utolerance ===> |f(t1) - f(t0)| < Tolerance3D
 
@@ -754,10 +630,140 @@ class Law_BSpline : public MMgt_TShared {
 	:rtype: None
 ") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_Law_BSpline
-") Copy;
-		Handle_Law_BSpline Copy ();
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "	* Changes the direction of parametrization of <self>. The Knot sequence is modified, the FirstParameter and the LastParameter are not modified. The StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
+
+	:rtype: None
+") Reverse;
+		void Reverse ();
+		%feature("compactdefaultargs") ReversedParameter;
+		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns UFirst + ULast - U
+
+	:param U:
+	:type U: float
+	:rtype: float
+") ReversedParameter;
+		Standard_Real ReversedParameter (const Standard_Real U);
+		%feature("compactdefaultargs") Segment;
+		%feature("autodoc", "	* Segments the curve between U1 and U2. The control points are modified, the first and the last point are not the same. Warnings : Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the curve <self> or if the curve makes loop. After the segmentation the length of a curve can be null. raises if U2 < U1.
+
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:rtype: None
+") Segment;
+		void Segment (const Standard_Real U1,const Standard_Real U2);
+		%feature("compactdefaultargs") SetKnot;
+		%feature("autodoc", "	* Changes the knot of range Index. The multiplicity of the knot is not modified. Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if Index < 1 || Index > NbKnots
+
+	:param Index:
+	:type Index: int
+	:param K:
+	:type K: float
+	:rtype: None
+") SetKnot;
+		void SetKnot (const Standard_Integer Index,const Standard_Real K);
+		%feature("compactdefaultargs") SetKnot;
+		%feature("autodoc", "	* Changes the knot of range Index with its multiplicity. You can increase the multiplicity of a knot but it is not allowed to decrease the multiplicity of an existing knot. //! Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if M is greater than Degree or lower than the previous multiplicity of knot of range Index. Raised if Index < 1 || Index > NbKnots
+
+	:param Index:
+	:type Index: int
+	:param K:
+	:type K: float
+	:param M:
+	:type M: int
+	:rtype: None
+") SetKnot;
+		void SetKnot (const Standard_Integer Index,const Standard_Real K,const Standard_Integer M);
+		%feature("compactdefaultargs") SetKnots;
+		%feature("autodoc", "	* Changes all the knots of the curve The multiplicity of the knots are not modified. //! Raised if there is an index such that K (Index+1) <= K (Index). //! Raised if K.Lower() < 1 or K.Upper() > NbKnots
+
+	:param K:
+	:type K: TColStd_Array1OfReal &
+	:rtype: None
+") SetKnots;
+		void SetKnots (const TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") SetNotPeriodic;
+		%feature("autodoc", "	* Makes a non periodic curve. If the curve was non periodic the curve is not modified.
+
+	:rtype: None
+") SetNotPeriodic;
+		void SetNotPeriodic ();
+		%feature("compactdefaultargs") SetOrigin;
+		%feature("autodoc", "	* Set the origin of a periodic curve at Knot(index) KnotVector and poles are modified. Raised if the curve is not periodic Raised if index not in the range [FirstUKnotIndex , LastUKnotIndex]
+
+	:param Index:
+	:type Index: int
+	:rtype: None
+") SetOrigin;
+		void SetOrigin (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetPeriodic;
+		%feature("autodoc", "	* Makes a closed B-spline into a periodic curve. The curve is periodic if the knot sequence is periodic and if the curve is closed (The tolerance criterion is Resolution from gp). The period T is equal to Knot(LastUKnotIndex) - Knot(FirstUKnotIndex). A periodic B-spline can be uniform or not. Raised if the curve is not closed.
+
+	:rtype: None
+") SetPeriodic;
+		void SetPeriodic ();
+		%feature("compactdefaultargs") SetPole;
+		%feature("autodoc", "	* Substitutes the Pole of range Index with P. //! Raised if Index < 1 || Index > NbPoles
+
+	:param Index:
+	:type Index: int
+	:param P:
+	:type P: float
+	:rtype: None
+") SetPole;
+		void SetPole (const Standard_Integer Index,const Standard_Real P);
+		%feature("compactdefaultargs") SetPole;
+		%feature("autodoc", "	* Substitutes the pole and the weight of range Index. If the curve <self> is not rational it can become rational If the curve was rational it can become non rational //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0
+
+	:param Index:
+	:type Index: int
+	:param P:
+	:type P: float
+	:param Weight:
+	:type Weight: float
+	:rtype: None
+") SetPole;
+		void SetPole (const Standard_Integer Index,const Standard_Real P,const Standard_Real Weight);
+		%feature("compactdefaultargs") SetWeight;
+		%feature("autodoc", "	* Changes the weight for the pole of range Index. If the curve was non rational it can become rational. If the curve was rational it can become non rational. //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0
+
+	:param Index:
+	:type Index: int
+	:param Weight:
+	:type Weight: float
+	:rtype: None
+") SetWeight;
+		void SetWeight (const Standard_Integer Index,const Standard_Real Weight);
+		%feature("compactdefaultargs") StartPoint;
+		%feature("autodoc", "	* Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree.
+
+	:rtype: float
+") StartPoint;
+		Standard_Real StartPoint ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:rtype: float
+") Value;
+		Standard_Real Value (const Standard_Real U);
+		%feature("compactdefaultargs") Weight;
+		%feature("autodoc", "	* Returns the weight of the pole of range Index . Raised if Index < 1 or Index > NbPoles.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Weight;
+		Standard_Real Weight (const Standard_Integer Index);
+		%feature("compactdefaultargs") Weights;
+		%feature("autodoc", "	* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
+
+	:param W:
+	:type W: TColStd_Array1OfReal &
+	:rtype: None
+") Weights;
+		void Weights (TColStd_Array1OfReal & W);
 };
 
 
@@ -787,14 +793,6 @@ class Law_BSplineKnotSplitting {
 	:rtype: int
 ") NbSplits;
 		Standard_Integer NbSplits ();
-		%feature("compactdefaultargs") Splitting;
-		%feature("autodoc", "	* Returns the indexes of the BSpline curve knots corresponding to the splitting. //! Raised if the length of SplitValues is not equal to NbSPlit.
-
-	:param SplitValues:
-	:type SplitValues: TColStd_Array1OfInteger &
-	:rtype: None
-") Splitting;
-		void Splitting (TColStd_Array1OfInteger & SplitValues);
 		%feature("compactdefaultargs") SplitValue;
 		%feature("autodoc", "	* Returns the index of the knot corresponding to the splitting of range Index. //! Raised if Index < 1 or Index > NbSplits
 
@@ -803,6 +801,14 @@ class Law_BSplineKnotSplitting {
 	:rtype: int
 ") SplitValue;
 		Standard_Integer SplitValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Splitting;
+		%feature("autodoc", "	* Returns the indexes of the BSpline curve knots corresponding to the splitting. //! Raised if the length of SplitValues is not equal to NbSPlit.
+
+	:param SplitValues:
+	:type SplitValues: TColStd_Array1OfInteger &
+	:rtype: None
+") Splitting;
+		void Splitting (TColStd_Array1OfInteger & SplitValues);
 };
 
 
@@ -812,38 +818,22 @@ class Law_BSplineKnotSplitting {
 	}
 };
 %nodefaultctor Law_Function;
-class Law_Function : public MMgt_TShared {
+class Law_Function : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Bounds;
+		%feature("autodoc", "	* Returns the parametric bounds of the function.
+
+	:param PFirst:
+	:type PFirst: float &
+	:param PLast:
+	:type PLast: float &
+	:rtype: void
+") Bounds;
+		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
 		virtual GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
-
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
-
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: void
-") Intervals;
-		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value of the function at the point of parameter X.
-
-	:param X:
-	:type X: float
-	:rtype: float
-") Value;
-		virtual Standard_Real Value (const Standard_Real X);
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "	* Returns the value F and the first derivative D of the function at the point of parameter X.
 
@@ -870,6 +860,24 @@ class Law_Function : public MMgt_TShared {
 	:rtype: void
 ") D2;
 		virtual void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: void
+") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
+
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "	* Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 
@@ -882,16 +890,14 @@ class Law_Function : public MMgt_TShared {
 	:rtype: Handle_Law_Function
 ") Trim;
 		virtual Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
-		%feature("compactdefaultargs") Bounds;
-		%feature("autodoc", "	* Returns the parametric bounds of the function.
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value of the function at the point of parameter X.
 
-	:param PFirst:
-	:type PFirst: float &
-	:param PLast:
-	:type PLast: float &
-	:rtype: void
-") Bounds;
-		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+	:param X:
+	:type X: float
+	:rtype: float
+") Value;
+		virtual Standard_Real Value (const Standard_Real X);
 };
 
 
@@ -905,6 +911,14 @@ class Law_Function : public MMgt_TShared {
 %nodefaultctor Law_Interpolate;
 class Law_Interpolate {
 	public:
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	:rtype: Handle_Law_BSpline
+") Curve;
+		Handle_Law_BSpline Curve ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Law_Interpolate;
 		%feature("autodoc", "	* Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic
 
@@ -957,14 +971,6 @@ class Law_Interpolate {
 	:rtype: None
 ") Perform;
 		void Perform ();
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	:rtype: Handle_Law_BSpline
-") Curve;
-		Handle_Law_BSpline Curve ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
 };
 
 
@@ -973,208 +979,57 @@ class Law_Interpolate {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor Law_Laws;
-class Law_Laws {
-	public:
-		%feature("compactdefaultargs") Law_Laws;
-		%feature("autodoc", "	:rtype: None
-") Law_Laws;
-		 Law_Laws ();
-		%feature("compactdefaultargs") Law_Laws;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:rtype: None
-") Law_Laws;
-		 Law_Laws (const Law_Laws & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:rtype: None
-") Assign;
-		void Assign (const Law_Laws & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:rtype: None
-") operator =;
-		void operator = (const Law_Laws & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_Law_Function & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:param theIt:
-	:type theIt: Law_ListIteratorOfLaws &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_Law_Function & I,Law_ListIteratorOfLaws & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:rtype: None
-") Prepend;
-		void Prepend (Law_Laws & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:rtype: None
-") Append;
-		void Append (const Handle_Law_Function & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:param theIt:
-	:type theIt: Law_ListIteratorOfLaws &
-	:rtype: None
-") Append;
-		void Append (const Handle_Law_Function & I,Law_ListIteratorOfLaws & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:rtype: None
-") Append;
-		void Append (Law_Laws & Other);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_Law_Function
-") First;
-		Handle_Law_Function First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_Law_Function
-") Last;
-		Handle_Law_Function Last ();
-		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: Law_ListIteratorOfLaws &
-	:rtype: None
-") Remove;
-		void Remove (Law_ListIteratorOfLaws & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:param It:
-	:type It: Law_ListIteratorOfLaws &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Handle_Law_Function & I,Law_ListIteratorOfLaws & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:param It:
-	:type It: Law_ListIteratorOfLaws &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (Law_Laws & Other,Law_ListIteratorOfLaws & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:param It:
-	:type It: Law_ListIteratorOfLaws &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Handle_Law_Function & I,Law_ListIteratorOfLaws & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: Law_Laws &
-	:param It:
-	:type It: Law_ListIteratorOfLaws &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (Law_Laws & Other,Law_ListIteratorOfLaws & It);
-};
-
-
-%extend Law_Laws {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Law_ListIteratorOfLaws;
-class Law_ListIteratorOfLaws {
-	public:
-		%feature("compactdefaultargs") Law_ListIteratorOfLaws;
-		%feature("autodoc", "	:rtype: None
-") Law_ListIteratorOfLaws;
-		 Law_ListIteratorOfLaws ();
-		%feature("compactdefaultargs") Law_ListIteratorOfLaws;
-		%feature("autodoc", "	:param L:
-	:type L: Law_Laws &
-	:rtype: None
-") Law_ListIteratorOfLaws;
-		 Law_ListIteratorOfLaws (const Law_Laws & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: Law_Laws &
-	:rtype: None
-") Initialize;
-		void Initialize (const Law_Laws & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Law_Function
-") Value;
-		Handle_Law_Function Value ();
-};
-
-
-%extend Law_ListIteratorOfLaws {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Law_ListNodeOfLaws;
-class Law_ListNodeOfLaws : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") Law_ListNodeOfLaws;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Law_Function &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") Law_ListNodeOfLaws;
-		 Law_ListNodeOfLaws (const Handle_Law_Function & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Law_Function
-") Value;
-		Handle_Law_Function Value ();
-};
-
-
-%make_alias(Law_ListNodeOfLaws)
-
-%extend Law_ListNodeOfLaws {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor Law_BSpFunc;
 class Law_BSpFunc : public Law_Function {
 	public:
+		%feature("compactdefaultargs") Bounds;
+		%feature("autodoc", "	:param PFirst:
+	:type PFirst: float &
+	:param PLast:
+	:type PLast: float &
+	:rtype: None
+") Bounds;
+		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	:rtype: Handle_Law_BSpline
+") Curve;
+		Handle_Law_BSpline Curve ();
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:param D2:
+	:type D2: float &
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Law_BSpFunc;
 		%feature("autodoc", "	:rtype: None
 ") Law_BSpFunc;
@@ -1189,10 +1044,6 @@ class Law_BSpFunc : public Law_Function {
 	:rtype: None
 ") Law_BSpFunc;
 		 Law_BSpFunc (const Handle_Law_BSpline & C,const Standard_Real First,const Standard_Real Last);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 
@@ -1201,44 +1052,12 @@ class Law_BSpFunc : public Law_Function {
 	:rtype: int
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
-
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
+		%feature("compactdefaultargs") SetCurve;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Law_BSpline &
 	:rtype: None
-") Intervals;
-		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param X:
-	:type X: float
-	:rtype: float
-") Value;
-		Standard_Real Value (const Standard_Real X);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:param D:
-	:type D: float &
-	:rtype: None
-") D1;
-		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:param D:
-	:type D: float &
-	:param D2:
-	:type D2: float &
-	:rtype: None
-") D2;
-		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+") SetCurve;
+		void SetCurve (const Handle_Law_BSpline & C);
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "	* Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 
@@ -1251,24 +1070,12 @@ class Law_BSpFunc : public Law_Function {
 	:rtype: Handle_Law_Function
 ") Trim;
 		Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
-		%feature("compactdefaultargs") Bounds;
-		%feature("autodoc", "	:param PFirst:
-	:type PFirst: float &
-	:param PLast:
-	:type PLast: float &
-	:rtype: None
-") Bounds;
-		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	:rtype: Handle_Law_BSpline
-") Curve;
-		Handle_Law_BSpline Curve ();
-		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Law_BSpline &
-	:rtype: None
-") SetCurve;
-		void SetCurve (const Handle_Law_BSpline & C);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:rtype: float
+") Value;
+		Standard_Real Value (const Standard_Real X);
 };
 
 
@@ -1282,92 +1089,6 @@ class Law_BSpFunc : public Law_Function {
 %nodefaultctor Law_Composite;
 class Law_Composite : public Law_Function {
 	public:
-		%feature("compactdefaultargs") Law_Composite;
-		%feature("autodoc", "	* Construct an empty Law
-
-	:rtype: None
-") Law_Composite;
-		 Law_Composite ();
-		%feature("compactdefaultargs") Law_Composite;
-		%feature("autodoc", "	* Construct an empty, trimed Law
-
-	:param First:
-	:type First: float
-	:param Last:
-	:type Last: float
-	:param Tol:
-	:type Tol: float
-	:rtype: None
-") Law_Composite;
-		 Law_Composite (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
-
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
-
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
-		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value at parameter X.
-
-	:param X:
-	:type X: float
-	:rtype: float
-") Value;
-		Standard_Real Value (const Standard_Real X);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Returns the value and the first derivative at parameter X.
-
-	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:param D:
-	:type D: float &
-	:rtype: None
-") D1;
-		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Returns the value, first and second derivatives at parameter X.
-
-	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:param D:
-	:type D: float &
-	:param D2:
-	:type D2: float &
-	:rtype: None
-") D2;
-		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
-
-	:param PFirst:
-	:type PFirst: float
-	:param PLast:
-	:type PLast: float
-	:param Tol:
-	:type Tol: float
-	:rtype: Handle_Law_Function
-") Trim;
-		Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "	* Returns the parametric bounds of the function.
 
@@ -1390,73 +1111,10 @@ class Law_Composite : public Law_Function {
 		%feature("autodoc", "	:rtype: Law_Laws
 ") ChangeLaws;
 		Law_Laws & ChangeLaws ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") SetPeriodic;
-		%feature("autodoc", "	:rtype: None
-") SetPeriodic;
-		void SetPeriodic ();
-};
-
-
-%make_alias(Law_Composite)
-
-%extend Law_Composite {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Law_Constant;
-class Law_Constant : public Law_Function {
-	public:
-		%feature("compactdefaultargs") Law_Constant;
-		%feature("autodoc", "	:rtype: None
-") Law_Constant;
-		 Law_Constant ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Set the radius and the range of the constant Law.
-
-	:param Radius:
-	:type Radius: float
-	:param PFirst:
-	:type PFirst: float
-	:param PLast:
-	:type PLast: float
-	:rtype: None
-") Set;
-		void Set (const Standard_Real Radius,const Standard_Real PFirst,const Standard_Real PLast);
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns GeomAbs_CN
-
-	:rtype: GeomAbs_Shape
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns 1
-
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
-		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value at parameter X.
-
-	:param X:
-	:type X: float
-	:rtype: float
-") Value;
-		Standard_Real Value (const Standard_Real X);
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "	* Returns the value and the first derivative at parameter X.
 
@@ -1483,8 +1141,54 @@ class Law_Constant : public Law_Function {
 	:rtype: None
 ") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("compactdefaultargs") Law_Composite;
+		%feature("autodoc", "	* Construct an empty Law
+
+	:rtype: None
+") Law_Composite;
+		 Law_Composite ();
+		%feature("compactdefaultargs") Law_Composite;
+		%feature("autodoc", "	* Construct an empty, trimed Law
+
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Law_Composite;
+		 Law_Composite (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
+
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("compactdefaultargs") SetPeriodic;
+		%feature("autodoc", "	:rtype: None
+") SetPeriodic;
+		void SetPeriodic ();
 		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	:param PFirst:
+		%feature("autodoc", "	* Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
+
+	:param PFirst:
 	:type PFirst: float
 	:param PLast:
 	:type PLast: float
@@ -1493,6 +1197,27 @@ class Law_Constant : public Law_Function {
 	:rtype: Handle_Law_Function
 ") Trim;
 		Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value at parameter X.
+
+	:param X:
+	:type X: float
+	:rtype: float
+") Value;
+		Standard_Real Value (const Standard_Real X);
+};
+
+
+%make_alias(Law_Composite)
+
+%extend Law_Composite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor Law_Constant;
+class Law_Constant : public Law_Function {
+	public:
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "	* Returns the parametric bounds of the function.
 
@@ -1503,6 +1228,88 @@ class Law_Constant : public Law_Function {
 	:rtype: None
 ") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns GeomAbs_CN
+
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Returns the value and the first derivative at parameter X.
+
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	* Returns the value, first and second derivatives at parameter X.
+
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:param D2:
+	:type D2: float &
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("compactdefaultargs") Law_Constant;
+		%feature("autodoc", "	:rtype: None
+") Law_Constant;
+		 Law_Constant ();
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns 1
+
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Set the radius and the range of the constant Law.
+
+	:param Radius:
+	:type Radius: float
+	:param PFirst:
+	:type PFirst: float
+	:param PLast:
+	:type PLast: float
+	:rtype: None
+") Set;
+		void Set (const Standard_Real Radius,const Standard_Real PFirst,const Standard_Real PLast);
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "	:param PFirst:
+	:type PFirst: float
+	:param PLast:
+	:type PLast: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Law_Function
+") Trim;
+		Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value at parameter X.
+
+	:param X:
+	:type X: float
+	:rtype: float
+") Value;
+		Standard_Real Value (const Standard_Real X);
 };
 
 
@@ -1516,56 +1323,22 @@ class Law_Constant : public Law_Function {
 %nodefaultctor Law_Linear;
 class Law_Linear : public Law_Function {
 	public:
-		%feature("compactdefaultargs") Law_Linear;
-		%feature("autodoc", "	* Constructs an empty linear evolution law.
+		%feature("compactdefaultargs") Bounds;
+		%feature("autodoc", "	* Returns the parametric bounds of the function.
 
+	:param PFirst:
+	:type PFirst: float &
+	:param PLast:
+	:type PLast: float &
 	:rtype: None
-") Law_Linear;
-		 Law_Linear ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Defines this linear evolution law by assigning both: - the bounds Pdeb and Pfin of the parameter, and - the values Valdeb and Valfin of the function at these two parametric bounds.
-
-	:param Pdeb:
-	:type Pdeb: float
-	:param Valdeb:
-	:type Valdeb: float
-	:param Pfin:
-	:type Pfin: float
-	:param Valfin:
-	:type Valfin: float
-	:rtype: None
-") Set;
-		void Set (const Standard_Real Pdeb,const Standard_Real Valdeb,const Standard_Real Pfin,const Standard_Real Valfin);
+") Bounds;
+		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	* Returns GeomAbs_CN
 
 	:rtype: GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns 1
-
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
-		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value of this function at the point of parameter X.
-
-	:param X:
-	:type X: float
-	:rtype: float
-") Value;
-		Standard_Real Value (const Standard_Real X);
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "	* Returns the value F and the first derivative D of this function at the point of parameter X.
 
@@ -1592,6 +1365,42 @@ class Law_Linear : public Law_Function {
 	:rtype: None
 ") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("compactdefaultargs") Law_Linear;
+		%feature("autodoc", "	* Constructs an empty linear evolution law.
+
+	:rtype: None
+") Law_Linear;
+		 Law_Linear ();
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns 1
+
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Defines this linear evolution law by assigning both: - the bounds Pdeb and Pfin of the parameter, and - the values Valdeb and Valfin of the function at these two parametric bounds.
+
+	:param Pdeb:
+	:type Pdeb: float
+	:param Valdeb:
+	:type Valdeb: float
+	:param Pfin:
+	:type Pfin: float
+	:param Valfin:
+	:type Valfin: float
+	:rtype: None
+") Set;
+		void Set (const Standard_Real Pdeb,const Standard_Real Valdeb,const Standard_Real Pfin,const Standard_Real Valfin);
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "	* Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 
@@ -1604,16 +1413,14 @@ class Law_Linear : public Law_Function {
 	:rtype: Handle_Law_Function
 ") Trim;
 		Handle_Law_Function Trim (const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol);
-		%feature("compactdefaultargs") Bounds;
-		%feature("autodoc", "	* Returns the parametric bounds of the function.
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value of this function at the point of parameter X.
 
-	:param PFirst:
-	:type PFirst: float &
-	:param PLast:
-	:type PLast: float &
-	:rtype: None
-") Bounds;
-		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+	:param X:
+	:type X: float
+	:rtype: float
+") Value;
+		Standard_Real Value (const Standard_Real X);
 };
 
 
@@ -1643,18 +1450,6 @@ class Law_Interpol : public Law_BSpFunc {
 	:rtype: None
 ") Set;
 		void Set (const TColgp_Array1OfPnt2d & ParAndRad,const Standard_Boolean Periodic = Standard_False);
-		%feature("compactdefaultargs") SetInRelative;
-		%feature("autodoc", "	:param ParAndRad:
-	:type ParAndRad: TColgp_Array1OfPnt2d
-	:param Ud:
-	:type Ud: float
-	:param Uf:
-	:type Uf: float
-	:param Periodic: default value is Standard_False
-	:type Periodic: bool
-	:rtype: None
-") SetInRelative;
-		void SetInRelative (const TColgp_Array1OfPnt2d & ParAndRad,const Standard_Real Ud,const Standard_Real Uf,const Standard_Boolean Periodic = Standard_False);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning - The X coordinates of points in the table ParAndRad must be given in ascendant order. - If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
 
@@ -1669,6 +1464,18 @@ class Law_Interpol : public Law_BSpFunc {
 	:rtype: None
 ") Set;
 		void Set (const TColgp_Array1OfPnt2d & ParAndRad,const Standard_Real Dd,const Standard_Real Df,const Standard_Boolean Periodic = Standard_False);
+		%feature("compactdefaultargs") SetInRelative;
+		%feature("autodoc", "	:param ParAndRad:
+	:type ParAndRad: TColgp_Array1OfPnt2d
+	:param Ud:
+	:type Ud: float
+	:param Uf:
+	:type Uf: float
+	:param Periodic: default value is Standard_False
+	:type Periodic: bool
+	:rtype: None
+") SetInRelative;
+		void SetInRelative (const TColgp_Array1OfPnt2d & ParAndRad,const Standard_Real Ud,const Standard_Real Uf,const Standard_Boolean Periodic = Standard_False);
 		%feature("compactdefaultargs") SetInRelative;
 		%feature("autodoc", "	:param ParAndRad:
 	:type ParAndRad: TColgp_Array1OfPnt2d
@@ -1746,3 +1553,6 @@ class Law_S : public Law_BSpFunc {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

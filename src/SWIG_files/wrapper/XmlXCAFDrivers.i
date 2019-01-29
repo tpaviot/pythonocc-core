@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLXCAFDRIVERSDOCSTRING
-"
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XMLXCAFDRIVERSDOCSTRING) XmlXCAFDrivers
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,6 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include XmlXCAFDrivers_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -50,8 +53,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %wrap_handle(XmlXCAFDrivers_DocumentStorageDriver)
 
 %rename(xmlxcafdrivers) XmlXCAFDrivers;
+%nodefaultctor XmlXCAFDrivers;
 class XmlXCAFDrivers {
 	public:
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "	* Defines format 'XmlXCAF' and registers its read and write drivers in the specified application
+
+	:param theApp:
+	:type theApp: Handle_TDocStd_Application &
+	:rtype: void
+") DefineFormat;
+		static void DefineFormat (const Handle_TDocStd_Application & theApp);
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "	* Depending from the ID, returns a list of storage or retrieval attribute drivers. Used for plugin. //! Standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent 47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient //! XCAF data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema
 
@@ -59,7 +71,7 @@ class XmlXCAFDrivers {
 	:type aGUID: Standard_GUID &
 	:rtype: Handle_Standard_Transient
 ") Factory;
-		static Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
+		Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
 };
 
 
@@ -71,16 +83,16 @@ class XmlXCAFDrivers {
 %nodefaultctor XmlXCAFDrivers_DocumentRetrievalDriver;
 class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver {
 	public:
-		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	:rtype: None
-") XmlXCAFDrivers_DocumentRetrievalDriver;
-		 XmlXCAFDrivers_DocumentRetrievalDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_XmlMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_XmlMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", "	:rtype: None
+") XmlXCAFDrivers_DocumentRetrievalDriver;
+		 XmlXCAFDrivers_DocumentRetrievalDriver ();
 };
 
 
@@ -94,18 +106,18 @@ class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetriev
 %nodefaultctor XmlXCAFDrivers_DocumentStorageDriver;
 class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDriver {
 	public:
-		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	:param theCopyright:
-	:type theCopyright: TCollection_ExtendedString &
-	:rtype: None
-") XmlXCAFDrivers_DocumentStorageDriver;
-		 XmlXCAFDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_XmlMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_XmlMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentStorageDriver;
+		%feature("autodoc", "	:param theCopyright:
+	:type theCopyright: TCollection_ExtendedString &
+	:rtype: None
+") XmlXCAFDrivers_DocumentStorageDriver;
+		 XmlXCAFDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
 };
 
 
@@ -116,3 +128,6 @@ class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDr
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

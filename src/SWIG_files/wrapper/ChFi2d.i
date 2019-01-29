@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,30 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFI2DDOCSTRING
-"This package contains the algorithms used to build
-fillets or chamfers on planar wire.
-
-This package provides two algorithms for 2D fillets:
-ChFi2d_Builder - it constructs a fillet or chamfer
-for linear and circular edges of a face.
-ChFi2d_FilletAPI - it encapsulates two algorithms:
-ChFi2d_AnaFilletAlgo - analytical constructor of the fillet.
-It works only for linear and circular edges,
-having a common point.
-ChFi2d_FilletAlgo - iteration recursive method constructing
-the fillet edge for any type of edges including
-ellipses and b-splines.
-The edges may even have no common point.
-ChFi2d_ChamferAPI - an algoroithm for construction of chamfers
-between two linear edges of a plane.
-
-The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly
-or via the interface class ChFi2d_FilletAPI.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=CHFI2DDOCSTRING) ChFi2d
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -57,6 +38,10 @@ or via the interface class ChFi2d_FilletAPI.
 
 
 %include ChFi2d_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -175,60 +160,6 @@ class ChFi2d_AnaFilletAlgo {
 %nodefaultctor ChFi2d_Builder;
 class ChFi2d_Builder {
 	public:
-		%feature("compactdefaultargs") ChFi2d_Builder;
-		%feature("autodoc", "	:rtype: None
-") ChFi2d_Builder;
-		 ChFi2d_Builder ();
-		%feature("compactdefaultargs") ChFi2d_Builder;
-		%feature("autodoc", "	* The face <F> can be build on a closed or an open wire.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") ChFi2d_Builder;
-		 ChFi2d_Builder (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param RefFace:
-	:type RefFace: TopoDS_Face &
-	:param ModFace:
-	:type ModFace: TopoDS_Face &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Face & RefFace,const TopoDS_Face & ModFace);
-		%feature("compactdefaultargs") AddFillet;
-		%feature("autodoc", "	* Add a fillet of radius <Radius> on the wire between the two edges connected to the vertex <V>. <AddFillet> returns the fillet edge. The returned edge has sense only if the status <status> is <IsDone>
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param Radius:
-	:type Radius: float
-	:rtype: TopoDS_Edge
-") AddFillet;
-		TopoDS_Edge AddFillet (const TopoDS_Vertex & V,const Standard_Real Radius);
-		%feature("compactdefaultargs") ModifyFillet;
-		%feature("autodoc", "	* modify the fillet radius and return the new fillet edge. this edge has sense only if the status <status> is <IsDone>.
-
-	:param Fillet:
-	:type Fillet: TopoDS_Edge &
-	:param Radius:
-	:type Radius: float
-	:rtype: TopoDS_Edge
-") ModifyFillet;
-		TopoDS_Edge ModifyFillet (const TopoDS_Edge & Fillet,const Standard_Real Radius);
-		%feature("compactdefaultargs") RemoveFillet;
-		%feature("autodoc", "	* removes the fillet <Fillet> and returns the vertex connecting the two adjacent edges to this fillet.
-
-	:param Fillet:
-	:type Fillet: TopoDS_Edge &
-	:rtype: TopoDS_Vertex
-") RemoveFillet;
-		TopoDS_Vertex RemoveFillet (const TopoDS_Edge & Fillet);
 		%feature("compactdefaultargs") AddChamfer;
 		%feature("autodoc", "	* Add a chamfer on the wire between the two edges connected <E1> and <E2>. <AddChamfer> returns the chamfer edge. This edge has sense only if the status <status> is <IsDone>.
 
@@ -257,6 +188,82 @@ class ChFi2d_Builder {
 	:rtype: TopoDS_Edge
 ") AddChamfer;
 		TopoDS_Edge AddChamfer (const TopoDS_Edge & E,const TopoDS_Vertex & V,const Standard_Real D,const Standard_Real Ang);
+		%feature("compactdefaultargs") AddFillet;
+		%feature("autodoc", "	* Add a fillet of radius <Radius> on the wire between the two edges connected to the vertex <V>. <AddFillet> returns the fillet edge. The returned edge has sense only if the status <status> is <IsDone>
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param Radius:
+	:type Radius: float
+	:rtype: TopoDS_Edge
+") AddFillet;
+		TopoDS_Edge AddFillet (const TopoDS_Vertex & V,const Standard_Real Radius);
+		%feature("compactdefaultargs") BasisEdge;
+		%feature("autodoc", "	* Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge would be equal to <E>
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Edge
+") BasisEdge;
+		const TopoDS_Edge  BasisEdge (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") ChFi2d_Builder;
+		%feature("autodoc", "	:rtype: None
+") ChFi2d_Builder;
+		 ChFi2d_Builder ();
+		%feature("compactdefaultargs") ChFi2d_Builder;
+		%feature("autodoc", "	* The face <F> can be build on a closed or an open wire.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") ChFi2d_Builder;
+		 ChFi2d_Builder (const TopoDS_Face & F);
+		%feature("compactdefaultargs") ChamferEdges;
+		%feature("autodoc", "	* returns the list of new edges
+
+	:rtype: TopTools_SequenceOfShape
+") ChamferEdges;
+		const TopTools_SequenceOfShape & ChamferEdges ();
+		%feature("compactdefaultargs") DescendantEdge;
+		%feature("autodoc", "	* returns the modified edge if <E> has descendant or <E> in the other case.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Edge
+") DescendantEdge;
+		const TopoDS_Edge  DescendantEdge (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") FilletEdges;
+		%feature("autodoc", "	* returns the list of new edges
+
+	:rtype: TopTools_SequenceOfShape
+") FilletEdges;
+		const TopTools_SequenceOfShape & FilletEdges ();
+		%feature("compactdefaultargs") HasDescendant;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") HasDescendant;
+		Standard_Boolean HasDescendant (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param RefFace:
+	:type RefFace: TopoDS_Face &
+	:param ModFace:
+	:type ModFace: TopoDS_Face &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Face & RefFace,const TopoDS_Face & ModFace);
+		%feature("compactdefaultargs") IsModified;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") IsModified;
+		Standard_Boolean IsModified (const TopoDS_Edge & E);
 		%feature("compactdefaultargs") ModifyChamfer;
 		%feature("autodoc", "	* modify the chamfer <Chamfer> and returns the new chamfer edge. This edge as sense only if the status <status> is <IsDone>.
 
@@ -287,6 +294,24 @@ class ChFi2d_Builder {
 	:rtype: TopoDS_Edge
 ") ModifyChamfer;
 		TopoDS_Edge ModifyChamfer (const TopoDS_Edge & Chamfer,const TopoDS_Edge & E,const Standard_Real D,const Standard_Real Ang);
+		%feature("compactdefaultargs") ModifyFillet;
+		%feature("autodoc", "	* modify the fillet radius and return the new fillet edge. this edge has sense only if the status <status> is <IsDone>.
+
+	:param Fillet:
+	:type Fillet: TopoDS_Edge &
+	:param Radius:
+	:type Radius: float
+	:rtype: TopoDS_Edge
+") ModifyFillet;
+		TopoDS_Edge ModifyFillet (const TopoDS_Edge & Fillet,const Standard_Real Radius);
+		%feature("compactdefaultargs") NbChamfer;
+		%feature("autodoc", "	:rtype: int
+") NbChamfer;
+		Standard_Integer NbChamfer ();
+		%feature("compactdefaultargs") NbFillet;
+		%feature("autodoc", "	:rtype: int
+") NbFillet;
+		Standard_Integer NbFillet ();
 		%feature("compactdefaultargs") RemoveChamfer;
 		%feature("autodoc", "	* removes the chamfer <Chamfer> and returns the vertex connecting the two adjacent edges to this chamfer.
 
@@ -295,60 +320,20 @@ class ChFi2d_Builder {
 	:rtype: TopoDS_Vertex
 ") RemoveChamfer;
 		TopoDS_Vertex RemoveChamfer (const TopoDS_Edge & Chamfer);
+		%feature("compactdefaultargs") RemoveFillet;
+		%feature("autodoc", "	* removes the fillet <Fillet> and returns the vertex connecting the two adjacent edges to this fillet.
+
+	:param Fillet:
+	:type Fillet: TopoDS_Edge &
+	:rtype: TopoDS_Vertex
+") RemoveFillet;
+		TopoDS_Vertex RemoveFillet (const TopoDS_Edge & Fillet);
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "	* returns the modified face
 
 	:rtype: TopoDS_Face
 ") Result;
 		TopoDS_Face Result ();
-		%feature("compactdefaultargs") IsModified;
-		%feature("autodoc", "	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") IsModified;
-		Standard_Boolean IsModified (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") FilletEdges;
-		%feature("autodoc", "	* returns the list of new edges
-
-	:rtype: TopTools_SequenceOfShape
-") FilletEdges;
-		const TopTools_SequenceOfShape & FilletEdges ();
-		%feature("compactdefaultargs") NbFillet;
-		%feature("autodoc", "	:rtype: int
-") NbFillet;
-		Standard_Integer NbFillet ();
-		%feature("compactdefaultargs") ChamferEdges;
-		%feature("autodoc", "	* returns the list of new edges
-
-	:rtype: TopTools_SequenceOfShape
-") ChamferEdges;
-		const TopTools_SequenceOfShape & ChamferEdges ();
-		%feature("compactdefaultargs") NbChamfer;
-		%feature("autodoc", "	:rtype: int
-") NbChamfer;
-		Standard_Integer NbChamfer ();
-		%feature("compactdefaultargs") HasDescendant;
-		%feature("autodoc", "	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") HasDescendant;
-		Standard_Boolean HasDescendant (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") DescendantEdge;
-		%feature("autodoc", "	* returns the modified edge if <E> has descendant or <E> in the other case.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: TopoDS_Edge
-") DescendantEdge;
-		const TopoDS_Edge  DescendantEdge (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") BasisEdge;
-		%feature("autodoc", "	* Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge would be equal to <E>
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: TopoDS_Edge
-") BasisEdge;
-		const TopoDS_Edge  BasisEdge (const TopoDS_Edge & E);
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	:rtype: ChFi2d_ConstructionError
 ") Status;
@@ -485,14 +470,6 @@ class ChFi2d_FilletAPI {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2,const gp_Pln & thePlane);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Constructs a fillet edge. Returns true if at least one result was found.
-
-	:param theRadius:
-	:type theRadius: float
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const Standard_Real theRadius);
 		%feature("compactdefaultargs") NbResults;
 		%feature("autodoc", "	* Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 
@@ -501,6 +478,14 @@ class ChFi2d_FilletAPI {
 	:rtype: int
 ") NbResults;
 		Standard_Integer NbResults (const gp_Pnt & thePoint);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Constructs a fillet edge. Returns true if at least one result was found.
+
+	:param theRadius:
+	:type theRadius: float
+	:rtype: bool
+") Perform;
+		Standard_Boolean Perform (const Standard_Real theRadius);
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "	* Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thePoint> if iSolution == -1 <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 
@@ -576,14 +561,6 @@ class ChFi2d_FilletAlgo {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2,const gp_Pln & thePlane);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Constructs a fillet edge. Returns true, if at least one result was found
-
-	:param theRadius:
-	:type theRadius: float
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const Standard_Real theRadius);
 		%feature("compactdefaultargs") NbResults;
 		%feature("autodoc", "	* Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 
@@ -592,6 +569,14 @@ class ChFi2d_FilletAlgo {
 	:rtype: int
 ") NbResults;
 		Standard_Integer NbResults (const gp_Pnt & thePoint);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Constructs a fillet edge. Returns true, if at least one result was found
+
+	:param theRadius:
+	:type theRadius: float
+	:rtype: bool
+") Perform;
+		Standard_Boolean Perform (const Standard_Real theRadius);
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "	* Returns result (fillet edge, modified edge1, modified edge2), neares to the given point <thePoint> if iSolution == -1. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 
@@ -614,3 +599,6 @@ class ChFi2d_FilletAlgo {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

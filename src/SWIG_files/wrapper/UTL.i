@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UTLDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=UTLDOCSTRING) UTL
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include UTL_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -49,12 +53,88 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(utl) UTL;
 class UTL {
 	public:
-		%feature("compactdefaultargs") xgetenv;
-		%feature("autodoc", "	:param aCString:
-	:type aCString: char *
+		%feature("compactdefaultargs") AddToUserInfo;
+		%feature("autodoc", "	:param aData:
+	:type aData: Handle_Storage_Data &
+	:param anInfo:
+	:type anInfo: TCollection_ExtendedString &
+	:rtype: void
+") AddToUserInfo;
+		static void AddToUserInfo (const Handle_Storage_Data & aData,const TCollection_ExtendedString & anInfo);
+		%feature("compactdefaultargs") CString;
+		%feature("autodoc", "	:param anExtendedString:
+	:type anExtendedString: TCollection_ExtendedString &
+	:rtype: char *
+") CString;
+		static const char * CString (const TCollection_ExtendedString & anExtendedString);
+		%feature("compactdefaultargs") Disk;
+		%feature("autodoc", "	:param aPath:
+	:type aPath: OSD_Path &
 	:rtype: TCollection_ExtendedString
-") xgetenv;
-		static TCollection_ExtendedString xgetenv (const char * aCString);
+") Disk;
+		static TCollection_ExtendedString Disk (const OSD_Path & aPath);
+		%feature("compactdefaultargs") ExtendedString;
+		%feature("autodoc", "	:param anAsciiString:
+	:type anAsciiString: TCollection_AsciiString &
+	:rtype: TCollection_ExtendedString
+") ExtendedString;
+		static TCollection_ExtendedString ExtendedString (const TCollection_AsciiString & anAsciiString);
+		%feature("compactdefaultargs") Extension;
+		%feature("autodoc", "	:param aPath:
+	:type aPath: OSD_Path &
+	:rtype: TCollection_ExtendedString
+") Extension;
+		static TCollection_ExtendedString Extension (const OSD_Path & aPath);
+		%feature("compactdefaultargs") Extension;
+		%feature("autodoc", "	:param aFileName:
+	:type aFileName: TCollection_ExtendedString &
+	:rtype: TCollection_ExtendedString
+") Extension;
+		static TCollection_ExtendedString Extension (const TCollection_ExtendedString & aFileName);
+		%feature("compactdefaultargs") FileIterator;
+		%feature("autodoc", "	:param aPath:
+	:type aPath: OSD_Path &
+	:param aMask:
+	:type aMask: TCollection_ExtendedString &
+	:rtype: OSD_FileIterator
+") FileIterator;
+		static OSD_FileIterator FileIterator (const OSD_Path & aPath,const TCollection_ExtendedString & aMask);
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "	:param aResourceManager:
+	:type aResourceManager: Handle_Resource_Manager &
+	:param aResourceName:
+	:type aResourceName: TCollection_ExtendedString &
+	:rtype: bool
+") Find;
+		static Standard_Boolean Find (const Handle_Resource_Manager & aResourceManager,const TCollection_ExtendedString & aResourceName);
+		%feature("compactdefaultargs") GUID;
+		%feature("autodoc", "	:param anXString:
+	:type anXString: TCollection_ExtendedString &
+	:rtype: Standard_GUID
+") GUID;
+		static Standard_GUID GUID (const TCollection_ExtendedString & anXString);
+		%feature("compactdefaultargs") IntegerValue;
+		%feature("autodoc", "	:param anExtendedString:
+	:type anExtendedString: TCollection_ExtendedString &
+	:rtype: int
+") IntegerValue;
+		static Standard_Integer IntegerValue (const TCollection_ExtendedString & anExtendedString);
+		%feature("compactdefaultargs") IsReadOnly;
+		%feature("autodoc", "	:param aFileName:
+	:type aFileName: TCollection_ExtendedString &
+	:rtype: bool
+") IsReadOnly;
+		static Standard_Boolean IsReadOnly (const TCollection_ExtendedString & aFileName);
+		%feature("compactdefaultargs") LocalHost;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") LocalHost;
+		static TCollection_ExtendedString LocalHost ();
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:param aPath:
+	:type aPath: OSD_Path &
+	:rtype: TCollection_ExtendedString
+") Name;
+		static TCollection_ExtendedString Name (const OSD_Path & aPath);
 		%feature("compactdefaultargs") OpenFile;
 		%feature("autodoc", "	:param aFile:
 	:type aFile: Storage_BaseDriver &
@@ -65,82 +145,18 @@ class UTL {
 	:rtype: Storage_Error
 ") OpenFile;
 		static Storage_Error OpenFile (Storage_BaseDriver & aFile,const TCollection_ExtendedString & aName,const Storage_OpenMode aMode);
-		%feature("compactdefaultargs") AddToUserInfo;
-		%feature("autodoc", "	:param aData:
-	:type aData: Handle_Storage_Data &
-	:param anInfo:
-	:type anInfo: TCollection_ExtendedString &
-	:rtype: void
-") AddToUserInfo;
-		static void AddToUserInfo (const Handle_Storage_Data & aData,const TCollection_ExtendedString & anInfo);
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", "	:param aFileName:
 	:type aFileName: TCollection_ExtendedString &
 	:rtype: OSD_Path
 ") Path;
 		static OSD_Path Path (const TCollection_ExtendedString & aFileName);
-		%feature("compactdefaultargs") Disk;
-		%feature("autodoc", "	:param aPath:
-	:type aPath: OSD_Path &
-	:rtype: TCollection_ExtendedString
-") Disk;
-		static TCollection_ExtendedString Disk (const OSD_Path & aPath);
 		%feature("compactdefaultargs") Trek;
 		%feature("autodoc", "	:param aPath:
 	:type aPath: OSD_Path &
 	:rtype: TCollection_ExtendedString
 ") Trek;
 		static TCollection_ExtendedString Trek (const OSD_Path & aPath);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:param aPath:
-	:type aPath: OSD_Path &
-	:rtype: TCollection_ExtendedString
-") Name;
-		static TCollection_ExtendedString Name (const OSD_Path & aPath);
-		%feature("compactdefaultargs") Extension;
-		%feature("autodoc", "	:param aPath:
-	:type aPath: OSD_Path &
-	:rtype: TCollection_ExtendedString
-") Extension;
-		static TCollection_ExtendedString Extension (const OSD_Path & aPath);
-		%feature("compactdefaultargs") FileIterator;
-		%feature("autodoc", "	:param aPath:
-	:type aPath: OSD_Path &
-	:param aMask:
-	:type aMask: TCollection_ExtendedString &
-	:rtype: OSD_FileIterator
-") FileIterator;
-		static OSD_FileIterator FileIterator (const OSD_Path & aPath,const TCollection_ExtendedString & aMask);
-		%feature("compactdefaultargs") Extension;
-		%feature("autodoc", "	:param aFileName:
-	:type aFileName: TCollection_ExtendedString &
-	:rtype: TCollection_ExtendedString
-") Extension;
-		static TCollection_ExtendedString Extension (const TCollection_ExtendedString & aFileName);
-		%feature("compactdefaultargs") LocalHost;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") LocalHost;
-		static TCollection_ExtendedString LocalHost ();
-		%feature("compactdefaultargs") ExtendedString;
-		%feature("autodoc", "	:param anAsciiString:
-	:type anAsciiString: TCollection_AsciiString &
-	:rtype: TCollection_ExtendedString
-") ExtendedString;
-		static TCollection_ExtendedString ExtendedString (const TCollection_AsciiString & anAsciiString);
-		%feature("compactdefaultargs") GUID;
-		%feature("autodoc", "	:param anXString:
-	:type anXString: TCollection_ExtendedString &
-	:rtype: Standard_GUID
-") GUID;
-		static Standard_GUID GUID (const TCollection_ExtendedString & anXString);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param aResourceManager:
-	:type aResourceManager: Handle_Resource_Manager &
-	:param aResourceName:
-	:type aResourceName: TCollection_ExtendedString &
-	:rtype: bool
-") Find;
-		static Standard_Boolean Find (const Handle_Resource_Manager & aResourceManager,const TCollection_ExtendedString & aResourceName);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aResourceManager:
 	:type aResourceManager: Handle_Resource_Manager &
@@ -149,24 +165,12 @@ class UTL {
 	:rtype: TCollection_ExtendedString
 ") Value;
 		static TCollection_ExtendedString Value (const Handle_Resource_Manager & aResourceManager,const TCollection_ExtendedString & aResourceName);
-		%feature("compactdefaultargs") IntegerValue;
-		%feature("autodoc", "	:param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString &
-	:rtype: int
-") IntegerValue;
-		static Standard_Integer IntegerValue (const TCollection_ExtendedString & anExtendedString);
-		%feature("compactdefaultargs") CString;
-		%feature("autodoc", "	:param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString &
-	:rtype: char *
-") CString;
-		static const char * CString (const TCollection_ExtendedString & anExtendedString);
-		%feature("compactdefaultargs") IsReadOnly;
-		%feature("autodoc", "	:param aFileName:
-	:type aFileName: TCollection_ExtendedString &
-	:rtype: bool
-") IsReadOnly;
-		static Standard_Boolean IsReadOnly (const TCollection_ExtendedString & aFileName);
+		%feature("compactdefaultargs") xgetenv;
+		%feature("autodoc", "	:param aCString:
+	:type aCString: char *
+	:rtype: TCollection_ExtendedString
+") xgetenv;
+		static TCollection_ExtendedString xgetenv (const char * aCString);
 };
 
 
@@ -175,3 +179,6 @@ class UTL {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

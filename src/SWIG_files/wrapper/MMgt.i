@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,14 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MMGTDOCSTRING
-"-Purpose:
-The package MMgt provides single class TShared which is second in hierarchy
-of inheritance from Standard_Transient, kept for historic reasons
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=MMGTDOCSTRING) MMgt
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -42,28 +39,18 @@ of inheritance from Standard_Transient, kept for historic reasons
 
 %include MMgt_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
+typedef Standard_Transient MMgt_TShared;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(MMgt_TShared)
 
-%nodefaultctor MMgt_TShared;
-class MMgt_TShared : public Standard_Transient {
-	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-};
-
-
-%make_alias(MMgt_TShared)
-
-%extend MMgt_TShared {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCE2DDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GCE2DDOCSTRING) GCE2d
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include GCE2d_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -83,10 +87,10 @@ class GCE2d_MakeMirror {
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
 		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Transformation&;
+		 operator constHandle_Geom2d_Transformation& ();
 };
 
 
@@ -114,10 +118,10 @@ class GCE2d_MakeRotation {
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
 		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Transformation&;
+		 operator constHandle_Geom2d_Transformation& ();
 };
 
 
@@ -145,10 +149,10 @@ class GCE2d_MakeScale {
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
 		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Transformation&;
+		 operator constHandle_Geom2d_Transformation& ();
 };
 
 
@@ -184,10 +188,10 @@ class GCE2d_MakeTranslation {
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
 		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Transformation&;
+		 operator constHandle_Geom2d_Transformation& ();
 };
 
 
@@ -293,10 +297,10 @@ class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_TrimmedCurve&;
+		 operator constHandle_Geom2d_TrimmedCurve& ();
 };
 
 
@@ -356,10 +360,10 @@ class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_TrimmedCurve&;
+		 operator constHandle_Geom2d_TrimmedCurve& ();
 };
 
 
@@ -419,10 +423,10 @@ class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_TrimmedCurve&;
+		 operator constHandle_Geom2d_TrimmedCurve& ();
 };
 
 
@@ -482,10 +486,10 @@ class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_TrimmedCurve&;
+		 operator constHandle_Geom2d_TrimmedCurve& ();
 };
 
 
@@ -589,10 +593,10 @@ class GCE2d_MakeCircle : public GCE2d_Root {
 	:rtype: Handle_Geom2d_Circle
 ") Value;
 		Handle_Geom2d_Circle Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Circle
-") Operator;
-		Handle_Geom2d_Circle Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Circle&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Circle&;
+		 operator constHandle_Geom2d_Circle& ();
 };
 
 
@@ -656,10 +660,10 @@ class GCE2d_MakeEllipse : public GCE2d_Root {
 	:rtype: Handle_Geom2d_Ellipse
 ") Value;
 		Handle_Geom2d_Ellipse Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Ellipse
-") Operator;
-		Handle_Geom2d_Ellipse Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Ellipse&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Ellipse&;
+		 operator constHandle_Geom2d_Ellipse& ();
 };
 
 
@@ -723,10 +727,10 @@ class GCE2d_MakeHyperbola : public GCE2d_Root {
 	:rtype: Handle_Geom2d_Hyperbola
 ") Value;
 		Handle_Geom2d_Hyperbola Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Hyperbola
-") Operator;
-		Handle_Geom2d_Hyperbola Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Hyperbola&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Hyperbola&;
+		 operator constHandle_Geom2d_Hyperbola& ();
 };
 
 
@@ -800,10 +804,10 @@ class GCE2d_MakeLine : public GCE2d_Root {
 	:rtype: Handle_Geom2d_Line
 ") Value;
 		Handle_Geom2d_Line Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Line
-") Operator;
-		Handle_Geom2d_Line Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Line&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Line&;
+		 operator constHandle_Geom2d_Line& ();
 };
 
 
@@ -846,16 +850,6 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola (const gp_Ax2d & MirrorAxis,const Standard_Real Focal,const Standard_Boolean Sense);
 		%feature("compactdefaultargs") GCE2d_MakeParabola;
-		%feature("autodoc", "	* Creates a parabola with the local coordinate system and the focus point. The sense of parametrization is given by Sense.
-
-	:param D:
-	:type D: gp_Ax22d
-	:param F:
-	:type F: gp_Pnt2d
-	:rtype: None
-") GCE2d_MakeParabola;
-		 GCE2d_MakeParabola (const gp_Ax22d & D,const gp_Pnt2d & F);
-		%feature("compactdefaultargs") GCE2d_MakeParabola;
 		%feature("autodoc", "	* D is the directrix of the parabola and F the focus point. The symmetry axis 'XAxis' of the parabola is normal to the directrix and pass through the focus point F, but its 'Location' point is the vertex of the parabola. The 'YAxis' of the parabola is parallel to D and its 'Location' point is the vertex of the parabola.
 
 	:param D:
@@ -883,10 +877,10 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 	:rtype: Handle_Geom2d_Parabola
 ") Value;
 		Handle_Geom2d_Parabola Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Parabola
-") Operator;
-		Handle_Geom2d_Parabola Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_Parabola&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_Parabola&;
+		 operator constHandle_Geom2d_Parabola& ();
 };
 
 
@@ -962,10 +956,10 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom2d_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom2d_TrimmedCurve&;
+		 operator constHandle_Geom2d_TrimmedCurve& ();
 };
 
 
@@ -974,3 +968,6 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

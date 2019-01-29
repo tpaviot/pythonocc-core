@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,16 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFAPPDOCSTRING
-"Defines application for DECAF document
-and provides application-specific tools
-
-The application should be registered before work with DECAF
-documents by call to XCAFApp_Application::GetApplication()
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XCAFAPPDOCSTRING) XCAFApp
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -44,6 +39,10 @@ documents by call to XCAFApp_Application::GetApplication()
 
 %include XCAFApp_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -55,18 +54,12 @@ documents by call to XCAFApp_Application::GetApplication()
 %nodefaultctor XCAFApp_Application;
 class XCAFApp_Application : public TDocStd_Application {
 	public:
-		%feature("compactdefaultargs") Formats;
-		%feature("autodoc", "	:param Formats:
-	:type Formats: TColStd_SequenceOfExtendedString &
-	:rtype: void
-") Formats;
-		virtual void Formats (TColStd_SequenceOfExtendedString & Formats);
-		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "	* methods from TDocStd_Application ================================
+		%feature("compactdefaultargs") GetApplication;
+		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
 
-	:rtype: char *
-") ResourcesName;
-		virtual const char * ResourcesName ();
+	:rtype: Handle_XCAFApp_Application
+") GetApplication;
+		static Handle_XCAFApp_Application GetApplication ();
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
 
@@ -75,12 +68,12 @@ class XCAFApp_Application : public TDocStd_Application {
 	:rtype: void
 ") InitDocument;
 		virtual void InitDocument (const Handle_TDocStd_Document & aDoc);
-		%feature("compactdefaultargs") GetApplication;
-		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
+		%feature("compactdefaultargs") ResourcesName;
+		%feature("autodoc", "	* methods from TDocStd_Application ================================
 
-	:rtype: Handle_XCAFApp_Application
-") GetApplication;
-		static Handle_XCAFApp_Application GetApplication ();
+	:rtype: char *
+") ResourcesName;
+		virtual const char * ResourcesName ();
 };
 
 
@@ -91,3 +84,6 @@ class XCAFApp_Application : public TDocStd_Application {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,20 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEUPGRADEDOCSTRING
-"This package provides tools
-for splitting and converting shapes by some criteria. It
-provides modifications of the kind when one topological
-object can be converted or splitted to several ones. In
-particular this package contains high level API classes which perform:
-converting geometry of shapes up to given continuity,
-splitting revolutions by U to segments less than given value,
-converting to beziers,
-splitting closed faces.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -47,6 +38,10 @@ splitting closed faces.
 
 
 %include ShapeUpgrade_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -111,42 +106,14 @@ class ShapeUpgrade {
 	}
 };
 %nodefaultctor ShapeUpgrade_RemoveLocations;
-class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
+class ShapeUpgrade_RemoveLocations : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_RemoveLocations;
-		%feature("autodoc", "	* Empy constructor
-
-	:rtype: None
-") ShapeUpgrade_RemoveLocations;
-		 ShapeUpgrade_RemoveLocations ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Removes all location correspodingly to RemoveLevel.
-
-	:param theShape:
-	:type theShape: TopoDS_Shape &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "	* Returns shape with removed locatins.
 
 	:rtype: TopoDS_Shape
 ") GetResult;
 		TopoDS_Shape GetResult ();
-		%feature("compactdefaultargs") SetRemoveLevel;
-		%feature("autodoc", "	* sets level starting with that location will be removed, by default TopAbs_SHAPE. In this case locations will be kept for specified shape and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
-
-	:param theLevel:
-	:type theLevel: TopAbs_ShapeEnum
-	:rtype: None
-") SetRemoveLevel;
-		void SetRemoveLevel (const TopAbs_ShapeEnum theLevel);
-		%feature("compactdefaultargs") RemoveLevel;
-		%feature("autodoc", "	* sets level starting with that location will be removed.Value of level can be set to TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE. In this case location will be removed for all shape types for exception of compound.
-
-	:rtype: TopAbs_ShapeEnum
-") RemoveLevel;
-		TopAbs_ShapeEnum RemoveLevel ();
 		%feature("compactdefaultargs") ModifiedShape;
 		%feature("autodoc", "	* Returns modified shape obtained from initial shape.
 
@@ -155,6 +122,34 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
 		TopoDS_Shape ModifiedShape (const TopoDS_Shape & theInitShape);
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Removes all location correspodingly to RemoveLevel.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: bool
+") Remove;
+		Standard_Boolean Remove (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") RemoveLevel;
+		%feature("autodoc", "	* sets level starting with that location will be removed.Value of level can be set to TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE. In this case location will be removed for all shape types for exception of compound.
+
+	:rtype: TopAbs_ShapeEnum
+") RemoveLevel;
+		TopAbs_ShapeEnum RemoveLevel ();
+		%feature("compactdefaultargs") SetRemoveLevel;
+		%feature("autodoc", "	* sets level starting with that location will be removed, by default TopAbs_SHAPE. In this case locations will be kept for specified shape and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
+
+	:param theLevel:
+	:type theLevel: TopAbs_ShapeEnum
+	:rtype: None
+") SetRemoveLevel;
+		void SetRemoveLevel (const TopAbs_ShapeEnum theLevel);
+		%feature("compactdefaultargs") ShapeUpgrade_RemoveLocations;
+		%feature("autodoc", "	* Empy constructor
+
+	:rtype: None
+") ShapeUpgrade_RemoveLocations;
+		 ShapeUpgrade_RemoveLocations ();
 };
 
 
@@ -168,18 +163,12 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 %nodefaultctor ShapeUpgrade_ShapeDivide;
 class ShapeUpgrade_ShapeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivide;
-		%feature("autodoc", "	:rtype: None
-") ShapeUpgrade_ShapeDivide;
-		 ShapeUpgrade_ShapeDivide ();
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivide;
-		%feature("autodoc", "	* Initialize by a Shape.
+		%feature("compactdefaultargs") GetContext;
+		%feature("autodoc", "	* Returns context with all the modifications made during last call(s) to Perform() recorded
 
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_ShapeDivide;
-		 ShapeUpgrade_ShapeDivide (const TopoDS_Shape & S);
+	:rtype: Handle_ShapeBuild_ReShape
+") GetContext;
+		Handle_ShapeBuild_ReShape GetContext ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize by a Shape.
 
@@ -188,18 +177,54 @@ class ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") SetPrecision;
-		%feature("autodoc", "	* Defines the spatial precision used for splitting
+		%feature("compactdefaultargs") MsgRegistrator;
+		%feature("autodoc", "	* Returns message registrator
 
-	:param Prec:
-	:type Prec: float
+	:rtype: Handle_ShapeExtend_BasicMsgRegistrator
+") MsgRegistrator;
+		Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs splitting and computes the resulting shape If newContext is True (default), the internal context will be cleared at start, else previous substitutions will be acting.
+
+	:param newContext: default value is Standard_True
+	:type newContext: bool
+	:rtype: bool
+") Perform;
+		virtual Standard_Boolean Perform (const Standard_Boolean newContext = Standard_True);
+		%feature("compactdefaultargs") Result;
+		%feature("autodoc", "	* Gives the resulting Shape, or Null shape if not done.
+
+	:rtype: TopoDS_Shape
+") Result;
+		TopoDS_Shape Result ();
+		%feature("compactdefaultargs") SendMsg;
+		%feature("autodoc", "	* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:param gravity: default value is Message_Info
+	:type gravity: Message_Gravity
 	:rtype: None
-") SetPrecision;
-		void SetPrecision (const Standard_Real Prec);
+") SendMsg;
+		void SendMsg (const TopoDS_Shape & shape,const Message_Msg & message,const Message_Gravity gravity = Message_Info);
+		%feature("compactdefaultargs") SetContext;
+		%feature("autodoc", "	* Sets context with recorded modifications to be applied during next call(s) to Perform(shape,Standard_False)
+
+	:param context:
+	:type context: Handle_ShapeBuild_ReShape &
+	:rtype: None
+") SetContext;
+		void SetContext (const Handle_ShapeBuild_ReShape & context);
+		%feature("compactdefaultargs") SetEdgeMode;
+		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
+
+	:param aEdgeMode:
+	:type aEdgeMode: int
+	:rtype: None
+") SetEdgeMode;
+		void SetEdgeMode (const Standard_Integer aEdgeMode);
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "	* Sets maximal allowed tolerance
 
@@ -216,42 +241,6 @@ class ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetMinTolerance;
 		void SetMinTolerance (const Standard_Real mintol);
-		%feature("compactdefaultargs") SetSurfaceSegmentMode;
-		%feature("autodoc", "	* Purpose sets mode for trimming (segment) surface by wire UV bounds.
-
-	:param Segment:
-	:type Segment: bool
-	:rtype: None
-") SetSurfaceSegmentMode;
-		void SetSurfaceSegmentMode (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs splitting and computes the resulting shape If newContext is True (default), the internal context will be cleared at start, else previous substitutions will be acting.
-
-	:param newContext: default value is Standard_True
-	:type newContext: bool
-	:rtype: bool
-") Perform;
-		virtual Standard_Boolean Perform (const Standard_Boolean newContext = Standard_True);
-		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "	* Gives the resulting Shape, or Null shape if not done.
-
-	:rtype: TopoDS_Shape
-") Result;
-		TopoDS_Shape Result ();
-		%feature("compactdefaultargs") GetContext;
-		%feature("autodoc", "	* Returns context with all the modifications made during last call(s) to Perform() recorded
-
-	:rtype: Handle_ShapeBuild_ReShape
-") GetContext;
-		Handle_ShapeBuild_ReShape GetContext ();
-		%feature("compactdefaultargs") SetContext;
-		%feature("autodoc", "	* Sets context with recorded modifications to be applied during next call(s) to Perform(shape,Standard_False)
-
-	:param context:
-	:type context: Handle_ShapeBuild_ReShape &
-	:rtype: None
-") SetContext;
-		void SetContext (const Handle_ShapeBuild_ReShape & context);
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "	* Sets message registrator
 
@@ -260,32 +249,14 @@ class ShapeUpgrade_ShapeDivide {
 	:rtype: void
 ") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("compactdefaultargs") MsgRegistrator;
-		%feature("autodoc", "	* Returns message registrator
+		%feature("compactdefaultargs") SetPrecision;
+		%feature("autodoc", "	* Defines the spatial precision used for splitting
 
-	:rtype: Handle_ShapeExtend_BasicMsgRegistrator
-") MsgRegistrator;
-		Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator ();
-		%feature("compactdefaultargs") SendMsg;
-		%feature("autodoc", "	* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param message:
-	:type message: Message_Msg &
-	:param gravity: default value is Message_Info
-	:type gravity: Message_Gravity
+	:param Prec:
+	:type Prec: float
 	:rtype: None
-") SendMsg;
-		void SendMsg (const TopoDS_Shape & shape,const Message_Msg & message,const Message_Gravity gravity = Message_Info);
-		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "	* Queries the status of last call to Perform OK : no splitting was done (or no call to Perform) DONE1: some edges were splitted DONE2: surface was splitted FAIL1: some errors occured
-
-	:param status:
-	:type status: ShapeExtend_Status
-	:rtype: bool
-") Status;
-		Standard_Boolean Status (const ShapeExtend_Status status);
+") SetPrecision;
+		void SetPrecision (const Standard_Real Prec);
 		%feature("compactdefaultargs") SetSplitFaceTool;
 		%feature("autodoc", "	* Sets the tool for splitting faces.
 
@@ -294,14 +265,34 @@ class ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetSplitFaceTool;
 		void SetSplitFaceTool (const Handle_ShapeUpgrade_FaceDivide & splitFaceTool);
-		%feature("compactdefaultargs") SetEdgeMode;
-		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
+		%feature("compactdefaultargs") SetSurfaceSegmentMode;
+		%feature("autodoc", "	* Purpose sets mode for trimming (segment) surface by wire UV bounds.
 
-	:param aEdgeMode:
-	:type aEdgeMode: int
+	:param Segment:
+	:type Segment: bool
 	:rtype: None
-") SetEdgeMode;
-		void SetEdgeMode (const Standard_Integer aEdgeMode);
+") SetSurfaceSegmentMode;
+		void SetSurfaceSegmentMode (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivide;
+		%feature("autodoc", "	:rtype: None
+") ShapeUpgrade_ShapeDivide;
+		 ShapeUpgrade_ShapeDivide ();
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivide;
+		%feature("autodoc", "	* Initialize by a Shape.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_ShapeDivide;
+		 ShapeUpgrade_ShapeDivide (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Status;
+		%feature("autodoc", "	* Queries the status of last call to Perform OK : no splitting was done (or no call to Perform) DONE1: some edges were splitted DONE2: surface was splitted FAIL1: some errors occured
+
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
+		Standard_Boolean Status (const ShapeExtend_Status status);
 };
 
 
@@ -313,12 +304,6 @@ class ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShellSewing;
 class ShapeUpgrade_ShellSewing {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShellSewing;
-		%feature("autodoc", "	* Creates a ShellSewing, empty
-
-	:rtype: None
-") ShapeUpgrade_ShellSewing;
-		 ShapeUpgrade_ShellSewing ();
 		%feature("compactdefaultargs") ApplySewing;
 		%feature("autodoc", "	* Builds a new shape from a former one, by calling Sewing from BRepBuilderAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape
 
@@ -329,6 +314,12 @@ class ShapeUpgrade_ShellSewing {
 	:rtype: TopoDS_Shape
 ") ApplySewing;
 		TopoDS_Shape ApplySewing (const TopoDS_Shape & shape,const Standard_Real tol = 0.0);
+		%feature("compactdefaultargs") ShapeUpgrade_ShellSewing;
+		%feature("autodoc", "	* Creates a ShellSewing, empty
+
+	:rtype: None
+") ShapeUpgrade_ShellSewing;
+		 ShapeUpgrade_ShellSewing ();
 };
 
 
@@ -338,14 +329,22 @@ class ShapeUpgrade_ShellSewing {
 	}
 };
 %nodefaultctor ShapeUpgrade_SplitCurve;
-class ShapeUpgrade_SplitCurve : public MMgt_TShared {
+class ShapeUpgrade_SplitCurve : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 
-	:rtype: None
-") ShapeUpgrade_SplitCurve;
-		 ShapeUpgrade_SplitCurve ();
+	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Build;
+		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
+
+	:rtype: void
+") Compute;
+		virtual void Compute ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes with curve first and last parameters.
 
@@ -356,34 +355,6 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 	:rtype: None
 ") Init;
 		void Init (const Standard_Real First,const Standard_Real Last);
-		%feature("compactdefaultargs") SetSplitValues;
-		%feature("autodoc", "	* Sets the parameters where splitting has to be done.
-
-	:param SplitValues:
-	:type SplitValues: Handle_TColStd_HSequenceOfReal &
-	:rtype: None
-") SetSplitValues;
-		void SetSplitValues (const Handle_TColStd_HSequenceOfReal & SplitValues);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
-
-	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Build;
-		virtual void Build (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") SplitValues;
-		%feature("autodoc", "	* returns all the splitting values including the First and Last parameters of the input curve Merges input split values and new ones into myGlobalKnots
-
-	:rtype: Handle_TColStd_HSequenceOfReal
-") SplitValues;
-		Handle_TColStd_HSequenceOfReal SplitValues ();
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
-
-	:rtype: void
-") Compute;
-		virtual void Compute ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs correction/splitting of the curve. First defines splitting values by method Compute(), then calls method Build().
 
@@ -392,6 +363,26 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 	:rtype: None
 ") Perform;
 		void Perform (const Standard_Boolean Segment = Standard_True);
+		%feature("compactdefaultargs") SetSplitValues;
+		%feature("autodoc", "	* Sets the parameters where splitting has to be done.
+
+	:param SplitValues:
+	:type SplitValues: Handle_TColStd_HSequenceOfReal &
+	:rtype: None
+") SetSplitValues;
+		void SetSplitValues (const Handle_TColStd_HSequenceOfReal & SplitValues);
+		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_SplitCurve;
+		 ShapeUpgrade_SplitCurve ();
+		%feature("compactdefaultargs") SplitValues;
+		%feature("autodoc", "	* returns all the splitting values including the First and Last parameters of the input curve Merges input split values and new ones into myGlobalKnots
+
+	:rtype: Handle_TColStd_HSequenceOfReal
+") SplitValues;
+		Handle_TColStd_HSequenceOfReal SplitValues ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one segment DONE2 - splitting is required, but gives only one segment (initial) DONE3 - geometric form of the curve or parametrisation is modified
 
@@ -411,14 +402,24 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 	}
 };
 %nodefaultctor ShapeUpgrade_SplitSurface;
-class ShapeUpgrade_SplitSurface : public MMgt_TShared {
+class ShapeUpgrade_SplitSurface : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitSurface;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Performs splitting of the supporting surface. If resulting surface is B-Spline and Segment is True, the result is composed with segments of the surface bounded by the U and V SplitValues (method Geom_BSplineSurface::Segment is used). If Segment is False, the result is composed with Geom_RectangularTrimmedSurface all based on the same complete surface. Fields myNbResultingRow and myNbResultingCol must be set to specify the size of resulting grid of surfaces.
 
-	:rtype: None
-") ShapeUpgrade_SplitSurface;
-		 ShapeUpgrade_SplitSurface ();
+	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Build;
+		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Calculates points for correction/splitting of the surface.
+
+	:param Segment: default value is Standard_True
+	:type Segment: bool
+	:rtype: void
+") Compute;
+		virtual void Compute (const Standard_Boolean Segment = Standard_True);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes with single supporting surface.
 
@@ -443,6 +444,20 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 	:rtype: None
 ") Init;
 		void Init (const Handle_Geom_Surface & S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs correction/splitting of the surface. First defines splitting values by method Compute(), then calls method Build().
+
+	:param Segment: default value is Standard_True
+	:type Segment: bool
+	:rtype: None
+") Perform;
+		void Perform (const Standard_Boolean Segment = Standard_True);
+		%feature("compactdefaultargs") ResSurfaces;
+		%feature("autodoc", "	* Returns obtained surfaces after splitting as CompositeSurface
+
+	:rtype: Handle_ShapeExtend_CompositeSurface
+") ResSurfaces;
+		Handle_ShapeExtend_CompositeSurface ResSurfaces ();
 		%feature("compactdefaultargs") SetUSplitValues;
 		%feature("autodoc", "	* Sets U parameters where splitting has to be done
 
@@ -459,30 +474,20 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 	:rtype: None
 ") SetVSplitValues;
 		void SetVSplitValues (const Handle_TColStd_HSequenceOfReal & VValues);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Performs splitting of the supporting surface. If resulting surface is B-Spline and Segment is True, the result is composed with segments of the surface bounded by the U and V SplitValues (method Geom_BSplineSurface::Segment is used). If Segment is False, the result is composed with Geom_RectangularTrimmedSurface all based on the same complete surface. Fields myNbResultingRow and myNbResultingCol must be set to specify the size of resulting grid of surfaces.
+		%feature("compactdefaultargs") ShapeUpgrade_SplitSurface;
+		%feature("autodoc", "	* Empty constructor.
 
-	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Build;
-		virtual void Build (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Calculates points for correction/splitting of the surface.
-
-	:param Segment: default value is Standard_True
-	:type Segment: bool
-	:rtype: void
-") Compute;
-		virtual void Compute (const Standard_Boolean Segment = Standard_True);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs correction/splitting of the surface. First defines splitting values by method Compute(), then calls method Build().
-
-	:param Segment: default value is Standard_True
-	:type Segment: bool
 	:rtype: None
-") Perform;
-		void Perform (const Standard_Boolean Segment = Standard_True);
+") ShapeUpgrade_SplitSurface;
+		 ShapeUpgrade_SplitSurface ();
+		%feature("compactdefaultargs") Status;
+		%feature("autodoc", "	* Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one patch DONE2 - splitting is required, but gives only single patch (initial) DONE3 - geometric form of the surface or parametrisation is modified
+
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
+		Standard_Boolean Status (const ShapeExtend_Status status);
 		%feature("compactdefaultargs") USplitValues;
 		%feature("autodoc", "	* returns all the U splitting values including the First and Last parameters of the input surface
 
@@ -495,20 +500,6 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 	:rtype: Handle_TColStd_HSequenceOfReal
 ") VSplitValues;
 		Handle_TColStd_HSequenceOfReal VSplitValues ();
-		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "	* Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one patch DONE2 - splitting is required, but gives only single patch (initial) DONE3 - geometric form of the surface or parametrisation is modified
-
-	:param status:
-	:type status: ShapeExtend_Status
-	:rtype: bool
-") Status;
-		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("compactdefaultargs") ResSurfaces;
-		%feature("autodoc", "	* Returns obtained surfaces after splitting as CompositeSurface
-
-	:rtype: Handle_ShapeExtend_CompositeSurface
-") ResSurfaces;
-		Handle_ShapeExtend_CompositeSurface ResSurfaces ();
 };
 
 
@@ -520,14 +511,40 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 	}
 };
 %nodefaultctor ShapeUpgrade_Tool;
-class ShapeUpgrade_Tool : public MMgt_TShared {
+class ShapeUpgrade_Tool : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_Tool;
-		%feature("autodoc", "	* Empty constructor
+		%feature("compactdefaultargs") Context;
+		%feature("autodoc", "	* Returns context
 
-	:rtype: None
-") ShapeUpgrade_Tool;
-		 ShapeUpgrade_Tool ();
+	:rtype: Handle_ShapeBuild_ReShape
+") Context;
+		Handle_ShapeBuild_ReShape Context ();
+		%feature("compactdefaultargs") LimitTolerance;
+		%feature("autodoc", "	* Returns tolerance limited by [myMinTol,myMaxTol]
+
+	:param toler:
+	:type toler: float
+	:rtype: float
+") LimitTolerance;
+		Standard_Real LimitTolerance (const Standard_Real toler);
+		%feature("compactdefaultargs") MaxTolerance;
+		%feature("autodoc", "	* Returns maximal allowed tolerance
+
+	:rtype: float
+") MaxTolerance;
+		Standard_Real MaxTolerance ();
+		%feature("compactdefaultargs") MinTolerance;
+		%feature("autodoc", "	* Returns minimal allowed tolerance
+
+	:rtype: float
+") MinTolerance;
+		Standard_Real MinTolerance ();
+		%feature("compactdefaultargs") Precision;
+		%feature("autodoc", "	* Returns basic precision value
+
+	:rtype: float
+") Precision;
+		Standard_Real Precision ();
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Copy all fields from another Root object
 
@@ -544,40 +561,6 @@ class ShapeUpgrade_Tool : public MMgt_TShared {
 	:rtype: None
 ") SetContext;
 		void SetContext (const Handle_ShapeBuild_ReShape & context);
-		%feature("compactdefaultargs") Context;
-		%feature("autodoc", "	* Returns context
-
-	:rtype: Handle_ShapeBuild_ReShape
-") Context;
-		Handle_ShapeBuild_ReShape Context ();
-		%feature("compactdefaultargs") SetPrecision;
-		%feature("autodoc", "	* Sets basic precision value
-
-	:param preci:
-	:type preci: float
-	:rtype: None
-") SetPrecision;
-		void SetPrecision (const Standard_Real preci);
-		%feature("compactdefaultargs") Precision;
-		%feature("autodoc", "	* Returns basic precision value
-
-	:rtype: float
-") Precision;
-		Standard_Real Precision ();
-		%feature("compactdefaultargs") SetMinTolerance;
-		%feature("autodoc", "	* Sets minimal allowed tolerance
-
-	:param mintol:
-	:type mintol: float
-	:rtype: None
-") SetMinTolerance;
-		void SetMinTolerance (const Standard_Real mintol);
-		%feature("compactdefaultargs") MinTolerance;
-		%feature("autodoc", "	* Returns minimal allowed tolerance
-
-	:rtype: float
-") MinTolerance;
-		Standard_Real MinTolerance ();
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "	* Sets maximal allowed tolerance
 
@@ -586,20 +569,28 @@ class ShapeUpgrade_Tool : public MMgt_TShared {
 	:rtype: None
 ") SetMaxTolerance;
 		void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("compactdefaultargs") MaxTolerance;
-		%feature("autodoc", "	* Returns maximal allowed tolerance
+		%feature("compactdefaultargs") SetMinTolerance;
+		%feature("autodoc", "	* Sets minimal allowed tolerance
 
-	:rtype: float
-") MaxTolerance;
-		Standard_Real MaxTolerance ();
-		%feature("compactdefaultargs") LimitTolerance;
-		%feature("autodoc", "	* Returns tolerance limited by [myMinTol,myMaxTol]
+	:param mintol:
+	:type mintol: float
+	:rtype: None
+") SetMinTolerance;
+		void SetMinTolerance (const Standard_Real mintol);
+		%feature("compactdefaultargs") SetPrecision;
+		%feature("autodoc", "	* Sets basic precision value
 
-	:param toler:
-	:type toler: float
-	:rtype: float
-") LimitTolerance;
-		Standard_Real LimitTolerance (const Standard_Real toler);
+	:param preci:
+	:type preci: float
+	:rtype: None
+") SetPrecision;
+		void SetPrecision (const Standard_Real preci);
+		%feature("compactdefaultargs") ShapeUpgrade_Tool;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") ShapeUpgrade_Tool;
+		 ShapeUpgrade_Tool ();
 };
 
 
@@ -611,8 +602,94 @@ class ShapeUpgrade_Tool : public MMgt_TShared {
 	}
 };
 %nodefaultctor ShapeUpgrade_UnifySameDomain;
-class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
+class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") AllowInternalEdges;
+		%feature("autodoc", "	* Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
+
+	:param theValue:
+	:type theValue: bool
+	:rtype: None
+") AllowInternalEdges;
+		void AllowInternalEdges (const Standard_Boolean theValue);
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Builds the resulting shape
+
+	:rtype: None
+") Build;
+		void Build ();
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "	* Returns the history of the processed shapes.
+
+	:rtype: Handle_BRepTools_History
+") History;
+		Handle_BRepTools_History History ();
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "	* Returns the history of the processed shapes.
+
+	:rtype: Handle_BRepTools_History
+") History;
+		Handle_BRepTools_History History ();
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "	* Initializes with a shape
+
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param UnifyEdges: default value is Standard_True
+	:type UnifyEdges: bool
+	:param UnifyFaces: default value is Standard_True
+	:type UnifyFaces: bool
+	:param ConcatBSplines: default value is Standard_False
+	:type ConcatBSplines: bool
+	:rtype: None
+") Initialize;
+		void Initialize (const TopoDS_Shape & aShape,const Standard_Boolean UnifyEdges = Standard_True,const Standard_Boolean UnifyFaces = Standard_True,const Standard_Boolean ConcatBSplines = Standard_False);
+		%feature("compactdefaultargs") KeepShape;
+		%feature("autodoc", "	* Sets the shape for avoid merging of the faces in given places. This shape can be vertex or edge. If shape is vertex it forbids merging of connected edges. If shape is edge it forbids merging of connected faces.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") KeepShape;
+		void KeepShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") KeepShapes;
+		%feature("autodoc", "	* Sets the map of shapes for avoid merging of the faces in given places These shapes can be vertexes or edges. If shape is vertex it forbids merging of connected edges. If shape is edge it forbids merging of connected faces.
+
+	:param theShapes:
+	:type theShapes: TopTools_MapOfShape &
+	:rtype: None
+") KeepShapes;
+		void KeepShapes (const TopTools_MapOfShape & theShapes);
+		%feature("compactdefaultargs") SetAngularTolerance;
+		%feature("autodoc", "	* Sets the angular tolerance. Default value is Precision::Angular().
+
+	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetAngularTolerance;
+		void SetAngularTolerance (const Standard_Real theValue);
+		%feature("compactdefaultargs") SetLinearTolerance;
+		%feature("autodoc", "	* Sets the linear tolerance. Default value is Precision::Confusion().
+
+	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetLinearTolerance;
+		void SetLinearTolerance (const Standard_Real theValue);
+		%feature("compactdefaultargs") SetSafeInputMode;
+		%feature("autodoc", "	* Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
+
+	:param theValue:
+	:type theValue: bool
+	:rtype: None
+") SetSafeInputMode;
+		void SetSafeInputMode (Standard_Boolean theValue);
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "	* Gives the resulting shape
+
+	:rtype: TopoDS_Shape
+") Shape;
+		const TopoDS_Shape  Shape ();
 		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
 		%feature("autodoc", "	* empty constructor
 
@@ -631,48 +708,18 @@ class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 	:rtype: None
 ") ShapeUpgrade_UnifySameDomain;
 		 ShapeUpgrade_UnifySameDomain (const TopoDS_Shape & aShape,const Standard_Boolean UnifyEdges = Standard_True,const Standard_Boolean UnifyFaces = Standard_True,const Standard_Boolean ConcatBSplines = Standard_False);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aShape:
-	:type aShape: TopoDS_Shape &
-	:param UnifyEdges: default value is Standard_True
-	:type UnifyEdges: bool
-	:param UnifyFaces: default value is Standard_True
-	:type UnifyFaces: bool
-	:param ConcatBSplines: default value is Standard_False
-	:type ConcatBSplines: bool
-	:rtype: None
-") Initialize;
-		void Initialize (const TopoDS_Shape & aShape,const Standard_Boolean UnifyEdges = Standard_True,const Standard_Boolean UnifyFaces = Standard_True,const Standard_Boolean ConcatBSplines = Standard_False);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Builds the resulting shape
-
-	:rtype: None
-") Build;
-		void Build ();
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Gives the resulting shape
-
-	:rtype: TopoDS_Shape
-") Shape;
-		const TopoDS_Shape  Shape ();
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	:param aShape:
-	:type aShape: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") Generated;
-		TopoDS_Shape Generated (const TopoDS_Shape & aShape);
-		%feature("compactdefaultargs") UnifyFaces;
-		%feature("autodoc", "	* this method makes if possible a common face from each group of faces lying on coincident surfaces
-
-	:rtype: None
-") UnifyFaces;
-		void UnifyFaces ();
 		%feature("compactdefaultargs") UnifyEdges;
 		%feature("autodoc", "	* this method makes if possible a common edge from each group of edges connecting common couple of faces
 
 	:rtype: None
 ") UnifyEdges;
 		void UnifyEdges ();
+		%feature("compactdefaultargs") UnifyFaces;
+		%feature("autodoc", "	* this method makes if possible a common face from each group of faces lying on coincident surfaces
+
+	:rtype: None
+") UnifyFaces;
+		void UnifyFaces ();
 		%feature("compactdefaultargs") UnifyFacesAndEdges;
 		%feature("autodoc", "	* this method unifies same domain faces and edges
 
@@ -692,12 +739,6 @@ class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 %nodefaultctor ShapeUpgrade_ConvertSurfaceToBezierBasis;
 class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurface {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ConvertSurfaceToBezierBasis;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_ConvertSurfaceToBezierBasis;
-		 ShapeUpgrade_ConvertSurfaceToBezierBasis ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 
@@ -714,54 +755,36 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 	:rtype: void
 ") Compute;
 		virtual void Compute (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") Segments;
-		%feature("autodoc", "	* Returns the grid of bezier based surfaces correspondent to original surface.
-
-	:rtype: Handle_ShapeExtend_CompositeSurface
-") Segments;
-		Handle_ShapeExtend_CompositeSurface Segments ();
-		%feature("compactdefaultargs") SetPlaneMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Plane to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetPlaneMode;
-		void SetPlaneMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetPlaneMode;
-		%feature("autodoc", "	* Returns the Geom_Pline conversion mode.
+		%feature("compactdefaultargs") GetBSplineMode;
+		%feature("autodoc", "	* Returns the Geom_BSplineSurface conversion mode.
 
 	:rtype: bool
-") GetPlaneMode;
-		Standard_Boolean GetPlaneMode ();
-		%feature("compactdefaultargs") SetRevolutionMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetRevolutionMode;
-		void SetRevolutionMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetRevolutionMode;
-		%feature("autodoc", "	* Returns the Geom_SurfaceOfRevolution conversion mode.
-
-	:rtype: bool
-") GetRevolutionMode;
-		Standard_Boolean GetRevolutionMode ();
-		%feature("compactdefaultargs") SetExtrusionMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetExtrusionMode;
-		void SetExtrusionMode (const Standard_Boolean mode);
+") GetBSplineMode;
+		Standard_Boolean GetBSplineMode ();
 		%feature("compactdefaultargs") GetExtrusionMode;
 		%feature("autodoc", "	* Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
 
 	:rtype: bool
 ") GetExtrusionMode;
 		Standard_Boolean GetExtrusionMode ();
+		%feature("compactdefaultargs") GetPlaneMode;
+		%feature("autodoc", "	* Returns the Geom_Pline conversion mode.
+
+	:rtype: bool
+") GetPlaneMode;
+		Standard_Boolean GetPlaneMode ();
+		%feature("compactdefaultargs") GetRevolutionMode;
+		%feature("autodoc", "	* Returns the Geom_SurfaceOfRevolution conversion mode.
+
+	:rtype: bool
+") GetRevolutionMode;
+		Standard_Boolean GetRevolutionMode ();
+		%feature("compactdefaultargs") Segments;
+		%feature("autodoc", "	* Returns the grid of bezier based surfaces correspondent to original surface.
+
+	:rtype: Handle_ShapeExtend_CompositeSurface
+") Segments;
+		Handle_ShapeExtend_CompositeSurface Segments ();
 		%feature("compactdefaultargs") SetBSplineMode;
 		%feature("autodoc", "	* Sets mode for conversion Geom_BSplineSurface to Bezier
 
@@ -770,12 +793,36 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 	:rtype: None
 ") SetBSplineMode;
 		void SetBSplineMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetBSplineMode;
-		%feature("autodoc", "	* Returns the Geom_BSplineSurface conversion mode.
+		%feature("compactdefaultargs") SetExtrusionMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
 
-	:rtype: bool
-") GetBSplineMode;
-		Standard_Boolean GetBSplineMode ();
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetExtrusionMode;
+		void SetExtrusionMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetPlaneMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Plane to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetPlaneMode;
+		void SetPlaneMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetRevolutionMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetRevolutionMode;
+		void SetRevolutionMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") ShapeUpgrade_ConvertSurfaceToBezierBasis;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_ConvertSurfaceToBezierBasis;
+		 ShapeUpgrade_ConvertSurfaceToBezierBasis ();
 };
 
 
@@ -789,30 +836,28 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 %nodefaultctor ShapeUpgrade_EdgeDivide;
 class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_EdgeDivide;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") ShapeUpgrade_EdgeDivide;
-		 ShapeUpgrade_EdgeDivide ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
-		%feature("compactdefaultargs") SetFace;
-		%feature("autodoc", "	* Sets supporting surface by face
-
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") SetFace;
-		void SetFace (const TopoDS_Face & F);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: bool
 ") Compute;
 		virtual Standard_Boolean Compute (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") GetSplitCurve2dTool;
+		%feature("autodoc", "	* Returns the tool for splitting pcurves.
+
+	:rtype: Handle_ShapeUpgrade_SplitCurve2d
+") GetSplitCurve2dTool;
+		virtual Handle_ShapeUpgrade_SplitCurve2d GetSplitCurve2dTool ();
+		%feature("compactdefaultargs") GetSplitCurve3dTool;
+		%feature("autodoc", "	* Returns the tool for splitting 3D curves.
+
+	:rtype: Handle_ShapeUpgrade_SplitCurve3d
+") GetSplitCurve3dTool;
+		virtual Handle_ShapeUpgrade_SplitCurve3d GetSplitCurve3dTool ();
 		%feature("compactdefaultargs") HasCurve2d;
 		%feature("autodoc", "	:rtype: bool
 ") HasCurve2d;
@@ -829,6 +874,14 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfReal
 ") Knots3d;
 		Handle_TColStd_HSequenceOfReal Knots3d ();
+		%feature("compactdefaultargs") SetFace;
+		%feature("autodoc", "	* Sets supporting surface by face
+
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") SetFace;
+		void SetFace (const TopoDS_Face & F);
 		%feature("compactdefaultargs") SetSplitCurve2dTool;
 		%feature("autodoc", "	* Sets the tool for splitting pcurves.
 
@@ -845,18 +898,12 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetSplitCurve3dTool;
 		void SetSplitCurve3dTool (const Handle_ShapeUpgrade_SplitCurve3d & splitCurve3dTool);
-		%feature("compactdefaultargs") GetSplitCurve2dTool;
-		%feature("autodoc", "	* Returns the tool for splitting pcurves.
+		%feature("compactdefaultargs") ShapeUpgrade_EdgeDivide;
+		%feature("autodoc", "	* Empty constructor
 
-	:rtype: Handle_ShapeUpgrade_SplitCurve2d
-") GetSplitCurve2dTool;
-		virtual Handle_ShapeUpgrade_SplitCurve2d GetSplitCurve2dTool ();
-		%feature("compactdefaultargs") GetSplitCurve3dTool;
-		%feature("autodoc", "	* Returns the tool for splitting 3D curves.
-
-	:rtype: Handle_ShapeUpgrade_SplitCurve3d
-") GetSplitCurve3dTool;
-		virtual Handle_ShapeUpgrade_SplitCurve3d GetSplitCurve3dTool ();
+	:rtype: None
+") ShapeUpgrade_EdgeDivide;
+		 ShapeUpgrade_EdgeDivide ();
 };
 
 
@@ -870,6 +917,62 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 %nodefaultctor ShapeUpgrade_FaceDivide;
 class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	public:
+		%feature("compactdefaultargs") GetSplitSurfaceTool;
+		%feature("autodoc", "	* Returns the tool for splitting surfaces. This tool must be already initialized.
+
+	:rtype: Handle_ShapeUpgrade_SplitSurface
+") GetSplitSurfaceTool;
+		virtual Handle_ShapeUpgrade_SplitSurface GetSplitSurfaceTool ();
+		%feature("compactdefaultargs") GetWireDivideTool;
+		%feature("autodoc", "	* Returns the tool for dividing edges on Face. This tool must be already initialized.
+
+	:rtype: Handle_ShapeUpgrade_WireDivide
+") GetWireDivideTool;
+		virtual Handle_ShapeUpgrade_WireDivide GetWireDivideTool ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize by a Face.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs splitting and computes the resulting shell The context is used to keep track of former splittings in order to keep sharings. It is updated according to modifications made.
+
+	:rtype: bool
+") Perform;
+		virtual Standard_Boolean Perform ();
+		%feature("compactdefaultargs") Result;
+		%feature("autodoc", "	* Gives the resulting Shell, or Face, or Null shape if not done.
+
+	:rtype: TopoDS_Shape
+") Result;
+		TopoDS_Shape Result ();
+		%feature("compactdefaultargs") SetSplitSurfaceTool;
+		%feature("autodoc", "	* Sets the tool for splitting surfaces.
+
+	:param splitSurfaceTool:
+	:type splitSurfaceTool: Handle_ShapeUpgrade_SplitSurface &
+	:rtype: None
+") SetSplitSurfaceTool;
+		void SetSplitSurfaceTool (const Handle_ShapeUpgrade_SplitSurface & splitSurfaceTool);
+		%feature("compactdefaultargs") SetSurfaceSegmentMode;
+		%feature("autodoc", "	* Purpose sets mode for trimming (segment) surface by wire UV bounds.
+
+	:param Segment:
+	:type Segment: bool
+	:rtype: None
+") SetSurfaceSegmentMode;
+		void SetSurfaceSegmentMode (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") SetWireDivideTool;
+		%feature("autodoc", "	* Sets the tool for dividing edges on Face.
+
+	:param wireDivideTool:
+	:type wireDivideTool: Handle_ShapeUpgrade_WireDivide &
+	:rtype: None
+") SetWireDivideTool;
+		void SetWireDivideTool (const Handle_ShapeUpgrade_WireDivide & wireDivideTool);
 		%feature("compactdefaultargs") ShapeUpgrade_FaceDivide;
 		%feature("autodoc", "	* Creates empty constructor.
 
@@ -884,46 +987,18 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") ShapeUpgrade_FaceDivide;
 		 ShapeUpgrade_FaceDivide (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize by a Face.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Face & F);
-		%feature("compactdefaultargs") SetSurfaceSegmentMode;
-		%feature("autodoc", "	* Purpose sets mode for trimming (segment) surface by wire UV bounds.
-
-	:param Segment:
-	:type Segment: bool
-	:rtype: None
-") SetSurfaceSegmentMode;
-		void SetSurfaceSegmentMode (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs splitting and computes the resulting shell The context is used to keep track of former splittings in order to keep sharings. It is updated according to modifications made.
-
-	:rtype: bool
-") Perform;
-		virtual Standard_Boolean Perform ();
-		%feature("compactdefaultargs") SplitSurface;
-		%feature("autodoc", "	* Performs splitting of surface and computes the shell from source face.
-
-	:rtype: bool
-") SplitSurface;
-		virtual Standard_Boolean SplitSurface ();
 		%feature("compactdefaultargs") SplitCurves;
 		%feature("autodoc", "	* Performs splitting of curves of all the edges in the shape and divides these edges.
 
 	:rtype: bool
 ") SplitCurves;
 		virtual Standard_Boolean SplitCurves ();
-		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "	* Gives the resulting Shell, or Face, or Null shape if not done.
+		%feature("compactdefaultargs") SplitSurface;
+		%feature("autodoc", "	* Performs splitting of surface and computes the shell from source face.
 
-	:rtype: TopoDS_Shape
-") Result;
-		TopoDS_Shape Result ();
+	:rtype: bool
+") SplitSurface;
+		virtual Standard_Boolean SplitSurface ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Queries the status of last call to Perform OK : no splitting was done (or no call to Perform) DONE1: some edges were splitted DONE2: surface was splitted DONE3: surface was modified without splitting FAIL1: some fails encountered during splitting wires FAIL2: face cannot be splitted
 
@@ -932,34 +1007,6 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	:rtype: bool
 ") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("compactdefaultargs") SetSplitSurfaceTool;
-		%feature("autodoc", "	* Sets the tool for splitting surfaces.
-
-	:param splitSurfaceTool:
-	:type splitSurfaceTool: Handle_ShapeUpgrade_SplitSurface &
-	:rtype: None
-") SetSplitSurfaceTool;
-		void SetSplitSurfaceTool (const Handle_ShapeUpgrade_SplitSurface & splitSurfaceTool);
-		%feature("compactdefaultargs") SetWireDivideTool;
-		%feature("autodoc", "	* Sets the tool for dividing edges on Face.
-
-	:param wireDivideTool:
-	:type wireDivideTool: Handle_ShapeUpgrade_WireDivide &
-	:rtype: None
-") SetWireDivideTool;
-		void SetWireDivideTool (const Handle_ShapeUpgrade_WireDivide & wireDivideTool);
-		%feature("compactdefaultargs") GetSplitSurfaceTool;
-		%feature("autodoc", "	* Returns the tool for splitting surfaces. This tool must be already initialized.
-
-	:rtype: Handle_ShapeUpgrade_SplitSurface
-") GetSplitSurfaceTool;
-		virtual Handle_ShapeUpgrade_SplitSurface GetSplitSurfaceTool ();
-		%feature("compactdefaultargs") GetWireDivideTool;
-		%feature("autodoc", "	* Returns the tool for dividing edges on Face. This tool must be already initialized.
-
-	:rtype: Handle_ShapeUpgrade_WireDivide
-") GetWireDivideTool;
-		virtual Handle_ShapeUpgrade_WireDivide GetWireDivideTool ();
 };
 
 
@@ -973,18 +1020,6 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 %nodefaultctor ShapeUpgrade_FixSmallCurves;
 class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_FixSmallCurves;
-		%feature("autodoc", "	:rtype: None
-") ShapeUpgrade_FixSmallCurves;
-		 ShapeUpgrade_FixSmallCurves ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param theEdge:
-	:type theEdge: TopoDS_Edge &
-	:param theFace:
-	:type theFace: TopoDS_Face &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 		%feature("compactdefaultargs") Approx;
 		%feature("autodoc", "	:param Curve3d:
 	:type Curve3d: Handle_Geom_Curve &
@@ -999,14 +1034,14 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 	:rtype: bool
 ") Approx;
 		virtual Standard_Boolean Approx (Handle_Geom_Curve & Curve3d,Handle_Geom2d_Curve & Curve2d,Handle_Geom2d_Curve & Curve2dR,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") SetSplitCurve3dTool;
-		%feature("autodoc", "	* Sets the tool for splitting 3D curves.
-
-	:param splitCurve3dTool:
-	:type splitCurve3dTool: Handle_ShapeUpgrade_SplitCurve3d &
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theFace:
+	:type theFace: TopoDS_Face &
 	:rtype: None
-") SetSplitCurve3dTool;
-		void SetSplitCurve3dTool (const Handle_ShapeUpgrade_SplitCurve3d & splitCurve3dTool);
+") Init;
+		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 		%feature("compactdefaultargs") SetSplitCurve2dTool;
 		%feature("autodoc", "	* Sets the tool for splitting pcurves.
 
@@ -1015,6 +1050,18 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetSplitCurve2dTool;
 		void SetSplitCurve2dTool (const Handle_ShapeUpgrade_SplitCurve2d & splitCurve2dTool);
+		%feature("compactdefaultargs") SetSplitCurve3dTool;
+		%feature("autodoc", "	* Sets the tool for splitting 3D curves.
+
+	:param splitCurve3dTool:
+	:type splitCurve3dTool: Handle_ShapeUpgrade_SplitCurve3d &
+	:rtype: None
+") SetSplitCurve3dTool;
+		void SetSplitCurve3dTool (const Handle_ShapeUpgrade_SplitCurve3d & splitCurve3dTool);
+		%feature("compactdefaultargs") ShapeUpgrade_FixSmallCurves;
+		%feature("autodoc", "	:rtype: None
+") ShapeUpgrade_FixSmallCurves;
+		 ShapeUpgrade_FixSmallCurves ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Queries the status of last call to Perform OK : DONE1: DONE2: FAIL1:
 
@@ -1036,18 +1083,12 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 %nodefaultctor ShapeUpgrade_RemoveInternalWires;
 class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_RemoveInternalWires;
-		%feature("autodoc", "	* Creates empty constructor.
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "	* Get result shape
 
-	:rtype: None
-") ShapeUpgrade_RemoveInternalWires;
-		 ShapeUpgrade_RemoveInternalWires ();
-		%feature("compactdefaultargs") ShapeUpgrade_RemoveInternalWires;
-		%feature("autodoc", "	:param theShape:
-	:type theShape: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_RemoveInternalWires;
-		 ShapeUpgrade_RemoveInternalWires (const TopoDS_Shape & theShape);
+	:rtype: TopoDS_Shape
+") GetResult;
+		TopoDS_Shape GetResult ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize by a Shape.
 
@@ -1056,26 +1097,6 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & theShape);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Removes all internal wires having area less than area specified as minimal allowed area
-
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* If specified sequence of shape contains - 1.wires then these wires will be removed if they have area less than allowed min area. 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
-
-	:param theSeqShapes:
-	:type theSeqShapes: TopTools_SequenceOfShape &
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const TopTools_SequenceOfShape & theSeqShapes);
-		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* Get result shape
-
-	:rtype: TopoDS_Shape
-") GetResult;
-		TopoDS_Shape GetResult ();
 
             %feature("autodoc","1");
             %extend {
@@ -1089,7 +1110,21 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
                 $self->MinArea()=value;
                 }
             };
-            
+            		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Removes all internal wires having area less than area specified as minimal allowed area
+
+	:rtype: bool
+") Perform;
+		Standard_Boolean Perform ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* If specified sequence of shape contains - 1.wires then these wires will be removed if they have area less than allowed min area. 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
+
+	:param theSeqShapes:
+	:type theSeqShapes: TopTools_SequenceOfShape &
+	:rtype: bool
+") Perform;
+		Standard_Boolean Perform (const TopTools_SequenceOfShape & theSeqShapes);
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetRemoveFaceMode() {
@@ -1114,6 +1149,18 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 	:rtype: TopTools_SequenceOfShape
 ") RemovedWires;
 		const TopTools_SequenceOfShape & RemovedWires ();
+		%feature("compactdefaultargs") ShapeUpgrade_RemoveInternalWires;
+		%feature("autodoc", "	* Creates empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_RemoveInternalWires;
+		 ShapeUpgrade_RemoveInternalWires ();
+		%feature("compactdefaultargs") ShapeUpgrade_RemoveInternalWires;
+		%feature("autodoc", "	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_RemoveInternalWires;
+		 ShapeUpgrade_RemoveInternalWires (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Queries status of last call to Perform() : OK - nothing was done :DONE1 - internal wires were removed :DONE2 - small faces were removed. :FAIL1 - initial shape is not specified :FAIL2 - specified sub-shape is not belonged to inotial shape.
 
@@ -1135,6 +1182,154 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 %nodefaultctor ShapeUpgrade_ShapeConvertToBezier;
 class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 	public:
+		%feature("compactdefaultargs") Get2dConversion;
+		%feature("autodoc", "	* Returns the 2D conversion mode.
+
+	:rtype: bool
+") Get2dConversion;
+		Standard_Boolean Get2dConversion ();
+		%feature("compactdefaultargs") Get3dCircleConversion;
+		%feature("autodoc", "	* Returns the Geom_Circle conversion mode.
+
+	:rtype: bool
+") Get3dCircleConversion;
+		Standard_Boolean Get3dCircleConversion ();
+		%feature("compactdefaultargs") Get3dConicConversion;
+		%feature("autodoc", "	* Returns the Geom_Conic conversion mode.
+
+	:rtype: bool
+") Get3dConicConversion;
+		Standard_Boolean Get3dConicConversion ();
+		%feature("compactdefaultargs") Get3dConversion;
+		%feature("autodoc", "	* Returns the 3D conversion mode.
+
+	:rtype: bool
+") Get3dConversion;
+		Standard_Boolean Get3dConversion ();
+		%feature("compactdefaultargs") Get3dLineConversion;
+		%feature("autodoc", "	* Returns the Geom_Line conversion mode.
+
+	:rtype: bool
+") Get3dLineConversion;
+		Standard_Boolean Get3dLineConversion ();
+		%feature("compactdefaultargs") GetBSplineMode;
+		%feature("autodoc", "	* Returns the Geom_BSplineSurface conversion mode.
+
+	:rtype: bool
+") GetBSplineMode;
+		Standard_Boolean GetBSplineMode ();
+		%feature("compactdefaultargs") GetExtrusionMode;
+		%feature("autodoc", "	* Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
+
+	:rtype: bool
+") GetExtrusionMode;
+		Standard_Boolean GetExtrusionMode ();
+		%feature("compactdefaultargs") GetPlaneMode;
+		%feature("autodoc", "	* Returns the Geom_Pline conversion mode.
+
+	:rtype: bool
+") GetPlaneMode;
+		Standard_Boolean GetPlaneMode ();
+		%feature("compactdefaultargs") GetRevolutionMode;
+		%feature("autodoc", "	* Returns the Geom_SurfaceOfRevolution conversion mode.
+
+	:rtype: bool
+") GetRevolutionMode;
+		Standard_Boolean GetRevolutionMode ();
+		%feature("compactdefaultargs") GetSurfaceConversion;
+		%feature("autodoc", "	* Returns the surface conversion mode.
+
+	:rtype: bool
+") GetSurfaceConversion;
+		Standard_Boolean GetSurfaceConversion ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs converting and computes the resulting shape
+
+	:param newContext: default value is Standard_True
+	:type newContext: bool
+	:rtype: bool
+") Perform;
+		virtual Standard_Boolean Perform (const Standard_Boolean newContext = Standard_True);
+		%feature("compactdefaultargs") Set2dConversion;
+		%feature("autodoc", "	* Sets mode for conversion 2D curves to bezier.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") Set2dConversion;
+		void Set2dConversion (const Standard_Boolean mode);
+		%feature("compactdefaultargs") Set3dCircleConversion;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Circle to bezier.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") Set3dCircleConversion;
+		void Set3dCircleConversion (const Standard_Boolean mode);
+		%feature("compactdefaultargs") Set3dConicConversion;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Conic to bezier.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") Set3dConicConversion;
+		void Set3dConicConversion (const Standard_Boolean mode);
+		%feature("compactdefaultargs") Set3dConversion;
+		%feature("autodoc", "	* Sets mode for conversion 3d curves to bezier.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") Set3dConversion;
+		void Set3dConversion (const Standard_Boolean mode);
+		%feature("compactdefaultargs") Set3dLineConversion;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Line to bezier.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") Set3dLineConversion;
+		void Set3dLineConversion (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetBSplineMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_BSplineSurface to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetBSplineMode;
+		void SetBSplineMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetExtrusionMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetExtrusionMode;
+		void SetExtrusionMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetPlaneMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Plane to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetPlaneMode;
+		void SetPlaneMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetRevolutionMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetRevolutionMode;
+		void SetRevolutionMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") SetSurfaceConversion;
+		%feature("autodoc", "	* Sets mode for conversion surfaces curves to bezier basis.
+
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetSurfaceConversion;
+		void SetSurfaceConversion (const Standard_Boolean mode);
 		%feature("compactdefaultargs") ShapeUpgrade_ShapeConvertToBezier;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -1149,154 +1344,6 @@ class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") ShapeUpgrade_ShapeConvertToBezier;
 		 ShapeUpgrade_ShapeConvertToBezier (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Set2dConversion;
-		%feature("autodoc", "	* Sets mode for conversion 2D curves to bezier.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") Set2dConversion;
-		void Set2dConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") Get2dConversion;
-		%feature("autodoc", "	* Returns the 2D conversion mode.
-
-	:rtype: bool
-") Get2dConversion;
-		Standard_Boolean Get2dConversion ();
-		%feature("compactdefaultargs") Set3dConversion;
-		%feature("autodoc", "	* Sets mode for conversion 3d curves to bezier.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") Set3dConversion;
-		void Set3dConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") Get3dConversion;
-		%feature("autodoc", "	* Returns the 3D conversion mode.
-
-	:rtype: bool
-") Get3dConversion;
-		Standard_Boolean Get3dConversion ();
-		%feature("compactdefaultargs") SetSurfaceConversion;
-		%feature("autodoc", "	* Sets mode for conversion surfaces curves to bezier basis.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetSurfaceConversion;
-		void SetSurfaceConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetSurfaceConversion;
-		%feature("autodoc", "	* Returns the surface conversion mode.
-
-	:rtype: bool
-") GetSurfaceConversion;
-		Standard_Boolean GetSurfaceConversion ();
-		%feature("compactdefaultargs") Set3dLineConversion;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Line to bezier.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") Set3dLineConversion;
-		void Set3dLineConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") Get3dLineConversion;
-		%feature("autodoc", "	* Returns the Geom_Line conversion mode.
-
-	:rtype: bool
-") Get3dLineConversion;
-		Standard_Boolean Get3dLineConversion ();
-		%feature("compactdefaultargs") Set3dCircleConversion;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Circle to bezier.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") Set3dCircleConversion;
-		void Set3dCircleConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") Get3dCircleConversion;
-		%feature("autodoc", "	* Returns the Geom_Circle conversion mode.
-
-	:rtype: bool
-") Get3dCircleConversion;
-		Standard_Boolean Get3dCircleConversion ();
-		%feature("compactdefaultargs") Set3dConicConversion;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Conic to bezier.
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") Set3dConicConversion;
-		void Set3dConicConversion (const Standard_Boolean mode);
-		%feature("compactdefaultargs") Get3dConicConversion;
-		%feature("autodoc", "	* Returns the Geom_Conic conversion mode.
-
-	:rtype: bool
-") Get3dConicConversion;
-		Standard_Boolean Get3dConicConversion ();
-		%feature("compactdefaultargs") SetPlaneMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Plane to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetPlaneMode;
-		void SetPlaneMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetPlaneMode;
-		%feature("autodoc", "	* Returns the Geom_Pline conversion mode.
-
-	:rtype: bool
-") GetPlaneMode;
-		Standard_Boolean GetPlaneMode ();
-		%feature("compactdefaultargs") SetRevolutionMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetRevolutionMode;
-		void SetRevolutionMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetRevolutionMode;
-		%feature("autodoc", "	* Returns the Geom_SurfaceOfRevolution conversion mode.
-
-	:rtype: bool
-") GetRevolutionMode;
-		Standard_Boolean GetRevolutionMode ();
-		%feature("compactdefaultargs") SetExtrusionMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetExtrusionMode;
-		void SetExtrusionMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetExtrusionMode;
-		%feature("autodoc", "	* Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
-
-	:rtype: bool
-") GetExtrusionMode;
-		Standard_Boolean GetExtrusionMode ();
-		%feature("compactdefaultargs") SetBSplineMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_BSplineSurface to Bezier
-
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetBSplineMode;
-		void SetBSplineMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetBSplineMode;
-		%feature("autodoc", "	* Returns the Geom_BSplineSurface conversion mode.
-
-	:rtype: bool
-") GetBSplineMode;
-		Standard_Boolean GetBSplineMode ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs converting and computes the resulting shape
-
-	:param newContext: default value is Standard_True
-	:type newContext: bool
-	:rtype: bool
-") Perform;
-		virtual Standard_Boolean Perform (const Standard_Boolean newContext = Standard_True);
 };
 
 
@@ -1308,6 +1355,28 @@ class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShapeDivideAngle;
 class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	public:
+		%feature("compactdefaultargs") InitTool;
+		%feature("autodoc", "	* Resets tool for splitting face with given angle
+
+	:param MaxAngle:
+	:type MaxAngle: float
+	:rtype: None
+") InitTool;
+		void InitTool (const Standard_Real MaxAngle);
+		%feature("compactdefaultargs") MaxAngle;
+		%feature("autodoc", "	* Returns maximal angle
+
+	:rtype: float
+") MaxAngle;
+		Standard_Real MaxAngle ();
+		%feature("compactdefaultargs") SetMaxAngle;
+		%feature("autodoc", "	* Set maximal angle (calls InitTool)
+
+	:param MaxAngle:
+	:type MaxAngle: float
+	:rtype: None
+") SetMaxAngle;
+		void SetMaxAngle (const Standard_Real MaxAngle);
 		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideAngle;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -1326,28 +1395,6 @@ class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") ShapeUpgrade_ShapeDivideAngle;
 		 ShapeUpgrade_ShapeDivideAngle (const Standard_Real MaxAngle,const TopoDS_Shape & S);
-		%feature("compactdefaultargs") InitTool;
-		%feature("autodoc", "	* Resets tool for splitting face with given angle
-
-	:param MaxAngle:
-	:type MaxAngle: float
-	:rtype: None
-") InitTool;
-		void InitTool (const Standard_Real MaxAngle);
-		%feature("compactdefaultargs") SetMaxAngle;
-		%feature("autodoc", "	* Set maximal angle (calls InitTool)
-
-	:param MaxAngle:
-	:type MaxAngle: float
-	:rtype: None
-") SetMaxAngle;
-		void SetMaxAngle (const Standard_Real MaxAngle);
-		%feature("compactdefaultargs") MaxAngle;
-		%feature("autodoc", "	* Returns maximal angle
-
-	:rtype: float
-") MaxAngle;
-		Standard_Real MaxAngle ();
 };
 
 
@@ -1359,18 +1406,6 @@ class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShapeDivideArea;
 class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideArea;
-		%feature("autodoc", "	:rtype: None
-") ShapeUpgrade_ShapeDivideArea;
-		 ShapeUpgrade_ShapeDivideArea ();
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideArea;
-		%feature("autodoc", "	* Initialize by a Shape.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_ShapeDivideArea;
-		 ShapeUpgrade_ShapeDivideArea (const TopoDS_Shape & S);
 
             %feature("autodoc","1");
             %extend {
@@ -1384,7 +1419,19 @@ class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
                 $self->MaxArea()=value;
                 }
             };
-            };
+            		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideArea;
+		%feature("autodoc", "	:rtype: None
+") ShapeUpgrade_ShapeDivideArea;
+		 ShapeUpgrade_ShapeDivideArea ();
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideArea;
+		%feature("autodoc", "	* Initialize by a Shape.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_ShapeDivideArea;
+		 ShapeUpgrade_ShapeDivideArea (const TopoDS_Shape & S);
+};
 
 
 %extend ShapeUpgrade_ShapeDivideArea {
@@ -1395,14 +1442,6 @@ class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShapeDivideClosed;
 class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideClosed;
-		%feature("autodoc", "	* Initialises tool with shape and default parameter.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_ShapeDivideClosed;
-		 ShapeUpgrade_ShapeDivideClosed (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") SetNbSplitPoints;
 		%feature("autodoc", "	* Sets the number of cuts applied to divide closed faces. The number of resulting faces will be num+1.
 
@@ -1411,6 +1450,14 @@ class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetNbSplitPoints;
 		void SetNbSplitPoints (const Standard_Integer num);
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideClosed;
+		%feature("autodoc", "	* Initialises tool with shape and default parameter.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_ShapeDivideClosed;
+		 ShapeUpgrade_ShapeDivideClosed (const TopoDS_Shape & S);
 };
 
 
@@ -1422,14 +1469,6 @@ class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShapeDivideClosedEdges;
 class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideClosedEdges;
-		%feature("autodoc", "	* Initialises tool with shape and default parameter.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_ShapeDivideClosedEdges;
-		 ShapeUpgrade_ShapeDivideClosedEdges (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") SetNbSplitPoints;
 		%feature("autodoc", "	* Sets the number of cuts applied to divide closed edges. The number of resulting faces will be num+1.
 
@@ -1438,6 +1477,14 @@ class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetNbSplitPoints;
 		void SetNbSplitPoints (const Standard_Integer num);
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideClosedEdges;
+		%feature("autodoc", "	* Initialises tool with shape and default parameter.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_ShapeDivideClosedEdges;
+		 ShapeUpgrade_ShapeDivideClosedEdges (const TopoDS_Shape & S);
 };
 
 
@@ -1449,34 +1496,6 @@ class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_ShapeDivideContinuity;
 class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideContinuity;
-		%feature("autodoc", "	:rtype: None
-") ShapeUpgrade_ShapeDivideContinuity;
-		 ShapeUpgrade_ShapeDivideContinuity ();
-		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideContinuity;
-		%feature("autodoc", "	* Initialize by a Shape.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") ShapeUpgrade_ShapeDivideContinuity;
-		 ShapeUpgrade_ShapeDivideContinuity (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	* Sets tolerance.
-
-	:param Tol:
-	:type Tol: float
-	:rtype: None
-") SetTolerance;
-		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") SetTolerance2d;
-		%feature("autodoc", "	* Sets tolerance.
-
-	:param Tol:
-	:type Tol: float
-	:rtype: None
-") SetTolerance2d;
-		void SetTolerance2d (const Standard_Real Tol);
 		%feature("compactdefaultargs") SetBoundaryCriterion;
 		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 
@@ -1501,6 +1520,34 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetSurfaceCriterion;
 		void SetSurfaceCriterion (const GeomAbs_Shape Criterion = GeomAbs_C1);
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "	* Sets tolerance.
+
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetTolerance;
+		void SetTolerance (const Standard_Real Tol);
+		%feature("compactdefaultargs") SetTolerance2d;
+		%feature("autodoc", "	* Sets tolerance.
+
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetTolerance2d;
+		void SetTolerance2d (const Standard_Real Tol);
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideContinuity;
+		%feature("autodoc", "	:rtype: None
+") ShapeUpgrade_ShapeDivideContinuity;
+		 ShapeUpgrade_ShapeDivideContinuity ();
+		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideContinuity;
+		%feature("autodoc", "	* Initialize by a Shape.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") ShapeUpgrade_ShapeDivideContinuity;
+		 ShapeUpgrade_ShapeDivideContinuity (const TopoDS_Shape & S);
 };
 
 
@@ -1512,12 +1559,18 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 %nodefaultctor ShapeUpgrade_SplitCurve2d;
 class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve2d;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 
-	:rtype: None
-") ShapeUpgrade_SplitCurve2d;
-		 ShapeUpgrade_SplitCurve2d ();
+	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Build;
+		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") GetCurves;
+		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HArray1OfCurve
+") GetCurves;
+		Handle_TColGeom2d_HArray1OfCurve GetCurves ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes with pcurve with its first and last parameters.
 
@@ -1538,18 +1591,12 @@ class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 	:rtype: None
 ") Init;
 		void Init (const Handle_Geom2d_Curve & C,const Standard_Real First,const Standard_Real Last);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
+		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve2d;
+		%feature("autodoc", "	* Empty constructor.
 
-	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Build;
-		virtual void Build (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") GetCurves;
-		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HArray1OfCurve
-") GetCurves;
-		Handle_TColGeom2d_HArray1OfCurve GetCurves ();
+	:rtype: None
+") ShapeUpgrade_SplitCurve2d;
+		 ShapeUpgrade_SplitCurve2d ();
 };
 
 
@@ -1563,12 +1610,18 @@ class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 %nodefaultctor ShapeUpgrade_SplitCurve3d;
 class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve3d;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 
-	:rtype: None
-") ShapeUpgrade_SplitCurve3d;
-		 ShapeUpgrade_SplitCurve3d ();
+	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Build;
+		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") GetCurves;
+		%feature("autodoc", "	:rtype: Handle_TColGeom_HArray1OfCurve
+") GetCurves;
+		Handle_TColGeom_HArray1OfCurve GetCurves ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes with curve with its first and last parameters.
 
@@ -1589,18 +1642,12 @@ class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 	:rtype: None
 ") Init;
 		void Init (const Handle_Geom_Curve & C,const Standard_Real First,const Standard_Real Last);
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
+		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve3d;
+		%feature("autodoc", "	* Empty constructor.
 
-	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Build;
-		virtual void Build (const Standard_Boolean Segment);
-		%feature("compactdefaultargs") GetCurves;
-		%feature("autodoc", "	:rtype: Handle_TColGeom_HArray1OfCurve
-") GetCurves;
-		Handle_TColGeom_HArray1OfCurve GetCurves ();
+	:rtype: None
+") ShapeUpgrade_SplitCurve3d;
+		 ShapeUpgrade_SplitCurve3d ();
 };
 
 
@@ -1614,28 +1661,6 @@ class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 %nodefaultctor ShapeUpgrade_SplitSurfaceAngle;
 class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceAngle;
-		%feature("autodoc", "	* Empty constructor.
-
-	:param MaxAngle:
-	:type MaxAngle: float
-	:rtype: None
-") ShapeUpgrade_SplitSurfaceAngle;
-		 ShapeUpgrade_SplitSurfaceAngle (const Standard_Real MaxAngle);
-		%feature("compactdefaultargs") SetMaxAngle;
-		%feature("autodoc", "	* Set maximal angle
-
-	:param MaxAngle:
-	:type MaxAngle: float
-	:rtype: None
-") SetMaxAngle;
-		void SetMaxAngle (const Standard_Real MaxAngle);
-		%feature("compactdefaultargs") MaxAngle;
-		%feature("autodoc", "	* Returns maximal angle
-
-	:rtype: float
-") MaxAngle;
-		Standard_Real MaxAngle ();
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* Performs splitting of the supporting surface(s). First defines splitting values, then calls inherited method.
 
@@ -1644,6 +1669,28 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 	:rtype: void
 ") Compute;
 		virtual void Compute (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") MaxAngle;
+		%feature("autodoc", "	* Returns maximal angle
+
+	:rtype: float
+") MaxAngle;
+		Standard_Real MaxAngle ();
+		%feature("compactdefaultargs") SetMaxAngle;
+		%feature("autodoc", "	* Set maximal angle
+
+	:param MaxAngle:
+	:type MaxAngle: float
+	:rtype: None
+") SetMaxAngle;
+		void SetMaxAngle (const Standard_Real MaxAngle);
+		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceAngle;
+		%feature("autodoc", "	* Empty constructor.
+
+	:param MaxAngle:
+	:type MaxAngle: float
+	:rtype: None
+") ShapeUpgrade_SplitSurfaceAngle;
+		 ShapeUpgrade_SplitSurfaceAngle (const Standard_Real MaxAngle);
 };
 
 
@@ -1657,12 +1704,12 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 %nodefaultctor ShapeUpgrade_SplitSurfaceArea;
 class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceArea;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_SplitSurfaceArea;
-		 ShapeUpgrade_SplitSurfaceArea ();
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	:param Segment: default value is Standard_True
+	:type Segment: bool
+	:rtype: void
+") Compute;
+		virtual void Compute (const Standard_Boolean Segment = Standard_True);
 
             %feature("autodoc","1");
             %extend {
@@ -1676,12 +1723,12 @@ class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
                 $self->NbParts()=value;
                 }
             };
-            		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:param Segment: default value is Standard_True
-	:type Segment: bool
-	:rtype: void
-") Compute;
-		virtual void Compute (const Standard_Boolean Segment = Standard_True);
+            		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceArea;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_SplitSurfaceArea;
+		 ShapeUpgrade_SplitSurfaceArea ();
 };
 
 
@@ -1695,12 +1742,12 @@ class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 %nodefaultctor ShapeUpgrade_SplitSurfaceContinuity;
 class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceContinuity;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_SplitSurfaceContinuity;
-		 ShapeUpgrade_SplitSurfaceContinuity ();
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Compute;
+		virtual void Compute (const Standard_Boolean Segment);
 		%feature("compactdefaultargs") SetCriterion;
 		%feature("autodoc", "	* Sets criterion for splitting.
 
@@ -1717,12 +1764,12 @@ class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Compute;
-		virtual void Compute (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceContinuity;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_SplitSurfaceContinuity;
+		 ShapeUpgrade_SplitSurfaceContinuity ();
 };
 
 
@@ -1736,12 +1783,24 @@ class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 %nodefaultctor ShapeUpgrade_WireDivide;
 class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_WireDivide;
-		%feature("autodoc", "	* Empty constructor
+		%feature("compactdefaultargs") GetEdgeDivideTool;
+		%feature("autodoc", "	* returns tool for splitting edges
 
-	:rtype: None
-") ShapeUpgrade_WireDivide;
-		 ShapeUpgrade_WireDivide ();
+	:rtype: Handle_ShapeUpgrade_EdgeDivide
+") GetEdgeDivideTool;
+		virtual Handle_ShapeUpgrade_EdgeDivide GetEdgeDivideTool ();
+		%feature("compactdefaultargs") GetFixSmallCurveTool;
+		%feature("autodoc", "	* Returns tool for fixing small curves
+
+	:rtype: Handle_ShapeUpgrade_FixSmallCurves
+") GetFixSmallCurveTool;
+		Handle_ShapeUpgrade_FixSmallCurves GetFixSmallCurveTool ();
+		%feature("compactdefaultargs") GetTransferParamTool;
+		%feature("autodoc", "	* Returns the tool for Transfer of parameters.
+
+	:rtype: Handle_ShapeAnalysis_TransferParameters
+") GetTransferParamTool;
+		virtual Handle_ShapeAnalysis_TransferParameters GetTransferParamTool ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes by wire and face
 
@@ -1778,6 +1837,28 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") Load;
 		void Load (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Computes the resulting wire by splitting all the edges according to splitting criteria. All the modifications made are recorded in context (ShapeBuild_ReShape). This tool is applied to all edges before splitting them in order to keep sharings. If no supporting face or surface is defined, only 3d splitting criteria are used.
+
+	:rtype: void
+") Perform;
+		virtual void Perform ();
+		%feature("compactdefaultargs") SetEdgeDivideTool;
+		%feature("autodoc", "	* Sets tool for splitting edge
+
+	:param edgeDivideTool:
+	:type edgeDivideTool: Handle_ShapeUpgrade_EdgeDivide &
+	:rtype: None
+") SetEdgeDivideTool;
+		void SetEdgeDivideTool (const Handle_ShapeUpgrade_EdgeDivide & edgeDivideTool);
+		%feature("compactdefaultargs") SetEdgeMode;
+		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
+
+	:param EdgeMode:
+	:type EdgeMode: int
+	:rtype: None
+") SetEdgeMode;
+		void SetEdgeMode (const Standard_Integer EdgeMode);
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "	* Sets supporting surface by face
 
@@ -1786,6 +1867,30 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetFace;
 		void SetFace (const TopoDS_Face & F);
+		%feature("compactdefaultargs") SetFixSmallCurveTool;
+		%feature("autodoc", "	* Sets tool for fixing small curves with specified min tolerance;
+
+	:param FixSmallCurvesTool:
+	:type FixSmallCurvesTool: Handle_ShapeUpgrade_FixSmallCurves &
+	:rtype: None
+") SetFixSmallCurveTool;
+		void SetFixSmallCurveTool (const Handle_ShapeUpgrade_FixSmallCurves & FixSmallCurvesTool);
+		%feature("compactdefaultargs") SetSplitCurve2dTool;
+		%feature("autodoc", "	* Sets the tool for splitting pcurves.
+
+	:param splitCurve2dTool:
+	:type splitCurve2dTool: Handle_ShapeUpgrade_SplitCurve2d &
+	:rtype: None
+") SetSplitCurve2dTool;
+		void SetSplitCurve2dTool (const Handle_ShapeUpgrade_SplitCurve2d & splitCurve2dTool);
+		%feature("compactdefaultargs") SetSplitCurve3dTool;
+		%feature("autodoc", "	* Sets the tool for splitting 3D curves.
+
+	:param splitCurve3dTool:
+	:type splitCurve3dTool: Handle_ShapeUpgrade_SplitCurve3d &
+	:rtype: None
+") SetSplitCurve3dTool;
+		void SetSplitCurve3dTool (const Handle_ShapeUpgrade_SplitCurve3d & splitCurve3dTool);
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "	* Sets supporting surface
 
@@ -1804,42 +1909,6 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetSurface;
 		void SetSurface (const Handle_Geom_Surface & S,const TopLoc_Location & L);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the resulting wire by splitting all the edges according to splitting criteria. All the modifications made are recorded in context (ShapeBuild_ReShape). This tool is applied to all edges before splitting them in order to keep sharings. If no supporting face or surface is defined, only 3d splitting criteria are used.
-
-	:rtype: void
-") Perform;
-		virtual void Perform ();
-		%feature("compactdefaultargs") Wire;
-		%feature("autodoc", "	* Gives the resulting Wire (equal to initial one if not done or Null if not loaded)
-
-	:rtype: TopoDS_Wire
-") Wire;
-		const TopoDS_Wire  Wire ();
-		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "	* Queries status of last call to Perform() OK - no edges were splitted, wire left untouched DONE1 - some edges were splitted FAIL1 - some edges have no 3d curve (skipped) FAIL2 - some edges have no pcurve (skipped)
-
-	:param status:
-	:type status: ShapeExtend_Status
-	:rtype: bool
-") Status;
-		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("compactdefaultargs") SetSplitCurve3dTool;
-		%feature("autodoc", "	* Sets the tool for splitting 3D curves.
-
-	:param splitCurve3dTool:
-	:type splitCurve3dTool: Handle_ShapeUpgrade_SplitCurve3d &
-	:rtype: None
-") SetSplitCurve3dTool;
-		void SetSplitCurve3dTool (const Handle_ShapeUpgrade_SplitCurve3d & splitCurve3dTool);
-		%feature("compactdefaultargs") SetSplitCurve2dTool;
-		%feature("autodoc", "	* Sets the tool for splitting pcurves.
-
-	:param splitCurve2dTool:
-	:type splitCurve2dTool: Handle_ShapeUpgrade_SplitCurve2d &
-	:rtype: None
-") SetSplitCurve2dTool;
-		void SetSplitCurve2dTool (const Handle_ShapeUpgrade_SplitCurve2d & splitCurve2dTool);
 		%feature("compactdefaultargs") SetTransferParamTool;
 		%feature("autodoc", "	* Sets the tool for Transfer parameters between curves and pcurves.
 
@@ -1848,48 +1917,26 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetTransferParamTool;
 		void SetTransferParamTool (const Handle_ShapeAnalysis_TransferParameters & TransferParam);
-		%feature("compactdefaultargs") SetEdgeDivideTool;
-		%feature("autodoc", "	* Sets tool for splitting edge
+		%feature("compactdefaultargs") ShapeUpgrade_WireDivide;
+		%feature("autodoc", "	* Empty constructor
 
-	:param edgeDivideTool:
-	:type edgeDivideTool: Handle_ShapeUpgrade_EdgeDivide &
 	:rtype: None
-") SetEdgeDivideTool;
-		void SetEdgeDivideTool (const Handle_ShapeUpgrade_EdgeDivide & edgeDivideTool);
-		%feature("compactdefaultargs") GetEdgeDivideTool;
-		%feature("autodoc", "	* returns tool for splitting edges
+") ShapeUpgrade_WireDivide;
+		 ShapeUpgrade_WireDivide ();
+		%feature("compactdefaultargs") Status;
+		%feature("autodoc", "	* Queries status of last call to Perform() OK - no edges were splitted, wire left untouched DONE1 - some edges were splitted FAIL1 - some edges have no 3d curve (skipped) FAIL2 - some edges have no pcurve (skipped)
 
-	:rtype: Handle_ShapeUpgrade_EdgeDivide
-") GetEdgeDivideTool;
-		virtual Handle_ShapeUpgrade_EdgeDivide GetEdgeDivideTool ();
-		%feature("compactdefaultargs") GetTransferParamTool;
-		%feature("autodoc", "	* Returns the tool for Transfer of parameters.
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
+		Standard_Boolean Status (const ShapeExtend_Status status);
+		%feature("compactdefaultargs") Wire;
+		%feature("autodoc", "	* Gives the resulting Wire (equal to initial one if not done or Null if not loaded)
 
-	:rtype: Handle_ShapeAnalysis_TransferParameters
-") GetTransferParamTool;
-		virtual Handle_ShapeAnalysis_TransferParameters GetTransferParamTool ();
-		%feature("compactdefaultargs") SetEdgeMode;
-		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
-
-	:param EdgeMode:
-	:type EdgeMode: int
-	:rtype: None
-") SetEdgeMode;
-		void SetEdgeMode (const Standard_Integer EdgeMode);
-		%feature("compactdefaultargs") SetFixSmallCurveTool;
-		%feature("autodoc", "	* Sets tool for fixing small curves with specified min tolerance;
-
-	:param FixSmallCurvesTool:
-	:type FixSmallCurvesTool: Handle_ShapeUpgrade_FixSmallCurves &
-	:rtype: None
-") SetFixSmallCurveTool;
-		void SetFixSmallCurveTool (const Handle_ShapeUpgrade_FixSmallCurves & FixSmallCurvesTool);
-		%feature("compactdefaultargs") GetFixSmallCurveTool;
-		%feature("autodoc", "	* Returns tool for fixing small curves
-
-	:rtype: Handle_ShapeUpgrade_FixSmallCurves
-") GetFixSmallCurveTool;
-		Handle_ShapeUpgrade_FixSmallCurves GetFixSmallCurveTool ();
+	:rtype: TopoDS_Wire
+") Wire;
+		const TopoDS_Wire  Wire ();
 };
 
 
@@ -1903,18 +1950,18 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 %nodefaultctor ShapeUpgrade_ClosedEdgeDivide;
 class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ClosedEdgeDivide;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_ClosedEdgeDivide;
-		 ShapeUpgrade_ClosedEdgeDivide ();
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param anEdge:
 	:type anEdge: TopoDS_Edge &
 	:rtype: bool
 ") Compute;
 		virtual Standard_Boolean Compute (const TopoDS_Edge & anEdge);
+		%feature("compactdefaultargs") ShapeUpgrade_ClosedEdgeDivide;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_ClosedEdgeDivide;
+		 ShapeUpgrade_ClosedEdgeDivide ();
 };
 
 
@@ -1928,6 +1975,20 @@ class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 %nodefaultctor ShapeUpgrade_ClosedFaceDivide;
 class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 	public:
+		%feature("compactdefaultargs") GetNbSplitPoints;
+		%feature("autodoc", "	* Returns the number of splitting points
+
+	:rtype: int
+") GetNbSplitPoints;
+		Standard_Integer GetNbSplitPoints ();
+		%feature("compactdefaultargs") SetNbSplitPoints;
+		%feature("autodoc", "	* Sets the number of cutting lines by which closed face will be splitted. The resulting faces will be num+1.
+
+	:param num:
+	:type num: int
+	:rtype: None
+") SetNbSplitPoints;
+		void SetNbSplitPoints (const Standard_Integer num);
 		%feature("compactdefaultargs") ShapeUpgrade_ClosedFaceDivide;
 		%feature("autodoc", "	* Creates empty constructor.
 
@@ -1948,20 +2009,6 @@ class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 	:rtype: bool
 ") SplitSurface;
 		virtual Standard_Boolean SplitSurface ();
-		%feature("compactdefaultargs") SetNbSplitPoints;
-		%feature("autodoc", "	* Sets the number of cutting lines by which closed face will be splitted. The resulting faces will be num+1.
-
-	:param num:
-	:type num: int
-	:rtype: None
-") SetNbSplitPoints;
-		void SetNbSplitPoints (const Standard_Integer num);
-		%feature("compactdefaultargs") GetNbSplitPoints;
-		%feature("autodoc", "	* Returns the number of splitting points
-
-	:rtype: int
-") GetNbSplitPoints;
-		Standard_Integer GetNbSplitPoints ();
 };
 
 
@@ -1975,18 +2022,6 @@ class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 %nodefaultctor ShapeUpgrade_ConvertCurve2dToBezier;
 class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ConvertCurve2dToBezier;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_ConvertCurve2dToBezier;
-		 ShapeUpgrade_ConvertCurve2dToBezier ();
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Converts curve into a list of beziers, and stores the splitting parameters on original curve.
-
-	:rtype: void
-") Compute;
-		virtual void Compute ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 
@@ -1995,6 +2030,18 @@ class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 	:rtype: void
 ") Build;
 		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Converts curve into a list of beziers, and stores the splitting parameters on original curve.
+
+	:rtype: void
+") Compute;
+		virtual void Compute ();
+		%feature("compactdefaultargs") ShapeUpgrade_ConvertCurve2dToBezier;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_ConvertCurve2dToBezier;
+		 ShapeUpgrade_ConvertCurve2dToBezier ();
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "	* Returns the list of splitted parameters in original curve parametrisation.
 
@@ -2014,20 +2061,32 @@ class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 %nodefaultctor ShapeUpgrade_ConvertCurve3dToBezier;
 class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_ConvertCurve3dToBezier;
-		%feature("autodoc", "	* Empty constructor
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 
-	:rtype: None
-") ShapeUpgrade_ConvertCurve3dToBezier;
-		 ShapeUpgrade_ConvertCurve3dToBezier ();
-		%feature("compactdefaultargs") SetLineMode;
-		%feature("autodoc", "	* Sets mode for conversion Geom_Line to bezier.
+	:param Segment:
+	:type Segment: bool
+	:rtype: void
+") Build;
+		virtual void Build (const Standard_Boolean Segment);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Converts curve into a list of beziers, and stores the splitting parameters on original curve.
 
-	:param mode:
-	:type mode: bool
-	:rtype: None
-") SetLineMode;
-		void SetLineMode (const Standard_Boolean mode);
+	:rtype: void
+") Compute;
+		virtual void Compute ();
+		%feature("compactdefaultargs") GetCircleMode;
+		%feature("autodoc", "	* Returns the Geom_Circle conversion mode.
+
+	:rtype: bool
+") GetCircleMode;
+		Standard_Boolean GetCircleMode ();
+		%feature("compactdefaultargs") GetConicMode;
+		%feature("autodoc", "	* Performs converting and computes the resulting shape.
+
+	:rtype: bool
+") GetConicMode;
+		Standard_Boolean GetConicMode ();
 		%feature("compactdefaultargs") GetLineMode;
 		%feature("autodoc", "	* Returns the Geom_Line conversion mode.
 
@@ -2042,12 +2101,6 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 	:rtype: None
 ") SetCircleMode;
 		void SetCircleMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetCircleMode;
-		%feature("autodoc", "	* Returns the Geom_Circle conversion mode.
-
-	:rtype: bool
-") GetCircleMode;
-		Standard_Boolean GetCircleMode ();
 		%feature("compactdefaultargs") SetConicMode;
 		%feature("autodoc", "	* Returns the Geom_Conic conversion mode.
 
@@ -2056,26 +2109,20 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 	:rtype: None
 ") SetConicMode;
 		void SetConicMode (const Standard_Boolean mode);
-		%feature("compactdefaultargs") GetConicMode;
-		%feature("autodoc", "	* Performs converting and computes the resulting shape.
+		%feature("compactdefaultargs") SetLineMode;
+		%feature("autodoc", "	* Sets mode for conversion Geom_Line to bezier.
 
-	:rtype: bool
-") GetConicMode;
-		Standard_Boolean GetConicMode ();
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Converts curve into a list of beziers, and stores the splitting parameters on original curve.
+	:param mode:
+	:type mode: bool
+	:rtype: None
+") SetLineMode;
+		void SetLineMode (const Standard_Boolean mode);
+		%feature("compactdefaultargs") ShapeUpgrade_ConvertCurve3dToBezier;
+		%feature("autodoc", "	* Empty constructor
 
-	:rtype: void
-") Compute;
-		virtual void Compute ();
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Splits a list of beziers computed by Compute method according the split values and splitting parameters.
-
-	:param Segment:
-	:type Segment: bool
-	:rtype: void
-") Build;
-		virtual void Build (const Standard_Boolean Segment);
+	:rtype: None
+") ShapeUpgrade_ConvertCurve3dToBezier;
+		 ShapeUpgrade_ConvertCurve3dToBezier ();
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "	* Returns the list of splitted parameters in original curve parametrisation.
 
@@ -2095,24 +2142,6 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 %nodefaultctor ShapeUpgrade_FaceDivideArea;
 class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_FaceDivideArea;
-		%feature("autodoc", "	* Creates empty constructor.
-
-	:rtype: None
-") ShapeUpgrade_FaceDivideArea;
-		 ShapeUpgrade_FaceDivideArea ();
-		%feature("compactdefaultargs") ShapeUpgrade_FaceDivideArea;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") ShapeUpgrade_FaceDivideArea;
-		 ShapeUpgrade_FaceDivideArea (const TopoDS_Face & F);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs splitting and computes the resulting shell The context is used to keep track of former splittings
-
-	:rtype: bool
-") Perform;
-		virtual Standard_Boolean Perform ();
 
             %feature("autodoc","1");
             %extend {
@@ -2126,7 +2155,25 @@ class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
                 $self->MaxArea()=value;
                 }
             };
-            };
+            		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs splitting and computes the resulting shell The context is used to keep track of former splittings
+
+	:rtype: bool
+") Perform;
+		virtual Standard_Boolean Perform ();
+		%feature("compactdefaultargs") ShapeUpgrade_FaceDivideArea;
+		%feature("autodoc", "	* Creates empty constructor.
+
+	:rtype: None
+") ShapeUpgrade_FaceDivideArea;
+		 ShapeUpgrade_FaceDivideArea ();
+		%feature("compactdefaultargs") ShapeUpgrade_FaceDivideArea;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") ShapeUpgrade_FaceDivideArea;
+		 ShapeUpgrade_FaceDivideArea (const TopoDS_Face & F);
+};
 
 
 %make_alias(ShapeUpgrade_FaceDivideArea)
@@ -2139,10 +2186,6 @@ class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
 %nodefaultctor ShapeUpgrade_FixSmallBezierCurves;
 class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_FixSmallBezierCurves;
-		%feature("autodoc", "	:rtype: None
-") ShapeUpgrade_FixSmallBezierCurves;
-		 ShapeUpgrade_FixSmallBezierCurves ();
 		%feature("compactdefaultargs") Approx;
 		%feature("autodoc", "	:param Curve3d:
 	:type Curve3d: Handle_Geom_Curve &
@@ -2157,6 +2200,10 @@ class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 	:rtype: bool
 ") Approx;
 		virtual Standard_Boolean Approx (Handle_Geom_Curve & Curve3d,Handle_Geom2d_Curve & Curve2d,Handle_Geom2d_Curve & Curve2dR,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") ShapeUpgrade_FixSmallBezierCurves;
+		%feature("autodoc", "	:rtype: None
+") ShapeUpgrade_FixSmallBezierCurves;
+		 ShapeUpgrade_FixSmallBezierCurves ();
 };
 
 
@@ -2170,12 +2217,12 @@ class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 %nodefaultctor ShapeUpgrade_SplitCurve2dContinuity;
 class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve2dContinuity;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
 
-	:rtype: None
-") ShapeUpgrade_SplitCurve2dContinuity;
-		 ShapeUpgrade_SplitCurve2dContinuity ();
+	:rtype: void
+") Compute;
+		virtual void Compute ();
 		%feature("compactdefaultargs") SetCriterion;
 		%feature("autodoc", "	* Sets criterion for splitting.
 
@@ -2192,12 +2239,12 @@ class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
+		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve2dContinuity;
+		%feature("autodoc", "	* Empty constructor.
 
-	:rtype: void
-") Compute;
-		virtual void Compute ();
+	:rtype: None
+") ShapeUpgrade_SplitCurve2dContinuity;
+		 ShapeUpgrade_SplitCurve2dContinuity ();
 };
 
 
@@ -2211,12 +2258,16 @@ class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 %nodefaultctor ShapeUpgrade_SplitCurve3dContinuity;
 class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 	public:
-		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve3dContinuity;
-		%feature("autodoc", "	* Empty constructor.
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
 
-	:rtype: None
-") ShapeUpgrade_SplitCurve3dContinuity;
-		 ShapeUpgrade_SplitCurve3dContinuity ();
+	:rtype: void
+") Compute;
+		virtual void Compute ();
+		%feature("compactdefaultargs") GetCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom_Curve
+") GetCurve;
+		Handle_Geom_Curve GetCurve ();
 		%feature("compactdefaultargs") SetCriterion;
 		%feature("autodoc", "	* Sets criterion for splitting.
 
@@ -2233,16 +2284,12 @@ class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
+		%feature("compactdefaultargs") ShapeUpgrade_SplitCurve3dContinuity;
+		%feature("autodoc", "	* Empty constructor.
 
-	:rtype: void
-") Compute;
-		virtual void Compute ();
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "	:rtype: Handle_Geom_Curve
-") GetCurve;
-		Handle_Geom_Curve GetCurve ();
+	:rtype: None
+") ShapeUpgrade_SplitCurve3dContinuity;
+		 ShapeUpgrade_SplitCurve3dContinuity ();
 };
 
 
@@ -2253,3 +2300,6 @@ class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRAPPLIDOCSTRING
-"-Purpose : This package represents applications
-of Hidden Lines Removal algorithm
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=HLRAPPLIDOCSTRING) HLRAppli
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,6 +39,10 @@ of Hidden Lines Removal algorithm
 
 %include HLRAppli_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -51,6 +53,24 @@ of Hidden Lines Removal algorithm
 %nodefaultctor HLRAppli_ReflectLines;
 class HLRAppli_ReflectLines {
 	public:
+		%feature("compactdefaultargs") GetCompoundOf3dEdges;
+		%feature("autodoc", "	* returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d
+
+	:param type:
+	:type type: HLRBRep_TypeOfResultingEdge
+	:param visible:
+	:type visible: bool
+	:param In3d:
+	:type In3d: bool
+	:rtype: TopoDS_Shape
+") GetCompoundOf3dEdges;
+		TopoDS_Shape GetCompoundOf3dEdges (const HLRBRep_TypeOfResultingEdge type,const Standard_Boolean visible,const Standard_Boolean In3d);
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "	* returns resulting compound of reflect lines represented by edges in 3d
+
+	:rtype: TopoDS_Shape
+") GetResult;
+		TopoDS_Shape GetResult ();
 		%feature("compactdefaultargs") HLRAppli_ReflectLines;
 		%feature("autodoc", "	* Constructor
 
@@ -59,6 +79,10 @@ class HLRAppli_ReflectLines {
 	:rtype: None
 ") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines (const TopoDS_Shape & aShape);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	:rtype: None
+") Perform;
+		void Perform ();
 		%feature("compactdefaultargs") SetAxes;
 		%feature("autodoc", "	* Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 
@@ -83,16 +107,6 @@ class HLRAppli_ReflectLines {
 	:rtype: None
 ") SetAxes;
 		void SetAxes (const Standard_Real Nx,const Standard_Real Ny,const Standard_Real Nz,const Standard_Real XAt,const Standard_Real YAt,const Standard_Real ZAt,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* returns resulting compound of reflect lines represented by edges in 3d
-
-	:rtype: TopoDS_Shape
-") GetResult;
-		TopoDS_Shape GetResult ();
 };
 
 
@@ -101,3 +115,6 @@ class HLRAppli_ReflectLines {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

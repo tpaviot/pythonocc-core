@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GCDOCSTRING) GC
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include GC_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -99,10 +103,10 @@ class GC_MakeMirror {
 	:rtype: Handle_Geom_Transformation
 ") Value;
 		Handle_Geom_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
-") Operator;
-		Handle_Geom_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Transformation&;
+		 operator constHandle_Geom_Transformation& ();
 };
 
 
@@ -152,10 +156,10 @@ class GC_MakeRotation {
 	:rtype: Handle_Geom_Transformation
 ") Value;
 		Handle_Geom_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
-") Operator;
-		Handle_Geom_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Transformation&;
+		 operator constHandle_Geom_Transformation& ();
 };
 
 
@@ -183,10 +187,10 @@ class GC_MakeScale {
 	:rtype: Handle_Geom_Transformation
 ") Value;
 		Handle_Geom_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
-") Operator;
-		Handle_Geom_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Transformation&;
+		 operator constHandle_Geom_Transformation& ();
 };
 
 
@@ -222,10 +226,10 @@ class GC_MakeTranslation {
 	:rtype: Handle_Geom_Transformation
 ") Value;
 		Handle_Geom_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
-") Operator;
-		Handle_Geom_Transformation Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Transformation&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Transformation&;
+		 operator constHandle_Geom_Transformation& ();
 };
 
 
@@ -331,10 +335,10 @@ class GC_MakeArcOfCircle : public GC_Root {
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
 		Handle_Geom_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
-") Operator;
-		Handle_Geom_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_TrimmedCurve&;
+		 operator constHandle_Geom_TrimmedCurve& ();
 };
 
 
@@ -394,10 +398,10 @@ class GC_MakeArcOfEllipse : public GC_Root {
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
 		Handle_Geom_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
-") Operator;
-		Handle_Geom_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_TrimmedCurve&;
+		 operator constHandle_Geom_TrimmedCurve& ();
 };
 
 
@@ -457,10 +461,10 @@ class GC_MakeArcOfHyperbola : public GC_Root {
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
 		Handle_Geom_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
-") Operator;
-		Handle_Geom_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_TrimmedCurve&;
+		 operator constHandle_Geom_TrimmedCurve& ();
 };
 
 
@@ -520,10 +524,10 @@ class GC_MakeArcOfParabola : public GC_Root {
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
 		Handle_Geom_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
-") Operator;
-		Handle_Geom_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_TrimmedCurve&;
+		 operator constHandle_Geom_TrimmedCurve& ();
 };
 
 
@@ -625,10 +629,10 @@ class GC_MakeCircle : public GC_Root {
 	:rtype: Handle_Geom_Circle
 ") Value;
 		Handle_Geom_Circle Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Circle
-") Operator;
-		Handle_Geom_Circle Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Circle&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Circle&;
+		 operator constHandle_Geom_Circle& ();
 };
 
 
@@ -661,26 +665,6 @@ class GC_MakeConicalSurface : public GC_Root {
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface (const gp_Cone & C);
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
-		%feature("autodoc", "	* Make a ConicalSurface from Geom <TheCone> parallel to another ConicalSurface <Cone> and passing through a Pnt <Point>.
-
-	:param Cone:
-	:type Cone: gp_Cone
-	:param Point:
-	:type Point: gp_Pnt
-	:rtype: None
-") GC_MakeConicalSurface;
-		 GC_MakeConicalSurface (const gp_Cone & Cone,const gp_Pnt & Point);
-		%feature("compactdefaultargs") GC_MakeConicalSurface;
-		%feature("autodoc", "	* Make a ConicalSurface from Geom <TheCone> parallel to another ConicalSurface <Cone> at the distance <Dist> which can be greater or lower than zero.
-
-	:param Cone:
-	:type Cone: gp_Cone
-	:param Dist:
-	:type Dist: float
-	:rtype: None
-") GC_MakeConicalSurface;
-		 GC_MakeConicalSurface (const gp_Cone & Cone,const Standard_Real Dist);
-		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "	* Make a ConicalSurface from Geom <TheCone> passing through 3 Pnt <P1>,<P2>,<P3>. Its axis is <P1P2> and the radius of its base is the distance between <P3> and <P1P2>. The distance between <P4> and <P1P2> is the radius of the section passing through <P4>. An error iss raised if <P1>,<P2>,<P3>,<P4> are colinear or if <P3P4> is perpendicular to <P1P2> or <P3P4> is colinear to <P1P2>.
 
 	:param P1:
@@ -694,30 +678,6 @@ class GC_MakeConicalSurface : public GC_Root {
 	:rtype: None
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface (const gp_Pnt & P1,const gp_Pnt & P2,const gp_Pnt & P3,const gp_Pnt & P4);
-		%feature("compactdefaultargs") GC_MakeConicalSurface;
-		%feature("autodoc", "	* Make a ConicalSurface by its axis <Axis> and and two points.
-
-	:param Axis:
-	:type Axis: gp_Ax1
-	:param P1:
-	:type P1: gp_Pnt
-	:param P2:
-	:type P2: gp_Pnt
-	:rtype: None
-") GC_MakeConicalSurface;
-		 GC_MakeConicalSurface (const gp_Ax1 & Axis,const gp_Pnt & P1,const gp_Pnt & P2);
-		%feature("compactdefaultargs") GC_MakeConicalSurface;
-		%feature("autodoc", "	* Make a ConicalSurface by its axis <Axis> and and two points.
-
-	:param Axis:
-	:type Axis: gp_Lin
-	:param P1:
-	:type P1: gp_Pnt
-	:param P2:
-	:type P2: gp_Pnt
-	:rtype: None
-") GC_MakeConicalSurface;
-		 GC_MakeConicalSurface (const gp_Lin & Axis,const gp_Pnt & P1,const gp_Pnt & P2);
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "	* Make a ConicalSurface with two points and two radius. The axis of the solution is the line passing through <P1> and <P2>. <R1> is the radius of the section passing through <P1> and <R2> the radius of the section passing through <P2>.
 
@@ -738,10 +698,10 @@ class GC_MakeConicalSurface : public GC_Root {
 	:rtype: Handle_Geom_ConicalSurface
 ") Value;
 		Handle_Geom_ConicalSurface Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_ConicalSurface
-") Operator;
-		Handle_Geom_ConicalSurface Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_ConicalSurface&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_ConicalSurface&;
+		 operator constHandle_Geom_ConicalSurface& ();
 };
 
 
@@ -827,10 +787,10 @@ class GC_MakeCylindricalSurface : public GC_Root {
 	:rtype: Handle_Geom_CylindricalSurface
 ") Value;
 		Handle_Geom_CylindricalSurface Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_CylindricalSurface
-") Operator;
-		Handle_Geom_CylindricalSurface Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_CylindricalSurface&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_CylindricalSurface&;
+		 operator constHandle_Geom_CylindricalSurface& ();
 };
 
 
@@ -880,10 +840,10 @@ class GC_MakeEllipse : public GC_Root {
 	:rtype: Handle_Geom_Ellipse
 ") Value;
 		Handle_Geom_Ellipse Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Ellipse
-") Operator;
-		Handle_Geom_Ellipse Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Ellipse&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Ellipse&;
+		 operator constHandle_Geom_Ellipse& ();
 };
 
 
@@ -933,10 +893,10 @@ class GC_MakeHyperbola : public GC_Root {
 	:rtype: Handle_Geom_Hyperbola
 ") Value;
 		Handle_Geom_Hyperbola Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Hyperbola
-") Operator;
-		Handle_Geom_Hyperbola Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Hyperbola&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Hyperbola&;
+		 operator constHandle_Geom_Hyperbola& ();
 };
 
 
@@ -1000,10 +960,10 @@ class GC_MakeLine : public GC_Root {
 	:rtype: Handle_Geom_Line
 ") Value;
 		Handle_Geom_Line Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Line
-") Operator;
-		Handle_Geom_Line Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Line&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Line&;
+		 operator constHandle_Geom_Line& ();
 };
 
 
@@ -1015,14 +975,6 @@ class GC_MakeLine : public GC_Root {
 %nodefaultctor GC_MakePlane;
 class GC_MakePlane : public GC_Root {
 	public:
-		%feature("compactdefaultargs") GC_MakePlane;
-		%feature("autodoc", "	* Creates a plane located in 3D space with an axis placement two axis. The 'ZDirection' of 'A2' is the direction normal to the plane. The 'Location' point of 'A2' is the origin of the plane. The 'XDirection' and 'YDirection' of 'A2' define the directions of the U isoparametric and V isoparametric curves.
-
-	:param A2:
-	:type A2: gp_Ax2
-	:rtype: None
-") GC_MakePlane;
-		 GC_MakePlane (const gp_Ax2 & A2);
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "	* Creates a plane from a non persistent plane from package gp.
 
@@ -1101,10 +1053,10 @@ class GC_MakePlane : public GC_Root {
 	:rtype: Handle_Geom_Plane
 ") Value;
 		Handle_Geom_Plane Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_Plane
-") Operator;
-		Handle_Geom_Plane Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_Plane&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_Plane&;
+		 operator constHandle_Geom_Plane& ();
 };
 
 
@@ -1168,10 +1120,10 @@ class GC_MakeSegment : public GC_Root {
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
 		Handle_Geom_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
-") Operator;
-		Handle_Geom_TrimmedCurve Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_TrimmedCurve&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_TrimmedCurve&;
+		 operator constHandle_Geom_TrimmedCurve& ();
 };
 
 
@@ -1217,10 +1169,10 @@ class GC_MakeTrimmedCone : public GC_Root {
 	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Value;
 		Handle_Geom_RectangularTrimmedSurface Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_RectangularTrimmedSurface
-") Operator;
-		Handle_Geom_RectangularTrimmedSurface Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_RectangularTrimmedSurface&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_RectangularTrimmedSurface&;
+		 operator constHandle_Geom_RectangularTrimmedSurface& ();
 };
 
 
@@ -1266,40 +1218,16 @@ class GC_MakeTrimmedCylinder : public GC_Root {
 	:rtype: None
 ") GC_MakeTrimmedCylinder;
 		 GC_MakeTrimmedCylinder (const gp_Ax1 & A1,const Standard_Real Radius,const Standard_Real Height);
-		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
-		%feature("autodoc", "	* Make a RectangularTrimmedSurface <Cylinder> from gp by a cylinder from gp. It is trimmed by the point <P> and the heigh <Heigh>. <Height> can be greater than zero or lower than zero. in the first case the limit section is in the side of the positives V paramters of <Cyl> and in the other side if <Heigh> is lower than zero.
-
-	:param Cyl:
-	:type Cyl: gp_Cylinder
-	:param P:
-	:type P: gp_Pnt
-	:param Height:
-	:type Height: float
-	:rtype: None
-") GC_MakeTrimmedCylinder;
-		 GC_MakeTrimmedCylinder (const gp_Cylinder & Cyl,const gp_Pnt & P,const Standard_Real Height);
-		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
-		%feature("autodoc", "	* Make a RectangularTrimmedSurface <Cylinder> from gp by a cylinder from gp. It is trimmed by the two points <P1> and <P2>. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if Radius is less than 0.0, or - gce_ConfusedPoints if the points P1 and P2 are coincident. - gce_ColinearPoints if the points P1, P2 and P3 are collinear.
-
-	:param Cyl:
-	:type Cyl: gp_Cylinder
-	:param P1:
-	:type P1: gp_Pnt
-	:param P2:
-	:type P2: gp_Pnt
-	:rtype: None
-") GC_MakeTrimmedCylinder;
-		 GC_MakeTrimmedCylinder (const gp_Cylinder & Cyl,const gp_Pnt & P1,const gp_Pnt & P2);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed trimmed cylinder. Exceptions StdFail_NotDone if no trimmed cylinder is constructed.
 
 	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Value;
 		Handle_Geom_RectangularTrimmedSurface Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom_RectangularTrimmedSurface
-") Operator;
-		Handle_Geom_RectangularTrimmedSurface Operator ();
+		%feature("compactdefaultargs") operator constHandle_Geom_RectangularTrimmedSurface&;
+		%feature("autodoc", "	:rtype: None
+") operator constHandle_Geom_RectangularTrimmedSurface&;
+		 operator constHandle_Geom_RectangularTrimmedSurface& ();
 };
 
 
@@ -1308,3 +1236,6 @@ class GC_MakeTrimmedCylinder : public GC_Root {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

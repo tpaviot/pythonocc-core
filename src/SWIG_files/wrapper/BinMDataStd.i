@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMDATASTDDOCSTRING
-"Storage and Retrieval drivers for modelling attributes.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BINMDATASTDDOCSTRING) BinMDataStd
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include BinMDataStd_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -86,16 +89,16 @@ class BinMDataStd {
 	:rtype: void
 ") AddDrivers;
 		static void AddDrivers (const Handle_BinMDF_ADriverTable & theDriverTable,const Handle_CDM_MessageDriver & aMsgDrv);
+		%feature("compactdefaultargs") DocumentVersion;
+		%feature("autodoc", "	:rtype: int
+") DocumentVersion;
+		static Standard_Integer DocumentVersion ();
 		%feature("compactdefaultargs") SetDocumentVersion;
 		%feature("autodoc", "	:param DocVersion:
 	:type DocVersion: int
 	:rtype: void
 ") SetDocumentVersion;
 		static void SetDocumentVersion (const Standard_Integer DocVersion);
-		%feature("compactdefaultargs") DocumentVersion;
-		%feature("autodoc", "	:rtype: int
-") DocumentVersion;
-		static Standard_Integer DocumentVersion ();
 };
 
 
@@ -1234,3 +1237,6 @@ class BinMDataStd_VariableDriver : public BinMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

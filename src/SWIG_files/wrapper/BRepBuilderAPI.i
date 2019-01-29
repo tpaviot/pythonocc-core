@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,73 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBUILDERAPIDOCSTRING
-"The BRepBuilderAPI package  provides an  Application
-Programming Interface for the BRep topology data
-structure.
-
-The API is a set of classes aiming to provide :
-
-* High level and simple calls for the most common
-operations.
-
-*  Keeping  an  access on  the  low-level
-implementation of high-level calls.
-
-* Examples of programming of high-level operations
-from low-level operations.
-
-* A complete coverage of modelling :
-
-- Creating vertices ,edges, faces, solids.
-
-- Sweeping operations.
-
-- Boolean operations.
-
-- Global properties computation.
-
-
-The API provides classes to build objects:
-
-* The constructors of the classes provides the
-different constructions methods.
-
-* The class keeps as fields the  different tools
-used to build the object.
-
-*  The class provides a casting method to get
-automatically the result with a  function-like
-call.
-
-For example to make a vertex <V> from a point <P>
-one can writes :
-
-V = BRepBuilderAPI_MakeVertex(P);
-
-or
-
-BRepBuilderAPI_MakeVertex MV(P);
-V = MV.Vertex();
-
-
-For tolerances a default precision is used which
-can  be  changed  by  the  packahe method
-BRepBuilderAPI::Precision.
-
-For error handling the BRepBuilderAPI commands raise only
-the NotDone error. When Done is false on a command
-the error description can be asked to the command.
-
-In theory the comands can be  called with any
-arguments, argument checking is performed by the
-command.
-
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -101,9 +39,15 @@ command.
 
 %include BRepBuilderAPI_headers.i
 
+/* templates */
+%template(VectorOfPoint) NCollection_Vector <gp_XYZ>;
+%template(BRepBuilderAPI_BndBoxTree) NCollection_UBTree <Standard_Integer , Bnd_Box>;
+/* end templates declaration */
+
+
 /* typedefs */
-typedef NCollection_CellFilter <BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
 typedef NCollection_Vector <gp_XYZ> VectorOfPoint;
+typedef NCollection_CellFilter <BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> BRepBuilderAPI_BndBoxTree;
 /* end typedefs declaration */
 
@@ -208,10 +152,6 @@ class BRepBuilderAPI {
 %nodefaultctor BRepBuilderAPI_Collect;
 class BRepBuilderAPI_Collect {
 	public:
-		%feature("compactdefaultargs") BRepBuilderAPI_Collect;
-		%feature("autodoc", "	:rtype: None
-") BRepBuilderAPI_Collect;
-		 BRepBuilderAPI_Collect ();
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	:param SI:
 	:type SI: TopoDS_Shape &
@@ -236,20 +176,24 @@ class BRepBuilderAPI_Collect {
 	:rtype: None
 ") AddModif;
 		void AddModif (const TopoDS_Shape & S,const TopoDS_Shape & Mod);
+		%feature("compactdefaultargs") BRepBuilderAPI_Collect;
+		%feature("autodoc", "	:rtype: None
+") BRepBuilderAPI_Collect;
+		 BRepBuilderAPI_Collect ();
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "	:param SF:
 	:type SF: TopoDS_Shape &
 	:rtype: None
 ") Filter;
 		void Filter (const TopoDS_Shape & SF);
-		%feature("compactdefaultargs") Modification;
-		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeListOfShape
-") Modification;
-		const TopTools_DataMapOfShapeListOfShape & Modification ();
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeListOfShape
 ") Generated;
 		const TopTools_DataMapOfShapeListOfShape & Generated ();
+		%feature("compactdefaultargs") Modification;
+		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeListOfShape
+") Modification;
+		const TopTools_DataMapOfShapeListOfShape & Modification ();
 };
 
 
@@ -261,20 +205,16 @@ class BRepBuilderAPI_Collect {
 %nodefaultctor BRepBuilderAPI_Command;
 class BRepBuilderAPI_Command {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		virtual Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "	* Raises NotDone if done is false.
 
 	:rtype: None
 ") Check;
 		void Check ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		virtual Standard_Boolean IsDone ();
 };
 
 
@@ -287,6 +227,10 @@ class BRepBuilderAPI_Command {
 class BRepBuilderAPI_FastSewing : public Standard_Transient {
 	public:
 typedef unsigned int FS_VARStatuses;
+		class FS_Vertex {};
+		class FS_Face {};
+		class FS_Edge {};
+		class NodeInspector {};
 /* public enums */
 enum FS_Statuses {
 	FS_OK = 0,
@@ -302,14 +246,6 @@ enum FS_Statuses {
 
 /* end public enums declaration */
 
-		%feature("compactdefaultargs") BRepBuilderAPI_FastSewing;
-		%feature("autodoc", "	* Creates an object with tolerance of connexity
-
-	:param theTolerance: default value is 1.0e-06
-	:type theTolerance: float
-	:rtype: None
-") BRepBuilderAPI_FastSewing;
-		 BRepBuilderAPI_FastSewing (const Standard_Real theTolerance = 1.0e-06);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds faces of a shape
 
@@ -326,6 +262,26 @@ enum FS_Statuses {
 	:rtype: bool
 ") Add;
 		Standard_Boolean Add (const Handle_Geom_Surface & theSurface);
+		%feature("compactdefaultargs") BRepBuilderAPI_FastSewing;
+		%feature("autodoc", "	* Creates an object with tolerance of connexity
+
+	:param theTolerance: default value is 1.0e-06
+	:type theTolerance: float
+	:rtype: None
+") BRepBuilderAPI_FastSewing;
+		 BRepBuilderAPI_FastSewing (const Standard_Real theTolerance = 1.0e-06);
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "	* Returns resulted shape
+
+	:rtype: TopoDS_Shape
+") GetResult;
+		const TopoDS_Shape  GetResult ();
+		%feature("compactdefaultargs") GetTolerance;
+		%feature("autodoc", "	* Returns tolerance
+
+	:rtype: float
+") GetTolerance;
+		Standard_Real GetTolerance ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Compute resulted shape
 
@@ -342,18 +298,6 @@ enum FS_Statuses {
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const Standard_Real theToler);
-		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "	* Returns tolerance
-
-	:rtype: float
-") GetTolerance;
-		Standard_Real GetTolerance ();
-		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* Returns resulted shape
-
-	:rtype: TopoDS_Shape
-") GetResult;
-		const TopoDS_Shape  GetResult ();
 };
 
 
@@ -383,6 +327,12 @@ class BRepBuilderAPI_FindPlane {
 	:rtype: None
 ") BRepBuilderAPI_FindPlane;
 		 BRepBuilderAPI_FindPlane (const TopoDS_Shape & S,const Standard_Real Tol = -1);
+		%feature("compactdefaultargs") Found;
+		%feature("autodoc", "	* Returns true if a plane containing the edges of the shape is found and built. Use the function Plane to consult the result.
+
+	:rtype: bool
+") Found;
+		Standard_Boolean Found ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Constructs the plane containing the edges of the shape S. A plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. This tolerance value is equal to the larger of the following two values: - Tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of S. Use the function Found to verify that a plane is built. The resulting plane is then retrieved using the function Plane.
 
@@ -393,12 +343,6 @@ class BRepBuilderAPI_FindPlane {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & S,const Standard_Real Tol = -1);
-		%feature("compactdefaultargs") Found;
-		%feature("autodoc", "	* Returns true if a plane containing the edges of the shape is found and built. Use the function Plane to consult the result.
-
-	:rtype: bool
-") Found;
-		Standard_Boolean Found ();
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "	* Returns the plane containing the edges of the shape. Warning Use the function Found to verify that the plane is built. If a plane is not found, Plane returns a null handle.
 
@@ -414,8 +358,16 @@ class BRepBuilderAPI_FindPlane {
 	}
 };
 %nodefaultctor BRepBuilderAPI_Sewing;
-class BRepBuilderAPI_Sewing : public MMgt_TShared {
+class BRepBuilderAPI_Sewing : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Defines the shapes to be sewed or controlled
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") BRepBuilderAPI_Sewing;
 		%feature("autodoc", "	* Creates an object with tolerance of connexity option for sewing (if false only control) option for analysis of degenerated shapes option for cutting of free edges. option for non manifold processing
 
@@ -432,100 +384,6 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: None
 ") BRepBuilderAPI_Sewing;
 		 BRepBuilderAPI_Sewing (const Standard_Real tolerance = 1.0e-06,const Standard_Boolean option1 = Standard_True,const Standard_Boolean option2 = Standard_True,const Standard_Boolean option3 = Standard_True,const Standard_Boolean option4 = Standard_False);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* initialize the parameters if necessary
-
-	:param tolerance: default value is 1.0e-06
-	:type tolerance: float
-	:param option1: default value is Standard_True
-	:type option1: bool
-	:param option2: default value is Standard_True
-	:type option2: bool
-	:param option3: default value is Standard_True
-	:type option3: bool
-	:param option4: default value is Standard_False
-	:type option4: bool
-	:rtype: None
-") Init;
-		void Init (const Standard_Real tolerance = 1.0e-06,const Standard_Boolean option1 = Standard_True,const Standard_Boolean option2 = Standard_True,const Standard_Boolean option3 = Standard_True,const Standard_Boolean option4 = Standard_False);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	* Loades the context shape.
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:rtype: None
-") Load;
-		void Load (const TopoDS_Shape & shape);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Defines the shapes to be sewed or controlled
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Shape & shape);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computing thePI - progress indicator of algorithm
-
-	:param thePI: default value is 0
-	:type thePI: Handle_Message_ProgressIndicator &
-	:rtype: None
-") Perform;
-		void Perform (const Handle_Message_ProgressIndicator & thePI = 0);
-		%feature("compactdefaultargs") SewedShape;
-		%feature("autodoc", "	* Gives the sewed shape a null shape if nothing constructed may be a face, a shell, a solid or a compound
-
-	:rtype: TopoDS_Shape
-") SewedShape;
-		const TopoDS_Shape  SewedShape ();
-		%feature("compactdefaultargs") SetContext;
-		%feature("autodoc", "	* set context
-
-	:param theContext:
-	:type theContext: Handle_BRepTools_ReShape &
-	:rtype: None
-") SetContext;
-		void SetContext (const Handle_BRepTools_ReShape & theContext);
-		%feature("compactdefaultargs") GetContext;
-		%feature("autodoc", "	* return context
-
-	:rtype: Handle_BRepTools_ReShape
-") GetContext;
-		Handle_BRepTools_ReShape GetContext ();
-		%feature("compactdefaultargs") NbFreeEdges;
-		%feature("autodoc", "	* Gives the number of free edges (edge shared by one face)
-
-	:rtype: int
-") NbFreeEdges;
-		Standard_Integer NbFreeEdges ();
-		%feature("compactdefaultargs") FreeEdge;
-		%feature("autodoc", "	* Gives each free edge
-
-	:param index:
-	:type index: int
-	:rtype: TopoDS_Edge
-") FreeEdge;
-		const TopoDS_Edge  FreeEdge (const Standard_Integer index);
-		%feature("compactdefaultargs") NbMultipleEdges;
-		%feature("autodoc", "	* Gives the number of multiple edges (edge shared by more than two faces)
-
-	:rtype: int
-") NbMultipleEdges;
-		Standard_Integer NbMultipleEdges ();
-		%feature("compactdefaultargs") MultipleEdge;
-		%feature("autodoc", "	* Gives each multiple edge
-
-	:param index:
-	:type index: int
-	:rtype: TopoDS_Edge
-") MultipleEdge;
-		const TopoDS_Edge  MultipleEdge (const Standard_Integer index);
-		%feature("compactdefaultargs") NbContigousEdges;
-		%feature("autodoc", "	* Gives the number of contigous edges (edge shared by two faces)
-
-	:rtype: int
-") NbContigousEdges;
-		Standard_Integer NbContigousEdges ();
 		%feature("compactdefaultargs") ContigousEdge;
 		%feature("autodoc", "	* Gives each contigous edge
 
@@ -542,28 +400,6 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: TopTools_ListOfShape
 ") ContigousEdgeCouple;
 		const TopTools_ListOfShape & ContigousEdgeCouple (const Standard_Integer index);
-		%feature("compactdefaultargs") IsSectionBound;
-		%feature("autodoc", "	* Indicates if a section is bound (before use SectionToBoundary)
-
-	:param section:
-	:type section: TopoDS_Edge &
-	:rtype: bool
-") IsSectionBound;
-		Standard_Boolean IsSectionBound (const TopoDS_Edge & section);
-		%feature("compactdefaultargs") SectionToBoundary;
-		%feature("autodoc", "	* Gives the original edge (free boundary) which becomes the the section. Remember that sections constitute common edges. This imformation is important for control because with original edge we can find the surface to which the section is attached.
-
-	:param section:
-	:type section: TopoDS_Edge &
-	:rtype: TopoDS_Edge
-") SectionToBoundary;
-		const TopoDS_Edge  SectionToBoundary (const TopoDS_Edge & section);
-		%feature("compactdefaultargs") NbDegeneratedShapes;
-		%feature("autodoc", "	* Gives the number of degenerated shapes
-
-	:rtype: int
-") NbDegeneratedShapes;
-		Standard_Integer NbDegeneratedShapes ();
 		%feature("compactdefaultargs") DegeneratedShape;
 		%feature("autodoc", "	* Gives each degenerated shape
 
@@ -572,6 +408,62 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: TopoDS_Shape
 ") DegeneratedShape;
 		const TopoDS_Shape  DegeneratedShape (const Standard_Integer index);
+		%feature("compactdefaultargs") DeletedFace;
+		%feature("autodoc", "	* Gives each deleted face
+
+	:param index:
+	:type index: int
+	:rtype: TopoDS_Face
+") DeletedFace;
+		const TopoDS_Face  DeletedFace (const Standard_Integer index);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	* print the informations
+
+	:rtype: None
+") Dump;
+		void Dump ();
+		%feature("compactdefaultargs") FaceMode;
+		%feature("autodoc", "	* Returns mode for sewing faces By default - true.
+
+	:rtype: bool
+") FaceMode;
+		Standard_Boolean FaceMode ();
+		%feature("compactdefaultargs") FloatingEdgesMode;
+		%feature("autodoc", "	* Returns mode for sewing floating edges By default - false.
+
+	:rtype: bool
+") FloatingEdgesMode;
+		Standard_Boolean FloatingEdgesMode ();
+		%feature("compactdefaultargs") FreeEdge;
+		%feature("autodoc", "	* Gives each free edge
+
+	:param index:
+	:type index: int
+	:rtype: TopoDS_Edge
+") FreeEdge;
+		const TopoDS_Edge  FreeEdge (const Standard_Integer index);
+		%feature("compactdefaultargs") GetContext;
+		%feature("autodoc", "	* return context
+
+	:rtype: Handle_BRepTools_ReShape
+") GetContext;
+		Handle_BRepTools_ReShape GetContext ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* initialize the parameters if necessary
+
+	:param tolerance: default value is 1.0e-06
+	:type tolerance: float
+	:param option1: default value is Standard_True
+	:type option1: bool
+	:param option2: default value is Standard_True
+	:type option2: bool
+	:param option3: default value is Standard_True
+	:type option3: bool
+	:param option4: default value is Standard_False
+	:type option4: bool
+	:rtype: None
+") Init;
+		void Init (const Standard_Real tolerance = 1.0e-06,const Standard_Boolean option1 = Standard_True,const Standard_Boolean option2 = Standard_True,const Standard_Boolean option3 = Standard_True,const Standard_Boolean option4 = Standard_False);
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "	* Indicates if a input shape is degenerated
 
@@ -588,14 +480,6 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: bool
 ") IsModified;
 		Standard_Boolean IsModified (const TopoDS_Shape & shape);
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "	* Gives a modifieded shape
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") Modified;
-		const TopoDS_Shape  Modified (const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") IsModifiedSubShape;
 		%feature("autodoc", "	* Indicates if a input subshape has been modified
 
@@ -604,6 +488,48 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: bool
 ") IsModifiedSubShape;
 		Standard_Boolean IsModifiedSubShape (const TopoDS_Shape & shape);
+		%feature("compactdefaultargs") IsSectionBound;
+		%feature("autodoc", "	* Indicates if a section is bound (before use SectionToBoundary)
+
+	:param section:
+	:type section: TopoDS_Edge &
+	:rtype: bool
+") IsSectionBound;
+		Standard_Boolean IsSectionBound (const TopoDS_Edge & section);
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "	* Loades the context shape.
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") Load;
+		void Load (const TopoDS_Shape & shape);
+		%feature("compactdefaultargs") LocalTolerancesMode;
+		%feature("autodoc", "	* Returns mode for accounting of local tolerances of edges and vertices during of merging.
+
+	:rtype: bool
+") LocalTolerancesMode;
+		Standard_Boolean LocalTolerancesMode ();
+		%feature("compactdefaultargs") MaxTolerance;
+		%feature("autodoc", "	* Gives set max tolerance
+
+	:rtype: float
+") MaxTolerance;
+		Standard_Real MaxTolerance ();
+		%feature("compactdefaultargs") MinTolerance;
+		%feature("autodoc", "	* Gives set min tolerance.
+
+	:rtype: float
+") MinTolerance;
+		Standard_Real MinTolerance ();
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Gives a modifieded shape
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") Modified;
+		const TopoDS_Shape  Modified (const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") ModifiedSubShape;
 		%feature("autodoc", "	* Gives a modifieded subshape
 
@@ -612,26 +538,156 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: TopoDS_Shape
 ") ModifiedSubShape;
 		TopoDS_Shape ModifiedSubShape (const TopoDS_Shape & shape);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* print the informations
+		%feature("compactdefaultargs") MultipleEdge;
+		%feature("autodoc", "	* Gives each multiple edge
 
-	:rtype: None
-") Dump;
-		void Dump ();
+	:param index:
+	:type index: int
+	:rtype: TopoDS_Edge
+") MultipleEdge;
+		const TopoDS_Edge  MultipleEdge (const Standard_Integer index);
+		%feature("compactdefaultargs") NbContigousEdges;
+		%feature("autodoc", "	* Gives the number of contigous edges (edge shared by two faces)
+
+	:rtype: int
+") NbContigousEdges;
+		Standard_Integer NbContigousEdges ();
+		%feature("compactdefaultargs") NbDegeneratedShapes;
+		%feature("autodoc", "	* Gives the number of degenerated shapes
+
+	:rtype: int
+") NbDegeneratedShapes;
+		Standard_Integer NbDegeneratedShapes ();
 		%feature("compactdefaultargs") NbDeletedFaces;
 		%feature("autodoc", "	* Gives the number of deleted faces (faces smallest than tolerance)
 
 	:rtype: int
 ") NbDeletedFaces;
 		Standard_Integer NbDeletedFaces ();
-		%feature("compactdefaultargs") DeletedFace;
-		%feature("autodoc", "	* Gives each deleted face
+		%feature("compactdefaultargs") NbFreeEdges;
+		%feature("autodoc", "	* Gives the number of free edges (edge shared by one face)
 
-	:param index:
-	:type index: int
-	:rtype: TopoDS_Face
-") DeletedFace;
-		const TopoDS_Face  DeletedFace (const Standard_Integer index);
+	:rtype: int
+") NbFreeEdges;
+		Standard_Integer NbFreeEdges ();
+		%feature("compactdefaultargs") NbMultipleEdges;
+		%feature("autodoc", "	* Gives the number of multiple edges (edge shared by more than two faces)
+
+	:rtype: int
+") NbMultipleEdges;
+		Standard_Integer NbMultipleEdges ();
+		%feature("compactdefaultargs") NonManifoldMode;
+		%feature("autodoc", "	* Gets mode for non-manifold sewing. //! INTERNAL FUCTIONS ---
+
+	:rtype: bool
+") NonManifoldMode;
+		Standard_Boolean NonManifoldMode ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Computing thePI - progress indicator of algorithm
+
+	:param thePI: default value is 0
+	:type thePI: Handle_Message_ProgressIndicator &
+	:rtype: None
+") Perform;
+		void Perform (const Handle_Message_ProgressIndicator & thePI = 0);
+		%feature("compactdefaultargs") SameParameterMode;
+		%feature("autodoc", "	* Gets same parameter mode.
+
+	:rtype: bool
+") SameParameterMode;
+		Standard_Boolean SameParameterMode ();
+		%feature("compactdefaultargs") SectionToBoundary;
+		%feature("autodoc", "	* Gives the original edge (free boundary) which becomes the the section. Remember that sections constitute common edges. This imformation is important for control because with original edge we can find the surface to which the section is attached.
+
+	:param section:
+	:type section: TopoDS_Edge &
+	:rtype: TopoDS_Edge
+") SectionToBoundary;
+		const TopoDS_Edge  SectionToBoundary (const TopoDS_Edge & section);
+		%feature("compactdefaultargs") SetContext;
+		%feature("autodoc", "	* set context
+
+	:param theContext:
+	:type theContext: Handle_BRepTools_ReShape &
+	:rtype: None
+") SetContext;
+		void SetContext (const Handle_BRepTools_ReShape & theContext);
+		%feature("compactdefaultargs") SetFaceMode;
+		%feature("autodoc", "	* Sets mode for sewing faces By default - true.
+
+	:param theFaceMode:
+	:type theFaceMode: bool
+	:rtype: None
+") SetFaceMode;
+		void SetFaceMode (const Standard_Boolean theFaceMode);
+		%feature("compactdefaultargs") SetFloatingEdgesMode;
+		%feature("autodoc", "	* Sets mode for sewing floating edges By default - false. Returns mode for cutting floating edges By default - false. Sets mode for cutting floating edges By default - false.
+
+	:param theFloatingEdgesMode:
+	:type theFloatingEdgesMode: bool
+	:rtype: None
+") SetFloatingEdgesMode;
+		void SetFloatingEdgesMode (const Standard_Boolean theFloatingEdgesMode);
+		%feature("compactdefaultargs") SetLocalTolerancesMode;
+		%feature("autodoc", "	* Sets mode for accounting of local tolerances of edges and vertices during of merging in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
+
+	:param theLocalTolerancesMode:
+	:type theLocalTolerancesMode: bool
+	:rtype: None
+") SetLocalTolerancesMode;
+		void SetLocalTolerancesMode (const Standard_Boolean theLocalTolerancesMode);
+		%feature("compactdefaultargs") SetMaxTolerance;
+		%feature("autodoc", "	* Sets max tolerance.
+
+	:param theMaxToler:
+	:type theMaxToler: float
+	:rtype: None
+") SetMaxTolerance;
+		void SetMaxTolerance (const Standard_Real theMaxToler);
+		%feature("compactdefaultargs") SetMinTolerance;
+		%feature("autodoc", "	* Sets min tolerance
+
+	:param theMinToler:
+	:type theMinToler: float
+	:rtype: None
+") SetMinTolerance;
+		void SetMinTolerance (const Standard_Real theMinToler);
+		%feature("compactdefaultargs") SetNonManifoldMode;
+		%feature("autodoc", "	* Sets mode for non-manifold sewing.
+
+	:param theNonManifoldMode:
+	:type theNonManifoldMode: bool
+	:rtype: None
+") SetNonManifoldMode;
+		void SetNonManifoldMode (const Standard_Boolean theNonManifoldMode);
+		%feature("compactdefaultargs") SetSameParameterMode;
+		%feature("autodoc", "	* Sets same parameter mode.
+
+	:param SameParameterMode:
+	:type SameParameterMode: bool
+	:rtype: None
+") SetSameParameterMode;
+		void SetSameParameterMode (const Standard_Boolean SameParameterMode);
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "	* Sets tolerance
+
+	:param theToler:
+	:type theToler: float
+	:rtype: None
+") SetTolerance;
+		void SetTolerance (const Standard_Real theToler);
+		%feature("compactdefaultargs") SewedShape;
+		%feature("autodoc", "	* Gives the sewed shape a null shape if nothing constructed may be a face, a shell, a solid or a compound
+
+	:rtype: TopoDS_Shape
+") SewedShape;
+		const TopoDS_Shape  SewedShape ();
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	* Gives set tolerance.
+
+	:rtype: float
+") Tolerance;
+		Standard_Real Tolerance ();
 		%feature("compactdefaultargs") WhichFace;
 		%feature("autodoc", "	* Gives a modified shape
 
@@ -642,118 +698,6 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:rtype: TopoDS_Face
 ") WhichFace;
 		TopoDS_Face WhichFace (const TopoDS_Edge & theEdg,const Standard_Integer index = 1);
-		%feature("compactdefaultargs") SameParameterMode;
-		%feature("autodoc", "	* Gets same parameter mode.
-
-	:rtype: bool
-") SameParameterMode;
-		Standard_Boolean SameParameterMode ();
-		%feature("compactdefaultargs") SetSameParameterMode;
-		%feature("autodoc", "	* Sets same parameter mode.
-
-	:param SameParameterMode:
-	:type SameParameterMode: bool
-	:rtype: None
-") SetSameParameterMode;
-		void SetSameParameterMode (const Standard_Boolean SameParameterMode);
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "	* Gives set tolerance.
-
-	:rtype: float
-") Tolerance;
-		Standard_Real Tolerance ();
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	* Sets tolerance
-
-	:param theToler:
-	:type theToler: float
-	:rtype: None
-") SetTolerance;
-		void SetTolerance (const Standard_Real theToler);
-		%feature("compactdefaultargs") MinTolerance;
-		%feature("autodoc", "	* Gives set min tolerance.
-
-	:rtype: float
-") MinTolerance;
-		Standard_Real MinTolerance ();
-		%feature("compactdefaultargs") SetMinTolerance;
-		%feature("autodoc", "	* Sets min tolerance
-
-	:param theMinToler:
-	:type theMinToler: float
-	:rtype: None
-") SetMinTolerance;
-		void SetMinTolerance (const Standard_Real theMinToler);
-		%feature("compactdefaultargs") MaxTolerance;
-		%feature("autodoc", "	* Gives set max tolerance
-
-	:rtype: float
-") MaxTolerance;
-		Standard_Real MaxTolerance ();
-		%feature("compactdefaultargs") SetMaxTolerance;
-		%feature("autodoc", "	* Sets max tolerance.
-
-	:param theMaxToler:
-	:type theMaxToler: float
-	:rtype: None
-") SetMaxTolerance;
-		void SetMaxTolerance (const Standard_Real theMaxToler);
-		%feature("compactdefaultargs") FaceMode;
-		%feature("autodoc", "	* Returns mode for sewing faces By default - true.
-
-	:rtype: bool
-") FaceMode;
-		Standard_Boolean FaceMode ();
-		%feature("compactdefaultargs") SetFaceMode;
-		%feature("autodoc", "	* Sets mode for sewing faces By default - true.
-
-	:param theFaceMode:
-	:type theFaceMode: bool
-	:rtype: None
-") SetFaceMode;
-		void SetFaceMode (const Standard_Boolean theFaceMode);
-		%feature("compactdefaultargs") FloatingEdgesMode;
-		%feature("autodoc", "	* Returns mode for sewing floating edges By default - false.
-
-	:rtype: bool
-") FloatingEdgesMode;
-		Standard_Boolean FloatingEdgesMode ();
-		%feature("compactdefaultargs") SetFloatingEdgesMode;
-		%feature("autodoc", "	* Sets mode for sewing floating edges By default - false. Returns mode for cutting floating edges By default - false. Sets mode for cutting floating edges By default - false.
-
-	:param theFloatingEdgesMode:
-	:type theFloatingEdgesMode: bool
-	:rtype: None
-") SetFloatingEdgesMode;
-		void SetFloatingEdgesMode (const Standard_Boolean theFloatingEdgesMode);
-		%feature("compactdefaultargs") LocalTolerancesMode;
-		%feature("autodoc", "	* Returns mode for accounting of local tolerances of edges and vertices during of merging.
-
-	:rtype: bool
-") LocalTolerancesMode;
-		Standard_Boolean LocalTolerancesMode ();
-		%feature("compactdefaultargs") SetLocalTolerancesMode;
-		%feature("autodoc", "	* Sets mode for accounting of local tolerances of edges and vertices during of merging in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
-
-	:param theLocalTolerancesMode:
-	:type theLocalTolerancesMode: bool
-	:rtype: None
-") SetLocalTolerancesMode;
-		void SetLocalTolerancesMode (const Standard_Boolean theLocalTolerancesMode);
-		%feature("compactdefaultargs") SetNonManifoldMode;
-		%feature("autodoc", "	* Sets mode for non-manifold sewing.
-
-	:param theNonManifoldMode:
-	:type theNonManifoldMode: bool
-	:rtype: None
-") SetNonManifoldMode;
-		void SetNonManifoldMode (const Standard_Boolean theNonManifoldMode);
-		%feature("compactdefaultargs") NonManifoldMode;
-		%feature("autodoc", "	* Gets mode for non-manifold sewing. //! INTERNAL FUCTIONS ---
-
-	:rtype: bool
-") NonManifoldMode;
-		Standard_Boolean NonManifoldMode ();
 };
 
 
@@ -768,14 +712,6 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXYZ {
 	public:
 typedef Standard_Integer Target;
-		%feature("compactdefaultargs") BRepBuilderAPI_VertexInspector;
-		%feature("autodoc", "	* Constructor; remembers the tolerance
-
-	:param theTol:
-	:type theTol: float
-	:rtype: None
-") BRepBuilderAPI_VertexInspector;
-		 BRepBuilderAPI_VertexInspector (const Standard_Real theTol);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Keep the points used for comparison
 
@@ -784,26 +720,20 @@ typedef Standard_Integer Target;
 	:rtype: None
 ") Add;
 		void Add (const gp_XYZ & thePnt);
+		%feature("compactdefaultargs") BRepBuilderAPI_VertexInspector;
+		%feature("autodoc", "	* Constructor; remembers the tolerance
+
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") BRepBuilderAPI_VertexInspector;
+		 BRepBuilderAPI_VertexInspector (const Standard_Real theTol);
 		%feature("compactdefaultargs") ClearResList;
 		%feature("autodoc", "	* Clear the list of adjacent points
 
 	:rtype: None
 ") ClearResList;
 		void ClearResList ();
-		%feature("compactdefaultargs") SetCurrent;
-		%feature("autodoc", "	* Set current point to search for coincidence
-
-	:param theCurPnt:
-	:type theCurPnt: gp_XYZ
-	:rtype: None
-") SetCurrent;
-		void SetCurrent (const gp_XYZ & theCurPnt);
-		%feature("compactdefaultargs") ResInd;
-		%feature("autodoc", "	* Get list of indexes of points adjacent with the current
-
-	:rtype: TColStd_ListOfInteger
-") ResInd;
-		const TColStd_ListOfInteger & ResInd ();
 		%feature("compactdefaultargs") Inspect;
 		%feature("autodoc", "	* Implementation of inspection method
 
@@ -812,6 +742,20 @@ typedef Standard_Integer Target;
 	:rtype: NCollection_CellFilter_Action
 ") Inspect;
 		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
+		%feature("compactdefaultargs") ResInd;
+		%feature("autodoc", "	* Get list of indexes of points adjacent with the current
+
+	:rtype: TColStd_ListOfInteger
+") ResInd;
+		const TColStd_ListOfInteger & ResInd ();
+		%feature("compactdefaultargs") SetCurrent;
+		%feature("autodoc", "	* Set current point to search for coincidence
+
+	:param theCurPnt:
+	:type theCurPnt: gp_XYZ
+	:rtype: None
+") SetCurrent;
+		void SetCurrent (const gp_XYZ & theCurPnt);
 };
 
 
@@ -823,20 +767,6 @@ typedef Standard_Integer Target;
 %nodefaultctor BRepBuilderAPI_BndBoxTreeSelector;
 class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Selector {
 	public:
-		%feature("compactdefaultargs") BRepBuilderAPI_BndBoxTreeSelector;
-		%feature("autodoc", "	* Constructor; calls the base class constructor
-
-	:rtype: None
-") BRepBuilderAPI_BndBoxTreeSelector;
-		 BRepBuilderAPI_BndBoxTreeSelector ();
-		%feature("compactdefaultargs") Reject;
-		%feature("autodoc", "	* Implementation of rejection method returns True if the bounding box does not intersect with the current
-
-	:param theBox:
-	:type theBox: Bnd_Box &
-	:rtype: bool
-") Reject;
-		Standard_Boolean Reject (const Bnd_Box & theBox);
 		%feature("compactdefaultargs") Accept;
 		%feature("autodoc", "	* Implementation of acceptance method This method is called when the bounding box intersect with the current. It stores the object - the index of box in the list of accepted objects. returns True, because the object is accepted
 
@@ -845,12 +775,32 @@ class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Sele
 	:rtype: bool
 ") Accept;
 		Standard_Boolean Accept (const Standard_Integer & theObj);
+		%feature("compactdefaultargs") BRepBuilderAPI_BndBoxTreeSelector;
+		%feature("autodoc", "	* Constructor; calls the base class constructor
+
+	:rtype: None
+") BRepBuilderAPI_BndBoxTreeSelector;
+		 BRepBuilderAPI_BndBoxTreeSelector ();
 		%feature("compactdefaultargs") ClearResList;
 		%feature("autodoc", "	* Clear the list of intersecting boxes
 
 	:rtype: None
 ") ClearResList;
 		void ClearResList ();
+		%feature("compactdefaultargs") Reject;
+		%feature("autodoc", "	* Implementation of rejection method returns True if the bounding box does not intersect with the current
+
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: bool
+") Reject;
+		Standard_Boolean Reject (const Bnd_Box & theBox);
+		%feature("compactdefaultargs") ResInd;
+		%feature("autodoc", "	* Get list of indexes of boxes intersecting with the current box
+
+	:rtype: TColStd_ListOfInteger
+") ResInd;
+		const TColStd_ListOfInteger & ResInd ();
 		%feature("compactdefaultargs") SetCurrent;
 		%feature("autodoc", "	* Set current box to search for overlapping with him
 
@@ -859,12 +809,6 @@ class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Sele
 	:rtype: None
 ") SetCurrent;
 		void SetCurrent (const Bnd_Box & theBox);
-		%feature("compactdefaultargs") ResInd;
-		%feature("autodoc", "	* Get list of indexes of boxes intersecting with the current box
-
-	:rtype: TColStd_ListOfInteger
-") ResInd;
-		const TColStd_ListOfInteger & ResInd ();
 };
 
 
@@ -876,16 +820,36 @@ class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Sele
 %nodefaultctor BRepBuilderAPI_MakeShape;
 class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* This is called by Shape(). It does nothing but may be redefined.
 
 	:rtype: void
 ") Build;
 		virtual void Build ();
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape S has been deleted.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	* Returns a shape built by the shape construction algorithm. Raises exception StdFail_NotDone if the shape was not built.
 
@@ -896,30 +860,6 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Shape;
 		 operator TopoDS_Shape ();
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Generated;
-		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Modified;
-		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "	* Returns true if the shape S has been deleted.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: bool
-") IsDeleted;
-		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 };
 
 
@@ -1273,6 +1213,18 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeEdge;
 		 BRepBuilderAPI_MakeEdge (const Handle_Geom2d_Curve & L,const Handle_Geom_Surface & S,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2,const Standard_Real p1,const Standard_Real p2);
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "	* Returns the constructed edge. Exceptions StdFail_NotDone if the edge is not built.
+
+	:rtype: TopoDS_Edge
+") Edge;
+		const TopoDS_Edge  Edge ();
+		%feature("compactdefaultargs") Error;
+		%feature("autodoc", "	* Returns the construction status - BRepBuilderAPI_EdgeDone if the edge is built, or - another value of the BRepBuilderAPI_EdgeError enumeration indicating the reason of construction failure.
+
+	:rtype: BRepBuilderAPI_EdgeError
+") Error;
+		BRepBuilderAPI_EdgeError Error ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param C:
 	:type C: Handle_Geom_Curve &
@@ -1421,22 +1373,6 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 	:rtype: bool
 ") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	* Returns the construction status - BRepBuilderAPI_EdgeDone if the edge is built, or - another value of the BRepBuilderAPI_EdgeError enumeration indicating the reason of construction failure.
-
-	:rtype: BRepBuilderAPI_EdgeError
-") Error;
-		BRepBuilderAPI_EdgeError Error ();
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	* Returns the constructed edge. Exceptions StdFail_NotDone if the edge is not built.
-
-	:rtype: TopoDS_Edge
-") Edge;
-		const TopoDS_Edge  Edge ();
-		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Edge;
-		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
 
@@ -1449,6 +1385,10 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 	:rtype: TopoDS_Vertex
 ") Vertex2;
 		const TopoDS_Vertex  Vertex2 ();
+		%feature("compactdefaultargs") operator TopoDS_Edge;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Edge;
+		 operator TopoDS_Edge ();
 };
 
 
@@ -1720,6 +1660,16 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeEdge2d;
 		 BRepBuilderAPI_MakeEdge2d (const Handle_Geom2d_Curve & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2,const Standard_Real p1,const Standard_Real p2);
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") Edge;
+		const TopoDS_Edge  Edge ();
+		%feature("compactdefaultargs") Error;
+		%feature("autodoc", "	* Returns the error description when NotDone.
+
+	:rtype: BRepBuilderAPI_EdgeError
+") Error;
+		BRepBuilderAPI_EdgeError Error ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param C:
 	:type C: Handle_Geom2d_Curve &
@@ -1788,20 +1738,6 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	* Returns the error description when NotDone.
-
-	:rtype: BRepBuilderAPI_EdgeError
-") Error;
-		BRepBuilderAPI_EdgeError Error ();
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") Edge;
-		const TopoDS_Edge  Edge ();
-		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Edge;
-		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
 
@@ -1814,6 +1750,10 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 	:rtype: TopoDS_Vertex
 ") Vertex2;
 		const TopoDS_Vertex  Vertex2 ();
+		%feature("compactdefaultargs") operator TopoDS_Edge;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Edge;
+		 operator TopoDS_Edge ();
 };
 
 
@@ -1825,6 +1765,14 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 %nodefaultctor BRepBuilderAPI_MakeFace;
 class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds the wire W to the constructed face as a hole. Warning W must not cross the other bounds of the face, and all the bounds must define only one area on the surface. (Be careful, however, as this is not checked.) Example // a cylinder gp_Cylinder C = ..; // a wire TopoDS_Wire W = ...; BRepBuilderAPI_MakeFace MF(C); MF.Add(W); TopoDS_Face F = MF;
+
+	:param W:
+	:type W: TopoDS_Wire &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Wire & W);
 		%feature("compactdefaultargs") BRepBuilderAPI_MakeFace;
 		%feature("autodoc", "	* Not done.
 
@@ -2079,6 +2027,18 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace (const TopoDS_Face & F,const TopoDS_Wire & W);
+		%feature("compactdefaultargs") Error;
+		%feature("autodoc", "	* Returns the construction status BRepBuilderAPI_FaceDone if the face is built, or - another value of the BRepBuilderAPI_FaceError enumeration indicating why the construction failed, in particular when the given parameters are outside the bounds of the surface.
+
+	:rtype: BRepBuilderAPI_FaceError
+") Error;
+		BRepBuilderAPI_FaceError Error ();
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "	* Returns the constructed face. Exceptions StdFail_NotDone if no face is built.
+
+	:rtype: TopoDS_Face
+") Face;
+		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes (or reinitializes) the construction of a face by creating a new object which is a copy of the face F, in order to add wires to it, using the function Add. Note: this complete copy of the geometry is only required if you want to work on the geometries of the two faces independently.
 
@@ -2117,32 +2077,12 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") Init;
 		void Init (const Handle_Geom_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real TolDegen);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the wire W to the constructed face as a hole. Warning W must not cross the other bounds of the face, and all the bounds must define only one area on the surface. (Be careful, however, as this is not checked.) Example // a cylinder gp_Cylinder C = ..; // a wire TopoDS_Wire W = ...; BRepBuilderAPI_MakeFace MF(C); MF.Add(W); TopoDS_Face F = MF;
-
-	:param W:
-	:type W: TopoDS_Wire &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Wire & W);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if this algorithm has a valid face.
 
 	:rtype: bool
 ") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	* Returns the construction status BRepBuilderAPI_FaceDone if the face is built, or - another value of the BRepBuilderAPI_FaceError enumeration indicating why the construction failed, in particular when the given parameters are outside the bounds of the surface.
-
-	:rtype: BRepBuilderAPI_FaceError
-") Error;
-		BRepBuilderAPI_FaceError Error ();
-		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	* Returns the constructed face. Exceptions StdFail_NotDone if no face is built.
-
-	:rtype: TopoDS_Face
-") Face;
-		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Face;
@@ -2158,6 +2098,26 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 %nodefaultctor BRepBuilderAPI_MakePolygon;
 class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") Add;
+		void Add (const gp_Pnt & P);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds the point P or the vertex V at the end of the polygonal wire under construction. A vertex is automatically created on the point P. Warning - When P or V is coincident to the previous vertex, no edge is built. The method Added can be used to test for this. Neither P nor V is checked to verify that it is coincident with another vertex than the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non manifold polygonal wire. - P or V is not checked to verify if it is coincident with another vertex but the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful when using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non-manifold polygonal wire.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Vertex & V);
+		%feature("compactdefaultargs") Added;
+		%feature("autodoc", "	* Returns true if the last vertex added to the constructed polygonal wire is not coincident with the previous one.
+
+	:rtype: bool
+") Added;
+		Standard_Boolean Added ();
 		%feature("compactdefaultargs") BRepBuilderAPI_MakePolygon;
 		%feature("autodoc", "	* Initializes an empty polygonal wire, to which points or vertices are added using the Add function. As soon as the polygonal wire under construction contains vertices, it can be consulted using the Wire function.
 
@@ -2236,64 +2196,44 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakePolygon;
 		 BRepBuilderAPI_MakePolygon (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2,const TopoDS_Vertex & V3,const TopoDS_Vertex & V4,const Standard_Boolean Close = Standard_False);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param P:
-	:type P: gp_Pnt
-	:rtype: None
-") Add;
-		void Add (const gp_Pnt & P);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the point P or the vertex V at the end of the polygonal wire under construction. A vertex is automatically created on the point P. Warning - When P or V is coincident to the previous vertex, no edge is built. The method Added can be used to test for this. Neither P nor V is checked to verify that it is coincident with another vertex than the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non manifold polygonal wire. - P or V is not checked to verify if it is coincident with another vertex but the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful when using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non-manifold polygonal wire.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Vertex & V);
-		%feature("compactdefaultargs") Added;
-		%feature("autodoc", "	* Returns true if the last vertex added to the constructed polygonal wire is not coincident with the previous one.
-
-	:rtype: bool
-") Added;
-		Standard_Boolean Added ();
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "	* Closes the polygonal wire under construction. Note - this is equivalent to adding the first vertex to the polygonal wire under construction.
 
 	:rtype: None
 ") Close;
 		void Close ();
-		%feature("compactdefaultargs") FirstVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
-") FirstVertex;
-		const TopoDS_Vertex  FirstVertex ();
-		%feature("compactdefaultargs") LastVertex;
-		%feature("autodoc", "	* Returns the first or the last vertex of the polygonal wire under construction. If the constructed polygonal wire is closed, the first and the last vertices are identical.
-
-	:rtype: TopoDS_Vertex
-") LastVertex;
-		const TopoDS_Vertex  LastVertex ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if this algorithm contains a valid polygonal wire (i.e. if there is at least one edge). IsDone returns false if fewer than two vertices have been chained together by this construction algorithm.
-
-	:rtype: bool
-") IsDone;
-		virtual Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "	* Returns the edge built between the last two points or vertices added to the constructed polygonal wire under construction. Warning If there is only one vertex in the polygonal wire, the result is a null edge.
 
 	:rtype: TopoDS_Edge
 ") Edge;
 		const TopoDS_Edge  Edge ();
-		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Edge;
-		 operator TopoDS_Edge ();
+		%feature("compactdefaultargs") FirstVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") FirstVertex;
+		const TopoDS_Vertex  FirstVertex ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns true if this algorithm contains a valid polygonal wire (i.e. if there is at least one edge). IsDone returns false if fewer than two vertices have been chained together by this construction algorithm.
+
+	:rtype: bool
+") IsDone;
+		virtual Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") LastVertex;
+		%feature("autodoc", "	* Returns the first or the last vertex of the polygonal wire under construction. If the constructed polygonal wire is closed, the first and the last vertices are identical.
+
+	:rtype: TopoDS_Vertex
+") LastVertex;
+		const TopoDS_Vertex  LastVertex ();
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "	* Returns the constructed polygonal wire, or the already built part of the polygonal wire under construction. Exceptions StdFail_NotDone if the wire is not built, i.e. if fewer than two vertices have been chained together by this construction algorithm.
 
 	:rtype: TopoDS_Wire
 ") Wire;
 		const TopoDS_Wire  Wire ();
+		%feature("compactdefaultargs") operator TopoDS_Edge;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Edge;
+		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Wire;
@@ -2343,6 +2283,12 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeShell;
 		 BRepBuilderAPI_MakeShell (const Handle_Geom_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Boolean Segment = Standard_False);
+		%feature("compactdefaultargs") Error;
+		%feature("autodoc", "	* Returns the construction status: - BRepBuilderAPI_ShellDone if the shell is built, or - another value of the BRepBuilderAPI_ShellError enumeration indicating why the construction failed. This is frequently BRepBuilderAPI_ShellParametersOutOfRange indicating that the given parameters are outside the bounds of the surface.
+
+	:rtype: BRepBuilderAPI_ShellError
+") Error;
+		BRepBuilderAPI_ShellError Error ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Defines or redefines the arguments for the construction of a shell. The construction is initialized with the surface S, limited in the u parametric direction by the two parameter values UMin and UMax, and in the v parametric direction by the two parameter values VMin and VMax. Warning The function Error returns: - BRepBuilderAPI_ShellParametersOutOfRange when the given parameters are outside the bounds of the surface or the basis surface if S is trimmed
 
@@ -2367,12 +2313,6 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 	:rtype: bool
 ") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	* Returns the construction status: - BRepBuilderAPI_ShellDone if the shell is built, or - another value of the BRepBuilderAPI_ShellError enumeration indicating why the construction failed. This is frequently BRepBuilderAPI_ShellParametersOutOfRange indicating that the given parameters are outside the bounds of the surface.
-
-	:rtype: BRepBuilderAPI_ShellError
-") Error;
-		BRepBuilderAPI_ShellError Error ();
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "	* Returns the new Shell.
 
@@ -2394,6 +2334,14 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 %nodefaultctor BRepBuilderAPI_MakeSolid;
 class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds the shell to the current solid. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S must not intersect other shells of the solid under construction. Besides, after all shells have been added, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
+
+	:param S:
+	:type S: TopoDS_Shell &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Shell & S);
 		%feature("compactdefaultargs") BRepBuilderAPI_MakeSolid;
 		%feature("autodoc", "	* Initializes the construction of a solid. An empty solid is considered to cover the whole space. The Add function is used to define shells to bound it.
 
@@ -2456,14 +2404,12 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeSolid;
 		 BRepBuilderAPI_MakeSolid (const TopoDS_Solid & So,const TopoDS_Shell & S);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the shell to the current solid. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S must not intersect other shells of the solid under construction. Besides, after all shells have been added, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
-
-	:param S:
-	:type S: TopoDS_Shell &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Shell & S);
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the solid is built. For this class, a solid under construction is always valid. If no shell has been added, it could be a whole-space solid. However, no check was done to verify the conditions of coherence of the resulting solid.
 
@@ -2480,12 +2426,6 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
-		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: bool
-") IsDeleted;
-		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 };
 
 
@@ -2526,6 +2466,30 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 %nodefaultctor BRepBuilderAPI_MakeWire;
 class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 	public:
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds the edge E to the wire under construction. E must be connectable to the wire under construction, and, unless it is the first edge of the wire, must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If E is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Add the edges of <W> to the current wire.
+
+	:param W:
+	:type W: TopoDS_Wire &
+	:rtype: None
+") Add;
+		void Add (const TopoDS_Wire & W);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically. If some of them are not connected the Status give DisconnectedWire but the 'Maker' is Done() and you can get the partial result. (ie connected to the first edgeof the list <L>)
+
+	:param L:
+	:type L: TopTools_ListOfShape &
+	:rtype: None
+") Add;
+		void Add (const TopTools_ListOfShape & L);
 		%feature("compactdefaultargs") BRepBuilderAPI_MakeWire;
 		%feature("autodoc", "	* Constructs an empty wire framework, to which edges are added using the Add function. As soon as the wire contains one edge, it can return with the use of the function Wire. Warning The function Error will return BRepBuilderAPI_EmptyWire if it is called before at least one edge is added to the wire under construction.
 
@@ -2594,42 +2558,30 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire (const TopoDS_Wire & W,const TopoDS_Edge & E);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the edge E to the wire under construction. E must be connectable to the wire under construction, and, unless it is the first edge of the wire, must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If E is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "	* Returns the last edge added to the wire under construction. Warning - This edge can be different from the original one (the argument of the function Add, for instance,) - A null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
 
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Add the edges of <W> to the current wire.
-
-	:param W:
-	:type W: TopoDS_Wire &
-	:rtype: None
-") Add;
-		void Add (const TopoDS_Wire & W);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically. If some of them are not connected the Status give DisconnectedWire but the 'Maker' is Done() and you can get the partial result. (ie connected to the first edgeof the list <L>)
-
-	:param L:
-	:type L: TopTools_ListOfShape &
-	:rtype: None
-") Add;
-		void Add (const TopTools_ListOfShape & L);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if this algorithm contains a valid wire. IsDone returns false if: - there are no edges in the wire, or - the last edge which you tried to add was not connectable.
-
-	:rtype: bool
-") IsDone;
-		virtual Standard_Boolean IsDone ();
+	:rtype: TopoDS_Edge
+") Edge;
+		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "	* Returns the construction status - BRepBuilderAPI_WireDone if the wire is built, or - another value of the BRepBuilderAPI_WireError enumeration indicating why the construction failed.
 
 	:rtype: BRepBuilderAPI_WireError
 ") Error;
 		BRepBuilderAPI_WireError Error ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns true if this algorithm contains a valid wire. IsDone returns false if: - there are no edges in the wire, or - the last edge which you tried to add was not connectable.
+
+	:rtype: bool
+") IsDone;
+		virtual Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Vertex;
+		%feature("autodoc", "	* Returns the last vertex of the last edge added to the wire under construction. Warning A null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectableR
+
+	:rtype: TopoDS_Vertex
+") Vertex;
+		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "	* Returns the constructed wire; or the part of the wire under construction already built. Exceptions StdFail_NotDone if a wire is not built.
 
@@ -2640,18 +2592,6 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	* Returns the last edge added to the wire under construction. Warning - This edge can be different from the original one (the argument of the function Add, for instance,) - A null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
-
-	:rtype: TopoDS_Edge
-") Edge;
-		const TopoDS_Edge  Edge ();
-		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	* Returns the last vertex of the last edge added to the wire under construction. Warning A null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectableR
-
-	:rtype: TopoDS_Vertex
-") Vertex;
-		const TopoDS_Vertex  Vertex ();
 };
 
 
@@ -2751,16 +2691,6 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	:rtype: None
 ") BRepBuilderAPI_GTransform;
 		 BRepBuilderAPI_GTransform (const TopoDS_Shape & S,const gp_GTrsf & T,const Standard_Boolean Copy = Standard_False);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Applies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric (i.e. if the determinant of the vectorial part of T is equal to 1.), and if Copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of S. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes: just specify them by calling the function Perform again.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:param Copy: default value is Standard_False
-	:type Copy: bool
-	:rtype: None
-") Perform;
-		void Perform (const TopoDS_Shape & S,const Standard_Boolean Copy = Standard_False);
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
 
@@ -2777,6 +2707,16 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Applies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric (i.e. if the determinant of the vectorial part of T is equal to 1.), and if Copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of S. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes: just specify them by calling the function Perform again.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:param Copy: default value is Standard_False
+	:type Copy: bool
+	:rtype: None
+") Perform;
+		void Perform (const TopoDS_Shape & S,const Standard_Boolean Copy = Standard_False);
 };
 
 
@@ -2804,6 +2744,22 @@ class BRepBuilderAPI_NurbsConvert : public BRepBuilderAPI_ModifyShape {
 	:rtype: None
 ") BRepBuilderAPI_NurbsConvert;
 		 BRepBuilderAPI_NurbsConvert (const TopoDS_Shape & S,const Standard_Boolean Copy = Standard_False);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") ModifiedShape;
+		%feature("autodoc", "	* Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ModifiedShape;
+		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Builds a new shape by converting the geometry of the shape S into NURBS geometry. Specifically, all curves supporting edges of S are converted into BSpline curves, and all surfaces supporting its faces are converted into BSpline surfaces. Use the function Shape to access the new shape. Note: this framework can be reused to convert other shapes: you specify them by calling the function Perform again.
 
@@ -2845,6 +2801,22 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	:rtype: None
 ") BRepBuilderAPI_Transform;
 		 BRepBuilderAPI_Transform (const TopoDS_Shape & S,const gp_Trsf & T,const Standard_Boolean Copy = Standard_False);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") ModifiedShape;
+		%feature("autodoc", "	* Returns the modified shape corresponding to <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ModifiedShape;
+		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* pplies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric, in other words, if the determinant of the vectorial part of T is equal to 1., and if Copy equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of S. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes. You only need to specify them by calling the function Perform again.
 
@@ -2855,22 +2827,6 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	:rtype: None
 ") Perform;
 		void Perform (const TopoDS_Shape & S,const Standard_Boolean Copy = Standard_False);
-		%feature("compactdefaultargs") ModifiedShape;
-		%feature("autodoc", "	* Returns the modified shape corresponding to <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") ModifiedShape;
-		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Modified;
-		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & S);
 };
 
 
@@ -2879,3 +2835,6 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

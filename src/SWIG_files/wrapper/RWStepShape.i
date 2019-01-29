@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPSHAPEDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPSHAPEDOCSTRING) RWStepShape
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include RWStepShape_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,14 +69,6 @@ class RWStepShape_RWAdvancedBrepShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_AdvancedBrepShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_AdvancedBrepShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AdvancedBrepShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_AdvancedBrepShapeRepresentation &
@@ -81,6 +77,14 @@ class RWStepShape_RWAdvancedBrepShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_AdvancedBrepShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_AdvancedBrepShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AdvancedBrepShapeRepresentation & ent);
 };
 
 
@@ -108,14 +112,6 @@ class RWStepShape_RWAdvancedFace {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_AdvancedFace & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_AdvancedFace &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AdvancedFace & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_AdvancedFace &
@@ -124,6 +120,14 @@ class RWStepShape_RWAdvancedFace {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_AdvancedFace & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_AdvancedFace &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AdvancedFace & ent);
 };
 
 
@@ -155,16 +159,6 @@ class RWStepShape_RWAngularLocation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_AngularLocation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes AngularLocation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_AngularLocation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AngularLocation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -175,6 +169,16 @@ class RWStepShape_RWAngularLocation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_AngularLocation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes AngularLocation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_AngularLocation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AngularLocation & ent);
 };
 
 
@@ -206,16 +210,6 @@ class RWStepShape_RWAngularSize {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_AngularSize & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes AngularSize
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_AngularSize &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AngularSize & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -226,6 +220,16 @@ class RWStepShape_RWAngularSize {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_AngularSize & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes AngularSize
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_AngularSize &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_AngularSize & ent);
 };
 
 
@@ -253,14 +257,6 @@ class RWStepShape_RWBlock {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Block & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Block &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Block & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Block &
@@ -269,6 +265,14 @@ class RWStepShape_RWBlock {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Block & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Block &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Block & ent);
 };
 
 
@@ -296,14 +300,6 @@ class RWStepShape_RWBooleanResult {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_BooleanResult & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_BooleanResult &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BooleanResult & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_BooleanResult &
@@ -312,6 +308,14 @@ class RWStepShape_RWBooleanResult {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_BooleanResult & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_BooleanResult &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BooleanResult & ent);
 };
 
 
@@ -339,14 +343,6 @@ class RWStepShape_RWBoxDomain {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_BoxDomain & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_BoxDomain &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BoxDomain & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_BoxDomain &
@@ -355,6 +351,14 @@ class RWStepShape_RWBoxDomain {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_BoxDomain & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_BoxDomain &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BoxDomain & ent);
 };
 
 
@@ -382,14 +386,6 @@ class RWStepShape_RWBoxedHalfSpace {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_BoxedHalfSpace & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_BoxedHalfSpace &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BoxedHalfSpace & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_BoxedHalfSpace &
@@ -398,6 +394,14 @@ class RWStepShape_RWBoxedHalfSpace {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_BoxedHalfSpace & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_BoxedHalfSpace &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BoxedHalfSpace & ent);
 };
 
 
@@ -409,6 +413,16 @@ class RWStepShape_RWBoxedHalfSpace {
 %nodefaultctor RWStepShape_RWBrepWithVoids;
 class RWStepShape_RWBrepWithVoids {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: Handle_StepShape_BrepWithVoids &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: Handle_Interface_Check &
+	:rtype: None
+") Check;
+		void Check (const Handle_StepShape_BrepWithVoids & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
 		%feature("compactdefaultargs") RWStepShape_RWBrepWithVoids;
 		%feature("autodoc", "	:rtype: None
 ") RWStepShape_RWBrepWithVoids;
@@ -425,14 +439,6 @@ class RWStepShape_RWBrepWithVoids {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_BrepWithVoids & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_BrepWithVoids &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BrepWithVoids & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_BrepWithVoids &
@@ -441,16 +447,14 @@ class RWStepShape_RWBrepWithVoids {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_BrepWithVoids & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
 	:type ent: Handle_StepShape_BrepWithVoids &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepShape_BrepWithVoids & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_BrepWithVoids & ent);
 };
 
 
@@ -478,14 +482,6 @@ class RWStepShape_RWClosedShell {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ClosedShell & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ClosedShell &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ClosedShell & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ClosedShell &
@@ -494,6 +490,14 @@ class RWStepShape_RWClosedShell {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ClosedShell & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ClosedShell &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ClosedShell & ent);
 };
 
 
@@ -525,16 +529,6 @@ class RWStepShape_RWCompoundShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_CompoundShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes CompoundShapeRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_CompoundShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CompoundShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -545,6 +539,16 @@ class RWStepShape_RWCompoundShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_CompoundShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes CompoundShapeRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_CompoundShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CompoundShapeRepresentation & ent);
 };
 
 
@@ -576,16 +580,6 @@ class RWStepShape_RWConnectedEdgeSet {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ConnectedEdgeSet & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ConnectedEdgeSet
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ConnectedEdgeSet &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedEdgeSet & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -596,6 +590,16 @@ class RWStepShape_RWConnectedEdgeSet {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ConnectedEdgeSet & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ConnectedEdgeSet
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ConnectedEdgeSet &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedEdgeSet & ent);
 };
 
 
@@ -623,14 +627,6 @@ class RWStepShape_RWConnectedFaceSet {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ConnectedFaceSet & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ConnectedFaceSet &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceSet & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ConnectedFaceSet &
@@ -639,6 +635,14 @@ class RWStepShape_RWConnectedFaceSet {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ConnectedFaceSet & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ConnectedFaceSet &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceSet & ent);
 };
 
 
@@ -670,16 +674,6 @@ class RWStepShape_RWConnectedFaceShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ConnectedFaceShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ConnectedFaceShapeRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ConnectedFaceShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -690,6 +684,16 @@ class RWStepShape_RWConnectedFaceShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ConnectedFaceShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ConnectedFaceShapeRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ConnectedFaceShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceShapeRepresentation & ent);
 };
 
 
@@ -721,16 +725,6 @@ class RWStepShape_RWConnectedFaceSubSet {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ConnectedFaceSubSet & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ConnectedFaceSubSet
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ConnectedFaceSubSet &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceSubSet & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -741,6 +735,16 @@ class RWStepShape_RWConnectedFaceSubSet {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ConnectedFaceSubSet & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ConnectedFaceSubSet
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ConnectedFaceSubSet &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ConnectedFaceSubSet & ent);
 };
 
 
@@ -768,14 +772,6 @@ class RWStepShape_RWContextDependentShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ContextDependentShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ContextDependentShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ContextDependentShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ContextDependentShapeRepresentation &
@@ -784,6 +780,14 @@ class RWStepShape_RWContextDependentShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ContextDependentShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ContextDependentShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ContextDependentShapeRepresentation & ent);
 };
 
 
@@ -811,14 +815,6 @@ class RWStepShape_RWCsgShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_CsgShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_CsgShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CsgShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_CsgShapeRepresentation &
@@ -827,6 +823,14 @@ class RWStepShape_RWCsgShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_CsgShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_CsgShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CsgShapeRepresentation & ent);
 };
 
 
@@ -854,14 +858,6 @@ class RWStepShape_RWCsgSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_CsgSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_CsgSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CsgSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_CsgSolid &
@@ -870,6 +866,14 @@ class RWStepShape_RWCsgSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_CsgSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_CsgSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_CsgSolid & ent);
 };
 
 
@@ -897,14 +901,6 @@ class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation &
@@ -913,6 +909,14 @@ class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation & ent);
 };
 
 
@@ -944,16 +948,6 @@ class RWStepShape_RWDimensionalCharacteristicRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DimensionalCharacteristicRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DimensionalCharacteristicRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DimensionalCharacteristicRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalCharacteristicRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -964,6 +958,16 @@ class RWStepShape_RWDimensionalCharacteristicRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DimensionalCharacteristicRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes DimensionalCharacteristicRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DimensionalCharacteristicRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalCharacteristicRepresentation & ent);
 };
 
 
@@ -995,16 +999,6 @@ class RWStepShape_RWDimensionalLocation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DimensionalLocation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DimensionalLocation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DimensionalLocation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalLocation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1015,6 +1009,16 @@ class RWStepShape_RWDimensionalLocation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DimensionalLocation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes DimensionalLocation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DimensionalLocation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalLocation & ent);
 };
 
 
@@ -1046,16 +1050,6 @@ class RWStepShape_RWDimensionalLocationWithPath {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DimensionalLocationWithPath & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DimensionalLocationWithPath
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DimensionalLocationWithPath &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalLocationWithPath & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1066,6 +1060,16 @@ class RWStepShape_RWDimensionalLocationWithPath {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DimensionalLocationWithPath & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes DimensionalLocationWithPath
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DimensionalLocationWithPath &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalLocationWithPath & ent);
 };
 
 
@@ -1097,16 +1101,6 @@ class RWStepShape_RWDimensionalSize {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DimensionalSize & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DimensionalSize
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DimensionalSize &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalSize & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1117,6 +1111,16 @@ class RWStepShape_RWDimensionalSize {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DimensionalSize & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes DimensionalSize
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DimensionalSize &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalSize & ent);
 };
 
 
@@ -1148,16 +1152,6 @@ class RWStepShape_RWDimensionalSizeWithPath {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_DimensionalSizeWithPath & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DimensionalSizeWithPath
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_DimensionalSizeWithPath &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalSizeWithPath & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1168,6 +1162,16 @@ class RWStepShape_RWDimensionalSizeWithPath {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_DimensionalSizeWithPath & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes DimensionalSizeWithPath
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_DimensionalSizeWithPath &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_DimensionalSizeWithPath & ent);
 };
 
 
@@ -1195,14 +1199,6 @@ class RWStepShape_RWEdge {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Edge & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Edge &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Edge & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Edge &
@@ -1211,6 +1207,14 @@ class RWStepShape_RWEdge {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Edge & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Edge &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Edge & ent);
 };
 
 
@@ -1242,16 +1246,6 @@ class RWStepShape_RWEdgeBasedWireframeModel {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_EdgeBasedWireframeModel & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes EdgeBasedWireframeModel
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_EdgeBasedWireframeModel &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeBasedWireframeModel & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1262,6 +1256,16 @@ class RWStepShape_RWEdgeBasedWireframeModel {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_EdgeBasedWireframeModel & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes EdgeBasedWireframeModel
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_EdgeBasedWireframeModel &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeBasedWireframeModel & ent);
 };
 
 
@@ -1293,16 +1297,6 @@ class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_EdgeBasedWireframeShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes EdgeBasedWireframeShapeRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_EdgeBasedWireframeShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeBasedWireframeShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1313,6 +1307,16 @@ class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_EdgeBasedWireframeShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes EdgeBasedWireframeShapeRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_EdgeBasedWireframeShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeBasedWireframeShapeRepresentation & ent);
 };
 
 
@@ -1324,6 +1328,16 @@ class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 %nodefaultctor RWStepShape_RWEdgeCurve;
 class RWStepShape_RWEdgeCurve {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: Handle_StepShape_EdgeCurve &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: Handle_Interface_Check &
+	:rtype: None
+") Check;
+		void Check (const Handle_StepShape_EdgeCurve & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
 		%feature("compactdefaultargs") RWStepShape_RWEdgeCurve;
 		%feature("autodoc", "	:rtype: None
 ") RWStepShape_RWEdgeCurve;
@@ -1340,14 +1354,6 @@ class RWStepShape_RWEdgeCurve {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_EdgeCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_EdgeCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeCurve & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_EdgeCurve &
@@ -1356,16 +1362,14 @@ class RWStepShape_RWEdgeCurve {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_EdgeCurve & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
 	:type ent: Handle_StepShape_EdgeCurve &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepShape_EdgeCurve & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeCurve & ent);
 };
 
 
@@ -1377,6 +1381,16 @@ class RWStepShape_RWEdgeCurve {
 %nodefaultctor RWStepShape_RWEdgeLoop;
 class RWStepShape_RWEdgeLoop {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: Handle_StepShape_EdgeLoop &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: Handle_Interface_Check &
+	:rtype: None
+") Check;
+		void Check (const Handle_StepShape_EdgeLoop & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
 		%feature("compactdefaultargs") RWStepShape_RWEdgeLoop;
 		%feature("autodoc", "	:rtype: None
 ") RWStepShape_RWEdgeLoop;
@@ -1393,14 +1407,6 @@ class RWStepShape_RWEdgeLoop {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_EdgeLoop & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_EdgeLoop &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeLoop & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_EdgeLoop &
@@ -1409,16 +1415,14 @@ class RWStepShape_RWEdgeLoop {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_EdgeLoop & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
 	:type ent: Handle_StepShape_EdgeLoop &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepShape_EdgeLoop & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_EdgeLoop & ent);
 };
 
 
@@ -1446,14 +1450,6 @@ class RWStepShape_RWExtrudedAreaSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ExtrudedAreaSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ExtrudedAreaSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ExtrudedAreaSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ExtrudedAreaSolid &
@@ -1462,6 +1458,14 @@ class RWStepShape_RWExtrudedAreaSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ExtrudedAreaSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ExtrudedAreaSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ExtrudedAreaSolid & ent);
 };
 
 
@@ -1489,14 +1493,6 @@ class RWStepShape_RWExtrudedFaceSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ExtrudedFaceSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ExtrudedFaceSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ExtrudedFaceSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ExtrudedFaceSolid &
@@ -1505,6 +1501,14 @@ class RWStepShape_RWExtrudedFaceSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ExtrudedFaceSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ExtrudedFaceSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ExtrudedFaceSolid & ent);
 };
 
 
@@ -1532,14 +1536,6 @@ class RWStepShape_RWFace {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Face & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Face &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Face & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Face &
@@ -1548,6 +1544,14 @@ class RWStepShape_RWFace {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Face & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Face &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Face & ent);
 };
 
 
@@ -1579,16 +1583,6 @@ class RWStepShape_RWFaceBasedSurfaceModel {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FaceBasedSurfaceModel & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes FaceBasedSurfaceModel
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FaceBasedSurfaceModel &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceBasedSurfaceModel & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -1599,6 +1593,16 @@ class RWStepShape_RWFaceBasedSurfaceModel {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FaceBasedSurfaceModel & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes FaceBasedSurfaceModel
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FaceBasedSurfaceModel &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceBasedSurfaceModel & ent);
 };
 
 
@@ -1610,6 +1614,16 @@ class RWStepShape_RWFaceBasedSurfaceModel {
 %nodefaultctor RWStepShape_RWFaceBound;
 class RWStepShape_RWFaceBound {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: Handle_StepShape_FaceBound &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: Handle_Interface_Check &
+	:rtype: None
+") Check;
+		void Check (const Handle_StepShape_FaceBound & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
 		%feature("compactdefaultargs") RWStepShape_RWFaceBound;
 		%feature("autodoc", "	:rtype: None
 ") RWStepShape_RWFaceBound;
@@ -1626,14 +1640,6 @@ class RWStepShape_RWFaceBound {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FaceBound & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FaceBound &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceBound & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FaceBound &
@@ -1642,16 +1648,14 @@ class RWStepShape_RWFaceBound {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FaceBound & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
 	:type ent: Handle_StepShape_FaceBound &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepShape_FaceBound & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceBound & ent);
 };
 
 
@@ -1679,14 +1683,6 @@ class RWStepShape_RWFaceOuterBound {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FaceOuterBound & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FaceOuterBound &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceOuterBound & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FaceOuterBound &
@@ -1695,6 +1691,14 @@ class RWStepShape_RWFaceOuterBound {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FaceOuterBound & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FaceOuterBound &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceOuterBound & ent);
 };
 
 
@@ -1722,14 +1726,6 @@ class RWStepShape_RWFaceSurface {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FaceSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FaceSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceSurface & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FaceSurface &
@@ -1738,6 +1734,14 @@ class RWStepShape_RWFaceSurface {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FaceSurface & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FaceSurface &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FaceSurface & ent);
 };
 
 
@@ -1765,14 +1769,6 @@ class RWStepShape_RWFacetedBrep {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FacetedBrep & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FacetedBrep &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrep & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FacetedBrep &
@@ -1781,6 +1777,14 @@ class RWStepShape_RWFacetedBrep {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FacetedBrep & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FacetedBrep &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrep & ent);
 };
 
 
@@ -1808,14 +1812,6 @@ class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FacetedBrepAndBrepWithVoids & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FacetedBrepAndBrepWithVoids &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrepAndBrepWithVoids & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FacetedBrepAndBrepWithVoids &
@@ -1824,6 +1820,14 @@ class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FacetedBrepAndBrepWithVoids & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FacetedBrepAndBrepWithVoids &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrepAndBrepWithVoids & ent);
 };
 
 
@@ -1851,14 +1855,6 @@ class RWStepShape_RWFacetedBrepShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_FacetedBrepShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_FacetedBrepShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrepShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_FacetedBrepShapeRepresentation &
@@ -1867,6 +1863,14 @@ class RWStepShape_RWFacetedBrepShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_FacetedBrepShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_FacetedBrepShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_FacetedBrepShapeRepresentation & ent);
 };
 
 
@@ -1894,14 +1898,6 @@ class RWStepShape_RWGeometricCurveSet {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_GeometricCurveSet & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_GeometricCurveSet &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricCurveSet & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_GeometricCurveSet &
@@ -1910,6 +1906,14 @@ class RWStepShape_RWGeometricCurveSet {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_GeometricCurveSet & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_GeometricCurveSet &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricCurveSet & ent);
 };
 
 
@@ -1937,14 +1941,6 @@ class RWStepShape_RWGeometricSet {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_GeometricSet & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_GeometricSet &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricSet & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_GeometricSet &
@@ -1953,6 +1949,14 @@ class RWStepShape_RWGeometricSet {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_GeometricSet & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_GeometricSet &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricSet & ent);
 };
 
 
@@ -1980,14 +1984,6 @@ class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation &
@@ -1996,6 +1992,14 @@ class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation & ent);
 };
 
 
@@ -2023,14 +2027,6 @@ class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation &
@@ -2039,6 +2035,14 @@ class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation & ent);
 };
 
 
@@ -2066,14 +2070,6 @@ class RWStepShape_RWHalfSpaceSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_HalfSpaceSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_HalfSpaceSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_HalfSpaceSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_HalfSpaceSolid &
@@ -2082,6 +2078,14 @@ class RWStepShape_RWHalfSpaceSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_HalfSpaceSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_HalfSpaceSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_HalfSpaceSolid & ent);
 };
 
 
@@ -2179,14 +2183,6 @@ class RWStepShape_RWLoopAndPath {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_LoopAndPath & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_LoopAndPath &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_LoopAndPath & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_LoopAndPath &
@@ -2195,6 +2191,14 @@ class RWStepShape_RWLoopAndPath {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_LoopAndPath & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_LoopAndPath &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_LoopAndPath & ent);
 };
 
 
@@ -2222,14 +2226,6 @@ class RWStepShape_RWManifoldSolidBrep {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ManifoldSolidBrep & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ManifoldSolidBrep &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ManifoldSolidBrep & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ManifoldSolidBrep &
@@ -2238,6 +2234,14 @@ class RWStepShape_RWManifoldSolidBrep {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ManifoldSolidBrep & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ManifoldSolidBrep &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ManifoldSolidBrep & ent);
 };
 
 
@@ -2265,14 +2269,6 @@ class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ManifoldSurfaceShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ManifoldSurfaceShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ManifoldSurfaceShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ManifoldSurfaceShapeRepresentation &
@@ -2281,6 +2277,14 @@ class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ManifoldSurfaceShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ManifoldSurfaceShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ManifoldSurfaceShapeRepresentation & ent);
 };
 
 
@@ -2308,14 +2312,6 @@ class RWStepShape_RWMeasureQualification {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_MeasureQualification & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_MeasureQualification &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_MeasureQualification & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_MeasureQualification &
@@ -2324,6 +2320,14 @@ class RWStepShape_RWMeasureQualification {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_MeasureQualification & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_MeasureQualification &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_MeasureQualification & ent);
 };
 
 
@@ -2351,14 +2355,6 @@ class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem &
@@ -2367,6 +2363,14 @@ class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem & ent);
 };
 
 
@@ -2398,16 +2402,6 @@ class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_NonManifoldSurfaceShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes NonManifoldSurfaceShapeRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_NonManifoldSurfaceShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_NonManifoldSurfaceShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -2418,6 +2412,16 @@ class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_NonManifoldSurfaceShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes NonManifoldSurfaceShapeRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_NonManifoldSurfaceShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_NonManifoldSurfaceShapeRepresentation & ent);
 };
 
 
@@ -2445,14 +2449,6 @@ class RWStepShape_RWOpenShell {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OpenShell & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OpenShell &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OpenShell & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OpenShell &
@@ -2461,6 +2457,14 @@ class RWStepShape_RWOpenShell {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OpenShell & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OpenShell &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OpenShell & ent);
 };
 
 
@@ -2488,14 +2492,6 @@ class RWStepShape_RWOrientedClosedShell {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OrientedClosedShell & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OrientedClosedShell &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedClosedShell & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OrientedClosedShell &
@@ -2504,6 +2500,14 @@ class RWStepShape_RWOrientedClosedShell {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OrientedClosedShell & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OrientedClosedShell &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedClosedShell & ent);
 };
 
 
@@ -2531,14 +2535,6 @@ class RWStepShape_RWOrientedEdge {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OrientedEdge & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OrientedEdge &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedEdge & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OrientedEdge &
@@ -2547,6 +2543,14 @@ class RWStepShape_RWOrientedEdge {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OrientedEdge & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OrientedEdge &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedEdge & ent);
 };
 
 
@@ -2574,14 +2578,6 @@ class RWStepShape_RWOrientedFace {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OrientedFace & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OrientedFace &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedFace & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OrientedFace &
@@ -2590,6 +2586,14 @@ class RWStepShape_RWOrientedFace {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OrientedFace & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OrientedFace &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedFace & ent);
 };
 
 
@@ -2617,14 +2621,6 @@ class RWStepShape_RWOrientedOpenShell {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OrientedOpenShell & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OrientedOpenShell &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedOpenShell & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OrientedOpenShell &
@@ -2633,6 +2629,14 @@ class RWStepShape_RWOrientedOpenShell {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OrientedOpenShell & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OrientedOpenShell &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedOpenShell & ent);
 };
 
 
@@ -2660,14 +2664,6 @@ class RWStepShape_RWOrientedPath {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_OrientedPath & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_OrientedPath &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedPath & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_OrientedPath &
@@ -2676,6 +2672,14 @@ class RWStepShape_RWOrientedPath {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_OrientedPath & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_OrientedPath &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_OrientedPath & ent);
 };
 
 
@@ -2703,14 +2707,6 @@ class RWStepShape_RWPath {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Path & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Path &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Path & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Path &
@@ -2719,6 +2715,14 @@ class RWStepShape_RWPath {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Path & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Path &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Path & ent);
 };
 
 
@@ -2746,14 +2750,6 @@ class RWStepShape_RWPlusMinusTolerance {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_PlusMinusTolerance & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_PlusMinusTolerance &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PlusMinusTolerance & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_PlusMinusTolerance &
@@ -2762,6 +2758,14 @@ class RWStepShape_RWPlusMinusTolerance {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_PlusMinusTolerance & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_PlusMinusTolerance &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PlusMinusTolerance & ent);
 };
 
 
@@ -2793,16 +2797,6 @@ class RWStepShape_RWPointRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_PointRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes PointRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_PointRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PointRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -2813,6 +2807,16 @@ class RWStepShape_RWPointRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_PointRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes PointRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_PointRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PointRepresentation & ent);
 };
 
 
@@ -2840,14 +2844,6 @@ class RWStepShape_RWPolyLoop {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_PolyLoop & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_PolyLoop &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PolyLoop & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_PolyLoop &
@@ -2856,6 +2852,14 @@ class RWStepShape_RWPolyLoop {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_PolyLoop & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_PolyLoop &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_PolyLoop & ent);
 };
 
 
@@ -2918,14 +2922,6 @@ class RWStepShape_RWQualifiedRepresentationItem {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_QualifiedRepresentationItem & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_QualifiedRepresentationItem &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_QualifiedRepresentationItem & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_QualifiedRepresentationItem &
@@ -2934,6 +2930,14 @@ class RWStepShape_RWQualifiedRepresentationItem {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_QualifiedRepresentationItem & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_QualifiedRepresentationItem &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_QualifiedRepresentationItem & ent);
 };
 
 
@@ -2961,14 +2965,6 @@ class RWStepShape_RWRevolvedAreaSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_RevolvedAreaSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_RevolvedAreaSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RevolvedAreaSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_RevolvedAreaSolid &
@@ -2977,6 +2973,14 @@ class RWStepShape_RWRevolvedAreaSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_RevolvedAreaSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_RevolvedAreaSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RevolvedAreaSolid & ent);
 };
 
 
@@ -3004,14 +3008,6 @@ class RWStepShape_RWRevolvedFaceSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_RevolvedFaceSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_RevolvedFaceSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RevolvedFaceSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_RevolvedFaceSolid &
@@ -3020,6 +3016,14 @@ class RWStepShape_RWRevolvedFaceSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_RevolvedFaceSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_RevolvedFaceSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RevolvedFaceSolid & ent);
 };
 
 
@@ -3047,14 +3051,6 @@ class RWStepShape_RWRightAngularWedge {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_RightAngularWedge & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_RightAngularWedge &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightAngularWedge & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_RightAngularWedge &
@@ -3063,6 +3059,14 @@ class RWStepShape_RWRightAngularWedge {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_RightAngularWedge & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_RightAngularWedge &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightAngularWedge & ent);
 };
 
 
@@ -3090,14 +3094,6 @@ class RWStepShape_RWRightCircularCone {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_RightCircularCone & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_RightCircularCone &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightCircularCone & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_RightCircularCone &
@@ -3106,6 +3102,14 @@ class RWStepShape_RWRightCircularCone {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_RightCircularCone & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_RightCircularCone &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightCircularCone & ent);
 };
 
 
@@ -3133,14 +3137,6 @@ class RWStepShape_RWRightCircularCylinder {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_RightCircularCylinder & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_RightCircularCylinder &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightCircularCylinder & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_RightCircularCylinder &
@@ -3149,6 +3145,14 @@ class RWStepShape_RWRightCircularCylinder {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_RightCircularCylinder & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_RightCircularCylinder &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_RightCircularCylinder & ent);
 };
 
 
@@ -3180,16 +3184,6 @@ class RWStepShape_RWSeamEdge {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_SeamEdge & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes SeamEdge
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_SeamEdge &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SeamEdge & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3200,6 +3194,16 @@ class RWStepShape_RWSeamEdge {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_SeamEdge & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes SeamEdge
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_SeamEdge &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SeamEdge & ent);
 };
 
 
@@ -3231,16 +3235,6 @@ class RWStepShape_RWShapeDefinitionRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ShapeDefinitionRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ShapeDefinitionRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeDefinitionRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3251,6 +3245,16 @@ class RWStepShape_RWShapeDefinitionRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ShapeDefinitionRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ShapeDefinitionRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ShapeDefinitionRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeDefinitionRepresentation & ent);
 };
 
 
@@ -3282,16 +3286,6 @@ class RWStepShape_RWShapeDimensionRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ShapeDimensionRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ShapeDimensionRepresentation
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ShapeDimensionRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeDimensionRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3302,6 +3296,16 @@ class RWStepShape_RWShapeDimensionRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ShapeDimensionRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ShapeDimensionRepresentation
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ShapeDimensionRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeDimensionRepresentation & ent);
 };
 
 
@@ -3329,14 +3333,6 @@ class RWStepShape_RWShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ShapeRepresentation &
@@ -3345,6 +3341,14 @@ class RWStepShape_RWShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeRepresentation & ent);
 };
 
 
@@ -3376,16 +3380,6 @@ class RWStepShape_RWShapeRepresentationWithParameters {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ShapeRepresentationWithParameters & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ShapeRepresentationWithParameters
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ShapeRepresentationWithParameters &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeRepresentationWithParameters & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3396,6 +3390,16 @@ class RWStepShape_RWShapeRepresentationWithParameters {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ShapeRepresentationWithParameters & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ShapeRepresentationWithParameters
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ShapeRepresentationWithParameters &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShapeRepresentationWithParameters & ent);
 };
 
 
@@ -3423,14 +3427,6 @@ class RWStepShape_RWShellBasedSurfaceModel {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ShellBasedSurfaceModel & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ShellBasedSurfaceModel &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShellBasedSurfaceModel & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ShellBasedSurfaceModel &
@@ -3439,6 +3435,14 @@ class RWStepShape_RWShellBasedSurfaceModel {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ShellBasedSurfaceModel & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ShellBasedSurfaceModel &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ShellBasedSurfaceModel & ent);
 };
 
 
@@ -3501,14 +3505,6 @@ class RWStepShape_RWSolidReplica {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_SolidReplica & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_SolidReplica &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SolidReplica & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_SolidReplica &
@@ -3517,6 +3513,14 @@ class RWStepShape_RWSolidReplica {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_SolidReplica & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_SolidReplica &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SolidReplica & ent);
 };
 
 
@@ -3544,14 +3548,6 @@ class RWStepShape_RWSphere {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Sphere & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Sphere &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Sphere & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Sphere &
@@ -3560,6 +3556,14 @@ class RWStepShape_RWSphere {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Sphere & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Sphere &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Sphere & ent);
 };
 
 
@@ -3591,16 +3595,6 @@ class RWStepShape_RWSubedge {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Subedge & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes Subedge
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Subedge &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Subedge & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3611,6 +3605,16 @@ class RWStepShape_RWSubedge {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Subedge & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes Subedge
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Subedge &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Subedge & ent);
 };
 
 
@@ -3642,16 +3646,6 @@ class RWStepShape_RWSubface {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Subface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes Subface
-
-	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Subface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Subface & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	* Fills data for graph (shared items)
 
@@ -3662,6 +3656,16 @@ class RWStepShape_RWSubface {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Subface & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes Subface
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Subface &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Subface & ent);
 };
 
 
@@ -3689,14 +3693,6 @@ class RWStepShape_RWSweptAreaSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_SweptAreaSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_SweptAreaSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SweptAreaSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_SweptAreaSolid &
@@ -3705,6 +3701,14 @@ class RWStepShape_RWSweptAreaSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_SweptAreaSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_SweptAreaSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SweptAreaSolid & ent);
 };
 
 
@@ -3732,14 +3736,6 @@ class RWStepShape_RWSweptFaceSolid {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_SweptFaceSolid & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_SweptFaceSolid &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SweptFaceSolid & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_SweptFaceSolid &
@@ -3748,6 +3744,14 @@ class RWStepShape_RWSweptFaceSolid {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_SweptFaceSolid & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_SweptFaceSolid &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_SweptFaceSolid & ent);
 };
 
 
@@ -3775,14 +3779,6 @@ class RWStepShape_RWToleranceValue {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ToleranceValue & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_ToleranceValue &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ToleranceValue & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_ToleranceValue &
@@ -3791,6 +3787,14 @@ class RWStepShape_RWToleranceValue {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_ToleranceValue & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ToleranceValue &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ToleranceValue & ent);
 };
 
 
@@ -3853,14 +3857,6 @@ class RWStepShape_RWTorus {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_Torus & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_Torus &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Torus & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_Torus &
@@ -3869,6 +3865,14 @@ class RWStepShape_RWTorus {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_Torus & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_Torus &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_Torus & ent);
 };
 
 
@@ -3896,14 +3900,6 @@ class RWStepShape_RWTransitionalShapeRepresentation {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_TransitionalShapeRepresentation & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_TransitionalShapeRepresentation &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_TransitionalShapeRepresentation & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_TransitionalShapeRepresentation &
@@ -3912,6 +3908,14 @@ class RWStepShape_RWTransitionalShapeRepresentation {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_TransitionalShapeRepresentation & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_TransitionalShapeRepresentation &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_TransitionalShapeRepresentation & ent);
 };
 
 
@@ -3951,6 +3955,47 @@ class RWStepShape_RWTypeQualifier {
 
 
 %extend RWStepShape_RWTypeQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor RWStepShape_RWValueFormatTypeQualifier;
+class RWStepShape_RWValueFormatTypeQualifier {
+	public:
+		%feature("compactdefaultargs") RWStepShape_RWValueFormatTypeQualifier;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") RWStepShape_RWValueFormatTypeQualifier;
+		 RWStepShape_RWValueFormatTypeQualifier ();
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "	* Reads ValueFormatTypeQualifier
+
+	:param data:
+	:type data: Handle_StepData_StepReaderData &
+	:param num:
+	:type num: int
+	:param ach:
+	:type ach: Handle_Interface_Check &
+	:param ent:
+	:type ent: Handle_StepShape_ValueFormatTypeQualifier &
+	:rtype: None
+") ReadStep;
+		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_ValueFormatTypeQualifier & ent);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	* Writes ValueFormatTypeQualifier
+
+	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_ValueFormatTypeQualifier &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_ValueFormatTypeQualifier & ent);
+};
+
+
+%extend RWStepShape_RWValueFormatTypeQualifier {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4009,14 +4054,6 @@ class RWStepShape_RWVertexLoop {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_VertexLoop & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_VertexLoop &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_VertexLoop & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_VertexLoop &
@@ -4025,6 +4062,14 @@ class RWStepShape_RWVertexLoop {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_VertexLoop & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_VertexLoop &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_VertexLoop & ent);
 };
 
 
@@ -4052,14 +4097,6 @@ class RWStepShape_RWVertexPoint {
 	:rtype: None
 ") ReadStep;
 		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepShape_VertexPoint & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepShape_VertexPoint &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_VertexPoint & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
 	:type ent: Handle_StepShape_VertexPoint &
@@ -4068,6 +4105,14 @@ class RWStepShape_RWVertexPoint {
 	:rtype: None
 ") Share;
 		void Share (const Handle_StepShape_VertexPoint & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: Handle_StepShape_VertexPoint &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const Handle_StepShape_VertexPoint & ent);
 };
 
 
@@ -4076,3 +4121,6 @@ class RWStepShape_RWVertexPoint {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

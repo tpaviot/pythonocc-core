@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,12 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMNAMINGDOCSTRING
-"
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XMLMNAMINGDOCSTRING) XmlMNaming
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include XmlMNaming_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -62,16 +65,16 @@ class XmlMNaming {
 	:rtype: void
 ") AddDrivers;
 		static void AddDrivers (const Handle_XmlMDF_ADriverTable & aDriverTable,const Handle_CDM_MessageDriver & aMessageDriver);
+		%feature("compactdefaultargs") DocumentVersion;
+		%feature("autodoc", "	:rtype: int
+") DocumentVersion;
+		static Standard_Integer DocumentVersion ();
 		%feature("compactdefaultargs") SetDocumentVersion;
 		%feature("autodoc", "	:param DocVersion:
 	:type DocVersion: int
 	:rtype: void
 ") SetDocumentVersion;
 		static void SetDocumentVersion (const Standard_Integer DocVersion);
-		%feature("compactdefaultargs") DocumentVersion;
-		%feature("autodoc", "	:rtype: int
-") DocumentVersion;
-		static Standard_Integer DocumentVersion ();
 };
 
 
@@ -83,12 +86,18 @@ class XmlMNaming {
 %nodefaultctor XmlMNaming_NamedShapeDriver;
 class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMNaming_NamedShapeDriver;
-		%feature("autodoc", "	:param aMessageDriver:
-	:type aMessageDriver: Handle_CDM_MessageDriver &
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Clear myShapeSet
+
 	:rtype: None
-") XmlMNaming_NamedShapeDriver;
-		 XmlMNaming_NamedShapeDriver (const Handle_CDM_MessageDriver & aMessageDriver);
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") GetShapesLocations;
+		%feature("autodoc", "	* get the format of topology
+
+	:rtype: TopTools_LocationSet
+") GetShapesLocations;
+		TopTools_LocationSet & GetShapesLocations ();
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -129,18 +138,12 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") WriteShapeSection;
 		void WriteShapeSection (XmlObjMgt_Element & anElement);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clear myShapeSet
-
+		%feature("compactdefaultargs") XmlMNaming_NamedShapeDriver;
+		%feature("autodoc", "	:param aMessageDriver:
+	:type aMessageDriver: Handle_CDM_MessageDriver &
 	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") GetShapesLocations;
-		%feature("autodoc", "	* get the format of topology
-
-	:rtype: TopTools_LocationSet
-") GetShapesLocations;
-		TopTools_LocationSet & GetShapesLocations ();
+") XmlMNaming_NamedShapeDriver;
+		 XmlMNaming_NamedShapeDriver (const Handle_CDM_MessageDriver & aMessageDriver);
 };
 
 
@@ -154,12 +157,6 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMNaming_NamingDriver;
 class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 	public:
-		%feature("compactdefaultargs") XmlMNaming_NamingDriver;
-		%feature("autodoc", "	:param aMessageDriver:
-	:type aMessageDriver: Handle_CDM_MessageDriver &
-	:rtype: None
-") XmlMNaming_NamingDriver;
-		 XmlMNaming_NamingDriver (const Handle_CDM_MessageDriver & aMessageDriver);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -184,6 +181,12 @@ class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
+		%feature("compactdefaultargs") XmlMNaming_NamingDriver;
+		%feature("autodoc", "	:param aMessageDriver:
+	:type aMessageDriver: Handle_CDM_MessageDriver &
+	:rtype: None
+") XmlMNaming_NamingDriver;
+		 XmlMNaming_NamingDriver (const Handle_CDM_MessageDriver & aMessageDriver);
 };
 
 
@@ -197,18 +200,6 @@ class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 %nodefaultctor XmlMNaming_Shape1;
 class XmlMNaming_Shape1 {
 	public:
-		%feature("compactdefaultargs") XmlMNaming_Shape1;
-		%feature("autodoc", "	:param Doc:
-	:type Doc: XmlObjMgt_Document &
-	:rtype: None
-") XmlMNaming_Shape1;
-		 XmlMNaming_Shape1 (XmlObjMgt_Document & Doc);
-		%feature("compactdefaultargs") XmlMNaming_Shape1;
-		%feature("autodoc", "	:param E:
-	:type E: XmlObjMgt_Element &
-	:rtype: None
-") XmlMNaming_Shape1;
-		 XmlMNaming_Shape1 (const XmlObjMgt_Element & E);
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "	* return myElement
 
@@ -221,10 +212,6 @@ class XmlMNaming_Shape1 {
 	:rtype: XmlObjMgt_Element
 ") Element;
 		XmlObjMgt_Element & Element ();
-		%feature("compactdefaultargs") TShapeId;
-		%feature("autodoc", "	:rtype: int
-") TShapeId;
-		Standard_Integer TShapeId ();
 		%feature("compactdefaultargs") LocId;
 		%feature("autodoc", "	:rtype: int
 ") LocId;
@@ -249,50 +236,22 @@ class XmlMNaming_Shape1 {
 	:rtype: None
 ") SetVertex;
 		void SetVertex (const TopoDS_Shape & theVertex);
+		%feature("compactdefaultargs") TShapeId;
+		%feature("autodoc", "	:rtype: int
+") TShapeId;
+		Standard_Integer TShapeId ();
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	:param Doc:
+	:type Doc: XmlObjMgt_Document &
+	:rtype: None
 ") XmlMNaming_Shape1;
-		 XmlMNaming_Shape1 ();
-		%feature("compactdefaultargs") _CSFDB_GetXmlMNaming_Shape1myElement;
-		%feature("autodoc", "	:rtype: XmlObjMgt_Element
-") _CSFDB_GetXmlMNaming_Shape1myElement;
-		XmlObjMgt_Element _CSFDB_GetXmlMNaming_Shape1myElement ();
-		%feature("compactdefaultargs") _CSFDB_SetXmlMNaming_Shape1myElement;
-		%feature("autodoc", "	:param p:
-	:type p: XmlObjMgt_Element
+		 XmlMNaming_Shape1 (XmlObjMgt_Document & Doc);
+		%feature("compactdefaultargs") XmlMNaming_Shape1;
+		%feature("autodoc", "	:param E:
+	:type E: XmlObjMgt_Element &
 	:rtype: None
-") _CSFDB_SetXmlMNaming_Shape1myElement;
-		void _CSFDB_SetXmlMNaming_Shape1myElement (const XmlObjMgt_Element p);
-		%feature("compactdefaultargs") _CSFDB_GetXmlMNaming_Shape1myTShapeID;
-		%feature("autodoc", "	:rtype: int
-") _CSFDB_GetXmlMNaming_Shape1myTShapeID;
-		Standard_Integer _CSFDB_GetXmlMNaming_Shape1myTShapeID ();
-		%feature("compactdefaultargs") _CSFDB_SetXmlMNaming_Shape1myTShapeID;
-		%feature("autodoc", "	:param p:
-	:type p: int
-	:rtype: None
-") _CSFDB_SetXmlMNaming_Shape1myTShapeID;
-		void _CSFDB_SetXmlMNaming_Shape1myTShapeID (const Standard_Integer p);
-		%feature("compactdefaultargs") _CSFDB_GetXmlMNaming_Shape1myLocID;
-		%feature("autodoc", "	:rtype: int
-") _CSFDB_GetXmlMNaming_Shape1myLocID;
-		Standard_Integer _CSFDB_GetXmlMNaming_Shape1myLocID ();
-		%feature("compactdefaultargs") _CSFDB_SetXmlMNaming_Shape1myLocID;
-		%feature("autodoc", "	:param p:
-	:type p: int
-	:rtype: None
-") _CSFDB_SetXmlMNaming_Shape1myLocID;
-		void _CSFDB_SetXmlMNaming_Shape1myLocID (const Standard_Integer p);
-		%feature("compactdefaultargs") _CSFDB_GetXmlMNaming_Shape1myOrientation;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") _CSFDB_GetXmlMNaming_Shape1myOrientation;
-		TopAbs_Orientation _CSFDB_GetXmlMNaming_Shape1myOrientation ();
-		%feature("compactdefaultargs") _CSFDB_SetXmlMNaming_Shape1myOrientation;
-		%feature("autodoc", "	:param p:
-	:type p: TopAbs_Orientation
-	:rtype: None
-") _CSFDB_SetXmlMNaming_Shape1myOrientation;
-		void _CSFDB_SetXmlMNaming_Shape1myOrientation (const TopAbs_Orientation p);
+") XmlMNaming_Shape1;
+		 XmlMNaming_Shape1 (const XmlObjMgt_Element & E);
 };
 
 
@@ -301,3 +260,6 @@ class XmlMNaming_Shape1 {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

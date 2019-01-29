@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,11 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPBLENDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=APPBLENDDOCSTRING) AppBlend
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,6 +39,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include AppBlend_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -49,10 +53,58 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor AppBlend_Approx;
 class AppBlend_Approx {
 	public:
+		%feature("compactdefaultargs") Curve2d;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param TPoles:
+	:type TPoles: TColgp_Array1OfPnt2d
+	:param TKnots:
+	:type TKnots: TColStd_Array1OfReal &
+	:param TMults:
+	:type TMults: TColStd_Array1OfInteger &
+	:rtype: void
+") Curve2d;
+		virtual void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
+		%feature("compactdefaultargs") Curve2dPoles;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: TColgp_Array1OfPnt2d
+") Curve2dPoles;
+		virtual const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
+		%feature("compactdefaultargs") Curves2dDegree;
+		%feature("autodoc", "	:rtype: int
+") Curves2dDegree;
+		virtual Standard_Integer Curves2dDegree ();
+		%feature("compactdefaultargs") Curves2dKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") Curves2dKnots;
+		virtual const TColStd_Array1OfReal & Curves2dKnots ();
+		%feature("compactdefaultargs") Curves2dMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") Curves2dMults;
+		virtual const TColStd_Array1OfInteger & Curves2dMults ();
+		%feature("compactdefaultargs") Curves2dShape;
+		%feature("autodoc", "	:param Degree:
+	:type Degree: int &
+	:param NbPoles:
+	:type NbPoles: int &
+	:param NbKnots:
+	:type NbKnots: int &
+	:rtype: void
+") Curves2dShape;
+		virtual void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		virtual Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") NbCurves2d;
+		%feature("autodoc", "	:rtype: int
+") NbCurves2d;
+		virtual Standard_Integer NbCurves2d ();
+		%feature("compactdefaultargs") SurfPoles;
+		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt
+") SurfPoles;
+		virtual const TColgp_Array2OfPnt & SurfPoles ();
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", "	:param UDegree:
 	:type UDegree: int &
@@ -69,6 +121,26 @@ class AppBlend_Approx {
 	:rtype: void
 ") SurfShape;
 		virtual void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") SurfUKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfUKnots;
+		virtual const TColStd_Array1OfReal & SurfUKnots ();
+		%feature("compactdefaultargs") SurfUMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfUMults;
+		virtual const TColStd_Array1OfInteger & SurfUMults ();
+		%feature("compactdefaultargs") SurfVKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfVKnots;
+		virtual const TColStd_Array1OfReal & SurfVKnots ();
+		%feature("compactdefaultargs") SurfVMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfVMults;
+		virtual const TColStd_Array1OfInteger & SurfVMults ();
+		%feature("compactdefaultargs") SurfWeights;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") SurfWeights;
+		virtual const TColStd_Array2OfReal & SurfWeights ();
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	:param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
@@ -85,82 +157,12 @@ class AppBlend_Approx {
 	:rtype: void
 ") Surface;
 		virtual void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
-		%feature("compactdefaultargs") UDegree;
-		%feature("autodoc", "	:rtype: int
-") UDegree;
-		virtual Standard_Integer UDegree ();
-		%feature("compactdefaultargs") VDegree;
-		%feature("autodoc", "	:rtype: int
-") VDegree;
-		virtual Standard_Integer VDegree ();
-		%feature("compactdefaultargs") SurfPoles;
-		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt
-") SurfPoles;
-		virtual const TColgp_Array2OfPnt & SurfPoles ();
-		%feature("compactdefaultargs") SurfWeights;
-		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
-") SurfWeights;
-		virtual const TColStd_Array2OfReal & SurfWeights ();
-		%feature("compactdefaultargs") SurfUKnots;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
-") SurfUKnots;
-		virtual const TColStd_Array1OfReal & SurfUKnots ();
-		%feature("compactdefaultargs") SurfVKnots;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
-") SurfVKnots;
-		virtual const TColStd_Array1OfReal & SurfVKnots ();
-		%feature("compactdefaultargs") SurfUMults;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
-") SurfUMults;
-		virtual const TColStd_Array1OfInteger & SurfUMults ();
-		%feature("compactdefaultargs") SurfVMults;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
-") SurfVMults;
-		virtual const TColStd_Array1OfInteger & SurfVMults ();
-		%feature("compactdefaultargs") NbCurves2d;
-		%feature("autodoc", "	:rtype: int
-") NbCurves2d;
-		virtual Standard_Integer NbCurves2d ();
-		%feature("compactdefaultargs") Curves2dShape;
-		%feature("autodoc", "	:param Degree:
-	:type Degree: int &
-	:param NbPoles:
-	:type NbPoles: int &
-	:param NbKnots:
-	:type NbKnots: int &
-	:rtype: void
-") Curves2dShape;
-		virtual void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("compactdefaultargs") Curve2d;
+		%feature("compactdefaultargs") TolCurveOnSurf;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
-	:param TPoles:
-	:type TPoles: TColgp_Array1OfPnt2d
-	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
-	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
-	:rtype: void
-") Curve2d;
-		virtual void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
-		%feature("compactdefaultargs") Curves2dDegree;
-		%feature("autodoc", "	:rtype: int
-") Curves2dDegree;
-		virtual Standard_Integer Curves2dDegree ();
-		%feature("compactdefaultargs") Curve2dPoles;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: TColgp_Array1OfPnt2d
-") Curve2dPoles;
-		virtual const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
-		%feature("compactdefaultargs") Curves2dKnots;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
-") Curves2dKnots;
-		virtual const TColStd_Array1OfReal & Curves2dKnots ();
-		%feature("compactdefaultargs") Curves2dMults;
-		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
-") Curves2dMults;
-		virtual const TColStd_Array1OfInteger & Curves2dMults ();
+	:rtype: float
+") TolCurveOnSurf;
+		virtual Standard_Real TolCurveOnSurf (const Standard_Integer Index);
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", "	:param Tol3d:
 	:type Tol3d: float &
@@ -169,12 +171,14 @@ class AppBlend_Approx {
 	:rtype: void
 ") TolReached;
 		virtual void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") TolCurveOnSurf;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: float
-") TolCurveOnSurf;
-		virtual Standard_Real TolCurveOnSurf (const Standard_Integer Index);
+		%feature("compactdefaultargs") UDegree;
+		%feature("autodoc", "	:rtype: int
+") UDegree;
+		virtual Standard_Integer UDegree ();
+		%feature("compactdefaultargs") VDegree;
+		%feature("autodoc", "	:rtype: int
+") VDegree;
+		virtual Standard_Integer VDegree ();
 };
 
 
@@ -183,3 +187,6 @@ class AppBlend_Approx {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

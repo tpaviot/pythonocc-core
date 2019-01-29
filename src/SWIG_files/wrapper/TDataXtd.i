@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,24 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDATAXTDDOCSTRING
-"This package defines extension of standard attributes for
-modelling (mainly for work with geometry).
-
-- Category: GUID - AttributeID
-
-2a96b602-ec8b-11d0-bee7-080009dc3333	TDataXtd_Constraint
-2a96b618-ec8b-11d0-bee7-080009dc3333	TDataXtd_Pattern
-2a96b61b-ec8b-11d0-bee7-080009dc3333	TDataXtd_PatternStd
-2a96b620-ec8b-11d0-bee7-080009dc3333    TDataXtd_Shape
-2a96b60d-ec8b-11d0-bee7-080009dc3333	TDataXtd_Point
-2a96b601-ec8b-11d0-bee7-080009dc3333	TDataXtd_Axis
-2a96b60c-ec8b-11d0-bee7-080009dc3333	TDataXtd_Plane
-2a96b604-ec8b-11d0-bee7-080009dc3333	TDataXtd_Geometry
-2a96b60b-ec8b-11d0-bee7-080009dc3333    TDataXtd_Placement"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=TDATAXTDDOCSTRING) TDataXtd
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -52,7 +39,47 @@ modelling (mainly for work with geometry).
 
 %include TDataXtd_headers.i
 
+/* templates */
+%template(TDataXtd_Array1OfTrsf) NCollection_Array1 <gp_Trsf>;
+
+%extend NCollection_Array1 <gp_Trsf> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_Array1 <gp_Trsf> TDataXtd_Array1OfTrsf;
 /* end typedefs declaration */
 
 /* public enums */
@@ -101,13 +128,14 @@ enum TDataXtd_GeometryEnum {
 %wrap_handle(TDataXtd_Axis)
 %wrap_handle(TDataXtd_Constraint)
 %wrap_handle(TDataXtd_Geometry)
-%wrap_handle(TDataXtd_HArray1OfTrsf)
 %wrap_handle(TDataXtd_Pattern)
 %wrap_handle(TDataXtd_Placement)
 %wrap_handle(TDataXtd_Plane)
 %wrap_handle(TDataXtd_Point)
 %wrap_handle(TDataXtd_Position)
+%wrap_handle(TDataXtd_Presentation)
 %wrap_handle(TDataXtd_Shape)
+%wrap_handle(TDataXtd_Triangulation)
 %wrap_handle(TDataXtd_PatternStd)
 
 %rename(tdataxtd) TDataXtd;
@@ -149,137 +177,45 @@ class TDataXtd {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TDataXtd_Array1OfTrsf;
-class TDataXtd_Array1OfTrsf {
-	public:
-		%feature("compactdefaultargs") TDataXtd_Array1OfTrsf;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TDataXtd_Array1OfTrsf;
-		 TDataXtd_Array1OfTrsf (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") TDataXtd_Array1OfTrsf;
-		%feature("autodoc", "	:param Item:
-	:type Item: gp_Trsf
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TDataXtd_Array1OfTrsf;
-		 TDataXtd_Array1OfTrsf (const gp_Trsf & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: gp_Trsf
-	:rtype: None
-") Init;
-		void Init (const gp_Trsf & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TDataXtd_Array1OfTrsf &
-	:rtype: TDataXtd_Array1OfTrsf
-") Assign;
-		const TDataXtd_Array1OfTrsf & Assign (const TDataXtd_Array1OfTrsf & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TDataXtd_Array1OfTrsf &
-	:rtype: TDataXtd_Array1OfTrsf
-") operator =;
-		const TDataXtd_Array1OfTrsf & operator = (const TDataXtd_Array1OfTrsf & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: gp_Trsf
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const gp_Trsf & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Trsf
-") ChangeValue;
-		gp_Trsf  ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend TDataXtd_Array1OfTrsf {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend TDataXtd_Array1OfTrsf {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TDataXtd_Axis;
 class TDataXtd_Axis : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") GetID;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* class methods ============= Returns the GUID for an axis.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param into:
+	:type into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & with);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Finds or creates an axis attribute defined by the label. In the case of a creation of an axis, a compatible named shape should already be associated with label. Exceptions Standard_NullObject if no compatible named shape is associated with the label.
 
@@ -302,37 +238,7 @@ class TDataXtd_Axis : public TDF_Attribute {
 		%feature("autodoc", "	:rtype: None
 ") TDataXtd_Axis;
 		 TDataXtd_Axis ();
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") ID;
-		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param with:
-	:type with: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & with);
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
-") NewEmpty;
-		Handle_TDF_Attribute NewEmpty ();
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param into:
-	:type into: Handle_TDF_Attribute &
-	:param RT:
-	:type RT: Handle_TDF_RelocationTable &
-	:rtype: None
-") Paste;
-		void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %make_alias(TDataXtd_Axis)
@@ -345,12 +251,128 @@ class TDataXtd_Axis : public TDF_Attribute {
 %nodefaultctor TDataXtd_Constraint;
 class TDataXtd_Constraint : public TDF_Attribute {
 	public:
+		%feature("compactdefaultargs") ClearGeometries;
+		%feature("autodoc", "	* Removes the geometries involved in the constraint or dimension from the array of topological attributes where they are stored.
+
+	:rtype: None
+") ClearGeometries;
+		void ClearGeometries ();
+		%feature("compactdefaultargs") CollectChildConstraints;
+		%feature("autodoc", "	* collects constraints on Childs for label <aLabel>
+
+	:param aLabel:
+	:type aLabel: TDF_Label &
+	:param TheList:
+	:type TheList: TDF_LabelList &
+	:rtype: void
+") CollectChildConstraints;
+		static void CollectChildConstraints (const TDF_Label & aLabel,TDF_LabelList & TheList);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetGeometry;
+		%feature("autodoc", "	* Returns the integer index Index used to access the array of the constraint or stored geometries of a dimension Index has a value between 1 and 4. methods to write constraint fields (use builder) ==================================
+
+	:param Index:
+	:type Index: int
+	:rtype: Handle_TNaming_NamedShape
+") GetGeometry;
+		Handle_TNaming_NamedShape GetGeometry (const Standard_Integer Index);
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* Returns the GUID for constraints.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") GetPlane;
+		%feature("autodoc", "	* Returns the topological attribute of the plane used for planar - i.e., 2D - constraints. This plane is attached to another label. If the constraint is not planar, in other words, 3D, this function will return a null handle.
+
+	:rtype: Handle_TNaming_NamedShape
+") GetPlane;
+		Handle_TNaming_NamedShape GetPlane ();
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", "	* Returns the type of constraint. This will be an element of the TDataXtd_ConstraintEnum enumeration.
+
+	:rtype: TDataXtd_ConstraintEnum
+") GetType;
+		TDataXtd_ConstraintEnum GetType ();
+		%feature("compactdefaultargs") GetValue;
+		%feature("autodoc", "	* Returns the value of a dimension. This value is a reference to a TDataStd_Real attribute. If the attribute is not a dimension, this value will be 0. Use IsDimension to test this condition.
+
+	:rtype: Handle_TDataStd_Real
+") GetValue;
+		Handle_TDataStd_Real GetValue ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") Inverted;
+		%feature("autodoc", "	:param status:
+	:type status: bool
+	:rtype: None
+") Inverted;
+		void Inverted (const Standard_Boolean status);
+		%feature("compactdefaultargs") Inverted;
+		%feature("autodoc", "	:rtype: bool
+") Inverted;
+		Standard_Boolean Inverted ();
+		%feature("compactdefaultargs") IsDimension;
+		%feature("autodoc", "	* Returns true if this constraint attribute is a dimension, and therefore has a value.
+
+	:rtype: bool
+") IsDimension;
+		Standard_Boolean IsDimension ();
+		%feature("compactdefaultargs") IsPlanar;
+		%feature("autodoc", "	* Returns true if this constraint attribute is two-dimensional.
+
+	:rtype: bool
+") IsPlanar;
+		Standard_Boolean IsPlanar ();
+		%feature("compactdefaultargs") NbGeometries;
+		%feature("autodoc", "	* Returns the number of geometry attributes in this constraint attribute. This number will be between 1 and 4.
+
+	:rtype: int
+") NbGeometries;
+		Standard_Integer NbGeometries ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param Into:
+	:type Into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") References;
+		%feature("autodoc", "	:param DS:
+	:type DS: Handle_TDF_DataSet &
+	:rtype: void
+") References;
+		virtual void References (const Handle_TDF_DataSet & DS);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param With:
+	:type With: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & With);
+		%feature("compactdefaultargs") Reversed;
+		%feature("autodoc", "	:param status:
+	:type status: bool
+	:rtype: None
+") Reversed;
+		void Reversed (const Standard_Boolean status);
+		%feature("compactdefaultargs") Reversed;
+		%feature("autodoc", "	:rtype: bool
+") Reversed;
+		Standard_Boolean Reversed ();
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Finds or creates the 2D constraint attribute defined by the planar topological attribute plane and the label label. Constraint methods ==================
 
@@ -359,10 +381,6 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:rtype: Handle_TDataXtd_Constraint
 ") Set;
 		static Handle_TDataXtd_Constraint Set (const TDF_Label & label);
-		%feature("compactdefaultargs") TDataXtd_Constraint;
-		%feature("autodoc", "	:rtype: None
-") TDataXtd_Constraint;
-		 TDataXtd_Constraint ();
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Finds or creates the constraint attribute defined by the topological attribute G1 and the constraint type type.
 
@@ -415,86 +433,6 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:rtype: None
 ") Set;
 		void Set (const TDataXtd_ConstraintEnum type,const Handle_TNaming_NamedShape & G1,const Handle_TNaming_NamedShape & G2,const Handle_TNaming_NamedShape & G3,const Handle_TNaming_NamedShape & G4);
-		%feature("compactdefaultargs") Verified;
-		%feature("autodoc", "	* Returns true if this constraint attribute is valid. By default, true is returned. When the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true.
-
-	:rtype: bool
-") Verified;
-		Standard_Boolean Verified ();
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	* Returns the type of constraint. This will be an element of the TDataXtd_ConstraintEnum enumeration.
-
-	:rtype: TDataXtd_ConstraintEnum
-") GetType;
-		TDataXtd_ConstraintEnum GetType ();
-		%feature("compactdefaultargs") IsPlanar;
-		%feature("autodoc", "	* Returns true if this constraint attribute is two-dimensional.
-
-	:rtype: bool
-") IsPlanar;
-		Standard_Boolean IsPlanar ();
-		%feature("compactdefaultargs") GetPlane;
-		%feature("autodoc", "	* Returns the topological attribute of the plane used for planar - i.e., 2D - constraints. This plane is attached to another label. If the constraint is not planar, in other words, 3D, this function will return a null handle.
-
-	:rtype: Handle_TNaming_NamedShape
-") GetPlane;
-		Handle_TNaming_NamedShape GetPlane ();
-		%feature("compactdefaultargs") IsDimension;
-		%feature("autodoc", "	* Returns true if this constraint attribute is a dimension, and therefore has a value.
-
-	:rtype: bool
-") IsDimension;
-		Standard_Boolean IsDimension ();
-		%feature("compactdefaultargs") GetValue;
-		%feature("autodoc", "	* Returns the value of a dimension. This value is a reference to a TDataStd_Real attribute. If the attribute is not a dimension, this value will be 0. Use IsDimension to test this condition.
-
-	:rtype: Handle_TDataStd_Real
-") GetValue;
-		Handle_TDataStd_Real GetValue ();
-		%feature("compactdefaultargs") NbGeometries;
-		%feature("autodoc", "	* Returns the number of geometry attributes in this constraint attribute. This number will be between 1 and 4.
-
-	:rtype: int
-") NbGeometries;
-		Standard_Integer NbGeometries ();
-		%feature("compactdefaultargs") GetGeometry;
-		%feature("autodoc", "	* Returns the integer index Index used to access the array of the constraint or stored geometries of a dimension Index has a value between 1 and 4. methods to write constraint fields (use builder) ==================================
-
-	:param Index:
-	:type Index: int
-	:rtype: Handle_TNaming_NamedShape
-") GetGeometry;
-		Handle_TNaming_NamedShape GetGeometry (const Standard_Integer Index);
-		%feature("compactdefaultargs") ClearGeometries;
-		%feature("autodoc", "	* Removes the geometries involved in the constraint or dimension from the array of topological attributes where they are stored.
-
-	:rtype: None
-") ClearGeometries;
-		void ClearGeometries ();
-		%feature("compactdefaultargs") SetType;
-		%feature("autodoc", "	* Finds or creates the type of constraint CTR.
-
-	:param CTR:
-	:type CTR: TDataXtd_ConstraintEnum
-	:rtype: None
-") SetType;
-		void SetType (const TDataXtd_ConstraintEnum CTR);
-		%feature("compactdefaultargs") SetPlane;
-		%feature("autodoc", "	* Finds or creates the plane of the 2D constraint attribute, defined by the planar topological attribute plane.
-
-	:param plane:
-	:type plane: Handle_TNaming_NamedShape &
-	:rtype: None
-") SetPlane;
-		void SetPlane (const Handle_TNaming_NamedShape & plane);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Finds or creates the real number value V of the dimension constraint attribute.
-
-	:param V:
-	:type V: Handle_TDataStd_Real &
-	:rtype: None
-") SetValue;
-		void SetValue (const Handle_TDataStd_Real & V);
 		%feature("compactdefaultargs") SetGeometry;
 		%feature("autodoc", "	* Finds or creates the underlying geometry of the constraint defined by the topological attribute G and the integer index Index.
 
@@ -505,6 +443,40 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:rtype: None
 ") SetGeometry;
 		void SetGeometry (const Standard_Integer Index,const Handle_TNaming_NamedShape & G);
+		%feature("compactdefaultargs") SetPlane;
+		%feature("autodoc", "	* Finds or creates the plane of the 2D constraint attribute, defined by the planar topological attribute plane.
+
+	:param plane:
+	:type plane: Handle_TNaming_NamedShape &
+	:rtype: None
+") SetPlane;
+		void SetPlane (const Handle_TNaming_NamedShape & plane);
+		%feature("compactdefaultargs") SetType;
+		%feature("autodoc", "	* Finds or creates the type of constraint CTR.
+
+	:param CTR:
+	:type CTR: TDataXtd_ConstraintEnum
+	:rtype: None
+") SetType;
+		void SetType (const TDataXtd_ConstraintEnum CTR);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	* Finds or creates the real number value V of the dimension constraint attribute.
+
+	:param V:
+	:type V: Handle_TDataStd_Real &
+	:rtype: None
+") SetValue;
+		void SetValue (const Handle_TDataStd_Real & V);
+		%feature("compactdefaultargs") TDataXtd_Constraint;
+		%feature("autodoc", "	:rtype: None
+") TDataXtd_Constraint;
+		 TDataXtd_Constraint ();
+		%feature("compactdefaultargs") Verified;
+		%feature("autodoc", "	* Returns true if this constraint attribute is valid. By default, true is returned. When the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true.
+
+	:rtype: bool
+") Verified;
+		Standard_Boolean Verified ();
 		%feature("compactdefaultargs") Verified;
 		%feature("autodoc", "	* Returns true if this constraint attribute defined by status is valid. By default, true is returned. When the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true. If status is false, Verified is set to false.
 
@@ -513,72 +485,6 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:rtype: None
 ") Verified;
 		void Verified (const Standard_Boolean status);
-		%feature("compactdefaultargs") Inverted;
-		%feature("autodoc", "	:param status:
-	:type status: bool
-	:rtype: None
-") Inverted;
-		void Inverted (const Standard_Boolean status);
-		%feature("compactdefaultargs") Inverted;
-		%feature("autodoc", "	:rtype: bool
-") Inverted;
-		Standard_Boolean Inverted ();
-		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", "	:param status:
-	:type status: bool
-	:rtype: None
-") Reversed;
-		void Reversed (const Standard_Boolean status);
-		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", "	:rtype: bool
-") Reversed;
-		Standard_Boolean Reversed ();
-		%feature("compactdefaultargs") CollectChildConstraints;
-		%feature("autodoc", "	* collects constraints on Childs for label <aLabel>
-
-	:param aLabel:
-	:type aLabel: TDF_Label &
-	:param TheList:
-	:type TheList: TDF_LabelList &
-	:rtype: void
-") CollectChildConstraints;
-		static void CollectChildConstraints (const TDF_Label & aLabel,TDF_LabelList & TheList);
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") ID;
-		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param With:
-	:type With: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & With);
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
-") NewEmpty;
-		Handle_TDF_Attribute NewEmpty ();
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param Into:
-	:type Into: Handle_TDF_Attribute &
-	:param RT:
-	:type RT: Handle_TDF_RelocationTable &
-	:rtype: None
-") Paste;
-		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") References;
-		%feature("autodoc", "	:param DS:
-	:type DS: Handle_TDF_DataSet &
-	:rtype: void
-") References;
-		virtual void References (const Handle_TDF_DataSet & DS);
 };
 
 
@@ -592,50 +498,6 @@ class TDataXtd_Constraint : public TDF_Attribute {
 %nodefaultctor TDataXtd_Geometry;
 class TDataXtd_Geometry : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* API class methods ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
-
-	:param label:
-	:type label: TDF_Label &
-	:rtype: Handle_TDataXtd_Geometry
-") Set;
-		static Handle_TDataXtd_Geometry Set (const TDF_Label & label);
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	* Returns the label L used to define the type of geometric construction for the geometry attribute.
-
-	:param L:
-	:type L: TDF_Label &
-	:rtype: TDataXtd_GeometryEnum
-") Type;
-		static TDataXtd_GeometryEnum Type (const TDF_Label & L);
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	* Returns the topological attribute S used to define the type of geometric construction for the geometry attribute.
-
-	:param S:
-	:type S: Handle_TNaming_NamedShape &
-	:rtype: TDataXtd_GeometryEnum
-") Type;
-		static TDataXtd_GeometryEnum Type (const Handle_TNaming_NamedShape & S);
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns the point attribute defined by the label L and the point G.
-
-	:param L:
-	:type L: TDF_Label &
-	:param G:
-	:type G: gp_Pnt
-	:rtype: bool
-") Point;
-		static Standard_Boolean Point (const TDF_Label & L,gp_Pnt & G);
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns the point attribute defined by the topological attribute S and the point G.
-
-	:param S:
-	:type S: Handle_TNaming_NamedShape &
-	:param G:
-	:type G: gp_Pnt
-	:rtype: bool
-") Point;
-		static Standard_Boolean Point (const Handle_TNaming_NamedShape & S,gp_Pnt & G);
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "	* Returns the axis attribute defined by the label L and the axis G.
 
@@ -656,26 +518,6 @@ class TDataXtd_Geometry : public TDF_Attribute {
 	:rtype: bool
 ") Axis;
 		static Standard_Boolean Axis (const Handle_TNaming_NamedShape & S,gp_Ax1 & G);
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	* Returns the line attribute defined by the label L and the line G.
-
-	:param L:
-	:type L: TDF_Label &
-	:param G:
-	:type G: gp_Lin
-	:rtype: bool
-") Line;
-		static Standard_Boolean Line (const TDF_Label & L,gp_Lin & G);
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	* Returns the line attribute defined by the topological attribute S and the line G.
-
-	:param S:
-	:type S: Handle_TNaming_NamedShape &
-	:param G:
-	:type G: gp_Lin
-	:rtype: bool
-") Line;
-		static Standard_Boolean Line (const Handle_TNaming_NamedShape & S,gp_Lin & G);
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "	* Returns the circle attribute defined by the label L and the circle G.
 
@@ -696,46 +538,6 @@ class TDataXtd_Geometry : public TDF_Attribute {
 	:rtype: bool
 ") Circle;
 		static Standard_Boolean Circle (const Handle_TNaming_NamedShape & S,gp_Circ & G);
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	* Returns the ellipse attribute defined by the label L and the ellipse G.
-
-	:param L:
-	:type L: TDF_Label &
-	:param G:
-	:type G: gp_Elips
-	:rtype: bool
-") Ellipse;
-		static Standard_Boolean Ellipse (const TDF_Label & L,gp_Elips & G);
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	* Returns the ellipse attribute defined by the topological attribute S and the ellipse G.
-
-	:param S:
-	:type S: Handle_TNaming_NamedShape &
-	:param G:
-	:type G: gp_Elips
-	:rtype: bool
-") Ellipse;
-		static Standard_Boolean Ellipse (const Handle_TNaming_NamedShape & S,gp_Elips & G);
-		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "	* Returns the plane attribute defined by the label L and the plane G.
-
-	:param L:
-	:type L: TDF_Label &
-	:param G:
-	:type G: gp_Pln
-	:rtype: bool
-") Plane;
-		static Standard_Boolean Plane (const TDF_Label & L,gp_Pln & G);
-		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "	* Returns the plane attribute defined by the topological attribute S and the plane G.
-
-	:param S:
-	:type S: Handle_TNaming_NamedShape &
-	:param G:
-	:type G: gp_Pln
-	:rtype: bool
-") Plane;
-		static Standard_Boolean Plane (const Handle_TNaming_NamedShape & S,gp_Pln & G);
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "	* Returns the cylinder attribute defined by the label L and the cylinder G.
 
@@ -756,26 +558,40 @@ class TDataXtd_Geometry : public TDF_Attribute {
 	:rtype: bool
 ") Cylinder;
 		static Standard_Boolean Cylinder (const Handle_TNaming_NamedShape & S,gp_Cylinder & G);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") Ellipse;
+		%feature("autodoc", "	* Returns the ellipse attribute defined by the label L and the ellipse G.
+
+	:param L:
+	:type L: TDF_Label &
+	:param G:
+	:type G: gp_Elips
+	:rtype: bool
+") Ellipse;
+		static Standard_Boolean Ellipse (const TDF_Label & L,gp_Elips & G);
+		%feature("compactdefaultargs") Ellipse;
+		%feature("autodoc", "	* Returns the ellipse attribute defined by the topological attribute S and the ellipse G.
+
+	:param S:
+	:type S: Handle_TNaming_NamedShape &
+	:param G:
+	:type G: gp_Elips
+	:rtype: bool
+") Ellipse;
+		static Standard_Boolean Ellipse (const Handle_TNaming_NamedShape & S,gp_Elips & G);
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* Returns the GUID for geometry attributes.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
-		%feature("compactdefaultargs") TDataXtd_Geometry;
-		%feature("autodoc", "	* This and the next methods are used to retrieve underlying geometry of the NamedShape, even if noone Geometry Attribute is associated . if not found or not compliant geometry return False.
-
-	:rtype: None
-") TDataXtd_Geometry;
-		 TDataXtd_Geometry ();
-		%feature("compactdefaultargs") SetType;
-		%feature("autodoc", "	* Returns the type of geometric construction T of this attribute. T will be a value of the enumeration TDataXtd_GeometryEnum.
-
-	:param T:
-	:type T: TDataXtd_GeometryEnum
-	:rtype: None
-") SetType;
-		void SetType (const TDataXtd_GeometryEnum T);
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "	* Returns the type of geometric construction.
 
@@ -786,12 +602,26 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("autodoc", "	:rtype: Standard_GUID
 ") ID;
 		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param with:
-	:type with: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & with);
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	* Returns the line attribute defined by the label L and the line G.
+
+	:param L:
+	:type L: TDF_Label &
+	:param G:
+	:type G: gp_Lin
+	:rtype: bool
+") Line;
+		static Standard_Boolean Line (const TDF_Label & L,gp_Lin & G);
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	* Returns the line attribute defined by the topological attribute S and the line G.
+
+	:param S:
+	:type S: Handle_TNaming_NamedShape &
+	:param G:
+	:type G: gp_Lin
+	:rtype: bool
+") Line;
+		static Standard_Boolean Line (const Handle_TNaming_NamedShape & S,gp_Lin & G);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -804,15 +634,91 @@ class TDataXtd_Geometry : public TDF_Attribute {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "	* Returns the plane attribute defined by the label L and the plane G.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+	:param L:
+	:type L: TDF_Label &
+	:param G:
+	:type G: gp_Pln
+	:rtype: bool
+") Plane;
+		static Standard_Boolean Plane (const TDF_Label & L,gp_Pln & G);
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "	* Returns the plane attribute defined by the topological attribute S and the plane G.
+
+	:param S:
+	:type S: Handle_TNaming_NamedShape &
+	:param G:
+	:type G: gp_Pln
+	:rtype: bool
+") Plane;
+		static Standard_Boolean Plane (const Handle_TNaming_NamedShape & S,gp_Pln & G);
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* Returns the point attribute defined by the label L and the point G.
+
+	:param L:
+	:type L: TDF_Label &
+	:param G:
+	:type G: gp_Pnt
+	:rtype: bool
+") Point;
+		static Standard_Boolean Point (const TDF_Label & L,gp_Pnt & G);
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* Returns the point attribute defined by the topological attribute S and the point G.
+
+	:param S:
+	:type S: Handle_TNaming_NamedShape &
+	:param G:
+	:type G: gp_Pnt
+	:rtype: bool
+") Point;
+		static Standard_Boolean Point (const Handle_TNaming_NamedShape & S,gp_Pnt & G);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & with);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* API class methods ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
+
+	:param label:
+	:type label: TDF_Label &
+	:rtype: Handle_TDataXtd_Geometry
+") Set;
+		static Handle_TDataXtd_Geometry Set (const TDF_Label & label);
+		%feature("compactdefaultargs") SetType;
+		%feature("autodoc", "	* Returns the type of geometric construction T of this attribute. T will be a value of the enumeration TDataXtd_GeometryEnum.
+
+	:param T:
+	:type T: TDataXtd_GeometryEnum
+	:rtype: None
+") SetType;
+		void SetType (const TDataXtd_GeometryEnum T);
+		%feature("compactdefaultargs") TDataXtd_Geometry;
+		%feature("autodoc", "	* This and the next methods are used to retrieve underlying geometry of the NamedShape, even if noone Geometry Attribute is associated . if not found or not compliant geometry return False.
+
+	:rtype: None
+") TDataXtd_Geometry;
+		 TDataXtd_Geometry ();
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "	* Returns the label L used to define the type of geometric construction for the geometry attribute.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: TDataXtd_GeometryEnum
+") Type;
+		static TDataXtd_GeometryEnum Type (const TDF_Label & L);
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "	* Returns the topological attribute S used to define the type of geometric construction for the geometry attribute.
+
+	:param S:
+	:type S: Handle_TNaming_NamedShape &
+	:rtype: TDataXtd_GeometryEnum
+") Type;
+		static TDataXtd_GeometryEnum Type (const Handle_TNaming_NamedShape & S);
+};
 
 
 %make_alias(TDataXtd_Geometry)
@@ -822,121 +728,17 @@ class TDataXtd_Geometry : public TDF_Attribute {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TDataXtd_HArray1OfTrsf;
-class TDataXtd_HArray1OfTrsf : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TDataXtd_HArray1OfTrsf;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TDataXtd_HArray1OfTrsf;
-		 TDataXtd_HArray1OfTrsf (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") TDataXtd_HArray1OfTrsf;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: gp_Trsf
-	:rtype: None
-") TDataXtd_HArray1OfTrsf;
-		 TDataXtd_HArray1OfTrsf (const Standard_Integer Low,const Standard_Integer Up,const gp_Trsf & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: gp_Trsf
-	:rtype: None
-") Init;
-		void Init (const gp_Trsf & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: gp_Trsf
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const gp_Trsf & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Trsf
-") ChangeValue;
-		gp_Trsf  ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: TDataXtd_Array1OfTrsf
-") Array1;
-		const TDataXtd_Array1OfTrsf & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: TDataXtd_Array1OfTrsf
-") ChangeArray1;
-		TDataXtd_Array1OfTrsf & ChangeArray1 ();
-};
-
-
-%make_alias(TDataXtd_HArray1OfTrsf)
-
-
-%extend TDataXtd_HArray1OfTrsf {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend TDataXtd_HArray1OfTrsf {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TDataXtd_Pattern;
 class TDataXtd_Pattern : public TDF_Attribute {
 	public:
+		%feature("compactdefaultargs") ComputeTrsfs;
+		%feature("autodoc", "	* Give the transformations
+
+	:param Trsfs:
+	:type Trsfs: TDataXtd_Array1OfTrsf &
+	:rtype: void
+") ComputeTrsfs;
+		virtual void ComputeTrsfs (TDataXtd_Array1OfTrsf & Trsfs);
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	:rtype: Standard_GUID
 ") GetID;
@@ -947,26 +749,18 @@ class TDataXtd_Pattern : public TDF_Attribute {
 	:rtype: Standard_GUID
 ") ID;
 		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") PatternID;
-		%feature("autodoc", "	* Returns the ID of the attribute.
-
-	:rtype: Standard_GUID
-") PatternID;
-		virtual const Standard_GUID & PatternID ();
 		%feature("compactdefaultargs") NbTrsfs;
 		%feature("autodoc", "	* Give the number of transformation
 
 	:rtype: int
 ") NbTrsfs;
 		virtual Standard_Integer NbTrsfs ();
-		%feature("compactdefaultargs") ComputeTrsfs;
-		%feature("autodoc", "	* Give the transformations
+		%feature("compactdefaultargs") PatternID;
+		%feature("autodoc", "	* Returns the ID of the attribute.
 
-	:param Trsfs:
-	:type Trsfs: TDataXtd_Array1OfTrsf &
-	:rtype: void
-") ComputeTrsfs;
-		virtual void ComputeTrsfs (TDataXtd_Array1OfTrsf & Trsfs);
+	:rtype: Standard_GUID
+") PatternID;
+		virtual const Standard_GUID & PatternID ();
 };
 
 
@@ -980,34 +774,24 @@ class TDataXtd_Pattern : public TDF_Attribute {
 %nodefaultctor TDataXtd_Placement;
 class TDataXtd_Placement : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") GetID;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* class methods =============
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Find, or create, an Placement attribute. the Placement attribute is returned. Placement methods =================
-
-	:param label:
-	:type label: TDF_Label &
-	:rtype: Handle_TDataXtd_Placement
-") Set;
-		static Handle_TDataXtd_Placement Set (const TDF_Label & label);
-		%feature("compactdefaultargs") TDataXtd_Placement;
-		%feature("autodoc", "	:rtype: None
-") TDataXtd_Placement;
-		 TDataXtd_Placement ();
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "	:rtype: Standard_GUID
 ") ID;
 		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param With:
-	:type With: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & With);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -1020,15 +804,25 @@ class TDataXtd_Placement : public TDF_Attribute {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param With:
+	:type With: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & With);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Find, or create, an Placement attribute. the Placement attribute is returned. Placement methods =================
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+	:param label:
+	:type label: TDF_Label &
+	:rtype: Handle_TDataXtd_Placement
+") Set;
+		static Handle_TDataXtd_Placement Set (const TDF_Label & label);
+		%feature("compactdefaultargs") TDataXtd_Placement;
+		%feature("autodoc", "	:rtype: None
+") TDataXtd_Placement;
+		 TDataXtd_Placement ();
+};
 
 
 %make_alias(TDataXtd_Placement)
@@ -1041,12 +835,42 @@ class TDataXtd_Placement : public TDF_Attribute {
 %nodefaultctor TDataXtd_Plane;
 class TDataXtd_Plane : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") GetID;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* class methods ============= //! Returns the GUID for plane attributes.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param Into:
+	:type Into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param With:
+	:type With: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & With);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Finds or creates the plane attribute defined by the label label. Warning If you are creating the attribute with this syntax, a planar face should already be associated with label.
 
@@ -1069,37 +893,7 @@ class TDataXtd_Plane : public TDF_Attribute {
 		%feature("autodoc", "	:rtype: None
 ") TDataXtd_Plane;
 		 TDataXtd_Plane ();
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") ID;
-		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param With:
-	:type With: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & With);
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
-") NewEmpty;
-		Handle_TDF_Attribute NewEmpty ();
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param Into:
-	:type Into: Handle_TDF_Attribute &
-	:param RT:
-	:type RT: Handle_TDF_RelocationTable &
-	:rtype: None
-") Paste;
-		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %make_alias(TDataXtd_Plane)
@@ -1112,12 +906,42 @@ class TDataXtd_Plane : public TDF_Attribute {
 %nodefaultctor TDataXtd_Point;
 class TDataXtd_Point : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") GetID;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* class methods ============= //! Returns the GUID for point attributes.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param Into:
+	:type Into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param With:
+	:type With: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & With);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Sets the label Label as a point attribute. If no object is found, a point attribute is created.
 
@@ -1140,37 +964,7 @@ class TDataXtd_Point : public TDF_Attribute {
 		%feature("autodoc", "	:rtype: None
 ") TDataXtd_Point;
 		 TDataXtd_Point ();
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") ID;
-		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param With:
-	:type With: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & With);
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
-") NewEmpty;
-		Handle_TDF_Attribute NewEmpty ();
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param Into:
-	:type Into: Handle_TDF_Attribute &
-	:param RT:
-	:type RT: Handle_TDF_RelocationTable &
-	:rtype: None
-") Paste;
-		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %make_alias(TDataXtd_Point)
@@ -1183,6 +977,56 @@ class TDataXtd_Point : public TDF_Attribute {
 %nodefaultctor TDataXtd_Position;
 class TDataXtd_Position : public TDF_Attribute {
 	public:
+		%feature("compactdefaultargs") Get;
+		%feature("autodoc", "	* Search label <aLabel) for the TDataXtd_Position attribute and get its position if found returns True
+
+	:param aLabel:
+	:type aLabel: TDF_Label &
+	:param aPos:
+	:type aPos: gp_Pnt
+	:rtype: bool
+") Get;
+		static Standard_Boolean Get (const TDF_Label & aLabel,gp_Pnt & aPos);
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "	* Returns the ID of the attribute.
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") GetPosition;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") GetPosition;
+		const gp_Pnt  GetPosition ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	* Returns the ID of the attribute.
+
+	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	* Returns an new empty attribute from the good end type. It is used by the copy algorithm.
+
+	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
+
+	:param intoAttribute:
+	:type intoAttribute: Handle_TDF_Attribute &
+	:param aRelocTationable:
+	:type aRelocTationable: Handle_TDF_RelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & intoAttribute,const Handle_TDF_RelocationTable & aRelocTationable);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
+
+	:param anAttribute:
+	:type anAttribute: Handle_TDF_Attribute &
+	:rtype: void
+") Restore;
+		virtual void Restore (const Handle_TDF_Attribute & anAttribute);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Create if not found the TDataXtd_Position attribute set its position to <aPos>
 
@@ -1201,40 +1045,91 @@ class TDataXtd_Position : public TDF_Attribute {
 	:rtype: Handle_TDataXtd_Position
 ") Set;
 		static Handle_TDataXtd_Position Set (const TDF_Label & aLabel);
-		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "	* Search label <aLabel) for the TDataXtd_Position attribute and get its position if found returns True
-
-	:param aLabel:
-	:type aLabel: TDF_Label &
-	:param aPos:
+		%feature("compactdefaultargs") SetPosition;
+		%feature("autodoc", "	:param aPos:
 	:type aPos: gp_Pnt
-	:rtype: bool
-") Get;
-		static Standard_Boolean Get (const TDF_Label & aLabel,gp_Pnt & aPos);
+	:rtype: None
+") SetPosition;
+		void SetPosition (const gp_Pnt & aPos);
 		%feature("compactdefaultargs") TDataXtd_Position;
 		%feature("autodoc", "	:rtype: None
 ") TDataXtd_Position;
 		 TDataXtd_Position ();
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "	* Returns the ID of the attribute.
+};
+
+
+%make_alias(TDataXtd_Position)
+
+%extend TDataXtd_Position {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor TDataXtd_Presentation;
+class TDataXtd_Presentation : public TDF_Attribute {
+	public:
+		%feature("compactdefaultargs") BackupCopy;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") BackupCopy;
+		Handle_TDF_Attribute BackupCopy ();
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "	:rtype: Quantity_NameOfColor
+") Color;
+		Quantity_NameOfColor Color ();
+		%feature("compactdefaultargs") GetDriverGUID;
+		%feature("autodoc", "	* //!@name Access to data Returns the GUID of the driver managing display of associated AIS object
 
 	:rtype: Standard_GUID
-") ID;
-		const Standard_GUID & ID ();
+") GetDriverGUID;
+		Standard_GUID GetDriverGUID ();
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "	* Returns the ID of the attribute.
 
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
+		%feature("compactdefaultargs") HasOwnColor;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnColor;
+		Standard_Boolean HasOwnColor ();
+		%feature("compactdefaultargs") HasOwnMaterial;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnMaterial;
+		Standard_Boolean HasOwnMaterial ();
+		%feature("compactdefaultargs") HasOwnMode;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnMode;
+		Standard_Boolean HasOwnMode ();
+		%feature("compactdefaultargs") HasOwnSelectionMode;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnSelectionMode;
+		Standard_Boolean HasOwnSelectionMode ();
+		%feature("compactdefaultargs") HasOwnTransparency;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnTransparency;
+		Standard_Boolean HasOwnTransparency ();
+		%feature("compactdefaultargs") HasOwnWidth;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnWidth;
+		Standard_Boolean HasOwnWidth ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	* Returns the ID of the attribute.
 
-	:param anAttribute:
-	:type anAttribute: Handle_TDF_Attribute &
-	:rtype: void
-") Restore;
-		virtual void Restore (const Handle_TDF_Attribute & anAttribute);
+	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "	:rtype: bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed ();
+		%feature("compactdefaultargs") MaterialIndex;
+		%feature("autodoc", "	:rtype: int
+") MaterialIndex;
+		Standard_Integer MaterialIndex ();
+		%feature("compactdefaultargs") Mode;
+		%feature("autodoc", "	:rtype: int
+") Mode;
+		Standard_Integer Mode ();
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	* Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 
@@ -1251,22 +1146,130 @@ class TDataXtd_Position : public TDF_Attribute {
 	:rtype: void
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & intoAttribute,const Handle_TDF_RelocationTable & aRelocTationable);
-		%feature("compactdefaultargs") GetPosition;
-		%feature("autodoc", "	:rtype: gp_Pnt
-") GetPosition;
-		const gp_Pnt  GetPosition ();
-		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "	:param aPos:
-	:type aPos: gp_Pnt
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
+
+	:param anAttribute:
+	:type anAttribute: Handle_TDF_Attribute &
+	:rtype: void
+") Restore;
+		virtual void Restore (const Handle_TDF_Attribute & anAttribute);
+		%feature("compactdefaultargs") SelectionMode;
+		%feature("autodoc", "	:rtype: int
+") SelectionMode;
+		Standard_Integer SelectionMode ();
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Create if not found the TDataXtd_Presentation attribute and set its driver GUID
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
+	:param theDriverId:
+	:type theDriverId: Standard_GUID &
+	:rtype: Handle_TDataXtd_Presentation
+") Set;
+		static Handle_TDataXtd_Presentation Set (const TDF_Label & theLabel,const Standard_GUID & theDriverId);
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	:param theColor:
+	:type theColor: Quantity_NameOfColor
 	:rtype: None
-") SetPosition;
-		void SetPosition (const gp_Pnt & aPos);
+") SetColor;
+		void SetColor (const Quantity_NameOfColor theColor);
+		%feature("compactdefaultargs") SetDisplayed;
+		%feature("autodoc", "	:param theIsDisplayed:
+	:type theIsDisplayed: bool
+	:rtype: None
+") SetDisplayed;
+		void SetDisplayed (const Standard_Boolean theIsDisplayed);
+		%feature("compactdefaultargs") SetDriverGUID;
+		%feature("autodoc", "	* Sets the GUID of the driver managing display of associated AIS object
+
+	:param theGUID:
+	:type theGUID: Standard_GUID &
+	:rtype: None
+") SetDriverGUID;
+		void SetDriverGUID (const Standard_GUID & theGUID);
+		%feature("compactdefaultargs") SetMaterialIndex;
+		%feature("autodoc", "	:param theMaterialIndex:
+	:type theMaterialIndex: int
+	:rtype: None
+") SetMaterialIndex;
+		void SetMaterialIndex (const Standard_Integer theMaterialIndex);
+		%feature("compactdefaultargs") SetMode;
+		%feature("autodoc", "	:param theMode:
+	:type theMode: int
+	:rtype: None
+") SetMode;
+		void SetMode (const Standard_Integer theMode);
+		%feature("compactdefaultargs") SetSelectionMode;
+		%feature("autodoc", "	:param theSelectionMode:
+	:type theSelectionMode: int
+	:rtype: None
+") SetSelectionMode;
+		void SetSelectionMode (const Standard_Integer theSelectionMode);
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetTransparency;
+		void SetTransparency (const Standard_Real theValue);
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", "	:param theWidth:
+	:type theWidth: float
+	:rtype: None
+") SetWidth;
+		void SetWidth (const Standard_Real theWidth);
+		%feature("compactdefaultargs") TDataXtd_Presentation;
+		%feature("autodoc", "	* //!@name Attribute mechanics Empty constructor
+
+	:rtype: None
+") TDataXtd_Presentation;
+		 TDataXtd_Presentation ();
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", "	:rtype: float
+") Transparency;
+		Standard_Real Transparency ();
+		%feature("compactdefaultargs") Unset;
+		%feature("autodoc", "	* Remove attribute of this type from the label
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
+	:rtype: void
+") Unset;
+		static void Unset (const TDF_Label & theLabel);
+		%feature("compactdefaultargs") UnsetColor;
+		%feature("autodoc", "	:rtype: None
+") UnsetColor;
+		void UnsetColor ();
+		%feature("compactdefaultargs") UnsetMaterial;
+		%feature("autodoc", "	:rtype: None
+") UnsetMaterial;
+		void UnsetMaterial ();
+		%feature("compactdefaultargs") UnsetMode;
+		%feature("autodoc", "	:rtype: None
+") UnsetMode;
+		void UnsetMode ();
+		%feature("compactdefaultargs") UnsetSelectionMode;
+		%feature("autodoc", "	:rtype: None
+") UnsetSelectionMode;
+		void UnsetSelectionMode ();
+		%feature("compactdefaultargs") UnsetTransparency;
+		%feature("autodoc", "	:rtype: None
+") UnsetTransparency;
+		void UnsetTransparency ();
+		%feature("compactdefaultargs") UnsetWidth;
+		%feature("autodoc", "	:rtype: None
+") UnsetWidth;
+		void UnsetWidth ();
+		%feature("compactdefaultargs") Width;
+		%feature("autodoc", "	:rtype: float
+") Width;
+		Standard_Real Width ();
 };
 
 
-%make_alias(TDataXtd_Position)
+%make_alias(TDataXtd_Presentation)
 
-%extend TDataXtd_Position {
+%extend TDataXtd_Presentation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1274,7 +1277,15 @@ class TDataXtd_Position : public TDF_Attribute {
 %nodefaultctor TDataXtd_Shape;
 class TDataXtd_Shape : public TDF_Attribute {
 	public:
-		%feature("compactdefaultargs") Find;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "	* class methods ============= try to retrieve a Shape attribute at <current> label or in fathers label of <current>. Returns True if found and set <S>.
 
 	:param current:
@@ -1284,24 +1295,6 @@ class TDataXtd_Shape : public TDF_Attribute {
 	:rtype: bool
 ") Find;
 		static Standard_Boolean Find (const TDF_Label & current,Handle_TDataXtd_Shape & S);
-		%feature("compactdefaultargs") New;
-		%feature("autodoc", "	* Find, or create, a Shape attribute. the Shape attribute is returned. Raises if <label> has attribute.
-
-	:param label:
-	:type label: TDF_Label &
-	:rtype: Handle_TDataXtd_Shape
-") New;
-		static Handle_TDataXtd_Shape New (const TDF_Label & label);
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Create or update associated NamedShape attribute. the Shape attribute is returned.
-
-	:param label:
-	:type label: TDF_Label &
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:rtype: Handle_TDataXtd_Shape
-") Set;
-		static Handle_TDataXtd_Shape Set (const TDF_Label & label,const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "	* the Shape from associated NamedShape attribute is returned.
 
@@ -1316,20 +1309,18 @@ class TDataXtd_Shape : public TDF_Attribute {
 	:rtype: Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID ();
-		%feature("compactdefaultargs") TDataXtd_Shape;
-		%feature("autodoc", "	:rtype: None
-") TDataXtd_Shape;
-		 TDataXtd_Shape ();
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "	:rtype: Standard_GUID
 ") ID;
 		const Standard_GUID & ID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param with:
-	:type with: Handle_TDF_Attribute &
-	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & with);
+		%feature("compactdefaultargs") New;
+		%feature("autodoc", "	* Find, or create, a Shape attribute. the Shape attribute is returned. Raises if <label> has attribute.
+
+	:param label:
+	:type label: TDF_Label &
+	:rtype: Handle_TDataXtd_Shape
+") New;
+		static Handle_TDataXtd_Shape New (const TDF_Label & label);
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -1348,15 +1339,27 @@ class TDataXtd_Shape : public TDF_Attribute {
 	:rtype: void
 ") References;
 		virtual void References (const Handle_TDF_DataSet & DS);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & with);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Create or update associated NamedShape attribute. the Shape attribute is returned.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+	:param label:
+	:type label: TDF_Label &
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: Handle_TDataXtd_Shape
+") Set;
+		static Handle_TDataXtd_Shape Set (const TDF_Label & label,const TopoDS_Shape & shape);
+		%feature("compactdefaultargs") TDataXtd_Shape;
+		%feature("autodoc", "	:rtype: None
+") TDataXtd_Shape;
+		 TDataXtd_Shape ();
+};
 
 
 %make_alias(TDataXtd_Shape)
@@ -1366,145 +1369,314 @@ class TDataXtd_Shape : public TDF_Attribute {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor TDataXtd_Triangulation;
+class TDataXtd_Triangulation : public TDF_Attribute {
+	public:
+		%feature("compactdefaultargs") Deflection;
+		%feature("autodoc", "	* Poly_Triangulation methods The methods are 'covered' by this attribute to prevent direct modification of the mesh. There is no performance problem to call Poly_Triangulation method through this attribute. The most of the methods are considered as 'inline' by the compiler in release mode. Returns the deflection of this triangulation.
+
+	:rtype: float
+") Deflection;
+		Standard_Real Deflection ();
+		%feature("compactdefaultargs") Deflection;
+		%feature("autodoc", "	* Sets the deflection of this triangulation to theDeflection. See more on deflection in Polygon2D
+
+	:param theDeflection:
+	:type theDeflection: float
+	:rtype: None
+") Deflection;
+		void Deflection (const Standard_Real theDeflection);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") Get;
+		%feature("autodoc", "	* Returns the underlying triangulation.
+
+	:rtype: Handle_Poly_Triangulation
+") Get;
+		Handle_Poly_Triangulation Get ();
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "	* Static methods Returns the ID of the triangulation attribute.
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
+		%feature("compactdefaultargs") HasNormals;
+		%feature("autodoc", "	* Returns Standard_True if nodal normals are defined.
+
+	:rtype: bool
+") HasNormals;
+		Standard_Boolean HasNormals ();
+		%feature("compactdefaultargs") HasUVNodes;
+		%feature("autodoc", "	* returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
+
+	:rtype: bool
+") HasUVNodes;
+		Standard_Boolean HasUVNodes ();
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "	* Inherited attribute methods
+
+	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("compactdefaultargs") NbNodes;
+		%feature("autodoc", "	* returns the number of nodes for this triangulation.
+
+	:rtype: int
+") NbNodes;
+		Standard_Integer NbNodes ();
+		%feature("compactdefaultargs") NbTriangles;
+		%feature("autodoc", "	* returns the number of triangles for this triangulation.
+
+	:rtype: int
+") NbTriangles;
+		Standard_Integer NbTriangles ();
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		Handle_TDF_Attribute NewEmpty ();
+		%feature("compactdefaultargs") Node;
+		%feature("autodoc", "	* returns node at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: gp_Pnt
+") Node;
+		const gp_Pnt  Node (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") Normal;
+		%feature("autodoc", "	* returns normal at the given index. Raises Standard_OutOfRange exception.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: gp_Dir
+") Normal;
+		const gp_Dir Normal (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "	:param Into:
+	:type Into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: None
+") Paste;
+		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") RemoveUVNodes;
+		%feature("autodoc", "	* Deallocates the UV nodes.
+
+	:rtype: None
+") RemoveUVNodes;
+		void RemoveUVNodes ();
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param theAttribute:
+	:type theAttribute: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & theAttribute);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Finds or creates a triangulation attribute.
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
+	:rtype: Handle_TDataXtd_Triangulation
+") Set;
+		static Handle_TDataXtd_Triangulation Set (const TDF_Label & theLabel);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Finds or creates a triangulation attribute. Initializes the attribute by a Poly_Triangulation object.
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
+	:param theTriangulation:
+	:type theTriangulation: Handle_Poly_Triangulation &
+	:rtype: Handle_TDataXtd_Triangulation
+") Set;
+		static Handle_TDataXtd_Triangulation Set (const TDF_Label & theLabel,const Handle_Poly_Triangulation & theTriangulation);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Sets the triangulation.
+
+	:param theTriangulation:
+	:type theTriangulation: Handle_Poly_Triangulation &
+	:rtype: None
+") Set;
+		void Set (const Handle_Poly_Triangulation & theTriangulation);
+		%feature("compactdefaultargs") SetNode;
+		%feature("autodoc", "	* The method differs from Poly_Triangulation! Sets a node at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
+
+	:param theIndex:
+	:type theIndex: int
+	:param theNode:
+	:type theNode: gp_Pnt
+	:rtype: None
+") SetNode;
+		void SetNode (const Standard_Integer theIndex,const gp_Pnt & theNode);
+		%feature("compactdefaultargs") SetNormal;
+		%feature("autodoc", "	* Changes normal at the given index. Raises Standard_OutOfRange exception.
+
+	:param theIndex:
+	:type theIndex: int
+	:param theNormal:
+	:type theNormal: gp_Dir
+	:rtype: None
+") SetNormal;
+		void SetNormal (const Standard_Integer theIndex,const gp_Dir & theNormal);
+		%feature("compactdefaultargs") SetNormals;
+		%feature("autodoc", "	* Sets the table of node normals. Raises exception if length of theNormals != 3 * NbNodes
+
+	:param theNormals:
+	:type theNormals: Handle_TShort_HArray1OfShortReal &
+	:rtype: None
+") SetNormals;
+		void SetNormals (const Handle_TShort_HArray1OfShortReal & theNormals);
+		%feature("compactdefaultargs") SetTriangle;
+		%feature("autodoc", "	* The method differs from Poly_Triangulation! Sets a triangle at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
+
+	:param theIndex:
+	:type theIndex: int
+	:param theTriangle:
+	:type theTriangle: Poly_Triangle &
+	:rtype: None
+") SetTriangle;
+		void SetTriangle (const Standard_Integer theIndex,const Poly_Triangle & theTriangle);
+		%feature("compactdefaultargs") SetUVNode;
+		%feature("autodoc", "	* The method differs from Poly_Triangulation! Sets a UVNode at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
+
+	:param theIndex:
+	:type theIndex: int
+	:param theUVNode:
+	:type theUVNode: gp_Pnt2d
+	:rtype: None
+") SetUVNode;
+		void SetUVNode (const Standard_Integer theIndex,const gp_Pnt2d & theUVNode);
+		%feature("compactdefaultargs") TDataXtd_Triangulation;
+		%feature("autodoc", "	* Object methods A constructor. Don't use it directly, use please the static method Set(), which returns the attribute attached to a label.
+
+	:rtype: None
+") TDataXtd_Triangulation;
+		 TDataXtd_Triangulation ();
+		%feature("compactdefaultargs") Triangle;
+		%feature("autodoc", "	* returns triangle at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: Poly_Triangle
+") Triangle;
+		const Poly_Triangle & Triangle (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") UVNode;
+		%feature("autodoc", "	* returns UVNode at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: gp_Pnt2d
+") UVNode;
+		const gp_Pnt2d  UVNode (const Standard_Integer theIndex);
+};
+
+
+%make_alias(TDataXtd_Triangulation)
+
+%extend TDataXtd_Triangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_PatternStd;
 class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	public:
-		%feature("compactdefaultargs") GetPatternID;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") GetPatternID;
-		static const Standard_GUID & GetPatternID ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Find, or create, a PatternStd attribute
-
-	:param label:
-	:type label: TDF_Label &
-	:rtype: Handle_TDataXtd_PatternStd
-") Set;
-		static Handle_TDataXtd_PatternStd Set (const TDF_Label & label);
-		%feature("compactdefaultargs") TDataXtd_PatternStd;
-		%feature("autodoc", "	:rtype: None
-") TDataXtd_PatternStd;
-		 TDataXtd_PatternStd ();
-		%feature("compactdefaultargs") Signature;
-		%feature("autodoc", "	:param signature:
-	:type signature: int
-	:rtype: None
-") Signature;
-		void Signature (const Standard_Integer signature);
 		%feature("compactdefaultargs") Axis1;
 		%feature("autodoc", "	:param Axis1:
 	:type Axis1: Handle_TNaming_NamedShape &
 	:rtype: None
 ") Axis1;
 		void Axis1 (const Handle_TNaming_NamedShape & Axis1);
-		%feature("compactdefaultargs") Axis2;
-		%feature("autodoc", "	:param Axis2:
-	:type Axis2: Handle_TNaming_NamedShape &
-	:rtype: None
-") Axis2;
-		void Axis2 (const Handle_TNaming_NamedShape & Axis2);
+		%feature("compactdefaultargs") Axis1;
+		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
+") Axis1;
+		Handle_TNaming_NamedShape Axis1 ();
 		%feature("compactdefaultargs") Axis1Reversed;
 		%feature("autodoc", "	:param Axis1Reversed:
 	:type Axis1Reversed: bool
 	:rtype: None
 ") Axis1Reversed;
 		void Axis1Reversed (const Standard_Boolean Axis1Reversed);
+		%feature("compactdefaultargs") Axis1Reversed;
+		%feature("autodoc", "	:rtype: bool
+") Axis1Reversed;
+		Standard_Boolean Axis1Reversed ();
+		%feature("compactdefaultargs") Axis2;
+		%feature("autodoc", "	:param Axis2:
+	:type Axis2: Handle_TNaming_NamedShape &
+	:rtype: None
+") Axis2;
+		void Axis2 (const Handle_TNaming_NamedShape & Axis2);
+		%feature("compactdefaultargs") Axis2;
+		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
+") Axis2;
+		Handle_TNaming_NamedShape Axis2 ();
 		%feature("compactdefaultargs") Axis2Reversed;
 		%feature("autodoc", "	:param Axis2Reversed:
 	:type Axis2Reversed: bool
 	:rtype: None
 ") Axis2Reversed;
 		void Axis2Reversed (const Standard_Boolean Axis2Reversed);
-		%feature("compactdefaultargs") Value1;
-		%feature("autodoc", "	:param value:
-	:type value: Handle_TDataStd_Real &
-	:rtype: None
-") Value1;
-		void Value1 (const Handle_TDataStd_Real & value);
-		%feature("compactdefaultargs") Value2;
-		%feature("autodoc", "	:param value:
-	:type value: Handle_TDataStd_Real &
-	:rtype: None
-") Value2;
-		void Value2 (const Handle_TDataStd_Real & value);
-		%feature("compactdefaultargs") NbInstances1;
-		%feature("autodoc", "	:param NbInstances1:
-	:type NbInstances1: Handle_TDataStd_Integer &
-	:rtype: None
-") NbInstances1;
-		void NbInstances1 (const Handle_TDataStd_Integer & NbInstances1);
-		%feature("compactdefaultargs") NbInstances2;
-		%feature("autodoc", "	:param NbInstances2:
-	:type NbInstances2: Handle_TDataStd_Integer &
-	:rtype: None
-") NbInstances2;
-		void NbInstances2 (const Handle_TDataStd_Integer & NbInstances2);
-		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	:param plane:
-	:type plane: Handle_TNaming_NamedShape &
-	:rtype: None
-") Mirror;
-		void Mirror (const Handle_TNaming_NamedShape & plane);
-		%feature("compactdefaultargs") Signature;
-		%feature("autodoc", "	:rtype: int
-") Signature;
-		Standard_Integer Signature ();
-		%feature("compactdefaultargs") Axis1;
-		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
-") Axis1;
-		Handle_TNaming_NamedShape Axis1 ();
-		%feature("compactdefaultargs") Axis2;
-		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
-") Axis2;
-		Handle_TNaming_NamedShape Axis2 ();
-		%feature("compactdefaultargs") Axis1Reversed;
-		%feature("autodoc", "	:rtype: bool
-") Axis1Reversed;
-		Standard_Boolean Axis1Reversed ();
 		%feature("compactdefaultargs") Axis2Reversed;
 		%feature("autodoc", "	:rtype: bool
 ") Axis2Reversed;
 		Standard_Boolean Axis2Reversed ();
-		%feature("compactdefaultargs") Value1;
-		%feature("autodoc", "	:rtype: Handle_TDataStd_Real
-") Value1;
-		Handle_TDataStd_Real Value1 ();
-		%feature("compactdefaultargs") Value2;
-		%feature("autodoc", "	:rtype: Handle_TDataStd_Real
-") Value2;
-		Handle_TDataStd_Real Value2 ();
-		%feature("compactdefaultargs") NbInstances1;
-		%feature("autodoc", "	:rtype: Handle_TDataStd_Integer
-") NbInstances1;
-		Handle_TDataStd_Integer NbInstances1 ();
-		%feature("compactdefaultargs") NbInstances2;
-		%feature("autodoc", "	:rtype: Handle_TDataStd_Integer
-") NbInstances2;
-		Handle_TDataStd_Integer NbInstances2 ();
-		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
-") Mirror;
-		Handle_TNaming_NamedShape Mirror ();
-		%feature("compactdefaultargs") NbTrsfs;
-		%feature("autodoc", "	:rtype: int
-") NbTrsfs;
-		Standard_Integer NbTrsfs ();
 		%feature("compactdefaultargs") ComputeTrsfs;
 		%feature("autodoc", "	:param Trsfs:
 	:type Trsfs: TDataXtd_Array1OfTrsf &
 	:rtype: None
 ") ComputeTrsfs;
 		void ComputeTrsfs (TDataXtd_Array1OfTrsf & Trsfs);
-		%feature("compactdefaultargs") PatternID;
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetPatternID;
 		%feature("autodoc", "	:rtype: Standard_GUID
-") PatternID;
-		const Standard_GUID & PatternID ();
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "	:param With:
-	:type With: Handle_TDF_Attribute &
+") GetPatternID;
+		static const Standard_GUID & GetPatternID ();
+		%feature("compactdefaultargs") Mirror;
+		%feature("autodoc", "	:param plane:
+	:type plane: Handle_TNaming_NamedShape &
 	:rtype: None
-") Restore;
-		void Restore (const Handle_TDF_Attribute & With);
+") Mirror;
+		void Mirror (const Handle_TNaming_NamedShape & plane);
+		%feature("compactdefaultargs") Mirror;
+		%feature("autodoc", "	:rtype: Handle_TNaming_NamedShape
+") Mirror;
+		Handle_TNaming_NamedShape Mirror ();
+		%feature("compactdefaultargs") NbInstances1;
+		%feature("autodoc", "	:param NbInstances1:
+	:type NbInstances1: Handle_TDataStd_Integer &
+	:rtype: None
+") NbInstances1;
+		void NbInstances1 (const Handle_TDataStd_Integer & NbInstances1);
+		%feature("compactdefaultargs") NbInstances1;
+		%feature("autodoc", "	:rtype: Handle_TDataStd_Integer
+") NbInstances1;
+		Handle_TDataStd_Integer NbInstances1 ();
+		%feature("compactdefaultargs") NbInstances2;
+		%feature("autodoc", "	:param NbInstances2:
+	:type NbInstances2: Handle_TDataStd_Integer &
+	:rtype: None
+") NbInstances2;
+		void NbInstances2 (const Handle_TDataStd_Integer & NbInstances2);
+		%feature("compactdefaultargs") NbInstances2;
+		%feature("autodoc", "	:rtype: Handle_TDataStd_Integer
+") NbInstances2;
+		Handle_TDataStd_Integer NbInstances2 ();
+		%feature("compactdefaultargs") NbTrsfs;
+		%feature("autodoc", "	:rtype: int
+") NbTrsfs;
+		Standard_Integer NbTrsfs ();
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
 ") NewEmpty;
@@ -1517,21 +1689,65 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	:rtype: None
 ") Paste;
 		void Paste (const Handle_TDF_Attribute & Into,const Handle_TDF_RelocationTable & RT);
+		%feature("compactdefaultargs") PatternID;
+		%feature("autodoc", "	:rtype: Standard_GUID
+") PatternID;
+		const Standard_GUID & PatternID ();
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "	:param aDataSet:
 	:type aDataSet: Handle_TDF_DataSet &
 	:rtype: void
 ") References;
 		virtual void References (const Handle_TDF_DataSet & aDataSet);
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "	:param With:
+	:type With: Handle_TDF_Attribute &
+	:rtype: None
+") Restore;
+		void Restore (const Handle_TDF_Attribute & With);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Find, or create, a PatternStd attribute
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+	:param label:
+	:type label: TDF_Label &
+	:rtype: Handle_TDataXtd_PatternStd
+") Set;
+		static Handle_TDataXtd_PatternStd Set (const TDF_Label & label);
+		%feature("compactdefaultargs") Signature;
+		%feature("autodoc", "	:param signature:
+	:type signature: int
+	:rtype: None
+") Signature;
+		void Signature (const Standard_Integer signature);
+		%feature("compactdefaultargs") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
+		Standard_Integer Signature ();
+		%feature("compactdefaultargs") TDataXtd_PatternStd;
+		%feature("autodoc", "	:rtype: None
+") TDataXtd_PatternStd;
+		 TDataXtd_PatternStd ();
+		%feature("compactdefaultargs") Value1;
+		%feature("autodoc", "	:param value:
+	:type value: Handle_TDataStd_Real &
+	:rtype: None
+") Value1;
+		void Value1 (const Handle_TDataStd_Real & value);
+		%feature("compactdefaultargs") Value1;
+		%feature("autodoc", "	:rtype: Handle_TDataStd_Real
+") Value1;
+		Handle_TDataStd_Real Value1 ();
+		%feature("compactdefaultargs") Value2;
+		%feature("autodoc", "	:param value:
+	:type value: Handle_TDataStd_Real &
+	:rtype: None
+") Value2;
+		void Value2 (const Handle_TDataStd_Real & value);
+		%feature("compactdefaultargs") Value2;
+		%feature("autodoc", "	:rtype: Handle_TDataStd_Real
+") Value2;
+		Handle_TDataStd_Real Value2 ();
+};
 
 
 %make_alias(TDataXtd_PatternStd)
@@ -1541,3 +1757,18 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+%wrap_handle(TDataXtd_HArray1OfTrsf)
+class TDataXtd_HArray1OfTrsf : public  TDataXtd_Array1OfTrsf, public Standard_Transient {
+  public:
+    TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper, const  TDataXtd_Array1OfTrsf::value_type& theValue);
+    TDataXtd_HArray1OfTrsf(const  TDataXtd_Array1OfTrsf& theOther);
+    const  TDataXtd_Array1OfTrsf& Array1();
+     TDataXtd_Array1OfTrsf& ChangeArray1();
+};
+%make_alias(TDataXtd_HArray1OfTrsf)
+
+
+/* harray2 class */
+/* harray2 class */

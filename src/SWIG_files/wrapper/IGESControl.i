@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IGESCONTROLDOCSTRING
-"-Purpose : This package provide external access and control to use IGES
-See also IGESToBRep for reading IGES to Shapes
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=IGESCONTROLDOCSTRING) IGESControl
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,6 +38,10 @@ See also IGESToBRep for reading IGES to Shapes
 
 
 %include IGESControl_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -110,20 +112,6 @@ class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 %nodefaultctor IGESControl_Controller;
 class IGESControl_Controller : public XSControl_Controller {
 	public:
-		%feature("compactdefaultargs") IGESControl_Controller;
-		%feature("autodoc", "	* Initializes the use of IGES Norm (the first time) and returns a Controller for IGES-5.1 If <modefnes> is True, sets it to internal FNES format
-
-	:param modefnes: default value is Standard_False
-	:type modefnes: bool
-	:rtype: None
-") IGESControl_Controller;
-		 IGESControl_Controller (const Standard_Boolean modefnes = Standard_False);
-		%feature("compactdefaultargs") NewModel;
-		%feature("autodoc", "	* Creates a new empty Model ready to receive data of the Norm. It is taken from IGES Template Model
-
-	:rtype: Handle_Interface_InterfaceModel
-") NewModel;
-		Handle_Interface_InterfaceModel NewModel ();
 		%feature("compactdefaultargs") ActorRead;
 		%feature("autodoc", "	* Returns the Actor for Read attached to the pair (norm,appli) It is an Actor from IGESToBRep, adapted from an IGESModel : Unit, tolerances
 
@@ -132,6 +120,32 @@ class IGESControl_Controller : public XSControl_Controller {
 	:rtype: Handle_Transfer_ActorOfTransientProcess
 ") ActorRead;
 		Handle_Transfer_ActorOfTransientProcess ActorRead (const Handle_Interface_InterfaceModel & model);
+		%feature("compactdefaultargs") Customise;
+		%feature("autodoc", "	:param WS:
+	:type WS: Handle_XSControl_WorkSession &
+	:rtype: void
+") Customise;
+		virtual void Customise (Handle_XSControl_WorkSession & WS);
+		%feature("compactdefaultargs") IGESControl_Controller;
+		%feature("autodoc", "	* Initializes the use of IGES Norm (the first time) and returns a Controller for IGES-5.1 If <modefnes> is True, sets it to internal FNES format
+
+	:param modefnes: default value is Standard_False
+	:type modefnes: bool
+	:rtype: None
+") IGESControl_Controller;
+		 IGESControl_Controller (const Standard_Boolean modefnes = Standard_False);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Standard Initialisation. It creates a Controller for IGES and records it to various names, available to select it later Returns True when done, False if could not be done Also, it creates and records an Adaptor for FNES
+
+	:rtype: bool
+") Init;
+		static Standard_Boolean Init ();
+		%feature("compactdefaultargs") NewModel;
+		%feature("autodoc", "	* Creates a new empty Model ready to receive data of the Norm. It is taken from IGES Template Model
+
+	:rtype: Handle_Interface_InterfaceModel
+") NewModel;
+		Handle_Interface_InterfaceModel NewModel ();
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "	* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modetrans> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires an IGESModel) modeshape : 0 groupe of face (version < 5.1) 1 BREP-version 5.1 of IGES
 
@@ -146,18 +160,6 @@ class IGESControl_Controller : public XSControl_Controller {
 	:rtype: IFSelect_ReturnStatus
 ") TransferWriteShape;
 		virtual IFSelect_ReturnStatus TransferWriteShape (const TopoDS_Shape & shape,const Handle_Transfer_FinderProcess & FP,const Handle_Interface_InterfaceModel & model,const Standard_Integer modetrans = 0);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Standard Initialisation. It creates a Controller for IGES and records it to various names, available to select it later Returns True when done, False if could not be done Also, it creates and records an Adaptor for FNES
-
-	:rtype: bool
-") Init;
-		static Standard_Boolean Init ();
-		%feature("compactdefaultargs") Customise;
-		%feature("autodoc", "	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:rtype: void
-") Customise;
-		virtual void Customise (Handle_XSControl_WorkSession & WS);
 };
 
 
@@ -171,20 +173,6 @@ class IGESControl_Controller : public XSControl_Controller {
 %nodefaultctor IGESControl_IGESBoundary;
 class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 	public:
-		%feature("compactdefaultargs") IGESControl_IGESBoundary;
-		%feature("autodoc", "	* Creates an object and calls inherited constuctor.
-
-	:rtype: None
-") IGESControl_IGESBoundary;
-		 IGESControl_IGESBoundary ();
-		%feature("compactdefaultargs") IGESControl_IGESBoundary;
-		%feature("autodoc", "	* Creates an object and calls inherited constuctor.
-
-	:param CS:
-	:type CS: IGESToBRep_CurveAndSurface &
-	:rtype: None
-") IGESControl_IGESBoundary;
-		 IGESControl_IGESBoundary (const IGESToBRep_CurveAndSurface & CS);
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "	* Checks result of translation of IGES boundary entities (types 141, 142 or 508). Checks consistency of 2D and 3D representations and keeps only one if they are inconsistent. Checks the closure of resulting wire and if it is not closed, checks 2D and 3D representation and updates the resulting wire to contain only closed representation.
 
@@ -199,6 +187,20 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 	:rtype: void
 ") Check;
 		virtual void Check (const Standard_Boolean result,const Standard_Boolean checkclosure,const Standard_Boolean okCurve3d,const Standard_Boolean okCurve2d);
+		%feature("compactdefaultargs") IGESControl_IGESBoundary;
+		%feature("autodoc", "	* Creates an object and calls inherited constuctor.
+
+	:rtype: None
+") IGESControl_IGESBoundary;
+		 IGESControl_IGESBoundary ();
+		%feature("compactdefaultargs") IGESControl_IGESBoundary;
+		%feature("autodoc", "	* Creates an object and calls inherited constuctor.
+
+	:param CS:
+	:type CS: IGESToBRep_CurveAndSurface &
+	:rtype: None
+") IGESControl_IGESBoundary;
+		 IGESControl_IGESBoundary (const IGESToBRep_CurveAndSurface & CS);
 };
 
 
@@ -212,6 +214,10 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 %nodefaultctor IGESControl_Reader;
 class IGESControl_Reader : public XSControl_Reader {
 	public:
+		%feature("compactdefaultargs") GetReadVisible;
+		%feature("autodoc", "	:rtype: bool
+") GetReadVisible;
+		Standard_Boolean GetReadVisible ();
 		%feature("compactdefaultargs") IGESControl_Reader;
 		%feature("autodoc", "	* Creates a Reader from scratch
 
@@ -228,18 +234,6 @@ class IGESControl_Reader : public XSControl_Reader {
 	:rtype: None
 ") IGESControl_Reader;
 		 IGESControl_Reader (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") SetReadVisible;
-		%feature("autodoc", "	* Set the transion of ALL Roots (if theReadOnlyVisible is False) or of Visible Roots (if theReadOnlyVisible is True)
-
-	:param ReadRoot:
-	:type ReadRoot: bool
-	:rtype: None
-") SetReadVisible;
-		void SetReadVisible (const Standard_Boolean ReadRoot);
-		%feature("compactdefaultargs") GetReadVisible;
-		%feature("autodoc", "	:rtype: bool
-") GetReadVisible;
-		Standard_Boolean GetReadVisible ();
 		%feature("compactdefaultargs") IGESModel;
 		%feature("autodoc", "	* Returns the model as a IGESModel. It can then be consulted (header, product)
 
@@ -262,6 +256,14 @@ class IGESControl_Reader : public XSControl_Reader {
 	:rtype: None
 ") PrintTransferInfo;
 		void PrintTransferInfo (const IFSelect_PrintFail failwarn,const IFSelect_PrintCount mode);
+		%feature("compactdefaultargs") SetReadVisible;
+		%feature("autodoc", "	* Set the transion of ALL Roots (if theReadOnlyVisible is False) or of Visible Roots (if theReadOnlyVisible is True)
+
+	:param ReadRoot:
+	:type ReadRoot: bool
+	:rtype: None
+") SetReadVisible;
+		void SetReadVisible (const Standard_Boolean ReadRoot);
 };
 
 
@@ -273,18 +275,18 @@ class IGESControl_Reader : public XSControl_Reader {
 %nodefaultctor IGESControl_ToolContainer;
 class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 	public:
-		%feature("compactdefaultargs") IGESControl_ToolContainer;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") IGESControl_ToolContainer;
-		 IGESControl_ToolContainer ();
 		%feature("compactdefaultargs") IGESBoundary;
 		%feature("autodoc", "	* Returns IGESControl_IGESBoundary
 
 	:rtype: Handle_IGESToBRep_IGESBoundary
 ") IGESBoundary;
 		virtual Handle_IGESToBRep_IGESBoundary IGESBoundary ();
+		%feature("compactdefaultargs") IGESControl_ToolContainer;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") IGESControl_ToolContainer;
+		 IGESControl_ToolContainer ();
 };
 
 
@@ -298,6 +300,36 @@ class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 %nodefaultctor IGESControl_Writer;
 class IGESControl_Writer {
 	public:
+		%feature("compactdefaultargs") AddEntity;
+		%feature("autodoc", "	* Adds an IGES entity (and the ones it references) to the model
+
+	:param ent:
+	:type ent: Handle_IGESData_IGESEntity &
+	:rtype: bool
+") AddEntity;
+		Standard_Boolean AddEntity (const Handle_IGESData_IGESEntity & ent);
+		%feature("compactdefaultargs") AddGeom;
+		%feature("autodoc", "	* Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null
+
+	:param geom:
+	:type geom: Handle_Standard_Transient &
+	:rtype: bool
+") AddGeom;
+		Standard_Boolean AddGeom (const Handle_Standard_Transient & geom);
+		%feature("compactdefaultargs") AddShape;
+		%feature("autodoc", "	* Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null
+
+	:param sh:
+	:type sh: TopoDS_Shape &
+	:rtype: bool
+") AddShape;
+		Standard_Boolean AddShape (const TopoDS_Shape & sh);
+		%feature("compactdefaultargs") ComputeModel;
+		%feature("autodoc", "	* Computes the entities found in the model, which is ready to be written. This contrasts with the default computation of headers only.
+
+	:rtype: None
+") ComputeModel;
+		void ComputeModel ();
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "	* Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);
 
@@ -330,10 +362,6 @@ class IGESControl_Writer {
 	:rtype: Handle_IGESData_IGESModel
 ") Model;
 		Handle_IGESData_IGESModel Model ();
-		%feature("compactdefaultargs") TransferProcess;
-		%feature("autodoc", "	:rtype: Handle_Transfer_FinderProcess
-") TransferProcess;
-		Handle_Transfer_FinderProcess TransferProcess ();
 		%feature("compactdefaultargs") SetTransferProcess;
 		%feature("autodoc", "	* Returns/Sets the TransferProcess : it contains final results and if some, check messages
 
@@ -342,36 +370,10 @@ class IGESControl_Writer {
 	:rtype: None
 ") SetTransferProcess;
 		void SetTransferProcess (const Handle_Transfer_FinderProcess & TP);
-		%feature("compactdefaultargs") AddShape;
-		%feature("autodoc", "	* Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null
-
-	:param sh:
-	:type sh: TopoDS_Shape &
-	:rtype: bool
-") AddShape;
-		Standard_Boolean AddShape (const TopoDS_Shape & sh);
-		%feature("compactdefaultargs") AddGeom;
-		%feature("autodoc", "	* Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null
-
-	:param geom:
-	:type geom: Handle_Standard_Transient &
-	:rtype: bool
-") AddGeom;
-		Standard_Boolean AddGeom (const Handle_Standard_Transient & geom);
-		%feature("compactdefaultargs") AddEntity;
-		%feature("autodoc", "	* Adds an IGES entity (and the ones it references) to the model
-
-	:param ent:
-	:type ent: Handle_IGESData_IGESEntity &
-	:rtype: bool
-") AddEntity;
-		Standard_Boolean AddEntity (const Handle_IGESData_IGESEntity & ent);
-		%feature("compactdefaultargs") ComputeModel;
-		%feature("autodoc", "	* Computes the entities found in the model, which is ready to be written. This contrasts with the default computation of headers only.
-
-	:rtype: None
-") ComputeModel;
-		void ComputeModel ();
+		%feature("compactdefaultargs") TransferProcess;
+		%feature("autodoc", "	:rtype: Handle_Transfer_FinderProcess
+") TransferProcess;
+		Handle_Transfer_FinderProcess TransferProcess ();
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Computes then writes the model to an OStream Returns True when done, false in case of error
 
@@ -392,16 +394,6 @@ class IGESControl_Writer {
 	:rtype: bool
 ") Write;
 		Standard_Boolean Write (const char * file,const Standard_Boolean fnes = Standard_False);
-		%feature("compactdefaultargs") PrintStatsTransfer;
-		%feature("autodoc", "	* Prints Statistics about Transfer
-
-	:param what:
-	:type what: int
-	:param mode: default value is 0
-	:type mode: int
-	:rtype: None
-") PrintStatsTransfer;
-		void PrintStatsTransfer (const Standard_Integer what,const Standard_Integer mode = 0);
 };
 
 
@@ -410,3 +402,6 @@ class IGESControl_Writer {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

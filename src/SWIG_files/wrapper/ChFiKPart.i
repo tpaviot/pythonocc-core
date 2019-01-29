@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,18 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFIKPARTDOCSTRING
-"Fonctions de remplissage pour une SurfData, dans
-les cas particulers de conges/chanfreins suivants :
-- cylindre/plan entre 2 surfaces planes,
-- tore/sphere/cone entre un plan et un cylindre othogonal,
-- tore/sphere/cone entre un plan et un cone othogonal,
-- tore/sphere/cone entre un plan et un tore othogonal,
-- tore/cone entre un plan et une sphere.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -46,13 +39,19 @@ les cas particulers de conges/chanfreins suivants :
 
 %include ChFiKPart_headers.i
 
+/* templates */
+%template(ChFiKPart_RstMap) NCollection_DataMap <Standard_Integer , Handle_Adaptor2d_HCurve2d , TColStd_MapIntegerHasher>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_DataMap <Standard_Integer , Handle_Adaptor2d_HCurve2d , TColStd_MapIntegerHasher> ChFiKPart_RstMap;
+typedef NCollection_DataMap <Standard_Integer , Handle_Adaptor2d_HCurve2d , TColStd_MapIntegerHasher>::Iterator ChFiKPart_DataMapIteratorOfRstMap;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(ChFiKPart_DataMapNodeOfRstMap)
 
 class ChFiKPart_ComputeData {
 	public:
@@ -176,161 +175,6 @@ class ChFiKPart_ComputeData {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor ChFiKPart_DataMapIteratorOfRstMap;
-class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") ChFiKPart_DataMapIteratorOfRstMap;
-		%feature("autodoc", "	:rtype: None
-") ChFiKPart_DataMapIteratorOfRstMap;
-		 ChFiKPart_DataMapIteratorOfRstMap ();
-		%feature("compactdefaultargs") ChFiKPart_DataMapIteratorOfRstMap;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: ChFiKPart_RstMap &
-	:rtype: None
-") ChFiKPart_DataMapIteratorOfRstMap;
-		 ChFiKPart_DataMapIteratorOfRstMap (const ChFiKPart_RstMap & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: ChFiKPart_RstMap &
-	:rtype: None
-") Initialize;
-		void Initialize (const ChFiKPart_RstMap & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: int
-") Key;
-		const Standard_Integer & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
-") Value;
-		Handle_Adaptor2d_HCurve2d Value ();
-};
-
-
-%extend ChFiKPart_DataMapIteratorOfRstMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor ChFiKPart_DataMapNodeOfRstMap;
-class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") ChFiKPart_DataMapNodeOfRstMap;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:param I:
-	:type I: Handle_Adaptor2d_HCurve2d &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") ChFiKPart_DataMapNodeOfRstMap;
-		 ChFiKPart_DataMapNodeOfRstMap (const Standard_Integer & K,const Handle_Adaptor2d_HCurve2d & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetKey() {
-                return (Standard_Integer) $self->Key();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetKey(Standard_Integer value ) {
-                $self->Key()=value;
-                }
-            };
-            		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
-") Value;
-		Handle_Adaptor2d_HCurve2d Value ();
-};
-
-
-%make_alias(ChFiKPart_DataMapNodeOfRstMap)
-
-%extend ChFiKPart_DataMapNodeOfRstMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor ChFiKPart_RstMap;
-class ChFiKPart_RstMap : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") ChFiKPart_RstMap;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") ChFiKPart_RstMap;
-		 ChFiKPart_RstMap (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: ChFiKPart_RstMap &
-	:rtype: ChFiKPart_RstMap
-") Assign;
-		ChFiKPart_RstMap & Assign (const ChFiKPart_RstMap & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: ChFiKPart_RstMap &
-	:rtype: ChFiKPart_RstMap
-") operator =;
-		ChFiKPart_RstMap & operator = (const ChFiKPart_RstMap & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:param I:
-	:type I: Handle_Adaptor2d_HCurve2d &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const Standard_Integer & K,const Handle_Adaptor2d_HCurve2d & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const Standard_Integer & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const Standard_Integer & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: Handle_Adaptor2d_HCurve2d
-") Find;
-		Handle_Adaptor2d_HCurve2d Find (const Standard_Integer & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: Handle_Adaptor2d_HCurve2d
-") ChangeFind;
-		Handle_Adaptor2d_HCurve2d ChangeFind (const Standard_Integer & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const Standard_Integer & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: int &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const Standard_Integer & K);
-};
-
-
-%extend ChFiKPart_RstMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

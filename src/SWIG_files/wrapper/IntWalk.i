@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,22 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTWALKDOCSTRING
-"This package defines the 'walking' (marching) algorithmes
-for the intersection between two surfaces.
-One of the surfaces is a parametric one.
-If the other is an implicit one, the 'IWalking' class will
-be used.
-If both surfaces are parametric, the 'PWalking' class will
-be used.
-
--Level: Internal
-
-All the methods of the classes of this package are Internal.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=INTWALKDOCSTRING) IntWalk
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -50,16 +39,21 @@ All the methods of the classes of this package are Internal.
 
 %include IntWalk_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
 /* public enums */
 enum IntWalk_StatusDeflection {
 	IntWalk_PasTropGrand = 0,
-	IntWalk_PointConfondu = 1,
-	IntWalk_ArretSurPointPrecedent = 2,
-	IntWalk_ArretSurPoint = 3,
-	IntWalk_OK = 4,
+	IntWalk_StepTooSmall = 1,
+	IntWalk_PointConfondu = 2,
+	IntWalk_ArretSurPointPrecedent = 3,
+	IntWalk_ArretSurPoint = 4,
+	IntWalk_OK = 5,
 };
 
 /* end public enums declaration */
@@ -68,6 +62,14 @@ enum IntWalk_StatusDeflection {
 %nodefaultctor IntWalk_PWalking;
 class IntWalk_PWalking {
 	public:
+		%feature("compactdefaultargs") AddAPoint;
+		%feature("autodoc", "	:param line:
+	:type line: Handle_IntSurf_LineOn2S &
+	:param POn2S:
+	:type POn2S: IntSurf_PntOn2S &
+	:rtype: None
+") AddAPoint;
+		void AddAPoint (Handle_IntSurf_LineOn2S & line,const IntSurf_PntOn2S & POn2S);
 		%feature("compactdefaultargs") IntWalk_PWalking;
 		%feature("autodoc", "	* Constructor used to set the data to compute intersection lines between Caro1 and Caro2. Deflection is the maximum deflection admitted between two consecutive points on the resulting polyline. TolTangency is the tolerance to find a tangent point. Func is the criterion which has to be evaluated at each solution point (each point of the line). It is necessary to call the Perform method to compute the intersection lines. The line found starts at a point on or in 2 natural domains of surfaces. It can be closed in the standard case if it is open it stops and begins at the border of one of the domains. If an open line stops at the middle of a domain, one stops at the tangent point. Epsilon is SquareTolerance of points confusion.
 
@@ -112,6 +114,34 @@ class IntWalk_PWalking {
 	:rtype: None
 ") IntWalk_PWalking;
 		 IntWalk_PWalking (const Handle_Adaptor3d_HSurface & Caro1,const Handle_Adaptor3d_HSurface & Caro2,const Standard_Real TolTangency,const Standard_Real Epsilon,const Standard_Real Deflection,const Standard_Real Increment,const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2);
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "	* Returns True if the line is closed. An exception is raised if IsDone returns False.
+
+	:rtype: bool
+") IsClosed;
+		Standard_Boolean IsClosed ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns true if the calculus was successful.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	:rtype: Handle_IntSurf_LineOn2S
+") Line;
+		Handle_IntSurf_LineOn2S Line ();
+		%feature("compactdefaultargs") MaxStep;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: int
+	:rtype: float
+") MaxStep;
+		Standard_Real MaxStep (Standard_Integer theIndex);
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	* Returns the number of points of the resulting polyline. An exception is raised if IsDone returns False.
+
+	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* calculate the line of intersection
 
@@ -154,30 +184,34 @@ class IntWalk_PWalking {
 	:rtype: bool
 ") PerformFirstPoint;
 		Standard_Boolean PerformFirstPoint (const TColStd_Array1OfReal & ParDep,IntSurf_PntOn2S & FirstPoint);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the calculus was successful.
-
+		%feature("compactdefaultargs") PutToBoundary;
+		%feature("autodoc", "	:param theASurf1:
+	:type theASurf1: Handle_Adaptor3d_HSurface &
+	:param theASurf2:
+	:type theASurf2: Handle_Adaptor3d_HSurface &
 	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of points of the resulting polyline. An exception is raised if IsDone returns False.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the point of range Index on the polyline. An exception is raised if IsDone returns False. An exception is raised if Index<=0 or Index>NbPoints.
-
-	:param Index:
-	:type Index: int
-	:rtype: IntSurf_PntOn2S
-") Value;
-		const IntSurf_PntOn2S & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: Handle_IntSurf_LineOn2S
-") Line;
-		Handle_IntSurf_LineOn2S Line ();
+") PutToBoundary;
+		Standard_Boolean PutToBoundary (const Handle_Adaptor3d_HSurface & theASurf1,const Handle_Adaptor3d_HSurface & theASurf2);
+		%feature("compactdefaultargs") RepartirOuDiviser;
+		%feature("autodoc", "	:param DejaReparti:
+	:type DejaReparti: bool
+	:param ChoixIso:
+	:type ChoixIso: IntImp_ConstIsoparametric &
+	:param Arrive:
+	:type Arrive: bool
+	:rtype: None
+") RepartirOuDiviser;
+		void RepartirOuDiviser (Standard_Boolean &OutValue,IntImp_ConstIsoparametric & ChoixIso,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") SeekAdditionalPoints;
+		%feature("autodoc", "	:param theASurf1:
+	:type theASurf1: Handle_Adaptor3d_HSurface &
+	:param theASurf2:
+	:type theASurf2: Handle_Adaptor3d_HSurface &
+	:param theMinNbPoints:
+	:type theMinNbPoints: int
+	:rtype: bool
+") SeekAdditionalPoints;
+		Standard_Boolean SeekAdditionalPoints (const Handle_Adaptor3d_HSurface & theASurf1,const Handle_Adaptor3d_HSurface & theASurf2,const Standard_Integer theMinNbPoints);
 		%feature("compactdefaultargs") TangentAtFirst;
 		%feature("autodoc", "	* Returns True if the surface are tangent at the first point of the line. An exception is raised if IsDone returns False.
 
@@ -190,22 +224,12 @@ class IntWalk_PWalking {
 	:rtype: bool
 ") TangentAtLast;
 		Standard_Boolean TangentAtLast ();
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	* Returns True if the line is closed. An exception is raised if IsDone returns False.
-
-	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
 		%feature("compactdefaultargs") TangentAtLine;
 		%feature("autodoc", "	:param Index:
 	:type Index: int &
 	:rtype: gp_Dir
 ") TangentAtLine;
 		const gp_Dir  TangentAtLine (Standard_Integer &OutValue);
-		%feature("compactdefaultargs") TestDeflection;
-		%feature("autodoc", "	:rtype: IntWalk_StatusDeflection
-") TestDeflection;
-		IntWalk_StatusDeflection TestDeflection ();
 		%feature("compactdefaultargs") TestArret;
 		%feature("autodoc", "	:param DejaReparti:
 	:type DejaReparti: bool
@@ -216,42 +240,20 @@ class IntWalk_PWalking {
 	:rtype: bool
 ") TestArret;
 		Standard_Boolean TestArret (const Standard_Boolean DejaReparti,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & ChoixIso);
-		%feature("compactdefaultargs") RepartirOuDiviser;
-		%feature("autodoc", "	:param DejaReparti:
-	:type DejaReparti: bool
-	:param ChoixIso:
-	:type ChoixIso: IntImp_ConstIsoparametric &
-	:param Arrive:
-	:type Arrive: bool
-	:rtype: None
-") RepartirOuDiviser;
-		void RepartirOuDiviser (Standard_Boolean &OutValue,IntImp_ConstIsoparametric & ChoixIso,Standard_Boolean &OutValue);
-		%feature("compactdefaultargs") AddAPoint;
-		%feature("autodoc", "	:param line:
-	:type line: Handle_IntSurf_LineOn2S &
-	:param POn2S:
-	:type POn2S: IntSurf_PntOn2S &
-	:rtype: None
-") AddAPoint;
-		void AddAPoint (Handle_IntSurf_LineOn2S & line,const IntSurf_PntOn2S & POn2S);
-		%feature("compactdefaultargs") PutToBoundary;
-		%feature("autodoc", "	:param theASurf1:
-	:type theASurf1: Handle_Adaptor3d_HSurface &
-	:param theASurf2:
-	:type theASurf2: Handle_Adaptor3d_HSurface &
-	:rtype: bool
-") PutToBoundary;
-		Standard_Boolean PutToBoundary (const Handle_Adaptor3d_HSurface & theASurf1,const Handle_Adaptor3d_HSurface & theASurf2);
-		%feature("compactdefaultargs") SeekAdditionalPoints;
-		%feature("autodoc", "	:param theASurf1:
-	:type theASurf1: Handle_Adaptor3d_HSurface &
-	:param theASurf2:
-	:type theASurf2: Handle_Adaptor3d_HSurface &
-	:param theMinNbPoints:
-	:type theMinNbPoints: int
-	:rtype: bool
-") SeekAdditionalPoints;
-		Standard_Boolean SeekAdditionalPoints (const Handle_Adaptor3d_HSurface & theASurf1,const Handle_Adaptor3d_HSurface & theASurf2,const Standard_Integer theMinNbPoints);
+		%feature("compactdefaultargs") TestDeflection;
+		%feature("autodoc", "	:param ChoixIso:
+	:type ChoixIso: IntImp_ConstIsoparametric
+	:rtype: IntWalk_StatusDeflection
+") TestDeflection;
+		IntWalk_StatusDeflection TestDeflection (const IntImp_ConstIsoparametric ChoixIso);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the point of range Index on the polyline. An exception is raised if IsDone returns False. An exception is raised if Index<=0 or Index>NbPoints.
+
+	:param Index:
+	:type Index: int
+	:rtype: IntSurf_PntOn2S
+") Value;
+		const IntSurf_PntOn2S & Value (const Standard_Integer Index);
 };
 
 
@@ -263,52 +265,14 @@ class IntWalk_PWalking {
 %nodefaultctor IntWalk_TheFunctionOfTheInt2S;
 class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	public:
-		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
-		%feature("autodoc", "	:rtype: None
-") IntWalk_TheFunctionOfTheInt2S;
-		 IntWalk_TheFunctionOfTheInt2S ();
-		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
-		%feature("autodoc", "	:param S1:
-	:type S1: Handle_Adaptor3d_HSurface &
-	:param S2:
-	:type S2: Handle_Adaptor3d_HSurface &
-	:rtype: None
-") IntWalk_TheFunctionOfTheInt2S;
-		 IntWalk_TheFunctionOfTheInt2S (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2);
-		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "	:rtype: int
-") NbVariables;
-		Standard_Integer NbVariables ();
-		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "	:rtype: int
-") NbEquations;
-		Standard_Integer NbEquations ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param X:
-	:type X: math_Vector &
-	:param F:
-	:type F: math_Vector &
-	:rtype: bool
-") Value;
-		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
-		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "	:param X:
-	:type X: math_Vector &
-	:param D:
-	:type D: math_Matrix &
-	:rtype: bool
-") Derivatives;
-		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	:param X:
-	:type X: math_Vector &
-	:param F:
-	:type F: math_Vector &
-	:param D:
-	:type D: math_Matrix &
-	:rtype: bool
-") Values;
-		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
+		%feature("compactdefaultargs") AuxillarSurface1;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") AuxillarSurface1;
+		Handle_Adaptor3d_HSurface AuxillarSurface1 ();
+		%feature("compactdefaultargs") AuxillarSurface2;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") AuxillarSurface2;
+		Handle_Adaptor3d_HSurface AuxillarSurface2 ();
 		%feature("compactdefaultargs") ComputeParameters;
 		%feature("autodoc", "	:param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
@@ -325,24 +289,14 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	:rtype: None
 ") ComputeParameters;
 		void ComputeParameters (const IntImp_ConstIsoparametric ChoixIso,const TColStd_Array1OfReal & Param,math_Vector & UVap,math_Vector & BornInf,math_Vector & BornSup,math_Vector & Tolerance);
-		%feature("compactdefaultargs") Root;
-		%feature("autodoc", "	:rtype: float
-") Root;
-		Standard_Real Root ();
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:rtype: gp_Pnt
-") Point;
-		gp_Pnt Point ();
-		%feature("compactdefaultargs") IsTangent;
-		%feature("autodoc", "	:param UVap:
-	:type UVap: math_Vector &
-	:param Param:
-	:type Param: TColStd_Array1OfReal &
-	:param BestChoix:
-	:type BestChoix: IntImp_ConstIsoparametric &
+		%feature("compactdefaultargs") Derivatives;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param D:
+	:type D: math_Matrix &
 	:rtype: bool
-") IsTangent;
-		Standard_Boolean IsTangent (const math_Vector & UVap,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & BestChoix);
+") Derivatives;
+		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Direction;
@@ -355,14 +309,60 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") DirectionOnS2;
 		gp_Dir2d DirectionOnS2 ();
-		%feature("compactdefaultargs") AuxillarSurface1;
-		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
-") AuxillarSurface1;
-		Handle_Adaptor3d_HSurface AuxillarSurface1 ();
-		%feature("compactdefaultargs") AuxillarSurface2;
-		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
-") AuxillarSurface2;
-		Handle_Adaptor3d_HSurface AuxillarSurface2 ();
+		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
+		%feature("autodoc", "	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") IntWalk_TheFunctionOfTheInt2S;
+		 IntWalk_TheFunctionOfTheInt2S (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2);
+		%feature("compactdefaultargs") IsTangent;
+		%feature("autodoc", "	:param UVap:
+	:type UVap: math_Vector &
+	:param Param:
+	:type Param: TColStd_Array1OfReal &
+	:param BestChoix:
+	:type BestChoix: IntImp_ConstIsoparametric &
+	:rtype: bool
+") IsTangent;
+		Standard_Boolean IsTangent (const math_Vector & UVap,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & BestChoix);
+		%feature("compactdefaultargs") NbEquations;
+		%feature("autodoc", "	:rtype: int
+") NbEquations;
+		Standard_Integer NbEquations ();
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "	:rtype: int
+") NbVariables;
+		Standard_Integer NbVariables ();
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Point;
+		gp_Pnt Point ();
+		%feature("compactdefaultargs") Root;
+		%feature("autodoc", "	* returns somme des fi*fi
+
+	:rtype: float
+") Root;
+		Standard_Real Root ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:rtype: bool
+") Value;
+		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:param D:
+	:type D: math_Matrix &
+	:rtype: bool
+") Values;
+		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 };
 
 
@@ -374,12 +374,40 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 %nodefaultctor IntWalk_TheInt2S;
 class IntWalk_TheInt2S {
 	public:
+		%feature("compactdefaultargs") ChangePoint;
+		%feature("autodoc", "	* return the intersection point which is enable for changing.
+
+	:rtype: IntSurf_PntOn2S
+") ChangePoint;
+		IntSurf_PntOn2S & ChangePoint ();
+		%feature("compactdefaultargs") Direction;
+		%feature("autodoc", "	* Returns the tangent at the intersection line.
+
+	:rtype: gp_Dir
+") Direction;
+		const gp_Dir  Direction ();
+		%feature("compactdefaultargs") DirectionOnS1;
+		%feature("autodoc", "	* Returns the tangent at the intersection line in the parametric space of the first surface.
+
+	:rtype: gp_Dir2d
+") DirectionOnS1;
+		const gp_Dir2d  DirectionOnS1 ();
+		%feature("compactdefaultargs") DirectionOnS2;
+		%feature("autodoc", "	* Returns the tangent at the intersection line in the parametric space of the second surface.
+
+	:rtype: gp_Dir2d
+") DirectionOnS2;
+		const gp_Dir2d  DirectionOnS2 ();
+		%feature("compactdefaultargs") Function;
+		%feature("autodoc", "	* return the math function which is used to compute the intersection
+
+	:rtype: IntWalk_TheFunctionOfTheInt2S
+") Function;
+		IntWalk_TheFunctionOfTheInt2S & Function ();
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
-		%feature("autodoc", "	:rtype: None
-") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S ();
-		%feature("compactdefaultargs") IntWalk_TheInt2S;
-		%feature("autodoc", "	:param Param:
+		%feature("autodoc", "	* compute the solution point with the close point
+
+	:param Param:
 	:type Param: TColStd_Array1OfReal &
 	:param S1:
 	:type S1: Handle_Adaptor3d_HSurface &
@@ -391,7 +419,9 @@ class IntWalk_TheInt2S {
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S (const TColStd_Array1OfReal & Param,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const Standard_Real TolTangency);
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
-		%feature("autodoc", "	:param S1:
+		%feature("autodoc", "	* initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }
+
+	:param S1:
 	:type S1: Handle_Adaptor3d_HSurface &
 	:param S2:
 	:type S2: Handle_Adaptor3d_HSurface &
@@ -400,8 +430,28 @@ class IntWalk_TheInt2S {
 	:rtype: None
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const Standard_Real TolTangency);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns True if the creation completed without failure.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True when there is no solution to the problem.
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsTangent;
+		%feature("autodoc", "	* Returns True if the surfaces are tangent at the intersection point.
+
+	:rtype: bool
+") IsTangent;
+		Standard_Boolean IsTangent ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param Param:
+		%feature("autodoc", "	* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated)
+
+	:param Param:
 	:type Param: TColStd_Array1OfReal &
 	:param Rsnld:
 	:type Rsnld: math_FunctionSetRoot &
@@ -409,7 +459,9 @@ class IntWalk_TheInt2S {
 ") Perform;
 		IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal & Param,math_FunctionSetRoot & Rsnld);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param Param:
+		%feature("autodoc", "	* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso)
+
+	:param Param:
 	:type Param: TColStd_Array1OfReal &
 	:param Rsnld:
 	:type Rsnld: math_FunctionSetRoot &
@@ -418,42 +470,12 @@ class IntWalk_TheInt2S {
 	:rtype: IntImp_ConstIsoparametric
 ") Perform;
 		IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal & Param,math_FunctionSetRoot & Rsnld,const IntImp_ConstIsoparametric ChoixIso);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:rtype: IntSurf_PntOn2S
+		%feature("autodoc", "	* Returns the intersection point.
+
+	:rtype: IntSurf_PntOn2S
 ") Point;
 		const IntSurf_PntOn2S & Point ();
-		%feature("compactdefaultargs") IsTangent;
-		%feature("autodoc", "	:rtype: bool
-") IsTangent;
-		Standard_Boolean IsTangent ();
-		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "	:rtype: gp_Dir
-") Direction;
-		const gp_Dir  Direction ();
-		%feature("compactdefaultargs") DirectionOnS1;
-		%feature("autodoc", "	:rtype: gp_Dir2d
-") DirectionOnS1;
-		const gp_Dir2d  DirectionOnS1 ();
-		%feature("compactdefaultargs") DirectionOnS2;
-		%feature("autodoc", "	:rtype: gp_Dir2d
-") DirectionOnS2;
-		const gp_Dir2d  DirectionOnS2 ();
-		%feature("compactdefaultargs") Function;
-		%feature("autodoc", "	:rtype: IntWalk_TheFunctionOfTheInt2S
-") Function;
-		IntWalk_TheFunctionOfTheInt2S & Function ();
-		%feature("compactdefaultargs") ChangePoint;
-		%feature("autodoc", "	:rtype: IntSurf_PntOn2S
-") ChangePoint;
-		IntSurf_PntOn2S & ChangePoint ();
 };
 
 
@@ -476,3 +498,6 @@ class IntWalk_WalkingData {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

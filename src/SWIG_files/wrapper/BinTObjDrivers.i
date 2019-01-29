@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -22,7 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %enddef
 %module (package="OCC.Core", docstring=BINTOBJDRIVERSDOCSTRING) BinTObjDrivers
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,6 +38,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include BinTObjDrivers_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -57,12 +61,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor BinTObjDrivers;
 class BinTObjDrivers {
 	public:
-		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	:param aGUID:
-	:type aGUID: Standard_GUID &
-	:rtype: Handle_Standard_Transient
-") Factory;
-		static Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "	:param aDriverTable:
 	:type aDriverTable: Handle_BinMDF_ADriverTable &
@@ -71,6 +69,20 @@ class BinTObjDrivers {
 	:rtype: void
 ") AddDrivers;
 		static void AddDrivers (const Handle_BinMDF_ADriverTable & aDriverTable,const Handle_CDM_MessageDriver & aMsgDrv);
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "	* Defines format 'TObjBin' and registers its read and write drivers in the specified application
+
+	:param theApp:
+	:type theApp: Handle_TDocStd_Application &
+	:rtype: void
+") DefineFormat;
+		static void DefineFormat (const Handle_TDocStd_Application & theApp);
+		%feature("compactdefaultargs") Factory;
+		%feature("autodoc", "	:param aGUID:
+	:type aGUID: Standard_GUID &
+	:rtype: Handle_Standard_Transient
+") Factory;
+		Handle_Standard_Transient Factory (const Standard_GUID & aGUID);
 };
 
 
@@ -82,16 +94,16 @@ class BinTObjDrivers {
 %nodefaultctor BinTObjDrivers_DocumentRetrievalDriver;
 class BinTObjDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalDriver {
 	public:
-		%feature("compactdefaultargs") BinTObjDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	:rtype: None
-") BinTObjDrivers_DocumentRetrievalDriver;
-		 BinTObjDrivers_DocumentRetrievalDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_BinMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_BinMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") BinTObjDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", "	:rtype: None
+") BinTObjDrivers_DocumentRetrievalDriver;
+		 BinTObjDrivers_DocumentRetrievalDriver ();
 };
 
 
@@ -105,16 +117,16 @@ class BinTObjDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrie
 %nodefaultctor BinTObjDrivers_DocumentStorageDriver;
 class BinTObjDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
 	public:
-		%feature("compactdefaultargs") BinTObjDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	:rtype: None
-") BinTObjDrivers_DocumentStorageDriver;
-		 BinTObjDrivers_DocumentStorageDriver ();
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "	:param theMsgDriver:
 	:type theMsgDriver: Handle_CDM_MessageDriver &
 	:rtype: Handle_BinMDF_ADriverTable
 ") AttributeDrivers;
 		virtual Handle_BinMDF_ADriverTable AttributeDrivers (const Handle_CDM_MessageDriver & theMsgDriver);
+		%feature("compactdefaultargs") BinTObjDrivers_DocumentStorageDriver;
+		%feature("autodoc", "	:rtype: None
+") BinTObjDrivers_DocumentStorageDriver;
+		 BinTObjDrivers_DocumentStorageDriver ();
 };
 
 
@@ -340,3 +352,6 @@ class BinTObjDrivers_XYZDriver : public BinMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

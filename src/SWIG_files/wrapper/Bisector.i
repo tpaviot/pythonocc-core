@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BISECTORDOCSTRING
-"- Purpose : This package provides the bisecting line between two
-geometric elements.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BISECTORDOCSTRING) Bisector
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,6 +38,10 @@ geometric elements.
 
 
 %include Bisector_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -78,6 +80,12 @@ class Bisector_Bisec {
 		%feature("autodoc", "	:rtype: None
 ") Bisector_Bisec;
 		 Bisector_Bisec ();
+		%feature("compactdefaultargs") ChangeValue;
+		%feature("autodoc", "	* Returns the Curve of <self>.
+
+	:rtype: Handle_Geom2d_TrimmedCurve
+") ChangeValue;
+		Handle_Geom2d_TrimmedCurve ChangeValue ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 
@@ -174,12 +182,6 @@ class Bisector_Bisec {
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
 		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	* Returns the Curve of <self>.
-
-	:rtype: Handle_Geom2d_TrimmedCurve
-") ChangeValue;
-		Handle_Geom2d_TrimmedCurve ChangeValue ();
 };
 
 
@@ -191,26 +193,6 @@ class Bisector_Bisec {
 %nodefaultctor Bisector_Curve;
 class Bisector_Curve : public Geom2d_Curve {
 	public:
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	:param P:
-	:type P: gp_Pnt2d
-	:rtype: float
-") Parameter;
-		virtual Standard_Real Parameter (const gp_Pnt2d & P);
-		%feature("compactdefaultargs") IsExtendAtStart;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtStart;
-		virtual Standard_Boolean IsExtendAtStart ();
-		%feature("compactdefaultargs") IsExtendAtEnd;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtEnd;
-		virtual Standard_Boolean IsExtendAtEnd ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
-
-	:rtype: int
-") NbIntervals;
-		virtual Standard_Integer NbIntervals ();
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "	* Returns the first parameter of the current interval.
 
@@ -227,6 +209,26 @@ class Bisector_Curve : public Geom2d_Curve {
 	:rtype: float
 ") IntervalLast;
 		virtual Standard_Real IntervalLast (const Standard_Integer Index);
+		%feature("compactdefaultargs") IsExtendAtEnd;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtEnd;
+		virtual Standard_Boolean IsExtendAtEnd ();
+		%feature("compactdefaultargs") IsExtendAtStart;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtStart;
+		virtual Standard_Boolean IsExtendAtStart ();
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
+
+	:rtype: int
+") NbIntervals;
+		virtual Standard_Integer NbIntervals ();
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt2d
+	:rtype: float
+") Parameter;
+		virtual Standard_Real Parameter (const gp_Pnt2d & P);
 };
 
 
@@ -250,6 +252,14 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 	:rtype: None
 ") Bisector_FunctionH;
 		 Bisector_FunctionH (const Handle_Geom2d_Curve & C2,const gp_Pnt2d & P1,const gp_Vec2d & T1);
+		%feature("compactdefaultargs") Derivative;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Derivative;
+		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Computes the values of the Functions for the variable <X>.
 
@@ -260,14 +270,6 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	:param X:
-	:type X: float
-	:param D:
-	:type D: float &
-	:rtype: bool
-") Derivative;
-		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the values of the functions and the derivatives for the variable <X>.
 
@@ -305,6 +307,14 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	:rtype: None
 ") Bisector_FunctionInter;
 		 Bisector_FunctionInter (const Handle_Geom2d_Curve & C,const Handle_Bisector_Curve & Bis1,const Handle_Bisector_Curve & Bis2);
+		%feature("compactdefaultargs") Derivative;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Derivative;
+		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param C:
 	:type C: Handle_Geom2d_Curve &
@@ -325,14 +335,6 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	:param X:
-	:type X: float
-	:param D:
-	:type D: float &
-	:rtype: bool
-") Derivative;
-		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the values of the functions and the derivatives for the variable <X>.
 
@@ -429,70 +431,70 @@ class Bisector_PointOnBis {
 	:rtype: None
 ") Bisector_PointOnBis;
 		 Bisector_PointOnBis (const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamBis,const Standard_Real Distance,const gp_Pnt2d & Point);
-		%feature("compactdefaultargs") ParamOnC1;
-		%feature("autodoc", "	:param Param:
-	:type Param: float
-	:rtype: None
-") ParamOnC1;
-		void ParamOnC1 (const Standard_Real Param);
-		%feature("compactdefaultargs") ParamOnC2;
-		%feature("autodoc", "	:param Param:
-	:type Param: float
-	:rtype: None
-") ParamOnC2;
-		void ParamOnC2 (const Standard_Real Param);
-		%feature("compactdefaultargs") ParamOnBis;
-		%feature("autodoc", "	:param Param:
-	:type Param: float
-	:rtype: None
-") ParamOnBis;
-		void ParamOnBis (const Standard_Real Param);
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "	:param Distance:
 	:type Distance: float
 	:rtype: None
 ") Distance;
 		void Distance (const Standard_Real Distance);
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	:rtype: float
+") Distance;
+		Standard_Real Distance ();
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
+		void Dump ();
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "	:param Infinite:
 	:type Infinite: bool
 	:rtype: None
 ") IsInfinite;
 		void IsInfinite (const Standard_Boolean Infinite);
+		%feature("compactdefaultargs") IsInfinite;
+		%feature("autodoc", "	:rtype: bool
+") IsInfinite;
+		Standard_Boolean IsInfinite ();
+		%feature("compactdefaultargs") ParamOnBis;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:rtype: None
+") ParamOnBis;
+		void ParamOnBis (const Standard_Real Param);
+		%feature("compactdefaultargs") ParamOnBis;
+		%feature("autodoc", "	:rtype: float
+") ParamOnBis;
+		Standard_Real ParamOnBis ();
+		%feature("compactdefaultargs") ParamOnC1;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:rtype: None
+") ParamOnC1;
+		void ParamOnC1 (const Standard_Real Param);
+		%feature("compactdefaultargs") ParamOnC1;
+		%feature("autodoc", "	:rtype: float
+") ParamOnC1;
+		Standard_Real ParamOnC1 ();
+		%feature("compactdefaultargs") ParamOnC2;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:rtype: None
+") ParamOnC2;
+		void ParamOnC2 (const Standard_Real Param);
+		%feature("compactdefaultargs") ParamOnC2;
+		%feature("autodoc", "	:rtype: float
+") ParamOnC2;
+		Standard_Real ParamOnC2 ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:rtype: None
 ") Point;
 		void Point (const gp_Pnt2d & P);
-		%feature("compactdefaultargs") ParamOnC1;
-		%feature("autodoc", "	:rtype: float
-") ParamOnC1;
-		Standard_Real ParamOnC1 ();
-		%feature("compactdefaultargs") ParamOnC2;
-		%feature("autodoc", "	:rtype: float
-") ParamOnC2;
-		Standard_Real ParamOnC2 ();
-		%feature("compactdefaultargs") ParamOnBis;
-		%feature("autodoc", "	:rtype: float
-") ParamOnBis;
-		Standard_Real ParamOnBis ();
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	:rtype: float
-") Distance;
-		Standard_Real Distance ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Point;
 		gp_Pnt2d Point ();
-		%feature("compactdefaultargs") IsInfinite;
-		%feature("autodoc", "	:rtype: bool
-") IsInfinite;
-		Standard_Boolean IsInfinite ();
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	:rtype: None
-") Dump;
-		void Dump ();
 };
 
 
@@ -504,50 +506,50 @@ class Bisector_PointOnBis {
 %nodefaultctor Bisector_PolyBis;
 class Bisector_PolyBis {
 	public:
-		%feature("compactdefaultargs") Bisector_PolyBis;
-		%feature("autodoc", "	:rtype: None
-") Bisector_PolyBis;
-		 Bisector_PolyBis ();
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param Point:
 	:type Point: Bisector_PointOnBis &
 	:rtype: None
 ") Append;
 		void Append (const Bisector_PointOnBis & Point);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Bisector_PointOnBis
-") Value;
-		const Bisector_PointOnBis & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") Bisector_PolyBis;
+		%feature("autodoc", "	:rtype: None
+") Bisector_PolyBis;
+		 Bisector_PolyBis ();
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Bisector_PointOnBis
 ") First;
 		const Bisector_PointOnBis & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Bisector_PointOnBis
-") Last;
-		const Bisector_PointOnBis & Last ();
 		%feature("compactdefaultargs") Interval;
 		%feature("autodoc", "	:param U:
 	:type U: float
 	:rtype: int
 ") Interval;
 		Standard_Integer Interval (const Standard_Real U);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Last;
+		%feature("autodoc", "	:rtype: Bisector_PointOnBis
+") Last;
+		const Bisector_PointOnBis & Last ();
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
+		Standard_Integer Length ();
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf2d
 	:rtype: None
 ") Transform;
 		void Transform (const gp_Trsf2d & T);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: Bisector_PointOnBis
+") Value;
+		const Bisector_PointOnBis & Value (const Standard_Integer Index);
 };
 
 
@@ -563,6 +565,152 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("autodoc", "	:rtype: None
 ") Bisector_BisecAna;
 		 Bisector_BisecAna ();
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") Copy;
+		Handle_Geom2d_Geometry Copy ();
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") D0;
+		void D0 (const Standard_Real U,gp_Pnt2d & P);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:param V3:
+	:type V3: gp_Vec2d
+	:rtype: None
+") D3;
+		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param N:
+	:type N: int
+	:rtype: gp_Vec2d
+") DN;
+		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:param Deep: default value is 0
+	:type Deep: int
+	:param Offset: default value is 0
+	:type Offset: int
+	:rtype: None
+") Dump;
+		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") Geom2dCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") Geom2dCurve;
+		Handle_Geom2d_Curve Geom2dCurve ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param bisector:
+	:type bisector: Handle_Geom2d_TrimmedCurve &
+	:rtype: None
+") Init;
+		void Init (const Handle_Geom2d_TrimmedCurve & bisector);
+		%feature("compactdefaultargs") IntervalFirst;
+		%feature("autodoc", "	* Returns the first parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalFirst;
+		Standard_Real IntervalFirst (const Standard_Integer Index);
+		%feature("compactdefaultargs") IntervalLast;
+		%feature("autodoc", "	* Returns the last parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalLast;
+		Standard_Real IntervalLast (const Standard_Integer Index);
+		%feature("compactdefaultargs") IsCN;
+		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
+
+	:param N:
+	:type N: int
+	:rtype: bool
+") IsCN;
+		Standard_Boolean IsCN (const Standard_Integer N);
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
+		Standard_Boolean IsClosed ();
+		%feature("compactdefaultargs") IsExtendAtEnd;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtEnd;
+		Standard_Boolean IsExtendAtEnd ();
+		%feature("compactdefaultargs") IsExtendAtStart;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtStart;
+		Standard_Boolean IsExtendAtStart ();
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
+		Standard_Real LastParameter ();
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
+
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals ();
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt2d
+	:rtype: float
+") Parameter;
+		Standard_Real Parameter (const gp_Pnt2d & P);
+		%feature("compactdefaultargs") ParameterOfEndPoint;
+		%feature("autodoc", "	:rtype: float
+") ParameterOfEndPoint;
+		Standard_Real ParameterOfEndPoint ();
+		%feature("compactdefaultargs") ParameterOfStartPoint;
+		%feature("autodoc", "	:rtype: float
+") ParameterOfStartPoint;
+		Standard_Real ParameterOfStartPoint ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 
@@ -653,20 +801,16 @@ class Bisector_BisecAna : public Bisector_Curve {
 	:rtype: None
 ") Perform;
 		void Perform (const Handle_Geom2d_Point & Pnt1,const Handle_Geom2d_Point & Pnt2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance = 0.0,const Standard_Boolean oncurve = Standard_True);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param bisector:
-	:type bisector: Handle_Geom2d_TrimmedCurve &
-	:rtype: None
-") Init;
-		void Init (const Handle_Geom2d_TrimmedCurve & bisector);
-		%feature("compactdefaultargs") IsExtendAtStart;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart ();
-		%feature("compactdefaultargs") IsExtendAtEnd;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd ();
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
+		void Reverse ();
+		%feature("compactdefaultargs") ReversedParameter;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:rtype: float
+") ReversedParameter;
+		Standard_Real ReversedParameter (const Standard_Real U);
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "	* Trim <self> by a domain defined by the curve <Cu>. This domain is the set of the points which are nearest from <Cu> than the extremitis of <Cu>.
 
@@ -685,154 +829,12 @@ class Bisector_BisecAna : public Bisector_Curve {
 	:rtype: None
 ") SetTrim;
 		void SetTrim (const Standard_Real uf,const Standard_Real ul);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:rtype: float
-") ReversedParameter;
-		Standard_Real ReversedParameter (const Standard_Real U);
-		%feature("compactdefaultargs") IsCN;
-		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
-
-	:param N:
-	:type N: int
-	:rtype: bool
-") IsCN;
-		Standard_Boolean IsCN (const Standard_Integer N);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
-") Copy;
-		Handle_Geom2d_Geometry Copy ();
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf2d
 	:rtype: None
 ") Transform;
 		void Transform (const gp_Trsf2d & T);
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:rtype: None
-") D0;
-		void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:rtype: None
-") D1;
-		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:rtype: None
-") D2;
-		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:param V3:
-	:type V3: gp_Vec2d
-	:rtype: None
-") D3;
-		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param N:
-	:type N: int
-	:rtype: gp_Vec2d
-") DN;
-		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
-		%feature("compactdefaultargs") Geom2dCurve;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
-") Geom2dCurve;
-		Handle_Geom2d_Curve Geom2dCurve ();
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	:param P:
-	:type P: gp_Pnt2d
-	:rtype: float
-") Parameter;
-		Standard_Real Parameter (const gp_Pnt2d & P);
-		%feature("compactdefaultargs") ParameterOfStartPoint;
-		%feature("autodoc", "	:rtype: float
-") ParameterOfStartPoint;
-		Standard_Real ParameterOfStartPoint ();
-		%feature("compactdefaultargs") ParameterOfEndPoint;
-		%feature("autodoc", "	:rtype: float
-") ParameterOfEndPoint;
-		Standard_Real ParameterOfEndPoint ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
-
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals ();
-		%feature("compactdefaultargs") IntervalFirst;
-		%feature("autodoc", "	* Returns the first parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalFirst;
-		Standard_Real IntervalFirst (const Standard_Integer Index);
-		%feature("compactdefaultargs") IntervalLast;
-		%feature("autodoc", "	* Returns the last parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalLast;
-		Standard_Real IntervalLast (const Standard_Integer Index);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	:param Deep: default value is 0
-	:type Deep: int
-	:param Offset: default value is 0
-	:type Offset: int
-	:rtype: None
-") Dump;
-		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
 };
 
 
@@ -868,142 +870,26 @@ class Bisector_BisecCC : public Bisector_Curve {
 	:rtype: None
 ") Bisector_BisecCC;
 		 Bisector_BisecCC (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const Standard_Real Side1,const Standard_Real Side2,const gp_Pnt2d & Origin,const Standard_Real DistMax = 500);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
-
-	:param Cu1:
-	:type Cu1: Handle_Geom2d_Curve &
-	:param Cu2:
-	:type Cu2: Handle_Geom2d_Curve &
-	:param Side1:
-	:type Side1: float
-	:param Side2:
-	:type Side2: float
-	:param Origin:
-	:type Origin: gp_Pnt2d
-	:param DistMax: default value is 500
-	:type DistMax: float
-	:rtype: None
-") Perform;
-		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const Standard_Real Side1,const Standard_Real Side2,const gp_Pnt2d & Origin,const Standard_Real DistMax = 500);
-		%feature("compactdefaultargs") IsExtendAtStart;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart ();
-		%feature("compactdefaultargs") IsExtendAtEnd;
-		%feature("autodoc", "	:rtype: bool
-") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd ();
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:rtype: float
-") ReversedParameter;
-		Standard_Real ReversedParameter (const Standard_Real U);
-		%feature("compactdefaultargs") IsCN;
-		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
-
-	:param N:
-	:type N: int
-	:rtype: bool
-") IsCN;
-		Standard_Boolean IsCN (const Standard_Integer N);
 		%feature("compactdefaultargs") ChangeGuide;
 		%feature("autodoc", "	* The parameter on <self> is linked to the parameter on the first curve. This method creates the same bisector where the curves are inversed.
 
 	:rtype: Handle_Bisector_BisecCC
 ") ChangeGuide;
 		Handle_Bisector_BisecCC ChangeGuide ();
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
-") Copy;
-		Handle_Geom2d_Geometry Copy ();
-		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
-
-	:param T:
-	:type T: gp_Trsf2d
-	:rtype: None
-") Transform;
-		void Transform (const gp_Trsf2d & T);
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
-
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals ();
-		%feature("compactdefaultargs") IntervalFirst;
-		%feature("autodoc", "	* Returns the first parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalFirst;
-		Standard_Real IntervalFirst (const Standard_Integer Index);
-		%feature("compactdefaultargs") IntervalLast;
-		%feature("autodoc", "	* Returns the last parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalLast;
-		Standard_Real IntervalLast (const Standard_Integer Index);
-		%feature("compactdefaultargs") IntervalContinuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") IntervalContinuity;
-		GeomAbs_Shape IntervalContinuity ();
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") ValueAndDist;
-		%feature("autodoc", "	* Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
-
-	:param U:
-	:type U: float
-	:param U1:
-	:type U1: float &
-	:param U2:
-	:type U2: float &
-	:param Distance:
-	:type Distance: float &
-	:rtype: gp_Pnt2d
-") ValueAndDist;
-		gp_Pnt2d ValueAndDist (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") ValueByInt;
-		%feature("autodoc", "	* Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
-
-	:param U:
-	:type U: float
-	:param U1:
-	:type U1: float &
-	:param U2:
-	:type U2: float &
-	:param Distance:
-	:type Distance: float &
-	:rtype: gp_Pnt2d
-") ValueByInt;
-		gp_Pnt2d ValueByInt (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") Copy;
+		Handle_Geom2d_Geometry Copy ();
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	:param IndCurve:
+	:type IndCurve: int
+	:rtype: Handle_Geom2d_Curve
+") Curve;
+		Handle_Geom2d_Curve Curve (const Standard_Integer IndCurve);
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "	:param U:
 	:type U: float
@@ -1056,10 +942,70 @@ class Bisector_BisecCC : public Bisector_Curve {
 	:rtype: gp_Vec2d
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:param Deep: default value is 0
+	:type Deep: int
+	:param Offset: default value is 0
+	:type Offset: int
+	:rtype: None
+") Dump;
+		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") IntervalContinuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") IntervalContinuity;
+		GeomAbs_Shape IntervalContinuity ();
+		%feature("compactdefaultargs") IntervalFirst;
+		%feature("autodoc", "	* Returns the first parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalFirst;
+		Standard_Real IntervalFirst (const Standard_Integer Index);
+		%feature("compactdefaultargs") IntervalLast;
+		%feature("autodoc", "	* Returns the last parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalLast;
+		Standard_Real IntervalLast (const Standard_Integer Index);
+		%feature("compactdefaultargs") IsCN;
+		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
+
+	:param N:
+	:type N: int
+	:rtype: bool
+") IsCN;
+		Standard_Boolean IsCN (const Standard_Integer N);
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
+		Standard_Boolean IsClosed ();
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsExtendAtEnd;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtEnd;
+		Standard_Boolean IsExtendAtEnd ();
+		%feature("compactdefaultargs") IsExtendAtStart;
+		%feature("autodoc", "	:rtype: bool
+") IsExtendAtStart;
+		Standard_Boolean IsExtendAtStart ();
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
+		Standard_Real LastParameter ();
 		%feature("compactdefaultargs") LinkBisCurve;
 		%feature("autodoc", "	* Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 
@@ -1076,30 +1022,86 @@ class Bisector_BisecCC : public Bisector_Curve {
 	:rtype: float
 ") LinkCurveBis;
 		Standard_Real LinkCurveBis (const Standard_Real U);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
+
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals ();
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:rtype: float
 ") Parameter;
 		Standard_Real Parameter (const gp_Pnt2d & P);
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	:param IndCurve:
-	:type IndCurve: int
-	:rtype: Handle_Geom2d_Curve
-") Curve;
-		Handle_Geom2d_Curve Curve (const Standard_Integer IndCurve);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
+
+	:param Cu1:
+	:type Cu1: Handle_Geom2d_Curve &
+	:param Cu2:
+	:type Cu2: Handle_Geom2d_Curve &
+	:param Side1:
+	:type Side1: float
+	:param Side2:
+	:type Side2: float
+	:param Origin:
+	:type Origin: gp_Pnt2d
+	:param DistMax: default value is 500
+	:type DistMax: float
+	:rtype: None
+") Perform;
+		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const Standard_Real Side1,const Standard_Real Side2,const gp_Pnt2d & Origin,const Standard_Real DistMax = 500);
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "	:rtype: Bisector_PolyBis
 ") Polygon;
 		const Bisector_PolyBis & Polygon ();
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	:param Deep: default value is 0
-	:type Deep: int
-	:param Offset: default value is 0
-	:type Offset: int
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
+		void Reverse ();
+		%feature("compactdefaultargs") ReversedParameter;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:rtype: float
+") ReversedParameter;
+		Standard_Real ReversedParameter (const Standard_Real U);
+		%feature("compactdefaultargs") Transform;
+		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
+
+	:param T:
+	:type T: gp_Trsf2d
 	:rtype: None
-") Dump;
-		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
+") Transform;
+		void Transform (const gp_Trsf2d & T);
+		%feature("compactdefaultargs") ValueAndDist;
+		%feature("autodoc", "	* Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
+
+	:param U:
+	:type U: float
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:param Distance:
+	:type Distance: float &
+	:rtype: gp_Pnt2d
+") ValueAndDist;
+		gp_Pnt2d ValueAndDist (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") ValueByInt;
+		%feature("autodoc", "	* Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
+
+	:param U:
+	:type U: float
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:param Distance:
+	:type Distance: float &
+	:rtype: gp_Pnt2d
+") ValueByInt;
+		gp_Pnt2d ValueByInt (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
 
@@ -1147,124 +1149,14 @@ class Bisector_BisecPC : public Bisector_Curve {
 	:rtype: None
 ") Bisector_BisecPC;
 		 Bisector_BisecPC (const Handle_Geom2d_Curve & Cu,const gp_Pnt2d & P,const Standard_Real Side,const Standard_Real UMin,const Standard_Real UMax);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Construct the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
-
-	:param Cu:
-	:type Cu: Handle_Geom2d_Curve &
-	:param P:
-	:type P: gp_Pnt2d
-	:param Side:
-	:type Side: float
-	:param DistMax: default value is 500
-	:type DistMax: float
-	:rtype: None
-") Perform;
-		void Perform (const Handle_Geom2d_Curve & Cu,const gp_Pnt2d & P,const Standard_Real Side,const Standard_Real DistMax = 500);
-		%feature("compactdefaultargs") IsExtendAtStart;
-		%feature("autodoc", "	* Returns True if the bisector is extended at start.
-
-	:rtype: bool
-") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart ();
-		%feature("compactdefaultargs") IsExtendAtEnd;
-		%feature("autodoc", "	* Returns True if the bisector is extended at end.
-
-	:rtype: bool
-") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd ();
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	* Changes the direction of parametrization of <self>. The orientation of the curve is modified. If the curve is bounded the StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
-
-	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>.
-
-	:param U:
-	:type U: float
-	:rtype: float
-") ReversedParameter;
-		Standard_Real ReversedParameter (const Standard_Real U);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
-") Copy;
-		Handle_Geom2d_Geometry Copy ();
-		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
-
-	:param T:
-	:type T: gp_Trsf2d
-	:rtype: None
-") Transform;
-		void Transform (const gp_Trsf2d & T);
-		%feature("compactdefaultargs") IsCN;
-		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
-
-	:param N:
-	:type N: int
-	:rtype: bool
-") IsCN;
-		Standard_Boolean IsCN (const Standard_Integer N);
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* Value of the first parameter.
-
-	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* Value of the last parameter.
-
-	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
-
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals ();
-		%feature("compactdefaultargs") IntervalFirst;
-		%feature("autodoc", "	* Returns the first parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalFirst;
-		Standard_Real IntervalFirst (const Standard_Integer Index);
-		%feature("compactdefaultargs") IntervalLast;
-		%feature("autodoc", "	* Returns the last parameter of the current interval.
-
-	:param Index:
-	:type Index: int
-	:rtype: float
-") IntervalLast;
-		Standard_Real IntervalLast (const Standard_Integer Index);
-		%feature("compactdefaultargs") IntervalContinuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") IntervalContinuity;
-		GeomAbs_Shape IntervalContinuity ();
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Returns the distance between the point of parameter U on <self> and my point or my curve.
-
-	:param U:
-	:type U: float
-	:rtype: float
-") Distance;
-		Standard_Real Distance (const Standard_Real U);
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") Copy;
+		Handle_Geom2d_Geometry Copy ();
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "	:param U:
 	:type U: float
@@ -1317,6 +1209,14 @@ class Bisector_BisecPC : public Bisector_Curve {
 	:rtype: gp_Vec2d
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Returns the distance between the point of parameter U on <self> and my point or my curve.
+
+	:param U:
+	:type U: float
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Real U);
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "	:param Deep: default value is 0
 	:type Deep: int
@@ -1325,6 +1225,72 @@ class Bisector_BisecPC : public Bisector_Curve {
 	:rtype: None
 ") Dump;
 		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	* Value of the first parameter.
+
+	:rtype: float
+") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") IntervalContinuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") IntervalContinuity;
+		GeomAbs_Shape IntervalContinuity ();
+		%feature("compactdefaultargs") IntervalFirst;
+		%feature("autodoc", "	* Returns the first parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalFirst;
+		Standard_Real IntervalFirst (const Standard_Integer Index);
+		%feature("compactdefaultargs") IntervalLast;
+		%feature("autodoc", "	* Returns the last parameter of the current interval.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") IntervalLast;
+		Standard_Real IntervalLast (const Standard_Integer Index);
+		%feature("compactdefaultargs") IsCN;
+		%feature("autodoc", "	* Returns the order of continuity of the curve. Raised if N < 0.
+
+	:param N:
+	:type N: int
+	:rtype: bool
+") IsCN;
+		Standard_Boolean IsCN (const Standard_Integer N);
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
+		Standard_Boolean IsClosed ();
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns <True> if the bisector is empty.
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") IsExtendAtEnd;
+		%feature("autodoc", "	* Returns True if the bisector is extended at end.
+
+	:rtype: bool
+") IsExtendAtEnd;
+		Standard_Boolean IsExtendAtEnd ();
+		%feature("compactdefaultargs") IsExtendAtStart;
+		%feature("autodoc", "	* Returns True if the bisector is extended at start.
+
+	:rtype: bool
+") IsExtendAtStart;
+		Standard_Boolean IsExtendAtStart ();
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	* Value of the last parameter.
+
+	:rtype: float
+") LastParameter;
+		Standard_Real LastParameter ();
 		%feature("compactdefaultargs") LinkBisCurve;
 		%feature("autodoc", "	* Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 
@@ -1341,6 +1307,12 @@ class Bisector_BisecPC : public Bisector_Curve {
 	:rtype: float
 ") LinkCurveBis;
 		Standard_Real LinkCurveBis (const Standard_Real U);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
+
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals ();
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Returns the parameter on <self> corresponding to <P>.
 
@@ -1349,12 +1321,42 @@ class Bisector_BisecPC : public Bisector_Curve {
 	:rtype: float
 ") Parameter;
 		Standard_Real Parameter (const gp_Pnt2d & P);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	* Returns <True> if the bisector is empty.
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Construct the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 
-	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
+	:param Cu:
+	:type Cu: Handle_Geom2d_Curve &
+	:param P:
+	:type P: gp_Pnt2d
+	:param Side:
+	:type Side: float
+	:param DistMax: default value is 500
+	:type DistMax: float
+	:rtype: None
+") Perform;
+		void Perform (const Handle_Geom2d_Curve & Cu,const gp_Pnt2d & P,const Standard_Real Side,const Standard_Real DistMax = 500);
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "	* Changes the direction of parametrization of <self>. The orientation of the curve is modified. If the curve is bounded the StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
+
+	:rtype: None
+") Reverse;
+		void Reverse ();
+		%feature("compactdefaultargs") ReversedParameter;
+		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>.
+
+	:param U:
+	:type U: float
+	:rtype: float
+") ReversedParameter;
+		Standard_Real ReversedParameter (const Standard_Real U);
+		%feature("compactdefaultargs") Transform;
+		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
+
+	:param T:
+	:type T: gp_Trsf2d
+	:rtype: None
+") Transform;
+		void Transform (const gp_Trsf2d & T);
 };
 
 
@@ -1365,3 +1367,6 @@ class Bisector_BisecPC : public Bisector_Curve {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

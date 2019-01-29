@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SWEEPDOCSTRING
-"This package contains generic classes usefull to create
-swept 3D primitives.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SWEEPDOCSTRING) Sweep
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,6 +39,10 @@ swept 3D primitives.
 
 %include Sweep_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -51,6 +53,42 @@ swept 3D primitives.
 %nodefaultctor Sweep_NumShape;
 class Sweep_NumShape {
 	public:
+		%feature("compactdefaultargs") BegInfinite;
+		%feature("autodoc", "	:rtype: bool
+") BegInfinite;
+		Standard_Boolean BegInfinite ();
+		%feature("compactdefaultargs") Closed;
+		%feature("autodoc", "	:rtype: bool
+") Closed;
+		Standard_Boolean Closed ();
+		%feature("compactdefaultargs") EndInfinite;
+		%feature("autodoc", "	:rtype: bool
+") EndInfinite;
+		Standard_Boolean EndInfinite ();
+		%feature("compactdefaultargs") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
+		Standard_Integer Index ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Reinitialize a simple indexed edge. //! For an Edge : Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex : Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, Closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
+
+	:param Index:
+	:type Index: int
+	:param Type:
+	:type Type: TopAbs_ShapeEnum
+	:param Closed: default value is Standard_False
+	:type Closed: bool
+	:param BegInf: default value is Standard_False
+	:type BegInf: bool
+	:param EndInf: default value is Standard_False
+	:type EndInf: bool
+	:rtype: None
+") Init;
+		void Init (const Standard_Integer Index,const TopAbs_ShapeEnum Type,const Standard_Boolean Closed = Standard_False,const Standard_Boolean BegInf = Standard_False,const Standard_Boolean EndInf = Standard_False);
+		%feature("compactdefaultargs") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
+		TopAbs_Orientation Orientation ();
 		%feature("compactdefaultargs") Sweep_NumShape;
 		%feature("autodoc", "	* Creates a dummy indexed edge.
 
@@ -73,46 +111,10 @@ class Sweep_NumShape {
 	:rtype: None
 ") Sweep_NumShape;
 		 Sweep_NumShape (const Standard_Integer Index,const TopAbs_ShapeEnum Type,const Standard_Boolean Closed = Standard_False,const Standard_Boolean BegInf = Standard_False,const Standard_Boolean EndInf = Standard_False);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Reinitialize a simple indexed edge. //! For an Edge : Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex : Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, Closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
-
-	:param Index:
-	:type Index: int
-	:param Type:
-	:type Type: TopAbs_ShapeEnum
-	:param Closed: default value is Standard_False
-	:type Closed: bool
-	:param BegInf: default value is Standard_False
-	:type BegInf: bool
-	:param EndInf: default value is Standard_False
-	:type EndInf: bool
-	:rtype: None
-") Init;
-		void Init (const Standard_Integer Index,const TopAbs_ShapeEnum Type,const Standard_Boolean Closed = Standard_False,const Standard_Boolean BegInf = Standard_False,const Standard_Boolean EndInf = Standard_False);
-		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "	:rtype: int
-") Index;
-		Standard_Integer Index ();
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	:rtype: TopAbs_ShapeEnum
 ") Type;
 		TopAbs_ShapeEnum Type ();
-		%feature("compactdefaultargs") Closed;
-		%feature("autodoc", "	:rtype: bool
-") Closed;
-		Standard_Boolean Closed ();
-		%feature("compactdefaultargs") BegInfinite;
-		%feature("autodoc", "	:rtype: bool
-") BegInfinite;
-		Standard_Boolean BegInfinite ();
-		%feature("compactdefaultargs") EndInfinite;
-		%feature("autodoc", "	:rtype: bool
-") EndInfinite;
-		Standard_Boolean EndInfinite ();
-		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") Orientation;
-		TopAbs_Orientation Orientation ();
 };
 
 
@@ -124,10 +126,6 @@ class Sweep_NumShape {
 %nodefaultctor Sweep_NumShapeIterator;
 class Sweep_NumShapeIterator {
 	public:
-		%feature("compactdefaultargs") Sweep_NumShapeIterator;
-		%feature("autodoc", "	:rtype: None
-") Sweep_NumShapeIterator;
-		 Sweep_NumShapeIterator ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Resest the NumShapeIterator on sub-shapes of <aShape>.
 
@@ -148,18 +146,22 @@ class Sweep_NumShapeIterator {
 	:rtype: None
 ") Next;
 		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the current sub-shape.
-
-	:rtype: Sweep_NumShape
-") Value;
-		const Sweep_NumShape & Value ();
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	* Returns the orientation of the current sub-shape.
 
 	:rtype: TopAbs_Orientation
 ") Orientation;
 		TopAbs_Orientation Orientation ();
+		%feature("compactdefaultargs") Sweep_NumShapeIterator;
+		%feature("autodoc", "	:rtype: None
+") Sweep_NumShapeIterator;
+		 Sweep_NumShapeIterator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the current sub-shape.
+
+	:rtype: Sweep_NumShape
+") Value;
+		const Sweep_NumShape & Value ();
 };
 
 
@@ -171,52 +173,12 @@ class Sweep_NumShapeIterator {
 %nodefaultctor Sweep_NumShapeTool;
 class Sweep_NumShapeTool {
 	public:
-		%feature("compactdefaultargs") Sweep_NumShapeTool;
-		%feature("autodoc", "	* Create a new NumShapeTool with <aShape>. The Tool must prepare an indexation for all the subshapes of this shape.
+		%feature("compactdefaultargs") FirstVertex;
+		%feature("autodoc", "	* Returns the first vertex.
 
-	:param aShape:
-	:type aShape: Sweep_NumShape &
-	:rtype: None
-") Sweep_NumShapeTool;
-		 Sweep_NumShapeTool (const Sweep_NumShape & aShape);
-		%feature("compactdefaultargs") NbShapes;
-		%feature("autodoc", "	* Returns the number of subshapes in the shape.
-
-	:rtype: int
-") NbShapes;
-		Standard_Integer NbShapes ();
-		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "	* Returns the index of <aShape>.
-
-	:param aShape:
-	:type aShape: Sweep_NumShape &
-	:rtype: int
-") Index;
-		Standard_Integer Index (const Sweep_NumShape & aShape);
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns the Shape at index anIndex
-
-	:param anIndex:
-	:type anIndex: int
 	:rtype: Sweep_NumShape
-") Shape;
-		Sweep_NumShape Shape (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	* Returns the type of <aShape>.
-
-	:param aShape:
-	:type aShape: Sweep_NumShape &
-	:rtype: TopAbs_ShapeEnum
-") Type;
-		TopAbs_ShapeEnum Type (const Sweep_NumShape & aShape);
-		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	* Returns the orientation of <aShape>.
-
-	:param aShape:
-	:type aShape: Sweep_NumShape &
-	:rtype: TopAbs_Orientation
-") Orientation;
-		TopAbs_Orientation Orientation (const Sweep_NumShape & aShape);
+") FirstVertex;
+		Sweep_NumShape FirstVertex ();
 		%feature("compactdefaultargs") HasFirstVertex;
 		%feature("autodoc", "	* Returns true if there is a First Vertex in the Shape.
 
@@ -229,18 +191,58 @@ class Sweep_NumShapeTool {
 	:rtype: bool
 ") HasLastVertex;
 		Standard_Boolean HasLastVertex ();
-		%feature("compactdefaultargs") FirstVertex;
-		%feature("autodoc", "	* Returns the first vertex.
+		%feature("compactdefaultargs") Index;
+		%feature("autodoc", "	* Returns the index of <aShape>.
 
-	:rtype: Sweep_NumShape
-") FirstVertex;
-		Sweep_NumShape FirstVertex ();
+	:param aShape:
+	:type aShape: Sweep_NumShape &
+	:rtype: int
+") Index;
+		Standard_Integer Index (const Sweep_NumShape & aShape);
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "	* Returns the last vertex.
 
 	:rtype: Sweep_NumShape
 ") LastVertex;
 		Sweep_NumShape LastVertex ();
+		%feature("compactdefaultargs") NbShapes;
+		%feature("autodoc", "	* Returns the number of subshapes in the shape.
+
+	:rtype: int
+") NbShapes;
+		Standard_Integer NbShapes ();
+		%feature("compactdefaultargs") Orientation;
+		%feature("autodoc", "	* Returns the orientation of <aShape>.
+
+	:param aShape:
+	:type aShape: Sweep_NumShape &
+	:rtype: TopAbs_Orientation
+") Orientation;
+		TopAbs_Orientation Orientation (const Sweep_NumShape & aShape);
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "	* Returns the Shape at index anIndex
+
+	:param anIndex:
+	:type anIndex: int
+	:rtype: Sweep_NumShape
+") Shape;
+		Sweep_NumShape Shape (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Sweep_NumShapeTool;
+		%feature("autodoc", "	* Create a new NumShapeTool with <aShape>. The Tool must prepare an indexation for all the subshapes of this shape.
+
+	:param aShape:
+	:type aShape: Sweep_NumShape &
+	:rtype: None
+") Sweep_NumShapeTool;
+		 Sweep_NumShapeTool (const Sweep_NumShape & aShape);
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "	* Returns the type of <aShape>.
+
+	:param aShape:
+	:type aShape: Sweep_NumShape &
+	:rtype: TopAbs_ShapeEnum
+") Type;
+		TopAbs_ShapeEnum Type (const Sweep_NumShape & aShape);
 };
 
 
@@ -249,3 +251,6 @@ class Sweep_NumShapeTool {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

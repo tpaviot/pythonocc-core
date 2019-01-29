@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,33 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BNDLIBDOCSTRING
-"The BndLib package provides functions to add a geometric primitive to a bounding box.
-Note: these functions work with gp objects, optionally
-limited by parameter values. If the curves and surfaces
-provided by the gp package are not explicitly
-parameterized, they still have an implicit parameterization,
-similar to that which they infer for the equivalent Geom or Geom2d objects.
-Add : Package to compute the bounding boxes for elementary
-objects from gp in 2d and 3d .
-
-AddCurve2d : A class to compute the bounding box for a curve
-in 2d dimensions ;the curve is defined by a tool
-
-AddCurve : A class to compute the bounding box for a curve
-in 3d dimensions ;the curve is defined by a tool
-
-AddSurface : A class to compute the bounding box for a surface.
-The surface is defined by a tool for the geometry and another
-tool for the topology (only the edges in 2d dimensions)
-
--Level : Public.
-All methods of all classes will be public.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -60,6 +38,10 @@ All methods of all classes will be public.
 
 
 %include BndLib_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -463,6 +445,22 @@ class BndLib_Add2dCurve {
 	:rtype: void
 ") Add;
 		static void Add (const Handle_Geom2d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d & B);
+		%feature("compactdefaultargs") AddOptimal;
+		%feature("autodoc", "	* Adds to the bounding box B the part of curve C B is then enlarged by the tolerance value Tol. U1, U2 - the parametric range to comute the bounding box; Note: depending on the type of curve, one of the following algorithms is used to include it in the bounding box B: - an exact analytical if C is built from a line, a circle or a conic curve, - numerical calculation of bounding box sizes, based on minimization algorithm, for other types of curve If Tol = < Precision::PConfusion(), Precision::PConfusion is used as tolerance for calculation
+
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box2d &
+	:rtype: void
+") AddOptimal;
+		static void AddOptimal (const Handle_Geom2d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d & B);
 };
 
 
@@ -501,6 +499,48 @@ class BndLib_Add3dCurve {
 	:rtype: void
 ") Add;
 		static void Add (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddGenCurv;
+		%feature("autodoc", "	* Adds to the bounding box B the curve C using numerical minimization algorithms This method is used in AddOptimal for not analytical curves. if Tol < Precision::Confusion(), Precision:;Confusion is used as computation tolerance
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param UMin:
+	:type UMin: float
+	:param UMax:
+	:type UMax: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddGenCurv;
+		static void AddGenCurv (const Adaptor3d_Curve & C,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddOptimal;
+		%feature("autodoc", "	* Adds to the bounding box B the curve C These methods use more precise algorithms for building bnd box then methods Add(...)
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddOptimal;
+		static void AddOptimal (const Adaptor3d_Curve & C,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddOptimal;
+		%feature("autodoc", "	:param C:
+	:type C: Adaptor3d_Curve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddOptimal;
+		static void AddOptimal (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box & B);
 };
 
 
@@ -543,6 +583,56 @@ class BndLib_AddSurface {
 	:rtype: void
 ") Add;
 		static void Add (const Adaptor3d_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddGenSurf;
+		%feature("autodoc", "	* Adds to the bounding box B the surface S using numerical minimization algorithms This method is used in AddOptimal for not analytical surfaces and torus. if Tol < Precision::Confusion(), Precision::Confusion is used as computation tolerance
+
+	:param S:
+	:type S: Adaptor3d_Surface &
+	:param UMin:
+	:type UMin: float
+	:param UMax:
+	:type UMax: float
+	:param VMin:
+	:type VMin: float
+	:param VMax:
+	:type VMax: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddGenSurf;
+		static void AddGenSurf (const Adaptor3d_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddOptimal;
+		%feature("autodoc", "	* Adds the surface S to the bounding box B. This algorith builds precise bounding box
+
+	:param S:
+	:type S: Adaptor3d_Surface &
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddOptimal;
+		static void AddOptimal (const Adaptor3d_Surface & S,const Standard_Real Tol,Bnd_Box & B);
+		%feature("compactdefaultargs") AddOptimal;
+		%feature("autodoc", "	:param S:
+	:type S: Adaptor3d_Surface &
+	:param UMin:
+	:type UMin: float
+	:param UMax:
+	:type UMax: float
+	:param VMin:
+	:type VMin: float
+	:param VMax:
+	:type VMax: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box &
+	:rtype: void
+") AddOptimal;
+		static void AddOptimal (const Adaptor3d_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real Tol,Bnd_Box & B);
 };
 
 
@@ -551,3 +641,6 @@ class BndLib_AddSurface {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

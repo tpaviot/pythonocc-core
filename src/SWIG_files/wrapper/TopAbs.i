@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,29 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPABSDOCSTRING
-"applications such as : Topological Data Structure,
-Topological Algorithms.
-
-It contains :
-
-* The ShapeEnum  enumeration to describe the
-differents topological shapes.
-
-* The Orientation enumeration to describe the
-orientation of a topological shape.
-
-* The State  enumeration to describes the
-position of a point relative to a Shape.
-
-* Methods to manage the enumerations.
-
--Level : Public.
-All methods of all classes will be public.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=TOPABSDOCSTRING) TopAbs
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -56,6 +38,10 @@ All methods of all classes will be public.
 
 
 %include TopAbs_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -93,6 +79,14 @@ enum TopAbs_State {
 %rename(topabs) TopAbs;
 class TopAbs {
 	public:
+		%feature("compactdefaultargs") Complement;
+		%feature("autodoc", "	* Reverses the interior/exterior status of each side of the object. So, to take the complement of an object means to reverse the interior/exterior status of its boundary, i.e. inside becomes outside. The method returns the complementary orientation, following the rules in the table below: FORWARD REVERSED REVERSED FORWARD INTERNAL EXTERNAL EXTERNAL INTERNAL //! Complement complements the material side. Inside becomes outside.
+
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:rtype: TopAbs_Orientation
+") Complement;
+		static TopAbs_Orientation Complement (const TopAbs_Orientation Or);
 		%feature("compactdefaultargs") Compose;
 		%feature("autodoc", "	* Compose the Orientation <Or1> and <Or2>. This composition is not symmetric (if you switch <Or1> and <Or2> the result is different). It assumes that <Or1> is the Orientation of a Shape S1 containing a Shape S2 of Orientation Or2. The result is the cumulated orientation of S2 in S1. The composition law is : //! \ Or2 FORWARD REVERSED INTERNAL EXTERNAL Or1 ------------------------------------- FORWARD | FORWARD REVERSED INTERNAL EXTERNAL | REVERSED | REVERSED FORWARD INTERNAL EXTERNAL | INTERNAL | INTERNAL INTERNAL INTERNAL INTERNAL | EXTERNAL | EXTERNAL EXTERNAL EXTERNAL EXTERNAL Note: The top corner in the table is the most important for the purposes of Open CASCADE topology and shape sharing.
 
@@ -103,42 +97,26 @@ class TopAbs {
 	:rtype: TopAbs_Orientation
 ") Compose;
 		static TopAbs_Orientation Compose (const TopAbs_Orientation Or1,const TopAbs_Orientation Or2);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	* xchanges the interior/exterior status of the two sides. This is what happens when the sense of direction is reversed. The following rules apply: //! FORWARD REVERSED REVERSED FORWARD INTERNAL INTERNAL EXTERNAL EXTERNAL //! Reverse exchange the material sides.
-
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:rtype: TopAbs_Orientation
-") Reverse;
-		static TopAbs_Orientation Reverse (const TopAbs_Orientation Or);
-		%feature("compactdefaultargs") Complement;
-		%feature("autodoc", "	* Reverses the interior/exterior status of each side of the object. So, to take the complement of an object means to reverse the interior/exterior status of its boundary, i.e. inside becomes outside. The method returns the complementary orientation, following the rules in the table below: FORWARD REVERSED REVERSED FORWARD INTERNAL EXTERNAL EXTERNAL INTERNAL //! Complement complements the material side. Inside becomes outside.
-
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:rtype: TopAbs_Orientation
-") Complement;
-		static TopAbs_Orientation Complement (const TopAbs_Orientation Or);
 		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "	* Prints the name of Shape <SEq> as a String on the Stream <S> and returns <S>.
+		%feature("autodoc", "	* Prints the name of Shape type as a String on the Stream.
 
-	:param SE:
-	:type SE: TopAbs_ShapeEnum
-	:param S:
-	:type S: Standard_OStream &
+	:param theShapeType:
+	:type theShapeType: TopAbs_ShapeEnum
+	:param theStream:
+	:type theStream: Standard_OStream &
 	:rtype: Standard_OStream
 ") Print;
-		static Standard_OStream & Print (const TopAbs_ShapeEnum SE,Standard_OStream & S);
+		static Standard_OStream & Print (const TopAbs_ShapeEnum theShapeType,Standard_OStream & theStream);
 		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "	* Prints the name of the Orientation <Or> as a String on the Stream <S> and returns <S>.
+		%feature("autodoc", "	* Prints the name of the Orientation as a String on the Stream.
 
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:param S:
-	:type S: Standard_OStream &
+	:param theOrientation:
+	:type theOrientation: TopAbs_Orientation
+	:param theStream:
+	:type theStream: Standard_OStream &
 	:rtype: Standard_OStream
 ") Print;
-		static Standard_OStream & Print (const TopAbs_Orientation Or,Standard_OStream & S);
+		static Standard_OStream & Print (const TopAbs_Orientation theOrientation,Standard_OStream & theStream);
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "	* Prints the name of the State <St> as a String on the Stream <S> and returns <S>.
 
@@ -149,6 +127,48 @@ class TopAbs {
 	:rtype: Standard_OStream
 ") Print;
 		static Standard_OStream & Print (const TopAbs_State St,Standard_OStream & S);
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "	* xchanges the interior/exterior status of the two sides. This is what happens when the sense of direction is reversed. The following rules apply: //! FORWARD REVERSED REVERSED FORWARD INTERNAL INTERNAL EXTERNAL EXTERNAL //! Reverse exchange the material sides.
+
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:rtype: TopAbs_Orientation
+") Reverse;
+		static TopAbs_Orientation Reverse (const TopAbs_Orientation Or);
+		%feature("compactdefaultargs") ShapeOrientationToString;
+		%feature("autodoc", "	* Returns the string name for a given shape orientation. @param theOrientation shape orientation returns string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL
+
+	:param theOrientation:
+	:type theOrientation: TopAbs_Orientation
+	:rtype: char *
+") ShapeOrientationToString;
+		static const char * ShapeOrientationToString (TopAbs_Orientation theOrientation);
+		%feature("compactdefaultargs") ShapeTypeFromString;
+		%feature("autodoc", "	* Returns the shape type from the given string identifier (using case-insensitive comparison). @param theTypeString string identifier returns shape type or TopAbs_SHAPE if string identifier is invalid
+
+	:param theTypeString:
+	:type theTypeString: char *
+	:rtype: TopAbs_ShapeEnum
+") ShapeTypeFromString;
+		static TopAbs_ShapeEnum ShapeTypeFromString (const char * theTypeString);
+		%feature("compactdefaultargs") ShapeTypeFromString;
+		%feature("autodoc", "	* Determines the shape type from the given string identifier (using case-insensitive comparison). @param theTypeString string identifier @param theType detected shape type returns True if string identifier is known
+
+	:param theTypeString:
+	:type theTypeString: char *
+	:param theType:
+	:type theType: TopAbs_ShapeEnum &
+	:rtype: bool
+") ShapeTypeFromString;
+		static Standard_Boolean ShapeTypeFromString (const char * theTypeString,TopAbs_ShapeEnum & theType);
+		%feature("compactdefaultargs") ShapeTypeToString;
+		%feature("autodoc", "	* Returns the string name for a given shape type. @param theType shape type returns string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE, VERTEX, SHAPE
+
+	:param theType:
+	:type theType: TopAbs_ShapeEnum
+	:rtype: char *
+") ShapeTypeToString;
+		static const char * ShapeTypeToString (TopAbs_ShapeEnum theType);
 };
 
 
@@ -157,3 +177,6 @@ class TopAbs {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

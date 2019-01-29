@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,13 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFPRSDOCSTRING
-"Presentation (visualiation, selection etc.) tools for
-DECAF documents
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XCAFPRSDOCSTRING) XCAFPrs
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,15 +39,26 @@ DECAF documents
 
 %include XCAFPrs_headers.i
 
+/* templates */
+%template(XCAFPrs_DataMapOfStyleShape) NCollection_DataMap <XCAFPrs_Style , TopoDS_Shape , XCAFPrs_Style>;
+%template(XCAFPrs_DataMapOfStyleTransient) NCollection_DataMap <XCAFPrs_Style , Handle_Standard_Transient , XCAFPrs_Style>;
+%template(XCAFPrs_DataMapOfShapeStyle) NCollection_DataMap <TopoDS_Shape , XCAFPrs_Style , TopTools_ShapeMapHasher>;
+/* end templates declaration */
+
+
 /* typedefs */
+typedef NCollection_DataMap <XCAFPrs_Style , TopoDS_Shape , XCAFPrs_Style> XCAFPrs_DataMapOfStyleShape;
+typedef NCollection_DataMap <XCAFPrs_Style , TopoDS_Shape , XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
+typedef NCollection_DataMap <XCAFPrs_Style , Handle_Standard_Transient , XCAFPrs_Style> XCAFPrs_DataMapOfStyleTransient;
+typedef NCollection_DataMap <XCAFPrs_Style , Handle_Standard_Transient , XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
+typedef NCollection_DataMap <TopoDS_Shape , XCAFPrs_Style , TopTools_ShapeMapHasher> XCAFPrs_DataMapOfShapeStyle;
+typedef NCollection_DataMap <TopoDS_Shape , XCAFPrs_Style , TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
 /* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfShapeStyle)
-%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfStyleShape)
-%wrap_handle(XCAFPrs_DataMapNodeOfDataMapOfStyleTransient)
+%wrap_handle(XCAFPrs_AISObject)
 %wrap_handle(XCAFPrs_Driver)
 
 %rename(xcafprs) XCAFPrs;
@@ -67,6 +76,10 @@ class XCAFPrs {
 	:rtype: void
 ") CollectStyleSettings;
 		static void CollectStyleSettings (const TDF_Label & L,const TopLoc_Location & loc,XCAFPrs_DataMapOfShapeStyle & settings);
+		%feature("compactdefaultargs") GetViewNameMode;
+		%feature("autodoc", "	:rtype: bool
+") GetViewNameMode;
+		static Standard_Boolean GetViewNameMode ();
 		%feature("compactdefaultargs") SetViewNameMode;
 		%feature("autodoc", "	* Set ViewNameMode for indicate display names or not.
 
@@ -75,10 +88,6 @@ class XCAFPrs {
 	:rtype: void
 ") SetViewNameMode;
 		static void SetViewNameMode (const Standard_Boolean viewNameMode);
-		%feature("compactdefaultargs") GetViewNameMode;
-		%feature("autodoc", "	:rtype: bool
-") GetViewNameMode;
-		static Standard_Boolean GetViewNameMode ();
 };
 
 
@@ -87,449 +96,53 @@ class XCAFPrs {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
-class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMapIterator {
+%nodefaultctor XCAFPrs_AISObject;
+class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
-		%feature("autodoc", "	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
-		 XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle ();
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfShapeStyle &
+		%feature("compactdefaultargs") DispatchStyles;
+		%feature("autodoc", "	* Fetch the Shape from associated Label and fill the map of sub-shapes styles. By default, this method is called implicitly within first ::Compute(). Application might call this method explicitly to manipulate styles afterwards. @param theToSyncStyles flag indicating if method ::Compute() should call this method again on first compute or re-compute
+
+	:param theToSyncStyles: default value is Standard_False
+	:type theToSyncStyles: bool
+	:rtype: void
+") DispatchStyles;
+		virtual void DispatchStyles (const Standard_Boolean theToSyncStyles = Standard_False);
+		%feature("compactdefaultargs") GetLabel;
+		%feature("autodoc", "	* Returns the label which was visualised by this presentation
+
+	:rtype: TDF_Label
+") GetLabel;
+		const TDF_Label & GetLabel ();
+		%feature("compactdefaultargs") SetLabel;
+		%feature("autodoc", "	* Assign the label to this presentation (but does not mark it outdated with SetToUpdate()).
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
 	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
-		 XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle (const XCAFPrs_DataMapOfShapeStyle & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfShapeStyle &
+") SetLabel;
+		void SetLabel (const TDF_Label & theLabel);
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "	* Sets the material aspect. This method assigns the new default material without overriding XDE styles. Re-computation of existing presentation is not required after calling this method.
+
+	:param theMaterial:
+	:type theMaterial: Graphic3d_MaterialAspect &
+	:rtype: void
+") SetMaterial;
+		virtual void SetMaterial (const Graphic3d_MaterialAspect & theMaterial);
+		%feature("compactdefaultargs") XCAFPrs_AISObject;
+		%feature("autodoc", "	* Creates an object to visualise the shape label.
+
+	:param theLabel:
+	:type theLabel: TDF_Label &
 	:rtype: None
-") Initialize;
-		void Initialize (const XCAFPrs_DataMapOfShapeStyle & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Value;
-		const XCAFPrs_Style & Value ();
+") XCAFPrs_AISObject;
+		 XCAFPrs_AISObject (const TDF_Label & theLabel);
 };
 
 
-%extend XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-		%feature("autodoc", "	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-		 XCAFPrs_DataMapIteratorOfDataMapOfStyleShape ();
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfStyleShape &
-	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-		 XCAFPrs_DataMapIteratorOfDataMapOfStyleShape (const XCAFPrs_DataMapOfStyleShape & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfStyleShape &
-	:rtype: None
-") Initialize;
-		void Initialize (const XCAFPrs_DataMapOfStyleShape & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Key;
-		const XCAFPrs_Style & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Value;
-		const TopoDS_Shape  Value ();
-};
+%make_alias(XCAFPrs_AISObject)
 
-
-%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-		%feature("autodoc", "	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-		 XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient ();
-		%feature("compactdefaultargs") XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfStyleTransient &
-	:rtype: None
-") XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-		 XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient (const XCAFPrs_DataMapOfStyleTransient & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: XCAFPrs_DataMapOfStyleTransient &
-	:rtype: None
-") Initialize;
-		void Initialize (const XCAFPrs_DataMapOfStyleTransient & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Key;
-		const XCAFPrs_Style & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
-class XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: XCAFPrs_Style &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
-		 XCAFPrs_DataMapNodeOfDataMapOfShapeStyle (const TopoDS_Shape & K,const XCAFPrs_Style & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Value;
-		XCAFPrs_Style & Value ();
-};
-
-
-%make_alias(XCAFPrs_DataMapNodeOfDataMapOfShapeStyle)
-
-%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
-class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:param I:
-	:type I: TopoDS_Shape &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
-		 XCAFPrs_DataMapNodeOfDataMapOfStyleShape (const XCAFPrs_Style & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Key;
-		XCAFPrs_Style & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Value;
-		TopoDS_Shape  Value ();
-};
-
-
-%make_alias(XCAFPrs_DataMapNodeOfDataMapOfStyleShape)
-
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
-class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:param I:
-	:type I: Handle_Standard_Transient &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
-		 XCAFPrs_DataMapNodeOfDataMapOfStyleTransient (const XCAFPrs_Style & K,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: XCAFPrs_Style
-") Key;
-		XCAFPrs_Style & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%make_alias(XCAFPrs_DataMapNodeOfDataMapOfStyleTransient)
-
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapOfShapeStyle;
-class XCAFPrs_DataMapOfShapeStyle : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapOfShapeStyle;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") XCAFPrs_DataMapOfShapeStyle;
-		 XCAFPrs_DataMapOfShapeStyle (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfShapeStyle &
-	:rtype: XCAFPrs_DataMapOfShapeStyle
-") Assign;
-		XCAFPrs_DataMapOfShapeStyle & Assign (const XCAFPrs_DataMapOfShapeStyle & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfShapeStyle &
-	:rtype: XCAFPrs_DataMapOfShapeStyle
-") operator =;
-		XCAFPrs_DataMapOfShapeStyle & operator = (const XCAFPrs_DataMapOfShapeStyle & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: XCAFPrs_Style &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const XCAFPrs_Style & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: XCAFPrs_Style
-") Find;
-		const XCAFPrs_Style & Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: XCAFPrs_Style
-") ChangeFind;
-		XCAFPrs_Style & ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend XCAFPrs_DataMapOfShapeStyle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapOfStyleShape;
-class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapOfStyleShape;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") XCAFPrs_DataMapOfStyleShape;
-		 XCAFPrs_DataMapOfStyleShape (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfStyleShape &
-	:rtype: XCAFPrs_DataMapOfStyleShape
-") Assign;
-		XCAFPrs_DataMapOfStyleShape & Assign (const XCAFPrs_DataMapOfStyleShape & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfStyleShape &
-	:rtype: XCAFPrs_DataMapOfStyleShape
-") operator =;
-		XCAFPrs_DataMapOfStyleShape & operator = (const XCAFPrs_DataMapOfStyleShape & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:param I:
-	:type I: TopoDS_Shape &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const XCAFPrs_Style & K,const TopoDS_Shape & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: TopoDS_Shape
-") Find;
-		const TopoDS_Shape  Find (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: TopoDS_Shape
-") ChangeFind;
-		TopoDS_Shape  ChangeFind (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const XCAFPrs_Style & K);
-};
-
-
-%extend XCAFPrs_DataMapOfStyleShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor XCAFPrs_DataMapOfStyleTransient;
-class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") XCAFPrs_DataMapOfStyleTransient;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") XCAFPrs_DataMapOfStyleTransient;
-		 XCAFPrs_DataMapOfStyleTransient (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfStyleTransient &
-	:rtype: XCAFPrs_DataMapOfStyleTransient
-") Assign;
-		XCAFPrs_DataMapOfStyleTransient & Assign (const XCAFPrs_DataMapOfStyleTransient & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: XCAFPrs_DataMapOfStyleTransient &
-	:rtype: XCAFPrs_DataMapOfStyleTransient
-") operator =;
-		XCAFPrs_DataMapOfStyleTransient & operator = (const XCAFPrs_DataMapOfStyleTransient & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:param I:
-	:type I: Handle_Standard_Transient &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const XCAFPrs_Style & K,const Handle_Standard_Transient & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Handle_Standard_Transient
-") Find;
-		Handle_Standard_Transient Find (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Handle_Standard_Transient
-") ChangeFind;
-		Handle_Standard_Transient ChangeFind (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const XCAFPrs_Style & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: XCAFPrs_Style &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const XCAFPrs_Style & K);
-};
-
-
-%extend XCAFPrs_DataMapOfStyleTransient {
+%extend XCAFPrs_AISObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -537,6 +150,12 @@ class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 %nodefaultctor XCAFPrs_Driver;
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "	* returns GUID of the driver
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "	:param L:
 	:type L: TDF_Label &
@@ -545,12 +164,6 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 	:rtype: bool
 ") Update;
 		virtual Standard_Boolean Update (const TDF_Label & L,Handle_AIS_InteractiveObject & ais);
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "	* returns GUID of the driver
-
-	:rtype: Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID ();
 };
 
 
@@ -564,70 +177,120 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 %nodefaultctor XCAFPrs_Style;
 class XCAFPrs_Style {
 	public:
-		%feature("compactdefaultargs") XCAFPrs_Style;
-		%feature("autodoc", "	:rtype: None
-") XCAFPrs_Style;
-		 XCAFPrs_Style ();
-		%feature("compactdefaultargs") IsSetColorSurf;
-		%feature("autodoc", "	:rtype: bool
-") IsSetColorSurf;
-		Standard_Boolean IsSetColorSurf ();
-		%feature("compactdefaultargs") GetColorSurf;
-		%feature("autodoc", "	:rtype: Quantity_Color
-") GetColorSurf;
-		Quantity_Color GetColorSurf ();
-		%feature("compactdefaultargs") SetColorSurf;
-		%feature("autodoc", "	:param col:
-	:type col: Quantity_Color &
-	:rtype: None
-") SetColorSurf;
-		void SetColorSurf (const Quantity_Color & col);
-		%feature("compactdefaultargs") UnSetColorSurf;
-		%feature("autodoc", "	* Manage surface color setting
+		%feature("compactdefaultargs") GetColorCurv;
+		%feature("autodoc", "	* Return curve color.
 
-	:rtype: None
-") UnSetColorSurf;
-		void UnSetColorSurf ();
+	:rtype: Quantity_Color
+") GetColorCurv;
+		const Quantity_Color & GetColorCurv ();
+		%feature("compactdefaultargs") GetColorSurf;
+		%feature("autodoc", "	* Return surface color.
+
+	:rtype: Quantity_Color
+") GetColorSurf;
+		const Quantity_Color & GetColorSurf ();
+		%feature("compactdefaultargs") GetColorSurfRGBA;
+		%feature("autodoc", "	* Return surface color.
+
+	:rtype: Quantity_ColorRGBA
+") GetColorSurfRGBA;
+		const Quantity_ColorRGBA & GetColorSurfRGBA ();
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	* Returns a HasCode value.
+
+	:param theStyle:
+	:type theStyle: XCAFPrs_Style &
+	:param theUpper:
+	:type theUpper: int
+	:rtype: int
+") HashCode;
+		static Standard_Integer HashCode (const XCAFPrs_Style & theStyle,const Standard_Integer theUpper);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns True if styles are the same Methods for using Style as key in maps
+
+	:param theOther:
+	:type theOther: XCAFPrs_Style &
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const XCAFPrs_Style & theOther);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns True when the two keys are the same.
+
+	:param theS1:
+	:type theS1: XCAFPrs_Style &
+	:param theS2:
+	:type theS2: XCAFPrs_Style &
+	:rtype: bool
+") IsEqual;
+		static Standard_Boolean IsEqual (const XCAFPrs_Style & theS1,const XCAFPrs_Style & theS2);
 		%feature("compactdefaultargs") IsSetColorCurv;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Return True if curve color has been defined.
+
+	:rtype: bool
 ") IsSetColorCurv;
 		Standard_Boolean IsSetColorCurv ();
-		%feature("compactdefaultargs") GetColorCurv;
-		%feature("autodoc", "	:rtype: Quantity_Color
-") GetColorCurv;
-		Quantity_Color GetColorCurv ();
+		%feature("compactdefaultargs") IsSetColorSurf;
+		%feature("autodoc", "	* Return True if surface color has been defined.
+
+	:rtype: bool
+") IsSetColorSurf;
+		Standard_Boolean IsSetColorSurf ();
+		%feature("compactdefaultargs") IsVisible;
+		%feature("autodoc", "	* Manage visibility.
+
+	:rtype: bool
+") IsVisible;
+		Standard_Boolean IsVisible ();
 		%feature("compactdefaultargs") SetColorCurv;
-		%feature("autodoc", "	:param col:
+		%feature("autodoc", "	* Set curve color.
+
+	:param col:
 	:type col: Quantity_Color &
 	:rtype: None
 ") SetColorCurv;
 		void SetColorCurv (const Quantity_Color & col);
+		%feature("compactdefaultargs") SetColorSurf;
+		%feature("autodoc", "	* Set surface color.
+
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetColorSurf;
+		void SetColorSurf (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") SetColorSurf;
+		%feature("autodoc", "	* Set surface color.
+
+	:param theColor:
+	:type theColor: Quantity_ColorRGBA &
+	:rtype: None
+") SetColorSurf;
+		void SetColorSurf (const Quantity_ColorRGBA & theColor);
+		%feature("compactdefaultargs") SetVisibility;
+		%feature("autodoc", "	* Assign visibility.
+
+	:param theVisibility:
+	:type theVisibility: bool
+	:rtype: None
+") SetVisibility;
+		void SetVisibility (const Standard_Boolean theVisibility);
 		%feature("compactdefaultargs") UnSetColorCurv;
 		%feature("autodoc", "	* Manage curve color setting
 
 	:rtype: None
 ") UnSetColorCurv;
 		void UnSetColorCurv ();
-		%feature("compactdefaultargs") SetVisibility;
-		%feature("autodoc", "	:param visibility:
-	:type visibility: bool
+		%feature("compactdefaultargs") UnSetColorSurf;
+		%feature("autodoc", "	* Manage surface color setting
+
 	:rtype: None
-") SetVisibility;
-		void SetVisibility (const Standard_Boolean visibility);
-		%feature("compactdefaultargs") IsVisible;
-		%feature("autodoc", "	* Manage visibility Note: Setting visibility to False makes colors undefined This is necessary for HashCode
+") UnSetColorSurf;
+		void UnSetColorSurf ();
+		%feature("compactdefaultargs") XCAFPrs_Style;
+		%feature("autodoc", "	* Empty constructor - colors are unset, visibility is True.
 
-	:rtype: bool
-") IsVisible;
-		Standard_Boolean IsVisible ();
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returs True if styles are the same Methods for using Style as key in maps
-
-	:param other:
-	:type other: XCAFPrs_Style &
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const XCAFPrs_Style & other);
+	:rtype: None
+") XCAFPrs_Style;
+		 XCAFPrs_Style ();
 
         %extend{
             bool __eq_wrapper__(const XCAFPrs_Style  other) {
@@ -642,27 +305,7 @@ class XCAFPrs_Style {
             except:
                 return False
         }
-        		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
-
-	:param S:
-	:type S: XCAFPrs_Style &
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const XCAFPrs_Style & S,const Standard_Integer Upper);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
-
-	:param S1:
-	:type S1: XCAFPrs_Style &
-	:param S2:
-	:type S2: XCAFPrs_Style &
-	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const XCAFPrs_Style & S1,const XCAFPrs_Style & S2);
-};
+        };
 
 
 %extend XCAFPrs_Style {
@@ -670,3 +313,6 @@ class XCAFPrs_Style {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

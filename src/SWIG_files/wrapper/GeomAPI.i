@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,48 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMAPIDOCSTRING
-"The  GeomAPI  package provides an Application
-Programming Interface for the Geometry.
-
-The API is a set of classes and methods aiming to
-provide :
-
-* High level and simple calls for the most common
-operations.
-
-*  Keeping  an  access on  the  low-level
-implementation of high-level calls.
-
-
-The API provides classes to call the algorithmes
-of the Geometry
-
-* The constructors of the classes provides the
-different constructions methods.
-
-* The class keeps as fields the  different tools
-used by the algorithmes
-
-*  The class provides a casting method to get
-automatically the result with a  function-like
-call.
-
-For example to evaluate the distance <D> between a
-point <P> and a curve <C>, one can writes :
-
-D = GeomAPI_ProjectPointOnCurve(P,C);
-
-or
-
-GeomAPI_ProjectPointOnCurve PonC(P,C);
-D = PonC.LowerDistance();
-
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GEOMAPIDOCSTRING) GeomAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -75,6 +38,10 @@ D = PonC.LowerDistance();
 
 
 %include GeomAPI_headers.i
+
+/* templates */
+/* end templates declaration */
+
 
 /* typedefs */
 /* end typedefs declaration */
@@ -117,6 +84,20 @@ class GeomAPI {
 %nodefaultctor GeomAPI_ExtremaCurveCurve;
 class GeomAPI_ExtremaCurveCurve {
 	public:
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Integer Index);
+		%feature("compactdefaultargs") Extrema;
+		%feature("autodoc", "	* return the algorithmic object from Extrema
+
+	:rtype: Extrema_ExtCC
+") Extrema;
+		const Extrema_ExtCC & Extrema ();
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "	* Constructs an empty algorithm for computing extrema between two curves. Use an Init function to define the curves on which it is going to work.
 
@@ -141,16 +122,16 @@ class GeomAPI_ExtremaCurveCurve {
 	:param C2:
 	:type C2: Handle_Geom_Curve &
 	:param U1min:
-	:type U1min: Quantity_Parameter
+	:type U1min: float
 	:param U1max:
-	:type U1max: Quantity_Parameter
+	:type U1max: float
 	:param U2min:
-	:type U2min: Quantity_Parameter
+	:type U2min: float
 	:param U2max:
-	:type U2max: Quantity_Parameter
+	:type U2max: float
 	:rtype: None
 ") GeomAPI_ExtremaCurveCurve;
-		 GeomAPI_ExtremaCurveCurve (const Handle_Geom_Curve & C1,const Handle_Geom_Curve & C2,const Quantity_Parameter U1min,const Quantity_Parameter U1max,const Quantity_Parameter U2min,const Quantity_Parameter U2max);
+		 GeomAPI_ExtremaCurveCurve (const Handle_Geom_Curve & C1,const Handle_Geom_Curve & C2,const Standard_Real U1min,const Standard_Real U1max,const Standard_Real U2min,const Standard_Real U2max);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes this algorithm with the given arguments and computes the extrema between the curves C1 and C2
 
@@ -169,26 +150,60 @@ class GeomAPI_ExtremaCurveCurve {
 	:param C2:
 	:type C2: Handle_Geom_Curve &
 	:param U1min:
-	:type U1min: Quantity_Parameter
+	:type U1min: float
 	:param U1max:
-	:type U1max: Quantity_Parameter
+	:type U1max: float
 	:param U2min:
-	:type U2min: Quantity_Parameter
+	:type U2min: float
 	:param U2max:
-	:type U2max: Quantity_Parameter
+	:type U2max: float
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Curve & C1,const Handle_Geom_Curve & C2,const Quantity_Parameter U1min,const Quantity_Parameter U1max,const Quantity_Parameter U2min,const Quantity_Parameter U2max);
+		void Init (const Handle_Geom_Curve & C1,const Handle_Geom_Curve & C2,const Standard_Real U1min,const Standard_Real U1max,const Standard_Real U2min,const Standard_Real U2max);
+		%feature("compactdefaultargs") LowerDistance;
+		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+
+	:rtype: float
+") LowerDistance;
+		Standard_Real LowerDistance ();
+		%feature("compactdefaultargs") LowerDistanceParameters;
+		%feature("autodoc", "	* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:rtype: None
+") LowerDistanceParameters;
+		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "	* Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 
 	:rtype: int
 ") NbExtrema;
 		Standard_Integer NbExtrema ();
-		%feature("compactdefaultargs") operator Standard_Integer;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Integer;
-		 operator Standard_Integer ();
+		%feature("compactdefaultargs") NearestPoints;
+		%feature("autodoc", "	* Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:rtype: None
+") NearestPoints;
+		void NearestPoints (gp_Pnt & P1,gp_Pnt & P2);
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 
@@ -201,62 +216,22 @@ class GeomAPI_ExtremaCurveCurve {
 	:rtype: None
 ") Points;
 		void Points (const Standard_Integer Index,gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+		%feature("compactdefaultargs") TotalLowerDistance;
+		%feature("autodoc", "	* return the distance of the total nearest couple solution point. if <myExtCC> is not done
 
-	:param Index:
-	:type Index: int
-	:param U1:
-	:type U1: Quantity_Parameter &
-	:param U2:
-	:type U2: Quantity_Parameter &
-	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
-
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Length
-") Distance;
-		Quantity_Length Distance (const Standard_Integer Index);
-		%feature("compactdefaultargs") NearestPoints;
-		%feature("autodoc", "	* Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
-
-	:param P1:
-	:type P1: gp_Pnt
-	:param P2:
-	:type P2: gp_Pnt
-	:rtype: None
-") NearestPoints;
-		void NearestPoints (gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") LowerDistanceParameters;
-		%feature("autodoc", "	* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+	:rtype: float
+") TotalLowerDistance;
+		Standard_Real TotalLowerDistance ();
+		%feature("compactdefaultargs") TotalLowerDistanceParameters;
+		%feature("autodoc", "	* set in <U1> and <U2> the parameters of the couple solution points which represents the total nearest solution.
 
 	:param U1:
-	:type U1: Quantity_Parameter &
+	:type U1: float &
 	:param U2:
-	:type U2: Quantity_Parameter &
-	:rtype: None
-") LowerDistanceParameters;
-		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") LowerDistance;
-		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
-
-	:rtype: Quantity_Length
-") LowerDistance;
-		Quantity_Length LowerDistance ();
-		%feature("compactdefaultargs") operator Standard_Real;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Real;
-		 operator Standard_Real ();
-		%feature("compactdefaultargs") Extrema;
-		%feature("autodoc", "	* return the algorithmic object from Extrema
-
-	:rtype: Extrema_ExtCC
-") Extrema;
-		const Extrema_ExtCC & Extrema ();
+	:type U2: float &
+	:rtype: bool
+") TotalLowerDistanceParameters;
+		Standard_Boolean TotalLowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") TotalNearestPoints;
 		%feature("autodoc", "	* set in <P1> and <P2> the couple solution points such a the distance [P1,P2] is the minimum. taking in account extremity points of curves.
 
@@ -267,22 +242,14 @@ class GeomAPI_ExtremaCurveCurve {
 	:rtype: bool
 ") TotalNearestPoints;
 		Standard_Boolean TotalNearestPoints (gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") TotalLowerDistanceParameters;
-		%feature("autodoc", "	* set in <U1> and <U2> the parameters of the couple solution points which represents the total nearest solution.
-
-	:param U1:
-	:type U1: Quantity_Parameter &
-	:param U2:
-	:type U2: Quantity_Parameter &
-	:rtype: bool
-") TotalLowerDistanceParameters;
-		Standard_Boolean TotalLowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") TotalLowerDistance;
-		%feature("autodoc", "	* return the distance of the total nearest couple solution point. if <myExtCC> is not done
-
-	:rtype: Quantity_Length
-") TotalLowerDistance;
-		Quantity_Length TotalLowerDistance ();
+		%feature("compactdefaultargs") operator Standard_Integer;
+		%feature("autodoc", "	:rtype: 
+") operator Standard_Integer;
+		 operator Standard_Integer ();
+		%feature("compactdefaultargs") operator Standard_Real;
+		%feature("autodoc", "	:rtype: 
+") operator Standard_Real;
+		 operator Standard_Real ();
 };
 
 
@@ -294,6 +261,20 @@ class GeomAPI_ExtremaCurveCurve {
 %nodefaultctor GeomAPI_ExtremaCurveSurface;
 class GeomAPI_ExtremaCurveSurface {
 	public:
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Integer Index);
+		%feature("compactdefaultargs") Extrema;
+		%feature("autodoc", "	* Missing detailed docstringic object from Extrema
+
+	:rtype: Extrema_ExtCS
+") Extrema;
+		const Extrema_ExtCS & Extrema ();
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "	* Constructs an empty algorithm for computing extrema between a curve and a surface. Use an Init function to define the curve and the surface on which it is going to work.
 
@@ -318,20 +299,20 @@ class GeomAPI_ExtremaCurveSurface {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Wmin:
-	:type Wmin: Quantity_Parameter
+	:type Wmin: float
 	:param Wmax:
-	:type Wmax: Quantity_Parameter
+	:type Wmax: float
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Umax:
-	:type Umax: Quantity_Parameter
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: Quantity_Parameter
+	:type Vmax: float
 	:rtype: None
 ") GeomAPI_ExtremaCurveSurface;
-		 GeomAPI_ExtremaCurveSurface (const Handle_Geom_Curve & Curve,const Handle_Geom_Surface & Surface,const Quantity_Parameter Wmin,const Quantity_Parameter Wmax,const Quantity_Parameter Umin,const Quantity_Parameter Umax,const Quantity_Parameter Vmin,const Quantity_Parameter Vmax);
+		 GeomAPI_ExtremaCurveSurface (const Handle_Geom_Curve & Curve,const Handle_Geom_Surface & Surface,const Standard_Real Wmin,const Standard_Real Wmax,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Computes the extrema distances between the curve <C> and the surface <S>.
 
@@ -350,30 +331,68 @@ class GeomAPI_ExtremaCurveSurface {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Wmin:
-	:type Wmin: Quantity_Parameter
+	:type Wmin: float
 	:param Wmax:
-	:type Wmax: Quantity_Parameter
+	:type Wmax: float
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Umax:
-	:type Umax: Quantity_Parameter
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: Quantity_Parameter
+	:type Vmax: float
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Curve & Curve,const Handle_Geom_Surface & Surface,const Quantity_Parameter Wmin,const Quantity_Parameter Wmax,const Quantity_Parameter Umin,const Quantity_Parameter Umax,const Quantity_Parameter Vmin,const Quantity_Parameter Vmax);
+		void Init (const Handle_Geom_Curve & Curve,const Handle_Geom_Surface & Surface,const Standard_Real Wmin,const Standard_Real Wmax,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax);
+		%feature("compactdefaultargs") LowerDistance;
+		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
+
+	:rtype: float
+") LowerDistance;
+		Standard_Real LowerDistance ();
+		%feature("compactdefaultargs") LowerDistanceParameters;
+		%feature("autodoc", "	* Returns the parameters W of the point on the curve and (U,V) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
+
+	:param W:
+	:type W: float &
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") LowerDistanceParameters;
+		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "	* Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 
 	:rtype: int
 ") NbExtrema;
 		Standard_Integer NbExtrema ();
-		%feature("compactdefaultargs") operator Standard_Integer;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Integer;
-		 operator Standard_Integer ();
+		%feature("compactdefaultargs") NearestPoints;
+		%feature("autodoc", "	* Returns the points PC on the curve and PS on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
+
+	:param PC:
+	:type PC: gp_Pnt
+	:param PS:
+	:type PS: gp_Pnt
+	:rtype: None
+") NearestPoints;
+		void NearestPoints (gp_Pnt & PC,gp_Pnt & PS);
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns the parameters W of the point on the curve, and (U,V) of the point on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:param W:
+	:type W: float &
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the curve and P2 on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 
@@ -386,66 +405,14 @@ class GeomAPI_ExtremaCurveSurface {
 	:rtype: None
 ") Points;
 		void Points (const Standard_Integer Index,gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns the parameters W of the point on the curve, and (U,V) of the point on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
-
-	:param Index:
-	:type Index: int
-	:param W:
-	:type W: Quantity_Parameter &
-	:param U:
-	:type U: Quantity_Parameter &
-	:param V:
-	:type V: Quantity_Parameter &
-	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
-
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Length
-") Distance;
-		Quantity_Length Distance (const Standard_Integer Index);
-		%feature("compactdefaultargs") NearestPoints;
-		%feature("autodoc", "	* Returns the points PC on the curve and PS on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
-
-	:param PC:
-	:type PC: gp_Pnt
-	:param PS:
-	:type PS: gp_Pnt
-	:rtype: None
-") NearestPoints;
-		void NearestPoints (gp_Pnt & PC,gp_Pnt & PS);
-		%feature("compactdefaultargs") LowerDistanceParameters;
-		%feature("autodoc", "	* Returns the parameters W of the point on the curve and (U,V) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
-
-	:param W:
-	:type W: Quantity_Parameter &
-	:param U:
-	:type U: Quantity_Parameter &
-	:param V:
-	:type V: Quantity_Parameter &
-	:rtype: None
-") LowerDistanceParameters;
-		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") LowerDistance;
-		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
-
-	:rtype: Quantity_Length
-") LowerDistance;
-		Quantity_Length LowerDistance ();
+		%feature("compactdefaultargs") operator Standard_Integer;
+		%feature("autodoc", "	:rtype: 
+") operator Standard_Integer;
+		 operator Standard_Integer ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
 ") operator Standard_Real;
 		 operator Standard_Real ();
-		%feature("compactdefaultargs") Extrema;
-		%feature("autodoc", "	* Missing detailed docstringic object from Extrema
-
-	:rtype: Extrema_ExtCS
-") Extrema;
-		const Extrema_ExtCS & Extrema ();
 };
 
 
@@ -457,6 +424,20 @@ class GeomAPI_ExtremaCurveSurface {
 %nodefaultctor GeomAPI_ExtremaSurfaceSurface;
 class GeomAPI_ExtremaSurfaceSurface {
 	public:
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Integer Index);
+		%feature("compactdefaultargs") Extrema;
+		%feature("autodoc", "	* return the algorithmic object from Extrema
+
+	:rtype: Extrema_ExtSS
+") Extrema;
+		const Extrema_ExtSS & Extrema ();
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "	* Constructs an empty algorithm for computing extrema between two surfaces. Use an Init function to define the surfaces on which it is going to work.
 
@@ -481,24 +462,24 @@ class GeomAPI_ExtremaSurfaceSurface {
 	:param S2:
 	:type S2: Handle_Geom_Surface &
 	:param U1min:
-	:type U1min: Quantity_Parameter
+	:type U1min: float
 	:param U1max:
-	:type U1max: Quantity_Parameter
+	:type U1max: float
 	:param V1min:
-	:type V1min: Quantity_Parameter
+	:type V1min: float
 	:param V1max:
-	:type V1max: Quantity_Parameter
+	:type V1max: float
 	:param U2min:
-	:type U2min: Quantity_Parameter
+	:type U2min: float
 	:param U2max:
-	:type U2max: Quantity_Parameter
+	:type U2max: float
 	:param V2min:
-	:type V2min: Quantity_Parameter
+	:type V2min: float
 	:param V2max:
-	:type V2max: Quantity_Parameter
+	:type V2max: float
 	:rtype: None
 ") GeomAPI_ExtremaSurfaceSurface;
-		 GeomAPI_ExtremaSurfaceSurface (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Quantity_Parameter U1min,const Quantity_Parameter U1max,const Quantity_Parameter V1min,const Quantity_Parameter V1max,const Quantity_Parameter U2min,const Quantity_Parameter U2max,const Quantity_Parameter V2min,const Quantity_Parameter V2max);
+		 GeomAPI_ExtremaSurfaceSurface (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Standard_Real U1min,const Standard_Real U1max,const Standard_Real V1min,const Standard_Real V1max,const Standard_Real U2min,const Standard_Real U2max,const Standard_Real V2min,const Standard_Real V2max);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initializes this algorithm with the given arguments and computes the extrema distances between the surfaces <S1> and <S2>
 
@@ -517,34 +498,76 @@ class GeomAPI_ExtremaSurfaceSurface {
 	:param S2:
 	:type S2: Handle_Geom_Surface &
 	:param U1min:
-	:type U1min: Quantity_Parameter
+	:type U1min: float
 	:param U1max:
-	:type U1max: Quantity_Parameter
+	:type U1max: float
 	:param V1min:
-	:type V1min: Quantity_Parameter
+	:type V1min: float
 	:param V1max:
-	:type V1max: Quantity_Parameter
+	:type V1max: float
 	:param U2min:
-	:type U2min: Quantity_Parameter
+	:type U2min: float
 	:param U2max:
-	:type U2max: Quantity_Parameter
+	:type U2max: float
 	:param V2min:
-	:type V2min: Quantity_Parameter
+	:type V2min: float
 	:param V2max:
-	:type V2max: Quantity_Parameter
+	:type V2max: float
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Quantity_Parameter U1min,const Quantity_Parameter U1max,const Quantity_Parameter V1min,const Quantity_Parameter V1max,const Quantity_Parameter U2min,const Quantity_Parameter U2max,const Quantity_Parameter V2min,const Quantity_Parameter V2max);
+		void Init (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Standard_Real U1min,const Standard_Real U1max,const Standard_Real V1min,const Standard_Real V1max,const Standard_Real U2min,const Standard_Real U2max,const Standard_Real V2min,const Standard_Real V2max);
+		%feature("compactdefaultargs") LowerDistance;
+		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+
+	:rtype: float
+") LowerDistance;
+		Standard_Real LowerDistance ();
+		%feature("compactdefaultargs") LowerDistanceParameters;
+		%feature("autodoc", "	* Returns the parameters (U1,V1) of the point on the first surface and (U2,V2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
+
+	:param U1:
+	:type U1: float &
+	:param V1:
+	:type V1: float &
+	:param U2:
+	:type U2: float &
+	:param V2:
+	:type V2: float &
+	:rtype: None
+") LowerDistanceParameters;
+		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "	* Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 
 	:rtype: int
 ") NbExtrema;
 		Standard_Integer NbExtrema ();
-		%feature("compactdefaultargs") operator Standard_Integer;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Integer;
-		 operator Standard_Integer ();
+		%feature("compactdefaultargs") NearestPoints;
+		%feature("autodoc", "	* Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
+
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:rtype: None
+") NearestPoints;
+		void NearestPoints (gp_Pnt & P1,gp_Pnt & P2);
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns the parameters (U1,V1) of the point on the first surface, and (U2,V2) of the point on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
+
+	:param Index:
+	:type Index: int
+	:param U1:
+	:type U1: float &
+	:param V1:
+	:type V1: float &
+	:param U2:
+	:type U2: float &
+	:param V2:
+	:type V2: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 
@@ -557,70 +580,14 @@ class GeomAPI_ExtremaSurfaceSurface {
 	:rtype: None
 ") Points;
 		void Points (const Standard_Integer Index,gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns the parameters (U1,V1) of the point on the first surface, and (U2,V2) of the point on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
-
-	:param Index:
-	:type Index: int
-	:param U1:
-	:type U1: Quantity_Parameter &
-	:param V1:
-	:type V1: Quantity_Parameter &
-	:param U2:
-	:type U2: Quantity_Parameter &
-	:param V2:
-	:type V2: Quantity_Parameter &
-	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
-
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Length
-") Distance;
-		Quantity_Length Distance (const Standard_Integer Index);
-		%feature("compactdefaultargs") NearestPoints;
-		%feature("autodoc", "	* Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
-
-	:param P1:
-	:type P1: gp_Pnt
-	:param P2:
-	:type P2: gp_Pnt
-	:rtype: None
-") NearestPoints;
-		void NearestPoints (gp_Pnt & P1,gp_Pnt & P2);
-		%feature("compactdefaultargs") LowerDistanceParameters;
-		%feature("autodoc", "	* Returns the parameters (U1,V1) of the point on the first surface and (U2,V2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
-
-	:param U1:
-	:type U1: Quantity_Parameter &
-	:param V1:
-	:type V1: Quantity_Parameter &
-	:param U2:
-	:type U2: Quantity_Parameter &
-	:param V2:
-	:type V2: Quantity_Parameter &
-	:rtype: None
-") LowerDistanceParameters;
-		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") LowerDistance;
-		%feature("autodoc", "	* Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
-
-	:rtype: Quantity_Length
-") LowerDistance;
-		Quantity_Length LowerDistance ();
+		%feature("compactdefaultargs") operator Standard_Integer;
+		%feature("autodoc", "	:rtype: 
+") operator Standard_Integer;
+		 operator Standard_Integer ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
 ") operator Standard_Real;
 		 operator Standard_Real ();
-		%feature("compactdefaultargs") Extrema;
-		%feature("autodoc", "	* return the algorithmic object from Extrema
-
-	:rtype: Extrema_ExtSS
-") Extrema;
-		const Extrema_ExtSS & Extrema ();
 };
 
 
@@ -648,16 +615,6 @@ class GeomAPI_IntCS {
 	:rtype: None
 ") GeomAPI_IntCS;
 		 GeomAPI_IntCS (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* This function Initializes an algorithm with the curve C and the surface S and computes the intersections between C and S. Warning Use function IsDone to verify that the intersections are computed successfully.
-
-	:param C:
-	:type C: Handle_Geom_Curve &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:rtype: None
-") Perform;
-		void Perform (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the intersections are successfully computed.
 
@@ -670,6 +627,52 @@ class GeomAPI_IntCS {
 	:rtype: int
 ") NbPoints;
 		Standard_Integer NbPoints ();
+		%feature("compactdefaultargs") NbSegments;
+		%feature("autodoc", "	* Returns the number of computed intersection segments in case of tangential intersection. Exceptions StdFail_NotDone if the intersection algorithm fails or is not initialized.
+
+	:rtype: int
+") NbSegments;
+		Standard_Integer NbSegments ();
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns parameter W on the curve and (parameters U,V) on the surface of the computed intersection point of index Index in case of cross intersection. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.
+
+	:param Index:
+	:type Index: int
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:param W:
+	:type W: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns the parameters of the first (U1,V1) and the last (U2,V2) points of curve's segment on the surface in case of tangential intersection. Index is the number of computed intersection segments. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.
+
+	:param Index:
+	:type Index: int
+	:param U1:
+	:type U1: float &
+	:param V1:
+	:type V1: float &
+	:param U2:
+	:type U2: float &
+	:param V2:
+	:type V2: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* This function Initializes an algorithm with the curve C and the surface S and computes the intersections between C and S. Warning Use function IsDone to verify that the intersections are computed successfully.
+
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:rtype: None
+") Perform;
+		void Perform (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S);
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the Intersection Point of range <Index>in case of cross intersection. Raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbPoints>
 
@@ -678,26 +681,6 @@ class GeomAPI_IntCS {
 	:rtype: gp_Pnt
 ") Point;
 		const gp_Pnt  Point (const Standard_Integer Index);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns parameter W on the curve and (parameters U,V) on the surface of the computed intersection point of index Index in case of cross intersection. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.
-
-	:param Index:
-	:type Index: int
-	:param U:
-	:type U: Quantity_Parameter &
-	:param V:
-	:type V: Quantity_Parameter &
-	:param W:
-	:type W: Quantity_Parameter &
-	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NbSegments;
-		%feature("autodoc", "	* Returns the number of computed intersection segments in case of tangential intersection. Exceptions StdFail_NotDone if the intersection algorithm fails or is not initialized.
-
-	:rtype: int
-") NbSegments;
-		Standard_Integer NbSegments ();
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "	* Returns the computed intersection segment of index Index in case of tangential intersection. Intersection segment is a portion of the initial curve tangent to surface. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.
 
@@ -706,22 +689,6 @@ class GeomAPI_IntCS {
 	:rtype: Handle_Geom_Curve
 ") Segment;
 		Handle_Geom_Curve Segment (const Standard_Integer Index);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns the parameters of the first (U1,V1) and the last (U2,V2) points of curve's segment on the surface in case of tangential intersection. Index is the number of computed intersection segments. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.
-
-	:param Index:
-	:type Index: int
-	:param U1:
-	:type U1: Quantity_Parameter &
-	:param V1:
-	:type V1: Quantity_Parameter &
-	:param U2:
-	:type U2: Quantity_Parameter &
-	:param V2:
-	:type V2: Quantity_Parameter &
-	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
 
@@ -751,6 +718,26 @@ class GeomAPI_IntSS {
 	:rtype: None
 ") GeomAPI_IntSS;
 		 GeomAPI_IntSS (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Standard_Real Tol);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns True if the intersection was successful.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	* Returns the computed intersection curve of index Index. Exceptions StdFail_NotDone if the computation fails. Standard_OutOfRange if Index is out of range [1, NbLines] where NbLines is the number of computed intersection curves.
+
+	:param Index:
+	:type Index: int
+	:rtype: Handle_Geom_Curve
+") Line;
+		Handle_Geom_Curve Line (const Standard_Integer Index);
+		%feature("compactdefaultargs") NbLines;
+		%feature("autodoc", "	* Returns the number of computed intersection curves. Exceptions StdFail_NotDone if the computation fails.
+
+	:rtype: int
+") NbLines;
+		Standard_Integer NbLines ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Initializes an algorithm with the given arguments and computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use function IsDone to verify that the intersections are successfully computed.
 
@@ -763,26 +750,6 @@ class GeomAPI_IntSS {
 	:rtype: None
 ") Perform;
 		void Perform (const Handle_Geom_Surface & S1,const Handle_Geom_Surface & S2,const Standard_Real Tol);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns True if the intersection was successful.
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbLines;
-		%feature("autodoc", "	* Returns the number of computed intersection curves. Exceptions StdFail_NotDone if the computation fails.
-
-	:rtype: int
-") NbLines;
-		Standard_Integer NbLines ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	* Returns the computed intersection curve of index Index. Exceptions StdFail_NotDone if the computation fails. Standard_OutOfRange if Index is out of range [1, NbLines] where NbLines is the number of computed intersection curves.
-
-	:param Index:
-	:type Index: int
-	:rtype: Handle_Geom_Curve
-") Line;
-		Handle_Geom_Curve Line (const Standard_Integer Index);
 };
 
 
@@ -794,6 +761,12 @@ class GeomAPI_IntSS {
 %nodefaultctor GeomAPI_Interpolate;
 class GeomAPI_Interpolate {
 	public:
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	* Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
+
+	:rtype: Handle_Geom_BSplineCurve
+") Curve;
+		Handle_Geom_BSplineCurve Curve ();
 		%feature("compactdefaultargs") GeomAPI_Interpolate;
 		%feature("autodoc", "	* Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be 'C2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only 'C1' continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.
 
@@ -820,6 +793,12 @@ class GeomAPI_Interpolate {
 	:rtype: None
 ") GeomAPI_Interpolate;
 		 GeomAPI_Interpolate (const Handle_TColgp_HArray1OfPnt & Points,const Handle_TColStd_HArray1OfReal & Parameters,const Standard_Boolean PeriodicFlag,const Standard_Real Tolerance);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "	* Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).
 
@@ -850,18 +829,6 @@ class GeomAPI_Interpolate {
 	:rtype: None
 ") Perform;
 		void Perform ();
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	* Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
-
-	:rtype: Handle_Geom_BSplineCurve
-") Curve;
-		Handle_Geom_BSplineCurve Curve ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
 };
 
 
@@ -873,6 +840,12 @@ class GeomAPI_Interpolate {
 %nodefaultctor GeomAPI_PointsToBSpline;
 class GeomAPI_PointsToBSpline {
 	public:
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	* Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.
+
+	:rtype: Handle_Geom_BSplineCurve
+") Curve;
+		Handle_Geom_BSplineCurve Curve ();
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "	* Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
 
@@ -1023,12 +996,6 @@ class GeomAPI_PointsToBSpline {
 	:rtype: None
 ") Init;
 		void Init (const TColgp_Array1OfPnt & Points,const Standard_Real Weight1,const Standard_Real Weight2,const Standard_Real Weight3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol3D = 1.0e-3);
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	* Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.
-
-	:rtype: Handle_Geom_BSplineCurve
-") Curve;
-		Handle_Geom_BSplineCurve Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -1144,24 +1111,6 @@ class GeomAPI_PointsToBSplineSurface {
 	:rtype: None
 ") Init;
 		void Init (const TColgp_Array2OfPnt & Points,const Standard_Integer DegMin = 3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol3D = 1.0e-3);
-		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.
-
-	:param Points:
-	:type Points: TColgp_Array2OfPnt
-	:rtype: None
-") Interpolate;
-		void Interpolate (const TColgp_Array2OfPnt & Points);
-		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.
-
-	:param Points:
-	:type Points: TColgp_Array2OfPnt
-	:param ParType:
-	:type ParType: Approx_ParametrizationType
-	:rtype: None
-") Interpolate;
-		void Interpolate (const TColgp_Array2OfPnt & Points,const Approx_ParametrizationType ParType);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Approximates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
 
@@ -1186,22 +1135,6 @@ class GeomAPI_PointsToBSplineSurface {
 	:rtype: None
 ") Init;
 		void Init (const TColStd_Array2OfReal & ZPoints,const Standard_Real X0,const Standard_Real dX,const Standard_Real Y0,const Standard_Real dY,const Standard_Integer DegMin = 3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol3D = 1.0e-3);
-		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be 3 2- his continuity will be C2. 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
-
-	:param ZPoints:
-	:type ZPoints: TColStd_Array2OfReal &
-	:param X0:
-	:type X0: float
-	:param dX:
-	:type dX: float
-	:param Y0:
-	:type Y0: float
-	:param dY:
-	:type dY: float
-	:rtype: None
-") Interpolate;
-		void Interpolate (const TColStd_Array2OfReal & ZPoints,const Standard_Real X0,const Standard_Real dX,const Standard_Real Y0,const Standard_Real dY);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Approximates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D
 
@@ -1240,16 +1173,50 @@ class GeomAPI_PointsToBSplineSurface {
 	:rtype: None
 ") Init;
 		void Init (const TColgp_Array2OfPnt & Points,const Standard_Real Weight1,const Standard_Real Weight2,const Standard_Real Weight3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol3D = 1.0e-3);
+		%feature("compactdefaultargs") Interpolate;
+		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.
+
+	:param Points:
+	:type Points: TColgp_Array2OfPnt
+	:rtype: None
+") Interpolate;
+		void Interpolate (const TColgp_Array2OfPnt & Points);
+		%feature("compactdefaultargs") Interpolate;
+		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.
+
+	:param Points:
+	:type Points: TColgp_Array2OfPnt
+	:param ParType:
+	:type ParType: Approx_ParametrizationType
+	:rtype: None
+") Interpolate;
+		void Interpolate (const TColgp_Array2OfPnt & Points,const Approx_ParametrizationType ParType);
+		%feature("compactdefaultargs") Interpolate;
+		%feature("autodoc", "	* Interpolates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be 3 2- his continuity will be C2. 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+
+	:param ZPoints:
+	:type ZPoints: TColStd_Array2OfReal &
+	:param X0:
+	:type X0: float
+	:param dX:
+	:type dX: float
+	:param Y0:
+	:type Y0: float
+	:param dY:
+	:type dY: float
+	:rtype: None
+") Interpolate;
+		void Interpolate (const TColStd_Array2OfReal & ZPoints,const Standard_Real X0,const Standard_Real dX,const Standard_Real Y0,const Standard_Real dY);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	* Returns the approximate BSpline Surface
 
 	:rtype: Handle_Geom_BSplineSurface
 ") Surface;
 		Handle_Geom_BSplineSurface Surface ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
 };
 
 
@@ -1261,6 +1228,20 @@ class GeomAPI_PointsToBSplineSurface {
 %nodefaultctor GeomAPI_ProjectPointOnCurve;
 class GeomAPI_ProjectPointOnCurve {
 	public:
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Integer Index);
+		%feature("compactdefaultargs") Extrema;
+		%feature("autodoc", "	* return the algorithmic object from Extrema
+
+	:rtype: Extrema_ExtPC
+") Extrema;
+		const Extrema_ExtPC & Extrema ();
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnCurve;
 		%feature("autodoc", "	* Creates an empty object. Use an Init function for further initialization.
 
@@ -1285,12 +1266,12 @@ class GeomAPI_ProjectPointOnCurve {
 	:param Curve:
 	:type Curve: Handle_Geom_Curve &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:rtype: None
 ") GeomAPI_ProjectPointOnCurve;
-		 GeomAPI_ProjectPointOnCurve (const gp_Pnt & P,const Handle_Geom_Curve & Curve,const Quantity_Parameter Umin,const Quantity_Parameter Usup);
+		 GeomAPI_ProjectPointOnCurve (const gp_Pnt & P,const Handle_Geom_Curve & Curve,const Standard_Real Umin,const Standard_Real Usup);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Init the projection of a point <P> on a curve <Curve>
 
@@ -1309,24 +1290,66 @@ class GeomAPI_ProjectPointOnCurve {
 	:param Curve:
 	:type Curve: Handle_Geom_Curve &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:rtype: None
 ") Init;
-		void Init (const gp_Pnt & P,const Handle_Geom_Curve & Curve,const Quantity_Parameter Umin,const Quantity_Parameter Usup);
+		void Init (const gp_Pnt & P,const Handle_Geom_Curve & Curve,const Standard_Real Umin,const Standard_Real Usup);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Init the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup.
 
 	:param Curve:
 	:type Curve: Handle_Geom_Curve &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Curve & Curve,const Quantity_Parameter Umin,const Quantity_Parameter Usup);
+		void Init (const Handle_Geom_Curve & Curve,const Standard_Real Umin,const Standard_Real Usup);
+		%feature("compactdefaultargs") LowerDistance;
+		%feature("autodoc", "	* Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
+
+	:rtype: float
+") LowerDistance;
+		Standard_Real LowerDistance ();
+		%feature("compactdefaultargs") LowerDistanceParameter;
+		%feature("autodoc", "	* Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
+
+	:rtype: float
+") LowerDistanceParameter;
+		Standard_Real LowerDistanceParameter ();
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	* Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.
+
+	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints ();
+		%feature("compactdefaultargs") NearestPoint;
+		%feature("autodoc", "	* Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
+
+	:rtype: gp_Pnt
+") NearestPoint;
+		gp_Pnt NearestPoint ();
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "	* Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Parameter;
+		Standard_Real Parameter (const Standard_Integer Index);
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "	* Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-
+
+	:param Index:
+	:type Index: int
+	:param U:
+	:type U: float &
+	:rtype: None
+") Parameter;
+		void Parameter (const Standard_Integer Index,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the projection of a point on the current curve.
 
@@ -1335,16 +1358,6 @@ class GeomAPI_ProjectPointOnCurve {
 	:rtype: None
 ") Perform;
 		void Perform (const gp_Pnt & P);
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") operator Standard_Integer;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Integer;
-		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 
@@ -1353,64 +1366,18 @@ class GeomAPI_ProjectPointOnCurve {
 	:rtype: gp_Pnt
 ") Point;
 		gp_Pnt Point (const Standard_Integer Index);
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
-
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Parameter
-") Parameter;
-		Quantity_Parameter Parameter (const Standard_Integer Index);
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-
-
-	:param Index:
-	:type Index: int
-	:param U:
-	:type U: Quantity_Parameter &
-	:rtype: None
-") Parameter;
-		void Parameter (const Standard_Integer Index,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
-
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Length
-") Distance;
-		Quantity_Length Distance (const Standard_Integer Index);
-		%feature("compactdefaultargs") NearestPoint;
-		%feature("autodoc", "	* Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
-
-	:rtype: gp_Pnt
-") NearestPoint;
-		gp_Pnt NearestPoint ();
-		%feature("compactdefaultargs") operator gp_Pnt;
+		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operator gp_Pnt;
-		 operator gp_Pnt ();
-		%feature("compactdefaultargs") LowerDistanceParameter;
-		%feature("autodoc", "	* Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
-
-	:rtype: Quantity_Parameter
-") LowerDistanceParameter;
-		Quantity_Parameter LowerDistanceParameter ();
-		%feature("compactdefaultargs") LowerDistance;
-		%feature("autodoc", "	* Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
-
-	:rtype: Quantity_Length
-") LowerDistance;
-		Quantity_Length LowerDistance ();
+") operator Standard_Integer;
+		 operator Standard_Integer ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
 ") operator Standard_Real;
 		 operator Standard_Real ();
-		%feature("compactdefaultargs") Extrema;
-		%feature("autodoc", "	* return the algorithmic object from Extrema
-
-	:rtype: Extrema_ExtPC
-") Extrema;
-		const Extrema_ExtPC & Extrema ();
+		%feature("compactdefaultargs") operator gp_Pnt;
+		%feature("autodoc", "	:rtype: 
+") operator gp_Pnt;
+		 operator gp_Pnt ();
 };
 
 
@@ -1422,6 +1389,20 @@ class GeomAPI_ProjectPointOnCurve {
 %nodefaultctor GeomAPI_ProjectPointOnSurf;
 class GeomAPI_ProjectPointOnSurf {
 	public:
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	* Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+
+	:param Index:
+	:type Index: int
+	:rtype: float
+") Distance;
+		Standard_Real Distance (const Standard_Integer Index);
+		%feature("compactdefaultargs") Extrema;
+		%feature("autodoc", "	* return the algorithmic object from Extrema
+
+	:rtype: Extrema_ExtPS
+") Extrema;
+		const Extrema_ExtPS & Extrema ();
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "	* Creates an empty object. Use the Init function for further initialization.
 
@@ -1460,20 +1441,20 @@ class GeomAPI_ProjectPointOnSurf {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Tolerance:
 	:type Tolerance: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") GeomAPI_ProjectPointOnSurf;
-		 GeomAPI_ProjectPointOnSurf (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		 GeomAPI_ProjectPointOnSurf (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "	* Init the projection of a point <P> on a surface <Surface>
 
@@ -1482,18 +1463,18 @@ class GeomAPI_ProjectPointOnSurf {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") GeomAPI_ProjectPointOnSurf;
-		 GeomAPI_ProjectPointOnSurf (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		 GeomAPI_ProjectPointOnSurf (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt
@@ -1524,20 +1505,20 @@ class GeomAPI_ProjectPointOnSurf {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Tolerance:
 	:type Tolerance: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") Init;
-		void Init (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		void Init (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Init the projection for many points on a surface <Surface>. The solutions will be computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.
 
@@ -1546,52 +1527,96 @@ class GeomAPI_ProjectPointOnSurf {
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") Init;
-		void Init (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		void Init (const gp_Pnt & P,const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Tolerance:
 	:type Tolerance: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		void Init (const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param Surface:
 	:type Surface: Handle_Geom_Surface &
 	:param Umin:
-	:type Umin: Quantity_Parameter
+	:type Umin: float
 	:param Usup:
-	:type Usup: Quantity_Parameter
+	:type Usup: float
 	:param Vmin:
-	:type Vmin: Quantity_Parameter
+	:type Vmin: float
 	:param Vsup:
-	:type Vsup: Quantity_Parameter
+	:type Vsup: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None
 ") Init;
-		void Init (const Handle_Geom_Surface & Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		void Init (const Handle_Geom_Surface & Surface,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") LowerDistance;
+		%feature("autodoc", "	* Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.
+
+	:rtype: float
+") LowerDistance;
+		Standard_Real LowerDistance ();
+		%feature("compactdefaultargs") LowerDistanceParameters;
+		%feature("autodoc", "	* Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
+
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") LowerDistanceParameters;
+		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	* Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.
+
+	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints ();
+		%feature("compactdefaultargs") NearestPoint;
+		%feature("autodoc", "	* Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
+
+	:rtype: gp_Pnt
+") NearestPoint;
+		gp_Pnt NearestPoint ();
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "	* Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+
+	:param Index:
+	:type Index: int
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") Parameters;
+		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the projection of a point on the current surface.
 
@@ -1600,20 +1625,6 @@ class GeomAPI_ProjectPointOnSurf {
 	:rtype: None
 ") Perform;
 		void Perform (const gp_Pnt & P);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") operator Standard_Integer;
-		%feature("autodoc", "	:rtype: 
-") operator Standard_Integer;
-		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 
@@ -1622,62 +1633,34 @@ class GeomAPI_ProjectPointOnSurf {
 	:rtype: gp_Pnt
 ") Point;
 		gp_Pnt Point (const Standard_Integer Index);
-		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	* Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+		%feature("compactdefaultargs") SetExtremaAlgo;
+		%feature("autodoc", "	* Sets the Extrema search algorithm - Grad or Tree. By default the Extrema is initialized with Grad algorithm.
 
-	:param Index:
-	:type Index: int
-	:param U:
-	:type U: Quantity_Parameter &
-	:param V:
-	:type V: Quantity_Parameter &
+	:param theAlgo:
+	:type theAlgo: Extrema_ExtAlgo
 	:rtype: None
-") Parameters;
-		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+") SetExtremaAlgo;
+		void SetExtremaAlgo (const Extrema_ExtAlgo theAlgo);
+		%feature("compactdefaultargs") SetExtremaFlag;
+		%feature("autodoc", "	* Sets the Extrema search flag - MIN or MAX or MINMAX. By default the Extrema is set to search the MinMax solutions.
 
-	:param Index:
-	:type Index: int
-	:rtype: Quantity_Length
-") Distance;
-		Quantity_Length Distance (const Standard_Integer Index);
-		%feature("compactdefaultargs") NearestPoint;
-		%feature("autodoc", "	* Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
-
-	:rtype: gp_Pnt
-") NearestPoint;
-		gp_Pnt NearestPoint ();
-		%feature("compactdefaultargs") operator gp_Pnt;
+	:param theExtFlag:
+	:type theExtFlag: Extrema_ExtFlag
+	:rtype: None
+") SetExtremaFlag;
+		void SetExtremaFlag (const Extrema_ExtFlag theExtFlag);
+		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operator gp_Pnt;
-		 operator gp_Pnt ();
-		%feature("compactdefaultargs") LowerDistanceParameters;
-		%feature("autodoc", "	* Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
-
-	:param U:
-	:type U: Quantity_Parameter &
-	:param V:
-	:type V: Quantity_Parameter &
-	:rtype: None
-") LowerDistanceParameters;
-		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") LowerDistance;
-		%feature("autodoc", "	* Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.
-
-	:rtype: Quantity_Length
-") LowerDistance;
-		Quantity_Length LowerDistance ();
+") operator Standard_Integer;
+		 operator Standard_Integer ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
 ") operator Standard_Real;
 		 operator Standard_Real ();
-		%feature("compactdefaultargs") Extrema;
-		%feature("autodoc", "	* return the algorithmic object from Extrema
-
-	:rtype: Extrema_ExtPS
-") Extrema;
-		const Extrema_ExtPS & Extrema ();
+		%feature("compactdefaultargs") operator gp_Pnt;
+		%feature("autodoc", "	:rtype: 
+") operator gp_Pnt;
+		 operator gp_Pnt ();
 };
 
 
@@ -1686,3 +1669,6 @@ class GeomAPI_ProjectPointOnSurf {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

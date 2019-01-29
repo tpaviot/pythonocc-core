@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,20 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTSTARTDOCSTRING
-"This package provides generic algorithms to
-find specific points (points on boundaries
-and points inside a surface) used as starting
-points for marching algorithms.
-
--Level: Internal
-
-All the methods of the classes of this package are Internal.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=INTSTARTDOCSTRING) IntStart
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -48,6 +39,10 @@ All the methods of the classes of this package are Internal.
 
 %include IntStart_headers.i
 
+/* templates */
+/* end templates declaration */
+
+
 /* typedefs */
 /* end typedefs declaration */
 
@@ -57,7 +52,7 @@ All the methods of the classes of this package are Internal.
 %wrap_handle(IntStart_SITopolTool)
 
 %nodefaultctor IntStart_SITopolTool;
-class IntStart_SITopolTool : public MMgt_TShared {
+class IntStart_SITopolTool : public Standard_Transient {
 	public:
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "	:param P:
@@ -77,3 +72,6 @@ class IntStart_SITopolTool : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */
