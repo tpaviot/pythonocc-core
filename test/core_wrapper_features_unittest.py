@@ -31,6 +31,7 @@ from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
 from OCC.Core.GC import GC_MakeSegment
+from OCC.Core.StepShape import *
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.Core.GCE2d import GCE2d_MakeSegment
@@ -521,6 +522,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(isinstance(curve, Geom_Curve))
         # The edge is internally a line, so we should be able to downcast it
         line = Geom_Line.DownCast(curve)
+        print(line)
         self.assertTrue(isinstance(line, Geom_Curve))
         # Hence, it should not be possible to downcast it as a B-Spline curve
         bspline = Geom_BSplineCurve.DownCast(curve)
