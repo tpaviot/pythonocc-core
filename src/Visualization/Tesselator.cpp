@@ -52,10 +52,6 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
                        Standard_Real                    aScaleV,
                        Standard_Real                    aRotationAngle) :
   //set local variables
-  myShape(aShape),
-  myTxtMapType(aTxtMapType),
-  myAutoScaleSizeOnU(anAutoScaleSizeOnU),
-  myAutoScaleSizeOnV(anAutoScaleSizeOnV),
   myDeviation(aDeviation),
   myUOrigin(aUOrigin),
   myVOrigin(aVOrigin),
@@ -63,6 +59,10 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
   myVRepeat(aVRepeat),
   myScaleU(aScaleU),
   myScaleV(aScaleV),
+  myAutoScaleSizeOnU(anAutoScaleSizeOnU),
+  myAutoScaleSizeOnV(anAutoScaleSizeOnV),
+  myTxtMapType(aTxtMapType),
+  myShape(aShape),
   myRotationAngle(aRotationAngle)
 {
   //prepare bbox tex coords
@@ -361,7 +361,7 @@ void Tesselator::ComputeDefaultDeviation()
     Standard_Real yDim = std::abs((long)aYmax - (long)aYmin);
     Standard_Real zDim = std::abs((long)aZmax - (long)aZmin);
 
-    Standard_Real adeviation = std::max(xDim, std::max(yDim, zDim)) * 2e-2 ;
+    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
     myDeviation = adeviation;
 }
 
@@ -446,7 +446,7 @@ std::string formatFloatNumber(float f)
 {
   // returns string representation of the float number f.
   // set epsilon to 1e-3
-  float epsilon = 1e-3f;
+  float epsilon = 1e-3;
   std::stringstream formatted_float;
   if (std::abs(f) < epsilon) {
     f = 0.;
