@@ -475,7 +475,7 @@ class TestWrapperFeatures(unittest.TestCase):
         d = gp_Dir(0, 0, 1)
         # testing exception segfaults on osx travis
         # TODO : check why
-        if not os.getenv('TRAVIS_OS_NAME') == "darwin":
+        if not os.getenv('TRAVIS_OS_NAME') == "osx":
             with self.assertRaises(RuntimeError):
                 d.Coord(-1)  # Standard_OutOfRange
 
