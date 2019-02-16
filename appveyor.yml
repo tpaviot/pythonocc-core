@@ -3,13 +3,13 @@ version: pythonocc-core-0.18.2-dev.{build}
 environment:
   binstar_token:
     # below the secure to upload to anaconda cloud
-    # take the travis-ci token generated from the command line
+    # take the anaconda token generated from the command line
     # anaconda auth -n the_token_name --max-age 22896000 -c --scopes api
     # and copy paste to
     # https://ci.appveyor.com/tools/encrypt
     # then copy/paste the result below
-    secure: yaM9tAVoGSlLnqMDUz996EX5y8Z7eb5Jz+DHKyk0SHfp3kD4YZqHFn7VOrhehJIS
-  
+    secure: +BLEI1wg9klPN7BVAY1thK7n1x1/L10dWtgKzOmGCI4mg4V77hes9yj3kjZ168xf
+
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
