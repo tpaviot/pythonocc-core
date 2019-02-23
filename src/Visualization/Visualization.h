@@ -65,8 +65,8 @@ public:
                                              int    StereoMode,
                                              int AnaglyphFilter,
                                              Standard_Boolean        ToReverseStereo);
-  Standard_EXPORT void SetVBBO();
-  Standard_EXPORT void UnsetVBBO();
+  Standard_EXPORT void EnableVBO();
+  Standard_EXPORT void DisableVBO();
   Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};

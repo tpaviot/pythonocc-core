@@ -109,9 +109,9 @@ class Display3d {
                                int  AnaglyphFilter,
                                bool ToReverseStere);
     %feature("autodoc", "1");
-    void SetVBBO();
+    void EnableVBO();
     %feature("autodoc", "1");
-    void UnsetVBBO();                               
+    void DisableVBO();
     %feature("autodoc", "1");
     Handle_V3d_View& GetView();
     %feature("autodoc", "1");

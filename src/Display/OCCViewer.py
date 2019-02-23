@@ -116,8 +116,9 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
 
 
 class Viewer3d(Display3d):
-    def __init__(self, window_handle):
+    def __init__(self, window_handle, parent=None):
         Display3d.__init__(self)
+        self._parent = parent  # the parent opengl GUI container
         self._window_handle = window_handle
         self._inited = False
         self._local_context_opened = False
@@ -125,7 +126,6 @@ class Viewer3d(Display3d):
         self.Viewer = None
         self.View = None
         self.OverLayer = None
-        self.selected_shape = None
         self.default_drawer = None
         self._struc_mgr = None
         self._is_offscreen = None
@@ -133,6 +133,9 @@ class Viewer3d(Display3d):
         self.selected_shapes = []
         self._select_callbacks = []
         self._overlay_items = []
+
+    def get_parent(self):
+        return self._parent
 
     def register_overlay_item(self, overlay_item):
         self._overlay_items.append(overlay_item)
@@ -345,15 +348,25 @@ class Viewer3d(Display3d):
     def display_graduated_trihedron(self):
         self.View.GraduatedTrihedronDisplay()
 
-    def display_trihedron(self):
-        """ Show a black trihedron in lower right corner
+    def display_triedron(self):
+        """ Show a black triedron in lower right corner
         """
         self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_NOC_BLACK, 0.1, V3d_ZBUFFER)
 
-    def set_bg_gradient_color(self, R1, G1, B1, R2, G2, B2):
+    def hide_triedron(self):
+        """ Show a black triedron in lower right corner
+        """
+        self.View.TriedronErase()
+
+    def set_bg_gradient_color(self, background_gradient_colors):
         """ set a bg vertical gradient color.
         R, G and B are floats.
+        color1 is [R1, G1, B1], each being bytes
+        color2 is [R2, G2, B2], each being bytes
         """
+        color1, color2 = background_gradient_colors
+        R1, G1, B1 = color1
+        R2, G2, B2 = color2
         aColor1 = rgb_color(float(R1)/255., float(G1)/255., float(B1)/255.)
         aColor2 = rgb_color(float(R2)/255., float(G2)/255., float(B2)/255.)
         self.View.SetBgGradientColors(aColor1, aColor2, 2, True)
@@ -652,7 +665,7 @@ class OffscreenRenderer(Viewer3d):
         self.SetSize(screen_size[0], screen_size[1])
         self.SetModeShaded()
         self.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
-        self.display_trihedron()
+        self.display_triedron()
         self.capture_number = 0
 
     def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=True):
