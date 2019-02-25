@@ -36,7 +36,8 @@ def check_callable(_callable):
 def init_display(backend_str=None,
                  size=(1024, 768),
                  display_triedron=True,
-                 background_gradient_colors =[[206, 215, 222], [128, 128, 128]]):
+                 background_gradient_color1=[206, 215, 222],
+                 background_gradient_color2=[128, 128, 128]):
     """ This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
     If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
     ignored and an offscreen renderer is returned.
@@ -201,9 +202,9 @@ def init_display(backend_str=None,
     if display_triedron:
         display.display_triedron()
 
-    if background_gradient_colors:
+    if background_gradient_color1 and background_gradient_color2:
     # background gradient
-        display.set_bg_gradient_color(background_gradient_colors)
+        display.set_bg_gradient_color(background_gradient_color1, background_gradient_color2)
 
     return display, start_display, add_menu, add_function_to_menu
 
