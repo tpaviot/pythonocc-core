@@ -30,7 +30,7 @@ def require_pythonocc_version(required_version):
     elif len(spl) == 2:
         major, minor = spl
         patch = 0
-    
+
     if ((int(major) > PYTHONOCC_VERSION_MAJOR) or
        (int(major) == PYTHONOCC_VERSION_MAJOR and int(minor) > PYTHONOCC_VERSION_MINOR) or
        (int(major) == PYTHONOCC_VERSION_MAJOR and int(minor) == PYTHONOCC_VERSION_MINOR and
