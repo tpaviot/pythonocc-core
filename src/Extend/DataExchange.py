@@ -216,9 +216,9 @@ def read_step_file_with_names_colors(filename):
             #print("    all ass locs   :", locs)
 
             loc = TopLoc_Location()
-            for i in range(len(locs)):
-                #print("    take loc       :", locs[i])
-                loc = loc.Multiplied(locs[i])
+            for l in locs:
+                #print("    take loc       :", l)
+                loc = loc.Multiplied(l)
 
             #trans = loc.Transformation()
             #print("    FINAL loc    :")

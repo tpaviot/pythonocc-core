@@ -74,6 +74,7 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
     locVertexcoord = NULL;
     locNormalcoord = NULL;
     locTexcoord    = NULL;
+    loc_tri_indexes = NULL;
     ComputeDefaultDeviation();
 }
 
@@ -95,6 +96,7 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
     locVertexcoord = NULL;
     locNormalcoord = NULL;
     locTexcoord    = NULL;
+    loc_tri_indexes = NULL;
     ComputeDefaultDeviation();
 }
 
