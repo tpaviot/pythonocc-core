@@ -4,7 +4,7 @@ PYTHONOCC_VERSION_MAJOR = 0
 PYTHONOCC_VERSION_MINOR = 18
 PYTHONOCC_VERSION_PATCH = 2
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-PYTHONOCC_VERSION_DEVEL = '-dev'
+PYTHONOCC_VERSION_DEVEL = ''
 
 VERSION = "%s.%s.%s%s" % (PYTHONOCC_VERSION_MAJOR, PYTHONOCC_VERSION_MINOR,
                           PYTHONOCC_VERSION_PATCH, PYTHONOCC_VERSION_DEVEL)
@@ -64,4 +64,3 @@ def test_require_pythonocc_version():
 
 if __name__ == "__main__":
     test_require_pythonocc_version()
-
