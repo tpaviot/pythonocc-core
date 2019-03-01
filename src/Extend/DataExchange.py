@@ -262,9 +262,9 @@ def read_step_file_with_names_colors(filename):
             if not shape_disp in output_shapes:
                 output_shapes[shape_disp] = [_get_label_name(lab), c]
             for i in range(l_subss.Length()):
-                lab = l_subss.Value(i+1)
+                lab_subs = l_subss.Value(i+1)
                 #print("\n########  simpleshape subshape label :", lab)
-                shape_sub = shape_tool.GetShape(lab)
+                shape_sub = shape_tool.GetShape(lab_subs)
 
                 c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
                 colorSet = False
@@ -278,9 +278,9 @@ def read_step_file_with_names_colors(filename):
                     #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
                 if not colorSet:
-                    if (color_tool.GetColor(lab, 0, c) or
-                            color_tool.GetColor(lab, 1, c) or
-                            color_tool.GetColor(lab, 2, c)):
+                    if (color_tool.GetColor(lab_subs, 0, c) or
+                            color_tool.GetColor(lab_subs, 1, c) or
+                            color_tool.GetColor(lab_subs, 2, c)):
                         for i in (0, 1, 2):
                             color_tool.SetInstanceColor(shape, i, c)
 
@@ -289,7 +289,7 @@ def read_step_file_with_names_colors(filename):
                 shape_to_disp = BRepBuilderAPI_Transform(shape_sub, loc.Transformation()).Shape()
                 # position the subshape to display
                 if not shape_to_disp in output_shapes:
-                    output_shapes[shape_to_disp] = [_get_label_name(lab), c]
+                    output_shapes[shape_to_disp] = [_get_label_name(lab_subs), c]
 
 
     def _get_shapes():
