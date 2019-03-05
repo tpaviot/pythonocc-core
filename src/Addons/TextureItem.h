@@ -22,7 +22,6 @@
 
 #include <Quantity_Color.hxx>
 #include <Visual3d_Layer.hxx>
-#include <V3d_View.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Image_AlienPixMap.hxx>
 #include <Aspect_Window.hxx>
@@ -35,7 +34,6 @@ class TextureItem : public Visual3d_LayerItem
 public:
   // constructor
   TextureItem (const TCollection_AsciiString& theImageFilename,
-               V3d_View* theView,
                const Handle(Visual3d_Layer)& theLayer);
 
   // Destructor.
@@ -45,22 +43,18 @@ public:
   void RedrawLayerPrs();
 
   //! Sets texture position in the view port.
-  //void SetPredefinedPosition (const Aspect_TypeOfConstraint thePos) { myPos = (int)thePos; }
-  void SetAbsolutePosition(int x_abs, int y_abs) {x=x_abs;y=y_abs;TypeOfPosition=0;}
-  void SetRelativePosition(int x_percent, int y_percent) {x=x_percent;y=y_percent;TypeOfPosition=1;}
-  Aspect_TypeOfConstraint myPos;
-  V3d_View* myView;
+  void SetPosition(int x_abs, int y_abs) {x=x_abs;y=y_abs;}
 
 private:
     //! Allocates and initializes the texture.
     void Init (unsigned char* theData);
+    Aspect_TypeOfConstraint myPos;
     unsigned int    myTextureId;
     Handle(Visual3d_Layer)   myLayer;
     int             myH;
     int             myW;
     int             x;
     int             y;
-    int             TypeOfPosition; // 0 is absolute, 1 is relative, 2 is predefined
 };
 
 #endif
