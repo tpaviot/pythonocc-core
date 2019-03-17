@@ -507,6 +507,8 @@ class ThreejsRenderer(object):
             shape_string_list.append('color:%s,' % color_to_hex(color))
             shape_string_list.append('specular:%s,' % color_to_hex(specular_color))
             shape_string_list.append('shininess:%g,' % shininess)
+            # force double side rendering, see issue #645
+            shape_string_list.append('side: THREE.DoubleSide,')
             if transparency > 0.:
                 shape_string_list.append('transparent: true, premultipliedAlpha: true, opacity:%g,' % transparency)
             #var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});
