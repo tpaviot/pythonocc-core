@@ -142,7 +142,6 @@ class wxViewer3d(wxBaseViewer):
     def InitDriver(self):
         self._display = OCCViewer.Viewer3d(self.GetWinId())
         self._display.Create()
-        self._display.display_trihedron()
         self._display.SetModeShaded()
         self._inited = True
 
