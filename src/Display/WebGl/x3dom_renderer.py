@@ -52,7 +52,7 @@ HEADER = """
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
-    <script type="text/javascript" src="https://x3dom.org/release/x3dom-full.js"></script>
+    <script type="text/javascript" src="https://x3dom.org/release/x3dom.js"></script>
     <style type="text/css">
         body {
             background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
@@ -112,6 +112,9 @@ BODY = """
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
+    <b>r</b> reset view<br>
+    <b>a</b> show all<br>
+    <b>u</b> upright<br>
     </div>
     <script>
     var selected_target_color = null;
@@ -210,11 +213,13 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, x3d_shapes):
+    def __init__(self, x3d_shapes, axes_plane, axes_plane_zoom_factor=1.):
         """ x3d_shapes is a list that contains uid for each shape
         """
         self._x3d_shapes = x3d_shapes
         self.spinning_cursor = spinning_cursor()
+        self._display_axes_plane = axes_plane
+        self._axis_plane_zoom_factor = axes_plane_zoom_factor
 
     def get_str(self):
         # get the location where pythonocc is running from
@@ -222,6 +227,18 @@ class HTMLBody(object):
         x3dcontent = '\n\t<x3d id="pythonocc-x3d-scene" style="width:100%;border: none" >\n\t\t<Scene>\n'
         nb_shape = len(self._x3d_shapes)
         cur_shp = 1
+        if self._display_axes_plane:
+            x3dcontent += """
+            <transform scale="%g,%g,%g">
+            <transform id="plane_smallaxe_Id" rotation="1 0 0 -1.57079632679">
+                <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/plane.x3d" mapDEFToID="true" namespaceName="plane"></inline>
+                <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axesSmall.x3d" mapDEFToID="true" namespaceName="axesSmall"></inline>
+            </transform>
+            <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axes.x3d" mapDEFToID="true" namespaceName="axes"></inline>
+            </transform>
+            """ % (self._axis_plane_zoom_factor, self._axis_plane_zoom_factor, self._axis_plane_zoom_factor)
+            # global rotateso that z is aligne properly
+        x3dcontent += '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
         for shp_uid in self._x3d_shapes:
             sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor),
                                                               int(cur_shp / nb_shape * 100)))
@@ -232,6 +249,7 @@ class HTMLBody(object):
             # ori_vx, ori_vy, ori_vz, angle = ori
             x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n' % shp_uid
             cur_shp += 1
+        x3dcontent += '</transform>'
         x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
         body_str = body_str.replace('@X3DSCENE@', x3dcontent)
         return body_str
@@ -332,7 +350,7 @@ class X3DExporter(object):
 
 
 class X3DomRenderer(object):
-    def __init__(self, path=None):
+    def __init__(self, path=None, display_axes_plane=True, axes_plane_zoom_factor=1.):
         if not path:  # by default, write to a temp directory
             self._path = tempfile.mkdtemp()
         else:
@@ -340,7 +358,11 @@ class X3DomRenderer(object):
         self._html_filename = os.path.join(self._path, 'index.html')
         self._x3d_shapes = {}
         self._x3d_edges = {}
-        print("## x3dom webgl renderer")
+        self._axes_plane = display_axes_plane  # display the small RVB axes and the plane
+        self._axes_plane_zoom_factor = axes_plane_zoom_factor
+
+        print("## x3dom webgl renderer - render axes/planes : %r - axes/plane zoom factor : %g" % (self._axes_plane,
+                                                                                                  self._axes_plane_zoom_factor))
 
     def DisplayShape(self,
                      shape,
@@ -407,12 +429,13 @@ class X3DomRenderer(object):
         """ Call the render() method to display the X3D scene.
         """
         # first generate the HTML root file
-        self.GenerateHTMLFile()
+        self.GenerateHTMLFile(self._axes_plane, self._axes_plane_zoom_factor)
         # then create a simple web server
         start_server(server_port, self._path, open_webbrowser)
 
-    def GenerateHTMLFile(self):
+    def GenerateHTMLFile(self, axes_plane, axes_plane_zoom_factor):
         """ Generate the HTML file to be rendered wy the web browser
+        axes_plane: a boolean, telles wether or not display axes
         """
         with open(self._html_filename, "w") as fp:
             fp.write("<!DOCTYPE HTML>")
@@ -422,7 +445,7 @@ class X3DomRenderer(object):
             # body
             # merge shapes and edges keys
             all_shapes = list(self._x3d_shapes) + list(self._x3d_edges)
-            fp.write(HTMLBody(all_shapes).get_str())
+            fp.write(HTMLBody(all_shapes, axes_plane, axes_plane_zoom_factor).get_str())
             fp.write("</html>\n")
 
 
