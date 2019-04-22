@@ -413,3 +413,80 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor BRepClass_FaceClassifier;
+class BRepClass_FaceClassifier : public BRepClass_FClassifier {
+	public:
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "	* Empty constructor, undefined algorithm.
+
+	:rtype: None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier ();
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "	* Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
+
+	:param F:
+	:type F: BRepClass_FaceExplorer &
+	:param P:
+	:type P: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier (BRepClass_FaceExplorer & F,const gp_Pnt2d & P,const Standard_Real Tol);
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "	* Creates an algorithm to classify the Point P with Tolerance <T> on the face <F>.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier (const TopoDS_Face & F,const gp_Pnt2d & P,const Standard_Real Tol);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Classify the Point P with Tolerance <T> on the face described by <F>.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
+		void Perform (const TopoDS_Face & F,const gp_Pnt2d & P,const Standard_Real Tol);
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "	* Creates an algorithm to classify the Point P with Tolerance <T> on the face <F>.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier (const TopoDS_Face & F,const gp_Pnt & P,const Standard_Real Tol);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Classify the Point P with Tolerance <T> on the face described by <F>.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
+		void Perform (const TopoDS_Face & F,const gp_Pnt & P,const Standard_Real Tol);
+};
+
+
+%extend BRepClass_FaceClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
