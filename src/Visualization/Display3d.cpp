@@ -19,6 +19,11 @@
 
 #include "Visualization.h"
 
+static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()
+{
+  static Handle(OpenGl_GraphicDriver) aGraphicDriver;
+  return aGraphicDriver;
+}
 
 Display3d::Display3d()
   : myIsOffscreen(false)
@@ -42,12 +47,6 @@ Display3d::Display3d()
 
 Display3d::~Display3d()
 {
-}
-
-static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()
-{
-  static Handle(OpenGl_GraphicDriver) aGraphicDriver;
-  return aGraphicDriver;
 }
 
 //=========================================================
