@@ -17,15 +17,21 @@
 
 from __future__ import print_function, absolute_import
 
-import sys
 import enum
-import uuid
-import operator
 from functools import reduce
+import itertools
+import math
+import operator
+import uuid
+import sys
 
 # pythreejs
 try:
-    from pythreejs import *
+    from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry, Plane, Mesh,
+                           LineSegmentsGeometry, LineMaterial, LineSegments2, AmbientLight,
+                           DirectionalLight, Scene, OrbitControls, Renderer, PerspectiveCamera,
+                           Picker, Group, GridHelper, LineSegments,
+                           ShaderMaterial, ShaderLib, MeshPhongMaterial, LineBasicMaterial)
     from IPython.display import display
     from ipywidgets import HTML, HBox
     import numpy as np
@@ -37,12 +43,13 @@ $ conda install -c conda-forge pythreejs"""
     sys.exit(0)
 
 from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.Visualization import Tesselator
 
-from OCC.Extend.TopologyUtils import TopologyExplorer, is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
+                                      discretize_wire, get_type_as_string)
 
-# smesh
 try:
     from OCC.Core.SMESH import SMESH_Mesh
     HAVE_SMESH = True
@@ -58,54 +65,204 @@ def format_color(r, g, b):
 default_shape_color = format_color(166, 166, 166)
 default_mesh_color = 'white'
 default_edge_color = format_color(0, 0, 0)
-default_selection_material = MeshPhongMaterial(color='orange',
-                                               polygonOffset=True,
-                                               polygonOffsetFactor=1,
-                                               polygonOffsetUnits=1,
-                                               shininess=0.9,
-                                               side='DoubleSide')
 
-class bounding_box(object):
-    """ Representation of the bounding box of the TopoDS_Shape `shape`
-    Constructor Parameters
-    ----------
-    shape : TopoDS_Shape or a subclass such as TopoDS_Face
-        the shape to compute the bounding box from
-    tol: float
-        tolerance of the computed boundingbox
-    """
+def distance(v1, v2):
+    return np.linalg.norm([x - y for x, y in zip(v1, v2)])
 
-    def __init__(self, shape_or_values, tol=1.e-5):
-        if isinstance(shape_or_values, tuple):
-            self.values = shape_or_values
+
+class Helpers(object):
+
+    def __init__(self, bb_center):
+        self.bb_center = bb_center
+        self.center = (0, 0, 0)
+
+    def _center(self, zero=True):
+        return self.center if zero else self.bb_center
+
+    def set_position(self, position):
+        raise NotImplementedError()
+
+    def set_visibility(self, change):
+        raise NotImplementedError()
+
+    def set_center(self, change):
+        self.set_position(self._center(change))
+
+
+class Grid(Helpers):
+
+    def __init__(self, bb_center=None, maximum=5, ticks=10, colorCenterLine='#aaa', colorGrid='#ddd'):
+        super().__init__(bb_center)
+        self.maximum = maximum
+        axis_start, axis_end, nice_tick = self.nice_bounds(-maximum, maximum, 2 * ticks)
+        self.step = nice_tick
+        self.size = axis_end - axis_start
+        self.grid = GridHelper(
+            self.size, int(self.size / self.step), colorCenterLine=colorCenterLine, colorGrid=colorGrid)
+        self.set_center(True)
+
+    # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
+    def _nice_number(self, value, round_=False):
+        exponent = math.floor(math.log(value, 10))
+        fraction = value / 10**exponent
+
+        if round_:
+            if fraction < 1.5:
+                nice_fraction = 1.
+            elif fraction < 3.:
+                nice_fraction = 2.
+            elif fraction < 7.:
+                nice_fraction = 5.
+            else:
+                nice_fraction = 10.
         else:
-            bbox = Bnd_Box()
-            bbox.SetGap(tol)
-            brepbndlib_Add(shape_or_values, bbox, True)  # use the shape triangulation
-            self.values = bbox.Get()
+            if fraction <= 1:
+                nice_fraction = 1.
+            elif fraction <= 2:
+                nice_fraction = 2.
+            elif fraction <= 5:
+                nice_fraction = 5.
+            else:
+                nice_fraction = 10.
 
-    def __getattr__(self, k):
-        attrs_0 = "x_min", "y_min", "z_min", "x_max", "y_max", "z_max"
-        if k in attrs_0:
-            return self.values[attrs_0.index(k)]
+        return nice_fraction * 10**exponent
 
-        idx = "xyz".index(k.split('_')[0])
+    def nice_bounds(self, axis_start, axis_end, num_ticks=10):
+        axis_width = axis_end - axis_start
+        if axis_width == 0:
+            nice_tick = 0
+        else:
+            nice_range = self._nice_number(axis_width)
+            nice_tick = self._nice_number(nice_range / (num_ticks - 1), round_=True)
+            axis_start = math.floor(axis_start / nice_tick) * nice_tick
+            axis_end = math.ceil(axis_end / nice_tick) * nice_tick
 
-        attrs_1 = "x_size", "y_size", "z_size"
-        if k in attrs_1:
-            return self.values[idx + 3] - self.values[idx]
+        return axis_start, axis_end, nice_tick
 
-        attrs_2 = "x_center", "y_center", "z_center"
-        if k in attrs_2:
-            return (self.values[idx] + self.values[idx + 3]) / 2.
+    def set_position(self, position):
+        self.grid.position = position
 
-        raise AttributeError("bounding_box has no attribute " + k)
+    def set_visibility(self, change):
+        self.grid.visible = change
 
-    def __add__(self, other):
-        a, b = self.values, other.values
-        mi = tuple(map(min, a[0:3], b[0:3]))
-        ma = tuple(map(max, a[3:6], b[3:6]))
-        return bounding_box(mi + ma)
+    def set_rotation(self, rotation):
+        self.grid.rotation = rotation
+
+
+class Axes(Helpers):
+    """ X, Y and Z axis
+    X is red
+    Y is green
+    Z is blue
+    """
+    def __init__(self, bb_center, length=1, width=3):
+        super().__init__(bb_center)
+
+        self.axes = []
+        for vector, color in zip(([length, 0, 0], [0, length, 0], [0, 0, length]), ('red', 'green', 'blue')):
+            self.axes.append(
+                LineSegments2(
+                    LineSegmentsGeometry(positions=[[self.center, self._shift(self.center, vector)]]),
+                    LineMaterial(linewidth=width, color=color)))
+
+    def _shift(self, v, offset):
+        return [x + o for x, o in zip(v, offset)]
+
+    def set_position(self, position):
+        for i in range(3):
+            self.axes[i].position = position
+
+    def set_visibility(self, change):
+        for i in range(3):
+            self.axes[i].visible = change
+
+
+class CustomMaterial(ShaderMaterial):
+
+    def __init__(self, typ):
+        self.types = {'diffuse': 'c', 'uvTransform': 'm3', 'normalScale': 'v2', 'fogColor': 'c', 'emissive': 'c'}
+
+        shader = ShaderLib[typ]
+
+        fragmentShader = """
+        uniform float alpha;
+        """
+        frag_from = "gl_FragColor = vec4( outgoingLight, diffuseColor.a );"
+        frag_to = """
+            if ( gl_FrontFacing ) {
+                gl_FragColor = vec4( outgoingLight, alpha * diffuseColor.a );
+            } else {
+                gl_FragColor = vec4( diffuseColor.r, diffuseColor.g, diffuseColor.b, alpha * diffuseColor.a );
+            }"""
+        fragmentShader += shader["fragmentShader"].replace(frag_from, frag_to)
+
+        vertexShader = shader["vertexShader"]
+        uniforms = shader["uniforms"]
+        uniforms["alpha"] = dict(value=0.7)
+
+        super().__init__(uniforms=uniforms, vertexShader=vertexShader, fragmentShader=fragmentShader)
+        self.lights = True
+
+    @property
+    def color(self):
+        return self.uniforms["diffuse"]["value"]
+
+    @color.setter
+    def color(self, value):
+        self.update("diffuse", value)
+
+    @property
+    def alpha(self):
+        return self.uniforms["alpha"]["value"]
+
+    @alpha.setter
+    def alpha(self, value):
+        self.update("alpha", value)
+
+    def update(self, key, value):
+        uniforms = dict(**self.uniforms)
+        if self.types.get(key) is None:
+            uniforms[key] = {'value': value}
+        else:
+            uniforms[key] = {'type': self.types.get(key), 'value': value}
+        self.uniforms = uniforms
+        self.needsUpdate = True
+
+
+class BoundingBox(object):
+    def __init__(self, objects, tol=1e-5):
+        self.tol = tol
+        
+        bbox = reduce(self._opt, [self.bbox(obj) for obj in objects])
+        self.xmin, self.xmax, self.ymin, self.ymax, self.zmin, self.zmax = bbox
+        self.xsize = self.xmax - self.xmin
+        self.ysize = self.ymax - self.ymin
+        self.zsize = self.zmax - self.zmin
+        self.center = (self.xmin + self.xsize / 2.0, self.ymin + self.ysize / 2.0, self.zmin + self.zsize / 2.0)
+        self.max = reduce(lambda a, b: max(abs(a), abs(b)), bbox)
+        self.diagonal = max([
+            distance(self.center, v)
+            for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
+        ])
+
+    def _opt(self, b1, b2):
+        return (min(b1[0], b2[0]), max(b1[1], b2[1]), min(b1[2], b2[2]), max(b1[3], b2[3]), min(b1[4], b2[4]),
+                max(b1[5], b2[5]))
+
+    def _bounding_box(self, obj, tol=1e-5):
+        bbox = Bnd_Box()
+        bbox.SetGap(self.tol)
+        brepbndlib_Add(obj, bbox, True)
+        values = bbox.Get()
+        return (values[0], values[3], values[1], values[4], values[2], values[5])
+
+    def bbox(self, objects):
+        bb = reduce(self._opt, [self._bounding_box(obj) for obj in objects])
+        return bb
+
+    def __repr__(self):
+        return "[x(%f .. %f), y(%f .. %f), z(%f .. %f)]" % \
+               (self.xmin, self.xmax, self.ymin, self.ymax, self.zmin, self.zmax)
 
 
 class NORMAL(enum.Enum):
@@ -114,7 +271,10 @@ class NORMAL(enum.Enum):
 
 
 class JupyterRenderer(object):
-    def __init__(self, size=(480, 480), compute_normals_mode=NORMAL.SERVER_SIDE, parallel=False):
+    def __init__(self,
+                 size=(640, 480),
+                 compute_normals_mode=NORMAL.SERVER_SIDE,
+                 parallel=False):
         """ Creates a jupyter renderer.
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
@@ -136,6 +296,9 @@ class JupyterRenderer(object):
         self._parallel = parallel
 
         self.html = HTML("Selected shape : None")
+
+        self._bb = None  # the bounding box, necessary to compute camera position
+
         # the default camera object
         self._camera_target = [0., 0., 0.]  # the point to look at
         self._camera_position = [0, 0., 100.]  # the camera initial position
@@ -151,7 +314,7 @@ class JupyterRenderer(object):
         # the group of 3d and 2d objects to render
         self._displayed_pickable_objects = Group()
 
-        # the group of other objects (grid, trihedron etc.) that can't e selected
+        # the group of other objects (grid, trihedron etc.) that can't be selected
         self._displayed_non_pickable_objects = Group()
 
         # event manager/selection manager
@@ -159,7 +322,8 @@ class JupyterRenderer(object):
 
         self._current_shape_selection = None
         self._current_mesh_selection = None
-        self._current_selection_material = None  # the color of the object currently being rendered
+        self._selection_color = format_color(232, 176, 36)
+
         self._select_callbacks = []  # a list of all functions called after an object is selected
 
 
@@ -168,29 +332,25 @@ class JupyterRenderer(object):
             """
             obj = value.owner.object
             if self._current_mesh_selection is not None:
-                self._current_mesh_selection.material = self._current_selection_material
+                self._current_mesh_selection.material.color = self._current_selection_material_color
             if obj is not None:
                 id_clicked = obj.name  # the mesh id clicked
                 self._current_mesh_selection = obj
-                self._current_selection_material = obj.material
-                obj.material = default_selection_material
+                self._current_selection_material_color = obj.material.color
+                obj.material.color = self._selection_color
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
-                self.html.value = "<b>Shape id:</b> %s<br><b>Topology hierearchy</b>" % (selected_shape)
+                html_value = "<b>Shape type:</b> %s<br>" % get_type_as_string(selected_shape)
+                html_value += "<b>Shape id:</b> %s<br>" % selected_shape
+                self.html.value = html_value
                 self._current_shape_selection = selected_shape
             else:
-                self.html.value = "<b>Shape id:</b> None"
+                self.html.value = "<b>Shape type:</b> None<br><b>Shape id:</b> None"
             # then execute calbacks
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
 
         self._picker.observe(click)
-
-        # key press and related events
-        #def key_pressed(widget):
-        #    print("key pressed")
-        #self._picker2 = Picker(event='keypress')
-        #self._picker.observe(key_pressed)
 
 
     def register_select_callback(self, callback):
@@ -211,44 +371,10 @@ class JupyterRenderer(object):
             self._select_callbacks.remove(callback)
 
 
-    def _update_camera(self):
-        all_shapes = list(self._shapes.values())
-        if all_shapes:
-            bb = reduce(operator.add, map(bounding_box, all_shapes))
-            self._camera_target = [bb.x_center, bb.y_center, bb.z_center]
-            self._camera_position = [0, bb.y_center - 2 * bb.y_size, bb.z_center + 2 * bb.z_center]
-        self._camera = PerspectiveCamera(position=self._camera_position,
-                                         lookAt=self._camera_target,
-                                         up=[0, 0, 1],
-                                         aspect=self._size[0] / self._size[1],
-                                         fov=50,
-                                         children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.9)])
-
-
     def GetSelectedShape(self):
         """ Returns the selected shape
         """
         return self._current_shape_selection
-
-
-    def DisplayGrid(self, sizex, sizey, nx, ny):
-        """ Displays a grid in the renderer.
-        sizex: float, grid size along x axis
-        sizey: float, grid size along y axis
-        nx: integer, number of segments along the x axis
-        ny: integer, number of segments along the y axis
-        """
-        surf_geo = SurfaceGeometry(z=[0] * (nx + 1) * (ny + 1),
-                                   width=sizex,
-                                   height=sizey,
-                                   width_segments=nx,
-                                   height_segments=ny)
-        surf_grid = SurfaceGrid(geometry=surf_geo,
-                                material=LineBasicMaterial(color='#000000',
-                                                           opacity=0.2,
-                                                           transparent=True))
-        self._displayed_non_pickable_objects.add(surf_grid)
-        return surf_geo
 
 
     def DisplayMesh(self,
@@ -457,15 +583,7 @@ class JupyterRenderer(object):
             shape_geometry.exec_three_obj_method('computeVertexNormals')
 
         # then a default material
-        shp_material = MeshPhongMaterial(color=shape_color,
-                                         polygonOffset=True,
-                                         polygonOffsetFactor=1,
-                                         polygonOffsetUnits=1,
-                                         shininess=0.9,
-                                         transparent=transparency,
-                                         opacity=opacity,
-                                         side='DoubleSide')
-
+        shp_material = self._material(shape_color, transparent=transparency, opacity=opacity)
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
 
@@ -497,6 +615,29 @@ class JupyterRenderer(object):
         if render_edges:
             self._displayed_non_pickable_objects.add(edge_lines)
 
+    def _scale(self, vec):
+        r = self._bb.diagonal * 2.5
+        n = np.linalg.norm(vec)
+        new_vec = [v / n * r for v in vec]
+        return self._add(new_vec, self._bb.center)
+
+    def _add(self, vec1, vec2):
+        return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
+
+    def _material(self, color, transparent=False, opacity=1.0):
+        material = CustomMaterial("standard")
+        material.color = color
+        material.clipping = True
+        material.side = "DoubleSide"
+        material.alpha = 0.7
+        material.polygonOffset = False
+        material.polygonOffsetFactor = 1
+        material.polygonOffsetUnits = 1
+        material.transparent = transparent
+        material.opacity = opacity
+        material.update("metalness", 0.3)
+        material.update("roughness", 0.8)
+        return material
 
     def EraseAll(self):
         self._shapes = {}
@@ -508,23 +649,72 @@ class JupyterRenderer(object):
 
 
     def Display(self):
-        self._update_camera()
+        # Get the overall bounding box
+        if self._shapes:
+            self._bb = BoundingBox([self._shapes.values()])
+        else:  # if nothing registered yet, create a fake bb
+            self._bb = BoundingBox([[BRepPrimAPI_MakeSphere(5.).Shape()]])
+        bb_max = self._bb.max
+        bb_diag = 2 * self._bb.diagonal
+
+        # Set up camera
+        camera_target = self._bb.center
+        camera_position = self._scale([1, 1, 1])
+
+
+        self._camera = CombinedCamera(position=camera_position,
+                                      width=self._size[0], height=self._size[1],
+                                      far=10 * bb_diag, orthoFar=10 * bb_diag)
+        self._camera.up = (0.0, 0.0, 1.0)
+        self._camera.lookAt(camera_target)
+        self._camera.mode = 'orthographic'
+        self._camera_target = camera_target
+        self._camera.position = camera_position
+
+        # Set up lights in every of the 8 corners of the global bounding box
+        key_lights = [
+            DirectionalLight(color='white', position=position, intensity=0.12)
+            for position in list(itertools.product((-bb_diag, bb_diag), (-bb_diag, bb_diag), (-bb_diag, bb_diag)))
+        ]
+        ambient_light = AmbientLight(intensity=1.0)
+
+        # Set up Helpers
+        self.axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
+        self.grid = Grid(bb_center=self._bb.center, maximum=bb_max, colorCenterLine='#aaa', colorGrid='#ddd')
+
+        # Set up scene
+        environment = self.axes.axes + key_lights + [ambient_light, self.grid.grid, self._camera]
+
         scene_shp = Scene(children=[self._displayed_pickable_objects,
-                                    self._displayed_non_pickable_objects,
-                                    self._camera,
-                                    AmbientLight(color='#101010')])
+                                    self._displayed_non_pickable_objects] + environment)
+
+        # Set up Controllers
+        self._controller = OrbitControls(controlling=self._camera, target=camera_target)
 
         self._renderer = Renderer(camera=self._camera,
                                   background=self._background,
                                   background_opacity=self._background_opacity,
                                   scene=scene_shp,
-                                  controls=[OrbitControls(controlling=self._camera, target=self._camera_target), self._picker],
+                                  controls=[self._controller, self._picker],
                                   width=self._size[0],
                                   height=self._size[1],
                                   antialias=True)
+
+        # needs to be done after setup of camera
+        self.grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
+        self.grid.set_position((0, 0, 0))
+
+        # Workaround: Zoom forth and back to update frame. Sometimes necessary :(
+        self._camera.zoom = 1.01
+        self._update()
+        self._camera.zoom = 1.0
+        self._update()
+
         # then display both 3d widgets and webui
         display(HBox([self._renderer, self.html]))
 
+    def _update(self):
+        self._controller.exec_three_obj_method('update')
 
     def __repr__(self):
         self.Display()
