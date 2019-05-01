@@ -115,14 +115,17 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
 
 
 class Viewer3d(Display3d):
-    def __init__(self, window_handle):
+    def __init__(self):
         Display3d.__init__(self)
-        self._window_handle = window_handle
+        
+        self.Context = self.GetContext()
+        self.Viewer = self.GetViewer()
+        self.View = self.GetView()
+        
+        self._window_handle = None
         self._inited = False
         self._local_context_opened = False
-        self.Context = None
-        self.Viewer = None
-        self.View = None
+        
         self.OverLayer = None
         self.selected_shape = None
         self.default_drawer = None
@@ -166,17 +169,11 @@ class Viewer3d(Display3d):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
-        if self._window_handle is None:
-            self.InitOffscreen(640, 480)
-            self._is_offscreen = True
-        else:
-            self.Init(self._window_handle)
-            self._is_offscreen = False
+    def Create(self, wid, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
+        self._window_handle = wid
+        self.Init(self._window_handle)
+        self._is_offscreen = False
 
-        self.Context = self.GetContext()
-        self.Viewer = self.GetViewer()
-        self.View = self.GetView()
         if create_default_lights:
             self.Viewer.SetDefaultLights()
             self.Viewer.SetLightOn()
