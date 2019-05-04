@@ -220,10 +220,11 @@ class Viewer3d(Display3d):
 
     def Repaint(self):
         # overlayed objects
-        self.OverLayer.Begin()
-        for item in self._overlay_items:
-            item.RedrawLayerPrs()
-        self.OverLayer.End()
+        if self.OverLayer:
+            self.OverLayer.Begin()
+            for item in self._overlay_items:
+                item.RedrawLayerPrs()
+            self.OverLayer.End()
         # finally redraw the view
         self.Viewer.Redraw()
 

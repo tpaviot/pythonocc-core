@@ -41,7 +41,7 @@ class qtBaseViewer(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super(qtBaseViewer,self).__init__(parent)
-        self._display = None
+        self._display = self._display = OCCViewer.Viewer3d()
         self._inited = False
 
         # enable Mouse Tracking
@@ -56,6 +56,10 @@ class qtBaseViewer(QtWidgets.QWidget):
         self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
         self.setAutoFillBackground(False)
+        
+    def paintEngine(self):
+        
+        return None
 
     def GetHandle(self):
         ''' returns an the identifier of the GUI widget.
@@ -122,10 +126,7 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
-        self._display = OCCViewer.Viewer3d(self.GetHandle())
-        self._display.Create()
-        # background gradient
-        self._display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
+        self._display.Create(self.GetHandle())
         # background gradient
         self._display.display_trihedron()
         self._display.SetModeShaded()
@@ -189,6 +190,8 @@ class qtViewer3d(qtBaseViewer):
             self._display.Context.UpdateCurrentViewer()
             # important to allow overpainting of the OCC OpenGL context in Qt
             # self.context().swapBuffers()
+        else:
+            self.InitDriver()
 
         if self._drawbox:
             painter = QtGui.QPainter(self)
