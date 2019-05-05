@@ -35,7 +35,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.ERROR)
 log = logging.getLogger(__name__)
 
 
-class qtBaseViewer(QtWidgets.QWidget):
+class qtBaseViewer(QtOpenGL.QGLWidget):
     ''' The base Qt Widget for an OCC viewer
     '''
 
@@ -111,7 +111,6 @@ class qtViewer3d(qtBaseViewer):
         self._rightisdown = False
         self._selection = None
         self._drawtext = True
-        self._qApp = QtWidgets.QApplication.instance() 
         self._key_map = {}
         self._current_cursor = "arrow"
         self._available_cursors = {}
@@ -119,11 +118,7 @@ class qtViewer3d(qtBaseViewer):
     @property
     def qApp(self):
         # reference to QApplication instance
-        return self._qApp
-
-    @qApp.setter
-    def qApp(self, value):
-        self._qApp = value
+        return QtWidgets.QApplication.instance() 
 
     def InitDriver(self):
         self._display.Create(self.GetHandle())
@@ -172,26 +167,12 @@ class qtViewer3d(qtBaseViewer):
             self._key_map[code]()
         else:
             log.info("key: %s \nnot mapped to any function", code)
-
-    def Test(self):
-        if self._inited:
-            self._display.Test()
-
-    def focusInEvent(self, event):
-        if self._inited:
-            self._display.Repaint()
-
-    def focusOutEvent(self, event):
-        if self._inited:
-            self._display.Repaint()
-
+        
     def paintEvent(self, event):
-        if self._inited:
-            self._display.Context.UpdateCurrentViewer()
-            # important to allow overpainting of the OCC OpenGL context in Qt
-            # self.context().swapBuffers()
-        else:
+        if not self._inited:
             self.InitDriver()
+            
+        self._display.Context.UpdateCurrentViewer()
 
         if self._drawbox:
             painter = QtGui.QPainter(self)
