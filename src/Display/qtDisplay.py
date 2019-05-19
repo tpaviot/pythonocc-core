@@ -31,7 +31,6 @@ QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 # on PySide
 HAVE_PYQT_SIGNAL = hasattr(QtCore, 'pyqtSignal')
 
-logging.basicConfig(stream=sys.stdout, level=logging.ERROR)
 log = logging.getLogger(__name__)
 
 
