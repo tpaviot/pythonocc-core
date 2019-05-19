@@ -453,18 +453,19 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     """
     brt = BRep_Tool()
     s = shape.ShapeType()
+    str_topology = ""
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
+        str_topology += ".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z())
     else:
-        print(".." * level, end="")
-        print(shape)
+        str_topology += ".." * level
+        str += str(shape)
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
         shp = it.Value()
         it.Next()
-        dump_topology_to_string(shp, level + 1, buffer)
-
+        str_topology += dump_topology_to_string(shp, level + 1, buffer)
+    return str_topology
 #
 # Edge and wire discretizers
 #
@@ -544,3 +545,12 @@ def is_compound(topods_shape):
 
 def is_compsolid(topods_shape):
     return topods_shape.ShapeType() == TopAbs_COMPSOLID
+
+
+def get_type_as_string(topods_shape):
+    """ just get the type string, remove TopAbs_ and lowercas all ending letters
+    """
+    types = {TopAbs_VERTEX: "Vertex", TopAbs_COMPSOLID: "CompSolid", TopAbs_FACE: "Face",
+             TopAbs_WIRE: "Wire", TopAbs_EDGE: "Edge", TopAbs_COMPOUND: "Compound",
+             TopAbs_COMPSOLID: "CompSolid", TopAbs_SOLID: "Solid"}
+    return types[topods_shape.ShapeType()]

@@ -29,10 +29,15 @@ log = logging.getLogger(__name__)
 
 
 def check_callable(_callable):
-    assert callable(_callable), 'the function supplied is not callable'
+    if not callable(_callable):
+        raise AssertionError("The function supplied is not callable")
 
 
-def init_display(backend_str=None, size=(1024, 768)):
+def init_display(backend_str=None,
+                 size=(1024, 768),
+                 display_triedron=True,
+                 background_gradient_color1=[206, 215, 222],
+                 background_gradient_color2=[128, 128, 128]):
     """ This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
     If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
     ignored and an offscreen renderer is returned.
@@ -41,7 +46,7 @@ def init_display(backend_str=None, size=(1024, 768)):
     * start_display : a function (the GUI mainloop) ;
     * add_menu : a function that creates a menu in the GUI
     * add_function_to_menu : adds a menu option
-    
+
     In case an offscreen renderer is returned, start_display and add_menu are ignored, i.e.
     an empty function is returned (named do_nothing). add_function_to_menu just execute the
     function taken as a paramter.
@@ -110,11 +115,6 @@ def init_display(backend_str=None, size=(1024, 768)):
         win.canva.InitDriver()
         app.SetTopWindow(win)
         display = win.canva._display
-        # background gradient
-        display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
-        # display black trihedron
-        display.display_trihedron()
-
 
         def add_menu(*args, **kwargs):
             win.add_menu(*args, **kwargs)
@@ -188,10 +188,6 @@ def init_display(backend_str=None, size=(1024, 768)):
         win.canva.InitDriver()
         win.canva.qApp = app
         display = win.canva._display
-        # background gradient
-        display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
-        # display black trihedron
-        display.display_trihedron()
 
         def add_menu(*args, **kwargs):
             win.add_menu(*args, **kwargs)
@@ -202,11 +198,19 @@ def init_display(backend_str=None, size=(1024, 768)):
         def start_display():
             win.raise_()  # make the application float to the top
             app.exec_()
+
+    if display_triedron:
+        display.display_triedron()
+
+    if background_gradient_color1 and background_gradient_color2:
+    # background gradient
+        display.set_bg_gradient_color(background_gradient_color1, background_gradient_color2)
+
     return display, start_display, add_menu, add_function_to_menu
 
 
 if __name__ == '__main__':
-    display, start_display, add_menu, add_function_to_menu = init_display("qt-pyside")
+    display, start_display, add_menu, add_function_to_menu = init_display("qt-pyqt5")
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
 
     def sphere(event=None):
@@ -215,11 +219,11 @@ if __name__ == '__main__':
     def cube(event=None):
         display.DisplayShape(BRepPrimAPI_MakeBox(1, 1, 1).Shape(), update=True)
 
-    def exit(event=None):
+    def quit(event=None):
         sys.exit()
 
     add_menu('primitives')
     add_function_to_menu('primitives', sphere)
     add_function_to_menu('primitives', cube)
-    add_function_to_menu('primitives', exit)
+    add_function_to_menu('primitives', quit)
     start_display()

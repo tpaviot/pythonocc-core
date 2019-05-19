@@ -113,7 +113,7 @@ Standard_Boolean Display3d::SetSize(int size_x, int size_y)
     mySizeY = size_y;
 
 #ifdef WNT
-      myWindow = new WNT_Window ("Python OCC",
+      myWindow = new WNT_Window ("PythonOCC",
                                     Handle(WNT_WClass)::DownCast (WClass()),
                                     WS_OVERLAPPEDWINDOW,
                                     0, 0,
@@ -121,13 +121,13 @@ Standard_Boolean Display3d::SetSize(int size_x, int size_y)
                                     Quantity_NOC_BLACK);
       myWindow->SetVirtual (true);
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-      myWindow = new Cocoa_Window("Python OCC",
+      myWindow = new Cocoa_Window("PythonOCC",
                                   0, 0,
                                   size_x, size_y);
       myWindow->SetVirtual (true);
 #else
       myWindow = new Xw_Window (myAISContext->CurrentViewer()->Driver()->GetDisplayConnection(),
-                                   "Python OCC",
+                                   "PythonOCC",
                                    0, 0,
                                    size_x, size_y);
       myWindow->SetVirtual (true);
@@ -205,10 +205,9 @@ void Display3d::ChangeRenderingParams(int Method,
 void Display3d::SetAnaglyphMode(int mode)
 {
   Handle(Graphic3d_Camera) aCamera = myV3dView->Camera();
-  Graphic3d_RenderingParams*   aParams   = &myV3dView->ChangeRenderingParams();
+  Graphic3d_RenderingParams* aParams = &myV3dView->ChangeRenderingParams();
   
   aParams->StereoMode = Graphic3d_StereoMode_Anaglyph;
-  //aParams->AnaglyphFilter = Graphic3d_RenderingParams::Anaglyph_RedCyan_Simple;
   aParams->AnaglyphFilter = (Graphic3d_RenderingParams::Anaglyph)mode;
 
   GetGraphicDriver()->ChangeOptions().contextStereo = true;
@@ -216,12 +215,12 @@ void Display3d::SetAnaglyphMode(int mode)
   myV3dView->Redraw();
 }
 
-void Display3d::SetVBBO()
+void Display3d::EnableVBO()
 {
   GetGraphicDriver()->ChangeOptions().vboDisable = false;
 }
 
-void Display3d::UnsetVBBO()
+void Display3d::DisableVBO()
 {
   GetGraphicDriver()->ChangeOptions().vboDisable = true;
 }

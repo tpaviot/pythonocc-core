@@ -24,7 +24,7 @@ requirements:
     - python
     - oce ==0.18.3
     - tbb ==2018_20171205
-    - cmake ==3.12.2
+    - cmake
     - ninja ==1.8.2
     - swig ==3.0.12
     - freetype ==2.9.1

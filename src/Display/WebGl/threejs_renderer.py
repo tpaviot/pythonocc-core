@@ -30,7 +30,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r100"
+THREEJS_RELEASE = "r104"
 
 def spinning_cursor():
     while True:
@@ -413,8 +413,8 @@ class ThreejsRenderer(object):
     def DisplayShape(self,
                      shape,
                      export_edges=False,
-                     color=(0.65, 0.65, 0.65),
-                     specular_color=(1, 1, 1),
+                     color=(0.65, 0.65, 0.7),
+                     specular_color=(0.2, 0.2, 0.2),
                      shininess=0.9,
                      transparency=0.,
                      line_color=(0, 0., 0.),
@@ -431,7 +431,7 @@ class ThreejsRenderer(object):
                 edge_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[edge_hash] = [color, line_width]
-            return True
+            return self._3js_shapes, self._3js_edges
         elif is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
@@ -442,7 +442,7 @@ class ThreejsRenderer(object):
                 wire_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width]
-            return True
+            return self._3js_shapes, self._3js_edges
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
         # tesselate
@@ -486,6 +486,8 @@ class ThreejsRenderer(object):
                     edge_file.write(str_to_write)
                 # store this edge hash, with black color
                 self._3js_edges[hash] = [(0, 0, 0), line_width]
+        return self._3js_shapes, self._3js_edges
+
 
     def generate_html_file(self):
         """ Generate the HTML file to be rendered by the web browser
@@ -505,6 +507,8 @@ class ThreejsRenderer(object):
             shape_string_list.append('color:%s,' % color_to_hex(color))
             shape_string_list.append('specular:%s,' % color_to_hex(specular_color))
             shape_string_list.append('shininess:%g,' % shininess)
+            # force double side rendering, see issue #645
+            shape_string_list.append('side: THREE.DoubleSide,')
             if transparency > 0.:
                 shape_string_list.append('transparent: true, premultipliedAlpha: true, opacity:%g,' % transparency)
             #var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});

@@ -18,6 +18,9 @@
 */
 
 %module(package="OCC") Addons
+
+%include ../SWIG_files/common/ExceptionCatcher.i
+
 %{
 #include <Addons.h>
 #include <TextItem.h>
@@ -93,7 +96,7 @@ class TextItem {
 	:type: const Handle_Visual3d_Layer&
 	:param ScrollX: 
 	:type: const float
-	:param Scrolly: 
+	:param ScrollY: 
 	:type: const float
 ") TextItem;
     TextItem(const TCollection_AsciiString& theText,
@@ -160,11 +163,9 @@ public:
  
 ") TextureItem;
     TextureItem(const TCollection_AsciiString& theImageFilename,
-                V3d_View* theView,
                 const Handle_Visual3d_Layer& theLayer);
     // redraw method
     void RedrawLayerPrs();
     // set position
-    void SetAbsolutePosition(int x_abs, int y_abs);
-    void SetRelativePosition(int x_percent, int y_percent);
+    void SetPosition(int x_abs, int y_abs);
 };

@@ -44,8 +44,11 @@ def assert_warns_deprecated():
         warnings.simplefilter("always")
         yield w
         # Verify some things
-        assert issubclass(w[-1].category, DeprecationWarning)
-        assert "deprecated" in str(w[-1].message)
+        if not issubclass(w[-1].category, DeprecationWarning):
+            raise AssertionError("Wrong exception type")
+        if not "deprecated" in str(w[-1].message):
+            raise AssertionError("deprecated string not in message")
+
 
 class TestOCAF(unittest.TestCase):
     def test_create_doc(self):

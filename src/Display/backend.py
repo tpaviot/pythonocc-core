@@ -7,10 +7,6 @@ PYSIDE = "qt-pyside"
 PYQT4 = "qt-pyqt4"
 PYQT5 = "qt-pyqt5"
 
-global QtCore, QtGui, QtWidgets, QtOpenGL
-global HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE, HAVE_WX, HAVE_BACKEND, \
-    BACKEND_MODULE, QtCore, QtGui, QtWidgets, QtOpenGL
-
 # backend module
 HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE, HAVE_WX = False, False, False, False
 

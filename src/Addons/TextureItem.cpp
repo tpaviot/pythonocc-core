@@ -22,9 +22,8 @@
 #include <OpenGl_GlCore20.hxx>
 
 TextureItem::TextureItem (const TCollection_AsciiString& theImageFilename,
-                          V3d_View* theView,
                           const Handle(Visual3d_Layer)& theLayer):
-    myLayer(theLayer), myView(theView), x(0), y(0), TypeOfPosition(0), myTextureId (-1)
+    myLayer(theLayer), x(0), y(0), myTextureId (-1)
 {
     Handle(Image_AlienPixMap) theImage=new Image_AlienPixMap();
     theImage->Load(theImageFilename);
@@ -87,22 +86,12 @@ void TextureItem::RedrawLayerPrs ()
     glBindTexture(GL_TEXTURE_2D, myTextureId);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
     glBegin(GL_QUADS);
-    if (TypeOfPosition==0) {//absolute}
-      glTexCoord2f (0.0f, 0.0f); glVertex2f (x, y);
-      glTexCoord2f (1.0f, 0.0f); glVertex2f (x + myW, y);
-      glTexCoord2f (1.0f, 1.0f); glVertex2f (x + myW, y + myH);
-      glTexCoord2f (0.0f, 1.0f); glVertex2f (x, y + myH);
-    }
-    else if (TypeOfPosition==1) {//relative
-      int aW=0, aH=0;
-      myView->Window()->Size (aW, aH);
-      int x_orig = int(x*aW / 100);
-      int y_orig = int(y*aH / 100);
-      glTexCoord2f (0.0f, 0.0f); glVertex2f (x_orig, y_orig);
-      glTexCoord2f (1.0f, 0.0f); glVertex2f (x_orig + myW, y_orig);
-      glTexCoord2f (1.0f, 1.0f); glVertex2f (x_orig + myW, y_orig + myH);
-      glTexCoord2f (0.0f, 1.0f); glVertex2f (x_orig, y_orig + myH);
-    }
+    
+    glTexCoord2f (0.0f, 0.0f); glVertex2f (x, y);
+    glTexCoord2f (1.0f, 0.0f); glVertex2f (x + myW, y);
+    glTexCoord2f (1.0f, 1.0f); glVertex2f (x + myW, y + myH);
+    glTexCoord2f (0.0f, 1.0f); glVertex2f (x, y + myH);
+
     glEnd();
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);

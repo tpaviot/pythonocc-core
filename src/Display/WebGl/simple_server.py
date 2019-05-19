@@ -32,7 +32,8 @@ def get_available_port(port):
     * if not, take another one
     * returns the port numer
     """
-    assert port > 1024
+    if not port > 1024:
+        raise AssertionError("port number should be > 1024")
     # check this port is available
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -73,7 +74,7 @@ def start_server(port=8080, path='.', open_webbrowser=False):
         print("## CTRL-C to shutdown the server")
         # open webbrowser
         if open_webbrowser:
-            webbrowser.open('http://localhost:%i' % port, new=2)        
+            webbrowser.open('http://localhost:%i' % port, new=2)
         # starts the web_server
         httpd.serve_forever()
 
