@@ -1,4 +1,4 @@
-##Copyright 2011-2017 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2019 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -30,7 +30,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r104"
+THREEJS_RELEASE = "r106"
 
 def spinning_cursor():
     while True:
