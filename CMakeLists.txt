@@ -26,6 +26,19 @@ set(PYTHONOCC_VERSION_DEVEL -dev)
 
 cmake_minimum_required(VERSION 2.6)
 
+## cmake policies
+if (NOT CMAKE_VERSION VERSION_LESS "3.13")
+    # CMP0077: option() honors normal variables
+    # https://cmake.org/cmake/help/latest/policy/CMP0077.html
+    cmake_policy(SET CMP0077 NEW)
+    # CMP0078: UseSWIG generates standard target names.
+    # https://cmake.org/cmake/help/latest/policy/CMP0078.html
+    cmake_policy(SET CMP0078 OLD)
+    # CMP0086: UseSWIG honors SWIG_MODULE_NAME via -module
+    cmake_policy(SET CMP0086 OLD)
+endif()
+
+
 if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
   set( PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
 endif( NOT DEFINED PYTHONOCC_BUILD_TYPE )
