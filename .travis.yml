@@ -31,38 +31,34 @@ env:
 
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
-      - gcc-multilib
-      - g++-multilib
-      - lib32z1+
-      - lsb-core
-      - g++-7
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - libglu1-mesa-dev
 
 matrix:
   include:
     - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
@@ -70,10 +66,6 @@ matrix:
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      export CXX=g++-7;
-      export CC=gcc-7;
-    fi;
   - if [ ${PYTHON:0:1} == "2" ]; then
       if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -99,8 +91,8 @@ before_install:
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
   # method which is quite loooong to process
-  - conda install conda-build==3.2.0
-  - conda install anaconda-client
+  #- conda install conda-build==3.2.0
+  - conda install conda-build anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
   # download/install OCE from DLR-SC channel
