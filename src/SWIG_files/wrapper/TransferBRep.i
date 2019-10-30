@@ -61,16 +61,7 @@ typedef NCollection_Sequence <Handle_TransferBRep_TransferResultInfo> TransferBR
 %rename(transferbrep) TransferBRep;
 class TransferBRep {
 	public:
-		%feature("compactdefaultargs") BRepCheck;
-		%feature("autodoc", "	* Performs a heavy check by calling the Analyser from BRepCheck This tool computes a lot of informations about integrity of a Shape. This method uses it and converts its internal result to a classic check-list. <lev> allows to get more informations : 0 : BRepCheck only 1(D) + Curves/Surfaces not C0 ; 2 + SameParameter on Edges Warning : entities to which checks are bound are the Shapes themselves, embedded in ShapeMapper
 
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param lev: default value is 1
-	:type lev: int
-	:rtype: Interface_CheckIterator
-") BRepCheck;
-		static Interface_CheckIterator BRepCheck (const TopoDS_Shape & shape,const Standard_Integer lev = 1);
 		%feature("compactdefaultargs") CheckObject;
 		%feature("autodoc", "	* Returns the check-list bound to a given object, generally none (if OK) or one check. <obj> can be, either a true Transient object or entity, or a ShapeMapper, in that case the Shape is considered
 

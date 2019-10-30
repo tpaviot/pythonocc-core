@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<gp_XYZ.hxx>
 #include<HLRAlgo.hxx>
 #include<HLRAlgo_Array1OfPHDat.hxx>
 #include<HLRAlgo_Array1OfPINod.hxx>

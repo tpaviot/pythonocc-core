@@ -79,7 +79,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
     __next__ = next
     }
 };
-%template(Message_HArrayOfMsg) NCollection_Handle <Message_ArrayOfMsg>;
+//%template(Message_HArrayOfMsg) NCollection_Handle <Message_ArrayOfMsg>;
 %template(Message_ListOfAlert) NCollection_List <Handle_Message_Alert>;
 /* end templates declaration */
 
@@ -90,7 +90,7 @@ typedef NCollection_List <Message_Msg>::Iterator Message_ListIteratorOfListOfMsg
 typedef NCollection_Sequence <Handle_Message_Printer> Message_SequenceOfPrinters;
 typedef NCollection_Sequence <Message_ProgressScale> Message_SequenceOfProgressScale;
 typedef NCollection_Array1 <NCollection_Handle <Message_Msg>> Message_ArrayOfMsg;
-typedef NCollection_Handle <Message_ArrayOfMsg> Message_HArrayOfMsg;
+//typedef NCollection_Handle <Message_ArrayOfMsg> Message_HArrayOfMsg;
 typedef NCollection_List <Handle_Message_Alert> Message_ListOfAlert;
 /* end typedefs declaration */
 

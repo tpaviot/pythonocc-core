@@ -470,6 +470,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRAlgo_Intersection.hxx>
 #include<HLRAlgo_Interference.hxx>
 #include<HLRAlgo_TriangleData.hxx>
+#include<HLRAlgo_PolyData.hxx>
 #include<HLRAlgo_PolyShellData.hxx>
 #include<HLRAlgo_Array1OfPHDat.hxx>
 #include<HLRAlgo_Coincidence.hxx>
@@ -479,7 +480,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRAlgo_InterferenceList.hxx>
 #include<HLRAlgo_PolyInternalNode.hxx>
 #include<HLRAlgo_ListOfBPoint.hxx>
-#include<HLRAlgo_PolyData.hxx>
 #include<HLRAlgo_BiPoint.hxx>
 #include<HLRAlgo_Array1OfTData.hxx>
 #include<HLRAlgo_HArray1OfPHDat.hxx>

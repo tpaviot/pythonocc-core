@@ -39,14 +39,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include Geom_headers.i
 
-/* templates */
-%template(Geom_SequenceOfBSplineSurface) NCollection_Sequence <Handle_Geom_BSplineSurface>;
-/* end templates declaration */
 
-
-/* typedefs */
-typedef NCollection_Sequence <Handle_Geom_BSplineSurface> Geom_SequenceOfBSplineSurface;
-/* end typedefs declaration */
 
 /* public enums */
 /* end public enums declaration */
@@ -89,6 +82,16 @@ typedef NCollection_Sequence <Handle_Geom_BSplineSurface> Geom_SequenceOfBSpline
 %wrap_handle(Geom_SurfaceOfRevolution)
 %wrap_handle(Geom_ToroidalSurface)
 %wrap_handle(Geom_TrimmedCurve)
+
+
+/* templates */
+%template(Geom_SequenceOfBSplineSurface) NCollection_Sequence <Handle_Geom_BSplineSurface>;
+/* end templates declaration */
+
+
+/* typedefs */
+typedef NCollection_Sequence <Handle_Geom_BSplineSurface> Geom_SequenceOfBSplineSurface;
+/* end typedefs declaration */
 
 %nodefaultctor Geom_Geometry;
 class Geom_Geometry : public Standard_Transient {

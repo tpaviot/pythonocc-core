@@ -118,7 +118,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %template(Extrema_SequenceOfPOnCurv2d) NCollection_Sequence <Extrema_POnCurv2d>;
 %template(Extrema_UBTreeOfSphere) NCollection_UBTree <Standard_Integer , Bnd_Sphere>;
 %template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller <Standard_Integer , Bnd_Sphere>;
-%template(Extrema_HUBTreeOfSphere) NCollection_Handle <Extrema_UBTreeOfSphere>;
+//%template(Extrema_HUBTreeOfSphere) NCollection_Handle <Extrema_UBTreeOfSphere>;
 %template(Extrema_Array2OfPOnCurv) NCollection_Array2 <Extrema_POnCurv>;
 %template(Extrema_Array1OfPOnSurf) NCollection_Array1 <Extrema_POnSurf>;
 

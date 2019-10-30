@@ -658,7 +658,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_ParamType.hxx>
 #include<Interface_Category.hxx>
 #include<Interface_ShareTool.hxx>
-#include<Interface_ValueInterpret.hxx>
+#include<Interface_TypedValue.hxx>
+
 #include<Interface_IntVal.hxx>
 #include<Interface_GeneralLib.hxx>
 #include<Interface_Macros.hxx>
@@ -695,7 +696,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_SignType.hxx>
 #include<Interface_IndexedMapOfAsciiString.hxx>
 #include<Interface_FileReaderData.hxx>
-#include<Interface_TypedValue.hxx>
 #include<Interface_EntityCluster.hxx>
 #include<Interface_StaticSatisfies.hxx>
 #include<Interface_ReaderModule.hxx>
@@ -1371,4 +1371,3 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TCollection.i
 %import StepData.i
 %import StepBasic.i
-%import StepShape.i

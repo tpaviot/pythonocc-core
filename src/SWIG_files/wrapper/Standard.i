@@ -174,7 +174,9 @@ class Standard_ArrayStreamBuffer : public std::streambuf {
 %nodefaultctor Standard_ErrorHandler;
 class Standard_ErrorHandler {
 	public:
-		class Callback {};
+		/*class Callback {
+			public:
+		};*/
 		%feature("compactdefaultargs") Catches;
 		%feature("autodoc", "	* Returns 'True' if the caught exception has the same type or inherits from 'aType'
 

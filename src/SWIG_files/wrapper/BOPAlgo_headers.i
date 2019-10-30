@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<IntTools_SurfaceRangeSample.hxx>
 #include<BOPAlgo_Alerts.hxx>
 #include<BOPAlgo_Algo.hxx>
 #include<BOPAlgo_ArgumentAnalyzer.hxx>

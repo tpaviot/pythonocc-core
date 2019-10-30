@@ -199,12 +199,13 @@ class BinTools_Curve2dSet {
 		Handle_Geom2d_Curve Curve2d (const Standard_Integer I);
 
         %feature("autodoc", "1");
-        %extend{
+		// TODO: Method Dump not available
+        /*%extend{
             std::string DumpToString() {
             std::stringstream s;
             self->Dump(s);
             return s.str();}
-        };
+        };*/
         		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "	* Returns the index of <L>.
 

@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<IntTools_SurfaceRangeSample.hxx>
 #include<BRepFeat.hxx>
 #include<BRepFeat_Builder.hxx>
 #include<BRepFeat_Form.hxx>

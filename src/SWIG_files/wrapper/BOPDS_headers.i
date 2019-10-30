@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<IntTools_SurfaceRangeSample.hxx>
 #include<BOPDS_CommonBlock.hxx>
 #include<BOPDS_CoupleOfPaveBlocks.hxx>
 #include<BOPDS_Curve.hxx>

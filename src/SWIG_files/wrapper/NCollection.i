@@ -40,8 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include NCollection_headers.i
 
 
-%define Handle(Class) opencascade::handle<Class>
-%enddef
 %include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";
 %include "NCollection_Array2.hxx";
@@ -59,7 +57,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include "NCollection_UBTree.hxx";
 %include "NCollection_UBTreeFiller.hxx";
 %include "NCollection_Lerp.hxx";
-%include "NCollection_Handle.hxx";
+//%include "NCollection_Handle.hxx";
 %include "NCollection_CellFilter.hxx";
 %include "NCollection_Vector.hxx";
 %include "NCollection_Vec2.hxx";

@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<IntTools_SurfaceRangeSample.hxx>
 #include<BOPTools.hxx>
 #include<BOPTools_AlgoTools.hxx>
 #include<BOPTools_AlgoTools2D.hxx>

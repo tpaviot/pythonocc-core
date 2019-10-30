@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<IntTools_SurfaceRangeSample.hxx>
 #include<BRepAlgoAPI_Algo.hxx>
 #include<BRepAlgoAPI_BooleanOperation.hxx>
 #include<BRepAlgoAPI_BuilderAlgo.hxx>

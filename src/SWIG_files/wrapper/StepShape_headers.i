@@ -710,9 +710,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MoniTool_TimerSentry.hxx>
 #include<MoniTool_SignText.hxx>
 #include<MoniTool_Timer.hxx>
+#include<Interface_TypedValue.hxx>
 #include<MoniTool_ValueInterpret.hxx>
 #include<MoniTool_IntVal.hxx>
-#include<MoniTool_TypedValue.hxx>
 #include<MoniTool_DataMapIteratorOfDataMapOfShapeTransient.hxx>
 #include<MoniTool_DataMapOfShapeTransient.hxx>
 #include<MoniTool_RealVal.hxx>
@@ -772,7 +772,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_ParamType.hxx>
 #include<Interface_Category.hxx>
 #include<Interface_ShareTool.hxx>
-#include<Interface_ValueInterpret.hxx>
+
 #include<Interface_IntVal.hxx>
 #include<Interface_GeneralLib.hxx>
 #include<Interface_Macros.hxx>
