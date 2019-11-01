@@ -38,6 +38,9 @@
 #include <TopExp.hxx>
 #include <BRepTools.hxx>
 #include <BRepBndLib.hxx>
+#include <BRep_Tool.hxx>
+#include <TopoDS_Face.hxx>
+
 //---------------------------------------------------------------------------
 Tesselator::Tesselator(TopoDS_Shape   aShape,
                        theTextureMappingRule            aTxtMapType,
@@ -570,7 +573,7 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 
 void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
 {
-    ofstream X3Dfile;
+    std::ofstream X3Dfile;
     X3Dfile.open (filename);
     // write header
     X3Dfile << "<?xml version='1.0' encoding='UTF-8'?>" ;
