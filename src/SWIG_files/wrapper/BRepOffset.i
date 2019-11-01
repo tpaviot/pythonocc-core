@@ -817,14 +817,7 @@ class BRepOffset_MakeSimpleOffset {
 	:rtype: TopoDS_Shape
 ") GetResultShape;
 		const TopoDS_Shape  GetResultShape ();
-		%feature("compactdefaultargs") GetSafeOffset;
-		%feature("autodoc", "	* Computes max safe offset value for the given tolerance.
 
-	:param theExpectedToler:
-	:type theExpectedToler: float
-	:rtype: float
-") GetSafeOffset;
-		Standard_Real GetSafeOffset (const Standard_Real theExpectedToler);
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "	* Gets tolerance (used for handling singularities).
 

@@ -29,6 +29,8 @@
 %include "std_vector.i"
 %include "typemaps.i"
 
+%include Visualization_headers.i
+
 %template(vector_float) std::vector<float>;
 
 %typemap(out) float [ANY] {

@@ -2734,32 +2734,6 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	:rtype: bool
 ") Compute;
 		Standard_Boolean Compute (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt & Pt,gp_Vec & Tg,gp_Vec2d & Tguv1,gp_Vec2d & Tguv2);
-		%feature("compactdefaultargs") FillInitialVectorOfSolution;
-		%feature("autodoc", "	:param u1:
-	:type u1: float
-	:param v1:
-	:type v1: float
-	:param u2:
-	:type u2: float
-	:param v2:
-	:type v2: float
-	:param binfu:
-	:type binfu: float
-	:param bsupu:
-	:type bsupu: float
-	:param binfv:
-	:type binfv: float
-	:param bsupv:
-	:type bsupv: float
-	:param X:
-	:type X: math_Vector &
-	:param TranslationU:
-	:type TranslationU: float &
-	:param TranslationV:
-	:type TranslationV: float &
-	:rtype: bool
-") FillInitialVectorOfSolution;
-		Standard_Boolean FillInitialVectorOfSolution (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,const Standard_Real binfu,const Standard_Real bsupu,const Standard_Real binfv,const Standard_Real bsupv,math_Vector & X,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "	:param Surf1:
 	:type Surf1: Handle_Adaptor3d_HSurface &

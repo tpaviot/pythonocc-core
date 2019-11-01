@@ -50,7 +50,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 namespace opencascade {
-template <typename T> struct handle;
+template <typename T> class handle{};
 }
 #define Handle(TYPE) opencascade::handle<TYPE>
 
@@ -64,13 +64,26 @@ template <typename T> struct handle;
   if (presult) presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
+
+%typemap(out) Handle_ ## TYPE {
+  TYPE * presult = !$1.IsNull() ? $1.get() : 0;
+  if (presult) presult->IncrementRefCounter();
+  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+}
 %typemap(out) CONST TYPE {
   TYPE * presult = new TYPE(static_cast< CONST TYPE& >($1));
   presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
 
-%typemap(out) opencascade::handle<TYPE>&{
+%typemap(out) CONST opencascade::handle<TYPE>&{
+  TYPE * presult = !$1->IsNull() ? $1->get() : 0;
+  if (presult) presult->IncrementRefCounter();
+  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+}
+
+
+%typemap(out) CONST Handle_ ## TYPE&{
   TYPE * presult = !$1->IsNull() ? $1->get() : 0;
   if (presult) presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
@@ -103,6 +116,18 @@ template <typename T> struct handle;
   $1 = &tempshared;
 }
 
+// shared_ptr by reference
+%typemap(in) Handle_ ## TYPE &(void *argp, int res = 0, $*1_ltype tempshared) {
+  int newmem = 0;
+  res = SWIG_ConvertPtrAndOwn($input, &argp, $descriptor(TYPE *), %convertptr_flags, &newmem);
+  if (!SWIG_IsOK(res)) {
+    %argument_fail(res, "$type", $symname, $argnum);
+  }
+
+  if (argp) tempshared = opencascade::handle< TYPE >(%reinterpret_cast(argp, TYPE*));
+  $1 = &tempshared;
+}
+
 %typemap(typecheck,precedence=SWIG_TYPECHECK_POINTER,noblock=1)
                       TYPE CONST,
                       TYPE CONST &,
@@ -125,7 +150,15 @@ class TYPE;
 // Avoid creating ValueWrappers
 %template() opencascade::handle<TYPE>;
 
+#if (defined(_MSC_VER) && _MSC_VER >= 1800) 
+class Handle_ ## TYPE : public opencascade::handle< TYPE >{
+public:
+  template <typename T2>
+  inline Handle_## TYPE(const T2* theOther) : Handle(TYPE)(theOther) {} \
+};
+#else
 typedef opencascade::handle< TYPE > Handle_ ## TYPE;
+#endif
 
 // deactivate warnings
 %ignore TYPE::operator=;

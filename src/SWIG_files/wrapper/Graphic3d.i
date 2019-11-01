@@ -40,12 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include Graphic3d_headers.i
 
 
-%define Handle_Graphic3d_TextureSet Handle(Graphic3d_TextureSet)
-%enddef
-%define Handle_Aspect_DisplayConnection Handle(Aspect_DisplayConnection)
-%enddef
-%define Handle_Graphic3d_NMapOfTransient Handle(Graphic3d_NMapOfTransient)
-%enddef
 /* templates */
 %template(Graphic3d_CameraLerp) NCollection_Lerp <Handle_Graphic3d_Camera>;
 %template(Graphic3d_SequenceOfGroup) NCollection_Sequence <Handle_Graphic3d_Group>;

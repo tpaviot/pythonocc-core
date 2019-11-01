@@ -28,6 +28,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_BaseSequence.hxx>
 #include<NCollection_BaseVector.hxx>
 #include<NCollection_Buffer.hxx>
+#include<gp_XYZ.hxx>
+#include<gp_XY.hxx>
+#include<gp_XYZ.hxx>
+#include<gp_XY.hxx>
 #include<NCollection_CellFilter.hxx>
 #include<NCollection_Comparator.hxx>
 #include<NCollection_DataMap.hxx>
@@ -189,6 +193,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_DefineHArray2.hxx>
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Handle.hxx>
+#include<gp_XYZ.hxx>
+#include<gp_XY.hxx>
+#include<gp_XYZ.hxx>
+#include<gp_XY.hxx>
 #include<NCollection_CellFilter.hxx>
 #include<NCollection_HArray1.hxx>
 #include<NCollection_BaseList.hxx>

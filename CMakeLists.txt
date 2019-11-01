@@ -156,9 +156,9 @@ set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
     TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
 set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl TKV3d)
 set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
-                     TKSTEP TKVRML TKXSBase)
+                     TKSTEP TKVRML TKXSBase TKService)
 set(OCE_OCAF_LIBRARIES TKCAF TKCDF TKLCAF TKBin TKBinL TKBinTObj TKBinXCAF TKXml TKXmlL TKXmlTObj
-                       TKXmlXCAF TKTObj TKXCAF TKXDESTEP TKXDEIGES)
+                       TKXmlXCAF TKTObj TKXCAF TKXDESTEP TKXDEIGES TKVCAF TKXSBase TKSTEPBase TKIGES ${OCE_VISUALIZATION_LIBRARIES})
 
 ######################################################
 # Configure Build settings according to the platform #
@@ -184,6 +184,9 @@ else(UNIX)
       add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
     endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
     set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
+    if (MSVC)
+      set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_MSC_VER=${MSVC_VERSION})
+    endif(MSVC)
     set(PLATFORM win)
   else(WIN32)
     message(STATUS "Unknown platform")

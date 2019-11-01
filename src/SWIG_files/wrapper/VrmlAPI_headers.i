@@ -130,6 +130,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_DefineHArray2.hxx>
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Handle.hxx>
+#include<gp_XYZ.hxx>
+#include<gp_XY.hxx>
 #include<NCollection_CellFilter.hxx>
 #include<NCollection_HArray1.hxx>
 #include<NCollection_BaseList.hxx>
@@ -589,59 +591,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Poly_CoherentTriangle.hxx>
 #include<Poly_Triangulation.hxx>
 #include<Poly_Connect.hxx>
-#include<Aspect_CircularGrid.hxx>
-#include<Aspect_Drawable.hxx>
-#include<Aspect_DisplayConnectionDefinitionError.hxx>
-#include<Aspect_IdentDefinitionError.hxx>
-#include<Aspect_TypeOfDeflection.hxx>
-#include<Aspect_TypeOfLine.hxx>
-#include<Aspect_GradientFillMethod.hxx>
-#include<Aspect_Convert.hxx>
-#include<Aspect_TypeOfHighlightMethod.hxx>
-#include<Aspect_RectangularGrid.hxx>
-#include<Aspect_TypeOfResize.hxx>
-#include<Aspect_BadAccess.hxx>
-#include<Aspect_TypeOfDrawMode.hxx>
-#include<Aspect_GridType.hxx>
-#include<Aspect_TypeOfConstraint.hxx>
-#include<Aspect_AspectFillAreaDefinitionError.hxx>
-#include<Aspect_TypeOfColorScaleData.hxx>
-#include<Aspect_SequenceOfColor.hxx>
-#include<Aspect_TypeOfStyleText.hxx>
-#include<Aspect_TypeOfMarker.hxx>
-#include<Aspect_Background.hxx>
-#include<Aspect_TypeOfColorScaleOrientation.hxx>
-#include<Aspect_TypeOfFacingModel.hxx>
-#include<Aspect_RenderingContext.hxx>
-#include<Aspect_Display.hxx>
-#include<Aspect_AspectLineDefinitionError.hxx>
-#include<Aspect_FillMethod.hxx>
-#include<Aspect_Window.hxx>
-#include<Aspect_Handle.hxx>
-#include<Aspect_AspectMarkerDefinitionError.hxx>
-#include<Aspect_TypeOfPrimitive.hxx>
-#include<Aspect_HatchStyle.hxx>
-#include<Aspect_WindowDefinitionError.hxx>
-#include<Aspect_NeutralWindow.hxx>
-#include<Aspect_WindowError.hxx>
-#include<Aspect_PolygonOffsetMode.hxx>
-#include<Aspect_FBConfig.hxx>
-#include<Aspect_TypeOfEdge.hxx>
-#include<Aspect_GenId.hxx>
-#include<Aspect_GraphicDeviceDefinitionError.hxx>
-#include<Aspect_TypeOfColorScalePosition.hxx>
-#include<Aspect_Units.hxx>
-#include<Aspect_GradientBackground.hxx>
-#include<Aspect_DisplayConnection.hxx>
-#include<Aspect_XAtom.hxx>
-#include<Aspect_TypeOfTriedronPosition.hxx>
-#include<Aspect_TypeOfLayer.hxx>
-#include<Aspect_Grid.hxx>
-#include<Aspect_GridDrawMode.hxx>
-#include<Aspect_DriverDefinitionError.hxx>
-#include<Aspect_WidthOfLine.hxx>
-#include<Aspect_TypeOfDisplayText.hxx>
-#include<Aspect_InteriorStyle.hxx>
+
+
 #include<TColgp_Array2OfXYZ.hxx>
 #include<TColgp_SequenceOfVec.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
@@ -836,10 +787,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_BaseDriver.hxx>
 #include<Storage_InternalData.hxx>
 #include<Storage_Data.hxx>
+#include<Aspect_DisplayConnection.hxx>
+#include<Aspect_Grid.hxx>
+#include<Aspect_Window.hxx>
 %};
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
 %import VrmlConverter.i
 %import Vrml.i
-%import Quantity.i
