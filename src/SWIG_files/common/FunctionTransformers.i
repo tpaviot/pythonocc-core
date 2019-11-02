@@ -19,6 +19,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+%{
+#include <TopoDS.hxx>
+%}
+
 /*
 Standard_Real & function transformation
 */
@@ -136,36 +140,28 @@ FairCurve_Analysis & function transformation
         switch (shape_type)
         {
           case TopAbs_COMPOUND:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Compound(static_cast< const TopoDS_Compound& >($1))),
-                                            SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound($1)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
             break;
           case TopAbs_COMPSOLID:
-            resultobj = SWIG_NewPointerObj((new TopoDS_CompSolid(static_cast< const TopoDS_CompSolid& >($1))),
-                                            SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid($1)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_SOLID:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Solid(static_cast< const TopoDS_Solid& >($1))),
-                                            SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid($1)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_SHELL:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Shell(static_cast< const TopoDS_Shell& >($1))),
-                                            SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell($1)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_FACE:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Face(static_cast< const TopoDS_Face& >($1))),
-                                            SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face($1)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_WIRE:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Wire(static_cast< const TopoDS_Wire& >($1))),
-                                            SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire($1)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_EDGE:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Edge(static_cast< const TopoDS_Edge& >($1))),
-                                            SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge($1)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
             break;
           case TopAbs_VERTEX:
-            resultobj = SWIG_NewPointerObj((new TopoDS_Vertex(static_cast< const TopoDS_Vertex& >($1))),
-                                            SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+            resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex($1)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
             break;
           default:
             break;
