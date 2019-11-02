@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,18 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:17
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define TOPCLASSDOCSTRING
-"The package TopClass  provides  Classification
-algorithms. A Classification algorithm is used to
-compute if a point is inside, outside or on the
-boundary of a Shape.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=TOPCLASSDOCSTRING) TopClass
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -43,85 +50,63 @@ boundary of a Shape.
 
 %include TopClass_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
 
-%nodefaultctor TopClass_Intersection3d;
-class TopClass_Intersection3d {
-	public:
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Face <Face>. //! Only the point with the smallest parameter on the line is returned. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
+/* typedefs */
+/* end typedefs declaration */
 
-	:param L:
-	:type L: gp_Lin
-	:param Prm:
-	:type Prm: float
-	:param Tol:
-	:type Tol: float
-	:param Face:
-	:type Face: TopoDS_Face &
-	:rtype: void
-") Perform;
-		virtual void Perform (const gp_Lin & L,const Standard_Real Prm,const Standard_Real Tol,const TopoDS_Face & Face);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* True is returned when the intersection have been computed.
+/* handles */
+/* end handles declaration */
 
-	:rtype: bool
-") IsDone;
-		virtual Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") HasAPoint;
-		%feature("autodoc", "	* True is returned if a point has been found.
-
-	:rtype: bool
-") HasAPoint;
-		virtual Standard_Boolean HasAPoint ();
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns the Intersection Point.
-
-	:rtype: IntCurveSurface_IntersectionPoint
-") Point;
-		virtual const IntCurveSurface_IntersectionPoint & Point ();
-		%feature("compactdefaultargs") State;
-		%feature("autodoc", "	* Returns the state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boudary of the face).
-
-	:rtype: TopAbs_State
-") State;
-		virtual TopAbs_State State ();
-};
-
-
-%extend TopClass_Intersection3d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TopClass_SolidExplorer;
 class TopClass_SolidExplorer {
 	public:
-		%feature("compactdefaultargs") Reject;
-		%feature("autodoc", "	* Should return True if the point is outside a bounding volume of the shape.
+		%feature("compactdefaultargs") CurrentFace;
+		%feature("autodoc", "	* Returns the current face.
 
-	:param P:
-	:type P: gp_Pnt
-	:rtype: bool
-") Reject;
-		virtual Standard_Boolean Reject (const gp_Pnt & P);
-		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
+	:rtype: TopoDS_Face
+") CurrentFace;
+		virtual TopoDS_Face CurrentFace ();
+		%feature("compactdefaultargs") InitFace;
+		%feature("autodoc", "	* Starts an exploration of the faces.
 
-	:param P:
-	:type P: gp_Pnt
-	:param L:
-	:type L: gp_Lin
-	:param Par:
-	:type Par: float &
 	:rtype: void
-") Segment;
-		virtual void Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
+") InitFace;
+		virtual void InitFace ();
+		%feature("compactdefaultargs") InitShell;
+		%feature("autodoc", "	* Starts an exploration of the shells.
+
+	:rtype: void
+") InitShell;
+		virtual void InitShell ();
+		%feature("compactdefaultargs") MoreFaces;
+		%feature("autodoc", "	* Returns True if there is a current face.
+
+	:rtype: bool
+") MoreFaces;
+		virtual Standard_Boolean MoreFaces ();
+		%feature("compactdefaultargs") MoreShells;
+		%feature("autodoc", "	* Returns True if there is a current shell.
+
+	:rtype: bool
+") MoreShells;
+		virtual Standard_Boolean MoreShells ();
+		%feature("compactdefaultargs") NextFace;
+		%feature("autodoc", "	* Sets the explorer to the next face and returns False if there are no more wires.
+
+	:rtype: void
+") NextFace;
+		virtual void NextFace ();
+		%feature("compactdefaultargs") NextShell;
+		%feature("autodoc", "	* Sets the explorer to the next shell and returns False if there are no more wires.
+
+	:rtype: void
+") NextShell;
+		virtual void NextShell ();
 		%feature("compactdefaultargs") OtherSegment;
 		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on. //! if the method is called N times on a shape with F faces (N>F) the line point to other points on the face 1,2,3 ... N
 
@@ -134,58 +119,14 @@ class TopClass_SolidExplorer {
 	:rtype: void
 ") OtherSegment;
 		virtual void OtherSegment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") InitShell;
-		%feature("autodoc", "	* Starts an exploration of the shells.
+		%feature("compactdefaultargs") Reject;
+		%feature("autodoc", "	* Should return True if the point is outside a bounding volume of the shape.
 
-	:rtype: void
-") InitShell;
-		virtual void InitShell ();
-		%feature("compactdefaultargs") MoreShells;
-		%feature("autodoc", "	* Returns True if there is a current shell.
-
+	:param P:
+	:type P: gp_Pnt
 	:rtype: bool
-") MoreShells;
-		virtual Standard_Boolean MoreShells ();
-		%feature("compactdefaultargs") NextShell;
-		%feature("autodoc", "	* Sets the explorer to the next shell and returns False if there are no more wires.
-
-	:rtype: void
-") NextShell;
-		virtual void NextShell ();
-		%feature("compactdefaultargs") RejectShell;
-		%feature("autodoc", "	* Returns True if the shell bounding volume does not intersect the segment.
-
-	:param L:
-	:type L: gp_Lin
-	:param Par:
-	:type Par: float
-	:rtype: bool
-") RejectShell;
-		virtual Standard_Boolean RejectShell (const gp_Lin & L,const Standard_Real Par);
-		%feature("compactdefaultargs") InitFace;
-		%feature("autodoc", "	* Starts an exploration of the faces.
-
-	:rtype: void
-") InitFace;
-		virtual void InitFace ();
-		%feature("compactdefaultargs") MoreFaces;
-		%feature("autodoc", "	* Returns True if there is a current face.
-
-	:rtype: bool
-") MoreFaces;
-		virtual Standard_Boolean MoreFaces ();
-		%feature("compactdefaultargs") NextFace;
-		%feature("autodoc", "	* Sets the explorer to the next face and returns False if there are no more wires.
-
-	:rtype: void
-") NextFace;
-		virtual void NextFace ();
-		%feature("compactdefaultargs") CurrentFace;
-		%feature("autodoc", "	* Returns the current face.
-
-	:rtype: TopoDS_Face
-") CurrentFace;
-		virtual TopoDS_Face CurrentFace ();
+") Reject;
+		virtual Standard_Boolean Reject (const gp_Pnt & P);
 		%feature("compactdefaultargs") RejectFace;
 		%feature("autodoc", "	* Returns True if the face bounding volume does not intersect the segment.
 
@@ -196,6 +137,28 @@ class TopClass_SolidExplorer {
 	:rtype: bool
 ") RejectFace;
 		virtual Standard_Boolean RejectFace (const gp_Lin & L,const Standard_Real Par);
+		%feature("compactdefaultargs") RejectShell;
+		%feature("autodoc", "	* Returns True if the shell bounding volume does not intersect the segment.
+
+	:param L:
+	:type L: gp_Lin
+	:param Par:
+	:type Par: float
+	:rtype: bool
+") RejectShell;
+		virtual Standard_Boolean RejectShell (const gp_Lin & L,const Standard_Real Par);
+		%feature("compactdefaultargs") Segment;
+		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
+
+	:param P:
+	:type P: gp_Pnt
+	:param L:
+	:type L: gp_Lin
+	:param Par:
+	:type Par: float &
+	:rtype: void
+") Segment;
+		virtual void Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 };
 
 
@@ -204,3 +167,6 @@ class TopClass_SolidExplorer {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

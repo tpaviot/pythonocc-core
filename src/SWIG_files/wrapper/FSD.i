@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:04
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define FSDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=FSDDOCSTRING) FSD
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,11 +50,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include FSD_headers.i
 
-/* typedefs */
-typedef fstream FSD_FStream;
-typedef FILE * FSD_BStream;
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef std::fstream FSD_FStream;
+typedef FILE * FSD_BStream;
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

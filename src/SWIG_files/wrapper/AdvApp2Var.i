@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,21 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:08
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define ADVAPP2VARDOCSTRING
-"This package provides algorithms to approximate a
-function of 2 variables that can be multidimensional;
-the result is a BSpline function with the required continuity
-Warning: only one 3D BSpline for the moment
-
-
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -46,9 +50,6 @@ Warning: only one 3D BSpline for the moment
 
 %include AdvApp2Var_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 enum AdvApp2Var_CriterionRepartition {
 	AdvApp2Var_Regular = 0,
@@ -62,10 +63,45 @@ enum AdvApp2Var_CriterionType {
 
 /* end public enums declaration */
 
-%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfNode)
-%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfPatch)
-%wrap_handle(AdvApp2Var_SequenceNodeOfSequenceOfStrip)
-%wrap_handle(AdvApp2Var_SequenceNodeOfStrip)
+/* templates */
+%template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence <AdvApp2Var_Patch>;
+%template(AdvApp2Var_SequenceOfNode) NCollection_Sequence <AdvApp2Var_Node>;
+%template(AdvApp2Var_SequenceOfStrip) NCollection_Sequence <AdvApp2Var_Strip>;
+%template(AdvApp2Var_Strip) NCollection_Sequence <AdvApp2Var_Iso>;
+/* end templates declaration */
+
+/* typedefs */
+typedef int integer;
+typedef double doublereal;
+typedef unsigned long uinteger;
+typedef char * address;
+typedef short int shortint;
+typedef float real;
+typedef long int logical;
+typedef short int shortlogical;
+typedef char logical1;
+typedef char integer1;
+typedef long long longint;
+typedef unsigned long long ulongint;
+typedef long int flag;
+typedef long int ftnlen;
+typedef long int ftnint;
+typedef union Multitype Multitype;
+typedef struct Vardesc Vardesc;
+typedef struct Namelist Namelist;
+typedef int ( * S_fp ) ( );
+typedef VOID C_f;
+typedef VOID H_f;
+typedef VOID Z_f;
+typedef doublereal E_f;
+typedef NCollection_Sequence <AdvApp2Var_Patch> AdvApp2Var_SequenceOfPatch;
+typedef NCollection_Sequence <AdvApp2Var_Node> AdvApp2Var_SequenceOfNode;
+typedef NCollection_Sequence <AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
+typedef NCollection_Sequence <AdvApp2Var_Iso> AdvApp2Var_Strip;
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor AdvApp2Var_ApproxAFunc2Var;
 class AdvApp2Var_ApproxAFunc2Var {
@@ -78,17 +114,17 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: Handle_TColStd_HArray1OfReal &
+	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param TwoDTol:
-	:type TwoDTol: Handle_TColStd_HArray1OfReal &
+	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param ThreeDTol:
-	:type ThreeDTol: Handle_TColStd_HArray1OfReal &
+	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param OneDTolFr:
-	:type OneDTolFr: Handle_TColStd_HArray2OfReal &
+	:type OneDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param TwoDTolFr:
-	:type TwoDTolFr: Handle_TColStd_HArray2OfReal &
+	:type TwoDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param ThreeDTolFr:
-	:type ThreeDTolFr: Handle_TColStd_HArray2OfReal &
+	:type ThreeDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param FirstInU:
 	:type FirstInU: float
 	:param LastInU:
@@ -119,7 +155,7 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:type VChoice: AdvApprox_Cutting &
 	:rtype: None
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle_TColStd_HArray1OfReal & OneDTol,const Handle_TColStd_HArray1OfReal & TwoDTol,const Handle_TColStd_HArray1OfReal & ThreeDTol,const Handle_TColStd_HArray2OfReal & OneDTolFr,const Handle_TColStd_HArray2OfReal & TwoDTolFr,const Handle_TColStd_HArray2OfReal & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
+		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
 		%feature("compactdefaultargs") AdvApp2Var_ApproxAFunc2Var;
 		%feature("autodoc", "	:param Num1DSS:
 	:type Num1DSS: int
@@ -128,17 +164,17 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: Handle_TColStd_HArray1OfReal &
+	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param TwoDTol:
-	:type TwoDTol: Handle_TColStd_HArray1OfReal &
+	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param ThreeDTol:
-	:type ThreeDTol: Handle_TColStd_HArray1OfReal &
+	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param OneDTolFr:
-	:type OneDTolFr: Handle_TColStd_HArray2OfReal &
+	:type OneDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param TwoDTolFr:
-	:type TwoDTolFr: Handle_TColStd_HArray2OfReal &
+	:type TwoDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param ThreeDTolFr:
-	:type ThreeDTolFr: Handle_TColStd_HArray2OfReal &
+	:type ThreeDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
 	:param FirstInU:
 	:type FirstInU: float
 	:param LastInU:
@@ -171,83 +207,15 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:type VChoice: AdvApprox_Cutting &
 	:rtype: None
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle_TColStd_HArray1OfReal & OneDTol,const Handle_TColStd_HArray1OfReal & TwoDTol,const Handle_TColStd_HArray1OfReal & ThreeDTol,const Handle_TColStd_HArray2OfReal & OneDTolFr,const Handle_TColStd_HArray2OfReal & TwoDTolFr,const Handle_TColStd_HArray2OfReal & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,const AdvApp2Var_Criterion & Crit,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* True if the approximation succeeded within the imposed tolerances and the wished continuities
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "	* True if the approximation did come out with a result that is not NECESSARELY within the required tolerance or a result that is not recognized with the wished continuities
-
-	:rtype: bool
-") HasResult;
-		Standard_Boolean HasResult ();
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "	* returns the BSplineSurface of range Index
-
-	:param Index:
-	:type Index: int
-	:rtype: Handle_Geom_BSplineSurface
-") Surface;
-		Handle_Geom_BSplineSurface Surface (const Standard_Integer Index);
-		%feature("compactdefaultargs") UDegree;
-		%feature("autodoc", "	:rtype: int
-") UDegree;
-		Standard_Integer UDegree ();
-		%feature("compactdefaultargs") VDegree;
-		%feature("autodoc", "	:rtype: int
-") VDegree;
-		Standard_Integer VDegree ();
-		%feature("compactdefaultargs") NumSubSpaces;
-		%feature("autodoc", "	:param Dimension:
-	:type Dimension: int
-	:rtype: int
-") NumSubSpaces;
-		Standard_Integer NumSubSpaces (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "	* returns the errors max
-
-	:param Dimension:
-	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") MaxError;
-		Handle_TColStd_HArray1OfReal MaxError (const Standard_Integer Dimension);
+		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,const AdvApp2Var_Criterion & Crit,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "	* returns the average errors
 
 	:param Dimension:
 	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") AverageError;
-		Handle_TColStd_HArray1OfReal AverageError (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") UFrontError;
-		%feature("autodoc", "	* returns the errors max on UFrontiers Warning: Dimension must be equal to 3.
-
-	:param Dimension:
-	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") UFrontError;
-		Handle_TColStd_HArray1OfReal UFrontError (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") VFrontError;
-		%feature("autodoc", "	* returns the errors max on VFrontiers Warning: Dimension must be equal to 3.
-
-	:param Dimension:
-	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") VFrontError;
-		Handle_TColStd_HArray1OfReal VFrontError (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index
-
-	:param Dimension:
-	:type Dimension: int
-	:param Index:
-	:type Index: int
-	:rtype: float
-") MaxError;
-		Standard_Real MaxError (const Standard_Integer Dimension,const Standard_Integer Index);
+		opencascade::handle<TColStd_HArray1OfReal> AverageError (const Standard_Integer Dimension);
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "	* returns the average error of the BSplineSurface of range Index
 
@@ -258,26 +226,6 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:rtype: float
 ") AverageError;
 		Standard_Real AverageError (const Standard_Integer Dimension,const Standard_Integer Index);
-		%feature("compactdefaultargs") UFrontError;
-		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index on a UFrontier
-
-	:param Dimension:
-	:type Dimension: int
-	:param Index:
-	:type Index: int
-	:rtype: float
-") UFrontError;
-		Standard_Real UFrontError (const Standard_Integer Dimension,const Standard_Integer Index);
-		%feature("compactdefaultargs") VFrontError;
-		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index on a VFrontier
-
-	:param Dimension:
-	:type Dimension: int
-	:param Index:
-	:type Index: int
-	:rtype: float
-") VFrontError;
-		Standard_Real VFrontError (const Standard_Integer Dimension,const Standard_Integer Index);
 		%feature("compactdefaultargs") CritError;
 		%feature("autodoc", "	:param Dimension:
 	:type Dimension: int
@@ -294,7 +242,95 @@ class AdvApp2Var_ApproxAFunc2Var {
             self->Dump(s);
             return s.str();}
         };
-        };
+        		%feature("compactdefaultargs") HasResult;
+		%feature("autodoc", "	* True if the approximation did come out with a result that is not NECESSARELY within the required tolerance or a result that is not recognized with the wished continuities
+
+	:rtype: bool
+") HasResult;
+		Standard_Boolean HasResult ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* True if the approximation succeeded within the imposed tolerances and the wished continuities
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	* returns the errors max
+
+	:param Dimension:
+	:type Dimension: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") MaxError;
+		opencascade::handle<TColStd_HArray1OfReal> MaxError (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index
+
+	:param Dimension:
+	:type Dimension: int
+	:param Index:
+	:type Index: int
+	:rtype: float
+") MaxError;
+		Standard_Real MaxError (const Standard_Integer Dimension,const Standard_Integer Index);
+		%feature("compactdefaultargs") NumSubSpaces;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:rtype: int
+") NumSubSpaces;
+		Standard_Integer NumSubSpaces (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") Surface;
+		%feature("autodoc", "	* returns the BSplineSurface of range Index
+
+	:param Index:
+	:type Index: int
+	:rtype: opencascade::handle<Geom_BSplineSurface>
+") Surface;
+		opencascade::handle<Geom_BSplineSurface> Surface (const Standard_Integer Index);
+		%feature("compactdefaultargs") UDegree;
+		%feature("autodoc", "	:rtype: int
+") UDegree;
+		Standard_Integer UDegree ();
+		%feature("compactdefaultargs") UFrontError;
+		%feature("autodoc", "	* returns the errors max on UFrontiers Warning: Dimension must be equal to 3.
+
+	:param Dimension:
+	:type Dimension: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UFrontError;
+		opencascade::handle<TColStd_HArray1OfReal> UFrontError (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") UFrontError;
+		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index on a UFrontier
+
+	:param Dimension:
+	:type Dimension: int
+	:param Index:
+	:type Index: int
+	:rtype: float
+") UFrontError;
+		Standard_Real UFrontError (const Standard_Integer Dimension,const Standard_Integer Index);
+		%feature("compactdefaultargs") VDegree;
+		%feature("autodoc", "	:rtype: int
+") VDegree;
+		Standard_Integer VDegree ();
+		%feature("compactdefaultargs") VFrontError;
+		%feature("autodoc", "	* returns the errors max on VFrontiers Warning: Dimension must be equal to 3.
+
+	:param Dimension:
+	:type Dimension: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") VFrontError;
+		opencascade::handle<TColStd_HArray1OfReal> VFrontError (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") VFrontError;
+		%feature("autodoc", "	* returns the error max of the BSplineSurface of range Index on a VFrontier
+
+	:param Dimension:
+	:type Dimension: int
+	:param Index:
+	:type Index: int
+	:rtype: float
+") VFrontError;
+		Standard_Real VFrontError (const Standard_Integer Dimension,const Standard_Integer Index);
+};
 
 
 %extend AdvApp2Var_ApproxAFunc2Var {
@@ -305,86 +341,52 @@ class AdvApp2Var_ApproxAFunc2Var {
 %nodefaultctor AdvApp2Var_ApproxF2var;
 class AdvApp2Var_ApproxF2var {
 	public:
-		%feature("compactdefaultargs") mma2fnc_;
-		%feature("autodoc", "	:param ndimen:
-	:type ndimen: integer *
-	:param nbsesp:
-	:type nbsesp: integer *
-	:param ndimse:
-	:type ndimse: integer *
-	:param uvfonc:
-	:type uvfonc: doublereal *
-	:param foncnp:
-	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
-	:param tconst:
-	:type tconst: doublereal *
-	:param isofav:
-	:type isofav: integer *
-	:param nbroot:
-	:type nbroot: integer *
-	:param rootlg:
-	:type rootlg: doublereal *
-	:param iordre:
-	:type iordre: integer *
-	:param ideriv:
-	:type ideriv: integer *
-	:param ndgjac:
-	:type ndgjac: integer *
-	:param nbcrmx:
-	:type nbcrmx: integer *
-	:param ncflim:
-	:type ncflim: integer *
-	:param epsapr:
-	:type epsapr: doublereal *
-	:param ncoeff:
-	:type ncoeff: integer *
-	:param courbe:
-	:type courbe: doublereal *
-	:param nbcrbe:
-	:type nbcrbe: integer *
-	:param somtab:
-	:type somtab: doublereal *
-	:param diftab:
-	:type diftab: doublereal *
-	:param contr1:
-	:type contr1: doublereal *
-	:param contr2:
-	:type contr2: doublereal *
-	:param tabdec:
-	:type tabdec: doublereal *
-	:param errmax:
-	:type errmax: doublereal *
-	:param errmoy:
-	:type errmoy: doublereal *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mma2fnc_;
-		static int mma2fnc_ (integer * ndimen,integer * nbsesp,integer * ndimse,doublereal * uvfonc,const AdvApp2Var_EvaluatorFunc2Var & foncnp,doublereal * tconst,integer * isofav,integer * nbroot,doublereal * rootlg,integer * iordre,integer * ideriv,integer * ndgjac,integer * nbcrmx,integer * ncflim,doublereal * epsapr,integer * ncoeff,doublereal * courbe,integer * nbcrbe,doublereal * somtab,doublereal * diftab,doublereal * contr1,doublereal * contr2,doublereal * tabdec,doublereal * errmax,doublereal * errmoy,integer * iercod);
-		%feature("compactdefaultargs") mma2roo_;
-		%feature("autodoc", "	:param nbpntu:
-	:type nbpntu: integer *
-	:param nbpntv:
-	:type nbpntv: integer *
-	:param urootl:
-	:type urootl: doublereal *
-	:param vrootl:
-	:type vrootl: doublereal *
-	:rtype: int
-") mma2roo_;
-		static int mma2roo_ (integer * nbpntu,integer * nbpntv,doublereal * urootl,doublereal * vrootl);
-		%feature("compactdefaultargs") mma2jmx_;
-		%feature("autodoc", "	:param ndgjac:
-	:type ndgjac: integer *
-	:param iordre:
-	:type iordre: integer *
-	:param xjacmx:
-	:type xjacmx: doublereal *
-	:rtype: int
-") mma2jmx_;
-		static int mma2jmx_ (integer * ndgjac,integer * iordre,doublereal * xjacmx);
-		%feature("compactdefaultargs") mmapptt_;
+		%feature("compactdefaultargs") mma1her_;
 		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:rtype: int
+") mma1her_;
+		static int mma1her_ (const integer * ,doublereal * ,integer * );
+		%feature("compactdefaultargs") mma2ac1_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:rtype: int
+") mma2ac1_;
+		static int mma2ac1_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,doublereal * );
+		%feature("compactdefaultargs") mma2ac2_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
 	:type : integer *
 	:param :
 	:type : integer *
@@ -394,9 +396,67 @@ class AdvApp2Var_ApproxF2var {
 	:type : doublereal *
 	:param :
 	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
 	:rtype: int
-") mmapptt_;
-		static int mmapptt_ (const integer * ,const integer * ,const integer * ,doublereal * ,integer * );
+") mma2ac2_;
+		static int mma2ac2_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const integer * ,const doublereal * ,const doublereal * ,doublereal * );
+		%feature("compactdefaultargs") mma2ac3_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:rtype: int
+") mma2ac3_;
+		static int mma2ac3_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const integer * ,const doublereal * ,const doublereal * ,doublereal * );
+		%feature("compactdefaultargs") mma2can_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:rtype: int
+") mma2can_;
+		static int mma2can_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,doublereal * ,doublereal * ,integer * );
 		%feature("compactdefaultargs") mma2cdi_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -449,42 +509,6 @@ class AdvApp2Var_ApproxF2var {
 	:rtype: int
 ") mma2cdi_;
 		static int mma2cdi_ (integer * ndimen,integer * nbpntu,doublereal * urootl,integer * nbpntv,doublereal * vrootl,integer * iordru,integer * iordrv,doublereal * contr1,doublereal * contr2,doublereal * contr3,doublereal * contr4,doublereal * sotbu1,doublereal * sotbu2,doublereal * ditbu1,doublereal * ditbu2,doublereal * sotbv1,doublereal * sotbv2,doublereal * ditbv1,doublereal * ditbv2,doublereal * sosotb,doublereal * soditb,doublereal * disotb,doublereal * diditb,integer * iercod);
-		%feature("compactdefaultargs") mma2ds1_;
-		%feature("autodoc", "	:param ndimen:
-	:type ndimen: integer *
-	:param uintfn:
-	:type uintfn: doublereal *
-	:param vintfn:
-	:type vintfn: doublereal *
-	:param foncnp:
-	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
-	:param nbpntu:
-	:type nbpntu: integer *
-	:param nbpntv:
-	:type nbpntv: integer *
-	:param urootb:
-	:type urootb: doublereal *
-	:param vrootb:
-	:type vrootb: doublereal *
-	:param isofav:
-	:type isofav: integer *
-	:param sosotb:
-	:type sosotb: doublereal *
-	:param disotb:
-	:type disotb: doublereal *
-	:param soditb:
-	:type soditb: doublereal *
-	:param diditb:
-	:type diditb: doublereal *
-	:param fpntab:
-	:type fpntab: doublereal *
-	:param ttable:
-	:type ttable: doublereal *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mma2ds1_;
-		static int mma2ds1_ (integer * ndimen,doublereal * uintfn,doublereal * vintfn,const AdvApp2Var_EvaluatorFunc2Var & foncnp,integer * nbpntu,integer * nbpntv,doublereal * urootb,doublereal * vrootb,integer * isofav,doublereal * sosotb,doublereal * disotb,doublereal * soditb,doublereal * diditb,doublereal * fpntab,doublereal * ttable,integer * iercod);
 		%feature("compactdefaultargs") mma2ce1_;
 		%feature("autodoc", "	:param numdec:
 	:type numdec: integer *
@@ -541,122 +565,98 @@ class AdvApp2Var_ApproxF2var {
 	:rtype: int
 ") mma2ce1_;
 		static int mma2ce1_ (integer * numdec,integer * ndimen,integer * nbsesp,integer * ndimse,integer * ndminu,integer * ndminv,integer * ndguli,integer * ndgvli,integer * ndjacu,integer * ndjacv,integer * iordru,integer * iordrv,integer * nbpntu,integer * nbpntv,doublereal * epsapr,doublereal * sosotb,doublereal * disotb,doublereal * soditb,doublereal * diditb,doublereal * patjac,doublereal * errmax,doublereal * errmoy,integer * ndegpu,integer * ndegpv,integer * itydec,integer * iercod);
-		%feature("compactdefaultargs") mma2can_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
+		%feature("compactdefaultargs") mma2ds1_;
+		%feature("autodoc", "	:param ndimen:
+	:type ndimen: integer *
+	:param uintfn:
+	:type uintfn: doublereal *
+	:param vintfn:
+	:type vintfn: doublereal *
+	:param foncnp:
+	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
+	:param nbpntu:
+	:type nbpntu: integer *
+	:param nbpntv:
+	:type nbpntv: integer *
+	:param urootb:
+	:type urootb: doublereal *
+	:param vrootb:
+	:type vrootb: doublereal *
+	:param isofav:
+	:type isofav: integer *
+	:param sosotb:
+	:type sosotb: doublereal *
+	:param disotb:
+	:type disotb: doublereal *
+	:param soditb:
+	:type soditb: doublereal *
+	:param diditb:
+	:type diditb: doublereal *
+	:param fpntab:
+	:type fpntab: doublereal *
+	:param ttable:
+	:type ttable: doublereal *
+	:param iercod:
+	:type iercod: integer *
 	:rtype: int
-") mma2can_;
-		static int mma2can_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,doublereal * ,doublereal * ,integer * );
-		%feature("compactdefaultargs") mma1her_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
+") mma2ds1_;
+		static int mma2ds1_ (integer * ndimen,doublereal * uintfn,doublereal * vintfn,const AdvApp2Var_EvaluatorFunc2Var & foncnp,integer * nbpntu,integer * nbpntv,doublereal * urootb,doublereal * vrootb,integer * isofav,doublereal * sosotb,doublereal * disotb,doublereal * soditb,doublereal * diditb,doublereal * fpntab,doublereal * ttable,integer * iercod);
+		%feature("compactdefaultargs") mma2fnc_;
+		%feature("autodoc", "	:param ndimen:
+	:type ndimen: integer *
+	:param nbsesp:
+	:type nbsesp: integer *
+	:param ndimse:
+	:type ndimse: integer *
+	:param uvfonc:
+	:type uvfonc: doublereal *
+	:param foncnp:
+	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
+	:param tconst:
+	:type tconst: doublereal *
+	:param isofav:
+	:type isofav: integer *
+	:param nbroot:
+	:type nbroot: integer *
+	:param rootlg:
+	:type rootlg: doublereal *
+	:param iordre:
+	:type iordre: integer *
+	:param ideriv:
+	:type ideriv: integer *
+	:param ndgjac:
+	:type ndgjac: integer *
+	:param nbcrmx:
+	:type nbcrmx: integer *
+	:param ncflim:
+	:type ncflim: integer *
+	:param epsapr:
+	:type epsapr: doublereal *
+	:param ncoeff:
+	:type ncoeff: integer *
+	:param courbe:
+	:type courbe: doublereal *
+	:param nbcrbe:
+	:type nbcrbe: integer *
+	:param somtab:
+	:type somtab: doublereal *
+	:param diftab:
+	:type diftab: doublereal *
+	:param contr1:
+	:type contr1: doublereal *
+	:param contr2:
+	:type contr2: doublereal *
+	:param tabdec:
+	:type tabdec: doublereal *
+	:param errmax:
+	:type errmax: doublereal *
+	:param errmoy:
+	:type errmoy: doublereal *
+	:param iercod:
+	:type iercod: integer *
 	:rtype: int
-") mma1her_;
-		static int mma1her_ (const integer * ,doublereal * ,integer * );
-		%feature("compactdefaultargs") mma2ac2_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:rtype: int
-") mma2ac2_;
-		static int mma2ac2_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const integer * ,const doublereal * ,const doublereal * ,doublereal * );
-		%feature("compactdefaultargs") mma2ac3_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:rtype: int
-") mma2ac3_;
-		static int mma2ac3_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const integer * ,const doublereal * ,const doublereal * ,doublereal * );
-		%feature("compactdefaultargs") mma2ac1_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:rtype: int
-") mma2ac1_;
-		static int mma2ac1_ (const integer * ,const integer * ,const integer * ,const integer * ,const integer * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,const doublereal * ,doublereal * );
+") mma2fnc_;
+		static int mma2fnc_ (integer * ndimen,integer * nbsesp,integer * ndimse,doublereal * uvfonc,const AdvApp2Var_EvaluatorFunc2Var & foncnp,doublereal * tconst,integer * isofav,integer * nbroot,doublereal * rootlg,integer * iordre,integer * ideriv,integer * ndgjac,integer * nbcrmx,integer * ncflim,doublereal * epsapr,integer * ncoeff,doublereal * courbe,integer * nbcrbe,doublereal * somtab,doublereal * diftab,doublereal * contr1,doublereal * contr2,doublereal * tabdec,doublereal * errmax,doublereal * errmoy,integer * iercod);
 		%feature("compactdefaultargs") mma2fx6_;
 		%feature("autodoc", "	:param ncfmxu:
 	:type ncfmxu: integer *
@@ -691,6 +691,42 @@ class AdvApp2Var_ApproxF2var {
 	:rtype: int
 ") mma2fx6_;
 		static int mma2fx6_ (integer * ncfmxu,integer * ncfmxv,integer * ndimen,integer * nbsesp,integer * ndimse,integer * nbupat,integer * nbvpat,integer * iordru,integer * iordrv,doublereal * epsapr,doublereal * epsfro,doublereal * patcan,doublereal * errmax,integer * ncoefu,integer * ncoefv);
+		%feature("compactdefaultargs") mma2jmx_;
+		%feature("autodoc", "	:param ndgjac:
+	:type ndgjac: integer *
+	:param iordre:
+	:type iordre: integer *
+	:param xjacmx:
+	:type xjacmx: doublereal *
+	:rtype: int
+") mma2jmx_;
+		static int mma2jmx_ (integer * ndgjac,integer * iordre,doublereal * xjacmx);
+		%feature("compactdefaultargs") mma2roo_;
+		%feature("autodoc", "	:param nbpntu:
+	:type nbpntu: integer *
+	:param nbpntv:
+	:type nbpntv: integer *
+	:param urootl:
+	:type urootl: doublereal *
+	:param vrootl:
+	:type vrootl: doublereal *
+	:rtype: int
+") mma2roo_;
+		static int mma2roo_ (integer * nbpntu,integer * nbpntv,doublereal * urootl,doublereal * vrootl);
+		%feature("compactdefaultargs") mmapptt_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:rtype: int
+") mmapptt_;
+		static int mmapptt_ (const integer * ,const integer * ,const integer * ,doublereal * ,integer * );
 };
 
 
@@ -726,20 +762,36 @@ class AdvApp2Var_Context {
 	:param nb3Dss:
 	:type nb3Dss: int
 	:param tol1D:
-	:type tol1D: Handle_TColStd_HArray1OfReal &
+	:type tol1D: opencascade::handle<TColStd_HArray1OfReal> &
 	:param tol2D:
-	:type tol2D: Handle_TColStd_HArray1OfReal &
+	:type tol2D: opencascade::handle<TColStd_HArray1OfReal> &
 	:param tol3D:
-	:type tol3D: Handle_TColStd_HArray1OfReal &
+	:type tol3D: opencascade::handle<TColStd_HArray1OfReal> &
 	:param tof1D:
-	:type tof1D: Handle_TColStd_HArray2OfReal &
+	:type tof1D: opencascade::handle<TColStd_HArray2OfReal> &
 	:param tof2D:
-	:type tof2D: Handle_TColStd_HArray2OfReal &
+	:type tof2D: opencascade::handle<TColStd_HArray2OfReal> &
 	:param tof3D:
-	:type tof3D: Handle_TColStd_HArray2OfReal &
+	:type tof3D: opencascade::handle<TColStd_HArray2OfReal> &
 	:rtype: None
 ") AdvApp2Var_Context;
-		 AdvApp2Var_Context (const Standard_Integer ifav,const Standard_Integer iu,const Standard_Integer iv,const Standard_Integer nlimu,const Standard_Integer nlimv,const Standard_Integer iprecis,const Standard_Integer nb1Dss,const Standard_Integer nb2Dss,const Standard_Integer nb3Dss,const Handle_TColStd_HArray1OfReal & tol1D,const Handle_TColStd_HArray1OfReal & tol2D,const Handle_TColStd_HArray1OfReal & tol3D,const Handle_TColStd_HArray2OfReal & tof1D,const Handle_TColStd_HArray2OfReal & tof2D,const Handle_TColStd_HArray2OfReal & tof3D);
+		 AdvApp2Var_Context (const Standard_Integer ifav,const Standard_Integer iu,const Standard_Integer iv,const Standard_Integer nlimu,const Standard_Integer nlimv,const Standard_Integer iprecis,const Standard_Integer nb1Dss,const Standard_Integer nb2Dss,const Standard_Integer nb3Dss,const opencascade::handle<TColStd_HArray1OfReal> & tol1D,const opencascade::handle<TColStd_HArray1OfReal> & tol2D,const opencascade::handle<TColStd_HArray1OfReal> & tol3D,const opencascade::handle<TColStd_HArray2OfReal> & tof1D,const opencascade::handle<TColStd_HArray2OfReal> & tof2D,const opencascade::handle<TColStd_HArray2OfReal> & tof3D);
+		%feature("compactdefaultargs") CToler;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") CToler;
+		opencascade::handle<TColStd_HArray2OfReal> CToler ();
+		%feature("compactdefaultargs") FToler;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") FToler;
+		opencascade::handle<TColStd_HArray2OfReal> FToler ();
+		%feature("compactdefaultargs") FavorIso;
+		%feature("autodoc", "	:rtype: int
+") FavorIso;
+		Standard_Integer FavorIso ();
+		%feature("compactdefaultargs") IToler;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") IToler;
+		opencascade::handle<TColStd_HArray1OfReal> IToler ();
 		%feature("compactdefaultargs") TotalDimension;
 		%feature("autodoc", "	:rtype: int
 ") TotalDimension;
@@ -748,70 +800,54 @@ class AdvApp2Var_Context {
 		%feature("autodoc", "	:rtype: int
 ") TotalNumberSSP;
 		Standard_Integer TotalNumberSSP ();
-		%feature("compactdefaultargs") FavorIso;
-		%feature("autodoc", "	:rtype: int
-") FavorIso;
-		Standard_Integer FavorIso ();
-		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "	:rtype: int
-") UOrder;
-		Standard_Integer UOrder ();
-		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "	:rtype: int
-") VOrder;
-		Standard_Integer VOrder ();
-		%feature("compactdefaultargs") ULimit;
-		%feature("autodoc", "	:rtype: int
-") ULimit;
-		Standard_Integer ULimit ();
-		%feature("compactdefaultargs") VLimit;
-		%feature("autodoc", "	:rtype: int
-") VLimit;
-		Standard_Integer VLimit ();
+		%feature("compactdefaultargs") UGauss;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UGauss;
+		opencascade::handle<TColStd_HArray1OfReal> UGauss ();
 		%feature("compactdefaultargs") UJacDeg;
 		%feature("autodoc", "	:rtype: int
 ") UJacDeg;
 		Standard_Integer UJacDeg ();
+		%feature("compactdefaultargs") UJacMax;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UJacMax;
+		opencascade::handle<TColStd_HArray1OfReal> UJacMax ();
+		%feature("compactdefaultargs") ULimit;
+		%feature("autodoc", "	:rtype: int
+") ULimit;
+		Standard_Integer ULimit ();
+		%feature("compactdefaultargs") UOrder;
+		%feature("autodoc", "	:rtype: int
+") UOrder;
+		Standard_Integer UOrder ();
+		%feature("compactdefaultargs") URoots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") URoots;
+		opencascade::handle<TColStd_HArray1OfReal> URoots ();
+		%feature("compactdefaultargs") VGauss;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") VGauss;
+		opencascade::handle<TColStd_HArray1OfReal> VGauss ();
 		%feature("compactdefaultargs") VJacDeg;
 		%feature("autodoc", "	:rtype: int
 ") VJacDeg;
 		Standard_Integer VJacDeg ();
-		%feature("compactdefaultargs") UJacMax;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") UJacMax;
-		Handle_TColStd_HArray1OfReal UJacMax ();
 		%feature("compactdefaultargs") VJacMax;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") VJacMax;
-		Handle_TColStd_HArray1OfReal VJacMax ();
-		%feature("compactdefaultargs") URoots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") URoots;
-		Handle_TColStd_HArray1OfReal URoots ();
+		opencascade::handle<TColStd_HArray1OfReal> VJacMax ();
+		%feature("compactdefaultargs") VLimit;
+		%feature("autodoc", "	:rtype: int
+") VLimit;
+		Standard_Integer VLimit ();
+		%feature("compactdefaultargs") VOrder;
+		%feature("autodoc", "	:rtype: int
+") VOrder;
+		Standard_Integer VOrder ();
 		%feature("compactdefaultargs") VRoots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") VRoots;
-		Handle_TColStd_HArray1OfReal VRoots ();
-		%feature("compactdefaultargs") UGauss;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") UGauss;
-		Handle_TColStd_HArray1OfReal UGauss ();
-		%feature("compactdefaultargs") VGauss;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") VGauss;
-		Handle_TColStd_HArray1OfReal VGauss ();
-		%feature("compactdefaultargs") IToler;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") IToler;
-		Handle_TColStd_HArray1OfReal IToler ();
-		%feature("compactdefaultargs") FToler;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") FToler;
-		Handle_TColStd_HArray2OfReal FToler ();
-		%feature("compactdefaultargs") CToler;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") CToler;
-		Handle_TColStd_HArray2OfReal CToler ();
+		opencascade::handle<TColStd_HArray1OfReal> VRoots ();
 };
 
 
@@ -823,18 +859,6 @@ class AdvApp2Var_Context {
 %nodefaultctor AdvApp2Var_Criterion;
 class AdvApp2Var_Criterion {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param P:
-	:type P: AdvApp2Var_Patch &
-	:param C:
-	:type C: AdvApp2Var_Context &
-	:rtype: void
-") Value;
-		virtual void Value (AdvApp2Var_Patch & P,const AdvApp2Var_Context & C);
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", "	:param P:
 	:type P: AdvApp2Var_Patch &
@@ -845,14 +869,22 @@ class AdvApp2Var_Criterion {
 		%feature("autodoc", "	:rtype: float
 ") MaxValue;
 		Standard_Real MaxValue ();
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	:rtype: AdvApp2Var_CriterionType
-") Type;
-		AdvApp2Var_CriterionType Type ();
 		%feature("compactdefaultargs") Repartition;
 		%feature("autodoc", "	:rtype: AdvApp2Var_CriterionRepartition
 ") Repartition;
 		AdvApp2Var_CriterionRepartition Repartition ();
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "	:rtype: AdvApp2Var_CriterionType
+") Type;
+		AdvApp2Var_CriterionType Type ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param P:
+	:type P: AdvApp2Var_Patch &
+	:param C:
+	:type C: AdvApp2Var_Context &
+	:rtype: void
+") Value;
+		virtual void Value (AdvApp2Var_Patch & P,const AdvApp2Var_Context & C);
 };
 
 
@@ -864,14 +896,6 @@ class AdvApp2Var_Criterion {
 %nodefaultctor AdvApp2Var_Data;
 class AdvApp2Var_Data {
 	public:
-		%feature("compactdefaultargs") Getmdnombr;
-		%feature("autodoc", "	:rtype: mdnombr_1_
-") Getmdnombr;
-		static mdnombr_1_ & Getmdnombr ();
-		%feature("compactdefaultargs") Getminombr;
-		%feature("autodoc", "	:rtype: minombr_1_
-") Getminombr;
-		static minombr_1_ & Getminombr ();
 		%feature("compactdefaultargs") Getmaovpar;
 		%feature("autodoc", "	:rtype: maovpar_1_
 ") Getmaovpar;
@@ -880,22 +904,18 @@ class AdvApp2Var_Data {
 		%feature("autodoc", "	:rtype: maovpch_1_
 ") Getmaovpch;
 		static maovpch_1_ & Getmaovpch ();
+		%feature("compactdefaultargs") Getmdnombr;
+		%feature("autodoc", "	:rtype: mdnombr_1_
+") Getmdnombr;
+		static mdnombr_1_ & Getmdnombr ();
+		%feature("compactdefaultargs") Getminombr;
+		%feature("autodoc", "	:rtype: minombr_1_
+") Getminombr;
+		static minombr_1_ & Getminombr ();
 		%feature("compactdefaultargs") Getmlgdrtl;
 		%feature("autodoc", "	:rtype: mlgdrtl_1_
 ") Getmlgdrtl;
 		static mlgdrtl_1_ & Getmlgdrtl ();
-		%feature("compactdefaultargs") Getmmjcobi;
-		%feature("autodoc", "	:rtype: mmjcobi_1_
-") Getmmjcobi;
-		static mmjcobi_1_ & Getmmjcobi ();
-		%feature("compactdefaultargs") Getmmcmcnp;
-		%feature("autodoc", "	:rtype: mmcmcnp_1_
-") Getmmcmcnp;
-		static mmcmcnp_1_ & Getmmcmcnp ();
-		%feature("compactdefaultargs") Getmmapgss;
-		%feature("autodoc", "	:rtype: mmapgss_1_
-") Getmmapgss;
-		static mmapgss_1_ & Getmmapgss ();
 		%feature("compactdefaultargs") Getmmapgs0;
 		%feature("autodoc", "	:rtype: mmapgs0_1_
 ") Getmmapgs0;
@@ -908,6 +928,18 @@ class AdvApp2Var_Data {
 		%feature("autodoc", "	:rtype: mmapgs2_1_
 ") Getmmapgs2;
 		static mmapgs2_1_ & Getmmapgs2 ();
+		%feature("compactdefaultargs") Getmmapgss;
+		%feature("autodoc", "	:rtype: mmapgss_1_
+") Getmmapgss;
+		static mmapgss_1_ & Getmmapgss ();
+		%feature("compactdefaultargs") Getmmcmcnp;
+		%feature("autodoc", "	:rtype: mmcmcnp_1_
+") Getmmcmcnp;
+		static mmcmcnp_1_ & Getmmcmcnp ();
+		%feature("compactdefaultargs") Getmmjcobi;
+		%feature("autodoc", "	:rtype: mmjcobi_1_
+") Getmmjcobi;
+		static mmjcobi_1_ & Getmmjcobi ();
 };
 
 
@@ -933,6 +965,32 @@ class AdvApp2Var_Framework {
 	:rtype: None
 ") AdvApp2Var_Framework;
 		 AdvApp2Var_Framework (const AdvApp2Var_SequenceOfNode & Frame,const AdvApp2Var_SequenceOfStrip & UFrontier,const AdvApp2Var_SequenceOfStrip & VFrontier);
+		%feature("compactdefaultargs") ChangeIso;
+		%feature("autodoc", "	:param IndexIso:
+	:type IndexIso: int
+	:param IndexStrip:
+	:type IndexStrip: int
+	:param anIso:
+	:type anIso: AdvApp2Var_Iso &
+	:rtype: None
+") ChangeIso;
+		void ChangeIso (const Standard_Integer IndexIso,const Standard_Integer IndexStrip,const AdvApp2Var_Iso & anIso);
+		%feature("compactdefaultargs") ChangeNode;
+		%feature("autodoc", "	:param IndexNode:
+	:type IndexNode: int
+	:rtype: AdvApp2Var_Node
+") ChangeNode;
+		AdvApp2Var_Node & ChangeNode (const Standard_Integer IndexNode);
+		%feature("compactdefaultargs") FirstNode;
+		%feature("autodoc", "	:param Type:
+	:type Type: GeomAbs_IsoType
+	:param IndexIso:
+	:type IndexIso: int
+	:param IndexStrip:
+	:type IndexStrip: int
+	:rtype: int
+") FirstNode;
+		Standard_Integer FirstNode (const GeomAbs_IsoType Type,const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "	* search the Index of the first Iso not approximated, if all Isos are approximated Standard_False is returned.
 
@@ -945,50 +1003,6 @@ class AdvApp2Var_Framework {
 	:rtype: bool
 ") FirstNotApprox;
 		Standard_Boolean FirstNotApprox (Standard_Integer &OutValue,Standard_Integer &OutValue,AdvApp2Var_Iso & anIso);
-		%feature("compactdefaultargs") FirstNode;
-		%feature("autodoc", "	:param Type:
-	:type Type: GeomAbs_IsoType
-	:param IndexIso:
-	:type IndexIso: int
-	:param IndexStrip:
-	:type IndexStrip: int
-	:rtype: int
-") FirstNode;
-		Standard_Integer FirstNode (const GeomAbs_IsoType Type,const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
-		%feature("compactdefaultargs") LastNode;
-		%feature("autodoc", "	:param Type:
-	:type Type: GeomAbs_IsoType
-	:param IndexIso:
-	:type IndexIso: int
-	:param IndexStrip:
-	:type IndexStrip: int
-	:rtype: int
-") LastNode;
-		Standard_Integer LastNode (const GeomAbs_IsoType Type,const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
-		%feature("compactdefaultargs") ChangeIso;
-		%feature("autodoc", "	:param IndexIso:
-	:type IndexIso: int
-	:param IndexStrip:
-	:type IndexStrip: int
-	:param anIso:
-	:type anIso: AdvApp2Var_Iso &
-	:rtype: None
-") ChangeIso;
-		void ChangeIso (const Standard_Integer IndexIso,const Standard_Integer IndexStrip,const AdvApp2Var_Iso & anIso);
-		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "	:param IndexNode:
-	:type IndexNode: int
-	:rtype: AdvApp2Var_Node
-") Node;
-		const AdvApp2Var_Node & Node (const Standard_Integer IndexNode);
-		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:rtype: AdvApp2Var_Node
-") Node;
-		const AdvApp2Var_Node & Node (const Standard_Real U,const Standard_Real V);
 		%feature("compactdefaultargs") IsoU;
 		%feature("autodoc", "	:param U:
 	:type U: float
@@ -1009,12 +1023,38 @@ class AdvApp2Var_Framework {
 	:rtype: AdvApp2Var_Iso
 ") IsoV;
 		const AdvApp2Var_Iso & IsoV (const Standard_Real U0,const Standard_Real U1,const Standard_Real V);
-		%feature("compactdefaultargs") ChangeNode;
+		%feature("compactdefaultargs") LastNode;
+		%feature("autodoc", "	:param Type:
+	:type Type: GeomAbs_IsoType
+	:param IndexIso:
+	:type IndexIso: int
+	:param IndexStrip:
+	:type IndexStrip: int
+	:rtype: int
+") LastNode;
+		Standard_Integer LastNode (const GeomAbs_IsoType Type,const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
+		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "	:param IndexNode:
 	:type IndexNode: int
 	:rtype: AdvApp2Var_Node
-") ChangeNode;
-		AdvApp2Var_Node & ChangeNode (const Standard_Integer IndexNode);
+") Node;
+		const AdvApp2Var_Node & Node (const Standard_Integer IndexNode);
+		%feature("compactdefaultargs") Node;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:rtype: AdvApp2Var_Node
+") Node;
+		const AdvApp2Var_Node & Node (const Standard_Real U,const Standard_Real V);
+		%feature("compactdefaultargs") UEquation;
+		%feature("autodoc", "	:param IndexIso:
+	:type IndexIso: int
+	:param IndexStrip:
+	:type IndexStrip: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UEquation;
+		const opencascade::handle<TColStd_HArray1OfReal> & UEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 		%feature("compactdefaultargs") UpdateInU;
 		%feature("autodoc", "	:param CuttingValue:
 	:type CuttingValue: float
@@ -1027,22 +1067,14 @@ class AdvApp2Var_Framework {
 	:rtype: None
 ") UpdateInV;
 		void UpdateInV (const Standard_Real CuttingValue);
-		%feature("compactdefaultargs") UEquation;
-		%feature("autodoc", "	:param IndexIso:
-	:type IndexIso: int
-	:param IndexStrip:
-	:type IndexStrip: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") UEquation;
-		Handle_TColStd_HArray1OfReal UEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 		%feature("compactdefaultargs") VEquation;
 		%feature("autodoc", "	:param IndexIso:
 	:type IndexIso: int
 	:param IndexStrip:
 	:type IndexStrip: int
-	:rtype: Handle_TColStd_HArray1OfReal
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") VEquation;
-		Handle_TColStd_HArray1OfReal VEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
+		const opencascade::handle<TColStd_HArray1OfReal> & VEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 };
 
 
@@ -1054,6 +1086,18 @@ class AdvApp2Var_Framework {
 %nodefaultctor AdvApp2Var_MathBase;
 class AdvApp2Var_MathBase {
 	public:
+		%feature("compactdefaultargs") mdsptpt_;
+		%feature("autodoc", "	:param ndimen:
+	:type ndimen: integer *
+	:param point1:
+	:type point1: doublereal *
+	:param point2:
+	:type point2: doublereal *
+	:param distan:
+	:type distan: doublereal *
+	:rtype: int
+") mdsptpt_;
+		static int mdsptpt_ (integer * ndimen,doublereal * point1,doublereal * point2,doublereal * distan);
 		%feature("compactdefaultargs") mmapcmp_;
 		%feature("autodoc", "	* ///
 
@@ -1070,106 +1114,48 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmapcmp_;
 		static int mmapcmp_ (integer * ,integer * ,integer * ,double * ,double * );
-		%feature("compactdefaultargs") mmdrc11_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:rtype: int
-") mmdrc11_;
-		static int mmdrc11_ (integer * ,integer * ,integer * ,doublereal * ,doublereal * ,doublereal * );
-		%feature("compactdefaultargs") mmfmca9_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:rtype: int
-") mmfmca9_;
-		static int mmfmca9_ (integer * ,integer * ,integer * ,integer * ,integer * ,integer * ,doublereal * ,doublereal * );
-		%feature("compactdefaultargs") mmfmcb5_;
-		%feature("autodoc", "	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
-	:rtype: int
-") mmfmcb5_;
-		static int mmfmcb5_ (integer * ,integer * ,integer * ,doublereal * ,integer * ,integer * ,integer * ,doublereal * ,integer * );
-		%feature("compactdefaultargs") mmwprcs_;
-		%feature("autodoc", "	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : doublereal *
-	:param :
-	:type : integer *
-	:param :
-	:type : integer *
-	:rtype: void
-") mmwprcs_;
-		static void mmwprcs_ (doublereal * ,doublereal * ,doublereal * ,doublereal * ,integer * ,integer * );
-		%feature("compactdefaultargs") mmcglc1_;
-		%feature("autodoc", "	* ///
-
-	:param ndimax:
-	:type ndimax: integer *
+		%feature("compactdefaultargs") mmaperx_;
+		%feature("autodoc", "	:param ncofmx:
+	:type ncofmx: integer *
 	:param ndimen:
 	:type ndimen: integer *
 	:param ncoeff:
 	:type ncoeff: integer *
-	:param courbe:
-	:type courbe: doublereal *
-	:param tdebut:
-	:type tdebut: doublereal *
-	:param tfinal:
-	:type tfinal: doublereal *
-	:param epsiln:
-	:type epsiln: doublereal *
-	:param xlongc:
-	:type xlongc: doublereal *
-	:param erreur:
-	:type erreur: doublereal *
+	:param iordre:
+	:type iordre: integer *
+	:param crvjac:
+	:type crvjac: doublereal *
+	:param ncfnew:
+	:type ncfnew: integer *
+	:param ycvmax:
+	:type ycvmax: doublereal *
+	:param errmax:
+	:type errmax: doublereal *
 	:param iercod:
 	:type iercod: integer *
 	:rtype: int
-") mmcglc1_;
-		static int mmcglc1_ (integer * ndimax,integer * ndimen,integer * ncoeff,doublereal * courbe,doublereal * tdebut,doublereal * tfinal,doublereal * epsiln,doublereal * xlongc,doublereal * erreur,integer * iercod);
+") mmaperx_;
+		static int mmaperx_ (integer * ncofmx,integer * ndimen,integer * ncoeff,integer * iordre,doublereal * crvjac,integer * ncfnew,doublereal * ycvmax,doublereal * errmax,integer * iercod);
+		%feature("compactdefaultargs") mmarcin_;
+		%feature("autodoc", "	:param ndimax:
+	:type ndimax: integer *
+	:param ndim:
+	:type ndim: integer *
+	:param ncoeff:
+	:type ncoeff: integer *
+	:param crvold:
+	:type crvold: doublereal *
+	:param u0:
+	:type u0: doublereal *
+	:param u1:
+	:type u1: doublereal *
+	:param crvnew:
+	:type crvnew: doublereal *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mmarcin_;
+		static int mmarcin_ (integer * ndimax,integer * ndim,integer * ncoeff,doublereal * crvold,doublereal * u0,doublereal * u1,doublereal * crvnew,integer * iercod);
 		%feature("compactdefaultargs") mmbulld_;
 		%feature("autodoc", "	:param nbcoln:
 	:type nbcoln: integer *
@@ -1198,6 +1184,32 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmcdriv_;
 		static int mmcdriv_ (integer * ndimen,integer * ncoeff,doublereal * courbe,integer * ideriv,integer * ncofdv,doublereal * crvdrv);
+		%feature("compactdefaultargs") mmcglc1_;
+		%feature("autodoc", "	* ///
+
+	:param ndimax:
+	:type ndimax: integer *
+	:param ndimen:
+	:type ndimen: integer *
+	:param ncoeff:
+	:type ncoeff: integer *
+	:param courbe:
+	:type courbe: doublereal *
+	:param tdebut:
+	:type tdebut: doublereal *
+	:param tfinal:
+	:type tfinal: doublereal *
+	:param epsiln:
+	:type epsiln: doublereal *
+	:param xlongc:
+	:type xlongc: doublereal *
+	:param erreur:
+	:type erreur: doublereal *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mmcglc1_;
+		static int mmcglc1_ (integer * ndimax,integer * ndimen,integer * ncoeff,doublereal * courbe,doublereal * tdebut,doublereal * tfinal,doublereal * epsiln,doublereal * xlongc,doublereal * erreur,integer * iercod);
 		%feature("compactdefaultargs") mmcvctx_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1218,40 +1230,36 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmcvctx_;
 		static int mmcvctx_ (integer * ndimen,integer * ncofmx,integer * nderiv,doublereal * ctrtes,doublereal * crvres,doublereal * tabaux,doublereal * xmatri,integer * iercod);
-		%feature("compactdefaultargs") mdsptpt_;
-		%feature("autodoc", "	:param ndimen:
-	:type ndimen: integer *
-	:param point1:
-	:type point1: doublereal *
-	:param point2:
-	:type point2: doublereal *
-	:param distan:
-	:type distan: doublereal *
+		%feature("compactdefaultargs") mmcvinv_;
+		%feature("autodoc", "	:param ndimax:
+	:type ndimax: integer *
+	:param ncoef:
+	:type ncoef: integer *
+	:param ndim:
+	:type ndim: integer *
+	:param curveo:
+	:type curveo: doublereal *
+	:param curve:
+	:type curve: doublereal *
 	:rtype: int
-") mdsptpt_;
-		static int mdsptpt_ (integer * ndimen,doublereal * point1,doublereal * point2,doublereal * distan);
-		%feature("compactdefaultargs") mmaperx_;
-		%feature("autodoc", "	:param ncofmx:
-	:type ncofmx: integer *
-	:param ndimen:
-	:type ndimen: integer *
-	:param ncoeff:
-	:type ncoeff: integer *
-	:param iordre:
-	:type iordre: integer *
-	:param crvjac:
-	:type crvjac: doublereal *
-	:param ncfnew:
-	:type ncfnew: integer *
-	:param ycvmax:
-	:type ycvmax: doublereal *
-	:param errmax:
-	:type errmax: doublereal *
-	:param iercod:
-	:type iercod: integer *
+") mmcvinv_;
+		static int mmcvinv_ (integer * ndimax,integer * ncoef,integer * ndim,doublereal * curveo,doublereal * curve);
+		%feature("compactdefaultargs") mmdrc11_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
 	:rtype: int
-") mmaperx_;
-		static int mmaperx_ (integer * ncofmx,integer * ndimen,integer * ncoeff,integer * iordre,doublereal * crvjac,integer * ncfnew,doublereal * ycvmax,doublereal * errmax,integer * iercod);
+") mmdrc11_;
+		static int mmdrc11_ (integer * ,integer * ,integer * ,doublereal * ,doublereal * ,doublereal * );
 		%feature("compactdefaultargs") mmdrvck_;
 		%feature("autodoc", "	:param ncoeff:
 	:type ncoeff: integer *
@@ -1294,6 +1302,26 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmfmca8_;
 		static int mmfmca8_ (const integer * ndimen,const integer * ncoefu,const integer * ncoefv,const integer * ndimax,const integer * ncfumx,const integer * ncfvmx,doublereal * tabini,doublereal * tabres);
+		%feature("compactdefaultargs") mmfmca9_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:rtype: int
+") mmfmca9_;
+		static int mmfmca9_ (integer * ,integer * ,integer * ,integer * ,integer * ,integer * ,doublereal * ,doublereal * );
 		%feature("compactdefaultargs") mmfmcar_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1320,6 +1348,28 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmfmcar_;
 		static int mmfmcar_ (integer * ndimen,integer * ncofmx,integer * ncoefu,integer * ncoefv,doublereal * patold,doublereal * upara1,doublereal * upara2,doublereal * vpara1,doublereal * vpara2,doublereal * patnew,integer * iercod);
+		%feature("compactdefaultargs") mmfmcb5_;
+		%feature("autodoc", "	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:rtype: int
+") mmfmcb5_;
+		static int mmfmcb5_ (integer * ,integer * ,integer * ,doublereal * ,integer * ,integer * ,integer * ,doublereal * ,integer * );
 		%feature("compactdefaultargs") mmfmtb1_;
 		%feature("autodoc", "	:param maxsz1:
 	:type maxsz1: integer *
@@ -1342,30 +1392,6 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmfmtb1_;
 		static int mmfmtb1_ (integer * maxsz1,doublereal * table1,integer * isize1,integer * jsize1,integer * maxsz2,doublereal * table2,integer * isize2,integer * jsize2,integer * iercod);
-		%feature("compactdefaultargs") mmgaus1_;
-		%feature("autodoc", "	:param ndimf:
-	:type ndimf: integer *
-	:param :
-	:type : int(*bfunx)(integer*ninteg,doublereal*parame,doublereal*vfunj1,integer*iercod)
-	:param k:
-	:type k: integer *
-	:param xd:
-	:type xd: doublereal *
-	:param xf:
-	:type xf: doublereal *
-	:param saux1:
-	:type saux1: doublereal *
-	:param saux2:
-	:type saux2: doublereal *
-	:param somme:
-	:type somme: doublereal *
-	:param niter:
-	:type niter: integer *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mmgaus1_;
-		static int mmgaus1_ (integer * ndimf,int(*bfunx)(integer*ninteg,doublereal*parame,doublereal*vfunj1,integer*iercod) ,integer * k,doublereal * xd,doublereal * xf,doublereal * saux1,doublereal * saux2,doublereal * somme,integer * niter,integer * iercod);
 		%feature("compactdefaultargs") mmhjcan_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1408,6 +1434,18 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mminltt_;
 		static int mminltt_ (integer * ncolmx,integer * nlgnmx,doublereal * tabtri,integer * nbrcol,integer * nbrlgn,doublereal * ajoute,doublereal * epseg,integer * iercod);
+		%feature("compactdefaultargs") mmjacan_;
+		%feature("autodoc", "	:param ideriv:
+	:type ideriv: integer *
+	:param ndeg:
+	:type ndeg: integer *
+	:param poljac:
+	:type poljac: doublereal *
+	:param polcan:
+	:type polcan: doublereal *
+	:rtype: int
+") mmjacan_;
+		static int mmjacan_ (const integer * ideriv,integer * ndeg,doublereal * poljac,doublereal * polcan);
 		%feature("compactdefaultargs") mmjaccv_;
 		%feature("autodoc", "	:param ncoef:
 	:type ncoef: integer *
@@ -1424,22 +1462,6 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmjaccv_;
 		static int mmjaccv_ (const integer * ncoef,const integer * ndim,const integer * ider,const doublereal * crvlgd,doublereal * polaux,doublereal * crvcan);
-		%feature("compactdefaultargs") mmpobas_;
-		%feature("autodoc", "	:param tparam:
-	:type tparam: doublereal *
-	:param iordre:
-	:type iordre: integer *
-	:param ncoeff:
-	:type ncoeff: integer *
-	:param nderiv:
-	:type nderiv: integer *
-	:param valbas:
-	:type valbas: doublereal *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mmpobas_;
-		static int mmpobas_ (doublereal * tparam,integer * iordre,integer * ncoeff,integer * nderiv,doublereal * valbas,integer * iercod);
 		%feature("compactdefaultargs") mmmpocur_;
 		%feature("autodoc", "	:param ncofmx:
 	:type ncofmx: integer *
@@ -1456,6 +1478,60 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmmpocur_;
 		static int mmmpocur_ (integer * ncofmx,integer * ndim,integer * ndeg,doublereal * courbe,doublereal * tparam,doublereal * tabval);
+		%feature("compactdefaultargs") mmmrslwd_;
+		%feature("autodoc", "	:param normax:
+	:type normax: integer *
+	:param nordre:
+	:type nordre: integer *
+	:param ndim:
+	:type ndim: integer *
+	:param amat:
+	:type amat: doublereal *
+	:param bmat:
+	:type bmat: doublereal *
+	:param epspiv:
+	:type epspiv: doublereal *
+	:param aaux:
+	:type aaux: doublereal *
+	:param xmat:
+	:type xmat: doublereal *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mmmrslwd_;
+		static int mmmrslwd_ (integer * normax,integer * nordre,integer * ndim,doublereal * amat,doublereal * bmat,doublereal * epspiv,doublereal * aaux,doublereal * xmat,integer * iercod);
+		%feature("compactdefaultargs") mmpobas_;
+		%feature("autodoc", "	:param tparam:
+	:type tparam: doublereal *
+	:param iordre:
+	:type iordre: integer *
+	:param ncoeff:
+	:type ncoeff: integer *
+	:param nderiv:
+	:type nderiv: integer *
+	:param valbas:
+	:type valbas: doublereal *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mmpobas_;
+		static int mmpobas_ (doublereal * tparam,integer * iordre,integer * ncoeff,integer * nderiv,doublereal * valbas,integer * iercod);
+		%feature("compactdefaultargs") mmpocrb_;
+		%feature("autodoc", "	:param ndimax:
+	:type ndimax: integer *
+	:param ncoeff:
+	:type ncoeff: integer *
+	:param courbe:
+	:type courbe: doublereal *
+	:param ndim:
+	:type ndim: integer *
+	:param tparam:
+	:type tparam: doublereal *
+	:param pntcrb:
+	:type pntcrb: doublereal *
+	:rtype: int
+") mmpocrb_;
+		static int mmpocrb_ (integer * ndimax,integer * ncoeff,doublereal * courbe,integer * ndim,doublereal * tparam,doublereal * pntcrb);
 		%feature("compactdefaultargs") mmposui_;
 		%feature("autodoc", "	:param dimmat:
 	:type dimmat: integer *
@@ -1568,6 +1644,12 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmunivt_;
 		static int mmunivt_ (integer * ndimen,doublereal * vector,doublereal * vecnrm,doublereal * epsiln,integer * iercod);
+		%feature("compactdefaultargs") mmveps3_;
+		%feature("autodoc", "	:param eps03:
+	:type eps03: doublereal *
+	:rtype: int
+") mmveps3_;
+		static int mmveps3_ (doublereal * eps03);
 		%feature("compactdefaultargs") mmvncol_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1580,6 +1662,22 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mmvncol_;
 		static int mmvncol_ (integer * ndimen,doublereal * vecin,doublereal * vecout,integer * iercod);
+		%feature("compactdefaultargs") mmwprcs_;
+		%feature("autodoc", "	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : doublereal *
+	:param :
+	:type : integer *
+	:param :
+	:type : integer *
+	:rtype: void
+") mmwprcs_;
+		static void mmwprcs_ (doublereal * ,doublereal * ,doublereal * ,doublereal * ,integer * ,integer * );
 		%feature("compactdefaultargs") msc_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1602,104 +1700,6 @@ class AdvApp2Var_MathBase {
 	:rtype: int
 ") mvsheld_;
 		static int mvsheld_ (integer * n,integer * is,doublereal * dtab,integer * icle);
-		%feature("compactdefaultargs") mmarcin_;
-		%feature("autodoc", "	:param ndimax:
-	:type ndimax: integer *
-	:param ndim:
-	:type ndim: integer *
-	:param ncoeff:
-	:type ncoeff: integer *
-	:param crvold:
-	:type crvold: doublereal *
-	:param u0:
-	:type u0: doublereal *
-	:param u1:
-	:type u1: doublereal *
-	:param crvnew:
-	:type crvnew: doublereal *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mmarcin_;
-		static int mmarcin_ (integer * ndimax,integer * ndim,integer * ncoeff,doublereal * crvold,doublereal * u0,doublereal * u1,doublereal * crvnew,integer * iercod);
-		%feature("compactdefaultargs") mmcvinv_;
-		%feature("autodoc", "	:param ndimax:
-	:type ndimax: integer *
-	:param ncoef:
-	:type ncoef: integer *
-	:param ndim:
-	:type ndim: integer *
-	:param curveo:
-	:type curveo: doublereal *
-	:param curve:
-	:type curve: doublereal *
-	:rtype: int
-") mmcvinv_;
-		static int mmcvinv_ (integer * ndimax,integer * ncoef,integer * ndim,doublereal * curveo,doublereal * curve);
-		%feature("compactdefaultargs") mmjacan_;
-		%feature("autodoc", "	:param ideriv:
-	:type ideriv: integer *
-	:param ndeg:
-	:type ndeg: integer *
-	:param poljac:
-	:type poljac: doublereal *
-	:param polcan:
-	:type polcan: doublereal *
-	:rtype: int
-") mmjacan_;
-		static int mmjacan_ (const integer * ideriv,integer * ndeg,doublereal * poljac,doublereal * polcan);
-		%feature("compactdefaultargs") mmpocrb_;
-		%feature("autodoc", "	:param ndimax:
-	:type ndimax: integer *
-	:param ncoeff:
-	:type ncoeff: integer *
-	:param courbe:
-	:type courbe: doublereal *
-	:param ndim:
-	:type ndim: integer *
-	:param tparam:
-	:type tparam: doublereal *
-	:param pntcrb:
-	:type pntcrb: doublereal *
-	:rtype: int
-") mmpocrb_;
-		static int mmpocrb_ (integer * ndimax,integer * ncoeff,doublereal * courbe,integer * ndim,doublereal * tparam,doublereal * pntcrb);
-		%feature("compactdefaultargs") mmmrslwd_;
-		%feature("autodoc", "	:param normax:
-	:type normax: integer *
-	:param nordre:
-	:type nordre: integer *
-	:param ndim:
-	:type ndim: integer *
-	:param amat:
-	:type amat: doublereal *
-	:param bmat:
-	:type bmat: doublereal *
-	:param epspiv:
-	:type epspiv: doublereal *
-	:param aaux:
-	:type aaux: doublereal *
-	:param xmat:
-	:type xmat: doublereal *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mmmrslwd_;
-		static int mmmrslwd_ (integer * normax,integer * nordre,integer * ndim,doublereal * amat,doublereal * bmat,doublereal * epspiv,doublereal * aaux,doublereal * xmat,integer * iercod);
-		%feature("compactdefaultargs") mmveps3_;
-		%feature("autodoc", "	:param eps03:
-	:type eps03: doublereal *
-	:rtype: int
-") mmveps3_;
-		static int mmveps3_ (doublereal * eps03);
-		%feature("compactdefaultargs") pow__di;
-		%feature("autodoc", "	:param x:
-	:type x: doublereal *
-	:param n:
-	:type n: integer *
-	:rtype: doublereal
-") pow__di;
-		static doublereal pow__di (doublereal * x,integer * n);
 		%feature("compactdefaultargs") mzsnorm_;
 		%feature("autodoc", "	:param ndimen:
 	:type ndimen: integer *
@@ -1708,6 +1708,14 @@ class AdvApp2Var_MathBase {
 	:rtype: doublereal
 ") mzsnorm_;
 		static doublereal mzsnorm_ (integer * ndimen,doublereal * vecteu);
+		%feature("compactdefaultargs") pow__di;
+		%feature("autodoc", "	:param x:
+	:type x: doublereal *
+	:param n:
+	:type n: integer *
+	:rtype: doublereal
+") pow__di;
+		static doublereal pow__di (doublereal * x,integer * n);
 };
 
 
@@ -1733,6 +1741,12 @@ class AdvApp2Var_Network {
 	:rtype: None
 ") AdvApp2Var_Network;
 		 AdvApp2Var_Network (const AdvApp2Var_SequenceOfPatch & Net,const TColStd_SequenceOfReal & TheU,const TColStd_SequenceOfReal & TheV);
+		%feature("compactdefaultargs") ChangePatch;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: AdvApp2Var_Patch
+") ChangePatch;
+		AdvApp2Var_Patch & ChangePatch (const Standard_Integer Index);
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "	* search the Index of the first Patch not approximated, if all Patches are approximated Standard_False is returned
 
@@ -1741,36 +1755,6 @@ class AdvApp2Var_Network {
 	:rtype: bool
 ") FirstNotApprox;
 		Standard_Boolean FirstNotApprox (Standard_Integer &OutValue);
-		%feature("compactdefaultargs") ChangePatch;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Patch
-") ChangePatch;
-		AdvApp2Var_Patch & ChangePatch (const Standard_Integer Index);
-		%feature("compactdefaultargs") UpdateInU;
-		%feature("autodoc", "	:param CuttingValue:
-	:type CuttingValue: float
-	:rtype: None
-") UpdateInU;
-		void UpdateInU (const Standard_Real CuttingValue);
-		%feature("compactdefaultargs") UpdateInV;
-		%feature("autodoc", "	:param CuttingValue:
-	:type CuttingValue: float
-	:rtype: None
-") UpdateInV;
-		void UpdateInV (const Standard_Real CuttingValue);
-		%feature("compactdefaultargs") SameDegree;
-		%feature("autodoc", "	:param iu:
-	:type iu: int
-	:param iv:
-	:type iv: int
-	:param ncfu:
-	:type ncfu: int &
-	:param ncfv:
-	:type ncfv: int &
-	:rtype: None
-") SameDegree;
-		void SameDegree (const Standard_Integer iu,const Standard_Integer iv,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") NbPatch;
 		%feature("autodoc", "	:rtype: int
 ") NbPatch;
@@ -1783,18 +1767,6 @@ class AdvApp2Var_Network {
 		%feature("autodoc", "	:rtype: int
 ") NbPatchInV;
 		Standard_Integer NbPatchInV ();
-		%feature("compactdefaultargs") UParameter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: float
-") UParameter;
-		Standard_Real UParameter (const Standard_Integer Index);
-		%feature("compactdefaultargs") VParameter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: float
-") VParameter;
-		Standard_Real VParameter (const Standard_Integer Index);
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "	:param UIndex:
 	:type UIndex: int
@@ -1803,6 +1775,42 @@ class AdvApp2Var_Network {
 	:rtype: AdvApp2Var_Patch
 ") Patch;
 		const AdvApp2Var_Patch & Patch (const Standard_Integer UIndex,const Standard_Integer VIndex);
+		%feature("compactdefaultargs") SameDegree;
+		%feature("autodoc", "	:param iu:
+	:type iu: int
+	:param iv:
+	:type iv: int
+	:param ncfu:
+	:type ncfu: int &
+	:param ncfv:
+	:type ncfv: int &
+	:rtype: None
+") SameDegree;
+		void SameDegree (const Standard_Integer iu,const Standard_Integer iv,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") UParameter;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: float
+") UParameter;
+		Standard_Real UParameter (const Standard_Integer Index);
+		%feature("compactdefaultargs") UpdateInU;
+		%feature("autodoc", "	:param CuttingValue:
+	:type CuttingValue: float
+	:rtype: None
+") UpdateInU;
+		void UpdateInU (const Standard_Real CuttingValue);
+		%feature("compactdefaultargs") UpdateInV;
+		%feature("autodoc", "	:param CuttingValue:
+	:type CuttingValue: float
+	:rtype: None
+") UpdateInV;
+		void UpdateInV (const Standard_Real CuttingValue);
+		%feature("compactdefaultargs") VParameter;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: float
+") VParameter;
+		Standard_Real VParameter (const Standard_Integer Index);
 };
 
 
@@ -1840,32 +1848,14 @@ class AdvApp2Var_Node {
 		%feature("autodoc", "	:rtype: gp_XY
 ") Coord;
 		gp_XY Coord ();
-		%feature("compactdefaultargs") SetCoord;
-		%feature("autodoc", "	:param x1:
-	:type x1: float
-	:param x2:
-	:type x2: float
-	:rtype: None
-") SetCoord;
-		void SetCoord (const Standard_Real x1,const Standard_Real x2);
-		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "	:rtype: int
-") UOrder;
-		Standard_Integer UOrder ();
-		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "	:rtype: int
-") VOrder;
-		Standard_Integer VOrder ();
-		%feature("compactdefaultargs") SetPoint;
+		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "	:param iu:
 	:type iu: int
 	:param iv:
 	:type iv: int
-	:param Cte:
-	:type Cte: gp_Pnt
-	:rtype: None
-") SetPoint;
-		void SetPoint (const Standard_Integer iu,const Standard_Integer iv,const gp_Pnt & Cte);
+	:rtype: float
+") Error;
+		Standard_Real Error (const Standard_Integer iu,const Standard_Integer iv);
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	:param iu:
 	:type iu: int
@@ -1874,6 +1864,14 @@ class AdvApp2Var_Node {
 	:rtype: gp_Pnt
 ") Point;
 		gp_Pnt Point (const Standard_Integer iu,const Standard_Integer iv);
+		%feature("compactdefaultargs") SetCoord;
+		%feature("autodoc", "	:param x1:
+	:type x1: float
+	:param x2:
+	:type x2: float
+	:rtype: None
+") SetCoord;
+		void SetCoord (const Standard_Real x1,const Standard_Real x2);
 		%feature("compactdefaultargs") SetError;
 		%feature("autodoc", "	:param iu:
 	:type iu: int
@@ -1884,14 +1882,24 @@ class AdvApp2Var_Node {
 	:rtype: None
 ") SetError;
 		void SetError (const Standard_Integer iu,const Standard_Integer iv,const Standard_Real error);
-		%feature("compactdefaultargs") Error;
+		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "	:param iu:
 	:type iu: int
 	:param iv:
 	:type iv: int
-	:rtype: float
-") Error;
-		Standard_Real Error (const Standard_Integer iu,const Standard_Integer iv);
+	:param Cte:
+	:type Cte: gp_Pnt
+	:rtype: None
+") SetPoint;
+		void SetPoint (const Standard_Integer iu,const Standard_Integer iv,const gp_Pnt & Cte);
+		%feature("compactdefaultargs") UOrder;
+		%feature("autodoc", "	:rtype: int
+") UOrder;
+		Standard_Integer UOrder ();
+		%feature("compactdefaultargs") VOrder;
+		%feature("autodoc", "	:rtype: int
+") VOrder;
+		Standard_Integer VOrder ();
 };
 
 
@@ -1903,6 +1911,20 @@ class AdvApp2Var_Node {
 %nodefaultctor AdvApp2Var_Patch;
 class AdvApp2Var_Patch {
 	public:
+		%feature("compactdefaultargs") AddConstraints;
+		%feature("autodoc", "	:param Conditions:
+	:type Conditions: AdvApp2Var_Context &
+	:param Constraints:
+	:type Constraints: AdvApp2Var_Framework &
+	:rtype: None
+") AddConstraints;
+		void AddConstraints (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints);
+		%feature("compactdefaultargs") AddErrors;
+		%feature("autodoc", "	:param Constraints:
+	:type Constraints: AdvApp2Var_Framework &
+	:rtype: None
+") AddErrors;
+		void AddErrors (const AdvApp2Var_Framework & Constraints);
 		%feature("compactdefaultargs") AdvApp2Var_Patch;
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_Patch;
@@ -1923,52 +1945,10 @@ class AdvApp2Var_Patch {
 	:rtype: None
 ") AdvApp2Var_Patch;
 		 AdvApp2Var_Patch (const Standard_Real U0,const Standard_Real U1,const Standard_Real V0,const Standard_Real V1,const Standard_Integer iu,const Standard_Integer iv);
-		%feature("compactdefaultargs") IsDiscretised;
-		%feature("autodoc", "	:rtype: bool
-") IsDiscretised;
-		Standard_Boolean IsDiscretised ();
-		%feature("compactdefaultargs") Discretise;
-		%feature("autodoc", "	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
-	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
-	:param func:
-	:type func: AdvApp2Var_EvaluatorFunc2Var &
-	:rtype: None
-") Discretise;
-		void Discretise (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints,const AdvApp2Var_EvaluatorFunc2Var & func);
-		%feature("compactdefaultargs") IsApproximated;
-		%feature("autodoc", "	:rtype: bool
-") IsApproximated;
-		Standard_Boolean IsApproximated ();
-		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "	:rtype: bool
-") HasResult;
-		Standard_Boolean HasResult ();
-		%feature("compactdefaultargs") MakeApprox;
-		%feature("autodoc", "	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
-	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
-	:param NumDec:
-	:type NumDec: int
-	:rtype: None
-") MakeApprox;
-		void MakeApprox (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints,const Standard_Integer NumDec);
-		%feature("compactdefaultargs") AddConstraints;
-		%feature("autodoc", "	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
-	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
-	:rtype: None
-") AddConstraints;
-		void AddConstraints (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints);
-		%feature("compactdefaultargs") AddErrors;
-		%feature("autodoc", "	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
-	:rtype: None
-") AddErrors;
-		void AddErrors (const AdvApp2Var_Framework & Constraints);
+		%feature("compactdefaultargs") AverageErrors;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") AverageErrors;
+		opencascade::handle<TColStd_HArray1OfReal> AverageErrors ();
 		%feature("compactdefaultargs") ChangeDomain;
 		%feature("autodoc", "	:param a:
 	:type a: float
@@ -1981,38 +1961,26 @@ class AdvApp2Var_Patch {
 	:rtype: None
 ") ChangeDomain;
 		void ChangeDomain (const Standard_Real a,const Standard_Real b,const Standard_Real c,const Standard_Real d);
-		%feature("compactdefaultargs") ResetApprox;
-		%feature("autodoc", "	:rtype: None
-") ResetApprox;
-		void ResetApprox ();
-		%feature("compactdefaultargs") OverwriteApprox;
-		%feature("autodoc", "	:rtype: None
-") OverwriteApprox;
-		void OverwriteApprox ();
-		%feature("compactdefaultargs") U0;
+		%feature("compactdefaultargs") ChangeNbCoeff;
+		%feature("autodoc", "	:param NbCoeffU:
+	:type NbCoeffU: int
+	:param NbCoeffV:
+	:type NbCoeffV: int
+	:rtype: None
+") ChangeNbCoeff;
+		void ChangeNbCoeff (const Standard_Integer NbCoeffU,const Standard_Integer NbCoeffV);
+		%feature("compactdefaultargs") Coefficients;
+		%feature("autodoc", "	:param SSPIndex:
+	:type SSPIndex: int
+	:param Conditions:
+	:type Conditions: AdvApp2Var_Context &
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") Coefficients;
+		opencascade::handle<TColStd_HArray1OfReal> Coefficients (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
+		%feature("compactdefaultargs") CritValue;
 		%feature("autodoc", "	:rtype: float
-") U0;
-		Standard_Real U0 ();
-		%feature("compactdefaultargs") U1;
-		%feature("autodoc", "	:rtype: float
-") U1;
-		Standard_Real U1 ();
-		%feature("compactdefaultargs") V0;
-		%feature("autodoc", "	:rtype: float
-") V0;
-		Standard_Real V0 ();
-		%feature("compactdefaultargs") V1;
-		%feature("autodoc", "	:rtype: float
-") V1;
-		Standard_Real V1 ();
-		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "	:rtype: int
-") UOrder;
-		Standard_Integer UOrder ();
-		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "	:rtype: int
-") VOrder;
-		Standard_Integer VOrder ();
+") CritValue;
+		Standard_Real CritValue ();
 		%feature("compactdefaultargs") CutSense;
 		%feature("autodoc", "	:rtype: int
 ") CutSense;
@@ -2025,6 +1993,46 @@ class AdvApp2Var_Patch {
 	:rtype: int
 ") CutSense;
 		Standard_Integer CutSense (const AdvApp2Var_Criterion & Crit,const Standard_Integer NumDec);
+		%feature("compactdefaultargs") Discretise;
+		%feature("autodoc", "	:param Conditions:
+	:type Conditions: AdvApp2Var_Context &
+	:param Constraints:
+	:type Constraints: AdvApp2Var_Framework &
+	:param func:
+	:type func: AdvApp2Var_EvaluatorFunc2Var &
+	:rtype: None
+") Discretise;
+		void Discretise (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints,const AdvApp2Var_EvaluatorFunc2Var & func);
+		%feature("compactdefaultargs") HasResult;
+		%feature("autodoc", "	:rtype: bool
+") HasResult;
+		Standard_Boolean HasResult ();
+		%feature("compactdefaultargs") IsApproximated;
+		%feature("autodoc", "	:rtype: bool
+") IsApproximated;
+		Standard_Boolean IsApproximated ();
+		%feature("compactdefaultargs") IsDiscretised;
+		%feature("autodoc", "	:rtype: bool
+") IsDiscretised;
+		Standard_Boolean IsDiscretised ();
+		%feature("compactdefaultargs") IsoErrors;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") IsoErrors;
+		opencascade::handle<TColStd_HArray2OfReal> IsoErrors ();
+		%feature("compactdefaultargs") MakeApprox;
+		%feature("autodoc", "	:param Conditions:
+	:type Conditions: AdvApp2Var_Context &
+	:param Constraints:
+	:type Constraints: AdvApp2Var_Framework &
+	:param NumDec:
+	:type NumDec: int
+	:rtype: None
+") MakeApprox;
+		void MakeApprox (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints,const Standard_Integer NumDec);
+		%feature("compactdefaultargs") MaxErrors;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") MaxErrors;
+		opencascade::handle<TColStd_HArray1OfReal> MaxErrors ();
 		%feature("compactdefaultargs") NbCoeffInU;
 		%feature("autodoc", "	:rtype: int
 ") NbCoeffInU;
@@ -2033,52 +2041,52 @@ class AdvApp2Var_Patch {
 		%feature("autodoc", "	:rtype: int
 ") NbCoeffInV;
 		Standard_Integer NbCoeffInV ();
-		%feature("compactdefaultargs") ChangeNbCoeff;
-		%feature("autodoc", "	:param NbCoeffU:
-	:type NbCoeffU: int
-	:param NbCoeffV:
-	:type NbCoeffV: int
-	:rtype: None
-") ChangeNbCoeff;
-		void ChangeNbCoeff (const Standard_Integer NbCoeffU,const Standard_Integer NbCoeffV);
+		%feature("compactdefaultargs") OverwriteApprox;
+		%feature("autodoc", "	:rtype: None
+") OverwriteApprox;
+		void OverwriteApprox ();
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "	:param SSPIndex:
 	:type SSPIndex: int
 	:param Conditions:
 	:type Conditions: AdvApp2Var_Context &
-	:rtype: Handle_TColgp_HArray2OfPnt
+	:rtype: opencascade::handle<TColgp_HArray2OfPnt>
 ") Poles;
-		Handle_TColgp_HArray2OfPnt Poles (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
-		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "	:param SSPIndex:
-	:type SSPIndex: int
-	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
-	:rtype: Handle_TColStd_HArray1OfReal
-") Coefficients;
-		Handle_TColStd_HArray1OfReal Coefficients (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
-		%feature("compactdefaultargs") MaxErrors;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") MaxErrors;
-		Handle_TColStd_HArray1OfReal MaxErrors ();
-		%feature("compactdefaultargs") AverageErrors;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") AverageErrors;
-		Handle_TColStd_HArray1OfReal AverageErrors ();
-		%feature("compactdefaultargs") IsoErrors;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") IsoErrors;
-		Handle_TColStd_HArray2OfReal IsoErrors ();
-		%feature("compactdefaultargs") CritValue;
-		%feature("autodoc", "	:rtype: float
-") CritValue;
-		Standard_Real CritValue ();
+		opencascade::handle<TColgp_HArray2OfPnt> Poles (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
+		%feature("compactdefaultargs") ResetApprox;
+		%feature("autodoc", "	:rtype: None
+") ResetApprox;
+		void ResetApprox ();
 		%feature("compactdefaultargs") SetCritValue;
 		%feature("autodoc", "	:param dist:
 	:type dist: float
 	:rtype: None
 ") SetCritValue;
 		void SetCritValue (const Standard_Real dist);
+		%feature("compactdefaultargs") U0;
+		%feature("autodoc", "	:rtype: float
+") U0;
+		Standard_Real U0 ();
+		%feature("compactdefaultargs") U1;
+		%feature("autodoc", "	:rtype: float
+") U1;
+		Standard_Real U1 ();
+		%feature("compactdefaultargs") UOrder;
+		%feature("autodoc", "	:rtype: int
+") UOrder;
+		Standard_Integer UOrder ();
+		%feature("compactdefaultargs") V0;
+		%feature("autodoc", "	:rtype: float
+") V0;
+		Standard_Real V0 ();
+		%feature("compactdefaultargs") V1;
+		%feature("autodoc", "	:rtype: float
+") V1;
+		Standard_Real V1 ();
+		%feature("compactdefaultargs") VOrder;
+		%feature("autodoc", "	:rtype: int
+") VOrder;
+		Standard_Integer VOrder ();
 };
 
 
@@ -2087,747 +2095,16 @@ class AdvApp2Var_Patch {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfNode;
-class AdvApp2Var_SequenceNodeOfSequenceOfNode : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceNodeOfSequenceOfNode;
-		%feature("autodoc", "	:param I:
-	:type I: AdvApp2Var_Node &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AdvApp2Var_SequenceNodeOfSequenceOfNode;
-		 AdvApp2Var_SequenceNodeOfSequenceOfNode (const AdvApp2Var_Node & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Node
-") Value;
-		AdvApp2Var_Node & Value ();
-};
-
-
-%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfNode)
-
-%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfPatch;
-class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceNodeOfSequenceOfPatch;
-		%feature("autodoc", "	:param I:
-	:type I: AdvApp2Var_Patch &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AdvApp2Var_SequenceNodeOfSequenceOfPatch;
-		 AdvApp2Var_SequenceNodeOfSequenceOfPatch (const AdvApp2Var_Patch & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Patch
-") Value;
-		AdvApp2Var_Patch & Value ();
-};
-
-
-%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfPatch)
-
-%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfStrip;
-class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceNodeOfSequenceOfStrip;
-		%feature("autodoc", "	:param I:
-	:type I: AdvApp2Var_Strip &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AdvApp2Var_SequenceNodeOfSequenceOfStrip;
-		 AdvApp2Var_SequenceNodeOfSequenceOfStrip (const AdvApp2Var_Strip & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Strip
-") Value;
-		AdvApp2Var_Strip & Value ();
-};
-
-
-%make_alias(AdvApp2Var_SequenceNodeOfSequenceOfStrip)
-
-%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceNodeOfStrip;
-class AdvApp2Var_SequenceNodeOfStrip : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceNodeOfStrip;
-		%feature("autodoc", "	:param I:
-	:type I: AdvApp2Var_Iso &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AdvApp2Var_SequenceNodeOfStrip;
-		 AdvApp2Var_SequenceNodeOfStrip (const AdvApp2Var_Iso & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Iso
-") Value;
-		AdvApp2Var_Iso & Value ();
-};
-
-
-%make_alias(AdvApp2Var_SequenceNodeOfStrip)
-
-%extend AdvApp2Var_SequenceNodeOfStrip {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceOfNode;
-class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfNode;
-		%feature("autodoc", "	:rtype: None
-") AdvApp2Var_SequenceOfNode;
-		 AdvApp2Var_SequenceOfNode ();
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfNode;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") AdvApp2Var_SequenceOfNode;
-		 AdvApp2Var_SequenceOfNode (const AdvApp2Var_SequenceOfNode & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfNode &
-	:rtype: AdvApp2Var_SequenceOfNode
-") Assign;
-		const AdvApp2Var_SequenceOfNode & Assign (const AdvApp2Var_SequenceOfNode & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfNode &
-	:rtype: AdvApp2Var_SequenceOfNode
-") operator =;
-		const AdvApp2Var_SequenceOfNode & operator = (const AdvApp2Var_SequenceOfNode & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Node &
-	:rtype: None
-") Append;
-		void Append (const AdvApp2Var_Node & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") Append;
-		void Append (AdvApp2Var_SequenceOfNode & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Node &
-	:rtype: None
-") Prepend;
-		void Prepend (const AdvApp2Var_Node & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") Prepend;
-		void Prepend (AdvApp2Var_SequenceOfNode & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Node &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AdvApp2Var_Node & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AdvApp2Var_SequenceOfNode & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Node &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AdvApp2Var_Node & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AdvApp2Var_SequenceOfNode & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Node
-") First;
-		const AdvApp2Var_Node & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Node
-") Last;
-		const AdvApp2Var_Node & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AdvApp2Var_SequenceOfNode &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AdvApp2Var_SequenceOfNode & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Node
-") Value;
-		const AdvApp2Var_Node & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AdvApp2Var_Node &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AdvApp2Var_Node & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Node
-") ChangeValue;
-		AdvApp2Var_Node & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AdvApp2Var_SequenceOfNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceOfPatch;
-class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfPatch;
-		%feature("autodoc", "	:rtype: None
-") AdvApp2Var_SequenceOfPatch;
-		 AdvApp2Var_SequenceOfPatch ();
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfPatch;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") AdvApp2Var_SequenceOfPatch;
-		 AdvApp2Var_SequenceOfPatch (const AdvApp2Var_SequenceOfPatch & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfPatch &
-	:rtype: AdvApp2Var_SequenceOfPatch
-") Assign;
-		const AdvApp2Var_SequenceOfPatch & Assign (const AdvApp2Var_SequenceOfPatch & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfPatch &
-	:rtype: AdvApp2Var_SequenceOfPatch
-") operator =;
-		const AdvApp2Var_SequenceOfPatch & operator = (const AdvApp2Var_SequenceOfPatch & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Patch &
-	:rtype: None
-") Append;
-		void Append (const AdvApp2Var_Patch & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") Append;
-		void Append (AdvApp2Var_SequenceOfPatch & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Patch &
-	:rtype: None
-") Prepend;
-		void Prepend (const AdvApp2Var_Patch & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") Prepend;
-		void Prepend (AdvApp2Var_SequenceOfPatch & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Patch &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AdvApp2Var_Patch & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AdvApp2Var_SequenceOfPatch & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Patch &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AdvApp2Var_Patch & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AdvApp2Var_SequenceOfPatch & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Patch
-") First;
-		const AdvApp2Var_Patch & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Patch
-") Last;
-		const AdvApp2Var_Patch & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AdvApp2Var_SequenceOfPatch &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AdvApp2Var_SequenceOfPatch & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Patch
-") Value;
-		const AdvApp2Var_Patch & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AdvApp2Var_Patch &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AdvApp2Var_Patch & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Patch
-") ChangeValue;
-		AdvApp2Var_Patch & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AdvApp2Var_SequenceOfPatch {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_SequenceOfStrip;
-class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfStrip;
-		%feature("autodoc", "	:rtype: None
-") AdvApp2Var_SequenceOfStrip;
-		 AdvApp2Var_SequenceOfStrip ();
-		%feature("compactdefaultargs") AdvApp2Var_SequenceOfStrip;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") AdvApp2Var_SequenceOfStrip;
-		 AdvApp2Var_SequenceOfStrip (const AdvApp2Var_SequenceOfStrip & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfStrip &
-	:rtype: AdvApp2Var_SequenceOfStrip
-") Assign;
-		const AdvApp2Var_SequenceOfStrip & Assign (const AdvApp2Var_SequenceOfStrip & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_SequenceOfStrip &
-	:rtype: AdvApp2Var_SequenceOfStrip
-") operator =;
-		const AdvApp2Var_SequenceOfStrip & operator = (const AdvApp2Var_SequenceOfStrip & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Strip &
-	:rtype: None
-") Append;
-		void Append (const AdvApp2Var_Strip & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") Append;
-		void Append (AdvApp2Var_SequenceOfStrip & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Strip &
-	:rtype: None
-") Prepend;
-		void Prepend (const AdvApp2Var_Strip & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") Prepend;
-		void Prepend (AdvApp2Var_SequenceOfStrip & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Strip &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AdvApp2Var_Strip & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AdvApp2Var_SequenceOfStrip & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Strip &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AdvApp2Var_Strip & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AdvApp2Var_SequenceOfStrip & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Strip
-") First;
-		const AdvApp2Var_Strip & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Strip
-") Last;
-		const AdvApp2Var_Strip & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AdvApp2Var_SequenceOfStrip &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AdvApp2Var_SequenceOfStrip & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Strip
-") Value;
-		const AdvApp2Var_Strip & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AdvApp2Var_Strip &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AdvApp2Var_Strip & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Strip
-") ChangeValue;
-		AdvApp2Var_Strip & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AdvApp2Var_SequenceOfStrip {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AdvApp2Var_Strip;
-class AdvApp2Var_Strip : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AdvApp2Var_Strip;
-		%feature("autodoc", "	:rtype: None
-") AdvApp2Var_Strip;
-		 AdvApp2Var_Strip ();
-		%feature("compactdefaultargs") AdvApp2Var_Strip;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_Strip &
-	:rtype: None
-") AdvApp2Var_Strip;
-		 AdvApp2Var_Strip (const AdvApp2Var_Strip & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_Strip &
-	:rtype: AdvApp2Var_Strip
-") Assign;
-		const AdvApp2Var_Strip & Assign (const AdvApp2Var_Strip & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AdvApp2Var_Strip &
-	:rtype: AdvApp2Var_Strip
-") operator =;
-		const AdvApp2Var_Strip & operator = (const AdvApp2Var_Strip & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Iso &
-	:rtype: None
-") Append;
-		void Append (const AdvApp2Var_Iso & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_Strip &
-	:rtype: None
-") Append;
-		void Append (AdvApp2Var_Strip & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AdvApp2Var_Iso &
-	:rtype: None
-") Prepend;
-		void Prepend (const AdvApp2Var_Iso & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AdvApp2Var_Strip &
-	:rtype: None
-") Prepend;
-		void Prepend (AdvApp2Var_Strip & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Iso &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AdvApp2Var_Iso & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_Strip &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AdvApp2Var_Strip & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AdvApp2Var_Iso &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AdvApp2Var_Iso & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AdvApp2Var_Strip &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AdvApp2Var_Strip & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Iso
-") First;
-		const AdvApp2Var_Iso & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AdvApp2Var_Iso
-") Last;
-		const AdvApp2Var_Iso & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AdvApp2Var_Strip &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AdvApp2Var_Strip & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Iso
-") Value;
-		const AdvApp2Var_Iso & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AdvApp2Var_Iso &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AdvApp2Var_Iso & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AdvApp2Var_Iso
-") ChangeValue;
-		AdvApp2Var_Iso & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AdvApp2Var_Strip {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor AdvApp2Var_SysBase;
 class AdvApp2Var_SysBase {
 	public:
+		class mitem {};
+		class  {};
+		class  {};
 		%feature("compactdefaultargs") AdvApp2Var_SysBase;
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_SysBase;
 		 AdvApp2Var_SysBase ();
-		%feature("compactdefaultargs") mainial_;
-		%feature("autodoc", "	:rtype: int
-") mainial_;
-		int mainial_ ();
-		%feature("compactdefaultargs") macinit_;
-		%feature("autodoc", "	:param :
-	:type : int *
-	:param :
-	:type : int *
-	:rtype: int
-") macinit_;
-		static int macinit_ (int * ,int * );
-		%feature("compactdefaultargs") mcrdelt_;
-		%feature("autodoc", "	:param iunit:
-	:type iunit: integer *
-	:param isize:
-	:type isize: integer *
-	:param t:
-	:type t: void *
-	:param iofset:
-	:type iofset: intptr_t *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mcrdelt_;
-		int mcrdelt_ (integer * iunit,integer * isize,void * t,intptr_t * iofset,integer * iercod);
-		%feature("compactdefaultargs") mcrfill_;
-		%feature("autodoc", "	:param size:
-	:type size: integer *
-	:param tin:
-	:type tin: void *
-	:param tout:
-	:type tout: void *
-	:rtype: int
-") mcrfill_;
-		static int mcrfill_ (integer * size,void * tin,void * tout);
-		%feature("compactdefaultargs") mcrrqst_;
-		%feature("autodoc", "	:param iunit:
-	:type iunit: integer *
-	:param isize:
-	:type isize: integer *
-	:param t:
-	:type t: void *
-	:param iofset:
-	:type iofset: intptr_t *
-	:param iercod:
-	:type iercod: integer *
-	:rtype: int
-") mcrrqst_;
-		int mcrrqst_ (integer * iunit,integer * isize,void * t,intptr_t * iofset,integer * iercod);
-		%feature("compactdefaultargs") mnfndeb_;
-		%feature("autodoc", "	:rtype: integer
-") mnfndeb_;
-		static integer mnfndeb_ ();
 		%feature("compactdefaultargs") do__fio;
 		%feature("autodoc", "	:rtype: int
 ") do__fio;
@@ -2836,6 +2113,14 @@ class AdvApp2Var_SysBase {
 		%feature("autodoc", "	:rtype: int
 ") do__lio;
 		static int do__lio ();
+		%feature("compactdefaultargs") macinit_;
+		%feature("autodoc", "	:param :
+	:type : int *
+	:param :
+	:type : int *
+	:rtype: int
+") macinit_;
+		static int macinit_ (int * ,int * );
 		%feature("compactdefaultargs") macrai4_;
 		%feature("autodoc", "	:param nbelem:
 	:type nbelem: integer *
@@ -2902,6 +2187,10 @@ class AdvApp2Var_SysBase {
 	:rtype: int
 ") maermsg_;
 		static int maermsg_ (const char * cnompg,integer * icoder,ftnlen cnompg_len);
+		%feature("compactdefaultargs") mainial_;
+		%feature("autodoc", "	:rtype: int
+") mainial_;
+		int mainial_ ();
 		%feature("compactdefaultargs") maitbr8_;
 		%feature("autodoc", "	:param itaill:
 	:type itaill: integer *
@@ -2918,6 +2207,44 @@ class AdvApp2Var_SysBase {
 	:rtype: int
 ") maovsr8_;
 		static int maovsr8_ (integer * ivalcs);
+		%feature("compactdefaultargs") mcrdelt_;
+		%feature("autodoc", "	:param iunit:
+	:type iunit: integer *
+	:param isize:
+	:type isize: integer *
+	:param t:
+	:type t: void *
+	:param iofset:
+	:type iofset: intptr_t *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mcrdelt_;
+		int mcrdelt_ (integer * iunit,integer * isize,void * t,intptr_t * iofset,integer * iercod);
+		%feature("compactdefaultargs") mcrfill_;
+		%feature("autodoc", "	:param size:
+	:type size: integer *
+	:param tin:
+	:type tin: void *
+	:param tout:
+	:type tout: void *
+	:rtype: int
+") mcrfill_;
+		static int mcrfill_ (integer * size,void * tin,void * tout);
+		%feature("compactdefaultargs") mcrrqst_;
+		%feature("autodoc", "	:param iunit:
+	:type iunit: integer *
+	:param isize:
+	:type isize: integer *
+	:param t:
+	:type t: void *
+	:param iofset:
+	:type iofset: intptr_t *
+	:param iercod:
+	:type iercod: integer *
+	:rtype: int
+") mcrrqst_;
+		int mcrrqst_ (integer * iunit,integer * isize,void * t,intptr_t * iofset,integer * iercod);
 		%feature("compactdefaultargs") mgenmsg_;
 		%feature("autodoc", "	:param nomprg:
 	:type nomprg: char *
@@ -2942,6 +2269,10 @@ class AdvApp2Var_SysBase {
 	:rtype: void
 ") miraz_;
 		static void miraz_ (integer * taille,void * adt);
+		%feature("compactdefaultargs") mnfndeb_;
+		%feature("autodoc", "	:rtype: integer
+") mnfndeb_;
+		static integer mnfndeb_ ();
 		%feature("compactdefaultargs") msifill_;
 		%feature("autodoc", "	:param nbintg:
 	:type nbintg: integer *
@@ -2986,3 +2317,6 @@ class AdvApp2Var_SysBase {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

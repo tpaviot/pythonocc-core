@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,17 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:05
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define MMGTDOCSTRING
-"-Purpose:
-The package MMgt provides single class TShared which is second in hierarchy
-of inheritance from Standard_Transient, kept for historic reasons
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=MMGTDOCSTRING) MMgt
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -42,28 +50,19 @@ of inheritance from Standard_Transient, kept for historic reasons
 
 %include MMgt_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(MMgt_TShared)
+/* templates */
+/* end templates declaration */
 
-%nodefaultctor MMgt_TShared;
-class MMgt_TShared : public Standard_Transient {
-	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-};
+/* typedefs */
+typedef Standard_Transient MMgt_TShared;
+/* end typedefs declaration */
 
+/* handles */
+/* end handles declaration */
 
-%make_alias(MMgt_TShared)
-
-%extend MMgt_TShared {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

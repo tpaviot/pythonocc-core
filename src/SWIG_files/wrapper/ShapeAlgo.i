@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,15 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:15
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define SHAPEALGODOCSTRING
-"
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEALGODOCSTRING) ShapeAlgo
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,17 +50,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include ShapeAlgo_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(ShapeAlgo_ToolContainer)
+/* end handles declaration */
 
 %rename(shapealgo) ShapeAlgo;
 class ShapeAlgo {
 	public:
+		%feature("compactdefaultargs") AlgoContainer;
+		%feature("autodoc", "	* Returns default AlgoContainer
+
+	:rtype: opencascade::handle<ShapeAlgo_AlgoContainer>
+") AlgoContainer;
+		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
 
@@ -61,16 +82,10 @@ class ShapeAlgo {
 		%feature("autodoc", "	* Sets default AlgoContainer
 
 	:param aContainer:
-	:type aContainer: Handle_ShapeAlgo_AlgoContainer &
+	:type aContainer: opencascade::handle<ShapeAlgo_AlgoContainer> &
 	:rtype: void
 ") SetAlgoContainer;
-		static void SetAlgoContainer (const Handle_ShapeAlgo_AlgoContainer & aContainer);
-		%feature("compactdefaultargs") AlgoContainer;
-		%feature("autodoc", "	* Returns default AlgoContainer
-
-	:rtype: Handle_ShapeAlgo_AlgoContainer
-") AlgoContainer;
-		static Handle_ShapeAlgo_AlgoContainer AlgoContainer ();
+		static void SetAlgoContainer (const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 };
 
 
@@ -80,26 +95,26 @@ class ShapeAlgo {
 	}
 };
 %nodefaultctor ShapeAlgo_ToolContainer;
-class ShapeAlgo_ToolContainer : public MMgt_TShared {
+class ShapeAlgo_ToolContainer : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") EdgeProjAux;
+		%feature("autodoc", "	* Returns ShapeFix_EdgeProjAux
+
+	:rtype: opencascade::handle<ShapeFix_EdgeProjAux>
+") EdgeProjAux;
+		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux ();
+		%feature("compactdefaultargs") FixShape;
+		%feature("autodoc", "	* Returns ShapeFix_Shape
+
+	:rtype: opencascade::handle<ShapeFix_Shape>
+") FixShape;
+		virtual opencascade::handle<ShapeFix_Shape> FixShape ();
 		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") ShapeAlgo_ToolContainer;
 		 ShapeAlgo_ToolContainer ();
-		%feature("compactdefaultargs") FixShape;
-		%feature("autodoc", "	* Returns ShapeFix_Shape
-
-	:rtype: Handle_ShapeFix_Shape
-") FixShape;
-		virtual Handle_ShapeFix_Shape FixShape ();
-		%feature("compactdefaultargs") EdgeProjAux;
-		%feature("autodoc", "	* Returns ShapeFix_EdgeProjAux
-
-	:rtype: Handle_ShapeFix_EdgeProjAux
-") EdgeProjAux;
-		virtual Handle_ShapeFix_EdgeProjAux EdgeProjAux ();
 };
 
 
@@ -110,3 +125,6 @@ class ShapeAlgo_ToolContainer : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

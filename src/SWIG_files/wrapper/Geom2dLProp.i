@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,21 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:20
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define GEOM2DLPROPDOCSTRING
-"Handles local properties of curves and surfaces from the
-packages Geom and Geom2d.
-SeeAlso: Package LProp.
-
-
--Level : Public.
-All methods of all classes will be public.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -46,29 +50,70 @@ All methods of all classes will be public.
 
 %include Geom2dLProp_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor Geom2dLProp_CLProps2d;
 class Geom2dLProp_CLProps2d {
 	public:
+		%feature("compactdefaultargs") CentreOfCurvature;
+		%feature("autodoc", "	* Returns the centre of curvature <P>.
+
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") CentreOfCurvature;
+		void CentreOfCurvature (gp_Pnt2d & P);
+		%feature("compactdefaultargs") Curvature;
+		%feature("autodoc", "	* Returns the curvature.
+
+	:rtype: float
+") Curvature;
+		Standard_Real Curvature ();
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Returns the first derivative. The derivative is computed if it has not been yet.
+
+	:rtype: gp_Vec2d
+") D1;
+		const gp_Vec2d  D1 ();
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	* Returns the second derivative. The derivative is computed if it has not been yet.
+
+	:rtype: gp_Vec2d
+") D2;
+		const gp_Vec2d  D2 ();
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "	* Returns the third derivative. The derivative is computed if it has not been yet.
+
+	:rtype: gp_Vec2d
+") D3;
+		const gp_Vec2d  D3 ();
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
+		%feature("autodoc", "	* Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:param N:
 	:type N: int
 	:param Resolution:
 	:type Resolution: float
 	:rtype: None
 ") Geom2dLProp_CLProps2d;
-		 Geom2dLProp_CLProps2d (const Handle_Geom2d_Curve & C,const Standard_Integer N,const Standard_Real Resolution);
+		 Geom2dLProp_CLProps2d (const opencascade::handle<Geom2d_Curve> & C,const Standard_Integer N,const Standard_Real Resolution);
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
+		%feature("autodoc", "	* Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:param U:
 	:type U: float
 	:param N:
@@ -77,69 +122,61 @@ class Geom2dLProp_CLProps2d {
 	:type Resolution: float
 	:rtype: None
 ") Geom2dLProp_CLProps2d;
-		 Geom2dLProp_CLProps2d (const Handle_Geom2d_Curve & C,const Standard_Real U,const Standard_Integer N,const Standard_Real Resolution);
+		 Geom2dLProp_CLProps2d (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real U,const Standard_Integer N,const Standard_Real Resolution);
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
-		%feature("autodoc", "	:param N:
+		%feature("autodoc", "	* Same as previous constructor but here the parameter is set to the value <U> and the curve is set with SetCurve. the curve can have a empty constructor All the computations done will be related to <C> and <U> when the functions 'set' will be done.
+
+	:param N:
 	:type N: int
 	:param Resolution:
 	:type Resolution: float
 	:rtype: None
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d (const Standard_Integer N,const Standard_Real Resolution);
-		%feature("compactdefaultargs") SetParameter;
-		%feature("autodoc", "	:param U:
-	:type U: float
-	:rtype: None
-") SetParameter;
-		void SetParameter (const Standard_Real U);
-		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") SetCurve;
-		void SetCurve (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Pnt2d
-") Value;
-		const gp_Pnt2d  Value ();
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") D1;
-		const gp_Vec2d  D1 ();
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") D2;
-		const gp_Vec2d  D2 ();
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") D3;
-		const gp_Vec2d  D3 ();
 		%feature("compactdefaultargs") IsTangentDefined;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if the tangent is defined. For example, the tangent is not defined if the three first derivatives are all null.
+
+	:rtype: bool
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined ();
-		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "	:param D:
-	:type D: gp_Dir2d
-	:rtype: None
-") Tangent;
-		void Tangent (gp_Dir2d & D);
-		%feature("compactdefaultargs") Curvature;
-		%feature("autodoc", "	:rtype: float
-") Curvature;
-		Standard_Real Curvature ();
 		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "	:param N:
+		%feature("autodoc", "	* Returns the normal direction <N>.
+
+	:param N:
 	:type N: gp_Dir2d
 	:rtype: None
 ") Normal;
 		void Normal (gp_Dir2d & N);
-		%feature("compactdefaultargs") CentreOfCurvature;
-		%feature("autodoc", "	:param P:
-	:type P: gp_Pnt2d
+		%feature("compactdefaultargs") SetCurve;
+		%feature("autodoc", "	* Initializes the local properties of the curve for the new curve.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:rtype: None
-") CentreOfCurvature;
-		void CentreOfCurvature (gp_Pnt2d & P);
+") SetCurve;
+		void SetCurve (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") SetParameter;
+		%feature("autodoc", "	* Initializes the local properties of the curve for the parameter value <U>.
+
+	:param U:
+	:type U: float
+	:rtype: None
+") SetParameter;
+		void SetParameter (const Standard_Real U);
+		%feature("compactdefaultargs") Tangent;
+		%feature("autodoc", "	* output the tangent direction <D>
+
+	:param D:
+	:type D: gp_Dir2d
+	:rtype: None
+") Tangent;
+		void Tangent (gp_Dir2d & D);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the Point.
+
+	:rtype: gp_Pnt2d
+") Value;
+		const gp_Pnt2d  Value ();
 };
 
 
@@ -157,36 +194,36 @@ class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 	:rtype: None
 ") Geom2dLProp_CurAndInf2d;
 		 Geom2dLProp_CurAndInf2d ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* For the curve C, Computes both the inflection points and the maximum and minimum curvatures.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") Perform;
-		void Perform (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") PerformCurExt;
-		%feature("autodoc", "	* For the curve C, Computes the locals extremas of curvature.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") PerformCurExt;
-		void PerformCurExt (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") PerformInf;
-		%feature("autodoc", "	* For the curve C, Computes the inflections. After computation, the following functions can be used: - IsDone to check if the computation was successful - NbPoints to obtain the number of computed particular points - Parameter to obtain the parameter on the curve for each particular point - Type to check if the point is an inflection point or an extremum of curvature of the curve C. Warning These functions can be used to analyze a series of curves, however it is necessary to clear the table of results between each computation.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") PerformInf;
-		void PerformInf (const Handle_Geom2d_Curve & C);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* True if the solutions are found.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* For the curve C, Computes both the inflection points and the maximum and minimum curvatures.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") Perform;
+		void Perform (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") PerformCurExt;
+		%feature("autodoc", "	* For the curve C, Computes the locals extremas of curvature.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") PerformCurExt;
+		void PerformCurExt (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") PerformInf;
+		%feature("autodoc", "	* For the curve C, Computes the inflections. After computation, the following functions can be used: - IsDone to check if the computation was successful - NbPoints to obtain the number of computed particular points - Parameter to obtain the parameter on the curve for each particular point - Type to check if the point is an inflection point or an extremum of curvature of the curve C. Warning These functions can be used to analyze a series of curves, however it is necessary to clear the table of results between each computation.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") PerformInf;
+		void PerformInf (const opencascade::handle<Geom2d_Curve> & C);
 };
 
 
@@ -197,23 +234,19 @@ class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 };
 class Geom2dLProp_Curve2dTool {
 	public:
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the curve <C>.
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* returns the order of continuity of the curve <C>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable. returns 3 : first, second and third are computable.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:rtype: void
-") Value;
-		static void Value (const Handle_Geom2d_Curve & C,const Standard_Real U,gp_Pnt2d & P);
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: int
+") Continuity;
+		static Standard_Integer Continuity (const opencascade::handle<Geom2d_Curve> & C);
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "	* Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:param U:
 	:type U: float
 	:param P:
@@ -222,12 +255,12 @@ class Geom2dLProp_Curve2dTool {
 	:type V1: gp_Vec2d
 	:rtype: void
 ") D1;
-		static void D1 (const Handle_Geom2d_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1);
+		static void D1 (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1);
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "	* Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:param U:
 	:type U: float
 	:param P:
@@ -238,12 +271,12 @@ class Geom2dLProp_Curve2dTool {
 	:type V2: gp_Vec2d
 	:rtype: void
 ") D2;
-		static void D2 (const Handle_Geom2d_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
+		static void D2 (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "	* Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:param U:
 	:type U: float
 	:param P:
@@ -256,31 +289,35 @@ class Geom2dLProp_Curve2dTool {
 	:type V3: gp_Vec2d
 	:rtype: void
 ") D3;
-		static void D3 (const Handle_Geom2d_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* returns the order of continuity of the curve <C>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable. returns 3 : first, second and third are computable.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: int
-") Continuity;
-		static Standard_Integer Continuity (const Handle_Geom2d_Curve & C);
+		static void D3 (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	* returns the first parameter bound of the curve.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:rtype: float
 ") FirstParameter;
-		static Standard_Real FirstParameter (const Handle_Geom2d_Curve & C);
+		static Standard_Real FirstParameter (const opencascade::handle<Geom2d_Curve> & C);
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "	* returns the last parameter bound of the curve. FirstParameter must be less than LastParameter.
 
 	:param C:
-	:type C: Handle_Geom2d_Curve &
+	:type C: opencascade::handle<Geom2d_Curve> &
 	:rtype: float
 ") LastParameter;
-		static Standard_Real LastParameter (const Handle_Geom2d_Curve & C);
+		static Standard_Real LastParameter (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the curve <C>.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: void
+") Value;
+		static void Value (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real U,gp_Pnt2d & P);
 };
 
 
@@ -292,24 +329,6 @@ class Geom2dLProp_Curve2dTool {
 %nodefaultctor Geom2dLProp_FuncCurExt;
 class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	public:
-		%feature("compactdefaultargs") Geom2dLProp_FuncCurExt;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param Tol:
-	:type Tol: float
-	:rtype: None
-") Geom2dLProp_FuncCurExt;
-		 Geom2dLProp_FuncCurExt (const Handle_Geom2d_Curve & C,const Standard_Real Tol);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value for the variable <X>.
-
-	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:rtype: bool
-") Value;
-		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "	* Returns the derivative for the variable <X>.
 
@@ -320,6 +339,32 @@ class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Geom2dLProp_FuncCurExt;
+		%feature("autodoc", "	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Geom2dLProp_FuncCurExt;
+		 Geom2dLProp_FuncCurExt (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real Tol);
+		%feature("compactdefaultargs") IsMinKC;
+		%feature("autodoc", "	* True if Param corresponds to a minus of the radius of curvature.
+
+	:param Param:
+	:type Param: float
+	:rtype: bool
+") IsMinKC;
+		Standard_Boolean IsMinKC (const Standard_Real Param);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value for the variable <X>.
+
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:rtype: bool
+") Value;
+		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the value of the function and the derivative for the variable <X>.
 
@@ -332,14 +377,6 @@ class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") IsMinKC;
-		%feature("autodoc", "	* True if Param corresponds to a minus of the radius of curvature.
-
-	:param Param:
-	:type Param: float
-	:rtype: bool
-") IsMinKC;
-		Standard_Boolean IsMinKC (const Standard_Real Param);
 };
 
 
@@ -351,22 +388,6 @@ class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 %nodefaultctor Geom2dLProp_FuncCurNul;
 class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 	public:
-		%feature("compactdefaultargs") Geom2dLProp_FuncCurNul;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") Geom2dLProp_FuncCurNul;
-		 Geom2dLProp_FuncCurNul (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value for the variable <X>.
-
-	:param X:
-	:type X: float
-	:param F:
-	:type F: float &
-	:rtype: bool
-") Value;
-		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "	* Returns the derivative for the variable <X>
 
@@ -377,6 +398,22 @@ class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Geom2dLProp_FuncCurNul;
+		%feature("autodoc", "	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") Geom2dLProp_FuncCurNul;
+		 Geom2dLProp_FuncCurNul (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the value for the variable <X>.
+
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:rtype: bool
+") Value;
+		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the value of the function and the derivative for the variable <X>.
 
@@ -404,60 +441,60 @@ class Geom2dLProp_NumericCurInf2d {
 		%feature("autodoc", "	:rtype: None
 ") Geom2dLProp_NumericCurInf2d;
 		 Geom2dLProp_NumericCurInf2d ();
-		%feature("compactdefaultargs") PerformCurExt;
-		%feature("autodoc", "	* Computes the locals extremas of curvature.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param Result:
-	:type Result: LProp_CurAndInf &
-	:rtype: None
-") PerformCurExt;
-		void PerformCurExt (const Handle_Geom2d_Curve & C,LProp_CurAndInf & Result);
-		%feature("compactdefaultargs") PerformInf;
-		%feature("autodoc", "	* Computes the inflections.
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param Result:
-	:type Result: LProp_CurAndInf &
-	:rtype: None
-") PerformInf;
-		void PerformInf (const Handle_Geom2d_Curve & C,LProp_CurAndInf & Result);
-		%feature("compactdefaultargs") PerformCurExt;
-		%feature("autodoc", "	* Computes the locals extremas of curvature. in the interval of parmeters [UMin,UMax].
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param UMin:
-	:type UMin: float
-	:param UMax:
-	:type UMax: float
-	:param Result:
-	:type Result: LProp_CurAndInf &
-	:rtype: None
-") PerformCurExt;
-		void PerformCurExt (const Handle_Geom2d_Curve & C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf & Result);
-		%feature("compactdefaultargs") PerformInf;
-		%feature("autodoc", "	* Computes the inflections in the interval of parmeters [UMin,UMax].
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param UMin:
-	:type UMin: float
-	:param UMax:
-	:type UMax: float
-	:param Result:
-	:type Result: LProp_CurAndInf &
-	:rtype: None
-") PerformInf;
-		void PerformInf (const Handle_Geom2d_Curve & C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf & Result);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* True if the solutions are found.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") PerformCurExt;
+		%feature("autodoc", "	* Computes the locals extremas of curvature.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param Result:
+	:type Result: LProp_CurAndInf &
+	:rtype: None
+") PerformCurExt;
+		void PerformCurExt (const opencascade::handle<Geom2d_Curve> & C,LProp_CurAndInf & Result);
+		%feature("compactdefaultargs") PerformCurExt;
+		%feature("autodoc", "	* Computes the locals extremas of curvature. in the interval of parmeters [UMin,UMax].
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param UMin:
+	:type UMin: float
+	:param UMax:
+	:type UMax: float
+	:param Result:
+	:type Result: LProp_CurAndInf &
+	:rtype: None
+") PerformCurExt;
+		void PerformCurExt (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf & Result);
+		%feature("compactdefaultargs") PerformInf;
+		%feature("autodoc", "	* Computes the inflections.
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param Result:
+	:type Result: LProp_CurAndInf &
+	:rtype: None
+") PerformInf;
+		void PerformInf (const opencascade::handle<Geom2d_Curve> & C,LProp_CurAndInf & Result);
+		%feature("compactdefaultargs") PerformInf;
+		%feature("autodoc", "	* Computes the inflections in the interval of parmeters [UMin,UMax].
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param UMin:
+	:type UMin: float
+	:param UMax:
+	:type UMax: float
+	:param Result:
+	:type Result: LProp_CurAndInf &
+	:rtype: None
+") PerformInf;
+		void PerformInf (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real UMin,const Standard_Real UMax,LProp_CurAndInf & Result);
 };
 
 
@@ -466,3 +503,6 @@ class Geom2dLProp_NumericCurInf2d {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

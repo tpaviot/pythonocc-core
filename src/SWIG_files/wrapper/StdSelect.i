@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,33 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:33
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define STDSELECTDOCSTRING
-"The StdSelect package provides the following services
--  the definition of selection modes for topological shapes
--  the definition of several concrete filtertandard
-Selection2d.ap classes
--  2D and 3D viewer selectors.
-Note that each new Interactive Object must have all
-its selection modes defined.
-Standard Classes is useful to build
-3D Selectable Objects, and to process
-3D Selections:
-
-- Implementation of View Selector for dynamic selection
-in Views from V3d.
-
-- Implementation of Tool class to decompose 3D BRep Objects
-into sensitive Primitives for every desired mode of selection
-(selection of vertex,edges,wires,faces,...)
-
-- Implementation of dedicated Sensitives Entities:
-Text for 2D Views (linked to Specific 2D projectors.)"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=STDSELECTDOCSTRING) StdSelect
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -57,9 +49,6 @@ Text for 2D Views (linked to Specific 2D projectors.)"
 
 
 %include StdSelect_headers.i
-
-/* typedefs */
-/* end typedefs declaration */
 
 /* public enums */
 enum StdSelect_TypeOfResult {
@@ -94,5 +83,26 @@ enum StdSelect_DisplayMode {
 	StdSelect_DM_HLR = 2,
 };
 
+enum StdSelect_TypeOfSelectionImage {
+	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0,
+	StdSelect_TypeOfSelectionImage_NormalizedDepthInverted = 1,
+	StdSelect_TypeOfSelectionImage_UnnormalizedDepth = 2,
+	StdSelect_TypeOfSelectionImage_ColoredDetectedObject = 3,
+	StdSelect_TypeOfSelectionImage_ColoredEntity = 4,
+	StdSelect_TypeOfSelectionImage_ColoredOwner = 5,
+	StdSelect_TypeOfSelectionImage_ColoredSelectionMode = 6,
+};
+
 /* end public enums declaration */
 
+/* templates */
+%template(StdSelect_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <StdSelect_Prs>, TColStd_MapTransientHasher>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <StdSelect_Prs>, TColStd_MapTransientHasher> StdSelect_IndexedDataMapOfOwnerPrs;
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

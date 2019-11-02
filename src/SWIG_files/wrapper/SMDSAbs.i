@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:48
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define SMDSABSDOCSTRING
 "No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SMDSABSDOCSTRING) SMDSAbs
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,63 +50,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include SMDSAbs_headers.i
 
+/* public enums */
+/* end public enums declaration */
+
+/* templates */
+/* end templates declaration */
+
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-enum SMDSAbs_ElementType {
-	SMDSAbs_All = 0,
-	SMDSAbs_Node = 1,
-	SMDSAbs_Edge = 2,
-	SMDSAbs_Face = 3,
-	SMDSAbs_Volume = 4,
-	SMDSAbs_0DElement = 5,
-	SMDSAbs_NbElementTypes = 6,
-};
+/* handles */
+/* end handles declaration */
 
-enum SMDSAbs_GeometryType {
-	SMDSGeom_POINT = 0,
-	SMDSGeom_EDGE = 1,
-	SMDSGeom_TRIANGLE = 2,
-	SMDSGeom_QUADRANGLE = 3,
-	SMDSGeom_POLYGON = 4,
-	SMDSGeom_TETRA = 5,
-	SMDSGeom_PYRAMID = 6,
-	SMDSGeom_HEXA = 7,
-	SMDSGeom_PENTA = 8,
-	SMDSGeom_POLYHEDRA = 9,
-};
-
-enum SMDSAbs_ElementOrder {
-	ORDER_ANY = 0,
-	ORDER_LINEAR = 1,
-	ORDER_QUADRATIC = 2,
-};
-
-enum SMDSAbs_EntityType {
-	SMDSEntity_Node = 0,
-	SMDSEntity_0D = 1,
-	SMDSEntity_Edge = 2,
-	SMDSEntity_Quad_Edge = 3,
-	SMDSEntity_Triangle = 4,
-	SMDSEntity_Quad_Triangle = 5,
-	SMDSEntity_Quadrangle = 6,
-	SMDSEntity_Quad_Quadrangle = 7,
-	SMDSEntity_Polygon = 8,
-	SMDSEntity_Quad_Polygon = 9,
-	SMDSEntity_Tetra = 10,
-	SMDSEntity_Quad_Tetra = 11,
-	SMDSEntity_Pyramid = 12,
-	SMDSEntity_Quad_Pyramid = 13,
-	SMDSEntity_Hexa = 14,
-	SMDSEntity_Quad_Hexa = 15,
-	SMDSEntity_Penta = 16,
-	SMDSEntity_Quad_Penta = 17,
-	SMDSEntity_Polyhedra = 18,
-	SMDSEntity_Quad_Polyhedra = 19,
-	SMDSEntity_Last = 20,
-};
-
-/* end public enums declaration */
-
-
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

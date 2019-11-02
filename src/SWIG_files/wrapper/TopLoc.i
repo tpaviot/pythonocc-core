@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,24 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:17
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define TOPLOCDOCSTRING
-"-Level : Public.
-All methods of all classes will be public.
-
-The TopLoc package gives ressources to handle 3D local
-coordinate systems called Locations.
-
-A Location is a composition of elementary coordinate
-systems, each one is called a Datum.  The Location
-keeps track of this composition.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=TOPLOCDOCSTRING) TopLoc
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -49,21 +50,49 @@ keeps track of this composition.
 
 %include TopLoc_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+%template(TopLoc_MapOfLocation) NCollection_Map <TopLoc_Location , TopLoc_MapLocationHasher>;
+%template(TopLoc_IndexedMapOfLocation) NCollection_IndexedMap <TopLoc_Location , TopLoc_MapLocationHasher>;
+%template(TopLoc_MapLocationHasher) NCollection_DefaultHasher <TopLoc_Location>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Map <TopLoc_Location , TopLoc_MapLocationHasher> TopLoc_MapOfLocation;
+typedef NCollection_Map <TopLoc_Location , TopLoc_MapLocationHasher>::Iterator TopLoc_MapIteratorOfMapOfLocation;
+typedef NCollection_IndexedMap <TopLoc_Location , TopLoc_MapLocationHasher> TopLoc_IndexedMapOfLocation;
+typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(TopLoc_Datum3D)
-%wrap_handle(TopLoc_IndexedMapNodeOfIndexedMapOfLocation)
 %wrap_handle(TopLoc_SListNodeOfItemLocation)
-%wrap_handle(TopLoc_StdMapNodeOfMapOfLocation)
+/* end handles declaration */
 
 %nodefaultctor TopLoc_Datum3D;
-class TopLoc_Datum3D : public MMgt_TShared {
+class TopLoc_Datum3D : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") TopLoc_Datum3D;
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "	* Dumps the content of me into the stream
+
+	:param theOStream:
+	:type theOStream: Standard_OStream &
+	:param theDepth: default value is -1
+	:type theDepth: int
+	:rtype: None
+") DumpJson;
+		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") TopLoc_Datum3D;
 		%feature("autodoc", "	* Constructs a default Datum3D.
 
 	:rtype: None
@@ -83,15 +112,7 @@ class TopLoc_Datum3D : public MMgt_TShared {
 	:rtype: gp_Trsf
 ") Transformation;
 		const gp_Trsf  Transformation ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %make_alias(TopLoc_Datum3D)
@@ -101,146 +122,29 @@ class TopLoc_Datum3D : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
-class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
-		%feature("autodoc", "	:param K1:
-	:type K1: TopLoc_Location &
-	:param K2:
-	:type K2: int
-	:param n1:
-	:type n1: TCollection_MapNodePtr &
-	:param n2:
-	:type n2: TCollection_MapNodePtr &
-	:rtype: None
-") TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
-		 TopLoc_IndexedMapNodeOfIndexedMapOfLocation (const TopLoc_Location & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("compactdefaultargs") Key1;
-		%feature("autodoc", "	:rtype: TopLoc_Location
-") Key1;
-		TopLoc_Location & Key1 ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetKey2() {
-                return (Standard_Integer) $self->Key2();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetKey2(Standard_Integer value ) {
-                $self->Key2()=value;
-                }
-            };
-            		%feature("compactdefaultargs") Next2;
-		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
-") Next2;
-		TCollection_MapNodePtr & Next2 ();
-};
-
-
-%make_alias(TopLoc_IndexedMapNodeOfIndexedMapOfLocation)
-
-%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TopLoc_IndexedMapOfLocation;
-class TopLoc_IndexedMapOfLocation : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") TopLoc_IndexedMapOfLocation;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") TopLoc_IndexedMapOfLocation;
-		 TopLoc_IndexedMapOfLocation (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") TopLoc_IndexedMapOfLocation;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_IndexedMapOfLocation &
-	:rtype: None
-") TopLoc_IndexedMapOfLocation;
-		 TopLoc_IndexedMapOfLocation (const TopLoc_IndexedMapOfLocation & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_IndexedMapOfLocation &
-	:rtype: TopLoc_IndexedMapOfLocation
-") Assign;
-		TopLoc_IndexedMapOfLocation & Assign (const TopLoc_IndexedMapOfLocation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_IndexedMapOfLocation &
-	:rtype: TopLoc_IndexedMapOfLocation
-") operator =;
-		TopLoc_IndexedMapOfLocation & operator = (const TopLoc_IndexedMapOfLocation & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param K:
-	:type K: TopLoc_Location &
-	:rtype: int
-") Add;
-		Standard_Integer Add (const TopLoc_Location & K);
-		%feature("compactdefaultargs") Substitute;
-		%feature("autodoc", "	:param I:
-	:type I: int
-	:param K:
-	:type K: TopLoc_Location &
-	:rtype: None
-") Substitute;
-		void Substitute (const Standard_Integer I,const TopLoc_Location & K);
-		%feature("compactdefaultargs") RemoveLast;
-		%feature("autodoc", "	:rtype: None
-") RemoveLast;
-		void RemoveLast ();
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param K:
-	:type K: TopLoc_Location &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const TopLoc_Location & K);
-		%feature("compactdefaultargs") FindKey;
-		%feature("autodoc", "	:param I:
-	:type I: int
-	:rtype: TopLoc_Location
-") FindKey;
-		const TopLoc_Location & FindKey (const Standard_Integer I);
-		%feature("compactdefaultargs") FindIndex;
-		%feature("autodoc", "	:param K:
-	:type K: TopLoc_Location &
-	:rtype: int
-") FindIndex;
-		Standard_Integer FindIndex (const TopLoc_Location & K);
-};
-
-
-%extend TopLoc_IndexedMapOfLocation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "	* Dumps the content of me into the stream
+
+	:param theOStream:
+	:type theOStream: Standard_OStream &
+	:param theDepth: default value is -1
+	:type theDepth: int
+	:rtype: None
+") DumpJson;
+		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 		%feature("compactdefaultargs") TopLoc_ItemLocation;
 		%feature("autodoc", "	* Sets the elementary Datum to <D> Sets the exponent to <P>
 
 	:param D:
-	:type D: Handle_TopLoc_Datum3D &
+	:type D: opencascade::handle<TopLoc_Datum3D> &
 	:param P:
 	:type P: int
 	:rtype: None
 ") TopLoc_ItemLocation;
-		 TopLoc_ItemLocation (const Handle_TopLoc_Datum3D & D,const Standard_Integer P);
+		 TopLoc_ItemLocation (const opencascade::handle<TopLoc_Datum3D> & D,const Standard_Integer P);
 };
 
 
@@ -252,7 +156,123 @@ class TopLoc_ItemLocation {
 %nodefaultctor TopLoc_Location;
 class TopLoc_Location {
 	public:
-		%feature("compactdefaultargs") TopLoc_Location;
+		%feature("compactdefaultargs") Divided;
+		%feature("autodoc", "	* Returns <self> / <Other>.
+
+	:param Other:
+	:type Other: TopLoc_Location &
+	:rtype: Standard_NODISCARD TopLoc_Location
+") Divided;
+		Standard_NODISCARD TopLoc_Location Divided (const TopLoc_Location & Other);
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "	* Dumps the content of me into the stream
+
+	:param theOStream:
+	:type theOStream: Standard_OStream &
+	:param theDepth: default value is -1
+	:type theDepth: int
+	:rtype: None
+") DumpJson;
+		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
+		%feature("compactdefaultargs") FirstDatum;
+		%feature("autodoc", "	* Returns the first elementary datum of the Location. Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
+
+	:rtype: opencascade::handle<TopLoc_Datum3D>
+") FirstDatum;
+		const opencascade::handle<TopLoc_Datum3D> & FirstDatum ();
+		%feature("compactdefaultargs") FirstPower;
+		%feature("autodoc", "	* Returns the power elevation of the first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
+
+	:rtype: int
+") FirstPower;
+		Standard_Integer FirstPower ();
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	* Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily, and is in the range [1, theUpperBound]. @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
+
+	:param theUpperBound:
+	:type theUpperBound: int
+	:rtype: int
+") HashCode;
+		Standard_Integer HashCode (Standard_Integer theUpperBound);
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("compactdefaultargs") Identity;
+		%feature("autodoc", "	* Resets this location to the Identity transformation.
+
+	:rtype: None
+") Identity;
+		void Identity ();
+		%feature("compactdefaultargs") Inverted;
+		%feature("autodoc", "	* Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
+
+	:rtype: Standard_NODISCARD TopLoc_Location
+") Inverted;
+		Standard_NODISCARD TopLoc_Location Inverted ();
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "	* Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
+
+	:param Other:
+	:type Other: TopLoc_Location &
+	:rtype: bool
+") IsDifferent;
+		Standard_Boolean IsDifferent (const TopLoc_Location & Other);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
+
+	:param Other:
+	:type Other: TopLoc_Location &
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const TopLoc_Location & Other);
+		%feature("compactdefaultargs") IsIdentity;
+		%feature("autodoc", "	* Returns true if this location is equal to the Identity transformation.
+
+	:rtype: bool
+") IsIdentity;
+		Standard_Boolean IsIdentity ();
+		%feature("compactdefaultargs") Multiplied;
+		%feature("autodoc", "	* Returns <self> * <Other>, the elementary datums are concatenated.
+
+	:param Other:
+	:type Other: TopLoc_Location &
+	:rtype: Standard_NODISCARD TopLoc_Location
+") Multiplied;
+		Standard_NODISCARD TopLoc_Location Multiplied (const TopLoc_Location & Other);
+		%feature("compactdefaultargs") NextLocation;
+		%feature("autodoc", "	* Returns a Location representing <self> without the first datum. We have the relation : //! <self> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty.
+
+	:rtype: TopLoc_Location
+") NextLocation;
+		const TopLoc_Location & NextLocation ();
+		%feature("compactdefaultargs") Powered;
+		%feature("autodoc", "	* Returns me at the power <pwr>. If <pwr> is zero returns Identity. <pwr> can be lower than zero (usual meaning for powers).
+
+	:param pwr:
+	:type pwr: int
+	:rtype: Standard_NODISCARD TopLoc_Location
+") Powered;
+		Standard_NODISCARD TopLoc_Location Powered (const Standard_Integer pwr);
+		%feature("compactdefaultargs") Predivided;
+		%feature("autodoc", "	* Returns <Other>.Inverted() * <self>.
+
+	:param Other:
+	:type Other: TopLoc_Location &
+	:rtype: Standard_NODISCARD TopLoc_Location
+") Predivided;
+		Standard_NODISCARD TopLoc_Location Predivided (const TopLoc_Location & Other);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") TopLoc_Location;
 		%feature("autodoc", "	* Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be 'empty'.
 
 	:rtype: None
@@ -270,122 +290,28 @@ class TopLoc_Location {
 		%feature("autodoc", "	* Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
 
 	:param D:
-	:type D: Handle_TopLoc_Datum3D &
+	:type D: opencascade::handle<TopLoc_Datum3D> &
 	:rtype: None
 ") TopLoc_Location;
-		 TopLoc_Location (const Handle_TopLoc_Datum3D & D);
-		%feature("compactdefaultargs") IsIdentity;
-		%feature("autodoc", "	* Returns true if this location is equal to the Identity transformation.
-
-	:rtype: bool
-") IsIdentity;
-		Standard_Boolean IsIdentity ();
-		%feature("compactdefaultargs") Identity;
-		%feature("autodoc", "	* Resets this location to the Identity transformation.
-
-	:rtype: None
-") Identity;
-		void Identity ();
-		%feature("compactdefaultargs") FirstDatum;
-		%feature("autodoc", "	* Returns the first elementary datum of the Location. Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
-
-	:rtype: Handle_TopLoc_Datum3D
-") FirstDatum;
-		Handle_TopLoc_Datum3D FirstDatum ();
-		%feature("compactdefaultargs") FirstPower;
-		%feature("autodoc", "	* Returns the power elevation of the first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
-
-	:rtype: int
-") FirstPower;
-		Standard_Integer FirstPower ();
-		%feature("compactdefaultargs") NextLocation;
-		%feature("autodoc", "	* Returns a Location representing <self> without the first datum. We have the relation : //! <self> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty.
-
-	:rtype: TopLoc_Location
-") NextLocation;
-		const TopLoc_Location & NextLocation ();
+		 TopLoc_Location (const opencascade::handle<TopLoc_Datum3D> & D);
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "	* Returns the transformation associated to the coordinate system.
 
 	:rtype: gp_Trsf
 ") Transformation;
 		const gp_Trsf  Transformation ();
-		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
-") operator gp_Trsf;
-		 operator gp_Trsf ();
-		%feature("compactdefaultargs") Inverted;
-		%feature("autodoc", "	* Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
-
-	:rtype: TopLoc_Location
-") Inverted;
-		TopLoc_Location Inverted ();
-		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "	* Returns <self> * <Other>, the elementary datums are concatenated.
-
-	:param Other:
-	:type Other: TopLoc_Location &
-	:rtype: TopLoc_Location
-") Multiplied;
-		TopLoc_Location Multiplied (const TopLoc_Location & Other);
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_Location &
-	:rtype: TopLoc_Location
+	:rtype: Standard_NODISCARD TopLoc_Location
 ") operator *;
-		TopLoc_Location operator * (const TopLoc_Location & Other);
-		%feature("compactdefaultargs") Divided;
-		%feature("autodoc", "	* Returns <self> / <Other>.
-
-	:param Other:
-	:type Other: TopLoc_Location &
-	:rtype: TopLoc_Location
-") Divided;
-		TopLoc_Location Divided (const TopLoc_Location & Other);
+		Standard_NODISCARD TopLoc_Location operator * (const TopLoc_Location & Other);
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_Location &
-	:rtype: TopLoc_Location
+	:rtype: Standard_NODISCARD TopLoc_Location
 ") operator /;
-		TopLoc_Location operator / (const TopLoc_Location & Other);
-		%feature("compactdefaultargs") Predivided;
-		%feature("autodoc", "	* Returns <Other>.Inverted() * <self>.
-
-	:param Other:
-	:type Other: TopLoc_Location &
-	:rtype: TopLoc_Location
-") Predivided;
-		TopLoc_Location Predivided (const TopLoc_Location & Other);
-		%feature("compactdefaultargs") Powered;
-		%feature("autodoc", "	* Returns me at the power <pwr>. If <pwr> is zero returns Identity. <pwr> can be lower than zero (usual meaning for powers).
-
-	:param pwr:
-	:type pwr: int
-	:rtype: TopLoc_Location
-") Powered;
-		TopLoc_Location Powered (const Standard_Integer pwr);
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily, and is in the range [ 1..Upper ].
-
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		Standard_Integer HashCode (const Standard_Integer Upper);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-        		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
-
-	:param Other:
-	:type Other: TopLoc_Location &
-	:rtype: bool
-") IsEqual;
-		Standard_Boolean IsEqual (const TopLoc_Location & Other);
+		Standard_NODISCARD TopLoc_Location operator / (const TopLoc_Location & Other);
 
         %extend{
             bool __eq_wrapper__(const TopLoc_Location  other) {
@@ -400,37 +326,11 @@ class TopLoc_Location {
             except:
                 return False
         }
-        		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
-
-	:param Other:
-	:type Other: TopLoc_Location &
-	:rtype: bool
-") IsDifferent;
-		Standard_Boolean IsDifferent (const TopLoc_Location & Other);
-
-        %extend{
-            bool __ne_wrapper__(const TopLoc_Location  other) {
-            if (*self!=other) return true;
-            else return false;
-            }
-        }
-        %pythoncode {
-        def __ne__(self, right):
-            try:
-                return self.__ne_wrapper__(right)
-            except:
-                return True
-        }
-        
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        };
+        		%feature("compactdefaultargs") operator gp_Trsf;
+		%feature("autodoc", "	:rtype: 
+") operator gp_Trsf;
+		 operator gp_Trsf ();
+};
 
 
 %extend TopLoc_Location {
@@ -438,129 +338,13 @@ class TopLoc_Location {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TopLoc_MapIteratorOfMapOfLocation;
-class TopLoc_MapIteratorOfMapOfLocation : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") TopLoc_MapIteratorOfMapOfLocation;
-		%feature("autodoc", "	:rtype: None
-") TopLoc_MapIteratorOfMapOfLocation;
-		 TopLoc_MapIteratorOfMapOfLocation ();
-		%feature("compactdefaultargs") TopLoc_MapIteratorOfMapOfLocation;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: TopLoc_MapOfLocation &
-	:rtype: None
-") TopLoc_MapIteratorOfMapOfLocation;
-		 TopLoc_MapIteratorOfMapOfLocation (const TopLoc_MapOfLocation & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: TopLoc_MapOfLocation &
-	:rtype: None
-") Initialize;
-		void Initialize (const TopLoc_MapOfLocation & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopLoc_Location
-") Key;
-		const TopLoc_Location & Key ();
-};
-
-
-%extend TopLoc_MapIteratorOfMapOfLocation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class TopLoc_MapLocationHasher {
-	public:
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	:param K:
-	:type K: TopLoc_Location &
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const TopLoc_Location & K,const Standard_Integer Upper);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param K1:
-	:type K1: TopLoc_Location &
-	:param K2:
-	:type K2: TopLoc_Location &
-	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const TopLoc_Location & K1,const TopLoc_Location & K2);
-};
-
-
-%extend TopLoc_MapLocationHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TopLoc_MapOfLocation;
-class TopLoc_MapOfLocation : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") TopLoc_MapOfLocation;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") TopLoc_MapOfLocation;
-		 TopLoc_MapOfLocation (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") TopLoc_MapOfLocation;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_MapOfLocation &
-	:rtype: None
-") TopLoc_MapOfLocation;
-		 TopLoc_MapOfLocation (const TopLoc_MapOfLocation & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_MapOfLocation &
-	:rtype: TopLoc_MapOfLocation
-") Assign;
-		TopLoc_MapOfLocation & Assign (const TopLoc_MapOfLocation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_MapOfLocation &
-	:rtype: TopLoc_MapOfLocation
-") operator =;
-		TopLoc_MapOfLocation & operator = (const TopLoc_MapOfLocation & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: TopLoc_Location &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const TopLoc_Location & aKey);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: TopLoc_Location &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const TopLoc_Location & aKey);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: TopLoc_Location &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const TopLoc_Location & aKey);
-};
-
-
-%extend TopLoc_MapOfLocation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor TopLoc_SListNodeOfItemLocation;
-class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
+class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Tail;
+		%feature("autodoc", "	:rtype: TopLoc_SListOfItemLocation
+") Tail;
+		TopLoc_SListOfItemLocation & Tail ();
 		%feature("compactdefaultargs") TopLoc_SListNodeOfItemLocation;
 		%feature("autodoc", "	:param I:
 	:type I: TopLoc_ItemLocation &
@@ -569,10 +353,6 @@ class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
 	:rtype: None
 ") TopLoc_SListNodeOfItemLocation;
 		 TopLoc_SListNodeOfItemLocation (const TopLoc_ItemLocation & I,const TopLoc_SListOfItemLocation & aTail);
-		%feature("compactdefaultargs") Tail;
-		%feature("autodoc", "	:rtype: TopLoc_SListOfItemLocation
-") Tail;
-		TopLoc_SListOfItemLocation & Tail ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopLoc_ItemLocation
 ") Value;
@@ -590,6 +370,58 @@ class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
 %nodefaultctor TopLoc_SListOfItemLocation;
 class TopLoc_SListOfItemLocation {
 	public:
+		%feature("compactdefaultargs") Assign;
+		%feature("autodoc", "	* Sets a list from an other one. The lists are shared. The list itself is returned.
+
+	:param Other:
+	:type Other: TopLoc_SListOfItemLocation &
+	:rtype: TopLoc_SListOfItemLocation
+") Assign;
+		TopLoc_SListOfItemLocation & Assign (const TopLoc_SListOfItemLocation & Other);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Sets the list to be empty.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Construct;
+		%feature("autodoc", "	* Replaces the list by a list with <anItem> as Value and the list <self> as tail.
+
+	:param anItem:
+	:type anItem: TopLoc_ItemLocation &
+	:rtype: None
+") Construct;
+		void Construct (const TopLoc_ItemLocation & anItem);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returne true if this list is empty
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") More;
+		%feature("autodoc", "	* Returns True if the iterator has a current value. This is !IsEmpty()
+
+	:rtype: bool
+") More;
+		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	* Moves the iterator to the next object in the list. If the iterator is empty it will stay empty. This is ToTail()
+
+	:rtype: None
+") Next;
+		void Next ();
+		%feature("compactdefaultargs") Tail;
+		%feature("autodoc", "	* Returns the current tail of the list. On an empty list the tail is the list itself.
+
+	:rtype: TopLoc_SListOfItemLocation
+") Tail;
+		const TopLoc_SListOfItemLocation & Tail ();
+		%feature("compactdefaultargs") ToTail;
+		%feature("autodoc", "	* Replaces the list <self> by its tail.
+
+	:rtype: None
+") ToTail;
+		void ToTail ();
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "	* Creates an empty List.
 
@@ -614,68 +446,36 @@ class TopLoc_SListOfItemLocation {
 	:rtype: None
 ") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation (const TopLoc_SListOfItemLocation & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	* Sets a list from an other one. The lists are shared. The list itself is returned.
+		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
+		%feature("autodoc", "	* Move constructor
 
-	:param Other:
-	:type Other: TopLoc_SListOfItemLocation &
-	:rtype: TopLoc_SListOfItemLocation
-") Assign;
-		TopLoc_SListOfItemLocation & Assign (const TopLoc_SListOfItemLocation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopLoc_SListOfItemLocation &
-	:rtype: TopLoc_SListOfItemLocation
-") operator =;
-		TopLoc_SListOfItemLocation & operator = (const TopLoc_SListOfItemLocation & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Sets the list to be empty.
-
+	:param theOther:
+	:type theOther: TopLoc_SListOfItemLocation &
 	:rtype: None
-") Clear;
-		void Clear ();
+") TopLoc_SListOfItemLocation;
+		 TopLoc_SListOfItemLocation (TopLoc_SListOfItemLocation & theOther);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the current value of the list. An error is raised if the list is empty.
 
 	:rtype: TopLoc_ItemLocation
 ") Value;
 		const TopLoc_ItemLocation & Value ();
-		%feature("compactdefaultargs") Tail;
-		%feature("autodoc", "	* Returns the current tail of the list. On an empty list the tail is the list itself.
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	* Assignment
 
+	:param Other:
+	:type Other: TopLoc_SListOfItemLocation &
 	:rtype: TopLoc_SListOfItemLocation
-") Tail;
-		const TopLoc_SListOfItemLocation & Tail ();
-		%feature("compactdefaultargs") Construct;
-		%feature("autodoc", "	* Replaces the list by a list with <anItem> as Value and the list <self> as tail.
+") operator =;
+		TopLoc_SListOfItemLocation & operator = (const TopLoc_SListOfItemLocation & Other);
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	* Move operator
 
-	:param anItem:
-	:type anItem: TopLoc_ItemLocation &
-	:rtype: None
-") Construct;
-		void Construct (const TopLoc_ItemLocation & anItem);
-		%feature("compactdefaultargs") ToTail;
-		%feature("autodoc", "	* Replaces the list <self> by its tail.
-
-	:rtype: None
-") ToTail;
-		void ToTail ();
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	* Returns True if the iterator has a current value. This is !IsEmpty()
-
-	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Moves the iterator to the next object in the list. If the iterator is empty it will stay empty. This is ToTail()
-
-	:rtype: None
-") Next;
-		void Next ();
+	:param theOther:
+	:type theOther: TopLoc_SListOfItemLocation &
+	:rtype: TopLoc_SListOfItemLocation
+") operator =;
+		TopLoc_SListOfItemLocation & operator = (TopLoc_SListOfItemLocation & theOther);
 };
 
 
@@ -684,28 +484,6 @@ class TopLoc_SListOfItemLocation {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor TopLoc_StdMapNodeOfMapOfLocation;
-class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TopLoc_StdMapNodeOfMapOfLocation;
-		%feature("autodoc", "	:param K:
-	:type K: TopLoc_Location &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TopLoc_StdMapNodeOfMapOfLocation;
-		 TopLoc_StdMapNodeOfMapOfLocation (const TopLoc_Location & K,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopLoc_Location
-") Key;
-		TopLoc_Location & Key ();
-};
-
-
-%make_alias(TopLoc_StdMapNodeOfMapOfLocation)
-
-%extend TopLoc_StdMapNodeOfMapOfLocation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

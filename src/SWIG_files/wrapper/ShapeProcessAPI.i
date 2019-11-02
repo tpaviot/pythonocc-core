@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:20
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define SHAPEPROCESSAPIDOCSTRING
-"Provides tools for converting shapes for data exchange
-between various systems (CATIA, EUCLID3 etc.)
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SHAPEPROCESSAPIDOCSTRING) ShapeProcessAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,32 +50,39 @@ between various systems (CATIA, EUCLID3 etc.)
 
 %include ShapeProcessAPI_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor ShapeProcessAPI_ApplySequence;
 class ShapeProcessAPI_ApplySequence {
 	public:
-		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
-		%feature("autodoc", "	* Creates an object and loads resource file and sequence of operators given by their names.
+		%feature("compactdefaultargs") ClearMap;
+		%feature("autodoc", "	* Clears myMap with accumulated history.
 
-	:param rscName:
-	:type rscName: char *
-	:param seqName: default value is ""
-	:type seqName: char *
 	:rtype: None
-") ShapeProcessAPI_ApplySequence;
-		 ShapeProcessAPI_ApplySequence (const char * rscName,const char * seqName = "");
+") ClearMap;
+		void ClearMap ();
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "	* Returns object for managing resource file and sequence of operators.
 
-	:rtype: Handle_ShapeProcess_ShapeContext
+	:rtype: opencascade::handle<ShapeProcess_ShapeContext>
 ") Context;
-		Handle_ShapeProcess_ShapeContext Context ();
+		opencascade::handle<ShapeProcess_ShapeContext> & Context ();
+		%feature("compactdefaultargs") Map;
+		%feature("autodoc", "	* Returns myMap with accumulated history.
+
+	:rtype: TopTools_DataMapOfShapeShape
+") Map;
+		const TopTools_DataMapOfShapeShape & Map ();
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "	* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 
@@ -79,24 +95,22 @@ class ShapeProcessAPI_ApplySequence {
 	:rtype: TopoDS_Shape
 ") PrepareShape;
 		TopoDS_Shape PrepareShape (const TopoDS_Shape & shape,const Standard_Boolean fillmap = Standard_False,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
-		%feature("compactdefaultargs") ClearMap;
-		%feature("autodoc", "	* Clears myMap with accumulated history.
-
-	:rtype: None
-") ClearMap;
-		void ClearMap ();
-		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "	* Returns myMap with accumulated history.
-
-	:rtype: TopTools_DataMapOfShapeShape
-") Map;
-		const TopTools_DataMapOfShapeShape & Map ();
 		%feature("compactdefaultargs") PrintPreparationResult;
 		%feature("autodoc", "	* Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
 
 	:rtype: None
 ") PrintPreparationResult;
 		void PrintPreparationResult ();
+		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
+		%feature("autodoc", "	* Creates an object and loads resource file and sequence of operators given by their names.
+
+	:param rscName:
+	:type rscName: char *
+	:param seqName: default value is ""
+	:type seqName: char *
+	:rtype: None
+") ShapeProcessAPI_ApplySequence;
+		 ShapeProcessAPI_ApplySequence (const char * rscName,const char * seqName = "");
 };
 
 
@@ -105,3 +119,6 @@ class ShapeProcessAPI_ApplySequence {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

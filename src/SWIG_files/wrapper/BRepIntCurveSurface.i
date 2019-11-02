@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,21 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:22
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define BREPINTCURVESURFACEDOCSTRING
-"Inttantiates IntCurveSurface with Surfaces from BRep
-and Curves from Adaptor
-
--Level: Public
-
-All the methods of the classes of this package are public.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -46,12 +50,17 @@ All the methods of the classes of this package are public.
 
 %include BRepIntCurveSurface_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor BRepIntCurveSurface_Inter;
 class BRepIntCurveSurface_Inter {
@@ -62,6 +71,12 @@ class BRepIntCurveSurface_Inter {
 	:rtype: None
 ") BRepIntCurveSurface_Inter;
 		 BRepIntCurveSurface_Inter ();
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "	* returns the current face.
+
+	:rtype: TopoDS_Face
+") Face;
+		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Load the Shape, the curve and initialize the tolerance used for the classification.
 
@@ -86,6 +101,14 @@ class BRepIntCurveSurface_Inter {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & theShape,const gp_Lin & theLine,const Standard_Real theTol);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Method to find intersections of specified curve with loaded shape.
+
+	:param theCurve:
+	:type theCurve: GeomAdaptor_Curve &
+	:rtype: None
+") Init;
+		void Init (const GeomAdaptor_Curve & theCurve);
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "	* Load the Shape, and initialize the tolerance used for the classification.
 
@@ -96,14 +119,6 @@ class BRepIntCurveSurface_Inter {
 	:rtype: None
 ") Load;
 		void Load (const TopoDS_Shape & theShape,const Standard_Real theTol);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Method to find intersections of specified curve with loaded shape.
-
-	:param theCurve:
-	:type theCurve: GeomAdaptor_Curve &
-	:rtype: None
-") Init;
-		void Init (const GeomAdaptor_Curve & theCurve);
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* returns True if there is a current face.
 
@@ -116,18 +131,30 @@ class BRepIntCurveSurface_Inter {
 	:rtype: None
 ") Next;
 		void Next ();
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* returns the current Intersection point.
-
-	:rtype: IntCurveSurface_IntersectionPoint
-") Point;
-		IntCurveSurface_IntersectionPoint Point ();
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "	* returns the current geometric Point
 
 	:rtype: gp_Pnt
 ") Pnt;
 		const gp_Pnt  Pnt ();
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* returns the current Intersection point.
+
+	:rtype: IntCurveSurface_IntersectionPoint
+") Point;
+		IntCurveSurface_IntersectionPoint Point ();
+		%feature("compactdefaultargs") State;
+		%feature("autodoc", "	* returns the current state (IN or ON)
+
+	:rtype: TopAbs_State
+") State;
+		TopAbs_State State ();
+		%feature("compactdefaultargs") Transition;
+		%feature("autodoc", "	* returns the transition of the line on the surface (IN or OUT or UNKNOWN)
+
+	:rtype: IntCurveSurface_TransitionOnCurve
+") Transition;
+		IntCurveSurface_TransitionOnCurve Transition ();
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "	* returns the U parameter of the current point on the current face.
 
@@ -146,24 +173,6 @@ class BRepIntCurveSurface_Inter {
 	:rtype: float
 ") W;
 		Standard_Real W ();
-		%feature("compactdefaultargs") State;
-		%feature("autodoc", "	* returns the current state (IN or ON)
-
-	:rtype: TopAbs_State
-") State;
-		TopAbs_State State ();
-		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "	* returns the transition of the line on the surface (IN or OUT or UNKNOWN)
-
-	:rtype: IntCurveSurface_TransitionOnCurve
-") Transition;
-		IntCurveSurface_TransitionOnCurve Transition ();
-		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	* returns the current face.
-
-	:rtype: TopoDS_Face
-") Face;
-		const TopoDS_Face  Face ();
 };
 
 
@@ -172,3 +181,6 @@ class BRepIntCurveSurface_Inter {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

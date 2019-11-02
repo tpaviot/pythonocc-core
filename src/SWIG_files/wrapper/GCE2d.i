@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:13
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define GCE2DDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GCE2DDOCSTRING) GCE2d
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,12 +50,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include GCE2d_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor GCE2d_MakeMirror;
 class GCE2d_MakeMirror {
@@ -80,13 +96,9 @@ class GCE2d_MakeMirror {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed transformation.
 
-	:rtype: Handle_Geom2d_Transformation
+	:rtype: opencascade::handle<Geom2d_Transformation>
 ") Value;
-		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		const opencascade::handle<Geom2d_Transformation> & Value ();
 };
 
 
@@ -111,13 +123,9 @@ class GCE2d_MakeRotation {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed transformation.
 
-	:rtype: Handle_Geom2d_Transformation
+	:rtype: opencascade::handle<Geom2d_Transformation>
 ") Value;
-		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		const opencascade::handle<Geom2d_Transformation> & Value ();
 };
 
 
@@ -142,13 +150,9 @@ class GCE2d_MakeScale {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed transformation.
 
-	:rtype: Handle_Geom2d_Transformation
+	:rtype: opencascade::handle<Geom2d_Transformation>
 ") Value;
-		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		const opencascade::handle<Geom2d_Transformation> & Value ();
 };
 
 
@@ -181,13 +185,9 @@ class GCE2d_MakeTranslation {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed transformation.
 
-	:rtype: Handle_Geom2d_Transformation
+	:rtype: opencascade::handle<Geom2d_Transformation>
 ") Value;
-		Handle_Geom2d_Transformation Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
-") Operator;
-		Handle_Geom2d_Transformation Operator ();
+		const opencascade::handle<Geom2d_Transformation> & Value ();
 };
 
 
@@ -290,13 +290,9 @@ class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed arc of circle. Exceptions StdFail_NotDone if no arc of circle is constructed.
 
-	:rtype: Handle_Geom2d_TrimmedCurve
+	:rtype: opencascade::handle<Geom2d_TrimmedCurve>
 ") Value;
-		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		const opencascade::handle<Geom2d_TrimmedCurve> & Value ();
 };
 
 
@@ -353,13 +349,9 @@ class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed arc of ellipse.
 
-	:rtype: Handle_Geom2d_TrimmedCurve
+	:rtype: opencascade::handle<Geom2d_TrimmedCurve>
 ") Value;
-		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		const opencascade::handle<Geom2d_TrimmedCurve> & Value ();
 };
 
 
@@ -416,13 +408,9 @@ class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed arc of hyperbola.
 
-	:rtype: Handle_Geom2d_TrimmedCurve
+	:rtype: opencascade::handle<Geom2d_TrimmedCurve>
 ") Value;
-		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		const opencascade::handle<Geom2d_TrimmedCurve> & Value ();
 };
 
 
@@ -479,13 +467,9 @@ class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed arc of parabola.
 
-	:rtype: Handle_Geom2d_TrimmedCurve
+	:rtype: opencascade::handle<Geom2d_TrimmedCurve>
 ") Value;
-		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		const opencascade::handle<Geom2d_TrimmedCurve> & Value ();
 };
 
 
@@ -586,13 +570,9 @@ class GCE2d_MakeCircle : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
 
-	:rtype: Handle_Geom2d_Circle
+	:rtype: opencascade::handle<Geom2d_Circle>
 ") Value;
-		Handle_Geom2d_Circle Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Circle
-") Operator;
-		Handle_Geom2d_Circle Operator ();
+		const opencascade::handle<Geom2d_Circle> & Value ();
 };
 
 
@@ -653,13 +633,9 @@ class GCE2d_MakeEllipse : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
 
-	:rtype: Handle_Geom2d_Ellipse
+	:rtype: opencascade::handle<Geom2d_Ellipse>
 ") Value;
-		Handle_Geom2d_Ellipse Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Ellipse
-") Operator;
-		Handle_Geom2d_Ellipse Operator ();
+		const opencascade::handle<Geom2d_Ellipse> & Value ();
 };
 
 
@@ -720,13 +696,9 @@ class GCE2d_MakeHyperbola : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed hyperbola. Exceptions: StdFail_NotDone if no hyperbola is constructed.
 
-	:rtype: Handle_Geom2d_Hyperbola
+	:rtype: opencascade::handle<Geom2d_Hyperbola>
 ") Value;
-		Handle_Geom2d_Hyperbola Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Hyperbola
-") Operator;
-		Handle_Geom2d_Hyperbola Operator ();
+		const opencascade::handle<Geom2d_Hyperbola> & Value ();
 };
 
 
@@ -797,13 +769,9 @@ class GCE2d_MakeLine : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed line. Exceptions StdFail_NotDone if no line is constructed.
 
-	:rtype: Handle_Geom2d_Line
+	:rtype: opencascade::handle<Geom2d_Line>
 ") Value;
-		Handle_Geom2d_Line Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Line
-") Operator;
-		Handle_Geom2d_Line Operator ();
+		const opencascade::handle<Geom2d_Line> & Value ();
 };
 
 
@@ -846,16 +814,6 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola (const gp_Ax2d & MirrorAxis,const Standard_Real Focal,const Standard_Boolean Sense);
 		%feature("compactdefaultargs") GCE2d_MakeParabola;
-		%feature("autodoc", "	* Creates a parabola with the local coordinate system and the focus point. The sense of parametrization is given by Sense.
-
-	:param D:
-	:type D: gp_Ax22d
-	:param F:
-	:type F: gp_Pnt2d
-	:rtype: None
-") GCE2d_MakeParabola;
-		 GCE2d_MakeParabola (const gp_Ax22d & D,const gp_Pnt2d & F);
-		%feature("compactdefaultargs") GCE2d_MakeParabola;
 		%feature("autodoc", "	* D is the directrix of the parabola and F the focus point. The symmetry axis 'XAxis' of the parabola is normal to the directrix and pass through the focus point F, but its 'Location' point is the vertex of the parabola. The 'YAxis' of the parabola is parallel to D and its 'Location' point is the vertex of the parabola.
 
 	:param D:
@@ -880,13 +838,9 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
 
-	:rtype: Handle_Geom2d_Parabola
+	:rtype: opencascade::handle<Geom2d_Parabola>
 ") Value;
-		Handle_Geom2d_Parabola Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Parabola
-") Operator;
-		Handle_Geom2d_Parabola Operator ();
+		const opencascade::handle<Geom2d_Parabola> & Value ();
 };
 
 
@@ -959,13 +913,9 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the constructed line segment. Exceptions StdFail_NotDone if no line segment is constructed.
 
-	:rtype: Handle_Geom2d_TrimmedCurve
+	:rtype: opencascade::handle<Geom2d_TrimmedCurve>
 ") Value;
-		Handle_Geom2d_TrimmedCurve Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
-") Operator;
-		Handle_Geom2d_TrimmedCurve Operator ();
+		const opencascade::handle<Geom2d_TrimmedCurve> & Value ();
 };
 
 
@@ -974,3 +924,6 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,17 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:44
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define STEPREPRDOCSTRING
-"-Purpose : Sub-Schema of Step for Representations
-Collects definitions of STEP entities used for describing
-representation structures (from Parts 41, 43, 44 of ISO10303)
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=STEPREPRDOCSTRING) StepRepr
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -42,23 +50,170 @@ representation structures (from Parts 41, 43, 44 of ISO10303)
 
 %include StepRepr_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+%template(StepRepr_SequenceOfMaterialPropertyRepresentation) NCollection_Sequence <opencascade::handle <StepRepr_MaterialPropertyRepresentation>>;
+%template(StepRepr_Array1OfMaterialPropertyRepresentation) NCollection_Array1 <opencascade::handle <StepRepr_MaterialPropertyRepresentation>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepRepr_MaterialPropertyRepresentation>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepRepr_SequenceOfRepresentationItem) NCollection_Sequence <opencascade::handle <StepRepr_RepresentationItem>>;
+%template(StepRepr_Array1OfRepresentationItem) NCollection_Array1 <opencascade::handle <StepRepr_RepresentationItem>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepRepr_RepresentationItem>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepRepr_Array1OfShapeAspect) NCollection_Array1 <opencascade::handle <StepRepr_ShapeAspect>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepRepr_ShapeAspect>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepRepr_Array1OfPropertyDefinitionRepresentation) NCollection_Array1 <opencascade::handle <StepRepr_PropertyDefinitionRepresentation>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepRepr_PropertyDefinitionRepresentation>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <opencascade::handle <StepRepr_MaterialPropertyRepresentation>> StepRepr_SequenceOfMaterialPropertyRepresentation;
+typedef NCollection_Array1 <opencascade::handle <StepRepr_MaterialPropertyRepresentation>> StepRepr_Array1OfMaterialPropertyRepresentation;
+typedef NCollection_Sequence <opencascade::handle <StepRepr_RepresentationItem>> StepRepr_SequenceOfRepresentationItem;
+typedef NCollection_Array1 <opencascade::handle <StepRepr_RepresentationItem>> StepRepr_Array1OfRepresentationItem;
+typedef NCollection_Array1 <opencascade::handle <StepRepr_ShapeAspect>> StepRepr_Array1OfShapeAspect;
+typedef NCollection_Array1 <opencascade::handle <StepRepr_PropertyDefinitionRepresentation>> StepRepr_Array1OfPropertyDefinitionRepresentation;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(StepRepr_AssemblyComponentUsageSubstitute)
 %wrap_handle(StepRepr_ConfigurationDesign)
 %wrap_handle(StepRepr_ConfigurationEffectivity)
 %wrap_handle(StepRepr_ConfigurationItem)
 %wrap_handle(StepRepr_DataEnvironment)
 %wrap_handle(StepRepr_FunctionallyDefinedTransformation)
-%wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
-%wrap_handle(StepRepr_HArray1OfRepresentationItem)
-%wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
 %wrap_handle(StepRepr_ItemDefinedTransformation)
 %wrap_handle(StepRepr_MaterialDesignation)
 %wrap_handle(StepRepr_ProductConcept)
@@ -71,20 +226,24 @@ representation structures (from Parts 41, 43, 44 of ISO10303)
 %wrap_handle(StepRepr_RepresentationItem)
 %wrap_handle(StepRepr_RepresentationMap)
 %wrap_handle(StepRepr_RepresentationRelationship)
-%wrap_handle(StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_SequenceNodeOfSequenceOfRepresentationItem)
 %wrap_handle(StepRepr_ShapeAspect)
 %wrap_handle(StepRepr_ShapeAspectRelationship)
 %wrap_handle(StepRepr_SuppliedPartRelationship)
 %wrap_handle(StepRepr_AssemblyComponentUsage)
+%wrap_handle(StepRepr_CharacterizedRepresentation)
+%wrap_handle(StepRepr_CompShAspAndDatumFeatAndShAsp)
 %wrap_handle(StepRepr_CompositeShapeAspect)
 %wrap_handle(StepRepr_CompoundRepresentationItem)
+%wrap_handle(StepRepr_ConstructiveGeometryRepresentation)
+%wrap_handle(StepRepr_ConstructiveGeometryRepresentationRelationship)
 %wrap_handle(StepRepr_DefinitionalRepresentation)
 %wrap_handle(StepRepr_DerivedShapeAspect)
 %wrap_handle(StepRepr_DescriptiveRepresentationItem)
 %wrap_handle(StepRepr_ExternallyDefinedRepresentation)
+%wrap_handle(StepRepr_FeatureForDatumTargetRelationship)
 %wrap_handle(StepRepr_GlobalUncertaintyAssignedContext)
 %wrap_handle(StepRepr_GlobalUnitAssignedContext)
+%wrap_handle(StepRepr_IntegerRepresentationItem)
 %wrap_handle(StepRepr_MakeFromUsageOption)
 %wrap_handle(StepRepr_MappedItem)
 %wrap_handle(StepRepr_MaterialProperty)
@@ -92,446 +251,98 @@ representation structures (from Parts 41, 43, 44 of ISO10303)
 %wrap_handle(StepRepr_MeasureRepresentationItem)
 %wrap_handle(StepRepr_ParametricRepresentationContext)
 %wrap_handle(StepRepr_ProductDefinitionShape)
-%wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnit)
+%wrap_handle(StepRepr_ReprItemAndMeasureWithUnit)
 %wrap_handle(StepRepr_ShapeAspectDerivingRelationship)
 %wrap_handle(StepRepr_ShapeAspectTransition)
 %wrap_handle(StepRepr_ShapeRepresentationRelationship)
 %wrap_handle(StepRepr_StructuralResponseProperty)
 %wrap_handle(StepRepr_StructuralResponsePropertyDefinitionRepresentation)
+%wrap_handle(StepRepr_ValueRepresentationItem)
+%wrap_handle(StepRepr_Apex)
+%wrap_handle(StepRepr_CentreOfSymmetry)
+%wrap_handle(StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp)
+%wrap_handle(StepRepr_CompositeGroupShapeAspect)
+%wrap_handle(StepRepr_ContinuosShapeAspect)
 %wrap_handle(StepRepr_Extension)
+%wrap_handle(StepRepr_GeometricAlignment)
 %wrap_handle(StepRepr_NextAssemblyUsageOccurrence)
+%wrap_handle(StepRepr_ParallelOffset)
+%wrap_handle(StepRepr_PerpendicularTo)
 %wrap_handle(StepRepr_PromissoryUsageOccurrence)
 %wrap_handle(StepRepr_QuantifiedAssemblyComponentUsage)
+%wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnit)
+%wrap_handle(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
+%wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnit)
 %wrap_handle(StepRepr_RepresentationRelationshipWithTransformation)
 %wrap_handle(StepRepr_SpecifiedHigherUsageOccurrence)
+%wrap_handle(StepRepr_Tangent)
 %wrap_handle(StepRepr_ValueRange)
+%wrap_handle(StepRepr_AllAroundShapeAspect)
+%wrap_handle(StepRepr_BetweenShapeAspect)
+%wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI)
+%wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ShapeRepresentationRelationshipWithTransformation)
+/* end handles declaration */
 
-%nodefaultctor StepRepr_Array1OfMaterialPropertyRepresentation;
-class StepRepr_Array1OfMaterialPropertyRepresentation {
-	public:
-		%feature("compactdefaultargs") StepRepr_Array1OfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfMaterialPropertyRepresentation;
-		 StepRepr_Array1OfMaterialPropertyRepresentation (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_Array1OfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepRepr_MaterialPropertyRepresentation &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfMaterialPropertyRepresentation;
-		 StepRepr_Array1OfMaterialPropertyRepresentation (const Handle_StepRepr_MaterialPropertyRepresentation & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_MaterialPropertyRepresentation & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfMaterialPropertyRepresentation &
-	:rtype: StepRepr_Array1OfMaterialPropertyRepresentation
-") Assign;
-		const StepRepr_Array1OfMaterialPropertyRepresentation & Assign (const StepRepr_Array1OfMaterialPropertyRepresentation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfMaterialPropertyRepresentation &
-	:rtype: StepRepr_Array1OfMaterialPropertyRepresentation
-") operator =;
-		const StepRepr_Array1OfMaterialPropertyRepresentation & operator = (const StepRepr_Array1OfMaterialPropertyRepresentation & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_MaterialPropertyRepresentation & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Value;
-		Handle_StepRepr_MaterialPropertyRepresentation Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") ChangeValue;
-		Handle_StepRepr_MaterialPropertyRepresentation ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepRepr_Array1OfMaterialPropertyRepresentation {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_Array1OfMaterialPropertyRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_Array1OfPropertyDefinitionRepresentation;
-class StepRepr_Array1OfPropertyDefinitionRepresentation {
-	public:
-		%feature("compactdefaultargs") StepRepr_Array1OfPropertyDefinitionRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfPropertyDefinitionRepresentation;
-		 StepRepr_Array1OfPropertyDefinitionRepresentation (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_Array1OfPropertyDefinitionRepresentation;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfPropertyDefinitionRepresentation;
-		 StepRepr_Array1OfPropertyDefinitionRepresentation (const Handle_StepRepr_PropertyDefinitionRepresentation & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_PropertyDefinitionRepresentation & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfPropertyDefinitionRepresentation &
-	:rtype: StepRepr_Array1OfPropertyDefinitionRepresentation
-") Assign;
-		const StepRepr_Array1OfPropertyDefinitionRepresentation & Assign (const StepRepr_Array1OfPropertyDefinitionRepresentation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfPropertyDefinitionRepresentation &
-	:rtype: StepRepr_Array1OfPropertyDefinitionRepresentation
-") operator =;
-		const StepRepr_Array1OfPropertyDefinitionRepresentation & operator = (const StepRepr_Array1OfPropertyDefinitionRepresentation & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_PropertyDefinitionRepresentation & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_PropertyDefinitionRepresentation
-") Value;
-		Handle_StepRepr_PropertyDefinitionRepresentation Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_PropertyDefinitionRepresentation
-") ChangeValue;
-		Handle_StepRepr_PropertyDefinitionRepresentation ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepRepr_Array1OfPropertyDefinitionRepresentation {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_Array1OfPropertyDefinitionRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_Array1OfRepresentationItem;
-class StepRepr_Array1OfRepresentationItem {
-	public:
-		%feature("compactdefaultargs") StepRepr_Array1OfRepresentationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfRepresentationItem;
-		 StepRepr_Array1OfRepresentationItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_Array1OfRepresentationItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepRepr_RepresentationItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_Array1OfRepresentationItem;
-		 StepRepr_Array1OfRepresentationItem (const Handle_StepRepr_RepresentationItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_RepresentationItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfRepresentationItem &
-	:rtype: StepRepr_Array1OfRepresentationItem
-") Assign;
-		const StepRepr_Array1OfRepresentationItem & Assign (const StepRepr_Array1OfRepresentationItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_Array1OfRepresentationItem &
-	:rtype: StepRepr_Array1OfRepresentationItem
-") operator =;
-		const StepRepr_Array1OfRepresentationItem & operator = (const StepRepr_Array1OfRepresentationItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_RepresentationItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") Value;
-		Handle_StepRepr_RepresentationItem Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") ChangeValue;
-		Handle_StepRepr_RepresentationItem ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepRepr_Array1OfRepresentationItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_Array1OfRepresentationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepRepr_AssemblyComponentUsageSubstitute;
-class StepRepr_AssemblyComponentUsageSubstitute : public MMgt_TShared {
+class StepRepr_AssemblyComponentUsageSubstitute : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Base;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_AssemblyComponentUsage>
+") Base;
+		opencascade::handle<StepRepr_AssemblyComponentUsage> Base ();
+		%feature("compactdefaultargs") Definition;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Definition;
+		opencascade::handle<TCollection_HAsciiString> Definition ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDef:
+	:type aDef: opencascade::handle<TCollection_HAsciiString> &
+	:param aBase:
+	:type aBase: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:param aSubs:
+	:type aSubs: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDef,const opencascade::handle<StepRepr_AssemblyComponentUsage> & aBase,const opencascade::handle<StepRepr_AssemblyComponentUsage> & aSubs);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetBase;
+		%feature("autodoc", "	:param aBase:
+	:type aBase: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:rtype: None
+") SetBase;
+		void SetBase (const opencascade::handle<StepRepr_AssemblyComponentUsage> & aBase);
+		%feature("compactdefaultargs") SetDefinition;
+		%feature("autodoc", "	:param aDef:
+	:type aDef: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDefinition;
+		void SetDefinition (const opencascade::handle<TCollection_HAsciiString> & aDef);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
+		%feature("compactdefaultargs") SetSubstitute;
+		%feature("autodoc", "	:param aSubstitute:
+	:type aSubstitute: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:rtype: None
+") SetSubstitute;
+		void SetSubstitute (const opencascade::handle<StepRepr_AssemblyComponentUsage> & aSubstitute);
 		%feature("compactdefaultargs") StepRepr_AssemblyComponentUsageSubstitute;
 		%feature("autodoc", "	:rtype: None
 ") StepRepr_AssemblyComponentUsageSubstitute;
 		 StepRepr_AssemblyComponentUsageSubstitute ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDef:
-	:type aDef: Handle_TCollection_HAsciiString &
-	:param aBase:
-	:type aBase: Handle_StepRepr_AssemblyComponentUsage &
-	:param aSubs:
-	:type aSubs: Handle_StepRepr_AssemblyComponentUsage &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDef,const Handle_StepRepr_AssemblyComponentUsage & aBase,const Handle_StepRepr_AssemblyComponentUsage & aSubs);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Definition;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Definition;
-		Handle_TCollection_HAsciiString Definition ();
-		%feature("compactdefaultargs") SetDefinition;
-		%feature("autodoc", "	:param aDef:
-	:type aDef: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDefinition;
-		void SetDefinition (const Handle_TCollection_HAsciiString & aDef);
-		%feature("compactdefaultargs") Base;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_AssemblyComponentUsage
-") Base;
-		Handle_StepRepr_AssemblyComponentUsage Base ();
-		%feature("compactdefaultargs") SetBase;
-		%feature("autodoc", "	:param aBase:
-	:type aBase: Handle_StepRepr_AssemblyComponentUsage &
-	:rtype: None
-") SetBase;
-		void SetBase (const Handle_StepRepr_AssemblyComponentUsage & aBase);
 		%feature("compactdefaultargs") Substitute;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_AssemblyComponentUsage
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_AssemblyComponentUsage>
 ") Substitute;
-		Handle_StepRepr_AssemblyComponentUsage Substitute ();
-		%feature("compactdefaultargs") SetSubstitute;
-		%feature("autodoc", "	:param aSubstitute:
-	:type aSubstitute: Handle_StepRepr_AssemblyComponentUsage &
-	:rtype: None
-") SetSubstitute;
-		void SetSubstitute (const Handle_StepRepr_AssemblyComponentUsage & aSubstitute);
+		opencascade::handle<StepRepr_AssemblyComponentUsage> Substitute ();
 };
 
 
@@ -545,62 +356,62 @@ class StepRepr_AssemblyComponentUsageSubstitute : public MMgt_TShared {
 %nodefaultctor StepRepr_CharacterizedDefinition;
 class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of CharacterizedDefinition select type 1 -> CharacterizedObject from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ProductDefinitionRelationship from StepBasic 4 -> ProductDefinitionShape from StepRepr 5 -> ShapeAspect from StepRepr 6 -> ShapeAspectRelationship from StepRepr 7 -> DocumentFile from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") CharacterizedObject;
+		%feature("autodoc", "	* Returns Value as CharacterizedObject (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_CharacterizedObject>
+") CharacterizedObject;
+		opencascade::handle<StepBasic_CharacterizedObject> CharacterizedObject ();
+		%feature("compactdefaultargs") DocumentFile;
+		%feature("autodoc", "	* Returns Value as DocumentFile (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_DocumentFile>
+") DocumentFile;
+		opencascade::handle<StepBasic_DocumentFile> DocumentFile ();
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") ProductDefinitionRelationship;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionRelationship (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionRelationship>
+") ProductDefinitionRelationship;
+		opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship ();
+		%feature("compactdefaultargs") ProductDefinitionShape;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionShape (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ProductDefinitionShape>
+") ProductDefinitionShape;
+		opencascade::handle<StepRepr_ProductDefinitionShape> ProductDefinitionShape ();
+		%feature("compactdefaultargs") ShapeAspect;
+		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
+") ShapeAspect;
+		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect ();
+		%feature("compactdefaultargs") ShapeAspectRelationship;
+		%feature("autodoc", "	* Returns Value as ShapeAspectRelationship (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspectRelationship>
+") ShapeAspectRelationship;
+		opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship ();
 		%feature("compactdefaultargs") StepRepr_CharacterizedDefinition;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_CharacterizedDefinition;
 		 StepRepr_CharacterizedDefinition ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CharacterizedDefinition select type 1 -> CharacterizedObject from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ProductDefinitionRelationship from StepBasic 4 -> ProductDefinitionShape from StepRepr 5 -> ShapeAspect from StepRepr 6 -> ShapeAspectRelationship from StepRepr 7 -> DocumentFile from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") CharacterizedObject;
-		%feature("autodoc", "	* Returns Value as CharacterizedObject (or Null if another type)
-
-	:rtype: Handle_StepBasic_CharacterizedObject
-") CharacterizedObject;
-		Handle_StepBasic_CharacterizedObject CharacterizedObject ();
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") ProductDefinitionRelationship;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionRelationship (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionRelationship
-") ProductDefinitionRelationship;
-		Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship ();
-		%feature("compactdefaultargs") ProductDefinitionShape;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionShape (or Null if another type)
-
-	:rtype: Handle_StepRepr_ProductDefinitionShape
-") ProductDefinitionShape;
-		Handle_StepRepr_ProductDefinitionShape ProductDefinitionShape ();
-		%feature("compactdefaultargs") ShapeAspect;
-		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspect
-") ShapeAspect;
-		Handle_StepRepr_ShapeAspect ShapeAspect ();
-		%feature("compactdefaultargs") ShapeAspectRelationship;
-		%feature("autodoc", "	* Returns Value as ShapeAspectRelationship (or Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspectRelationship
-") ShapeAspectRelationship;
-		Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship ();
-		%feature("compactdefaultargs") DocumentFile;
-		%feature("autodoc", "	* Returns Value as DocumentFile (or Null if another type)
-
-	:rtype: Handle_StepBasic_DocumentFile
-") DocumentFile;
-		Handle_StepBasic_DocumentFile DocumentFile ();
 };
 
 
@@ -610,44 +421,38 @@ class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 	}
 };
 %nodefaultctor StepRepr_ConfigurationDesign;
-class StepRepr_ConfigurationDesign : public MMgt_TShared {
+class StepRepr_ConfigurationDesign : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_ConfigurationDesign;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_ConfigurationDesign;
-		 StepRepr_ConfigurationDesign ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aConfiguration:
-	:type aConfiguration: Handle_StepRepr_ConfigurationItem &
-	:param aDesign:
-	:type aDesign: StepRepr_ConfigurationDesignItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_ConfigurationItem & aConfiguration,const StepRepr_ConfigurationDesignItem & aDesign);
 		%feature("compactdefaultargs") Configuration;
 		%feature("autodoc", "	* Returns field Configuration
 
-	:rtype: Handle_StepRepr_ConfigurationItem
+	:rtype: opencascade::handle<StepRepr_ConfigurationItem>
 ") Configuration;
-		Handle_StepRepr_ConfigurationItem Configuration ();
-		%feature("compactdefaultargs") SetConfiguration;
-		%feature("autodoc", "	* Set field Configuration
-
-	:param Configuration:
-	:type Configuration: Handle_StepRepr_ConfigurationItem &
-	:rtype: None
-") SetConfiguration;
-		void SetConfiguration (const Handle_StepRepr_ConfigurationItem & Configuration);
+		opencascade::handle<StepRepr_ConfigurationItem> Configuration ();
 		%feature("compactdefaultargs") Design;
 		%feature("autodoc", "	* Returns field Design
 
 	:rtype: StepRepr_ConfigurationDesignItem
 ") Design;
 		StepRepr_ConfigurationDesignItem Design ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aConfiguration:
+	:type aConfiguration: opencascade::handle<StepRepr_ConfigurationItem> &
+	:param aDesign:
+	:type aDesign: StepRepr_ConfigurationDesignItem &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepRepr_ConfigurationItem> & aConfiguration,const StepRepr_ConfigurationDesignItem & aDesign);
+		%feature("compactdefaultargs") SetConfiguration;
+		%feature("autodoc", "	* Set field Configuration
+
+	:param Configuration:
+	:type Configuration: opencascade::handle<StepRepr_ConfigurationItem> &
+	:rtype: None
+") SetConfiguration;
+		void SetConfiguration (const opencascade::handle<StepRepr_ConfigurationItem> & Configuration);
 		%feature("compactdefaultargs") SetDesign;
 		%feature("autodoc", "	* Set field Design
 
@@ -656,6 +461,12 @@ class StepRepr_ConfigurationDesign : public MMgt_TShared {
 	:rtype: None
 ") SetDesign;
 		void SetDesign (const StepRepr_ConfigurationDesignItem & Design);
+		%feature("compactdefaultargs") StepRepr_ConfigurationDesign;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_ConfigurationDesign;
+		 StepRepr_ConfigurationDesign ();
 };
 
 
@@ -669,32 +480,32 @@ class StepRepr_ConfigurationDesign : public MMgt_TShared {
 %nodefaultctor StepRepr_ConfigurationDesignItem;
 class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of ConfigurationDesignItem select type 1 -> ProductDefinition from StepBasic 2 -> ProductDefinitionFormation from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepRepr_ConfigurationDesignItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_ConfigurationDesignItem;
 		 StepRepr_ConfigurationDesignItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ConfigurationDesignItem select type 1 -> ProductDefinition from StepBasic 2 -> ProductDefinitionFormation from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
 };
 
 
@@ -706,38 +517,38 @@ class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 %nodefaultctor StepRepr_ConfigurationEffectivity;
 class StepRepr_ConfigurationEffectivity : public StepBasic_ProductDefinitionEffectivity {
 	public:
+		%feature("compactdefaultargs") Configuration;
+		%feature("autodoc", "	* Returns field Configuration
+
+	:rtype: opencascade::handle<StepRepr_ConfigurationDesign>
+") Configuration;
+		opencascade::handle<StepRepr_ConfigurationDesign> Configuration ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aEffectivity_Id:
+	:type aEffectivity_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionEffectivity_Usage:
+	:type aProductDefinitionEffectivity_Usage: opencascade::handle<StepBasic_ProductDefinitionRelationship> &
+	:param aConfiguration:
+	:type aConfiguration: opencascade::handle<StepRepr_ConfigurationDesign> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aEffectivity_Id,const opencascade::handle<StepBasic_ProductDefinitionRelationship> & aProductDefinitionEffectivity_Usage,const opencascade::handle<StepRepr_ConfigurationDesign> & aConfiguration);
+		%feature("compactdefaultargs") SetConfiguration;
+		%feature("autodoc", "	* Set field Configuration
+
+	:param Configuration:
+	:type Configuration: opencascade::handle<StepRepr_ConfigurationDesign> &
+	:rtype: None
+") SetConfiguration;
+		void SetConfiguration (const opencascade::handle<StepRepr_ConfigurationDesign> & Configuration);
 		%feature("compactdefaultargs") StepRepr_ConfigurationEffectivity;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_ConfigurationEffectivity;
 		 StepRepr_ConfigurationEffectivity ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aEffectivity_Id:
-	:type aEffectivity_Id: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionEffectivity_Usage:
-	:type aProductDefinitionEffectivity_Usage: Handle_StepBasic_ProductDefinitionRelationship &
-	:param aConfiguration:
-	:type aConfiguration: Handle_StepRepr_ConfigurationDesign &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aEffectivity_Id,const Handle_StepBasic_ProductDefinitionRelationship & aProductDefinitionEffectivity_Usage,const Handle_StepRepr_ConfigurationDesign & aConfiguration);
-		%feature("compactdefaultargs") Configuration;
-		%feature("autodoc", "	* Returns field Configuration
-
-	:rtype: Handle_StepRepr_ConfigurationDesign
-") Configuration;
-		Handle_StepRepr_ConfigurationDesign Configuration ();
-		%feature("compactdefaultargs") SetConfiguration;
-		%feature("autodoc", "	* Set field Configuration
-
-	:param Configuration:
-	:type Configuration: Handle_StepRepr_ConfigurationDesign &
-	:rtype: None
-") SetConfiguration;
-		void SetConfiguration (const Handle_StepRepr_ConfigurationDesign & Configuration);
 };
 
 
@@ -749,116 +560,116 @@ class StepRepr_ConfigurationEffectivity : public StepBasic_ProductDefinitionEffe
 	}
 };
 %nodefaultctor StepRepr_ConfigurationItem;
-class StepRepr_ConfigurationItem : public MMgt_TShared {
+class StepRepr_ConfigurationItem : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_ConfigurationItem;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_ConfigurationItem;
-		 StepRepr_ConfigurationItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aId:
-	:type aId: Handle_TCollection_HAsciiString &
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasDescription:
-	:type hasDescription: bool
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aItemConcept:
-	:type aItemConcept: Handle_StepRepr_ProductConcept &
-	:param hasPurpose:
-	:type hasPurpose: bool
-	:param aPurpose:
-	:type aPurpose: Handle_TCollection_HAsciiString &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aId,const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasDescription,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_ProductConcept & aItemConcept,const Standard_Boolean hasPurpose,const Handle_TCollection_HAsciiString & aPurpose);
-		%feature("compactdefaultargs") Id;
-		%feature("autodoc", "	* Returns field Id
-
-	:rtype: Handle_TCollection_HAsciiString
-") Id;
-		Handle_TCollection_HAsciiString Id ();
-		%feature("compactdefaultargs") SetId;
-		%feature("autodoc", "	* Set field Id
-
-	:param Id:
-	:type Id: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetId;
-		void SetId (const Handle_TCollection_HAsciiString & Id);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "	* Returns field Description
 
-	:rtype: Handle_TCollection_HAsciiString
+	:rtype: opencascade::handle<TCollection_HAsciiString>
 ") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
+		opencascade::handle<TCollection_HAsciiString> Description ();
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "	* Returns True if optional field Description is defined
 
 	:rtype: bool
 ") HasDescription;
 		Standard_Boolean HasDescription ();
-		%feature("compactdefaultargs") ItemConcept;
-		%feature("autodoc", "	* Returns field ItemConcept
-
-	:rtype: Handle_StepRepr_ProductConcept
-") ItemConcept;
-		Handle_StepRepr_ProductConcept ItemConcept ();
-		%feature("compactdefaultargs") SetItemConcept;
-		%feature("autodoc", "	* Set field ItemConcept
-
-	:param ItemConcept:
-	:type ItemConcept: Handle_StepRepr_ProductConcept &
-	:rtype: None
-") SetItemConcept;
-		void SetItemConcept (const Handle_StepRepr_ProductConcept & ItemConcept);
-		%feature("compactdefaultargs") Purpose;
-		%feature("autodoc", "	* Returns field Purpose
-
-	:rtype: Handle_TCollection_HAsciiString
-") Purpose;
-		Handle_TCollection_HAsciiString Purpose ();
-		%feature("compactdefaultargs") SetPurpose;
-		%feature("autodoc", "	* Set field Purpose
-
-	:param Purpose:
-	:type Purpose: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetPurpose;
-		void SetPurpose (const Handle_TCollection_HAsciiString & Purpose);
 		%feature("compactdefaultargs") HasPurpose;
 		%feature("autodoc", "	* Returns True if optional field Purpose is defined
 
 	:rtype: bool
 ") HasPurpose;
 		Standard_Boolean HasPurpose ();
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "	* Returns field Id
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Id;
+		opencascade::handle<TCollection_HAsciiString> Id ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aId:
+	:type aId: opencascade::handle<TCollection_HAsciiString> &
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param hasDescription:
+	:type hasDescription: bool
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aItemConcept:
+	:type aItemConcept: opencascade::handle<StepRepr_ProductConcept> &
+	:param hasPurpose:
+	:type hasPurpose: bool
+	:param aPurpose:
+	:type aPurpose: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aId,const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasDescription,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_ProductConcept> & aItemConcept,const Standard_Boolean hasPurpose,const opencascade::handle<TCollection_HAsciiString> & aPurpose);
+		%feature("compactdefaultargs") ItemConcept;
+		%feature("autodoc", "	* Returns field ItemConcept
+
+	:rtype: opencascade::handle<StepRepr_ProductConcept>
+") ItemConcept;
+		opencascade::handle<StepRepr_ProductConcept> ItemConcept ();
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") Purpose;
+		%feature("autodoc", "	* Returns field Purpose
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Purpose;
+		opencascade::handle<TCollection_HAsciiString> Purpose ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetId;
+		%feature("autodoc", "	* Set field Id
+
+	:param Id:
+	:type Id: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetId;
+		void SetId (const opencascade::handle<TCollection_HAsciiString> & Id);
+		%feature("compactdefaultargs") SetItemConcept;
+		%feature("autodoc", "	* Set field ItemConcept
+
+	:param ItemConcept:
+	:type ItemConcept: opencascade::handle<StepRepr_ProductConcept> &
+	:rtype: None
+") SetItemConcept;
+		void SetItemConcept (const opencascade::handle<StepRepr_ProductConcept> & ItemConcept);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
+		%feature("compactdefaultargs") SetPurpose;
+		%feature("autodoc", "	* Set field Purpose
+
+	:param Purpose:
+	:type Purpose: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetPurpose;
+		void SetPurpose (const opencascade::handle<TCollection_HAsciiString> & Purpose);
+		%feature("compactdefaultargs") StepRepr_ConfigurationItem;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_ConfigurationItem;
+		 StepRepr_ConfigurationItem ();
 };
 
 
@@ -870,68 +681,68 @@ class StepRepr_ConfigurationItem : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_DataEnvironment;
-class StepRepr_DataEnvironment : public MMgt_TShared {
+class StepRepr_DataEnvironment : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	* Returns field Description
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Elements;
+		%feature("autodoc", "	* Returns field Elements
+
+	:rtype: opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation>
+") Elements;
+		opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> Elements ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aElements:
+	:type aElements: opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> & aElements);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetElements;
+		%feature("autodoc", "	* Set field Elements
+
+	:param Elements:
+	:type Elements: opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> &
+	:rtype: None
+") SetElements;
+		void SetElements (const opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> & Elements);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
 		%feature("compactdefaultargs") StepRepr_DataEnvironment;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_DataEnvironment;
 		 StepRepr_DataEnvironment ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aElements:
-	:type aElements: Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation & aElements);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
-		%feature("compactdefaultargs") Elements;
-		%feature("autodoc", "	* Returns field Elements
-
-	:rtype: Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation
-") Elements;
-		Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation Elements ();
-		%feature("compactdefaultargs") SetElements;
-		%feature("autodoc", "	* Set field Elements
-
-	:param Elements:
-	:type Elements: Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation &
-	:rtype: None
-") SetElements;
-		void SetElements (const Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation & Elements);
 };
 
 
@@ -943,42 +754,42 @@ class StepRepr_DataEnvironment : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_FunctionallyDefinedTransformation;
-class StepRepr_FunctionallyDefinedTransformation : public MMgt_TShared {
+class StepRepr_FunctionallyDefinedTransformation : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 		%feature("compactdefaultargs") StepRepr_FunctionallyDefinedTransformation;
 		%feature("autodoc", "	* Returns a FunctionallyDefinedTransformation
 
 	:rtype: None
 ") StepRepr_FunctionallyDefinedTransformation;
 		 StepRepr_FunctionallyDefinedTransformation ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
 };
 
 
@@ -989,691 +800,65 @@ class StepRepr_FunctionallyDefinedTransformation : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepRepr_HArray1OfMaterialPropertyRepresentation;
-class StepRepr_HArray1OfMaterialPropertyRepresentation : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepRepr_HArray1OfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_HArray1OfMaterialPropertyRepresentation;
-		 StepRepr_HArray1OfMaterialPropertyRepresentation (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_HArray1OfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") StepRepr_HArray1OfMaterialPropertyRepresentation;
-		 StepRepr_HArray1OfMaterialPropertyRepresentation (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepRepr_MaterialPropertyRepresentation & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_MaterialPropertyRepresentation & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_MaterialPropertyRepresentation & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Value;
-		Handle_StepRepr_MaterialPropertyRepresentation Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") ChangeValue;
-		Handle_StepRepr_MaterialPropertyRepresentation ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfMaterialPropertyRepresentation
-") Array1;
-		const StepRepr_Array1OfMaterialPropertyRepresentation & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfMaterialPropertyRepresentation
-") ChangeArray1;
-		StepRepr_Array1OfMaterialPropertyRepresentation & ChangeArray1 ();
-};
-
-
-%make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
-
-
-%extend StepRepr_HArray1OfMaterialPropertyRepresentation {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_HArray1OfMaterialPropertyRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_HArray1OfPropertyDefinitionRepresentation;
-class StepRepr_HArray1OfPropertyDefinitionRepresentation : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepRepr_HArray1OfPropertyDefinitionRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_HArray1OfPropertyDefinitionRepresentation;
-		 StepRepr_HArray1OfPropertyDefinitionRepresentation (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_HArray1OfPropertyDefinitionRepresentation;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:rtype: None
-") StepRepr_HArray1OfPropertyDefinitionRepresentation;
-		 StepRepr_HArray1OfPropertyDefinitionRepresentation (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepRepr_PropertyDefinitionRepresentation & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_PropertyDefinitionRepresentation & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_PropertyDefinitionRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_PropertyDefinitionRepresentation & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_PropertyDefinitionRepresentation
-") Value;
-		Handle_StepRepr_PropertyDefinitionRepresentation Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_PropertyDefinitionRepresentation
-") ChangeValue;
-		Handle_StepRepr_PropertyDefinitionRepresentation ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfPropertyDefinitionRepresentation
-") Array1;
-		const StepRepr_Array1OfPropertyDefinitionRepresentation & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfPropertyDefinitionRepresentation
-") ChangeArray1;
-		StepRepr_Array1OfPropertyDefinitionRepresentation & ChangeArray1 ();
-};
-
-
-%make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
-
-
-%extend StepRepr_HArray1OfPropertyDefinitionRepresentation {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_HArray1OfPropertyDefinitionRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_HArray1OfRepresentationItem;
-class StepRepr_HArray1OfRepresentationItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepRepr_HArray1OfRepresentationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepRepr_HArray1OfRepresentationItem;
-		 StepRepr_HArray1OfRepresentationItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepRepr_HArray1OfRepresentationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") StepRepr_HArray1OfRepresentationItem;
-		 StepRepr_HArray1OfRepresentationItem (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepRepr_RepresentationItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepRepr_RepresentationItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_RepresentationItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") Value;
-		Handle_StepRepr_RepresentationItem Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") ChangeValue;
-		Handle_StepRepr_RepresentationItem ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfRepresentationItem
-") Array1;
-		const StepRepr_Array1OfRepresentationItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepRepr_Array1OfRepresentationItem
-") ChangeArray1;
-		StepRepr_Array1OfRepresentationItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepRepr_HArray1OfRepresentationItem)
-
-
-%extend StepRepr_HArray1OfRepresentationItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepRepr_HArray1OfRepresentationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_HSequenceOfMaterialPropertyRepresentation;
-class StepRepr_HSequenceOfMaterialPropertyRepresentation : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepRepr_HSequenceOfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_HSequenceOfMaterialPropertyRepresentation;
-		 StepRepr_HSequenceOfMaterialPropertyRepresentation ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_MaterialPropertyRepresentation & anItem);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation & aSequence);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_MaterialPropertyRepresentation & anItem);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation & aSequence);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_StepRepr_MaterialPropertyRepresentation & anItem);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation & aSequence);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_StepRepr_MaterialPropertyRepresentation & anItem);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation & aSequence);
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anOtherIndex:
-	:type anOtherIndex: int
-	:rtype: None
-") Exchange;
-		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation
-") Split;
-		Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation Split (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer anIndex,const Handle_StepRepr_MaterialPropertyRepresentation & anItem);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Value;
-		Handle_StepRepr_MaterialPropertyRepresentation Value (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") ChangeValue;
-		Handle_StepRepr_MaterialPropertyRepresentation ChangeValue (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: int
-	:param toIndex:
-	:type toIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("compactdefaultargs") Sequence;
-		%feature("autodoc", "	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
-") Sequence;
-		const StepRepr_SequenceOfMaterialPropertyRepresentation & Sequence ();
-		%feature("compactdefaultargs") ChangeSequence;
-		%feature("autodoc", "	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
-") ChangeSequence;
-		StepRepr_SequenceOfMaterialPropertyRepresentation & ChangeSequence ();
-};
-
-
-%make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
-
-%extend StepRepr_HSequenceOfMaterialPropertyRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_HSequenceOfRepresentationItem;
-class StepRepr_HSequenceOfRepresentationItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepRepr_HSequenceOfRepresentationItem;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_HSequenceOfRepresentationItem;
-		 StepRepr_HSequenceOfRepresentationItem ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_RepresentationItem & anItem);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfRepresentationItem &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_HSequenceOfRepresentationItem & aSequence);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_RepresentationItem & anItem);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfRepresentationItem &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_HSequenceOfRepresentationItem & aSequence);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_StepRepr_RepresentationItem & anItem);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfRepresentationItem &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_StepRepr_HSequenceOfRepresentationItem & aSequence);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_StepRepr_RepresentationItem & anItem);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_StepRepr_HSequenceOfRepresentationItem &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_StepRepr_HSequenceOfRepresentationItem & aSequence);
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anOtherIndex:
-	:type anOtherIndex: int
-	:rtype: None
-") Exchange;
-		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_HSequenceOfRepresentationItem
-") Split;
-		Handle_StepRepr_HSequenceOfRepresentationItem Split (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer anIndex,const Handle_StepRepr_RepresentationItem & anItem);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") Value;
-		Handle_StepRepr_RepresentationItem Value (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") ChangeValue;
-		Handle_StepRepr_RepresentationItem ChangeValue (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: int
-	:param toIndex:
-	:type toIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("compactdefaultargs") Sequence;
-		%feature("autodoc", "	:rtype: StepRepr_SequenceOfRepresentationItem
-") Sequence;
-		const StepRepr_SequenceOfRepresentationItem & Sequence ();
-		%feature("compactdefaultargs") ChangeSequence;
-		%feature("autodoc", "	:rtype: StepRepr_SequenceOfRepresentationItem
-") ChangeSequence;
-		StepRepr_SequenceOfRepresentationItem & ChangeSequence ();
-};
-
-
-%make_alias(StepRepr_HSequenceOfRepresentationItem)
-
-%extend StepRepr_HSequenceOfRepresentationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepRepr_ItemDefinedTransformation;
-class StepRepr_ItemDefinedTransformation : public MMgt_TShared {
+class StepRepr_ItemDefinedTransformation : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aTransformItem1:
+	:type aTransformItem1: opencascade::handle<StepRepr_RepresentationItem> &
+	:param aTransformItem2:
+	:type aTransformItem2: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_RepresentationItem> & aTransformItem1,const opencascade::handle<StepRepr_RepresentationItem> & aTransformItem2);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
+		%feature("compactdefaultargs") SetTransformItem1;
+		%feature("autodoc", "	:param aItem:
+	:type aItem: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") SetTransformItem1;
+		void SetTransformItem1 (const opencascade::handle<StepRepr_RepresentationItem> & aItem);
+		%feature("compactdefaultargs") SetTransformItem2;
+		%feature("autodoc", "	:param aItem:
+	:type aItem: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") SetTransformItem2;
+		void SetTransformItem2 (const opencascade::handle<StepRepr_RepresentationItem> & aItem);
 		%feature("compactdefaultargs") StepRepr_ItemDefinedTransformation;
 		%feature("autodoc", "	:rtype: None
 ") StepRepr_ItemDefinedTransformation;
 		 StepRepr_ItemDefinedTransformation ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aTransformItem1:
-	:type aTransformItem1: Handle_StepRepr_RepresentationItem &
-	:param aTransformItem2:
-	:type aTransformItem2: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_RepresentationItem & aTransformItem1,const Handle_StepRepr_RepresentationItem & aTransformItem2);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetTransformItem1;
-		%feature("autodoc", "	:param aItem:
-	:type aItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetTransformItem1;
-		void SetTransformItem1 (const Handle_StepRepr_RepresentationItem & aItem);
 		%feature("compactdefaultargs") TransformItem1;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationItem>
 ") TransformItem1;
-		Handle_StepRepr_RepresentationItem TransformItem1 ();
-		%feature("compactdefaultargs") SetTransformItem2;
-		%feature("autodoc", "	:param aItem:
-	:type aItem: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetTransformItem2;
-		void SetTransformItem2 (const Handle_StepRepr_RepresentationItem & aItem);
+		opencascade::handle<StepRepr_RepresentationItem> TransformItem1 ();
 		%feature("compactdefaultargs") TransformItem2;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationItem>
 ") TransformItem2;
-		Handle_StepRepr_RepresentationItem TransformItem2 ();
+		opencascade::handle<StepRepr_RepresentationItem> TransformItem2 ();
 };
 
 
@@ -1685,40 +870,40 @@ class StepRepr_ItemDefinedTransformation : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_MaterialDesignation;
-class StepRepr_MaterialDesignation : public MMgt_TShared {
+class StepRepr_MaterialDesignation : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_MaterialDesignation;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_MaterialDesignation;
-		 StepRepr_MaterialDesignation ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aOfDefinition:
 	:type aOfDefinition: StepRepr_CharacterizedDefinition &
 	:rtype: None
 ") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const StepRepr_CharacterizedDefinition & aOfDefinition);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepRepr_CharacterizedDefinition & aOfDefinition);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") OfDefinition;
+		%feature("autodoc", "	:rtype: StepRepr_CharacterizedDefinition
+") OfDefinition;
+		StepRepr_CharacterizedDefinition OfDefinition ();
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:rtype: None
 ") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 		%feature("compactdefaultargs") SetOfDefinition;
 		%feature("autodoc", "	:param aOfDefinition:
 	:type aOfDefinition: StepRepr_CharacterizedDefinition &
 	:rtype: None
 ") SetOfDefinition;
 		void SetOfDefinition (const StepRepr_CharacterizedDefinition & aOfDefinition);
-		%feature("compactdefaultargs") OfDefinition;
-		%feature("autodoc", "	:rtype: StepRepr_CharacterizedDefinition
-") OfDefinition;
-		StepRepr_CharacterizedDefinition OfDefinition ();
+		%feature("compactdefaultargs") StepRepr_MaterialDesignation;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_MaterialDesignation;
+		 StepRepr_MaterialDesignation ();
 };
 
 
@@ -1730,92 +915,92 @@ class StepRepr_MaterialDesignation : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_ProductConcept;
-class StepRepr_ProductConcept : public MMgt_TShared {
+class StepRepr_ProductConcept : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_ProductConcept;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_ProductConcept;
-		 StepRepr_ProductConcept ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aId:
-	:type aId: Handle_TCollection_HAsciiString &
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasDescription:
-	:type hasDescription: bool
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aMarketContext:
-	:type aMarketContext: Handle_StepBasic_ProductConceptContext &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aId,const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasDescription,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepBasic_ProductConceptContext & aMarketContext);
-		%feature("compactdefaultargs") Id;
-		%feature("autodoc", "	* Returns field Id
-
-	:rtype: Handle_TCollection_HAsciiString
-") Id;
-		Handle_TCollection_HAsciiString Id ();
-		%feature("compactdefaultargs") SetId;
-		%feature("autodoc", "	* Set field Id
-
-	:param Id:
-	:type Id: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetId;
-		void SetId (const Handle_TCollection_HAsciiString & Id);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "	* Returns field Description
 
-	:rtype: Handle_TCollection_HAsciiString
+	:rtype: opencascade::handle<TCollection_HAsciiString>
 ") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
+		opencascade::handle<TCollection_HAsciiString> Description ();
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "	* Returns True if optional field Description is defined
 
 	:rtype: bool
 ") HasDescription;
 		Standard_Boolean HasDescription ();
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "	* Returns field Id
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Id;
+		opencascade::handle<TCollection_HAsciiString> Id ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aId:
+	:type aId: opencascade::handle<TCollection_HAsciiString> &
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param hasDescription:
+	:type hasDescription: bool
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aMarketContext:
+	:type aMarketContext: opencascade::handle<StepBasic_ProductConceptContext> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aId,const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasDescription,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepBasic_ProductConceptContext> & aMarketContext);
 		%feature("compactdefaultargs") MarketContext;
 		%feature("autodoc", "	* Returns field MarketContext
 
-	:rtype: Handle_StepBasic_ProductConceptContext
+	:rtype: opencascade::handle<StepBasic_ProductConceptContext>
 ") MarketContext;
-		Handle_StepBasic_ProductConceptContext MarketContext ();
+		opencascade::handle<StepBasic_ProductConceptContext> MarketContext ();
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetId;
+		%feature("autodoc", "	* Set field Id
+
+	:param Id:
+	:type Id: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetId;
+		void SetId (const opencascade::handle<TCollection_HAsciiString> & Id);
 		%feature("compactdefaultargs") SetMarketContext;
 		%feature("autodoc", "	* Set field MarketContext
 
 	:param MarketContext:
-	:type MarketContext: Handle_StepBasic_ProductConceptContext &
+	:type MarketContext: opencascade::handle<StepBasic_ProductConceptContext> &
 	:rtype: None
 ") SetMarketContext;
-		void SetMarketContext (const Handle_StepBasic_ProductConceptContext & MarketContext);
+		void SetMarketContext (const opencascade::handle<StepBasic_ProductConceptContext> & MarketContext);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
+		%feature("compactdefaultargs") StepRepr_ProductConcept;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_ProductConcept;
+		 StepRepr_ProductConcept ();
 };
 
 
@@ -1846,68 +1031,46 @@ class StepRepr_ProductDefinitionUsage : public StepBasic_ProductDefinitionRelati
 	}
 };
 %nodefaultctor StepRepr_PropertyDefinition;
-class StepRepr_PropertyDefinition : public MMgt_TShared {
+class StepRepr_PropertyDefinition : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_PropertyDefinition;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_PropertyDefinition;
-		 StepRepr_PropertyDefinition ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasDescription:
-	:type hasDescription: bool
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aDefinition:
-	:type aDefinition: StepRepr_CharacterizedDefinition &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasDescription,const Handle_TCollection_HAsciiString & aDescription,const StepRepr_CharacterizedDefinition & aDefinition);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
-		%feature("compactdefaultargs") HasDescription;
-		%feature("autodoc", "	* Returns True if optional field Description is defined
-
-	:rtype: bool
-") HasDescription;
-		Standard_Boolean HasDescription ();
 		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns field Definition
 
 	:rtype: StepRepr_CharacterizedDefinition
 ") Definition;
 		StepRepr_CharacterizedDefinition Definition ();
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	* Returns field Description
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") HasDescription;
+		%feature("autodoc", "	* Returns True if optional field Description is defined
+
+	:rtype: bool
+") HasDescription;
+		Standard_Boolean HasDescription ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param hasDescription:
+	:type hasDescription: bool
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aDefinition:
+	:type aDefinition: StepRepr_CharacterizedDefinition &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasDescription,const opencascade::handle<TCollection_HAsciiString> & aDescription,const StepRepr_CharacterizedDefinition & aDefinition);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "	* Set field Definition
 
@@ -1916,6 +1079,28 @@ class StepRepr_PropertyDefinition : public MMgt_TShared {
 	:rtype: None
 ") SetDefinition;
 		void SetDefinition (const StepRepr_CharacterizedDefinition & Definition);
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
+		%feature("compactdefaultargs") StepRepr_PropertyDefinition;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_PropertyDefinition;
+		 StepRepr_PropertyDefinition ();
 };
 
 
@@ -1927,84 +1112,84 @@ class StepRepr_PropertyDefinition : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_PropertyDefinitionRelationship;
-class StepRepr_PropertyDefinitionRelationship : public MMgt_TShared {
+class StepRepr_PropertyDefinitionRelationship : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	* Returns field Description
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aRelatingPropertyDefinition:
+	:type aRelatingPropertyDefinition: opencascade::handle<StepRepr_PropertyDefinition> &
+	:param aRelatedPropertyDefinition:
+	:type aRelatedPropertyDefinition: opencascade::handle<StepRepr_PropertyDefinition> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_PropertyDefinition> & aRelatingPropertyDefinition,const opencascade::handle<StepRepr_PropertyDefinition> & aRelatedPropertyDefinition);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") RelatedPropertyDefinition;
+		%feature("autodoc", "	* Returns field RelatedPropertyDefinition
+
+	:rtype: opencascade::handle<StepRepr_PropertyDefinition>
+") RelatedPropertyDefinition;
+		opencascade::handle<StepRepr_PropertyDefinition> RelatedPropertyDefinition ();
+		%feature("compactdefaultargs") RelatingPropertyDefinition;
+		%feature("autodoc", "	* Returns field RelatingPropertyDefinition
+
+	:rtype: opencascade::handle<StepRepr_PropertyDefinition>
+") RelatingPropertyDefinition;
+		opencascade::handle<StepRepr_PropertyDefinition> RelatingPropertyDefinition ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
+		%feature("compactdefaultargs") SetRelatedPropertyDefinition;
+		%feature("autodoc", "	* Set field RelatedPropertyDefinition
+
+	:param RelatedPropertyDefinition:
+	:type RelatedPropertyDefinition: opencascade::handle<StepRepr_PropertyDefinition> &
+	:rtype: None
+") SetRelatedPropertyDefinition;
+		void SetRelatedPropertyDefinition (const opencascade::handle<StepRepr_PropertyDefinition> & RelatedPropertyDefinition);
+		%feature("compactdefaultargs") SetRelatingPropertyDefinition;
+		%feature("autodoc", "	* Set field RelatingPropertyDefinition
+
+	:param RelatingPropertyDefinition:
+	:type RelatingPropertyDefinition: opencascade::handle<StepRepr_PropertyDefinition> &
+	:rtype: None
+") SetRelatingPropertyDefinition;
+		void SetRelatingPropertyDefinition (const opencascade::handle<StepRepr_PropertyDefinition> & RelatingPropertyDefinition);
 		%feature("compactdefaultargs") StepRepr_PropertyDefinitionRelationship;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_PropertyDefinitionRelationship;
 		 StepRepr_PropertyDefinitionRelationship ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aRelatingPropertyDefinition:
-	:type aRelatingPropertyDefinition: Handle_StepRepr_PropertyDefinition &
-	:param aRelatedPropertyDefinition:
-	:type aRelatedPropertyDefinition: Handle_StepRepr_PropertyDefinition &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_PropertyDefinition & aRelatingPropertyDefinition,const Handle_StepRepr_PropertyDefinition & aRelatedPropertyDefinition);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
-		%feature("compactdefaultargs") RelatingPropertyDefinition;
-		%feature("autodoc", "	* Returns field RelatingPropertyDefinition
-
-	:rtype: Handle_StepRepr_PropertyDefinition
-") RelatingPropertyDefinition;
-		Handle_StepRepr_PropertyDefinition RelatingPropertyDefinition ();
-		%feature("compactdefaultargs") SetRelatingPropertyDefinition;
-		%feature("autodoc", "	* Set field RelatingPropertyDefinition
-
-	:param RelatingPropertyDefinition:
-	:type RelatingPropertyDefinition: Handle_StepRepr_PropertyDefinition &
-	:rtype: None
-") SetRelatingPropertyDefinition;
-		void SetRelatingPropertyDefinition (const Handle_StepRepr_PropertyDefinition & RelatingPropertyDefinition);
-		%feature("compactdefaultargs") RelatedPropertyDefinition;
-		%feature("autodoc", "	* Returns field RelatedPropertyDefinition
-
-	:rtype: Handle_StepRepr_PropertyDefinition
-") RelatedPropertyDefinition;
-		Handle_StepRepr_PropertyDefinition RelatedPropertyDefinition ();
-		%feature("compactdefaultargs") SetRelatedPropertyDefinition;
-		%feature("autodoc", "	* Set field RelatedPropertyDefinition
-
-	:param RelatedPropertyDefinition:
-	:type RelatedPropertyDefinition: Handle_StepRepr_PropertyDefinition &
-	:rtype: None
-") SetRelatedPropertyDefinition;
-		void SetRelatedPropertyDefinition (const Handle_StepRepr_PropertyDefinition & RelatedPropertyDefinition);
 };
 
 
@@ -2016,30 +1201,24 @@ class StepRepr_PropertyDefinitionRelationship : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_PropertyDefinitionRepresentation;
-class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared {
+class StepRepr_PropertyDefinitionRepresentation : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_PropertyDefinitionRepresentation;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_PropertyDefinitionRepresentation;
-		 StepRepr_PropertyDefinitionRepresentation ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aDefinition:
-	:type aDefinition: StepRepr_RepresentedDefinition &
-	:param aUsedRepresentation:
-	:type aUsedRepresentation: Handle_StepRepr_Representation &
-	:rtype: None
-") Init;
-		void Init (const StepRepr_RepresentedDefinition & aDefinition,const Handle_StepRepr_Representation & aUsedRepresentation);
 		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns field Definition
 
 	:rtype: StepRepr_RepresentedDefinition
 ") Definition;
 		StepRepr_RepresentedDefinition Definition ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aDefinition:
+	:type aDefinition: StepRepr_RepresentedDefinition &
+	:param aUsedRepresentation:
+	:type aUsedRepresentation: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") Init;
+		void Init (const StepRepr_RepresentedDefinition & aDefinition,const opencascade::handle<StepRepr_Representation> & aUsedRepresentation);
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "	* Set field Definition
 
@@ -2048,20 +1227,26 @@ class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared {
 	:rtype: None
 ") SetDefinition;
 		void SetDefinition (const StepRepr_RepresentedDefinition & Definition);
-		%feature("compactdefaultargs") UsedRepresentation;
-		%feature("autodoc", "	* Returns field UsedRepresentation
-
-	:rtype: Handle_StepRepr_Representation
-") UsedRepresentation;
-		Handle_StepRepr_Representation UsedRepresentation ();
 		%feature("compactdefaultargs") SetUsedRepresentation;
 		%feature("autodoc", "	* Set field UsedRepresentation
 
 	:param UsedRepresentation:
-	:type UsedRepresentation: Handle_StepRepr_Representation &
+	:type UsedRepresentation: opencascade::handle<StepRepr_Representation> &
 	:rtype: None
 ") SetUsedRepresentation;
-		void SetUsedRepresentation (const Handle_StepRepr_Representation & UsedRepresentation);
+		void SetUsedRepresentation (const opencascade::handle<StepRepr_Representation> & UsedRepresentation);
+		%feature("compactdefaultargs") StepRepr_PropertyDefinitionRepresentation;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_PropertyDefinitionRepresentation;
+		 StepRepr_PropertyDefinitionRepresentation ();
+		%feature("compactdefaultargs") UsedRepresentation;
+		%feature("autodoc", "	* Returns field UsedRepresentation
+
+	:rtype: opencascade::handle<StepRepr_Representation>
+") UsedRepresentation;
+		opencascade::handle<StepRepr_Representation> UsedRepresentation ();
 };
 
 
@@ -2073,64 +1258,64 @@ class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_Representation;
-class StepRepr_Representation : public MMgt_TShared {
+class StepRepr_Representation : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_Representation;
-		%feature("autodoc", "	* Returns a Representation
-
-	:rtype: None
-") StepRepr_Representation;
-		 StepRepr_Representation ();
+		%feature("compactdefaultargs") ContextOfItems;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationContext>
+") ContextOfItems;
+		opencascade::handle<StepRepr_RepresentationContext> ContextOfItems ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aItems:
-	:type aItems: Handle_StepRepr_HArray1OfRepresentationItem &
+	:type aItems: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
 	:param aContextOfItems:
-	:type aContextOfItems: Handle_StepRepr_RepresentationContext &
-	:rtype: void
+	:type aContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepRepr_HArray1OfRepresentationItem & aItems,const Handle_StepRepr_RepresentationContext & aContextOfItems);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	:param aItems:
-	:type aItems: Handle_StepRepr_HArray1OfRepresentationItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepRepr_HArray1OfRepresentationItem & aItems);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aItems,const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_HArray1OfRepresentationItem
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_HArray1OfRepresentationItem>
 ") Items;
-		Handle_StepRepr_HArray1OfRepresentationItem Items ();
+		opencascade::handle<StepRepr_HArray1OfRepresentationItem> Items ();
 		%feature("compactdefaultargs") ItemsValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
-	:rtype: Handle_StepRepr_RepresentationItem
+	:rtype: opencascade::handle<StepRepr_RepresentationItem>
 ") ItemsValue;
-		Handle_StepRepr_RepresentationItem ItemsValue (const Standard_Integer num);
+		opencascade::handle<StepRepr_RepresentationItem> ItemsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "	:rtype: int
 ") NbItems;
 		Standard_Integer NbItems ();
 		%feature("compactdefaultargs") SetContextOfItems;
 		%feature("autodoc", "	:param aContextOfItems:
-	:type aContextOfItems: Handle_StepRepr_RepresentationContext &
+	:type aContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
 	:rtype: None
 ") SetContextOfItems;
-		void SetContextOfItems (const Handle_StepRepr_RepresentationContext & aContextOfItems);
-		%feature("compactdefaultargs") ContextOfItems;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationContext
-") ContextOfItems;
-		Handle_StepRepr_RepresentationContext ContextOfItems ();
+		void SetContextOfItems (const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	:param aItems:
+	:type aItems: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aItems);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
+		%feature("compactdefaultargs") StepRepr_Representation;
+		%feature("autodoc", "	* Returns a Representation
+
+	:rtype: None
+") StepRepr_Representation;
+		 StepRepr_Representation ();
 };
 
 
@@ -2142,42 +1327,42 @@ class StepRepr_Representation : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_RepresentationContext;
-class StepRepr_RepresentationContext : public MMgt_TShared {
+class StepRepr_RepresentationContext : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") ContextIdentifier;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") ContextIdentifier;
+		opencascade::handle<TCollection_HAsciiString> ContextIdentifier ();
+		%feature("compactdefaultargs") ContextType;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") ContextType;
+		opencascade::handle<TCollection_HAsciiString> ContextType ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aContextIdentifier:
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
+	:param aContextType:
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType);
+		%feature("compactdefaultargs") SetContextIdentifier;
+		%feature("autodoc", "	:param aContextIdentifier:
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetContextIdentifier;
+		void SetContextIdentifier (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier);
+		%feature("compactdefaultargs") SetContextType;
+		%feature("autodoc", "	:param aContextType:
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetContextType;
+		void SetContextType (const opencascade::handle<TCollection_HAsciiString> & aContextType);
 		%feature("compactdefaultargs") StepRepr_RepresentationContext;
 		%feature("autodoc", "	* Returns a RepresentationContext
 
 	:rtype: None
 ") StepRepr_RepresentationContext;
 		 StepRepr_RepresentationContext ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") SetContextIdentifier;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetContextIdentifier;
-		void SetContextIdentifier (const Handle_TCollection_HAsciiString & aContextIdentifier);
-		%feature("compactdefaultargs") ContextIdentifier;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") ContextIdentifier;
-		Handle_TCollection_HAsciiString ContextIdentifier ();
-		%feature("compactdefaultargs") SetContextType;
-		%feature("autodoc", "	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetContextType;
-		void SetContextType (const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") ContextType;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") ContextType;
-		Handle_TCollection_HAsciiString ContextType ();
 };
 
 
@@ -2189,30 +1374,30 @@ class StepRepr_RepresentationContext : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_RepresentationItem;
-class StepRepr_RepresentationItem : public MMgt_TShared {
+class StepRepr_RepresentationItem : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 		%feature("compactdefaultargs") StepRepr_RepresentationItem;
 		%feature("autodoc", "	* Returns a RepresentationItem
 
 	:rtype: None
 ") StepRepr_RepresentationItem;
 		 StepRepr_RepresentationItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
 };
 
 
@@ -2224,42 +1409,42 @@ class StepRepr_RepresentationItem : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_RepresentationMap;
-class StepRepr_RepresentationMap : public MMgt_TShared {
+class StepRepr_RepresentationMap : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aMappingOrigin:
+	:type aMappingOrigin: opencascade::handle<StepRepr_RepresentationItem> &
+	:param aMappedRepresentation:
+	:type aMappedRepresentation: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepRepr_RepresentationItem> & aMappingOrigin,const opencascade::handle<StepRepr_Representation> & aMappedRepresentation);
+		%feature("compactdefaultargs") MappedRepresentation;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_Representation>
+") MappedRepresentation;
+		opencascade::handle<StepRepr_Representation> MappedRepresentation ();
+		%feature("compactdefaultargs") MappingOrigin;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationItem>
+") MappingOrigin;
+		opencascade::handle<StepRepr_RepresentationItem> MappingOrigin ();
+		%feature("compactdefaultargs") SetMappedRepresentation;
+		%feature("autodoc", "	:param aMappedRepresentation:
+	:type aMappedRepresentation: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") SetMappedRepresentation;
+		void SetMappedRepresentation (const opencascade::handle<StepRepr_Representation> & aMappedRepresentation);
+		%feature("compactdefaultargs") SetMappingOrigin;
+		%feature("autodoc", "	:param aMappingOrigin:
+	:type aMappingOrigin: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") SetMappingOrigin;
+		void SetMappingOrigin (const opencascade::handle<StepRepr_RepresentationItem> & aMappingOrigin);
 		%feature("compactdefaultargs") StepRepr_RepresentationMap;
 		%feature("autodoc", "	* Returns a RepresentationMap
 
 	:rtype: None
 ") StepRepr_RepresentationMap;
 		 StepRepr_RepresentationMap ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aMappingOrigin:
-	:type aMappingOrigin: Handle_StepRepr_RepresentationItem &
-	:param aMappedRepresentation:
-	:type aMappedRepresentation: Handle_StepRepr_Representation &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_StepRepr_RepresentationItem & aMappingOrigin,const Handle_StepRepr_Representation & aMappedRepresentation);
-		%feature("compactdefaultargs") SetMappingOrigin;
-		%feature("autodoc", "	:param aMappingOrigin:
-	:type aMappingOrigin: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetMappingOrigin;
-		void SetMappingOrigin (const Handle_StepRepr_RepresentationItem & aMappingOrigin);
-		%feature("compactdefaultargs") MappingOrigin;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") MappingOrigin;
-		Handle_StepRepr_RepresentationItem MappingOrigin ();
-		%feature("compactdefaultargs") SetMappedRepresentation;
-		%feature("autodoc", "	:param aMappedRepresentation:
-	:type aMappedRepresentation: Handle_StepRepr_Representation &
-	:rtype: None
-") SetMappedRepresentation;
-		void SetMappedRepresentation (const Handle_StepRepr_Representation & aMappedRepresentation);
-		%feature("compactdefaultargs") MappedRepresentation;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_Representation
-") MappedRepresentation;
-		Handle_StepRepr_Representation MappedRepresentation ();
 };
 
 
@@ -2271,66 +1456,66 @@ class StepRepr_RepresentationMap : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_RepresentationRelationship;
-class StepRepr_RepresentationRelationship : public MMgt_TShared {
+class StepRepr_RepresentationRelationship : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aRep1:
+	:type aRep1: opencascade::handle<StepRepr_Representation> &
+	:param aRep2:
+	:type aRep2: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_Representation> & aRep1,const opencascade::handle<StepRepr_Representation> & aRep2);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") Rep1;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_Representation>
+") Rep1;
+		opencascade::handle<StepRepr_Representation> Rep1 ();
+		%feature("compactdefaultargs") Rep2;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_Representation>
+") Rep2;
+		opencascade::handle<StepRepr_Representation> Rep2 ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
+		%feature("compactdefaultargs") SetRep1;
+		%feature("autodoc", "	:param aRep1:
+	:type aRep1: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") SetRep1;
+		void SetRep1 (const opencascade::handle<StepRepr_Representation> & aRep1);
+		%feature("compactdefaultargs") SetRep2;
+		%feature("autodoc", "	:param aRep2:
+	:type aRep2: opencascade::handle<StepRepr_Representation> &
+	:rtype: None
+") SetRep2;
+		void SetRep2 (const opencascade::handle<StepRepr_Representation> & aRep2);
 		%feature("compactdefaultargs") StepRepr_RepresentationRelationship;
 		%feature("autodoc", "	* Returns a RepresentationRelationship
 
 	:rtype: None
 ") StepRepr_RepresentationRelationship;
 		 StepRepr_RepresentationRelationship ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aRep1:
-	:type aRep1: Handle_StepRepr_Representation &
-	:param aRep2:
-	:type aRep2: Handle_StepRepr_Representation &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_Representation & aRep1,const Handle_StepRepr_Representation & aRep2);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetRep1;
-		%feature("autodoc", "	:param aRep1:
-	:type aRep1: Handle_StepRepr_Representation &
-	:rtype: None
-") SetRep1;
-		void SetRep1 (const Handle_StepRepr_Representation & aRep1);
-		%feature("compactdefaultargs") Rep1;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_Representation
-") Rep1;
-		Handle_StepRepr_Representation Rep1 ();
-		%feature("compactdefaultargs") SetRep2;
-		%feature("autodoc", "	:param aRep2:
-	:type aRep2: Handle_StepRepr_Representation &
-	:rtype: None
-") SetRep2;
-		void SetRep2 (const Handle_StepRepr_Representation & aRep2);
-		%feature("compactdefaultargs") Rep2;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_Representation
-") Rep2;
-		Handle_StepRepr_Representation Rep2 ();
 };
 
 
@@ -2344,50 +1529,50 @@ class StepRepr_RepresentationRelationship : public MMgt_TShared {
 %nodefaultctor StepRepr_RepresentedDefinition;
 class StepRepr_RepresentedDefinition : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of RepresentedDefinition select type 1 -> GeneralProperty from StepBasic 2 -> PropertyDefinition from StepRepr 3 -> PropertyDefinitionRelationship from StepRepr 4 -> ShapeAspect from StepRepr 5 -> ShapeAspectRelationship from StepRepr 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") GeneralProperty;
+		%feature("autodoc", "	* Returns Value as GeneralProperty (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_GeneralProperty>
+") GeneralProperty;
+		opencascade::handle<StepBasic_GeneralProperty> GeneralProperty ();
+		%feature("compactdefaultargs") PropertyDefinition;
+		%feature("autodoc", "	* Returns Value as PropertyDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_PropertyDefinition>
+") PropertyDefinition;
+		opencascade::handle<StepRepr_PropertyDefinition> PropertyDefinition ();
+		%feature("compactdefaultargs") PropertyDefinitionRelationship;
+		%feature("autodoc", "	* Returns Value as PropertyDefinitionRelationship (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_PropertyDefinitionRelationship>
+") PropertyDefinitionRelationship;
+		opencascade::handle<StepRepr_PropertyDefinitionRelationship> PropertyDefinitionRelationship ();
+		%feature("compactdefaultargs") ShapeAspect;
+		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
+") ShapeAspect;
+		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect ();
+		%feature("compactdefaultargs") ShapeAspectRelationship;
+		%feature("autodoc", "	* Returns Value as ShapeAspectRelationship (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspectRelationship>
+") ShapeAspectRelationship;
+		opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship ();
 		%feature("compactdefaultargs") StepRepr_RepresentedDefinition;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_RepresentedDefinition;
 		 StepRepr_RepresentedDefinition ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of RepresentedDefinition select type 1 -> GeneralProperty from StepBasic 2 -> PropertyDefinition from StepRepr 3 -> PropertyDefinitionRelationship from StepRepr 4 -> ShapeAspect from StepRepr 5 -> ShapeAspectRelationship from StepRepr 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") GeneralProperty;
-		%feature("autodoc", "	* Returns Value as GeneralProperty (or Null if another type)
-
-	:rtype: Handle_StepBasic_GeneralProperty
-") GeneralProperty;
-		Handle_StepBasic_GeneralProperty GeneralProperty ();
-		%feature("compactdefaultargs") PropertyDefinition;
-		%feature("autodoc", "	* Returns Value as PropertyDefinition (or Null if another type)
-
-	:rtype: Handle_StepRepr_PropertyDefinition
-") PropertyDefinition;
-		Handle_StepRepr_PropertyDefinition PropertyDefinition ();
-		%feature("compactdefaultargs") PropertyDefinitionRelationship;
-		%feature("autodoc", "	* Returns Value as PropertyDefinitionRelationship (or Null if another type)
-
-	:rtype: Handle_StepRepr_PropertyDefinitionRelationship
-") PropertyDefinitionRelationship;
-		Handle_StepRepr_PropertyDefinitionRelationship PropertyDefinitionRelationship ();
-		%feature("compactdefaultargs") ShapeAspect;
-		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspect
-") ShapeAspect;
-		Handle_StepRepr_ShapeAspect ShapeAspect ();
-		%feature("compactdefaultargs") ShapeAspectRelationship;
-		%feature("autodoc", "	* Returns Value as ShapeAspectRelationship (or Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspectRelationship
-") ShapeAspectRelationship;
-		Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship ();
 };
 
 
@@ -2396,407 +1581,67 @@ class StepRepr_RepresentedDefinition : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation;
-class StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_StepRepr_MaterialPropertyRepresentation &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation;
-		 StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation (const Handle_StepRepr_MaterialPropertyRepresentation & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Value;
-		Handle_StepRepr_MaterialPropertyRepresentation Value ();
-};
-
-
-%make_alias(StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation)
-
-%extend StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_SequenceNodeOfSequenceOfRepresentationItem;
-class StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") StepRepr_SequenceNodeOfSequenceOfRepresentationItem;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_StepRepr_RepresentationItem &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") StepRepr_SequenceNodeOfSequenceOfRepresentationItem;
-		 StepRepr_SequenceNodeOfSequenceOfRepresentationItem (const Handle_StepRepr_RepresentationItem & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") Value;
-		Handle_StepRepr_RepresentationItem Value ();
-};
-
-
-%make_alias(StepRepr_SequenceNodeOfSequenceOfRepresentationItem)
-
-%extend StepRepr_SequenceNodeOfSequenceOfRepresentationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_SequenceOfMaterialPropertyRepresentation;
-class StepRepr_SequenceOfMaterialPropertyRepresentation : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") StepRepr_SequenceOfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_SequenceOfMaterialPropertyRepresentation;
-		 StepRepr_SequenceOfMaterialPropertyRepresentation ();
-		%feature("compactdefaultargs") StepRepr_SequenceOfMaterialPropertyRepresentation;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") StepRepr_SequenceOfMaterialPropertyRepresentation;
-		 StepRepr_SequenceOfMaterialPropertyRepresentation (const StepRepr_SequenceOfMaterialPropertyRepresentation & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
-") Assign;
-		const StepRepr_SequenceOfMaterialPropertyRepresentation & Assign (const StepRepr_SequenceOfMaterialPropertyRepresentation & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
-") operator =;
-		const StepRepr_SequenceOfMaterialPropertyRepresentation & operator = (const StepRepr_SequenceOfMaterialPropertyRepresentation & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_MaterialPropertyRepresentation & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") Append;
-		void Append (StepRepr_SequenceOfMaterialPropertyRepresentation & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_MaterialPropertyRepresentation & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") Prepend;
-		void Prepend (StepRepr_SequenceOfMaterialPropertyRepresentation & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Handle_StepRepr_MaterialPropertyRepresentation & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Handle_StepRepr_MaterialPropertyRepresentation & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") First;
-		Handle_StepRepr_MaterialPropertyRepresentation First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Last;
-		Handle_StepRepr_MaterialPropertyRepresentation Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: StepRepr_SequenceOfMaterialPropertyRepresentation &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") Value;
-		Handle_StepRepr_MaterialPropertyRepresentation Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Handle_StepRepr_MaterialPropertyRepresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_MaterialPropertyRepresentation & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_MaterialPropertyRepresentation
-") ChangeValue;
-		Handle_StepRepr_MaterialPropertyRepresentation ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend StepRepr_SequenceOfMaterialPropertyRepresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_SequenceOfRepresentationItem;
-class StepRepr_SequenceOfRepresentationItem : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") StepRepr_SequenceOfRepresentationItem;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_SequenceOfRepresentationItem;
-		 StepRepr_SequenceOfRepresentationItem ();
-		%feature("compactdefaultargs") StepRepr_SequenceOfRepresentationItem;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") StepRepr_SequenceOfRepresentationItem;
-		 StepRepr_SequenceOfRepresentationItem (const StepRepr_SequenceOfRepresentationItem & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfRepresentationItem &
-	:rtype: StepRepr_SequenceOfRepresentationItem
-") Assign;
-		const StepRepr_SequenceOfRepresentationItem & Assign (const StepRepr_SequenceOfRepresentationItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepRepr_SequenceOfRepresentationItem &
-	:rtype: StepRepr_SequenceOfRepresentationItem
-") operator =;
-		const StepRepr_SequenceOfRepresentationItem & operator = (const StepRepr_SequenceOfRepresentationItem & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Append;
-		void Append (const Handle_StepRepr_RepresentationItem & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") Append;
-		void Append (StepRepr_SequenceOfRepresentationItem & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_StepRepr_RepresentationItem & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") Prepend;
-		void Prepend (StepRepr_SequenceOfRepresentationItem & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Handle_StepRepr_RepresentationItem & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,StepRepr_SequenceOfRepresentationItem & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Handle_StepRepr_RepresentationItem & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,StepRepr_SequenceOfRepresentationItem & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") First;
-		Handle_StepRepr_RepresentationItem First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") Last;
-		Handle_StepRepr_RepresentationItem Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: StepRepr_SequenceOfRepresentationItem &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,StepRepr_SequenceOfRepresentationItem & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") Value;
-		Handle_StepRepr_RepresentationItem Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepRepr_RepresentationItem & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") ChangeValue;
-		Handle_StepRepr_RepresentationItem ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend StepRepr_SequenceOfRepresentationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepRepr_ShapeAspect;
-class StepRepr_ShapeAspect : public MMgt_TShared {
+class StepRepr_ShapeAspect : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_ShapeAspect;
-		%feature("autodoc", "	* Returns a ShapeAspect
-
-	:rtype: None
-") StepRepr_ShapeAspect;
-		 StepRepr_ShapeAspect ();
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aOfShape:
-	:type aOfShape: Handle_StepRepr_ProductDefinitionShape &
+	:type aOfShape: opencascade::handle<StepRepr_ProductDefinitionShape> &
 	:param aProductDefinitional:
 	:type aProductDefinitional: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_ProductDefinitionShape & aOfShape,const StepData_Logical aProductDefinitional);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
 	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & aName);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_ProductDefinitionShape> & aOfShape,const StepData_Logical aProductDefinitional);
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
 ") Name;
-		Handle_TCollection_HAsciiString Name ();
+		opencascade::handle<TCollection_HAsciiString> Name ();
+		%feature("compactdefaultargs") OfShape;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_ProductDefinitionShape>
+") OfShape;
+		opencascade::handle<StepRepr_ProductDefinitionShape> OfShape ();
+		%feature("compactdefaultargs") ProductDefinitional;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") ProductDefinitional;
+		StepData_Logical ProductDefinitional ();
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:rtype: None
 ") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 		%feature("compactdefaultargs") SetOfShape;
 		%feature("autodoc", "	:param aOfShape:
-	:type aOfShape: Handle_StepRepr_ProductDefinitionShape &
+	:type aOfShape: opencascade::handle<StepRepr_ProductDefinitionShape> &
 	:rtype: None
 ") SetOfShape;
-		void SetOfShape (const Handle_StepRepr_ProductDefinitionShape & aOfShape);
-		%feature("compactdefaultargs") OfShape;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_ProductDefinitionShape
-") OfShape;
-		Handle_StepRepr_ProductDefinitionShape OfShape ();
+		void SetOfShape (const opencascade::handle<StepRepr_ProductDefinitionShape> & aOfShape);
 		%feature("compactdefaultargs") SetProductDefinitional;
 		%feature("autodoc", "	:param aProductDefinitional:
 	:type aProductDefinitional: StepData_Logical
 	:rtype: None
 ") SetProductDefinitional;
 		void SetProductDefinitional (const StepData_Logical aProductDefinitional);
-		%feature("compactdefaultargs") ProductDefinitional;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") ProductDefinitional;
-		StepData_Logical ProductDefinitional ();
+		%feature("compactdefaultargs") StepRepr_ShapeAspect;
+		%feature("autodoc", "	* Returns a ShapeAspect
+
+	:rtype: None
+") StepRepr_ShapeAspect;
+		 StepRepr_ShapeAspect ();
 };
 
 
@@ -2808,92 +1653,92 @@ class StepRepr_ShapeAspect : public MMgt_TShared {
 	}
 };
 %nodefaultctor StepRepr_ShapeAspectRelationship;
-class StepRepr_ShapeAspectRelationship : public MMgt_TShared {
+class StepRepr_ShapeAspectRelationship : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepRepr_ShapeAspectRelationship;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_ShapeAspectRelationship;
-		 StepRepr_ShapeAspectRelationship ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasDescription:
-	:type hasDescription: bool
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:param aRelatingShapeAspect:
-	:type aRelatingShapeAspect: Handle_StepRepr_ShapeAspect &
-	:param aRelatedShapeAspect:
-	:type aRelatedShapeAspect: Handle_StepRepr_ShapeAspect &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasDescription,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_ShapeAspect & aRelatingShapeAspect,const Handle_StepRepr_ShapeAspect & aRelatedShapeAspect);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: Handle_TCollection_HAsciiString
-") Name;
-		Handle_TCollection_HAsciiString Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
-
-	:param Name:
-	:type Name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & Name);
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "	* Returns field Description
 
-	:rtype: Handle_TCollection_HAsciiString
+	:rtype: opencascade::handle<TCollection_HAsciiString>
 ") Description;
-		Handle_TCollection_HAsciiString Description ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
-
-	:param Description:
-	:type Description: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & Description);
+		opencascade::handle<TCollection_HAsciiString> Description ();
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "	* Returns True if optional field Description is defined
 
 	:rtype: bool
 ") HasDescription;
 		Standard_Boolean HasDescription ();
-		%feature("compactdefaultargs") RelatingShapeAspect;
-		%feature("autodoc", "	* Returns field RelatingShapeAspect
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
-	:rtype: Handle_StepRepr_ShapeAspect
-") RelatingShapeAspect;
-		Handle_StepRepr_ShapeAspect RelatingShapeAspect ();
-		%feature("compactdefaultargs") SetRelatingShapeAspect;
-		%feature("autodoc", "	* Set field RelatingShapeAspect
-
-	:param RelatingShapeAspect:
-	:type RelatingShapeAspect: Handle_StepRepr_ShapeAspect &
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param hasDescription:
+	:type hasDescription: bool
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param aRelatingShapeAspect:
+	:type aRelatingShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:param aRelatedShapeAspect:
+	:type aRelatedShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
 	:rtype: None
-") SetRelatingShapeAspect;
-		void SetRelatingShapeAspect (const Handle_StepRepr_ShapeAspect & RelatingShapeAspect);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasDescription,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_ShapeAspect> & aRelatingShapeAspect,const opencascade::handle<StepRepr_ShapeAspect> & aRelatedShapeAspect);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns field Name
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name ();
 		%feature("compactdefaultargs") RelatedShapeAspect;
 		%feature("autodoc", "	* Returns field RelatedShapeAspect
 
-	:rtype: Handle_StepRepr_ShapeAspect
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
 ") RelatedShapeAspect;
-		Handle_StepRepr_ShapeAspect RelatedShapeAspect ();
+		opencascade::handle<StepRepr_ShapeAspect> RelatedShapeAspect ();
+		%feature("compactdefaultargs") RelatingShapeAspect;
+		%feature("autodoc", "	* Returns field RelatingShapeAspect
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
+") RelatingShapeAspect;
+		opencascade::handle<StepRepr_ShapeAspect> RelatingShapeAspect ();
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	* Set field Description
+
+	:param Description:
+	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	* Set field Name
+
+	:param Name:
+	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
 		%feature("compactdefaultargs") SetRelatedShapeAspect;
 		%feature("autodoc", "	* Set field RelatedShapeAspect
 
 	:param RelatedShapeAspect:
-	:type RelatedShapeAspect: Handle_StepRepr_ShapeAspect &
+	:type RelatedShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
 	:rtype: None
 ") SetRelatedShapeAspect;
-		void SetRelatedShapeAspect (const Handle_StepRepr_ShapeAspect & RelatedShapeAspect);
+		void SetRelatedShapeAspect (const opencascade::handle<StepRepr_ShapeAspect> & RelatedShapeAspect);
+		%feature("compactdefaultargs") SetRelatingShapeAspect;
+		%feature("autodoc", "	* Set field RelatingShapeAspect
+
+	:param RelatingShapeAspect:
+	:type RelatingShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:rtype: None
+") SetRelatingShapeAspect;
+		void SetRelatingShapeAspect (const opencascade::handle<StepRepr_ShapeAspect> & RelatingShapeAspect);
+		%feature("compactdefaultargs") StepRepr_ShapeAspectRelationship;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_ShapeAspectRelationship;
+		 StepRepr_ShapeAspectRelationship ();
 };
 
 
@@ -2907,38 +1752,38 @@ class StepRepr_ShapeAspectRelationship : public MMgt_TShared {
 %nodefaultctor StepRepr_ShapeDefinition;
 class StepRepr_ShapeDefinition : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a ShapeDefinition Kind Entity that is : 1 -> ProductDefinitionShape 2 -> ShapeAspect 3 -> ShapeAspectRelationship 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionShape;
+		%feature("autodoc", "	* returns Value as a ProductDefinitionShape (Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ProductDefinitionShape>
+") ProductDefinitionShape;
+		opencascade::handle<StepRepr_ProductDefinitionShape> ProductDefinitionShape ();
+		%feature("compactdefaultargs") ShapeAspect;
+		%feature("autodoc", "	* returns Value as a ShapeAspect (Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
+") ShapeAspect;
+		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect ();
+		%feature("compactdefaultargs") ShapeAspectRelationship;
+		%feature("autodoc", "	* returns Value as a ShapeAspectRelationship (Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspectRelationship>
+") ShapeAspectRelationship;
+		opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship ();
 		%feature("compactdefaultargs") StepRepr_ShapeDefinition;
 		%feature("autodoc", "	* Returns a ShapeDefinition SelectType
 
 	:rtype: None
 ") StepRepr_ShapeDefinition;
 		 StepRepr_ShapeDefinition ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a ShapeDefinition Kind Entity that is : 1 -> ProductDefinitionShape 2 -> ShapeAspect 3 -> ShapeAspectRelationship 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionShape;
-		%feature("autodoc", "	* returns Value as a ProductDefinitionShape (Null if another type)
-
-	:rtype: Handle_StepRepr_ProductDefinitionShape
-") ProductDefinitionShape;
-		Handle_StepRepr_ProductDefinitionShape ProductDefinitionShape ();
-		%feature("compactdefaultargs") ShapeAspect;
-		%feature("autodoc", "	* returns Value as a ShapeAspect (Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspect
-") ShapeAspect;
-		Handle_StepRepr_ShapeAspect ShapeAspect ();
-		%feature("compactdefaultargs") ShapeAspectRelationship;
-		%feature("autodoc", "	* returns Value as a ShapeAspectRelationship (Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspectRelationship
-") ShapeAspectRelationship;
-		Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship ();
 };
 
 
@@ -2967,32 +1812,32 @@ class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRela
 %nodefaultctor StepRepr_Transformation;
 class StepRepr_Transformation : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a Transformation Kind Entity that is : 1 -> ItemDefinedTransformation 2 -> FunctionallyDefinedTransformation 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") FunctionallyDefinedTransformation;
+		%feature("autodoc", "	* returns Value as a FunctionallyDefinedTransformation (Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_FunctionallyDefinedTransformation>
+") FunctionallyDefinedTransformation;
+		opencascade::handle<StepRepr_FunctionallyDefinedTransformation> FunctionallyDefinedTransformation ();
+		%feature("compactdefaultargs") ItemDefinedTransformation;
+		%feature("autodoc", "	* returns Value as a ItemDefinedTransformation (Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ItemDefinedTransformation>
+") ItemDefinedTransformation;
+		opencascade::handle<StepRepr_ItemDefinedTransformation> ItemDefinedTransformation ();
 		%feature("compactdefaultargs") StepRepr_Transformation;
 		%feature("autodoc", "	* Returns a Transformation SelectType
 
 	:rtype: None
 ") StepRepr_Transformation;
 		 StepRepr_Transformation ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a Transformation Kind Entity that is : 1 -> ItemDefinedTransformation 2 -> FunctionallyDefinedTransformation 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ItemDefinedTransformation;
-		%feature("autodoc", "	* returns Value as a ItemDefinedTransformation (Null if another type)
-
-	:rtype: Handle_StepRepr_ItemDefinedTransformation
-") ItemDefinedTransformation;
-		Handle_StepRepr_ItemDefinedTransformation ItemDefinedTransformation ();
-		%feature("compactdefaultargs") FunctionallyDefinedTransformation;
-		%feature("autodoc", "	* returns Value as a FunctionallyDefinedTransformation (Null if another type)
-
-	:rtype: Handle_StepRepr_FunctionallyDefinedTransformation
-") FunctionallyDefinedTransformation;
-		Handle_StepRepr_FunctionallyDefinedTransformation FunctionallyDefinedTransformation ();
 };
 
 
@@ -3004,60 +1849,140 @@ class StepRepr_Transformation : public StepData_SelectType {
 %nodefaultctor StepRepr_AssemblyComponentUsage;
 class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage {
 	public:
-		%feature("compactdefaultargs") StepRepr_AssemblyComponentUsage;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_AssemblyComponentUsage;
-		 StepRepr_AssemblyComponentUsage ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aProductDefinitionRelationship_Id:
-	:type aProductDefinitionRelationship_Id: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_Name:
-	:type aProductDefinitionRelationship_Name: Handle_TCollection_HAsciiString &
-	:param hasProductDefinitionRelationship_Description:
-	:type hasProductDefinitionRelationship_Description: bool
-	:param aProductDefinitionRelationship_Description:
-	:type aProductDefinitionRelationship_Description: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_RelatingProductDefinition:
-	:type aProductDefinitionRelationship_RelatingProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param aProductDefinitionRelationship_RelatedProductDefinition:
-	:type aProductDefinitionRelationship_RelatedProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param hasReferenceDesignator:
-	:type hasReferenceDesignator: bool
-	:param aReferenceDesignator:
-	:type aReferenceDesignator: Handle_TCollection_HAsciiString &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Id,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Description,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatingProductDefinition,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasReferenceDesignator,const Handle_TCollection_HAsciiString & aReferenceDesignator);
-		%feature("compactdefaultargs") ReferenceDesignator;
-		%feature("autodoc", "	* Returns field ReferenceDesignator
-
-	:rtype: Handle_TCollection_HAsciiString
-") ReferenceDesignator;
-		Handle_TCollection_HAsciiString ReferenceDesignator ();
-		%feature("compactdefaultargs") SetReferenceDesignator;
-		%feature("autodoc", "	* Set field ReferenceDesignator
-
-	:param ReferenceDesignator:
-	:type ReferenceDesignator: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetReferenceDesignator;
-		void SetReferenceDesignator (const Handle_TCollection_HAsciiString & ReferenceDesignator);
 		%feature("compactdefaultargs") HasReferenceDesignator;
 		%feature("autodoc", "	* Returns True if optional field ReferenceDesignator is defined
 
 	:rtype: bool
 ") HasReferenceDesignator;
 		Standard_Boolean HasReferenceDesignator ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param hasReferenceDesignator:
+	:type hasReferenceDesignator: bool
+	:param aReferenceDesignator:
+	:type aReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param hasReferenceDesignator:
+	:type hasReferenceDesignator: bool
+	:param aReferenceDesignator:
+	:type aReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
+		%feature("compactdefaultargs") ReferenceDesignator;
+		%feature("autodoc", "	* Returns field ReferenceDesignator
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") ReferenceDesignator;
+		opencascade::handle<TCollection_HAsciiString> ReferenceDesignator ();
+		%feature("compactdefaultargs") SetReferenceDesignator;
+		%feature("autodoc", "	* Set field ReferenceDesignator
+
+	:param ReferenceDesignator:
+	:type ReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetReferenceDesignator;
+		void SetReferenceDesignator (const opencascade::handle<TCollection_HAsciiString> & ReferenceDesignator);
+		%feature("compactdefaultargs") StepRepr_AssemblyComponentUsage;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_AssemblyComponentUsage;
+		 StepRepr_AssemblyComponentUsage ();
 };
 
 
 %make_alias(StepRepr_AssemblyComponentUsage)
 
 %extend StepRepr_AssemblyComponentUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_CharacterizedRepresentation;
+class StepRepr_CharacterizedRepresentation : public StepRepr_Representation {
+	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Returns a CharacterizedRepresentation
+
+	:param theName:
+	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param theItems:
+	:type theItems: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
+	:param theContextOfItems:
+	:type theContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<TCollection_HAsciiString> & theDescription,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems,const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	:param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & theDescription);
+		%feature("compactdefaultargs") StepRepr_CharacterizedRepresentation;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CharacterizedRepresentation;
+		 StepRepr_CharacterizedRepresentation ();
+};
+
+
+%make_alias(StepRepr_CharacterizedRepresentation)
+
+%extend StepRepr_CharacterizedRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_CompShAspAndDatumFeatAndShAsp;
+class StepRepr_CompShAspAndDatumFeatAndShAsp : public StepRepr_ShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_CompShAspAndDatumFeatAndShAsp;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CompShAspAndDatumFeatAndShAsp;
+		 StepRepr_CompShAspAndDatumFeatAndShAsp ();
+};
+
+
+%make_alias(StepRepr_CompShAspAndDatumFeatAndShAsp)
+
+%extend StepRepr_CompShAspAndDatumFeatAndShAsp {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3082,52 +2007,88 @@ class StepRepr_CompositeShapeAspect : public StepRepr_ShapeAspect {
 %nodefaultctor StepRepr_CompoundRepresentationItem;
 class StepRepr_CompoundRepresentationItem : public StepRepr_RepresentationItem {
 	public:
-		%feature("compactdefaultargs") StepRepr_CompoundRepresentationItem;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_CompoundRepresentationItem;
-		 StepRepr_CompoundRepresentationItem ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param item_element:
-	:type item_element: Handle_StepRepr_HArray1OfRepresentationItem &
+	:type item_element: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
 	:rtype: None
 ") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepRepr_HArray1OfRepresentationItem & item_element);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & item_element);
 		%feature("compactdefaultargs") ItemElement;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_HArray1OfRepresentationItem
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_HArray1OfRepresentationItem>
 ") ItemElement;
-		Handle_StepRepr_HArray1OfRepresentationItem ItemElement ();
+		opencascade::handle<StepRepr_HArray1OfRepresentationItem> ItemElement ();
+		%feature("compactdefaultargs") ItemElementValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: opencascade::handle<StepRepr_RepresentationItem>
+") ItemElementValue;
+		opencascade::handle<StepRepr_RepresentationItem> ItemElementValue (const Standard_Integer num);
 		%feature("compactdefaultargs") NbItemElement;
 		%feature("autodoc", "	:rtype: int
 ") NbItemElement;
 		Standard_Integer NbItemElement ();
 		%feature("compactdefaultargs") SetItemElement;
 		%feature("autodoc", "	:param item_element:
-	:type item_element: Handle_StepRepr_HArray1OfRepresentationItem &
+	:type item_element: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
 	:rtype: None
 ") SetItemElement;
-		void SetItemElement (const Handle_StepRepr_HArray1OfRepresentationItem & item_element);
-		%feature("compactdefaultargs") ItemElementValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: Handle_StepRepr_RepresentationItem
-") ItemElementValue;
-		Handle_StepRepr_RepresentationItem ItemElementValue (const Standard_Integer num);
+		void SetItemElement (const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & item_element);
 		%feature("compactdefaultargs") SetItemElementValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:param anelement:
-	:type anelement: Handle_StepRepr_RepresentationItem &
+	:type anelement: opencascade::handle<StepRepr_RepresentationItem> &
 	:rtype: None
 ") SetItemElementValue;
-		void SetItemElementValue (const Standard_Integer num,const Handle_StepRepr_RepresentationItem & anelement);
+		void SetItemElementValue (const Standard_Integer num,const opencascade::handle<StepRepr_RepresentationItem> & anelement);
+		%feature("compactdefaultargs") StepRepr_CompoundRepresentationItem;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CompoundRepresentationItem;
+		 StepRepr_CompoundRepresentationItem ();
 };
 
 
 %make_alias(StepRepr_CompoundRepresentationItem)
 
 %extend StepRepr_CompoundRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ConstructiveGeometryRepresentation;
+class StepRepr_ConstructiveGeometryRepresentation : public StepRepr_Representation {
+	public:
+		%feature("compactdefaultargs") StepRepr_ConstructiveGeometryRepresentation;
+		%feature("autodoc", "	* Returns a ConstructiveGeometryRepresentation
+
+	:rtype: None
+") StepRepr_ConstructiveGeometryRepresentation;
+		 StepRepr_ConstructiveGeometryRepresentation ();
+};
+
+
+%make_alias(StepRepr_ConstructiveGeometryRepresentation)
+
+%extend StepRepr_ConstructiveGeometryRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ConstructiveGeometryRepresentationRelationship;
+class StepRepr_ConstructiveGeometryRepresentationRelationship : public StepRepr_RepresentationRelationship {
+	public:
+		%feature("compactdefaultargs") StepRepr_ConstructiveGeometryRepresentationRelationship;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ConstructiveGeometryRepresentationRelationship;
+		 StepRepr_ConstructiveGeometryRepresentationRelationship ();
+};
+
+
+%make_alias(StepRepr_ConstructiveGeometryRepresentationRelationship)
+
+%extend StepRepr_ConstructiveGeometryRepresentationRelationship {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3171,36 +2132,30 @@ class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect {
 %nodefaultctor StepRepr_DescriptiveRepresentationItem;
 class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationItem {
 	public:
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	:rtype: opencascade::handle<TCollection_HAsciiString>
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "	:param aDescription:
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None
+") SetDescription;
+		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
 		%feature("compactdefaultargs") StepRepr_DescriptiveRepresentationItem;
 		%feature("autodoc", "	* Returns a DescriptiveRepresentationItem
 
 	:rtype: None
 ") StepRepr_DescriptiveRepresentationItem;
 		 StepRepr_DescriptiveRepresentationItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const Handle_TCollection_HAsciiString & aDescription);
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") Description;
-		Handle_TCollection_HAsciiString Description ();
 };
 
 
@@ -3228,53 +2183,64 @@ class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation 
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor StepRepr_FeatureForDatumTargetRelationship;
+class StepRepr_FeatureForDatumTargetRelationship : public StepRepr_ShapeAspectRelationship {
+	public:
+		%feature("compactdefaultargs") StepRepr_FeatureForDatumTargetRelationship;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_FeatureForDatumTargetRelationship;
+		 StepRepr_FeatureForDatumTargetRelationship ();
+};
+
+
+%make_alias(StepRepr_FeatureForDatumTargetRelationship)
+
+%extend StepRepr_FeatureForDatumTargetRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_GlobalUncertaintyAssignedContext;
 class StepRepr_GlobalUncertaintyAssignedContext : public StepRepr_RepresentationContext {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aContextIdentifier:
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
+	:param aContextType:
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
+	:param aUncertainty:
+	:type aUncertainty: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
+		%feature("compactdefaultargs") NbUncertainty;
+		%feature("autodoc", "	:rtype: int
+") NbUncertainty;
+		Standard_Integer NbUncertainty ();
+		%feature("compactdefaultargs") SetUncertainty;
+		%feature("autodoc", "	:param aUncertainty:
+	:type aUncertainty: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> &
+	:rtype: None
+") SetUncertainty;
+		void SetUncertainty (const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
 		%feature("compactdefaultargs") StepRepr_GlobalUncertaintyAssignedContext;
 		%feature("autodoc", "	* Returns a GlobalUncertaintyAssignedContext
 
 	:rtype: None
 ") StepRepr_GlobalUncertaintyAssignedContext;
 		 StepRepr_GlobalUncertaintyAssignedContext ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:param aUncertainty:
-	:type aUncertainty: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit & aUncertainty);
-		%feature("compactdefaultargs") SetUncertainty;
-		%feature("autodoc", "	:param aUncertainty:
-	:type aUncertainty: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit &
-	:rtype: None
-") SetUncertainty;
-		void SetUncertainty (const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit & aUncertainty);
 		%feature("compactdefaultargs") Uncertainty;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit>
 ") Uncertainty;
-		Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit Uncertainty ();
+		opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> Uncertainty ();
 		%feature("compactdefaultargs") UncertaintyValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
-	:rtype: Handle_StepBasic_UncertaintyMeasureWithUnit
+	:rtype: opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>
 ") UncertaintyValue;
-		Handle_StepBasic_UncertaintyMeasureWithUnit UncertaintyValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUncertainty;
-		%feature("autodoc", "	:rtype: int
-") NbUncertainty;
-		Standard_Integer NbUncertainty ();
+		opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> UncertaintyValue (const Standard_Integer num);
 };
 
 
@@ -3288,50 +2254,42 @@ class StepRepr_GlobalUncertaintyAssignedContext : public StepRepr_Representation
 %nodefaultctor StepRepr_GlobalUnitAssignedContext;
 class StepRepr_GlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aContextIdentifier:
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
+	:param aContextType:
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
+	:param aUnits:
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		%feature("compactdefaultargs") NbUnits;
+		%feature("autodoc", "	:rtype: int
+") NbUnits;
+		Standard_Integer NbUnits ();
+		%feature("compactdefaultargs") SetUnits;
+		%feature("autodoc", "	:param aUnits:
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
+	:rtype: None
+") SetUnits;
+		void SetUnits (const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
 		%feature("compactdefaultargs") StepRepr_GlobalUnitAssignedContext;
 		%feature("autodoc", "	* Returns a GlobalUnitAssignedContext
 
 	:rtype: None
 ") StepRepr_GlobalUnitAssignedContext;
 		 StepRepr_GlobalUnitAssignedContext ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Handle_StepBasic_HArray1OfNamedUnit & aUnits);
-		%feature("compactdefaultargs") SetUnits;
-		%feature("autodoc", "	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
-	:rtype: None
-") SetUnits;
-		void SetUnits (const Handle_StepBasic_HArray1OfNamedUnit & aUnits);
 		%feature("compactdefaultargs") Units;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_HArray1OfNamedUnit
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_HArray1OfNamedUnit>
 ") Units;
-		Handle_StepBasic_HArray1OfNamedUnit Units ();
+		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units ();
 		%feature("compactdefaultargs") UnitsValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
-	:rtype: Handle_StepBasic_NamedUnit
+	:rtype: opencascade::handle<StepBasic_NamedUnit>
 ") UnitsValue;
-		Handle_StepBasic_NamedUnit UnitsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUnits;
-		%feature("autodoc", "	:rtype: int
-") NbUnits;
-		Standard_Integer NbUnits ();
+		opencascade::handle<StepBasic_NamedUnit> UnitsValue (const Standard_Integer num);
 };
 
 
@@ -3342,45 +2300,120 @@ class StepRepr_GlobalUnitAssignedContext : public StepRepr_RepresentationContext
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor StepRepr_IntegerRepresentationItem;
+class StepRepr_IntegerRepresentationItem : public StepRepr_RepresentationItem {
+	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param theName:
+	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:param theValue:
+	:type theValue: int
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const Standard_Integer theValue);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: inline void
+") SetValue;
+		inline void SetValue (const Standard_Integer theValue);
+		%feature("compactdefaultargs") StepRepr_IntegerRepresentationItem;
+		%feature("autodoc", "	* Returns a IntegerRepresentationItem
+
+	:rtype: None
+") StepRepr_IntegerRepresentationItem;
+		 StepRepr_IntegerRepresentationItem ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:rtype: inline int
+") Value;
+		inline Standard_Integer Value ();
+};
+
+
+%make_alias(StepRepr_IntegerRepresentationItem)
+
+%extend StepRepr_IntegerRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MakeFromUsageOption;
 class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 	public:
-		%feature("compactdefaultargs") StepRepr_MakeFromUsageOption;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepRepr_MakeFromUsageOption;
-		 StepRepr_MakeFromUsageOption ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
 	:param aProductDefinitionRelationship_Id:
-	:type aProductDefinitionRelationship_Id: Handle_TCollection_HAsciiString &
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
 	:param aProductDefinitionRelationship_Name:
-	:type aProductDefinitionRelationship_Name: Handle_TCollection_HAsciiString &
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param hasProductDefinitionRelationship_Description:
 	:type hasProductDefinitionRelationship_Description: bool
 	:param aProductDefinitionRelationship_Description:
-	:type aProductDefinitionRelationship_Description: Handle_TCollection_HAsciiString &
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
 	:param aProductDefinitionRelationship_RelatingProductDefinition:
-	:type aProductDefinitionRelationship_RelatingProductDefinition: Handle_StepBasic_ProductDefinition &
+	:type aProductDefinitionRelationship_RelatingProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
 	:param aProductDefinitionRelationship_RelatedProductDefinition:
-	:type aProductDefinitionRelationship_RelatedProductDefinition: Handle_StepBasic_ProductDefinition &
+	:type aProductDefinitionRelationship_RelatedProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
 	:param aRanking:
 	:type aRanking: int
 	:param aRankingRationale:
-	:type aRankingRationale: Handle_TCollection_HAsciiString &
+	:type aRankingRationale: opencascade::handle<TCollection_HAsciiString> &
 	:param aQuantity:
-	:type aQuantity: Handle_StepBasic_MeasureWithUnit &
+	:type aQuantity: opencascade::handle<StepBasic_MeasureWithUnit> &
 	:rtype: None
 ") Init;
-		void Init (const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Id,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Description,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatingProductDefinition,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Integer aRanking,const Handle_TCollection_HAsciiString & aRankingRationale,const Handle_StepBasic_MeasureWithUnit & aQuantity);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Integer aRanking,const opencascade::handle<TCollection_HAsciiString> & aRankingRationale,const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param aRanking:
+	:type aRanking: int
+	:param aRankingRationale:
+	:type aRankingRationale: opencascade::handle<TCollection_HAsciiString> &
+	:param aQuantity:
+	:type aQuantity: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Integer aRanking,const opencascade::handle<TCollection_HAsciiString> & aRankingRationale,const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		%feature("compactdefaultargs") Quantity;
+		%feature("autodoc", "	* Returns field Quantity
+
+	:rtype: opencascade::handle<StepBasic_MeasureWithUnit>
+") Quantity;
+		opencascade::handle<StepBasic_MeasureWithUnit> Quantity ();
 		%feature("compactdefaultargs") Ranking;
 		%feature("autodoc", "	* Returns field Ranking
 
 	:rtype: int
 ") Ranking;
 		Standard_Integer Ranking ();
+		%feature("compactdefaultargs") RankingRationale;
+		%feature("autodoc", "	* Returns field RankingRationale
+
+	:rtype: opencascade::handle<TCollection_HAsciiString>
+") RankingRationale;
+		opencascade::handle<TCollection_HAsciiString> RankingRationale ();
+		%feature("compactdefaultargs") SetQuantity;
+		%feature("autodoc", "	* Set field Quantity
+
+	:param Quantity:
+	:type Quantity: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") SetQuantity;
+		void SetQuantity (const opencascade::handle<StepBasic_MeasureWithUnit> & Quantity);
 		%feature("compactdefaultargs") SetRanking;
 		%feature("autodoc", "	* Set field Ranking
 
@@ -3389,34 +2422,20 @@ class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 	:rtype: None
 ") SetRanking;
 		void SetRanking (const Standard_Integer Ranking);
-		%feature("compactdefaultargs") RankingRationale;
-		%feature("autodoc", "	* Returns field RankingRationale
-
-	:rtype: Handle_TCollection_HAsciiString
-") RankingRationale;
-		Handle_TCollection_HAsciiString RankingRationale ();
 		%feature("compactdefaultargs") SetRankingRationale;
 		%feature("autodoc", "	* Set field RankingRationale
 
 	:param RankingRationale:
-	:type RankingRationale: Handle_TCollection_HAsciiString &
+	:type RankingRationale: opencascade::handle<TCollection_HAsciiString> &
 	:rtype: None
 ") SetRankingRationale;
-		void SetRankingRationale (const Handle_TCollection_HAsciiString & RankingRationale);
-		%feature("compactdefaultargs") Quantity;
-		%feature("autodoc", "	* Returns field Quantity
+		void SetRankingRationale (const opencascade::handle<TCollection_HAsciiString> & RankingRationale);
+		%feature("compactdefaultargs") StepRepr_MakeFromUsageOption;
+		%feature("autodoc", "	* Empty constructor
 
-	:rtype: Handle_StepBasic_MeasureWithUnit
-") Quantity;
-		Handle_StepBasic_MeasureWithUnit Quantity ();
-		%feature("compactdefaultargs") SetQuantity;
-		%feature("autodoc", "	* Set field Quantity
-
-	:param Quantity:
-	:type Quantity: Handle_StepBasic_MeasureWithUnit &
 	:rtype: None
-") SetQuantity;
-		void SetQuantity (const Handle_StepBasic_MeasureWithUnit & Quantity);
+") StepRepr_MakeFromUsageOption;
+		 StepRepr_MakeFromUsageOption ();
 };
 
 
@@ -3430,48 +2449,42 @@ class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 %nodefaultctor StepRepr_MappedItem;
 class StepRepr_MappedItem : public StepRepr_RepresentationItem {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aMappingSource:
+	:type aMappingSource: opencascade::handle<StepRepr_RepresentationMap> &
+	:param aMappingTarget:
+	:type aMappingTarget: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepRepr_RepresentationMap> & aMappingSource,const opencascade::handle<StepRepr_RepresentationItem> & aMappingTarget);
+		%feature("compactdefaultargs") MappingSource;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationMap>
+") MappingSource;
+		opencascade::handle<StepRepr_RepresentationMap> MappingSource ();
+		%feature("compactdefaultargs") MappingTarget;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationItem>
+") MappingTarget;
+		opencascade::handle<StepRepr_RepresentationItem> MappingTarget ();
+		%feature("compactdefaultargs") SetMappingSource;
+		%feature("autodoc", "	:param aMappingSource:
+	:type aMappingSource: opencascade::handle<StepRepr_RepresentationMap> &
+	:rtype: None
+") SetMappingSource;
+		void SetMappingSource (const opencascade::handle<StepRepr_RepresentationMap> & aMappingSource);
+		%feature("compactdefaultargs") SetMappingTarget;
+		%feature("autodoc", "	:param aMappingTarget:
+	:type aMappingTarget: opencascade::handle<StepRepr_RepresentationItem> &
+	:rtype: None
+") SetMappingTarget;
+		void SetMappingTarget (const opencascade::handle<StepRepr_RepresentationItem> & aMappingTarget);
 		%feature("compactdefaultargs") StepRepr_MappedItem;
 		%feature("autodoc", "	* Returns a MappedItem
 
 	:rtype: None
 ") StepRepr_MappedItem;
 		 StepRepr_MappedItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aMappingSource:
-	:type aMappingSource: Handle_StepRepr_RepresentationMap &
-	:param aMappingTarget:
-	:type aMappingTarget: Handle_StepRepr_RepresentationItem &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepRepr_RepresentationMap & aMappingSource,const Handle_StepRepr_RepresentationItem & aMappingTarget);
-		%feature("compactdefaultargs") SetMappingSource;
-		%feature("autodoc", "	:param aMappingSource:
-	:type aMappingSource: Handle_StepRepr_RepresentationMap &
-	:rtype: None
-") SetMappingSource;
-		void SetMappingSource (const Handle_StepRepr_RepresentationMap & aMappingSource);
-		%feature("compactdefaultargs") MappingSource;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationMap
-") MappingSource;
-		Handle_StepRepr_RepresentationMap MappingSource ();
-		%feature("compactdefaultargs") SetMappingTarget;
-		%feature("autodoc", "	:param aMappingTarget:
-	:type aMappingTarget: Handle_StepRepr_RepresentationItem &
-	:rtype: None
-") SetMappingTarget;
-		void SetMappingTarget (const Handle_StepRepr_RepresentationItem & aMappingTarget);
-		%feature("compactdefaultargs") MappingTarget;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") MappingTarget;
-		Handle_StepRepr_RepresentationItem MappingTarget ();
 };
 
 
@@ -3504,38 +2517,38 @@ class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition {
 %nodefaultctor StepRepr_MaterialPropertyRepresentation;
 class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
-		%feature("compactdefaultargs") StepRepr_MaterialPropertyRepresentation;
-		%feature("autodoc", "	* Empty constructor
+		%feature("compactdefaultargs") DependentEnvironment;
+		%feature("autodoc", "	* Returns field DependentEnvironment
 
-	:rtype: None
-") StepRepr_MaterialPropertyRepresentation;
-		 StepRepr_MaterialPropertyRepresentation ();
+	:rtype: opencascade::handle<StepRepr_DataEnvironment>
+") DependentEnvironment;
+		opencascade::handle<StepRepr_DataEnvironment> DependentEnvironment ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
 	:param aPropertyDefinitionRepresentation_Definition:
 	:type aPropertyDefinitionRepresentation_Definition: StepRepr_RepresentedDefinition &
 	:param aPropertyDefinitionRepresentation_UsedRepresentation:
-	:type aPropertyDefinitionRepresentation_UsedRepresentation: Handle_StepRepr_Representation &
+	:type aPropertyDefinitionRepresentation_UsedRepresentation: opencascade::handle<StepRepr_Representation> &
 	:param aDependentEnvironment:
-	:type aDependentEnvironment: Handle_StepRepr_DataEnvironment &
+	:type aDependentEnvironment: opencascade::handle<StepRepr_DataEnvironment> &
 	:rtype: None
 ") Init;
-		void Init (const StepRepr_RepresentedDefinition & aPropertyDefinitionRepresentation_Definition,const Handle_StepRepr_Representation & aPropertyDefinitionRepresentation_UsedRepresentation,const Handle_StepRepr_DataEnvironment & aDependentEnvironment);
-		%feature("compactdefaultargs") DependentEnvironment;
-		%feature("autodoc", "	* Returns field DependentEnvironment
-
-	:rtype: Handle_StepRepr_DataEnvironment
-") DependentEnvironment;
-		Handle_StepRepr_DataEnvironment DependentEnvironment ();
+		void Init (const StepRepr_RepresentedDefinition & aPropertyDefinitionRepresentation_Definition,const opencascade::handle<StepRepr_Representation> & aPropertyDefinitionRepresentation_UsedRepresentation,const opencascade::handle<StepRepr_DataEnvironment> & aDependentEnvironment);
 		%feature("compactdefaultargs") SetDependentEnvironment;
 		%feature("autodoc", "	* Set field DependentEnvironment
 
 	:param DependentEnvironment:
-	:type DependentEnvironment: Handle_StepRepr_DataEnvironment &
+	:type DependentEnvironment: opencascade::handle<StepRepr_DataEnvironment> &
 	:rtype: None
 ") SetDependentEnvironment;
-		void SetDependentEnvironment (const Handle_StepRepr_DataEnvironment & DependentEnvironment);
+		void SetDependentEnvironment (const opencascade::handle<StepRepr_DataEnvironment> & DependentEnvironment);
+		%feature("compactdefaultargs") StepRepr_MaterialPropertyRepresentation;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepRepr_MaterialPropertyRepresentation;
+		 StepRepr_MaterialPropertyRepresentation ();
 };
 
 
@@ -3549,34 +2562,34 @@ class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefiniti
 %nodefaultctor StepRepr_MeasureRepresentationItem;
 class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Init all fields
+
+	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aValueComponent:
+	:type aValueComponent: opencascade::handle<StepBasic_MeasureValueMember> &
+	:param aUnitComponent:
+	:type aUnitComponent: StepBasic_Unit &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent,const StepBasic_Unit & aUnitComponent);
+		%feature("compactdefaultargs") Measure;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_MeasureWithUnit>
+") Measure;
+		opencascade::handle<StepBasic_MeasureWithUnit> Measure ();
+		%feature("compactdefaultargs") SetMeasure;
+		%feature("autodoc", "	:param Measure:
+	:type Measure: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") SetMeasure;
+		void SetMeasure (const opencascade::handle<StepBasic_MeasureWithUnit> & Measure);
 		%feature("compactdefaultargs") StepRepr_MeasureRepresentationItem;
 		%feature("autodoc", "	* Creates empty object
 
 	:rtype: None
 ") StepRepr_MeasureRepresentationItem;
 		 StepRepr_MeasureRepresentationItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Init all fields
-
-	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aValueComponent:
-	:type aValueComponent: Handle_StepBasic_MeasureValueMember &
-	:param aUnitComponent:
-	:type aUnitComponent: StepBasic_Unit &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepBasic_MeasureValueMember & aValueComponent,const StepBasic_Unit & aUnitComponent);
-		%feature("compactdefaultargs") SetMeasure;
-		%feature("autodoc", "	:param Measure:
-	:type Measure: Handle_StepBasic_MeasureWithUnit &
-	:rtype: None
-") SetMeasure;
-		void SetMeasure (const Handle_StepBasic_MeasureWithUnit & Measure);
-		%feature("compactdefaultargs") Measure;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_MeasureWithUnit
-") Measure;
-		Handle_StepBasic_MeasureWithUnit Measure ();
 };
 
 
@@ -3625,55 +2638,45 @@ class StepRepr_ProductDefinitionShape : public StepRepr_PropertyDefinition {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnit;
-class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_RepresentationItem {
+%nodefaultctor StepRepr_ReprItemAndMeasureWithUnit;
+class StepRepr_ReprItemAndMeasureWithUnit : public StepRepr_RepresentationItem {
 	public:
-		%feature("compactdefaultargs") StepRepr_ReprItemAndLengthMeasureWithUnit;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_ReprItemAndLengthMeasureWithUnit;
-		 StepRepr_ReprItemAndLengthMeasureWithUnit ();
+		%feature("compactdefaultargs") GetMeasureRepresentationItem;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_MeasureRepresentationItem>
+") GetMeasureRepresentationItem;
+		opencascade::handle<StepRepr_MeasureRepresentationItem> GetMeasureRepresentationItem ();
+		%feature("compactdefaultargs") GetMeasureWithUnit;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_MeasureWithUnit>
+") GetMeasureWithUnit;
+		opencascade::handle<StepBasic_MeasureWithUnit> GetMeasureWithUnit ();
+		%feature("compactdefaultargs") GetRepresentationItem;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_RepresentationItem>
+") GetRepresentationItem;
+		opencascade::handle<StepRepr_RepresentationItem> GetRepresentationItem ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aMWU:
-	:type aMWU: Handle_StepBasic_MeasureWithUnit &
+	:type aMWU: opencascade::handle<StepBasic_MeasureWithUnit> &
 	:param aRI:
-	:type aRI: Handle_StepRepr_RepresentationItem &
+	:type aRI: opencascade::handle<StepRepr_RepresentationItem> &
 	:rtype: None
 ") Init;
-		void Init (const Handle_StepBasic_MeasureWithUnit & aMWU,const Handle_StepRepr_RepresentationItem & aRI);
-		%feature("compactdefaultargs") SetLengthMeasureWithUnit;
-		%feature("autodoc", "	:param aLMWU:
-	:type aLMWU: Handle_StepBasic_LengthMeasureWithUnit &
-	:rtype: None
-") SetLengthMeasureWithUnit;
-		void SetLengthMeasureWithUnit (const Handle_StepBasic_LengthMeasureWithUnit & aLMWU);
-		%feature("compactdefaultargs") GetLengthMeasureWithUnit;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_LengthMeasureWithUnit
-") GetLengthMeasureWithUnit;
-		Handle_StepBasic_LengthMeasureWithUnit GetLengthMeasureWithUnit ();
-		%feature("compactdefaultargs") GetMeasureRepresentationItem;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_MeasureRepresentationItem
-") GetMeasureRepresentationItem;
-		Handle_StepRepr_MeasureRepresentationItem GetMeasureRepresentationItem ();
+		void Init (const opencascade::handle<StepBasic_MeasureWithUnit> & aMWU,const opencascade::handle<StepRepr_RepresentationItem> & aRI);
 		%feature("compactdefaultargs") SetMeasureWithUnit;
 		%feature("autodoc", "	:param aMWU:
-	:type aMWU: Handle_StepBasic_MeasureWithUnit &
+	:type aMWU: opencascade::handle<StepBasic_MeasureWithUnit> &
 	:rtype: None
 ") SetMeasureWithUnit;
-		void SetMeasureWithUnit (const Handle_StepBasic_MeasureWithUnit & aMWU);
-		%feature("compactdefaultargs") GetMeasureWithUnit;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_MeasureWithUnit
-") GetMeasureWithUnit;
-		Handle_StepBasic_MeasureWithUnit GetMeasureWithUnit ();
-		%feature("compactdefaultargs") GetRepresentationItem;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_RepresentationItem
-") GetRepresentationItem;
-		Handle_StepRepr_RepresentationItem GetRepresentationItem ();
+		void SetMeasureWithUnit (const opencascade::handle<StepBasic_MeasureWithUnit> & aMWU);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndMeasureWithUnit;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndMeasureWithUnit;
+		 StepRepr_ReprItemAndMeasureWithUnit ();
 };
 
 
-%make_alias(StepRepr_ReprItemAndLengthMeasureWithUnit)
+%make_alias(StepRepr_ReprItemAndMeasureWithUnit)
 
-%extend StepRepr_ReprItemAndLengthMeasureWithUnit {
+%extend StepRepr_ReprItemAndMeasureWithUnit {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3769,6 +2772,128 @@ class StepRepr_StructuralResponsePropertyDefinitionRepresentation : public StepR
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor StepRepr_ValueRepresentationItem;
+class StepRepr_ValueRepresentationItem : public StepRepr_RepresentationItem {
+	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param theName:
+	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:param theValueComponentMember:
+	:type theValueComponentMember: opencascade::handle<StepBasic_MeasureValueMember> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepBasic_MeasureValueMember> & theValueComponentMember);
+		%feature("compactdefaultargs") SetValueComponentMember;
+		%feature("autodoc", "	:param theValueComponentMember:
+	:type theValueComponentMember: opencascade::handle<StepBasic_MeasureValueMember> &
+	:rtype: inline void
+") SetValueComponentMember;
+		inline void SetValueComponentMember (const opencascade::handle<StepBasic_MeasureValueMember> & theValueComponentMember);
+		%feature("compactdefaultargs") StepRepr_ValueRepresentationItem;
+		%feature("autodoc", "	* Returns a ValueRepresentationItem
+
+	:rtype: None
+") StepRepr_ValueRepresentationItem;
+		 StepRepr_ValueRepresentationItem ();
+		%feature("compactdefaultargs") ValueComponentMember;
+		%feature("autodoc", "	:rtype: inline opencascade::handle<StepBasic_MeasureValueMember>
+") ValueComponentMember;
+		inline opencascade::handle<StepBasic_MeasureValueMember> ValueComponentMember ();
+};
+
+
+%make_alias(StepRepr_ValueRepresentationItem)
+
+%extend StepRepr_ValueRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_Apex;
+class StepRepr_Apex : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_Apex;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_Apex;
+		 StepRepr_Apex ();
+};
+
+
+%make_alias(StepRepr_Apex)
+
+%extend StepRepr_Apex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_CentreOfSymmetry;
+class StepRepr_CentreOfSymmetry : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_CentreOfSymmetry;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CentreOfSymmetry;
+		 StepRepr_CentreOfSymmetry ();
+};
+
+
+%make_alias(StepRepr_CentreOfSymmetry)
+
+%extend StepRepr_CentreOfSymmetry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp;
+class StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp : public StepRepr_CompShAspAndDatumFeatAndShAsp {
+	public:
+		%feature("compactdefaultargs") StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp;
+		 StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp ();
+};
+
+
+%make_alias(StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp)
+
+%extend StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_CompositeGroupShapeAspect;
+class StepRepr_CompositeGroupShapeAspect : public StepRepr_CompositeShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_CompositeGroupShapeAspect;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_CompositeGroupShapeAspect;
+		 StepRepr_CompositeGroupShapeAspect ();
+};
+
+
+%make_alias(StepRepr_CompositeGroupShapeAspect)
+
+%extend StepRepr_CompositeGroupShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ContinuosShapeAspect;
+class StepRepr_ContinuosShapeAspect : public StepRepr_CompositeShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_ContinuosShapeAspect;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ContinuosShapeAspect;
+		 StepRepr_ContinuosShapeAspect ();
+};
+
+
+%make_alias(StepRepr_ContinuosShapeAspect)
+
+%extend StepRepr_ContinuosShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Extension;
 class StepRepr_Extension : public StepRepr_DerivedShapeAspect {
 	public:
@@ -3782,6 +2907,23 @@ class StepRepr_Extension : public StepRepr_DerivedShapeAspect {
 %make_alias(StepRepr_Extension)
 
 %extend StepRepr_Extension {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_GeometricAlignment;
+class StepRepr_GeometricAlignment : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_GeometricAlignment;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_GeometricAlignment;
+		 StepRepr_GeometricAlignment ();
+};
+
+
+%make_alias(StepRepr_GeometricAlignment)
+
+%extend StepRepr_GeometricAlignment {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3801,6 +2943,70 @@ class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUs
 %make_alias(StepRepr_NextAssemblyUsageOccurrence)
 
 %extend StepRepr_NextAssemblyUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ParallelOffset;
+class StepRepr_ParallelOffset : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param theName:
+	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param theOfShape:
+	:type theOfShape: opencascade::handle<StepRepr_ProductDefinitionShape> &
+	:param theProductDefinitional:
+	:type theProductDefinitional: StepData_Logical
+	:param theOffset:
+	:type theOffset: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<TCollection_HAsciiString> & theDescription,const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape,const StepData_Logical theProductDefinitional,const opencascade::handle<StepBasic_MeasureWithUnit> & theOffset);
+		%feature("compactdefaultargs") Offset;
+		%feature("autodoc", "	* Returns field Offset
+
+	:rtype: inline opencascade::handle<StepBasic_MeasureWithUnit>
+") Offset;
+		inline opencascade::handle<StepBasic_MeasureWithUnit> Offset ();
+		%feature("compactdefaultargs") SetOffset;
+		%feature("autodoc", "	* Set field Offset
+
+	:param theOffset:
+	:type theOffset: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: inline void
+") SetOffset;
+		inline void SetOffset (const opencascade::handle<StepBasic_MeasureWithUnit> & theOffset);
+		%feature("compactdefaultargs") StepRepr_ParallelOffset;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ParallelOffset;
+		 StepRepr_ParallelOffset ();
+};
+
+
+%make_alias(StepRepr_ParallelOffset)
+
+%extend StepRepr_ParallelOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_PerpendicularTo;
+class StepRepr_PerpendicularTo : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_PerpendicularTo;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_PerpendicularTo;
+		 StepRepr_PerpendicularTo ();
+};
+
+
+%make_alias(StepRepr_PerpendicularTo)
+
+%extend StepRepr_PerpendicularTo {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3825,50 +3031,74 @@ class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsag
 %nodefaultctor StepRepr_QuantifiedAssemblyComponentUsage;
 class StepRepr_QuantifiedAssemblyComponentUsage : public StepRepr_AssemblyComponentUsage {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param hasAssemblyComponentUsage_ReferenceDesignator:
+	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
+	:param aAssemblyComponentUsage_ReferenceDesignator:
+	:type aAssemblyComponentUsage_ReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:param aQuantity:
+	:type aQuantity: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param hasAssemblyComponentUsage_ReferenceDesignator:
+	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
+	:param aAssemblyComponentUsage_ReferenceDesignator:
+	:type aAssemblyComponentUsage_ReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:param aQuantity:
+	:type aQuantity: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		%feature("compactdefaultargs") Quantity;
+		%feature("autodoc", "	* Returns field Quantity
+
+	:rtype: opencascade::handle<StepBasic_MeasureWithUnit>
+") Quantity;
+		opencascade::handle<StepBasic_MeasureWithUnit> Quantity ();
+		%feature("compactdefaultargs") SetQuantity;
+		%feature("autodoc", "	* Set field Quantity
+
+	:param Quantity:
+	:type Quantity: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:rtype: None
+") SetQuantity;
+		void SetQuantity (const opencascade::handle<StepBasic_MeasureWithUnit> & Quantity);
 		%feature("compactdefaultargs") StepRepr_QuantifiedAssemblyComponentUsage;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_QuantifiedAssemblyComponentUsage;
 		 StepRepr_QuantifiedAssemblyComponentUsage ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aProductDefinitionRelationship_Id:
-	:type aProductDefinitionRelationship_Id: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_Name:
-	:type aProductDefinitionRelationship_Name: Handle_TCollection_HAsciiString &
-	:param hasProductDefinitionRelationship_Description:
-	:type hasProductDefinitionRelationship_Description: bool
-	:param aProductDefinitionRelationship_Description:
-	:type aProductDefinitionRelationship_Description: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_RelatingProductDefinition:
-	:type aProductDefinitionRelationship_RelatingProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param aProductDefinitionRelationship_RelatedProductDefinition:
-	:type aProductDefinitionRelationship_RelatedProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param hasAssemblyComponentUsage_ReferenceDesignator:
-	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
-	:param aAssemblyComponentUsage_ReferenceDesignator:
-	:type aAssemblyComponentUsage_ReferenceDesignator: Handle_TCollection_HAsciiString &
-	:param aQuantity:
-	:type aQuantity: Handle_StepBasic_MeasureWithUnit &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Id,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Description,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatingProductDefinition,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const Handle_TCollection_HAsciiString & aAssemblyComponentUsage_ReferenceDesignator,const Handle_StepBasic_MeasureWithUnit & aQuantity);
-		%feature("compactdefaultargs") Quantity;
-		%feature("autodoc", "	* Returns field Quantity
-
-	:rtype: Handle_StepBasic_MeasureWithUnit
-") Quantity;
-		Handle_StepBasic_MeasureWithUnit Quantity ();
-		%feature("compactdefaultargs") SetQuantity;
-		%feature("autodoc", "	* Set field Quantity
-
-	:param Quantity:
-	:type Quantity: Handle_StepBasic_MeasureWithUnit &
-	:rtype: None
-") SetQuantity;
-		void SetQuantity (const Handle_StepBasic_MeasureWithUnit & Quantity);
 };
 
 
@@ -3879,37 +3109,128 @@ class StepRepr_QuantifiedAssemblyComponentUsage : public StepRepr_AssemblyCompon
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnit;
+class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_ReprItemAndMeasureWithUnit {
+	public:
+		%feature("compactdefaultargs") GetLengthMeasureWithUnit;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_LengthMeasureWithUnit>
+") GetLengthMeasureWithUnit;
+		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetLengthMeasureWithUnit ();
+		%feature("compactdefaultargs") SetLengthMeasureWithUnit;
+		%feature("autodoc", "	:param aLMWU:
+	:type aLMWU: opencascade::handle<StepBasic_LengthMeasureWithUnit> &
+	:rtype: None
+") SetLengthMeasureWithUnit;
+		void SetLengthMeasureWithUnit (const opencascade::handle<StepBasic_LengthMeasureWithUnit> & aLMWU);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndLengthMeasureWithUnit;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndLengthMeasureWithUnit;
+		 StepRepr_ReprItemAndLengthMeasureWithUnit ();
+};
+
+
+%make_alias(StepRepr_ReprItemAndLengthMeasureWithUnit)
+
+%extend StepRepr_ReprItemAndLengthMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ReprItemAndMeasureWithUnitAndQRI;
+class StepRepr_ReprItemAndMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnit {
+	public:
+		%feature("compactdefaultargs") GetQualifiedRepresentationItem;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepShape_QualifiedRepresentationItem>
+") GetQualifiedRepresentationItem;
+		opencascade::handle<StepShape_QualifiedRepresentationItem> GetQualifiedRepresentationItem ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aMWU:
+	:type aMWU: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:param aRI:
+	:type aRI: opencascade::handle<StepRepr_RepresentationItem> &
+	:param aQRI:
+	:type aQRI: opencascade::handle<StepShape_QualifiedRepresentationItem>
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_MeasureWithUnit> & aMWU,const opencascade::handle<StepRepr_RepresentationItem> & aRI,const opencascade::handle<StepShape_QualifiedRepresentationItem> aQRI);
+		%feature("compactdefaultargs") SetQualifiedRepresentationItem;
+		%feature("autodoc", "	:param aQRI:
+	:type aQRI: opencascade::handle<StepShape_QualifiedRepresentationItem> &
+	:rtype: None
+") SetQualifiedRepresentationItem;
+		void SetQualifiedRepresentationItem (const opencascade::handle<StepShape_QualifiedRepresentationItem> & aQRI);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
+		 StepRepr_ReprItemAndMeasureWithUnitAndQRI ();
+};
+
+
+%make_alias(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
+
+%extend StepRepr_ReprItemAndMeasureWithUnitAndQRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ReprItemAndPlaneAngleMeasureWithUnit;
+class StepRepr_ReprItemAndPlaneAngleMeasureWithUnit : public StepRepr_ReprItemAndMeasureWithUnit {
+	public:
+		%feature("compactdefaultargs") GetPlaneAngleMeasureWithUnit;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit>
+") GetPlaneAngleMeasureWithUnit;
+		opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> GetPlaneAngleMeasureWithUnit ();
+		%feature("compactdefaultargs") SetPlaneAngleMeasureWithUnit;
+		%feature("autodoc", "	:param aLMWU:
+	:type aLMWU: opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> &
+	:rtype: None
+") SetPlaneAngleMeasureWithUnit;
+		void SetPlaneAngleMeasureWithUnit (const opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> & aLMWU);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndPlaneAngleMeasureWithUnit;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndPlaneAngleMeasureWithUnit;
+		 StepRepr_ReprItemAndPlaneAngleMeasureWithUnit ();
+};
+
+
+%make_alias(StepRepr_ReprItemAndPlaneAngleMeasureWithUnit)
+
+%extend StepRepr_ReprItemAndPlaneAngleMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationRelationshipWithTransformation;
 class StepRepr_RepresentationRelationshipWithTransformation : public StepRepr_ShapeRepresentationRelationship {
 	public:
-		%feature("compactdefaultargs") StepRepr_RepresentationRelationshipWithTransformation;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_RepresentationRelationshipWithTransformation;
-		 StepRepr_RepresentationRelationshipWithTransformation ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
-	:type aDescription: Handle_TCollection_HAsciiString &
+	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aRep1:
-	:type aRep1: Handle_StepRepr_Representation &
+	:type aRep1: opencascade::handle<StepRepr_Representation> &
 	:param aRep2:
-	:type aRep2: Handle_StepRepr_Representation &
+	:type aRep2: opencascade::handle<StepRepr_Representation> &
 	:param aTransf:
 	:type aTransf: StepRepr_Transformation &
 	:rtype: None
 ") Init;
-		void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TCollection_HAsciiString & aDescription,const Handle_StepRepr_Representation & aRep1,const Handle_StepRepr_Representation & aRep2,const StepRepr_Transformation & aTransf);
-		%feature("compactdefaultargs") TransformationOperator;
-		%feature("autodoc", "	:rtype: StepRepr_Transformation
-") TransformationOperator;
-		StepRepr_Transformation TransformationOperator ();
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_Representation> & aRep1,const opencascade::handle<StepRepr_Representation> & aRep2,const StepRepr_Transformation & aTransf);
 		%feature("compactdefaultargs") SetTransformationOperator;
 		%feature("autodoc", "	:param aTrans:
 	:type aTrans: StepRepr_Transformation &
 	:rtype: None
 ") SetTransformationOperator;
 		void SetTransformationOperator (const StepRepr_Transformation & aTrans);
+		%feature("compactdefaultargs") StepRepr_RepresentationRelationshipWithTransformation;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_RepresentationRelationshipWithTransformation;
+		 StepRepr_RepresentationRelationshipWithTransformation ();
+		%feature("compactdefaultargs") TransformationOperator;
+		%feature("autodoc", "	:rtype: StepRepr_Transformation
+") TransformationOperator;
+		StepRepr_Transformation TransformationOperator ();
 };
 
 
@@ -3923,72 +3244,115 @@ class StepRepr_RepresentationRelationshipWithTransformation : public StepRepr_Sh
 %nodefaultctor StepRepr_SpecifiedHigherUsageOccurrence;
 class StepRepr_SpecifiedHigherUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: opencascade::handle<StepBasic_ProductDefinition> &
+	:param hasAssemblyComponentUsage_ReferenceDesignator:
+	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
+	:param aAssemblyComponentUsage_ReferenceDesignator:
+	:type aAssemblyComponentUsage_ReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:param aUpperUsage:
+	:type aUpperUsage: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:param aNextUsage:
+	:type aNextUsage: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition,const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage,const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aProductDefinitionRelationship_Id:
+	:type aProductDefinitionRelationship_Id: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_Name:
+	:type aProductDefinitionRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param hasProductDefinitionRelationship_Description:
+	:type hasProductDefinitionRelationship_Description: bool
+	:param aProductDefinitionRelationship_Description:
+	:type aProductDefinitionRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:param aProductDefinitionRelationship_RelatingProductDefinition:
+	:type aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param aProductDefinitionRelationship_RelatedProductDefinition:
+	:type aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference &
+	:param hasAssemblyComponentUsage_ReferenceDesignator:
+	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
+	:param aAssemblyComponentUsage_ReferenceDesignator:
+	:type aAssemblyComponentUsage_ReferenceDesignator: opencascade::handle<TCollection_HAsciiString> &
+	:param aUpperUsage:
+	:type aUpperUsage: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:param aNextUsage:
+	:type aNextUsage: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition,const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator,const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage,const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
+		%feature("compactdefaultargs") NextUsage;
+		%feature("autodoc", "	* Returns field NextUsage
+
+	:rtype: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence>
+") NextUsage;
+		opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> NextUsage ();
+		%feature("compactdefaultargs") SetNextUsage;
+		%feature("autodoc", "	* Set field NextUsage
+
+	:param NextUsage:
+	:type NextUsage: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:rtype: None
+") SetNextUsage;
+		void SetNextUsage (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & NextUsage);
+		%feature("compactdefaultargs") SetUpperUsage;
+		%feature("autodoc", "	* Set field UpperUsage
+
+	:param UpperUsage:
+	:type UpperUsage: opencascade::handle<StepRepr_AssemblyComponentUsage> &
+	:rtype: None
+") SetUpperUsage;
+		void SetUpperUsage (const opencascade::handle<StepRepr_AssemblyComponentUsage> & UpperUsage);
 		%feature("compactdefaultargs") StepRepr_SpecifiedHigherUsageOccurrence;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepRepr_SpecifiedHigherUsageOccurrence;
 		 StepRepr_SpecifiedHigherUsageOccurrence ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aProductDefinitionRelationship_Id:
-	:type aProductDefinitionRelationship_Id: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_Name:
-	:type aProductDefinitionRelationship_Name: Handle_TCollection_HAsciiString &
-	:param hasProductDefinitionRelationship_Description:
-	:type hasProductDefinitionRelationship_Description: bool
-	:param aProductDefinitionRelationship_Description:
-	:type aProductDefinitionRelationship_Description: Handle_TCollection_HAsciiString &
-	:param aProductDefinitionRelationship_RelatingProductDefinition:
-	:type aProductDefinitionRelationship_RelatingProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param aProductDefinitionRelationship_RelatedProductDefinition:
-	:type aProductDefinitionRelationship_RelatedProductDefinition: Handle_StepBasic_ProductDefinition &
-	:param hasAssemblyComponentUsage_ReferenceDesignator:
-	:type hasAssemblyComponentUsage_ReferenceDesignator: bool
-	:param aAssemblyComponentUsage_ReferenceDesignator:
-	:type aAssemblyComponentUsage_ReferenceDesignator: Handle_TCollection_HAsciiString &
-	:param aUpperUsage:
-	:type aUpperUsage: Handle_StepRepr_AssemblyComponentUsage &
-	:param aNextUsage:
-	:type aNextUsage: Handle_StepRepr_NextAssemblyUsageOccurrence &
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Id,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle_TCollection_HAsciiString & aProductDefinitionRelationship_Description,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatingProductDefinition,const Handle_StepBasic_ProductDefinition & aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator,const Handle_TCollection_HAsciiString & aAssemblyComponentUsage_ReferenceDesignator,const Handle_StepRepr_AssemblyComponentUsage & aUpperUsage,const Handle_StepRepr_NextAssemblyUsageOccurrence & aNextUsage);
 		%feature("compactdefaultargs") UpperUsage;
 		%feature("autodoc", "	* Returns field UpperUsage
 
-	:rtype: Handle_StepRepr_AssemblyComponentUsage
+	:rtype: opencascade::handle<StepRepr_AssemblyComponentUsage>
 ") UpperUsage;
-		Handle_StepRepr_AssemblyComponentUsage UpperUsage ();
-		%feature("compactdefaultargs") SetUpperUsage;
-		%feature("autodoc", "	* Set field UpperUsage
-
-	:param UpperUsage:
-	:type UpperUsage: Handle_StepRepr_AssemblyComponentUsage &
-	:rtype: None
-") SetUpperUsage;
-		void SetUpperUsage (const Handle_StepRepr_AssemblyComponentUsage & UpperUsage);
-		%feature("compactdefaultargs") NextUsage;
-		%feature("autodoc", "	* Returns field NextUsage
-
-	:rtype: Handle_StepRepr_NextAssemblyUsageOccurrence
-") NextUsage;
-		Handle_StepRepr_NextAssemblyUsageOccurrence NextUsage ();
-		%feature("compactdefaultargs") SetNextUsage;
-		%feature("autodoc", "	* Set field NextUsage
-
-	:param NextUsage:
-	:type NextUsage: Handle_StepRepr_NextAssemblyUsageOccurrence &
-	:rtype: None
-") SetNextUsage;
-		void SetNextUsage (const Handle_StepRepr_NextAssemblyUsageOccurrence & NextUsage);
+		opencascade::handle<StepRepr_AssemblyComponentUsage> UpperUsage ();
 };
 
 
 %make_alias(StepRepr_SpecifiedHigherUsageOccurrence)
 
 %extend StepRepr_SpecifiedHigherUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_Tangent;
+class StepRepr_Tangent : public StepRepr_DerivedShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_Tangent;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_Tangent;
+		 StepRepr_Tangent ();
+};
+
+
+%make_alias(StepRepr_Tangent)
+
+%extend StepRepr_Tangent {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4010,6 +3374,94 @@ class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor StepRepr_AllAroundShapeAspect;
+class StepRepr_AllAroundShapeAspect : public StepRepr_ContinuosShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_AllAroundShapeAspect;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_AllAroundShapeAspect;
+		 StepRepr_AllAroundShapeAspect ();
+};
+
+
+%make_alias(StepRepr_AllAroundShapeAspect)
+
+%extend StepRepr_AllAroundShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_BetweenShapeAspect;
+class StepRepr_BetweenShapeAspect : public StepRepr_ContinuosShapeAspect {
+	public:
+		%feature("compactdefaultargs") StepRepr_BetweenShapeAspect;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_BetweenShapeAspect;
+		 StepRepr_BetweenShapeAspect ();
+};
+
+
+%make_alias(StepRepr_BetweenShapeAspect)
+
+%extend StepRepr_BetweenShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI;
+class StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnitAndQRI {
+	public:
+		%feature("compactdefaultargs") GetLengthMeasureWithUnit;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_LengthMeasureWithUnit>
+") GetLengthMeasureWithUnit;
+		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetLengthMeasureWithUnit ();
+		%feature("compactdefaultargs") SetLengthMeasureWithUnit;
+		%feature("autodoc", "	:param aLMWU:
+	:type aLMWU: opencascade::handle<StepBasic_LengthMeasureWithUnit> &
+	:rtype: None
+") SetLengthMeasureWithUnit;
+		void SetLengthMeasureWithUnit (const opencascade::handle<StepBasic_LengthMeasureWithUnit> & aLMWU);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI;
+		 StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI ();
+};
+
+
+%make_alias(StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI)
+
+%extend StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI;
+class StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnitAndQRI {
+	public:
+		%feature("compactdefaultargs") GetPlaneAngleMeasureWithUnit;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit>
+") GetPlaneAngleMeasureWithUnit;
+		opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> GetPlaneAngleMeasureWithUnit ();
+		%feature("compactdefaultargs") SetPlaneAngleMeasureWithUnit;
+		%feature("autodoc", "	:param aLMWU:
+	:type aLMWU: opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> &
+	:rtype: None
+") SetPlaneAngleMeasureWithUnit;
+		void SetPlaneAngleMeasureWithUnit (const opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> & aLMWU);
+		%feature("compactdefaultargs") StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI;
+		%feature("autodoc", "	:rtype: None
+") StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI;
+		 StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI ();
+};
+
+
+%make_alias(StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI)
+
+%extend StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeRepresentationRelationshipWithTransformation;
 class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRepr_RepresentationRelationshipWithTransformation {
 	public:
@@ -4027,3 +3479,78 @@ class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRe
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+%wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
+class StepRepr_HArray1OfMaterialPropertyRepresentation : public  StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
+  public:
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfMaterialPropertyRepresentation::value_type& theValue);
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const  StepRepr_Array1OfMaterialPropertyRepresentation& theOther);
+    const  StepRepr_Array1OfMaterialPropertyRepresentation& Array1();
+     StepRepr_Array1OfMaterialPropertyRepresentation& ChangeArray1();
+};
+%make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
+
+
+%wrap_handle(StepRepr_HArray1OfRepresentationItem)
+class StepRepr_HArray1OfRepresentationItem : public  StepRepr_Array1OfRepresentationItem, public Standard_Transient {
+  public:
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfRepresentationItem::value_type& theValue);
+    StepRepr_HArray1OfRepresentationItem(const  StepRepr_Array1OfRepresentationItem& theOther);
+    const  StepRepr_Array1OfRepresentationItem& Array1();
+     StepRepr_Array1OfRepresentationItem& ChangeArray1();
+};
+%make_alias(StepRepr_HArray1OfRepresentationItem)
+
+
+%wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
+class StepRepr_HArray1OfPropertyDefinitionRepresentation : public  StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
+  public:
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfPropertyDefinitionRepresentation::value_type& theValue);
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const  StepRepr_Array1OfPropertyDefinitionRepresentation& theOther);
+    const  StepRepr_Array1OfPropertyDefinitionRepresentation& Array1();
+     StepRepr_Array1OfPropertyDefinitionRepresentation& ChangeArray1();
+};
+%make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
+
+
+%wrap_handle(StepRepr_HArray1OfShapeAspect)
+class StepRepr_HArray1OfShapeAspect : public  StepRepr_Array1OfShapeAspect, public Standard_Transient {
+  public:
+    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfShapeAspect::value_type& theValue);
+    StepRepr_HArray1OfShapeAspect(const  StepRepr_Array1OfShapeAspect& theOther);
+    const  StepRepr_Array1OfShapeAspect& Array1();
+     StepRepr_Array1OfShapeAspect& ChangeArray1();
+};
+%make_alias(StepRepr_HArray1OfShapeAspect)
+
+
+/* harray2 class */
+/* harray2 class */
+%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
+class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
+    StepRepr_HSequenceOfRepresentationItem();
+    StepRepr_HSequenceOfRepresentationItem(const  StepRepr_SequenceOfRepresentationItem& theOther);
+    const  StepRepr_SequenceOfRepresentationItem& Sequence();
+    void Append (const  StepRepr_SequenceOfRepresentationItem::value_type& theItem);
+    void Append ( StepRepr_SequenceOfRepresentationItem& theSequence);
+     StepRepr_SequenceOfRepresentationItem& ChangeSequence();
+};
+%make_alias(StepRepr_HSequenceOfRepresentationItem)
+
+
+%wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
+class StepRepr_HSequenceOfMaterialPropertyRepresentation : public  StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
+    StepRepr_HSequenceOfMaterialPropertyRepresentation();
+    StepRepr_HSequenceOfMaterialPropertyRepresentation(const  StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);
+    const  StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence();
+    void Append (const  StepRepr_SequenceOfMaterialPropertyRepresentation::value_type& theItem);
+    void Append ( StepRepr_SequenceOfMaterialPropertyRepresentation& theSequence);
+     StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence();
+};
+%make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
+
+

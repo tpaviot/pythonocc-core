@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,76 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:26
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define BREPPRIMAPIDOCSTRING
-"The BRepBuilderAPI package  provides an  Application
-Programming Interface for the BRep topology data
-structure.
-
-The API is a set of classes aiming to provide :
-
-* High level and simple calls for the most common
-operations.
-
-*  Keeping  an  access on  the  low-level
-implementation of high-level calls.
-
-* Examples of programming of high-level operations
-from low-level operations.
-
-* A complete coverage of modelling :
-
-- Creating vertices ,edges, faces, solids.
-
-- Sweeping operations.
-
-- Boolean operations.
-
-- Global properties computation.
-
-
-The API provides classes to build objects:
-
-* The constructors of the classes provides the
-different constructions methods.
-
-* The class keeps as fields the  different tools
-used to build the object.
-
-*  The class provides a casting method to get
-automatically the result with a  function-like
-call.
-
-For example to make a vertex <V> from a point <P>
-one can writes :
-
-V = BRepBuilderAPI_MakeVertex(P);
-
-or
-
-BRepBuilderAPI_MakeVertex MV(P);
-V = MV.Vertex();
-
-
-For tolerances a default precision is used which
-can  be  changed  by  the  packahe method
-BRepBuilderAPI::Precision.
-
-For error handling the BRepBuilderAPI commands raise only
-the NotDone error. When Done is false on a command
-the error description can be asked to the command.
-
-In theory the comands can be  called with any
-arguments, argument checking is performed by the
-command.
-
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -101,12 +50,17 @@ command.
 
 %include BRepPrimAPI_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor BRepPrimAPI_MakeBox;
 class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
@@ -161,50 +115,24 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepPrimAPI_MakeBox;
 		 BRepPrimAPI_MakeBox (const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
-		%feature("compactdefaultargs") Wedge;
-		%feature("autodoc", "	* Returns the internal algorithm.
-
-	:rtype: BRepPrim_Wedge
-") Wedge;
-		BRepPrim_Wedge & Wedge ();
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Stores the solid in myShape.
-
-	:rtype: void
-") Build;
-		virtual void Build ();
-		%feature("compactdefaultargs") Shell;
-		%feature("autodoc", "	* Returns the constructed box as a shell.
-
-	:rtype: TopoDS_Shell
-") Shell;
-		const TopoDS_Shell  Shell ();
-		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Shell;
-		 operator TopoDS_Shell ();
-		%feature("compactdefaultargs") Solid;
-		%feature("autodoc", "	* Returns the constructed box as a solid.
-
-	:rtype: TopoDS_Solid
-") Solid;
-		const TopoDS_Solid  Solid ();
-		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Solid;
-		 operator TopoDS_Solid ();
-		%feature("compactdefaultargs") BottomFace;
-		%feature("autodoc", "	* Returns ZMin face
-
-	:rtype: TopoDS_Face
-") BottomFace;
-		const TopoDS_Face  BottomFace ();
 		%feature("compactdefaultargs") BackFace;
 		%feature("autodoc", "	* Returns XMin face
 
 	:rtype: TopoDS_Face
 ") BackFace;
 		const TopoDS_Face  BackFace ();
+		%feature("compactdefaultargs") BottomFace;
+		%feature("autodoc", "	* Returns ZMin face
+
+	:rtype: TopoDS_Face
+") BottomFace;
+		const TopoDS_Face  BottomFace ();
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "	* Stores the solid in myShape.
+
+	:rtype: void
+") Build;
+		virtual void Build ();
 		%feature("compactdefaultargs") FrontFace;
 		%feature("autodoc", "	* Returns XMax face
 
@@ -223,12 +151,38 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 	:rtype: TopoDS_Face
 ") RightFace;
 		const TopoDS_Face  RightFace ();
+		%feature("compactdefaultargs") Shell;
+		%feature("autodoc", "	* Returns the constructed box as a shell.
+
+	:rtype: TopoDS_Shell
+") Shell;
+		const TopoDS_Shell  Shell ();
+		%feature("compactdefaultargs") Solid;
+		%feature("autodoc", "	* Returns the constructed box as a solid.
+
+	:rtype: TopoDS_Solid
+") Solid;
+		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") TopFace;
 		%feature("autodoc", "	* Returns ZMax face
 
 	:rtype: TopoDS_Face
 ") TopFace;
 		const TopoDS_Face  TopFace ();
+		%feature("compactdefaultargs") Wedge;
+		%feature("autodoc", "	* Returns the internal algorithm.
+
+	:rtype: BRepPrim_Wedge
+") Wedge;
+		BRepPrim_Wedge & Wedge ();
+		%feature("compactdefaultargs") operator TopoDS_Shell;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Shell;
+		 operator TopoDS_Shell ();
+		%feature("compactdefaultargs") operator TopoDS_Solid;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Solid;
+		 operator TopoDS_Solid ();
 };
 
 
@@ -281,12 +235,6 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 %nodefaultctor BRepPrimAPI_MakeOneAxis;
 class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 	public:
-		%feature("compactdefaultargs") OneAxis;
-		%feature("autodoc", "	* The inherited commands should provide the algorithm. Returned as a pointer.
-
-	:rtype: Standard_Address
-") OneAxis;
-		virtual Standard_Address OneAxis ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Stores the solid in myShape.
 
@@ -299,26 +247,32 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 	:rtype: TopoDS_Face
 ") Face;
 		const TopoDS_Face  Face ();
-		%feature("compactdefaultargs") operator TopoDS_Face;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Face;
-		 operator TopoDS_Face ();
+		%feature("compactdefaultargs") OneAxis;
+		%feature("autodoc", "	* The inherited commands should provide the algorithm. Returned as a pointer.
+
+	:rtype: Standard_Address
+") OneAxis;
+		virtual Standard_Address OneAxis ();
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "	* Returns the constructed rotational primitive as a shell.
 
 	:rtype: TopoDS_Shell
 ") Shell;
 		const TopoDS_Shell  Shell ();
-		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Shell;
-		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "	* Returns the constructed rotational primitive as a solid.
 
 	:rtype: TopoDS_Solid
 ") Solid;
 		const TopoDS_Solid  Solid ();
+		%feature("compactdefaultargs") operator TopoDS_Face;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Face;
+		 operator TopoDS_Face ();
+		%feature("compactdefaultargs") operator TopoDS_Shell;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Shell;
+		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Solid;
@@ -429,12 +383,6 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 	:rtype: None
 ") BRepPrimAPI_MakeWedge;
 		 BRepPrimAPI_MakeWedge (const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz,const Standard_Real xmin,const Standard_Real zmin,const Standard_Real xmax,const Standard_Real zmax);
-		%feature("compactdefaultargs") Wedge;
-		%feature("autodoc", "	* Returns the internal algorithm.
-
-	:rtype: BRepPrim_Wedge
-") Wedge;
-		BRepPrim_Wedge & Wedge ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Stores the solid in myShape.
 
@@ -447,16 +395,22 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 	:rtype: TopoDS_Shell
 ") Shell;
 		const TopoDS_Shell  Shell ();
-		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
-") operator TopoDS_Shell;
-		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "	* Returns the constructed box in the form of a solid.
 
 	:rtype: TopoDS_Solid
 ") Solid;
 		const TopoDS_Solid  Solid ();
+		%feature("compactdefaultargs") Wedge;
+		%feature("autodoc", "	* Returns the internal algorithm.
+
+	:rtype: BRepPrim_Wedge
+") Wedge;
+		BRepPrim_Wedge & Wedge ();
+		%feature("compactdefaultargs") operator TopoDS_Shell;
+		%feature("autodoc", "	:rtype: 
+") operator TopoDS_Shell;
+		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
 ") operator TopoDS_Solid;
@@ -528,18 +482,18 @@ class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 	:rtype: None
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone (const gp_Ax2 & Axes,const Standard_Real R1,const Standard_Real R2,const Standard_Real H,const Standard_Real angle);
-		%feature("compactdefaultargs") OneAxis;
-		%feature("autodoc", "	* Missing detailed docstring.
-
-	:rtype: Standard_Address
-") OneAxis;
-		Standard_Address OneAxis ();
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "	* Missing detailed docstring.
 
 	:rtype: BRepPrim_Cone
 ") Cone;
 		BRepPrim_Cone & Cone ();
+		%feature("compactdefaultargs") OneAxis;
+		%feature("autodoc", "	* Missing detailed docstring.
+
+	:rtype: Standard_Address
+") OneAxis;
+		Standard_Address OneAxis ();
 };
 
 
@@ -599,18 +553,18 @@ class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 	:rtype: None
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder (const gp_Ax2 & Axes,const Standard_Real R,const Standard_Real H,const Standard_Real Angle);
-		%feature("compactdefaultargs") OneAxis;
-		%feature("autodoc", "	* Missing detailed docstring.
-
-	:rtype: Standard_Address
-") OneAxis;
-		Standard_Address OneAxis ();
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "	* Missing detailed docstring.
 
 	:rtype: BRepPrim_Cylinder
 ") Cylinder;
 		BRepPrim_Cylinder & Cylinder ();
+		%feature("compactdefaultargs") OneAxis;
+		%feature("autodoc", "	* Missing detailed docstring.
+
+	:rtype: Standard_Address
+") OneAxis;
+		Standard_Address OneAxis ();
 };
 
 
@@ -652,12 +606,6 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	:rtype: None
 ") BRepPrimAPI_MakePrism;
 		 BRepPrimAPI_MakePrism (const TopoDS_Shape & S,const gp_Dir & D,const Standard_Boolean Inf = Standard_True,const Standard_Boolean Copy = Standard_False,const Standard_Boolean Canonize = Standard_True);
-		%feature("compactdefaultargs") Prism;
-		%feature("autodoc", "	* Returns the internal sweeping algorithm.
-
-	:rtype: BRepSweep_Prism
-") Prism;
-		const BRepSweep_Prism & Prism ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Builds the resulting shape (redefined from MakeShape).
 
@@ -670,20 +618,6 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape ();
-		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	* Returns the TopoDS Shape of the top of the prism. In the case of a finite prism, FirstShape returns the basis of the prism, in other words, S if Copy is false; otherwise, the copy of S belonging to the prism. LastShape returns the copy of S translated by V at the time of construction.
-
-	:rtype: TopoDS_Shape
-") LastShape;
-		TopoDS_Shape LastShape ();
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns ListOfShape from TopTools.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Generated;
-		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	* Returns the TopoDS Shape of the bottom of the prism. generated with theShape (subShape of the generating shape).
 
@@ -692,6 +626,28 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns ListOfShape from TopTools.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape S has been deleted.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") LastShape;
+		%feature("autodoc", "	* Returns the TopoDS Shape of the top of the prism. In the case of a finite prism, FirstShape returns the basis of the prism, in other words, S if Copy is false; otherwise, the copy of S belonging to the prism. LastShape returns the copy of S translated by V at the time of construction.
+
+	:rtype: TopoDS_Shape
+") LastShape;
+		TopoDS_Shape LastShape ();
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "	* Returns the TopoDS Shape of the top of the prism. generated with theShape (subShape of the generating shape).
 
@@ -700,6 +656,12 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	:rtype: TopoDS_Shape
 ") LastShape;
 		TopoDS_Shape LastShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Prism;
+		%feature("autodoc", "	* Returns the internal sweeping algorithm.
+
+	:rtype: BRepSweep_Prism
+") Prism;
+		const BRepSweep_Prism & Prism ();
 };
 
 
@@ -737,36 +699,24 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	:rtype: None
 ") BRepPrimAPI_MakeRevol;
 		 BRepPrimAPI_MakeRevol (const TopoDS_Shape & S,const gp_Ax1 & A,const Standard_Boolean Copy = Standard_False);
-		%feature("compactdefaultargs") Revol;
-		%feature("autodoc", "	* Returns the internal sweeping algorithm.
-
-	:rtype: BRepSweep_Revol
-") Revol;
-		const BRepSweep_Revol & Revol ();
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "	* Builds the resulting shape (redefined from MakeShape).
 
 	:rtype: void
 ") Build;
 		virtual void Build ();
+		%feature("compactdefaultargs") Degenerated;
+		%feature("autodoc", "	* Returns the list of degenerated edges
+
+	:rtype: TopTools_ListOfShape
+") Degenerated;
+		const TopTools_ListOfShape & Degenerated ();
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	* Returns the first shape of the revol (coinciding with the generating shape).
 
 	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape ();
-		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	* Returns the TopoDS Shape of the end of the revol.
-
-	:rtype: TopoDS_Shape
-") LastShape;
-		TopoDS_Shape LastShape ();
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") Generated;
-		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	* Returns the TopoDS Shape of the beginning of the revolution, generated with theShape (subShape of the generating shape).
 
@@ -775,6 +725,34 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns list of shape generated from shape S Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID. For shapes of other types method always returns empty list
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") HasDegenerated;
+		%feature("autodoc", "	* Check if there are degenerated edges in the result.
+
+	:rtype: bool
+") HasDegenerated;
+		Standard_Boolean HasDegenerated ();
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape S has been deleted.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") LastShape;
+		%feature("autodoc", "	* Returns the TopoDS Shape of the end of the revol.
+
+	:rtype: TopoDS_Shape
+") LastShape;
+		TopoDS_Shape LastShape ();
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "	* Returns the TopoDS Shape of the end of the revolution, generated with theShape (subShape of the generating shape).
 
@@ -783,16 +761,12 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	:rtype: TopoDS_Shape
 ") LastShape;
 		TopoDS_Shape LastShape (const TopoDS_Shape & theShape);
-		%feature("compactdefaultargs") HasDegenerated;
-		%feature("autodoc", "	* Check if there are degenerated edges in the result.
+		%feature("compactdefaultargs") Revol;
+		%feature("autodoc", "	* Returns the internal sweeping algorithm.
 
-	:rtype: bool
-") HasDegenerated;
-		Standard_Boolean HasDegenerated ();
-		%feature("compactdefaultargs") Degenerated;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") Degenerated;
-		const TopTools_ListOfShape & Degenerated ();
+	:rtype: BRepSweep_Revol
+") Revol;
+		const BRepSweep_Revol & Revol ();
 };
 
 
@@ -808,37 +782,37 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const Handle_Geom_Curve & Meridian);
+		 BRepPrimAPI_MakeRevolution (const opencascade::handle<Geom_Curve> & Meridian);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param angle:
 	:type angle: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const Handle_Geom_Curve & Meridian,const Standard_Real angle);
+		 BRepPrimAPI_MakeRevolution (const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real angle);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param VMin:
 	:type VMin: float
 	:param VMax:
 	:type VMax: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const Handle_Geom_Curve & Meridian,const Standard_Real VMin,const Standard_Real VMax);
+		 BRepPrimAPI_MakeRevolution (const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real VMin,const Standard_Real VMax);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param VMin:
 	:type VMin: float
 	:param VMax:
@@ -847,50 +821,50 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:type angle: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const Handle_Geom_Curve & Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
+		 BRepPrimAPI_MakeRevolution (const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const Handle_Geom_Curve & Meridian);
+		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const opencascade::handle<Geom_Curve> & Meridian);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param angle:
 	:type angle: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const Handle_Geom_Curve & Meridian,const Standard_Real angle);
+		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real angle);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z.
 
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param VMin:
 	:type VMin: float
 	:param VMax:
 	:type VMax: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const Handle_Geom_Curve & Meridian,const Standard_Real VMin,const Standard_Real VMax);
+		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real VMin,const Standard_Real VMax);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "	* Make a revolution body by rotating a curve around Z. For all algorithms the resulting shape is composed of - a lateral revolved face, - two planar faces in planes parallel to the plane z = 0, and passing by the extremities of the revolved portion of Meridian, if these points are not on the Z axis (in case of a complete revolved shape, these faces are circles), - and in the case of a portion of a revolved shape, two planar faces to close the shape (in the planes u = 0 and u = angle).
 
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: Handle_Geom_Curve &
+	:type Meridian: opencascade::handle<Geom_Curve> &
 	:param VMin:
 	:type VMin: float
 	:param VMax:
@@ -899,7 +873,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:type angle: float
 	:rtype: None
 ") BRepPrimAPI_MakeRevolution;
-		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const Handle_Geom_Curve & Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
+		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const opencascade::handle<Geom_Curve> & Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
 		%feature("compactdefaultargs") OneAxis;
 		%feature("autodoc", "	* Missing detailed docstring.
 
@@ -1226,3 +1200,6 @@ class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

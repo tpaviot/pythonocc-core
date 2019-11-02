@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:29
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define LOCOPEDOCSTRING
-"Provides tools to implement local   topological
-operations on a shape.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,9 +50,6 @@ operations on a shape.
 
 %include LocOpe_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 enum LocOpe_Operation {
 	LocOpe_FUSE = 0,
@@ -53,14 +59,26 @@ enum LocOpe_Operation {
 
 /* end public enums declaration */
 
-%wrap_handle(LocOpe_DataMapNodeOfDataMapOfShapePnt)
+/* templates */
+%template(LocOpe_SequenceOfLin) NCollection_Sequence <gp_Lin>;
+%template(LocOpe_DataMapOfShapePnt) NCollection_DataMap <TopoDS_Shape , gp_Pnt , TopTools_ShapeMapHasher>;
+%template(LocOpe_SequenceOfCirc) NCollection_Sequence <gp_Circ>;
+%template(LocOpe_SequenceOfPntFace) NCollection_Sequence <LocOpe_PntFace>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <gp_Lin> LocOpe_SequenceOfLin;
+typedef NCollection_DataMap <TopoDS_Shape , gp_Pnt , TopTools_ShapeMapHasher> LocOpe_DataMapOfShapePnt;
+typedef NCollection_DataMap <TopoDS_Shape , gp_Pnt , TopTools_ShapeMapHasher>::Iterator LocOpe_DataMapIteratorOfDataMapOfShapePnt;
+typedef NCollection_Sequence <gp_Circ> LocOpe_SequenceOfCirc;
+typedef NCollection_Sequence <LocOpe_PntFace> LocOpe_SequenceOfPntFace;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(LocOpe_GeneratedShape)
-%wrap_handle(LocOpe_HBuilder)
-%wrap_handle(LocOpe_SequenceNodeOfSequenceOfCirc)
-%wrap_handle(LocOpe_SequenceNodeOfSequenceOfLin)
-%wrap_handle(LocOpe_SequenceNodeOfSequenceOfPntFace)
 %wrap_handle(LocOpe_WiresOnShape)
 %wrap_handle(LocOpe_GluedShape)
+/* end handles declaration */
 
 %rename(locope) LocOpe;
 class LocOpe {
@@ -85,6 +103,14 @@ class LocOpe {
 	:rtype: bool
 ") Closed;
 		static Standard_Boolean Closed (const TopoDS_Edge & E,const TopoDS_Face & OnF);
+		%feature("compactdefaultargs") SampleEdges;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param Pt:
+	:type Pt: TColgp_SequenceOfPnt
+	:rtype: void
+") SampleEdges;
+		static void SampleEdges (const TopoDS_Shape & S,TColgp_SequenceOfPnt & Pt);
 		%feature("compactdefaultargs") TgtFaces;
 		%feature("autodoc", "	* Returns Standard_True when the faces are tangent
 
@@ -97,14 +123,6 @@ class LocOpe {
 	:rtype: bool
 ") TgtFaces;
 		static Standard_Boolean TgtFaces (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("compactdefaultargs") SampleEdges;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:param Pt:
-	:type Pt: TColgp_SequenceOfPnt
-	:rtype: void
-") SampleEdges;
-		static void SampleEdges (const TopoDS_Shape & S,TColgp_SequenceOfPnt & Pt);
 };
 
 
@@ -151,6 +169,10 @@ class LocOpe_BuildShape {
 %nodefaultctor LocOpe_BuildWires;
 class LocOpe_BuildWires {
 	public:
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") LocOpe_BuildWires;
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_BuildWires;
@@ -159,22 +181,18 @@ class LocOpe_BuildWires {
 		%feature("autodoc", "	:param Ledges:
 	:type Ledges: TopTools_ListOfShape &
 	:param PW:
-	:type PW: Handle_LocOpe_WiresOnShape &
+	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
 	:rtype: None
 ") LocOpe_BuildWires;
-		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_WiresOnShape & PW);
+		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const opencascade::handle<LocOpe_WiresOnShape> & PW);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param Ledges:
 	:type Ledges: TopTools_ListOfShape &
 	:param PW:
-	:type PW: Handle_LocOpe_WiresOnShape &
+	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
 	:rtype: None
 ") Perform;
-		void Perform (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_WiresOnShape & PW);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
+		void Perform (const TopTools_ListOfShape & Ledges,const opencascade::handle<LocOpe_WiresOnShape> & PW);
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Result;
@@ -190,6 +208,24 @@ class LocOpe_BuildWires {
 %nodefaultctor LocOpe_CSIntersector;
 class LocOpe_CSIntersector {
 	public:
+		%feature("compactdefaultargs") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
+		void Destroy ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns <Standard_True> if the intersection has been done.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") LocOpe_CSIntersector;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -204,56 +240,6 @@ class LocOpe_CSIntersector {
 	:rtype: None
 ") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param Slin:
-	:type Slin: LocOpe_SequenceOfLin &
-	:rtype: None
-") Perform;
-		void Perform (const LocOpe_SequenceOfLin & Slin);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param Scir:
-	:type Scir: LocOpe_SequenceOfCirc &
-	:rtype: None
-") Perform;
-		void Perform (const LocOpe_SequenceOfCirc & Scir);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param Scur:
-	:type Scur: TColGeom_SequenceOfCurve &
-	:rtype: None
-") Perform;
-		void Perform (const TColGeom_SequenceOfCurve & Scur);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns <Standard_True> if the intersection has been done.
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of intersection point on the element of range <I>.
-
-	:param I:
-	:type I: int
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints (const Standard_Integer I);
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns the intersection point of range <Index> on element of range <I>. The points are sorted in increasing order of parameter along the axis.
-
-	:param I:
-	:type I: int
-	:param Index:
-	:type Index: int
-	:rtype: LocOpe_PntFace
-") Point;
-		const LocOpe_PntFace & Point (const Standard_Integer I,const Standard_Integer Index);
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
@@ -272,24 +258,6 @@ class LocOpe_CSIntersector {
 	:rtype: bool
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
-
-	:param I:
-	:type I: int
-	:param From:
-	:type From: float
-	:param Tol:
-	:type Tol: float
-	:param Or:
-	:type Or: TopAbs_Orientation &
-	:param IndFrom:
-	:type IndFrom: int &
-	:param IndTo:
-	:type IndTo: int &
-	:rtype: bool
-") LocalizeBefore;
-		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
@@ -309,6 +277,24 @@ class LocOpe_CSIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
+
+	:param I:
+	:type I: int
+	:param From:
+	:type From: float
+	:param Tol:
+	:type Tol: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: int &
+	:param IndTo:
+	:type IndTo: int &
+	:rtype: bool
+") LocalizeBefore;
+		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
 	:param I:
@@ -326,10 +312,42 @@ class LocOpe_CSIntersector {
 	:rtype: bool
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	* Returns the number of intersection point on the element of range <I>.
+
+	:param I:
+	:type I: int
+	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints (const Standard_Integer I);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	:param Slin:
+	:type Slin: LocOpe_SequenceOfLin &
+	:rtype: None
+") Perform;
+		void Perform (const LocOpe_SequenceOfLin & Slin);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	:param Scir:
+	:type Scir: LocOpe_SequenceOfCirc &
+	:rtype: None
+") Perform;
+		void Perform (const LocOpe_SequenceOfCirc & Scir);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	:param Scur:
+	:type Scur: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Perform;
+		void Perform (const TColGeom_SequenceOfCurve & Scur);
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* Returns the intersection point of range <Index> on element of range <I>. The points are sorted in increasing order of parameter along the axis.
+
+	:param I:
+	:type I: int
+	:param Index:
+	:type Index: int
+	:rtype: LocOpe_PntFace
+") Point;
+		const LocOpe_PntFace & Point (const Standard_Integer I,const Standard_Integer Index);
 };
 
 
@@ -341,32 +359,6 @@ class LocOpe_CSIntersector {
 %nodefaultctor LocOpe_CurveShapeIntersector;
 class LocOpe_CurveShapeIntersector {
 	public:
-		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") LocOpe_CurveShapeIntersector;
-		 LocOpe_CurveShapeIntersector ();
-		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
-		%feature("autodoc", "	* Creates and performs the intersection betwwen <Ax1> and <S>.
-
-	:param Axis:
-	:type Axis: gp_Ax1
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_CurveShapeIntersector;
-		 LocOpe_CurveShapeIntersector (const gp_Ax1 & Axis,const TopoDS_Shape & S);
-		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
-		%feature("autodoc", "	* Creates and performs yte intersection betwwen <C> and <S>.
-
-	:param C:
-	:type C: gp_Circ
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_CurveShapeIntersector;
-		 LocOpe_CurveShapeIntersector (const gp_Circ & C,const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
 
@@ -393,20 +385,32 @@ class LocOpe_CurveShapeIntersector {
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of intersection point.
+		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
+		%feature("autodoc", "	* Empty constructor.
 
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns the intersection point of range <Index>. The points are sorted in increasing order of parameter along the axis.
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
+		 LocOpe_CurveShapeIntersector ();
+		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
+		%feature("autodoc", "	* Creates and performs the intersection betwwen <Ax1> and <S>.
 
-	:param Index:
-	:type Index: int
-	:rtype: LocOpe_PntFace
-") Point;
-		const LocOpe_PntFace & Point (const Standard_Integer Index);
+	:param Axis:
+	:type Axis: gp_Ax1
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
+		 LocOpe_CurveShapeIntersector (const gp_Ax1 & Axis,const TopoDS_Shape & S);
+		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
+		%feature("autodoc", "	* Creates and performs yte intersection betwwen <C> and <S>.
+
+	:param C:
+	:type C: gp_Circ
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
+		 LocOpe_CurveShapeIntersector (const gp_Circ & C,const TopoDS_Shape & S);
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "	* Searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
@@ -421,20 +425,6 @@ class LocOpe_CurveShapeIntersector {
 	:rtype: bool
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* Searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
-
-	:param From:
-	:type From: float
-	:param Or:
-	:type Or: TopAbs_Orientation &
-	:param IndFrom:
-	:type IndFrom: int &
-	:param IndTo:
-	:type IndTo: int &
-	:rtype: bool
-") LocalizeBefore;
-		Standard_Boolean LocalizeBefore (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "	* Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
@@ -450,6 +440,20 @@ class LocOpe_CurveShapeIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
+		%feature("autodoc", "	* Searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
+
+	:param From:
+	:type From: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: int &
+	:param IndTo:
+	:type IndTo: int &
+	:rtype: bool
+") LocalizeBefore;
+		Standard_Boolean LocalizeBefore (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "	* Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
 	:param FromInd:
@@ -463,6 +467,20 @@ class LocOpe_CurveShapeIntersector {
 	:rtype: bool
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	* Returns the number of intersection point.
+
+	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints ();
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* Returns the intersection point of range <Index>. The points are sorted in increasing order of parameter along the axis.
+
+	:param Index:
+	:type Index: int
+	:rtype: LocOpe_PntFace
+") Point;
+		const LocOpe_PntFace & Point (const Standard_Integer Index);
 };
 
 
@@ -474,6 +492,28 @@ class LocOpe_CurveShapeIntersector {
 %nodefaultctor LocOpe_DPrism;
 class LocOpe_DPrism {
 	public:
+		%feature("compactdefaultargs") BarycCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom_Curve>
+") BarycCurve;
+		opencascade::handle<Geom_Curve> BarycCurve ();
+		%feature("compactdefaultargs") Curves;
+		%feature("autodoc", "	:param SCurves:
+	:type SCurves: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Curves;
+		void Curves (TColGeom_SequenceOfCurve & SCurves);
+		%feature("compactdefaultargs") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
+		const TopoDS_Shape  FirstShape ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
+		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", "	:param Spine:
 	:type Spine: TopoDS_Face &
@@ -496,26 +536,10 @@ class LocOpe_DPrism {
 	:rtype: None
 ") LocOpe_DPrism;
 		 LocOpe_DPrism (const TopoDS_Face & Spine,const Standard_Real Height,const Standard_Real Angle);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Spine;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Spine;
-		const TopoDS_Shape  Spine ();
 		%feature("compactdefaultargs") Profile;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Profile;
 		const TopoDS_Shape  Profile ();
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape  FirstShape ();
-		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") LastShape;
-		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
@@ -526,16 +550,10 @@ class LocOpe_DPrism {
 	:rtype: TopTools_ListOfShape
 ") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Curves;
-		%feature("autodoc", "	:param SCurves:
-	:type SCurves: TColGeom_SequenceOfCurve &
-	:rtype: None
-") Curves;
-		void Curves (TColGeom_SequenceOfCurve & SCurves);
-		%feature("compactdefaultargs") BarycCurve;
-		%feature("autodoc", "	:rtype: Handle_Geom_Curve
-") BarycCurve;
-		Handle_Geom_Curve BarycCurve ();
+		%feature("compactdefaultargs") Spine;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Spine;
+		const TopoDS_Shape  Spine ();
 };
 
 
@@ -544,158 +562,21 @@ class LocOpe_DPrism {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-class LocOpe_DataMapIteratorOfDataMapOfShapePnt : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-		 LocOpe_DataMapIteratorOfDataMapOfShapePnt ();
-		%feature("compactdefaultargs") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: LocOpe_DataMapOfShapePnt &
-	:rtype: None
-") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-		 LocOpe_DataMapIteratorOfDataMapOfShapePnt (const LocOpe_DataMapOfShapePnt & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: LocOpe_DataMapOfShapePnt &
-	:rtype: None
-") Initialize;
-		void Initialize (const LocOpe_DataMapOfShapePnt & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Pnt
-") Value;
-		const gp_Pnt  Value ();
-};
-
-
-%extend LocOpe_DataMapIteratorOfDataMapOfShapePnt {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_DataMapNodeOfDataMapOfShapePnt;
-class LocOpe_DataMapNodeOfDataMapOfShapePnt : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") LocOpe_DataMapNodeOfDataMapOfShapePnt;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: gp_Pnt
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") LocOpe_DataMapNodeOfDataMapOfShapePnt;
-		 LocOpe_DataMapNodeOfDataMapOfShapePnt (const TopoDS_Shape & K,const gp_Pnt & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Pnt
-") Value;
-		gp_Pnt  Value ();
-};
-
-
-%make_alias(LocOpe_DataMapNodeOfDataMapOfShapePnt)
-
-%extend LocOpe_DataMapNodeOfDataMapOfShapePnt {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_DataMapOfShapePnt;
-class LocOpe_DataMapOfShapePnt : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") LocOpe_DataMapOfShapePnt;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") LocOpe_DataMapOfShapePnt;
-		 LocOpe_DataMapOfShapePnt (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_DataMapOfShapePnt &
-	:rtype: LocOpe_DataMapOfShapePnt
-") Assign;
-		LocOpe_DataMapOfShapePnt & Assign (const LocOpe_DataMapOfShapePnt & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_DataMapOfShapePnt &
-	:rtype: LocOpe_DataMapOfShapePnt
-") operator =;
-		LocOpe_DataMapOfShapePnt & operator = (const LocOpe_DataMapOfShapePnt & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: gp_Pnt
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const gp_Pnt & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: gp_Pnt
-") Find;
-		const gp_Pnt  Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: gp_Pnt
-") ChangeFind;
-		gp_Pnt  ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend LocOpe_DataMapOfShapePnt {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor LocOpe_FindEdges;
 class LocOpe_FindEdges {
 	public:
+		%feature("compactdefaultargs") EdgeFrom;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") EdgeFrom;
+		const TopoDS_Edge  EdgeFrom ();
+		%feature("compactdefaultargs") EdgeTo;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") EdgeTo;
+		const TopoDS_Edge  EdgeTo ();
+		%feature("compactdefaultargs") InitIterator;
+		%feature("autodoc", "	:rtype: None
+") InitIterator;
+		void InitIterator ();
 		%feature("compactdefaultargs") LocOpe_FindEdges;
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_FindEdges;
@@ -708,6 +589,14 @@ class LocOpe_FindEdges {
 	:rtype: None
 ") LocOpe_FindEdges;
 		 LocOpe_FindEdges (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
+		%feature("compactdefaultargs") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
+		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
+		void Next ();
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	:param FFrom:
 	:type FFrom: TopoDS_Shape &
@@ -716,26 +605,6 @@ class LocOpe_FindEdges {
 	:rtype: None
 ") Set;
 		void Set (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
-		%feature("compactdefaultargs") InitIterator;
-		%feature("autodoc", "	:rtype: None
-") InitIterator;
-		void InitIterator ();
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") EdgeFrom;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") EdgeFrom;
-		const TopoDS_Edge  EdgeFrom ();
-		%feature("compactdefaultargs") EdgeTo;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") EdgeTo;
-		const TopoDS_Edge  EdgeTo ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
 };
 
 
@@ -747,6 +616,14 @@ class LocOpe_FindEdges {
 %nodefaultctor LocOpe_FindEdgesInFace;
 class LocOpe_FindEdgesInFace {
 	public:
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") Edge;
+		const TopoDS_Edge  Edge ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
+		void Init ();
 		%feature("compactdefaultargs") LocOpe_FindEdgesInFace;
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_FindEdgesInFace;
@@ -759,6 +636,14 @@ class LocOpe_FindEdgesInFace {
 	:rtype: None
 ") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace (const TopoDS_Shape & S,const TopoDS_Face & F);
+		%feature("compactdefaultargs") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
+		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
+		void Next ();
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
@@ -767,22 +652,6 @@ class LocOpe_FindEdgesInFace {
 	:rtype: None
 ") Set;
 		void Set (const TopoDS_Shape & S,const TopoDS_Face & F);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:rtype: None
-") Init;
-		void Init ();
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") Edge;
-		const TopoDS_Edge  Edge ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
 };
 
 
@@ -792,12 +661,8 @@ class LocOpe_FindEdgesInFace {
 	}
 };
 %nodefaultctor LocOpe_GeneratedShape;
-class LocOpe_GeneratedShape : public MMgt_TShared {
+class LocOpe_GeneratedShape : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") GeneratingEdges;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") GeneratingEdges;
-		virtual const TopTools_ListOfShape & GeneratingEdges ();
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
 
@@ -814,6 +679,10 @@ class LocOpe_GeneratedShape : public MMgt_TShared {
 	:rtype: TopoDS_Face
 ") Generated;
 		virtual TopoDS_Face Generated (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") GeneratingEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GeneratingEdges;
+		virtual const TopTools_ListOfShape & GeneratingEdges ();
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
 
@@ -833,6 +702,26 @@ class LocOpe_GeneratedShape : public MMgt_TShared {
 %nodefaultctor LocOpe_Generator;
 class LocOpe_Generator {
 	public:
+		%feature("compactdefaultargs") DescendantFace;
+		%feature("autodoc", "	* Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
+
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopTools_ListOfShape
+") DescendantFace;
+		const TopTools_ListOfShape & DescendantFace (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") LocOpe_Generator;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -847,24 +736,12 @@ class LocOpe_Generator {
 	:rtype: None
 ") LocOpe_Generator;
 		 LocOpe_Generator (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param G:
-	:type G: Handle_LocOpe_GeneratedShape &
+	:type G: opencascade::handle<LocOpe_GeneratedShape> &
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_LocOpe_GeneratedShape & G);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
+		void Perform (const opencascade::handle<LocOpe_GeneratedShape> & G);
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "	* Returns the new shape
 
@@ -877,14 +754,6 @@ class LocOpe_Generator {
 	:rtype: TopoDS_Shape
 ") Shape;
 		const TopoDS_Shape  Shape ();
-		%feature("compactdefaultargs") DescendantFace;
-		%feature("autodoc", "	* Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
-
-	:param F:
-	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") DescendantFace;
-		const TopTools_ListOfShape & DescendantFace (const TopoDS_Face & F);
 };
 
 
@@ -896,26 +765,10 @@ class LocOpe_Generator {
 %nodefaultctor LocOpe_Gluer;
 class LocOpe_Gluer {
 	public:
-		%feature("compactdefaultargs") LocOpe_Gluer;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_Gluer;
-		 LocOpe_Gluer ();
-		%feature("compactdefaultargs") LocOpe_Gluer;
-		%feature("autodoc", "	:param Sbase:
-	:type Sbase: TopoDS_Shape &
-	:param Snew:
-	:type Snew: TopoDS_Shape &
-	:rtype: None
-") LocOpe_Gluer;
-		 LocOpe_Gluer (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param Sbase:
-	:type Sbase: TopoDS_Shape &
-	:param Snew:
-	:type Snew: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
+		%feature("compactdefaultargs") BasisShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") BasisShape;
+		const TopoDS_Shape  BasisShape ();
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	:param Fnew:
 	:type Fnew: TopoDS_Face &
@@ -932,6 +785,44 @@ class LocOpe_Gluer {
 	:rtype: None
 ") Bind;
 		void Bind (const TopoDS_Edge & Enew,const TopoDS_Edge & Ebase);
+		%feature("compactdefaultargs") DescendantFaces;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopTools_ListOfShape
+") DescendantFaces;
+		const TopTools_ListOfShape & DescendantFaces (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Edges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Edges;
+		const TopTools_ListOfShape & Edges ();
+		%feature("compactdefaultargs") GluedShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") GluedShape;
+		const TopoDS_Shape  GluedShape ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param Sbase:
+	:type Sbase: TopoDS_Shape &
+	:param Snew:
+	:type Snew: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") LocOpe_Gluer;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_Gluer;
+		 LocOpe_Gluer ();
+		%feature("compactdefaultargs") LocOpe_Gluer;
+		%feature("autodoc", "	:param Sbase:
+	:type Sbase: TopoDS_Shape &
+	:param Snew:
+	:type Snew: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Gluer;
+		 LocOpe_Gluer (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
 		%feature("compactdefaultargs") OpeType;
 		%feature("autodoc", "	:rtype: LocOpe_Operation
 ") OpeType;
@@ -940,32 +831,10 @@ class LocOpe_Gluer {
 		%feature("autodoc", "	:rtype: None
 ") Perform;
 		void Perform ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ResultingShape;
 		const TopoDS_Shape  ResultingShape ();
-		%feature("compactdefaultargs") DescendantFaces;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") DescendantFaces;
-		const TopTools_ListOfShape & DescendantFaces (const TopoDS_Face & F);
-		%feature("compactdefaultargs") BasisShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") BasisShape;
-		const TopoDS_Shape  BasisShape ();
-		%feature("compactdefaultargs") GluedShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") GluedShape;
-		const TopoDS_Shape  GluedShape ();
-		%feature("compactdefaultargs") Edges;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") Edges;
-		const TopTools_ListOfShape & Edges ();
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") TgtEdges;
@@ -978,38 +847,17 @@ class LocOpe_Gluer {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor LocOpe_HBuilder;
-class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder {
-	public:
-		%feature("compactdefaultargs") LocOpe_HBuilder;
-		%feature("autodoc", "	:param BT:
-	:type BT: TopOpeBRepDS_BuildTool &
-	:rtype: None
-") LocOpe_HBuilder;
-		 LocOpe_HBuilder (const TopOpeBRepDS_BuildTool & BT);
-		%feature("compactdefaultargs") Classify;
-		%feature("autodoc", "	:rtype: bool
-") Classify;
-		Standard_Boolean Classify ();
-		%feature("compactdefaultargs") Classify;
-		%feature("autodoc", "	:param B:
-	:type B: bool
-	:rtype: None
-") Classify;
-		void Classify (const Standard_Boolean B);
-};
-
-
-%make_alias(LocOpe_HBuilder)
-
-%extend LocOpe_HBuilder {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor LocOpe_LinearForm;
 class LocOpe_LinearForm {
 	public:
+		%feature("compactdefaultargs") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
+		const TopoDS_Shape  FirstShape ();
+		%feature("compactdefaultargs") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
+		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_LinearForm;
@@ -1066,14 +914,6 @@ class LocOpe_LinearForm {
 	:rtype: None
 ") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vectra,const gp_Pnt & Pnt1,const gp_Pnt & Pnt2);
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape  FirstShape ();
-		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") LastShape;
-		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
@@ -1095,22 +935,16 @@ class LocOpe_LinearForm {
 %nodefaultctor LocOpe_Pipe;
 class LocOpe_Pipe {
 	public:
-		%feature("compactdefaultargs") LocOpe_Pipe;
-		%feature("autodoc", "	:param Spine:
-	:type Spine: TopoDS_Wire &
-	:param Profile:
-	:type Profile: TopoDS_Shape &
-	:rtype: None
-") LocOpe_Pipe;
-		 LocOpe_Pipe (const TopoDS_Wire & Spine,const TopoDS_Shape & Profile);
-		%feature("compactdefaultargs") Spine;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Spine;
-		const TopoDS_Shape  Spine ();
-		%feature("compactdefaultargs") Profile;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Profile;
-		const TopoDS_Shape  Profile ();
+		%feature("compactdefaultargs") BarycCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom_Curve>
+") BarycCurve;
+		opencascade::handle<Geom_Curve> BarycCurve ();
+		%feature("compactdefaultargs") Curves;
+		%feature("autodoc", "	:param Spt:
+	:type Spt: TColgp_SequenceOfPnt
+	:rtype: TColGeom_SequenceOfCurve
+") Curves;
+		const TColGeom_SequenceOfCurve & Curves (const TColgp_SequenceOfPnt & Spt);
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") FirstShape;
@@ -1119,6 +953,18 @@ class LocOpe_Pipe {
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") LastShape;
 		const TopoDS_Shape  LastShape ();
+		%feature("compactdefaultargs") LocOpe_Pipe;
+		%feature("autodoc", "	:param Spine:
+	:type Spine: TopoDS_Wire &
+	:param Profile:
+	:type Profile: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Pipe;
+		 LocOpe_Pipe (const TopoDS_Wire & Spine,const TopoDS_Shape & Profile);
+		%feature("compactdefaultargs") Profile;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Profile;
+		const TopoDS_Shape  Profile ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
@@ -1129,16 +975,10 @@ class LocOpe_Pipe {
 	:rtype: TopTools_ListOfShape
 ") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Curves;
-		%feature("autodoc", "	:param Spt:
-	:type Spt: TColgp_SequenceOfPnt
-	:rtype: TColGeom_SequenceOfCurve
-") Curves;
-		const TColGeom_SequenceOfCurve & Curves (const TColgp_SequenceOfPnt & Spt);
-		%feature("compactdefaultargs") BarycCurve;
-		%feature("autodoc", "	:rtype: Handle_Geom_Curve
-") BarycCurve;
-		Handle_Geom_Curve BarycCurve ();
+		%feature("compactdefaultargs") Spine;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Spine;
+		const TopoDS_Shape  Spine ();
 };
 
 
@@ -1150,6 +990,14 @@ class LocOpe_Pipe {
 %nodefaultctor LocOpe_PntFace;
 class LocOpe_PntFace {
 	public:
+		%feature("compactdefaultargs") ChangeOrientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") ChangeOrientation;
+		TopAbs_Orientation  ChangeOrientation ();
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") Face;
+		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "	* Empty constructor. Useful only for the list.
 
@@ -1172,26 +1020,18 @@ class LocOpe_PntFace {
 	:rtype: None
 ") LocOpe_PntFace;
 		 LocOpe_PntFace (const gp_Pnt & P,const TopoDS_Face & F,const TopAbs_Orientation Or,const Standard_Real Param,const Standard_Real UPar,const Standard_Real VPar);
-		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "	:rtype: gp_Pnt
-") Pnt;
-		const gp_Pnt  Pnt ();
-		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	:rtype: TopoDS_Face
-") Face;
-		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("compactdefaultargs") ChangeOrientation;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") ChangeOrientation;
-		TopAbs_Orientation & ChangeOrientation ();
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();
+		%feature("compactdefaultargs") Pnt;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Pnt;
+		const gp_Pnt  Pnt ();
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "	:rtype: float
 ") UParameter;
@@ -1211,6 +1051,24 @@ class LocOpe_PntFace {
 %nodefaultctor LocOpe_Prism;
 class LocOpe_Prism {
 	public:
+		%feature("compactdefaultargs") BarycCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom_Curve>
+") BarycCurve;
+		opencascade::handle<Geom_Curve> BarycCurve ();
+		%feature("compactdefaultargs") Curves;
+		%feature("autodoc", "	:param SCurves:
+	:type SCurves: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Curves;
+		void Curves (TColGeom_SequenceOfCurve & SCurves);
+		%feature("compactdefaultargs") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
+		const TopoDS_Shape  FirstShape ();
+		%feature("compactdefaultargs") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
+		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_Prism;
@@ -1251,14 +1109,6 @@ class LocOpe_Prism {
 	:rtype: None
 ") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vtra);
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape  FirstShape ();
-		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") LastShape;
-		const TopoDS_Shape  LastShape ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
@@ -1269,16 +1119,6 @@ class LocOpe_Prism {
 	:rtype: TopTools_ListOfShape
 ") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Curves;
-		%feature("autodoc", "	:param SCurves:
-	:type SCurves: TColGeom_SequenceOfCurve &
-	:rtype: None
-") Curves;
-		void Curves (TColGeom_SequenceOfCurve & SCurves);
-		%feature("compactdefaultargs") BarycCurve;
-		%feature("autodoc", "	:rtype: Handle_Geom_Curve
-") BarycCurve;
-		Handle_Geom_Curve BarycCurve ();
 };
 
 
@@ -1287,519 +1127,23 @@ class LocOpe_Prism {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor LocOpe_SequenceNodeOfSequenceOfCirc;
-class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceNodeOfSequenceOfCirc;
-		%feature("autodoc", "	:param I:
-	:type I: gp_Circ
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") LocOpe_SequenceNodeOfSequenceOfCirc;
-		 LocOpe_SequenceNodeOfSequenceOfCirc (const gp_Circ & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Circ
-") Value;
-		gp_Circ  Value ();
-};
-
-
-%make_alias(LocOpe_SequenceNodeOfSequenceOfCirc)
-
-%extend LocOpe_SequenceNodeOfSequenceOfCirc {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_SequenceNodeOfSequenceOfLin;
-class LocOpe_SequenceNodeOfSequenceOfLin : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceNodeOfSequenceOfLin;
-		%feature("autodoc", "	:param I:
-	:type I: gp_Lin
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") LocOpe_SequenceNodeOfSequenceOfLin;
-		 LocOpe_SequenceNodeOfSequenceOfLin (const gp_Lin & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Lin
-") Value;
-		gp_Lin  Value ();
-};
-
-
-%make_alias(LocOpe_SequenceNodeOfSequenceOfLin)
-
-%extend LocOpe_SequenceNodeOfSequenceOfLin {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_SequenceNodeOfSequenceOfPntFace;
-class LocOpe_SequenceNodeOfSequenceOfPntFace : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceNodeOfSequenceOfPntFace;
-		%feature("autodoc", "	:param I:
-	:type I: LocOpe_PntFace &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") LocOpe_SequenceNodeOfSequenceOfPntFace;
-		 LocOpe_SequenceNodeOfSequenceOfPntFace (const LocOpe_PntFace & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: LocOpe_PntFace
-") Value;
-		LocOpe_PntFace & Value ();
-};
-
-
-%make_alias(LocOpe_SequenceNodeOfSequenceOfPntFace)
-
-%extend LocOpe_SequenceNodeOfSequenceOfPntFace {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_SequenceOfCirc;
-class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceOfCirc;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_SequenceOfCirc;
-		 LocOpe_SequenceOfCirc ();
-		%feature("compactdefaultargs") LocOpe_SequenceOfCirc;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfCirc &
-	:rtype: None
-") LocOpe_SequenceOfCirc;
-		 LocOpe_SequenceOfCirc (const LocOpe_SequenceOfCirc & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfCirc &
-	:rtype: LocOpe_SequenceOfCirc
-") Assign;
-		const LocOpe_SequenceOfCirc & Assign (const LocOpe_SequenceOfCirc & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfCirc &
-	:rtype: LocOpe_SequenceOfCirc
-") operator =;
-		const LocOpe_SequenceOfCirc & operator = (const LocOpe_SequenceOfCirc & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Circ
-	:rtype: None
-") Append;
-		void Append (const gp_Circ & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfCirc &
-	:rtype: None
-") Append;
-		void Append (LocOpe_SequenceOfCirc & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Circ
-	:rtype: None
-") Prepend;
-		void Prepend (const gp_Circ & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfCirc &
-	:rtype: None
-") Prepend;
-		void Prepend (LocOpe_SequenceOfCirc & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: gp_Circ
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const gp_Circ & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfCirc &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfCirc & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: gp_Circ
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const gp_Circ & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfCirc &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfCirc & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: gp_Circ
-") First;
-		const gp_Circ  First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: gp_Circ
-") Last;
-		const gp_Circ  Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: LocOpe_SequenceOfCirc &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,LocOpe_SequenceOfCirc & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Circ
-") Value;
-		const gp_Circ  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: gp_Circ
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const gp_Circ & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Circ
-") ChangeValue;
-		gp_Circ  ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend LocOpe_SequenceOfCirc {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_SequenceOfLin;
-class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceOfLin;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_SequenceOfLin;
-		 LocOpe_SequenceOfLin ();
-		%feature("compactdefaultargs") LocOpe_SequenceOfLin;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfLin &
-	:rtype: None
-") LocOpe_SequenceOfLin;
-		 LocOpe_SequenceOfLin (const LocOpe_SequenceOfLin & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfLin &
-	:rtype: LocOpe_SequenceOfLin
-") Assign;
-		const LocOpe_SequenceOfLin & Assign (const LocOpe_SequenceOfLin & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfLin &
-	:rtype: LocOpe_SequenceOfLin
-") operator =;
-		const LocOpe_SequenceOfLin & operator = (const LocOpe_SequenceOfLin & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Lin
-	:rtype: None
-") Append;
-		void Append (const gp_Lin & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfLin &
-	:rtype: None
-") Append;
-		void Append (LocOpe_SequenceOfLin & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Lin
-	:rtype: None
-") Prepend;
-		void Prepend (const gp_Lin & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfLin &
-	:rtype: None
-") Prepend;
-		void Prepend (LocOpe_SequenceOfLin & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: gp_Lin
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const gp_Lin & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfLin &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfLin & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: gp_Lin
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const gp_Lin & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfLin &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfLin & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: gp_Lin
-") First;
-		const gp_Lin  First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: gp_Lin
-") Last;
-		const gp_Lin  Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: LocOpe_SequenceOfLin &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,LocOpe_SequenceOfLin & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Lin
-") Value;
-		const gp_Lin  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: gp_Lin
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const gp_Lin & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: gp_Lin
-") ChangeValue;
-		gp_Lin  ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend LocOpe_SequenceOfLin {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LocOpe_SequenceOfPntFace;
-class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") LocOpe_SequenceOfPntFace;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_SequenceOfPntFace;
-		 LocOpe_SequenceOfPntFace ();
-		%feature("compactdefaultargs") LocOpe_SequenceOfPntFace;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") LocOpe_SequenceOfPntFace;
-		 LocOpe_SequenceOfPntFace (const LocOpe_SequenceOfPntFace & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfPntFace &
-	:rtype: LocOpe_SequenceOfPntFace
-") Assign;
-		const LocOpe_SequenceOfPntFace & Assign (const LocOpe_SequenceOfPntFace & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: LocOpe_SequenceOfPntFace &
-	:rtype: LocOpe_SequenceOfPntFace
-") operator =;
-		const LocOpe_SequenceOfPntFace & operator = (const LocOpe_SequenceOfPntFace & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: LocOpe_PntFace &
-	:rtype: None
-") Append;
-		void Append (const LocOpe_PntFace & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") Append;
-		void Append (LocOpe_SequenceOfPntFace & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: LocOpe_PntFace &
-	:rtype: None
-") Prepend;
-		void Prepend (const LocOpe_PntFace & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") Prepend;
-		void Prepend (LocOpe_SequenceOfPntFace & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: LocOpe_PntFace &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const LocOpe_PntFace & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfPntFace & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: LocOpe_PntFace &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const LocOpe_PntFace & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfPntFace & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: LocOpe_PntFace
-") First;
-		const LocOpe_PntFace & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: LocOpe_PntFace
-") Last;
-		const LocOpe_PntFace & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: LocOpe_SequenceOfPntFace &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,LocOpe_SequenceOfPntFace & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: LocOpe_PntFace
-") Value;
-		const LocOpe_PntFace & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: LocOpe_PntFace &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const LocOpe_PntFace & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: LocOpe_PntFace
-") ChangeValue;
-		LocOpe_PntFace & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend LocOpe_SequenceOfPntFace {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor LocOpe_SplitDrafts;
 class LocOpe_SplitDrafts {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initializes the algoritm with the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns <Standard_True> if the modification has been succesfully performed.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -1814,14 +1158,10 @@ class LocOpe_SplitDrafts {
 	:rtype: None
 ") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initializes the algoritm with the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") OriginalShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") OriginalShape;
+		const TopoDS_Shape  OriginalShape ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <Standard_False>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <Standard_False>,no draft angle is applied to the right part of the wire.
 
@@ -1864,16 +1204,6 @@ class LocOpe_SplitDrafts {
 	:rtype: None
 ") Perform;
 		void Perform (const TopoDS_Face & F,const TopoDS_Wire & W,const gp_Dir & Extract,const gp_Pln & NPl,const Standard_Real Angle);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns <Standard_True> if the modification has been succesfully performed.
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") OriginalShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") OriginalShape;
-		const TopoDS_Shape  OriginalShape ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	* Returns the modified shape.
 
@@ -1899,36 +1229,6 @@ class LocOpe_SplitDrafts {
 %nodefaultctor LocOpe_SplitShape;
 class LocOpe_SplitShape {
 	public:
-		%feature("compactdefaultargs") LocOpe_SplitShape;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") LocOpe_SplitShape;
-		 LocOpe_SplitShape ();
-		%feature("compactdefaultargs") LocOpe_SplitShape;
-		%feature("autodoc", "	* Creates the process with the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_SplitShape;
-		 LocOpe_SplitShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initializes the process on the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") CanSplit;
-		%feature("autodoc", "	* Tests if it is possible to split the edge <E>.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") CanSplit;
-		Standard_Boolean CanSplit (const TopoDS_Edge & E);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds the vertex <V> on the edge <E>, at parameter <P>.
 
@@ -1948,9 +1248,9 @@ class LocOpe_SplitShape {
 	:type W: TopoDS_Wire &
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: None
+	:rtype: bool
 ") Add;
-		void Add (const TopoDS_Wire & W,const TopoDS_Face & F);
+		Standard_Boolean Add (const TopoDS_Wire & W,const TopoDS_Face & F);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds the list of wires <Lwires> on the face <F>.
 
@@ -1958,15 +1258,17 @@ class LocOpe_SplitShape {
 	:type Lwires: TopTools_ListOfShape &
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: None
+	:rtype: bool
 ") Add;
-		void Add (const TopTools_ListOfShape & Lwires,const TopoDS_Face & F);
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns the 'original' shape.
+		Standard_Boolean Add (const TopTools_ListOfShape & Lwires,const TopoDS_Face & F);
+		%feature("compactdefaultargs") CanSplit;
+		%feature("autodoc", "	* Tests if it is possible to split the edge <E>.
 
-	:rtype: TopoDS_Shape
-") Shape;
-		const TopoDS_Shape  Shape ();
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") CanSplit;
+		Standard_Boolean CanSplit (const TopoDS_Edge & E);
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "	* Returns the list of descendant shapes of <S>.
 
@@ -1975,6 +1277,14 @@ class LocOpe_SplitShape {
 	:rtype: TopTools_ListOfShape
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initializes the process on the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") LeftOf;
 		%feature("autodoc", "	* Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 
@@ -1985,6 +1295,26 @@ class LocOpe_SplitShape {
 	:rtype: TopTools_ListOfShape
 ") LeftOf;
 		const TopTools_ListOfShape & LeftOf (const TopoDS_Wire & W,const TopoDS_Face & F);
+		%feature("compactdefaultargs") LocOpe_SplitShape;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") LocOpe_SplitShape;
+		 LocOpe_SplitShape ();
+		%feature("compactdefaultargs") LocOpe_SplitShape;
+		%feature("autodoc", "	* Creates the process with the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_SplitShape;
+		 LocOpe_SplitShape (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "	* Returns the 'original' shape.
+
+	:rtype: TopoDS_Shape
+") Shape;
+		const TopoDS_Shape  Shape ();
 };
 
 
@@ -1996,6 +1326,38 @@ class LocOpe_SplitShape {
 %nodefaultctor LocOpe_Spliter;
 class LocOpe_Spliter {
 	public:
+		%feature("compactdefaultargs") DescendantShapes;
+		%feature("autodoc", "	* Returns the list of descendant shapes of <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") DescendantShapes;
+		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") DirectLeft;
+		%feature("autodoc", "	* Returns the faces which are the left of the projected wires and which are
+
+	:rtype: TopTools_ListOfShape
+") DirectLeft;
+		const TopTools_ListOfShape & DirectLeft ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Left;
+		%feature("autodoc", "	* Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
+
+	:rtype: TopTools_ListOfShape
+") Left;
+		const TopTools_ListOfShape & Left ();
 		%feature("compactdefaultargs") LocOpe_Spliter;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -2010,24 +1372,12 @@ class LocOpe_Spliter {
 	:rtype: None
 ") LocOpe_Spliter;
 		 LocOpe_Spliter (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param PW:
-	:type PW: Handle_LocOpe_WiresOnShape &
+	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_LocOpe_WiresOnShape & PW);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
+		void Perform (const opencascade::handle<LocOpe_WiresOnShape> & PW);
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "	* Returns the new shape
 
@@ -2040,26 +1390,6 @@ class LocOpe_Spliter {
 	:rtype: TopoDS_Shape
 ") Shape;
 		const TopoDS_Shape  Shape ();
-		%feature("compactdefaultargs") DirectLeft;
-		%feature("autodoc", "	* Returns the faces which are the left of the projected wires and which are
-
-	:rtype: TopTools_ListOfShape
-") DirectLeft;
-		const TopTools_ListOfShape & DirectLeft ();
-		%feature("compactdefaultargs") Left;
-		%feature("autodoc", "	* Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
-
-	:rtype: TopTools_ListOfShape
-") Left;
-		const TopTools_ListOfShape & Left ();
-		%feature("compactdefaultargs") DescendantShapes;
-		%feature("autodoc", "	* Returns the list of descendant shapes of <S>.
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: TopTools_ListOfShape
-") DescendantShapes;
-		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
 };
 
 
@@ -2069,28 +1399,16 @@ class LocOpe_Spliter {
 	}
 };
 %nodefaultctor LocOpe_WiresOnShape;
-class LocOpe_WiresOnShape : public MMgt_TShared {
+class LocOpe_WiresOnShape : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") LocOpe_WiresOnShape;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_WiresOnShape;
-		 LocOpe_WiresOnShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") SetCheckInterior;
-		%feature("autodoc", "	* Set the flag of check internal intersections default value is True (to check)
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Add splitting edges or wires for whole initial shape withot additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape
 
-	:param ToCheckInterior:
-	:type ToCheckInterior: bool
-	:rtype: None
-") SetCheckInterior;
-		void SetCheckInterior (const Standard_Boolean ToCheckInterior);
+	:param theEdges:
+	:type theEdges: TopTools_SequenceOfShape &
+	:rtype: bool
+") Add;
+		Standard_Boolean Add (const TopTools_SequenceOfShape & theEdges);
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	:param W:
 	:type W: TopoDS_Wire &
@@ -2127,28 +1445,46 @@ class LocOpe_WiresOnShape : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: None
 ") BindAll;
 		void BindAll ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") InitEdgeIterator;
-		%feature("autodoc", "	:rtype: None
-") InitEdgeIterator;
-		void InitEdgeIterator ();
-		%feature("compactdefaultargs") MoreEdge;
-		%feature("autodoc", "	:rtype: bool
-") MoreEdge;
-		Standard_Boolean MoreEdge ();
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
 		TopoDS_Edge Edge ();
-		%feature("compactdefaultargs") OnFace;
-		%feature("autodoc", "	* Returns the face of the shape on which the current edge is projected.
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") InitEdgeIterator;
+		%feature("autodoc", "	:rtype: None
+") InitEdgeIterator;
+		void InitEdgeIterator ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") IsFaceWithSection;
+		%feature("autodoc", "	* tells is the face to be split by section or not
 
-	:rtype: TopoDS_Face
-") OnFace;
-		TopoDS_Face OnFace ();
+	:param aFace:
+	:type aFace: TopoDS_Shape &
+	:rtype: bool
+") IsFaceWithSection;
+		Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
+		%feature("compactdefaultargs") LocOpe_WiresOnShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_WiresOnShape;
+		 LocOpe_WiresOnShape (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") MoreEdge;
+		%feature("autodoc", "	:rtype: bool
+") MoreEdge;
+		Standard_Boolean MoreEdge ();
+		%feature("compactdefaultargs") NextEdge;
+		%feature("autodoc", "	:rtype: None
+") NextEdge;
+		void NextEdge ();
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "	* If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
 
@@ -2157,18 +1493,6 @@ class LocOpe_WiresOnShape : public MMgt_TShared {
 	:rtype: bool
 ") OnEdge;
 		Standard_Boolean OnEdge (TopoDS_Edge & E);
-		%feature("compactdefaultargs") NextEdge;
-		%feature("autodoc", "	:rtype: None
-") NextEdge;
-		void NextEdge ();
-		%feature("compactdefaultargs") OnVertex;
-		%feature("autodoc", "	:param Vwire:
-	:type Vwire: TopoDS_Vertex &
-	:param Vshape:
-	:type Vshape: TopoDS_Vertex &
-	:rtype: bool
-") OnVertex;
-		Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "	* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 
@@ -2195,14 +1519,28 @@ class LocOpe_WiresOnShape : public MMgt_TShared {
 	:rtype: bool
 ") OnEdge;
 		Standard_Boolean OnEdge (const TopoDS_Vertex & V,const TopoDS_Edge & EdgeFrom,TopoDS_Edge & E,Standard_Real &OutValue);
-		%feature("compactdefaultargs") IsFaceWithSection;
-		%feature("autodoc", "	* tells is the face to be split by section or not
+		%feature("compactdefaultargs") OnFace;
+		%feature("autodoc", "	* Returns the face of the shape on which the current edge is projected.
 
-	:param aFace:
-	:type aFace: TopoDS_Shape &
+	:rtype: TopoDS_Face
+") OnFace;
+		TopoDS_Face OnFace ();
+		%feature("compactdefaultargs") OnVertex;
+		%feature("autodoc", "	:param Vwire:
+	:type Vwire: TopoDS_Vertex &
+	:param Vshape:
+	:type Vshape: TopoDS_Vertex &
 	:rtype: bool
-") IsFaceWithSection;
-		Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
+") OnVertex;
+		Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
+		%feature("compactdefaultargs") SetCheckInterior;
+		%feature("autodoc", "	* Set the flag of check internal intersections default value is True (to check)
+
+	:param ToCheckInterior:
+	:type ToCheckInterior: bool
+	:rtype: None
+") SetCheckInterior;
+		void SetCheckInterior (const Standard_Boolean ToCheckInterior);
 };
 
 
@@ -2216,32 +1554,6 @@ class LocOpe_WiresOnShape : public MMgt_TShared {
 %nodefaultctor LocOpe_GluedShape;
 class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	public:
-		%feature("compactdefaultargs") LocOpe_GluedShape;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_GluedShape;
-		 LocOpe_GluedShape ();
-		%feature("compactdefaultargs") LocOpe_GluedShape;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_GluedShape;
-		 LocOpe_GluedShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") GlueOnFace;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") GlueOnFace;
-		void GlueOnFace (const TopoDS_Face & F);
-		%feature("compactdefaultargs") GeneratingEdges;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") GeneratingEdges;
-		const TopTools_ListOfShape & GeneratingEdges ();
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
 
@@ -2258,6 +1570,32 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	:rtype: TopoDS_Face
 ") Generated;
 		TopoDS_Face Generated (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") GeneratingEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GeneratingEdges;
+		const TopTools_ListOfShape & GeneratingEdges ();
+		%feature("compactdefaultargs") GlueOnFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") GlueOnFace;
+		void GlueOnFace (const TopoDS_Face & F);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") LocOpe_GluedShape;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_GluedShape;
+		 LocOpe_GluedShape ();
+		%feature("compactdefaultargs") LocOpe_GluedShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_GluedShape;
+		 LocOpe_GluedShape (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
 
@@ -2274,3 +1612,6 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

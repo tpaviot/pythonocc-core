@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,26 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:11
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define HATCHDOCSTRING
-"The Hatch package provides  algorithm to compute
-cross-hatchings on a 2D face.
-
-The Hatcher algorithms stores a  set of lines in
-the 2D plane.
-
-The user stores lines in the Hatcher and afterward
-trim them with other lines.
-
-At any moment when trimming the user can ask for
-any line if  it is intersected and how  many
-intervals are defined on the line by the trim.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=HATCHDOCSTRING) Hatch
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -51,9 +50,6 @@ intervals are defined on the line by the trim.
 
 %include Hatch_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 enum Hatch_LineForm {
 	Hatch_XLINE = 0,
@@ -63,32 +59,22 @@ enum Hatch_LineForm {
 
 /* end public enums declaration */
 
-%wrap_handle(Hatch_SequenceNodeOfSequenceOfLine)
-%wrap_handle(Hatch_SequenceNodeOfSequenceOfParameter)
+/* templates */
+%template(Hatch_SequenceOfLine) NCollection_Sequence <Hatch_Line>;
+%template(Hatch_SequenceOfParameter) NCollection_Sequence <Hatch_Parameter>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <Hatch_Line> Hatch_SequenceOfLine;
+typedef NCollection_Sequence <Hatch_Parameter> Hatch_SequenceOfParameter;
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor Hatch_Hatcher;
 class Hatch_Hatcher {
 	public:
-		%feature("compactdefaultargs") Hatch_Hatcher;
-		%feature("autodoc", "	* Returns a empty hatcher. <Tol> is the tolerance for intersections.
-
-	:param Tol:
-	:type Tol: float
-	:param Oriented: default value is Standard_True
-	:type Oriented: bool
-	:rtype: None
-") Hatch_Hatcher;
-		 Hatch_Hatcher (const Standard_Real Tol,const Standard_Boolean Oriented = Standard_True);
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "	:param Tol:
-	:type Tol: float
-	:rtype: None
-") Tolerance;
-		void Tolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "	:rtype: float
-") Tolerance;
-		Standard_Real Tolerance ();
 		%feature("compactdefaultargs") AddLine;
 		%feature("autodoc", "	* Add a line <L> to be trimmed. <T> the type is only kept from information. It is not used in the computation.
 
@@ -125,6 +111,134 @@ class Hatch_Hatcher {
 	:rtype: None
 ") AddYLine;
 		void AddYLine (const Standard_Real Y);
+		%feature("compactdefaultargs") Coordinate;
+		%feature("autodoc", "	* Returns the X or Y coordinate of the line of index <I> if it is a X or a Y line.
+
+	:param I:
+	:type I: int
+	:rtype: float
+") Coordinate;
+		Standard_Real Coordinate (const Standard_Integer I);
+		%feature("compactdefaultargs") End;
+		%feature("autodoc", "	* Returns the last parameter of interval <J> on line <I>.
+
+	:param I:
+	:type I: int
+	:param J:
+	:type J: int
+	:rtype: float
+") End;
+		Standard_Real End (const Standard_Integer I,const Standard_Integer J);
+		%feature("compactdefaultargs") EndIndex;
+		%feature("autodoc", "	* Returns the last Index and Par2 of interval <J> on line <I>.
+
+	:param I:
+	:type I: int
+	:param J:
+	:type J: int
+	:param Index:
+	:type Index: int &
+	:param Par2:
+	:type Par2: float &
+	:rtype: None
+") EndIndex;
+		void EndIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Hatch_Hatcher;
+		%feature("autodoc", "	* Returns a empty hatcher. <Tol> is the tolerance for intersections.
+
+	:param Tol:
+	:type Tol: float
+	:param Oriented: default value is Standard_True
+	:type Oriented: bool
+	:rtype: None
+") Hatch_Hatcher;
+		 Hatch_Hatcher (const Standard_Real Tol,const Standard_Boolean Oriented = Standard_True);
+		%feature("compactdefaultargs") IsXLine;
+		%feature("autodoc", "	* Returns True if the line of index <I> has a constant X value.
+
+	:param I:
+	:type I: int
+	:rtype: bool
+") IsXLine;
+		Standard_Boolean IsXLine (const Standard_Integer I);
+		%feature("compactdefaultargs") IsYLine;
+		%feature("autodoc", "	* Returns True if the line of index <I> has a constant Y value.
+
+	:param I:
+	:type I: int
+	:rtype: bool
+") IsYLine;
+		Standard_Boolean IsYLine (const Standard_Integer I);
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	* Returns the line of index <I>.
+
+	:param I:
+	:type I: int
+	:rtype: gp_Lin2d
+") Line;
+		const gp_Lin2d  Line (const Standard_Integer I);
+		%feature("compactdefaultargs") LineForm;
+		%feature("autodoc", "	* Returns the type of the line of index <I>.
+
+	:param I:
+	:type I: int
+	:rtype: Hatch_LineForm
+") LineForm;
+		Hatch_LineForm LineForm (const Standard_Integer I);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns the total number of intervals on all the lines.
+
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals ();
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* Returns the number of intervals on line of index <I>.
+
+	:param I:
+	:type I: int
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals (const Standard_Integer I);
+		%feature("compactdefaultargs") NbLines;
+		%feature("autodoc", "	* Returns the number of lines.
+
+	:rtype: int
+") NbLines;
+		Standard_Integer NbLines ();
+		%feature("compactdefaultargs") Start;
+		%feature("autodoc", "	* Returns the first parameter of interval <J> on line <I>.
+
+	:param I:
+	:type I: int
+	:param J:
+	:type J: int
+	:rtype: float
+") Start;
+		Standard_Real Start (const Standard_Integer I,const Standard_Integer J);
+		%feature("compactdefaultargs") StartIndex;
+		%feature("autodoc", "	* Returns the first Index and Par2 of interval <J> on line <I>.
+
+	:param I:
+	:type I: int
+	:param J:
+	:type J: int
+	:param Index:
+	:type Index: int &
+	:param Par2:
+	:type Par2: float &
+	:rtype: None
+") StartIndex;
+		void StartIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Tolerance;
+		void Tolerance (const Standard_Real Tol);
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	:rtype: float
+") Tolerance;
+		Standard_Real Tolerance ();
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "	* Trims the lines at intersections with <L>.
 
@@ -161,114 +275,6 @@ class Hatch_Hatcher {
 	:rtype: None
 ") Trim;
 		void Trim (const gp_Pnt2d & P1,const gp_Pnt2d & P2,const Standard_Integer Index = 0);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns the total number of intervals on all the lines.
-
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals ();
-		%feature("compactdefaultargs") NbLines;
-		%feature("autodoc", "	* Returns the number of lines.
-
-	:rtype: int
-") NbLines;
-		Standard_Integer NbLines ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	* Returns the line of index <I>.
-
-	:param I:
-	:type I: int
-	:rtype: gp_Lin2d
-") Line;
-		const gp_Lin2d  Line (const Standard_Integer I);
-		%feature("compactdefaultargs") LineForm;
-		%feature("autodoc", "	* Returns the type of the line of index <I>.
-
-	:param I:
-	:type I: int
-	:rtype: Hatch_LineForm
-") LineForm;
-		Hatch_LineForm LineForm (const Standard_Integer I);
-		%feature("compactdefaultargs") IsXLine;
-		%feature("autodoc", "	* Returns True if the line of index <I> has a constant X value.
-
-	:param I:
-	:type I: int
-	:rtype: bool
-") IsXLine;
-		Standard_Boolean IsXLine (const Standard_Integer I);
-		%feature("compactdefaultargs") IsYLine;
-		%feature("autodoc", "	* Returns True if the line of index <I> has a constant Y value.
-
-	:param I:
-	:type I: int
-	:rtype: bool
-") IsYLine;
-		Standard_Boolean IsYLine (const Standard_Integer I);
-		%feature("compactdefaultargs") Coordinate;
-		%feature("autodoc", "	* Returns the X or Y coordinate of the line of index <I> if it is a X or a Y line.
-
-	:param I:
-	:type I: int
-	:rtype: float
-") Coordinate;
-		Standard_Real Coordinate (const Standard_Integer I);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* Returns the number of intervals on line of index <I>.
-
-	:param I:
-	:type I: int
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const Standard_Integer I);
-		%feature("compactdefaultargs") Start;
-		%feature("autodoc", "	* Returns the first parameter of interval <J> on line <I>.
-
-	:param I:
-	:type I: int
-	:param J:
-	:type J: int
-	:rtype: float
-") Start;
-		Standard_Real Start (const Standard_Integer I,const Standard_Integer J);
-		%feature("compactdefaultargs") StartIndex;
-		%feature("autodoc", "	* Returns the first Index and Par2 of interval <J> on line <I>.
-
-	:param I:
-	:type I: int
-	:param J:
-	:type J: int
-	:param Index:
-	:type Index: int &
-	:param Par2:
-	:type Par2: float &
-	:rtype: None
-") StartIndex;
-		void StartIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") End;
-		%feature("autodoc", "	* Returns the last parameter of interval <J> on line <I>.
-
-	:param I:
-	:type I: int
-	:param J:
-	:type J: int
-	:rtype: float
-") End;
-		Standard_Real End (const Standard_Integer I,const Standard_Integer J);
-		%feature("compactdefaultargs") EndIndex;
-		%feature("autodoc", "	* Returns the last Index and Par2 of interval <J> on line <I>.
-
-	:param I:
-	:type I: int
-	:param J:
-	:type J: int
-	:param Index:
-	:type Index: int &
-	:param Par2:
-	:type Par2: float &
-	:rtype: None
-") EndIndex;
-		void EndIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
 };
 
 
@@ -280,18 +286,6 @@ class Hatch_Hatcher {
 %nodefaultctor Hatch_Line;
 class Hatch_Line {
 	public:
-		%feature("compactdefaultargs") Hatch_Line;
-		%feature("autodoc", "	:rtype: None
-") Hatch_Line;
-		 Hatch_Line ();
-		%feature("compactdefaultargs") Hatch_Line;
-		%feature("autodoc", "	:param L:
-	:type L: gp_Lin2d
-	:param T:
-	:type T: Hatch_LineForm
-	:rtype: None
-") Hatch_Line;
-		 Hatch_Line (const gp_Lin2d & L,const Hatch_LineForm T);
 		%feature("compactdefaultargs") AddIntersection;
 		%feature("autodoc", "	* Insert a new intersection in the sorted list.
 
@@ -308,6 +302,18 @@ class Hatch_Line {
 	:rtype: None
 ") AddIntersection;
 		void AddIntersection (const Standard_Real Par1,const Standard_Boolean Start,const Standard_Integer Index,const Standard_Real Par2,const Standard_Real theToler);
+		%feature("compactdefaultargs") Hatch_Line;
+		%feature("autodoc", "	:rtype: None
+") Hatch_Line;
+		 Hatch_Line ();
+		%feature("compactdefaultargs") Hatch_Line;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin2d
+	:param T:
+	:type T: Hatch_LineForm
+	:rtype: None
+") Hatch_Line;
+		 Hatch_Line (const gp_Lin2d & L,const Hatch_LineForm T);
 };
 
 
@@ -343,343 +349,6 @@ class Hatch_Parameter {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor Hatch_SequenceNodeOfSequenceOfLine;
-class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") Hatch_SequenceNodeOfSequenceOfLine;
-		%feature("autodoc", "	:param I:
-	:type I: Hatch_Line &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") Hatch_SequenceNodeOfSequenceOfLine;
-		 Hatch_SequenceNodeOfSequenceOfLine (const Hatch_Line & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Hatch_Line
-") Value;
-		Hatch_Line & Value ();
-};
-
-
-%make_alias(Hatch_SequenceNodeOfSequenceOfLine)
-
-%extend Hatch_SequenceNodeOfSequenceOfLine {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Hatch_SequenceNodeOfSequenceOfParameter;
-class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") Hatch_SequenceNodeOfSequenceOfParameter;
-		%feature("autodoc", "	:param I:
-	:type I: Hatch_Parameter &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") Hatch_SequenceNodeOfSequenceOfParameter;
-		 Hatch_SequenceNodeOfSequenceOfParameter (const Hatch_Parameter & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Hatch_Parameter
-") Value;
-		Hatch_Parameter & Value ();
-};
-
-
-%make_alias(Hatch_SequenceNodeOfSequenceOfParameter)
-
-%extend Hatch_SequenceNodeOfSequenceOfParameter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Hatch_SequenceOfLine;
-class Hatch_SequenceOfLine : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") Hatch_SequenceOfLine;
-		%feature("autodoc", "	:rtype: None
-") Hatch_SequenceOfLine;
-		 Hatch_SequenceOfLine ();
-		%feature("compactdefaultargs") Hatch_SequenceOfLine;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfLine &
-	:rtype: None
-") Hatch_SequenceOfLine;
-		 Hatch_SequenceOfLine (const Hatch_SequenceOfLine & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfLine &
-	:rtype: Hatch_SequenceOfLine
-") Assign;
-		const Hatch_SequenceOfLine & Assign (const Hatch_SequenceOfLine & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfLine &
-	:rtype: Hatch_SequenceOfLine
-") operator =;
-		const Hatch_SequenceOfLine & operator = (const Hatch_SequenceOfLine & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Hatch_Line &
-	:rtype: None
-") Append;
-		void Append (const Hatch_Line & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: Hatch_SequenceOfLine &
-	:rtype: None
-") Append;
-		void Append (Hatch_SequenceOfLine & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Hatch_Line &
-	:rtype: None
-") Prepend;
-		void Prepend (const Hatch_Line & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: Hatch_SequenceOfLine &
-	:rtype: None
-") Prepend;
-		void Prepend (Hatch_SequenceOfLine & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Hatch_Line &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Hatch_Line & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: Hatch_SequenceOfLine &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,Hatch_SequenceOfLine & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Hatch_Line &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Hatch_Line & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: Hatch_SequenceOfLine &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,Hatch_SequenceOfLine & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Hatch_Line
-") First;
-		const Hatch_Line & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Hatch_Line
-") Last;
-		const Hatch_Line & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: Hatch_SequenceOfLine &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,Hatch_SequenceOfLine & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Hatch_Line
-") Value;
-		const Hatch_Line & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Hatch_Line &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Hatch_Line & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Hatch_Line
-") ChangeValue;
-		Hatch_Line & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend Hatch_SequenceOfLine {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Hatch_SequenceOfParameter;
-class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") Hatch_SequenceOfParameter;
-		%feature("autodoc", "	:rtype: None
-") Hatch_SequenceOfParameter;
-		 Hatch_SequenceOfParameter ();
-		%feature("compactdefaultargs") Hatch_SequenceOfParameter;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfParameter &
-	:rtype: None
-") Hatch_SequenceOfParameter;
-		 Hatch_SequenceOfParameter (const Hatch_SequenceOfParameter & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfParameter &
-	:rtype: Hatch_SequenceOfParameter
-") Assign;
-		const Hatch_SequenceOfParameter & Assign (const Hatch_SequenceOfParameter & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: Hatch_SequenceOfParameter &
-	:rtype: Hatch_SequenceOfParameter
-") operator =;
-		const Hatch_SequenceOfParameter & operator = (const Hatch_SequenceOfParameter & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Hatch_Parameter &
-	:rtype: None
-") Append;
-		void Append (const Hatch_Parameter & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: Hatch_SequenceOfParameter &
-	:rtype: None
-") Append;
-		void Append (Hatch_SequenceOfParameter & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Hatch_Parameter &
-	:rtype: None
-") Prepend;
-		void Prepend (const Hatch_Parameter & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: Hatch_SequenceOfParameter &
-	:rtype: None
-") Prepend;
-		void Prepend (Hatch_SequenceOfParameter & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Hatch_Parameter &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Hatch_Parameter & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: Hatch_SequenceOfParameter &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,Hatch_SequenceOfParameter & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Hatch_Parameter &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Hatch_Parameter & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: Hatch_SequenceOfParameter &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,Hatch_SequenceOfParameter & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Hatch_Parameter
-") First;
-		const Hatch_Parameter & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Hatch_Parameter
-") Last;
-		const Hatch_Parameter & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: Hatch_SequenceOfParameter &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,Hatch_SequenceOfParameter & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Hatch_Parameter
-") Value;
-		const Hatch_Parameter & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Hatch_Parameter &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Hatch_Parameter & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Hatch_Parameter
-") ChangeValue;
-		Hatch_Parameter & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend Hatch_SequenceOfParameter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

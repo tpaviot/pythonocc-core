@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:43
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define STEPGEOMDOCSTRING
-"-Purpose : AP214 CC1 , Revision 4 for Geom (Part42, geometric)
-Upgrading from Revision 2 to Revision 4 : 26 Mar 1997
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=STEPGEOMDOCSTRING) StepGeom
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,9 +49,6 @@ Upgrading from Revision 2 to Revision 4 : 26 Mar 1997
 
 
 %include StepGeom_headers.i
-
-/* typedefs */
-/* end typedefs declaration */
 
 /* public enums */
 enum StepGeom_KnotType {
@@ -96,21 +102,275 @@ enum StepGeom_TransitionCode {
 
 /* end public enums declaration */
 
+/* templates */
+%template(StepGeom_Array1OfCurve) NCollection_Array1 <opencascade::handle <StepGeom_Curve>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepGeom_Curve>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array1OfPcurveOrSurface) NCollection_Array1 <StepGeom_PcurveOrSurface>;
+
+%extend NCollection_Array1 <StepGeom_PcurveOrSurface> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array1OfBoundaryCurve) NCollection_Array1 <opencascade::handle <StepGeom_BoundaryCurve>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepGeom_BoundaryCurve>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array2OfCartesianPoint) NCollection_Array2 <opencascade::handle <StepGeom_CartesianPoint>>;
+%template(StepGeom_Array2OfSurfacePatch) NCollection_Array2 <opencascade::handle <StepGeom_SurfacePatch>>;
+%template(StepGeom_Array1OfSurfaceBoundary) NCollection_Array1 <StepGeom_SurfaceBoundary>;
+
+%extend NCollection_Array1 <StepGeom_SurfaceBoundary> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array1OfCompositeCurveSegment) NCollection_Array1 <opencascade::handle <StepGeom_CompositeCurveSegment>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepGeom_CompositeCurveSegment>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array1OfTrimmingSelect) NCollection_Array1 <StepGeom_TrimmingSelect>;
+
+%extend NCollection_Array1 <StepGeom_TrimmingSelect> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepGeom_Array1OfCartesianPoint) NCollection_Array1 <opencascade::handle <StepGeom_CartesianPoint>>;
+
+%extend NCollection_Array1 <opencascade::handle <StepGeom_CartesianPoint>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Array1 <opencascade::handle <StepGeom_Curve>> StepGeom_Array1OfCurve;
+typedef NCollection_Array1 <StepGeom_PcurveOrSurface> StepGeom_Array1OfPcurveOrSurface;
+typedef NCollection_Array1 <opencascade::handle <StepGeom_BoundaryCurve>> StepGeom_Array1OfBoundaryCurve;
+typedef NCollection_Array2 <opencascade::handle <StepGeom_CartesianPoint>> StepGeom_Array2OfCartesianPoint;
+typedef NCollection_Array2 <opencascade::handle <StepGeom_SurfacePatch>> StepGeom_Array2OfSurfacePatch;
+typedef NCollection_Array1 <StepGeom_SurfaceBoundary> StepGeom_Array1OfSurfaceBoundary;
+typedef NCollection_Array1 <opencascade::handle <StepGeom_CompositeCurveSegment>> StepGeom_Array1OfCompositeCurveSegment;
+typedef NCollection_Array1 <StepGeom_TrimmingSelect> StepGeom_Array1OfTrimmingSelect;
+typedef NCollection_Array1 <opencascade::handle <StepGeom_CartesianPoint>> StepGeom_Array1OfCartesianPoint;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(StepGeom_CompositeCurveSegment)
 %wrap_handle(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx)
 %wrap_handle(StepGeom_GeometricRepresentationContext)
 %wrap_handle(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext)
 %wrap_handle(StepGeom_GeometricRepresentationContextAndParametricRepresentationContext)
 %wrap_handle(StepGeom_GeometricRepresentationItem)
-%wrap_handle(StepGeom_HArray1OfBoundaryCurve)
-%wrap_handle(StepGeom_HArray1OfCartesianPoint)
-%wrap_handle(StepGeom_HArray1OfCompositeCurveSegment)
-%wrap_handle(StepGeom_HArray1OfCurve)
-%wrap_handle(StepGeom_HArray1OfPcurveOrSurface)
-%wrap_handle(StepGeom_HArray1OfSurfaceBoundary)
-%wrap_handle(StepGeom_HArray1OfTrimmingSelect)
-%wrap_handle(StepGeom_HArray2OfCartesianPoint)
-%wrap_handle(StepGeom_HArray2OfSurfacePatch)
 %wrap_handle(StepGeom_SurfacePatch)
 %wrap_handle(StepGeom_TrimmingMember)
 %wrap_handle(StepGeom_CartesianTransformationOperator)
@@ -189,1108 +449,37 @@ enum StepGeom_TransitionCode {
 %wrap_handle(StepGeom_UniformSurfaceAndRationalBSplineSurface)
 %wrap_handle(StepGeom_BoundaryCurve)
 %wrap_handle(StepGeom_OuterBoundaryCurve)
+/* end handles declaration */
 
-%nodefaultctor StepGeom_Array1OfBoundaryCurve;
-class StepGeom_Array1OfBoundaryCurve {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfBoundaryCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfBoundaryCurve;
-		 StepGeom_Array1OfBoundaryCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfBoundaryCurve;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_BoundaryCurve &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfBoundaryCurve;
-		 StepGeom_Array1OfBoundaryCurve (const Handle_StepGeom_BoundaryCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_BoundaryCurve & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfBoundaryCurve &
-	:rtype: StepGeom_Array1OfBoundaryCurve
-") Assign;
-		const StepGeom_Array1OfBoundaryCurve & Assign (const StepGeom_Array1OfBoundaryCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfBoundaryCurve &
-	:rtype: StepGeom_Array1OfBoundaryCurve
-") operator =;
-		const StepGeom_Array1OfBoundaryCurve & operator = (const StepGeom_Array1OfBoundaryCurve & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_BoundaryCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_BoundaryCurve
-") Value;
-		Handle_StepGeom_BoundaryCurve Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_BoundaryCurve
-") ChangeValue;
-		Handle_StepGeom_BoundaryCurve ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfBoundaryCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfBoundaryCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfCartesianPoint;
-class StepGeom_Array1OfCartesianPoint {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfCartesianPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCartesianPoint;
-		 StepGeom_Array1OfCartesianPoint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfCartesianPoint;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_CartesianPoint &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCartesianPoint;
-		 StepGeom_Array1OfCartesianPoint (const Handle_StepGeom_CartesianPoint & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCartesianPoint &
-	:rtype: StepGeom_Array1OfCartesianPoint
-") Assign;
-		const StepGeom_Array1OfCartesianPoint & Assign (const StepGeom_Array1OfCartesianPoint & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCartesianPoint &
-	:rtype: StepGeom_Array1OfCartesianPoint
-") operator =;
-		const StepGeom_Array1OfCartesianPoint & operator = (const StepGeom_Array1OfCartesianPoint & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_CartesianPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") Value;
-		Handle_StepGeom_CartesianPoint Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ChangeValue;
-		Handle_StepGeom_CartesianPoint ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfCartesianPoint {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfCartesianPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfCompositeCurveSegment;
-class StepGeom_Array1OfCompositeCurveSegment {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfCompositeCurveSegment;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCompositeCurveSegment;
-		 StepGeom_Array1OfCompositeCurveSegment (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfCompositeCurveSegment;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_CompositeCurveSegment &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCompositeCurveSegment;
-		 StepGeom_Array1OfCompositeCurveSegment (const Handle_StepGeom_CompositeCurveSegment & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CompositeCurveSegment & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCompositeCurveSegment &
-	:rtype: StepGeom_Array1OfCompositeCurveSegment
-") Assign;
-		const StepGeom_Array1OfCompositeCurveSegment & Assign (const StepGeom_Array1OfCompositeCurveSegment & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCompositeCurveSegment &
-	:rtype: StepGeom_Array1OfCompositeCurveSegment
-") operator =;
-		const StepGeom_Array1OfCompositeCurveSegment & operator = (const StepGeom_Array1OfCompositeCurveSegment & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_CompositeCurveSegment & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CompositeCurveSegment
-") Value;
-		Handle_StepGeom_CompositeCurveSegment Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CompositeCurveSegment
-") ChangeValue;
-		Handle_StepGeom_CompositeCurveSegment ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfCompositeCurveSegment {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfCompositeCurveSegment {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfCurve;
-class StepGeom_Array1OfCurve {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCurve;
-		 StepGeom_Array1OfCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfCurve;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_Curve &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfCurve;
-		 StepGeom_Array1OfCurve (const Handle_StepGeom_Curve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_Curve &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_Curve & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCurve &
-	:rtype: StepGeom_Array1OfCurve
-") Assign;
-		const StepGeom_Array1OfCurve & Assign (const StepGeom_Array1OfCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfCurve &
-	:rtype: StepGeom_Array1OfCurve
-") operator =;
-		const StepGeom_Array1OfCurve & operator = (const StepGeom_Array1OfCurve & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_Curve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_Curve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_Curve
-") Value;
-		Handle_StepGeom_Curve Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_Curve
-") ChangeValue;
-		Handle_StepGeom_Curve ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfPcurveOrSurface;
-class StepGeom_Array1OfPcurveOrSurface {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfPcurveOrSurface;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfPcurveOrSurface;
-		 StepGeom_Array1OfPcurveOrSurface (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfPcurveOrSurface;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepGeom_PcurveOrSurface &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfPcurveOrSurface;
-		 StepGeom_Array1OfPcurveOrSurface (const StepGeom_PcurveOrSurface & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_PcurveOrSurface &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_PcurveOrSurface & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfPcurveOrSurface &
-	:rtype: StepGeom_Array1OfPcurveOrSurface
-") Assign;
-		const StepGeom_Array1OfPcurveOrSurface & Assign (const StepGeom_Array1OfPcurveOrSurface & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfPcurveOrSurface &
-	:rtype: StepGeom_Array1OfPcurveOrSurface
-") operator =;
-		const StepGeom_Array1OfPcurveOrSurface & operator = (const StepGeom_Array1OfPcurveOrSurface & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_PcurveOrSurface &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_PcurveOrSurface & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_PcurveOrSurface
-") Value;
-		const StepGeom_PcurveOrSurface & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_PcurveOrSurface
-") ChangeValue;
-		StepGeom_PcurveOrSurface & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfPcurveOrSurface {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfPcurveOrSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfSurfaceBoundary;
-class StepGeom_Array1OfSurfaceBoundary {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfSurfaceBoundary;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfSurfaceBoundary;
-		 StepGeom_Array1OfSurfaceBoundary (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfSurfaceBoundary;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepGeom_SurfaceBoundary &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfSurfaceBoundary;
-		 StepGeom_Array1OfSurfaceBoundary (const StepGeom_SurfaceBoundary & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_SurfaceBoundary &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_SurfaceBoundary & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfSurfaceBoundary &
-	:rtype: StepGeom_Array1OfSurfaceBoundary
-") Assign;
-		const StepGeom_Array1OfSurfaceBoundary & Assign (const StepGeom_Array1OfSurfaceBoundary & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfSurfaceBoundary &
-	:rtype: StepGeom_Array1OfSurfaceBoundary
-") operator =;
-		const StepGeom_Array1OfSurfaceBoundary & operator = (const StepGeom_Array1OfSurfaceBoundary & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_SurfaceBoundary &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_SurfaceBoundary & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_SurfaceBoundary
-") Value;
-		const StepGeom_SurfaceBoundary & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_SurfaceBoundary
-") ChangeValue;
-		StepGeom_SurfaceBoundary & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfSurfaceBoundary {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfSurfaceBoundary {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array1OfTrimmingSelect;
-class StepGeom_Array1OfTrimmingSelect {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array1OfTrimmingSelect;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfTrimmingSelect;
-		 StepGeom_Array1OfTrimmingSelect (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_Array1OfTrimmingSelect;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepGeom_TrimmingSelect &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_Array1OfTrimmingSelect;
-		 StepGeom_Array1OfTrimmingSelect (const StepGeom_TrimmingSelect & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_TrimmingSelect &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_TrimmingSelect & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfTrimmingSelect &
-	:rtype: StepGeom_Array1OfTrimmingSelect
-") Assign;
-		const StepGeom_Array1OfTrimmingSelect & Assign (const StepGeom_Array1OfTrimmingSelect & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array1OfTrimmingSelect &
-	:rtype: StepGeom_Array1OfTrimmingSelect
-") operator =;
-		const StepGeom_Array1OfTrimmingSelect & operator = (const StepGeom_Array1OfTrimmingSelect & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_TrimmingSelect &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_TrimmingSelect & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_TrimmingSelect
-") Value;
-		const StepGeom_TrimmingSelect & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_TrimmingSelect
-") ChangeValue;
-		StepGeom_TrimmingSelect & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepGeom_Array1OfTrimmingSelect {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_Array1OfTrimmingSelect {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array2OfCartesianPoint;
-class StepGeom_Array2OfCartesianPoint {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array2OfCartesianPoint;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_Array2OfCartesianPoint;
-		 StepGeom_Array2OfCartesianPoint (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") StepGeom_Array2OfCartesianPoint;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_CartesianPoint &
-	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_Array2OfCartesianPoint;
-		 StepGeom_Array2OfCartesianPoint (const Handle_StepGeom_CartesianPoint & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array2OfCartesianPoint &
-	:rtype: StepGeom_Array2OfCartesianPoint
-") Assign;
-		const StepGeom_Array2OfCartesianPoint & Assign (const StepGeom_Array2OfCartesianPoint & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array2OfCartesianPoint &
-	:rtype: StepGeom_Array2OfCartesianPoint
-") operator =;
-		const StepGeom_Array2OfCartesianPoint & operator = (const StepGeom_Array2OfCartesianPoint & Other);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_StepGeom_CartesianPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") Value;
-		Handle_StepGeom_CartesianPoint Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ChangeValue;
-		Handle_StepGeom_CartesianPoint ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-};
-
-
-%extend StepGeom_Array2OfCartesianPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_Array2OfSurfacePatch;
-class StepGeom_Array2OfSurfacePatch {
-	public:
-		%feature("compactdefaultargs") StepGeom_Array2OfSurfacePatch;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_Array2OfSurfacePatch;
-		 StepGeom_Array2OfSurfacePatch (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") StepGeom_Array2OfSurfacePatch;
-		%feature("autodoc", "	:param Item:
-	:type Item: Handle_StepGeom_SurfacePatch &
-	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_Array2OfSurfacePatch;
-		 StepGeom_Array2OfSurfacePatch (const Handle_StepGeom_SurfacePatch & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_SurfacePatch & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array2OfSurfacePatch &
-	:rtype: StepGeom_Array2OfSurfacePatch
-") Assign;
-		const StepGeom_Array2OfSurfacePatch & Assign (const StepGeom_Array2OfSurfacePatch & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepGeom_Array2OfSurfacePatch &
-	:rtype: StepGeom_Array2OfSurfacePatch
-") operator =;
-		const StepGeom_Array2OfSurfacePatch & operator = (const StepGeom_Array2OfSurfacePatch & Other);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_StepGeom_SurfacePatch & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_SurfacePatch
-") Value;
-		Handle_StepGeom_SurfacePatch Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_SurfacePatch
-") ChangeValue;
-		Handle_StepGeom_SurfacePatch ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-};
-
-
-%extend StepGeom_Array2OfSurfacePatch {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepGeom_Axis2Placement;
 class StepGeom_Axis2Placement : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") Axis2Placement2d;
+		%feature("autodoc", "	* returns Value as a Axis2Placement2d (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_Axis2Placement2d>
+") Axis2Placement2d;
+		opencascade::handle<StepGeom_Axis2Placement2d> Axis2Placement2d ();
+		%feature("compactdefaultargs") Axis2Placement3d;
+		%feature("autodoc", "	* returns Value as a Axis2Placement3d (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_Axis2Placement3d>
+") Axis2Placement3d;
+		opencascade::handle<StepGeom_Axis2Placement3d> Axis2Placement3d ();
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a Axis2Placement Kind Entity that is : 1 -> Axis2Placement2d 2 -> Axis2Placement3d 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 		%feature("compactdefaultargs") StepGeom_Axis2Placement;
 		%feature("autodoc", "	* Returns a Axis2Placement SelectType
 
 	:rtype: None
 ") StepGeom_Axis2Placement;
 		 StepGeom_Axis2Placement ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a Axis2Placement Kind Entity that is : 1 -> Axis2Placement2d 2 -> Axis2Placement3d 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") Axis2Placement2d;
-		%feature("autodoc", "	* returns Value as a Axis2Placement2d (Null if another type)
-
-	:rtype: Handle_StepGeom_Axis2Placement2d
-") Axis2Placement2d;
-		Handle_StepGeom_Axis2Placement2d Axis2Placement2d ();
-		%feature("compactdefaultargs") Axis2Placement3d;
-		%feature("autodoc", "	* returns Value as a Axis2Placement3d (Null if another type)
-
-	:rtype: Handle_StepGeom_Axis2Placement3d
-") Axis2Placement3d;
-		Handle_StepGeom_Axis2Placement3d Axis2Placement3d ();
 };
 
 
@@ -1300,54 +489,54 @@ class StepGeom_Axis2Placement : public StepData_SelectType {
 	}
 };
 %nodefaultctor StepGeom_CompositeCurveSegment;
-class StepGeom_CompositeCurveSegment : public MMgt_TShared {
+class StepGeom_CompositeCurveSegment : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepGeom_CompositeCurveSegment;
-		%feature("autodoc", "	* Returns a CompositeCurveSegment
-
-	:rtype: None
-") StepGeom_CompositeCurveSegment;
-		 StepGeom_CompositeCurveSegment ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aTransition:
 	:type aTransition: StepGeom_TransitionCode
 	:param aSameSense:
 	:type aSameSense: bool
 	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
-	:rtype: void
+	:type aParentCurve: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
 ") Init;
-		virtual void Init (const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const Handle_StepGeom_Curve & aParentCurve);
-		%feature("compactdefaultargs") SetTransition;
-		%feature("autodoc", "	:param aTransition:
-	:type aTransition: StepGeom_TransitionCode
-	:rtype: None
-") SetTransition;
-		void SetTransition (const StepGeom_TransitionCode aTransition);
-		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
-") Transition;
-		StepGeom_TransitionCode Transition ();
-		%feature("compactdefaultargs") SetSameSense;
-		%feature("autodoc", "	:param aSameSense:
-	:type aSameSense: bool
-	:rtype: None
-") SetSameSense;
-		void SetSameSense (const Standard_Boolean aSameSense);
+		void Init (const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const opencascade::handle<StepGeom_Curve> & aParentCurve);
+		%feature("compactdefaultargs") ParentCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") ParentCurve;
+		opencascade::handle<StepGeom_Curve> ParentCurve ();
 		%feature("compactdefaultargs") SameSense;
 		%feature("autodoc", "	:rtype: bool
 ") SameSense;
 		Standard_Boolean SameSense ();
 		%feature("compactdefaultargs") SetParentCurve;
 		%feature("autodoc", "	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
+	:type aParentCurve: opencascade::handle<StepGeom_Curve> &
 	:rtype: None
 ") SetParentCurve;
-		void SetParentCurve (const Handle_StepGeom_Curve & aParentCurve);
-		%feature("compactdefaultargs") ParentCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") ParentCurve;
-		Handle_StepGeom_Curve ParentCurve ();
+		void SetParentCurve (const opencascade::handle<StepGeom_Curve> & aParentCurve);
+		%feature("compactdefaultargs") SetSameSense;
+		%feature("autodoc", "	:param aSameSense:
+	:type aSameSense: bool
+	:rtype: None
+") SetSameSense;
+		void SetSameSense (const Standard_Boolean aSameSense);
+		%feature("compactdefaultargs") SetTransition;
+		%feature("autodoc", "	:param aTransition:
+	:type aTransition: StepGeom_TransitionCode
+	:rtype: None
+") SetTransition;
+		void SetTransition (const StepGeom_TransitionCode aTransition);
+		%feature("compactdefaultargs") StepGeom_CompositeCurveSegment;
+		%feature("autodoc", "	* Returns a CompositeCurveSegment
+
+	:rtype: None
+") StepGeom_CompositeCurveSegment;
+		 StepGeom_CompositeCurveSegment ();
+		%feature("compactdefaultargs") Transition;
+		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
+") Transition;
+		StepGeom_TransitionCode Transition ();
 };
 
 
@@ -1361,38 +550,38 @@ class StepGeom_CompositeCurveSegment : public MMgt_TShared {
 %nodefaultctor StepGeom_CurveOnSurface;
 class StepGeom_CurveOnSurface : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a CurveOnSurface Kind Entity that is : 1 -> Pcurve 2 -> SurfaceCurve 3 -> CompositeCurveOnSurface 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") CompositeCurveOnSurface;
+		%feature("autodoc", "	* returns Value as a CompositeCurveOnSurface (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_CompositeCurveOnSurface>
+") CompositeCurveOnSurface;
+		opencascade::handle<StepGeom_CompositeCurveOnSurface> CompositeCurveOnSurface ();
+		%feature("compactdefaultargs") Pcurve;
+		%feature("autodoc", "	* returns Value as a Pcurve (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_Pcurve>
+") Pcurve;
+		opencascade::handle<StepGeom_Pcurve> Pcurve ();
 		%feature("compactdefaultargs") StepGeom_CurveOnSurface;
 		%feature("autodoc", "	* Returns a CurveOnSurface SelectType
 
 	:rtype: None
 ") StepGeom_CurveOnSurface;
 		 StepGeom_CurveOnSurface ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a CurveOnSurface Kind Entity that is : 1 -> Pcurve 2 -> SurfaceCurve 3 -> CompositeCurveOnSurface 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") Pcurve;
-		%feature("autodoc", "	* returns Value as a Pcurve (Null if another type)
-
-	:rtype: Handle_StepGeom_Pcurve
-") Pcurve;
-		Handle_StepGeom_Pcurve Pcurve ();
 		%feature("compactdefaultargs") SurfaceCurve;
 		%feature("autodoc", "	* returns Value as a SurfaceCurve (Null if another type)
 
-	:rtype: Handle_StepGeom_SurfaceCurve
+	:rtype: opencascade::handle<StepGeom_SurfaceCurve>
 ") SurfaceCurve;
-		Handle_StepGeom_SurfaceCurve SurfaceCurve ();
-		%feature("compactdefaultargs") CompositeCurveOnSurface;
-		%feature("autodoc", "	* returns Value as a CompositeCurveOnSurface (Null if another type)
-
-	:rtype: Handle_StepGeom_CompositeCurveOnSurface
-") CompositeCurveOnSurface;
-		Handle_StepGeom_CompositeCurveOnSurface CompositeCurveOnSurface ();
+		opencascade::handle<StepGeom_SurfaceCurve> SurfaceCurve ();
 };
 
 
@@ -1404,126 +593,118 @@ class StepGeom_CurveOnSurface : public StepData_SelectType {
 %nodefaultctor StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext {
 	public:
-		%feature("compactdefaultargs") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
-		%feature("autodoc", "	:rtype: None
-") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
-		 StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ();
+		%feature("compactdefaultargs") CoordinateSpaceDimension;
+		%feature("autodoc", "	:rtype: int
+") CoordinateSpaceDimension;
+		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") GeometricRepresentationContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_GeometricRepresentationContext>
+") GeometricRepresentationContext;
+		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext ();
+		%feature("compactdefaultargs") GlobalUncertaintyAssignedContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext>
+") GlobalUncertaintyAssignedContext;
+		opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> GlobalUncertaintyAssignedContext ();
+		%feature("compactdefaultargs") GlobalUnitAssignedContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_GlobalUnitAssignedContext>
+") GlobalUnitAssignedContext;
+		opencascade::handle<StepRepr_GlobalUnitAssignedContext> GlobalUnitAssignedContext ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aGeometricRepresentationCtx:
-	:type aGeometricRepresentationCtx: Handle_StepGeom_GeometricRepresentationContext &
+	:type aGeometricRepresentationCtx: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:param aGlobalUnitAssignedCtx:
-	:type aGlobalUnitAssignedCtx: Handle_StepRepr_GlobalUnitAssignedContext &
+	:type aGlobalUnitAssignedCtx: opencascade::handle<StepRepr_GlobalUnitAssignedContext> &
 	:param aGlobalUncertaintyAssignedCtx:
-	:type aGlobalUncertaintyAssignedCtx: Handle_StepRepr_GlobalUncertaintyAssignedContext &
-	:rtype: void
+	:type aGlobalUncertaintyAssignedCtx: opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationCtx,const Handle_StepRepr_GlobalUnitAssignedContext & aGlobalUnitAssignedCtx,const Handle_StepRepr_GlobalUncertaintyAssignedContext & aGlobalUncertaintyAssignedCtx);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationCtx,const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedCtx,const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aGlobalUncertaintyAssignedCtx);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
 	:param anUncertainty:
-	:type anUncertainty: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit &
-	:rtype: void
+	:type anUncertainty: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Standard_Integer aCoordinateSpaceDimension,const Handle_StepBasic_HArray1OfNamedUnit & aUnits,const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit & anUncertainty);
-		%feature("compactdefaultargs") SetGeometricRepresentationContext;
-		%feature("autodoc", "	:param aGeometricRepresentationContext:
-	:type aGeometricRepresentationContext: Handle_StepGeom_GeometricRepresentationContext &
-	:rtype: None
-") SetGeometricRepresentationContext;
-		void SetGeometricRepresentationContext (const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationContext);
-		%feature("compactdefaultargs") GeometricRepresentationContext;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_GeometricRepresentationContext
-") GeometricRepresentationContext;
-		Handle_StepGeom_GeometricRepresentationContext GeometricRepresentationContext ();
-		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
-		%feature("autodoc", "	:param aGlobalUnitAssignedContext:
-	:type aGlobalUnitAssignedContext: Handle_StepRepr_GlobalUnitAssignedContext &
-	:rtype: None
-") SetGlobalUnitAssignedContext;
-		void SetGlobalUnitAssignedContext (const Handle_StepRepr_GlobalUnitAssignedContext & aGlobalUnitAssignedContext);
-		%feature("compactdefaultargs") GlobalUnitAssignedContext;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_GlobalUnitAssignedContext
-") GlobalUnitAssignedContext;
-		Handle_StepRepr_GlobalUnitAssignedContext GlobalUnitAssignedContext ();
-		%feature("compactdefaultargs") SetGlobalUncertaintyAssignedContext;
-		%feature("autodoc", "	:param aGlobalUncertaintyAssignedCtx:
-	:type aGlobalUncertaintyAssignedCtx: Handle_StepRepr_GlobalUncertaintyAssignedContext &
-	:rtype: None
-") SetGlobalUncertaintyAssignedContext;
-		void SetGlobalUncertaintyAssignedContext (const Handle_StepRepr_GlobalUncertaintyAssignedContext & aGlobalUncertaintyAssignedCtx);
-		%feature("compactdefaultargs") GlobalUncertaintyAssignedContext;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_GlobalUncertaintyAssignedContext
-") GlobalUncertaintyAssignedContext;
-		Handle_StepRepr_GlobalUncertaintyAssignedContext GlobalUncertaintyAssignedContext ();
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const Standard_Integer aCoordinateSpaceDimension,const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits,const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & anUncertainty);
+		%feature("compactdefaultargs") NbUncertainty;
+		%feature("autodoc", "	:rtype: int
+") NbUncertainty;
+		Standard_Integer NbUncertainty ();
+		%feature("compactdefaultargs") NbUnits;
+		%feature("autodoc", "	:rtype: int
+") NbUnits;
+		Standard_Integer NbUnits ();
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:rtype: None
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension);
-		%feature("compactdefaultargs") CoordinateSpaceDimension;
-		%feature("autodoc", "	:rtype: int
-") CoordinateSpaceDimension;
-		Standard_Integer CoordinateSpaceDimension ();
-		%feature("compactdefaultargs") SetUnits;
-		%feature("autodoc", "	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
+		%feature("compactdefaultargs") SetGeometricRepresentationContext;
+		%feature("autodoc", "	:param aGeometricRepresentationContext:
+	:type aGeometricRepresentationContext: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:rtype: None
-") SetUnits;
-		void SetUnits (const Handle_StepBasic_HArray1OfNamedUnit & aUnits);
-		%feature("compactdefaultargs") Units;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_HArray1OfNamedUnit
-") Units;
-		Handle_StepBasic_HArray1OfNamedUnit Units ();
-		%feature("compactdefaultargs") UnitsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: Handle_StepBasic_NamedUnit
-") UnitsValue;
-		Handle_StepBasic_NamedUnit UnitsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUnits;
-		%feature("autodoc", "	:rtype: int
-") NbUnits;
-		Standard_Integer NbUnits ();
+") SetGeometricRepresentationContext;
+		void SetGeometricRepresentationContext (const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
+		%feature("compactdefaultargs") SetGlobalUncertaintyAssignedContext;
+		%feature("autodoc", "	:param aGlobalUncertaintyAssignedCtx:
+	:type aGlobalUncertaintyAssignedCtx: opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> &
+	:rtype: None
+") SetGlobalUncertaintyAssignedContext;
+		void SetGlobalUncertaintyAssignedContext (const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aGlobalUncertaintyAssignedCtx);
+		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
+		%feature("autodoc", "	:param aGlobalUnitAssignedContext:
+	:type aGlobalUnitAssignedContext: opencascade::handle<StepRepr_GlobalUnitAssignedContext> &
+	:rtype: None
+") SetGlobalUnitAssignedContext;
+		void SetGlobalUnitAssignedContext (const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 		%feature("compactdefaultargs") SetUncertainty;
 		%feature("autodoc", "	:param aUncertainty:
-	:type aUncertainty: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit &
+	:type aUncertainty: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> &
 	:rtype: None
 ") SetUncertainty;
-		void SetUncertainty (const Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit & aUncertainty);
+		void SetUncertainty (const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
+		%feature("compactdefaultargs") SetUnits;
+		%feature("autodoc", "	:param aUnits:
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
+	:rtype: None
+") SetUnits;
+		void SetUnits (const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		%feature("compactdefaultargs") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
+		%feature("autodoc", "	:rtype: None
+") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
+		 StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ();
 		%feature("compactdefaultargs") Uncertainty;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit>
 ") Uncertainty;
-		Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit Uncertainty ();
+		opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> Uncertainty ();
 		%feature("compactdefaultargs") UncertaintyValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
-	:rtype: Handle_StepBasic_UncertaintyMeasureWithUnit
+	:rtype: opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>
 ") UncertaintyValue;
-		Handle_StepBasic_UncertaintyMeasureWithUnit UncertaintyValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUncertainty;
-		%feature("autodoc", "	:rtype: int
-") NbUncertainty;
-		Standard_Integer NbUncertainty ();
+		opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> UncertaintyValue (const Standard_Integer num);
+		%feature("compactdefaultargs") Units;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_HArray1OfNamedUnit>
+") Units;
+		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units ();
+		%feature("compactdefaultargs") UnitsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: opencascade::handle<StepBasic_NamedUnit>
+") UnitsValue;
+		opencascade::handle<StepBasic_NamedUnit> UnitsValue (const Standard_Integer num);
 };
 
 
@@ -1537,40 +718,32 @@ class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public 
 %nodefaultctor StepGeom_GeometricRepresentationContext;
 class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
-		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContext;
-		%feature("autodoc", "	* Returns a GeometricRepresentationContext
-
-	:rtype: None
-") StepGeom_GeometricRepresentationContext;
-		 StepGeom_GeometricRepresentationContext ();
+		%feature("compactdefaultargs") CoordinateSpaceDimension;
+		%feature("autodoc", "	:rtype: int
+") CoordinateSpaceDimension;
+		Standard_Integer CoordinateSpaceDimension ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Standard_Integer aCoordinateSpaceDimension);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const Standard_Integer aCoordinateSpaceDimension);
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:rtype: None
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension);
-		%feature("compactdefaultargs") CoordinateSpaceDimension;
-		%feature("autodoc", "	:rtype: int
-") CoordinateSpaceDimension;
-		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContext;
+		%feature("autodoc", "	* Returns a GeometricRepresentationContext
+
+	:rtype: None
+") StepGeom_GeometricRepresentationContext;
+		 StepGeom_GeometricRepresentationContext ();
 };
 
 
@@ -1584,94 +757,86 @@ class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationCo
 %nodefaultctor StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
-		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
-		%feature("autodoc", "	* Returns a GeometricRepresentationContextAndGlobalUnitAssignedContext
-
-	:rtype: None
-") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
-		 StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext ();
+		%feature("compactdefaultargs") CoordinateSpaceDimension;
+		%feature("autodoc", "	:rtype: int
+") CoordinateSpaceDimension;
+		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") GeometricRepresentationContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_GeometricRepresentationContext>
+") GeometricRepresentationContext;
+		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext ();
+		%feature("compactdefaultargs") GlobalUnitAssignedContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_GlobalUnitAssignedContext>
+") GlobalUnitAssignedContext;
+		opencascade::handle<StepRepr_GlobalUnitAssignedContext> GlobalUnitAssignedContext ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aGeometricRepresentationContext:
-	:type aGeometricRepresentationContext: Handle_StepGeom_GeometricRepresentationContext &
+	:type aGeometricRepresentationContext: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:param aGlobalUnitAssignedContext:
-	:type aGlobalUnitAssignedContext: Handle_StepRepr_GlobalUnitAssignedContext &
-	:rtype: void
+	:type aGlobalUnitAssignedContext: opencascade::handle<StepRepr_GlobalUnitAssignedContext> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationContext,const Handle_StepRepr_GlobalUnitAssignedContext & aGlobalUnitAssignedContext);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext,const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
-	:rtype: void
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Standard_Integer aCoordinateSpaceDimension,const Handle_StepBasic_HArray1OfNamedUnit & aUnits);
-		%feature("compactdefaultargs") SetGeometricRepresentationContext;
-		%feature("autodoc", "	:param aGeometricRepresentationContext:
-	:type aGeometricRepresentationContext: Handle_StepGeom_GeometricRepresentationContext &
-	:rtype: None
-") SetGeometricRepresentationContext;
-		void SetGeometricRepresentationContext (const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationContext);
-		%feature("compactdefaultargs") GeometricRepresentationContext;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_GeometricRepresentationContext
-") GeometricRepresentationContext;
-		Handle_StepGeom_GeometricRepresentationContext GeometricRepresentationContext ();
-		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
-		%feature("autodoc", "	:param aGlobalUnitAssignedContext:
-	:type aGlobalUnitAssignedContext: Handle_StepRepr_GlobalUnitAssignedContext &
-	:rtype: None
-") SetGlobalUnitAssignedContext;
-		void SetGlobalUnitAssignedContext (const Handle_StepRepr_GlobalUnitAssignedContext & aGlobalUnitAssignedContext);
-		%feature("compactdefaultargs") GlobalUnitAssignedContext;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_GlobalUnitAssignedContext
-") GlobalUnitAssignedContext;
-		Handle_StepRepr_GlobalUnitAssignedContext GlobalUnitAssignedContext ();
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const Standard_Integer aCoordinateSpaceDimension,const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		%feature("compactdefaultargs") NbUnits;
+		%feature("autodoc", "	:rtype: int
+") NbUnits;
+		Standard_Integer NbUnits ();
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:rtype: None
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension);
-		%feature("compactdefaultargs") CoordinateSpaceDimension;
-		%feature("autodoc", "	:rtype: int
-") CoordinateSpaceDimension;
-		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") SetGeometricRepresentationContext;
+		%feature("autodoc", "	:param aGeometricRepresentationContext:
+	:type aGeometricRepresentationContext: opencascade::handle<StepGeom_GeometricRepresentationContext> &
+	:rtype: None
+") SetGeometricRepresentationContext;
+		void SetGeometricRepresentationContext (const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
+		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
+		%feature("autodoc", "	:param aGlobalUnitAssignedContext:
+	:type aGlobalUnitAssignedContext: opencascade::handle<StepRepr_GlobalUnitAssignedContext> &
+	:rtype: None
+") SetGlobalUnitAssignedContext;
+		void SetGlobalUnitAssignedContext (const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 		%feature("compactdefaultargs") SetUnits;
 		%feature("autodoc", "	:param aUnits:
-	:type aUnits: Handle_StepBasic_HArray1OfNamedUnit &
+	:type aUnits: opencascade::handle<StepBasic_HArray1OfNamedUnit> &
 	:rtype: None
 ") SetUnits;
-		void SetUnits (const Handle_StepBasic_HArray1OfNamedUnit & aUnits);
+		void SetUnits (const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
+		%feature("autodoc", "	* Returns a GeometricRepresentationContextAndGlobalUnitAssignedContext
+
+	:rtype: None
+") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
+		 StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext ();
 		%feature("compactdefaultargs") Units;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_HArray1OfNamedUnit
+		%feature("autodoc", "	:rtype: opencascade::handle<StepBasic_HArray1OfNamedUnit>
 ") Units;
-		Handle_StepBasic_HArray1OfNamedUnit Units ();
+		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units ();
 		%feature("compactdefaultargs") UnitsValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
-	:rtype: Handle_StepBasic_NamedUnit
+	:rtype: opencascade::handle<StepBasic_NamedUnit>
 ") UnitsValue;
-		Handle_StepBasic_NamedUnit UnitsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUnits;
-		%feature("autodoc", "	:rtype: int
-") NbUnits;
-		Standard_Integer NbUnits ();
+		opencascade::handle<StepBasic_NamedUnit> UnitsValue (const Standard_Integer num);
 };
 
 
@@ -1685,72 +850,64 @@ class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : publ
 %nodefaultctor StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
-		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
-		%feature("autodoc", "	* empty constructor
-
-	:rtype: None
-") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
-		 StepGeom_GeometricRepresentationContextAndParametricRepresentationContext ();
+		%feature("compactdefaultargs") CoordinateSpaceDimension;
+		%feature("autodoc", "	:rtype: int
+") CoordinateSpaceDimension;
+		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") GeometricRepresentationContext;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_GeometricRepresentationContext>
+") GeometricRepresentationContext;
+		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
-	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aGeometricRepresentationContext:
-	:type aGeometricRepresentationContext: Handle_StepGeom_GeometricRepresentationContext &
+	:type aGeometricRepresentationContext: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:param aParametricRepresentationContext:
-	:type aParametricRepresentationContext: Handle_StepRepr_ParametricRepresentationContext &
-	:rtype: void
+	:type aParametricRepresentationContext: opencascade::handle<StepRepr_ParametricRepresentationContext> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationContext,const Handle_StepRepr_ParametricRepresentationContext & aParametricRepresentationContext);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext,const opencascade::handle<StepRepr_ParametricRepresentationContext> & aParametricRepresentationContext);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aContextIdentifier:
-	:type aContextIdentifier: Handle_TCollection_HAsciiString &
+	:type aContextIdentifier: opencascade::handle<TCollection_HAsciiString> &
 	:param aContextType:
-	:type aContextType: Handle_TCollection_HAsciiString &
+	:type aContextType: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aContextIdentifier,const Handle_TCollection_HAsciiString & aContextType,const Standard_Integer aCoordinateSpaceDimension);
-		%feature("compactdefaultargs") SetGeometricRepresentationContext;
-		%feature("autodoc", "	:param aGeometricRepresentationContext:
-	:type aGeometricRepresentationContext: Handle_StepGeom_GeometricRepresentationContext &
-	:rtype: None
-") SetGeometricRepresentationContext;
-		void SetGeometricRepresentationContext (const Handle_StepGeom_GeometricRepresentationContext & aGeometricRepresentationContext);
-		%feature("compactdefaultargs") GeometricRepresentationContext;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_GeometricRepresentationContext
-") GeometricRepresentationContext;
-		Handle_StepGeom_GeometricRepresentationContext GeometricRepresentationContext ();
-		%feature("compactdefaultargs") SetParametricRepresentationContext;
-		%feature("autodoc", "	:param aParametricRepresentationContext:
-	:type aParametricRepresentationContext: Handle_StepRepr_ParametricRepresentationContext &
-	:rtype: None
-") SetParametricRepresentationContext;
-		void SetParametricRepresentationContext (const Handle_StepRepr_ParametricRepresentationContext & aParametricRepresentationContext);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier,const opencascade::handle<TCollection_HAsciiString> & aContextType,const Standard_Integer aCoordinateSpaceDimension);
 		%feature("compactdefaultargs") ParametricRepresentationContext;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_ParametricRepresentationContext
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_ParametricRepresentationContext>
 ") ParametricRepresentationContext;
-		Handle_StepRepr_ParametricRepresentationContext ParametricRepresentationContext ();
+		opencascade::handle<StepRepr_ParametricRepresentationContext> ParametricRepresentationContext ();
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "	:param aCoordinateSpaceDimension:
 	:type aCoordinateSpaceDimension: int
 	:rtype: None
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension);
-		%feature("compactdefaultargs") CoordinateSpaceDimension;
-		%feature("autodoc", "	:rtype: int
-") CoordinateSpaceDimension;
-		Standard_Integer CoordinateSpaceDimension ();
+		%feature("compactdefaultargs") SetGeometricRepresentationContext;
+		%feature("autodoc", "	:param aGeometricRepresentationContext:
+	:type aGeometricRepresentationContext: opencascade::handle<StepGeom_GeometricRepresentationContext> &
+	:rtype: None
+") SetGeometricRepresentationContext;
+		void SetGeometricRepresentationContext (const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
+		%feature("compactdefaultargs") SetParametricRepresentationContext;
+		%feature("autodoc", "	:param aParametricRepresentationContext:
+	:type aParametricRepresentationContext: opencascade::handle<StepRepr_ParametricRepresentationContext> &
+	:rtype: None
+") SetParametricRepresentationContext;
+		void SetParametricRepresentationContext (const opencascade::handle<StepRepr_ParametricRepresentationContext> & aParametricRepresentationContext);
+		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
+		%feature("autodoc", "	* empty constructor
+
+	:rtype: None
+") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
+		 StepGeom_GeometricRepresentationContextAndParametricRepresentationContext ();
 };
 
 
@@ -1780,1025 +937,35 @@ class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem 
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepGeom_HArray1OfBoundaryCurve;
-class StepGeom_HArray1OfBoundaryCurve : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfBoundaryCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfBoundaryCurve;
-		 StepGeom_HArray1OfBoundaryCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfBoundaryCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") StepGeom_HArray1OfBoundaryCurve;
-		 StepGeom_HArray1OfBoundaryCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepGeom_BoundaryCurve & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_BoundaryCurve & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_BoundaryCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_BoundaryCurve
-") Value;
-		Handle_StepGeom_BoundaryCurve Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_BoundaryCurve
-") ChangeValue;
-		Handle_StepGeom_BoundaryCurve ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfBoundaryCurve
-") Array1;
-		const StepGeom_Array1OfBoundaryCurve & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfBoundaryCurve
-") ChangeArray1;
-		StepGeom_Array1OfBoundaryCurve & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfBoundaryCurve)
-
-
-%extend StepGeom_HArray1OfBoundaryCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfBoundaryCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfCartesianPoint;
-class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfCartesianPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfCartesianPoint;
-		 StepGeom_HArray1OfCartesianPoint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfCartesianPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") StepGeom_HArray1OfCartesianPoint;
-		 StepGeom_HArray1OfCartesianPoint (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_CartesianPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") Value;
-		Handle_StepGeom_CartesianPoint Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ChangeValue;
-		Handle_StepGeom_CartesianPoint ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCartesianPoint
-") Array1;
-		const StepGeom_Array1OfCartesianPoint & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCartesianPoint
-") ChangeArray1;
-		StepGeom_Array1OfCartesianPoint & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfCartesianPoint)
-
-
-%extend StepGeom_HArray1OfCartesianPoint {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfCartesianPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfCompositeCurveSegment;
-class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfCompositeCurveSegment;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfCompositeCurveSegment;
-		 StepGeom_HArray1OfCompositeCurveSegment (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfCompositeCurveSegment;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") StepGeom_HArray1OfCompositeCurveSegment;
-		 StepGeom_HArray1OfCompositeCurveSegment (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepGeom_CompositeCurveSegment & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CompositeCurveSegment & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_CompositeCurveSegment & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CompositeCurveSegment
-") Value;
-		Handle_StepGeom_CompositeCurveSegment Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_CompositeCurveSegment
-") ChangeValue;
-		Handle_StepGeom_CompositeCurveSegment ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCompositeCurveSegment
-") Array1;
-		const StepGeom_Array1OfCompositeCurveSegment & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCompositeCurveSegment
-") ChangeArray1;
-		StepGeom_Array1OfCompositeCurveSegment & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfCompositeCurveSegment)
-
-
-%extend StepGeom_HArray1OfCompositeCurveSegment {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfCompositeCurveSegment {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfCurve;
-class StepGeom_HArray1OfCurve : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfCurve;
-		 StepGeom_HArray1OfCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Handle_StepGeom_Curve &
-	:rtype: None
-") StepGeom_HArray1OfCurve;
-		 StepGeom_HArray1OfCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_StepGeom_Curve & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_Curve &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_Curve & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Handle_StepGeom_Curve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_StepGeom_Curve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_Curve
-") Value;
-		Handle_StepGeom_Curve Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_StepGeom_Curve
-") ChangeValue;
-		Handle_StepGeom_Curve ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCurve
-") Array1;
-		const StepGeom_Array1OfCurve & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfCurve
-") ChangeArray1;
-		StepGeom_Array1OfCurve & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfCurve)
-
-
-%extend StepGeom_HArray1OfCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfPcurveOrSurface;
-class StepGeom_HArray1OfPcurveOrSurface : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfPcurveOrSurface;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfPcurveOrSurface;
-		 StepGeom_HArray1OfPcurveOrSurface (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfPcurveOrSurface;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepGeom_PcurveOrSurface &
-	:rtype: None
-") StepGeom_HArray1OfPcurveOrSurface;
-		 StepGeom_HArray1OfPcurveOrSurface (const Standard_Integer Low,const Standard_Integer Up,const StepGeom_PcurveOrSurface & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_PcurveOrSurface &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_PcurveOrSurface & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_PcurveOrSurface &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_PcurveOrSurface & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_PcurveOrSurface
-") Value;
-		const StepGeom_PcurveOrSurface & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_PcurveOrSurface
-") ChangeValue;
-		StepGeom_PcurveOrSurface & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfPcurveOrSurface
-") Array1;
-		const StepGeom_Array1OfPcurveOrSurface & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfPcurveOrSurface
-") ChangeArray1;
-		StepGeom_Array1OfPcurveOrSurface & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfPcurveOrSurface)
-
-
-%extend StepGeom_HArray1OfPcurveOrSurface {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfPcurveOrSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfSurfaceBoundary;
-class StepGeom_HArray1OfSurfaceBoundary : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfSurfaceBoundary;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfSurfaceBoundary;
-		 StepGeom_HArray1OfSurfaceBoundary (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfSurfaceBoundary;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepGeom_SurfaceBoundary &
-	:rtype: None
-") StepGeom_HArray1OfSurfaceBoundary;
-		 StepGeom_HArray1OfSurfaceBoundary (const Standard_Integer Low,const Standard_Integer Up,const StepGeom_SurfaceBoundary & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_SurfaceBoundary &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_SurfaceBoundary & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_SurfaceBoundary &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_SurfaceBoundary & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_SurfaceBoundary
-") Value;
-		const StepGeom_SurfaceBoundary & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_SurfaceBoundary
-") ChangeValue;
-		StepGeom_SurfaceBoundary & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfSurfaceBoundary
-") Array1;
-		const StepGeom_Array1OfSurfaceBoundary & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfSurfaceBoundary
-") ChangeArray1;
-		StepGeom_Array1OfSurfaceBoundary & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfSurfaceBoundary)
-
-
-%extend StepGeom_HArray1OfSurfaceBoundary {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfSurfaceBoundary {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray1OfTrimmingSelect;
-class StepGeom_HArray1OfTrimmingSelect : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray1OfTrimmingSelect;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepGeom_HArray1OfTrimmingSelect;
-		 StepGeom_HArray1OfTrimmingSelect (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepGeom_HArray1OfTrimmingSelect;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepGeom_TrimmingSelect &
-	:rtype: None
-") StepGeom_HArray1OfTrimmingSelect;
-		 StepGeom_HArray1OfTrimmingSelect (const Standard_Integer Low,const Standard_Integer Up,const StepGeom_TrimmingSelect & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepGeom_TrimmingSelect &
-	:rtype: None
-") Init;
-		void Init (const StepGeom_TrimmingSelect & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepGeom_TrimmingSelect &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepGeom_TrimmingSelect & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_TrimmingSelect
-") Value;
-		const StepGeom_TrimmingSelect & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepGeom_TrimmingSelect
-") ChangeValue;
-		StepGeom_TrimmingSelect & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfTrimmingSelect
-") Array1;
-		const StepGeom_Array1OfTrimmingSelect & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepGeom_Array1OfTrimmingSelect
-") ChangeArray1;
-		StepGeom_Array1OfTrimmingSelect & ChangeArray1 ();
-};
-
-
-%make_alias(StepGeom_HArray1OfTrimmingSelect)
-
-
-%extend StepGeom_HArray1OfTrimmingSelect {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepGeom_HArray1OfTrimmingSelect {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray2OfCartesianPoint;
-class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray2OfCartesianPoint;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_HArray2OfCartesianPoint;
-		 StepGeom_HArray2OfCartesianPoint (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") StepGeom_HArray2OfCartesianPoint;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") StepGeom_HArray2OfCartesianPoint;
-		 StepGeom_HArray2OfCartesianPoint (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_CartesianPoint & V);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_StepGeom_CartesianPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") Value;
-		Handle_StepGeom_CartesianPoint Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ChangeValue;
-		Handle_StepGeom_CartesianPoint ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") Array2;
-		%feature("autodoc", "	:rtype: StepGeom_Array2OfCartesianPoint
-") Array2;
-		const StepGeom_Array2OfCartesianPoint & Array2 ();
-		%feature("compactdefaultargs") ChangeArray2;
-		%feature("autodoc", "	:rtype: StepGeom_Array2OfCartesianPoint
-") ChangeArray2;
-		StepGeom_Array2OfCartesianPoint & ChangeArray2 ();
-};
-
-
-%make_alias(StepGeom_HArray2OfCartesianPoint)
-
-%extend StepGeom_HArray2OfCartesianPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepGeom_HArray2OfSurfacePatch;
-class StepGeom_HArray2OfSurfacePatch : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepGeom_HArray2OfSurfacePatch;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") StepGeom_HArray2OfSurfacePatch;
-		 StepGeom_HArray2OfSurfacePatch (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") StepGeom_HArray2OfSurfacePatch;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:param V:
-	:type V: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") StepGeom_HArray2OfSurfacePatch;
-		 StepGeom_HArray2OfSurfacePatch (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle_StepGeom_SurfacePatch & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepGeom_SurfacePatch & V);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_StepGeom_SurfacePatch & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_SurfacePatch
-") Value;
-		Handle_StepGeom_SurfacePatch Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Handle_StepGeom_SurfacePatch
-") ChangeValue;
-		Handle_StepGeom_SurfacePatch ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") Array2;
-		%feature("autodoc", "	:rtype: StepGeom_Array2OfSurfacePatch
-") Array2;
-		const StepGeom_Array2OfSurfacePatch & Array2 ();
-		%feature("compactdefaultargs") ChangeArray2;
-		%feature("autodoc", "	:rtype: StepGeom_Array2OfSurfacePatch
-") ChangeArray2;
-		StepGeom_Array2OfSurfacePatch & ChangeArray2 ();
-};
-
-
-%make_alias(StepGeom_HArray2OfSurfacePatch)
-
-%extend StepGeom_HArray2OfSurfacePatch {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepGeom_PcurveOrSurface;
 class StepGeom_PcurveOrSurface : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a PcurveOrSurface Kind Entity that is : 1 -> Pcurve 2 -> Surface 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") Pcurve;
+		%feature("autodoc", "	* returns Value as a Pcurve (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_Pcurve>
+") Pcurve;
+		opencascade::handle<StepGeom_Pcurve> Pcurve ();
 		%feature("compactdefaultargs") StepGeom_PcurveOrSurface;
 		%feature("autodoc", "	* Returns a PcurveOrSurface SelectType
 
 	:rtype: None
 ") StepGeom_PcurveOrSurface;
 		 StepGeom_PcurveOrSurface ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a PcurveOrSurface Kind Entity that is : 1 -> Pcurve 2 -> Surface 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") Pcurve;
-		%feature("autodoc", "	* returns Value as a Pcurve (Null if another type)
-
-	:rtype: Handle_StepGeom_Pcurve
-") Pcurve;
-		Handle_StepGeom_Pcurve Pcurve ();
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	* returns Value as a Surface (Null if another type)
 
-	:rtype: Handle_StepGeom_Surface
+	:rtype: opencascade::handle<StepGeom_Surface>
 ") Surface;
-		Handle_StepGeom_Surface Surface ();
+		opencascade::handle<StepGeom_Surface> Surface ();
 };
 
 
@@ -2810,32 +977,32 @@ class StepGeom_PcurveOrSurface : public StepData_SelectType {
 %nodefaultctor StepGeom_SurfaceBoundary;
 class StepGeom_SurfaceBoundary : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") BoundaryCurve;
+		%feature("autodoc", "	* Returns Value as BoundaryCurve (or Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_BoundaryCurve>
+") BoundaryCurve;
+		opencascade::handle<StepGeom_BoundaryCurve> BoundaryCurve ();
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of SurfaceBoundary select type 1 -> BoundaryCurve from StepGeom 2 -> DegeneratePcurve from StepGeom 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") DegeneratePcurve;
+		%feature("autodoc", "	* Returns Value as DegeneratePcurve (or Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_DegeneratePcurve>
+") DegeneratePcurve;
+		opencascade::handle<StepGeom_DegeneratePcurve> DegeneratePcurve ();
 		%feature("compactdefaultargs") StepGeom_SurfaceBoundary;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepGeom_SurfaceBoundary;
 		 StepGeom_SurfaceBoundary ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SurfaceBoundary select type 1 -> BoundaryCurve from StepGeom 2 -> DegeneratePcurve from StepGeom 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") BoundaryCurve;
-		%feature("autodoc", "	* Returns Value as BoundaryCurve (or Null if another type)
-
-	:rtype: Handle_StepGeom_BoundaryCurve
-") BoundaryCurve;
-		Handle_StepGeom_BoundaryCurve BoundaryCurve ();
-		%feature("compactdefaultargs") DegeneratePcurve;
-		%feature("autodoc", "	* Returns Value as DegeneratePcurve (or Null if another type)
-
-	:rtype: Handle_StepGeom_DegeneratePcurve
-") DegeneratePcurve;
-		Handle_StepGeom_DegeneratePcurve DegeneratePcurve ();
 };
 
 
@@ -2845,17 +1012,11 @@ class StepGeom_SurfaceBoundary : public StepData_SelectType {
 	}
 };
 %nodefaultctor StepGeom_SurfacePatch;
-class StepGeom_SurfacePatch : public MMgt_TShared {
+class StepGeom_SurfacePatch : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") StepGeom_SurfacePatch;
-		%feature("autodoc", "	* Returns a SurfacePatch
-
-	:rtype: None
-") StepGeom_SurfacePatch;
-		 StepGeom_SurfacePatch ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aParentSurface:
-	:type aParentSurface: Handle_StepGeom_BoundedSurface &
+	:type aParentSurface: opencascade::handle<StepGeom_BoundedSurface> &
 	:param aUTransition:
 	:type aUTransition: StepGeom_TransitionCode
 	:param aVTransition:
@@ -2864,59 +1025,65 @@ class StepGeom_SurfacePatch : public MMgt_TShared {
 	:type aUSense: bool
 	:param aVSense:
 	:type aVSense: bool
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_StepGeom_BoundedSurface & aParentSurface,const StepGeom_TransitionCode aUTransition,const StepGeom_TransitionCode aVTransition,const Standard_Boolean aUSense,const Standard_Boolean aVSense);
+		void Init (const opencascade::handle<StepGeom_BoundedSurface> & aParentSurface,const StepGeom_TransitionCode aUTransition,const StepGeom_TransitionCode aVTransition,const Standard_Boolean aUSense,const Standard_Boolean aVSense);
+		%feature("compactdefaultargs") ParentSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BoundedSurface>
+") ParentSurface;
+		opencascade::handle<StepGeom_BoundedSurface> ParentSurface ();
 		%feature("compactdefaultargs") SetParentSurface;
 		%feature("autodoc", "	:param aParentSurface:
-	:type aParentSurface: Handle_StepGeom_BoundedSurface &
+	:type aParentSurface: opencascade::handle<StepGeom_BoundedSurface> &
 	:rtype: None
 ") SetParentSurface;
-		void SetParentSurface (const Handle_StepGeom_BoundedSurface & aParentSurface);
-		%feature("compactdefaultargs") ParentSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_BoundedSurface
-") ParentSurface;
-		Handle_StepGeom_BoundedSurface ParentSurface ();
-		%feature("compactdefaultargs") SetUTransition;
-		%feature("autodoc", "	:param aUTransition:
-	:type aUTransition: StepGeom_TransitionCode
-	:rtype: None
-") SetUTransition;
-		void SetUTransition (const StepGeom_TransitionCode aUTransition);
-		%feature("compactdefaultargs") UTransition;
-		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
-") UTransition;
-		StepGeom_TransitionCode UTransition ();
-		%feature("compactdefaultargs") SetVTransition;
-		%feature("autodoc", "	:param aVTransition:
-	:type aVTransition: StepGeom_TransitionCode
-	:rtype: None
-") SetVTransition;
-		void SetVTransition (const StepGeom_TransitionCode aVTransition);
-		%feature("compactdefaultargs") VTransition;
-		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
-") VTransition;
-		StepGeom_TransitionCode VTransition ();
+		void SetParentSurface (const opencascade::handle<StepGeom_BoundedSurface> & aParentSurface);
 		%feature("compactdefaultargs") SetUSense;
 		%feature("autodoc", "	:param aUSense:
 	:type aUSense: bool
 	:rtype: None
 ") SetUSense;
 		void SetUSense (const Standard_Boolean aUSense);
-		%feature("compactdefaultargs") USense;
-		%feature("autodoc", "	:rtype: bool
-") USense;
-		Standard_Boolean USense ();
+		%feature("compactdefaultargs") SetUTransition;
+		%feature("autodoc", "	:param aUTransition:
+	:type aUTransition: StepGeom_TransitionCode
+	:rtype: None
+") SetUTransition;
+		void SetUTransition (const StepGeom_TransitionCode aUTransition);
 		%feature("compactdefaultargs") SetVSense;
 		%feature("autodoc", "	:param aVSense:
 	:type aVSense: bool
 	:rtype: None
 ") SetVSense;
 		void SetVSense (const Standard_Boolean aVSense);
+		%feature("compactdefaultargs") SetVTransition;
+		%feature("autodoc", "	:param aVTransition:
+	:type aVTransition: StepGeom_TransitionCode
+	:rtype: None
+") SetVTransition;
+		void SetVTransition (const StepGeom_TransitionCode aVTransition);
+		%feature("compactdefaultargs") StepGeom_SurfacePatch;
+		%feature("autodoc", "	* Returns a SurfacePatch
+
+	:rtype: None
+") StepGeom_SurfacePatch;
+		 StepGeom_SurfacePatch ();
+		%feature("compactdefaultargs") USense;
+		%feature("autodoc", "	:rtype: bool
+") USense;
+		Standard_Boolean USense ();
+		%feature("compactdefaultargs") UTransition;
+		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
+") UTransition;
+		StepGeom_TransitionCode UTransition ();
 		%feature("compactdefaultargs") VSense;
 		%feature("autodoc", "	:rtype: bool
 ") VSense;
 		Standard_Boolean VSense ();
+		%feature("compactdefaultargs") VTransition;
+		%feature("autodoc", "	:rtype: StepGeom_TransitionCode
+") VTransition;
+		StepGeom_TransitionCode VTransition ();
 };
 
 
@@ -2930,10 +1097,6 @@ class StepGeom_SurfacePatch : public MMgt_TShared {
 %nodefaultctor StepGeom_TrimmingMember;
 class StepGeom_TrimmingMember : public StepData_SelectReal {
 	public:
-		%feature("compactdefaultargs") StepGeom_TrimmingMember;
-		%feature("autodoc", "	:rtype: None
-") StepGeom_TrimmingMember;
-		 StepGeom_TrimmingMember ();
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "	:rtype: bool
 ") HasName;
@@ -2948,6 +1111,10 @@ class StepGeom_TrimmingMember : public StepData_SelectReal {
 	:rtype: bool
 ") SetName;
 		virtual Standard_Boolean SetName (const char * name);
+		%feature("compactdefaultargs") StepGeom_TrimmingMember;
+		%feature("autodoc", "	:rtype: None
+") StepGeom_TrimmingMember;
+		 StepGeom_TrimmingMember ();
 };
 
 
@@ -2961,40 +1128,40 @@ class StepGeom_TrimmingMember : public StepData_SelectReal {
 %nodefaultctor StepGeom_TrimmingSelect;
 class StepGeom_TrimmingSelect : public StepData_SelectType {
 	public:
-		%feature("compactdefaultargs") StepGeom_TrimmingSelect;
-		%feature("autodoc", "	* Returns a TrimmingSelect SelectType
+		%feature("compactdefaultargs") CartesianPoint;
+		%feature("autodoc", "	* returns Value as a CartesianPoint (Null if another type)
 
-	:rtype: None
-") StepGeom_TrimmingSelect;
-		 StepGeom_TrimmingSelect ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a TrimmingSelect Kind Entity that is : 1 -> CartesianPoint 0 else (i.e. Real)
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a TrimmingMember (for PARAMETER_VALUE) as preferred
-
-	:rtype: Handle_StepData_SelectMember
-") NewMember;
-		virtual Handle_StepData_SelectMember NewMember ();
+	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") CartesianPoint;
+		opencascade::handle<StepGeom_CartesianPoint> CartesianPoint ();
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "	* Recognizes a SelectMember as Real, named as PARAMETER_VALUE 1 -> ParameterValue i.e. Real 0 else (i.e. Entity)
 
 	:param ent:
-	:type ent: Handle_StepData_SelectMember &
+	:type ent: opencascade::handle<StepData_SelectMember> &
 	:rtype: int
 ") CaseMem;
-		virtual Standard_Integer CaseMem (const Handle_StepData_SelectMember & ent);
-		%feature("compactdefaultargs") CartesianPoint;
-		%feature("autodoc", "	* returns Value as a CartesianPoint (Null if another type)
+		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a TrimmingSelect Kind Entity that is : 1 -> CartesianPoint 0 else (i.e. Real)
 
-	:rtype: Handle_StepGeom_CartesianPoint
-") CartesianPoint;
-		Handle_StepGeom_CartesianPoint CartesianPoint ();
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") NewMember;
+		%feature("autodoc", "	* Returns a TrimmingMember (for PARAMETER_VALUE) as preferred
+
+	:rtype: opencascade::handle<StepData_SelectMember>
+") NewMember;
+		virtual opencascade::handle<StepData_SelectMember> NewMember ();
+		%feature("compactdefaultargs") ParameterValue;
+		%feature("autodoc", "	* returns Value as a Real (0.0 if not a Real)
+
+	:rtype: float
+") ParameterValue;
+		Standard_Real ParameterValue ();
 		%feature("compactdefaultargs") SetParameterValue;
 		%feature("autodoc", "	* sets the ParameterValue as Real
 
@@ -3003,12 +1170,12 @@ class StepGeom_TrimmingSelect : public StepData_SelectType {
 	:rtype: None
 ") SetParameterValue;
 		void SetParameterValue (const Standard_Real aParameterValue);
-		%feature("compactdefaultargs") ParameterValue;
-		%feature("autodoc", "	* returns Value as a Real (0.0 if not a Real)
+		%feature("compactdefaultargs") StepGeom_TrimmingSelect;
+		%feature("autodoc", "	* Returns a TrimmingSelect SelectType
 
-	:rtype: float
-") ParameterValue;
-		Standard_Real ParameterValue ();
+	:rtype: None
+") StepGeom_TrimmingSelect;
+		 StepGeom_TrimmingSelect ();
 };
 
 
@@ -3020,32 +1187,32 @@ class StepGeom_TrimmingSelect : public StepData_SelectType {
 %nodefaultctor StepGeom_VectorOrDirection;
 class StepGeom_VectorOrDirection : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a VectorOrDirection Kind Entity that is : 1 -> Vector 2 -> Direction 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") Direction;
+		%feature("autodoc", "	* returns Value as a Direction (Null if another type)
+
+	:rtype: opencascade::handle<StepGeom_Direction>
+") Direction;
+		opencascade::handle<StepGeom_Direction> Direction ();
 		%feature("compactdefaultargs") StepGeom_VectorOrDirection;
 		%feature("autodoc", "	* Returns a VectorOrDirection SelectType
 
 	:rtype: None
 ") StepGeom_VectorOrDirection;
 		 StepGeom_VectorOrDirection ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a VectorOrDirection Kind Entity that is : 1 -> Vector 2 -> Direction 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") Vector;
 		%feature("autodoc", "	* returns Value as a Vector (Null if another type)
 
-	:rtype: Handle_StepGeom_Vector
+	:rtype: opencascade::handle<StepGeom_Vector>
 ") Vector;
-		Handle_StepGeom_Vector Vector ();
-		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "	* returns Value as a Direction (Null if another type)
-
-	:rtype: Handle_StepGeom_Direction
-") Direction;
-		Handle_StepGeom_Direction Direction ();
+		opencascade::handle<StepGeom_Vector> Vector ();
 };
 
 
@@ -3057,102 +1224,96 @@ class StepGeom_VectorOrDirection : public StepData_SelectType {
 %nodefaultctor StepGeom_CartesianTransformationOperator;
 class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepresentationItem {
 	public:
-		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator;
-		%feature("autodoc", "	* Returns a CartesianTransformationOperator
-
-	:rtype: None
-") StepGeom_CartesianTransformationOperator;
-		 StepGeom_CartesianTransformationOperator ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasAaxis1:
-	:type hasAaxis1: bool
-	:param aAxis1:
-	:type aAxis1: Handle_StepGeom_Direction &
-	:param hasAaxis2:
-	:type hasAaxis2: bool
-	:param aAxis2:
-	:type aAxis2: Handle_StepGeom_Direction &
-	:param aLocalOrigin:
-	:type aLocalOrigin: Handle_StepGeom_CartesianPoint &
-	:param hasAscale:
-	:type hasAscale: bool
-	:param aScale:
-	:type aScale: float
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasAaxis1,const Handle_StepGeom_Direction & aAxis1,const Standard_Boolean hasAaxis2,const Handle_StepGeom_Direction & aAxis2,const Handle_StepGeom_CartesianPoint & aLocalOrigin,const Standard_Boolean hasAscale,const Standard_Real aScale);
-		%feature("compactdefaultargs") SetAxis1;
-		%feature("autodoc", "	:param aAxis1:
-	:type aAxis1: Handle_StepGeom_Direction &
-	:rtype: None
-") SetAxis1;
-		void SetAxis1 (const Handle_StepGeom_Direction & aAxis1);
-		%feature("compactdefaultargs") UnSetAxis1;
-		%feature("autodoc", "	:rtype: None
-") UnSetAxis1;
-		void UnSetAxis1 ();
 		%feature("compactdefaultargs") Axis1;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
 ") Axis1;
-		Handle_StepGeom_Direction Axis1 ();
+		opencascade::handle<StepGeom_Direction> Axis1 ();
+		%feature("compactdefaultargs") Axis2;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") Axis2;
+		opencascade::handle<StepGeom_Direction> Axis2 ();
 		%feature("compactdefaultargs") HasAxis1;
 		%feature("autodoc", "	:rtype: bool
 ") HasAxis1;
 		Standard_Boolean HasAxis1 ();
-		%feature("compactdefaultargs") SetAxis2;
-		%feature("autodoc", "	:param aAxis2:
-	:type aAxis2: Handle_StepGeom_Direction &
-	:rtype: None
-") SetAxis2;
-		void SetAxis2 (const Handle_StepGeom_Direction & aAxis2);
-		%feature("compactdefaultargs") UnSetAxis2;
-		%feature("autodoc", "	:rtype: None
-") UnSetAxis2;
-		void UnSetAxis2 ();
-		%feature("compactdefaultargs") Axis2;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") Axis2;
-		Handle_StepGeom_Direction Axis2 ();
 		%feature("compactdefaultargs") HasAxis2;
 		%feature("autodoc", "	:rtype: bool
 ") HasAxis2;
 		Standard_Boolean HasAxis2 ();
+		%feature("compactdefaultargs") HasScale;
+		%feature("autodoc", "	:rtype: bool
+") HasScale;
+		Standard_Boolean HasScale ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param hasAaxis1:
+	:type hasAaxis1: bool
+	:param aAxis1:
+	:type aAxis1: opencascade::handle<StepGeom_Direction> &
+	:param hasAaxis2:
+	:type hasAaxis2: bool
+	:param aAxis2:
+	:type aAxis2: opencascade::handle<StepGeom_Direction> &
+	:param aLocalOrigin:
+	:type aLocalOrigin: opencascade::handle<StepGeom_CartesianPoint> &
+	:param hasAscale:
+	:type hasAscale: bool
+	:param aScale:
+	:type aScale: float
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasAaxis1,const opencascade::handle<StepGeom_Direction> & aAxis1,const Standard_Boolean hasAaxis2,const opencascade::handle<StepGeom_Direction> & aAxis2,const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin,const Standard_Boolean hasAscale,const Standard_Real aScale);
+		%feature("compactdefaultargs") LocalOrigin;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") LocalOrigin;
+		opencascade::handle<StepGeom_CartesianPoint> LocalOrigin ();
+		%feature("compactdefaultargs") Scale;
+		%feature("autodoc", "	:rtype: float
+") Scale;
+		Standard_Real Scale ();
+		%feature("compactdefaultargs") SetAxis1;
+		%feature("autodoc", "	:param aAxis1:
+	:type aAxis1: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetAxis1;
+		void SetAxis1 (const opencascade::handle<StepGeom_Direction> & aAxis1);
+		%feature("compactdefaultargs") SetAxis2;
+		%feature("autodoc", "	:param aAxis2:
+	:type aAxis2: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetAxis2;
+		void SetAxis2 (const opencascade::handle<StepGeom_Direction> & aAxis2);
 		%feature("compactdefaultargs") SetLocalOrigin;
 		%feature("autodoc", "	:param aLocalOrigin:
-	:type aLocalOrigin: Handle_StepGeom_CartesianPoint &
+	:type aLocalOrigin: opencascade::handle<StepGeom_CartesianPoint> &
 	:rtype: None
 ") SetLocalOrigin;
-		void SetLocalOrigin (const Handle_StepGeom_CartesianPoint & aLocalOrigin);
-		%feature("compactdefaultargs") LocalOrigin;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianPoint
-") LocalOrigin;
-		Handle_StepGeom_CartesianPoint LocalOrigin ();
+		void SetLocalOrigin (const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin);
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "	:param aScale:
 	:type aScale: float
 	:rtype: None
 ") SetScale;
 		void SetScale (const Standard_Real aScale);
+		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator;
+		%feature("autodoc", "	* Returns a CartesianTransformationOperator
+
+	:rtype: None
+") StepGeom_CartesianTransformationOperator;
+		 StepGeom_CartesianTransformationOperator ();
+		%feature("compactdefaultargs") UnSetAxis1;
+		%feature("autodoc", "	:rtype: None
+") UnSetAxis1;
+		void UnSetAxis1 ();
+		%feature("compactdefaultargs") UnSetAxis2;
+		%feature("autodoc", "	:rtype: None
+") UnSetAxis2;
+		void UnSetAxis2 ();
 		%feature("compactdefaultargs") UnSetScale;
 		%feature("autodoc", "	:rtype: None
 ") UnSetScale;
 		void UnSetScale ();
-		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "	:rtype: float
-") Scale;
-		Standard_Real Scale ();
-		%feature("compactdefaultargs") HasScale;
-		%feature("autodoc", "	:rtype: bool
-") HasScale;
-		Standard_Boolean HasScale ();
 };
 
 
@@ -3185,46 +1346,40 @@ class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 %nodefaultctor StepGeom_Direction;
 class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 	public:
-		%feature("compactdefaultargs") StepGeom_Direction;
-		%feature("autodoc", "	* Returns a Direction
-
-	:rtype: None
-") StepGeom_Direction;
-		 StepGeom_Direction ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDirectionRatios:
-	:type aDirectionRatios: Handle_TColStd_HArray1OfReal &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TColStd_HArray1OfReal & aDirectionRatios);
-		%feature("compactdefaultargs") SetDirectionRatios;
-		%feature("autodoc", "	:param aDirectionRatios:
-	:type aDirectionRatios: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetDirectionRatios;
-		void SetDirectionRatios (const Handle_TColStd_HArray1OfReal & aDirectionRatios);
 		%feature("compactdefaultargs") DirectionRatios;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") DirectionRatios;
-		Handle_TColStd_HArray1OfReal DirectionRatios ();
+		opencascade::handle<TColStd_HArray1OfReal> DirectionRatios ();
 		%feature("compactdefaultargs") DirectionRatiosValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") DirectionRatiosValue;
 		Standard_Real DirectionRatiosValue (const Standard_Integer num);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aDirectionRatios:
+	:type aDirectionRatios: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TColStd_HArray1OfReal> & aDirectionRatios);
 		%feature("compactdefaultargs") NbDirectionRatios;
 		%feature("autodoc", "	:rtype: int
 ") NbDirectionRatios;
 		Standard_Integer NbDirectionRatios ();
+		%feature("compactdefaultargs") SetDirectionRatios;
+		%feature("autodoc", "	:param aDirectionRatios:
+	:type aDirectionRatios: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetDirectionRatios;
+		void SetDirectionRatios (const opencascade::handle<TColStd_HArray1OfReal> & aDirectionRatios);
+		%feature("compactdefaultargs") StepGeom_Direction;
+		%feature("autodoc", "	* Returns a Direction
+
+	:rtype: None
+") StepGeom_Direction;
+		 StepGeom_Direction ();
 };
 
 
@@ -3238,36 +1393,30 @@ class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 %nodefaultctor StepGeom_Placement;
 class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aLocation:
+	:type aLocation: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CartesianPoint> & aLocation);
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") Location;
+		opencascade::handle<StepGeom_CartesianPoint> Location ();
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: None
+") SetLocation;
+		void SetLocation (const opencascade::handle<StepGeom_CartesianPoint> & aLocation);
 		%feature("compactdefaultargs") StepGeom_Placement;
 		%feature("autodoc", "	* Returns a Placement
 
 	:rtype: None
 ") StepGeom_Placement;
 		 StepGeom_Placement ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation);
-		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetLocation;
-		void SetLocation (const Handle_StepGeom_CartesianPoint & aLocation);
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianPoint
-") Location;
-		Handle_StepGeom_CartesianPoint Location ();
 };
 
 
@@ -3300,44 +1449,34 @@ class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 %nodefaultctor StepGeom_ReparametrisedCompositeCurveSegment;
 class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCurveSegment {
 	public:
-		%feature("compactdefaultargs") StepGeom_ReparametrisedCompositeCurveSegment;
-		%feature("autodoc", "	* Returns a ReparametrisedCompositeCurveSegment
-
-	:rtype: None
-") StepGeom_ReparametrisedCompositeCurveSegment;
-		 StepGeom_ReparametrisedCompositeCurveSegment ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aTransition:
 	:type aTransition: StepGeom_TransitionCode
 	:param aSameSense:
 	:type aSameSense: bool
 	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
-	:rtype: void
-") Init;
-		virtual void Init (const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const Handle_StepGeom_Curve & aParentCurve);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aTransition:
-	:type aTransition: StepGeom_TransitionCode
-	:param aSameSense:
-	:type aSameSense: bool
-	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
+	:type aParentCurve: opencascade::handle<StepGeom_Curve> &
 	:param aParamLength:
 	:type aParamLength: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const Handle_StepGeom_Curve & aParentCurve,const Standard_Real aParamLength);
+		void Init (const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const opencascade::handle<StepGeom_Curve> & aParentCurve,const Standard_Real aParamLength);
+		%feature("compactdefaultargs") ParamLength;
+		%feature("autodoc", "	:rtype: float
+") ParamLength;
+		Standard_Real ParamLength ();
 		%feature("compactdefaultargs") SetParamLength;
 		%feature("autodoc", "	:param aParamLength:
 	:type aParamLength: float
 	:rtype: None
 ") SetParamLength;
 		void SetParamLength (const Standard_Real aParamLength);
-		%feature("compactdefaultargs") ParamLength;
-		%feature("autodoc", "	:rtype: float
-") ParamLength;
-		Standard_Real ParamLength ();
+		%feature("compactdefaultargs") StepGeom_ReparametrisedCompositeCurveSegment;
+		%feature("autodoc", "	* Returns a ReparametrisedCompositeCurveSegment
+
+	:rtype: None
+") StepGeom_ReparametrisedCompositeCurveSegment;
+		 StepGeom_ReparametrisedCompositeCurveSegment ();
 };
 
 
@@ -3370,48 +1509,42 @@ class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 %nodefaultctor StepGeom_Vector;
 class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 	public:
-		%feature("compactdefaultargs") StepGeom_Vector;
-		%feature("autodoc", "	* Returns a Vector
-
-	:rtype: None
-") StepGeom_Vector;
-		 StepGeom_Vector ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aOrientation:
-	:type aOrientation: Handle_StepGeom_Direction &
+	:type aOrientation: opencascade::handle<StepGeom_Direction> &
 	:param aMagnitude:
 	:type aMagnitude: float
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Direction & aOrientation,const Standard_Real aMagnitude);
-		%feature("compactdefaultargs") SetOrientation;
-		%feature("autodoc", "	:param aOrientation:
-	:type aOrientation: Handle_StepGeom_Direction &
 	:rtype: None
-") SetOrientation;
-		void SetOrientation (const Handle_StepGeom_Direction & aOrientation);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Direction> & aOrientation,const Standard_Real aMagnitude);
+		%feature("compactdefaultargs") Magnitude;
+		%feature("autodoc", "	:rtype: float
+") Magnitude;
+		Standard_Real Magnitude ();
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
 ") Orientation;
-		Handle_StepGeom_Direction Orientation ();
+		opencascade::handle<StepGeom_Direction> Orientation ();
 		%feature("compactdefaultargs") SetMagnitude;
 		%feature("autodoc", "	:param aMagnitude:
 	:type aMagnitude: float
 	:rtype: None
 ") SetMagnitude;
 		void SetMagnitude (const Standard_Real aMagnitude);
-		%feature("compactdefaultargs") Magnitude;
-		%feature("autodoc", "	:rtype: float
-") Magnitude;
-		Standard_Real Magnitude ();
+		%feature("compactdefaultargs") SetOrientation;
+		%feature("autodoc", "	:param aOrientation:
+	:type aOrientation: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetOrientation;
+		void SetOrientation (const opencascade::handle<StepGeom_Direction> & aOrientation);
+		%feature("compactdefaultargs") StepGeom_Vector;
+		%feature("autodoc", "	* Returns a Vector
+
+	:rtype: None
+") StepGeom_Vector;
+		 StepGeom_Vector ();
 };
 
 
@@ -3425,50 +1558,42 @@ class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 %nodefaultctor StepGeom_Axis1Placement;
 class StepGeom_Axis1Placement : public StepGeom_Placement {
 	public:
+		%feature("compactdefaultargs") Axis;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") Axis;
+		opencascade::handle<StepGeom_Direction> Axis ();
+		%feature("compactdefaultargs") HasAxis;
+		%feature("autodoc", "	:rtype: bool
+") HasAxis;
+		Standard_Boolean HasAxis ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aLocation:
+	:type aLocation: opencascade::handle<StepGeom_CartesianPoint> &
+	:param hasAaxis:
+	:type hasAaxis: bool
+	:param aAxis:
+	:type aAxis: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CartesianPoint> & aLocation,const Standard_Boolean hasAaxis,const opencascade::handle<StepGeom_Direction> & aAxis);
+		%feature("compactdefaultargs") SetAxis;
+		%feature("autodoc", "	:param aAxis:
+	:type aAxis: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetAxis;
+		void SetAxis (const opencascade::handle<StepGeom_Direction> & aAxis);
 		%feature("compactdefaultargs") StepGeom_Axis1Placement;
 		%feature("autodoc", "	* Returns a Axis1Placement
 
 	:rtype: None
 ") StepGeom_Axis1Placement;
 		 StepGeom_Axis1Placement ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:param hasAaxis:
-	:type hasAaxis: bool
-	:param aAxis:
-	:type aAxis: Handle_StepGeom_Direction &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation,const Standard_Boolean hasAaxis,const Handle_StepGeom_Direction & aAxis);
-		%feature("compactdefaultargs") SetAxis;
-		%feature("autodoc", "	:param aAxis:
-	:type aAxis: Handle_StepGeom_Direction &
-	:rtype: None
-") SetAxis;
-		void SetAxis (const Handle_StepGeom_Direction & aAxis);
 		%feature("compactdefaultargs") UnSetAxis;
 		%feature("autodoc", "	:rtype: None
 ") UnSetAxis;
 		void UnSetAxis ();
-		%feature("compactdefaultargs") Axis;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") Axis;
-		Handle_StepGeom_Direction Axis ();
-		%feature("compactdefaultargs") HasAxis;
-		%feature("autodoc", "	:rtype: bool
-") HasAxis;
-		Standard_Boolean HasAxis ();
 };
 
 
@@ -3482,50 +1607,42 @@ class StepGeom_Axis1Placement : public StepGeom_Placement {
 %nodefaultctor StepGeom_Axis2Placement2d;
 class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 	public:
+		%feature("compactdefaultargs") HasRefDirection;
+		%feature("autodoc", "	:rtype: bool
+") HasRefDirection;
+		Standard_Boolean HasRefDirection ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aLocation:
+	:type aLocation: opencascade::handle<StepGeom_CartesianPoint> &
+	:param hasArefDirection:
+	:type hasArefDirection: bool
+	:param aRefDirection:
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CartesianPoint> & aLocation,const Standard_Boolean hasArefDirection,const opencascade::handle<StepGeom_Direction> & aRefDirection);
+		%feature("compactdefaultargs") RefDirection;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") RefDirection;
+		opencascade::handle<StepGeom_Direction> RefDirection ();
+		%feature("compactdefaultargs") SetRefDirection;
+		%feature("autodoc", "	:param aRefDirection:
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetRefDirection;
+		void SetRefDirection (const opencascade::handle<StepGeom_Direction> & aRefDirection);
 		%feature("compactdefaultargs") StepGeom_Axis2Placement2d;
 		%feature("autodoc", "	* Returns a Axis2Placement2d
 
 	:rtype: None
 ") StepGeom_Axis2Placement2d;
 		 StepGeom_Axis2Placement2d ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:param hasArefDirection:
-	:type hasArefDirection: bool
-	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation,const Standard_Boolean hasArefDirection,const Handle_StepGeom_Direction & aRefDirection);
-		%feature("compactdefaultargs") SetRefDirection;
-		%feature("autodoc", "	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
-	:rtype: None
-") SetRefDirection;
-		void SetRefDirection (const Handle_StepGeom_Direction & aRefDirection);
 		%feature("compactdefaultargs") UnSetRefDirection;
 		%feature("autodoc", "	:rtype: None
 ") UnSetRefDirection;
 		void UnSetRefDirection ();
-		%feature("compactdefaultargs") RefDirection;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") RefDirection;
-		Handle_StepGeom_Direction RefDirection ();
-		%feature("compactdefaultargs") HasRefDirection;
-		%feature("autodoc", "	:rtype: bool
-") HasRefDirection;
-		Standard_Boolean HasRefDirection ();
 };
 
 
@@ -3539,72 +1656,64 @@ class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 %nodefaultctor StepGeom_Axis2Placement3d;
 class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 	public:
+		%feature("compactdefaultargs") Axis;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") Axis;
+		opencascade::handle<StepGeom_Direction> Axis ();
+		%feature("compactdefaultargs") HasAxis;
+		%feature("autodoc", "	:rtype: bool
+") HasAxis;
+		Standard_Boolean HasAxis ();
+		%feature("compactdefaultargs") HasRefDirection;
+		%feature("autodoc", "	:rtype: bool
+") HasRefDirection;
+		Standard_Boolean HasRefDirection ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aLocation:
+	:type aLocation: opencascade::handle<StepGeom_CartesianPoint> &
+	:param hasAaxis:
+	:type hasAaxis: bool
+	:param aAxis:
+	:type aAxis: opencascade::handle<StepGeom_Direction> &
+	:param hasArefDirection:
+	:type hasArefDirection: bool
+	:param aRefDirection:
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CartesianPoint> & aLocation,const Standard_Boolean hasAaxis,const opencascade::handle<StepGeom_Direction> & aAxis,const Standard_Boolean hasArefDirection,const opencascade::handle<StepGeom_Direction> & aRefDirection);
+		%feature("compactdefaultargs") RefDirection;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") RefDirection;
+		opencascade::handle<StepGeom_Direction> RefDirection ();
+		%feature("compactdefaultargs") SetAxis;
+		%feature("autodoc", "	:param aAxis:
+	:type aAxis: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetAxis;
+		void SetAxis (const opencascade::handle<StepGeom_Direction> & aAxis);
+		%feature("compactdefaultargs") SetRefDirection;
+		%feature("autodoc", "	:param aRefDirection:
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetRefDirection;
+		void SetRefDirection (const opencascade::handle<StepGeom_Direction> & aRefDirection);
 		%feature("compactdefaultargs") StepGeom_Axis2Placement3d;
 		%feature("autodoc", "	* Returns a Axis2Placement3d
 
 	:rtype: None
 ") StepGeom_Axis2Placement3d;
 		 StepGeom_Axis2Placement3d ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aLocation:
-	:type aLocation: Handle_StepGeom_CartesianPoint &
-	:param hasAaxis:
-	:type hasAaxis: bool
-	:param aAxis:
-	:type aAxis: Handle_StepGeom_Direction &
-	:param hasArefDirection:
-	:type hasArefDirection: bool
-	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aLocation,const Standard_Boolean hasAaxis,const Handle_StepGeom_Direction & aAxis,const Standard_Boolean hasArefDirection,const Handle_StepGeom_Direction & aRefDirection);
-		%feature("compactdefaultargs") SetAxis;
-		%feature("autodoc", "	:param aAxis:
-	:type aAxis: Handle_StepGeom_Direction &
-	:rtype: None
-") SetAxis;
-		void SetAxis (const Handle_StepGeom_Direction & aAxis);
 		%feature("compactdefaultargs") UnSetAxis;
 		%feature("autodoc", "	:rtype: None
 ") UnSetAxis;
 		void UnSetAxis ();
-		%feature("compactdefaultargs") Axis;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") Axis;
-		Handle_StepGeom_Direction Axis ();
-		%feature("compactdefaultargs") HasAxis;
-		%feature("autodoc", "	:rtype: bool
-") HasAxis;
-		Standard_Boolean HasAxis ();
-		%feature("compactdefaultargs") SetRefDirection;
-		%feature("autodoc", "	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
-	:rtype: None
-") SetRefDirection;
-		void SetRefDirection (const Handle_StepGeom_Direction & aRefDirection);
 		%feature("compactdefaultargs") UnSetRefDirection;
 		%feature("autodoc", "	:rtype: None
 ") UnSetRefDirection;
 		void UnSetRefDirection ();
-		%feature("compactdefaultargs") RefDirection;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") RefDirection;
-		Handle_StepGeom_Direction RefDirection ();
-		%feature("compactdefaultargs") HasRefDirection;
-		%feature("autodoc", "	:rtype: bool
-") HasRefDirection;
-		Standard_Boolean HasRefDirection ();
 };
 
 
@@ -3656,39 +1765,37 @@ class StepGeom_BoundedSurface : public StepGeom_Surface {
 %nodefaultctor StepGeom_CartesianPoint;
 class StepGeom_CartesianPoint : public StepGeom_Point {
 	public:
-		%feature("compactdefaultargs") StepGeom_CartesianPoint;
-		%feature("autodoc", "	* Returns a CartesianPoint
-
-	:rtype: None
-") StepGeom_CartesianPoint;
-		 StepGeom_CartesianPoint ();
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") Coordinates;
+		opencascade::handle<TColStd_HArray1OfReal> Coordinates ();
+		%feature("compactdefaultargs") CoordinatesValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: float
+") CoordinatesValue;
+		Standard_Real CoordinatesValue (const Standard_Integer num);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinates:
-	:type aCoordinates: Handle_TColStd_HArray1OfReal &
-	:rtype: void
+	:type aCoordinates: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_TColStd_HArray1OfReal & aCoordinates);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TColStd_HArray1OfReal> & aCoordinates);
 		%feature("compactdefaultargs") Init2D;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param X:
 	:type X: float
 	:param Y:
 	:type Y: float
 	:rtype: None
 ") Init2D;
-		void Init2D (const Handle_TCollection_HAsciiString & aName,const Standard_Real X,const Standard_Real Y);
+		void Init2D (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Real X,const Standard_Real Y);
 		%feature("compactdefaultargs") Init3D;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param X:
 	:type X: float
 	:param Y:
@@ -3697,27 +1804,23 @@ class StepGeom_CartesianPoint : public StepGeom_Point {
 	:type Z: float
 	:rtype: None
 ") Init3D;
-		void Init3D (const Handle_TCollection_HAsciiString & aName,const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "	:param aCoordinates:
-	:type aCoordinates: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetCoordinates;
-		void SetCoordinates (const Handle_TColStd_HArray1OfReal & aCoordinates);
-		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") Coordinates;
-		Handle_TColStd_HArray1OfReal Coordinates ();
-		%feature("compactdefaultargs") CoordinatesValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: float
-") CoordinatesValue;
-		Standard_Real CoordinatesValue (const Standard_Integer num);
+		void Init3D (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
 		%feature("compactdefaultargs") NbCoordinates;
 		%feature("autodoc", "	:rtype: int
 ") NbCoordinates;
 		Standard_Integer NbCoordinates ();
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "	:param aCoordinates:
+	:type aCoordinates: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetCoordinates;
+		void SetCoordinates (const opencascade::handle<TColStd_HArray1OfReal> & aCoordinates);
+		%feature("compactdefaultargs") StepGeom_CartesianPoint;
+		%feature("autodoc", "	* Returns a CartesianPoint
+
+	:rtype: None
+") StepGeom_CartesianPoint;
+		 StepGeom_CartesianPoint ();
 };
 
 
@@ -3748,45 +1851,27 @@ class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTran
 %nodefaultctor StepGeom_CartesianTransformationOperator3d;
 class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTransformationOperator {
 	public:
-		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator3d;
-		%feature("autodoc", "	* Returns a CartesianTransformationOperator3d
-
-	:rtype: None
-") StepGeom_CartesianTransformationOperator3d;
-		 StepGeom_CartesianTransformationOperator3d ();
+		%feature("compactdefaultargs") Axis3;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") Axis3;
+		opencascade::handle<StepGeom_Direction> Axis3 ();
+		%feature("compactdefaultargs") HasAxis3;
+		%feature("autodoc", "	:rtype: bool
+") HasAxis3;
+		Standard_Boolean HasAxis3 ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param hasAaxis1:
 	:type hasAaxis1: bool
 	:param aAxis1:
-	:type aAxis1: Handle_StepGeom_Direction &
+	:type aAxis1: opencascade::handle<StepGeom_Direction> &
 	:param hasAaxis2:
 	:type hasAaxis2: bool
 	:param aAxis2:
-	:type aAxis2: Handle_StepGeom_Direction &
+	:type aAxis2: opencascade::handle<StepGeom_Direction> &
 	:param aLocalOrigin:
-	:type aLocalOrigin: Handle_StepGeom_CartesianPoint &
-	:param hasAscale:
-	:type hasAscale: bool
-	:param aScale:
-	:type aScale: float
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasAaxis1,const Handle_StepGeom_Direction & aAxis1,const Standard_Boolean hasAaxis2,const Handle_StepGeom_Direction & aAxis2,const Handle_StepGeom_CartesianPoint & aLocalOrigin,const Standard_Boolean hasAscale,const Standard_Real aScale);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param hasAaxis1:
-	:type hasAaxis1: bool
-	:param aAxis1:
-	:type aAxis1: Handle_StepGeom_Direction &
-	:param hasAaxis2:
-	:type hasAaxis2: bool
-	:param aAxis2:
-	:type aAxis2: Handle_StepGeom_Direction &
-	:param aLocalOrigin:
-	:type aLocalOrigin: Handle_StepGeom_CartesianPoint &
+	:type aLocalOrigin: opencascade::handle<StepGeom_CartesianPoint> &
 	:param hasAscale:
 	:type hasAscale: bool
 	:param aScale:
@@ -3794,28 +1879,26 @@ class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTran
 	:param hasAaxis3:
 	:type hasAaxis3: bool
 	:param aAxis3:
-	:type aAxis3: Handle_StepGeom_Direction &
-	:rtype: void
+	:type aAxis3: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Boolean hasAaxis1,const Handle_StepGeom_Direction & aAxis1,const Standard_Boolean hasAaxis2,const Handle_StepGeom_Direction & aAxis2,const Handle_StepGeom_CartesianPoint & aLocalOrigin,const Standard_Boolean hasAscale,const Standard_Real aScale,const Standard_Boolean hasAaxis3,const Handle_StepGeom_Direction & aAxis3);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Boolean hasAaxis1,const opencascade::handle<StepGeom_Direction> & aAxis1,const Standard_Boolean hasAaxis2,const opencascade::handle<StepGeom_Direction> & aAxis2,const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin,const Standard_Boolean hasAscale,const Standard_Real aScale,const Standard_Boolean hasAaxis3,const opencascade::handle<StepGeom_Direction> & aAxis3);
 		%feature("compactdefaultargs") SetAxis3;
 		%feature("autodoc", "	:param aAxis3:
-	:type aAxis3: Handle_StepGeom_Direction &
+	:type aAxis3: opencascade::handle<StepGeom_Direction> &
 	:rtype: None
 ") SetAxis3;
-		void SetAxis3 (const Handle_StepGeom_Direction & aAxis3);
+		void SetAxis3 (const opencascade::handle<StepGeom_Direction> & aAxis3);
+		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator3d;
+		%feature("autodoc", "	* Returns a CartesianTransformationOperator3d
+
+	:rtype: None
+") StepGeom_CartesianTransformationOperator3d;
+		 StepGeom_CartesianTransformationOperator3d ();
 		%feature("compactdefaultargs") UnSetAxis3;
 		%feature("autodoc", "	:rtype: None
 ") UnSetAxis3;
 		void UnSetAxis3 ();
-		%feature("compactdefaultargs") Axis3;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") Axis3;
-		Handle_StepGeom_Direction Axis3 ();
-		%feature("compactdefaultargs") HasAxis3;
-		%feature("autodoc", "	:rtype: bool
-") HasAxis3;
-		Standard_Boolean HasAxis3 ();
 };
 
 
@@ -3829,36 +1912,30 @@ class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTran
 %nodefaultctor StepGeom_Conic;
 class StepGeom_Conic : public StepGeom_Curve {
 	public:
-		%feature("compactdefaultargs") StepGeom_Conic;
-		%feature("autodoc", "	* Returns a Conic
-
-	:rtype: None
-") StepGeom_Conic;
-		 StepGeom_Conic ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepGeom_Axis2Placement & aPosition);
+		%feature("compactdefaultargs") Position;
+		%feature("autodoc", "	:rtype: StepGeom_Axis2Placement
+") Position;
+		StepGeom_Axis2Placement Position ();
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
 	:rtype: None
 ") SetPosition;
 		void SetPosition (const StepGeom_Axis2Placement & aPosition);
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "	:rtype: StepGeom_Axis2Placement
-") Position;
-		StepGeom_Axis2Placement Position ();
+		%feature("compactdefaultargs") StepGeom_Conic;
+		%feature("autodoc", "	* Returns a Conic
+
+	:rtype: None
+") StepGeom_Conic;
+		 StepGeom_Conic ();
 };
 
 
@@ -3872,48 +1949,42 @@ class StepGeom_Conic : public StepGeom_Curve {
 %nodefaultctor StepGeom_CurveReplica;
 class StepGeom_CurveReplica : public StepGeom_Curve {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aParentCurve:
+	:type aParentCurve: opencascade::handle<StepGeom_Curve> &
+	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aParentCurve,const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
+		%feature("compactdefaultargs") ParentCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") ParentCurve;
+		opencascade::handle<StepGeom_Curve> ParentCurve ();
+		%feature("compactdefaultargs") SetParentCurve;
+		%feature("autodoc", "	:param aParentCurve:
+	:type aParentCurve: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
+") SetParentCurve;
+		void SetParentCurve (const opencascade::handle<StepGeom_Curve> & aParentCurve);
+		%feature("compactdefaultargs") SetTransformation;
+		%feature("autodoc", "	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator> &
+	:rtype: None
+") SetTransformation;
+		void SetTransformation (const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 		%feature("compactdefaultargs") StepGeom_CurveReplica;
 		%feature("autodoc", "	* Returns a CurveReplica
 
 	:rtype: None
 ") StepGeom_CurveReplica;
 		 StepGeom_CurveReplica ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
-	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aParentCurve,const Handle_StepGeom_CartesianTransformationOperator & aTransformation);
-		%feature("compactdefaultargs") SetParentCurve;
-		%feature("autodoc", "	:param aParentCurve:
-	:type aParentCurve: Handle_StepGeom_Curve &
-	:rtype: None
-") SetParentCurve;
-		void SetParentCurve (const Handle_StepGeom_Curve & aParentCurve);
-		%feature("compactdefaultargs") ParentCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") ParentCurve;
-		Handle_StepGeom_Curve ParentCurve ();
-		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator &
-	:rtype: None
-") SetTransformation;
-		void SetTransformation (const Handle_StepGeom_CartesianTransformationOperator & aTransformation);
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianTransformationOperator
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianTransformationOperator>
 ") Transformation;
-		Handle_StepGeom_CartesianTransformationOperator Transformation ();
+		opencascade::handle<StepGeom_CartesianTransformationOperator> Transformation ();
 };
 
 
@@ -3927,48 +1998,42 @@ class StepGeom_CurveReplica : public StepGeom_Curve {
 %nodefaultctor StepGeom_DegeneratePcurve;
 class StepGeom_DegeneratePcurve : public StepGeom_Point {
 	public:
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") BasisSurface;
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:param aReferenceToCurve:
+	:type aReferenceToCurve: opencascade::handle<StepRepr_DefinitionalRepresentation> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
+		%feature("compactdefaultargs") ReferenceToCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_DefinitionalRepresentation>
+") ReferenceToCurve;
+		opencascade::handle<StepRepr_DefinitionalRepresentation> ReferenceToCurve ();
+		%feature("compactdefaultargs") SetBasisSurface;
+		%feature("autodoc", "	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:rtype: None
+") SetBasisSurface;
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & aBasisSurface);
+		%feature("compactdefaultargs") SetReferenceToCurve;
+		%feature("autodoc", "	:param aReferenceToCurve:
+	:type aReferenceToCurve: opencascade::handle<StepRepr_DefinitionalRepresentation> &
+	:rtype: None
+") SetReferenceToCurve;
+		void SetReferenceToCurve (const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
 		%feature("compactdefaultargs") StepGeom_DegeneratePcurve;
 		%feature("autodoc", "	* Returns a DegeneratePcurve
 
 	:rtype: None
 ") StepGeom_DegeneratePcurve;
 		 StepGeom_DegeneratePcurve ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve);
-		%feature("compactdefaultargs") SetBasisSurface;
-		%feature("autodoc", "	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:rtype: None
-") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & aBasisSurface);
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
-		%feature("compactdefaultargs") SetReferenceToCurve;
-		%feature("autodoc", "	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:rtype: None
-") SetReferenceToCurve;
-		void SetReferenceToCurve (const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve);
-		%feature("compactdefaultargs") ReferenceToCurve;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_DefinitionalRepresentation
-") ReferenceToCurve;
-		Handle_StepRepr_DefinitionalRepresentation ReferenceToCurve ();
 };
 
 
@@ -3982,36 +2047,30 @@ class StepGeom_DegeneratePcurve : public StepGeom_Point {
 %nodefaultctor StepGeom_ElementarySurface;
 class StepGeom_ElementarySurface : public StepGeom_Surface {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aPosition:
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
+		%feature("compactdefaultargs") Position;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Axis2Placement3d>
+") Position;
+		opencascade::handle<StepGeom_Axis2Placement3d> Position ();
+		%feature("compactdefaultargs") SetPosition;
+		%feature("autodoc", "	:param aPosition:
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:rtype: None
+") SetPosition;
+		void SetPosition (const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 		%feature("compactdefaultargs") StepGeom_ElementarySurface;
 		%feature("autodoc", "	* Returns a ElementarySurface
 
 	:rtype: None
 ") StepGeom_ElementarySurface;
 		 StepGeom_ElementarySurface ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: None
-") SetPosition;
-		void SetPosition (const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Axis2Placement3d
-") Position;
-		Handle_StepGeom_Axis2Placement3d Position ();
 };
 
 
@@ -4025,48 +2084,42 @@ class StepGeom_ElementarySurface : public StepGeom_Surface {
 %nodefaultctor StepGeom_Line;
 class StepGeom_Line : public StepGeom_Curve {
 	public:
+		%feature("compactdefaultargs") Dir;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Vector>
+") Dir;
+		opencascade::handle<StepGeom_Vector> Dir ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aPnt:
+	:type aPnt: opencascade::handle<StepGeom_CartesianPoint> &
+	:param aDir:
+	:type aDir: opencascade::handle<StepGeom_Vector> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CartesianPoint> & aPnt,const opencascade::handle<StepGeom_Vector> & aDir);
+		%feature("compactdefaultargs") Pnt;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") Pnt;
+		opencascade::handle<StepGeom_CartesianPoint> Pnt ();
+		%feature("compactdefaultargs") SetDir;
+		%feature("autodoc", "	:param aDir:
+	:type aDir: opencascade::handle<StepGeom_Vector> &
+	:rtype: None
+") SetDir;
+		void SetDir (const opencascade::handle<StepGeom_Vector> & aDir);
+		%feature("compactdefaultargs") SetPnt;
+		%feature("autodoc", "	:param aPnt:
+	:type aPnt: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: None
+") SetPnt;
+		void SetPnt (const opencascade::handle<StepGeom_CartesianPoint> & aPnt);
 		%feature("compactdefaultargs") StepGeom_Line;
 		%feature("autodoc", "	* Returns a Line
 
 	:rtype: None
 ") StepGeom_Line;
 		 StepGeom_Line ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPnt:
-	:type aPnt: Handle_StepGeom_CartesianPoint &
-	:param aDir:
-	:type aDir: Handle_StepGeom_Vector &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_CartesianPoint & aPnt,const Handle_StepGeom_Vector & aDir);
-		%feature("compactdefaultargs") SetPnt;
-		%feature("autodoc", "	:param aPnt:
-	:type aPnt: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetPnt;
-		void SetPnt (const Handle_StepGeom_CartesianPoint & aPnt);
-		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianPoint
-") Pnt;
-		Handle_StepGeom_CartesianPoint Pnt ();
-		%feature("compactdefaultargs") SetDir;
-		%feature("autodoc", "	:param aDir:
-	:type aDir: Handle_StepGeom_Vector &
-	:rtype: None
-") SetDir;
-		void SetDir (const Handle_StepGeom_Vector & aDir);
-		%feature("compactdefaultargs") Dir;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Vector
-") Dir;
-		Handle_StepGeom_Vector Dir ();
 };
 
 
@@ -4080,72 +2133,66 @@ class StepGeom_Line : public StepGeom_Curve {
 %nodefaultctor StepGeom_OffsetCurve3d;
 class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 	public:
-		%feature("compactdefaultargs") StepGeom_OffsetCurve3d;
-		%feature("autodoc", "	* Returns a OffsetCurve3d
-
-	:rtype: None
-") StepGeom_OffsetCurve3d;
-		 StepGeom_OffsetCurve3d ();
+		%feature("compactdefaultargs") BasisCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") BasisCurve;
+		opencascade::handle<StepGeom_Curve> BasisCurve ();
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	:rtype: float
+") Distance;
+		Standard_Real Distance ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
 	:param aDistance:
 	:type aDistance: float
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
-	:rtype: void
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aBasisCurve,const Standard_Real aDistance,const StepData_Logical aSelfIntersect,const Handle_StepGeom_Direction & aRefDirection);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aBasisCurve,const Standard_Real aDistance,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_Direction> & aRefDirection);
+		%feature("compactdefaultargs") RefDirection;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
+") RefDirection;
+		opencascade::handle<StepGeom_Direction> RefDirection ();
+		%feature("compactdefaultargs") SelfIntersect;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") SelfIntersect;
+		StepData_Logical SelfIntersect ();
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
 	:rtype: None
 ") SetBasisCurve;
-		void SetBasisCurve (const Handle_StepGeom_Curve & aBasisCurve);
-		%feature("compactdefaultargs") BasisCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") BasisCurve;
-		Handle_StepGeom_Curve BasisCurve ();
+		void SetBasisCurve (const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 		%feature("compactdefaultargs") SetDistance;
 		%feature("autodoc", "	:param aDistance:
 	:type aDistance: float
 	:rtype: None
 ") SetDistance;
 		void SetDistance (const Standard_Real aDistance);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	:rtype: float
-") Distance;
-		Standard_Real Distance ();
+		%feature("compactdefaultargs") SetRefDirection;
+		%feature("autodoc", "	:param aRefDirection:
+	:type aRefDirection: opencascade::handle<StepGeom_Direction> &
+	:rtype: None
+") SetRefDirection;
+		void SetRefDirection (const opencascade::handle<StepGeom_Direction> & aRefDirection);
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:rtype: None
 ") SetSelfIntersect;
 		void SetSelfIntersect (const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SelfIntersect;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") SelfIntersect;
-		StepData_Logical SelfIntersect ();
-		%feature("compactdefaultargs") SetRefDirection;
-		%feature("autodoc", "	:param aRefDirection:
-	:type aRefDirection: Handle_StepGeom_Direction &
+		%feature("compactdefaultargs") StepGeom_OffsetCurve3d;
+		%feature("autodoc", "	* Returns a OffsetCurve3d
+
 	:rtype: None
-") SetRefDirection;
-		void SetRefDirection (const Handle_StepGeom_Direction & aRefDirection);
-		%feature("compactdefaultargs") RefDirection;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Direction
-") RefDirection;
-		Handle_StepGeom_Direction RefDirection ();
+") StepGeom_OffsetCurve3d;
+		 StepGeom_OffsetCurve3d ();
 };
 
 
@@ -4159,60 +2206,54 @@ class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 %nodefaultctor StepGeom_OffsetSurface;
 class StepGeom_OffsetSurface : public StepGeom_Surface {
 	public:
-		%feature("compactdefaultargs") StepGeom_OffsetSurface;
-		%feature("autodoc", "	* Returns a OffsetSurface
-
-	:rtype: None
-") StepGeom_OffsetSurface;
-		 StepGeom_OffsetSurface ();
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") BasisSurface;
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "	:rtype: float
+") Distance;
+		Standard_Real Distance ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:param aDistance:
 	:type aDistance: float
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Standard_Real aDistance,const StepData_Logical aSelfIntersect);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const Standard_Real aDistance,const StepData_Logical aSelfIntersect);
+		%feature("compactdefaultargs") SelfIntersect;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") SelfIntersect;
+		StepData_Logical SelfIntersect ();
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:rtype: None
 ") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & aBasisSurface);
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 		%feature("compactdefaultargs") SetDistance;
 		%feature("autodoc", "	:param aDistance:
 	:type aDistance: float
 	:rtype: None
 ") SetDistance;
 		void SetDistance (const Standard_Real aDistance);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	:rtype: float
-") Distance;
-		Standard_Real Distance ();
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:rtype: None
 ") SetSelfIntersect;
 		void SetSelfIntersect (const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SelfIntersect;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") SelfIntersect;
-		StepData_Logical SelfIntersect ();
+		%feature("compactdefaultargs") StepGeom_OffsetSurface;
+		%feature("autodoc", "	* Returns a OffsetSurface
+
+	:rtype: None
+") StepGeom_OffsetSurface;
+		 StepGeom_OffsetSurface ();
 };
 
 
@@ -4226,22 +2267,16 @@ class StepGeom_OffsetSurface : public StepGeom_Surface {
 %nodefaultctor StepGeom_OrientedSurface;
 class StepGeom_OrientedSurface : public StepGeom_Surface {
 	public:
-		%feature("compactdefaultargs") StepGeom_OrientedSurface;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepGeom_OrientedSurface;
-		 StepGeom_OrientedSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: Handle_TCollection_HAsciiString &
+	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None
 ") Init;
-		void Init (const Handle_TCollection_HAsciiString & aRepresentationItem_Name,const Standard_Boolean aOrientation);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const Standard_Boolean aOrientation);
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	* Returns field Orientation
 
@@ -4256,6 +2291,12 @@ class StepGeom_OrientedSurface : public StepGeom_Surface {
 	:rtype: None
 ") SetOrientation;
 		void SetOrientation (const Standard_Boolean Orientation);
+		%feature("compactdefaultargs") StepGeom_OrientedSurface;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepGeom_OrientedSurface;
+		 StepGeom_OrientedSurface ();
 };
 
 
@@ -4269,48 +2310,42 @@ class StepGeom_OrientedSurface : public StepGeom_Surface {
 %nodefaultctor StepGeom_Pcurve;
 class StepGeom_Pcurve : public StepGeom_Curve {
 	public:
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") BasisSurface;
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:param aReferenceToCurve:
+	:type aReferenceToCurve: opencascade::handle<StepRepr_DefinitionalRepresentation> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
+		%feature("compactdefaultargs") ReferenceToCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepRepr_DefinitionalRepresentation>
+") ReferenceToCurve;
+		opencascade::handle<StepRepr_DefinitionalRepresentation> ReferenceToCurve ();
+		%feature("compactdefaultargs") SetBasisSurface;
+		%feature("autodoc", "	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:rtype: None
+") SetBasisSurface;
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & aBasisSurface);
+		%feature("compactdefaultargs") SetReferenceToCurve;
+		%feature("autodoc", "	:param aReferenceToCurve:
+	:type aReferenceToCurve: opencascade::handle<StepRepr_DefinitionalRepresentation> &
+	:rtype: None
+") SetReferenceToCurve;
+		void SetReferenceToCurve (const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
 		%feature("compactdefaultargs") StepGeom_Pcurve;
 		%feature("autodoc", "	* Returns a Pcurve
 
 	:rtype: None
 ") StepGeom_Pcurve;
 		 StepGeom_Pcurve ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve);
-		%feature("compactdefaultargs") SetBasisSurface;
-		%feature("autodoc", "	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:rtype: None
-") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & aBasisSurface);
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
-		%feature("compactdefaultargs") SetReferenceToCurve;
-		%feature("autodoc", "	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:rtype: None
-") SetReferenceToCurve;
-		void SetReferenceToCurve (const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve);
-		%feature("compactdefaultargs") ReferenceToCurve;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_DefinitionalRepresentation
-") ReferenceToCurve;
-		Handle_StepRepr_DefinitionalRepresentation ReferenceToCurve ();
 };
 
 
@@ -4324,48 +2359,42 @@ class StepGeom_Pcurve : public StepGeom_Curve {
 %nodefaultctor StepGeom_PointOnCurve;
 class StepGeom_PointOnCurve : public StepGeom_Point {
 	public:
-		%feature("compactdefaultargs") StepGeom_PointOnCurve;
-		%feature("autodoc", "	* Returns a PointOnCurve
-
-	:rtype: None
-") StepGeom_PointOnCurve;
-		 StepGeom_PointOnCurve ();
+		%feature("compactdefaultargs") BasisCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") BasisCurve;
+		opencascade::handle<StepGeom_Curve> BasisCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
 	:param aPointParameter:
 	:type aPointParameter: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aBasisCurve,const Standard_Real aPointParameter);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aBasisCurve,const Standard_Real aPointParameter);
+		%feature("compactdefaultargs") PointParameter;
+		%feature("autodoc", "	:rtype: float
+") PointParameter;
+		Standard_Real PointParameter ();
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
 	:rtype: None
 ") SetBasisCurve;
-		void SetBasisCurve (const Handle_StepGeom_Curve & aBasisCurve);
-		%feature("compactdefaultargs") BasisCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") BasisCurve;
-		Handle_StepGeom_Curve BasisCurve ();
+		void SetBasisCurve (const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 		%feature("compactdefaultargs") SetPointParameter;
 		%feature("autodoc", "	:param aPointParameter:
 	:type aPointParameter: float
 	:rtype: None
 ") SetPointParameter;
 		void SetPointParameter (const Standard_Real aPointParameter);
-		%feature("compactdefaultargs") PointParameter;
-		%feature("autodoc", "	:rtype: float
-") PointParameter;
-		Standard_Real PointParameter ();
+		%feature("compactdefaultargs") StepGeom_PointOnCurve;
+		%feature("autodoc", "	* Returns a PointOnCurve
+
+	:rtype: None
+") StepGeom_PointOnCurve;
+		 StepGeom_PointOnCurve ();
 };
 
 
@@ -4379,60 +2408,54 @@ class StepGeom_PointOnCurve : public StepGeom_Point {
 %nodefaultctor StepGeom_PointOnSurface;
 class StepGeom_PointOnSurface : public StepGeom_Point {
 	public:
-		%feature("compactdefaultargs") StepGeom_PointOnSurface;
-		%feature("autodoc", "	* Returns a PointOnSurface
-
-	:rtype: None
-") StepGeom_PointOnSurface;
-		 StepGeom_PointOnSurface ();
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") BasisSurface;
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:param aPointParameterU:
 	:type aPointParameterU: float
 	:param aPointParameterV:
 	:type aPointParameterV: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Standard_Real aPointParameterU,const Standard_Real aPointParameterV);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const Standard_Real aPointParameterU,const Standard_Real aPointParameterV);
+		%feature("compactdefaultargs") PointParameterU;
+		%feature("autodoc", "	:rtype: float
+") PointParameterU;
+		Standard_Real PointParameterU ();
+		%feature("compactdefaultargs") PointParameterV;
+		%feature("autodoc", "	:rtype: float
+") PointParameterV;
+		Standard_Real PointParameterV ();
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:rtype: None
 ") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & aBasisSurface);
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 		%feature("compactdefaultargs") SetPointParameterU;
 		%feature("autodoc", "	:param aPointParameterU:
 	:type aPointParameterU: float
 	:rtype: None
 ") SetPointParameterU;
 		void SetPointParameterU (const Standard_Real aPointParameterU);
-		%feature("compactdefaultargs") PointParameterU;
-		%feature("autodoc", "	:rtype: float
-") PointParameterU;
-		Standard_Real PointParameterU ();
 		%feature("compactdefaultargs") SetPointParameterV;
 		%feature("autodoc", "	:param aPointParameterV:
 	:type aPointParameterV: float
 	:rtype: None
 ") SetPointParameterV;
 		void SetPointParameterV (const Standard_Real aPointParameterV);
-		%feature("compactdefaultargs") PointParameterV;
-		%feature("autodoc", "	:rtype: float
-") PointParameterV;
-		Standard_Real PointParameterV ();
+		%feature("compactdefaultargs") StepGeom_PointOnSurface;
+		%feature("autodoc", "	* Returns a PointOnSurface
+
+	:rtype: None
+") StepGeom_PointOnSurface;
+		 StepGeom_PointOnSurface ();
 };
 
 
@@ -4446,48 +2469,42 @@ class StepGeom_PointOnSurface : public StepGeom_Point {
 %nodefaultctor StepGeom_PointReplica;
 class StepGeom_PointReplica : public StepGeom_Point {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aParentPt:
+	:type aParentPt: opencascade::handle<StepGeom_Point> &
+	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Point> & aParentPt,const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
+		%feature("compactdefaultargs") ParentPt;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Point>
+") ParentPt;
+		opencascade::handle<StepGeom_Point> ParentPt ();
+		%feature("compactdefaultargs") SetParentPt;
+		%feature("autodoc", "	:param aParentPt:
+	:type aParentPt: opencascade::handle<StepGeom_Point> &
+	:rtype: None
+") SetParentPt;
+		void SetParentPt (const opencascade::handle<StepGeom_Point> & aParentPt);
+		%feature("compactdefaultargs") SetTransformation;
+		%feature("autodoc", "	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator> &
+	:rtype: None
+") SetTransformation;
+		void SetTransformation (const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 		%feature("compactdefaultargs") StepGeom_PointReplica;
 		%feature("autodoc", "	* Returns a PointReplica
 
 	:rtype: None
 ") StepGeom_PointReplica;
 		 StepGeom_PointReplica ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aParentPt:
-	:type aParentPt: Handle_StepGeom_Point &
-	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Point & aParentPt,const Handle_StepGeom_CartesianTransformationOperator & aTransformation);
-		%feature("compactdefaultargs") SetParentPt;
-		%feature("autodoc", "	:param aParentPt:
-	:type aParentPt: Handle_StepGeom_Point &
-	:rtype: None
-") SetParentPt;
-		void SetParentPt (const Handle_StepGeom_Point & aParentPt);
-		%feature("compactdefaultargs") ParentPt;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Point
-") ParentPt;
-		Handle_StepGeom_Point ParentPt ();
-		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator &
-	:rtype: None
-") SetTransformation;
-		void SetTransformation (const Handle_StepGeom_CartesianTransformationOperator & aTransformation);
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianTransformationOperator
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianTransformationOperator>
 ") Transformation;
-		Handle_StepGeom_CartesianTransformationOperator Transformation ();
+		opencascade::handle<StepGeom_CartesianTransformationOperator> Transformation ();
 };
 
 
@@ -4501,70 +2518,64 @@ class StepGeom_PointReplica : public StepGeom_Point {
 %nodefaultctor StepGeom_SurfaceCurve;
 class StepGeom_SurfaceCurve : public StepGeom_Curve {
 	public:
-		%feature("compactdefaultargs") StepGeom_SurfaceCurve;
-		%feature("autodoc", "	* Returns a SurfaceCurve
-
-	:rtype: None
-") StepGeom_SurfaceCurve;
-		 StepGeom_SurfaceCurve ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aCurve3d:
-	:type aCurve3d: Handle_StepGeom_Curve &
-	:param aAssociatedGeometry:
-	:type aAssociatedGeometry: Handle_StepGeom_HArray1OfPcurveOrSurface &
-	:param aMasterRepresentation:
-	:type aMasterRepresentation: StepGeom_PreferredSurfaceCurveRepresentation
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aCurve3d,const Handle_StepGeom_HArray1OfPcurveOrSurface & aAssociatedGeometry,const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
-		%feature("compactdefaultargs") SetCurve3d;
-		%feature("autodoc", "	:param aCurve3d:
-	:type aCurve3d: Handle_StepGeom_Curve &
-	:rtype: None
-") SetCurve3d;
-		void SetCurve3d (const Handle_StepGeom_Curve & aCurve3d);
-		%feature("compactdefaultargs") Curve3d;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") Curve3d;
-		Handle_StepGeom_Curve Curve3d ();
-		%feature("compactdefaultargs") SetAssociatedGeometry;
-		%feature("autodoc", "	:param aAssociatedGeometry:
-	:type aAssociatedGeometry: Handle_StepGeom_HArray1OfPcurveOrSurface &
-	:rtype: None
-") SetAssociatedGeometry;
-		void SetAssociatedGeometry (const Handle_StepGeom_HArray1OfPcurveOrSurface & aAssociatedGeometry);
 		%feature("compactdefaultargs") AssociatedGeometry;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfPcurveOrSurface
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfPcurveOrSurface>
 ") AssociatedGeometry;
-		Handle_StepGeom_HArray1OfPcurveOrSurface AssociatedGeometry ();
+		opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> AssociatedGeometry ();
 		%feature("compactdefaultargs") AssociatedGeometryValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: StepGeom_PcurveOrSurface
 ") AssociatedGeometryValue;
 		StepGeom_PcurveOrSurface AssociatedGeometryValue (const Standard_Integer num);
+		%feature("compactdefaultargs") Curve3d;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") Curve3d;
+		opencascade::handle<StepGeom_Curve> Curve3d ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aCurve3d:
+	:type aCurve3d: opencascade::handle<StepGeom_Curve> &
+	:param aAssociatedGeometry:
+	:type aAssociatedGeometry: opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> &
+	:param aMasterRepresentation:
+	:type aMasterRepresentation: StepGeom_PreferredSurfaceCurveRepresentation
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aCurve3d,const opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> & aAssociatedGeometry,const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
+		%feature("compactdefaultargs") MasterRepresentation;
+		%feature("autodoc", "	:rtype: StepGeom_PreferredSurfaceCurveRepresentation
+") MasterRepresentation;
+		StepGeom_PreferredSurfaceCurveRepresentation MasterRepresentation ();
 		%feature("compactdefaultargs") NbAssociatedGeometry;
 		%feature("autodoc", "	:rtype: int
 ") NbAssociatedGeometry;
 		Standard_Integer NbAssociatedGeometry ();
+		%feature("compactdefaultargs") SetAssociatedGeometry;
+		%feature("autodoc", "	:param aAssociatedGeometry:
+	:type aAssociatedGeometry: opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> &
+	:rtype: None
+") SetAssociatedGeometry;
+		void SetAssociatedGeometry (const opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> & aAssociatedGeometry);
+		%feature("compactdefaultargs") SetCurve3d;
+		%feature("autodoc", "	:param aCurve3d:
+	:type aCurve3d: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
+") SetCurve3d;
+		void SetCurve3d (const opencascade::handle<StepGeom_Curve> & aCurve3d);
 		%feature("compactdefaultargs") SetMasterRepresentation;
 		%feature("autodoc", "	:param aMasterRepresentation:
 	:type aMasterRepresentation: StepGeom_PreferredSurfaceCurveRepresentation
 	:rtype: None
 ") SetMasterRepresentation;
 		void SetMasterRepresentation (const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
-		%feature("compactdefaultargs") MasterRepresentation;
-		%feature("autodoc", "	:rtype: StepGeom_PreferredSurfaceCurveRepresentation
-") MasterRepresentation;
-		StepGeom_PreferredSurfaceCurveRepresentation MasterRepresentation ();
+		%feature("compactdefaultargs") StepGeom_SurfaceCurve;
+		%feature("autodoc", "	* Returns a SurfaceCurve
+
+	:rtype: None
+") StepGeom_SurfaceCurve;
+		 StepGeom_SurfaceCurve ();
 };
 
 
@@ -4578,48 +2589,42 @@ class StepGeom_SurfaceCurve : public StepGeom_Curve {
 %nodefaultctor StepGeom_SurfaceReplica;
 class StepGeom_SurfaceReplica : public StepGeom_Surface {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aParentSurface:
+	:type aParentSurface: opencascade::handle<StepGeom_Surface> &
+	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aParentSurface,const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
+		%feature("compactdefaultargs") ParentSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") ParentSurface;
+		opencascade::handle<StepGeom_Surface> ParentSurface ();
+		%feature("compactdefaultargs") SetParentSurface;
+		%feature("autodoc", "	:param aParentSurface:
+	:type aParentSurface: opencascade::handle<StepGeom_Surface> &
+	:rtype: None
+") SetParentSurface;
+		void SetParentSurface (const opencascade::handle<StepGeom_Surface> & aParentSurface);
+		%feature("compactdefaultargs") SetTransformation;
+		%feature("autodoc", "	:param aTransformation:
+	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
+	:rtype: None
+") SetTransformation;
+		void SetTransformation (const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
 		%feature("compactdefaultargs") StepGeom_SurfaceReplica;
 		%feature("autodoc", "	* Returns a SurfaceReplica
 
 	:rtype: None
 ") StepGeom_SurfaceReplica;
 		 StepGeom_SurfaceReplica ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aParentSurface:
-	:type aParentSurface: Handle_StepGeom_Surface &
-	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aParentSurface,const Handle_StepGeom_CartesianTransformationOperator3d & aTransformation);
-		%feature("compactdefaultargs") SetParentSurface;
-		%feature("autodoc", "	:param aParentSurface:
-	:type aParentSurface: Handle_StepGeom_Surface &
-	:rtype: None
-") SetParentSurface;
-		void SetParentSurface (const Handle_StepGeom_Surface & aParentSurface);
-		%feature("compactdefaultargs") ParentSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") ParentSurface;
-		Handle_StepGeom_Surface ParentSurface ();
-		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "	:param aTransformation:
-	:type aTransformation: Handle_StepGeom_CartesianTransformationOperator3d &
-	:rtype: None
-") SetTransformation;
-		void SetTransformation (const Handle_StepGeom_CartesianTransformationOperator3d & aTransformation);
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianTransformationOperator3d
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianTransformationOperator3d>
 ") Transformation;
-		Handle_StepGeom_CartesianTransformationOperator3d Transformation ();
+		opencascade::handle<StepGeom_CartesianTransformationOperator3d> Transformation ();
 };
 
 
@@ -4633,36 +2638,30 @@ class StepGeom_SurfaceReplica : public StepGeom_Surface {
 %nodefaultctor StepGeom_SweptSurface;
 class StepGeom_SweptSurface : public StepGeom_Surface {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aSweptCurve:
+	:type aSweptCurve: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aSweptCurve);
+		%feature("compactdefaultargs") SetSweptCurve;
+		%feature("autodoc", "	:param aSweptCurve:
+	:type aSweptCurve: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
+") SetSweptCurve;
+		void SetSweptCurve (const opencascade::handle<StepGeom_Curve> & aSweptCurve);
 		%feature("compactdefaultargs") StepGeom_SweptSurface;
 		%feature("autodoc", "	* Returns a SweptSurface
 
 	:rtype: None
 ") StepGeom_SweptSurface;
 		 StepGeom_SweptSurface ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aSweptCurve);
-		%feature("compactdefaultargs") SetSweptCurve;
-		%feature("autodoc", "	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:rtype: None
-") SetSweptCurve;
-		void SetSweptCurve (const Handle_StepGeom_Curve & aSweptCurve);
 		%feature("compactdefaultargs") SweptCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
 ") SweptCurve;
-		Handle_StepGeom_Curve SweptCurve ();
+		opencascade::handle<StepGeom_Curve> SweptCurve ();
 };
 
 
@@ -4676,94 +2675,88 @@ class StepGeom_SweptSurface : public StepGeom_Surface {
 %nodefaultctor StepGeom_BSplineCurve;
 class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineCurve;
-		%feature("autodoc", "	* Returns a BSplineCurve
-
-	:rtype: None
-") StepGeom_BSplineCurve;
-		 StepGeom_BSplineCurve ();
+		%feature("compactdefaultargs") ClosedCurve;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") ClosedCurve;
+		StepData_Logical ClosedCurve ();
+		%feature("compactdefaultargs") ControlPointsList;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfCartesianPoint>
+") ControlPointsList;
+		opencascade::handle<StepGeom_HArray1OfCartesianPoint> ControlPointsList ();
+		%feature("compactdefaultargs") ControlPointsListValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") ControlPointsListValue;
+		opencascade::handle<StepGeom_CartesianPoint> ControlPointsListValue (const Standard_Integer num);
+		%feature("compactdefaultargs") CurveForm;
+		%feature("autodoc", "	:rtype: StepGeom_BSplineCurveForm
+") CurveForm;
+		StepGeom_BSplineCurveForm CurveForm ();
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
+		Standard_Integer Degree ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
 	:type aClosedCurve: StepData_Logical
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SetDegree;
-		%feature("autodoc", "	:param aDegree:
-	:type aDegree: int
-	:rtype: None
-") SetDegree;
-		void SetDegree (const Standard_Integer aDegree);
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") SetControlPointsList;
-		%feature("autodoc", "	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:rtype: None
-") SetControlPointsList;
-		void SetControlPointsList (const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList);
-		%feature("compactdefaultargs") ControlPointsList;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfCartesianPoint
-") ControlPointsList;
-		Handle_StepGeom_HArray1OfCartesianPoint ControlPointsList ();
-		%feature("compactdefaultargs") ControlPointsListValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ControlPointsListValue;
-		Handle_StepGeom_CartesianPoint ControlPointsListValue (const Standard_Integer num);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
 		%feature("compactdefaultargs") NbControlPointsList;
 		%feature("autodoc", "	:rtype: int
 ") NbControlPointsList;
 		Standard_Integer NbControlPointsList ();
-		%feature("compactdefaultargs") SetCurveForm;
-		%feature("autodoc", "	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:rtype: None
-") SetCurveForm;
-		void SetCurveForm (const StepGeom_BSplineCurveForm aCurveForm);
-		%feature("compactdefaultargs") CurveForm;
-		%feature("autodoc", "	:rtype: StepGeom_BSplineCurveForm
-") CurveForm;
-		StepGeom_BSplineCurveForm CurveForm ();
+		%feature("compactdefaultargs") SelfIntersect;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") SelfIntersect;
+		StepData_Logical SelfIntersect ();
 		%feature("compactdefaultargs") SetClosedCurve;
 		%feature("autodoc", "	:param aClosedCurve:
 	:type aClosedCurve: StepData_Logical
 	:rtype: None
 ") SetClosedCurve;
 		void SetClosedCurve (const StepData_Logical aClosedCurve);
-		%feature("compactdefaultargs") ClosedCurve;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") ClosedCurve;
-		StepData_Logical ClosedCurve ();
+		%feature("compactdefaultargs") SetControlPointsList;
+		%feature("autodoc", "	:param aControlPointsList:
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
+	:rtype: None
+") SetControlPointsList;
+		void SetControlPointsList (const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList);
+		%feature("compactdefaultargs") SetCurveForm;
+		%feature("autodoc", "	:param aCurveForm:
+	:type aCurveForm: StepGeom_BSplineCurveForm
+	:rtype: None
+") SetCurveForm;
+		void SetCurveForm (const StepGeom_BSplineCurveForm aCurveForm);
+		%feature("compactdefaultargs") SetDegree;
+		%feature("autodoc", "	:param aDegree:
+	:type aDegree: int
+	:rtype: None
+") SetDegree;
+		void SetDegree (const Standard_Integer aDegree);
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:rtype: None
 ") SetSelfIntersect;
 		void SetSelfIntersect (const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SelfIntersect;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") SelfIntersect;
-		StepData_Logical SelfIntersect ();
+		%feature("compactdefaultargs") StepGeom_BSplineCurve;
+		%feature("autodoc", "	* Returns a BSplineCurve
+
+	:rtype: None
+") StepGeom_BSplineCurve;
+		 StepGeom_BSplineCurve ();
 };
 
 
@@ -4777,27 +2770,27 @@ class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 %nodefaultctor StepGeom_BSplineSurface;
 class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineSurface;
-		%feature("autodoc", "	* Returns a BSplineSurface
-
-	:rtype: None
-") StepGeom_BSplineSurface;
-		 StepGeom_BSplineSurface ();
+		%feature("compactdefaultargs") ControlPointsList;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray2OfCartesianPoint>
+") ControlPointsList;
+		opencascade::handle<StepGeom_HArray2OfCartesianPoint> ControlPointsList ();
+		%feature("compactdefaultargs") ControlPointsListValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") ControlPointsListValue;
+		opencascade::handle<StepGeom_CartesianPoint> ControlPointsListValue (const Standard_Integer num1,const Standard_Integer num2);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -4806,47 +2799,9 @@ class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 	:type aVClosed: StepData_Logical
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SetUDegree;
-		%feature("autodoc", "	:param aUDegree:
-	:type aUDegree: int
-	:rtype: None
-") SetUDegree;
-		void SetUDegree (const Standard_Integer aUDegree);
-		%feature("compactdefaultargs") UDegree;
-		%feature("autodoc", "	:rtype: int
-") UDegree;
-		Standard_Integer UDegree ();
-		%feature("compactdefaultargs") SetVDegree;
-		%feature("autodoc", "	:param aVDegree:
-	:type aVDegree: int
-	:rtype: None
-") SetVDegree;
-		void SetVDegree (const Standard_Integer aVDegree);
-		%feature("compactdefaultargs") VDegree;
-		%feature("autodoc", "	:rtype: int
-") VDegree;
-		Standard_Integer VDegree ();
-		%feature("compactdefaultargs") SetControlPointsList;
-		%feature("autodoc", "	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:rtype: None
-") SetControlPointsList;
-		void SetControlPointsList (const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList);
-		%feature("compactdefaultargs") ControlPointsList;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray2OfCartesianPoint
-") ControlPointsList;
-		Handle_StepGeom_HArray2OfCartesianPoint ControlPointsList ();
-		%feature("compactdefaultargs") ControlPointsListValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") ControlPointsListValue;
-		Handle_StepGeom_CartesianPoint ControlPointsListValue (const Standard_Integer num1,const Standard_Integer num2);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
 		%feature("compactdefaultargs") NbControlPointsListI;
 		%feature("autodoc", "	:rtype: int
 ") NbControlPointsListI;
@@ -4855,46 +2810,78 @@ class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 		%feature("autodoc", "	:rtype: int
 ") NbControlPointsListJ;
 		Standard_Integer NbControlPointsListJ ();
-		%feature("compactdefaultargs") SetSurfaceForm;
-		%feature("autodoc", "	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:rtype: None
-") SetSurfaceForm;
-		void SetSurfaceForm (const StepGeom_BSplineSurfaceForm aSurfaceForm);
-		%feature("compactdefaultargs") SurfaceForm;
-		%feature("autodoc", "	:rtype: StepGeom_BSplineSurfaceForm
-") SurfaceForm;
-		StepGeom_BSplineSurfaceForm SurfaceForm ();
-		%feature("compactdefaultargs") SetUClosed;
-		%feature("autodoc", "	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:rtype: None
-") SetUClosed;
-		void SetUClosed (const StepData_Logical aUClosed);
-		%feature("compactdefaultargs") UClosed;
+		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "	:rtype: StepData_Logical
-") UClosed;
-		StepData_Logical UClosed ();
-		%feature("compactdefaultargs") SetVClosed;
-		%feature("autodoc", "	:param aVClosed:
-	:type aVClosed: StepData_Logical
+") SelfIntersect;
+		StepData_Logical SelfIntersect ();
+		%feature("compactdefaultargs") SetControlPointsList;
+		%feature("autodoc", "	:param aControlPointsList:
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:rtype: None
-") SetVClosed;
-		void SetVClosed (const StepData_Logical aVClosed);
-		%feature("compactdefaultargs") VClosed;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") VClosed;
-		StepData_Logical VClosed ();
+") SetControlPointsList;
+		void SetControlPointsList (const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList);
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:rtype: None
 ") SetSelfIntersect;
 		void SetSelfIntersect (const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SelfIntersect;
+		%feature("compactdefaultargs") SetSurfaceForm;
+		%feature("autodoc", "	:param aSurfaceForm:
+	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
+	:rtype: None
+") SetSurfaceForm;
+		void SetSurfaceForm (const StepGeom_BSplineSurfaceForm aSurfaceForm);
+		%feature("compactdefaultargs") SetUClosed;
+		%feature("autodoc", "	:param aUClosed:
+	:type aUClosed: StepData_Logical
+	:rtype: None
+") SetUClosed;
+		void SetUClosed (const StepData_Logical aUClosed);
+		%feature("compactdefaultargs") SetUDegree;
+		%feature("autodoc", "	:param aUDegree:
+	:type aUDegree: int
+	:rtype: None
+") SetUDegree;
+		void SetUDegree (const Standard_Integer aUDegree);
+		%feature("compactdefaultargs") SetVClosed;
+		%feature("autodoc", "	:param aVClosed:
+	:type aVClosed: StepData_Logical
+	:rtype: None
+") SetVClosed;
+		void SetVClosed (const StepData_Logical aVClosed);
+		%feature("compactdefaultargs") SetVDegree;
+		%feature("autodoc", "	:param aVDegree:
+	:type aVDegree: int
+	:rtype: None
+") SetVDegree;
+		void SetVDegree (const Standard_Integer aVDegree);
+		%feature("compactdefaultargs") StepGeom_BSplineSurface;
+		%feature("autodoc", "	* Returns a BSplineSurface
+
+	:rtype: None
+") StepGeom_BSplineSurface;
+		 StepGeom_BSplineSurface ();
+		%feature("compactdefaultargs") SurfaceForm;
+		%feature("autodoc", "	:rtype: StepGeom_BSplineSurfaceForm
+") SurfaceForm;
+		StepGeom_BSplineSurfaceForm SurfaceForm ();
+		%feature("compactdefaultargs") UClosed;
 		%feature("autodoc", "	:rtype: StepData_Logical
-") SelfIntersect;
-		StepData_Logical SelfIntersect ();
+") UClosed;
+		StepData_Logical UClosed ();
+		%feature("compactdefaultargs") UDegree;
+		%feature("autodoc", "	:rtype: int
+") UDegree;
+		Standard_Integer UDegree ();
+		%feature("compactdefaultargs") VClosed;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") VClosed;
+		StepData_Logical VClosed ();
+		%feature("compactdefaultargs") VDegree;
+		%feature("autodoc", "	:rtype: int
+") VDegree;
+		Standard_Integer VDegree ();
 };
 
 
@@ -4908,40 +2895,32 @@ class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 %nodefaultctor StepGeom_Circle;
 class StepGeom_Circle : public StepGeom_Conic {
 	public:
-		%feature("compactdefaultargs") StepGeom_Circle;
-		%feature("autodoc", "	* Returns a Circle
-
-	:rtype: None
-") StepGeom_Circle;
-		 StepGeom_Circle ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: StepGeom_Axis2Placement &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
 	:param aRadius:
 	:type aRadius: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aRadius);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aRadius);
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "	:rtype: float
+") Radius;
+		Standard_Real Radius ();
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "	:param aRadius:
 	:type aRadius: float
 	:rtype: None
 ") SetRadius;
 		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
+		%feature("compactdefaultargs") StepGeom_Circle;
+		%feature("autodoc", "	* Returns a Circle
+
+	:rtype: None
+") StepGeom_Circle;
+		 StepGeom_Circle ();
 };
 
 
@@ -4955,58 +2934,52 @@ class StepGeom_Circle : public StepGeom_Conic {
 %nodefaultctor StepGeom_CompositeCurve;
 class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_CompositeCurve;
-		%feature("autodoc", "	* Returns a CompositeCurve
-
-	:rtype: None
-") StepGeom_CompositeCurve;
-		 StepGeom_CompositeCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aSegments:
-	:type aSegments: Handle_StepGeom_HArray1OfCompositeCurveSegment &
+	:type aSegments: opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> &
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_HArray1OfCompositeCurveSegment & aSegments,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SetSegments;
-		%feature("autodoc", "	:param aSegments:
-	:type aSegments: Handle_StepGeom_HArray1OfCompositeCurveSegment &
 	:rtype: None
-") SetSegments;
-		void SetSegments (const Handle_StepGeom_HArray1OfCompositeCurveSegment & aSegments);
-		%feature("compactdefaultargs") Segments;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfCompositeCurveSegment
-") Segments;
-		Handle_StepGeom_HArray1OfCompositeCurveSegment Segments ();
-		%feature("compactdefaultargs") SegmentsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: Handle_StepGeom_CompositeCurveSegment
-") SegmentsValue;
-		Handle_StepGeom_CompositeCurveSegment SegmentsValue (const Standard_Integer num);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> & aSegments,const StepData_Logical aSelfIntersect);
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "	:rtype: int
 ") NbSegments;
 		Standard_Integer NbSegments ();
+		%feature("compactdefaultargs") Segments;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment>
+") Segments;
+		opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> Segments ();
+		%feature("compactdefaultargs") SegmentsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: opencascade::handle<StepGeom_CompositeCurveSegment>
+") SegmentsValue;
+		opencascade::handle<StepGeom_CompositeCurveSegment> SegmentsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") SelfIntersect;
+		%feature("autodoc", "	:rtype: StepData_Logical
+") SelfIntersect;
+		StepData_Logical SelfIntersect ();
+		%feature("compactdefaultargs") SetSegments;
+		%feature("autodoc", "	:param aSegments:
+	:type aSegments: opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> &
+	:rtype: None
+") SetSegments;
+		void SetSegments (const opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> & aSegments);
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:rtype: None
 ") SetSelfIntersect;
 		void SetSelfIntersect (const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") SelfIntersect;
-		%feature("autodoc", "	:rtype: StepData_Logical
-") SelfIntersect;
-		StepData_Logical SelfIntersect ();
+		%feature("compactdefaultargs") StepGeom_CompositeCurve;
+		%feature("autodoc", "	* Returns a CompositeCurve
+
+	:rtype: None
+") StepGeom_CompositeCurve;
+		 StepGeom_CompositeCurve ();
 };
 
 
@@ -5020,52 +2993,44 @@ class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 %nodefaultctor StepGeom_ConicalSurface;
 class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_ConicalSurface;
-		%feature("autodoc", "	* Returns a ConicalSurface
-
-	:rtype: None
-") StepGeom_ConicalSurface;
-		 StepGeom_ConicalSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param aRadius:
 	:type aRadius: float
 	:param aSemiAngle:
 	:type aSemiAngle: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aRadius,const Standard_Real aSemiAngle);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition,const Standard_Real aRadius,const Standard_Real aSemiAngle);
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "	:rtype: float
+") Radius;
+		Standard_Real Radius ();
+		%feature("compactdefaultargs") SemiAngle;
+		%feature("autodoc", "	:rtype: float
+") SemiAngle;
+		Standard_Real SemiAngle ();
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "	:param aRadius:
 	:type aRadius: float
 	:rtype: None
 ") SetRadius;
 		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
 		%feature("compactdefaultargs") SetSemiAngle;
 		%feature("autodoc", "	:param aSemiAngle:
 	:type aSemiAngle: float
 	:rtype: None
 ") SetSemiAngle;
 		void SetSemiAngle (const Standard_Real aSemiAngle);
-		%feature("compactdefaultargs") SemiAngle;
-		%feature("autodoc", "	:rtype: float
-") SemiAngle;
-		Standard_Real SemiAngle ();
+		%feature("compactdefaultargs") StepGeom_ConicalSurface;
+		%feature("autodoc", "	* Returns a ConicalSurface
+
+	:rtype: None
+") StepGeom_ConicalSurface;
+		 StepGeom_ConicalSurface ();
 };
 
 
@@ -5079,60 +3044,54 @@ class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 %nodefaultctor StepGeom_CurveBoundedSurface;
 class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_CurveBoundedSurface;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepGeom_CurveBoundedSurface;
-		 StepGeom_CurveBoundedSurface ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: Handle_TCollection_HAsciiString &
-	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:param aBoundaries:
-	:type aBoundaries: Handle_StepGeom_HArray1OfSurfaceBoundary &
-	:param aImplicitOuter:
-	:type aImplicitOuter: bool
-	:rtype: None
-") Init;
-		void Init (const Handle_TCollection_HAsciiString & aRepresentationItem_Name,const Handle_StepGeom_Surface & aBasisSurface,const Handle_StepGeom_HArray1OfSurfaceBoundary & aBoundaries,const Standard_Boolean aImplicitOuter);
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "	* Returns field BasisSurface
 
-	:rtype: Handle_StepGeom_Surface
+	:rtype: opencascade::handle<StepGeom_Surface>
 ") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
-		%feature("compactdefaultargs") SetBasisSurface;
-		%feature("autodoc", "	* Set field BasisSurface
-
-	:param BasisSurface:
-	:type BasisSurface: Handle_StepGeom_Surface &
-	:rtype: None
-") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & BasisSurface);
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
 		%feature("compactdefaultargs") Boundaries;
 		%feature("autodoc", "	* Returns field Boundaries
 
-	:rtype: Handle_StepGeom_HArray1OfSurfaceBoundary
+	:rtype: opencascade::handle<StepGeom_HArray1OfSurfaceBoundary>
 ") Boundaries;
-		Handle_StepGeom_HArray1OfSurfaceBoundary Boundaries ();
-		%feature("compactdefaultargs") SetBoundaries;
-		%feature("autodoc", "	* Set field Boundaries
-
-	:param Boundaries:
-	:type Boundaries: Handle_StepGeom_HArray1OfSurfaceBoundary &
-	:rtype: None
-") SetBoundaries;
-		void SetBoundaries (const Handle_StepGeom_HArray1OfSurfaceBoundary & Boundaries);
+		opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> Boundaries ();
 		%feature("compactdefaultargs") ImplicitOuter;
 		%feature("autodoc", "	* Returns field ImplicitOuter
 
 	:rtype: bool
 ") ImplicitOuter;
 		Standard_Boolean ImplicitOuter ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aRepresentationItem_Name:
+	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:param aBoundaries:
+	:type aBoundaries: opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> &
+	:param aImplicitOuter:
+	:type aImplicitOuter: bool
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> & aBoundaries,const Standard_Boolean aImplicitOuter);
+		%feature("compactdefaultargs") SetBasisSurface;
+		%feature("autodoc", "	* Set field BasisSurface
+
+	:param BasisSurface:
+	:type BasisSurface: opencascade::handle<StepGeom_Surface> &
+	:rtype: None
+") SetBasisSurface;
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & BasisSurface);
+		%feature("compactdefaultargs") SetBoundaries;
+		%feature("autodoc", "	* Set field Boundaries
+
+	:param Boundaries:
+	:type Boundaries: opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> &
+	:rtype: None
+") SetBoundaries;
+		void SetBoundaries (const opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> & Boundaries);
 		%feature("compactdefaultargs") SetImplicitOuter;
 		%feature("autodoc", "	* Set field ImplicitOuter
 
@@ -5141,6 +3100,12 @@ class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 	:rtype: None
 ") SetImplicitOuter;
 		void SetImplicitOuter (const Standard_Boolean ImplicitOuter);
+		%feature("compactdefaultargs") StepGeom_CurveBoundedSurface;
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
+") StepGeom_CurveBoundedSurface;
+		 StepGeom_CurveBoundedSurface ();
 };
 
 
@@ -5154,40 +3119,32 @@ class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 %nodefaultctor StepGeom_CylindricalSurface;
 class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_CylindricalSurface;
-		%feature("autodoc", "	* Returns a CylindricalSurface
-
-	:rtype: None
-") StepGeom_CylindricalSurface;
-		 StepGeom_CylindricalSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param aRadius:
 	:type aRadius: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aRadius);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition,const Standard_Real aRadius);
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "	:rtype: float
+") Radius;
+		Standard_Real Radius ();
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "	:param aRadius:
 	:type aRadius: float
 	:rtype: None
 ") SetRadius;
 		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
+		%feature("compactdefaultargs") StepGeom_CylindricalSurface;
+		%feature("autodoc", "	* Returns a CylindricalSurface
+
+	:rtype: None
+") StepGeom_CylindricalSurface;
+		 StepGeom_CylindricalSurface ();
 };
 
 
@@ -5201,52 +3158,44 @@ class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 %nodefaultctor StepGeom_Ellipse;
 class StepGeom_Ellipse : public StepGeom_Conic {
 	public:
-		%feature("compactdefaultargs") StepGeom_Ellipse;
-		%feature("autodoc", "	* Returns a Ellipse
-
-	:rtype: None
-") StepGeom_Ellipse;
-		 StepGeom_Ellipse ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: StepGeom_Axis2Placement &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
 	:param aSemiAxis1:
 	:type aSemiAxis1: float
 	:param aSemiAxis2:
 	:type aSemiAxis2: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aSemiAxis1,const Standard_Real aSemiAxis2);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aSemiAxis1,const Standard_Real aSemiAxis2);
+		%feature("compactdefaultargs") SemiAxis1;
+		%feature("autodoc", "	:rtype: float
+") SemiAxis1;
+		Standard_Real SemiAxis1 ();
+		%feature("compactdefaultargs") SemiAxis2;
+		%feature("autodoc", "	:rtype: float
+") SemiAxis2;
+		Standard_Real SemiAxis2 ();
 		%feature("compactdefaultargs") SetSemiAxis1;
 		%feature("autodoc", "	:param aSemiAxis1:
 	:type aSemiAxis1: float
 	:rtype: None
 ") SetSemiAxis1;
 		void SetSemiAxis1 (const Standard_Real aSemiAxis1);
-		%feature("compactdefaultargs") SemiAxis1;
-		%feature("autodoc", "	:rtype: float
-") SemiAxis1;
-		Standard_Real SemiAxis1 ();
 		%feature("compactdefaultargs") SetSemiAxis2;
 		%feature("autodoc", "	:param aSemiAxis2:
 	:type aSemiAxis2: float
 	:rtype: None
 ") SetSemiAxis2;
 		void SetSemiAxis2 (const Standard_Real aSemiAxis2);
-		%feature("compactdefaultargs") SemiAxis2;
-		%feature("autodoc", "	:rtype: float
-") SemiAxis2;
-		Standard_Real SemiAxis2 ();
+		%feature("compactdefaultargs") StepGeom_Ellipse;
+		%feature("autodoc", "	* Returns a Ellipse
+
+	:rtype: None
+") StepGeom_Ellipse;
+		 StepGeom_Ellipse ();
 };
 
 
@@ -5260,44 +3209,34 @@ class StepGeom_Ellipse : public StepGeom_Conic {
 %nodefaultctor StepGeom_EvaluatedDegeneratePcurve;
 class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 	public:
+		%feature("compactdefaultargs") EquivalentPoint;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") EquivalentPoint;
+		opencascade::handle<StepGeom_CartesianPoint> EquivalentPoint ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aBasisSurface:
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
+	:param aReferenceToCurve:
+	:type aReferenceToCurve: opencascade::handle<StepRepr_DefinitionalRepresentation> &
+	:param aEquivalentPoint:
+	:type aEquivalentPoint: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve,const opencascade::handle<StepGeom_CartesianPoint> & aEquivalentPoint);
+		%feature("compactdefaultargs") SetEquivalentPoint;
+		%feature("autodoc", "	:param aEquivalentPoint:
+	:type aEquivalentPoint: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: None
+") SetEquivalentPoint;
+		void SetEquivalentPoint (const opencascade::handle<StepGeom_CartesianPoint> & aEquivalentPoint);
 		%feature("compactdefaultargs") StepGeom_EvaluatedDegeneratePcurve;
 		%feature("autodoc", "	* Returns a EvaluatedDegeneratePcurve
 
 	:rtype: None
 ") StepGeom_EvaluatedDegeneratePcurve;
 		 StepGeom_EvaluatedDegeneratePcurve ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
-	:param aReferenceToCurve:
-	:type aReferenceToCurve: Handle_StepRepr_DefinitionalRepresentation &
-	:param aEquivalentPoint:
-	:type aEquivalentPoint: Handle_StepGeom_CartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Handle_StepRepr_DefinitionalRepresentation & aReferenceToCurve,const Handle_StepGeom_CartesianPoint & aEquivalentPoint);
-		%feature("compactdefaultargs") SetEquivalentPoint;
-		%feature("autodoc", "	:param aEquivalentPoint:
-	:type aEquivalentPoint: Handle_StepGeom_CartesianPoint &
-	:rtype: None
-") SetEquivalentPoint;
-		void SetEquivalentPoint (const Handle_StepGeom_CartesianPoint & aEquivalentPoint);
-		%feature("compactdefaultargs") EquivalentPoint;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_CartesianPoint
-") EquivalentPoint;
-		Handle_StepGeom_CartesianPoint EquivalentPoint ();
 };
 
 
@@ -5311,52 +3250,44 @@ class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 %nodefaultctor StepGeom_Hyperbola;
 class StepGeom_Hyperbola : public StepGeom_Conic {
 	public:
-		%feature("compactdefaultargs") StepGeom_Hyperbola;
-		%feature("autodoc", "	* Returns a Hyperbola
-
-	:rtype: None
-") StepGeom_Hyperbola;
-		 StepGeom_Hyperbola ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: StepGeom_Axis2Placement &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
 	:param aSemiAxis:
 	:type aSemiAxis: float
 	:param aSemiImagAxis:
 	:type aSemiImagAxis: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aSemiAxis,const Standard_Real aSemiImagAxis);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aSemiAxis,const Standard_Real aSemiImagAxis);
+		%feature("compactdefaultargs") SemiAxis;
+		%feature("autodoc", "	:rtype: float
+") SemiAxis;
+		Standard_Real SemiAxis ();
+		%feature("compactdefaultargs") SemiImagAxis;
+		%feature("autodoc", "	:rtype: float
+") SemiImagAxis;
+		Standard_Real SemiImagAxis ();
 		%feature("compactdefaultargs") SetSemiAxis;
 		%feature("autodoc", "	:param aSemiAxis:
 	:type aSemiAxis: float
 	:rtype: None
 ") SetSemiAxis;
 		void SetSemiAxis (const Standard_Real aSemiAxis);
-		%feature("compactdefaultargs") SemiAxis;
-		%feature("autodoc", "	:rtype: float
-") SemiAxis;
-		Standard_Real SemiAxis ();
 		%feature("compactdefaultargs") SetSemiImagAxis;
 		%feature("autodoc", "	:param aSemiImagAxis:
 	:type aSemiImagAxis: float
 	:rtype: None
 ") SetSemiImagAxis;
 		void SetSemiImagAxis (const Standard_Real aSemiImagAxis);
-		%feature("compactdefaultargs") SemiImagAxis;
-		%feature("autodoc", "	:rtype: float
-") SemiImagAxis;
-		Standard_Real SemiImagAxis ();
+		%feature("compactdefaultargs") StepGeom_Hyperbola;
+		%feature("autodoc", "	* Returns a Hyperbola
+
+	:rtype: None
+") StepGeom_Hyperbola;
+		 StepGeom_Hyperbola ();
 };
 
 
@@ -5389,40 +3320,32 @@ class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 %nodefaultctor StepGeom_Parabola;
 class StepGeom_Parabola : public StepGeom_Conic {
 	public:
-		%feature("compactdefaultargs") StepGeom_Parabola;
-		%feature("autodoc", "	* Returns a Parabola
-
-	:rtype: None
-") StepGeom_Parabola;
-		 StepGeom_Parabola ();
+		%feature("compactdefaultargs") FocalDist;
+		%feature("autodoc", "	:rtype: float
+") FocalDist;
+		Standard_Real FocalDist ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: StepGeom_Axis2Placement &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
 	:type aPosition: StepGeom_Axis2Placement &
 	:param aFocalDist:
 	:type aFocalDist: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aFocalDist);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepGeom_Axis2Placement & aPosition,const Standard_Real aFocalDist);
 		%feature("compactdefaultargs") SetFocalDist;
 		%feature("autodoc", "	:param aFocalDist:
 	:type aFocalDist: float
 	:rtype: None
 ") SetFocalDist;
 		void SetFocalDist (const Standard_Real aFocalDist);
-		%feature("compactdefaultargs") FocalDist;
-		%feature("autodoc", "	:rtype: float
-") FocalDist;
-		Standard_Real FocalDist ();
+		%feature("compactdefaultargs") StepGeom_Parabola;
+		%feature("autodoc", "	* Returns a Parabola
+
+	:rtype: None
+") StepGeom_Parabola;
+		 StepGeom_Parabola ();
 };
 
 
@@ -5455,46 +3378,40 @@ class StepGeom_Plane : public StepGeom_ElementarySurface {
 %nodefaultctor StepGeom_Polyline;
 class StepGeom_Polyline : public StepGeom_BoundedCurve {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aPoints:
+	:type aPoints: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPoints);
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "	:rtype: int
+") NbPoints;
+		Standard_Integer NbPoints ();
+		%feature("compactdefaultargs") Points;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfCartesianPoint>
+") Points;
+		opencascade::handle<StepGeom_HArray1OfCartesianPoint> Points ();
+		%feature("compactdefaultargs") PointsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: opencascade::handle<StepGeom_CartesianPoint>
+") PointsValue;
+		opencascade::handle<StepGeom_CartesianPoint> PointsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") SetPoints;
+		%feature("autodoc", "	:param aPoints:
+	:type aPoints: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
+	:rtype: None
+") SetPoints;
+		void SetPoints (const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPoints);
 		%feature("compactdefaultargs") StepGeom_Polyline;
 		%feature("autodoc", "	* Returns a Polyline
 
 	:rtype: None
 ") StepGeom_Polyline;
 		 StepGeom_Polyline ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPoints:
-	:type aPoints: Handle_StepGeom_HArray1OfCartesianPoint &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_HArray1OfCartesianPoint & aPoints);
-		%feature("compactdefaultargs") SetPoints;
-		%feature("autodoc", "	:param aPoints:
-	:type aPoints: Handle_StepGeom_HArray1OfCartesianPoint &
-	:rtype: None
-") SetPoints;
-		void SetPoints (const Handle_StepGeom_HArray1OfCartesianPoint & aPoints);
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfCartesianPoint
-") Points;
-		Handle_StepGeom_HArray1OfCartesianPoint Points ();
-		%feature("compactdefaultargs") PointsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: Handle_StepGeom_CartesianPoint
-") PointsValue;
-		Handle_StepGeom_CartesianPoint PointsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
 };
 
 
@@ -5508,44 +3425,14 @@ class StepGeom_Polyline : public StepGeom_BoundedCurve {
 %nodefaultctor StepGeom_RectangularCompositeSurface;
 class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_RectangularCompositeSurface;
-		%feature("autodoc", "	* Returns a RectangularCompositeSurface
-
-	:rtype: None
-") StepGeom_RectangularCompositeSurface;
-		 StepGeom_RectangularCompositeSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aSegments:
-	:type aSegments: Handle_StepGeom_HArray2OfSurfacePatch &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_HArray2OfSurfacePatch & aSegments);
-		%feature("compactdefaultargs") SetSegments;
-		%feature("autodoc", "	:param aSegments:
-	:type aSegments: Handle_StepGeom_HArray2OfSurfacePatch &
+	:type aSegments: opencascade::handle<StepGeom_HArray2OfSurfacePatch> &
 	:rtype: None
-") SetSegments;
-		void SetSegments (const Handle_StepGeom_HArray2OfSurfacePatch & aSegments);
-		%feature("compactdefaultargs") Segments;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray2OfSurfacePatch
-") Segments;
-		Handle_StepGeom_HArray2OfSurfacePatch Segments ();
-		%feature("compactdefaultargs") SegmentsValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: Handle_StepGeom_SurfacePatch
-") SegmentsValue;
-		Handle_StepGeom_SurfacePatch SegmentsValue (const Standard_Integer num1,const Standard_Integer num2);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_HArray2OfSurfacePatch> & aSegments);
 		%feature("compactdefaultargs") NbSegmentsI;
 		%feature("autodoc", "	:rtype: int
 ") NbSegmentsI;
@@ -5554,6 +3441,30 @@ class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 		%feature("autodoc", "	:rtype: int
 ") NbSegmentsJ;
 		Standard_Integer NbSegmentsJ ();
+		%feature("compactdefaultargs") Segments;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray2OfSurfacePatch>
+") Segments;
+		opencascade::handle<StepGeom_HArray2OfSurfacePatch> Segments ();
+		%feature("compactdefaultargs") SegmentsValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: opencascade::handle<StepGeom_SurfacePatch>
+") SegmentsValue;
+		opencascade::handle<StepGeom_SurfacePatch> SegmentsValue (const Standard_Integer num1,const Standard_Integer num2);
+		%feature("compactdefaultargs") SetSegments;
+		%feature("autodoc", "	:param aSegments:
+	:type aSegments: opencascade::handle<StepGeom_HArray2OfSurfacePatch> &
+	:rtype: None
+") SetSegments;
+		void SetSegments (const opencascade::handle<StepGeom_HArray2OfSurfacePatch> & aSegments);
+		%feature("compactdefaultargs") StepGeom_RectangularCompositeSurface;
+		%feature("autodoc", "	* Returns a RectangularCompositeSurface
+
+	:rtype: None
+") StepGeom_RectangularCompositeSurface;
+		 StepGeom_RectangularCompositeSurface ();
 };
 
 
@@ -5567,23 +3478,15 @@ class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 %nodefaultctor StepGeom_RectangularTrimmedSurface;
 class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_RectangularTrimmedSurface;
-		%feature("autodoc", "	* Returns a RectangularTrimmedSurface
-
-	:rtype: None
-") StepGeom_RectangularTrimmedSurface;
-		 StepGeom_RectangularTrimmedSurface ();
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
+") BasisSurface;
+		opencascade::handle<StepGeom_Surface> BasisSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:param aU1:
 	:type aU1: float
 	:param aU2:
@@ -5596,75 +3499,77 @@ class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 	:type aUsense: bool
 	:param aVsense:
 	:type aVsense: bool
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Surface & aBasisSurface,const Standard_Real aU1,const Standard_Real aU2,const Standard_Real aV1,const Standard_Real aV2,const Standard_Boolean aUsense,const Standard_Boolean aVsense);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBasisSurface,const Standard_Real aU1,const Standard_Real aU2,const Standard_Real aV1,const Standard_Real aV2,const Standard_Boolean aUsense,const Standard_Boolean aVsense);
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "	:param aBasisSurface:
-	:type aBasisSurface: Handle_StepGeom_Surface &
+	:type aBasisSurface: opencascade::handle<StepGeom_Surface> &
 	:rtype: None
 ") SetBasisSurface;
-		void SetBasisSurface (const Handle_StepGeom_Surface & aBasisSurface);
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Surface
-") BasisSurface;
-		Handle_StepGeom_Surface BasisSurface ();
+		void SetBasisSurface (const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 		%feature("compactdefaultargs") SetU1;
 		%feature("autodoc", "	:param aU1:
 	:type aU1: float
 	:rtype: None
 ") SetU1;
 		void SetU1 (const Standard_Real aU1);
-		%feature("compactdefaultargs") U1;
-		%feature("autodoc", "	:rtype: float
-") U1;
-		Standard_Real U1 ();
 		%feature("compactdefaultargs") SetU2;
 		%feature("autodoc", "	:param aU2:
 	:type aU2: float
 	:rtype: None
 ") SetU2;
 		void SetU2 (const Standard_Real aU2);
-		%feature("compactdefaultargs") U2;
-		%feature("autodoc", "	:rtype: float
-") U2;
-		Standard_Real U2 ();
-		%feature("compactdefaultargs") SetV1;
-		%feature("autodoc", "	:param aV1:
-	:type aV1: float
-	:rtype: None
-") SetV1;
-		void SetV1 (const Standard_Real aV1);
-		%feature("compactdefaultargs") V1;
-		%feature("autodoc", "	:rtype: float
-") V1;
-		Standard_Real V1 ();
-		%feature("compactdefaultargs") SetV2;
-		%feature("autodoc", "	:param aV2:
-	:type aV2: float
-	:rtype: None
-") SetV2;
-		void SetV2 (const Standard_Real aV2);
-		%feature("compactdefaultargs") V2;
-		%feature("autodoc", "	:rtype: float
-") V2;
-		Standard_Real V2 ();
 		%feature("compactdefaultargs") SetUsense;
 		%feature("autodoc", "	:param aUsense:
 	:type aUsense: bool
 	:rtype: None
 ") SetUsense;
 		void SetUsense (const Standard_Boolean aUsense);
-		%feature("compactdefaultargs") Usense;
-		%feature("autodoc", "	:rtype: bool
-") Usense;
-		Standard_Boolean Usense ();
+		%feature("compactdefaultargs") SetV1;
+		%feature("autodoc", "	:param aV1:
+	:type aV1: float
+	:rtype: None
+") SetV1;
+		void SetV1 (const Standard_Real aV1);
+		%feature("compactdefaultargs") SetV2;
+		%feature("autodoc", "	:param aV2:
+	:type aV2: float
+	:rtype: None
+") SetV2;
+		void SetV2 (const Standard_Real aV2);
 		%feature("compactdefaultargs") SetVsense;
 		%feature("autodoc", "	:param aVsense:
 	:type aVsense: bool
 	:rtype: None
 ") SetVsense;
 		void SetVsense (const Standard_Boolean aVsense);
+		%feature("compactdefaultargs") StepGeom_RectangularTrimmedSurface;
+		%feature("autodoc", "	* Returns a RectangularTrimmedSurface
+
+	:rtype: None
+") StepGeom_RectangularTrimmedSurface;
+		 StepGeom_RectangularTrimmedSurface ();
+		%feature("compactdefaultargs") U1;
+		%feature("autodoc", "	:rtype: float
+") U1;
+		Standard_Real U1 ();
+		%feature("compactdefaultargs") U2;
+		%feature("autodoc", "	:rtype: float
+") U2;
+		Standard_Real U2 ();
+		%feature("compactdefaultargs") Usense;
+		%feature("autodoc", "	:rtype: bool
+") Usense;
+		Standard_Boolean Usense ();
+		%feature("compactdefaultargs") V1;
+		%feature("autodoc", "	:rtype: float
+") V1;
+		Standard_Real V1 ();
+		%feature("compactdefaultargs") V2;
+		%feature("autodoc", "	:rtype: float
+") V2;
+		Standard_Real V2 ();
 		%feature("compactdefaultargs") Vsense;
 		%feature("autodoc", "	:rtype: bool
 ") Vsense;
@@ -5701,40 +3606,32 @@ class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 %nodefaultctor StepGeom_SphericalSurface;
 class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_SphericalSurface;
-		%feature("autodoc", "	* Returns a SphericalSurface
-
-	:rtype: None
-") StepGeom_SphericalSurface;
-		 StepGeom_SphericalSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param aRadius:
 	:type aRadius: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aRadius);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition,const Standard_Real aRadius);
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "	:rtype: float
+") Radius;
+		Standard_Real Radius ();
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "	:param aRadius:
 	:type aRadius: float
 	:rtype: None
 ") SetRadius;
 		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
+		%feature("compactdefaultargs") StepGeom_SphericalSurface;
+		%feature("autodoc", "	* Returns a SphericalSurface
+
+	:rtype: None
+") StepGeom_SphericalSurface;
+		 StepGeom_SphericalSurface ();
 };
 
 
@@ -5748,18 +3645,18 @@ class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 %nodefaultctor StepGeom_SurfaceCurveAndBoundedCurve;
 class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 	public:
+		%feature("compactdefaultargs") BoundedCurve;
+		%feature("autodoc", "	* returns field BoundedCurve
+
+	:rtype: opencascade::handle<StepGeom_BoundedCurve>
+") BoundedCurve;
+		opencascade::handle<StepGeom_BoundedCurve> & BoundedCurve ();
 		%feature("compactdefaultargs") StepGeom_SurfaceCurveAndBoundedCurve;
 		%feature("autodoc", "	* creates empty object
 
 	:rtype: None
 ") StepGeom_SurfaceCurveAndBoundedCurve;
 		 StepGeom_SurfaceCurveAndBoundedCurve ();
-		%feature("compactdefaultargs") BoundedCurve;
-		%feature("autodoc", "	* returns field BoundedCurve
-
-	:rtype: Handle_StepGeom_BoundedCurve
-") BoundedCurve;
-		Handle_StepGeom_BoundedCurve BoundedCurve ();
 };
 
 
@@ -5773,40 +3670,32 @@ class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 %nodefaultctor StepGeom_SurfaceOfLinearExtrusion;
 class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 	public:
+		%feature("compactdefaultargs") ExtrusionAxis;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Vector>
+") ExtrusionAxis;
+		opencascade::handle<StepGeom_Vector> ExtrusionAxis ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aSweptCurve:
+	:type aSweptCurve: opencascade::handle<StepGeom_Curve> &
+	:param aExtrusionAxis:
+	:type aExtrusionAxis: opencascade::handle<StepGeom_Vector> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aSweptCurve,const opencascade::handle<StepGeom_Vector> & aExtrusionAxis);
+		%feature("compactdefaultargs") SetExtrusionAxis;
+		%feature("autodoc", "	:param aExtrusionAxis:
+	:type aExtrusionAxis: opencascade::handle<StepGeom_Vector> &
+	:rtype: None
+") SetExtrusionAxis;
+		void SetExtrusionAxis (const opencascade::handle<StepGeom_Vector> & aExtrusionAxis);
 		%feature("compactdefaultargs") StepGeom_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "	* Returns a SurfaceOfLinearExtrusion
 
 	:rtype: None
 ") StepGeom_SurfaceOfLinearExtrusion;
 		 StepGeom_SurfaceOfLinearExtrusion ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aSweptCurve);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:param aExtrusionAxis:
-	:type aExtrusionAxis: Handle_StepGeom_Vector &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aSweptCurve,const Handle_StepGeom_Vector & aExtrusionAxis);
-		%feature("compactdefaultargs") SetExtrusionAxis;
-		%feature("autodoc", "	:param aExtrusionAxis:
-	:type aExtrusionAxis: Handle_StepGeom_Vector &
-	:rtype: None
-") SetExtrusionAxis;
-		void SetExtrusionAxis (const Handle_StepGeom_Vector & aExtrusionAxis);
-		%feature("compactdefaultargs") ExtrusionAxis;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Vector
-") ExtrusionAxis;
-		Handle_StepGeom_Vector ExtrusionAxis ();
 };
 
 
@@ -5820,40 +3709,32 @@ class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 %nodefaultctor StepGeom_SurfaceOfRevolution;
 class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 	public:
+		%feature("compactdefaultargs") AxisPosition;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Axis1Placement>
+") AxisPosition;
+		opencascade::handle<StepGeom_Axis1Placement> AxisPosition ();
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:param aSweptCurve:
+	:type aSweptCurve: opencascade::handle<StepGeom_Curve> &
+	:param aAxisPosition:
+	:type aAxisPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aSweptCurve,const opencascade::handle<StepGeom_Axis1Placement> & aAxisPosition);
+		%feature("compactdefaultargs") SetAxisPosition;
+		%feature("autodoc", "	:param aAxisPosition:
+	:type aAxisPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:rtype: None
+") SetAxisPosition;
+		void SetAxisPosition (const opencascade::handle<StepGeom_Axis1Placement> & aAxisPosition);
 		%feature("compactdefaultargs") StepGeom_SurfaceOfRevolution;
 		%feature("autodoc", "	* Returns a SurfaceOfRevolution
 
 	:rtype: None
 ") StepGeom_SurfaceOfRevolution;
 		 StepGeom_SurfaceOfRevolution ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aSweptCurve);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aSweptCurve:
-	:type aSweptCurve: Handle_StepGeom_Curve &
-	:param aAxisPosition:
-	:type aAxisPosition: Handle_StepGeom_Axis1Placement &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aSweptCurve,const Handle_StepGeom_Axis1Placement & aAxisPosition);
-		%feature("compactdefaultargs") SetAxisPosition;
-		%feature("autodoc", "	:param aAxisPosition:
-	:type aAxisPosition: Handle_StepGeom_Axis1Placement &
-	:rtype: None
-") SetAxisPosition;
-		void SetAxisPosition (const Handle_StepGeom_Axis1Placement & aAxisPosition);
-		%feature("compactdefaultargs") AxisPosition;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Axis1Placement
-") AxisPosition;
-		Handle_StepGeom_Axis1Placement AxisPosition ();
 };
 
 
@@ -5867,52 +3748,44 @@ class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 %nodefaultctor StepGeom_ToroidalSurface;
 class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_ToroidalSurface;
-		%feature("autodoc", "	* Returns a ToroidalSurface
-
-	:rtype: None
-") StepGeom_ToroidalSurface;
-		 StepGeom_ToroidalSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param aMajorRadius:
 	:type aMajorRadius: float
 	:param aMinorRadius:
 	:type aMinorRadius: float
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius);
+		%feature("compactdefaultargs") MajorRadius;
+		%feature("autodoc", "	:rtype: float
+") MajorRadius;
+		Standard_Real MajorRadius ();
+		%feature("compactdefaultargs") MinorRadius;
+		%feature("autodoc", "	:rtype: float
+") MinorRadius;
+		Standard_Real MinorRadius ();
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "	:param aMajorRadius:
 	:type aMajorRadius: float
 	:rtype: None
 ") SetMajorRadius;
 		void SetMajorRadius (const Standard_Real aMajorRadius);
-		%feature("compactdefaultargs") MajorRadius;
-		%feature("autodoc", "	:rtype: float
-") MajorRadius;
-		Standard_Real MajorRadius ();
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "	:param aMinorRadius:
 	:type aMinorRadius: float
 	:rtype: None
 ") SetMinorRadius;
 		void SetMinorRadius (const Standard_Real aMinorRadius);
-		%feature("compactdefaultargs") MinorRadius;
-		%feature("autodoc", "	:rtype: float
-") MinorRadius;
-		Standard_Real MinorRadius ();
+		%feature("compactdefaultargs") StepGeom_ToroidalSurface;
+		%feature("autodoc", "	* Returns a ToroidalSurface
+
+	:rtype: None
+") StepGeom_ToroidalSurface;
+		 StepGeom_ToroidalSurface ();
 };
 
 
@@ -5926,104 +3799,98 @@ class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 %nodefaultctor StepGeom_TrimmedCurve;
 class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_TrimmedCurve;
-		%feature("autodoc", "	* Returns a TrimmedCurve
-
-	:rtype: None
-") StepGeom_TrimmedCurve;
-		 StepGeom_TrimmedCurve ();
+		%feature("compactdefaultargs") BasisCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
+") BasisCurve;
+		opencascade::handle<StepGeom_Curve> BasisCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
 	:param aTrim1:
-	:type aTrim1: Handle_StepGeom_HArray1OfTrimmingSelect &
+	:type aTrim1: opencascade::handle<StepGeom_HArray1OfTrimmingSelect> &
 	:param aTrim2:
-	:type aTrim2: Handle_StepGeom_HArray1OfTrimmingSelect &
+	:type aTrim2: opencascade::handle<StepGeom_HArray1OfTrimmingSelect> &
 	:param aSenseAgreement:
 	:type aSenseAgreement: bool
 	:param aMasterRepresentation:
 	:type aMasterRepresentation: StepGeom_TrimmingPreference
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Curve & aBasisCurve,const Handle_StepGeom_HArray1OfTrimmingSelect & aTrim1,const Handle_StepGeom_HArray1OfTrimmingSelect & aTrim2,const Standard_Boolean aSenseAgreement,const StepGeom_TrimmingPreference aMasterRepresentation);
-		%feature("compactdefaultargs") SetBasisCurve;
-		%feature("autodoc", "	:param aBasisCurve:
-	:type aBasisCurve: Handle_StepGeom_Curve &
-	:rtype: None
-") SetBasisCurve;
-		void SetBasisCurve (const Handle_StepGeom_Curve & aBasisCurve);
-		%feature("compactdefaultargs") BasisCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_Curve
-") BasisCurve;
-		Handle_StepGeom_Curve BasisCurve ();
-		%feature("compactdefaultargs") SetTrim1;
-		%feature("autodoc", "	:param aTrim1:
-	:type aTrim1: Handle_StepGeom_HArray1OfTrimmingSelect &
-	:rtype: None
-") SetTrim1;
-		void SetTrim1 (const Handle_StepGeom_HArray1OfTrimmingSelect & aTrim1);
-		%feature("compactdefaultargs") Trim1;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfTrimmingSelect
-") Trim1;
-		Handle_StepGeom_HArray1OfTrimmingSelect Trim1 ();
-		%feature("compactdefaultargs") Trim1Value;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: StepGeom_TrimmingSelect
-") Trim1Value;
-		StepGeom_TrimmingSelect Trim1Value (const Standard_Integer num);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Curve> & aBasisCurve,const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim1,const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim2,const Standard_Boolean aSenseAgreement,const StepGeom_TrimmingPreference aMasterRepresentation);
+		%feature("compactdefaultargs") MasterRepresentation;
+		%feature("autodoc", "	:rtype: StepGeom_TrimmingPreference
+") MasterRepresentation;
+		StepGeom_TrimmingPreference MasterRepresentation ();
 		%feature("compactdefaultargs") NbTrim1;
 		%feature("autodoc", "	:rtype: int
 ") NbTrim1;
 		Standard_Integer NbTrim1 ();
-		%feature("compactdefaultargs") SetTrim2;
-		%feature("autodoc", "	:param aTrim2:
-	:type aTrim2: Handle_StepGeom_HArray1OfTrimmingSelect &
-	:rtype: None
-") SetTrim2;
-		void SetTrim2 (const Handle_StepGeom_HArray1OfTrimmingSelect & aTrim2);
-		%feature("compactdefaultargs") Trim2;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_HArray1OfTrimmingSelect
-") Trim2;
-		Handle_StepGeom_HArray1OfTrimmingSelect Trim2 ();
-		%feature("compactdefaultargs") Trim2Value;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: StepGeom_TrimmingSelect
-") Trim2Value;
-		StepGeom_TrimmingSelect Trim2Value (const Standard_Integer num);
 		%feature("compactdefaultargs") NbTrim2;
 		%feature("autodoc", "	:rtype: int
 ") NbTrim2;
 		Standard_Integer NbTrim2 ();
-		%feature("compactdefaultargs") SetSenseAgreement;
-		%feature("autodoc", "	:param aSenseAgreement:
-	:type aSenseAgreement: bool
-	:rtype: None
-") SetSenseAgreement;
-		void SetSenseAgreement (const Standard_Boolean aSenseAgreement);
 		%feature("compactdefaultargs") SenseAgreement;
 		%feature("autodoc", "	:rtype: bool
 ") SenseAgreement;
 		Standard_Boolean SenseAgreement ();
+		%feature("compactdefaultargs") SetBasisCurve;
+		%feature("autodoc", "	:param aBasisCurve:
+	:type aBasisCurve: opencascade::handle<StepGeom_Curve> &
+	:rtype: None
+") SetBasisCurve;
+		void SetBasisCurve (const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 		%feature("compactdefaultargs") SetMasterRepresentation;
 		%feature("autodoc", "	:param aMasterRepresentation:
 	:type aMasterRepresentation: StepGeom_TrimmingPreference
 	:rtype: None
 ") SetMasterRepresentation;
 		void SetMasterRepresentation (const StepGeom_TrimmingPreference aMasterRepresentation);
-		%feature("compactdefaultargs") MasterRepresentation;
-		%feature("autodoc", "	:rtype: StepGeom_TrimmingPreference
-") MasterRepresentation;
-		StepGeom_TrimmingPreference MasterRepresentation ();
+		%feature("compactdefaultargs") SetSenseAgreement;
+		%feature("autodoc", "	:param aSenseAgreement:
+	:type aSenseAgreement: bool
+	:rtype: None
+") SetSenseAgreement;
+		void SetSenseAgreement (const Standard_Boolean aSenseAgreement);
+		%feature("compactdefaultargs") SetTrim1;
+		%feature("autodoc", "	:param aTrim1:
+	:type aTrim1: opencascade::handle<StepGeom_HArray1OfTrimmingSelect> &
+	:rtype: None
+") SetTrim1;
+		void SetTrim1 (const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim1);
+		%feature("compactdefaultargs") SetTrim2;
+		%feature("autodoc", "	:param aTrim2:
+	:type aTrim2: opencascade::handle<StepGeom_HArray1OfTrimmingSelect> &
+	:rtype: None
+") SetTrim2;
+		void SetTrim2 (const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim2);
+		%feature("compactdefaultargs") StepGeom_TrimmedCurve;
+		%feature("autodoc", "	* Returns a TrimmedCurve
+
+	:rtype: None
+") StepGeom_TrimmedCurve;
+		 StepGeom_TrimmedCurve ();
+		%feature("compactdefaultargs") Trim1;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfTrimmingSelect>
+") Trim1;
+		opencascade::handle<StepGeom_HArray1OfTrimmingSelect> Trim1 ();
+		%feature("compactdefaultargs") Trim1Value;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: StepGeom_TrimmingSelect
+") Trim1Value;
+		StepGeom_TrimmingSelect Trim1Value (const Standard_Integer num);
+		%feature("compactdefaultargs") Trim2;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_HArray1OfTrimmingSelect>
+") Trim2;
+		opencascade::handle<StepGeom_HArray1OfTrimmingSelect> Trim2 ();
+		%feature("compactdefaultargs") Trim2Value;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: StepGeom_TrimmingSelect
+") Trim2Value;
+		StepGeom_TrimmingSelect Trim2Value (const Standard_Integer num);
 };
 
 
@@ -6037,35 +3904,13 @@ class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 %nodefaultctor StepGeom_BSplineCurveWithKnots;
 class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnots;
-		%feature("autodoc", "	* Returns a BSplineCurveWithKnots
-
-	:rtype: None
-") StepGeom_BSplineCurveWithKnots;
-		 StepGeom_BSplineCurveWithKnots ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -6073,64 +3918,70 @@ class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aKnotMultiplicities:
-	:type aKnotMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aKnotMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aKnots:
-	:type aKnots: Handle_TColStd_HArray1OfReal &
+	:type aKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfInteger & aKnotMultiplicities,const Handle_TColStd_HArray1OfReal & aKnots,const StepGeom_KnotType aKnotSpec);
-		%feature("compactdefaultargs") SetKnotMultiplicities;
-		%feature("autodoc", "	:param aKnotMultiplicities:
-	:type aKnotMultiplicities: Handle_TColStd_HArray1OfInteger &
 	:rtype: None
-") SetKnotMultiplicities;
-		void SetKnotMultiplicities (const Handle_TColStd_HArray1OfInteger & aKnotMultiplicities);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities,const opencascade::handle<TColStd_HArray1OfReal> & aKnots,const StepGeom_KnotType aKnotSpec);
 		%feature("compactdefaultargs") KnotMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
 ") KnotMultiplicities;
-		Handle_TColStd_HArray1OfInteger KnotMultiplicities ();
+		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities ();
 		%feature("compactdefaultargs") KnotMultiplicitiesValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: int
 ") KnotMultiplicitiesValue;
 		Standard_Integer KnotMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbKnotMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbKnotMultiplicities;
-		Standard_Integer NbKnotMultiplicities ();
-		%feature("compactdefaultargs") SetKnots;
-		%feature("autodoc", "	:param aKnots:
-	:type aKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetKnots;
-		void SetKnots (const Handle_TColStd_HArray1OfReal & aKnots);
+		%feature("compactdefaultargs") KnotSpec;
+		%feature("autodoc", "	:rtype: StepGeom_KnotType
+") KnotSpec;
+		StepGeom_KnotType KnotSpec ();
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") Knots;
-		Handle_TColStd_HArray1OfReal Knots ();
+		opencascade::handle<TColStd_HArray1OfReal> Knots ();
 		%feature("compactdefaultargs") KnotsValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") KnotsValue;
 		Standard_Real KnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") NbKnotMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbKnotMultiplicities;
+		Standard_Integer NbKnotMultiplicities ();
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "	:rtype: int
 ") NbKnots;
 		Standard_Integer NbKnots ();
+		%feature("compactdefaultargs") SetKnotMultiplicities;
+		%feature("autodoc", "	:param aKnotMultiplicities:
+	:type aKnotMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetKnotMultiplicities;
+		void SetKnotMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
 	:rtype: None
 ") SetKnotSpec;
 		void SetKnotSpec (const StepGeom_KnotType aKnotSpec);
-		%feature("compactdefaultargs") KnotSpec;
-		%feature("autodoc", "	:rtype: StepGeom_KnotType
-") KnotSpec;
-		StepGeom_KnotType KnotSpec ();
+		%feature("compactdefaultargs") SetKnots;
+		%feature("autodoc", "	:param aKnots:
+	:type aKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetKnots;
+		void SetKnots (const opencascade::handle<TColStd_HArray1OfReal> & aKnots);
+		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnots;
+		%feature("autodoc", "	* Returns a BSplineCurveWithKnots
+
+	:rtype: None
+") StepGeom_BSplineCurveWithKnots;
+		 StepGeom_BSplineCurveWithKnots ();
 };
 
 
@@ -6144,35 +3995,17 @@ class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 %nodefaultctor StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
-		%feature("autodoc", "	* Returns a BSplineCurveWithKnotsAndRationalBSplineCurve
-
-	:rtype: None
-") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
-		 StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve ();
+		%feature("compactdefaultargs") BSplineCurveWithKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineCurveWithKnots>
+") BSplineCurveWithKnots;
+		opencascade::handle<StepGeom_BSplineCurveWithKnots> BSplineCurveWithKnots ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -6180,19 +4013,19 @@ class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aBSplineCurveWithKnots:
-	:type aBSplineCurveWithKnots: Handle_StepGeom_BSplineCurveWithKnots &
+	:type aBSplineCurveWithKnots: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
 	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: void
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_StepGeom_BSplineCurveWithKnots & aBSplineCurveWithKnots,const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots,const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -6200,106 +4033,108 @@ class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aKnotMultiplicities:
-	:type aKnotMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aKnotMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aKnots:
-	:type aKnots: Handle_TColStd_HArray1OfReal &
+	:type aKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfInteger & aKnotMultiplicities,const Handle_TColStd_HArray1OfReal & aKnots,const StepGeom_KnotType aKnotSpec,const Handle_TColStd_HArray1OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetBSplineCurveWithKnots;
-		%feature("autodoc", "	:param aBSplineCurveWithKnots:
-	:type aBSplineCurveWithKnots: Handle_StepGeom_BSplineCurveWithKnots &
-	:rtype: None
-") SetBSplineCurveWithKnots;
-		void SetBSplineCurveWithKnots (const Handle_StepGeom_BSplineCurveWithKnots & aBSplineCurveWithKnots);
-		%feature("compactdefaultargs") BSplineCurveWithKnots;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_BSplineCurveWithKnots
-") BSplineCurveWithKnots;
-		Handle_StepGeom_BSplineCurveWithKnots BSplineCurveWithKnots ();
-		%feature("compactdefaultargs") SetRationalBSplineCurve;
-		%feature("autodoc", "	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: None
-") SetRationalBSplineCurve;
-		void SetRationalBSplineCurve (const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
-		%feature("compactdefaultargs") RationalBSplineCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineCurve
-") RationalBSplineCurve;
-		Handle_StepGeom_RationalBSplineCurve RationalBSplineCurve ();
-		%feature("compactdefaultargs") SetKnotMultiplicities;
-		%feature("autodoc", "	:param aKnotMultiplicities:
-	:type aKnotMultiplicities: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetKnotMultiplicities;
-		void SetKnotMultiplicities (const Handle_TColStd_HArray1OfInteger & aKnotMultiplicities);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities,const opencascade::handle<TColStd_HArray1OfReal> & aKnots,const StepGeom_KnotType aKnotSpec,const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 		%feature("compactdefaultargs") KnotMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
 ") KnotMultiplicities;
-		Handle_TColStd_HArray1OfInteger KnotMultiplicities ();
+		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities ();
 		%feature("compactdefaultargs") KnotMultiplicitiesValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: int
 ") KnotMultiplicitiesValue;
 		Standard_Integer KnotMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbKnotMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbKnotMultiplicities;
-		Standard_Integer NbKnotMultiplicities ();
-		%feature("compactdefaultargs") SetKnots;
-		%feature("autodoc", "	:param aKnots:
-	:type aKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetKnots;
-		void SetKnots (const Handle_TColStd_HArray1OfReal & aKnots);
+		%feature("compactdefaultargs") KnotSpec;
+		%feature("autodoc", "	:rtype: StepGeom_KnotType
+") KnotSpec;
+		StepGeom_KnotType KnotSpec ();
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") Knots;
-		Handle_TColStd_HArray1OfReal Knots ();
+		opencascade::handle<TColStd_HArray1OfReal> Knots ();
 		%feature("compactdefaultargs") KnotsValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") KnotsValue;
 		Standard_Real KnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") NbKnotMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbKnotMultiplicities;
+		Standard_Integer NbKnotMultiplicities ();
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "	:rtype: int
 ") NbKnots;
 		Standard_Integer NbKnots ();
+		%feature("compactdefaultargs") NbWeightsData;
+		%feature("autodoc", "	:rtype: int
+") NbWeightsData;
+		Standard_Integer NbWeightsData ();
+		%feature("compactdefaultargs") RationalBSplineCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineCurve>
+") RationalBSplineCurve;
+		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve ();
+		%feature("compactdefaultargs") SetBSplineCurveWithKnots;
+		%feature("autodoc", "	:param aBSplineCurveWithKnots:
+	:type aBSplineCurveWithKnots: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
+	:rtype: None
+") SetBSplineCurveWithKnots;
+		void SetBSplineCurveWithKnots (const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots);
+		%feature("compactdefaultargs") SetKnotMultiplicities;
+		%feature("autodoc", "	:param aKnotMultiplicities:
+	:type aKnotMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetKnotMultiplicities;
+		void SetKnotMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
 	:rtype: None
 ") SetKnotSpec;
 		void SetKnotSpec (const StepGeom_KnotType aKnotSpec);
-		%feature("compactdefaultargs") KnotSpec;
-		%feature("autodoc", "	:rtype: StepGeom_KnotType
-") KnotSpec;
-		StepGeom_KnotType KnotSpec ();
+		%feature("compactdefaultargs") SetKnots;
+		%feature("autodoc", "	:param aKnots:
+	:type aKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetKnots;
+		void SetKnots (const opencascade::handle<TColStd_HArray1OfReal> & aKnots);
+		%feature("compactdefaultargs") SetRationalBSplineCurve;
+		%feature("autodoc", "	:param aRationalBSplineCurve:
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:rtype: None
+") SetRationalBSplineCurve;
+		void SetRationalBSplineCurve (const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
 ") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void SetWeightsData (const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
+		%feature("autodoc", "	* Returns a BSplineCurveWithKnotsAndRationalBSplineCurve
+
+	:rtype: None
+") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
+		 StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") WeightsData;
-		Handle_TColStd_HArray1OfReal WeightsData ();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData ();
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") WeightsDataValue;
 		Standard_Real WeightsDataValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbWeightsData;
-		%feature("autodoc", "	:rtype: int
-") NbWeightsData;
-		Standard_Integer NbWeightsData ();
 };
 
 
@@ -6313,41 +4148,15 @@ class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BS
 %nodefaultctor StepGeom_BSplineSurfaceWithKnots;
 class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnots;
-		%feature("autodoc", "	* Returns a BSplineSurfaceWithKnots
-
-	:rtype: None
-") StepGeom_BSplineSurfaceWithKnots;
-		 StepGeom_BSplineSurfaceWithKnots ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -6357,108 +4166,114 @@ class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aUMultiplicities:
-	:type aUMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aUMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aVMultiplicities:
-	:type aVMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aVMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aUKnots:
-	:type aUKnots: Handle_TColStd_HArray1OfReal &
+	:type aUKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aVKnots:
-	:type aVKnots: Handle_TColStd_HArray1OfReal &
+	:type aVKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfInteger & aUMultiplicities,const Handle_TColStd_HArray1OfInteger & aVMultiplicities,const Handle_TColStd_HArray1OfReal & aUKnots,const Handle_TColStd_HArray1OfReal & aVKnots,const StepGeom_KnotType aKnotSpec);
-		%feature("compactdefaultargs") SetUMultiplicities;
-		%feature("autodoc", "	:param aUMultiplicities:
-	:type aUMultiplicities: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetUMultiplicities;
-		void SetUMultiplicities (const Handle_TColStd_HArray1OfInteger & aUMultiplicities);
-		%feature("compactdefaultargs") UMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") UMultiplicities;
-		Handle_TColStd_HArray1OfInteger UMultiplicities ();
-		%feature("compactdefaultargs") UMultiplicitiesValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: int
-") UMultiplicitiesValue;
-		Standard_Integer UMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbUMultiplicities;
-		Standard_Integer NbUMultiplicities ();
-		%feature("compactdefaultargs") SetVMultiplicities;
-		%feature("autodoc", "	:param aVMultiplicities:
-	:type aVMultiplicities: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetVMultiplicities;
-		void SetVMultiplicities (const Handle_TColStd_HArray1OfInteger & aVMultiplicities);
-		%feature("compactdefaultargs") VMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") VMultiplicities;
-		Handle_TColStd_HArray1OfInteger VMultiplicities ();
-		%feature("compactdefaultargs") VMultiplicitiesValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: int
-") VMultiplicitiesValue;
-		Standard_Integer VMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbVMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbVMultiplicities;
-		Standard_Integer NbVMultiplicities ();
-		%feature("compactdefaultargs") SetUKnots;
-		%feature("autodoc", "	:param aUKnots:
-	:type aUKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetUKnots;
-		void SetUKnots (const Handle_TColStd_HArray1OfReal & aUKnots);
-		%feature("compactdefaultargs") UKnots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") UKnots;
-		Handle_TColStd_HArray1OfReal UKnots ();
-		%feature("compactdefaultargs") UKnotsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: float
-") UKnotsValue;
-		Standard_Real UKnotsValue (const Standard_Integer num);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities,const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities,const opencascade::handle<TColStd_HArray1OfReal> & aUKnots,const opencascade::handle<TColStd_HArray1OfReal> & aVKnots,const StepGeom_KnotType aKnotSpec);
+		%feature("compactdefaultargs") KnotSpec;
+		%feature("autodoc", "	:rtype: StepGeom_KnotType
+") KnotSpec;
+		StepGeom_KnotType KnotSpec ();
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "	:rtype: int
 ") NbUKnots;
 		Standard_Integer NbUKnots ();
-		%feature("compactdefaultargs") SetVKnots;
-		%feature("autodoc", "	:param aVKnots:
-	:type aVKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetVKnots;
-		void SetVKnots (const Handle_TColStd_HArray1OfReal & aVKnots);
-		%feature("compactdefaultargs") VKnots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") VKnots;
-		Handle_TColStd_HArray1OfReal VKnots ();
-		%feature("compactdefaultargs") VKnotsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: float
-") VKnotsValue;
-		Standard_Real VKnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") NbUMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbUMultiplicities;
+		Standard_Integer NbUMultiplicities ();
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "	:rtype: int
 ") NbVKnots;
 		Standard_Integer NbVKnots ();
+		%feature("compactdefaultargs") NbVMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbVMultiplicities;
+		Standard_Integer NbVMultiplicities ();
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
 	:rtype: None
 ") SetKnotSpec;
 		void SetKnotSpec (const StepGeom_KnotType aKnotSpec);
-		%feature("compactdefaultargs") KnotSpec;
-		%feature("autodoc", "	:rtype: StepGeom_KnotType
-") KnotSpec;
-		StepGeom_KnotType KnotSpec ();
+		%feature("compactdefaultargs") SetUKnots;
+		%feature("autodoc", "	:param aUKnots:
+	:type aUKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetUKnots;
+		void SetUKnots (const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
+		%feature("compactdefaultargs") SetUMultiplicities;
+		%feature("autodoc", "	:param aUMultiplicities:
+	:type aUMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetUMultiplicities;
+		void SetUMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
+		%feature("compactdefaultargs") SetVKnots;
+		%feature("autodoc", "	:param aVKnots:
+	:type aVKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetVKnots;
+		void SetVKnots (const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
+		%feature("compactdefaultargs") SetVMultiplicities;
+		%feature("autodoc", "	:param aVMultiplicities:
+	:type aVMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetVMultiplicities;
+		void SetVMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
+		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnots;
+		%feature("autodoc", "	* Returns a BSplineSurfaceWithKnots
+
+	:rtype: None
+") StepGeom_BSplineSurfaceWithKnots;
+		 StepGeom_BSplineSurfaceWithKnots ();
+		%feature("compactdefaultargs") UKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UKnots;
+		opencascade::handle<TColStd_HArray1OfReal> UKnots ();
+		%feature("compactdefaultargs") UKnotsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: float
+") UKnotsValue;
+		Standard_Real UKnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") UMultiplicities;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
+") UMultiplicities;
+		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities ();
+		%feature("compactdefaultargs") UMultiplicitiesValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: int
+") UMultiplicitiesValue;
+		Standard_Integer UMultiplicitiesValue (const Standard_Integer num);
+		%feature("compactdefaultargs") VKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") VKnots;
+		opencascade::handle<TColStd_HArray1OfReal> VKnots ();
+		%feature("compactdefaultargs") VKnotsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: float
+") VKnotsValue;
+		Standard_Real VKnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") VMultiplicities;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
+") VMultiplicities;
+		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities ();
+		%feature("compactdefaultargs") VMultiplicitiesValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: int
+") VMultiplicitiesValue;
+		Standard_Integer VMultiplicitiesValue (const Standard_Integer num);
 };
 
 
@@ -6472,41 +4287,19 @@ class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 %nodefaultctor StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
-		%feature("autodoc", "	* Returns a BSplineSurfaceWithKnotsAndRationalBSplineSurface
-
-	:rtype: None
-") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
-		 StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") BSplineSurfaceWithKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineSurfaceWithKnots>
+") BSplineSurfaceWithKnots;
+		opencascade::handle<StepGeom_BSplineSurfaceWithKnots> BSplineSurfaceWithKnots ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -6516,21 +4309,21 @@ class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeo
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aBSplineSurfaceWithKnots:
-	:type aBSplineSurfaceWithKnots: Handle_StepGeom_BSplineSurfaceWithKnots &
+	:type aBSplineSurfaceWithKnots: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
 	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: void
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_StepGeom_BSplineSurfaceWithKnots & aBSplineSurfaceWithKnots,const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots,const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -6540,148 +4333,40 @@ class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeo
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aUMultiplicities:
-	:type aUMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aUMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aVMultiplicities:
-	:type aVMultiplicities: Handle_TColStd_HArray1OfInteger &
+	:type aVMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
 	:param aUKnots:
-	:type aUKnots: Handle_TColStd_HArray1OfReal &
+	:type aUKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aVKnots:
-	:type aVKnots: Handle_TColStd_HArray1OfReal &
+	:type aVKnots: opencascade::handle<TColStd_HArray1OfReal> &
 	:param aKnotSpec:
 	:type aKnotSpec: StepGeom_KnotType
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfInteger & aUMultiplicities,const Handle_TColStd_HArray1OfInteger & aVMultiplicities,const Handle_TColStd_HArray1OfReal & aUKnots,const Handle_TColStd_HArray1OfReal & aVKnots,const StepGeom_KnotType aKnotSpec,const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetBSplineSurfaceWithKnots;
-		%feature("autodoc", "	:param aBSplineSurfaceWithKnots:
-	:type aBSplineSurfaceWithKnots: Handle_StepGeom_BSplineSurfaceWithKnots &
-	:rtype: None
-") SetBSplineSurfaceWithKnots;
-		void SetBSplineSurfaceWithKnots (const Handle_StepGeom_BSplineSurfaceWithKnots & aBSplineSurfaceWithKnots);
-		%feature("compactdefaultargs") BSplineSurfaceWithKnots;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_BSplineSurfaceWithKnots
-") BSplineSurfaceWithKnots;
-		Handle_StepGeom_BSplineSurfaceWithKnots BSplineSurfaceWithKnots ();
-		%feature("compactdefaultargs") SetRationalBSplineSurface;
-		%feature("autodoc", "	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: None
-") SetRationalBSplineSurface;
-		void SetRationalBSplineSurface (const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
-		%feature("compactdefaultargs") RationalBSplineSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineSurface
-") RationalBSplineSurface;
-		Handle_StepGeom_RationalBSplineSurface RationalBSplineSurface ();
-		%feature("compactdefaultargs") SetUMultiplicities;
-		%feature("autodoc", "	:param aUMultiplicities:
-	:type aUMultiplicities: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetUMultiplicities;
-		void SetUMultiplicities (const Handle_TColStd_HArray1OfInteger & aUMultiplicities);
-		%feature("compactdefaultargs") UMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") UMultiplicities;
-		Handle_TColStd_HArray1OfInteger UMultiplicities ();
-		%feature("compactdefaultargs") UMultiplicitiesValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: int
-") UMultiplicitiesValue;
-		Standard_Integer UMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbUMultiplicities;
-		Standard_Integer NbUMultiplicities ();
-		%feature("compactdefaultargs") SetVMultiplicities;
-		%feature("autodoc", "	:param aVMultiplicities:
-	:type aVMultiplicities: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetVMultiplicities;
-		void SetVMultiplicities (const Handle_TColStd_HArray1OfInteger & aVMultiplicities);
-		%feature("compactdefaultargs") VMultiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") VMultiplicities;
-		Handle_TColStd_HArray1OfInteger VMultiplicities ();
-		%feature("compactdefaultargs") VMultiplicitiesValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: int
-") VMultiplicitiesValue;
-		Standard_Integer VMultiplicitiesValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbVMultiplicities;
-		%feature("autodoc", "	:rtype: int
-") NbVMultiplicities;
-		Standard_Integer NbVMultiplicities ();
-		%feature("compactdefaultargs") SetUKnots;
-		%feature("autodoc", "	:param aUKnots:
-	:type aUKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetUKnots;
-		void SetUKnots (const Handle_TColStd_HArray1OfReal & aUKnots);
-		%feature("compactdefaultargs") UKnots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") UKnots;
-		Handle_TColStd_HArray1OfReal UKnots ();
-		%feature("compactdefaultargs") UKnotsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: float
-") UKnotsValue;
-		Standard_Real UKnotsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbUKnots;
-		%feature("autodoc", "	:rtype: int
-") NbUKnots;
-		Standard_Integer NbUKnots ();
-		%feature("compactdefaultargs") SetVKnots;
-		%feature("autodoc", "	:param aVKnots:
-	:type aVKnots: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetVKnots;
-		void SetVKnots (const Handle_TColStd_HArray1OfReal & aVKnots);
-		%feature("compactdefaultargs") VKnots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") VKnots;
-		Handle_TColStd_HArray1OfReal VKnots ();
-		%feature("compactdefaultargs") VKnotsValue;
-		%feature("autodoc", "	:param num:
-	:type num: int
-	:rtype: float
-") VKnotsValue;
-		Standard_Real VKnotsValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbVKnots;
-		%feature("autodoc", "	:rtype: int
-") NbVKnots;
-		Standard_Integer NbVKnots ();
-		%feature("compactdefaultargs") SetKnotSpec;
-		%feature("autodoc", "	:param aKnotSpec:
-	:type aKnotSpec: StepGeom_KnotType
-	:rtype: None
-") SetKnotSpec;
-		void SetKnotSpec (const StepGeom_KnotType aKnotSpec);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities,const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities,const opencascade::handle<TColStd_HArray1OfReal> & aUKnots,const opencascade::handle<TColStd_HArray1OfReal> & aVKnots,const StepGeom_KnotType aKnotSpec,const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 		%feature("compactdefaultargs") KnotSpec;
 		%feature("autodoc", "	:rtype: StepGeom_KnotType
 ") KnotSpec;
 		StepGeom_KnotType KnotSpec ();
-		%feature("compactdefaultargs") SetWeightsData;
-		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: None
-") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") WeightsData;
-		Handle_TColStd_HArray2OfReal WeightsData ();
-		%feature("compactdefaultargs") WeightsDataValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: float
-") WeightsDataValue;
-		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
+		%feature("compactdefaultargs") NbUKnots;
+		%feature("autodoc", "	:rtype: int
+") NbUKnots;
+		Standard_Integer NbUKnots ();
+		%feature("compactdefaultargs") NbUMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbUMultiplicities;
+		Standard_Integer NbUMultiplicities ();
+		%feature("compactdefaultargs") NbVKnots;
+		%feature("autodoc", "	:rtype: int
+") NbVKnots;
+		Standard_Integer NbVKnots ();
+		%feature("compactdefaultargs") NbVMultiplicities;
+		%feature("autodoc", "	:rtype: int
+") NbVMultiplicities;
+		Standard_Integer NbVMultiplicities ();
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataI;
@@ -6690,6 +4375,116 @@ class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeo
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ ();
+		%feature("compactdefaultargs") RationalBSplineSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineSurface>
+") RationalBSplineSurface;
+		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface ();
+		%feature("compactdefaultargs") SetBSplineSurfaceWithKnots;
+		%feature("autodoc", "	:param aBSplineSurfaceWithKnots:
+	:type aBSplineSurfaceWithKnots: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
+	:rtype: None
+") SetBSplineSurfaceWithKnots;
+		void SetBSplineSurfaceWithKnots (const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots);
+		%feature("compactdefaultargs") SetKnotSpec;
+		%feature("autodoc", "	:param aKnotSpec:
+	:type aKnotSpec: StepGeom_KnotType
+	:rtype: None
+") SetKnotSpec;
+		void SetKnotSpec (const StepGeom_KnotType aKnotSpec);
+		%feature("compactdefaultargs") SetRationalBSplineSurface;
+		%feature("autodoc", "	:param aRationalBSplineSurface:
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
+") SetRationalBSplineSurface;
+		void SetRationalBSplineSurface (const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		%feature("compactdefaultargs") SetUKnots;
+		%feature("autodoc", "	:param aUKnots:
+	:type aUKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetUKnots;
+		void SetUKnots (const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
+		%feature("compactdefaultargs") SetUMultiplicities;
+		%feature("autodoc", "	:param aUMultiplicities:
+	:type aUMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetUMultiplicities;
+		void SetUMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
+		%feature("compactdefaultargs") SetVKnots;
+		%feature("autodoc", "	:param aVKnots:
+	:type aVKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
+") SetVKnots;
+		void SetVKnots (const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
+		%feature("compactdefaultargs") SetVMultiplicities;
+		%feature("autodoc", "	:param aVMultiplicities:
+	:type aVMultiplicities: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None
+") SetVMultiplicities;
+		void SetVMultiplicities (const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
+		%feature("compactdefaultargs") SetWeightsData;
+		%feature("autodoc", "	:param aWeightsData:
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
+") SetWeightsData;
+		void SetWeightsData (const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
+		%feature("autodoc", "	* Returns a BSplineSurfaceWithKnotsAndRationalBSplineSurface
+
+	:rtype: None
+") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
+		 StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") UKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") UKnots;
+		opencascade::handle<TColStd_HArray1OfReal> UKnots ();
+		%feature("compactdefaultargs") UKnotsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: float
+") UKnotsValue;
+		Standard_Real UKnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") UMultiplicities;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
+") UMultiplicities;
+		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities ();
+		%feature("compactdefaultargs") UMultiplicitiesValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: int
+") UMultiplicitiesValue;
+		Standard_Integer UMultiplicitiesValue (const Standard_Integer num);
+		%feature("compactdefaultargs") VKnots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") VKnots;
+		opencascade::handle<TColStd_HArray1OfReal> VKnots ();
+		%feature("compactdefaultargs") VKnotsValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: float
+") VKnotsValue;
+		Standard_Real VKnotsValue (const Standard_Integer num);
+		%feature("compactdefaultargs") VMultiplicities;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
+") VMultiplicities;
+		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities ();
+		%feature("compactdefaultargs") VMultiplicitiesValue;
+		%feature("autodoc", "	:param num:
+	:type num: int
+	:rtype: int
+") VMultiplicitiesValue;
+		Standard_Integer VMultiplicitiesValue (const Standard_Integer num);
+		%feature("compactdefaultargs") WeightsData;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") WeightsData;
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData ();
+		%feature("compactdefaultargs") WeightsDataValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: float
+") WeightsDataValue;
+		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
 };
 
 
@@ -6722,35 +4517,17 @@ class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 %nodefaultctor StepGeom_BezierCurveAndRationalBSplineCurve;
 class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_BezierCurveAndRationalBSplineCurve;
-		%feature("autodoc", "	* Returns a BezierCurveAndRationalBSplineCurve
-
-	:rtype: None
-") StepGeom_BezierCurveAndRationalBSplineCurve;
-		 StepGeom_BezierCurveAndRationalBSplineCurve ();
+		%feature("compactdefaultargs") BezierCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BezierCurve>
+") BezierCurve;
+		opencascade::handle<StepGeom_BezierCurve> BezierCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -6758,19 +4535,19 @@ class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aBezierCurve:
-	:type aBezierCurve: Handle_StepGeom_BezierCurve &
+	:type aBezierCurve: opencascade::handle<StepGeom_BezierCurve> &
 	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: void
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_StepGeom_BezierCurve & aBezierCurve,const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve,const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -6778,50 +4555,52 @@ class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") NbWeightsData;
+		%feature("autodoc", "	:rtype: int
+") NbWeightsData;
+		Standard_Integer NbWeightsData ();
+		%feature("compactdefaultargs") RationalBSplineCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineCurve>
+") RationalBSplineCurve;
+		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve ();
 		%feature("compactdefaultargs") SetBezierCurve;
 		%feature("autodoc", "	:param aBezierCurve:
-	:type aBezierCurve: Handle_StepGeom_BezierCurve &
+	:type aBezierCurve: opencascade::handle<StepGeom_BezierCurve> &
 	:rtype: None
 ") SetBezierCurve;
-		void SetBezierCurve (const Handle_StepGeom_BezierCurve & aBezierCurve);
-		%feature("compactdefaultargs") BezierCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_BezierCurve
-") BezierCurve;
-		Handle_StepGeom_BezierCurve BezierCurve ();
+		void SetBezierCurve (const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve);
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:rtype: None
 ") SetRationalBSplineCurve;
-		void SetRationalBSplineCurve (const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
-		%feature("compactdefaultargs") RationalBSplineCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineCurve
-") RationalBSplineCurve;
-		Handle_StepGeom_RationalBSplineCurve RationalBSplineCurve ();
+		void SetRationalBSplineCurve (const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
 ") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void SetWeightsData (const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_BezierCurveAndRationalBSplineCurve;
+		%feature("autodoc", "	* Returns a BezierCurveAndRationalBSplineCurve
+
+	:rtype: None
+") StepGeom_BezierCurveAndRationalBSplineCurve;
+		 StepGeom_BezierCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") WeightsData;
-		Handle_TColStd_HArray1OfReal WeightsData ();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData ();
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") WeightsDataValue;
 		Standard_Real WeightsDataValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbWeightsData;
-		%feature("autodoc", "	:rtype: int
-") NbWeightsData;
-		Standard_Integer NbWeightsData ();
 };
 
 
@@ -6854,41 +4633,19 @@ class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 %nodefaultctor StepGeom_BezierSurfaceAndRationalBSplineSurface;
 class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_BezierSurfaceAndRationalBSplineSurface;
-		%feature("autodoc", "	* Returns a BezierSurfaceAndRationalBSplineSurface
-
-	:rtype: None
-") StepGeom_BezierSurfaceAndRationalBSplineSurface;
-		 StepGeom_BezierSurfaceAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") BezierSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BezierSurface>
+") BezierSurface;
+		opencascade::handle<StepGeom_BezierSurface> BezierSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -6898,21 +4655,21 @@ class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aBezierSurface:
-	:type aBezierSurface: Handle_StepGeom_BezierSurface &
+	:type aBezierSurface: opencascade::handle<StepGeom_BezierSurface> &
 	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: void
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_StepGeom_BezierSurface & aBezierSurface,const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface,const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -6922,48 +4679,10 @@ class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetBezierSurface;
-		%feature("autodoc", "	:param aBezierSurface:
-	:type aBezierSurface: Handle_StepGeom_BezierSurface &
-	:rtype: None
-") SetBezierSurface;
-		void SetBezierSurface (const Handle_StepGeom_BezierSurface & aBezierSurface);
-		%feature("compactdefaultargs") BezierSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_BezierSurface
-") BezierSurface;
-		Handle_StepGeom_BezierSurface BezierSurface ();
-		%feature("compactdefaultargs") SetRationalBSplineSurface;
-		%feature("autodoc", "	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: None
-") SetRationalBSplineSurface;
-		void SetRationalBSplineSurface (const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
-		%feature("compactdefaultargs") RationalBSplineSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineSurface
-") RationalBSplineSurface;
-		Handle_StepGeom_RationalBSplineSurface RationalBSplineSurface ();
-		%feature("compactdefaultargs") SetWeightsData;
-		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: None
-") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") WeightsData;
-		Handle_TColStd_HArray2OfReal WeightsData ();
-		%feature("compactdefaultargs") WeightsDataValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: float
-") WeightsDataValue;
-		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataI;
@@ -6972,6 +4691,46 @@ class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineS
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ ();
+		%feature("compactdefaultargs") RationalBSplineSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineSurface>
+") RationalBSplineSurface;
+		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface ();
+		%feature("compactdefaultargs") SetBezierSurface;
+		%feature("autodoc", "	:param aBezierSurface:
+	:type aBezierSurface: opencascade::handle<StepGeom_BezierSurface> &
+	:rtype: None
+") SetBezierSurface;
+		void SetBezierSurface (const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface);
+		%feature("compactdefaultargs") SetRationalBSplineSurface;
+		%feature("autodoc", "	:param aRationalBSplineSurface:
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
+") SetRationalBSplineSurface;
+		void SetRationalBSplineSurface (const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		%feature("compactdefaultargs") SetWeightsData;
+		%feature("autodoc", "	:param aWeightsData:
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
+") SetWeightsData;
+		void SetWeightsData (const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_BezierSurfaceAndRationalBSplineSurface;
+		%feature("autodoc", "	* Returns a BezierSurfaceAndRationalBSplineSurface
+
+	:rtype: None
+") StepGeom_BezierSurfaceAndRationalBSplineSurface;
+		 StepGeom_BezierSurfaceAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") WeightsData;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") WeightsData;
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData ();
+		%feature("compactdefaultargs") WeightsDataValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: float
+") WeightsDataValue;
+		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
 };
 
 
@@ -7004,48 +4763,36 @@ class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 %nodefaultctor StepGeom_DegenerateToroidalSurface;
 class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_DegenerateToroidalSurface;
-		%feature("autodoc", "	* Returns a DegenerateToroidalSurface
-
-	:rtype: None
-") StepGeom_DegenerateToroidalSurface;
-		 StepGeom_DegenerateToroidalSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
-	:param aMajorRadius:
-	:type aMajorRadius: float
-	:param aMinorRadius:
-	:type aMinorRadius: float
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aPosition:
-	:type aPosition: Handle_StepGeom_Axis2Placement3d &
+	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param aMajorRadius:
 	:type aMajorRadius: float
 	:param aMinorRadius:
 	:type aMinorRadius: float
 	:param aSelectOuter:
 	:type aSelectOuter: bool
-	:rtype: void
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepGeom_Axis2Placement3d & aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius,const Standard_Boolean aSelectOuter);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius,const Standard_Boolean aSelectOuter);
+		%feature("compactdefaultargs") SelectOuter;
+		%feature("autodoc", "	:rtype: bool
+") SelectOuter;
+		Standard_Boolean SelectOuter ();
 		%feature("compactdefaultargs") SetSelectOuter;
 		%feature("autodoc", "	:param aSelectOuter:
 	:type aSelectOuter: bool
 	:rtype: None
 ") SetSelectOuter;
 		void SetSelectOuter (const Standard_Boolean aSelectOuter);
-		%feature("compactdefaultargs") SelectOuter;
-		%feature("autodoc", "	:rtype: bool
-") SelectOuter;
-		Standard_Boolean SelectOuter ();
+		%feature("compactdefaultargs") StepGeom_DegenerateToroidalSurface;
+		%feature("autodoc", "	* Returns a DegenerateToroidalSurface
+
+	:rtype: None
+") StepGeom_DegenerateToroidalSurface;
+		 StepGeom_DegenerateToroidalSurface ();
 };
 
 
@@ -7078,35 +4825,13 @@ class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 %nodefaultctor StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
-		%feature("autodoc", "	* Returns a QuasiUniformCurveAndRationalBSplineCurve
-
-	:rtype: None
-") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
-		 StepGeom_QuasiUniformCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -7114,19 +4839,19 @@ class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplin
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aQuasiUniformCurve:
-	:type aQuasiUniformCurve: Handle_StepGeom_QuasiUniformCurve &
+	:type aQuasiUniformCurve: opencascade::handle<StepGeom_QuasiUniformCurve> &
 	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: void
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_StepGeom_QuasiUniformCurve & aQuasiUniformCurve,const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve,const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -7134,50 +4859,56 @@ class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplin
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") NbWeightsData;
+		%feature("autodoc", "	:rtype: int
+") NbWeightsData;
+		Standard_Integer NbWeightsData ();
+		%feature("compactdefaultargs") QuasiUniformCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_QuasiUniformCurve>
+") QuasiUniformCurve;
+		opencascade::handle<StepGeom_QuasiUniformCurve> QuasiUniformCurve ();
+		%feature("compactdefaultargs") RationalBSplineCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineCurve>
+") RationalBSplineCurve;
+		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve ();
 		%feature("compactdefaultargs") SetQuasiUniformCurve;
 		%feature("autodoc", "	:param aQuasiUniformCurve:
-	:type aQuasiUniformCurve: Handle_StepGeom_QuasiUniformCurve &
+	:type aQuasiUniformCurve: opencascade::handle<StepGeom_QuasiUniformCurve> &
 	:rtype: None
 ") SetQuasiUniformCurve;
-		void SetQuasiUniformCurve (const Handle_StepGeom_QuasiUniformCurve & aQuasiUniformCurve);
-		%feature("compactdefaultargs") QuasiUniformCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_QuasiUniformCurve
-") QuasiUniformCurve;
-		Handle_StepGeom_QuasiUniformCurve QuasiUniformCurve ();
+		void SetQuasiUniformCurve (const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve);
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:rtype: None
 ") SetRationalBSplineCurve;
-		void SetRationalBSplineCurve (const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
-		%feature("compactdefaultargs") RationalBSplineCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineCurve
-") RationalBSplineCurve;
-		Handle_StepGeom_RationalBSplineCurve RationalBSplineCurve ();
+		void SetRationalBSplineCurve (const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
 ") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void SetWeightsData (const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
+		%feature("autodoc", "	* Returns a QuasiUniformCurveAndRationalBSplineCurve
+
+	:rtype: None
+") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
+		 StepGeom_QuasiUniformCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") WeightsData;
-		Handle_TColStd_HArray1OfReal WeightsData ();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData ();
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") WeightsDataValue;
 		Standard_Real WeightsDataValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbWeightsData;
-		%feature("autodoc", "	:rtype: int
-") NbWeightsData;
-		Standard_Integer NbWeightsData ();
 };
 
 
@@ -7210,41 +4941,15 @@ class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 %nodefaultctor StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
-		%feature("autodoc", "	* Returns a QuasiUniformSurfaceAndRationalBSplineSurface
-
-	:rtype: None
-") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
-		 StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -7254,21 +4959,21 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aQuasiUniformSurface:
-	:type aQuasiUniformSurface: Handle_StepGeom_QuasiUniformSurface &
+	:type aQuasiUniformSurface: opencascade::handle<StepGeom_QuasiUniformSurface> &
 	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: void
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_StepGeom_QuasiUniformSurface & aQuasiUniformSurface,const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface,const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -7278,48 +4983,10 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetQuasiUniformSurface;
-		%feature("autodoc", "	:param aQuasiUniformSurface:
-	:type aQuasiUniformSurface: Handle_StepGeom_QuasiUniformSurface &
-	:rtype: None
-") SetQuasiUniformSurface;
-		void SetQuasiUniformSurface (const Handle_StepGeom_QuasiUniformSurface & aQuasiUniformSurface);
-		%feature("compactdefaultargs") QuasiUniformSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_QuasiUniformSurface
-") QuasiUniformSurface;
-		Handle_StepGeom_QuasiUniformSurface QuasiUniformSurface ();
-		%feature("compactdefaultargs") SetRationalBSplineSurface;
-		%feature("autodoc", "	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: None
-") SetRationalBSplineSurface;
-		void SetRationalBSplineSurface (const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
-		%feature("compactdefaultargs") RationalBSplineSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineSurface
-") RationalBSplineSurface;
-		Handle_StepGeom_RationalBSplineSurface RationalBSplineSurface ();
-		%feature("compactdefaultargs") SetWeightsData;
-		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: None
-") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") WeightsData;
-		Handle_TColStd_HArray2OfReal WeightsData ();
-		%feature("compactdefaultargs") WeightsDataValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: float
-") WeightsDataValue;
-		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataI;
@@ -7328,6 +4995,50 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ ();
+		%feature("compactdefaultargs") QuasiUniformSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_QuasiUniformSurface>
+") QuasiUniformSurface;
+		opencascade::handle<StepGeom_QuasiUniformSurface> QuasiUniformSurface ();
+		%feature("compactdefaultargs") RationalBSplineSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineSurface>
+") RationalBSplineSurface;
+		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface ();
+		%feature("compactdefaultargs") SetQuasiUniformSurface;
+		%feature("autodoc", "	:param aQuasiUniformSurface:
+	:type aQuasiUniformSurface: opencascade::handle<StepGeom_QuasiUniformSurface> &
+	:rtype: None
+") SetQuasiUniformSurface;
+		void SetQuasiUniformSurface (const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface);
+		%feature("compactdefaultargs") SetRationalBSplineSurface;
+		%feature("autodoc", "	:param aRationalBSplineSurface:
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
+") SetRationalBSplineSurface;
+		void SetRationalBSplineSurface (const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		%feature("compactdefaultargs") SetWeightsData;
+		%feature("autodoc", "	:param aWeightsData:
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
+") SetWeightsData;
+		void SetWeightsData (const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
+		%feature("autodoc", "	* Returns a QuasiUniformSurfaceAndRationalBSplineSurface
+
+	:rtype: None
+") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
+		 StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") WeightsData;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") WeightsData;
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData ();
+		%feature("compactdefaultargs") WeightsDataValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: float
+") WeightsDataValue;
+		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
 };
 
 
@@ -7341,35 +5052,13 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 %nodefaultctor StepGeom_RationalBSplineCurve;
 class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_RationalBSplineCurve;
-		%feature("autodoc", "	* Returns a RationalBSplineCurve
-
-	:rtype: None
-") StepGeom_RationalBSplineCurve;
-		 StepGeom_RationalBSplineCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -7377,30 +5066,36 @@ class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") NbWeightsData;
+		%feature("autodoc", "	:rtype: int
+") NbWeightsData;
+		Standard_Integer NbWeightsData ();
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
 ") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void SetWeightsData (const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_RationalBSplineCurve;
+		%feature("autodoc", "	* Returns a RationalBSplineCurve
+
+	:rtype: None
+") StepGeom_RationalBSplineCurve;
+		 StepGeom_RationalBSplineCurve ();
 		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") WeightsData;
-		Handle_TColStd_HArray1OfReal WeightsData ();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData ();
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") WeightsDataValue;
 		Standard_Real WeightsDataValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbWeightsData;
-		%feature("autodoc", "	:rtype: int
-") NbWeightsData;
-		Standard_Integer NbWeightsData ();
 };
 
 
@@ -7414,41 +5109,15 @@ class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 %nodefaultctor StepGeom_RationalBSplineSurface;
 class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_RationalBSplineSurface;
-		%feature("autodoc", "	* Returns a RationalBSplineSurface
-
-	:rtype: None
-") StepGeom_RationalBSplineSurface;
-		 StepGeom_RationalBSplineSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -7458,28 +5127,10 @@ class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetWeightsData;
-		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
 	:rtype: None
-") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") WeightsData;
-		Handle_TColStd_HArray2OfReal WeightsData ();
-		%feature("compactdefaultargs") WeightsDataValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: float
-") WeightsDataValue;
-		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataI;
@@ -7488,6 +5139,30 @@ class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ ();
+		%feature("compactdefaultargs") SetWeightsData;
+		%feature("autodoc", "	:param aWeightsData:
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
+") SetWeightsData;
+		void SetWeightsData (const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_RationalBSplineSurface;
+		%feature("autodoc", "	* Returns a RationalBSplineSurface
+
+	:rtype: None
+") StepGeom_RationalBSplineSurface;
+		 StepGeom_RationalBSplineSurface ();
+		%feature("compactdefaultargs") WeightsData;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") WeightsData;
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData ();
+		%feature("compactdefaultargs") WeightsDataValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: float
+") WeightsDataValue;
+		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
 };
 
 
@@ -7520,35 +5195,13 @@ class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 %nodefaultctor StepGeom_UniformCurveAndRationalBSplineCurve;
 class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		%feature("compactdefaultargs") StepGeom_UniformCurveAndRationalBSplineCurve;
-		%feature("autodoc", "	* Returns a UniformCurveAndRationalBSplineCurve
-
-	:rtype: None
-") StepGeom_UniformCurveAndRationalBSplineCurve;
-		 StepGeom_UniformCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
-	:param aCurveForm:
-	:type aCurveForm: StepGeom_BSplineCurveForm
-	:param aClosedCurve:
-	:type aClosedCurve: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aDegree:
-	:type aDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -7556,19 +5209,19 @@ class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurv
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aUniformCurve:
-	:type aUniformCurve: Handle_StepGeom_UniformCurve &
+	:type aUniformCurve: opencascade::handle<StepGeom_UniformCurve> &
 	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: void
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_StepGeom_UniformCurve & aUniformCurve,const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve,const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDegree:
 	:type aDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray1OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
 	:param aCurveForm:
 	:type aCurveForm: StepGeom_BSplineCurveForm
 	:param aClosedCurve:
@@ -7576,50 +5229,56 @@ class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurv
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aDegree,const Handle_StepGeom_HArray1OfCartesianPoint & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray1OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetUniformCurve;
-		%feature("autodoc", "	:param aUniformCurve:
-	:type aUniformCurve: Handle_StepGeom_UniformCurve &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
-") SetUniformCurve;
-		void SetUniformCurve (const Handle_StepGeom_UniformCurve & aUniformCurve);
-		%feature("compactdefaultargs") UniformCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_UniformCurve
-") UniformCurve;
-		Handle_StepGeom_UniformCurve UniformCurve ();
+") Init;
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aDegree,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") NbWeightsData;
+		%feature("autodoc", "	:rtype: int
+") NbWeightsData;
+		Standard_Integer NbWeightsData ();
+		%feature("compactdefaultargs") RationalBSplineCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineCurve>
+") RationalBSplineCurve;
+		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve ();
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "	:param aRationalBSplineCurve:
-	:type aRationalBSplineCurve: Handle_StepGeom_RationalBSplineCurve &
+	:type aRationalBSplineCurve: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:rtype: None
 ") SetRationalBSplineCurve;
-		void SetRationalBSplineCurve (const Handle_StepGeom_RationalBSplineCurve & aRationalBSplineCurve);
-		%feature("compactdefaultargs") RationalBSplineCurve;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineCurve
-") RationalBSplineCurve;
-		Handle_StepGeom_RationalBSplineCurve RationalBSplineCurve ();
+		void SetRationalBSplineCurve (const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
+		%feature("compactdefaultargs") SetUniformCurve;
+		%feature("autodoc", "	:param aUniformCurve:
+	:type aUniformCurve: opencascade::handle<StepGeom_UniformCurve> &
+	:rtype: None
+") SetUniformCurve;
+		void SetUniformCurve (const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve);
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray1OfReal &
+	:type aWeightsData: opencascade::handle<TColStd_HArray1OfReal> &
 	:rtype: None
 ") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray1OfReal & aWeightsData);
+		void SetWeightsData (const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_UniformCurveAndRationalBSplineCurve;
+		%feature("autodoc", "	* Returns a UniformCurveAndRationalBSplineCurve
+
+	:rtype: None
+") StepGeom_UniformCurveAndRationalBSplineCurve;
+		 StepGeom_UniformCurveAndRationalBSplineCurve ();
+		%feature("compactdefaultargs") UniformCurve;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_UniformCurve>
+") UniformCurve;
+		opencascade::handle<StepGeom_UniformCurve> UniformCurve ();
 		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") WeightsData;
-		Handle_TColStd_HArray1OfReal WeightsData ();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData ();
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "	:param num:
 	:type num: int
 	:rtype: float
 ") WeightsDataValue;
 		Standard_Real WeightsDataValue (const Standard_Integer num);
-		%feature("compactdefaultargs") NbWeightsData;
-		%feature("autodoc", "	:rtype: int
-") NbWeightsData;
-		Standard_Integer NbWeightsData ();
 };
 
 
@@ -7652,41 +5311,15 @@ class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 %nodefaultctor StepGeom_UniformSurfaceAndRationalBSplineSurface;
 class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		%feature("compactdefaultargs") StepGeom_UniformSurfaceAndRationalBSplineSurface;
-		%feature("autodoc", "	* Returns a UniformSurfaceAndRationalBSplineSurface
-
-	:rtype: None
-") StepGeom_UniformSurfaceAndRationalBSplineSurface;
-		 StepGeom_UniformSurfaceAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
-	:param aSurfaceForm:
-	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
-	:param aUClosed:
-	:type aUClosed: StepData_Logical
-	:param aVClosed:
-	:type aVClosed: StepData_Logical
-	:param aSelfIntersect:
-	:type aSelfIntersect: StepData_Logical
-	:rtype: void
-") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
-	:param aUDegree:
-	:type aUDegree: int
-	:param aVDegree:
-	:type aVDegree: int
-	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -7696,21 +5329,21 @@ class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSpline
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aUniformSurface:
-	:type aUniformSurface: Handle_StepGeom_UniformSurface &
+	:type aUniformSurface: opencascade::handle<StepGeom_UniformSurface> &
 	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: void
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_StepGeom_UniformSurface & aUniformSurface,const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface,const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aName:
-	:type aName: Handle_TCollection_HAsciiString &
+	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aUDegree:
 	:type aUDegree: int
 	:param aVDegree:
 	:type aVDegree: int
 	:param aControlPointsList:
-	:type aControlPointsList: Handle_StepGeom_HArray2OfCartesianPoint &
+	:type aControlPointsList: opencascade::handle<StepGeom_HArray2OfCartesianPoint> &
 	:param aSurfaceForm:
 	:type aSurfaceForm: StepGeom_BSplineSurfaceForm
 	:param aUClosed:
@@ -7720,48 +5353,10 @@ class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSpline
 	:param aSelfIntersect:
 	:type aSelfIntersect: StepData_Logical
 	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: void
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
 ") Init;
-		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const Handle_StepGeom_HArray2OfCartesianPoint & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") SetUniformSurface;
-		%feature("autodoc", "	:param aUniformSurface:
-	:type aUniformSurface: Handle_StepGeom_UniformSurface &
-	:rtype: None
-") SetUniformSurface;
-		void SetUniformSurface (const Handle_StepGeom_UniformSurface & aUniformSurface);
-		%feature("compactdefaultargs") UniformSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_UniformSurface
-") UniformSurface;
-		Handle_StepGeom_UniformSurface UniformSurface ();
-		%feature("compactdefaultargs") SetRationalBSplineSurface;
-		%feature("autodoc", "	:param aRationalBSplineSurface:
-	:type aRationalBSplineSurface: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: None
-") SetRationalBSplineSurface;
-		void SetRationalBSplineSurface (const Handle_StepGeom_RationalBSplineSurface & aRationalBSplineSurface);
-		%feature("compactdefaultargs") RationalBSplineSurface;
-		%feature("autodoc", "	:rtype: Handle_StepGeom_RationalBSplineSurface
-") RationalBSplineSurface;
-		Handle_StepGeom_RationalBSplineSurface RationalBSplineSurface ();
-		%feature("compactdefaultargs") SetWeightsData;
-		%feature("autodoc", "	:param aWeightsData:
-	:type aWeightsData: Handle_TColStd_HArray2OfReal &
-	:rtype: None
-") SetWeightsData;
-		void SetWeightsData (const Handle_TColStd_HArray2OfReal & aWeightsData);
-		%feature("compactdefaultargs") WeightsData;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfReal
-") WeightsData;
-		Handle_TColStd_HArray2OfReal WeightsData ();
-		%feature("compactdefaultargs") WeightsDataValue;
-		%feature("autodoc", "	:param num1:
-	:type num1: int
-	:param num2:
-	:type num2: int
-	:rtype: float
-") WeightsDataValue;
-		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
+		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Integer aUDegree,const Standard_Integer aVDegree,const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList,const StepGeom_BSplineSurfaceForm aSurfaceForm,const StepData_Logical aUClosed,const StepData_Logical aVClosed,const StepData_Logical aSelfIntersect,const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataI;
@@ -7770,6 +5365,50 @@ class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSpline
 		%feature("autodoc", "	:rtype: int
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ ();
+		%feature("compactdefaultargs") RationalBSplineSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RationalBSplineSurface>
+") RationalBSplineSurface;
+		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface ();
+		%feature("compactdefaultargs") SetRationalBSplineSurface;
+		%feature("autodoc", "	:param aRationalBSplineSurface:
+	:type aRationalBSplineSurface: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:rtype: None
+") SetRationalBSplineSurface;
+		void SetRationalBSplineSurface (const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		%feature("compactdefaultargs") SetUniformSurface;
+		%feature("autodoc", "	:param aUniformSurface:
+	:type aUniformSurface: opencascade::handle<StepGeom_UniformSurface> &
+	:rtype: None
+") SetUniformSurface;
+		void SetUniformSurface (const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface);
+		%feature("compactdefaultargs") SetWeightsData;
+		%feature("autodoc", "	:param aWeightsData:
+	:type aWeightsData: opencascade::handle<TColStd_HArray2OfReal> &
+	:rtype: None
+") SetWeightsData;
+		void SetWeightsData (const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
+		%feature("compactdefaultargs") StepGeom_UniformSurfaceAndRationalBSplineSurface;
+		%feature("autodoc", "	* Returns a UniformSurfaceAndRationalBSplineSurface
+
+	:rtype: None
+") StepGeom_UniformSurfaceAndRationalBSplineSurface;
+		 StepGeom_UniformSurfaceAndRationalBSplineSurface ();
+		%feature("compactdefaultargs") UniformSurface;
+		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_UniformSurface>
+") UniformSurface;
+		opencascade::handle<StepGeom_UniformSurface> UniformSurface ();
+		%feature("compactdefaultargs") WeightsData;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") WeightsData;
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData ();
+		%feature("compactdefaultargs") WeightsDataValue;
+		%feature("autodoc", "	:param num1:
+	:type num1: int
+	:param num2:
+	:type num2: int
+	:rtype: float
+") WeightsDataValue;
+		Standard_Real WeightsDataValue (const Standard_Integer num1,const Standard_Integer num2);
 };
 
 
@@ -7818,3 +5457,118 @@ class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+%wrap_handle(StepGeom_HArray1OfCartesianPoint)
+class StepGeom_HArray1OfCartesianPoint : public  StepGeom_Array1OfCartesianPoint, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCartesianPoint::value_type& theValue);
+    StepGeom_HArray1OfCartesianPoint(const  StepGeom_Array1OfCartesianPoint& theOther);
+    const  StepGeom_Array1OfCartesianPoint& Array1();
+     StepGeom_Array1OfCartesianPoint& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfCartesianPoint)
+
+
+%wrap_handle(StepGeom_HArray1OfPcurveOrSurface)
+class StepGeom_HArray1OfPcurveOrSurface : public  StepGeom_Array1OfPcurveOrSurface, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfPcurveOrSurface::value_type& theValue);
+    StepGeom_HArray1OfPcurveOrSurface(const  StepGeom_Array1OfPcurveOrSurface& theOther);
+    const  StepGeom_Array1OfPcurveOrSurface& Array1();
+     StepGeom_Array1OfPcurveOrSurface& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfPcurveOrSurface)
+
+
+%wrap_handle(StepGeom_HArray1OfSurfaceBoundary)
+class StepGeom_HArray1OfSurfaceBoundary : public  StepGeom_Array1OfSurfaceBoundary, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfSurfaceBoundary::value_type& theValue);
+    StepGeom_HArray1OfSurfaceBoundary(const  StepGeom_Array1OfSurfaceBoundary& theOther);
+    const  StepGeom_Array1OfSurfaceBoundary& Array1();
+     StepGeom_Array1OfSurfaceBoundary& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfSurfaceBoundary)
+
+
+%wrap_handle(StepGeom_HArray1OfBoundaryCurve)
+class StepGeom_HArray1OfBoundaryCurve : public  StepGeom_Array1OfBoundaryCurve, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfBoundaryCurve::value_type& theValue);
+    StepGeom_HArray1OfBoundaryCurve(const  StepGeom_Array1OfBoundaryCurve& theOther);
+    const  StepGeom_Array1OfBoundaryCurve& Array1();
+     StepGeom_Array1OfBoundaryCurve& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfBoundaryCurve)
+
+
+%wrap_handle(StepGeom_HArray1OfCompositeCurveSegment)
+class StepGeom_HArray1OfCompositeCurveSegment : public  StepGeom_Array1OfCompositeCurveSegment, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCompositeCurveSegment::value_type& theValue);
+    StepGeom_HArray1OfCompositeCurveSegment(const  StepGeom_Array1OfCompositeCurveSegment& theOther);
+    const  StepGeom_Array1OfCompositeCurveSegment& Array1();
+     StepGeom_Array1OfCompositeCurveSegment& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfCompositeCurveSegment)
+
+
+%wrap_handle(StepGeom_HArray1OfCurve)
+class StepGeom_HArray1OfCurve : public  StepGeom_Array1OfCurve, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCurve::value_type& theValue);
+    StepGeom_HArray1OfCurve(const  StepGeom_Array1OfCurve& theOther);
+    const  StepGeom_Array1OfCurve& Array1();
+     StepGeom_Array1OfCurve& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfCurve)
+
+
+%wrap_handle(StepGeom_HArray1OfTrimmingSelect)
+class StepGeom_HArray1OfTrimmingSelect : public  StepGeom_Array1OfTrimmingSelect, public Standard_Transient {
+  public:
+    StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfTrimmingSelect::value_type& theValue);
+    StepGeom_HArray1OfTrimmingSelect(const  StepGeom_Array1OfTrimmingSelect& theOther);
+    const  StepGeom_Array1OfTrimmingSelect& Array1();
+     StepGeom_Array1OfTrimmingSelect& ChangeArray1();
+};
+%make_alias(StepGeom_HArray1OfTrimmingSelect)
+
+
+/* harray2 class */
+%wrap_handle(StepGeom_HArray2OfSurfacePatch)
+class StepGeom_HArray2OfSurfacePatch : public  StepGeom_Array2OfSurfacePatch, public Standard_Transient {
+  public:
+    StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const  StepGeom_Array2OfSurfacePatch::value_type& theValue);
+    StepGeom_HArray2OfSurfacePatch(const  StepGeom_Array2OfSurfacePatch& theOther);
+    const  StepGeom_Array2OfSurfacePatch& Array2 ();
+     StepGeom_Array2OfSurfacePatch& ChangeArray2 (); 
+};
+%make_alias(StepGeom_HArray2OfSurfacePatch)
+
+
+%wrap_handle(StepGeom_HArray2OfCartesianPoint)
+class StepGeom_HArray2OfCartesianPoint : public  StepGeom_Array2OfCartesianPoint, public Standard_Transient {
+  public:
+    StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const  StepGeom_Array2OfCartesianPoint::value_type& theValue);
+    StepGeom_HArray2OfCartesianPoint(const  StepGeom_Array2OfCartesianPoint& theOther);
+    const  StepGeom_Array2OfCartesianPoint& Array2 ();
+     StepGeom_Array2OfCartesianPoint& ChangeArray2 (); 
+};
+%make_alias(StepGeom_HArray2OfCartesianPoint)
+
+
+/* harray2 class */
