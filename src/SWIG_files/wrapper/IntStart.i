@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,23 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:15
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define INTSTARTDOCSTRING
-"This package provides generic algorithms to
-find specific points (points on boundaries
-and points inside a surface) used as starting
-points for marching algorithms.
-
--Level: Internal
-
-All the methods of the classes of this package are Internal.
-
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=INTSTARTDOCSTRING) IntStart
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -48,16 +50,21 @@ All the methods of the classes of this package are Internal.
 
 %include IntStart_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(IntStart_SITopolTool)
+/* end handles declaration */
 
 %nodefaultctor IntStart_SITopolTool;
-class IntStart_SITopolTool : public MMgt_TShared {
+class IntStart_SITopolTool : public Standard_Transient {
 	public:
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "	:param P:
@@ -77,3 +84,6 @@ class IntStart_SITopolTool : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

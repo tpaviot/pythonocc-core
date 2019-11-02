@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,17 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:20
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define GEOM2DADAPTORDOCSTRING
-"this package contains the geometric definition of
-2d curves compatible with the Adaptor package
-templates.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -42,14 +50,19 @@ templates.
 
 %include Geom2dAdaptor_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(Geom2dAdaptor_GHCurve)
 %wrap_handle(Geom2dAdaptor_HCurve)
+/* end handles declaration */
 
 %rename(geom2dadaptor) Geom2dAdaptor;
 class Geom2dAdaptor {
@@ -59,9 +72,9 @@ class Geom2dAdaptor {
 
 	:param HC:
 	:type HC: Adaptor2d_Curve2d &
-	:rtype: Handle_Geom2d_Curve
+	:rtype: opencascade::handle<Geom2d_Curve>
 ") MakeCurve;
-		static Handle_Geom2d_Curve MakeCurve (const Adaptor2d_Curve2d & HC);
+		static opencascade::handle<Geom2d_Curve> MakeCurve (const Adaptor2d_Curve2d & HC);
 };
 
 
@@ -73,112 +86,26 @@ class Geom2dAdaptor {
 %nodefaultctor Geom2dAdaptor_Curve;
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
-		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
-		%feature("autodoc", "	:rtype: None
-") Geom2dAdaptor_Curve;
-		 Geom2dAdaptor_Curve ();
-		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") Geom2dAdaptor_Curve;
-		 Geom2dAdaptor_Curve (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
-		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param UFirst:
-	:type UFirst: float
-	:param ULast:
-	:type ULast: float
-	:rtype: None
-") Geom2dAdaptor_Curve;
-		 Geom2dAdaptor_Curve (const Handle_Geom2d_Curve & C,const Standard_Real UFirst,const Standard_Real ULast);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:rtype: None
-") Load;
-		void Load (const Handle_Geom2d_Curve & C);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
-
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param UFirst:
-	:type UFirst: float
-	:param ULast:
-	:type ULast: float
-	:rtype: None
-") Load;
-		void Load (const Handle_Geom2d_Curve & C,const Standard_Real UFirst,const Standard_Real ULast);
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
-") Curve;
-		Handle_Geom2d_Curve Curve ();
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
+		%feature("compactdefaultargs") BSpline;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BSplineCurve>
+") BSpline;
+		opencascade::handle<Geom2d_BSplineCurve> BSpline ();
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BezierCurve>
+") Bezier;
+		opencascade::handle<Geom2d_BezierCurve> Bezier ();
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ2d
+") Circle;
+		gp_Circ2d Circle ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
-
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
-
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
-		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
-
-	:param First:
-	:type First: float
-	:param Last:
-	:type Last: float
-	:param Tol:
-	:type Tol: float
-	:rtype: Handle_Adaptor2d_HCurve2d
-") Trim;
-		Handle_Adaptor2d_HCurve2d Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:rtype: float
-") Period;
-		Standard_Real Period ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve
-
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
-		gp_Pnt2d Value (const Standard_Real U);
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_Curve>
+") Curve;
+		const opencascade::handle<Geom2d_Curve> & Curve ();
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "	* Computes the point of parameter U.
 
@@ -241,6 +168,130 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	:rtype: gp_Vec2d
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
+		Standard_Integer Degree ();
+		%feature("compactdefaultargs") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips2d
+") Ellipse;
+		gp_Elips2d Ellipse ();
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
+		%feature("autodoc", "	:rtype: None
+") Geom2dAdaptor_Curve;
+		 Geom2dAdaptor_Curve ();
+		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
+		%feature("autodoc", "	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") Geom2dAdaptor_Curve;
+		 Geom2dAdaptor_Curve (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
+		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:rtype: None
+") Geom2dAdaptor_Curve;
+		 Geom2dAdaptor_Curve (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real UFirst,const Standard_Real ULast);
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", "	:rtype: GeomAbs_CurveType
+") GetType;
+		GeomAbs_CurveType GetType ();
+		%feature("compactdefaultargs") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr2d
+") Hyperbola;
+		gp_Hypr2d Hyperbola ();
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
+		Standard_Boolean IsClosed ();
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("compactdefaultargs") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
+		Standard_Boolean IsRational ();
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
+		Standard_Real LastParameter ();
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "	:rtype: gp_Lin2d
+") Line;
+		gp_Lin2d Line ();
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:rtype: None
+") Load;
+		void Load (const opencascade::handle<Geom2d_Curve> & C);
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
+
+	:param C:
+	:type C: opencascade::handle<Geom2d_Curve> &
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:rtype: None
+") Load;
+		void Load (const opencascade::handle<Geom2d_Curve> & C,const Standard_Real UFirst,const Standard_Real ULast);
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
+
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
+		Standard_Integer NbKnots ();
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
+		Standard_Integer NbPoles ();
+		%feature("compactdefaultargs") NbSamples;
+		%feature("autodoc", "	:rtype: int
+") NbSamples;
+		virtual Standard_Integer NbSamples ();
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab2d
+") Parabola;
+		gp_Parab2d Parabola ();
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
+		Standard_Real Period ();
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "	* Reset currently loaded curve (undone Load()).
+
+	:rtype: None
+") Reset;
+		void Reset ();
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "	* returns the parametric resolution
 
@@ -249,58 +300,26 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	:rtype: float
 ") Resolution;
 		Standard_Real Resolution (const Standard_Real Ruv);
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	:rtype: GeomAbs_CurveType
-") GetType;
-		GeomAbs_CurveType GetType ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Line;
-		gp_Lin2d Line ();
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Circle;
-		gp_Circ2d Circle ();
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Ellipse;
-		gp_Elips2d Ellipse ();
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Hyperbola;
-		gp_Hypr2d Hyperbola ();
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Parabola;
-		gp_Parab2d Parabola ();
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "	:rtype: bool
-") IsRational;
-		Standard_Boolean IsRational ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	:rtype: int
-") NbPoles;
-		Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:rtype: int
-") NbSamples;
-		virtual Standard_Integer NbSamples ();
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_BezierCurve
-") Bezier;
-		Handle_Geom2d_BezierCurve Bezier ();
-		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
-") BSpline;
-		Handle_Geom2d_BSplineCurve BSpline ();
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
+
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
+") Trim;
+		opencascade::handle<Adaptor2d_HCurve2d> Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Computes the point of parameter U on the curve
+
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt2d
+") Value;
+		gp_Pnt2d Value (const Standard_Real U);
 };
 
 
@@ -312,30 +331,40 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 %nodefaultctor Geom2dAdaptor_GHCurve;
 class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 	public:
+		%feature("compactdefaultargs") ChangeCurve2d;
+		%feature("autodoc", "	* Returns the curve used to create the GenHCurve.
+
+	:rtype: Geom2dAdaptor_Curve
+") ChangeCurve2d;
+		Geom2dAdaptor_Curve & ChangeCurve2d ();
+		%feature("compactdefaultargs") Curve2d;
+		%feature("autodoc", "	* Returns the curve used to create the GenHCurve2d. This is redefined from HCurve2d, cannot be inline.
+
+	:rtype: Adaptor2d_Curve2d
+") Curve2d;
+		const Adaptor2d_Curve2d & Curve2d ();
 		%feature("compactdefaultargs") Geom2dAdaptor_GHCurve;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Creates an empty GenHCurve2d.
+
+	:rtype: None
 ") Geom2dAdaptor_GHCurve;
 		 Geom2dAdaptor_GHCurve ();
 		%feature("compactdefaultargs") Geom2dAdaptor_GHCurve;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Creates a GenHCurve2d from a Curve
+
+	:param C:
 	:type C: Geom2dAdaptor_Curve &
 	:rtype: None
 ") Geom2dAdaptor_GHCurve;
 		 Geom2dAdaptor_GHCurve (const Geom2dAdaptor_Curve & C);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Sets the field of the GenHCurve2d.
+
+	:param C:
 	:type C: Geom2dAdaptor_Curve &
 	:rtype: None
 ") Set;
 		void Set (const Geom2dAdaptor_Curve & C);
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "	:rtype: Adaptor2d_Curve2d
-") Curve2d;
-		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "	:rtype: Geom2dAdaptor_Curve
-") ChangeCurve2d;
-		Geom2dAdaptor_Curve & ChangeCurve2d ();
 };
 
 
@@ -361,22 +390,22 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 		 Geom2dAdaptor_HCurve (const Geom2dAdaptor_Curve & AS);
 		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
 		%feature("autodoc", "	:param S:
-	:type S: Handle_Geom2d_Curve &
+	:type S: opencascade::handle<Geom2d_Curve> &
 	:rtype: None
 ") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve (const Handle_Geom2d_Curve & S);
+		 Geom2dAdaptor_HCurve (const opencascade::handle<Geom2d_Curve> & S);
 		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
 		%feature("autodoc", "	* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 
 	:param S:
-	:type S: Handle_Geom2d_Curve &
+	:type S: opencascade::handle<Geom2d_Curve> &
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
 	:type ULast: float
 	:rtype: None
 ") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve (const Handle_Geom2d_Curve & S,const Standard_Real UFirst,const Standard_Real ULast);
+		 Geom2dAdaptor_HCurve (const opencascade::handle<Geom2d_Curve> & S,const Standard_Real UFirst,const Standard_Real ULast);
 };
 
 
@@ -387,3 +416,6 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

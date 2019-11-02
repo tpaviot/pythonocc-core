@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,22 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
-%define BREPPROJDOCSTRING
-"The BRepProj  package provides  Projection
-Algorithms   like Cylindrical  and Conical
-Projections. Those algorithms have been put in an
-independant package  instead of BRepAlgo  (like
-NormalProjection) because of cyclic reference with
-BRepFill. So this package is not available for
-the moment to BRepFill.
 
-"
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:23
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
+%define BREPPROJDOCSTRING
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=BREPPROJDOCSTRING) BRepProj
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -47,12 +50,17 @@ the moment to BRepFill.
 
 %include BRepProj_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor BRepProj_Projection;
 class BRepProj_Projection {
@@ -81,18 +89,24 @@ class BRepProj_Projection {
 	:rtype: None
 ") BRepProj_Projection;
 		 BRepProj_Projection (const TopoDS_Shape & Wire,const TopoDS_Shape & Shape,const gp_Pnt & P);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* returns False if the section failed
+		%feature("compactdefaultargs") Current;
+		%feature("autodoc", "	* Returns the current result wire.
 
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
+	:rtype: TopoDS_Wire
+") Current;
+		TopoDS_Wire Current ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Resets the iterator by resulting wires.
 
 	:rtype: None
 ") Init;
 		void Init ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* returns False if the section failed
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* Returns True if there is a current result wire
 
@@ -105,12 +119,6 @@ class BRepProj_Projection {
 	:rtype: None
 ") Next;
 		void Next ();
-		%feature("compactdefaultargs") Current;
-		%feature("autodoc", "	* Returns the current result wire.
-
-	:rtype: TopoDS_Wire
-") Current;
-		TopoDS_Wire Current ();
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	* Returns the complete result as compound of wires.
 
@@ -125,3 +133,6 @@ class BRepProj_Projection {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

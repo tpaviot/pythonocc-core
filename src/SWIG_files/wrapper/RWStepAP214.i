@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:30
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define RWSTEPAP214DOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP214DOCSTRING) RWStepAP214
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,14 +50,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include RWStepAP214_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(RWStepAP214_GeneralModule)
 %wrap_handle(RWStepAP214_ReadWriteModule)
+/* end handles declaration */
 
 %rename(rwstepap214) RWStepAP214;
 class RWStepAP214 {
@@ -68,82 +84,82 @@ class RWStepAP214 {
 %nodefaultctor RWStepAP214_GeneralModule;
 class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 	public:
-		%feature("compactdefaultargs") RWStepAP214_GeneralModule;
-		%feature("autodoc", "	* Creates a GeneralModule
-
-	:rtype: None
-") RWStepAP214_GeneralModule;
-		 RWStepAP214_GeneralModule ();
-		%feature("compactdefaultargs") FillSharedCase;
-		%feature("autodoc", "	* Specific filling of the list of Entities shared by an Entity <ent>, according to a Case Number <CN> (provided by StepAP214 Protocol).
-
-	:param CN:
+		%feature("compactdefaultargs") CategoryNumber;
+		%feature("autodoc", "	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") FillSharedCase;
-		void FillSharedCase (const Standard_Integer CN,const Handle_Standard_Transient & ent,Interface_EntityIterator & iter);
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:rtype: int
+") CategoryNumber;
+		virtual Standard_Integer CategoryNumber (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares);
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "	* Specific Checking of an Entity <ent>
 
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: Handle_Standard_Transient &
+	:type ent: opencascade::handle<Standard_Transient> &
 	:param shares:
 	:type shares: Interface_ShareTool &
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:rtype: None
 ") CheckCase;
-		void CheckCase (const Standard_Integer CN,const Handle_Standard_Transient & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+		void CheckCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "	* Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from CopyTool to work
 
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: Handle_Standard_Transient &
+	:type entfrom: opencascade::handle<Standard_Transient> &
 	:param entto:
-	:type entto: Handle_Standard_Transient &
+	:type entto: opencascade::handle<Standard_Transient> &
 	:param TC:
 	:type TC: Interface_CopyTool &
 	:rtype: None
 ") CopyCase;
-		void CopyCase (const Standard_Integer CN,const Handle_Standard_Transient & entfrom,const Handle_Standard_Transient & entto,Interface_CopyTool & TC);
-		%feature("compactdefaultargs") NewVoid;
-		%feature("autodoc", "	:param CN:
+		void CopyCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
+		%feature("compactdefaultargs") FillSharedCase;
+		%feature("autodoc", "	* Specific filling of the list of Entities shared by an Entity <ent>, according to a Case Number <CN> (provided by StepAP214 Protocol).
+
+	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: bool
-") NewVoid;
-		Standard_Boolean NewVoid (const Standard_Integer CN,Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") CategoryNumber;
-		%feature("autodoc", "	:param CN:
-	:type CN: int
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:rtype: int
-") CategoryNumber;
-		virtual Standard_Integer CategoryNumber (const Standard_Integer CN,const Handle_Standard_Transient & ent,const Interface_ShareTool & shares);
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") FillSharedCase;
+		void FillSharedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns the name of a STEP Entity according to its type
 
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: Handle_Standard_Transient &
+	:type ent: opencascade::handle<Standard_Transient> &
 	:param shares:
 	:type shares: Interface_ShareTool &
-	:rtype: Handle_TCollection_HAsciiString
+	:rtype: opencascade::handle<TCollection_HAsciiString>
 ") Name;
-		virtual Handle_TCollection_HAsciiString Name (const Standard_Integer CN,const Handle_Standard_Transient & ent,const Interface_ShareTool & shares);
+		virtual opencascade::handle<TCollection_HAsciiString> Name (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares);
+		%feature("compactdefaultargs") NewVoid;
+		%feature("autodoc", "	:param CN:
+	:type CN: int
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: bool
+") NewVoid;
+		Standard_Boolean NewVoid (const Standard_Integer CN,opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") RWStepAP214_GeneralModule;
+		%feature("autodoc", "	* Creates a GeneralModule
+
+	:rtype: None
+") RWStepAP214_GeneralModule;
+		 RWStepAP214_GeneralModule ();
 };
 
 
@@ -163,32 +179,32 @@ class RWStepAP214_RWAppliedApprovalAssignment {
 		 RWStepAP214_RWAppliedApprovalAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedApprovalAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedApprovalAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedApprovalAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedApprovalAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedApprovalAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedApprovalAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedApprovalAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedApprovalAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedApprovalAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedApprovalAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedApprovalAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedApprovalAssignment> & ent);
 };
 
 
@@ -206,32 +222,32 @@ class RWStepAP214_RWAppliedDateAndTimeAssignment {
 		 RWStepAP214_RWAppliedDateAndTimeAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedDateAndTimeAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAndTimeAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedDateAndTimeAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedDateAndTimeAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> & ent);
 };
 
 
@@ -249,32 +265,32 @@ class RWStepAP214_RWAppliedDateAssignment {
 		 RWStepAP214_RWAppliedDateAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedDateAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedDateAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedDateAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedDateAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedDateAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedDateAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedDateAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedDateAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedDateAssignment> & ent);
 };
 
 
@@ -292,32 +308,32 @@ class RWStepAP214_RWAppliedDocumentReference {
 		 RWStepAP214_RWAppliedDocumentReference ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedDocumentReference &
+	:type ent: opencascade::handle<StepAP214_AppliedDocumentReference> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedDocumentReference & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedDocumentReference &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedDocumentReference & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedDocumentReference> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedDocumentReference &
+	:type ent: opencascade::handle<StepAP214_AppliedDocumentReference> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedDocumentReference & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedDocumentReference> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedDocumentReference> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedDocumentReference> & ent);
 };
 
 
@@ -339,36 +355,36 @@ class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 		%feature("autodoc", "	* Reads AppliedExternalIdentificationAssignment
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedExternalIdentificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedExternalIdentificationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes AppliedExternalIdentificationAssignment
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedExternalIdentificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedExternalIdentificationAssignment & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedExternalIdentificationAssignment &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_AppliedExternalIdentificationAssignment & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> & ent);
 };
 
 
@@ -390,36 +406,36 @@ class RWStepAP214_RWAppliedGroupAssignment {
 		%feature("autodoc", "	* Reads AppliedGroupAssignment
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedGroupAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedGroupAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedGroupAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedGroupAssignment> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedGroupAssignment> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_AppliedGroupAssignment> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes AppliedGroupAssignment
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedGroupAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedGroupAssignment> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedGroupAssignment & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedGroupAssignment &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_AppliedGroupAssignment & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedGroupAssignment> & ent);
 };
 
 
@@ -437,32 +453,32 @@ class RWStepAP214_RWAppliedOrganizationAssignment {
 		 RWStepAP214_RWAppliedOrganizationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedOrganizationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedOrganizationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedOrganizationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedOrganizationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedOrganizationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedOrganizationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedOrganizationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedOrganizationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedOrganizationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedOrganizationAssignment> & ent);
 };
 
 
@@ -480,32 +496,32 @@ class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 		 RWStepAP214_RWAppliedPersonAndOrganizationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedPersonAndOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedPersonAndOrganizationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedPersonAndOrganizationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedPersonAndOrganizationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedPersonAndOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedPersonAndOrganizationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> & ent);
 };
 
 
@@ -523,32 +539,32 @@ class RWStepAP214_RWAppliedPresentedItem {
 		 RWStepAP214_RWAppliedPresentedItem ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedPresentedItem &
+	:type ent: opencascade::handle<StepAP214_AppliedPresentedItem> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedPresentedItem & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedPresentedItem &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedPresentedItem & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedPresentedItem> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedPresentedItem &
+	:type ent: opencascade::handle<StepAP214_AppliedPresentedItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedPresentedItem & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedPresentedItem> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedPresentedItem> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedPresentedItem> & ent);
 };
 
 
@@ -566,32 +582,32 @@ class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 		 RWStepAP214_RWAppliedSecurityClassificationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AppliedSecurityClassificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AppliedSecurityClassificationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AppliedSecurityClassificationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AppliedSecurityClassificationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AppliedSecurityClassificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AppliedSecurityClassificationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> & ent);
 };
 
 
@@ -609,32 +625,32 @@ class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 		 RWStepAP214_RWAutoDesignActualDateAndTimeAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignActualDateAndTimeAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAndTimeAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignActualDateAndTimeAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignActualDateAndTimeAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> & ent);
 };
 
 
@@ -652,32 +668,32 @@ class RWStepAP214_RWAutoDesignActualDateAssignment {
 		 RWStepAP214_RWAutoDesignActualDateAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignActualDateAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignActualDateAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignActualDateAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignActualDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignActualDateAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignActualDateAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignActualDateAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignActualDateAssignment> & ent);
 };
 
 
@@ -695,32 +711,32 @@ class RWStepAP214_RWAutoDesignApprovalAssignment {
 		 RWStepAP214_RWAutoDesignApprovalAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignApprovalAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignApprovalAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignApprovalAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignApprovalAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignApprovalAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignApprovalAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignApprovalAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignApprovalAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignApprovalAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignApprovalAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignApprovalAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignApprovalAssignment> & ent);
 };
 
 
@@ -738,32 +754,32 @@ class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 		 RWStepAP214_RWAutoDesignDateAndPersonAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDateAndPersonAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignDateAndPersonAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDateAndPersonAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignDateAndPersonAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDateAndPersonAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignDateAndPersonAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> & ent);
 };
 
 
@@ -781,32 +797,32 @@ class RWStepAP214_RWAutoDesignDocumentReference {
 		 RWStepAP214_RWAutoDesignDocumentReference ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDocumentReference &
+	:type ent: opencascade::handle<StepAP214_AutoDesignDocumentReference> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignDocumentReference & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDocumentReference &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignDocumentReference & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignDocumentReference> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignDocumentReference &
+	:type ent: opencascade::handle<StepAP214_AutoDesignDocumentReference> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignDocumentReference & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignDocumentReference> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignDocumentReference> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignDocumentReference> & ent);
 };
 
 
@@ -824,32 +840,32 @@ class RWStepAP214_RWAutoDesignGroupAssignment {
 		 RWStepAP214_RWAutoDesignGroupAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignGroupAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignGroupAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignGroupAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignGroupAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignGroupAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignGroupAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignGroupAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignGroupAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignGroupAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignGroupAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignGroupAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignGroupAssignment> & ent);
 };
 
 
@@ -867,32 +883,32 @@ class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 		 RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> & ent);
 };
 
 
@@ -910,32 +926,32 @@ class RWStepAP214_RWAutoDesignNominalDateAssignment {
 		 RWStepAP214_RWAutoDesignNominalDateAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignNominalDateAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignNominalDateAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignNominalDateAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignNominalDateAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> & ent);
 };
 
 
@@ -953,32 +969,32 @@ class RWStepAP214_RWAutoDesignOrganizationAssignment {
 		 RWStepAP214_RWAutoDesignOrganizationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignOrganizationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignOrganizationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignOrganizationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignOrganizationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> & ent);
 };
 
 
@@ -996,32 +1012,32 @@ class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 		 RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> & ent);
 };
 
 
@@ -1039,32 +1055,32 @@ class RWStepAP214_RWAutoDesignPresentedItem {
 		 RWStepAP214_RWAutoDesignPresentedItem ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPresentedItem &
+	:type ent: opencascade::handle<StepAP214_AutoDesignPresentedItem> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignPresentedItem & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPresentedItem &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignPresentedItem & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignPresentedItem> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignPresentedItem &
+	:type ent: opencascade::handle<StepAP214_AutoDesignPresentedItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignPresentedItem & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignPresentedItem> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignPresentedItem> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignPresentedItem> & ent);
 };
 
 
@@ -1082,32 +1098,32 @@ class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 		 RWStepAP214_RWAutoDesignSecurityClassificationAssignment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignSecurityClassificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_AutoDesignSecurityClassificationAssignment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignSecurityClassificationAssignment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_AutoDesignSecurityClassificationAssignment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepAP214_AutoDesignSecurityClassificationAssignment &
+	:type ent: opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepAP214_AutoDesignSecurityClassificationAssignment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> & ent);
 };
 
 
@@ -1129,36 +1145,36 @@ class RWStepAP214_RWClass {
 		%feature("autodoc", "	* Reads Class
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_Class &
+	:type ent: opencascade::handle<StepAP214_Class> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_Class & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_Class> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_Class> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_Class> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes Class
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_Class &
+	:type ent: opencascade::handle<StepAP214_Class> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_Class & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_Class &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_Class & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_Class> & ent);
 };
 
 
@@ -1180,36 +1196,36 @@ class RWStepAP214_RWExternallyDefinedClass {
 		%feature("autodoc", "	* Reads ExternallyDefinedClass
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedClass &
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedClass> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_ExternallyDefinedClass & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_ExternallyDefinedClass> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedClass> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_ExternallyDefinedClass> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes ExternallyDefinedClass
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedClass &
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedClass> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_ExternallyDefinedClass & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedClass &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_ExternallyDefinedClass & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_ExternallyDefinedClass> & ent);
 };
 
 
@@ -1231,36 +1247,36 @@ class RWStepAP214_RWExternallyDefinedGeneralProperty {
 		%feature("autodoc", "	* Reads ExternallyDefinedGeneralProperty
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedGeneralProperty &
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_ExternallyDefinedGeneralProperty & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes ExternallyDefinedGeneralProperty
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedGeneralProperty &
+	:type ent: opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_ExternallyDefinedGeneralProperty & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_ExternallyDefinedGeneralProperty &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_ExternallyDefinedGeneralProperty & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> & ent);
 };
 
 
@@ -1282,36 +1298,36 @@ class RWStepAP214_RWRepItemGroup {
 		%feature("autodoc", "	* Reads RepItemGroup
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepAP214_RepItemGroup &
+	:type ent: opencascade::handle<StepAP214_RepItemGroup> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepAP214_RepItemGroup & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP214_RepItemGroup> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepAP214_RepItemGroup> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepAP214_RepItemGroup> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes RepItemGroup
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepAP214_RepItemGroup &
+	:type ent: opencascade::handle<StepAP214_RepItemGroup> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepAP214_RepItemGroup & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepAP214_RepItemGroup &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepAP214_RepItemGroup & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP214_RepItemGroup> & ent);
 };
 
 
@@ -1323,10 +1339,6 @@ class RWStepAP214_RWRepItemGroup {
 %nodefaultctor RWStepAP214_ReadWriteModule;
 class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	public:
-		%feature("compactdefaultargs") RWStepAP214_ReadWriteModule;
-		%feature("autodoc", "	:rtype: None
-") RWStepAP214_ReadWriteModule;
-		 RWStepAP214_ReadWriteModule ();
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "	* associates a positive Case Number to each type of StepAP214 entity, given as a String defined in the EXPRESS form
 
@@ -1343,22 +1355,6 @@ class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	:rtype: int
 ") CaseStep;
 		virtual Standard_Integer CaseStep (const TColStd_SequenceOfAsciiString & types);
-		%feature("compactdefaultargs") IsComplex;
-		%feature("autodoc", "	* returns True if the Case Number corresponds to a Complex Type
-
-	:param CN:
-	:type CN: int
-	:rtype: bool
-") IsComplex;
-		virtual Standard_Boolean IsComplex (const Standard_Integer CN);
-		%feature("compactdefaultargs") StepType;
-		%feature("autodoc", "	* returns a StepType (defined in EXPRESS form which belongs to a Type of Entity, identified by its CaseNumber determined by Protocol
-
-	:param CN:
-	:type CN: int
-	:rtype: TCollection_AsciiString
-") StepType;
-		const TCollection_AsciiString & StepType (const Standard_Integer CN);
 		%feature("compactdefaultargs") ComplexType;
 		%feature("autodoc", "	:param CN:
 	:type CN: int
@@ -1367,30 +1363,50 @@ class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	:rtype: bool
 ") ComplexType;
 		virtual Standard_Boolean ComplexType (const Standard_Integer CN,TColStd_SequenceOfAsciiString & types);
+		%feature("compactdefaultargs") IsComplex;
+		%feature("autodoc", "	* returns True if the Case Number corresponds to a Complex Type
+
+	:param CN:
+	:type CN: int
+	:rtype: bool
+") IsComplex;
+		virtual Standard_Boolean IsComplex (const Standard_Integer CN);
+		%feature("compactdefaultargs") RWStepAP214_ReadWriteModule;
+		%feature("autodoc", "	:rtype: None
+") RWStepAP214_ReadWriteModule;
+		 RWStepAP214_ReadWriteModule ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param CN:
 	:type CN: int
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_Standard_Transient &
+	:type ent: opencascade::handle<Standard_Transient> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Standard_Integer CN,const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_Standard_Transient & ent);
+		void ReadStep (const Standard_Integer CN,const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") StepType;
+		%feature("autodoc", "	* returns a StepType (defined in EXPRESS form which belongs to a Type of Entity, identified by its CaseNumber determined by Protocol
+
+	:param CN:
+	:type CN: int
+	:rtype: TCollection_AsciiString
+") StepType;
+		const TCollection_AsciiString & StepType (const Standard_Integer CN);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param CN:
 	:type CN: int
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_Standard_Transient &
+	:type ent: opencascade::handle<Standard_Transient> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (const Standard_Integer CN,StepData_StepWriter & SW,const Handle_Standard_Transient & ent);
+		void WriteStep (const Standard_Integer CN,StepData_StepWriter & SW,const opencascade::handle<Standard_Transient> & ent);
 };
 
 
@@ -1401,3 +1417,6 @@ class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:36
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define RWSTEPGEOMDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPGEOMDOCSTRING) RWStepGeom
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,12 +50,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include RWStepGeom_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor RWStepGeom_RWAxis1Placement;
 class RWStepGeom_RWAxis1Placement {
@@ -55,32 +71,32 @@ class RWStepGeom_RWAxis1Placement {
 		 RWStepGeom_RWAxis1Placement ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Axis1Placement &
+	:type ent: opencascade::handle<StepGeom_Axis1Placement> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Axis1Placement & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Axis1Placement &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Axis1Placement & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Axis1Placement> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Axis1Placement &
+	:type ent: opencascade::handle<StepGeom_Axis1Placement> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Axis1Placement & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Axis1Placement> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Axis1Placement> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Axis1Placement> & ent);
 };
 
 
@@ -98,32 +114,32 @@ class RWStepGeom_RWAxis2Placement2d {
 		 RWStepGeom_RWAxis2Placement2d ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement2d &
+	:type ent: opencascade::handle<StepGeom_Axis2Placement2d> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Axis2Placement2d & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement2d &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Axis2Placement2d & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Axis2Placement2d> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement2d &
+	:type ent: opencascade::handle<StepGeom_Axis2Placement2d> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Axis2Placement2d & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Axis2Placement2d> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Axis2Placement2d> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Axis2Placement2d> & ent);
 };
 
 
@@ -141,32 +157,32 @@ class RWStepGeom_RWAxis2Placement3d {
 		 RWStepGeom_RWAxis2Placement3d ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement3d &
+	:type ent: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Axis2Placement3d & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement3d &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Axis2Placement3d & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Axis2Placement3d> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Axis2Placement3d &
+	:type ent: opencascade::handle<StepGeom_Axis2Placement3d> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Axis2Placement3d & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Axis2Placement3d> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Axis2Placement3d> & ent);
 };
 
 
@@ -184,32 +200,32 @@ class RWStepGeom_RWBSplineCurve {
 		 RWStepGeom_RWBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineCurve> & ent);
 };
 
 
@@ -221,48 +237,48 @@ class RWStepGeom_RWBSplineCurve {
 %nodefaultctor RWStepGeom_RWBSplineCurveWithKnots;
 class RWStepGeom_RWBSplineCurveWithKnots {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineCurveWithKnots;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWBSplineCurveWithKnots;
 		 RWStepGeom_RWBSplineCurveWithKnots ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnots &
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineCurveWithKnots & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnots &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineCurveWithKnots & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnots &
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineCurveWithKnots & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnots &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnots> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_BSplineCurveWithKnots & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent);
 };
 
 
@@ -274,48 +290,48 @@ class RWStepGeom_RWBSplineCurveWithKnots {
 %nodefaultctor RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 		 RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent);
 };
 
 
@@ -333,32 +349,32 @@ class RWStepGeom_RWBSplineSurface {
 		 RWStepGeom_RWBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineSurface> & ent);
 };
 
 
@@ -370,48 +386,48 @@ class RWStepGeom_RWBSplineSurface {
 %nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnots;
 class RWStepGeom_RWBSplineSurfaceWithKnots {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineSurfaceWithKnots;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWBSplineSurfaceWithKnots;
 		 RWStepGeom_RWBSplineSurfaceWithKnots ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnots &
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineSurfaceWithKnots & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnots &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineSurfaceWithKnots & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnots &
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineSurfaceWithKnots & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnots &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnots> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_BSplineSurfaceWithKnots & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent);
 };
 
 
@@ -423,48 +439,48 @@ class RWStepGeom_RWBSplineSurfaceWithKnots {
 %nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		 RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent);
 };
 
 
@@ -482,32 +498,32 @@ class RWStepGeom_RWBezierCurve {
 		 RWStepGeom_RWBezierCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BezierCurve &
+	:type ent: opencascade::handle<StepGeom_BezierCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BezierCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BezierCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BezierCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BezierCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BezierCurve &
+	:type ent: opencascade::handle<StepGeom_BezierCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BezierCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BezierCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BezierCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BezierCurve> & ent);
 };
 
 
@@ -525,32 +541,32 @@ class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 		 RWStepGeom_RWBezierCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BezierCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BezierCurveAndRationalBSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BezierCurveAndRationalBSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BezierCurveAndRationalBSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BezierCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BezierCurveAndRationalBSplineCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> & ent);
 };
 
 
@@ -568,32 +584,32 @@ class RWStepGeom_RWBezierSurface {
 		 RWStepGeom_RWBezierSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BezierSurface &
+	:type ent: opencascade::handle<StepGeom_BezierSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BezierSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BezierSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BezierSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BezierSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BezierSurface &
+	:type ent: opencascade::handle<StepGeom_BezierSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BezierSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BezierSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BezierSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BezierSurface> & ent);
 };
 
 
@@ -611,32 +627,32 @@ class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 		 RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> & ent);
 };
 
 
@@ -654,32 +670,32 @@ class RWStepGeom_RWBoundaryCurve {
 		 RWStepGeom_RWBoundaryCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BoundaryCurve &
+	:type ent: opencascade::handle<StepGeom_BoundaryCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BoundaryCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_BoundaryCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BoundaryCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BoundaryCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_BoundaryCurve &
+	:type ent: opencascade::handle<StepGeom_BoundaryCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_BoundaryCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_BoundaryCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_BoundaryCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BoundaryCurve> & ent);
 };
 
 
@@ -697,24 +713,24 @@ class RWStepGeom_RWBoundedCurve {
 		 RWStepGeom_RWBoundedCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BoundedCurve &
+	:type ent: opencascade::handle<StepGeom_BoundedCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BoundedCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BoundedCurve> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_BoundedCurve &
+	:type ent: opencascade::handle<StepGeom_BoundedCurve> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BoundedCurve & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BoundedCurve> & ent);
 };
 
 
@@ -732,24 +748,24 @@ class RWStepGeom_RWBoundedSurface {
 		 RWStepGeom_RWBoundedSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_BoundedSurface &
+	:type ent: opencascade::handle<StepGeom_BoundedSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_BoundedSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_BoundedSurface> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_BoundedSurface &
+	:type ent: opencascade::handle<StepGeom_BoundedSurface> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_BoundedSurface & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_BoundedSurface> & ent);
 };
 
 
@@ -767,24 +783,24 @@ class RWStepGeom_RWCartesianPoint {
 		 RWStepGeom_RWCartesianPoint ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CartesianPoint &
+	:type ent: opencascade::handle<StepGeom_CartesianPoint> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CartesianPoint & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CartesianPoint> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_CartesianPoint &
+	:type ent: opencascade::handle<StepGeom_CartesianPoint> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CartesianPoint & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CartesianPoint> & ent);
 };
 
 
@@ -802,32 +818,32 @@ class RWStepGeom_RWCartesianTransformationOperator {
 		 RWStepGeom_RWCartesianTransformationOperator ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator &
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CartesianTransformationOperator & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CartesianTransformationOperator & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CartesianTransformationOperator> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator &
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CartesianTransformationOperator & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CartesianTransformationOperator> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CartesianTransformationOperator> & ent);
 };
 
 
@@ -845,32 +861,32 @@ class RWStepGeom_RWCartesianTransformationOperator3d {
 		 RWStepGeom_RWCartesianTransformationOperator3d ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator3d &
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CartesianTransformationOperator3d & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator3d &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CartesianTransformationOperator3d & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CartesianTransformationOperator3d &
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CartesianTransformationOperator3d & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & ent);
 };
 
 
@@ -888,32 +904,32 @@ class RWStepGeom_RWCircle {
 		 RWStepGeom_RWCircle ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Circle &
+	:type ent: opencascade::handle<StepGeom_Circle> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Circle & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Circle &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Circle & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Circle> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Circle &
+	:type ent: opencascade::handle<StepGeom_Circle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Circle & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Circle> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Circle> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Circle> & ent);
 };
 
 
@@ -931,32 +947,32 @@ class RWStepGeom_RWCompositeCurve {
 		 RWStepGeom_RWCompositeCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurve &
+	:type ent: opencascade::handle<StepGeom_CompositeCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CompositeCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CompositeCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CompositeCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurve &
+	:type ent: opencascade::handle<StepGeom_CompositeCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CompositeCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CompositeCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CompositeCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CompositeCurve> & ent);
 };
 
 
@@ -974,32 +990,32 @@ class RWStepGeom_RWCompositeCurveOnSurface {
 		 RWStepGeom_RWCompositeCurveOnSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveOnSurface &
+	:type ent: opencascade::handle<StepGeom_CompositeCurveOnSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CompositeCurveOnSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveOnSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CompositeCurveOnSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CompositeCurveOnSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveOnSurface &
+	:type ent: opencascade::handle<StepGeom_CompositeCurveOnSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CompositeCurveOnSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CompositeCurveOnSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CompositeCurveOnSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CompositeCurveOnSurface> & ent);
 };
 
 
@@ -1017,32 +1033,32 @@ class RWStepGeom_RWCompositeCurveSegment {
 		 RWStepGeom_RWCompositeCurveSegment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveSegment &
+	:type ent: opencascade::handle<StepGeom_CompositeCurveSegment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CompositeCurveSegment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveSegment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CompositeCurveSegment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CompositeCurveSegment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CompositeCurveSegment &
+	:type ent: opencascade::handle<StepGeom_CompositeCurveSegment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CompositeCurveSegment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CompositeCurveSegment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CompositeCurveSegment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CompositeCurveSegment> & ent);
 };
 
 
@@ -1060,32 +1076,32 @@ class RWStepGeom_RWConic {
 		 RWStepGeom_RWConic ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Conic &
+	:type ent: opencascade::handle<StepGeom_Conic> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Conic & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Conic &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Conic & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Conic> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Conic &
+	:type ent: opencascade::handle<StepGeom_Conic> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Conic & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Conic> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Conic> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Conic> & ent);
 };
 
 
@@ -1103,32 +1119,32 @@ class RWStepGeom_RWConicalSurface {
 		 RWStepGeom_RWConicalSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_ConicalSurface &
+	:type ent: opencascade::handle<StepGeom_ConicalSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_ConicalSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_ConicalSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_ConicalSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_ConicalSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_ConicalSurface &
+	:type ent: opencascade::handle<StepGeom_ConicalSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_ConicalSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_ConicalSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_ConicalSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_ConicalSurface> & ent);
 };
 
 
@@ -1146,24 +1162,24 @@ class RWStepGeom_RWCurve {
 		 RWStepGeom_RWCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Curve &
+	:type ent: opencascade::handle<StepGeom_Curve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Curve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Curve> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_Curve &
+	:type ent: opencascade::handle<StepGeom_Curve> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Curve & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Curve> & ent);
 };
 
 
@@ -1185,36 +1201,36 @@ class RWStepGeom_RWCurveBoundedSurface {
 		%feature("autodoc", "	* Reads CurveBoundedSurface
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CurveBoundedSurface &
+	:type ent: opencascade::handle<StepGeom_CurveBoundedSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CurveBoundedSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CurveBoundedSurface> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CurveBoundedSurface> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepGeom_CurveBoundedSurface> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes CurveBoundedSurface
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_CurveBoundedSurface &
+	:type ent: opencascade::handle<StepGeom_CurveBoundedSurface> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CurveBoundedSurface & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepGeom_CurveBoundedSurface &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepGeom_CurveBoundedSurface & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CurveBoundedSurface> & ent);
 };
 
 
@@ -1232,32 +1248,32 @@ class RWStepGeom_RWCurveReplica {
 		 RWStepGeom_RWCurveReplica ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CurveReplica &
+	:type ent: opencascade::handle<StepGeom_CurveReplica> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CurveReplica & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CurveReplica &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CurveReplica & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CurveReplica> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CurveReplica &
+	:type ent: opencascade::handle<StepGeom_CurveReplica> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CurveReplica & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CurveReplica> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CurveReplica> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CurveReplica> & ent);
 };
 
 
@@ -1275,32 +1291,32 @@ class RWStepGeom_RWCylindricalSurface {
 		 RWStepGeom_RWCylindricalSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_CylindricalSurface &
+	:type ent: opencascade::handle<StepGeom_CylindricalSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_CylindricalSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_CylindricalSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_CylindricalSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_CylindricalSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_CylindricalSurface &
+	:type ent: opencascade::handle<StepGeom_CylindricalSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_CylindricalSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_CylindricalSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_CylindricalSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_CylindricalSurface> & ent);
 };
 
 
@@ -1318,32 +1334,32 @@ class RWStepGeom_RWDegeneratePcurve {
 		 RWStepGeom_RWDegeneratePcurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_DegeneratePcurve &
+	:type ent: opencascade::handle<StepGeom_DegeneratePcurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_DegeneratePcurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_DegeneratePcurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_DegeneratePcurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_DegeneratePcurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_DegeneratePcurve &
+	:type ent: opencascade::handle<StepGeom_DegeneratePcurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_DegeneratePcurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_DegeneratePcurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_DegeneratePcurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_DegeneratePcurve> & ent);
 };
 
 
@@ -1361,32 +1377,32 @@ class RWStepGeom_RWDegenerateToroidalSurface {
 		 RWStepGeom_RWDegenerateToroidalSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_DegenerateToroidalSurface &
+	:type ent: opencascade::handle<StepGeom_DegenerateToroidalSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_DegenerateToroidalSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_DegenerateToroidalSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_DegenerateToroidalSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_DegenerateToroidalSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_DegenerateToroidalSurface &
+	:type ent: opencascade::handle<StepGeom_DegenerateToroidalSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_DegenerateToroidalSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_DegenerateToroidalSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_DegenerateToroidalSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_DegenerateToroidalSurface> & ent);
 };
 
 
@@ -1398,40 +1414,40 @@ class RWStepGeom_RWDegenerateToroidalSurface {
 %nodefaultctor RWStepGeom_RWDirection;
 class RWStepGeom_RWDirection {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_Direction> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_Direction> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWDirection;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWDirection;
 		 RWStepGeom_RWDirection ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Direction &
+	:type ent: opencascade::handle<StepGeom_Direction> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Direction & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Direction> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_Direction &
+	:type ent: opencascade::handle<StepGeom_Direction> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Direction & ent);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Direction &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
-	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_Direction & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Direction> & ent);
 };
 
 
@@ -1449,32 +1465,32 @@ class RWStepGeom_RWElementarySurface {
 		 RWStepGeom_RWElementarySurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_ElementarySurface &
+	:type ent: opencascade::handle<StepGeom_ElementarySurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_ElementarySurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_ElementarySurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_ElementarySurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_ElementarySurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_ElementarySurface &
+	:type ent: opencascade::handle<StepGeom_ElementarySurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_ElementarySurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_ElementarySurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_ElementarySurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_ElementarySurface> & ent);
 };
 
 
@@ -1486,48 +1502,48 @@ class RWStepGeom_RWElementarySurface {
 %nodefaultctor RWStepGeom_RWEllipse;
 class RWStepGeom_RWEllipse {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_Ellipse> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_Ellipse> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWEllipse;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWEllipse;
 		 RWStepGeom_RWEllipse ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Ellipse &
+	:type ent: opencascade::handle<StepGeom_Ellipse> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Ellipse & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Ellipse &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Ellipse & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Ellipse> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Ellipse &
+	:type ent: opencascade::handle<StepGeom_Ellipse> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Ellipse & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Ellipse &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_Ellipse> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Ellipse> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_Ellipse & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Ellipse> & ent);
 };
 
 
@@ -1545,32 +1561,32 @@ class RWStepGeom_RWEvaluatedDegeneratePcurve {
 		 RWStepGeom_RWEvaluatedDegeneratePcurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_EvaluatedDegeneratePcurve &
+	:type ent: opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_EvaluatedDegeneratePcurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_EvaluatedDegeneratePcurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_EvaluatedDegeneratePcurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_EvaluatedDegeneratePcurve &
+	:type ent: opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_EvaluatedDegeneratePcurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> & ent);
 };
 
 
@@ -1588,32 +1604,32 @@ class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 		 RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx &
+	:type ent: opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx &
+	:type ent: opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> & ent);
 };
 
 
@@ -1631,24 +1647,24 @@ class RWStepGeom_RWGeometricRepresentationContext {
 		 RWStepGeom_RWGeometricRepresentationContext ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_GeometricRepresentationContext & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_GeometricRepresentationContext> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContext> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_GeometricRepresentationContext & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_GeometricRepresentationContext> & ent);
 };
 
 
@@ -1666,32 +1682,32 @@ class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 		 RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> & ent);
 };
 
 
@@ -1709,32 +1725,32 @@ class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationCont
 		 RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> & ent);
 };
 
 
@@ -1752,24 +1768,24 @@ class RWStepGeom_RWGeometricRepresentationItem {
 		 RWStepGeom_RWGeometricRepresentationItem ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationItem &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationItem> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_GeometricRepresentationItem & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_GeometricRepresentationItem> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_GeometricRepresentationItem &
+	:type ent: opencascade::handle<StepGeom_GeometricRepresentationItem> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_GeometricRepresentationItem & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_GeometricRepresentationItem> & ent);
 };
 
 
@@ -1787,32 +1803,32 @@ class RWStepGeom_RWHyperbola {
 		 RWStepGeom_RWHyperbola ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Hyperbola &
+	:type ent: opencascade::handle<StepGeom_Hyperbola> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Hyperbola & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Hyperbola &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Hyperbola & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Hyperbola> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Hyperbola &
+	:type ent: opencascade::handle<StepGeom_Hyperbola> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Hyperbola & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Hyperbola> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Hyperbola> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Hyperbola> & ent);
 };
 
 
@@ -1830,32 +1846,32 @@ class RWStepGeom_RWIntersectionCurve {
 		 RWStepGeom_RWIntersectionCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_IntersectionCurve &
+	:type ent: opencascade::handle<StepGeom_IntersectionCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_IntersectionCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_IntersectionCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_IntersectionCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_IntersectionCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_IntersectionCurve &
+	:type ent: opencascade::handle<StepGeom_IntersectionCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_IntersectionCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_IntersectionCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_IntersectionCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_IntersectionCurve> & ent);
 };
 
 
@@ -1873,32 +1889,32 @@ class RWStepGeom_RWLine {
 		 RWStepGeom_RWLine ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Line &
+	:type ent: opencascade::handle<StepGeom_Line> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Line & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Line &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Line & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Line> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Line &
+	:type ent: opencascade::handle<StepGeom_Line> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Line & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Line> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Line> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Line> & ent);
 };
 
 
@@ -1916,32 +1932,32 @@ class RWStepGeom_RWOffsetCurve3d {
 		 RWStepGeom_RWOffsetCurve3d ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_OffsetCurve3d &
+	:type ent: opencascade::handle<StepGeom_OffsetCurve3d> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_OffsetCurve3d & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_OffsetCurve3d &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_OffsetCurve3d & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_OffsetCurve3d> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_OffsetCurve3d &
+	:type ent: opencascade::handle<StepGeom_OffsetCurve3d> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_OffsetCurve3d & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_OffsetCurve3d> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_OffsetCurve3d> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_OffsetCurve3d> & ent);
 };
 
 
@@ -1959,32 +1975,32 @@ class RWStepGeom_RWOffsetSurface {
 		 RWStepGeom_RWOffsetSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_OffsetSurface &
+	:type ent: opencascade::handle<StepGeom_OffsetSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_OffsetSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_OffsetSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_OffsetSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_OffsetSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_OffsetSurface &
+	:type ent: opencascade::handle<StepGeom_OffsetSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_OffsetSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_OffsetSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_OffsetSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_OffsetSurface> & ent);
 };
 
 
@@ -2006,36 +2022,36 @@ class RWStepGeom_RWOrientedSurface {
 		%feature("autodoc", "	* Reads OrientedSurface
 
 	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_OrientedSurface &
+	:type ent: opencascade::handle<StepGeom_OrientedSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_OrientedSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_OrientedSurface> & ent);
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "	* Fills data for graph (shared items)
+
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_OrientedSurface> &
+	:param iter:
+	:type iter: Interface_EntityIterator &
+	:rtype: None
+") Share;
+		void Share (const opencascade::handle<StepGeom_OrientedSurface> & ent,Interface_EntityIterator & iter);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	* Writes OrientedSurface
 
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_OrientedSurface &
+	:type ent: opencascade::handle<StepGeom_OrientedSurface> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_OrientedSurface & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
-
-	:param ent:
-	:type ent: Handle_StepGeom_OrientedSurface &
-	:param iter:
-	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
-		void Share (const Handle_StepGeom_OrientedSurface & ent,Interface_EntityIterator & iter);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_OrientedSurface> & ent);
 };
 
 
@@ -2053,32 +2069,32 @@ class RWStepGeom_RWOuterBoundaryCurve {
 		 RWStepGeom_RWOuterBoundaryCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_OuterBoundaryCurve &
+	:type ent: opencascade::handle<StepGeom_OuterBoundaryCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_OuterBoundaryCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_OuterBoundaryCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_OuterBoundaryCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_OuterBoundaryCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_OuterBoundaryCurve &
+	:type ent: opencascade::handle<StepGeom_OuterBoundaryCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_OuterBoundaryCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_OuterBoundaryCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_OuterBoundaryCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_OuterBoundaryCurve> & ent);
 };
 
 
@@ -2096,32 +2112,32 @@ class RWStepGeom_RWParabola {
 		 RWStepGeom_RWParabola ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Parabola &
+	:type ent: opencascade::handle<StepGeom_Parabola> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Parabola & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Parabola &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Parabola & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Parabola> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Parabola &
+	:type ent: opencascade::handle<StepGeom_Parabola> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Parabola & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Parabola> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Parabola> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Parabola> & ent);
 };
 
 
@@ -2139,32 +2155,32 @@ class RWStepGeom_RWPcurve {
 		 RWStepGeom_RWPcurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Pcurve &
+	:type ent: opencascade::handle<StepGeom_Pcurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Pcurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Pcurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Pcurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Pcurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Pcurve &
+	:type ent: opencascade::handle<StepGeom_Pcurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Pcurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Pcurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Pcurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Pcurve> & ent);
 };
 
 
@@ -2182,32 +2198,32 @@ class RWStepGeom_RWPlacement {
 		 RWStepGeom_RWPlacement ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Placement &
+	:type ent: opencascade::handle<StepGeom_Placement> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Placement & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Placement &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Placement & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Placement> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Placement &
+	:type ent: opencascade::handle<StepGeom_Placement> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Placement & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Placement> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Placement> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Placement> & ent);
 };
 
 
@@ -2225,32 +2241,32 @@ class RWStepGeom_RWPlane {
 		 RWStepGeom_RWPlane ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Plane &
+	:type ent: opencascade::handle<StepGeom_Plane> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Plane & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Plane &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Plane & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Plane> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Plane &
+	:type ent: opencascade::handle<StepGeom_Plane> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Plane & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Plane> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Plane> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Plane> & ent);
 };
 
 
@@ -2268,24 +2284,24 @@ class RWStepGeom_RWPoint {
 		 RWStepGeom_RWPoint ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Point &
+	:type ent: opencascade::handle<StepGeom_Point> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Point & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Point> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_Point &
+	:type ent: opencascade::handle<StepGeom_Point> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Point & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Point> & ent);
 };
 
 
@@ -2303,32 +2319,32 @@ class RWStepGeom_RWPointOnCurve {
 		 RWStepGeom_RWPointOnCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_PointOnCurve &
+	:type ent: opencascade::handle<StepGeom_PointOnCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_PointOnCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_PointOnCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_PointOnCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_PointOnCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_PointOnCurve &
+	:type ent: opencascade::handle<StepGeom_PointOnCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_PointOnCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_PointOnCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_PointOnCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_PointOnCurve> & ent);
 };
 
 
@@ -2346,32 +2362,32 @@ class RWStepGeom_RWPointOnSurface {
 		 RWStepGeom_RWPointOnSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_PointOnSurface &
+	:type ent: opencascade::handle<StepGeom_PointOnSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_PointOnSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_PointOnSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_PointOnSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_PointOnSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_PointOnSurface &
+	:type ent: opencascade::handle<StepGeom_PointOnSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_PointOnSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_PointOnSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_PointOnSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_PointOnSurface> & ent);
 };
 
 
@@ -2389,32 +2405,32 @@ class RWStepGeom_RWPointReplica {
 		 RWStepGeom_RWPointReplica ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_PointReplica &
+	:type ent: opencascade::handle<StepGeom_PointReplica> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_PointReplica & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_PointReplica &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_PointReplica & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_PointReplica> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_PointReplica &
+	:type ent: opencascade::handle<StepGeom_PointReplica> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_PointReplica & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_PointReplica> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_PointReplica> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_PointReplica> & ent);
 };
 
 
@@ -2432,32 +2448,32 @@ class RWStepGeom_RWPolyline {
 		 RWStepGeom_RWPolyline ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Polyline &
+	:type ent: opencascade::handle<StepGeom_Polyline> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Polyline & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Polyline &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Polyline & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Polyline> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Polyline &
+	:type ent: opencascade::handle<StepGeom_Polyline> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Polyline & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_Polyline> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Polyline> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Polyline> & ent);
 };
 
 
@@ -2475,32 +2491,32 @@ class RWStepGeom_RWQuasiUniformCurve {
 		 RWStepGeom_RWQuasiUniformCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurve &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_QuasiUniformCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_QuasiUniformCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_QuasiUniformCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurve &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_QuasiUniformCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_QuasiUniformCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_QuasiUniformCurve> & ent);
 };
 
 
@@ -2518,32 +2534,32 @@ class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 		 RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> & ent);
 };
 
 
@@ -2561,32 +2577,32 @@ class RWStepGeom_RWQuasiUniformSurface {
 		 RWStepGeom_RWQuasiUniformSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurface &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_QuasiUniformSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_QuasiUniformSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_QuasiUniformSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurface &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_QuasiUniformSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_QuasiUniformSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_QuasiUniformSurface> & ent);
 };
 
 
@@ -2604,32 +2620,32 @@ class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 		 RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> & ent);
 };
 
 
@@ -2641,48 +2657,48 @@ class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 %nodefaultctor RWStepGeom_RWRationalBSplineCurve;
 class RWStepGeom_RWRationalBSplineCurve {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_RationalBSplineCurve> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_RationalBSplineCurve> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWRationalBSplineCurve;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWRationalBSplineCurve;
 		 RWStepGeom_RWRationalBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_RationalBSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_RationalBSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_RationalBSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_RationalBSplineCurve & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineCurve &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_RationalBSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_RationalBSplineCurve> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_RationalBSplineCurve & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_RationalBSplineCurve> & ent);
 };
 
 
@@ -2694,48 +2710,48 @@ class RWStepGeom_RWRationalBSplineCurve {
 %nodefaultctor RWStepGeom_RWRationalBSplineSurface;
 class RWStepGeom_RWRationalBSplineSurface {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_RationalBSplineSurface> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_RationalBSplineSurface> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWRationalBSplineSurface;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWRationalBSplineSurface;
 		 RWStepGeom_RWRationalBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_RationalBSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_RationalBSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_RationalBSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_RationalBSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_RationalBSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_RationalBSplineSurface & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RationalBSplineSurface &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_RationalBSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_RationalBSplineSurface> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_RationalBSplineSurface & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_RationalBSplineSurface> & ent);
 };
 
 
@@ -2753,32 +2769,32 @@ class RWStepGeom_RWRectangularCompositeSurface {
 		 RWStepGeom_RWRectangularCompositeSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_RectangularCompositeSurface &
+	:type ent: opencascade::handle<StepGeom_RectangularCompositeSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_RectangularCompositeSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_RectangularCompositeSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_RectangularCompositeSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_RectangularCompositeSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RectangularCompositeSurface &
+	:type ent: opencascade::handle<StepGeom_RectangularCompositeSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_RectangularCompositeSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_RectangularCompositeSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_RectangularCompositeSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_RectangularCompositeSurface> & ent);
 };
 
 
@@ -2796,32 +2812,32 @@ class RWStepGeom_RWRectangularTrimmedSurface {
 		 RWStepGeom_RWRectangularTrimmedSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_RectangularTrimmedSurface &
+	:type ent: opencascade::handle<StepGeom_RectangularTrimmedSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_RectangularTrimmedSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_RectangularTrimmedSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_RectangularTrimmedSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_RectangularTrimmedSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_RectangularTrimmedSurface &
+	:type ent: opencascade::handle<StepGeom_RectangularTrimmedSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_RectangularTrimmedSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_RectangularTrimmedSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_RectangularTrimmedSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_RectangularTrimmedSurface> & ent);
 };
 
 
@@ -2839,32 +2855,32 @@ class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 		 RWStepGeom_RWReparametrisedCompositeCurveSegment ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_ReparametrisedCompositeCurveSegment &
+	:type ent: opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_ReparametrisedCompositeCurveSegment & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_ReparametrisedCompositeCurveSegment &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_ReparametrisedCompositeCurveSegment & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_ReparametrisedCompositeCurveSegment &
+	:type ent: opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_ReparametrisedCompositeCurveSegment & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> & ent);
 };
 
 
@@ -2882,32 +2898,32 @@ class RWStepGeom_RWSeamCurve {
 		 RWStepGeom_RWSeamCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SeamCurve &
+	:type ent: opencascade::handle<StepGeom_SeamCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SeamCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SeamCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SeamCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SeamCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SeamCurve &
+	:type ent: opencascade::handle<StepGeom_SeamCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SeamCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SeamCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SeamCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SeamCurve> & ent);
 };
 
 
@@ -2925,32 +2941,32 @@ class RWStepGeom_RWSphericalSurface {
 		 RWStepGeom_RWSphericalSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SphericalSurface &
+	:type ent: opencascade::handle<StepGeom_SphericalSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SphericalSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SphericalSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SphericalSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SphericalSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SphericalSurface &
+	:type ent: opencascade::handle<StepGeom_SphericalSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SphericalSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SphericalSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SphericalSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SphericalSurface> & ent);
 };
 
 
@@ -2968,24 +2984,24 @@ class RWStepGeom_RWSurface {
 		 RWStepGeom_RWSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Surface &
+	:type ent: opencascade::handle<StepGeom_Surface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Surface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Surface> & ent);
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
-	:type ent: Handle_StepGeom_Surface &
+	:type ent: opencascade::handle<StepGeom_Surface> &
 	:rtype: None
 ") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Surface & ent);
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Surface> & ent);
 };
 
 
@@ -3003,32 +3019,32 @@ class RWStepGeom_RWSurfaceCurve {
 		 RWStepGeom_RWSurfaceCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurve &
+	:type ent: opencascade::handle<StepGeom_SurfaceCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfaceCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfaceCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfaceCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurve &
+	:type ent: opencascade::handle<StepGeom_SurfaceCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfaceCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfaceCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfaceCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfaceCurve> & ent);
 };
 
 
@@ -3046,32 +3062,32 @@ class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 		 RWStepGeom_RWSurfaceCurveAndBoundedCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurveAndBoundedCurve &
+	:type ent: opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfaceCurveAndBoundedCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurveAndBoundedCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfaceCurveAndBoundedCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfaceCurveAndBoundedCurve &
+	:type ent: opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfaceCurveAndBoundedCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> & ent);
 };
 
 
@@ -3089,32 +3105,32 @@ class RWStepGeom_RWSurfaceOfLinearExtrusion {
 		 RWStepGeom_RWSurfaceOfLinearExtrusion ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfLinearExtrusion &
+	:type ent: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfaceOfLinearExtrusion & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfLinearExtrusion &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfaceOfLinearExtrusion & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfLinearExtrusion &
+	:type ent: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfaceOfLinearExtrusion & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & ent);
 };
 
 
@@ -3132,32 +3148,32 @@ class RWStepGeom_RWSurfaceOfRevolution {
 		 RWStepGeom_RWSurfaceOfRevolution ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfRevolution &
+	:type ent: opencascade::handle<StepGeom_SurfaceOfRevolution> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfaceOfRevolution & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfRevolution &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfaceOfRevolution & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfaceOfRevolution> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfaceOfRevolution &
+	:type ent: opencascade::handle<StepGeom_SurfaceOfRevolution> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfaceOfRevolution & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfaceOfRevolution> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfaceOfRevolution> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfaceOfRevolution> & ent);
 };
 
 
@@ -3175,32 +3191,32 @@ class RWStepGeom_RWSurfacePatch {
 		 RWStepGeom_RWSurfacePatch ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfacePatch &
+	:type ent: opencascade::handle<StepGeom_SurfacePatch> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfacePatch & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfacePatch &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfacePatch & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfacePatch> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfacePatch &
+	:type ent: opencascade::handle<StepGeom_SurfacePatch> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfacePatch & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfacePatch> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfacePatch> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfacePatch> & ent);
 };
 
 
@@ -3218,32 +3234,32 @@ class RWStepGeom_RWSurfaceReplica {
 		 RWStepGeom_RWSurfaceReplica ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SurfaceReplica &
+	:type ent: opencascade::handle<StepGeom_SurfaceReplica> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SurfaceReplica & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SurfaceReplica &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SurfaceReplica & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SurfaceReplica> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SurfaceReplica &
+	:type ent: opencascade::handle<StepGeom_SurfaceReplica> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SurfaceReplica & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SurfaceReplica> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SurfaceReplica> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SurfaceReplica> & ent);
 };
 
 
@@ -3261,32 +3277,32 @@ class RWStepGeom_RWSweptSurface {
 		 RWStepGeom_RWSweptSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_SweptSurface &
+	:type ent: opencascade::handle<StepGeom_SweptSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_SweptSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_SweptSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_SweptSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_SweptSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_SweptSurface &
+	:type ent: opencascade::handle<StepGeom_SweptSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_SweptSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_SweptSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_SweptSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_SweptSurface> & ent);
 };
 
 
@@ -3298,48 +3314,48 @@ class RWStepGeom_RWSweptSurface {
 %nodefaultctor RWStepGeom_RWToroidalSurface;
 class RWStepGeom_RWToroidalSurface {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_ToroidalSurface> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_ToroidalSurface> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWToroidalSurface;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWToroidalSurface;
 		 RWStepGeom_RWToroidalSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_ToroidalSurface &
+	:type ent: opencascade::handle<StepGeom_ToroidalSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_ToroidalSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_ToroidalSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_ToroidalSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_ToroidalSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_ToroidalSurface &
+	:type ent: opencascade::handle<StepGeom_ToroidalSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_ToroidalSurface & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_ToroidalSurface &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_ToroidalSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_ToroidalSurface> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_ToroidalSurface & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_ToroidalSurface> & ent);
 };
 
 
@@ -3357,32 +3373,32 @@ class RWStepGeom_RWTrimmedCurve {
 		 RWStepGeom_RWTrimmedCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_TrimmedCurve &
+	:type ent: opencascade::handle<StepGeom_TrimmedCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_TrimmedCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_TrimmedCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_TrimmedCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_TrimmedCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_TrimmedCurve &
+	:type ent: opencascade::handle<StepGeom_TrimmedCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_TrimmedCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_TrimmedCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_TrimmedCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_TrimmedCurve> & ent);
 };
 
 
@@ -3400,32 +3416,32 @@ class RWStepGeom_RWUniformCurve {
 		 RWStepGeom_RWUniformCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_UniformCurve &
+	:type ent: opencascade::handle<StepGeom_UniformCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_UniformCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_UniformCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_UniformCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_UniformCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_UniformCurve &
+	:type ent: opencascade::handle<StepGeom_UniformCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_UniformCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_UniformCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_UniformCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_UniformCurve> & ent);
 };
 
 
@@ -3443,32 +3459,32 @@ class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 		 RWStepGeom_RWUniformCurveAndRationalBSplineCurve ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_UniformCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_UniformCurveAndRationalBSplineCurve & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_UniformCurveAndRationalBSplineCurve &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_UniformCurveAndRationalBSplineCurve & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_UniformCurveAndRationalBSplineCurve &
+	:type ent: opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_UniformCurveAndRationalBSplineCurve & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> & ent);
 };
 
 
@@ -3486,32 +3502,32 @@ class RWStepGeom_RWUniformSurface {
 		 RWStepGeom_RWUniformSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_UniformSurface &
+	:type ent: opencascade::handle<StepGeom_UniformSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_UniformSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_UniformSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_UniformSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_UniformSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_UniformSurface &
+	:type ent: opencascade::handle<StepGeom_UniformSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_UniformSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_UniformSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_UniformSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_UniformSurface> & ent);
 };
 
 
@@ -3529,32 +3545,32 @@ class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 		 RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface &
+	:type ent: opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface & ent,Interface_EntityIterator & iter);
+		void Share (const opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> &
+	:rtype: None
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> & ent);
 };
 
 
@@ -3566,48 +3582,48 @@ class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 %nodefaultctor RWStepGeom_RWVector;
 class RWStepGeom_RWVector {
 	public:
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "	:param ent:
+	:type ent: opencascade::handle<StepGeom_Vector> &
+	:param shares:
+	:type shares: Interface_ShareTool &
+	:param ach:
+	:type ach: opencascade::handle<Interface_Check> &
+	:rtype: None
+") Check;
+		void Check (const opencascade::handle<StepGeom_Vector> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 		%feature("compactdefaultargs") RWStepGeom_RWVector;
 		%feature("autodoc", "	:rtype: None
 ") RWStepGeom_RWVector;
 		 RWStepGeom_RWVector ();
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "	:param data:
-	:type data: Handle_StepData_StepReaderData &
+	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: Handle_Interface_Check &
+	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
-	:type ent: Handle_StepGeom_Vector &
+	:type ent: opencascade::handle<StepGeom_Vector> &
 	:rtype: None
 ") ReadStep;
-		void ReadStep (const Handle_StepData_StepReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_StepGeom_Vector & ent);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
-	:type SW: StepData_StepWriter &
-	:param ent:
-	:type ent: Handle_StepGeom_Vector &
-	:rtype: None
-") WriteStep;
-		void WriteStep (StepData_StepWriter & SW,const Handle_StepGeom_Vector & ent);
+		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepGeom_Vector> & ent);
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Vector &
+	:type ent: opencascade::handle<StepGeom_Vector> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
 	:rtype: None
 ") Share;
-		void Share (const Handle_StepGeom_Vector & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	:param ent:
-	:type ent: Handle_StepGeom_Vector &
-	:param shares:
-	:type shares: Interface_ShareTool &
-	:param ach:
-	:type ach: Handle_Interface_Check &
+		void Share (const opencascade::handle<StepGeom_Vector> & ent,Interface_EntityIterator & iter);
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "	:param SW:
+	:type SW: StepData_StepWriter &
+	:param ent:
+	:type ent: opencascade::handle<StepGeom_Vector> &
 	:rtype: None
-") Check;
-		void Check (const Handle_StepGeom_Vector & ent,const Interface_ShareTool & shares,Handle_Interface_Check & ach);
+") WriteStep;
+		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepGeom_Vector> & ent);
 };
 
 
@@ -3616,3 +3632,6 @@ class RWStepGeom_RWVector {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

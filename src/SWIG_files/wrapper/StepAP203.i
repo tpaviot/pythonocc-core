@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,15 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:34
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define STEPAP203DOCSTRING
-"Contains implementation of STEP entities specific for AP203
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=STEPAP203DOCSTRING) StepAP203
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -40,12 +50,376 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include StepAP203_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+%template(StepAP203_Array1OfPersonOrganizationItem) NCollection_Array1 <StepAP203_PersonOrganizationItem>;
+
+%extend NCollection_Array1 <StepAP203_PersonOrganizationItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfChangeRequestItem) NCollection_Array1 <StepAP203_ChangeRequestItem>;
+
+%extend NCollection_Array1 <StepAP203_ChangeRequestItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfDateTimeItem) NCollection_Array1 <StepAP203_DateTimeItem>;
+
+%extend NCollection_Array1 <StepAP203_DateTimeItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfStartRequestItem) NCollection_Array1 <StepAP203_StartRequestItem>;
+
+%extend NCollection_Array1 <StepAP203_StartRequestItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfCertifiedItem) NCollection_Array1 <StepAP203_CertifiedItem>;
+
+%extend NCollection_Array1 <StepAP203_CertifiedItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfWorkItem) NCollection_Array1 <StepAP203_WorkItem>;
+
+%extend NCollection_Array1 <StepAP203_WorkItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfSpecifiedItem) NCollection_Array1 <StepAP203_SpecifiedItem>;
+
+%extend NCollection_Array1 <StepAP203_SpecifiedItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfApprovedItem) NCollection_Array1 <StepAP203_ApprovedItem>;
+
+%extend NCollection_Array1 <StepAP203_ApprovedItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfContractedItem) NCollection_Array1 <StepAP203_ContractedItem>;
+
+%extend NCollection_Array1 <StepAP203_ContractedItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepAP203_Array1OfClassifiedItem) NCollection_Array1 <StepAP203_ClassifiedItem>;
+
+%extend NCollection_Array1 <StepAP203_ClassifiedItem> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Array1 <StepAP203_PersonOrganizationItem> StepAP203_Array1OfPersonOrganizationItem;
+typedef NCollection_Array1 <StepAP203_ChangeRequestItem> StepAP203_Array1OfChangeRequestItem;
+typedef NCollection_Array1 <StepAP203_DateTimeItem> StepAP203_Array1OfDateTimeItem;
+typedef NCollection_Array1 <StepAP203_StartRequestItem> StepAP203_Array1OfStartRequestItem;
+typedef NCollection_Array1 <StepAP203_CertifiedItem> StepAP203_Array1OfCertifiedItem;
+typedef NCollection_Array1 <StepAP203_WorkItem> StepAP203_Array1OfWorkItem;
+typedef NCollection_Array1 <StepAP203_SpecifiedItem> StepAP203_Array1OfSpecifiedItem;
+typedef NCollection_Array1 <StepAP203_ApprovedItem> StepAP203_Array1OfApprovedItem;
+typedef NCollection_Array1 <StepAP203_ContractedItem> StepAP203_Array1OfContractedItem;
+typedef NCollection_Array1 <StepAP203_ClassifiedItem> StepAP203_Array1OfClassifiedItem;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(StepAP203_CcDesignApproval)
 %wrap_handle(StepAP203_CcDesignCertification)
 %wrap_handle(StepAP203_CcDesignContract)
@@ -55,102 +429,93 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %wrap_handle(StepAP203_CcDesignSpecificationReference)
 %wrap_handle(StepAP203_Change)
 %wrap_handle(StepAP203_ChangeRequest)
-%wrap_handle(StepAP203_HArray1OfApprovedItem)
-%wrap_handle(StepAP203_HArray1OfCertifiedItem)
-%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
-%wrap_handle(StepAP203_HArray1OfClassifiedItem)
-%wrap_handle(StepAP203_HArray1OfContractedItem)
-%wrap_handle(StepAP203_HArray1OfDateTimeItem)
-%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
-%wrap_handle(StepAP203_HArray1OfSpecifiedItem)
-%wrap_handle(StepAP203_HArray1OfStartRequestItem)
-%wrap_handle(StepAP203_HArray1OfWorkItem)
 %wrap_handle(StepAP203_StartRequest)
 %wrap_handle(StepAP203_StartWork)
+/* end handles declaration */
 
 %nodefaultctor StepAP203_ApprovedItem;
 class StepAP203_ApprovedItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of ApprovedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ConfigurationEffectivity from StepRepr 4 -> ConfigurationItem from StepRepr 5 -> SecurityClassification from StepBasic 6 -> ChangeRequest from StepAP203 7 -> Change from StepAP203 8 -> StartRequest from StepAP203 9 -> StartWork from StepAP203 10 -> Certification from StepBasic 11 -> Contract from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") Certification;
+		%feature("autodoc", "	* Returns Value as Certification (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Certification>
+") Certification;
+		opencascade::handle<StepBasic_Certification> Certification ();
+		%feature("compactdefaultargs") Change;
+		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_Change>
+") Change;
+		opencascade::handle<StepAP203_Change> Change ();
+		%feature("compactdefaultargs") ChangeRequest;
+		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_ChangeRequest>
+") ChangeRequest;
+		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest ();
+		%feature("compactdefaultargs") ConfigurationEffectivity;
+		%feature("autodoc", "	* Returns Value as ConfigurationEffectivity (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ConfigurationEffectivity>
+") ConfigurationEffectivity;
+		opencascade::handle<StepRepr_ConfigurationEffectivity> ConfigurationEffectivity ();
+		%feature("compactdefaultargs") ConfigurationItem;
+		%feature("autodoc", "	* Returns Value as ConfigurationItem (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ConfigurationItem>
+") ConfigurationItem;
+		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem ();
+		%feature("compactdefaultargs") Contract;
+		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Contract>
+") Contract;
+		opencascade::handle<StepBasic_Contract> Contract ();
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
+		%feature("compactdefaultargs") SecurityClassification;
+		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_SecurityClassification>
+") SecurityClassification;
+		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification ();
+		%feature("compactdefaultargs") StartRequest;
+		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartRequest>
+") StartRequest;
+		opencascade::handle<StepAP203_StartRequest> StartRequest ();
+		%feature("compactdefaultargs") StartWork;
+		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartWork>
+") StartWork;
+		opencascade::handle<StepAP203_StartWork> StartWork ();
 		%feature("compactdefaultargs") StepAP203_ApprovedItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_ApprovedItem;
 		 StepAP203_ApprovedItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ApprovedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ConfigurationEffectivity from StepRepr 4 -> ConfigurationItem from StepRepr 5 -> SecurityClassification from StepBasic 6 -> ChangeRequest from StepAP203 7 -> Change from StepAP203 8 -> StartRequest from StepAP203 9 -> StartWork from StepAP203 10 -> Certification from StepBasic 11 -> Contract from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") ConfigurationEffectivity;
-		%feature("autodoc", "	* Returns Value as ConfigurationEffectivity (or Null if another type)
-
-	:rtype: Handle_StepRepr_ConfigurationEffectivity
-") ConfigurationEffectivity;
-		Handle_StepRepr_ConfigurationEffectivity ConfigurationEffectivity ();
-		%feature("compactdefaultargs") ConfigurationItem;
-		%feature("autodoc", "	* Returns Value as ConfigurationItem (or Null if another type)
-
-	:rtype: Handle_StepRepr_ConfigurationItem
-") ConfigurationItem;
-		Handle_StepRepr_ConfigurationItem ConfigurationItem ();
-		%feature("compactdefaultargs") SecurityClassification;
-		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
-
-	:rtype: Handle_StepBasic_SecurityClassification
-") SecurityClassification;
-		Handle_StepBasic_SecurityClassification SecurityClassification ();
-		%feature("compactdefaultargs") ChangeRequest;
-		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_ChangeRequest
-") ChangeRequest;
-		Handle_StepAP203_ChangeRequest ChangeRequest ();
-		%feature("compactdefaultargs") Change;
-		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
-
-	:rtype: Handle_StepAP203_Change
-") Change;
-		Handle_StepAP203_Change Change ();
-		%feature("compactdefaultargs") StartRequest;
-		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartRequest
-") StartRequest;
-		Handle_StepAP203_StartRequest StartRequest ();
-		%feature("compactdefaultargs") StartWork;
-		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartWork
-") StartWork;
-		Handle_StepAP203_StartWork StartWork ();
-		%feature("compactdefaultargs") Certification;
-		%feature("autodoc", "	* Returns Value as Certification (or Null if another type)
-
-	:rtype: Handle_StepBasic_Certification
-") Certification;
-		Handle_StepBasic_Certification Certification ();
-		%feature("compactdefaultargs") Contract;
-		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
-
-	:rtype: Handle_StepBasic_Contract
-") Contract;
-		Handle_StepBasic_Contract Contract ();
 };
 
 
@@ -159,1259 +524,39 @@ class StepAP203_ApprovedItem : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepAP203_Array1OfApprovedItem;
-class StepAP203_Array1OfApprovedItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfApprovedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfApprovedItem;
-		 StepAP203_Array1OfApprovedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfApprovedItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_ApprovedItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfApprovedItem;
-		 StepAP203_Array1OfApprovedItem (const StepAP203_ApprovedItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ApprovedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ApprovedItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfApprovedItem &
-	:rtype: StepAP203_Array1OfApprovedItem
-") Assign;
-		const StepAP203_Array1OfApprovedItem & Assign (const StepAP203_Array1OfApprovedItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfApprovedItem &
-	:rtype: StepAP203_Array1OfApprovedItem
-") operator =;
-		const StepAP203_Array1OfApprovedItem & operator = (const StepAP203_Array1OfApprovedItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ApprovedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ApprovedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ApprovedItem
-") Value;
-		const StepAP203_ApprovedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ApprovedItem
-") ChangeValue;
-		StepAP203_ApprovedItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfApprovedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfApprovedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfCertifiedItem;
-class StepAP203_Array1OfCertifiedItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfCertifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfCertifiedItem;
-		 StepAP203_Array1OfCertifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfCertifiedItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_CertifiedItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfCertifiedItem;
-		 StepAP203_Array1OfCertifiedItem (const StepAP203_CertifiedItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_CertifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_CertifiedItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfCertifiedItem &
-	:rtype: StepAP203_Array1OfCertifiedItem
-") Assign;
-		const StepAP203_Array1OfCertifiedItem & Assign (const StepAP203_Array1OfCertifiedItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfCertifiedItem &
-	:rtype: StepAP203_Array1OfCertifiedItem
-") operator =;
-		const StepAP203_Array1OfCertifiedItem & operator = (const StepAP203_Array1OfCertifiedItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_CertifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_CertifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_CertifiedItem
-") Value;
-		const StepAP203_CertifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_CertifiedItem
-") ChangeValue;
-		StepAP203_CertifiedItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfCertifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfCertifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfChangeRequestItem;
-class StepAP203_Array1OfChangeRequestItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfChangeRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfChangeRequestItem;
-		 StepAP203_Array1OfChangeRequestItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfChangeRequestItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_ChangeRequestItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfChangeRequestItem;
-		 StepAP203_Array1OfChangeRequestItem (const StepAP203_ChangeRequestItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ChangeRequestItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ChangeRequestItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfChangeRequestItem &
-	:rtype: StepAP203_Array1OfChangeRequestItem
-") Assign;
-		const StepAP203_Array1OfChangeRequestItem & Assign (const StepAP203_Array1OfChangeRequestItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfChangeRequestItem &
-	:rtype: StepAP203_Array1OfChangeRequestItem
-") operator =;
-		const StepAP203_Array1OfChangeRequestItem & operator = (const StepAP203_Array1OfChangeRequestItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ChangeRequestItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ChangeRequestItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ChangeRequestItem
-") Value;
-		const StepAP203_ChangeRequestItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ChangeRequestItem
-") ChangeValue;
-		StepAP203_ChangeRequestItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfChangeRequestItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfChangeRequestItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfClassifiedItem;
-class StepAP203_Array1OfClassifiedItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfClassifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfClassifiedItem;
-		 StepAP203_Array1OfClassifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfClassifiedItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_ClassifiedItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfClassifiedItem;
-		 StepAP203_Array1OfClassifiedItem (const StepAP203_ClassifiedItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ClassifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ClassifiedItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfClassifiedItem &
-	:rtype: StepAP203_Array1OfClassifiedItem
-") Assign;
-		const StepAP203_Array1OfClassifiedItem & Assign (const StepAP203_Array1OfClassifiedItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfClassifiedItem &
-	:rtype: StepAP203_Array1OfClassifiedItem
-") operator =;
-		const StepAP203_Array1OfClassifiedItem & operator = (const StepAP203_Array1OfClassifiedItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ClassifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ClassifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ClassifiedItem
-") Value;
-		const StepAP203_ClassifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ClassifiedItem
-") ChangeValue;
-		StepAP203_ClassifiedItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfClassifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfClassifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfContractedItem;
-class StepAP203_Array1OfContractedItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfContractedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfContractedItem;
-		 StepAP203_Array1OfContractedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfContractedItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_ContractedItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfContractedItem;
-		 StepAP203_Array1OfContractedItem (const StepAP203_ContractedItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ContractedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ContractedItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfContractedItem &
-	:rtype: StepAP203_Array1OfContractedItem
-") Assign;
-		const StepAP203_Array1OfContractedItem & Assign (const StepAP203_Array1OfContractedItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfContractedItem &
-	:rtype: StepAP203_Array1OfContractedItem
-") operator =;
-		const StepAP203_Array1OfContractedItem & operator = (const StepAP203_Array1OfContractedItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ContractedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ContractedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ContractedItem
-") Value;
-		const StepAP203_ContractedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ContractedItem
-") ChangeValue;
-		StepAP203_ContractedItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfContractedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfContractedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfDateTimeItem;
-class StepAP203_Array1OfDateTimeItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfDateTimeItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfDateTimeItem;
-		 StepAP203_Array1OfDateTimeItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfDateTimeItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_DateTimeItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfDateTimeItem;
-		 StepAP203_Array1OfDateTimeItem (const StepAP203_DateTimeItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_DateTimeItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_DateTimeItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfDateTimeItem &
-	:rtype: StepAP203_Array1OfDateTimeItem
-") Assign;
-		const StepAP203_Array1OfDateTimeItem & Assign (const StepAP203_Array1OfDateTimeItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfDateTimeItem &
-	:rtype: StepAP203_Array1OfDateTimeItem
-") operator =;
-		const StepAP203_Array1OfDateTimeItem & operator = (const StepAP203_Array1OfDateTimeItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_DateTimeItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_DateTimeItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_DateTimeItem
-") Value;
-		const StepAP203_DateTimeItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_DateTimeItem
-") ChangeValue;
-		StepAP203_DateTimeItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfDateTimeItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfDateTimeItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfPersonOrganizationItem;
-class StepAP203_Array1OfPersonOrganizationItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfPersonOrganizationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfPersonOrganizationItem;
-		 StepAP203_Array1OfPersonOrganizationItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfPersonOrganizationItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_PersonOrganizationItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfPersonOrganizationItem;
-		 StepAP203_Array1OfPersonOrganizationItem (const StepAP203_PersonOrganizationItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_PersonOrganizationItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_PersonOrganizationItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfPersonOrganizationItem &
-	:rtype: StepAP203_Array1OfPersonOrganizationItem
-") Assign;
-		const StepAP203_Array1OfPersonOrganizationItem & Assign (const StepAP203_Array1OfPersonOrganizationItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfPersonOrganizationItem &
-	:rtype: StepAP203_Array1OfPersonOrganizationItem
-") operator =;
-		const StepAP203_Array1OfPersonOrganizationItem & operator = (const StepAP203_Array1OfPersonOrganizationItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_PersonOrganizationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_PersonOrganizationItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_PersonOrganizationItem
-") Value;
-		const StepAP203_PersonOrganizationItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_PersonOrganizationItem
-") ChangeValue;
-		StepAP203_PersonOrganizationItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfPersonOrganizationItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfPersonOrganizationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfSpecifiedItem;
-class StepAP203_Array1OfSpecifiedItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfSpecifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfSpecifiedItem;
-		 StepAP203_Array1OfSpecifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfSpecifiedItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_SpecifiedItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfSpecifiedItem;
-		 StepAP203_Array1OfSpecifiedItem (const StepAP203_SpecifiedItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_SpecifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_SpecifiedItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfSpecifiedItem &
-	:rtype: StepAP203_Array1OfSpecifiedItem
-") Assign;
-		const StepAP203_Array1OfSpecifiedItem & Assign (const StepAP203_Array1OfSpecifiedItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfSpecifiedItem &
-	:rtype: StepAP203_Array1OfSpecifiedItem
-") operator =;
-		const StepAP203_Array1OfSpecifiedItem & operator = (const StepAP203_Array1OfSpecifiedItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_SpecifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_SpecifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_SpecifiedItem
-") Value;
-		const StepAP203_SpecifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_SpecifiedItem
-") ChangeValue;
-		StepAP203_SpecifiedItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfSpecifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfSpecifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfStartRequestItem;
-class StepAP203_Array1OfStartRequestItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfStartRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfStartRequestItem;
-		 StepAP203_Array1OfStartRequestItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfStartRequestItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_StartRequestItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfStartRequestItem;
-		 StepAP203_Array1OfStartRequestItem (const StepAP203_StartRequestItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_StartRequestItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_StartRequestItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfStartRequestItem &
-	:rtype: StepAP203_Array1OfStartRequestItem
-") Assign;
-		const StepAP203_Array1OfStartRequestItem & Assign (const StepAP203_Array1OfStartRequestItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfStartRequestItem &
-	:rtype: StepAP203_Array1OfStartRequestItem
-") operator =;
-		const StepAP203_Array1OfStartRequestItem & operator = (const StepAP203_Array1OfStartRequestItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_StartRequestItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_StartRequestItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_StartRequestItem
-") Value;
-		const StepAP203_StartRequestItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_StartRequestItem
-") ChangeValue;
-		StepAP203_StartRequestItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfStartRequestItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfStartRequestItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_Array1OfWorkItem;
-class StepAP203_Array1OfWorkItem {
-	public:
-		%feature("compactdefaultargs") StepAP203_Array1OfWorkItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfWorkItem;
-		 StepAP203_Array1OfWorkItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_Array1OfWorkItem;
-		%feature("autodoc", "	:param Item:
-	:type Item: StepAP203_WorkItem &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_Array1OfWorkItem;
-		 StepAP203_Array1OfWorkItem (const StepAP203_WorkItem & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_WorkItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_WorkItem & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfWorkItem &
-	:rtype: StepAP203_Array1OfWorkItem
-") Assign;
-		const StepAP203_Array1OfWorkItem & Assign (const StepAP203_Array1OfWorkItem & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: StepAP203_Array1OfWorkItem &
-	:rtype: StepAP203_Array1OfWorkItem
-") operator =;
-		const StepAP203_Array1OfWorkItem & operator = (const StepAP203_Array1OfWorkItem & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_WorkItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_WorkItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_WorkItem
-") Value;
-		const StepAP203_WorkItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_WorkItem
-") ChangeValue;
-		StepAP203_WorkItem & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend StepAP203_Array1OfWorkItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_Array1OfWorkItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepAP203_CcDesignApproval;
 class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aApprovalAssignment_AssignedApproval:
+	:type aApprovalAssignment_AssignedApproval: opencascade::handle<StepBasic_Approval> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfApprovedItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval,const opencascade::handle<StepAP203_HArray1OfApprovedItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfApprovedItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfApprovedItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfApprovedItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfApprovedItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignApproval;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignApproval;
 		 StepAP203_CcDesignApproval ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aApprovalAssignment_AssignedApproval:
-	:type aApprovalAssignment_AssignedApproval: Handle_StepBasic_Approval &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfApprovedItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Approval & aApprovalAssignment_AssignedApproval,const Handle_StepAP203_HArray1OfApprovedItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfApprovedItem
-") Items;
-		Handle_StepAP203_HArray1OfApprovedItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfApprovedItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfApprovedItem & Items);
 };
 
 
@@ -1425,36 +570,36 @@ class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 %nodefaultctor StepAP203_CcDesignCertification;
 class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aCertificationAssignment_AssignedCertification:
+	:type aCertificationAssignment_AssignedCertification: opencascade::handle<StepBasic_Certification> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfCertifiedItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification,const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfCertifiedItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfCertifiedItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfCertifiedItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignCertification;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignCertification;
 		 StepAP203_CcDesignCertification ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aCertificationAssignment_AssignedCertification:
-	:type aCertificationAssignment_AssignedCertification: Handle_StepBasic_Certification &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfCertifiedItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Certification & aCertificationAssignment_AssignedCertification,const Handle_StepAP203_HArray1OfCertifiedItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfCertifiedItem
-") Items;
-		Handle_StepAP203_HArray1OfCertifiedItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfCertifiedItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfCertifiedItem & Items);
 };
 
 
@@ -1468,36 +613,36 @@ class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment
 %nodefaultctor StepAP203_CcDesignContract;
 class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aContractAssignment_AssignedContract:
+	:type aContractAssignment_AssignedContract: opencascade::handle<StepBasic_Contract> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfContractedItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract,const opencascade::handle<StepAP203_HArray1OfContractedItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfContractedItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfContractedItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfContractedItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfContractedItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignContract;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignContract;
 		 StepAP203_CcDesignContract ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aContractAssignment_AssignedContract:
-	:type aContractAssignment_AssignedContract: Handle_StepBasic_Contract &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfContractedItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Contract & aContractAssignment_AssignedContract,const Handle_StepAP203_HArray1OfContractedItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfContractedItem
-") Items;
-		Handle_StepAP203_HArray1OfContractedItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfContractedItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfContractedItem & Items);
 };
 
 
@@ -1511,38 +656,38 @@ class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 %nodefaultctor StepAP203_CcDesignDateAndTimeAssignment;
 class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aDateAndTimeAssignment_AssignedDateAndTime:
+	:type aDateAndTimeAssignment_AssignedDateAndTime: opencascade::handle<StepBasic_DateAndTime> &
+	:param aDateAndTimeAssignment_Role:
+	:type aDateAndTimeAssignment_Role: opencascade::handle<StepBasic_DateTimeRole> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfDateTimeItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime,const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role,const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfDateTimeItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfDateTimeItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfDateTimeItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignDateAndTimeAssignment;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignDateAndTimeAssignment;
 		 StepAP203_CcDesignDateAndTimeAssignment ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aDateAndTimeAssignment_AssignedDateAndTime:
-	:type aDateAndTimeAssignment_AssignedDateAndTime: Handle_StepBasic_DateAndTime &
-	:param aDateAndTimeAssignment_Role:
-	:type aDateAndTimeAssignment_Role: Handle_StepBasic_DateTimeRole &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfDateTimeItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_DateAndTime & aDateAndTimeAssignment_AssignedDateAndTime,const Handle_StepBasic_DateTimeRole & aDateAndTimeAssignment_Role,const Handle_StepAP203_HArray1OfDateTimeItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfDateTimeItem
-") Items;
-		Handle_StepAP203_HArray1OfDateTimeItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfDateTimeItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfDateTimeItem & Items);
 };
 
 
@@ -1556,38 +701,38 @@ class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssi
 %nodefaultctor StepAP203_CcDesignPersonAndOrganizationAssignment;
 class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aPersonAndOrganizationAssignment_AssignedPersonAndOrganization:
+	:type aPersonAndOrganizationAssignment_AssignedPersonAndOrganization: opencascade::handle<StepBasic_PersonAndOrganization> &
+	:param aPersonAndOrganizationAssignment_Role:
+	:type aPersonAndOrganizationAssignment_Role: opencascade::handle<StepBasic_PersonAndOrganizationRole> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization,const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role,const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignPersonAndOrganizationAssignment;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignPersonAndOrganizationAssignment;
 		 StepAP203_CcDesignPersonAndOrganizationAssignment ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aPersonAndOrganizationAssignment_AssignedPersonAndOrganization:
-	:type aPersonAndOrganizationAssignment_AssignedPersonAndOrganization: Handle_StepBasic_PersonAndOrganization &
-	:param aPersonAndOrganizationAssignment_Role:
-	:type aPersonAndOrganizationAssignment_Role: Handle_StepBasic_PersonAndOrganizationRole &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfPersonOrganizationItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_PersonAndOrganization & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization,const Handle_StepBasic_PersonAndOrganizationRole & aPersonAndOrganizationAssignment_Role,const Handle_StepAP203_HArray1OfPersonOrganizationItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfPersonOrganizationItem
-") Items;
-		Handle_StepAP203_HArray1OfPersonOrganizationItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfPersonOrganizationItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfPersonOrganizationItem & Items);
 };
 
 
@@ -1601,36 +746,36 @@ class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_Perso
 %nodefaultctor StepAP203_CcDesignSecurityClassification;
 class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassificationAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aSecurityClassificationAssignment_AssignedSecurityClassification:
+	:type aSecurityClassificationAssignment_AssignedSecurityClassification: opencascade::handle<StepBasic_SecurityClassification> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfClassifiedItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification,const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfClassifiedItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfClassifiedItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfClassifiedItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignSecurityClassification;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignSecurityClassification;
 		 StepAP203_CcDesignSecurityClassification ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aSecurityClassificationAssignment_AssignedSecurityClassification:
-	:type aSecurityClassificationAssignment_AssignedSecurityClassification: Handle_StepBasic_SecurityClassification &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfClassifiedItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_SecurityClassification & aSecurityClassificationAssignment_AssignedSecurityClassification,const Handle_StepAP203_HArray1OfClassifiedItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfClassifiedItem
-") Items;
-		Handle_StepAP203_HArray1OfClassifiedItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfClassifiedItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfClassifiedItem & Items);
 };
 
 
@@ -1644,38 +789,38 @@ class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassi
 %nodefaultctor StepAP203_CcDesignSpecificationReference;
 class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aDocumentReference_AssignedDocument:
+	:type aDocumentReference_AssignedDocument: opencascade::handle<StepBasic_Document> &
+	:param aDocumentReference_Source:
+	:type aDocumentReference_Source: opencascade::handle<TCollection_HAsciiString> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfSpecifiedItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument,const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source,const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfSpecifiedItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfSpecifiedItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfSpecifiedItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & Items);
 		%feature("compactdefaultargs") StepAP203_CcDesignSpecificationReference;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CcDesignSpecificationReference;
 		 StepAP203_CcDesignSpecificationReference ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aDocumentReference_AssignedDocument:
-	:type aDocumentReference_AssignedDocument: Handle_StepBasic_Document &
-	:param aDocumentReference_Source:
-	:type aDocumentReference_Source: Handle_TCollection_HAsciiString &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfSpecifiedItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Document & aDocumentReference_AssignedDocument,const Handle_TCollection_HAsciiString & aDocumentReference_Source,const Handle_StepAP203_HArray1OfSpecifiedItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfSpecifiedItem
-") Items;
-		Handle_StepAP203_HArray1OfSpecifiedItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfSpecifiedItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfSpecifiedItem & Items);
 };
 
 
@@ -1689,26 +834,26 @@ class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentRefere
 %nodefaultctor StepAP203_CertifiedItem;
 class StepAP203_CertifiedItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of CertifiedItem select type 1 -> SuppliedPartRelationship from StepRepr 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 		%feature("compactdefaultargs") StepAP203_CertifiedItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_CertifiedItem;
 		 StepAP203_CertifiedItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CertifiedItem select type 1 -> SuppliedPartRelationship from StepRepr 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") SuppliedPartRelationship;
 		%feature("autodoc", "	* Returns Value as SuppliedPartRelationship (or Null if another type)
 
-	:rtype: Handle_StepRepr_SuppliedPartRelationship
+	:rtype: opencascade::handle<StepRepr_SuppliedPartRelationship>
 ") SuppliedPartRelationship;
-		Handle_StepRepr_SuppliedPartRelationship SuppliedPartRelationship ();
+		opencascade::handle<StepRepr_SuppliedPartRelationship> SuppliedPartRelationship ();
 };
 
 
@@ -1720,36 +865,36 @@ class StepAP203_CertifiedItem : public StepData_SelectType {
 %nodefaultctor StepAP203_Change;
 class StepAP203_Change : public StepBasic_ActionAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aActionAssignment_AssignedAction:
+	:type aActionAssignment_AssignedAction: opencascade::handle<StepBasic_Action> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfWorkItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction,const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfWorkItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfWorkItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfWorkItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
 		%feature("compactdefaultargs") StepAP203_Change;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_Change;
 		 StepAP203_Change ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aActionAssignment_AssignedAction:
-	:type aActionAssignment_AssignedAction: Handle_StepBasic_Action &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfWorkItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Action & aActionAssignment_AssignedAction,const Handle_StepAP203_HArray1OfWorkItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfWorkItem
-") Items;
-		Handle_StepAP203_HArray1OfWorkItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfWorkItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfWorkItem & Items);
 };
 
 
@@ -1763,36 +908,36 @@ class StepAP203_Change : public StepBasic_ActionAssignment {
 %nodefaultctor StepAP203_ChangeRequest;
 class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aActionRequestAssignment_AssignedActionRequest:
+	:type aActionRequestAssignment_AssignedActionRequest: opencascade::handle<StepBasic_VersionedActionRequest> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfChangeRequestItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest,const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfChangeRequestItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfChangeRequestItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfChangeRequestItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & Items);
 		%feature("compactdefaultargs") StepAP203_ChangeRequest;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_ChangeRequest;
 		 StepAP203_ChangeRequest ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aActionRequestAssignment_AssignedActionRequest:
-	:type aActionRequestAssignment_AssignedActionRequest: Handle_StepBasic_VersionedActionRequest &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfChangeRequestItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_VersionedActionRequest & aActionRequestAssignment_AssignedActionRequest,const Handle_StepAP203_HArray1OfChangeRequestItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfChangeRequestItem
-") Items;
-		Handle_StepAP203_HArray1OfChangeRequestItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfChangeRequestItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfChangeRequestItem & Items);
 };
 
 
@@ -1806,26 +951,26 @@ class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 %nodefaultctor StepAP203_ChangeRequestItem;
 class StepAP203_ChangeRequestItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of ChangeRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepAP203_ChangeRequestItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_ChangeRequestItem;
 		 StepAP203_ChangeRequestItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ChangeRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
 };
 
 
@@ -1837,32 +982,32 @@ class StepAP203_ChangeRequestItem : public StepData_SelectType {
 %nodefaultctor StepAP203_ClassifiedItem;
 class StepAP203_ClassifiedItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") AssemblyComponentUsage;
+		%feature("autodoc", "	* Returns Value as AssemblyComponentUsage (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_AssemblyComponentUsage>
+") AssemblyComponentUsage;
+		opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage ();
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of ClassifiedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> AssemblyComponentUsage from StepRepr 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepAP203_ClassifiedItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_ClassifiedItem;
 		 StepAP203_ClassifiedItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ClassifiedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> AssemblyComponentUsage from StepRepr 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
-		%feature("compactdefaultargs") AssemblyComponentUsage;
-		%feature("autodoc", "	* Returns Value as AssemblyComponentUsage (or Null if another type)
-
-	:rtype: Handle_StepRepr_AssemblyComponentUsage
-") AssemblyComponentUsage;
-		Handle_StepRepr_AssemblyComponentUsage AssemblyComponentUsage ();
 };
 
 
@@ -1874,26 +1019,26 @@ class StepAP203_ClassifiedItem : public StepData_SelectType {
 %nodefaultctor StepAP203_ContractedItem;
 class StepAP203_ContractedItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of ContractedItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepAP203_ContractedItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_ContractedItem;
 		 StepAP203_ContractedItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ContractedItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
 };
 
 
@@ -1905,74 +1050,74 @@ class StepAP203_ContractedItem : public StepData_SelectType {
 %nodefaultctor StepAP203_DateTimeItem;
 class StepAP203_DateTimeItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") ApprovalPersonOrganization;
+		%feature("autodoc", "	* Returns Value as ApprovalPersonOrganization (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ApprovalPersonOrganization>
+") ApprovalPersonOrganization;
+		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization ();
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of DateTimeItem select type 1 -> ProductDefinition from StepBasic 2 -> ChangeRequest from StepAP203 3 -> StartRequest from StepAP203 4 -> Change from StepAP203 5 -> StartWork from StepAP203 6 -> ApprovalPersonOrganization from StepBasic 7 -> Contract from StepBasic 8 -> SecurityClassification from StepBasic 9 -> Certification from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") Certification;
+		%feature("autodoc", "	* Returns Value as Certification (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Certification>
+") Certification;
+		opencascade::handle<StepBasic_Certification> Certification ();
+		%feature("compactdefaultargs") Change;
+		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_Change>
+") Change;
+		opencascade::handle<StepAP203_Change> Change ();
+		%feature("compactdefaultargs") ChangeRequest;
+		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_ChangeRequest>
+") ChangeRequest;
+		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest ();
+		%feature("compactdefaultargs") Contract;
+		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Contract>
+") Contract;
+		opencascade::handle<StepBasic_Contract> Contract ();
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") SecurityClassification;
+		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_SecurityClassification>
+") SecurityClassification;
+		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification ();
+		%feature("compactdefaultargs") StartRequest;
+		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartRequest>
+") StartRequest;
+		opencascade::handle<StepAP203_StartRequest> StartRequest ();
+		%feature("compactdefaultargs") StartWork;
+		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartWork>
+") StartWork;
+		opencascade::handle<StepAP203_StartWork> StartWork ();
 		%feature("compactdefaultargs") StepAP203_DateTimeItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_DateTimeItem;
 		 StepAP203_DateTimeItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of DateTimeItem select type 1 -> ProductDefinition from StepBasic 2 -> ChangeRequest from StepAP203 3 -> StartRequest from StepAP203 4 -> Change from StepAP203 5 -> StartWork from StepAP203 6 -> ApprovalPersonOrganization from StepBasic 7 -> Contract from StepBasic 8 -> SecurityClassification from StepBasic 9 -> Certification from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") ChangeRequest;
-		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_ChangeRequest
-") ChangeRequest;
-		Handle_StepAP203_ChangeRequest ChangeRequest ();
-		%feature("compactdefaultargs") StartRequest;
-		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartRequest
-") StartRequest;
-		Handle_StepAP203_StartRequest StartRequest ();
-		%feature("compactdefaultargs") Change;
-		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
-
-	:rtype: Handle_StepAP203_Change
-") Change;
-		Handle_StepAP203_Change Change ();
-		%feature("compactdefaultargs") StartWork;
-		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartWork
-") StartWork;
-		Handle_StepAP203_StartWork StartWork ();
-		%feature("compactdefaultargs") ApprovalPersonOrganization;
-		%feature("autodoc", "	* Returns Value as ApprovalPersonOrganization (or Null if another type)
-
-	:rtype: Handle_StepBasic_ApprovalPersonOrganization
-") ApprovalPersonOrganization;
-		Handle_StepBasic_ApprovalPersonOrganization ApprovalPersonOrganization ();
-		%feature("compactdefaultargs") Contract;
-		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
-
-	:rtype: Handle_StepBasic_Contract
-") Contract;
-		Handle_StepBasic_Contract Contract ();
-		%feature("compactdefaultargs") SecurityClassification;
-		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
-
-	:rtype: Handle_StepBasic_SecurityClassification
-") SecurityClassification;
-		Handle_StepBasic_SecurityClassification SecurityClassification ();
-		%feature("compactdefaultargs") Certification;
-		%feature("autodoc", "	* Returns Value as Certification (or Null if another type)
-
-	:rtype: Handle_StepBasic_Certification
-") Certification;
-		Handle_StepBasic_Certification Certification ();
 };
 
 
@@ -1981,1203 +1126,83 @@ class StepAP203_DateTimeItem : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor StepAP203_HArray1OfApprovedItem;
-class StepAP203_HArray1OfApprovedItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfApprovedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfApprovedItem;
-		 StepAP203_HArray1OfApprovedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfApprovedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_ApprovedItem &
-	:rtype: None
-") StepAP203_HArray1OfApprovedItem;
-		 StepAP203_HArray1OfApprovedItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_ApprovedItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ApprovedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ApprovedItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ApprovedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ApprovedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ApprovedItem
-") Value;
-		const StepAP203_ApprovedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ApprovedItem
-") ChangeValue;
-		StepAP203_ApprovedItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfApprovedItem
-") Array1;
-		const StepAP203_Array1OfApprovedItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfApprovedItem
-") ChangeArray1;
-		StepAP203_Array1OfApprovedItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfApprovedItem)
-
-
-%extend StepAP203_HArray1OfApprovedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfApprovedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfCertifiedItem;
-class StepAP203_HArray1OfCertifiedItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfCertifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfCertifiedItem;
-		 StepAP203_HArray1OfCertifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfCertifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_CertifiedItem &
-	:rtype: None
-") StepAP203_HArray1OfCertifiedItem;
-		 StepAP203_HArray1OfCertifiedItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_CertifiedItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_CertifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_CertifiedItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_CertifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_CertifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_CertifiedItem
-") Value;
-		const StepAP203_CertifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_CertifiedItem
-") ChangeValue;
-		StepAP203_CertifiedItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfCertifiedItem
-") Array1;
-		const StepAP203_Array1OfCertifiedItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfCertifiedItem
-") ChangeArray1;
-		StepAP203_Array1OfCertifiedItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfCertifiedItem)
-
-
-%extend StepAP203_HArray1OfCertifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfCertifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfChangeRequestItem;
-class StepAP203_HArray1OfChangeRequestItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfChangeRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfChangeRequestItem;
-		 StepAP203_HArray1OfChangeRequestItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfChangeRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_ChangeRequestItem &
-	:rtype: None
-") StepAP203_HArray1OfChangeRequestItem;
-		 StepAP203_HArray1OfChangeRequestItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_ChangeRequestItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ChangeRequestItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ChangeRequestItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ChangeRequestItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ChangeRequestItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ChangeRequestItem
-") Value;
-		const StepAP203_ChangeRequestItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ChangeRequestItem
-") ChangeValue;
-		StepAP203_ChangeRequestItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfChangeRequestItem
-") Array1;
-		const StepAP203_Array1OfChangeRequestItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfChangeRequestItem
-") ChangeArray1;
-		StepAP203_Array1OfChangeRequestItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfChangeRequestItem)
-
-
-%extend StepAP203_HArray1OfChangeRequestItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfChangeRequestItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfClassifiedItem;
-class StepAP203_HArray1OfClassifiedItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfClassifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfClassifiedItem;
-		 StepAP203_HArray1OfClassifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfClassifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_ClassifiedItem &
-	:rtype: None
-") StepAP203_HArray1OfClassifiedItem;
-		 StepAP203_HArray1OfClassifiedItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_ClassifiedItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ClassifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ClassifiedItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ClassifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ClassifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ClassifiedItem
-") Value;
-		const StepAP203_ClassifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ClassifiedItem
-") ChangeValue;
-		StepAP203_ClassifiedItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfClassifiedItem
-") Array1;
-		const StepAP203_Array1OfClassifiedItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfClassifiedItem
-") ChangeArray1;
-		StepAP203_Array1OfClassifiedItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfClassifiedItem)
-
-
-%extend StepAP203_HArray1OfClassifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfClassifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfContractedItem;
-class StepAP203_HArray1OfContractedItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfContractedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfContractedItem;
-		 StepAP203_HArray1OfContractedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfContractedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_ContractedItem &
-	:rtype: None
-") StepAP203_HArray1OfContractedItem;
-		 StepAP203_HArray1OfContractedItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_ContractedItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_ContractedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_ContractedItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_ContractedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_ContractedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ContractedItem
-") Value;
-		const StepAP203_ContractedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_ContractedItem
-") ChangeValue;
-		StepAP203_ContractedItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfContractedItem
-") Array1;
-		const StepAP203_Array1OfContractedItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfContractedItem
-") ChangeArray1;
-		StepAP203_Array1OfContractedItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfContractedItem)
-
-
-%extend StepAP203_HArray1OfContractedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfContractedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfDateTimeItem;
-class StepAP203_HArray1OfDateTimeItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfDateTimeItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfDateTimeItem;
-		 StepAP203_HArray1OfDateTimeItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfDateTimeItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_DateTimeItem &
-	:rtype: None
-") StepAP203_HArray1OfDateTimeItem;
-		 StepAP203_HArray1OfDateTimeItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_DateTimeItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_DateTimeItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_DateTimeItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_DateTimeItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_DateTimeItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_DateTimeItem
-") Value;
-		const StepAP203_DateTimeItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_DateTimeItem
-") ChangeValue;
-		StepAP203_DateTimeItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfDateTimeItem
-") Array1;
-		const StepAP203_Array1OfDateTimeItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfDateTimeItem
-") ChangeArray1;
-		StepAP203_Array1OfDateTimeItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfDateTimeItem)
-
-
-%extend StepAP203_HArray1OfDateTimeItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfDateTimeItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfPersonOrganizationItem;
-class StepAP203_HArray1OfPersonOrganizationItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfPersonOrganizationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfPersonOrganizationItem;
-		 StepAP203_HArray1OfPersonOrganizationItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfPersonOrganizationItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_PersonOrganizationItem &
-	:rtype: None
-") StepAP203_HArray1OfPersonOrganizationItem;
-		 StepAP203_HArray1OfPersonOrganizationItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_PersonOrganizationItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_PersonOrganizationItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_PersonOrganizationItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_PersonOrganizationItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_PersonOrganizationItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_PersonOrganizationItem
-") Value;
-		const StepAP203_PersonOrganizationItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_PersonOrganizationItem
-") ChangeValue;
-		StepAP203_PersonOrganizationItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfPersonOrganizationItem
-") Array1;
-		const StepAP203_Array1OfPersonOrganizationItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfPersonOrganizationItem
-") ChangeArray1;
-		StepAP203_Array1OfPersonOrganizationItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfPersonOrganizationItem)
-
-
-%extend StepAP203_HArray1OfPersonOrganizationItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfPersonOrganizationItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfSpecifiedItem;
-class StepAP203_HArray1OfSpecifiedItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfSpecifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfSpecifiedItem;
-		 StepAP203_HArray1OfSpecifiedItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfSpecifiedItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_SpecifiedItem &
-	:rtype: None
-") StepAP203_HArray1OfSpecifiedItem;
-		 StepAP203_HArray1OfSpecifiedItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_SpecifiedItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_SpecifiedItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_SpecifiedItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_SpecifiedItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_SpecifiedItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_SpecifiedItem
-") Value;
-		const StepAP203_SpecifiedItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_SpecifiedItem
-") ChangeValue;
-		StepAP203_SpecifiedItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfSpecifiedItem
-") Array1;
-		const StepAP203_Array1OfSpecifiedItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfSpecifiedItem
-") ChangeArray1;
-		StepAP203_Array1OfSpecifiedItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfSpecifiedItem)
-
-
-%extend StepAP203_HArray1OfSpecifiedItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfSpecifiedItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfStartRequestItem;
-class StepAP203_HArray1OfStartRequestItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfStartRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfStartRequestItem;
-		 StepAP203_HArray1OfStartRequestItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfStartRequestItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_StartRequestItem &
-	:rtype: None
-") StepAP203_HArray1OfStartRequestItem;
-		 StepAP203_HArray1OfStartRequestItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_StartRequestItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_StartRequestItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_StartRequestItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_StartRequestItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_StartRequestItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_StartRequestItem
-") Value;
-		const StepAP203_StartRequestItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_StartRequestItem
-") ChangeValue;
-		StepAP203_StartRequestItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfStartRequestItem
-") Array1;
-		const StepAP203_Array1OfStartRequestItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfStartRequestItem
-") ChangeArray1;
-		StepAP203_Array1OfStartRequestItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfStartRequestItem)
-
-
-%extend StepAP203_HArray1OfStartRequestItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfStartRequestItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepAP203_HArray1OfWorkItem;
-class StepAP203_HArray1OfWorkItem : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") StepAP203_HArray1OfWorkItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") StepAP203_HArray1OfWorkItem;
-		 StepAP203_HArray1OfWorkItem (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") StepAP203_HArray1OfWorkItem;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: StepAP203_WorkItem &
-	:rtype: None
-") StepAP203_HArray1OfWorkItem;
-		 StepAP203_HArray1OfWorkItem (const Standard_Integer Low,const Standard_Integer Up,const StepAP203_WorkItem & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: StepAP203_WorkItem &
-	:rtype: None
-") Init;
-		void Init (const StepAP203_WorkItem & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: StepAP203_WorkItem &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const StepAP203_WorkItem & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_WorkItem
-") Value;
-		const StepAP203_WorkItem & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: StepAP203_WorkItem
-") ChangeValue;
-		StepAP203_WorkItem & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfWorkItem
-") Array1;
-		const StepAP203_Array1OfWorkItem & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: StepAP203_Array1OfWorkItem
-") ChangeArray1;
-		StepAP203_Array1OfWorkItem & ChangeArray1 ();
-};
-
-
-%make_alias(StepAP203_HArray1OfWorkItem)
-
-
-%extend StepAP203_HArray1OfWorkItem {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend StepAP203_HArray1OfWorkItem {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor StepAP203_PersonOrganizationItem;
 class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of PersonOrganizationItem select type 1 -> Change from StepAP203 2 -> StartWork from StepAP203 3 -> ChangeRequest from StepAP203 4 -> StartRequest from StepAP203 5 -> ConfigurationItem from StepRepr 6 -> Product from StepBasic 7 -> ProductDefinitionFormation from StepBasic 8 -> ProductDefinition from StepBasic 9 -> Contract from StepBasic 10 -> SecurityClassification from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") Change;
+		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_Change>
+") Change;
+		opencascade::handle<StepAP203_Change> Change ();
+		%feature("compactdefaultargs") ChangeRequest;
+		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_ChangeRequest>
+") ChangeRequest;
+		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest ();
+		%feature("compactdefaultargs") ConfigurationItem;
+		%feature("autodoc", "	* Returns Value as ConfigurationItem (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ConfigurationItem>
+") ConfigurationItem;
+		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem ();
+		%feature("compactdefaultargs") Contract;
+		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Contract>
+") Contract;
+		opencascade::handle<StepBasic_Contract> Contract ();
+		%feature("compactdefaultargs") Product;
+		%feature("autodoc", "	* Returns Value as Product (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_Product>
+") Product;
+		opencascade::handle<StepBasic_Product> Product ();
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
+		%feature("compactdefaultargs") SecurityClassification;
+		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_SecurityClassification>
+") SecurityClassification;
+		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification ();
+		%feature("compactdefaultargs") StartRequest;
+		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartRequest>
+") StartRequest;
+		opencascade::handle<StepAP203_StartRequest> StartRequest ();
+		%feature("compactdefaultargs") StartWork;
+		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
+
+	:rtype: opencascade::handle<StepAP203_StartWork>
+") StartWork;
+		opencascade::handle<StepAP203_StartWork> StartWork ();
 		%feature("compactdefaultargs") StepAP203_PersonOrganizationItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_PersonOrganizationItem;
 		 StepAP203_PersonOrganizationItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of PersonOrganizationItem select type 1 -> Change from StepAP203 2 -> StartWork from StepAP203 3 -> ChangeRequest from StepAP203 4 -> StartRequest from StepAP203 5 -> ConfigurationItem from StepRepr 6 -> Product from StepBasic 7 -> ProductDefinitionFormation from StepBasic 8 -> ProductDefinition from StepBasic 9 -> Contract from StepBasic 10 -> SecurityClassification from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") Change;
-		%feature("autodoc", "	* Returns Value as Change (or Null if another type)
-
-	:rtype: Handle_StepAP203_Change
-") Change;
-		Handle_StepAP203_Change Change ();
-		%feature("compactdefaultargs") StartWork;
-		%feature("autodoc", "	* Returns Value as StartWork (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartWork
-") StartWork;
-		Handle_StepAP203_StartWork StartWork ();
-		%feature("compactdefaultargs") ChangeRequest;
-		%feature("autodoc", "	* Returns Value as ChangeRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_ChangeRequest
-") ChangeRequest;
-		Handle_StepAP203_ChangeRequest ChangeRequest ();
-		%feature("compactdefaultargs") StartRequest;
-		%feature("autodoc", "	* Returns Value as StartRequest (or Null if another type)
-
-	:rtype: Handle_StepAP203_StartRequest
-") StartRequest;
-		Handle_StepAP203_StartRequest StartRequest ();
-		%feature("compactdefaultargs") ConfigurationItem;
-		%feature("autodoc", "	* Returns Value as ConfigurationItem (or Null if another type)
-
-	:rtype: Handle_StepRepr_ConfigurationItem
-") ConfigurationItem;
-		Handle_StepRepr_ConfigurationItem ConfigurationItem ();
-		%feature("compactdefaultargs") Product;
-		%feature("autodoc", "	* Returns Value as Product (or Null if another type)
-
-	:rtype: Handle_StepBasic_Product
-") Product;
-		Handle_StepBasic_Product Product ();
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") Contract;
-		%feature("autodoc", "	* Returns Value as Contract (or Null if another type)
-
-	:rtype: Handle_StepBasic_Contract
-") Contract;
-		Handle_StepBasic_Contract Contract ();
-		%feature("compactdefaultargs") SecurityClassification;
-		%feature("autodoc", "	* Returns Value as SecurityClassification (or Null if another type)
-
-	:rtype: Handle_StepBasic_SecurityClassification
-") SecurityClassification;
-		Handle_StepBasic_SecurityClassification SecurityClassification ();
 };
 
 
@@ -3189,32 +1214,32 @@ class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 %nodefaultctor StepAP203_SpecifiedItem;
 class StepAP203_SpecifiedItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of SpecifiedItem select type 1 -> ProductDefinition from StepBasic 2 -> ShapeAspect from StepRepr 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinition;
+		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinition>
+") ProductDefinition;
+		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition ();
+		%feature("compactdefaultargs") ShapeAspect;
+		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
+
+	:rtype: opencascade::handle<StepRepr_ShapeAspect>
+") ShapeAspect;
+		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect ();
 		%feature("compactdefaultargs") StepAP203_SpecifiedItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_SpecifiedItem;
 		 StepAP203_SpecifiedItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SpecifiedItem select type 1 -> ProductDefinition from StepBasic 2 -> ShapeAspect from StepRepr 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinition;
-		%feature("autodoc", "	* Returns Value as ProductDefinition (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinition
-") ProductDefinition;
-		Handle_StepBasic_ProductDefinition ProductDefinition ();
-		%feature("compactdefaultargs") ShapeAspect;
-		%feature("autodoc", "	* Returns Value as ShapeAspect (or Null if another type)
-
-	:rtype: Handle_StepRepr_ShapeAspect
-") ShapeAspect;
-		Handle_StepRepr_ShapeAspect ShapeAspect ();
 };
 
 
@@ -3226,36 +1251,36 @@ class StepAP203_SpecifiedItem : public StepData_SelectType {
 %nodefaultctor StepAP203_StartRequest;
 class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aActionRequestAssignment_AssignedActionRequest:
+	:type aActionRequestAssignment_AssignedActionRequest: opencascade::handle<StepBasic_VersionedActionRequest> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfStartRequestItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest,const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfStartRequestItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfStartRequestItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfStartRequestItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & Items);
 		%feature("compactdefaultargs") StepAP203_StartRequest;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_StartRequest;
 		 StepAP203_StartRequest ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aActionRequestAssignment_AssignedActionRequest:
-	:type aActionRequestAssignment_AssignedActionRequest: Handle_StepBasic_VersionedActionRequest &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfStartRequestItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_VersionedActionRequest & aActionRequestAssignment_AssignedActionRequest,const Handle_StepAP203_HArray1OfStartRequestItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfStartRequestItem
-") Items;
-		Handle_StepAP203_HArray1OfStartRequestItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfStartRequestItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfStartRequestItem & Items);
 };
 
 
@@ -3269,26 +1294,26 @@ class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 %nodefaultctor StepAP203_StartRequestItem;
 class StepAP203_StartRequestItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of StartRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepAP203_StartRequestItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_StartRequestItem;
 		 StepAP203_StartRequestItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of StartRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
 };
 
 
@@ -3300,36 +1325,36 @@ class StepAP203_StartRequestItem : public StepData_SelectType {
 %nodefaultctor StepAP203_StartWork;
 class StepAP203_StartWork : public StepBasic_ActionAssignment {
 	public:
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Initialize all fields (own and inherited)
+
+	:param aActionAssignment_AssignedAction:
+	:type aActionAssignment_AssignedAction: opencascade::handle<StepBasic_Action> &
+	:param aItems:
+	:type aItems: opencascade::handle<StepAP203_HArray1OfWorkItem> &
+	:rtype: None
+") Init;
+		void Init (const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction,const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "	* Returns field Items
+
+	:rtype: opencascade::handle<StepAP203_HArray1OfWorkItem>
+") Items;
+		opencascade::handle<StepAP203_HArray1OfWorkItem> Items ();
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "	* Set field Items
+
+	:param Items:
+	:type Items: opencascade::handle<StepAP203_HArray1OfWorkItem> &
+	:rtype: None
+") SetItems;
+		void SetItems (const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
 		%feature("compactdefaultargs") StepAP203_StartWork;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_StartWork;
 		 StepAP203_StartWork ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
-	:param aActionAssignment_AssignedAction:
-	:type aActionAssignment_AssignedAction: Handle_StepBasic_Action &
-	:param aItems:
-	:type aItems: Handle_StepAP203_HArray1OfWorkItem &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Action & aActionAssignment_AssignedAction,const Handle_StepAP203_HArray1OfWorkItem & aItems);
-		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns field Items
-
-	:rtype: Handle_StepAP203_HArray1OfWorkItem
-") Items;
-		Handle_StepAP203_HArray1OfWorkItem Items ();
-		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "	* Set field Items
-
-	:param Items:
-	:type Items: Handle_StepAP203_HArray1OfWorkItem &
-	:rtype: None
-") SetItems;
-		void SetItems (const Handle_StepAP203_HArray1OfWorkItem & Items);
 };
 
 
@@ -3343,26 +1368,26 @@ class StepAP203_StartWork : public StepBasic_ActionAssignment {
 %nodefaultctor StepAP203_WorkItem;
 class StepAP203_WorkItem : public StepData_SelectType {
 	public:
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "	* Recognizes a kind of WorkItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
+
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:rtype: int
+") CaseNum;
+		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+		%feature("compactdefaultargs") ProductDefinitionFormation;
+		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
+
+	:rtype: opencascade::handle<StepBasic_ProductDefinitionFormation>
+") ProductDefinitionFormation;
+		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation ();
 		%feature("compactdefaultargs") StepAP203_WorkItem;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") StepAP203_WorkItem;
 		 StepAP203_WorkItem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of WorkItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else
-
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:rtype: int
-") CaseNum;
-		Standard_Integer CaseNum (const Handle_Standard_Transient & ent);
-		%feature("compactdefaultargs") ProductDefinitionFormation;
-		%feature("autodoc", "	* Returns Value as ProductDefinitionFormation (or Null if another type)
-
-	:rtype: Handle_StepBasic_ProductDefinitionFormation
-") ProductDefinitionFormation;
-		Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation ();
 };
 
 
@@ -3371,3 +1396,126 @@ class StepAP203_WorkItem : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+%wrap_handle(StepAP203_HArray1OfSpecifiedItem)
+class StepAP203_HArray1OfSpecifiedItem : public  StepAP203_Array1OfSpecifiedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfSpecifiedItem::value_type& theValue);
+    StepAP203_HArray1OfSpecifiedItem(const  StepAP203_Array1OfSpecifiedItem& theOther);
+    const  StepAP203_Array1OfSpecifiedItem& Array1();
+     StepAP203_Array1OfSpecifiedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfSpecifiedItem)
+
+
+%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
+class StepAP203_HArray1OfPersonOrganizationItem : public  StepAP203_Array1OfPersonOrganizationItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfPersonOrganizationItem::value_type& theValue);
+    StepAP203_HArray1OfPersonOrganizationItem(const  StepAP203_Array1OfPersonOrganizationItem& theOther);
+    const  StepAP203_Array1OfPersonOrganizationItem& Array1();
+     StepAP203_Array1OfPersonOrganizationItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfPersonOrganizationItem)
+
+
+%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
+class StepAP203_HArray1OfChangeRequestItem : public  StepAP203_Array1OfChangeRequestItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfChangeRequestItem::value_type& theValue);
+    StepAP203_HArray1OfChangeRequestItem(const  StepAP203_Array1OfChangeRequestItem& theOther);
+    const  StepAP203_Array1OfChangeRequestItem& Array1();
+     StepAP203_Array1OfChangeRequestItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfChangeRequestItem)
+
+
+%wrap_handle(StepAP203_HArray1OfContractedItem)
+class StepAP203_HArray1OfContractedItem : public  StepAP203_Array1OfContractedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfContractedItem::value_type& theValue);
+    StepAP203_HArray1OfContractedItem(const  StepAP203_Array1OfContractedItem& theOther);
+    const  StepAP203_Array1OfContractedItem& Array1();
+     StepAP203_Array1OfContractedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfContractedItem)
+
+
+%wrap_handle(StepAP203_HArray1OfCertifiedItem)
+class StepAP203_HArray1OfCertifiedItem : public  StepAP203_Array1OfCertifiedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfCertifiedItem::value_type& theValue);
+    StepAP203_HArray1OfCertifiedItem(const  StepAP203_Array1OfCertifiedItem& theOther);
+    const  StepAP203_Array1OfCertifiedItem& Array1();
+     StepAP203_Array1OfCertifiedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfCertifiedItem)
+
+
+%wrap_handle(StepAP203_HArray1OfStartRequestItem)
+class StepAP203_HArray1OfStartRequestItem : public  StepAP203_Array1OfStartRequestItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfStartRequestItem::value_type& theValue);
+    StepAP203_HArray1OfStartRequestItem(const  StepAP203_Array1OfStartRequestItem& theOther);
+    const  StepAP203_Array1OfStartRequestItem& Array1();
+     StepAP203_Array1OfStartRequestItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfStartRequestItem)
+
+
+%wrap_handle(StepAP203_HArray1OfDateTimeItem)
+class StepAP203_HArray1OfDateTimeItem : public  StepAP203_Array1OfDateTimeItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfDateTimeItem::value_type& theValue);
+    StepAP203_HArray1OfDateTimeItem(const  StepAP203_Array1OfDateTimeItem& theOther);
+    const  StepAP203_Array1OfDateTimeItem& Array1();
+     StepAP203_Array1OfDateTimeItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfDateTimeItem)
+
+
+%wrap_handle(StepAP203_HArray1OfApprovedItem)
+class StepAP203_HArray1OfApprovedItem : public  StepAP203_Array1OfApprovedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfApprovedItem::value_type& theValue);
+    StepAP203_HArray1OfApprovedItem(const  StepAP203_Array1OfApprovedItem& theOther);
+    const  StepAP203_Array1OfApprovedItem& Array1();
+     StepAP203_Array1OfApprovedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfApprovedItem)
+
+
+%wrap_handle(StepAP203_HArray1OfWorkItem)
+class StepAP203_HArray1OfWorkItem : public  StepAP203_Array1OfWorkItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfWorkItem::value_type& theValue);
+    StepAP203_HArray1OfWorkItem(const  StepAP203_Array1OfWorkItem& theOther);
+    const  StepAP203_Array1OfWorkItem& Array1();
+     StepAP203_Array1OfWorkItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfWorkItem)
+
+
+%wrap_handle(StepAP203_HArray1OfClassifiedItem)
+class StepAP203_HArray1OfClassifiedItem : public  StepAP203_Array1OfClassifiedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP203_Array1OfClassifiedItem::value_type& theValue);
+    StepAP203_HArray1OfClassifiedItem(const  StepAP203_Array1OfClassifiedItem& theOther);
+    const  StepAP203_Array1OfClassifiedItem& Array1();
+     StepAP203_Array1OfClassifiedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfClassifiedItem)
+
+
+/* harray2 class */
+/* harray2 class */

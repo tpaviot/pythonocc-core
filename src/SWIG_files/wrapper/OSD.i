@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,23 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:07
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define OSDDOCSTRING
-"-History:
-Version  Date    Purpose
-1.1  24/06/92  Operating System Dependent tools
-1.2
-2.0
-3.0
-Windows NT 30/09/96 ( EUG )
-Set of Operating Sytem Dependent Tools
-(O)perating (S)ystem (D)ependent
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -47,11 +49,6 @@ Set of Operating Sytem Dependent Tools
 
 
 %include OSD_headers.i
-
-/* typedefs */
-typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
-typedef pthread_t OSD_PThread;
-/* end typedefs declaration */
 
 /* public enums */
 enum OSD_LockType {
@@ -102,8 +99,7 @@ enum OSD_WhoAmI {
 	OSD_WChronometer = 11,
 	OSD_WTimer = 12,
 	OSD_WPackage = 13,
-	OSD_WPrinter = 14,
-	OSD_WEnvironmentIterator = 15,
+	OSD_WEnvironmentIterator = 14,
 };
 
 enum OSD_SysType {
@@ -127,6 +123,13 @@ enum OSD_KindFile {
 	OSD_LINK = 2,
 	OSD_SOCKET = 3,
 	OSD_UNKNOWN = 4,
+};
+
+enum OSD_SignalMode {
+	OSD_SignalMode_AsIs = 0,
+	OSD_SignalMode_Set = 1,
+	OSD_SignalMode_SetUnhandled = 2,
+	OSD_SignalMode_Unset = 3,
 };
 
 enum OSD_FromWhere {
@@ -156,3 +159,14 @@ enum OSD_SingleProtection {
 
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
+typedef pthread_t OSD_PThread;
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

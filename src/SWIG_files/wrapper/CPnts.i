@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,20 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:10
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define CPNTSDOCSTRING
-"- Purpose :
-This package contains  the definition of the geometric
-algorithms  used to compute characteristic points  on
-parametrized curves in 3d or 2d space.
-This package defines the external geometric entities, with
-their requirements, used in the algorithms.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=CPNTSDOCSTRING) CPnts
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -45,104 +50,35 @@ their requirements, used in the algorithms.
 
 %include CPnts_headers.i
 
+/* public enums */
+/* end public enums declaration */
+
+/* templates */
+/* end templates declaration */
+
 /* typedefs */
 typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real , 	 	 	 	 	 const Standard_Address );
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
+/* handles */
+/* end handles declaration */
 
 class CPnts_AbscissaPoint {
 	public:
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C>.
+		%feature("compactdefaultargs") AdvPerform;
+		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with Tolerance = Resolution, then call AdvPermorm. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 
-	:param C:
-	:type C: Adaptor3d_Curve &
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor3d_Curve & C);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C>.
-
-	:param C:
-	:type C: Adaptor2d_Curve2d &
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor2d_Curve2d & C);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance.
-
-	:param C:
-	:type C: Adaptor3d_Curve &
-	:param Tol:
-	:type Tol: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real Tol);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance.
-
-	:param C:
-	:type C: Adaptor2d_Curve2d &
-	:param Tol:
-	:type Tol: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real Tol);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2>.
-
-	:param C:
-	:type C: Adaptor3d_Curve &
-	:param U1:
-	:type U1: float
-	:param U2:
-	:type U2: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2>.
-
-	:param C:
-	:type C: Adaptor2d_Curve2d &
-	:param U1:
-	:type U1: float
-	:param U2:
-	:type U2: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
-
-	:param C:
-	:type C: Adaptor3d_Curve &
-	:param U1:
-	:type U1: float
-	:param U2:
-	:type U2: float
-	:param Tol:
-	:type Tol: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance. creation of a indefinite AbscissaPoint.
-
-	:param C:
-	:type C: Adaptor2d_Curve2d &
-	:param U1:
-	:type U1: float
-	:param U2:
-	:type U2: float
-	:param Tol:
-	:type Tol: float
-	:rtype: float
-") Length;
-		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
+	:param Abscissa:
+	:type Abscissa: float
+	:param U0:
+	:type U0: float
+	:param Ui:
+	:type Ui: float
+	:param Resolution:
+	:type Resolution: float
+	:rtype: None
+") AdvPerform;
+		void AdvPerform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Resolution);
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "	:rtype: None
 ") CPnts_AbscissaPoint;
@@ -295,6 +231,106 @@ class CPnts_AbscissaPoint {
 	:rtype: None
 ") Init;
 		void Init (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* True if the computation was successful, False otherwise.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C>.
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor3d_Curve & C);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C>.
+
+	:param C:
+	:type C: Adaptor2d_Curve2d &
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor2d_Curve2d & C);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance.
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param Tol:
+	:type Tol: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real Tol);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance.
+
+	:param C:
+	:type C: Adaptor2d_Curve2d &
+	:param Tol:
+	:type Tol: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real Tol);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2>.
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2>.
+
+	:param C:
+	:type C: Adaptor2d_Curve2d &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
+
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param Tol:
+	:type Tol: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "	* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance. creation of a indefinite AbscissaPoint.
+
+	:param C:
+	:type C: Adaptor2d_Curve2d &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param Tol:
+	:type Tol: float
+	:rtype: float
+") Length;
+		static Standard_Real Length (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "	* Returns the parameter of the solution.
+
+	:rtype: float
+") Parameter;
+		Standard_Real Parameter ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured.
 
@@ -321,32 +357,6 @@ class CPnts_AbscissaPoint {
 	:rtype: None
 ") Perform;
 		void Perform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Resolution);
-		%feature("compactdefaultargs") AdvPerform;
-		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with Tolerance = Resolution, then call AdvPermorm. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
-
-	:param Abscissa:
-	:type Abscissa: float
-	:param U0:
-	:type U0: float
-	:param Ui:
-	:type Ui: float
-	:param Resolution:
-	:type Resolution: float
-	:rtype: None
-") AdvPerform;
-		void AdvPerform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Resolution);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* True if the computation was successful, False otherwise.
-
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter of the solution.
-
-	:rtype: float
-") Parameter;
-		Standard_Real Parameter ();
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "	* Enforce the solution, used by GCPnts.
 
@@ -403,6 +413,16 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 		%feature("autodoc", "	:rtype: None
 ") CPnts_MyRootFunction;
 		 CPnts_MyRootFunction ();
+		%feature("compactdefaultargs") Derivative;
+		%feature("autodoc", "	* This is F(X,D)
+
+	:param X:
+	:type X: float
+	:param Df:
+	:type Df: float &
+	:rtype: bool
+") Derivative;
+		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* F is a pointer on a function D is a client data Order is the order of integration to use
 
@@ -447,16 +467,6 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	* This is F(X,D)
-
-	:param X:
-	:type X: float
-	:param Df:
-	:type Df: float &
-	:rtype: bool
-") Derivative;
-		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	:param X:
 	:type X: float
@@ -618,30 +628,30 @@ class CPnts_UniformDeflection {
 	:rtype: bool
 ") IsAllDone;
 		Standard_Boolean IsAllDone ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* go to the next Point.
-
-	:rtype: None
-") Next;
-		void Next ();
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* returns True if it exists a next Point.
 
 	:rtype: bool
 ") More;
 		Standard_Boolean More ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* return the computed parameter
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	* go to the next Point.
 
-	:rtype: float
-") Value;
-		Standard_Real Value ();
+	:rtype: None
+") Next;
+		void Next ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* return the computed parameter
 
 	:rtype: gp_Pnt
 ") Point;
 		gp_Pnt Point ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* return the computed parameter
+
+	:rtype: float
+") Value;
+		Standard_Real Value ();
 };
 
 
@@ -650,3 +660,6 @@ class CPnts_UniformDeflection {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

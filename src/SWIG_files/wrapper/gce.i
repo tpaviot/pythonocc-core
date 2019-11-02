@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:16
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define GCEDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=GCEDOCSTRING) gce
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -38,9 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 %include gce_headers.i
-
-/* typedefs */
-/* end typedefs declaration */
 
 /* public enums */
 enum gce_ErrorType {
@@ -62,10 +70,28 @@ enum gce_ErrorType {
 
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor gce_MakeMirror;
 class gce_MakeMirror {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") Operator;
+		const gp_Trsf  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf
+") Value;
+		const gp_Trsf  Value ();
 		%feature("compactdefaultargs") gce_MakeMirror;
 		%feature("autodoc", "	:param Point:
 	:type Point: gp_Pnt
@@ -110,16 +136,6 @@ class gce_MakeMirror {
 	:rtype: None
 ") gce_MakeMirror;
 		 gce_MakeMirror (const gp_Ax2 & Plane);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Operator;
-		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf;
@@ -135,6 +151,16 @@ class gce_MakeMirror {
 %nodefaultctor gce_MakeMirror2d;
 class gce_MakeMirror2d {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf2d
+") Operator;
+		const gp_Trsf2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf2d
+") Value;
+		const gp_Trsf2d  Value ();
 		%feature("compactdefaultargs") gce_MakeMirror2d;
 		%feature("autodoc", "	:param Point:
 	:type Point: gp_Pnt2d
@@ -163,16 +189,6 @@ class gce_MakeMirror2d {
 	:rtype: None
 ") gce_MakeMirror2d;
 		 gce_MakeMirror2d (const gp_Pnt2d & Point,const gp_Dir2d & Direc);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf2d
-") Value;
-		const gp_Trsf2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf2d
-") Operator;
-		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf2d;
@@ -188,6 +204,16 @@ class gce_MakeMirror2d {
 %nodefaultctor gce_MakeRotation;
 class gce_MakeRotation {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") Operator;
+		const gp_Trsf  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf
+") Value;
+		const gp_Trsf  Value ();
 		%feature("compactdefaultargs") gce_MakeRotation;
 		%feature("autodoc", "	* Constructs a rotation through angle Angle about the axis defined by the line Line.
 
@@ -220,16 +246,6 @@ class gce_MakeRotation {
 	:rtype: None
 ") gce_MakeRotation;
 		 gce_MakeRotation (const gp_Pnt & Point,const gp_Dir & Direc,const Standard_Real Angle);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Operator;
-		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf;
@@ -245,6 +261,16 @@ class gce_MakeRotation {
 %nodefaultctor gce_MakeRotation2d;
 class gce_MakeRotation2d {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf2d
+") Operator;
+		const gp_Trsf2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf2d
+") Value;
+		const gp_Trsf2d  Value ();
 		%feature("compactdefaultargs") gce_MakeRotation2d;
 		%feature("autodoc", "	* Constructs a rotation through angle Angle about the center Point.
 
@@ -255,16 +281,6 @@ class gce_MakeRotation2d {
 	:rtype: None
 ") gce_MakeRotation2d;
 		 gce_MakeRotation2d (const gp_Pnt2d & Point,const Standard_Real Angle);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf2d
-") Value;
-		const gp_Trsf2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf2d
-") Operator;
-		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf2d;
@@ -280,6 +296,16 @@ class gce_MakeRotation2d {
 %nodefaultctor gce_MakeScale;
 class gce_MakeScale {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") Operator;
+		const gp_Trsf  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf
+") Value;
+		const gp_Trsf  Value ();
 		%feature("compactdefaultargs") gce_MakeScale;
 		%feature("autodoc", "	* Constructs a scaling transformation with - Point as the center of the transformation, and - Scale as the scale factor.
 
@@ -290,16 +316,6 @@ class gce_MakeScale {
 	:rtype: None
 ") gce_MakeScale;
 		 gce_MakeScale (const gp_Pnt & Point,const Standard_Real Scale);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Operator;
-		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf;
@@ -315,6 +331,16 @@ class gce_MakeScale {
 %nodefaultctor gce_MakeScale2d;
 class gce_MakeScale2d {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf2d
+") Operator;
+		const gp_Trsf2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf2d
+") Value;
+		const gp_Trsf2d  Value ();
 		%feature("compactdefaultargs") gce_MakeScale2d;
 		%feature("autodoc", "	* Constructs a scaling transformation with: - Point as the center of the transformation, and - Scale as the scale factor.
 
@@ -325,16 +351,6 @@ class gce_MakeScale2d {
 	:rtype: None
 ") gce_MakeScale2d;
 		 gce_MakeScale2d (const gp_Pnt2d & Point,const Standard_Real Scale);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf2d
-") Value;
-		const gp_Trsf2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf2d
-") Operator;
-		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf2d;
@@ -350,6 +366,16 @@ class gce_MakeScale2d {
 %nodefaultctor gce_MakeTranslation;
 class gce_MakeTranslation {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") Operator;
+		const gp_Trsf  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf
+") Value;
+		const gp_Trsf  Value ();
 		%feature("compactdefaultargs") gce_MakeTranslation;
 		%feature("autodoc", "	* Constructs a translation along the vector ' Vect'
 
@@ -368,16 +394,6 @@ class gce_MakeTranslation {
 	:rtype: None
 ") gce_MakeTranslation;
 		 gce_MakeTranslation (const gp_Pnt & Point1,const gp_Pnt & Point2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf
-") Value;
-		const gp_Trsf  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Operator;
-		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf;
@@ -393,6 +409,16 @@ class gce_MakeTranslation {
 %nodefaultctor gce_MakeTranslation2d;
 class gce_MakeTranslation2d {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Trsf2d
+") Operator;
+		const gp_Trsf2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed transformation.
+
+	:rtype: gp_Trsf2d
+") Value;
+		const gp_Trsf2d  Value ();
 		%feature("compactdefaultargs") gce_MakeTranslation2d;
 		%feature("autodoc", "	* Constructs a translation along the vector Vect.
 
@@ -411,16 +437,6 @@ class gce_MakeTranslation2d {
 	:rtype: None
 ") gce_MakeTranslation2d;
 		 gce_MakeTranslation2d (const gp_Pnt2d & Point1,const gp_Pnt2d & Point2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed transformation.
-
-	:rtype: gp_Trsf2d
-") Value;
-		const gp_Trsf2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Trsf2d
-") Operator;
-		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Trsf2d;
@@ -458,6 +474,16 @@ class gce_Root {
 %nodefaultctor gce_MakeCirc;
 class gce_MakeCirc : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Operator;
+		const gp_Circ  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
+
+	:rtype: gp_Circ
+") Value;
+		const gp_Circ  Value ();
 		%feature("compactdefaultargs") gce_MakeCirc;
 		%feature("autodoc", "	* A2 locates the circle and gives its orientation in 3D space. Warnings : It is not forbidden to create a circle with Radius = 0.0 The status is 'NegativeRadius' if Radius < 0.0
 
@@ -546,16 +572,6 @@ class gce_MakeCirc : public gce_Root {
 	:rtype: None
 ") gce_MakeCirc;
 		 gce_MakeCirc (const gp_Ax1 & Axis,const Standard_Real Radius);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
-
-	:rtype: gp_Circ
-") Value;
-		const gp_Circ  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Circ
-") Operator;
-		const gp_Circ  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Circ;
@@ -571,6 +587,16 @@ class gce_MakeCirc : public gce_Root {
 %nodefaultctor gce_MakeCirc2d;
 class gce_MakeCirc2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Circ2d
+") Operator;
+		const gp_Circ2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
+
+	:rtype: gp_Circ2d
+") Value;
+		const gp_Circ2d  Value ();
 		%feature("compactdefaultargs") gce_MakeCirc2d;
 		%feature("autodoc", "	* The location point of XAxis is the center of the circle. Warnings : It is not forbidden to create a circle with Radius = 0.0 If Sense is true the local coordinate system of the solution is direct and non direct in the other case. The status is 'NegativeRadius' if Radius < 0.0.
 
@@ -649,16 +675,6 @@ class gce_MakeCirc2d : public gce_Root {
 	:rtype: None
 ") gce_MakeCirc2d;
 		 gce_MakeCirc2d (const gp_Pnt2d & Center,const gp_Pnt2d & Point,const Standard_Boolean Sense = Standard_True);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
-
-	:rtype: gp_Circ2d
-") Value;
-		const gp_Circ2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Operator;
-		const gp_Circ2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Circ2d;
@@ -674,6 +690,16 @@ class gce_MakeCirc2d : public gce_Root {
 %nodefaultctor gce_MakeCone;
 class gce_MakeCone : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Cone
+") Operator;
+		const gp_Cone  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed cone. Exceptions StdFail_NotDone if no cone is constructed.
+
+	:rtype: gp_Cone
+") Value;
+		const gp_Cone  Value ();
 		%feature("compactdefaultargs") gce_MakeCone;
 		%feature("autodoc", "	* Creates an infinite conical surface. A2 locates the cone in the space and defines the reference plane of the surface. Ang is the conical surface semi-angle between 0 and PI/2 radians. Radius is the radius of the circle in the reference plane of the cone. If Radius is lower than 0.0 the status is ' If Ang < Resolution from gp or Ang >= (PI/2) - Resolution.
 
@@ -758,16 +784,6 @@ class gce_MakeCone : public gce_Root {
 	:rtype: None
 ") gce_MakeCone;
 		 gce_MakeCone (const gp_Pnt & P1,const gp_Pnt & P2,const Standard_Real R1,const Standard_Real R2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed cone. Exceptions StdFail_NotDone if no cone is constructed.
-
-	:rtype: gp_Cone
-") Value;
-		const gp_Cone  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Cone
-") Operator;
-		const gp_Cone  Operator ();
 		%feature("compactdefaultargs") operator gp_Cone;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Cone;
@@ -783,6 +799,16 @@ class gce_MakeCone : public gce_Root {
 %nodefaultctor gce_MakeCylinder;
 class gce_MakeCylinder : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Cylinder
+") Operator;
+		const gp_Cylinder  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed cylinder. Exceptions StdFail_NotDone if no cylinder is constructed.
+
+	:rtype: gp_Cylinder
+") Value;
+		const gp_Cylinder  Value ();
 		%feature("compactdefaultargs") gce_MakeCylinder;
 		%feature("autodoc", "	* <A2> is the local cartesian coordinate system of <self>. The status is 'NegativeRadius' if R < 0.0
 
@@ -843,16 +869,6 @@ class gce_MakeCylinder : public gce_Root {
 	:rtype: None
 ") gce_MakeCylinder;
 		 gce_MakeCylinder (const gp_Circ & Circ);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed cylinder. Exceptions StdFail_NotDone if no cylinder is constructed.
-
-	:rtype: gp_Cylinder
-") Value;
-		const gp_Cylinder  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Cylinder
-") Operator;
-		const gp_Cylinder  Operator ();
 		%feature("compactdefaultargs") operator gp_Cylinder;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Cylinder;
@@ -868,6 +884,16 @@ class gce_MakeCylinder : public gce_Root {
 %nodefaultctor gce_MakeDir;
 class gce_MakeDir : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Dir
+") Operator;
+		const gp_Dir  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed unit vector. Exceptions StdFail_NotDone if no unit vector is constructed.
+
+	:rtype: gp_Dir
+") Value;
+		const gp_Dir  Value ();
 		%feature("compactdefaultargs") gce_MakeDir;
 		%feature("autodoc", "	* Normalizes the vector V and creates a direction. Status is 'NullVector' if V.Magnitude() <= Resolution.
 
@@ -906,16 +932,6 @@ class gce_MakeDir : public gce_Root {
 	:rtype: None
 ") gce_MakeDir;
 		 gce_MakeDir (const gp_Pnt & P1,const gp_Pnt & P2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed unit vector. Exceptions StdFail_NotDone if no unit vector is constructed.
-
-	:rtype: gp_Dir
-") Value;
-		const gp_Dir  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Dir
-") Operator;
-		const gp_Dir  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Dir;
@@ -931,6 +947,16 @@ class gce_MakeDir : public gce_Root {
 %nodefaultctor gce_MakeDir2d;
 class gce_MakeDir2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Dir2d
+") Operator;
+		const gp_Dir2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed unit vector. Exceptions StdFail_NotDone if no unit vector is constructed.
+
+	:rtype: gp_Dir2d
+") Value;
+		const gp_Dir2d  Value ();
 		%feature("compactdefaultargs") gce_MakeDir2d;
 		%feature("autodoc", "	* Normalizes the vector V and creates a direction. Status is 'NullVector' if V.Magnitude() <= Resolution.
 
@@ -967,16 +993,6 @@ class gce_MakeDir2d : public gce_Root {
 	:rtype: None
 ") gce_MakeDir2d;
 		 gce_MakeDir2d (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed unit vector. Exceptions StdFail_NotDone if no unit vector is constructed.
-
-	:rtype: gp_Dir2d
-") Value;
-		const gp_Dir2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Dir2d
-") Operator;
-		const gp_Dir2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Dir2d;
@@ -992,6 +1008,16 @@ class gce_MakeDir2d : public gce_Root {
 %nodefaultctor gce_MakeElips;
 class gce_MakeElips : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Elips
+") Operator;
+		const gp_Elips  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
+
+	:rtype: gp_Elips
+") Value;
+		const gp_Elips  Value ();
 		%feature("compactdefaultargs") gce_MakeElips;
 		%feature("autodoc", "	* The major radius of the ellipse is on the 'XAxis' and the minor radius is on the 'YAxis' of the ellipse. The 'XAxis' is defined with the 'XDirection' of A2 and the 'YAxis' is defined with the 'YDirection' of A2. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius.
 
@@ -1016,16 +1042,6 @@ class gce_MakeElips : public gce_Root {
 	:rtype: None
 ") gce_MakeElips;
 		 gce_MakeElips (const gp_Pnt & S1,const gp_Pnt & S2,const gp_Pnt & Center);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
-
-	:rtype: gp_Elips
-") Value;
-		const gp_Elips  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Elips
-") Operator;
-		const gp_Elips  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Elips;
@@ -1041,6 +1057,16 @@ class gce_MakeElips : public gce_Root {
 %nodefaultctor gce_MakeElips2d;
 class gce_MakeElips2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Elips2d
+") Operator;
+		const gp_Elips2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
+
+	:rtype: gp_Elips2d
+") Value;
+		const gp_Elips2d  Value ();
 		%feature("compactdefaultargs") gce_MakeElips2d;
 		%feature("autodoc", "	* Creates an ellipse with the major axis, the major and the minor radius. The location of the MajorAxis is the center of the ellipse. The sense of parametrization is given by Sense. It is possible to create an ellipse with MajorRadius = MinorRadius. the status is 'InvertRadius' if MajorRadius < MinorRadius or 'NegativeRadius' if MinorRadius < 0.0
 
@@ -1079,16 +1105,6 @@ class gce_MakeElips2d : public gce_Root {
 	:rtype: None
 ") gce_MakeElips2d;
 		 gce_MakeElips2d (const gp_Pnt2d & S1,const gp_Pnt2d & S2,const gp_Pnt2d & Center);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
-
-	:rtype: gp_Elips2d
-") Value;
-		const gp_Elips2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Operator;
-		const gp_Elips2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Elips2d;
@@ -1104,6 +1120,16 @@ class gce_MakeElips2d : public gce_Root {
 %nodefaultctor gce_MakeHypr;
 class gce_MakeHypr : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Hypr
+") Operator;
+		const gp_Hypr  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed hyperbola. Exceptions StdFail_NotDone if no hyperbola is constructed.
+
+	:rtype: gp_Hypr
+") Value;
+		const gp_Hypr  Value ();
 		%feature("compactdefaultargs") gce_MakeHypr;
 		%feature("autodoc", "	* A2 is the local coordinate system of the hyperbola. In the local coordinates system A2 the equation of the hyperbola is : X*X / MajorRadius*MajorRadius - Y*Y / MinorRadius*MinorRadius = 1.0 It is not forbidden to create an Hyperbola with MajorRadius = MinorRadius. For the hyperbola the MajorRadius can be lower than the MinorRadius. The status is 'NegativeRadius' if MajorRadius < 0.0 and 'InvertRadius' if MinorRadius > MajorRadius.
 
@@ -1128,16 +1154,6 @@ class gce_MakeHypr : public gce_Root {
 	:rtype: None
 ") gce_MakeHypr;
 		 gce_MakeHypr (const gp_Pnt & S1,const gp_Pnt & S2,const gp_Pnt & Center);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed hyperbola. Exceptions StdFail_NotDone if no hyperbola is constructed.
-
-	:rtype: gp_Hypr
-") Value;
-		const gp_Hypr  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Hypr
-") Operator;
-		const gp_Hypr  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Hypr;
@@ -1153,6 +1169,16 @@ class gce_MakeHypr : public gce_Root {
 %nodefaultctor gce_MakeHypr2d;
 class gce_MakeHypr2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Hypr2d
+") Operator;
+		const gp_Hypr2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed hyperbola. Exceptions StdFail_NotDone if no hyperbola is constructed.
+
+	:rtype: gp_Hypr2d
+") Value;
+		const gp_Hypr2d  Value ();
 		%feature("compactdefaultargs") gce_MakeHypr2d;
 		%feature("autodoc", "	* Constructs a hyperbola centered on the point Center, where: - the major axis of the hyperbola is defined by Center and point S1, - the major radius is the distance between Center and S1, and - the minor radius is the distance between point S2 and the major axis.
 
@@ -1191,16 +1217,6 @@ class gce_MakeHypr2d : public gce_Root {
 	:rtype: None
 ") gce_MakeHypr2d;
 		 gce_MakeHypr2d (const gp_Ax22d & A,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed hyperbola. Exceptions StdFail_NotDone if no hyperbola is constructed.
-
-	:rtype: gp_Hypr2d
-") Value;
-		const gp_Hypr2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Operator;
-		const gp_Hypr2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Hypr2d;
@@ -1216,6 +1232,16 @@ class gce_MakeHypr2d : public gce_Root {
 %nodefaultctor gce_MakeLin;
 class gce_MakeLin : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Operator;
+		const gp_Lin  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed line. Exceptions StdFail_NotDone is raised if no line is constructed.
+
+	:rtype: gp_Lin
+") Value;
+		const gp_Lin  Value ();
 		%feature("compactdefaultargs") gce_MakeLin;
 		%feature("autodoc", "	* Creates a line located along the axis A1.
 
@@ -1254,16 +1280,6 @@ class gce_MakeLin : public gce_Root {
 	:rtype: None
 ") gce_MakeLin;
 		 gce_MakeLin (const gp_Pnt & P1,const gp_Pnt & P2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed line. Exceptions StdFail_NotDone is raised if no line is constructed.
-
-	:rtype: gp_Lin
-") Value;
-		const gp_Lin  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Lin
-") Operator;
-		const gp_Lin  Operator ();
 		%feature("compactdefaultargs") operator gp_Lin;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Lin;
@@ -1279,6 +1295,16 @@ class gce_MakeLin : public gce_Root {
 %nodefaultctor gce_MakeLin2d;
 class gce_MakeLin2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Lin2d
+") Operator;
+		gp_Lin2d Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed line. Exceptions StdFail_NotDone if no line is constructed.
+
+	:rtype: gp_Lin2d
+") Value;
+		gp_Lin2d Value ();
 		%feature("compactdefaultargs") gce_MakeLin2d;
 		%feature("autodoc", "	* Creates a line located with A.
 
@@ -1339,16 +1365,6 @@ class gce_MakeLin2d : public gce_Root {
 	:rtype: None
 ") gce_MakeLin2d;
 		 gce_MakeLin2d (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed line. Exceptions StdFail_NotDone if no line is constructed.
-
-	:rtype: gp_Lin2d
-") Value;
-		gp_Lin2d Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Operator;
-		gp_Lin2d Operator ();
 		%feature("compactdefaultargs") operator gp_Lin2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Lin2d;
@@ -1364,6 +1380,16 @@ class gce_MakeLin2d : public gce_Root {
 %nodefaultctor gce_MakeParab;
 class gce_MakeParab : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Parab
+") Operator;
+		const gp_Parab  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
+
+	:rtype: gp_Parab
+") Value;
+		const gp_Parab  Value ();
 		%feature("compactdefaultargs") gce_MakeParab;
 		%feature("autodoc", "	* --- Purpose ; Creates a parabola with its local coordinate system 'A2' and it's focal length 'Focal'. The XDirection of A2 defines the axis of symmetry of the parabola. The YDirection of A2 is parallel to the directrix of the parabola. The Location point of A2 is the vertex of the parabola The status is 'NullFocusLength' if Focal < 0.0
 
@@ -1384,16 +1410,6 @@ class gce_MakeParab : public gce_Root {
 	:rtype: None
 ") gce_MakeParab;
 		 gce_MakeParab (const gp_Ax1 & D,const gp_Pnt & F);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
-
-	:rtype: gp_Parab
-") Value;
-		const gp_Parab  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Parab
-") Operator;
-		const gp_Parab  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Parab;
@@ -1409,6 +1425,16 @@ class gce_MakeParab : public gce_Root {
 %nodefaultctor gce_MakeParab2d;
 class gce_MakeParab2d : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Parab2d
+") Operator;
+		const gp_Parab2d  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
+
+	:rtype: gp_Parab2d
+") Value;
+		const gp_Parab2d  Value ();
 		%feature("compactdefaultargs") gce_MakeParab2d;
 		%feature("autodoc", "	* Creates a parabola with its axis of symmetry ('MirrorAxis') and its focal length. Warnings : It is possible to have Focal = 0. The status is 'NullFocalLength' Raised if Focal < 0.0
 
@@ -1444,16 +1470,6 @@ class gce_MakeParab2d : public gce_Root {
 ") gce_MakeParab2d;
 		 gce_MakeParab2d (const gp_Ax2d & D,const gp_Pnt2d & F,const Standard_Boolean Sense = Standard_True);
 		%feature("compactdefaultargs") gce_MakeParab2d;
-		%feature("autodoc", "	* Creates a parabola with the local coordinate system and the focus point. The sense of parametrization is given by Sense.
-
-	:param D:
-	:type D: gp_Ax22d
-	:param F:
-	:type F: gp_Pnt2d
-	:rtype: None
-") gce_MakeParab2d;
-		 gce_MakeParab2d (const gp_Ax22d & D,const gp_Pnt2d & F);
-		%feature("compactdefaultargs") gce_MakeParab2d;
 		%feature("autodoc", "	* Make an Parab2d with S1 as the Focal point and Center as the apex of the parabola Warning The MakeParab2d class does not prevent the construction of a parabola with a null focal distance. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NullFocusLength if Focal is less than 0.0, or - gce_NullAxis if S1 and Center are coincident.
 
 	:param S1:
@@ -1465,16 +1481,6 @@ class gce_MakeParab2d : public gce_Root {
 	:rtype: None
 ") gce_MakeParab2d;
 		 gce_MakeParab2d (const gp_Pnt2d & S1,const gp_Pnt2d & Center,const Standard_Boolean Sense = Standard_True);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
-
-	:rtype: gp_Parab2d
-") Value;
-		const gp_Parab2d  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Operator;
-		const gp_Parab2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab2d;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Parab2d;
@@ -1490,6 +1496,16 @@ class gce_MakeParab2d : public gce_Root {
 %nodefaultctor gce_MakePln;
 class gce_MakePln : public gce_Root {
 	public:
+		%feature("compactdefaultargs") Operator;
+		%feature("autodoc", "	:rtype: gp_Pln
+") Operator;
+		const gp_Pln  Operator ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the constructed plane. Exceptions StdFail_NotDone if no plane is constructed.
+
+	:rtype: gp_Pln
+") Value;
+		const gp_Pln  Value ();
 		%feature("compactdefaultargs") gce_MakePln;
 		%feature("autodoc", "	* The coordinate system of the plane is defined with the axis placement A2. The 'Direction' of A2 defines the normal to the plane. The 'Location' of A2 defines the location (origin) of the plane. The 'XDirection' and 'YDirection' of A2 define the 'XAxis' and the 'YAxis' of the plane used to parametrize the plane.
 
@@ -1572,16 +1588,6 @@ class gce_MakePln : public gce_Root {
 	:rtype: None
 ") gce_MakePln;
 		 gce_MakePln (const gp_Ax1 & Axis);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the constructed plane. Exceptions StdFail_NotDone if no plane is constructed.
-
-	:rtype: gp_Pln
-") Value;
-		const gp_Pln  Value ();
-		%feature("compactdefaultargs") Operator;
-		%feature("autodoc", "	:rtype: gp_Pln
-") Operator;
-		const gp_Pln  Operator ();
 		%feature("compactdefaultargs") operator gp_Pln;
 		%feature("autodoc", "	:rtype: 
 ") operator gp_Pln;
@@ -1594,3 +1600,6 @@ class gce_MakePln : public gce_Root {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:37
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define CDMDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=CDMDOCSTRING) CDM
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -39,11 +50,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include CDM_headers.i
 
-/* typedefs */
-typedef CDM_Document * CDM_DocumentPointer;
-typedef TColStd_DataMapOfStringInteger CDM_NamesDirectory;
-/* end typedefs declaration */
-
 /* public enums */
 enum CDM_CanCloseStatus {
 	CDM_CCS_OK = 0,
@@ -55,54 +61,87 @@ enum CDM_CanCloseStatus {
 
 /* end public enums declaration */
 
+/* templates */
+%template(CDM_ListOfReferences) NCollection_List <opencascade::handle <CDM_Reference>>;
+%template(CDM_ListIteratorOfListOfReferences) NCollection_TListIterator<opencascade::handle<CDM_Reference>>;
+%template(CDM_ListOfDocument) NCollection_List <opencascade::handle <CDM_Document>>;
+%template(CDM_ListIteratorOfListOfDocument) NCollection_TListIterator<opencascade::handle<CDM_Document>>;
+%template(CDM_PresentationDirectory) NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_Document>, TCollection_ExtendedString>;
+%template(CDM_MetaDataLookUpTable) NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_MetaData>, TCollection_ExtendedString>;
+%template(CDM_MapOfDocument) NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher>;
+%template(CDM_DocumentHasher) NCollection_DefaultHasher <opencascade::handle <CDM_Document>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <opencascade::handle <CDM_Reference>> CDM_ListOfReferences;
+typedef NCollection_List <opencascade::handle <CDM_Reference>>::Iterator CDM_ListIteratorOfListOfReferences;
+typedef NCollection_List <opencascade::handle <CDM_Document>> CDM_ListOfDocument;
+typedef NCollection_List <opencascade::handle <CDM_Document>>::Iterator CDM_ListIteratorOfListOfDocument;
+typedef NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_Document>, TCollection_ExtendedString> CDM_PresentationDirectory;
+typedef NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_Document>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfPresentationDirectory;
+typedef TColStd_DataMapOfStringInteger CDM_NamesDirectory;
+typedef NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_MetaData>, TCollection_ExtendedString> CDM_MetaDataLookUpTable;
+typedef NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <CDM_MetaData>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfMetaDataLookUpTable;
+typedef NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher> CDM_MapOfDocument;
+typedef NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher>::Iterator CDM_MapIteratorOfMapOfDocument;
+typedef NCollection_DefaultHasher <opencascade::handle <CDM_Document>> CDM_DocumentHasher;
+typedef CDM_Document * CDM_DocumentPointer;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(CDM_Application)
-%wrap_handle(CDM_DataMapNodeOfMetaDataLookUpTable)
-%wrap_handle(CDM_DataMapNodeOfPresentationDirectory)
 %wrap_handle(CDM_Document)
-%wrap_handle(CDM_ListNodeOfListOfDocument)
-%wrap_handle(CDM_ListNodeOfListOfReferences)
-%wrap_handle(CDM_MessageDriver)
 %wrap_handle(CDM_MetaData)
 %wrap_handle(CDM_Reference)
-%wrap_handle(CDM_StdMapNodeOfMapOfDocument)
-%wrap_handle(CDM_COutMessageDriver)
-%wrap_handle(CDM_NullMessageDriver)
+/* end handles declaration */
 
 %nodefaultctor CDM_Application;
 class CDM_Application : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Resources;
-		%feature("autodoc", "	* the manager returned by this virtual method will be used to search for Format`.Retrieval resource items.
-
-	:rtype: Handle_Resource_Manager
-") Resources;
-		virtual Handle_Resource_Manager Resources ();
-		%feature("compactdefaultargs") MessageDriver;
-		%feature("autodoc", "	* By default returns a NullMessageDriver;
-
-	:rtype: Handle_CDM_MessageDriver
-") MessageDriver;
-		virtual Handle_CDM_MessageDriver MessageDriver ();
 		%feature("compactdefaultargs") BeginOfUpdate;
 		%feature("autodoc", "	* this method is called before the update of a document. By default, writes in MessageDriver().
 
 	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
+	:type aDocument: opencascade::handle<CDM_Document> &
 	:rtype: void
 ") BeginOfUpdate;
-		virtual void BeginOfUpdate (const Handle_CDM_Document & aDocument);
+		virtual void BeginOfUpdate (const opencascade::handle<CDM_Document> & aDocument);
 		%feature("compactdefaultargs") EndOfUpdate;
 		%feature("autodoc", "	* this method is called affter the update of a document. By default, writes in MessageDriver().
 
 	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
-	:param Status:
-	:type Status: bool
+	:type aDocument: opencascade::handle<CDM_Document> &
+	:param theStatus:
+	:type theStatus: bool
 	:param ErrorString:
 	:type ErrorString: TCollection_ExtendedString &
 	:rtype: void
 ") EndOfUpdate;
-		virtual void EndOfUpdate (const Handle_CDM_Document & aDocument,const Standard_Boolean Status,const TCollection_ExtendedString & ErrorString);
+		virtual void EndOfUpdate (const opencascade::handle<CDM_Document> & aDocument,const Standard_Boolean theStatus,const TCollection_ExtendedString & ErrorString);
+		%feature("compactdefaultargs") MessageDriver;
+		%feature("autodoc", "	* Returns default messenger;
+
+	:rtype: opencascade::handle<Message_Messenger>
+") MessageDriver;
+		virtual opencascade::handle<Message_Messenger> MessageDriver ();
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* Returns the application name.
+
+	:rtype: TCollection_ExtendedString
+") Name;
+		virtual TCollection_ExtendedString Name ();
+		%feature("compactdefaultargs") Resources;
+		%feature("autodoc", "	* The manager returned by this virtual method will be used to search for Format.Retrieval resource items.
+
+	:rtype: opencascade::handle<Resource_Manager>
+") Resources;
+		virtual opencascade::handle<Resource_Manager> Resources ();
+		%feature("compactdefaultargs") Version;
+		%feature("autodoc", "	* Returns the application version.
+
+	:rtype: TCollection_AsciiString
+") Version;
+		virtual TCollection_AsciiString Version ();
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* writes the string in the application MessagerDriver.
 
@@ -121,168 +160,138 @@ class CDM_Application : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor CDM_DataMapIteratorOfMetaDataLookUpTable;
-class CDM_DataMapIteratorOfMetaDataLookUpTable : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") CDM_DataMapIteratorOfMetaDataLookUpTable;
-		%feature("autodoc", "	:rtype: None
-") CDM_DataMapIteratorOfMetaDataLookUpTable;
-		 CDM_DataMapIteratorOfMetaDataLookUpTable ();
-		%feature("compactdefaultargs") CDM_DataMapIteratorOfMetaDataLookUpTable;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_MetaDataLookUpTable &
-	:rtype: None
-") CDM_DataMapIteratorOfMetaDataLookUpTable;
-		 CDM_DataMapIteratorOfMetaDataLookUpTable (const CDM_MetaDataLookUpTable & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_MetaDataLookUpTable &
-	:rtype: None
-") Initialize;
-		void Initialize (const CDM_MetaDataLookUpTable & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Key;
-		const TCollection_ExtendedString & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_MetaData
-") Value;
-		Handle_CDM_MetaData Value ();
-};
-
-
-%extend CDM_DataMapIteratorOfMetaDataLookUpTable {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_DataMapIteratorOfPresentationDirectory;
-class CDM_DataMapIteratorOfPresentationDirectory : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") CDM_DataMapIteratorOfPresentationDirectory;
-		%feature("autodoc", "	:rtype: None
-") CDM_DataMapIteratorOfPresentationDirectory;
-		 CDM_DataMapIteratorOfPresentationDirectory ();
-		%feature("compactdefaultargs") CDM_DataMapIteratorOfPresentationDirectory;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_PresentationDirectory &
-	:rtype: None
-") CDM_DataMapIteratorOfPresentationDirectory;
-		 CDM_DataMapIteratorOfPresentationDirectory (const CDM_PresentationDirectory & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_PresentationDirectory &
-	:rtype: None
-") Initialize;
-		void Initialize (const CDM_PresentationDirectory & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Key;
-		const TCollection_ExtendedString & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Value;
-		Handle_CDM_Document Value ();
-};
-
-
-%extend CDM_DataMapIteratorOfPresentationDirectory {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_DataMapNodeOfMetaDataLookUpTable;
-class CDM_DataMapNodeOfMetaDataLookUpTable : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") CDM_DataMapNodeOfMetaDataLookUpTable;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:param I:
-	:type I: Handle_CDM_MetaData &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") CDM_DataMapNodeOfMetaDataLookUpTable;
-		 CDM_DataMapNodeOfMetaDataLookUpTable (const TCollection_ExtendedString & K,const Handle_CDM_MetaData & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Key;
-		TCollection_ExtendedString & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_MetaData
-") Value;
-		Handle_CDM_MetaData Value ();
-};
-
-
-%make_alias(CDM_DataMapNodeOfMetaDataLookUpTable)
-
-%extend CDM_DataMapNodeOfMetaDataLookUpTable {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_DataMapNodeOfPresentationDirectory;
-class CDM_DataMapNodeOfPresentationDirectory : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") CDM_DataMapNodeOfPresentationDirectory;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:param I:
-	:type I: Handle_CDM_Document &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") CDM_DataMapNodeOfPresentationDirectory;
-		 CDM_DataMapNodeOfPresentationDirectory (const TCollection_ExtendedString & K,const Handle_CDM_Document & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Key;
-		TCollection_ExtendedString & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Value;
-		Handle_CDM_Document Value ();
-};
-
-
-%make_alias(CDM_DataMapNodeOfPresentationDirectory)
-
-%extend CDM_DataMapNodeOfPresentationDirectory {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor CDM_Document;
 %ignore CDM_Document::~CDM_Document();
 class CDM_Document : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* The Update method will be called once for each reference, but it should not perform any computation, to avoid multiple computation of a same document.
+		%feature("compactdefaultargs") AddComment;
+		%feature("autodoc", "	* appends a comment into comments of this document.
 
-	:param aToDocument:
-	:type aToDocument: Handle_CDM_Document &
+	:param aComment:
+	:type aComment: TCollection_ExtendedString &
+	:rtype: None
+") AddComment;
+		void AddComment (const TCollection_ExtendedString & aComment);
+		%feature("compactdefaultargs") Application;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_Application>
+") Application;
+		const opencascade::handle<CDM_Application> & Application ();
+		%feature("compactdefaultargs") CanClose;
+		%feature("autodoc", "	:rtype: CDM_CanCloseStatus
+") CanClose;
+		CDM_CanCloseStatus CanClose ();
+		%feature("compactdefaultargs") CanCloseReference;
+		%feature("autodoc", "	* A referenced document may indicate through this virtual method that it does not allow the closing of aDocument which it references through the reference aReferenceIdentifier. By default returns Standard_True;;
+
+	:param aDocument:
+	:type aDocument: opencascade::handle<CDM_Document> &
 	:param aReferenceIdentifier:
 	:type aReferenceIdentifier: int
-	:param aModifContext:
-	:type aModifContext: Standard_Address
-	:rtype: void
-") Update;
-		virtual void Update (const Handle_CDM_Document & aToDocument,const Standard_Integer aReferenceIdentifier,const Standard_Address aModifContext);
-		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString.
-
-	:param ErrorString:
-	:type ErrorString: TCollection_ExtendedString &
 	:rtype: bool
-") Update;
-		virtual Standard_Boolean Update (TCollection_ExtendedString & ErrorString);
-		%feature("compactdefaultargs") StorageFormat;
-		%feature("autodoc", "	* The Storage Format is the key which is used to determine in the application resources the storage driver plugin, the file extension and other data used to store the document.
+") CanCloseReference;
+		virtual Standard_Boolean CanCloseReference (const opencascade::handle<CDM_Document> & aDocument,const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") ChangeStorageFormatVersion;
+		%feature("autodoc", "	* Sets <theVersion> of the format to be used to store the document
+
+	:param theVersion:
+	:type theVersion: int
+	:rtype: None
+") ChangeStorageFormatVersion;
+		void ChangeStorageFormatVersion (const Standard_Integer theVersion);
+		%feature("compactdefaultargs") Close;
+		%feature("autodoc", "	:rtype: None
+") Close;
+		void Close ();
+		%feature("compactdefaultargs") CloseReference;
+		%feature("autodoc", "	* A referenced document may update its internal data structure when {aDocument} which it references through the reference {aReferenceIdentifier} is being closed. By default this method does nothing.
+
+	:param aDocument:
+	:type aDocument: opencascade::handle<CDM_Document> &
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: void
+") CloseReference;
+		virtual void CloseReference (const opencascade::handle<CDM_Document> & aDocument,const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") Comment;
+		%feature("autodoc", "	* returns the first of associated comments. By defaut the comment is an empty string.
+
+	:rtype: Standard_ExtString
+") Comment;
+		Standard_ExtString Comment ();
+		%feature("compactdefaultargs") Comments;
+		%feature("autodoc", "	* returns the associated comments through <aComments>. Returns empty sequence if no comments are associated.
+
+	:param aComments:
+	:type aComments: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") Comments;
+		void Comments (TColStd_SequenceOfExtendedString & aComments);
+		%feature("compactdefaultargs") CopyReference;
+		%feature("autodoc", "	* Copies a reference to this document. This method avoid retrieval of referenced document. The arguments are the original document and a valid reference identifier Returns the local identifier.
+
+	:param aFromDocument:
+	:type aFromDocument: opencascade::handle<CDM_Document> &
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: int
+") CopyReference;
+		Standard_Integer CopyReference (const opencascade::handle<CDM_Document> & aFromDocument,const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") CreateReference;
+		%feature("autodoc", "	* Creates a reference from this document to {anOtherDocument}. Returns a reference identifier. This reference identifier is unique in the document and will not be used for the next references, even after the storing of the document. If there is already a reference between the two documents, the reference is not created, but its reference identifier is returned.
+
+	:param anOtherDocument:
+	:type anOtherDocument: opencascade::handle<CDM_Document> &
+	:rtype: int
+") CreateReference;
+		Standard_Integer CreateReference (const opencascade::handle<CDM_Document> & anOtherDocument);
+		%feature("compactdefaultargs") CreateReference;
+		%feature("autodoc", "	:param aMetaData:
+	:type aMetaData: opencascade::handle<CDM_MetaData> &
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:param anApplication:
+	:type anApplication: opencascade::handle<CDM_Application> &
+	:param aToDocumentVersion:
+	:type aToDocumentVersion: int
+	:param UseStorageConfiguration:
+	:type UseStorageConfiguration: bool
+	:rtype: None
+") CreateReference;
+		void CreateReference (const opencascade::handle<CDM_MetaData> & aMetaData,const Standard_Integer aReferenceIdentifier,const opencascade::handle<CDM_Application> & anApplication,const Standard_Integer aToDocumentVersion,const Standard_Boolean UseStorageConfiguration);
+		%feature("compactdefaultargs") CreateReference;
+		%feature("autodoc", "	:param aMetaData:
+	:type aMetaData: opencascade::handle<CDM_MetaData> &
+	:param anApplication:
+	:type anApplication: opencascade::handle<CDM_Application> &
+	:param aDocumentVersion:
+	:type aDocumentVersion: int
+	:param UseStorageConfiguration:
+	:type UseStorageConfiguration: bool
+	:rtype: int
+") CreateReference;
+		Standard_Integer CreateReference (const opencascade::handle<CDM_MetaData> & aMetaData,const opencascade::handle<CDM_Application> & anApplication,const Standard_Integer aDocumentVersion,const Standard_Boolean UseStorageConfiguration);
+		%feature("compactdefaultargs") DeepReferences;
+		%feature("autodoc", "	* returns True is this document references aDocument;
+
+	:param aDocument:
+	:type aDocument: opencascade::handle<CDM_Document> &
+	:rtype: bool
+") DeepReferences;
+		Standard_Boolean DeepReferences (const opencascade::handle<CDM_Document> & aDocument);
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "	* gets the `FileFormat`.Description resource.
 
 	:rtype: TCollection_ExtendedString
-") StorageFormat;
-		virtual TCollection_ExtendedString StorageFormat ();
+") Description;
+		TCollection_ExtendedString Description ();
+		%feature("compactdefaultargs") Document;
+		%feature("autodoc", "	* Returns the To Document of the reference identified by aReferenceIdentifier. If the ToDocument is stored and has not yet been retrieved, this method will retrieve it.
+
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: opencascade::handle<CDM_Document>
+") Document;
+		opencascade::handle<CDM_Document> Document (const Standard_Integer aReferenceIdentifier);
 		%feature("compactdefaultargs") Extensions;
 		%feature("autodoc", "	* by default empties the extensions.
 
@@ -291,46 +300,64 @@ class CDM_Document : public Standard_Transient {
 	:rtype: void
 ") Extensions;
 		virtual void Extensions (TColStd_SequenceOfExtendedString & Extensions);
+		%feature("compactdefaultargs") FileExtension;
+		%feature("autodoc", "	* gets the Desktop.Domain.Application.`FileFormat`.FileExtension resource.
+
+	:rtype: TCollection_ExtendedString
+") FileExtension;
+		TCollection_ExtendedString FileExtension ();
+		%feature("compactdefaultargs") FindDescription;
+		%feature("autodoc", "	:rtype: bool
+") FindDescription;
+		Standard_Boolean FindDescription ();
+		%feature("compactdefaultargs") FindFileExtension;
+		%feature("autodoc", "	:rtype: bool
+") FindFileExtension;
+		Standard_Boolean FindFileExtension ();
+		%feature("compactdefaultargs") FindFromPresentation;
+		%feature("autodoc", "	* returns the document having the given alphanumeric presentation.
+
+	:param aPresentation:
+	:type aPresentation: TCollection_ExtendedString &
+	:rtype: opencascade::handle<CDM_Document>
+") FindFromPresentation;
+		static opencascade::handle<CDM_Document> FindFromPresentation (const TCollection_ExtendedString & aPresentation);
+		%feature("compactdefaultargs") FindPresentation;
+		%feature("autodoc", "	* indicates whether a document having the given presentation does exist.
+
+	:param aPresentation:
+	:type aPresentation: TCollection_ExtendedString &
+	:rtype: bool
+") FindPresentation;
+		static Standard_Boolean FindPresentation (const TCollection_ExtendedString & aPresentation);
+		%feature("compactdefaultargs") Folder;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Folder;
+		TCollection_ExtendedString Folder ();
+		%feature("compactdefaultargs") FromReferencesNumber;
+		%feature("autodoc", "	* returns the number of references having this document as To Document.
+
+	:rtype: int
+") FromReferencesNumber;
+		Standard_Integer FromReferencesNumber ();
 		%feature("compactdefaultargs") GetAlternativeDocument;
-		%feature("autodoc", "	* This method can be redefined to extract another document in a different format. For example, to extract a MDTV-Shape from an applicative document.
+		%feature("autodoc", "	* This method can be redefined to extract another document in a different format. For example, to extract a Shape from an applicative document.
 
 	:param aFormat:
 	:type aFormat: TCollection_ExtendedString &
 	:param anAlternativeDocument:
-	:type anAlternativeDocument: Handle_CDM_Document &
+	:type anAlternativeDocument: opencascade::handle<CDM_Document> &
 	:rtype: bool
 ") GetAlternativeDocument;
-		virtual Standard_Boolean GetAlternativeDocument (const TCollection_ExtendedString & aFormat,Handle_CDM_Document & anAlternativeDocument);
-		%feature("compactdefaultargs") CreateReference;
-		%feature("autodoc", "	* Creates a reference from this document to {anOtherDocument}. Returns a reference identifier. This reference identifier is unique in the document and will not be used for the next references, even after the storing of the document. If there is already a reference between the two documents, the reference is not created, but its reference identifier is returned.
-
-	:param anOtherDocument:
-	:type anOtherDocument: Handle_CDM_Document &
-	:rtype: int
-") CreateReference;
-		Standard_Integer CreateReference (const Handle_CDM_Document & anOtherDocument);
-		%feature("compactdefaultargs") RemoveReference;
-		%feature("autodoc", "	* Removes the reference between the From Document and the To Document identified by a reference identifier.
-
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: None
-") RemoveReference;
-		void RemoveReference (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") RemoveAllReferences;
-		%feature("autodoc", "	* Removes all references having this document for From Document.
-
-	:rtype: None
-") RemoveAllReferences;
-		void RemoveAllReferences ();
-		%feature("compactdefaultargs") Document;
-		%feature("autodoc", "	* Returns the To Document of the reference identified by aReferenceIdentifier. If the ToDocument is stored and has not yet been retrieved, this method will retrieve it.
-
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: Handle_CDM_Document
-") Document;
-		Handle_CDM_Document Document (const Standard_Integer aReferenceIdentifier);
+		virtual Standard_Boolean GetAlternativeDocument (const TCollection_ExtendedString & aFormat,opencascade::handle<CDM_Document> & anAlternativeDocument);
+		%feature("compactdefaultargs") HasRequestedFolder;
+		%feature("autodoc", "	:rtype: bool
+") HasRequestedFolder;
+		Standard_Boolean HasRequestedFolder ();
+		%feature("compactdefaultargs") HasRequestedPreviousVersion;
+		%feature("autodoc", "	:rtype: bool
+") HasRequestedPreviousVersion;
+		Standard_Boolean HasRequestedPreviousVersion ();
 		%feature("compactdefaultargs") IsInSession;
 		%feature("autodoc", "	* returns True if the To Document of the reference identified by aReferenceIdentifier is in session, False if it corresponds to a not yet retrieved document.
 
@@ -339,68 +366,24 @@ class CDM_Document : public Standard_Transient {
 	:rtype: bool
 ") IsInSession;
 		Standard_Boolean IsInSession (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") IsStored;
-		%feature("autodoc", "	* returns True if the To Document of the reference identified by aReferenceIdentifier has already been stored, False otherwise.
+		%feature("compactdefaultargs") IsModified;
+		%feature("autodoc", "	* returns true if the version is greater than the storage version
+
+	:rtype: bool
+") IsModified;
+		Standard_Boolean IsModified ();
+		%feature("compactdefaultargs") IsOpened;
+		%feature("autodoc", "	:rtype: bool
+") IsOpened;
+		Standard_Boolean IsOpened ();
+		%feature("compactdefaultargs") IsOpened;
+		%feature("autodoc", "	* returns true if the document corresponding to the given reference has been retrieved and opened. Otherwise returns false. This method does not retrieve the referenced document
 
 	:param aReferenceIdentifier:
 	:type aReferenceIdentifier: int
 	:rtype: bool
-") IsStored;
-		Standard_Boolean IsStored (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* returns the name of the metadata of the To Document of the reference identified by aReferenceIdentifier.
-
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: TCollection_ExtendedString
-") Name;
-		TCollection_ExtendedString Name (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") UpdateFromDocuments;
-		%feature("autodoc", "	* call virtual method Update on all referencing documents. This method keeps the list of the -- documents to process.It may be the starting of an update -- cycle. If not, the reentrant calls made by Update method (without argument) will append the referencing documents to the list and call the Update method (with arguments). Only the first call to UpdateFromDocuments generate call to Update().
-
-	:param aModifContext:
-	:type aModifContext: Standard_Address
-	:rtype: None
-") UpdateFromDocuments;
-		void UpdateFromDocuments (const Standard_Address aModifContext);
-		%feature("compactdefaultargs") ToReferencesNumber;
-		%feature("autodoc", "	* returns the number of references having this document as From Document.
-
-	:rtype: int
-") ToReferencesNumber;
-		Standard_Integer ToReferencesNumber ();
-		%feature("compactdefaultargs") FromReferencesNumber;
-		%feature("autodoc", "	* returns the number of references having this document as To Document.
-
-	:rtype: int
-") FromReferencesNumber;
-		Standard_Integer FromReferencesNumber ();
-		%feature("compactdefaultargs") ShallowReferences;
-		%feature("autodoc", "	* returns True is this document references aDocument;
-
-	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
-	:rtype: bool
-") ShallowReferences;
-		Standard_Boolean ShallowReferences (const Handle_CDM_Document & aDocument);
-		%feature("compactdefaultargs") DeepReferences;
-		%feature("autodoc", "	* returns True is this document references aDocument;
-
-	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
-	:rtype: bool
-") DeepReferences;
-		Standard_Boolean DeepReferences (const Handle_CDM_Document & aDocument);
-		%feature("compactdefaultargs") CopyReference;
-		%feature("autodoc", "	* Copies a reference to this document. This method avoid retrieval of referenced document. The arguments are the original document and a valid reference identifier Returns the local identifier.
-
-	:param aFromDocument:
-	:type aFromDocument: Handle_CDM_Document &
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: int
-") CopyReference;
-		Standard_Integer CopyReference (const Handle_CDM_Document & aFromDocument,const Standard_Integer aReferenceIdentifier);
+") IsOpened;
+		Standard_Boolean IsOpened (const Standard_Integer aReferenceIdentifier);
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "	* indicates that this document cannot be modified.
 
@@ -415,30 +398,18 @@ class CDM_Document : public Standard_Transient {
 	:rtype: bool
 ") IsReadOnly;
 		Standard_Boolean IsReadOnly (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") SetIsReadOnly;
-		%feature("autodoc", "	:rtype: None
-") SetIsReadOnly;
-		void SetIsReadOnly ();
-		%feature("compactdefaultargs") UnsetIsReadOnly;
-		%feature("autodoc", "	:rtype: None
-") UnsetIsReadOnly;
-		void UnsetIsReadOnly ();
-		%feature("compactdefaultargs") Modify;
-		%feature("autodoc", "	* Indicates that this document has been modified. This method increments the modification counter.
+		%feature("compactdefaultargs") IsStored;
+		%feature("autodoc", "	* returns True if the To Document of the reference identified by aReferenceIdentifier has already been stored, False otherwise.
 
-	:rtype: None
-") Modify;
-		void Modify ();
-		%feature("compactdefaultargs") Modifications;
-		%feature("autodoc", "	* returns the current modification counter.
-
-	:rtype: int
-") Modifications;
-		Standard_Integer Modifications ();
-		%feature("compactdefaultargs") UnModify;
-		%feature("autodoc", "	:rtype: None
-") UnModify;
-		void UnModify ();
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: bool
+") IsStored;
+		Standard_Boolean IsStored (const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") IsStored;
+		%feature("autodoc", "	:rtype: bool
+") IsStored;
+		Standard_Boolean IsStored ();
 		%feature("compactdefaultargs") IsUpToDate;
 		%feature("autodoc", "	* returns true if the modification counter found in the given reference is equal to the actual modification counter of the To Document. This method is able to deal with a reference to a not retrieved document.
 
@@ -447,234 +418,48 @@ class CDM_Document : public Standard_Transient {
 	:rtype: bool
 ") IsUpToDate;
 		Standard_Boolean IsUpToDate (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") SetIsUpToDate;
-		%feature("autodoc", "	* Resets the modification counter in the given reference to the actual modification counter of its To Document. This method should be called after the application has updated this document.
-
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: None
-") SetIsUpToDate;
-		void SetIsUpToDate (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") SetComment;
-		%feature("autodoc", "	* associates a comment with this document.
-
-	:param aComment:
-	:type aComment: TCollection_ExtendedString &
-	:rtype: None
-") SetComment;
-		void SetComment (const TCollection_ExtendedString & aComment);
-		%feature("compactdefaultargs") AddComment;
-		%feature("autodoc", "	* appends a comment into comments of this document.
-
-	:param aComment:
-	:type aComment: TCollection_ExtendedString &
-	:rtype: None
-") AddComment;
-		void AddComment (const TCollection_ExtendedString & aComment);
-		%feature("compactdefaultargs") SetComments;
-		%feature("autodoc", "	* associates a comments with this document.
-
-	:param aComments:
-	:type aComments: TColStd_SequenceOfExtendedString &
-	:rtype: None
-") SetComments;
-		void SetComments (const TColStd_SequenceOfExtendedString & aComments);
-		%feature("compactdefaultargs") Comments;
-		%feature("autodoc", "	* returns the associated comments through <aComments>. Returns empty sequence if no comments are associated.
-
-	:param aComments:
-	:type aComments: TColStd_SequenceOfExtendedString &
-	:rtype: None
-") Comments;
-		void Comments (TColStd_SequenceOfExtendedString & aComments);
-		%feature("compactdefaultargs") Comment;
-		%feature("autodoc", "	* returns the first of associated comments. By defaut the comment is an empty string.
-
-	:rtype: Standard_ExtString
-") Comment;
-		Standard_ExtString Comment ();
-		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "	* Returns an alphanumeric string identifying this document in a unique manner in the current process. The presentation may change when the document is stored. Tries to get the 'FileFormat`.Presentation resource This item is used to give a default presentation to the document.
-
-	:rtype: Standard_ExtString
-") Presentation;
-		Standard_ExtString Presentation ();
-		%feature("compactdefaultargs") FindFromPresentation;
-		%feature("autodoc", "	* returns the document having the given alphanumeric presentation.
-
-	:param aPresentation:
-	:type aPresentation: TCollection_ExtendedString &
-	:rtype: Handle_CDM_Document
-") FindFromPresentation;
-		static Handle_CDM_Document FindFromPresentation (const TCollection_ExtendedString & aPresentation);
-		%feature("compactdefaultargs") FindPresentation;
-		%feature("autodoc", "	* indicates whether a document having the given presentation does exist.
-
-	:param aPresentation:
-	:type aPresentation: TCollection_ExtendedString &
-	:rtype: bool
-") FindPresentation;
-		static Standard_Boolean FindPresentation (const TCollection_ExtendedString & aPresentation);
-		%feature("compactdefaultargs") IsStored;
-		%feature("autodoc", "	:rtype: bool
-") IsStored;
-		Standard_Boolean IsStored ();
-		%feature("compactdefaultargs") StorageVersion;
-		%feature("autodoc", "	* returns the value of the modification counter at the time of storage. By default returns 0.
-
-	:rtype: int
-") StorageVersion;
-		Standard_Integer StorageVersion ();
-		%feature("compactdefaultargs") SetMetaData;
-		%feature("autodoc", "	* associates database information to a document which has been stored. The name of the document is now the name which has beenused to store the data.
-
-	:param aMetaData:
-	:type aMetaData: Handle_CDM_MetaData &
-	:rtype: None
-") SetMetaData;
-		void SetMetaData (const Handle_CDM_MetaData & aMetaData);
-		%feature("compactdefaultargs") UnsetIsStored;
-		%feature("autodoc", "	:rtype: None
-") UnsetIsStored;
-		void UnsetIsStored ();
-		%feature("compactdefaultargs") MetaData;
-		%feature("autodoc", "	:rtype: Handle_CDM_MetaData
-") MetaData;
-		Handle_CDM_MetaData MetaData ();
-		%feature("compactdefaultargs") Folder;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Folder;
-		TCollection_ExtendedString Folder ();
-		%feature("compactdefaultargs") SetRequestedFolder;
-		%feature("autodoc", "	* defines the folder in which the object should be stored.
-
-	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
-	:rtype: None
-") SetRequestedFolder;
-		void SetRequestedFolder (const TCollection_ExtendedString & aFolder);
-		%feature("compactdefaultargs") RequestedFolder;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") RequestedFolder;
-		TCollection_ExtendedString RequestedFolder ();
-		%feature("compactdefaultargs") HasRequestedFolder;
-		%feature("autodoc", "	:rtype: bool
-") HasRequestedFolder;
-		Standard_Boolean HasRequestedFolder ();
-		%feature("compactdefaultargs") SetRequestedName;
-		%feature("autodoc", "	* defines the name under which the object should be stored.
-
-	:param aName:
-	:type aName: TCollection_ExtendedString &
-	:rtype: None
-") SetRequestedName;
-		void SetRequestedName (const TCollection_ExtendedString & aName);
-		%feature("compactdefaultargs") RequestedName;
-		%feature("autodoc", "	* determines under which the document is going to be store. By default the name of the document wil be -- used. If the document has no name its presentation will be used.
-
-	:rtype: TCollection_ExtendedString
-") RequestedName;
-		TCollection_ExtendedString RequestedName ();
-		%feature("compactdefaultargs") SetRequestedPreviousVersion;
-		%feature("autodoc", "	:param aPreviousVersion:
-	:type aPreviousVersion: TCollection_ExtendedString &
-	:rtype: None
-") SetRequestedPreviousVersion;
-		void SetRequestedPreviousVersion (const TCollection_ExtendedString & aPreviousVersion);
-		%feature("compactdefaultargs") UnsetRequestedPreviousVersion;
-		%feature("autodoc", "	:rtype: None
-") UnsetRequestedPreviousVersion;
-		void UnsetRequestedPreviousVersion ();
-		%feature("compactdefaultargs") HasRequestedPreviousVersion;
-		%feature("autodoc", "	:rtype: bool
-") HasRequestedPreviousVersion;
-		Standard_Boolean HasRequestedPreviousVersion ();
-		%feature("compactdefaultargs") RequestedPreviousVersion;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") RequestedPreviousVersion;
-		TCollection_ExtendedString RequestedPreviousVersion ();
-		%feature("compactdefaultargs") SetRequestedComment;
-		%feature("autodoc", "	* defines the Comment with which the object should be stored.
-
-	:param aComment:
-	:type aComment: TCollection_ExtendedString &
-	:rtype: None
-") SetRequestedComment;
-		void SetRequestedComment (const TCollection_ExtendedString & aComment);
-		%feature("compactdefaultargs") RequestedComment;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") RequestedComment;
-		TCollection_ExtendedString RequestedComment ();
 		%feature("compactdefaultargs") LoadResources;
 		%feature("autodoc", "	* read (or rereads) the following resource.
 
 	:rtype: None
 ") LoadResources;
 		void LoadResources ();
-		%feature("compactdefaultargs") FindFileExtension;
-		%feature("autodoc", "	:rtype: bool
-") FindFileExtension;
-		Standard_Boolean FindFileExtension ();
-		%feature("compactdefaultargs") FileExtension;
-		%feature("autodoc", "	* gets the Desktop.Domain.Application.`FileFormat`.FileExtension resource.
+		%feature("compactdefaultargs") MetaData;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_MetaData>
+") MetaData;
+		opencascade::handle<CDM_MetaData> MetaData ();
+		%feature("compactdefaultargs") Modifications;
+		%feature("autodoc", "	* returns the current modification counter.
 
+	:rtype: int
+") Modifications;
+		Standard_Integer Modifications ();
+		%feature("compactdefaultargs") Modify;
+		%feature("autodoc", "	* Indicates that this document has been modified. This method increments the modification counter.
+
+	:rtype: None
+") Modify;
+		void Modify ();
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	* returns the name of the metadata of the To Document of the reference identified by aReferenceIdentifier.
+
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
 	:rtype: TCollection_ExtendedString
-") FileExtension;
-		TCollection_ExtendedString FileExtension ();
-		%feature("compactdefaultargs") FindDataType;
-		%feature("autodoc", "	:rtype: bool
-") FindDataType;
-		Standard_Boolean FindDataType ();
-		%feature("compactdefaultargs") DataType;
-		%feature("autodoc", "	* this datatype will be used if the DBMS deals with this concept gets the `FileFormat`.DataType resource. concept.
+") Name;
+		TCollection_ExtendedString Name (const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") Open;
+		%feature("autodoc", "	:param anApplication:
+	:type anApplication: opencascade::handle<CDM_Application> &
+	:rtype: None
+") Open;
+		void Open (const opencascade::handle<CDM_Application> & anApplication);
+		%feature("compactdefaultargs") Presentation;
+		%feature("autodoc", "	* Returns an alphanumeric string identifying this document in a unique manner in the current process. The presentation may change when the document is stored. Tries to get the 'FileFormat`.Presentation resource This item is used to give a default presentation to the document.
 
-	:rtype: TCollection_ExtendedString
-") DataType;
-		TCollection_ExtendedString DataType ();
-		%feature("compactdefaultargs") FindVersionDataType;
-		%feature("autodoc", "	:rtype: bool
-") FindVersionDataType;
-		Standard_Boolean FindVersionDataType ();
-		%feature("compactdefaultargs") VersionDataType;
-		%feature("autodoc", "	* this datatype will be used if the DBMS deals with this concept gets the `FileFormat`.VersionDataType resource.
-
-	:rtype: TCollection_ExtendedString
-") VersionDataType;
-		TCollection_ExtendedString VersionDataType ();
-		%feature("compactdefaultargs") FindDescription;
-		%feature("autodoc", "	:rtype: bool
-") FindDescription;
-		Standard_Boolean FindDescription ();
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* gets the `FileFormat`.Description resource.
-
-	:rtype: TCollection_ExtendedString
-") Description;
-		TCollection_ExtendedString Description ();
-		%feature("compactdefaultargs") FindDomain;
-		%feature("autodoc", "	:rtype: bool
-") FindDomain;
-		Standard_Boolean FindDomain ();
-		%feature("compactdefaultargs") Domain;
-		%feature("autodoc", "	* gets the `FileFormat`.Domain resource.
-
-	:rtype: TCollection_ExtendedString
-") Domain;
-		TCollection_ExtendedString Domain ();
-		%feature("compactdefaultargs") FindStoragePlugin;
-		%feature("autodoc", "	:rtype: bool
-") FindStoragePlugin;
-		Standard_Boolean FindStoragePlugin ();
-		%feature("compactdefaultargs") StoragePlugin;
-		%feature("autodoc", "	:rtype: Standard_GUID
-") StoragePlugin;
-		Standard_GUID StoragePlugin ();
-		%feature("compactdefaultargs") IsModified;
-		%feature("autodoc", "	* returns true if the version is greater than the storage version
-
-	:rtype: bool
-") IsModified;
-		Standard_Boolean IsModified ();
+	:rtype: Standard_ExtString
+") Presentation;
+		Standard_ExtString Presentation ();
 
         %feature("autodoc", "1");
         %extend{
@@ -683,92 +468,208 @@ class CDM_Document : public Standard_Transient {
             self->Print(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") IsOpened;
-		%feature("autodoc", "	:rtype: bool
-") IsOpened;
-		Standard_Boolean IsOpened ();
-		%feature("compactdefaultargs") Open;
-		%feature("autodoc", "	:param anApplication:
-	:type anApplication: Handle_CDM_Application &
-	:rtype: None
-") Open;
-		void Open (const Handle_CDM_Application & anApplication);
-		%feature("compactdefaultargs") CanClose;
-		%feature("autodoc", "	:rtype: CDM_CanCloseStatus
-") CanClose;
-		CDM_CanCloseStatus CanClose ();
-		%feature("compactdefaultargs") Close;
-		%feature("autodoc", "	:rtype: None
-") Close;
-		void Close ();
-		%feature("compactdefaultargs") Application;
-		%feature("autodoc", "	:rtype: Handle_CDM_Application
-") Application;
-		Handle_CDM_Application Application ();
-		%feature("compactdefaultargs") CanCloseReference;
-		%feature("autodoc", "	* A referenced document may indicate through this virtual method that it does not allow the closing of aDocument which it references through the reference aReferenceIdentifier. By default returns Standard_True;;
-
-	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
-	:param aReferenceIdentifier:
+        		%feature("compactdefaultargs") Reference;
+		%feature("autodoc", "	:param aReferenceIdentifier:
 	:type aReferenceIdentifier: int
-	:rtype: bool
-") CanCloseReference;
-		virtual Standard_Boolean CanCloseReference (const Handle_CDM_Document & aDocument,const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") CloseReference;
-		%feature("autodoc", "	* A referenced document may update its internal data structure when {aDocument} which it references through the reference {aReferenceIdentifier} is being closed. By default this method does nothing.
-
-	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: void
-") CloseReference;
-		virtual void CloseReference (const Handle_CDM_Document & aDocument,const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") IsOpened;
-		%feature("autodoc", "	* returns true if the document corresponding to the given reference has been retrieved and opened. Otherwise returns false. This method does not retrieve the referenced document
-
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:rtype: bool
-") IsOpened;
-		Standard_Boolean IsOpened (const Standard_Integer aReferenceIdentifier);
-		%feature("compactdefaultargs") CreateReference;
-		%feature("autodoc", "	:param aMetaData:
-	:type aMetaData: Handle_CDM_MetaData &
-	:param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:param anApplication:
-	:type anApplication: Handle_CDM_Application &
-	:param aToDocumentVersion:
-	:type aToDocumentVersion: int
-	:param UseStorageConfiguration:
-	:type UseStorageConfiguration: bool
-	:rtype: None
-") CreateReference;
-		void CreateReference (const Handle_CDM_MetaData & aMetaData,const Standard_Integer aReferenceIdentifier,const Handle_CDM_Application & anApplication,const Standard_Integer aToDocumentVersion,const Standard_Boolean UseStorageConfiguration);
-		%feature("compactdefaultargs") CreateReference;
-		%feature("autodoc", "	:param aMetaData:
-	:type aMetaData: Handle_CDM_MetaData &
-	:param anApplication:
-	:type anApplication: Handle_CDM_Application &
-	:param aDocumentVersion:
-	:type aDocumentVersion: int
-	:param UseStorageConfiguration:
-	:type UseStorageConfiguration: bool
-	:rtype: int
-") CreateReference;
-		Standard_Integer CreateReference (const Handle_CDM_MetaData & aMetaData,const Handle_CDM_Application & anApplication,const Standard_Integer aDocumentVersion,const Standard_Boolean UseStorageConfiguration);
+	:rtype: opencascade::handle<CDM_Reference>
+") Reference;
+		opencascade::handle<CDM_Reference> Reference (const Standard_Integer aReferenceIdentifier);
 		%feature("compactdefaultargs") ReferenceCounter;
 		%feature("autodoc", "	:rtype: int
 ") ReferenceCounter;
 		Standard_Integer ReferenceCounter ();
+		%feature("compactdefaultargs") RemoveAllReferences;
+		%feature("autodoc", "	* Removes all references having this document for From Document.
+
+	:rtype: None
+") RemoveAllReferences;
+		void RemoveAllReferences ();
+		%feature("compactdefaultargs") RemoveReference;
+		%feature("autodoc", "	* Removes the reference between the From Document and the To Document identified by a reference identifier.
+
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: None
+") RemoveReference;
+		void RemoveReference (const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") RequestedComment;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") RequestedComment;
+		TCollection_ExtendedString RequestedComment ();
+		%feature("compactdefaultargs") RequestedFolder;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") RequestedFolder;
+		TCollection_ExtendedString RequestedFolder ();
+		%feature("compactdefaultargs") RequestedName;
+		%feature("autodoc", "	* determines under which the document is going to be store. By default the name of the document wil be -- used. If the document has no name its presentation will be used.
+
+	:rtype: TCollection_ExtendedString
+") RequestedName;
+		TCollection_ExtendedString RequestedName ();
+		%feature("compactdefaultargs") RequestedPreviousVersion;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") RequestedPreviousVersion;
+		TCollection_ExtendedString RequestedPreviousVersion ();
+		%feature("compactdefaultargs") SetComment;
+		%feature("autodoc", "	* associates a comment with this document.
+
+	:param aComment:
+	:type aComment: TCollection_ExtendedString &
+	:rtype: None
+") SetComment;
+		void SetComment (const TCollection_ExtendedString & aComment);
+		%feature("compactdefaultargs") SetComments;
+		%feature("autodoc", "	* associates a comments with this document.
+
+	:param aComments:
+	:type aComments: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") SetComments;
+		void SetComments (const TColStd_SequenceOfExtendedString & aComments);
+		%feature("compactdefaultargs") SetIsReadOnly;
+		%feature("autodoc", "	:rtype: None
+") SetIsReadOnly;
+		void SetIsReadOnly ();
+		%feature("compactdefaultargs") SetIsUpToDate;
+		%feature("autodoc", "	* Resets the modification counter in the given reference to the actual modification counter of its To Document. This method should be called after the application has updated this document.
+
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:rtype: None
+") SetIsUpToDate;
+		void SetIsUpToDate (const Standard_Integer aReferenceIdentifier);
+		%feature("compactdefaultargs") SetMetaData;
+		%feature("autodoc", "	* associates database information to a document which has been stored. The name of the document is now the name which has beenused to store the data.
+
+	:param aMetaData:
+	:type aMetaData: opencascade::handle<CDM_MetaData> &
+	:rtype: None
+") SetMetaData;
+		void SetMetaData (const opencascade::handle<CDM_MetaData> & aMetaData);
+		%feature("compactdefaultargs") SetModifications;
+		%feature("autodoc", "	:param Modifications:
+	:type Modifications: int
+	:rtype: None
+") SetModifications;
+		void SetModifications (const Standard_Integer Modifications);
+		%feature("compactdefaultargs") SetReferenceCounter;
+		%feature("autodoc", "	:param aReferenceCounter:
+	:type aReferenceCounter: int
+	:rtype: None
+") SetReferenceCounter;
+		void SetReferenceCounter (const Standard_Integer aReferenceCounter);
+		%feature("compactdefaultargs") SetRequestedComment;
+		%feature("autodoc", "	* defines the Comment with which the object should be stored.
+
+	:param aComment:
+	:type aComment: TCollection_ExtendedString &
+	:rtype: None
+") SetRequestedComment;
+		void SetRequestedComment (const TCollection_ExtendedString & aComment);
+		%feature("compactdefaultargs") SetRequestedFolder;
+		%feature("autodoc", "	* defines the folder in which the object should be stored.
+
+	:param aFolder:
+	:type aFolder: TCollection_ExtendedString &
+	:rtype: None
+") SetRequestedFolder;
+		void SetRequestedFolder (const TCollection_ExtendedString & aFolder);
+		%feature("compactdefaultargs") SetRequestedName;
+		%feature("autodoc", "	* defines the name under which the object should be stored.
+
+	:param aName:
+	:type aName: TCollection_ExtendedString &
+	:rtype: None
+") SetRequestedName;
+		void SetRequestedName (const TCollection_ExtendedString & aName);
+		%feature("compactdefaultargs") SetRequestedPreviousVersion;
+		%feature("autodoc", "	:param aPreviousVersion:
+	:type aPreviousVersion: TCollection_ExtendedString &
+	:rtype: None
+") SetRequestedPreviousVersion;
+		void SetRequestedPreviousVersion (const TCollection_ExtendedString & aPreviousVersion);
+		%feature("compactdefaultargs") ShallowReferences;
+		%feature("autodoc", "	* returns True is this document references aDocument;
+
+	:param aDocument:
+	:type aDocument: opencascade::handle<CDM_Document> &
+	:rtype: bool
+") ShallowReferences;
+		Standard_Boolean ShallowReferences (const opencascade::handle<CDM_Document> & aDocument);
+		%feature("compactdefaultargs") StorageFormat;
+		%feature("autodoc", "	* The Storage Format is the key which is used to determine in the application resources the storage driver plugin, the file extension and other data used to store the document.
+
+	:rtype: TCollection_ExtendedString
+") StorageFormat;
+		virtual TCollection_ExtendedString StorageFormat ();
+		%feature("compactdefaultargs") StorageFormatVersion;
+		%feature("autodoc", "	* Returns version of the format to be used to store the document
+
+	:rtype: int
+") StorageFormatVersion;
+		Standard_Integer StorageFormatVersion ();
+		%feature("compactdefaultargs") StorageVersion;
+		%feature("autodoc", "	* returns the value of the modification counter at the time of storage. By default returns 0.
+
+	:rtype: int
+") StorageVersion;
+		Standard_Integer StorageVersion ();
+		%feature("compactdefaultargs") ToReferencesNumber;
+		%feature("autodoc", "	* returns the number of references having this document as From Document.
+
+	:rtype: int
+") ToReferencesNumber;
+		Standard_Integer ToReferencesNumber ();
+		%feature("compactdefaultargs") UnModify;
+		%feature("autodoc", "	:rtype: None
+") UnModify;
+		void UnModify ();
+		%feature("compactdefaultargs") UnsetIsReadOnly;
+		%feature("autodoc", "	:rtype: None
+") UnsetIsReadOnly;
+		void UnsetIsReadOnly ();
+		%feature("compactdefaultargs") UnsetIsStored;
+		%feature("autodoc", "	:rtype: None
+") UnsetIsStored;
+		void UnsetIsStored ();
+		%feature("compactdefaultargs") UnsetRequestedPreviousVersion;
+		%feature("autodoc", "	:rtype: None
+") UnsetRequestedPreviousVersion;
+		void UnsetRequestedPreviousVersion ();
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "	* The Update method will be called once for each reference, but it should not perform any computation, to avoid multiple computation of a same document.
+
+	:param aToDocument:
+	:type aToDocument: opencascade::handle<CDM_Document> &
+	:param aReferenceIdentifier:
+	:type aReferenceIdentifier: int
+	:param aModifContext:
+	:type aModifContext: Standard_Address
+	:rtype: void
+") Update;
+		virtual void Update (const opencascade::handle<CDM_Document> & aToDocument,const Standard_Integer aReferenceIdentifier,const Standard_Address aModifContext);
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "	* This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString.
+
+	:param ErrorString:
+	:type ErrorString: TCollection_ExtendedString &
+	:rtype: bool
+") Update;
+		virtual Standard_Boolean Update (TCollection_ExtendedString & ErrorString);
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "	* the following method should be used instead: //! Update(me:mutable; ErrorString: out ExtendedString from TCollection) returns Boolean from Standard
 
 	:rtype: void
 ") Update;
 		virtual void Update ();
+		%feature("compactdefaultargs") UpdateFromDocuments;
+		%feature("autodoc", "	* call virtual method Update on all referencing documents. This method keeps the list of the -- documents to process.It may be the starting of an update -- cycle. If not, the reentrant calls made by Update method (without argument) will append the referencing documents to the list and call the Update method (with arguments). Only the first call to UpdateFromDocuments generate call to Update().
+
+	:param aModifContext:
+	:type aModifContext: Standard_Address
+	:rtype: None
+") UpdateFromDocuments;
+		void UpdateFromDocuments (const Standard_Address aModifContext);
 };
 
 
@@ -779,546 +680,37 @@ class CDM_Document : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-class CDM_DocumentHasher {
-	public:
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_CDM_Document &
-	:param Upper:
-	:type Upper: int
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const Handle_CDM_Document & K,const Standard_Integer Upper);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param K1:
-	:type K1: Handle_CDM_Document &
-	:param K2:
-	:type K2: Handle_CDM_Document &
-	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const Handle_CDM_Document & K1,const Handle_CDM_Document & K2);
-};
-
-
-%extend CDM_DocumentHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListIteratorOfListOfDocument;
-class CDM_ListIteratorOfListOfDocument {
-	public:
-		%feature("compactdefaultargs") CDM_ListIteratorOfListOfDocument;
-		%feature("autodoc", "	:rtype: None
-") CDM_ListIteratorOfListOfDocument;
-		 CDM_ListIteratorOfListOfDocument ();
-		%feature("compactdefaultargs") CDM_ListIteratorOfListOfDocument;
-		%feature("autodoc", "	:param L:
-	:type L: CDM_ListOfDocument &
-	:rtype: None
-") CDM_ListIteratorOfListOfDocument;
-		 CDM_ListIteratorOfListOfDocument (const CDM_ListOfDocument & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: CDM_ListOfDocument &
-	:rtype: None
-") Initialize;
-		void Initialize (const CDM_ListOfDocument & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Value;
-		Handle_CDM_Document Value ();
-};
-
-
-%extend CDM_ListIteratorOfListOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListIteratorOfListOfReferences;
-class CDM_ListIteratorOfListOfReferences {
-	public:
-		%feature("compactdefaultargs") CDM_ListIteratorOfListOfReferences;
-		%feature("autodoc", "	:rtype: None
-") CDM_ListIteratorOfListOfReferences;
-		 CDM_ListIteratorOfListOfReferences ();
-		%feature("compactdefaultargs") CDM_ListIteratorOfListOfReferences;
-		%feature("autodoc", "	:param L:
-	:type L: CDM_ListOfReferences &
-	:rtype: None
-") CDM_ListIteratorOfListOfReferences;
-		 CDM_ListIteratorOfListOfReferences (const CDM_ListOfReferences & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: CDM_ListOfReferences &
-	:rtype: None
-") Initialize;
-		void Initialize (const CDM_ListOfReferences & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Reference
-") Value;
-		Handle_CDM_Reference Value ();
-};
-
-
-%extend CDM_ListIteratorOfListOfReferences {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListNodeOfListOfDocument;
-class CDM_ListNodeOfListOfDocument : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") CDM_ListNodeOfListOfDocument;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") CDM_ListNodeOfListOfDocument;
-		 CDM_ListNodeOfListOfDocument (const Handle_CDM_Document & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Value;
-		Handle_CDM_Document Value ();
-};
-
-
-%make_alias(CDM_ListNodeOfListOfDocument)
-
-%extend CDM_ListNodeOfListOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListNodeOfListOfReferences;
-class CDM_ListNodeOfListOfReferences : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") CDM_ListNodeOfListOfReferences;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") CDM_ListNodeOfListOfReferences;
-		 CDM_ListNodeOfListOfReferences (const Handle_CDM_Reference & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_CDM_Reference
-") Value;
-		Handle_CDM_Reference Value ();
-};
-
-
-%make_alias(CDM_ListNodeOfListOfReferences)
-
-%extend CDM_ListNodeOfListOfReferences {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListOfDocument;
-class CDM_ListOfDocument {
-	public:
-		%feature("compactdefaultargs") CDM_ListOfDocument;
-		%feature("autodoc", "	:rtype: None
-") CDM_ListOfDocument;
-		 CDM_ListOfDocument ();
-		%feature("compactdefaultargs") CDM_ListOfDocument;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:rtype: None
-") CDM_ListOfDocument;
-		 CDM_ListOfDocument (const CDM_ListOfDocument & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:rtype: None
-") Assign;
-		void Assign (const CDM_ListOfDocument & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:rtype: None
-") operator =;
-		void operator = (const CDM_ListOfDocument & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_CDM_Document & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:param theIt:
-	:type theIt: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_CDM_Document & I,CDM_ListIteratorOfListOfDocument & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:rtype: None
-") Prepend;
-		void Prepend (CDM_ListOfDocument & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:rtype: None
-") Append;
-		void Append (const Handle_CDM_Document & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:param theIt:
-	:type theIt: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") Append;
-		void Append (const Handle_CDM_Document & I,CDM_ListIteratorOfListOfDocument & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:rtype: None
-") Append;
-		void Append (CDM_ListOfDocument & Other);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") First;
-		Handle_CDM_Document First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Last;
-		Handle_CDM_Document Last ();
-		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") Remove;
-		void Remove (CDM_ListIteratorOfListOfDocument & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Handle_CDM_Document & I,CDM_ListIteratorOfListOfDocument & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (CDM_ListOfDocument & Other,CDM_ListIteratorOfListOfDocument & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Document &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Handle_CDM_Document & I,CDM_ListIteratorOfListOfDocument & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfDocument &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfDocument &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (CDM_ListOfDocument & Other,CDM_ListIteratorOfListOfDocument & It);
-};
-
-
-%extend CDM_ListOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_ListOfReferences;
-class CDM_ListOfReferences {
-	public:
-		%feature("compactdefaultargs") CDM_ListOfReferences;
-		%feature("autodoc", "	:rtype: None
-") CDM_ListOfReferences;
-		 CDM_ListOfReferences ();
-		%feature("compactdefaultargs") CDM_ListOfReferences;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:rtype: None
-") CDM_ListOfReferences;
-		 CDM_ListOfReferences (const CDM_ListOfReferences & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:rtype: None
-") Assign;
-		void Assign (const CDM_ListOfReferences & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:rtype: None
-") operator =;
-		void operator = (const CDM_ListOfReferences & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_CDM_Reference & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:param theIt:
-	:type theIt: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_CDM_Reference & I,CDM_ListIteratorOfListOfReferences & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:rtype: None
-") Prepend;
-		void Prepend (CDM_ListOfReferences & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:rtype: None
-") Append;
-		void Append (const Handle_CDM_Reference & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:param theIt:
-	:type theIt: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") Append;
-		void Append (const Handle_CDM_Reference & I,CDM_ListIteratorOfListOfReferences & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:rtype: None
-") Append;
-		void Append (CDM_ListOfReferences & Other);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_CDM_Reference
-") First;
-		Handle_CDM_Reference First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_CDM_Reference
-") Last;
-		Handle_CDM_Reference Last ();
-		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") Remove;
-		void Remove (CDM_ListIteratorOfListOfReferences & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Handle_CDM_Reference & I,CDM_ListIteratorOfListOfReferences & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (CDM_ListOfReferences & Other,CDM_ListIteratorOfListOfReferences & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_CDM_Reference &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Handle_CDM_Reference & I,CDM_ListIteratorOfListOfReferences & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_ListOfReferences &
-	:param It:
-	:type It: CDM_ListIteratorOfListOfReferences &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (CDM_ListOfReferences & Other,CDM_ListIteratorOfListOfReferences & It);
-};
-
-
-%extend CDM_ListOfReferences {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_MapIteratorOfMapOfDocument;
-class CDM_MapIteratorOfMapOfDocument : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") CDM_MapIteratorOfMapOfDocument;
-		%feature("autodoc", "	:rtype: None
-") CDM_MapIteratorOfMapOfDocument;
-		 CDM_MapIteratorOfMapOfDocument ();
-		%feature("compactdefaultargs") CDM_MapIteratorOfMapOfDocument;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_MapOfDocument &
-	:rtype: None
-") CDM_MapIteratorOfMapOfDocument;
-		 CDM_MapIteratorOfMapOfDocument (const CDM_MapOfDocument & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: CDM_MapOfDocument &
-	:rtype: None
-") Initialize;
-		void Initialize (const CDM_MapOfDocument & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Key;
-		Handle_CDM_Document Key ();
-};
-
-
-%extend CDM_MapIteratorOfMapOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_MapOfDocument;
-class CDM_MapOfDocument : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") CDM_MapOfDocument;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") CDM_MapOfDocument;
-		 CDM_MapOfDocument (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") CDM_MapOfDocument;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_MapOfDocument &
-	:rtype: None
-") CDM_MapOfDocument;
-		 CDM_MapOfDocument (const CDM_MapOfDocument & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_MapOfDocument &
-	:rtype: CDM_MapOfDocument
-") Assign;
-		CDM_MapOfDocument & Assign (const CDM_MapOfDocument & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_MapOfDocument &
-	:rtype: CDM_MapOfDocument
-") operator =;
-		CDM_MapOfDocument & operator = (const CDM_MapOfDocument & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_CDM_Document &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Handle_CDM_Document & aKey);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_CDM_Document &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Handle_CDM_Document & aKey);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_CDM_Document &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Handle_CDM_Document & aKey);
-};
-
-
-%extend CDM_MapOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_MessageDriver;
-class CDM_MessageDriver : public Standard_Transient {
-	public:
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	:param aString:
-	:type aString: Standard_ExtString
-	:rtype: void
-") Write;
-		virtual void Write (const Standard_ExtString aString);
-};
-
-
-%make_alias(CDM_MessageDriver)
-
-%extend CDM_MessageDriver {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor CDM_MetaData;
 class CDM_MetaData : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Document;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_Document>
+") Document;
+		opencascade::handle<CDM_Document> Document ();
+		%feature("compactdefaultargs") FileName;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") FileName;
+		TCollection_ExtendedString FileName ();
+		%feature("compactdefaultargs") Folder;
+		%feature("autodoc", "	* returns the folder in which the meta-data has to be created or has to be found.
+
+	:rtype: TCollection_ExtendedString
+") Folder;
+		TCollection_ExtendedString Folder ();
+		%feature("compactdefaultargs") HasVersion;
+		%feature("autodoc", "	* indicates that the version has to be taken into account when searching the corresponding meta-data.
+
+	:rtype: bool
+") HasVersion;
+		Standard_Boolean HasVersion ();
+		%feature("compactdefaultargs") IsReadOnly;
+		%feature("autodoc", "	:rtype: bool
+") IsReadOnly;
+		Standard_Boolean IsReadOnly ();
+		%feature("compactdefaultargs") IsRetrieved;
+		%feature("autodoc", "	:rtype: bool
+") IsRetrieved;
+		Standard_Boolean IsRetrieved ();
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "	:param aFolder:
 	:type aFolder: TCollection_ExtendedString &
@@ -1330,9 +722,9 @@ class CDM_MetaData : public Standard_Transient {
 	:type aFileName: TCollection_ExtendedString &
 	:param ReadOnly:
 	:type ReadOnly: bool
-	:rtype: Handle_CDM_MetaData
+	:rtype: opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static Handle_CDM_MetaData LookUp (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aPath,const TCollection_ExtendedString & aFileName,const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aPath,const TCollection_ExtendedString & aFileName,const Standard_Boolean ReadOnly);
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "	:param aFolder:
 	:type aFolder: TCollection_ExtendedString &
@@ -1346,45 +738,19 @@ class CDM_MetaData : public Standard_Transient {
 	:type aFileName: TCollection_ExtendedString &
 	:param ReadOnly:
 	:type ReadOnly: bool
-	:rtype: Handle_CDM_MetaData
+	:rtype: opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static Handle_CDM_MetaData LookUp (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aPath,const TCollection_ExtendedString & aVersion,const TCollection_ExtendedString & aFileName,const Standard_Boolean ReadOnly);
-		%feature("compactdefaultargs") IsRetrieved;
-		%feature("autodoc", "	:rtype: bool
-") IsRetrieved;
-		Standard_Boolean IsRetrieved ();
-		%feature("compactdefaultargs") Document;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Document;
-		Handle_CDM_Document Document ();
-		%feature("compactdefaultargs") Folder;
-		%feature("autodoc", "	* returns the folder in which the meta-data has to be created or has to be found.
-
-	:rtype: TCollection_ExtendedString
-") Folder;
-		TCollection_ExtendedString Folder ();
+		static opencascade::handle<CDM_MetaData> LookUp (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aPath,const TCollection_ExtendedString & aVersion,const TCollection_ExtendedString & aFileName,const Standard_Boolean ReadOnly);
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* returns the name under which the meta-data has to be created or has to be found.
 
 	:rtype: TCollection_ExtendedString
 ") Name;
 		TCollection_ExtendedString Name ();
-		%feature("compactdefaultargs") Version;
-		%feature("autodoc", "	* returns the version under which the meta-data has to be found. Warning: raises NoSuchObject from Standard if no Version has been defined
-
-	:rtype: TCollection_ExtendedString
-") Version;
-		TCollection_ExtendedString Version ();
-		%feature("compactdefaultargs") HasVersion;
-		%feature("autodoc", "	* indicates that the version has to be taken into account when searching the corresponding meta-data.
-
-	:rtype: bool
-") HasVersion;
-		Standard_Boolean HasVersion ();
-		%feature("compactdefaultargs") FileName;
+		%feature("compactdefaultargs") Path;
 		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") FileName;
-		TCollection_ExtendedString FileName ();
+") Path;
+		TCollection_ExtendedString Path ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1393,26 +759,24 @@ class CDM_MetaData : public Standard_Transient {
             self->Print(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "	:rtype: TCollection_ExtendedString
-") Path;
-		TCollection_ExtendedString Path ();
+        		%feature("compactdefaultargs") SetIsReadOnly;
+		%feature("autodoc", "	:rtype: None
+") SetIsReadOnly;
+		void SetIsReadOnly ();
 		%feature("compactdefaultargs") UnsetDocument;
 		%feature("autodoc", "	:rtype: None
 ") UnsetDocument;
 		void UnsetDocument ();
-		%feature("compactdefaultargs") IsReadOnly;
-		%feature("autodoc", "	:rtype: bool
-") IsReadOnly;
-		Standard_Boolean IsReadOnly ();
-		%feature("compactdefaultargs") SetIsReadOnly;
-		%feature("autodoc", "	:rtype: None
-") SetIsReadOnly;
-		void SetIsReadOnly ();
 		%feature("compactdefaultargs") UnsetIsReadOnly;
 		%feature("autodoc", "	:rtype: None
 ") UnsetIsReadOnly;
 		void UnsetIsReadOnly ();
+		%feature("compactdefaultargs") Version;
+		%feature("autodoc", "	* returns the version under which the meta-data has to be found. Warning: raises NoSuchObject from Standard if no Version has been defined
+
+	:rtype: TCollection_ExtendedString
+") Version;
+		TCollection_ExtendedString Version ();
 };
 
 
@@ -1423,195 +787,29 @@ class CDM_MetaData : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor CDM_MetaDataLookUpTable;
-class CDM_MetaDataLookUpTable : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") CDM_MetaDataLookUpTable;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") CDM_MetaDataLookUpTable;
-		 CDM_MetaDataLookUpTable (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_MetaDataLookUpTable &
-	:rtype: CDM_MetaDataLookUpTable
-") Assign;
-		CDM_MetaDataLookUpTable & Assign (const CDM_MetaDataLookUpTable & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_MetaDataLookUpTable &
-	:rtype: CDM_MetaDataLookUpTable
-") operator =;
-		CDM_MetaDataLookUpTable & operator = (const CDM_MetaDataLookUpTable & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:param I:
-	:type I: Handle_CDM_MetaData &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TCollection_ExtendedString & K,const Handle_CDM_MetaData & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Handle_CDM_MetaData
-") Find;
-		Handle_CDM_MetaData Find (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Handle_CDM_MetaData
-") ChangeFind;
-		Handle_CDM_MetaData ChangeFind (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TCollection_ExtendedString & K);
-};
-
-
-%extend CDM_MetaDataLookUpTable {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_PresentationDirectory;
-class CDM_PresentationDirectory : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") CDM_PresentationDirectory;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") CDM_PresentationDirectory;
-		 CDM_PresentationDirectory (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_PresentationDirectory &
-	:rtype: CDM_PresentationDirectory
-") Assign;
-		CDM_PresentationDirectory & Assign (const CDM_PresentationDirectory & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: CDM_PresentationDirectory &
-	:rtype: CDM_PresentationDirectory
-") operator =;
-		CDM_PresentationDirectory & operator = (const CDM_PresentationDirectory & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:param I:
-	:type I: Handle_CDM_Document &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TCollection_ExtendedString & K,const Handle_CDM_Document & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Handle_CDM_Document
-") Find;
-		Handle_CDM_Document Find (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Handle_CDM_Document
-") ChangeFind;
-		Handle_CDM_Document ChangeFind (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TCollection_ExtendedString & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TCollection_ExtendedString &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TCollection_ExtendedString & K);
-};
-
-
-%extend CDM_PresentationDirectory {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor CDM_Reference;
 class CDM_Reference : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") FromDocument;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") FromDocument;
-		Handle_CDM_Document FromDocument ();
-		%feature("compactdefaultargs") ToDocument;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") ToDocument;
-		Handle_CDM_Document ToDocument ();
-		%feature("compactdefaultargs") ReferenceIdentifier;
-		%feature("autodoc", "	:rtype: int
-") ReferenceIdentifier;
-		Standard_Integer ReferenceIdentifier ();
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "	:rtype: int
 ") DocumentVersion;
 		Standard_Integer DocumentVersion ();
+		%feature("compactdefaultargs") FromDocument;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_Document>
+") FromDocument;
+		opencascade::handle<CDM_Document> FromDocument ();
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "	:rtype: bool
 ") IsReadOnly;
 		Standard_Boolean IsReadOnly ();
+		%feature("compactdefaultargs") ReferenceIdentifier;
+		%feature("autodoc", "	:rtype: int
+") ReferenceIdentifier;
+		Standard_Integer ReferenceIdentifier ();
+		%feature("compactdefaultargs") ToDocument;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_Document>
+") ToDocument;
+		opencascade::handle<CDM_Document> ToDocument ();
 };
 
 
@@ -1627,10 +825,20 @@ class CDM_ReferenceIterator {
 	public:
 		%feature("compactdefaultargs") CDM_ReferenceIterator;
 		%feature("autodoc", "	:param aDocument:
-	:type aDocument: Handle_CDM_Document &
+	:type aDocument: opencascade::handle<CDM_Document> &
 	:rtype: None
 ") CDM_ReferenceIterator;
-		 CDM_ReferenceIterator (const Handle_CDM_Document & aDocument);
+		 CDM_ReferenceIterator (const opencascade::handle<CDM_Document> & aDocument);
+		%feature("compactdefaultargs") Document;
+		%feature("autodoc", "	:rtype: opencascade::handle<CDM_Document>
+") Document;
+		opencascade::handle<CDM_Document> Document ();
+		%feature("compactdefaultargs") DocumentVersion;
+		%feature("autodoc", "	* returns the Document Version in the reference.
+
+	:rtype: int
+") DocumentVersion;
+		Standard_Integer DocumentVersion ();
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
@@ -1639,20 +847,10 @@ class CDM_ReferenceIterator {
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
-		%feature("compactdefaultargs") Document;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Document;
-		Handle_CDM_Document Document ();
 		%feature("compactdefaultargs") ReferenceIdentifier;
 		%feature("autodoc", "	:rtype: int
 ") ReferenceIdentifier;
 		Standard_Integer ReferenceIdentifier ();
-		%feature("compactdefaultargs") DocumentVersion;
-		%feature("autodoc", "	* returns the Document Version in the reference.
-
-	:rtype: int
-") DocumentVersion;
-		Standard_Integer DocumentVersion ();
 };
 
 
@@ -1661,70 +859,6 @@ class CDM_ReferenceIterator {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor CDM_StdMapNodeOfMapOfDocument;
-class CDM_StdMapNodeOfMapOfDocument : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") CDM_StdMapNodeOfMapOfDocument;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_CDM_Document &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") CDM_StdMapNodeOfMapOfDocument;
-		 CDM_StdMapNodeOfMapOfDocument (const Handle_CDM_Document & K,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_CDM_Document
-") Key;
-		Handle_CDM_Document Key ();
-};
-
-
-%make_alias(CDM_StdMapNodeOfMapOfDocument)
-
-%extend CDM_StdMapNodeOfMapOfDocument {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_COutMessageDriver;
-class CDM_COutMessageDriver : public CDM_MessageDriver {
-	public:
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	:param aString:
-	:type aString: Standard_ExtString
-	:rtype: None
-") Write;
-		void Write (const Standard_ExtString aString);
-};
-
-
-%make_alias(CDM_COutMessageDriver)
-
-%extend CDM_COutMessageDriver {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor CDM_NullMessageDriver;
-class CDM_NullMessageDriver : public CDM_MessageDriver {
-	public:
-		%feature("compactdefaultargs") CDM_NullMessageDriver;
-		%feature("autodoc", "	:rtype: None
-") CDM_NullMessageDriver;
-		 CDM_NullMessageDriver ();
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	:param aString:
-	:type aString: Standard_ExtString
-	:rtype: None
-") Write;
-		void Write (const Standard_ExtString aString);
-};
-
-
-%make_alias(CDM_NullMessageDriver)
-
-%extend CDM_NullMessageDriver {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,26 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:29
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define PRSMGRDOCSTRING
-"and is only to be used when you do not want to use
-the services provided by AIS.
-PrsMgr manages display through the following services:
--  supplying a graphic structure for the object to be presented
--  recalculating presentations when required, e.g. by
-moving the object or changing its color
--  defining the display mode of the object to be
-presented; in the case of AIS_Shape, for example,
-this determines whether the object is to be displayed in:
--  wireframe 0
--  shading 1.
-Note that each new Interactive Object must have all its display modes defined.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=PRSMGRDOCSTRING) PrsMgr
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -51,16 +50,6 @@ Note that each new Interactive Object must have all its display modes defined.
 
 %include PrsMgr_headers.i
 
-/* typedefs */
-typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
-typedef PrsMgr_Presentation PrsMgr_Presentation3d;
-typedef PrsMgr_PresentableObject * PrsMgr_PresentableObjectPointer;
-typedef PrsMgr_Presentation * PrsMgr_PresentationPointer;
-typedef NCollection_List <Handle_Prs3d_Presentation> PrsMgr_ListOfPresentations;
-typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
-typedef PrsMgr_PresentationManager PrsMgr_PresentationManager3d;
-/* end typedefs declaration */
-
 /* public enums */
 enum PrsMgr_TypeOfPresentation3d {
 	PrsMgr_TOP_AllView = 0,
@@ -69,75 +58,141 @@ enum PrsMgr_TypeOfPresentation3d {
 
 /* end public enums declaration */
 
+/* templates */
+%template(PrsMgr_ListOfPresentableObjects) NCollection_List <opencascade::handle <PrsMgr_PresentableObject>>;
+%template(PrsMgr_ListOfPresentableObjectsIter) NCollection_TListIterator<PrsMgr_ListOfPresentableObjects>;
+%template(PrsMgr_ListOfPresentations) NCollection_List <opencascade::handle <Prs3d_Presentation>>;
+%template(PrsMgr_Presentations) NCollection_Sequence <opencascade::handle <PrsMgr_Presentation>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <opencascade::handle <PrsMgr_PresentableObject>> PrsMgr_ListOfPresentableObjects;
+typedef NCollection_List <opencascade::handle <PrsMgr_PresentableObject>>::Iterator PrsMgr_ListOfPresentableObjectsIter;
+typedef PrsMgr_Presentation PrsMgr_Presentation3d;
+typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
+typedef PrsMgr_PresentationManager PrsMgr_PresentationManager3d;
+typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
+typedef NCollection_List <opencascade::handle <Prs3d_Presentation>> PrsMgr_ListOfPresentations;
+typedef NCollection_Sequence <opencascade::handle <PrsMgr_Presentation>> PrsMgr_Presentations;
+typedef Graphic3d_Structure Prs3d_Presentation;
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(PrsMgr_PresentableObject)
 %wrap_handle(PrsMgr_Presentation)
 %wrap_handle(PrsMgr_PresentationManager)
-%wrap_handle(PrsMgr_Prs)
-%wrap_handle(PrsMgr_SequenceNodeOfPresentations)
+/* end handles declaration */
 
-%nodefaultctor PrsMgr_ModedPresentation;
-class PrsMgr_ModedPresentation {
-	public:
-		%feature("compactdefaultargs") PrsMgr_ModedPresentation;
-		%feature("autodoc", "	:rtype: None
-") PrsMgr_ModedPresentation;
-		 PrsMgr_ModedPresentation ();
-		%feature("compactdefaultargs") PrsMgr_ModedPresentation;
-		%feature("autodoc", "	:param thePrs:
-	:type thePrs: Handle_PrsMgr_Presentation &
-	:param theMode:
-	:type theMode: int
-	:rtype: None
-") PrsMgr_ModedPresentation;
-		 PrsMgr_ModedPresentation (const Handle_PrsMgr_Presentation & thePrs,const Standard_Integer theMode);
-		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "	:rtype: Handle_PrsMgr_Presentation
-") Presentation;
-		Handle_PrsMgr_Presentation Presentation ();
-		%feature("compactdefaultargs") Mode;
-		%feature("autodoc", "	:rtype: int
-") Mode;
-		Standard_Integer Mode ();
-};
-
-
-%extend PrsMgr_ModedPresentation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor PrsMgr_PresentableObject;
 %ignore PrsMgr_PresentableObject::~PrsMgr_PresentableObject();
-class PrsMgr_PresentableObject : public MMgt_TShared {
+class PrsMgr_PresentableObject : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Presentations;
-		%feature("autodoc", "	:rtype: PrsMgr_Presentations
-") Presentations;
-		PrsMgr_Presentations & Presentations ();
-		%feature("compactdefaultargs") TypeOfPresentation3d;
-		%feature("autodoc", "	* Returns information on whether the object accepts display in HLR mode or not.
+		%feature("compactdefaultargs") AcceptDisplayMode;
+		%feature("autodoc", "	* Returns true if the class of objects accepts specified display mode index. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by a given class of objects. Consequently, this virtual method allowing us to get information about the class in question must be implemented. At least one display mode index should be accepted by this method. Although subclass can leave default implementation, it is highly desired defining exact list of supported modes instead, which is usually an enumeration for one object or objects class sharing similar list of display modes.
 
-	:rtype: PrsMgr_TypeOfPresentation3d
-") TypeOfPresentation3d;
-		PrsMgr_TypeOfPresentation3d TypeOfPresentation3d ();
-		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "	* Sets up Transform Persistence Mode for this object. This function used to lock in object position, rotation and / or zooming relative to camera position. Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag - see description later). aFlag should be: - Graphic3d_TMF_None - no persistence attributes (reset); - Graphic3d_TMF_PanPers - object doesn't move; - Graphic3d_TMF_ZoomPers - object doesn't resize; - Graphic3d_TMF_RotatePers - object doesn't rotate; - Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence; - Graphic3d_TMF_TriedronPers - object behaves like trihedron; - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers); - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers); - combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers). If Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d persistence mode selected APoint coordinates X and Y means: - X = 0.0, Y = 0.0 - center of view window; - X > 0.0, Y > 0.0 - right upper corner of view window; - X > 0.0, Y < 0.0 - right lower corner of view window; - X < 0.0, Y > 0.0 - left upper corner of view window; - X < 0.0, Y < 0.0 - left lower corner of view window. And Z coordinate defines the gap from border of view window (except center position).
+	:param theMode:
+	:type theMode: int
+	:rtype: bool
+") AcceptDisplayMode;
+		Standard_Boolean AcceptDisplayMode (const Standard_Integer theMode);
+		%feature("compactdefaultargs") AddChild;
+		%feature("autodoc", "	* Makes theObject child of current object in scene hierarchy.
 
-	:param aFlag:
-	:type aFlag: Graphic3d_TransModeFlags &
-	:param APoint:
-	:type APoint: gp_Pnt
+	:param theObject:
+	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:rtype: void
-") SetTransformPersistence;
-		virtual void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag,const gp_Pnt & APoint);
-		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "	* Calls previous method with point (0,0,0)
+") AddChild;
+		virtual void AddChild (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
+		%feature("compactdefaultargs") AddChildWithCurrentTransformation;
+		%feature("autodoc", "	* Makes theObject child of current object in scene hierarchy with keeping the current global transformation So the object keeps the same position/orientation in the global CS.
 
-	:param aFlag:
-	:type aFlag: Graphic3d_TransModeFlags &
+	:param theObject:
+	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:rtype: None
-") SetTransformPersistence;
-		void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag);
+") AddChildWithCurrentTransformation;
+		void AddChildWithCurrentTransformation (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
+		%feature("compactdefaultargs") AddClipPlane;
+		%feature("autodoc", "	* Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes. @param thePlane [in] the clip plane to be appended to map of clip planes.
+
+	:param thePlane:
+	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:rtype: void
+") AddClipPlane;
+		virtual void AddClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
+		%feature("compactdefaultargs") Attributes;
+		%feature("autodoc", "	* @name presentation attributes Returns the attributes settings.
+
+	:rtype: opencascade::handle<Prs3d_Drawer>
+") Attributes;
+		const opencascade::handle<Prs3d_Drawer> & Attributes ();
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "	* Returns bounding box of object correspondingly to its current display mode. This method requires presentation to be already computed, since it relies on bounding box of presentation structures, which are supposed to be same/close amongst different display modes of this object.
+
+	:param theBndBox:
+	:type theBndBox: Bnd_Box &
+	:rtype: void
+") BoundingBox;
+		virtual void BoundingBox (Bnd_Box & theBndBox);
+		%feature("compactdefaultargs") Children;
+		%feature("autodoc", "	* Returns children of the current object.
+
+	:rtype: PrsMgr_ListOfPresentableObjects
+") Children;
+		const PrsMgr_ListOfPresentableObjects & Children ();
+		%feature("compactdefaultargs") ClipPlanes;
+		%feature("autodoc", "	* @name clipping planes Get clip planes. returns set of previously added clip planes for all display mode presentations.
+
+	:rtype: opencascade::handle<Graphic3d_SequenceOfHClipPlane>
+") ClipPlanes;
+		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes ();
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "	* Returns the color setting of the Interactive Object.
+
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") Color;
+		void Color (Quantity_Color & theColor);
+		%feature("compactdefaultargs") CombinedParentTransformation;
+		%feature("autodoc", "	* Return combined parent transformation.
+
+	:rtype: opencascade::handle<Geom_Transformation>
+") CombinedParentTransformation;
+		const opencascade::handle<Geom_Transformation> & CombinedParentTransformation ();
+		%feature("compactdefaultargs") CurrentFacingModel;
+		%feature("autodoc", "	* Returns the current facing model which is in effect.
+
+	:rtype: Aspect_TypeOfFacingModel
+") CurrentFacingModel;
+		Aspect_TypeOfFacingModel CurrentFacingModel ();
+		%feature("compactdefaultargs") DefaultDisplayMode;
+		%feature("autodoc", "	* Returns the default display mode.
+
+	:rtype: int
+") DefaultDisplayMode;
+		Standard_Integer DefaultDisplayMode ();
+		%feature("compactdefaultargs") DisplayMode;
+		%feature("autodoc", "	* Returns the display mode setting of the Interactive Object. The range of supported display mode indexes should be specified within object definition and filtered by AccepDisplayMode(). @sa AcceptDisplayMode()
+
+	:rtype: int
+") DisplayMode;
+		Standard_Integer DisplayMode ();
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "	* Dumps the content of me into the stream
+
+	:param theOStream:
+	:type theOStream: Standard_OStream &
+	:param theDepth: default value is -1
+	:type theDepth: int
+	:rtype: void
+") DumpJson;
+		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
+		%feature("compactdefaultargs") DynamicHilightAttributes;
+		%feature("autodoc", "	* Returns the hilight attributes settings. When not NULL, overrides both Prs3d_TypeOfHighlight_LocalDynamic and Prs3d_TypeOfHighlight_Dynamic defined within AIS_InteractiveContext.
+
+	:rtype: opencascade::handle<Prs3d_Drawer>
+") DynamicHilightAttributes;
+		const opencascade::handle<Prs3d_Drawer> & DynamicHilightAttributes ();
 		%feature("compactdefaultargs") GetTransformPersistenceMode;
 		%feature("autodoc", "	* Gets Transform Persistence Mode for this object
 
@@ -150,120 +205,272 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 	:rtype: gp_Pnt
 ") GetTransformPersistencePoint;
 		gp_Pnt GetTransformPersistencePoint ();
-		%feature("compactdefaultargs") SetTypeOfPresentation;
-		%feature("autodoc", "	:param aType:
-	:type aType: PrsMgr_TypeOfPresentation3d
-	:rtype: None
-") SetTypeOfPresentation;
-		void SetTypeOfPresentation (const PrsMgr_TypeOfPresentation3d aType);
-		%feature("compactdefaultargs") SetToUpdate;
-		%feature("autodoc", "	* flags the Prs of mode <AMode> to be Updated. the Update will be done when needed.
+		%feature("compactdefaultargs") HasColor;
+		%feature("autodoc", "	* Returns true if the Interactive Object has color.
 
-	:param aMode:
-	:type aMode: int
-	:rtype: None
-") SetToUpdate;
-		void SetToUpdate (const Standard_Integer aMode);
-		%feature("compactdefaultargs") SetToUpdate;
-		%feature("autodoc", "	* flags all the Presentations to be Updated.
+	:rtype: bool
+") HasColor;
+		Standard_Boolean HasColor ();
+		%feature("compactdefaultargs") HasDisplayMode;
+		%feature("autodoc", "	* Returns true if the Interactive Object has display mode setting overriding global setting (within Interactive Context).
 
-	:rtype: None
-") SetToUpdate;
-		void SetToUpdate ();
-		%feature("compactdefaultargs") ToBeUpdated;
-		%feature("autodoc", "	* gives the list of modes which are flagged 'to be updated'.
+	:rtype: bool
+") HasDisplayMode;
+		Standard_Boolean HasDisplayMode ();
+		%feature("compactdefaultargs") HasHilightMode;
+		%feature("autodoc", "	* Returns true if the Interactive Object is in highlight mode.
 
-	:param ListOfMode:
-	:type ListOfMode: TColStd_ListOfInteger &
-	:rtype: None
-") ToBeUpdated;
-		void ToBeUpdated (TColStd_ListOfInteger & ListOfMode);
-		%feature("compactdefaultargs") SetLocalTransformation;
-		%feature("autodoc", "	* Sets local transformation to theTransformation.
+	:rtype: bool
+") HasHilightMode;
+		Standard_Boolean HasHilightMode ();
+		%feature("compactdefaultargs") HasMaterial;
+		%feature("autodoc", "	* Returns true if the Interactive Object has a setting for material.
 
-	:param theTransformation:
-	:type theTransformation: gp_Trsf
-	:rtype: void
-") SetLocalTransformation;
-		virtual void SetLocalTransformation (const gp_Trsf & theTransformation);
+	:rtype: bool
+") HasMaterial;
+		Standard_Boolean HasMaterial ();
+		%feature("compactdefaultargs") HasOwnPresentations;
+		%feature("autodoc", "	* Returns true if object should have own presentations.
+
+	:rtype: bool
+") HasOwnPresentations;
+		Standard_Boolean HasOwnPresentations ();
+		%feature("compactdefaultargs") HasPolygonOffsets;
+		%feature("autodoc", "	* Returns Standard_True if <myDrawer> has non-null shading aspect
+
+	:rtype: bool
+") HasPolygonOffsets;
+		virtual Standard_Boolean HasPolygonOffsets ();
 		%feature("compactdefaultargs") HasTransformation;
 		%feature("autodoc", "	* Returns true if object has a transformation that is different from the identity.
 
 	:rtype: bool
 ") HasTransformation;
 		Standard_Boolean HasTransformation ();
+		%feature("compactdefaultargs") HasWidth;
+		%feature("autodoc", "	* Returns true if the Interactive Object has width.
+
+	:rtype: bool
+") HasWidth;
+		Standard_Boolean HasWidth ();
+		%feature("compactdefaultargs") HilightAttributes;
+		%feature("autodoc", "	* Returns the hilight attributes settings. When not NULL, overrides both Prs3d_TypeOfHighlight_LocalSelected and Prs3d_TypeOfHighlight_Selected defined within AIS_InteractiveContext.
+
+	:rtype: opencascade::handle<Prs3d_Drawer>
+") HilightAttributes;
+		const opencascade::handle<Prs3d_Drawer> & HilightAttributes ();
+		%feature("compactdefaultargs") HilightMode;
+		%feature("autodoc", "	* Returns highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead.
+
+	:rtype: int
+") HilightMode;
+		Standard_Integer HilightMode ();
+		%feature("compactdefaultargs") InversedTransformation;
+		%feature("autodoc", "	* Return inversed transformation.
+
+	:rtype: gp_GTrsf
+") InversedTransformation;
+		const gp_GTrsf  InversedTransformation ();
+		%feature("compactdefaultargs") IsInfinite;
+		%feature("autodoc", "	* Returns true if the interactive object is infinite; False by default. This flag affects various operations operating on bounding box of graphic presentations of this object. For instance, infinite objects are not taken in account for View FitAll. This does not necessarily means that object is actually infinite, auxiliary objects might be also marked with this flag to achieve desired behavior.
+
+	:rtype: bool
+") IsInfinite;
+		Standard_Boolean IsInfinite ();
+		%feature("compactdefaultargs") IsMutable;
+		%feature("autodoc", "	* Returns true if object has mutable nature (content or location are be changed regularly). Mutable object will be managed in different way than static onces (another optimizations).
+
+	:rtype: bool
+") IsMutable;
+		Standard_Boolean IsMutable ();
+		%feature("compactdefaultargs") IsTransparent;
+		%feature("autodoc", "	* Returns true if there is a transparency setting.
+
+	:rtype: bool
+") IsTransparent;
+		Standard_Boolean IsTransparent ();
 		%feature("compactdefaultargs") LocalTransformation;
-		%feature("autodoc", "	:rtype: gp_Trsf
+		%feature("autodoc", "	* Return the local transformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:rtype: gp_Trsf
 ") LocalTransformation;
 		const gp_Trsf  LocalTransformation ();
-		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Transformation;
-		const gp_Trsf  Transformation ();
-		%feature("compactdefaultargs") InversedTransformation;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") InversedTransformation;
-		const gp_Trsf  InversedTransformation ();
+		%feature("compactdefaultargs") LocalTransformationGeom;
+		%feature("autodoc", "	* Return the local transformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:rtype: opencascade::handle<Geom_Transformation>
+") LocalTransformationGeom;
+		const opencascade::handle<Geom_Transformation> & LocalTransformationGeom ();
+		%feature("compactdefaultargs") Material;
+		%feature("autodoc", "	* Returns the current material setting as enumeration value.
+
+	:rtype: Graphic3d_NameOfMaterial
+") Material;
+		virtual Graphic3d_NameOfMaterial Material ();
+		%feature("compactdefaultargs") Parent;
+		%feature("autodoc", "	* @name parent/children properties Returns parent of current object in scene hierarchy.
+
+	:rtype: PrsMgr_PresentableObject *
+") Parent;
+		PrsMgr_PresentableObject * Parent ();
+		%feature("compactdefaultargs") PolygonOffsets;
+		%feature("autodoc", "	* Retrieves current polygon offsets settings from <myDrawer>.
+
+	:param aMode:
+	:type aMode: int &
+	:param aFactor:
+	:type aFactor: Standard_ShortReal &
+	:param aUnits:
+	:type aUnits: Standard_ShortReal &
+	:rtype: void
+") PolygonOffsets;
+		virtual void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
+		%feature("compactdefaultargs") Presentations;
+		%feature("autodoc", "	* Return presentations.
+
+	:rtype: PrsMgr_Presentations
+") Presentations;
+		PrsMgr_Presentations & Presentations ();
+		%feature("compactdefaultargs") RemoveChild;
+		%feature("autodoc", "	* Removes theObject from children of current object in scene hierarchy.
+
+	:param theObject:
+	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: void
+") RemoveChild;
+		virtual void RemoveChild (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
+		%feature("compactdefaultargs") RemoveChildWithRestoreTransformation;
+		%feature("autodoc", "	* Removes theObject from children of current object in scene hierarchy with keeping the current global transformation. So the object keeps the same position/orientation in the global CS.
+
+	:param theObject:
+	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: None
+") RemoveChildWithRestoreTransformation;
+		void RemoveChildWithRestoreTransformation (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
+		%feature("compactdefaultargs") RemoveClipPlane;
+		%feature("autodoc", "	* Removes previously added clip plane. @param thePlane [in] the clip plane to be removed from map of clip planes.
+
+	:param thePlane:
+	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:rtype: void
+") RemoveClipPlane;
+		virtual void RemoveClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 		%feature("compactdefaultargs") ResetTransformation;
 		%feature("autodoc", "	* resets local transformation to identity.
 
 	:rtype: void
 ") ResetTransformation;
 		virtual void ResetTransformation ();
-		%feature("compactdefaultargs") UpdateTransformation;
-		%feature("autodoc", "	:rtype: void
-") UpdateTransformation;
-		virtual void UpdateTransformation ();
-		%feature("compactdefaultargs") UpdateTransformation;
-		%feature("autodoc", "	:param P:
-	:type P: Handle_Prs3d_Presentation &
-	:rtype: void
-") UpdateTransformation;
-		virtual void UpdateTransformation (const Handle_Prs3d_Presentation & P);
-		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "	* Set Z layer ID and update all presentations of the presentable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+		%feature("compactdefaultargs") SetAttributes;
+		%feature("autodoc", "	* Initializes the drawing tool theDrawer.
 
-	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
-	:rtype: void
-") SetZLayer;
-		virtual void SetZLayer (const Graphic3d_ZLayerId theLayerId);
-		%feature("compactdefaultargs") ZLayer;
-		%feature("autodoc", "	* Get ID of Z layer.
-
-	:rtype: Graphic3d_ZLayerId
-") ZLayer;
-		Graphic3d_ZLayerId ZLayer ();
-		%feature("compactdefaultargs") AddClipPlane;
-		%feature("autodoc", "	* Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes. @param thePlane [in] the clip plane to be appended to map of clip planes.
-
-	:param thePlane:
-	:type thePlane: Handle_Graphic3d_ClipPlane &
-	:rtype: void
-") AddClipPlane;
-		virtual void AddClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
-		%feature("compactdefaultargs") RemoveClipPlane;
-		%feature("autodoc", "	* Removes previously added clip plane. @param thePlane [in] the clip plane to be removed from map of clip planes.
-
-	:param thePlane:
-	:type thePlane: Handle_Graphic3d_ClipPlane &
-	:rtype: void
-") RemoveClipPlane;
-		virtual void RemoveClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
+	:param theDrawer:
+	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:rtype: None
+") SetAttributes;
+		void SetAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "	* Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes.
+		%feature("autodoc", "	* Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes.
 
 	:param thePlanes:
-	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:type thePlanes: opencascade::handle<Graphic3d_SequenceOfHClipPlane> &
 	:rtype: void
 ") SetClipPlanes;
-		virtual void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
-		%feature("compactdefaultargs") GetClipPlanes;
-		%feature("autodoc", "	* Get clip planes. returns set of previously added clip planes for all display mode presentations.
+		virtual void SetClipPlanes (const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
+		%feature("compactdefaultargs") SetClipPlanes;
+		%feature("autodoc", "	:param thePlanes:
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:rtype: None
+") SetClipPlanes;
+		void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	* Only the interactive object knowns which Drawer attribute is affected by the color, if any (ex: for a wire,it's the wireaspect field of the drawer, but for a vertex, only the point aspect field is affected by the color). WARNING : Do not forget to set the corresponding fields here (hasOwnColor and myDrawer->SetColor())
 
-	:rtype: Graphic3d_SequenceOfHClipPlane
-") GetClipPlanes;
-		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetColor;
+		void SetColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") SetCurrentFacingModel;
+		%feature("autodoc", "	* change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
+
+	:param theModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type theModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetCurrentFacingModel;
+		void SetCurrentFacingModel (const Aspect_TypeOfFacingModel theModel = Aspect_TOFM_BOTH_SIDE);
+		%feature("compactdefaultargs") SetDisplayMode;
+		%feature("autodoc", "	* Sets the display mode for the interactive object. An object can have its own temporary display mode, which is different from that proposed by the interactive context. @sa AcceptDisplayMode()
+
+	:param theMode:
+	:type theMode: int
+	:rtype: None
+") SetDisplayMode;
+		void SetDisplayMode (const Standard_Integer theMode);
+		%feature("compactdefaultargs") SetDynamicHilightAttributes;
+		%feature("autodoc", "	* Initializes the dynamic hilight drawing tool.
+
+	:param theDrawer:
+	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:rtype: None
+") SetDynamicHilightAttributes;
+		void SetDynamicHilightAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		%feature("compactdefaultargs") SetHilightAttributes;
+		%feature("autodoc", "	* Initializes the hilight drawing tool theDrawer.
+
+	:param theDrawer:
+	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:rtype: None
+") SetHilightAttributes;
+		void SetHilightAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		%feature("compactdefaultargs") SetHilightMode;
+		%feature("autodoc", "	* Sets highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead.
+
+	:param theMode:
+	:type theMode: int
+	:rtype: None
+") SetHilightMode;
+		void SetHilightMode (const Standard_Integer theMode);
+		%feature("compactdefaultargs") SetInfiniteState;
+		%feature("autodoc", "	* Sets if object should be considered as infinite.
+
+	:param theFlag: default value is Standard_True
+	:type theFlag: bool
+	:rtype: None
+") SetInfiniteState;
+		void SetInfiniteState (const Standard_Boolean theFlag = Standard_True);
+		%feature("compactdefaultargs") SetIsoOnTriangulation;
+		%feature("autodoc", "	* @name simplified presentation properties API Enables or disables on-triangulation build of isolines according to the flag given.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetIsoOnTriangulation;
+		void SetIsoOnTriangulation (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") SetLocalTransformation;
+		%feature("autodoc", "	* Sets local transformation to theTransformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: None
+") SetLocalTransformation;
+		void SetLocalTransformation (const gp_Trsf & theTrsf);
+		%feature("compactdefaultargs") SetLocalTransformation;
+		%feature("autodoc", "	* Sets local transformation to theTransformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:param theTrsf:
+	:type theTrsf: opencascade::handle<Geom_Transformation> &
+	:rtype: None
+") SetLocalTransformation;
+		void SetLocalTransformation (const opencascade::handle<Geom_Transformation> & theTrsf);
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "	* Sets the material aMat defining this display attribute for the interactive object. Material aspect determines shading aspect, color and transparency of visible entities.
+
+	:param aName:
+	:type aName: Graphic3d_MaterialAspect &
+	:rtype: void
+") SetMaterial;
+		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
 		%feature("compactdefaultargs") SetMutable;
 		%feature("autodoc", "	* Sets if the object has mutable nature (content or location will be changed regularly). This method should be called before object displaying to take effect.
 
@@ -272,46 +479,214 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 	:rtype: void
 ") SetMutable;
 		virtual void SetMutable (const Standard_Boolean theIsMutable);
-		%feature("compactdefaultargs") IsMutable;
-		%feature("autodoc", "	* Returns true if object has mutable nature (content or location are be changed regularly). Mutable object will be managed in different way than static onces (another optimizations).
+		%feature("compactdefaultargs") SetPolygonOffsets;
+		%feature("autodoc", "	* Sets up polygon offsets for this object. @sa Graphic3d_Aspects::SetPolygonOffsets()
+
+	:param aMode:
+	:type aMode: int
+	:param aFactor: default value is 1.0
+	:type aFactor: Standard_ShortReal
+	:param aUnits: default value is 0.0
+	:type aUnits: Standard_ShortReal
+	:rtype: void
+") SetPolygonOffsets;
+		virtual void SetPolygonOffsets (const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0);
+		%feature("compactdefaultargs") SetPropagateVisualState;
+		%feature("autodoc", "	* Change the value of the flag 'propagate visual state'
+
+	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetPropagateVisualState;
+		void SetPropagateVisualState (const Standard_Boolean theFlag);
+		%feature("compactdefaultargs") SetToUpdate;
+		%feature("autodoc", "	* Flags presentation to be updated; UpdatePresentations() will recompute these presentations. @param theMode presentation (display mode) to invalidate, or -1 to invalidate them all
+
+	:param theMode:
+	:type theMode: int
+	:rtype: None
+") SetToUpdate;
+		void SetToUpdate (Standard_Integer theMode);
+		%feature("compactdefaultargs") SetToUpdate;
+		%feature("autodoc", "	* flags all the Presentations to be Updated.
+
+	:rtype: None
+") SetToUpdate;
+		void SetToUpdate ();
+		%feature("compactdefaultargs") SetTransformPersistence;
+		%feature("autodoc", "	* Sets up Transform Persistence defining a special Local Coordinate system where this object should be located. Note that management of Transform Persistence object is more expensive than of the normal one, because it requires its position being recomputed basing on camera position within each draw call / traverse. @sa Graphic3d_TransformPers class description
+
+	:param theTrsfPers:
+	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:rtype: void
+") SetTransformPersistence;
+		virtual void SetTransformPersistence (const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
+		%feature("compactdefaultargs") SetTransformPersistence;
+		%feature("autodoc", "	* Sets up Transform Persistence Mode for this object. This function used to lock in object position, rotation and / or zooming relative to camera position. Object will be drawn in the origin setted by thePoint parameter (except Graphic3d_TMF_TriedronPers flag - see description later). theMode should be: - Graphic3d_TMF_None - no persistence attributes (reset); - Graphic3d_TMF_ZoomPers - object doesn't resize; - Graphic3d_TMF_RotatePers - object doesn't rotate; - Graphic3d_TMF_ZoomRotatePers - object doesn't resize and rotate; - Graphic3d_TMF_RotatePers - object doesn't rotate; - Graphic3d_TMF_TriedronPers - object behaves like trihedron. If Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d persistence mode selected thePoint coordinates X and Y means: - X = 0.0, Y = 0.0 - center of view window; - X > 0.0, Y > 0.0 - right upper corner of view window; - X > 0.0, Y < 0.0 - right lower corner of view window; - X < 0.0, Y > 0.0 - left upper corner of view window; - X < 0.0, Y < 0.0 - left lower corner of view window. And Z coordinate defines the gap from border of view window (except center position).
+
+	:param theMode:
+	:type theMode: Graphic3d_TransModeFlags
+	:param thePoint: default value is gp_Pnt(0.0,0.0,0.0)
+	:type thePoint: gp_Pnt
+	:rtype: None
+") SetTransformPersistence;
+		void SetTransformPersistence (const Graphic3d_TransModeFlags theMode,const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0));
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", "	* Attributes a setting aValue for transparency. The transparency value should be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent. Warning At a value of 1.0, there may be nothing visible.
+
+	:param aValue: default value is 0.6
+	:type aValue: float
+	:rtype: void
+") SetTransparency;
+		virtual void SetTransparency (const Standard_Real aValue = 0.6);
+		%feature("compactdefaultargs") SetTypeOfPresentation;
+		%feature("autodoc", "	* Set type of presentation.
+
+	:param theType:
+	:type theType: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") SetTypeOfPresentation;
+		void SetTypeOfPresentation (const PrsMgr_TypeOfPresentation3d theType);
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", "	* Allows you to provide the setting aValue for width. Only the Interactive Object knows which Drawer attribute is affected by the width setting.
+
+	:param theWidth:
+	:type theWidth: float
+	:rtype: None
+") SetWidth;
+		void SetWidth (const Standard_Real theWidth);
+		%feature("compactdefaultargs") SetZLayer;
+		%feature("autodoc", "	* Set Z layer ID and update all presentations of the presentable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+
+	:param theLayerId:
+	:type theLayerId: Graphic3d_ZLayerId
+	:rtype: void
+") SetZLayer;
+		virtual void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		%feature("compactdefaultargs") SynchronizeAspects;
+		%feature("autodoc", "	* Synchronize presentation aspects after their modification. //! This method should be called after modifying primitive aspect properties (material, texture, shader) so that modifications will take effect on already computed presentation groups (thus avoiding re-displaying the object).
+
+	:rtype: None
+") SynchronizeAspects;
+		void SynchronizeAspects ();
+		%feature("compactdefaultargs") ToBeUpdated;
+		%feature("autodoc", "	* Returns True if any active presentation has invalidation flag. @param theToIncludeHidden when True, also checks hidden presentations
+
+	:param theToIncludeHidden: default value is Standard_False
+	:type theToIncludeHidden: bool
+	:rtype: bool
+") ToBeUpdated;
+		Standard_Boolean ToBeUpdated (Standard_Boolean theToIncludeHidden = Standard_False);
+		%feature("compactdefaultargs") ToBeUpdated;
+		%feature("autodoc", "	* @name deprecated methods gives the list of modes which are flagged 'to be updated'.
+
+	:param ListOfMode:
+	:type ListOfMode: TColStd_ListOfInteger &
+	:rtype: None
+") ToBeUpdated;
+		void ToBeUpdated (TColStd_ListOfInteger & ListOfMode);
+		%feature("compactdefaultargs") ToPropagateVisualState;
+		%feature("autodoc", "	* Get value of the flag 'propagate visual state' It means that the display/erase/color visual state is propagated automatically to all children; by default, the flag is true
 
 	:rtype: bool
-") IsMutable;
-		const Standard_Boolean IsMutable ();
-		%feature("compactdefaultargs") AddChild;
-		%feature("autodoc", "	* Makes theObject child of current object in scene hierarchy.
+") ToPropagateVisualState;
+		Standard_Boolean ToPropagateVisualState ();
+		%feature("compactdefaultargs") TransformPersistence;
+		%feature("autodoc", "	* @name object transformation Returns Transformation Persistence defining a special Local Coordinate system where this presentable object is located or NULL handle if not defined. Position of the object having Transformation Persistence is mutable and depends on camera position. The same applies to a bounding box of the object. @sa Graphic3d_TransformPers class description
 
-	:param theObject:
-	:type theObject: Handle_PrsMgr_PresentableObject &
+	:rtype: opencascade::handle<Graphic3d_TransformPers>
+") TransformPersistence;
+		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence ();
+		%feature("compactdefaultargs") Transformation;
+		%feature("autodoc", "	* Return the transformation taking into account transformation of parent object(s). Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:rtype: gp_Trsf
+") Transformation;
+		const gp_Trsf  Transformation ();
+		%feature("compactdefaultargs") TransformationGeom;
+		%feature("autodoc", "	* Return the transformation taking into account transformation of parent object(s). Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
+
+	:rtype: opencascade::handle<Geom_Transformation>
+") TransformationGeom;
+		const opencascade::handle<Geom_Transformation> & TransformationGeom ();
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", "	* Returns the transparency setting. This will be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
+
+	:rtype: float
+") Transparency;
+		Standard_Real Transparency ();
+		%feature("compactdefaultargs") TypeOfPresentation3d;
+		%feature("autodoc", "	* Returns information on whether the object accepts display in HLR mode or not.
+
+	:rtype: PrsMgr_TypeOfPresentation3d
+") TypeOfPresentation3d;
+		PrsMgr_TypeOfPresentation3d TypeOfPresentation3d ();
+		%feature("compactdefaultargs") UnsetAttributes;
+		%feature("autodoc", "	* Clears settings provided by the drawing tool aDrawer.
+
 	:rtype: void
-") AddChild;
-		virtual void AddChild (const Handle_PrsMgr_PresentableObject & theObject);
-		%feature("compactdefaultargs") RemoveChild;
-		%feature("autodoc", "	* Removes theObject from children of current object in scene hierarchy.
+") UnsetAttributes;
+		virtual void UnsetAttributes ();
+		%feature("compactdefaultargs") UnsetColor;
+		%feature("autodoc", "	* Removes color settings. Only the Interactive Object knows which Drawer attribute is affected by the color setting. For a wire, for example, wire aspect is the attribute affected. For a vertex, however, only point aspect is affected by the color setting.
 
-	:param theObject:
-	:type theObject: Handle_PrsMgr_PresentableObject &
+	:rtype: None
+") UnsetColor;
+		void UnsetColor ();
+		%feature("compactdefaultargs") UnsetDisplayMode;
+		%feature("autodoc", "	* Removes display mode settings from the interactive object.
+
+	:rtype: None
+") UnsetDisplayMode;
+		void UnsetDisplayMode ();
+		%feature("compactdefaultargs") UnsetHilightAttributes;
+		%feature("autodoc", "	* Clears settings provided by the hilight drawing tool theDrawer.
+
+	:rtype: None
+") UnsetHilightAttributes;
+		void UnsetHilightAttributes ();
+		%feature("compactdefaultargs") UnsetHilightMode;
+		%feature("autodoc", "	* Unsets highlight display mode.
+
+	:rtype: None
+") UnsetHilightMode;
+		void UnsetHilightMode ();
+		%feature("compactdefaultargs") UnsetMaterial;
+		%feature("autodoc", "	* Removes the setting for material.
+
 	:rtype: void
-") RemoveChild;
-		virtual void RemoveChild (const Handle_PrsMgr_PresentableObject & theObject);
-		%feature("compactdefaultargs") Children;
-		%feature("autodoc", "	* Returns children of the current object.
+") UnsetMaterial;
+		virtual void UnsetMaterial ();
+		%feature("compactdefaultargs") UnsetTransparency;
+		%feature("autodoc", "	* Removes the transparency setting. The object is opaque by default.
 
-	:rtype: PrsMgr_ListOfPresentableObjects
-") Children;
-		const PrsMgr_ListOfPresentableObjects & Children ();
-		%feature("compactdefaultargs") HasOwnPresentations;
-		%feature("autodoc", "	* Returns true if object should have own presentations.
+	:rtype: void
+") UnsetTransparency;
+		virtual void UnsetTransparency ();
+		%feature("compactdefaultargs") UnsetWidth;
+		%feature("autodoc", "	* Reset width to default value.
 
-	:rtype: bool
-") HasOwnPresentations;
-		const Standard_Boolean HasOwnPresentations ();
-		%feature("compactdefaultargs") Parent;
-		%feature("autodoc", "	* Returns parent of current object in scene hierarchy.
+	:rtype: None
+") UnsetWidth;
+		void UnsetWidth ();
+		%feature("compactdefaultargs") UpdateTransformation;
+		%feature("autodoc", "	* Updates final transformation (parent + local) of presentable object and its presentations.
 
-	:rtype: PrsMgr_PresentableObjectPointer
-") Parent;
-		const PrsMgr_PresentableObjectPointer Parent ();
+	:rtype: void
+") UpdateTransformation;
+		virtual void UpdateTransformation ();
+		%feature("compactdefaultargs") Width;
+		%feature("autodoc", "	* Returns the width setting of the Interactive Object.
+
+	:rtype: float
+") Width;
+		Standard_Real Width ();
+		%feature("compactdefaultargs") ZLayer;
+		%feature("autodoc", "	* Get ID of Z layer for main presentation.
+
+	:rtype: Graphic3d_ZLayerId
+") ZLayer;
+		Graphic3d_ZLayerId ZLayer ();
 };
 
 
@@ -323,34 +698,80 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 	}
 };
 %nodefaultctor PrsMgr_Presentation;
-class PrsMgr_Presentation : public MMgt_TShared {
+class PrsMgr_Presentation : public Graphic3d_Structure {
 	public:
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	* Destructor
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* removes the whole content of the presentation. Does not remove the other connected presentations.
+
+	:param theWithDestruction: default value is Standard_True
+	:type theWithDestruction: bool
+	:rtype: void
+") Clear;
+		virtual void Clear (const Standard_Boolean theWithDestruction = Standard_True);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	* Compute structure using presentation manager.
 
 	:rtype: void
-") Destroy;
-		virtual void Destroy ();
-		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "	:rtype: Handle_Prs3d_Presentation
-") Presentation;
-		Handle_Prs3d_Presentation Presentation ();
-		%feature("compactdefaultargs") PresentationManager;
-		%feature("autodoc", "	* returns the PresentationManager in which the presentation has been created.
+") Compute;
+		virtual void Compute ();
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "	* Display structure.
 
-	:rtype: Handle_PrsMgr_PresentationManager
-") PresentationManager;
-		Handle_PrsMgr_PresentationManager PresentationManager ();
-		%feature("compactdefaultargs") SetUpdateStatus;
-		%feature("autodoc", "	:param theStat:
-	:type theStat: bool
+	:rtype: void
+") Display;
+		virtual void Display ();
+		%feature("compactdefaultargs") Erase;
+		%feature("autodoc", "	* Remove structure.
+
+	:rtype: void
+") Erase;
+		virtual void Erase ();
+		%feature("compactdefaultargs") Highlight;
+		%feature("autodoc", "	* Highlight structure.
+
+	:param theStyle:
+	:type theStyle: opencascade::handle<Prs3d_Drawer> &
 	:rtype: None
-") SetUpdateStatus;
-		void SetUpdateStatus (const Standard_Boolean theStat);
+") Highlight;
+		void Highlight (const opencascade::handle<Prs3d_Drawer> & theStyle);
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "	* Return True if structure has been displayed and in no hidden state.
+
+	:rtype: bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed ();
+		%feature("compactdefaultargs") Mode;
+		%feature("autodoc", "	* Return display mode index.
+
+	:rtype: int
+") Mode;
+		Standard_Integer Mode ();
 		%feature("compactdefaultargs") MustBeUpdated;
 		%feature("autodoc", "	:rtype: bool
 ") MustBeUpdated;
 		Standard_Boolean MustBeUpdated ();
+		%feature("compactdefaultargs") Presentation;
+		%feature("autodoc", "	:rtype: Prs3d_Presentation *
+") Presentation;
+		Prs3d_Presentation * Presentation ();
+		%feature("compactdefaultargs") PresentationManager;
+		%feature("autodoc", "	* returns the PresentationManager in which the presentation has been created.
+
+	:rtype: opencascade::handle<PrsMgr_PresentationManager>
+") PresentationManager;
+		const opencascade::handle<PrsMgr_PresentationManager> & PresentationManager ();
+		%feature("compactdefaultargs") SetUpdateStatus;
+		%feature("autodoc", "	:param theUpdateStatus:
+	:type theUpdateStatus: bool
+	:rtype: None
+") SetUpdateStatus;
+		void SetUpdateStatus (const Standard_Boolean theUpdateStatus);
+		%feature("compactdefaultargs") Unhighlight;
+		%feature("autodoc", "	* Unhighlight structure.
+
+	:rtype: None
+") Unhighlight;
+		void Unhighlight ();
 };
 
 
@@ -362,284 +783,268 @@ class PrsMgr_Presentation : public MMgt_TShared {
 	}
 };
 %nodefaultctor PrsMgr_PresentationManager;
-class PrsMgr_PresentationManager : public MMgt_TShared {
+class PrsMgr_PresentationManager : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") PrsMgr_PresentationManager;
-		%feature("autodoc", "	* Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
+		%feature("compactdefaultargs") AddToImmediateList;
+		%feature("autodoc", "	* Stores thePrs in the transient list of presentations to be displayed in immediate mode. Will be taken in account in EndImmediateDraw method.
 
-	:param theStructureManager:
-	:type theStructureManager: Handle_Visual3d_ViewManager &
+	:param thePrs:
+	:type thePrs: opencascade::handle<Prs3d_Presentation> &
 	:rtype: None
-") PrsMgr_PresentationManager;
-		 PrsMgr_PresentationManager (const Handle_Visual3d_ViewManager & theStructureManager);
-		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") Display;
-		void Display (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "	* erases the presentation of the object in the given Presentation manager with the given mode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") Erase;
-		void Erase (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: void
-") Clear;
-		virtual void Clear (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") SetVisibility;
-		%feature("autodoc", "	* Sets the visibility of presentable object.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode:
-	:type theMode: int
-	:param theValue:
-	:type theValue: bool
-	:rtype: None
-") SetVisibility;
-		void SetVisibility (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode,const Standard_Boolean theValue);
-		%feature("compactdefaultargs") Highlight;
-		%feature("autodoc", "	* Highlights the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") Highlight;
-		void Highlight (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") Unhighlight;
-		%feature("autodoc", "	* Removes highlighting from the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") Unhighlight;
-		void Unhighlight (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") SetDisplayPriority;
-		%feature("autodoc", "	* Sets the display priority theNewPrior of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode:
-	:type theMode: int
-	:param theNewPrior:
-	:type theNewPrior: int
-	:rtype: None
-") SetDisplayPriority;
-		void SetDisplayPriority (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode,const Standard_Integer theNewPrior);
-		%feature("compactdefaultargs") DisplayPriority;
-		%feature("autodoc", "	* Returns the display priority of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode:
-	:type theMode: int
-	:rtype: int
-") DisplayPriority;
-		Standard_Integer DisplayPriority (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode);
-		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "	* Set Z layer ID for all presentations of the object.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theLayerId:
-	:type theLayerId: int
-	:rtype: None
-") SetZLayer;
-		void SetZLayer (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theLayerId);
-		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer ID assigned to all presentations of the object. Method returns -1 value if object has no presentations and is impossible to get layer index.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:rtype: int
-") GetZLayer;
-		Standard_Integer GetZLayer (const Handle_PrsMgr_PresentableObject & thePrsObject);
-		%feature("compactdefaultargs") IsDisplayed;
-		%feature("autodoc", "	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: bool
-") IsDisplayed;
-		Standard_Boolean IsDisplayed (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") IsHighlighted;
-		%feature("autodoc", "	* Returns true if the presentation of the presentable object thePrsObject in this framework with the display mode theMode is highlighted.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: bool
-") IsHighlighted;
-		Standard_Boolean IsHighlighted (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* Updates the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") Update;
-		void Update (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
+") AddToImmediateList;
+		void AddToImmediateList (const opencascade::handle<Prs3d_Presentation> & thePrs);
 		%feature("compactdefaultargs") BeginImmediateDraw;
 		%feature("autodoc", "	* Resets the transient list of presentations previously displayed in immediate mode and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls.
 
 	:rtype: None
 ") BeginImmediateDraw;
 		void BeginImmediateDraw ();
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:rtype: void
+") Clear;
+		virtual void Clear (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
 		%feature("compactdefaultargs") ClearImmediateDraw;
 		%feature("autodoc", "	* Resets the transient list of presentations previously displayed in immediate mode.
 
 	:rtype: None
 ") ClearImmediateDraw;
 		void ClearImmediateDraw ();
-		%feature("compactdefaultargs") AddToImmediateList;
-		%feature("autodoc", "	* Stores thePrs in the transient list of presentations to be displayed in immediate mode. Will be taken in account in EndImmediateDraw method.
-
-	:param thePrs:
-	:type thePrs: Handle_Prs3d_Presentation &
-	:rtype: None
-") AddToImmediateList;
-		void AddToImmediateList (const Handle_Prs3d_Presentation & thePrs);
-		%feature("compactdefaultargs") EndImmediateDraw;
-		%feature("autodoc", "	* Allows rapid drawing of the view theView by avoiding an update of the whole background.
-
-	:param theView:
-	:type theView: Handle_V3d_View &
-	:rtype: None
-") EndImmediateDraw;
-		void EndImmediateDraw (const Handle_V3d_View & theView);
-		%feature("compactdefaultargs") IsImmediateModeOn;
-		%feature("autodoc", "	* Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode.
-
-	:rtype: bool
-") IsImmediateModeOn;
-		Standard_Boolean IsImmediateModeOn ();
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "	* Highlights the graphic object thePrsObject in the color theColor. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theColor: default value is Quantity_NOC_YELLOW
-	:type theColor: Quantity_NameOfColor
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theStyle:
+	:type theStyle: opencascade::handle<Prs3d_Drawer> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theSelObj: default value is NULL
-	:type theSelObj: Handle_PrsMgr_PresentableObject &
+	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theImmediateStructLayerId: default value is Graphic3d_ZLayerId_Topmost
+	:type theImmediateStructLayerId: Graphic3d_ZLayerId
 	:rtype: None
 ") Color;
-		void Color (const Handle_PrsMgr_PresentableObject & thePrsObject,const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW,const Standard_Integer theMode = 0,const Handle_PrsMgr_PresentableObject & theSelObj = NULL);
-		%feature("compactdefaultargs") BoundBox;
-		%feature("autodoc", "	* highlights the boundbox of the presentation
-
-	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") BoundBox;
-		void BoundBox (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
+		void Color (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const opencascade::handle<Prs3d_Drawer> & theStyle,const Standard_Integer theMode = 0,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL,const Graphic3d_ZLayerId theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theOtherObject:
-	:type theOtherObject: Handle_PrsMgr_PresentableObject &
+	:type theOtherObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theOtherMode: default value is 0
 	:type theOtherMode: int
 	:rtype: None
 ") Connect;
-		void Connect (const Handle_PrsMgr_PresentableObject & thePrsObject,const Handle_PrsMgr_PresentableObject & theOtherObject,const Standard_Integer theMode = 0,const Standard_Integer theOtherMode = 0);
-		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Sets the transformation theTransformation for the presentable object thePrsObject. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
+		void Connect (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const opencascade::handle<PrsMgr_PresentableObject> & theOtherObject,const Standard_Integer theMode = 0,const Standard_Integer theOtherMode = 0);
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "	* Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theTransformation:
-	:type theTransformation: Handle_Geom_Transformation &
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None
-") Transform;
-		void Transform (const Handle_PrsMgr_PresentableObject & thePrsObject,const Handle_Geom_Transformation & theTransformation,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") StructureManager;
-		%feature("autodoc", "	* Returns the structure manager.
-
-	:rtype: Handle_Graphic3d_StructureManager
-") StructureManager;
-		Handle_Graphic3d_StructureManager StructureManager ();
-		%feature("compactdefaultargs") SetShadingAspect;
-		%feature("autodoc", "	* this method will change the color and the aspect of the presentations containing shaded structures.
+") Display;
+		void Display (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") DisplayPriority;
+		%feature("autodoc", "	* Returns the display priority of the presentable object thePrsObject in this framework with the display mode theMode.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theColor:
-	:type theColor: Quantity_NameOfColor
-	:param theMaterial:
-	:type theMaterial: Graphic3d_NameOfMaterial
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode:
+	:type theMode: int
+	:rtype: int
+") DisplayPriority;
+		Standard_Integer DisplayPriority (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode);
+		%feature("compactdefaultargs") EndImmediateDraw;
+		%feature("autodoc", "	* Allows rapid drawing of the each view in theViewer by avoiding an update of the whole background.
+
+	:param theViewer:
+	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:rtype: None
+") EndImmediateDraw;
+		void EndImmediateDraw (const opencascade::handle<V3d_Viewer> & theViewer);
+		%feature("compactdefaultargs") Erase;
+		%feature("autodoc", "	* erases the presentation of the object in the given Presentation manager with the given mode. If @theMode is -1, then erases all presentations of the object.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None
-") SetShadingAspect;
-		void SetShadingAspect (const Handle_PrsMgr_PresentableObject & thePrsObject,const Quantity_NameOfColor theColor,const Graphic3d_NameOfMaterial theMaterial,const Standard_Integer theMode = 0);
-		%feature("compactdefaultargs") SetShadingAspect;
-		%feature("autodoc", "	* this method will change the color and the aspect of the presentations containing shaded structures.
+") Erase;
+		void Erase (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") GetZLayer;
+		%feature("autodoc", "	* Get Z layer ID assigned to all presentations of the object. Method returns -1 value if object has no presentations and is impossible to get layer index.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
-	:param theShadingAspect:
-	:type theShadingAspect: Handle_Prs3d_ShadingAspect &
-	:param theMode: default value is 0
-	:type theMode: int
-	:rtype: None
-") SetShadingAspect;
-		void SetShadingAspect (const Handle_PrsMgr_PresentableObject & thePrsObject,const Handle_Prs3d_ShadingAspect & theShadingAspect,const Standard_Integer theMode = 0);
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: Graphic3d_ZLayerId
+") GetZLayer;
+		Graphic3d_ZLayerId GetZLayer (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 		%feature("compactdefaultargs") HasPresentation;
 		%feature("autodoc", "	* Returns true if there is a presentation of the presentable object thePrsObject in this framework, thePrsObject having the display mode theMode.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool
 ") HasPresentation;
-		Standard_Boolean HasPresentation (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
+		Standard_Boolean HasPresentation (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:rtype: bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") IsHighlighted;
+		%feature("autodoc", "	* Returns true if the presentation of the presentable object thePrsObject in this framework with the display mode theMode is highlighted.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:rtype: bool
+") IsHighlighted;
+		Standard_Boolean IsHighlighted (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") IsImmediateModeOn;
+		%feature("autodoc", "	* Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode.
+
+	:rtype: bool
+") IsImmediateModeOn;
+		Standard_Boolean IsImmediateModeOn ();
 		%feature("compactdefaultargs") Presentation;
 		%feature("autodoc", "	* Returns the presentation Presentation of the presentable object thePrsObject in this framework. When theToCreate is true - automatically creates presentation for specified mode when not exist. Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
 
 	:param thePrsObject:
-	:type thePrsObject: Handle_PrsMgr_PresentableObject &
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theToCreate: default value is Standard_False
 	:type theToCreate: bool
 	:param theSelObj: default value is NULL
-	:type theSelObj: Handle_PrsMgr_PresentableObject &
-	:rtype: Handle_PrsMgr_Presentation
+	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: opencascade::handle<PrsMgr_Presentation>
 ") Presentation;
-		Handle_PrsMgr_Presentation Presentation (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0,const Standard_Boolean theToCreate = Standard_False,const Handle_PrsMgr_PresentableObject & theSelObj = NULL);
+		opencascade::handle<PrsMgr_Presentation> Presentation (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0,const Standard_Boolean theToCreate = Standard_False,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
+		%feature("compactdefaultargs") PrsMgr_PresentationManager;
+		%feature("autodoc", "	* Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
+
+	:param theStructureManager:
+	:type theStructureManager: opencascade::handle<Graphic3d_StructureManager> &
+	:rtype: None
+") PrsMgr_PresentationManager;
+		 PrsMgr_PresentationManager (const opencascade::handle<Graphic3d_StructureManager> & theStructureManager);
+		%feature("compactdefaultargs") RedrawImmediate;
+		%feature("autodoc", "	* Clears and redisplays immediate structures of the viewer taking into account its affinity.
+
+	:param theViewer:
+	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:rtype: None
+") RedrawImmediate;
+		void RedrawImmediate (const opencascade::handle<V3d_Viewer> & theViewer);
+		%feature("compactdefaultargs") SetDisplayPriority;
+		%feature("autodoc", "	* Sets the display priority theNewPrior of the presentable object thePrsObject in this framework with the display mode theMode.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode:
+	:type theMode: int
+	:param theNewPrior:
+	:type theNewPrior: int
+	:rtype: None
+") SetDisplayPriority;
+		void SetDisplayPriority (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode,const Standard_Integer theNewPrior);
+		%feature("compactdefaultargs") SetVisibility;
+		%feature("autodoc", "	* Sets the visibility of presentable object.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode:
+	:type theMode: int
+	:param theValue:
+	:type theValue: bool
+	:rtype: None
+") SetVisibility;
+		void SetVisibility (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode,const Standard_Boolean theValue);
+		%feature("compactdefaultargs") SetZLayer;
+		%feature("autodoc", "	* Set Z layer ID for all presentations of the object.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theLayerId:
+	:type theLayerId: Graphic3d_ZLayerId
+	:rtype: None
+") SetZLayer;
+		void SetZLayer (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Graphic3d_ZLayerId theLayerId);
+		%feature("compactdefaultargs") StructureManager;
+		%feature("autodoc", "	* Returns the structure manager.
+
+	:rtype: opencascade::handle<Graphic3d_StructureManager>
+") StructureManager;
+		const opencascade::handle<Graphic3d_StructureManager> & StructureManager ();
+		%feature("compactdefaultargs") Transform;
+		%feature("autodoc", "	* Sets the transformation theTransformation for the presentable object thePrsObject. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theTransformation:
+	:type theTransformation: opencascade::handle<Geom_Transformation> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:rtype: None
+") Transform;
+		void Transform (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const opencascade::handle<Geom_Transformation> & theTransformation,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") Unhighlight;
+		%feature("autodoc", "	* Removes highlighting from the presentation of the presentable object.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: None
+") Unhighlight;
+		void Unhighlight (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
+		%feature("compactdefaultargs") Unhighlight;
+		%feature("autodoc", "	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode:
+	:type theMode: int
+	:rtype: None
+") Unhighlight;
+		void Unhighlight (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode);
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "	* Updates the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
+
+	:param thePrsObject:
+	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:rtype: None
+") Update;
+		void Update (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0);
+		%feature("compactdefaultargs") UpdateHighlightTrsf;
+		%feature("autodoc", "	* Allows to apply location transformation to shadow highlight presentation immediately. @param theObj defines the base object, it local transformation will be applied to corresponding highlight structure @param theMode defines display mode of the base object @param theSelObj defines the object produced after decomposition of the base object for local selection
+
+	:param theViewer:
+	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:param theObj:
+	:type theObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:param theMode: default value is 0
+	:type theMode: int
+	:param theSelObj: default value is NULL
+	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:rtype: None
+") UpdateHighlightTrsf;
+		void UpdateHighlightTrsf (const opencascade::handle<V3d_Viewer> & theViewer,const opencascade::handle<PrsMgr_PresentableObject> & theObj,const Standard_Integer theMode = 0,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
 };
 
 
@@ -650,238 +1055,6 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor PrsMgr_Presentations;
-class PrsMgr_Presentations : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") PrsMgr_Presentations;
-		%feature("autodoc", "	:rtype: None
-") PrsMgr_Presentations;
-		 PrsMgr_Presentations ();
-		%feature("compactdefaultargs") PrsMgr_Presentations;
-		%feature("autodoc", "	:param Other:
-	:type Other: PrsMgr_Presentations &
-	:rtype: None
-") PrsMgr_Presentations;
-		 PrsMgr_Presentations (const PrsMgr_Presentations & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: PrsMgr_Presentations &
-	:rtype: PrsMgr_Presentations
-") Assign;
-		const PrsMgr_Presentations & Assign (const PrsMgr_Presentations & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: PrsMgr_Presentations &
-	:rtype: PrsMgr_Presentations
-") operator =;
-		const PrsMgr_Presentations & operator = (const PrsMgr_Presentations & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: PrsMgr_ModedPresentation &
-	:rtype: None
-") Append;
-		void Append (const PrsMgr_ModedPresentation & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: PrsMgr_Presentations &
-	:rtype: None
-") Append;
-		void Append (PrsMgr_Presentations & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: PrsMgr_ModedPresentation &
-	:rtype: None
-") Prepend;
-		void Prepend (const PrsMgr_ModedPresentation & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: PrsMgr_Presentations &
-	:rtype: None
-") Prepend;
-		void Prepend (PrsMgr_Presentations & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: PrsMgr_ModedPresentation &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const PrsMgr_ModedPresentation & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: PrsMgr_Presentations &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,PrsMgr_Presentations & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: PrsMgr_ModedPresentation &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const PrsMgr_ModedPresentation & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: PrsMgr_Presentations &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,PrsMgr_Presentations & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
-") First;
-		const PrsMgr_ModedPresentation & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
-") Last;
-		const PrsMgr_ModedPresentation & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: PrsMgr_Presentations &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,PrsMgr_Presentations & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: PrsMgr_ModedPresentation
-") Value;
-		const PrsMgr_ModedPresentation & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: PrsMgr_ModedPresentation &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const PrsMgr_ModedPresentation & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: PrsMgr_ModedPresentation
-") ChangeValue;
-		PrsMgr_ModedPresentation & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend PrsMgr_Presentations {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor PrsMgr_Prs;
-class PrsMgr_Prs : public Prs3d_Presentation {
-	public:
-		%feature("compactdefaultargs") PrsMgr_Prs;
-		%feature("autodoc", "	:param theStructManager:
-	:type theStructManager: Handle_Graphic3d_StructureManager &
-	:param thePresentation:
-	:type thePresentation: PrsMgr_PresentationPointer &
-	:param theTypeOfPresentation3d:
-	:type theTypeOfPresentation3d: PrsMgr_TypeOfPresentation3d
-	:rtype: None
-") PrsMgr_Prs;
-		 PrsMgr_Prs (const Handle_Graphic3d_StructureManager & theStructManager,const PrsMgr_PresentationPointer & thePresentation,const PrsMgr_TypeOfPresentation3d theTypeOfPresentation3d);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:rtype: None
-") Compute;
-		void Compute ();
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:param aProjector:
-	:type aProjector: Handle_Graphic3d_DataStructureManager &
-	:rtype: Handle_Graphic3d_Structure
-") Compute;
-		Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* the 'degenerated' Structure is displayed with a transformation defined by <AMatrix> which is not a Pure Translation. We have to take in account this Transformation in the computation of hidden line removal... returns a filled Graphic Structure.
-
-	:param aProjector:
-	:type aProjector: Handle_Graphic3d_DataStructureManager &
-	:param AMatrix:
-	:type AMatrix: TColStd_Array2OfReal &
-	:rtype: Handle_Graphic3d_Structure
-") Compute;
-		Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* No need to return a structure, just to fill <ComputedStruct> ....
-
-	:param aProjector:
-	:type aProjector: Handle_Graphic3d_DataStructureManager &
-	:param ComputedStruct:
-	:type ComputedStruct: Handle_Graphic3d_Structure &
-	:rtype: None
-") Compute;
-		void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,Handle_Graphic3d_Structure & ComputedStruct);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* No Need to return a Structure, just to Fill <aStructure>. The Trsf has to be taken in account in the computation (Rotation Part....)
-
-	:param aProjector:
-	:type aProjector: Handle_Graphic3d_DataStructureManager &
-	:param AMatrix:
-	:type AMatrix: TColStd_Array2OfReal &
-	:param aStructure:
-	:type aStructure: Handle_Graphic3d_Structure &
-	:rtype: None
-") Compute;
-		void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix,Handle_Graphic3d_Structure & aStructure);
-};
-
-
-%make_alias(PrsMgr_Prs)
-
-%extend PrsMgr_Prs {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor PrsMgr_SequenceNodeOfPresentations;
-class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") PrsMgr_SequenceNodeOfPresentations;
-		%feature("autodoc", "	:param I:
-	:type I: PrsMgr_ModedPresentation &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") PrsMgr_SequenceNodeOfPresentations;
-		 PrsMgr_SequenceNodeOfPresentations (const PrsMgr_ModedPresentation & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
-") Value;
-		PrsMgr_ModedPresentation & Value ();
-};
-
-
-%make_alias(PrsMgr_SequenceNodeOfPresentations)
-
-%extend PrsMgr_SequenceNodeOfPresentations {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

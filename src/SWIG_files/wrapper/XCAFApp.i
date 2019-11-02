@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,19 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
-%define XCAFAPPDOCSTRING
-"Defines application for DECAF document
-and provides application-specific tools
 
-The application should be registered before work with DECAF
-documents by call to XCAFApp_Application::GetApplication()
-"
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:47
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
+%define XCAFAPPDOCSTRING
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=XCAFAPPDOCSTRING) XCAFApp
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -44,43 +50,42 @@ documents by call to XCAFApp_Application::GetApplication()
 
 %include XCAFApp_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
 %wrap_handle(XCAFApp_Application)
+/* end handles declaration */
 
 %nodefaultctor XCAFApp_Application;
 class XCAFApp_Application : public TDocStd_Application {
 	public:
-		%feature("compactdefaultargs") Formats;
-		%feature("autodoc", "	:param Formats:
-	:type Formats: TColStd_SequenceOfExtendedString &
+		%feature("compactdefaultargs") GetApplication;
+		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
+
+	:rtype: opencascade::handle<XCAFApp_Application>
+") GetApplication;
+		static opencascade::handle<XCAFApp_Application> GetApplication ();
+		%feature("compactdefaultargs") InitDocument;
+		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
+
+	:param aDoc:
+	:type aDoc: opencascade::handle<TDocStd_Document> &
 	:rtype: void
-") Formats;
-		virtual void Formats (TColStd_SequenceOfExtendedString & Formats);
+") InitDocument;
+		virtual void InitDocument (const opencascade::handle<TDocStd_Document> & aDoc);
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "	* methods from TDocStd_Application ================================
 
 	:rtype: char *
 ") ResourcesName;
 		virtual const char * ResourcesName ();
-		%feature("compactdefaultargs") InitDocument;
-		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
-
-	:param aDoc:
-	:type aDoc: Handle_TDocStd_Document &
-	:rtype: void
-") InitDocument;
-		virtual void InitDocument (const Handle_TDocStd_Document & aDoc);
-		%feature("compactdefaultargs") GetApplication;
-		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
-
-	:rtype: Handle_XCAFApp_Application
-") GetApplication;
-		static Handle_XCAFApp_Application GetApplication ();
 };
 
 
@@ -91,3 +96,6 @@ class XCAFApp_Application : public TDocStd_Application {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

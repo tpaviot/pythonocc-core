@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,18 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
-%define ADVAPPROXDOCSTRING
-"This package provides algorithms approximating a function
-that can be multidimensional creating in the end a
-BSpline function with the required continuity
 
-"
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:05
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
+%define ADVAPPROXDOCSTRING
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=ADVAPPROXDOCSTRING) AdvApprox
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -43,12 +50,17 @@ BSpline function with the required continuity
 
 %include AdvApprox_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %nodefaultctor AdvApprox_ApproxAFunction;
 class AdvApprox_ApproxAFunction {
@@ -63,11 +75,11 @@ class AdvApprox_ApproxAFunction {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: Handle_TColStd_HArray1OfReal &
+	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param TwoDTol:
-	:type TwoDTol: Handle_TColStd_HArray1OfReal &
+	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param ThreeDTol:
-	:type ThreeDTol: Handle_TColStd_HArray1OfReal &
+	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param First:
 	:type First: float
 	:param Last:
@@ -82,7 +94,7 @@ class AdvApprox_ApproxAFunction {
 	:type Func: AdvApprox_EvaluatorFunction &
 	:rtype: None
 ") AdvApprox_ApproxAFunction;
-		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle_TColStd_HArray1OfReal & OneDTol,const Handle_TColStd_HArray1OfReal & TwoDTol,const Handle_TColStd_HArray1OfReal & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func);
+		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func);
 		%feature("compactdefaultargs") AdvApprox_ApproxAFunction;
 		%feature("autodoc", "	* Approximation with user methode of cutting
 
@@ -93,11 +105,11 @@ class AdvApprox_ApproxAFunction {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: Handle_TColStd_HArray1OfReal &
+	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param TwoDTol:
-	:type TwoDTol: Handle_TColStd_HArray1OfReal &
+	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param ThreeDTol:
-	:type ThreeDTol: Handle_TColStd_HArray1OfReal &
+	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
 	:param First:
 	:type First: float
 	:param Last:
@@ -114,7 +126,7 @@ class AdvApprox_ApproxAFunction {
 	:type CutTool: AdvApprox_Cutting &
 	:rtype: None
 ") AdvApprox_ApproxAFunction;
-		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle_TColStd_HArray1OfReal & OneDTol,const Handle_TColStd_HArray1OfReal & TwoDTol,const Handle_TColStd_HArray1OfReal & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func,const AdvApprox_Cutting & CutTool);
+		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func,const AdvApprox_Cutting & CutTool);
 		%feature("compactdefaultargs") Approximation;
 		%feature("autodoc", "	:param TotalDimension:
 	:type TotalDimension: int
@@ -157,38 +169,104 @@ class AdvApprox_ApproxAFunction {
 	:rtype: void
 ") Approximation;
 		static void Approximation (const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const TColStd_Array1OfInteger & LocalDimension,const Standard_Real First,const Standard_Real Last,AdvApprox_EvaluatorFunction & Evaluator,const AdvApprox_Cutting & CutTool,const Standard_Integer ContinuityOrder,const Standard_Integer NumMaxCoeffs,const Standard_Integer MaxSegments,const TColStd_Array1OfReal & TolerancesArray,const Standard_Integer code_precis,Standard_Integer &OutValue,TColStd_Array1OfInteger & NumCoeffPerCurveArray,TColStd_Array1OfReal & LocalCoefficientArray,TColStd_Array1OfReal & IntervalsArray,TColStd_Array1OfReal & ErrorMaxArray,TColStd_Array1OfReal & AverageErrorArray,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") AverageError;
+		%feature("autodoc", "	* returns the error as is in the algorithms
+
+	:param Dimension:
+	:type Dimension: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") AverageError;
+		opencascade::handle<TColStd_HArray1OfReal> AverageError (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") AverageError;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:param Index:
+	:type Index: int
+	:rtype: float
+") AverageError;
+		Standard_Real AverageError (const Standard_Integer Dimension,const Standard_Integer Index);
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
+		Standard_Integer Degree ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") HasResult;
+		%feature("autodoc", "	:rtype: bool
+") HasResult;
+		Standard_Boolean HasResult ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "	:rtype: bool
-") HasResult;
-		Standard_Boolean HasResult ();
-		%feature("compactdefaultargs") Poles1d;
-		%feature("autodoc", "	* returns the poles from the algorithms as is
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") Knots;
+		opencascade::handle<TColStd_HArray1OfReal> Knots ();
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	* returns the error as is in the algorithms
 
-	:rtype: Handle_TColStd_HArray2OfReal
-") Poles1d;
-		Handle_TColStd_HArray2OfReal Poles1d ();
-		%feature("compactdefaultargs") Poles2d;
-		%feature("autodoc", "	* returns the poles from the algorithms as is
-
-	:rtype: Handle_TColgp_HArray2OfPnt2d
-") Poles2d;
-		Handle_TColgp_HArray2OfPnt2d Poles2d ();
-		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "	* -- returns the poles from the algorithms as is
-
-	:rtype: Handle_TColgp_HArray2OfPnt
-") Poles;
-		Handle_TColgp_HArray2OfPnt Poles ();
+	:param Dimension:
+	:type Dimension: int
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") MaxError;
+		opencascade::handle<TColStd_HArray1OfReal> MaxError (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:param Index:
+	:type Index: int
+	:rtype: float
+") MaxError;
+		Standard_Real MaxError (const Standard_Integer Dimension,const Standard_Integer Index);
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfInteger>
+") Multiplicities;
+		opencascade::handle<TColStd_HArray1OfInteger> Multiplicities ();
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
+		Standard_Integer NbKnots ();
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "	* as the name says
 
 	:rtype: int
 ") NbPoles;
 		Standard_Integer NbPoles ();
+		%feature("compactdefaultargs") NumSubSpaces;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:rtype: int
+") NumSubSpaces;
+		Standard_Integer NumSubSpaces (const Standard_Integer Dimension);
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* -- returns the poles from the algorithms as is
+
+	:rtype: opencascade::handle<TColgp_HArray2OfPnt>
+") Poles;
+		opencascade::handle<TColgp_HArray2OfPnt> Poles ();
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* returns the poles at Index from the 3d subspace
+
+	:param Index:
+	:type Index: int
+	:param P:
+	:type P: TColgp_Array1OfPnt
+	:rtype: None
+") Poles;
+		void Poles (const Standard_Integer Index,TColgp_Array1OfPnt & P);
+		%feature("compactdefaultargs") Poles1d;
+		%feature("autodoc", "	* returns the poles from the algorithms as is
+
+	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") Poles1d;
+		opencascade::handle<TColStd_HArray2OfReal> Poles1d ();
 		%feature("compactdefaultargs") Poles1d;
 		%feature("autodoc", "	* returns the poles at Index from the 1d subspace
 
@@ -200,6 +278,12 @@ class AdvApprox_ApproxAFunction {
 ") Poles1d;
 		void Poles1d (const Standard_Integer Index,TColStd_Array1OfReal & P);
 		%feature("compactdefaultargs") Poles2d;
+		%feature("autodoc", "	* returns the poles from the algorithms as is
+
+	:rtype: opencascade::handle<TColgp_HArray2OfPnt2d>
+") Poles2d;
+		opencascade::handle<TColgp_HArray2OfPnt2d> Poles2d ();
+		%feature("compactdefaultargs") Poles2d;
 		%feature("autodoc", "	* returns the poles at Index from the 2d subspace
 
 	:param Index:
@@ -209,79 +293,7 @@ class AdvApprox_ApproxAFunction {
 	:rtype: None
 ") Poles2d;
 		void Poles2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & P);
-		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "	* returns the poles at Index from the 3d subspace
-
-	:param Index:
-	:type Index: int
-	:param P:
-	:type P: TColgp_Array1OfPnt
-	:rtype: None
-") Poles;
-		void Poles (const Standard_Integer Index,TColgp_Array1OfPnt & P);
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NumSubSpaces;
-		%feature("autodoc", "	:param Dimension:
-	:type Dimension: int
-	:rtype: int
-") NumSubSpaces;
-		Standard_Integer NumSubSpaces (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") Knots;
-		Handle_TColStd_HArray1OfReal Knots ();
-		%feature("compactdefaultargs") Multiplicities;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") Multiplicities;
-		Handle_TColStd_HArray1OfInteger Multiplicities ();
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "	* returns the error as is in the algorithms
-
-	:param Dimension:
-	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") MaxError;
-		Handle_TColStd_HArray1OfReal MaxError (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") AverageError;
-		%feature("autodoc", "	* returns the error as is in the algorithms
-
-	:param Dimension:
-	:type Dimension: int
-	:rtype: Handle_TColStd_HArray1OfReal
-") AverageError;
-		Handle_TColStd_HArray1OfReal AverageError (const Standard_Integer Dimension);
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "	:param Dimension:
-	:type Dimension: int
-	:param Index:
-	:type Index: int
-	:rtype: float
-") MaxError;
-		Standard_Real MaxError (const Standard_Integer Dimension,const Standard_Integer Index);
-		%feature("compactdefaultargs") AverageError;
-		%feature("autodoc", "	:param Dimension:
-	:type Dimension: int
-	:param Index:
-	:type Index: int
-	:rtype: float
-") AverageError;
-		Standard_Real AverageError (const Standard_Integer Dimension,const Standard_Integer Index);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend AdvApprox_ApproxAFunction {
@@ -292,10 +304,6 @@ class AdvApprox_ApproxAFunction {
 %nodefaultctor AdvApprox_Cutting;
 class AdvApprox_Cutting {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param a:
 	:type a: float
@@ -329,12 +337,62 @@ class AdvApprox_SimpleApprox {
 	:param NbGaussPoints:
 	:type NbGaussPoints: int
 	:param JacobiBase:
-	:type JacobiBase: Handle_PLib_JacobiPolynomial &
+	:type JacobiBase: opencascade::handle<PLib_JacobiPolynomial> &
 	:param Func:
 	:type Func: AdvApprox_EvaluatorFunction &
 	:rtype: None
 ") AdvApprox_SimpleApprox;
-		 AdvApprox_SimpleApprox (const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const GeomAbs_Shape Continuity,const Standard_Integer WorkDegree,const Standard_Integer NbGaussPoints,const Handle_PLib_JacobiPolynomial & JacobiBase,const AdvApprox_EvaluatorFunction & Func);
+		 AdvApprox_SimpleApprox (const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const GeomAbs_Shape Continuity,const Standard_Integer WorkDegree,const Standard_Integer NbGaussPoints,const opencascade::handle<PLib_JacobiPolynomial> & JacobiBase,const AdvApprox_EvaluatorFunction & Func);
+		%feature("compactdefaultargs") AverageError;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: float
+") AverageError;
+		Standard_Real AverageError (const Standard_Integer Index);
+		%feature("compactdefaultargs") Coefficients;
+		%feature("autodoc", "	* returns the coefficients in the Jacobi Base
+
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") Coefficients;
+		opencascade::handle<TColStd_HArray1OfReal> Coefficients ();
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
+		Standard_Integer Degree ();
+		%feature("compactdefaultargs") DifTab;
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
+") DifTab;
+		opencascade::handle<TColStd_HArray1OfReal> DifTab ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") FirstConstr;
+		%feature("autodoc", "	* returns the constraints at First
+
+	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") FirstConstr;
+		opencascade::handle<TColStd_HArray2OfReal> FirstConstr ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") LastConstr;
+		%feature("autodoc", "	* returns the constraints at Last
+
+	:rtype: opencascade::handle<TColStd_HArray2OfReal>
+") LastConstr;
+		opencascade::handle<TColStd_HArray2OfReal> LastConstr ();
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: float
+") MaxError;
+		Standard_Real MaxError (const Standard_Integer Index);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool;
 
@@ -351,61 +409,11 @@ class AdvApprox_SimpleApprox {
 	:rtype: None
 ") Perform;
 		void Perform (const TColStd_Array1OfInteger & LocalDimension,const TColStd_Array1OfReal & LocalTolerancesArray,const Standard_Real First,const Standard_Real Last,const Standard_Integer MaxDegree);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "	* returns the coefficients in the Jacobi Base
-
-	:rtype: Handle_TColStd_HArray1OfReal
-") Coefficients;
-		Handle_TColStd_HArray1OfReal Coefficients ();
-		%feature("compactdefaultargs") FirstConstr;
-		%feature("autodoc", "	* returns the constraints at First
-
-	:rtype: Handle_TColStd_HArray2OfReal
-") FirstConstr;
-		Handle_TColStd_HArray2OfReal FirstConstr ();
-		%feature("compactdefaultargs") LastConstr;
-		%feature("autodoc", "	* returns the constraints at Last
-
-	:rtype: Handle_TColStd_HArray2OfReal
-") LastConstr;
-		Handle_TColStd_HArray2OfReal LastConstr ();
 		%feature("compactdefaultargs") SomTab;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+		%feature("autodoc", "	:rtype: opencascade::handle<TColStd_HArray1OfReal>
 ") SomTab;
-		Handle_TColStd_HArray1OfReal SomTab ();
-		%feature("compactdefaultargs") DifTab;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") DifTab;
-		Handle_TColStd_HArray1OfReal DifTab ();
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: float
-") MaxError;
-		Standard_Real MaxError (const Standard_Integer Index);
-		%feature("compactdefaultargs") AverageError;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: float
-") AverageError;
-		Standard_Real AverageError (const Standard_Integer Index);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+		opencascade::handle<TColStd_HArray1OfReal> SomTab ();
+};
 
 
 %extend AdvApprox_SimpleApprox {
@@ -498,3 +506,6 @@ class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

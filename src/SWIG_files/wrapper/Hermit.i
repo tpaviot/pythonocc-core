@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,30 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
-%define HERMITDOCSTRING
-"This is used to reparameterize Rational BSpline
-Curves so that we can  concatenate them later to
-build C1 Curves It builds and 1D-reparameterizing
-function starting from an Hermite interpolation and
-adding knots and modifying poles of the 1D BSpline
-obtained that way. The goal is to build a(u) so that
-if we consider a BSpline curve
-N(u)
-f(u) = -
-D(u)
 
-the function a(u)D(u) has value 1 at the umin and umax
-and has 0.0e0 derivative value a umin and umax.
-The details of the computation occuring in this package
-can be found by reading :
-' Etude sur la concatenation de NURBS en vue du
-balayage de surfaces' PFE n S85 Ensam Lille"
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:15
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
+%define HERMITDOCSTRING
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -55,12 +50,17 @@ balayage de surfaces' PFE n S85 Ensam Lille"
 
 %include Hermit_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* handles */
+/* end handles declaration */
 
 %rename(hermit) Hermit;
 class Hermit {
@@ -69,31 +69,31 @@ class Hermit {
 		%feature("autodoc", "	* returns the correct spline a(u) which will be multiplicated with BS later.
 
 	:param BS:
-	:type BS: Handle_Geom_BSplineCurve &
+	:type BS: opencascade::handle<Geom_BSplineCurve> &
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
 	:type TolKnots: float
-	:rtype: Handle_Geom2d_BSplineCurve
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>
 ") Solution;
-		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+		static opencascade::handle<Geom2d_BSplineCurve> Solution (const opencascade::handle<Geom_BSplineCurve> & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "	* returns the correct spline a(u) which will be multiplicated with BS later.
 
 	:param BS:
-	:type BS: Handle_Geom2d_BSplineCurve &
+	:type BS: opencascade::handle<Geom2d_BSplineCurve> &
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
 	:type TolKnots: float
-	:rtype: Handle_Geom2d_BSplineCurve
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>
 ") Solution;
-		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom2d_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+		static opencascade::handle<Geom2d_BSplineCurve> Solution (const opencascade::handle<Geom2d_BSplineCurve> & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
 		%feature("compactdefaultargs") Solutionbis;
 		%feature("autodoc", "	* returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 
 	:param BS:
-	:type BS: Handle_Geom_BSplineCurve &
+	:type BS: opencascade::handle<Geom_BSplineCurve> &
 	:param Knotmin:
 	:type Knotmin: float &
 	:param Knotmax:
@@ -104,7 +104,7 @@ class Hermit {
 	:type TolKnots: float
 	:rtype: void
 ") Solutionbis;
-		static void Solutionbis (const Handle_Geom_BSplineCurve & BS,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+		static void Solutionbis (const opencascade::handle<Geom_BSplineCurve> & BS,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
 };
 
 
@@ -113,3 +113,6 @@ class Hermit {
 	__repr__ = _dumps_object
 	}
 };
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

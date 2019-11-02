@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,26 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
+
+/*
+This file was automatically generated using the pythonocc_generator, see
+https://github.com/tpaviot/pythonocc-generator.
+
+This file is platform independant, but was generated under the following
+conditions:
+
+- time : 2019-11-03 11:38:08
+- operating system : debian Linux 4.15.0-66-generic
+- occt version targeted : 7.4.0
+*/
+
 %define SORTTOOLSDOCSTRING
-"This package provides the basic sorting tools generally
-used.
-"
+"No docstring provided."
 %enddef
 %module (package="OCC.Core", docstring=SORTTOOLSDOCSTRING) SortTools
 
-#pragma SWIG nowarn=504,325,503
+#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
@@ -41,154 +50,18 @@ used.
 
 %include SortTools_headers.i
 
-/* typedefs */
-/* end typedefs declaration */
-
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
 
-class SortTools_HeapSortOfInteger {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfInteger &
-	:param Comp:
-	:type Comp: TCollection_CompareOfInteger &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
-};
+/* typedefs */
+/* end typedefs declaration */
 
+/* handles */
+/* end handles declaration */
 
-%extend SortTools_HeapSortOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_HeapSortOfReal {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfReal &
-	:param Comp:
-	:type Comp: TCollection_CompareOfReal &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
-};
-
-
-%extend SortTools_HeapSortOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_QuickSortOfInteger {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfInteger &
-	:param Comp:
-	:type Comp: TCollection_CompareOfInteger &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
-};
-
-
-%extend SortTools_QuickSortOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_QuickSortOfReal {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfReal &
-	:param Comp:
-	:type Comp: TCollection_CompareOfReal &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
-};
-
-
-%extend SortTools_QuickSortOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_ShellSortOfInteger {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfInteger &
-	:param Comp:
-	:type Comp: TCollection_CompareOfInteger &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
-};
-
-
-%extend SortTools_ShellSortOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_ShellSortOfReal {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfReal &
-	:param Comp:
-	:type Comp: TCollection_CompareOfReal &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
-};
-
-
-%extend SortTools_ShellSortOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_StraightInsertionSortOfInteger {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfInteger &
-	:param Comp:
-	:type Comp: TCollection_CompareOfInteger &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
-};
-
-
-%extend SortTools_StraightInsertionSortOfInteger {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class SortTools_StraightInsertionSortOfReal {
-	public:
-		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "	:param TheArray:
-	:type TheArray: TColStd_Array1OfReal &
-	:param Comp:
-	:type Comp: TCollection_CompareOfReal &
-	:rtype: void
-") Sort;
-		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
-};
-
-
-%extend SortTools_StraightInsertionSortOfReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */
