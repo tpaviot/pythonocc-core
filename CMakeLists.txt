@@ -19,8 +19,8 @@ project(PYTHONOCC)
 
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 0)
-set(PYTHONOCC_VERSION_MINOR 18)
-set(PYTHONOCC_VERSION_PATCH 2)
+set(PYTHONOCC_VERSION_MINOR 19)
+set(PYTHONOCC_VERSION_PATCH )
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL)
 
@@ -38,6 +38,9 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.13")
     cmake_policy(SET CMP0086 OLD)
 endif()
 
+# Force C++ 11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
   set( PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
