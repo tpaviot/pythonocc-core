@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:13
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -69,6 +68,9 @@ enum Intrv_Position {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(Intrv_SequenceOfInterval) NCollection_Sequence <Intrv_Interval>;
 /* end templates declaration */
@@ -76,9 +78,6 @@ enum Intrv_Position {
 /* typedefs */
 typedef NCollection_Sequence <Intrv_Interval> Intrv_SequenceOfInterval;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Intrv_Interval;
 class Intrv_Interval {

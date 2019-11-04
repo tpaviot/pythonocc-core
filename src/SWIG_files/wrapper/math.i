@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:19
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -60,6 +59,9 @@ enum math_Status {
 };
 
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(math_Array1OfValueAndWeight) NCollection_Array1 <math_ValueAndWeight>;
@@ -102,9 +104,6 @@ enum math_Status {
 /* typedefs */
 typedef NCollection_Array1 <math_ValueAndWeight> math_Array1OfValueAndWeight;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(math) math;
 class math {

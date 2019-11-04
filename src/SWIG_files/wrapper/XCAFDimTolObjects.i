@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:47
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -282,6 +281,12 @@ enum XCAFDimTolObjects_DimensionGrade {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(XCAFDimTolObjects_DatumObject)
+%wrap_handle(XCAFDimTolObjects_DimensionObject)
+%wrap_handle(XCAFDimTolObjects_GeomToleranceObject)
+/* end handles declaration */
+
 /* templates */
 %template(XCAFDimTolObjects_DimensionObjectSequence) NCollection_Sequence <opencascade::handle <XCAFDimTolObjects_DimensionObject>>;
 %template(XCAFDimTolObjects_GeomToleranceModifiersSequence) NCollection_Sequence <XCAFDimTolObjects_GeomToleranceModif>;
@@ -301,12 +306,6 @@ typedef NCollection_Sequence <opencascade::handle <XCAFDimTolObjects_DatumObject
 typedef NCollection_DataMap <opencascade::handle <XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle <XCAFDimTolObjects_DatumObject>, TColStd_MapTransientHasher> XCAFDimTolObjects_DataMapOfToleranceDatum;
 typedef NCollection_Sequence <opencascade::handle <XCAFDimTolObjects_GeomToleranceObject>> XCAFDimTolObjects_GeomToleranceObjectSequence;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(XCAFDimTolObjects_DatumObject)
-%wrap_handle(XCAFDimTolObjects_DimensionObject)
-%wrap_handle(XCAFDimTolObjects_GeomToleranceObject)
-/* end handles declaration */
 
 %nodefaultctor XCAFDimTolObjects_DatumObject;
 class XCAFDimTolObjects_DatumObject : public Standard_Transient {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:31
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -79,6 +78,18 @@ enum SelectMgr_PickingStrategy {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(SelectMgr_EntityOwner)
+%wrap_handle(SelectMgr_Filter)
+%wrap_handle(SelectMgr_SelectableObject)
+%wrap_handle(SelectMgr_Selection)
+%wrap_handle(SelectMgr_SelectionManager)
+%wrap_handle(SelectMgr_SensitiveEntity)
+%wrap_handle(SelectMgr_CompositionFilter)
+%wrap_handle(SelectMgr_AndFilter)
+%wrap_handle(SelectMgr_OrFilter)
+/* end handles declaration */
+
 /* templates */
 %template(SelectMgr_FrustumCache) NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager>;
 %template(SelectMgr_SequenceOfFilter) NCollection_Sequence <opencascade::handle <SelectMgr_Filter>>;
@@ -110,18 +121,6 @@ typedef NCollection_IndexedMap <opencascade::handle <SelectMgr_SensitiveEntity>>
 typedef NCollection_Shared<NCollection_IndexedMap <opencascade::handle <SelectMgr_EntityOwner>>> SelectMgr_IndexedMapOfOwner;
 typedef NCollection_Sequence <opencascade::handle <SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(SelectMgr_EntityOwner)
-%wrap_handle(SelectMgr_Filter)
-%wrap_handle(SelectMgr_SelectableObject)
-%wrap_handle(SelectMgr_Selection)
-%wrap_handle(SelectMgr_SelectionManager)
-%wrap_handle(SelectMgr_SensitiveEntity)
-%wrap_handle(SelectMgr_CompositionFilter)
-%wrap_handle(SelectMgr_AndFilter)
-%wrap_handle(SelectMgr_OrFilter)
-/* end handles declaration */
 
 %nodefaultctor SelectMgr_EntityOwner;
 class SelectMgr_EntityOwner : public Standard_Transient {

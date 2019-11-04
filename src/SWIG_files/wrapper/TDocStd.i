@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:40
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,18 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TDocStd_Application)
+%wrap_handle(TDocStd_ApplicationDelta)
+%wrap_handle(TDocStd_CompoundDelta)
+%wrap_handle(TDocStd_Document)
+%wrap_handle(TDocStd_Modified)
+%wrap_handle(TDocStd_MultiTransactionManager)
+%wrap_handle(TDocStd_Owner)
+%wrap_handle(TDocStd_XLink)
+%wrap_handle(TDocStd_XLinkRoot)
+/* end handles declaration */
+
 /* templates */
 %template(TDocStd_LabelIDMapDataMap) NCollection_DataMap <TDF_Label , TDF_IDMap , TDF_LabelMapHasher>;
 %template(TDocStd_SequenceOfApplicationDelta) NCollection_Sequence <opencascade::handle <TDocStd_ApplicationDelta>>;
@@ -66,18 +77,6 @@ typedef NCollection_DataMap <TDF_Label , TDF_IDMap , TDF_LabelMapHasher>::Iterat
 typedef NCollection_Sequence <opencascade::handle <TDocStd_ApplicationDelta>> TDocStd_SequenceOfApplicationDelta;
 typedef NCollection_Sequence <opencascade::handle <TDocStd_Document>> TDocStd_SequenceOfDocument;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TDocStd_Application)
-%wrap_handle(TDocStd_ApplicationDelta)
-%wrap_handle(TDocStd_CompoundDelta)
-%wrap_handle(TDocStd_Document)
-%wrap_handle(TDocStd_Modified)
-%wrap_handle(TDocStd_MultiTransactionManager)
-%wrap_handle(TDocStd_Owner)
-%wrap_handle(TDocStd_XLink)
-%wrap_handle(TDocStd_XLinkRoot)
-/* end handles declaration */
 
 %rename(tdocstd) TDocStd;
 class TDocStd {

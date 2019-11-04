@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:11
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,13 @@ enum TCollection_Side {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TCollection_HAsciiString)
+%wrap_handle(TCollection_HExtendedString)
+%wrap_handle(TCollection_MapNode)
+%wrap_handle(TCollection_SeqNode)
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
@@ -65,13 +71,6 @@ enum TCollection_Side {
 typedef TCollection_MapNode * TCollection_MapNodePtr;
 typedef TCollection_SeqNode * TCollection_SeqNodePtr;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TCollection_HAsciiString)
-%wrap_handle(TCollection_HExtendedString)
-%wrap_handle(TCollection_MapNode)
-%wrap_handle(TCollection_SeqNode)
-/* end handles declaration */
 
 %rename(tcollection) TCollection;
 class TCollection {

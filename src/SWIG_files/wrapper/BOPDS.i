@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:06
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,11 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(BOPDS_CommonBlock)
+%wrap_handle(BOPDS_PaveBlock)
+/* end handles declaration */
 
 /* templates */
 %template(BOPDS_VectorOfInterfZZ) NCollection_Vector <BOPDS_InterfZZ>;
@@ -171,11 +175,6 @@ typedef BOPDS_ListOfPaveBlock::Iterator BOPDS_ListIteratorOfListOfPaveBlock;
 typedef NCollection_Map <opencascade::handle <BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_MapOfPaveBlock;
 typedef BOPDS_MapOfPaveBlock::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BOPDS_CommonBlock)
-%wrap_handle(BOPDS_PaveBlock)
-/* end handles declaration */
 
 %nodefaultctor BOPDS_CommonBlock;
 class BOPDS_CommonBlock : public Standard_Transient {

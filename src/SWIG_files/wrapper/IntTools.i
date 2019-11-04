@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:08
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,11 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(IntTools_Context)
+%wrap_handle(IntTools_TopolTool)
+/* end handles declaration */
 
 /* templates */
 %template(IntTools_DataMapOfSurfaceSampleBox) NCollection_DataMap <IntTools_SurfaceRangeSample , Bnd_Box , IntTools_SurfaceRangeSampleMapHasher>;
@@ -164,11 +168,6 @@ typedef NCollection_Sequence <IntTools_PntOn2Faces> IntTools_SequenceOfPntOn2Fac
 typedef NCollection_DataMap <IntTools_CurveRangeSample , Bnd_Box , IntTools_CurveRangeSampleMapHasher> IntTools_DataMapOfCurveSampleBox;
 typedef NCollection_DataMap <IntTools_CurveRangeSample , Bnd_Box , IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(IntTools_Context)
-%wrap_handle(IntTools_TopolTool)
-/* end handles declaration */
 
 %rename(inttools) IntTools;
 class IntTools {

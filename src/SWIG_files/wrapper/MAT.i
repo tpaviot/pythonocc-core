@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:25
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,20 @@ enum MAT_Side {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(MAT_Arc)
+%wrap_handle(MAT_BasicElt)
+%wrap_handle(MAT_Bisector)
+%wrap_handle(MAT_Edge)
+%wrap_handle(MAT_Graph)
+%wrap_handle(MAT_ListOfBisector)
+%wrap_handle(MAT_ListOfEdge)
+%wrap_handle(MAT_Node)
+%wrap_handle(MAT_TListNodeOfListOfBisector)
+%wrap_handle(MAT_TListNodeOfListOfEdge)
+%wrap_handle(MAT_Zone)
+/* end handles declaration */
+
 /* templates */
 %template(MAT_DataMapOfIntegerArc) NCollection_DataMap <Standard_Integer , opencascade::handle <MAT_Arc>, TColStd_MapIntegerHasher>;
 %template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap <Standard_Integer , opencascade::handle <MAT_BasicElt>, TColStd_MapIntegerHasher>;
@@ -79,20 +92,6 @@ typedef NCollection_Sequence <opencascade::handle <MAT_Arc>> MAT_SequenceOfArc;
 typedef NCollection_DataMap <Standard_Integer , opencascade::handle <MAT_Node>, TColStd_MapIntegerHasher> MAT_DataMapOfIntegerNode;
 typedef NCollection_DataMap <Standard_Integer , opencascade::handle <MAT_Node>, TColStd_MapIntegerHasher>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerNode;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(MAT_Arc)
-%wrap_handle(MAT_BasicElt)
-%wrap_handle(MAT_Bisector)
-%wrap_handle(MAT_Edge)
-%wrap_handle(MAT_Graph)
-%wrap_handle(MAT_ListOfBisector)
-%wrap_handle(MAT_ListOfEdge)
-%wrap_handle(MAT_Node)
-%wrap_handle(MAT_TListNodeOfListOfBisector)
-%wrap_handle(MAT_TListNodeOfListOfEdge)
-%wrap_handle(MAT_Zone)
-/* end handles declaration */
 
 %nodefaultctor MAT_Arc;
 class MAT_Arc : public Standard_Transient {

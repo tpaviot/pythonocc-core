@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:12
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -61,6 +60,14 @@ enum HLRBRep_TypeOfResultingEdge {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(HLRBRep_AreaLimit)
+%wrap_handle(HLRBRep_Data)
+%wrap_handle(HLRBRep_InternalAlgo)
+%wrap_handle(HLRBRep_PolyAlgo)
+%wrap_handle(HLRBRep_Algo)
+/* end handles declaration */
 
 /* templates */
 %template(HLRBRep_ListOfBPoint) NCollection_List <HLRBRep_BiPoint>;
@@ -149,14 +156,6 @@ typedef NCollection_Array1 <HLRBRep_FaceData> HLRBRep_Array1OfFData;
 typedef NCollection_List <HLRBRep_BiPnt2D> HLRBRep_ListOfBPnt2D;
 typedef NCollection_List <HLRBRep_BiPnt2D>::Iterator HLRBRep_ListIteratorOfListOfBPnt2D;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(HLRBRep_AreaLimit)
-%wrap_handle(HLRBRep_Data)
-%wrap_handle(HLRBRep_InternalAlgo)
-%wrap_handle(HLRBRep_PolyAlgo)
-%wrap_handle(HLRBRep_Algo)
-/* end handles declaration */
 
 %rename(hlrbrep) HLRBRep;
 class HLRBRep {

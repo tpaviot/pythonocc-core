@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(Plate_Array1OfPinpointConstraint) NCollection_Array1 <Plate_PinpointConstraint>;
@@ -100,9 +102,6 @@ typedef NCollection_Sequence <Plate_PinpointConstraint> Plate_SequenceOfPinpoint
 typedef NCollection_Sequence <Plate_LinearXYZConstraint> Plate_SequenceOfLinearXYZConstraint;
 typedef NCollection_Sequence <Plate_LinearScalarConstraint> Plate_SequenceOfLinearScalarConstraint;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Plate_D1;
 class Plate_D1 {

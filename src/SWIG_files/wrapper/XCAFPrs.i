@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:48
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,11 @@ enum  {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(XCAFPrs_AISObject)
+%wrap_handle(XCAFPrs_Driver)
+/* end handles declaration */
+
 /* templates */
 %template(XCAFPrs_DataMapOfStyleShape) NCollection_DataMap <XCAFPrs_Style , TopoDS_Shape , XCAFPrs_Style>;
 %template(XCAFPrs_DataMapOfStyleTransient) NCollection_DataMap <XCAFPrs_Style , opencascade::handle <Standard_Transient>, XCAFPrs_Style>;
@@ -74,11 +78,6 @@ typedef Standard_Integer XCAFPrs_DocumentExplorerFlags;
 typedef NCollection_IndexedDataMap <TopoDS_Shape , XCAFPrs_Style , TopTools_ShapeMapHasher> XCAFPrs_IndexedDataMapOfShapeStyle;
 typedef NCollection_IndexedDataMap <TopoDS_Shape , XCAFPrs_Style , TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(XCAFPrs_AISObject)
-%wrap_handle(XCAFPrs_Driver)
-/* end handles declaration */
 
 %rename(xcafprs) XCAFPrs;
 class XCAFPrs {

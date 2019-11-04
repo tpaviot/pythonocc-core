@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:21
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,15 +57,15 @@ enum BRepAlgo_CheckStatus {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepAlgo_AsDes)
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepAlgo_AsDes)
-/* end handles declaration */
 
 %rename(brepalgo) BRepAlgo;
 class BRepAlgo {

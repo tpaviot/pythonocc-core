@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:36
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -85,6 +84,33 @@ enum Interface_CheckStatus {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(Interface_Check)
+%wrap_handle(Interface_CopyControl)
+%wrap_handle(Interface_EntityCluster)
+%wrap_handle(Interface_FileReaderData)
+%wrap_handle(Interface_GTool)
+%wrap_handle(Interface_GeneralModule)
+%wrap_handle(Interface_GlobalNodeOfGeneralLib)
+%wrap_handle(Interface_GlobalNodeOfReaderLib)
+%wrap_handle(Interface_HGraph)
+%wrap_handle(Interface_IntVal)
+%wrap_handle(Interface_InterfaceModel)
+%wrap_handle(Interface_NodeOfGeneralLib)
+%wrap_handle(Interface_NodeOfReaderLib)
+%wrap_handle(Interface_ParamList)
+%wrap_handle(Interface_ParamSet)
+%wrap_handle(Interface_Protocol)
+%wrap_handle(Interface_ReaderModule)
+%wrap_handle(Interface_ReportEntity)
+%wrap_handle(Interface_SignLabel)
+%wrap_handle(Interface_SignType)
+%wrap_handle(Interface_TypedValue)
+%wrap_handle(Interface_UndefinedContent)
+%wrap_handle(Interface_CopyMap)
+%wrap_handle(Interface_Static)
+/* end handles declaration */
 
 /* templates */
 %template(Interface_VectorOfFileParameter) NCollection_Vector <Interface_FileParameter>;
@@ -173,33 +199,6 @@ typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Standard_
 typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Standard_Integer , TColStd_MapTransientHasher>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
 typedef NCollection_IndexedMap <TCollection_AsciiString , Interface_MapAsciiStringHasher> Interface_IndexedMapOfAsciiString;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Interface_Check)
-%wrap_handle(Interface_CopyControl)
-%wrap_handle(Interface_EntityCluster)
-%wrap_handle(Interface_FileReaderData)
-%wrap_handle(Interface_GTool)
-%wrap_handle(Interface_GeneralModule)
-%wrap_handle(Interface_GlobalNodeOfGeneralLib)
-%wrap_handle(Interface_GlobalNodeOfReaderLib)
-%wrap_handle(Interface_HGraph)
-%wrap_handle(Interface_IntVal)
-%wrap_handle(Interface_InterfaceModel)
-%wrap_handle(Interface_NodeOfGeneralLib)
-%wrap_handle(Interface_NodeOfReaderLib)
-%wrap_handle(Interface_ParamList)
-%wrap_handle(Interface_ParamSet)
-%wrap_handle(Interface_Protocol)
-%wrap_handle(Interface_ReaderModule)
-%wrap_handle(Interface_ReportEntity)
-%wrap_handle(Interface_SignLabel)
-%wrap_handle(Interface_SignType)
-%wrap_handle(Interface_TypedValue)
-%wrap_handle(Interface_UndefinedContent)
-%wrap_handle(Interface_CopyMap)
-%wrap_handle(Interface_Static)
-/* end handles declaration */
 
 %nodefaultctor Interface_BitMap;
 class Interface_BitMap {

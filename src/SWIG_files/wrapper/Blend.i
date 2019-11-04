@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:22
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -71,6 +70,9 @@ enum Blend_DecrochStatus {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(Blend_SequenceOfPoint) NCollection_Sequence <Blend_Point>;
 /* end templates declaration */
@@ -78,9 +80,6 @@ enum Blend_DecrochStatus {
 /* typedefs */
 typedef NCollection_Sequence <Blend_Point> Blend_SequenceOfPoint;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Blend_AppFunction;
 class Blend_AppFunction : public math_FunctionSetWithDerivatives {

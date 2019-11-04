@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:40
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,47 @@ enum TDataStd_RealEnum {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TDataStd_AsciiString)
+%wrap_handle(TDataStd_BooleanArray)
+%wrap_handle(TDataStd_BooleanList)
+%wrap_handle(TDataStd_ByteArray)
+%wrap_handle(TDataStd_Comment)
+%wrap_handle(TDataStd_Current)
+%wrap_handle(TDataStd_DeltaOnModificationOfByteArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfExtStringArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfIntArray)
+%wrap_handle(TDataStd_DeltaOnModificationOfIntPackedMap)
+%wrap_handle(TDataStd_DeltaOnModificationOfRealArray)
+%wrap_handle(TDataStd_Directory)
+%wrap_handle(TDataStd_Expression)
+%wrap_handle(TDataStd_ExtStringArray)
+%wrap_handle(TDataStd_ExtStringList)
+%wrap_handle(TDataStd_HDataMapOfStringByte)
+%wrap_handle(TDataStd_HDataMapOfStringHArray1OfInteger)
+%wrap_handle(TDataStd_HDataMapOfStringHArray1OfReal)
+%wrap_handle(TDataStd_HDataMapOfStringInteger)
+%wrap_handle(TDataStd_HDataMapOfStringReal)
+%wrap_handle(TDataStd_HDataMapOfStringString)
+%wrap_handle(TDataStd_IntPackedMap)
+%wrap_handle(TDataStd_Integer)
+%wrap_handle(TDataStd_IntegerArray)
+%wrap_handle(TDataStd_IntegerList)
+%wrap_handle(TDataStd_Name)
+%wrap_handle(TDataStd_NamedData)
+%wrap_handle(TDataStd_NoteBook)
+%wrap_handle(TDataStd_Real)
+%wrap_handle(TDataStd_RealArray)
+%wrap_handle(TDataStd_RealList)
+%wrap_handle(TDataStd_ReferenceArray)
+%wrap_handle(TDataStd_ReferenceList)
+%wrap_handle(TDataStd_Relation)
+%wrap_handle(TDataStd_Tick)
+%wrap_handle(TDataStd_TreeNode)
+%wrap_handle(TDataStd_UAttribute)
+%wrap_handle(TDataStd_Variable)
+/* end handles declaration */
 
 /* templates */
 %template(TDataStd_DataMapOfStringHArray1OfInteger) NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <TColStd_HArray1OfInteger>, TCollection_ExtendedString>;
@@ -124,47 +164,6 @@ typedef NCollection_DataMap <TCollection_ExtendedString , opencascade::handle <T
 typedef NCollection_DataMap <TCollection_ExtendedString , Standard_Real , TCollection_ExtendedString> TDataStd_DataMapOfStringReal;
 typedef NCollection_DataMap <TCollection_ExtendedString , Standard_Real , TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TDataStd_AsciiString)
-%wrap_handle(TDataStd_BooleanArray)
-%wrap_handle(TDataStd_BooleanList)
-%wrap_handle(TDataStd_ByteArray)
-%wrap_handle(TDataStd_Comment)
-%wrap_handle(TDataStd_Current)
-%wrap_handle(TDataStd_DeltaOnModificationOfByteArray)
-%wrap_handle(TDataStd_DeltaOnModificationOfExtStringArray)
-%wrap_handle(TDataStd_DeltaOnModificationOfIntArray)
-%wrap_handle(TDataStd_DeltaOnModificationOfIntPackedMap)
-%wrap_handle(TDataStd_DeltaOnModificationOfRealArray)
-%wrap_handle(TDataStd_Directory)
-%wrap_handle(TDataStd_Expression)
-%wrap_handle(TDataStd_ExtStringArray)
-%wrap_handle(TDataStd_ExtStringList)
-%wrap_handle(TDataStd_HDataMapOfStringByte)
-%wrap_handle(TDataStd_HDataMapOfStringHArray1OfInteger)
-%wrap_handle(TDataStd_HDataMapOfStringHArray1OfReal)
-%wrap_handle(TDataStd_HDataMapOfStringInteger)
-%wrap_handle(TDataStd_HDataMapOfStringReal)
-%wrap_handle(TDataStd_HDataMapOfStringString)
-%wrap_handle(TDataStd_IntPackedMap)
-%wrap_handle(TDataStd_Integer)
-%wrap_handle(TDataStd_IntegerArray)
-%wrap_handle(TDataStd_IntegerList)
-%wrap_handle(TDataStd_Name)
-%wrap_handle(TDataStd_NamedData)
-%wrap_handle(TDataStd_NoteBook)
-%wrap_handle(TDataStd_Real)
-%wrap_handle(TDataStd_RealArray)
-%wrap_handle(TDataStd_RealList)
-%wrap_handle(TDataStd_ReferenceArray)
-%wrap_handle(TDataStd_ReferenceList)
-%wrap_handle(TDataStd_Relation)
-%wrap_handle(TDataStd_Tick)
-%wrap_handle(TDataStd_TreeNode)
-%wrap_handle(TDataStd_UAttribute)
-%wrap_handle(TDataStd_Variable)
-/* end handles declaration */
 
 %rename(tdatastd) TDataStd;
 class TDataStd {

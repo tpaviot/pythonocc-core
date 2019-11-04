@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:28
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,10 @@ enum TopOpeBRepTool_OutCurveType {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TopOpeBRepTool_HBoxTool)
+/* end handles declaration */
+
 /* templates */
 %template(TopOpeBRepTool_IndexedDataMapOfShapeconnexity) NCollection_IndexedDataMap <TopoDS_Shape , TopOpeBRepTool_connexity , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepTool_DataMapOfShapeface) NCollection_DataMap <TopoDS_Shape , TopOpeBRepTool_face , TopTools_ShapeMapHasher>;
@@ -86,10 +89,6 @@ typedef NCollection_IndexedDataMap <TopoDS_Shape , Bnd_Box2d , TopTools_Oriented
 typedef NCollection_List <TopOpeBRepTool_C2DF> TopOpeBRepTool_ListOfC2DF;
 typedef NCollection_List <TopOpeBRepTool_C2DF>::Iterator TopOpeBRepTool_ListIteratorOfListOfC2DF;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TopOpeBRepTool_HBoxTool)
-/* end handles declaration */
 
 %rename(topopebreptool) TopOpeBRepTool;
 class TopOpeBRepTool {

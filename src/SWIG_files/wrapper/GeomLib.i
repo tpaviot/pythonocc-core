@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:14
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,9 @@ enum GeomLib_InterpolationErrors {
 };
 
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(GeomLib_Array1OfMat) NCollection_Array1 <gp_Mat>;
@@ -102,9 +104,6 @@ enum GeomLib_InterpolationErrors {
 typedef NCollection_Array1 <gp_Mat> GeomLib_Array1OfMat;
 typedef GeomLib_DenominatorMultiplier * GeomLib_DenominatorMultiplierPtr;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(geomlib) GeomLib;
 class GeomLib {

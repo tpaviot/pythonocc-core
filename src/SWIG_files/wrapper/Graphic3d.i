@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:27
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -530,6 +529,58 @@ enum Graphic3d_NameOfTextureEnv {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Graphic3d_ArrayOfPrimitives)
+%wrap_handle(Graphic3d_Aspects)
+%wrap_handle(Graphic3d_BoundBuffer)
+%wrap_handle(Graphic3d_CLight)
+%wrap_handle(Graphic3d_CStructure)
+%wrap_handle(Graphic3d_Camera)
+%wrap_handle(Graphic3d_ClipPlane)
+%wrap_handle(Graphic3d_DataStructureManager)
+%wrap_handle(Graphic3d_GraphicDriver)
+%wrap_handle(Graphic3d_Group)
+%wrap_handle(Graphic3d_HatchStyle)
+%wrap_handle(Graphic3d_LightSet)
+%wrap_handle(Graphic3d_MarkerImage)
+%wrap_handle(Graphic3d_PresentationAttributes)
+%wrap_handle(Graphic3d_SequenceOfHClipPlane)
+%wrap_handle(Graphic3d_ShaderAttribute)
+%wrap_handle(Graphic3d_ShaderObject)
+%wrap_handle(Graphic3d_ShaderProgram)
+%wrap_handle(Graphic3d_ShaderVariable)
+%wrap_handle(Graphic3d_Structure)
+%wrap_handle(Graphic3d_StructureManager)
+%wrap_handle(Graphic3d_Text)
+%wrap_handle(Graphic3d_TextureParams)
+%wrap_handle(Graphic3d_TextureRoot)
+%wrap_handle(Graphic3d_ViewAffinity)
+%wrap_handle(Graphic3d_ArrayOfPoints)
+%wrap_handle(Graphic3d_ArrayOfPolygons)
+%wrap_handle(Graphic3d_ArrayOfPolylines)
+%wrap_handle(Graphic3d_ArrayOfQuadrangleStrips)
+%wrap_handle(Graphic3d_ArrayOfQuadrangles)
+%wrap_handle(Graphic3d_ArrayOfSegments)
+%wrap_handle(Graphic3d_ArrayOfTriangleFans)
+%wrap_handle(Graphic3d_ArrayOfTriangleStrips)
+%wrap_handle(Graphic3d_ArrayOfTriangles)
+%wrap_handle(Graphic3d_AspectFillArea3d)
+%wrap_handle(Graphic3d_AspectLine3d)
+%wrap_handle(Graphic3d_AspectMarker3d)
+%wrap_handle(Graphic3d_AspectText3d)
+%wrap_handle(Graphic3d_CView)
+%wrap_handle(Graphic3d_TextureEnv)
+%wrap_handle(Graphic3d_TextureMap)
+%wrap_handle(Graphic3d_CubeMap)
+%wrap_handle(Graphic3d_Texture1D)
+%wrap_handle(Graphic3d_Texture2D)
+%wrap_handle(Graphic3d_CubeMapSeparate)
+%wrap_handle(Graphic3d_Texture1Dmanual)
+%wrap_handle(Graphic3d_Texture1Dsegment)
+%wrap_handle(Graphic3d_Texture2Dmanual)
+%wrap_handle(Graphic3d_Texture2Dplane)
+/* end handles declaration */
+
 /* templates */
 %template(Graphic3d_IndexedMapOfStructure) NCollection_IndexedMap <const Graphic3d_CStructure *>;
 %template(Graphic3d_ArrayOfIndexedMapOfStructure) NCollection_Array1 <Graphic3d_IndexedMapOfStructure>;
@@ -682,58 +733,6 @@ typedef NCollection_Array1 <Graphic3d_Attribute> Graphic3d_Array1OfAttribute;
 typedef NCollection_Mat4 <Standard_Real> Graphic3d_Mat4d;
 typedef NCollection_Shared<NCollection_Map <const Standard_Transient *>> Graphic3d_NMapOfTransient;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Graphic3d_ArrayOfPrimitives)
-%wrap_handle(Graphic3d_Aspects)
-%wrap_handle(Graphic3d_BoundBuffer)
-%wrap_handle(Graphic3d_CLight)
-%wrap_handle(Graphic3d_CStructure)
-%wrap_handle(Graphic3d_Camera)
-%wrap_handle(Graphic3d_ClipPlane)
-%wrap_handle(Graphic3d_DataStructureManager)
-%wrap_handle(Graphic3d_GraphicDriver)
-%wrap_handle(Graphic3d_Group)
-%wrap_handle(Graphic3d_HatchStyle)
-%wrap_handle(Graphic3d_LightSet)
-%wrap_handle(Graphic3d_MarkerImage)
-%wrap_handle(Graphic3d_PresentationAttributes)
-%wrap_handle(Graphic3d_SequenceOfHClipPlane)
-%wrap_handle(Graphic3d_ShaderAttribute)
-%wrap_handle(Graphic3d_ShaderObject)
-%wrap_handle(Graphic3d_ShaderProgram)
-%wrap_handle(Graphic3d_ShaderVariable)
-%wrap_handle(Graphic3d_Structure)
-%wrap_handle(Graphic3d_StructureManager)
-%wrap_handle(Graphic3d_Text)
-%wrap_handle(Graphic3d_TextureParams)
-%wrap_handle(Graphic3d_TextureRoot)
-%wrap_handle(Graphic3d_ViewAffinity)
-%wrap_handle(Graphic3d_ArrayOfPoints)
-%wrap_handle(Graphic3d_ArrayOfPolygons)
-%wrap_handle(Graphic3d_ArrayOfPolylines)
-%wrap_handle(Graphic3d_ArrayOfQuadrangleStrips)
-%wrap_handle(Graphic3d_ArrayOfQuadrangles)
-%wrap_handle(Graphic3d_ArrayOfSegments)
-%wrap_handle(Graphic3d_ArrayOfTriangleFans)
-%wrap_handle(Graphic3d_ArrayOfTriangleStrips)
-%wrap_handle(Graphic3d_ArrayOfTriangles)
-%wrap_handle(Graphic3d_AspectFillArea3d)
-%wrap_handle(Graphic3d_AspectLine3d)
-%wrap_handle(Graphic3d_AspectMarker3d)
-%wrap_handle(Graphic3d_AspectText3d)
-%wrap_handle(Graphic3d_CView)
-%wrap_handle(Graphic3d_TextureEnv)
-%wrap_handle(Graphic3d_TextureMap)
-%wrap_handle(Graphic3d_CubeMap)
-%wrap_handle(Graphic3d_Texture1D)
-%wrap_handle(Graphic3d_Texture2D)
-%wrap_handle(Graphic3d_CubeMapSeparate)
-%wrap_handle(Graphic3d_Texture1Dmanual)
-%wrap_handle(Graphic3d_Texture1Dsegment)
-%wrap_handle(Graphic3d_Texture2Dmanual)
-%wrap_handle(Graphic3d_Texture2Dplane)
-/* end handles declaration */
 
 %nodefaultctor Graphic3d_ArrayOfPrimitives;
 class Graphic3d_ArrayOfPrimitives : public Standard_Transient {

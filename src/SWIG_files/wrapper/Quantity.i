@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:08
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -649,6 +648,9 @@ enum Quantity_PhysicalQuantity {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(Quantity_Array1OfColor) NCollection_Array1 <Quantity_Color>;
 
@@ -771,9 +773,6 @@ typedef Standard_Real Quantity_SpecificHeatCapacity;
 typedef Standard_Real Quantity_VolumeFlow;
 typedef Standard_Real Quantity_Constant;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Quantity_Color;
 class Quantity_Color {

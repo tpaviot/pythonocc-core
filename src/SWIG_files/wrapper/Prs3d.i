@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:28
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -141,17 +140,6 @@ enum Prs3d_DimensionArrowOrientation {
 
 /* end public enums declaration */
 
-/* templates */
-%template(Prs3d_NListOfSequenceOfPnt) NCollection_List <opencascade::handle <TColgp_HSequenceOfPnt>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_List <opencascade::handle <TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
-typedef Prs3d_Drawer Graphic3d_HighlightStyle;
-typedef Graphic3d_Structure Prs3d_Presentation;
-typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Prs3d_BasicAspect)
 %wrap_handle(Prs3d_Drawer)
@@ -167,6 +155,17 @@ typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequence
 %wrap_handle(Prs3d_TextAspect)
 %wrap_handle(Prs3d_IsoAspect)
 /* end handles declaration */
+
+/* templates */
+%template(Prs3d_NListOfSequenceOfPnt) NCollection_List <opencascade::handle <TColgp_HSequenceOfPnt>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <opencascade::handle <TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
+typedef Prs3d_Drawer Graphic3d_HighlightStyle;
+typedef Graphic3d_Structure Prs3d_Presentation;
+typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
+/* end typedefs declaration */
 
 %rename(prs3d) Prs3d;
 class Prs3d {

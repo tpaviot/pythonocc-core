@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,13 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BinMDF_ADriver)
+%wrap_handle(BinMDF_ADriverTable)
+%wrap_handle(BinMDF_ReferenceDriver)
+%wrap_handle(BinMDF_TagSourceDriver)
+/* end handles declaration */
+
 /* templates */
 %template(BinMDF_TypeIdMap) NCollection_DoubleMap <opencascade::handle <Standard_Type>, Standard_Integer , TColStd_MapTransientHasher , TColStd_MapIntegerHasher>;
 %template(BinMDF_TypeADriverMap) NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher>;
@@ -65,13 +71,6 @@ typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::h
 typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator BinMDF_DataMapIteratorOfTypeADriverMap;
 typedef TColStd_DataMapOfAsciiStringInteger BinMDF_StringIdMap;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BinMDF_ADriver)
-%wrap_handle(BinMDF_ADriverTable)
-%wrap_handle(BinMDF_ReferenceDriver)
-%wrap_handle(BinMDF_TagSourceDriver)
-/* end handles declaration */
 
 %rename(binmdf) BinMDF;
 class BinMDF {

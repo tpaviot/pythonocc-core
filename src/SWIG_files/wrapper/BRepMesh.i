@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:14
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -70,6 +69,10 @@ enum BRepMesh_DegreeOfFreedom {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepMesh_DiscretRoot)
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
@@ -77,10 +80,6 @@ enum BRepMesh_DegreeOfFreedom {
 typedef Standard_Integer ( * BRepMesh_PluginEntryType ) ( const TopoDS_Shape & theShape , const Standard_Real theLinDeflection , const Standard_Real theAngDeflection , BRepMesh_DiscretRoot * & theMeshAlgoInstance );
 typedef IMeshTools_Parameters Parameters;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepMesh_DiscretRoot)
-/* end handles declaration */
 
 %nodefaultctor BRepMesh_BaseMeshAlgo;
 class BRepMesh_BaseMeshAlgo : public IMeshTools_MeshAlgo {

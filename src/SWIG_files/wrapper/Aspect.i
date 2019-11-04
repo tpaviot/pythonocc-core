@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:21
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -395,6 +394,12 @@ enum Aspect_InteriorStyle {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Aspect_DisplayConnection)
+%wrap_handle(Aspect_Grid)
+%wrap_handle(Aspect_Window)
+/* end handles declaration */
+
 /* templates */
 %template(Aspect_SequenceOfColor) NCollection_Sequence <Quantity_Color>;
 %template(Aspect_TouchMap) NCollection_IndexedDataMap <Standard_Size , Aspect_Touch>;
@@ -414,12 +419,6 @@ typedef void * Aspect_FBConfig;
 typedef unsigned int Aspect_VKeyFlags;
 typedef unsigned int Aspect_VKeyMouse;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Aspect_DisplayConnection)
-%wrap_handle(Aspect_Grid)
-%wrap_handle(Aspect_Window)
-/* end handles declaration */
 
 %nodefaultctor Aspect_Background;
 class Aspect_Background {

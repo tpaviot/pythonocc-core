@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:13
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(Bnd_Array1OfSphere) NCollection_Array1 <Bnd_Sphere>;
@@ -168,9 +170,6 @@ typedef NCollection_Array1 <Bnd_Box> Bnd_Array1OfBox;
 typedef NCollection_Array1 <Bnd_Box2d> Bnd_Array1OfBox2d;
 typedef NCollection_Sequence <Bnd_Box> Bnd_SeqOfBox;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Bnd_B2d;
 class Bnd_B2d {

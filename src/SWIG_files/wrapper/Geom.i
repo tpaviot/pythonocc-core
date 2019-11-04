@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:06
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,14 +51,6 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
-
-/* templates */
-%template(Geom_SequenceOfBSplineSurface) NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>> Geom_SequenceOfBSplineSurface;
-/* end typedefs declaration */
 
 /* handles */
 %wrap_handle(Geom_Geometry)
@@ -101,6 +92,14 @@ typedef NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>> Geom_Se
 %wrap_handle(Geom_ToroidalSurface)
 %wrap_handle(Geom_TrimmedCurve)
 /* end handles declaration */
+
+/* templates */
+%template(Geom_SequenceOfBSplineSurface) NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>> Geom_SequenceOfBSplineSurface;
+/* end typedefs declaration */
 
 %nodefaultctor Geom_Geometry;
 class Geom_Geometry : public Standard_Transient {

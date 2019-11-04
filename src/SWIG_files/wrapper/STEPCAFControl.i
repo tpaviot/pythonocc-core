@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:49
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,12 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(STEPCAFControl_ActorWrite)
+%wrap_handle(STEPCAFControl_Controller)
+%wrap_handle(STEPCAFControl_ExternFile)
+/* end handles declaration */
+
 /* templates */
 %template(STEPCAFControl_DataMapOfPDExternFile) NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>;
 %template(STEPCAFControl_DataMapOfShapeSDR) NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>;
@@ -76,12 +81,6 @@ typedef NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepre
 typedef NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelShape;
 typedef NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(STEPCAFControl_ActorWrite)
-%wrap_handle(STEPCAFControl_Controller)
-%wrap_handle(STEPCAFControl_ExternFile)
-/* end handles declaration */
 
 %nodefaultctor STEPCAFControl_ActorWrite;
 class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {

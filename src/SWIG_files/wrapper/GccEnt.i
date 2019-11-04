@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:05
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -60,6 +59,9 @@ enum GccEnt_Position {
 };
 
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(GccEnt_Array1OfPosition) NCollection_Array1 <GccEnt_Position>;
@@ -102,9 +104,6 @@ enum GccEnt_Position {
 /* typedefs */
 typedef NCollection_Array1 <GccEnt_Position> GccEnt_Array1OfPosition;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(gccent) GccEnt;
 class GccEnt {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:14
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence <IntPolyh_StartPoint>;
 %template(IntPolyh_ListOfCouples) NCollection_List <IntPolyh_Couple>;
@@ -70,9 +72,6 @@ typedef NCollection_List <IntPolyh_Couple> IntPolyh_ListOfCouples;
 typedef IntPolyh_ListOfCouples::Iterator IntPolyh_ListIteratorOfListOfCouples;
 typedef IntPolyh_Array <IntPolyh_Point> IntPolyh_ArrayOfPoints;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor IntPolyh_Couple;
 class IntPolyh_Couple {

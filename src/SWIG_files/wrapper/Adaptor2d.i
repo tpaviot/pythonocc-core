@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:19
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,17 +52,17 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Adaptor2d_HCurve2d)
 %wrap_handle(Adaptor2d_HLine2d)
 %wrap_handle(Adaptor2d_HOffsetCurve)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 class Adaptor2d_Curve2d {
 	public:

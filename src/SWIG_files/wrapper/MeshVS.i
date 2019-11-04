@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:35
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -154,6 +153,29 @@ enum  {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(MeshVS_CommonSensitiveEntity)
+%wrap_handle(MeshVS_DataSource)
+%wrap_handle(MeshVS_Drawer)
+%wrap_handle(MeshVS_DummySensitiveEntity)
+%wrap_handle(MeshVS_Mesh)
+%wrap_handle(MeshVS_MeshEntityOwner)
+%wrap_handle(MeshVS_MeshOwner)
+%wrap_handle(MeshVS_PrsBuilder)
+%wrap_handle(MeshVS_SensitiveFace)
+%wrap_handle(MeshVS_SensitiveMesh)
+%wrap_handle(MeshVS_SensitivePolyhedron)
+%wrap_handle(MeshVS_SensitiveQuad)
+%wrap_handle(MeshVS_SensitiveSegment)
+%wrap_handle(MeshVS_DataSource3D)
+%wrap_handle(MeshVS_DeformedDataSource)
+%wrap_handle(MeshVS_ElementalColorPrsBuilder)
+%wrap_handle(MeshVS_MeshPrsBuilder)
+%wrap_handle(MeshVS_NodalColorPrsBuilder)
+%wrap_handle(MeshVS_TextPrsBuilder)
+%wrap_handle(MeshVS_VectorPrsBuilder)
+/* end handles declaration */
+
 /* templates */
 %template(MeshVS_PolyhedronVerts) NCollection_List <opencascade::handle <TColgp_HArray1OfPnt>>;
 %template(MeshVS_PolyhedronVertsIter) NCollection_TListIterator<MeshVS_PolyhedronVerts>;
@@ -246,29 +268,6 @@ typedef NCollection_DataMap <Quantity_Color , TColStd_MapOfInteger , Quantity_Co
 typedef NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMaterial;
 typedef NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(MeshVS_CommonSensitiveEntity)
-%wrap_handle(MeshVS_DataSource)
-%wrap_handle(MeshVS_Drawer)
-%wrap_handle(MeshVS_DummySensitiveEntity)
-%wrap_handle(MeshVS_Mesh)
-%wrap_handle(MeshVS_MeshEntityOwner)
-%wrap_handle(MeshVS_MeshOwner)
-%wrap_handle(MeshVS_PrsBuilder)
-%wrap_handle(MeshVS_SensitiveFace)
-%wrap_handle(MeshVS_SensitiveMesh)
-%wrap_handle(MeshVS_SensitivePolyhedron)
-%wrap_handle(MeshVS_SensitiveQuad)
-%wrap_handle(MeshVS_SensitiveSegment)
-%wrap_handle(MeshVS_DataSource3D)
-%wrap_handle(MeshVS_DeformedDataSource)
-%wrap_handle(MeshVS_ElementalColorPrsBuilder)
-%wrap_handle(MeshVS_MeshPrsBuilder)
-%wrap_handle(MeshVS_NodalColorPrsBuilder)
-%wrap_handle(MeshVS_TextPrsBuilder)
-%wrap_handle(MeshVS_VectorPrsBuilder)
-/* end handles declaration */
 
 %nodefaultctor MeshVS_Buffer;
 class MeshVS_Buffer {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -67,6 +66,10 @@ enum Contap_TFunction {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Contap_TheIWLineOfTheIWalking)
+/* end handles declaration */
+
 /* templates */
 %template(Contap_TheSequenceOfPoint) NCollection_Sequence <Contap_Point>;
 %template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence <Contap_TheSegmentOfTheSearch>;
@@ -82,10 +85,6 @@ typedef NCollection_Sequence <Contap_Line> Contap_TheSequenceOfLine;
 typedef NCollection_Sequence <opencascade::handle <Contap_TheIWLineOfTheIWalking>> Contap_SequenceOfIWLineOfTheIWalking;
 typedef NCollection_Sequence <Contap_ThePathPointOfTheSearch> Contap_SequenceOfPathPointOfTheSearch;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Contap_TheIWLineOfTheIWalking)
-/* end handles declaration */
 
 %nodefaultctor Contap_ArcFunction;
 class Contap_ArcFunction : public math_FunctionWithDerivative {

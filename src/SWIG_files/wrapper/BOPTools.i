@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:07
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(BOPTools_ListOfConnexityBlock) NCollection_List <BOPTools_ConnexityBlock>;
 %template(BOPTools_MapOfSet) NCollection_Map <BOPTools_Set , BOPTools_SetMapHasher>;
@@ -75,9 +77,6 @@ typedef NCollection_List <BOPTools_CoupleOfShape> BOPTools_ListOfCoupleOfShape;
 typedef BOPTools_ListOfCoupleOfShape::Iterator BOPTools_ListIteratorOfListOfCoupleOfShape;
 typedef NCollection_IndexedDataMap <BOPTools_Set , TopoDS_Shape , BOPTools_SetMapHasher> BOPTools_IndexedDataMapOfSetShape;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 class BOPTools_AlgoTools {
 	public:

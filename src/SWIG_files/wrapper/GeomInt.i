@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:10
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(GeomInt_VectorOfReal) NCollection_Vector <Standard_Real>;
 %template(GeomInt_SequenceOfParameterAndOrientation) NCollection_Sequence <GeomInt_ParameterAndOrientation>;
@@ -62,9 +64,6 @@ conditions:
 typedef NCollection_Vector <Standard_Real> GeomInt_VectorOfReal;
 typedef NCollection_Sequence <GeomInt_ParameterAndOrientation> GeomInt_SequenceOfParameterAndOrientation;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(geomint) GeomInt;
 class GeomInt {

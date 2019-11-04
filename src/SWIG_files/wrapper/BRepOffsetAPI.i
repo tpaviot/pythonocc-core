@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:31
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(BRepOffsetAPI_SequenceOfSequenceOfReal) NCollection_Sequence <TColStd_SequenceOfReal>;
 %template(BRepOffsetAPI_SequenceOfSequenceOfShape) NCollection_Sequence <TopTools_SequenceOfShape>;
@@ -63,9 +65,6 @@ typedef NCollection_Sequence <TColStd_SequenceOfReal> BRepOffsetAPI_SequenceOfSe
 typedef BRepBuilderAPI_Sewing BRepOffsetAPI_Sewing;
 typedef NCollection_Sequence <TopTools_SequenceOfShape> BRepOffsetAPI_SequenceOfSequenceOfShape;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor BRepOffsetAPI_DraftAngle;
 class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {

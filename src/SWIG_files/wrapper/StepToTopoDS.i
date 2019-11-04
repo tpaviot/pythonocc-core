@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:37
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -102,6 +101,9 @@ enum StepToTopoDS_TranslateVertexError {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(StepToTopoDS_PointEdgeMap) NCollection_DataMap <StepToTopoDS_PointPair , TopoDS_Edge , StepToTopoDS_PointPairHasher>;
 %template(StepToTopoDS_DataMapOfRI) NCollection_DataMap <opencascade::handle <StepRepr_RepresentationItem>, TopoDS_Shape , TColStd_MapTransientHasher>;
@@ -122,9 +124,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , TopoDS_Shape , TCollectio
 typedef NCollection_DataMap <opencascade::handle <StepShape_TopologicalRepresentationItem>, TopoDS_Shape , TColStd_MapTransientHasher> StepToTopoDS_DataMapOfTRI;
 typedef NCollection_DataMap <opencascade::handle <StepShape_TopologicalRepresentationItem>, TopoDS_Shape , TColStd_MapTransientHasher>::Iterator StepToTopoDS_DataMapIteratorOfDataMapOfTRI;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(steptotopods) StepToTopoDS;
 class StepToTopoDS {

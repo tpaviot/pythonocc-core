@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:27
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -78,6 +77,20 @@ enum TopOpeBRepDS_Kind {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TopOpeBRepDS_Association)
+%wrap_handle(TopOpeBRepDS_Check)
+%wrap_handle(TopOpeBRepDS_GapTool)
+%wrap_handle(TopOpeBRepDS_Interference)
+%wrap_handle(TopOpeBRepDS_Marker)
+%wrap_handle(TopOpeBRepDS_CurvePointInterference)
+%wrap_handle(TopOpeBRepDS_ShapeShapeInterference)
+%wrap_handle(TopOpeBRepDS_SolidSurfaceInterference)
+%wrap_handle(TopOpeBRepDS_SurfaceCurveInterference)
+%wrap_handle(TopOpeBRepDS_EdgeVertexInterference)
+%wrap_handle(TopOpeBRepDS_FaceEdgeInterference)
+/* end handles declaration */
 
 /* templates */
 %template(TopOpeBRepDS_IndexedDataMapOfVertexPoint) NCollection_IndexedDataMap <TopoDS_Shape , TopOpeBRepDS_Point , TopTools_ShapeMapHasher>;
@@ -167,20 +180,6 @@ typedef TopOpeBRepDS_DataStructure * TopOpeBRepDS_PDataStructure;
 typedef NCollection_DoubleMap <Standard_Integer , TopoDS_Shape , TColStd_MapIntegerHasher , TopTools_ShapeMapHasher> TopOpeBRepDS_DoubleMapOfIntegerShape;
 typedef NCollection_DoubleMap <Standard_Integer , TopoDS_Shape , TColStd_MapIntegerHasher , TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TopOpeBRepDS_Association)
-%wrap_handle(TopOpeBRepDS_Check)
-%wrap_handle(TopOpeBRepDS_GapTool)
-%wrap_handle(TopOpeBRepDS_Interference)
-%wrap_handle(TopOpeBRepDS_Marker)
-%wrap_handle(TopOpeBRepDS_CurvePointInterference)
-%wrap_handle(TopOpeBRepDS_ShapeShapeInterference)
-%wrap_handle(TopOpeBRepDS_SolidSurfaceInterference)
-%wrap_handle(TopOpeBRepDS_SurfaceCurveInterference)
-%wrap_handle(TopOpeBRepDS_EdgeVertexInterference)
-%wrap_handle(TopOpeBRepDS_FaceEdgeInterference)
-/* end handles declaration */
 
 %rename(topopebrepds) TopOpeBRepDS;
 class TopOpeBRepDS {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:11
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,17 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Units_Lexicon)
+%wrap_handle(Units_Token)
+%wrap_handle(Units_Unit)
+%wrap_handle(Units_UnitsDictionary)
+%wrap_handle(Units_UnitsSystem)
+%wrap_handle(Units_ShiftedToken)
+%wrap_handle(Units_ShiftedUnit)
+%wrap_handle(Units_UnitsLexicon)
+/* end handles declaration */
+
 /* templates */
 %template(Units_TksSequence) NCollection_Sequence <opencascade::handle <Units_Token>>;
 %template(Units_QtsSequence) NCollection_Sequence <opencascade::handle <Units_Quantity>>;
@@ -64,17 +74,6 @@ typedef NCollection_Sequence <opencascade::handle <Units_Token>> Units_TksSequen
 typedef NCollection_Sequence <opencascade::handle <Units_Quantity>> Units_QtsSequence;
 typedef NCollection_Sequence <opencascade::handle <Units_Unit>> Units_UtsSequence;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Units_Lexicon)
-%wrap_handle(Units_Token)
-%wrap_handle(Units_Unit)
-%wrap_handle(Units_UnitsDictionary)
-%wrap_handle(Units_UnitsSystem)
-%wrap_handle(Units_ShiftedToken)
-%wrap_handle(Units_ShiftedUnit)
-%wrap_handle(Units_UnitsLexicon)
-/* end handles declaration */
 
 %rename(units) Units;
 class Units {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:37
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -95,6 +94,16 @@ enum PCDM_ReaderStatus {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(PCDM_ReadWriter)
+%wrap_handle(PCDM_Reader)
+%wrap_handle(PCDM_ReferenceIterator)
+%wrap_handle(PCDM_Writer)
+%wrap_handle(PCDM_ReadWriter_1)
+%wrap_handle(PCDM_RetrievalDriver)
+%wrap_handle(PCDM_StorageDriver)
+/* end handles declaration */
+
 /* templates */
 %template(PCDM_SequenceOfDocument) NCollection_Sequence <opencascade::handle <PCDM_Document>>;
 %template(PCDM_SequenceOfReference) NCollection_Sequence <PCDM_Reference>;
@@ -105,16 +114,6 @@ typedef NCollection_Sequence <opencascade::handle <PCDM_Document>> PCDM_Sequence
 typedef Storage_BaseDriver * PCDM_BaseDriverPointer;
 typedef NCollection_Sequence <PCDM_Reference> PCDM_SequenceOfReference;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(PCDM_ReadWriter)
-%wrap_handle(PCDM_Reader)
-%wrap_handle(PCDM_ReferenceIterator)
-%wrap_handle(PCDM_Writer)
-%wrap_handle(PCDM_ReadWriter_1)
-%wrap_handle(PCDM_RetrievalDriver)
-%wrap_handle(PCDM_StorageDriver)
-/* end handles declaration */
 
 %rename(pcdm) PCDM;
 %nodefaultctor PCDM;

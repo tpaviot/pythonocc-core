@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:22
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -65,6 +64,19 @@ enum BRepFill_TransitionStyle {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepFill_CurveConstraint)
+%wrap_handle(BRepFill_LocationLaw)
+%wrap_handle(BRepFill_PipeShell)
+%wrap_handle(BRepFill_SectionLaw)
+%wrap_handle(BRepFill_ACRLaw)
+%wrap_handle(BRepFill_Edge3DLaw)
+%wrap_handle(BRepFill_EdgeOnSurfLaw)
+%wrap_handle(BRepFill_NSections)
+%wrap_handle(BRepFill_ShapeLaw)
+%wrap_handle(BRepFill_DraftLaw)
+/* end handles declaration */
+
 /* templates */
 %template(BRepFill_IndexedDataMapOfOrientedShapeListOfShape) NCollection_IndexedDataMap <TopoDS_Shape , TopTools_ListOfShape , TopTools_OrientedShapeMapHasher>;
 %template(BRepFill_DataMapOfShapeHArray2OfShape) NCollection_DataMap <TopoDS_Shape , opencascade::handle <TopTools_HArray2OfShape>, TopTools_ShapeMapHasher>;
@@ -103,19 +115,6 @@ typedef NCollection_DataMap <TopoDS_Shape , TColStd_SequenceOfReal , TopTools_Sh
 typedef NCollection_DataMap <TopoDS_Shape , TColStd_SequenceOfReal , TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal;
 typedef NCollection_Sequence <BRepFill_EdgeFaceAndOrder> BRepFill_SequenceOfEdgeFaceAndOrder;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepFill_CurveConstraint)
-%wrap_handle(BRepFill_LocationLaw)
-%wrap_handle(BRepFill_PipeShell)
-%wrap_handle(BRepFill_SectionLaw)
-%wrap_handle(BRepFill_ACRLaw)
-%wrap_handle(BRepFill_Edge3DLaw)
-%wrap_handle(BRepFill_EdgeOnSurfLaw)
-%wrap_handle(BRepFill_NSections)
-%wrap_handle(BRepFill_ShapeLaw)
-%wrap_handle(BRepFill_DraftLaw)
-/* end handles declaration */
 
 %rename(brepfill) BRepFill;
 class BRepFill {

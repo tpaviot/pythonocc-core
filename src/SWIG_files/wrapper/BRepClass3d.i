@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:20
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(BRepClass3d_MapOfInter) NCollection_DataMap <TopoDS_Shape , Standard_Address , TopTools_ShapeMapHasher>;
 %template(BRepClass3d_BndBoxTree) NCollection_UBTree <Standard_Integer , Bnd_Box>;
@@ -63,9 +65,6 @@ typedef NCollection_DataMap <TopoDS_Shape , Standard_Address , TopTools_ShapeMap
 typedef NCollection_DataMap <TopoDS_Shape , Standard_Address , TopTools_ShapeMapHasher>::Iterator BRepClass3d_DataMapIteratorOfMapOfInter;
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> BRepClass3d_BndBoxTree;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(brepclass3d) BRepClass3d;
 class BRepClass3d {

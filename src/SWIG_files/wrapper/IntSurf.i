@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:15
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -66,6 +65,10 @@ enum IntSurf_TypeTrans {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(IntSurf_LineOn2S)
+/* end handles declaration */
+
 /* templates */
 %template(IntSurf_SequenceOfPathPoint) NCollection_Sequence <IntSurf_PathPoint>;
 %template(IntSurf_SequenceOfInteriorPoint) NCollection_Sequence <IntSurf_InteriorPoint>;
@@ -85,10 +88,6 @@ typedef NCollection_Sequence <IntSurf_PntOn2S> IntSurf_SequenceOfPntOn2S;
 typedef NCollection_List <IntSurf_PntOn2S> IntSurf_ListOfPntOn2S;
 typedef NCollection_List <IntSurf_PntOn2S>::Iterator IntSurf_ListIteratorOfListOfPntOn2S;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(IntSurf_LineOn2S)
-/* end handles declaration */
 
 %rename(intsurf) IntSurf;
 class IntSurf {

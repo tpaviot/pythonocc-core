@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,11 @@ enum BinLDrivers_Marker {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BinLDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinLDrivers_DocumentStorageDriver)
+/* end handles declaration */
+
 /* templates */
 %template(BinLDrivers_VectorOfDocumentSection) NCollection_Vector <BinLDrivers_DocumentSection>;
 /* end templates declaration */
@@ -65,11 +69,6 @@ enum BinLDrivers_Marker {
 /* typedefs */
 typedef NCollection_Vector <BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocumentSection;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BinLDrivers_DocumentRetrievalDriver)
-%wrap_handle(BinLDrivers_DocumentStorageDriver)
-/* end handles declaration */
 
 %rename(binldrivers) BinLDrivers;
 %nodefaultctor BinLDrivers;

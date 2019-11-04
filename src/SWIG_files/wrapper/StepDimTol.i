@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:32
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -132,6 +131,59 @@ enum StepDimTol_GeometricToleranceModifier {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepDimTol_CommonDatum)
+%wrap_handle(StepDimTol_Datum)
+%wrap_handle(StepDimTol_DatumFeature)
+%wrap_handle(StepDimTol_DatumReference)
+%wrap_handle(StepDimTol_DatumReferenceModifierWithValue)
+%wrap_handle(StepDimTol_DatumSystem)
+%wrap_handle(StepDimTol_DatumTarget)
+%wrap_handle(StepDimTol_GeneralDatumReference)
+%wrap_handle(StepDimTol_GeometricTolerance)
+%wrap_handle(StepDimTol_GeometricToleranceRelationship)
+%wrap_handle(StepDimTol_RunoutZoneOrientation)
+%wrap_handle(StepDimTol_SimpleDatumReferenceModifierMember)
+%wrap_handle(StepDimTol_ToleranceZone)
+%wrap_handle(StepDimTol_ToleranceZoneDefinition)
+%wrap_handle(StepDimTol_ToleranceZoneForm)
+%wrap_handle(StepDimTol_CylindricityTolerance)
+%wrap_handle(StepDimTol_DatumReferenceCompartment)
+%wrap_handle(StepDimTol_DatumReferenceElement)
+%wrap_handle(StepDimTol_FlatnessTolerance)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRef)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthMod)
+%wrap_handle(StepDimTol_GeometricToleranceWithDatumReference)
+%wrap_handle(StepDimTol_GeometricToleranceWithDefinedUnit)
+%wrap_handle(StepDimTol_GeometricToleranceWithModifiers)
+%wrap_handle(StepDimTol_LineProfileTolerance)
+%wrap_handle(StepDimTol_ModifiedGeometricTolerance)
+%wrap_handle(StepDimTol_NonUniformZoneDefinition)
+%wrap_handle(StepDimTol_PlacedDatumTargetFeature)
+%wrap_handle(StepDimTol_PositionTolerance)
+%wrap_handle(StepDimTol_ProjectedZoneDefinition)
+%wrap_handle(StepDimTol_RoundnessTolerance)
+%wrap_handle(StepDimTol_RunoutZoneDefinition)
+%wrap_handle(StepDimTol_StraightnessTolerance)
+%wrap_handle(StepDimTol_SurfaceProfileTolerance)
+%wrap_handle(StepDimTol_UnequallyDisposedGeometricTolerance)
+%wrap_handle(StepDimTol_AngularityTolerance)
+%wrap_handle(StepDimTol_CircularRunoutTolerance)
+%wrap_handle(StepDimTol_CoaxialityTolerance)
+%wrap_handle(StepDimTol_ConcentricityTolerance)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol)
+%wrap_handle(StepDimTol_GeoTolAndGeoTolWthMaxTol)
+%wrap_handle(StepDimTol_GeometricToleranceWithDefinedAreaUnit)
+%wrap_handle(StepDimTol_GeometricToleranceWithMaximumTolerance)
+%wrap_handle(StepDimTol_ParallelismTolerance)
+%wrap_handle(StepDimTol_PerpendicularityTolerance)
+%wrap_handle(StepDimTol_SymmetryTolerance)
+%wrap_handle(StepDimTol_TotalRunoutTolerance)
+/* end handles declaration */
 
 /* templates */
 %template(StepDimTol_Array1OfToleranceZoneTarget) NCollection_Array1 <StepDimTol_ToleranceZoneTarget>;
@@ -390,59 +442,6 @@ typedef NCollection_Array1 <StepDimTol_DatumSystemOrReference> StepDimTol_Array1
 typedef NCollection_Array1 <StepDimTol_DatumReferenceModifier> StepDimTol_Array1OfDatumReferenceModifier;
 typedef NCollection_Array1 <opencascade::handle <StepDimTol_DatumReference>> StepDimTol_Array1OfDatumReference;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepDimTol_CommonDatum)
-%wrap_handle(StepDimTol_Datum)
-%wrap_handle(StepDimTol_DatumFeature)
-%wrap_handle(StepDimTol_DatumReference)
-%wrap_handle(StepDimTol_DatumReferenceModifierWithValue)
-%wrap_handle(StepDimTol_DatumSystem)
-%wrap_handle(StepDimTol_DatumTarget)
-%wrap_handle(StepDimTol_GeneralDatumReference)
-%wrap_handle(StepDimTol_GeometricTolerance)
-%wrap_handle(StepDimTol_GeometricToleranceRelationship)
-%wrap_handle(StepDimTol_RunoutZoneOrientation)
-%wrap_handle(StepDimTol_SimpleDatumReferenceModifierMember)
-%wrap_handle(StepDimTol_ToleranceZone)
-%wrap_handle(StepDimTol_ToleranceZoneDefinition)
-%wrap_handle(StepDimTol_ToleranceZoneForm)
-%wrap_handle(StepDimTol_CylindricityTolerance)
-%wrap_handle(StepDimTol_DatumReferenceCompartment)
-%wrap_handle(StepDimTol_DatumReferenceElement)
-%wrap_handle(StepDimTol_FlatnessTolerance)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRef)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthMod)
-%wrap_handle(StepDimTol_GeometricToleranceWithDatumReference)
-%wrap_handle(StepDimTol_GeometricToleranceWithDefinedUnit)
-%wrap_handle(StepDimTol_GeometricToleranceWithModifiers)
-%wrap_handle(StepDimTol_LineProfileTolerance)
-%wrap_handle(StepDimTol_ModifiedGeometricTolerance)
-%wrap_handle(StepDimTol_NonUniformZoneDefinition)
-%wrap_handle(StepDimTol_PlacedDatumTargetFeature)
-%wrap_handle(StepDimTol_PositionTolerance)
-%wrap_handle(StepDimTol_ProjectedZoneDefinition)
-%wrap_handle(StepDimTol_RoundnessTolerance)
-%wrap_handle(StepDimTol_RunoutZoneDefinition)
-%wrap_handle(StepDimTol_StraightnessTolerance)
-%wrap_handle(StepDimTol_SurfaceProfileTolerance)
-%wrap_handle(StepDimTol_UnequallyDisposedGeometricTolerance)
-%wrap_handle(StepDimTol_AngularityTolerance)
-%wrap_handle(StepDimTol_CircularRunoutTolerance)
-%wrap_handle(StepDimTol_CoaxialityTolerance)
-%wrap_handle(StepDimTol_ConcentricityTolerance)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol)
-%wrap_handle(StepDimTol_GeoTolAndGeoTolWthMaxTol)
-%wrap_handle(StepDimTol_GeometricToleranceWithDefinedAreaUnit)
-%wrap_handle(StepDimTol_GeometricToleranceWithMaximumTolerance)
-%wrap_handle(StepDimTol_ParallelismTolerance)
-%wrap_handle(StepDimTol_PerpendicularityTolerance)
-%wrap_handle(StepDimTol_SymmetryTolerance)
-%wrap_handle(StepDimTol_TotalRunoutTolerance)
-/* end handles declaration */
 
 %nodefaultctor StepDimTol_CommonDatum;
 class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect {

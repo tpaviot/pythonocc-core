@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:20
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -93,6 +92,16 @@ enum BRepCheck_Status {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepCheck_Result)
+%wrap_handle(BRepCheck_Edge)
+%wrap_handle(BRepCheck_Face)
+%wrap_handle(BRepCheck_Shell)
+%wrap_handle(BRepCheck_Solid)
+%wrap_handle(BRepCheck_Vertex)
+%wrap_handle(BRepCheck_Wire)
+/* end handles declaration */
+
 /* templates */
 %template(BRepCheck_ListOfStatus) NCollection_List <BRepCheck_Status>;
 %template(BRepCheck_ListIteratorOfListOfStatus) NCollection_TListIterator<BRepCheck_Status>;
@@ -108,16 +117,6 @@ typedef NCollection_DataMap <TopoDS_Shape , BRepCheck_ListOfStatus , TopTools_Sh
 typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_DataMapOfShapeResult;
 typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <BRepCheck_Result>, TopTools_OrientedShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepCheck_Result)
-%wrap_handle(BRepCheck_Edge)
-%wrap_handle(BRepCheck_Face)
-%wrap_handle(BRepCheck_Shell)
-%wrap_handle(BRepCheck_Solid)
-%wrap_handle(BRepCheck_Vertex)
-%wrap_handle(BRepCheck_Wire)
-/* end handles declaration */
 
 %rename(brepcheck) BRepCheck;
 class BRepCheck {

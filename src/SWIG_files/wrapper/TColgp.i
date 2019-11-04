@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(TColgp_Array2OfXYZ) NCollection_Array2 <gp_XYZ>;
@@ -458,9 +460,6 @@ typedef NCollection_Array1 <gp_Pnt> TColgp_Array1OfPnt;
 typedef NCollection_Sequence <gp_XYZ> TColgp_SequenceOfXYZ;
 typedef NCollection_Array2 <gp_Dir> TColgp_Array2OfDir;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 /* harray1 class */
 %wrap_handle(TColgp_HArray1OfVec)

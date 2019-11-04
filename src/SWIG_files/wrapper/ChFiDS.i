@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:25
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -82,6 +81,15 @@ enum ChFiDS_ErrorStatus {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(ChFiDS_HElSpine)
+%wrap_handle(ChFiDS_Spine)
+%wrap_handle(ChFiDS_Stripe)
+%wrap_handle(ChFiDS_SurfData)
+%wrap_handle(ChFiDS_ChamfSpine)
+%wrap_handle(ChFiDS_FilSpine)
+/* end handles declaration */
 
 /* templates */
 %template(ChFiDS_SequenceOfSpine) NCollection_Sequence <opencascade::handle <ChFiDS_Spine>>;
@@ -178,15 +186,6 @@ typedef NCollection_List <opencascade::handle <ChFiDS_Stripe>>::Iterator ChFiDS_
 typedef NCollection_List <ChFiDS_Regul> ChFiDS_Regularities;
 typedef NCollection_List <ChFiDS_Regul>::Iterator ChFiDS_ListIteratorOfRegularities;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(ChFiDS_HElSpine)
-%wrap_handle(ChFiDS_Spine)
-%wrap_handle(ChFiDS_Stripe)
-%wrap_handle(ChFiDS_SurfData)
-%wrap_handle(ChFiDS_ChamfSpine)
-%wrap_handle(ChFiDS_FilSpine)
-/* end handles declaration */
 
 %nodefaultctor ChFiDS_CircSection;
 class ChFiDS_CircSection {

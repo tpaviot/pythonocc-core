@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:48
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,18 +58,6 @@ enum XCAFDoc_ColorType {
 
 /* end public enums declaration */
 
-/* templates */
-%template(XCAFDoc_DataMapOfShapeLabel) NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher>;
-%template(XCAFDoc_GraphNodeSequence) NCollection_Sequence <opencascade::handle <XCAFDoc_GraphNode>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher> XCAFDoc_DataMapOfShapeLabel;
-typedef NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher>::Iterator XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
-typedef NCollection_Sequence <opencascade::handle <XCAFDoc_GraphNode>> XCAFDoc_GraphNodeSequence;
-typedef TCollection_AsciiString XCAFDoc_PartId;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(XCAFDoc_Area)
 %wrap_handle(XCAFDoc_AssemblyItemRef)
@@ -98,6 +85,18 @@ typedef TCollection_AsciiString XCAFDoc_PartId;
 %wrap_handle(XCAFDoc_NoteComment)
 %wrap_handle(XCAFDoc_NoteBalloon)
 /* end handles declaration */
+
+/* templates */
+%template(XCAFDoc_DataMapOfShapeLabel) NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher>;
+%template(XCAFDoc_GraphNodeSequence) NCollection_Sequence <opencascade::handle <XCAFDoc_GraphNode>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher> XCAFDoc_DataMapOfShapeLabel;
+typedef NCollection_DataMap <TopoDS_Shape , TDF_Label , TopTools_ShapeMapHasher>::Iterator XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
+typedef NCollection_Sequence <opencascade::handle <XCAFDoc_GraphNode>> XCAFDoc_GraphNodeSequence;
+typedef TCollection_AsciiString XCAFDoc_PartId;
+/* end typedefs declaration */
 
 %rename(xcafdoc) XCAFDoc;
 class XCAFDoc {

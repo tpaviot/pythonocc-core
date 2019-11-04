@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:10
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -64,6 +63,11 @@ enum Approx_ParametrizationType {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(Approx_CurvlinFunc)
+%wrap_handle(Approx_SweepFunction)
+/* end handles declaration */
 
 /* templates */
 %template(Approx_SequenceOfHArray1OfReal) NCollection_Sequence <opencascade::handle <TColStd_HArray1OfReal>>;
@@ -144,11 +148,6 @@ typedef NCollection_Sequence <opencascade::handle <TColStd_HArray1OfReal>> Appro
 typedef NCollection_Array1 <gp_GTrsf2d> Approx_Array1OfGTrsf2d;
 typedef NCollection_Array1 <opencascade::handle <Adaptor3d_HSurface>> Approx_Array1OfAdHSurface;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Approx_CurvlinFunc)
-%wrap_handle(Approx_SweepFunction)
-/* end handles declaration */
 
 %nodefaultctor Approx_Curve2d;
 class Approx_Curve2d {

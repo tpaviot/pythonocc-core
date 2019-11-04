@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:15
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,14 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(ShapeAnalysis_FreeBoundData)
+%wrap_handle(ShapeAnalysis_Surface)
+%wrap_handle(ShapeAnalysis_TransferParameters)
+%wrap_handle(ShapeAnalysis_Wire)
+%wrap_handle(ShapeAnalysis_TransferParametersProj)
+/* end handles declaration */
+
 /* templates */
 %template(ShapeAnalysis_SequenceOfFreeBounds) NCollection_Sequence <opencascade::handle <ShapeAnalysis_FreeBoundData>>;
 %template(ShapeAnalysis_DataMapOfShapeListOfReal) NCollection_DataMap <TopoDS_Shape , TColStd_ListOfReal , TopTools_ShapeMapHasher>;
@@ -65,14 +72,6 @@ typedef NCollection_DataMap <TopoDS_Shape , TColStd_ListOfReal , TopTools_ShapeM
 typedef NCollection_DataMap <TopoDS_Shape , TColStd_ListOfReal , TopTools_ShapeMapHasher>::Iterator ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(ShapeAnalysis_FreeBoundData)
-%wrap_handle(ShapeAnalysis_Surface)
-%wrap_handle(ShapeAnalysis_TransferParameters)
-%wrap_handle(ShapeAnalysis_Wire)
-%wrap_handle(ShapeAnalysis_TransferParametersProj)
-/* end handles declaration */
 
 %rename(shapeanalysis) ShapeAnalysis;
 class ShapeAnalysis {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,11 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(AppDef_SmoothCriterion)
+%wrap_handle(AppDef_LinearCriteria)
+/* end handles declaration */
 
 /* templates */
 %template(AppDef_Array1OfMultiPointConstraint) NCollection_Array1 <AppDef_MultiPointConstraint>;
@@ -94,11 +98,6 @@ conditions:
 /* typedefs */
 typedef NCollection_Array1 <AppDef_MultiPointConstraint> AppDef_Array1OfMultiPointConstraint;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(AppDef_SmoothCriterion)
-%wrap_handle(AppDef_LinearCriteria)
-/* end handles declaration */
 
 %nodefaultctor AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS {

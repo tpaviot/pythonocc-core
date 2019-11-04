@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:30
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -92,6 +91,10 @@ enum BRepOffset_Status {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepOffset_SimpleOffset)
+/* end handles declaration */
+
 /* templates */
 %template(BRepOffset_DataMapOfShapeListOfInterval) NCollection_DataMap <TopoDS_Shape , BRepOffset_ListOfInterval , TopTools_ShapeMapHasher>;
 %template(BRepOffset_ListOfInterval) NCollection_List <BRepOffset_Interval>;
@@ -110,10 +113,6 @@ typedef NCollection_DataMap <TopoDS_Shape , BRepOffset_Offset , TopTools_ShapeMa
 typedef NCollection_DataMap <TopoDS_Shape , TopTools_MapOfShape , TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeMapOfShape;
 typedef NCollection_DataMap <TopoDS_Shape , TopTools_MapOfShape , TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepOffset_SimpleOffset)
-/* end handles declaration */
 
 %rename(brepoffset) BRepOffset;
 %nodefaultctor BRepOffset;

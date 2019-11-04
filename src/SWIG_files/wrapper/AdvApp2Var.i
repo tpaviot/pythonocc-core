@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:08
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -63,6 +62,9 @@ enum AdvApp2Var_CriterionType {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence <AdvApp2Var_Patch>;
 %template(AdvApp2Var_SequenceOfNode) NCollection_Sequence <AdvApp2Var_Node>;
@@ -99,9 +101,6 @@ typedef NCollection_Sequence <AdvApp2Var_Node> AdvApp2Var_SequenceOfNode;
 typedef NCollection_Sequence <AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
 typedef NCollection_Sequence <AdvApp2Var_Iso> AdvApp2Var_Strip;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor AdvApp2Var_ApproxAFunc2Var;
 class AdvApp2Var_ApproxAFunc2Var {

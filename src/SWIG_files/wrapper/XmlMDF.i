@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:44
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,13 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(XmlMDF_ADriver)
+%wrap_handle(XmlMDF_ADriverTable)
+%wrap_handle(XmlMDF_ReferenceDriver)
+%wrap_handle(XmlMDF_TagSourceDriver)
+/* end handles declaration */
+
 /* templates */
 %template(XmlMDF_MapOfDriver) NCollection_DataMap <TCollection_AsciiString , opencascade::handle <XmlMDF_ADriver>, TCollection_AsciiString>;
 %template(XmlMDF_TypeADriverMap) NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher>;
@@ -64,13 +70,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , opencascade::handle <XmlM
 typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher> XmlMDF_TypeADriverMap;
 typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator XmlMDF_DataMapIteratorOfTypeADriverMap;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(XmlMDF_ADriver)
-%wrap_handle(XmlMDF_ADriverTable)
-%wrap_handle(XmlMDF_ReferenceDriver)
-%wrap_handle(XmlMDF_TagSourceDriver)
-/* end handles declaration */
 
 %rename(xmlmdf) XmlMDF;
 class XmlMDF {

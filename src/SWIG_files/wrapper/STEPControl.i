@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:32
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -64,17 +63,17 @@ enum STEPControl_StepModelType {
 
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(STEPControl_ActorRead)
 %wrap_handle(STEPControl_ActorWrite)
 %wrap_handle(STEPControl_Controller)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %nodefaultctor STEPControl_ActorRead;
 class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -77,6 +76,15 @@ enum TNaming_NameType {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TNaming_DeltaOnModification)
+%wrap_handle(TNaming_DeltaOnRemoval)
+%wrap_handle(TNaming_NamedShape)
+%wrap_handle(TNaming_Naming)
+%wrap_handle(TNaming_TranslateTool)
+%wrap_handle(TNaming_UsedShapes)
+/* end handles declaration */
+
 /* templates */
 %template(TNaming_DataMapOfShapePtrRefShape) NCollection_DataMap <TopoDS_Shape , TNaming_PtrRefShape , TopTools_ShapeMapHasher>;
 %template(TNaming_ListOfIndexedDataMapOfShapeListOfShape) NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape>;
@@ -114,15 +122,6 @@ typedef NCollection_List <TopTools_MapOfShape> TNaming_ListOfMapOfShape;
 typedef NCollection_List <TopTools_MapOfShape>::Iterator TNaming_ListIteratorOfListOfMapOfShape;
 typedef TNaming_Node * TNaming_PtrNode;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TNaming_DeltaOnModification)
-%wrap_handle(TNaming_DeltaOnRemoval)
-%wrap_handle(TNaming_NamedShape)
-%wrap_handle(TNaming_Naming)
-%wrap_handle(TNaming_TranslateTool)
-%wrap_handle(TNaming_UsedShapes)
-/* end handles declaration */
 
 %rename(tnaming) TNaming;
 class TNaming {

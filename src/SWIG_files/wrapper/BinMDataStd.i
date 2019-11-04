@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:43
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,12 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(BinMDataStd_AsciiStringDriver)
 %wrap_handle(BinMDataStd_BooleanArrayDriver)
@@ -87,6 +80,12 @@ conditions:
 %wrap_handle(BinMDataStd_UAttributeDriver)
 %wrap_handle(BinMDataStd_VariableDriver)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %rename(binmdatastd) BinMDataStd;
 class BinMDataStd {

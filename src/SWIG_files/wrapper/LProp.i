@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:21
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -66,6 +65,9 @@ enum LProp_CIType {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(LProp_SequenceOfCIType) NCollection_Sequence <LProp_CIType>;
 /* end templates declaration */
@@ -73,9 +75,6 @@ enum LProp_CIType {
 /* typedefs */
 typedef NCollection_Sequence <LProp_CIType> LProp_SequenceOfCIType;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor LProp_AnalyticCurInf;
 class LProp_AnalyticCurInf {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:20
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,16 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(TopoDS_ListOfShape) NCollection_List <TopoDS_Shape>;
-%template(TopoDS_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_List <TopoDS_Shape> TopoDS_ListOfShape;
-typedef NCollection_List <TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfShape;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(TopoDS_HShape)
 %wrap_handle(TopoDS_TShape)
@@ -75,6 +64,16 @@ typedef NCollection_List <TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfSha
 %wrap_handle(TopoDS_TVertex)
 %wrap_handle(TopoDS_TWire)
 /* end handles declaration */
+
+/* templates */
+%template(TopoDS_ListOfShape) NCollection_List <TopoDS_Shape>;
+%template(TopoDS_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <TopoDS_Shape> TopoDS_ListOfShape;
+typedef NCollection_List <TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfShape;
+/* end typedefs declaration */
 
 %rename(topods) TopoDS;
 class TopoDS {

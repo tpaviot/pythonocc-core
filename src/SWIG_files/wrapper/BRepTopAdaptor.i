@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:23
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,11 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepTopAdaptor_HVertex)
+%wrap_handle(BRepTopAdaptor_TopolTool)
+/* end handles declaration */
+
 /* templates */
 %template(BRepTopAdaptor_MapOfShapeTool) NCollection_DataMap <TopoDS_Shape , BRepTopAdaptor_Tool , TopTools_ShapeMapHasher>;
 /* end templates declaration */
@@ -62,11 +66,6 @@ typedef NCollection_DataMap <TopoDS_Shape , BRepTopAdaptor_Tool , TopTools_Shape
 typedef NCollection_DataMap <TopoDS_Shape , BRepTopAdaptor_Tool , TopTools_ShapeMapHasher>::Iterator BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepTopAdaptor_HVertex)
-%wrap_handle(BRepTopAdaptor_TopolTool)
-/* end handles declaration */
 
 %nodefaultctor BRepTopAdaptor_FClass2d;
 class BRepTopAdaptor_FClass2d {

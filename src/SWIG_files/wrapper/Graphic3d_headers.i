@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:27
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -880,39 +879,6 @@ conditions:
 #include<TopTools_SequenceOfShape.hxx>
 #include<TopTools_ShapeMapHasher.hxx>
 #include<TopTools_ShapeSet.hxx>
-#include<V3d.hxx>
-#include<V3d_AmbientLight.hxx>
-#include<V3d_BadValue.hxx>
-#include<V3d_CircularGrid.hxx>
-#include<V3d_Coordinate.hxx>
-#include<V3d_DirectionalLight.hxx>
-#include<V3d_ImageDumpOptions.hxx>
-#include<V3d_Light.hxx>
-#include<V3d_ListOfLight.hxx>
-#include<V3d_ListOfView.hxx>
-#include<V3d_Parameter.hxx>
-#include<V3d_Plane.hxx>
-#include<V3d_PositionLight.hxx>
-#include<V3d_PositionalLight.hxx>
-#include<V3d_RectangularGrid.hxx>
-#include<V3d_SpotLight.hxx>
-#include<V3d_StereoDumpOptions.hxx>
-#include<V3d_Trihedron.hxx>
-#include<V3d_TypeOfAxe.hxx>
-#include<V3d_TypeOfBackfacingModel.hxx>
-#include<V3d_TypeOfLight.hxx>
-#include<V3d_TypeOfOrientation.hxx>
-#include<V3d_TypeOfPickCamera.hxx>
-#include<V3d_TypeOfPickLight.hxx>
-#include<V3d_TypeOfRepresentation.hxx>
-#include<V3d_TypeOfShadingModel.hxx>
-#include<V3d_TypeOfView.hxx>
-#include<V3d_TypeOfVisualization.hxx>
-#include<V3d_UnMapped.hxx>
-#include<V3d_View.hxx>
-#include<V3d_ViewPointer.hxx>
-#include<V3d_Viewer.hxx>
-#include<V3d_ViewerPointer.hxx>
 #include<SelectMgr_AndFilter.hxx>
 #include<SelectMgr_BaseFrustum.hxx>
 #include<SelectMgr_CompositionFilter.hxx>
@@ -993,6 +959,39 @@ conditions:
 #include<Poly_PolygonOnTriangulation.hxx>
 #include<Poly_Triangle.hxx>
 #include<Poly_Triangulation.hxx>
+#include<V3d.hxx>
+#include<V3d_AmbientLight.hxx>
+#include<V3d_BadValue.hxx>
+#include<V3d_CircularGrid.hxx>
+#include<V3d_Coordinate.hxx>
+#include<V3d_DirectionalLight.hxx>
+#include<V3d_ImageDumpOptions.hxx>
+#include<V3d_Light.hxx>
+#include<V3d_ListOfLight.hxx>
+#include<V3d_ListOfView.hxx>
+#include<V3d_Parameter.hxx>
+#include<V3d_Plane.hxx>
+#include<V3d_PositionLight.hxx>
+#include<V3d_PositionalLight.hxx>
+#include<V3d_RectangularGrid.hxx>
+#include<V3d_SpotLight.hxx>
+#include<V3d_StereoDumpOptions.hxx>
+#include<V3d_Trihedron.hxx>
+#include<V3d_TypeOfAxe.hxx>
+#include<V3d_TypeOfBackfacingModel.hxx>
+#include<V3d_TypeOfLight.hxx>
+#include<V3d_TypeOfOrientation.hxx>
+#include<V3d_TypeOfPickCamera.hxx>
+#include<V3d_TypeOfPickLight.hxx>
+#include<V3d_TypeOfRepresentation.hxx>
+#include<V3d_TypeOfShadingModel.hxx>
+#include<V3d_TypeOfView.hxx>
+#include<V3d_TypeOfVisualization.hxx>
+#include<V3d_UnMapped.hxx>
+#include<V3d_View.hxx>
+#include<V3d_ViewPointer.hxx>
+#include<V3d_Viewer.hxx>
+#include<V3d_ViewerPointer.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
