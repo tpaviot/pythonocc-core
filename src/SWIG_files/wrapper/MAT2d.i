@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:25
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,11 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(MAT2d_Circuit)
+%wrap_handle(MAT2d_Connexion)
+/* end handles declaration */
 
 /* templates */
 %template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap <Standard_Integer , MAT2d_SequenceOfConnexion , TColStd_MapIntegerHasher>;
@@ -87,11 +91,6 @@ typedef NCollection_DataMap <MAT2d_BiInt , TColStd_SequenceOfInteger , MAT2d_Map
 typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHasher> MAT2d_DataMapOfBiIntInteger;
 typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(MAT2d_Circuit)
-%wrap_handle(MAT2d_Connexion)
-/* end handles declaration */
 
 %nodefaultctor MAT2d_BiInt;
 class MAT2d_BiInt {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:12
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,9 @@ enum IntCurveSurface_TransitionOnCurve {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(IntCurveSurface_SequenceOfSeg) NCollection_Sequence <IntCurveSurface_IntersectionSegment>;
 %template(IntCurveSurface_SequenceOfPnt) NCollection_Sequence <IntCurveSurface_IntersectionPoint>;
@@ -68,9 +70,6 @@ enum IntCurveSurface_TransitionOnCurve {
 typedef NCollection_Sequence <IntCurveSurface_IntersectionSegment> IntCurveSurface_SequenceOfSeg;
 typedef NCollection_Sequence <IntCurveSurface_IntersectionPoint> IntCurveSurface_SequenceOfPnt;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor IntCurveSurface_Intersection;
 %ignore IntCurveSurface_Intersection::~IntCurveSurface_Intersection();

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:18
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -81,6 +80,14 @@ enum ShapeExtend_Parametrisation {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(ShapeExtend_BasicMsgRegistrator)
+%wrap_handle(ShapeExtend_ComplexCurve)
+%wrap_handle(ShapeExtend_CompositeSurface)
+%wrap_handle(ShapeExtend_WireData)
+%wrap_handle(ShapeExtend_MsgRegistrator)
+/* end handles declaration */
+
 /* templates */
 %template(ShapeExtend_DataMapOfTransientListOfMsg) NCollection_DataMap <opencascade::handle <Standard_Transient>, Message_ListOfMsg , TColStd_MapTransientHasher>;
 %template(ShapeExtend_DataMapOfShapeListOfMsg) NCollection_DataMap <TopoDS_Shape , Message_ListOfMsg , TopTools_ShapeMapHasher>;
@@ -92,14 +99,6 @@ typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Message_L
 typedef NCollection_DataMap <TopoDS_Shape , Message_ListOfMsg , TopTools_ShapeMapHasher> ShapeExtend_DataMapOfShapeListOfMsg;
 typedef NCollection_DataMap <TopoDS_Shape , Message_ListOfMsg , TopTools_ShapeMapHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(ShapeExtend_BasicMsgRegistrator)
-%wrap_handle(ShapeExtend_ComplexCurve)
-%wrap_handle(ShapeExtend_CompositeSurface)
-%wrap_handle(ShapeExtend_WireData)
-%wrap_handle(ShapeExtend_MsgRegistrator)
-/* end handles declaration */
 
 %rename(shapeextend) ShapeExtend;
 class ShapeExtend {

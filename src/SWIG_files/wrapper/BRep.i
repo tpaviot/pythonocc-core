@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,20 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(BRep_ListOfPointRepresentation) NCollection_List <opencascade::handle <BRep_PointRepresentation>>;
-%template(BRep_ListIteratorOfListOfPointRepresentation) NCollection_TListIterator<opencascade::handle<BRep_PointRepresentation>>;
-%template(BRep_ListOfCurveRepresentation) NCollection_List <opencascade::handle <BRep_CurveRepresentation>>;
-%template(BRep_ListIteratorOfListOfCurveRepresentation) NCollection_TListIterator<opencascade::handle<BRep_CurveRepresentation>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>> BRep_ListOfPointRepresentation;
-typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>>::Iterator BRep_ListIteratorOfListOfPointRepresentation;
-typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>> BRep_ListOfCurveRepresentation;
-typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>>::Iterator BRep_ListIteratorOfListOfCurveRepresentation;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(BRep_CurveRepresentation)
 %wrap_handle(BRep_PointRepresentation)
@@ -88,6 +73,20 @@ typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>>::Itera
 %wrap_handle(BRep_PolygonOnClosedTriangulation)
 %wrap_handle(BRep_CurveOnClosedSurface)
 /* end handles declaration */
+
+/* templates */
+%template(BRep_ListOfPointRepresentation) NCollection_List <opencascade::handle <BRep_PointRepresentation>>;
+%template(BRep_ListIteratorOfListOfPointRepresentation) NCollection_TListIterator<opencascade::handle<BRep_PointRepresentation>>;
+%template(BRep_ListOfCurveRepresentation) NCollection_List <opencascade::handle <BRep_CurveRepresentation>>;
+%template(BRep_ListIteratorOfListOfCurveRepresentation) NCollection_TListIterator<opencascade::handle<BRep_CurveRepresentation>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>> BRep_ListOfPointRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>>::Iterator BRep_ListIteratorOfListOfPointRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>> BRep_ListOfCurveRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>>::Iterator BRep_ListIteratorOfListOfCurveRepresentation;
+/* end typedefs declaration */
 
 class BRep_Builder : public TopoDS_Builder {
 	public:

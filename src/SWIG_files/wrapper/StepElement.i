@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:40
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -115,6 +114,30 @@ enum StepElement_EnumeratedCurveElementPurpose {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepElement_AnalysisItemWithinRepresentation)
+%wrap_handle(StepElement_CurveElementEndReleasePacket)
+%wrap_handle(StepElement_CurveElementFreedomMember)
+%wrap_handle(StepElement_CurveElementPurposeMember)
+%wrap_handle(StepElement_CurveElementSectionDefinition)
+%wrap_handle(StepElement_ElementAspectMember)
+%wrap_handle(StepElement_ElementDescriptor)
+%wrap_handle(StepElement_ElementMaterial)
+%wrap_handle(StepElement_MeasureOrUnspecifiedValueMember)
+%wrap_handle(StepElement_SurfaceElementProperty)
+%wrap_handle(StepElement_SurfaceElementPurposeMember)
+%wrap_handle(StepElement_SurfaceSection)
+%wrap_handle(StepElement_SurfaceSectionField)
+%wrap_handle(StepElement_VolumeElementPurposeMember)
+%wrap_handle(StepElement_Curve3dElementDescriptor)
+%wrap_handle(StepElement_CurveElementSectionDerivedDefinitions)
+%wrap_handle(StepElement_Surface3dElementDescriptor)
+%wrap_handle(StepElement_SurfaceSectionFieldConstant)
+%wrap_handle(StepElement_SurfaceSectionFieldVarying)
+%wrap_handle(StepElement_UniformSurfaceSection)
+%wrap_handle(StepElement_Volume3dElementDescriptor)
+/* end handles declaration */
 
 /* templates */
 %template(StepElement_SequenceOfCurveElementSectionDefinition) NCollection_Sequence <opencascade::handle <StepElement_CurveElementSectionDefinition>>;
@@ -423,30 +446,6 @@ typedef NCollection_Array1 <opencascade::handle <StepElement_VolumeElementPurpos
 typedef NCollection_Array2 <opencascade::handle <StepElement_SurfaceElementPurposeMember>> StepElement_Array2OfSurfaceElementPurposeMember;
 typedef NCollection_Sequence <opencascade::handle <StepElement_CurveElementPurposeMember>> StepElement_SequenceOfCurveElementPurposeMember;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepElement_AnalysisItemWithinRepresentation)
-%wrap_handle(StepElement_CurveElementEndReleasePacket)
-%wrap_handle(StepElement_CurveElementFreedomMember)
-%wrap_handle(StepElement_CurveElementPurposeMember)
-%wrap_handle(StepElement_CurveElementSectionDefinition)
-%wrap_handle(StepElement_ElementAspectMember)
-%wrap_handle(StepElement_ElementDescriptor)
-%wrap_handle(StepElement_ElementMaterial)
-%wrap_handle(StepElement_MeasureOrUnspecifiedValueMember)
-%wrap_handle(StepElement_SurfaceElementProperty)
-%wrap_handle(StepElement_SurfaceElementPurposeMember)
-%wrap_handle(StepElement_SurfaceSection)
-%wrap_handle(StepElement_SurfaceSectionField)
-%wrap_handle(StepElement_VolumeElementPurposeMember)
-%wrap_handle(StepElement_Curve3dElementDescriptor)
-%wrap_handle(StepElement_CurveElementSectionDerivedDefinitions)
-%wrap_handle(StepElement_Surface3dElementDescriptor)
-%wrap_handle(StepElement_SurfaceSectionFieldConstant)
-%wrap_handle(StepElement_SurfaceSectionFieldVarying)
-%wrap_handle(StepElement_UniformSurfaceSection)
-%wrap_handle(StepElement_Volume3dElementDescriptor)
-/* end handles declaration */
 
 %nodefaultctor StepElement_AnalysisItemWithinRepresentation;
 class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {

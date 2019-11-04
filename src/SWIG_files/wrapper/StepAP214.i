@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:35
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,36 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepAP214_AppliedApprovalAssignment)
+%wrap_handle(StepAP214_AppliedDateAndTimeAssignment)
+%wrap_handle(StepAP214_AppliedDateAssignment)
+%wrap_handle(StepAP214_AppliedDocumentReference)
+%wrap_handle(StepAP214_AppliedExternalIdentificationAssignment)
+%wrap_handle(StepAP214_AppliedGroupAssignment)
+%wrap_handle(StepAP214_AppliedOrganizationAssignment)
+%wrap_handle(StepAP214_AppliedPersonAndOrganizationAssignment)
+%wrap_handle(StepAP214_AppliedPresentedItem)
+%wrap_handle(StepAP214_AppliedSecurityClassificationAssignment)
+%wrap_handle(StepAP214_AutoDesignActualDateAndTimeAssignment)
+%wrap_handle(StepAP214_AutoDesignActualDateAssignment)
+%wrap_handle(StepAP214_AutoDesignApprovalAssignment)
+%wrap_handle(StepAP214_AutoDesignDateAndPersonAssignment)
+%wrap_handle(StepAP214_AutoDesignDocumentReference)
+%wrap_handle(StepAP214_AutoDesignGroupAssignment)
+%wrap_handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)
+%wrap_handle(StepAP214_AutoDesignNominalDateAssignment)
+%wrap_handle(StepAP214_AutoDesignOrganizationAssignment)
+%wrap_handle(StepAP214_AutoDesignPersonAndOrganizationAssignment)
+%wrap_handle(StepAP214_AutoDesignPresentedItem)
+%wrap_handle(StepAP214_AutoDesignSecurityClassificationAssignment)
+%wrap_handle(StepAP214_Class)
+%wrap_handle(StepAP214_ExternallyDefinedGeneralProperty)
+%wrap_handle(StepAP214_Protocol)
+%wrap_handle(StepAP214_RepItemGroup)
+%wrap_handle(StepAP214_ExternallyDefinedClass)
+/* end handles declaration */
 
 /* templates */
 %template(StepAP214_Array1OfOrganizationItem) NCollection_Array1 <StepAP214_OrganizationItem>;
@@ -670,36 +699,6 @@ typedef NCollection_Array1 <StepAP214_AutoDesignPresentedItemSelect> StepAP214_A
 typedef NCollection_Array1 <StepAP214_AutoDesignDateAndTimeItem> StepAP214_Array1OfAutoDesignDateAndTimeItem;
 typedef NCollection_Array1 <StepAP214_AutoDesignDateAndPersonItem> StepAP214_Array1OfAutoDesignDateAndPersonItem;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepAP214_AppliedApprovalAssignment)
-%wrap_handle(StepAP214_AppliedDateAndTimeAssignment)
-%wrap_handle(StepAP214_AppliedDateAssignment)
-%wrap_handle(StepAP214_AppliedDocumentReference)
-%wrap_handle(StepAP214_AppliedExternalIdentificationAssignment)
-%wrap_handle(StepAP214_AppliedGroupAssignment)
-%wrap_handle(StepAP214_AppliedOrganizationAssignment)
-%wrap_handle(StepAP214_AppliedPersonAndOrganizationAssignment)
-%wrap_handle(StepAP214_AppliedPresentedItem)
-%wrap_handle(StepAP214_AppliedSecurityClassificationAssignment)
-%wrap_handle(StepAP214_AutoDesignActualDateAndTimeAssignment)
-%wrap_handle(StepAP214_AutoDesignActualDateAssignment)
-%wrap_handle(StepAP214_AutoDesignApprovalAssignment)
-%wrap_handle(StepAP214_AutoDesignDateAndPersonAssignment)
-%wrap_handle(StepAP214_AutoDesignDocumentReference)
-%wrap_handle(StepAP214_AutoDesignGroupAssignment)
-%wrap_handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)
-%wrap_handle(StepAP214_AutoDesignNominalDateAssignment)
-%wrap_handle(StepAP214_AutoDesignOrganizationAssignment)
-%wrap_handle(StepAP214_AutoDesignPersonAndOrganizationAssignment)
-%wrap_handle(StepAP214_AutoDesignPresentedItem)
-%wrap_handle(StepAP214_AutoDesignSecurityClassificationAssignment)
-%wrap_handle(StepAP214_Class)
-%wrap_handle(StepAP214_ExternallyDefinedGeneralProperty)
-%wrap_handle(StepAP214_Protocol)
-%wrap_handle(StepAP214_RepItemGroup)
-%wrap_handle(StepAP214_ExternallyDefinedClass)
-/* end handles declaration */
 
 %rename(stepap214) StepAP214;
 class StepAP214 {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:24
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -330,38 +329,6 @@ enum AIS_DisplayStatus {
 
 /* end public enums declaration */
 
-/* templates */
-%template(AIS_DataMapofIntegerListOfinteractive) NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher>;
-%template(AIS_ListOfInteractive) NCollection_List <opencascade::handle <AIS_InteractiveObject>>;
-%template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
-%template(AIS_MouseGestureMap) NCollection_DataMap <unsigned int , AIS_MouseGesture>;
-%template(AIS_DataMapOfShapeDrawer) NCollection_DataMap <TopoDS_Shape , opencascade::handle <AIS_ColoredDrawer>, TopTools_ShapeMapHasher>;
-%template(AIS_MapOfInteractive) NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher>;
-%template(AIS_DataMapOfIOStatus) NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>;
-%template(AIS_SequenceOfDimension) NCollection_Sequence <opencascade::handle <AIS_Relation>>;
-%template(AIS_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <Prs3d_Presentation>, TColStd_MapTransientHasher>;
-%template(AIS_NListOfEntityOwner) NCollection_List <opencascade::handle <SelectMgr_EntityOwner>>;
-%template(AIS_SequenceOfInteractive) NCollection_Sequence <opencascade::handle <AIS_InteractiveObject>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
-typedef NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher>::Iterator AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
-typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>> AIS_ListOfInteractive;
-typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
-typedef NCollection_DataMap <unsigned int , AIS_MouseGesture> AIS_MouseGestureMap;
-typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
-typedef NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
-typedef NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
-typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
-typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
-typedef NCollection_Sequence <opencascade::handle <AIS_Relation>> AIS_SequenceOfDimension;
-typedef NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
-typedef NCollection_List <opencascade::handle <SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
-typedef NCollection_Sequence <opencascade::handle <AIS_InteractiveObject>> AIS_SequenceOfInteractive;
-typedef Media_Timer AIS_AnimationTimer;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(AIS_Animation)
 %wrap_handle(AIS_AttributeFilter)
@@ -420,6 +387,38 @@ typedef Media_Timer AIS_AnimationTimer;
 %wrap_handle(AIS_MaxRadiusDimension)
 %wrap_handle(AIS_MinRadiusDimension)
 /* end handles declaration */
+
+/* templates */
+%template(AIS_DataMapofIntegerListOfinteractive) NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher>;
+%template(AIS_ListOfInteractive) NCollection_List <opencascade::handle <AIS_InteractiveObject>>;
+%template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
+%template(AIS_MouseGestureMap) NCollection_DataMap <unsigned int , AIS_MouseGesture>;
+%template(AIS_DataMapOfShapeDrawer) NCollection_DataMap <TopoDS_Shape , opencascade::handle <AIS_ColoredDrawer>, TopTools_ShapeMapHasher>;
+%template(AIS_MapOfInteractive) NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher>;
+%template(AIS_DataMapOfIOStatus) NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>;
+%template(AIS_SequenceOfDimension) NCollection_Sequence <opencascade::handle <AIS_Relation>>;
+%template(AIS_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <Prs3d_Presentation>, TColStd_MapTransientHasher>;
+%template(AIS_NListOfEntityOwner) NCollection_List <opencascade::handle <SelectMgr_EntityOwner>>;
+%template(AIS_SequenceOfInteractive) NCollection_Sequence <opencascade::handle <AIS_InteractiveObject>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
+typedef NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher>::Iterator AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
+typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>> AIS_ListOfInteractive;
+typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
+typedef NCollection_DataMap <unsigned int , AIS_MouseGesture> AIS_MouseGestureMap;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
+typedef NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
+typedef NCollection_Map <opencascade::handle <AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
+typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
+typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
+typedef NCollection_Sequence <opencascade::handle <AIS_Relation>> AIS_SequenceOfDimension;
+typedef NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
+typedef NCollection_List <opencascade::handle <SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
+typedef NCollection_Sequence <opencascade::handle <AIS_InteractiveObject>> AIS_SequenceOfInteractive;
+typedef Media_Timer AIS_AnimationTimer;
+/* end typedefs declaration */
 
 %rename(ais) AIS;
 class AIS {

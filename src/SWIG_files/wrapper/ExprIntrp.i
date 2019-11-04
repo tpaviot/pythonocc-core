@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:15
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,13 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(ExprIntrp_Generator)
+%wrap_handle(ExprIntrp_GenExp)
+%wrap_handle(ExprIntrp_GenFct)
+%wrap_handle(ExprIntrp_GenRel)
+/* end handles declaration */
+
 /* templates */
 %template(ExprIntrp_StackOfGeneralRelation) NCollection_List <opencascade::handle <Expr_GeneralRelation>>;
 %template(ExprIntrp_ListIteratorOfStackOfGeneralRelation) NCollection_TListIterator<opencascade::handle<Expr_GeneralRelation>>;
@@ -74,13 +80,6 @@ typedef NCollection_Sequence <opencascade::handle <Expr_NamedExpression>> ExprIn
 typedef NCollection_List <opencascade::handle <Expr_GeneralExpression>> ExprIntrp_StackOfGeneralExpression;
 typedef NCollection_List <opencascade::handle <Expr_GeneralExpression>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(ExprIntrp_Generator)
-%wrap_handle(ExprIntrp_GenExp)
-%wrap_handle(ExprIntrp_GenFct)
-%wrap_handle(ExprIntrp_GenRel)
-/* end handles declaration */
 
 %rename(exprintrp) ExprIntrp;
 %nodefaultctor ExprIntrp;

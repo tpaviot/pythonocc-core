@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:12
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,10 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(HLRTopoBRep_OutLiner)
+/* end handles declaration */
+
 /* templates */
 %template(HLRTopoBRep_DataMapOfShapeFaceData) NCollection_DataMap <TopoDS_Shape , HLRTopoBRep_FaceData , TopTools_ShapeMapHasher>;
 %template(HLRTopoBRep_ListOfVData) NCollection_List <HLRTopoBRep_VData>;
@@ -68,10 +71,6 @@ typedef NCollection_List <HLRTopoBRep_VData>::Iterator HLRTopoBRep_ListIteratorO
 typedef NCollection_DataMap <TopoDS_Shape , HLRTopoBRep_ListOfVData , TopTools_ShapeMapHasher> HLRTopoBRep_MapOfShapeListOfVData;
 typedef NCollection_DataMap <TopoDS_Shape , HLRTopoBRep_ListOfVData , TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(HLRTopoBRep_OutLiner)
-/* end handles declaration */
 
 class HLRTopoBRep_DSFiller {
 	public:

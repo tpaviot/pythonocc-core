@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:22
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(TColQuantity_Array1OfLength) NCollection_Array1 <Quantity_Length>;
@@ -96,9 +98,6 @@ conditions:
 typedef NCollection_Array1 <Quantity_Length> TColQuantity_Array1OfLength;
 typedef NCollection_Array2 <Quantity_Length> TColQuantity_Array2OfLength;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 /* harray1 class */
 %wrap_handle(TColQuantity_HArray1OfLength)

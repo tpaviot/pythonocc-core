@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:34
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -93,23 +92,6 @@ enum IFSelect_PrintCount {
 };
 
 /* end public enums declaration */
-
-/* templates */
-%template(IFSelect_TSeqOfSelection) NCollection_Sequence <opencascade::handle <IFSelect_Selection>>;
-%template(IFSelect_SequenceOfGeneralModifier) NCollection_Sequence <opencascade::handle <IFSelect_GeneralModifier>>;
-%template(IFSelect_TSeqOfDispatch) NCollection_Sequence <opencascade::handle <IFSelect_Dispatch>>;
-%template(IFSelect_SequenceOfAppliedModifiers) NCollection_Sequence <opencascade::handle <IFSelect_AppliedModifiers>>;
-%template(IFSelect_SequenceOfInterfaceModel) NCollection_Sequence <opencascade::handle <Interface_InterfaceModel>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_Sequence <opencascade::handle <IFSelect_Selection>> IFSelect_TSeqOfSelection;
-typedef NCollection_Sequence <opencascade::handle <IFSelect_GeneralModifier>> IFSelect_SequenceOfGeneralModifier;
-typedef NCollection_Sequence <opencascade::handle <IFSelect_Dispatch>> IFSelect_TSeqOfDispatch;
-typedef NCollection_Sequence <opencascade::handle <IFSelect_AppliedModifiers>> IFSelect_SequenceOfAppliedModifiers;
-typedef IFSelect_ReturnStatus ( * IFSelect_ActFunc ) ( const opencascade::handle <IFSelect_SessionPilot>& );
-typedef NCollection_Sequence <opencascade::handle <Interface_InterfaceModel>> IFSelect_SequenceOfInterfaceModel;
-/* end typedefs declaration */
 
 /* handles */
 %wrap_handle(IFSelect_Activator)
@@ -183,6 +165,23 @@ typedef NCollection_Sequence <opencascade::handle <Interface_InterfaceModel>> IF
 %wrap_handle(IFSelect_SelectIncorrectEntities)
 %wrap_handle(IFSelect_SelectType)
 /* end handles declaration */
+
+/* templates */
+%template(IFSelect_TSeqOfSelection) NCollection_Sequence <opencascade::handle <IFSelect_Selection>>;
+%template(IFSelect_SequenceOfGeneralModifier) NCollection_Sequence <opencascade::handle <IFSelect_GeneralModifier>>;
+%template(IFSelect_TSeqOfDispatch) NCollection_Sequence <opencascade::handle <IFSelect_Dispatch>>;
+%template(IFSelect_SequenceOfAppliedModifiers) NCollection_Sequence <opencascade::handle <IFSelect_AppliedModifiers>>;
+%template(IFSelect_SequenceOfInterfaceModel) NCollection_Sequence <opencascade::handle <Interface_InterfaceModel>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <opencascade::handle <IFSelect_Selection>> IFSelect_TSeqOfSelection;
+typedef NCollection_Sequence <opencascade::handle <IFSelect_GeneralModifier>> IFSelect_SequenceOfGeneralModifier;
+typedef NCollection_Sequence <opencascade::handle <IFSelect_Dispatch>> IFSelect_TSeqOfDispatch;
+typedef NCollection_Sequence <opencascade::handle <IFSelect_AppliedModifiers>> IFSelect_SequenceOfAppliedModifiers;
+typedef IFSelect_ReturnStatus ( * IFSelect_ActFunc ) ( const opencascade::handle <IFSelect_SessionPilot>& );
+typedef NCollection_Sequence <opencascade::handle <Interface_InterfaceModel>> IFSelect_SequenceOfInterfaceModel;
+/* end typedefs declaration */
 
 %rename(ifselect) IFSelect;
 class IFSelect {

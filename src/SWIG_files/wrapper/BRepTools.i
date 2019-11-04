@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:18
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,15 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(BRepTools_MapOfVertexPnt2d) NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher> BRepTools_MapOfVertexPnt2d;
-typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>::Iterator BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(BRepTools_History)
 %wrap_handle(BRepTools_Modification)
@@ -70,6 +60,15 @@ typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_Sh
 %wrap_handle(BRepTools_NurbsConvertModification)
 %wrap_handle(BRepTools_TrsfModification)
 /* end handles declaration */
+
+/* templates */
+%template(BRepTools_MapOfVertexPnt2d) NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher> BRepTools_MapOfVertexPnt2d;
+typedef NCollection_DataMap <TopoDS_Shape , TColgp_SequenceOfPnt2d , TopTools_ShapeMapHasher>::Iterator BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
+/* end typedefs declaration */
 
 %rename(breptools) BRepTools;
 class BRepTools {

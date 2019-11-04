@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:16
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,9 @@ enum Intf_PIType {
 };
 
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(Intf_SeqOfSectionLine) NCollection_Sequence <Intf_SectionLine>;
@@ -107,9 +109,6 @@ typedef NCollection_Sequence <Intf_TangentZone> Intf_SeqOfTangentZone;
 typedef NCollection_Sequence <Intf_SectionPoint> Intf_SeqOfSectionPoint;
 typedef NCollection_Array1 <gp_Lin> Intf_Array1OfLin;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(intf) Intf;
 class Intf {

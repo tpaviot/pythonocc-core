@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:34
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -152,6 +151,20 @@ enum V3d_TypeOfPickLight {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(V3d_AmbientLight)
+%wrap_handle(V3d_CircularGrid)
+%wrap_handle(V3d_Plane)
+%wrap_handle(V3d_PositionLight)
+%wrap_handle(V3d_RectangularGrid)
+%wrap_handle(V3d_Trihedron)
+%wrap_handle(V3d_View)
+%wrap_handle(V3d_Viewer)
+%wrap_handle(V3d_DirectionalLight)
+%wrap_handle(V3d_PositionalLight)
+%wrap_handle(V3d_SpotLight)
+/* end handles declaration */
+
 /* templates */
 %template(V3d_ListOfLight) NCollection_List <opencascade::handle <Graphic3d_CLight>>;
 %template(V3d_ListOfView) NCollection_List <opencascade::handle <V3d_View>>;
@@ -171,20 +184,6 @@ typedef Standard_Real V3d_Coordinate;
 typedef Graphic3d_CLight V3d_Light;
 typedef Handle_Graphic3d_CLight Handle_V3d_Light;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(V3d_AmbientLight)
-%wrap_handle(V3d_CircularGrid)
-%wrap_handle(V3d_Plane)
-%wrap_handle(V3d_PositionLight)
-%wrap_handle(V3d_RectangularGrid)
-%wrap_handle(V3d_Trihedron)
-%wrap_handle(V3d_View)
-%wrap_handle(V3d_Viewer)
-%wrap_handle(V3d_DirectionalLight)
-%wrap_handle(V3d_PositionalLight)
-%wrap_handle(V3d_SpotLight)
-/* end handles declaration */
 
 %rename(v3d) V3d;
 class V3d {

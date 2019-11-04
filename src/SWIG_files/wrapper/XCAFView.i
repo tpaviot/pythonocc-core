@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:49
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,15 +58,15 @@ enum XCAFView_ProjectionType {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(XCAFView_Object)
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(XCAFView_Object)
-/* end handles declaration */
 
 %nodefaultctor XCAFView_Object;
 class XCAFView_Object : public Standard_Transient {

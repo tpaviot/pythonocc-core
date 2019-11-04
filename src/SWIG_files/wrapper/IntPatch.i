@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:13
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -73,6 +72,16 @@ enum IntPatch_IType {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(IntPatch_Line)
+%wrap_handle(IntPatch_TheIWLineOfTheIWalking)
+%wrap_handle(IntPatch_ALine)
+%wrap_handle(IntPatch_GLine)
+%wrap_handle(IntPatch_PointLine)
+%wrap_handle(IntPatch_RLine)
+%wrap_handle(IntPatch_WLine)
+/* end handles declaration */
+
 /* templates */
 %template(IntPatch_SequenceOfPoint) NCollection_Sequence <IntPatch_Point>;
 %template(IntPatch_SequenceOfPathPointOfTheSOnBounds) NCollection_Sequence <IntPatch_ThePathPointOfTheSOnBounds>;
@@ -89,16 +98,6 @@ typedef NCollection_Sequence <IntPatch_TheSegmentOfTheSOnBounds> IntPatch_Sequen
 typedef NCollection_Sequence <opencascade::handle <IntPatch_Line>> IntPatch_SequenceOfLine;
 typedef NCollection_Sequence <opencascade::handle <IntPatch_TheIWLineOfTheIWalking>> IntPatch_SequenceOfIWLineOfTheIWalking;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(IntPatch_Line)
-%wrap_handle(IntPatch_TheIWLineOfTheIWalking)
-%wrap_handle(IntPatch_ALine)
-%wrap_handle(IntPatch_GLine)
-%wrap_handle(IntPatch_PointLine)
-%wrap_handle(IntPatch_RLine)
-%wrap_handle(IntPatch_WLine)
-/* end handles declaration */
 
 %nodefaultctor IntPatch_ALineToWLine;
 class IntPatch_ALineToWLine {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(TopTrans_Array2OfOrientation) NCollection_Array2 <TopAbs_Orientation>;
 /* end templates declaration */
@@ -60,9 +62,6 @@ conditions:
 /* typedefs */
 typedef NCollection_Array2 <TopAbs_Orientation> TopTrans_Array2OfOrientation;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor TopTrans_CurveTransition;
 class TopTrans_CurveTransition {

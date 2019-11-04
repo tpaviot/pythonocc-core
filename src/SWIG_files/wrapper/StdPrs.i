@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:32
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,9 @@ enum StdPrs_Volume {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(StdPrs_Point) Prs3d_Point <opencascade::handle <Geom_Point>, StdPrs_ToolPoint>;
 %template(StdPrs_Vertex) Prs3d_Point <TopoDS_Vertex , StdPrs_ToolVertex>;
@@ -68,9 +70,6 @@ enum StdPrs_Volume {
 typedef Prs3d_Point <opencascade::handle <Geom_Point>, StdPrs_ToolPoint> StdPrs_Point;
 typedef Prs3d_Point <TopoDS_Vertex , StdPrs_ToolVertex> StdPrs_Vertex;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor StdPrs_BndBox;
 class StdPrs_BndBox : public Prs3d_Root {

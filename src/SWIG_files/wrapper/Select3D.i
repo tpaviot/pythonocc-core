@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:30
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,22 @@ enum Select3D_TypeOfSensitivity {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Select3D_BVHIndexBuffer)
+%wrap_handle(Select3D_SensitiveBox)
+%wrap_handle(Select3D_SensitiveFace)
+%wrap_handle(Select3D_SensitivePoint)
+%wrap_handle(Select3D_SensitiveSegment)
+%wrap_handle(Select3D_SensitiveTriangle)
+%wrap_handle(Select3D_InteriorSensitivePointSet)
+%wrap_handle(Select3D_SensitiveGroup)
+%wrap_handle(Select3D_SensitivePoly)
+%wrap_handle(Select3D_SensitivePrimitiveArray)
+%wrap_handle(Select3D_SensitiveWire)
+%wrap_handle(Select3D_SensitiveCircle)
+%wrap_handle(Select3D_SensitiveCurve)
+/* end handles declaration */
+
 /* templates */
 %template(Select3D_EntitySequence) NCollection_Sequence <opencascade::handle <Select3D_SensitiveEntity>>;
 %template(Select3D_EntitySequenceIter) NCollection_TListIterator<Select3D_EntitySequence>;
@@ -75,22 +90,6 @@ typedef NCollection_Vec3 <Standard_Real> Select3D_Vec3;
 typedef NCollection_IndexedMap <opencascade::handle <Select3D_SensitiveEntity>> Select3D_IndexedMapOfEntity;
 typedef Select3D_SensitiveEntity SelectBasics_SensitiveEntity;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Select3D_BVHIndexBuffer)
-%wrap_handle(Select3D_SensitiveBox)
-%wrap_handle(Select3D_SensitiveFace)
-%wrap_handle(Select3D_SensitivePoint)
-%wrap_handle(Select3D_SensitiveSegment)
-%wrap_handle(Select3D_SensitiveTriangle)
-%wrap_handle(Select3D_InteriorSensitivePointSet)
-%wrap_handle(Select3D_SensitiveGroup)
-%wrap_handle(Select3D_SensitivePoly)
-%wrap_handle(Select3D_SensitivePrimitiveArray)
-%wrap_handle(Select3D_SensitiveWire)
-%wrap_handle(Select3D_SensitiveCircle)
-%wrap_handle(Select3D_SensitiveCurve)
-/* end handles declaration */
 
 %nodefaultctor Select3D_BVHIndexBuffer;
 class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:19
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,19 +52,19 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle <ShapeProcess_Context>& context );
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(ShapeProcess_Context)
 %wrap_handle(ShapeProcess_Operator)
 %wrap_handle(ShapeProcess_ShapeContext)
 %wrap_handle(ShapeProcess_UOperator)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle <ShapeProcess_Context>& context );
+/* end typedefs declaration */
 
 %rename(shapeprocess) ShapeProcess;
 class ShapeProcess {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,11 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TopLoc_Datum3D)
+%wrap_handle(TopLoc_SListNodeOfItemLocation)
+/* end handles declaration */
+
 /* templates */
 %template(TopLoc_MapOfLocation) NCollection_Map <TopLoc_Location , TopLoc_MapLocationHasher>;
 %template(TopLoc_IndexedMapOfLocation) NCollection_IndexedMap <TopLoc_Location , TopLoc_MapLocationHasher>;
@@ -65,11 +69,6 @@ typedef NCollection_Map <TopLoc_Location , TopLoc_MapLocationHasher>::Iterator T
 typedef NCollection_IndexedMap <TopLoc_Location , TopLoc_MapLocationHasher> TopLoc_IndexedMapOfLocation;
 typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TopLoc_Datum3D)
-%wrap_handle(TopLoc_SListNodeOfItemLocation)
-/* end handles declaration */
 
 %nodefaultctor TopLoc_Datum3D;
 class TopLoc_Datum3D : public Standard_Transient {

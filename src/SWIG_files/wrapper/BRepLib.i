@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:23
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -93,14 +92,14 @@ enum BRepLib_FaceError {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(breplib) BRepLib;
 class BRepLib {

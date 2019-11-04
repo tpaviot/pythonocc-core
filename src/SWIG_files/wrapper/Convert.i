@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:14
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -64,6 +63,9 @@ enum Convert_ParameterisationType {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(Convert_SequenceOfArray1OfPoles) NCollection_Sequence <opencascade::handle <TColgp_HArray1OfPnt>>;
 /* end templates declaration */
@@ -73,9 +75,6 @@ typedef NCollection_Sequence <opencascade::handle <TColgp_HArray1OfPnt>> Convert
 typedef TColgp_SequenceOfArray1OfPnt2d Convert_SequenceOfArray1OfPoles2d;
 typedef void Convert_CosAndSinEvalFunction ( Standard_Real , 	 	 	 	 	 const Standard_Integer , 	 	 	 	 	 const TColgp_Array1OfPnt2d & , 	 	 	 	 	 const TColStd_Array1OfReal & , 	 	 	 	 	 const TColStd_Array1OfInteger * , 	 	 	 	 	 Standard_Real Result [ 2 ] );
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Convert_CompBezierCurves2dToBSplineCurve2d;
 class Convert_CompBezierCurves2dToBSplineCurve2d {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:16
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,16 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(Law_Laws) NCollection_List <opencascade::handle <Law_Function>>;
-%template(Law_ListIteratorOfLaws) NCollection_TListIterator<opencascade::handle<Law_Function>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_List <opencascade::handle <Law_Function>> Law_Laws;
-typedef NCollection_List <opencascade::handle <Law_Function>>::Iterator Law_ListIteratorOfLaws;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Law_BSpline)
 %wrap_handle(Law_Function)
@@ -73,6 +62,16 @@ typedef NCollection_List <opencascade::handle <Law_Function>>::Iterator Law_List
 %wrap_handle(Law_Interpol)
 %wrap_handle(Law_S)
 /* end handles declaration */
+
+/* templates */
+%template(Law_Laws) NCollection_List <opencascade::handle <Law_Function>>;
+%template(Law_ListIteratorOfLaws) NCollection_TListIterator<opencascade::handle<Law_Function>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_List <opencascade::handle <Law_Function>> Law_Laws;
+typedef NCollection_List <opencascade::handle <Law_Function>>::Iterator Law_ListIteratorOfLaws;
+/* end typedefs declaration */
 
 %rename(law) Law;
 class Law {

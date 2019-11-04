@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -93,6 +92,21 @@ enum TDataXtd_GeometryEnum {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(TDataXtd_Axis)
+%wrap_handle(TDataXtd_Constraint)
+%wrap_handle(TDataXtd_Geometry)
+%wrap_handle(TDataXtd_Pattern)
+%wrap_handle(TDataXtd_Placement)
+%wrap_handle(TDataXtd_Plane)
+%wrap_handle(TDataXtd_Point)
+%wrap_handle(TDataXtd_Position)
+%wrap_handle(TDataXtd_Presentation)
+%wrap_handle(TDataXtd_Shape)
+%wrap_handle(TDataXtd_Triangulation)
+%wrap_handle(TDataXtd_PatternStd)
+/* end handles declaration */
+
 /* templates */
 %template(TDataXtd_Array1OfTrsf) NCollection_Array1 <gp_Trsf>;
 
@@ -134,21 +148,6 @@ enum TDataXtd_GeometryEnum {
 /* typedefs */
 typedef NCollection_Array1 <gp_Trsf> TDataXtd_Array1OfTrsf;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TDataXtd_Axis)
-%wrap_handle(TDataXtd_Constraint)
-%wrap_handle(TDataXtd_Geometry)
-%wrap_handle(TDataXtd_Pattern)
-%wrap_handle(TDataXtd_Placement)
-%wrap_handle(TDataXtd_Plane)
-%wrap_handle(TDataXtd_Point)
-%wrap_handle(TDataXtd_Position)
-%wrap_handle(TDataXtd_Presentation)
-%wrap_handle(TDataXtd_Shape)
-%wrap_handle(TDataXtd_Triangulation)
-%wrap_handle(TDataXtd_PatternStd)
-/* end handles declaration */
 
 %rename(tdataxtd) TDataXtd;
 class TDataXtd {

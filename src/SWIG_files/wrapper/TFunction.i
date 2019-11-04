@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:41
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -60,6 +59,15 @@ enum TFunction_ExecutionStatus {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TFunction_Driver)
+%wrap_handle(TFunction_DriverTable)
+%wrap_handle(TFunction_Function)
+%wrap_handle(TFunction_GraphNode)
+%wrap_handle(TFunction_Logbook)
+%wrap_handle(TFunction_Scope)
+/* end handles declaration */
 
 /* templates */
 %template(TFunction_Array1OfDataMapOfGUIDDriver) NCollection_Array1 <TFunction_DataMapOfGUIDDriver>;
@@ -111,15 +119,6 @@ typedef NCollection_DoubleMap <Standard_Integer , TDF_Label , TColStd_MapInteger
 typedef NCollection_DataMap <TDF_Label , TDF_LabelList , TDF_LabelMapHasher> TFunction_DataMapOfLabelListOfLabel;
 typedef NCollection_DataMap <TDF_Label , TDF_LabelList , TDF_LabelMapHasher>::Iterator TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TFunction_Driver)
-%wrap_handle(TFunction_DriverTable)
-%wrap_handle(TFunction_Function)
-%wrap_handle(TFunction_GraphNode)
-%wrap_handle(TFunction_Logbook)
-%wrap_handle(TFunction_Scope)
-/* end handles declaration */
 
 %nodefaultctor TFunction_Driver;
 class TFunction_Driver : public Standard_Transient {

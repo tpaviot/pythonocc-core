@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:17
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,13 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(BRepAdaptor_HCompCurve)
+%wrap_handle(BRepAdaptor_HCurve)
+%wrap_handle(BRepAdaptor_HCurve2d)
+%wrap_handle(BRepAdaptor_HSurface)
+/* end handles declaration */
 
 /* templates */
 %template(BRepAdaptor_Array1OfCurve) NCollection_Array1 <BRepAdaptor_Curve>;
@@ -94,13 +100,6 @@ conditions:
 /* typedefs */
 typedef NCollection_Array1 <BRepAdaptor_Curve> BRepAdaptor_Array1OfCurve;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepAdaptor_HCompCurve)
-%wrap_handle(BRepAdaptor_HCurve)
-%wrap_handle(BRepAdaptor_HCurve2d)
-%wrap_handle(BRepAdaptor_HSurface)
-/* end handles declaration */
 
 %nodefaultctor BRepAdaptor_CompCurve;
 class BRepAdaptor_CompCurve : public Adaptor3d_Curve {

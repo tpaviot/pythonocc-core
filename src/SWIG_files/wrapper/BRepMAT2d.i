@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:23
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(BRepMAT2d_DataMapOfBasicEltShape) NCollection_DataMap <opencascade::handle <MAT_BasicElt>, TopoDS_Shape , TColStd_MapTransientHasher>;
 %template(BRepMAT2d_DataMapOfShapeSequenceOfBasicElt) NCollection_DataMap <TopoDS_Shape , MAT_SequenceOfBasicElt , TopTools_ShapeMapHasher>;
@@ -64,9 +66,6 @@ typedef NCollection_DataMap <opencascade::handle <MAT_BasicElt>, TopoDS_Shape , 
 typedef NCollection_DataMap <TopoDS_Shape , MAT_SequenceOfBasicElt , TopTools_ShapeMapHasher> BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 typedef NCollection_DataMap <TopoDS_Shape , MAT_SequenceOfBasicElt , TopTools_ShapeMapHasher>::Iterator BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor BRepMAT2d_BisectingLocus;
 class BRepMAT2d_BisectingLocus {

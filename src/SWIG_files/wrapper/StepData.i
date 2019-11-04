@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,31 @@ enum StepData_Logical {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepData_Described)
+%wrap_handle(StepData_EDescr)
+%wrap_handle(StepData_FileRecognizer)
+%wrap_handle(StepData_GeneralModule)
+%wrap_handle(StepData_GlobalNodeOfWriterLib)
+%wrap_handle(StepData_NodeOfWriterLib)
+%wrap_handle(StepData_PDescr)
+%wrap_handle(StepData_Protocol)
+%wrap_handle(StepData_ReadWriteModule)
+%wrap_handle(StepData_SelectMember)
+%wrap_handle(StepData_StepModel)
+%wrap_handle(StepData_StepReaderData)
+%wrap_handle(StepData_DefaultGeneral)
+%wrap_handle(StepData_ECDescr)
+%wrap_handle(StepData_ESDescr)
+%wrap_handle(StepData_FileProtocol)
+%wrap_handle(StepData_Plex)
+%wrap_handle(StepData_SelectInt)
+%wrap_handle(StepData_SelectNamed)
+%wrap_handle(StepData_SelectReal)
+%wrap_handle(StepData_Simple)
+%wrap_handle(StepData_SelectArrReal)
+/* end handles declaration */
 
 /* templates */
 %template(StepData_Array1OfField) NCollection_Array1 <StepData_Field>;
@@ -100,31 +124,6 @@ enum StepData_Logical {
 /* typedefs */
 typedef NCollection_Array1 <StepData_Field> StepData_Array1OfField;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepData_Described)
-%wrap_handle(StepData_EDescr)
-%wrap_handle(StepData_FileRecognizer)
-%wrap_handle(StepData_GeneralModule)
-%wrap_handle(StepData_GlobalNodeOfWriterLib)
-%wrap_handle(StepData_NodeOfWriterLib)
-%wrap_handle(StepData_PDescr)
-%wrap_handle(StepData_Protocol)
-%wrap_handle(StepData_ReadWriteModule)
-%wrap_handle(StepData_SelectMember)
-%wrap_handle(StepData_StepModel)
-%wrap_handle(StepData_StepReaderData)
-%wrap_handle(StepData_DefaultGeneral)
-%wrap_handle(StepData_ECDescr)
-%wrap_handle(StepData_ESDescr)
-%wrap_handle(StepData_FileProtocol)
-%wrap_handle(StepData_Plex)
-%wrap_handle(StepData_SelectInt)
-%wrap_handle(StepData_SelectNamed)
-%wrap_handle(StepData_SelectReal)
-%wrap_handle(StepData_Simple)
-%wrap_handle(StepData_SelectArrReal)
-/* end handles declaration */
 
 %rename(stepdata) StepData;
 class StepData {

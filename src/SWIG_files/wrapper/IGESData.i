@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:47
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -84,6 +83,35 @@ enum IGESData_DefType {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(IGESData_FileRecognizer)
+%wrap_handle(IGESData_GeneralModule)
+%wrap_handle(IGESData_GlobalNodeOfSpecificLib)
+%wrap_handle(IGESData_GlobalNodeOfWriterLib)
+%wrap_handle(IGESData_IGESEntity)
+%wrap_handle(IGESData_IGESModel)
+%wrap_handle(IGESData_IGESReaderData)
+%wrap_handle(IGESData_NodeOfSpecificLib)
+%wrap_handle(IGESData_NodeOfWriterLib)
+%wrap_handle(IGESData_Protocol)
+%wrap_handle(IGESData_ReadWriteModule)
+%wrap_handle(IGESData_SpecificModule)
+%wrap_handle(IGESData_ToolLocation)
+%wrap_handle(IGESData_ColorEntity)
+%wrap_handle(IGESData_DefaultGeneral)
+%wrap_handle(IGESData_DefaultSpecific)
+%wrap_handle(IGESData_FileProtocol)
+%wrap_handle(IGESData_LabelDisplayEntity)
+%wrap_handle(IGESData_LevelListEntity)
+%wrap_handle(IGESData_LineFontEntity)
+%wrap_handle(IGESData_NameEntity)
+%wrap_handle(IGESData_SingleParentEntity)
+%wrap_handle(IGESData_TransfEntity)
+%wrap_handle(IGESData_UndefinedEntity)
+%wrap_handle(IGESData_ViewKindEntity)
+%wrap_handle(IGESData_FreeFormatEntity)
+/* end handles declaration */
 
 /* templates */
 %template(IGESData_Array1OfIGESEntity) NCollection_Array1 <opencascade::handle <IGESData_IGESEntity>>;
@@ -162,35 +190,6 @@ enum IGESData_DefType {
 typedef NCollection_Array1 <opencascade::handle <IGESData_IGESEntity>> IGESData_Array1OfIGESEntity;
 typedef NCollection_Array1 <IGESData_DirPart> IGESData_Array1OfDirPart;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(IGESData_FileRecognizer)
-%wrap_handle(IGESData_GeneralModule)
-%wrap_handle(IGESData_GlobalNodeOfSpecificLib)
-%wrap_handle(IGESData_GlobalNodeOfWriterLib)
-%wrap_handle(IGESData_IGESEntity)
-%wrap_handle(IGESData_IGESModel)
-%wrap_handle(IGESData_IGESReaderData)
-%wrap_handle(IGESData_NodeOfSpecificLib)
-%wrap_handle(IGESData_NodeOfWriterLib)
-%wrap_handle(IGESData_Protocol)
-%wrap_handle(IGESData_ReadWriteModule)
-%wrap_handle(IGESData_SpecificModule)
-%wrap_handle(IGESData_ToolLocation)
-%wrap_handle(IGESData_ColorEntity)
-%wrap_handle(IGESData_DefaultGeneral)
-%wrap_handle(IGESData_DefaultSpecific)
-%wrap_handle(IGESData_FileProtocol)
-%wrap_handle(IGESData_LabelDisplayEntity)
-%wrap_handle(IGESData_LevelListEntity)
-%wrap_handle(IGESData_LineFontEntity)
-%wrap_handle(IGESData_NameEntity)
-%wrap_handle(IGESData_SingleParentEntity)
-%wrap_handle(IGESData_TransfEntity)
-%wrap_handle(IGESData_UndefinedEntity)
-%wrap_handle(IGESData_ViewKindEntity)
-%wrap_handle(IGESData_FreeFormatEntity)
-/* end handles declaration */
 
 %rename(igesdata) IGESData;
 class IGESData {

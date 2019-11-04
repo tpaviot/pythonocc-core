@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:46
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,26 +58,6 @@ enum TObj_DeletingMode {
 
 /* end public enums declaration */
 
-/* templates */
-%template(TObj_TIntSparseArray_VecOfData) NCollection_SparseArray <Standard_Integer>;
-%template(TObj_TIntSparseArray_MapOfData) NCollection_SparseArray <Standard_Integer>;
-%template(TObj_DataMapOfNameLabel) NCollection_DataMap <opencascade::handle <TCollection_HExtendedString>, TDF_Label>;
-%template(TObj_DataMapOfObjectHSequenceOcafObjects) NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>>;
-%template(TObj_DataMapOfStringPointer) NCollection_DataMap <TCollection_AsciiString , Standard_Address>;
-%template(TObj_SequenceOfIterator) NCollection_Sequence <opencascade::handle <TObj_ObjectIterator>>;
-%template(TObj_SequenceOfObject) NCollection_Sequence <opencascade::handle <TObj_Object>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_VecOfData;
-typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_MapOfData;
-typedef NCollection_DataMap <opencascade::handle <TCollection_HExtendedString>, TDF_Label> TObj_DataMapOfNameLabel;
-typedef NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>> TObj_DataMapOfObjectHSequenceOcafObjects;
-typedef NCollection_DataMap <TCollection_AsciiString , Standard_Address> TObj_DataMapOfStringPointer;
-typedef NCollection_Sequence <opencascade::handle <TObj_ObjectIterator>> TObj_SequenceOfIterator;
-typedef NCollection_Sequence <opencascade::handle <TObj_Object>> TObj_SequenceOfObject;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(TObj_Application)
 %wrap_handle(TObj_CheckModel)
@@ -99,6 +78,26 @@ typedef NCollection_Sequence <opencascade::handle <TObj_Object>> TObj_SequenceOf
 %wrap_handle(TObj_OcafObjectIterator)
 %wrap_handle(TObj_ReferenceIterator)
 /* end handles declaration */
+
+/* templates */
+%template(TObj_TIntSparseArray_VecOfData) NCollection_SparseArray <Standard_Integer>;
+%template(TObj_TIntSparseArray_MapOfData) NCollection_SparseArray <Standard_Integer>;
+%template(TObj_DataMapOfNameLabel) NCollection_DataMap <opencascade::handle <TCollection_HExtendedString>, TDF_Label>;
+%template(TObj_DataMapOfObjectHSequenceOcafObjects) NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>>;
+%template(TObj_DataMapOfStringPointer) NCollection_DataMap <TCollection_AsciiString , Standard_Address>;
+%template(TObj_SequenceOfIterator) NCollection_Sequence <opencascade::handle <TObj_ObjectIterator>>;
+%template(TObj_SequenceOfObject) NCollection_Sequence <opencascade::handle <TObj_Object>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_VecOfData;
+typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_MapOfData;
+typedef NCollection_DataMap <opencascade::handle <TCollection_HExtendedString>, TDF_Label> TObj_DataMapOfNameLabel;
+typedef NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>> TObj_DataMapOfObjectHSequenceOcafObjects;
+typedef NCollection_DataMap <TCollection_AsciiString , Standard_Address> TObj_DataMapOfStringPointer;
+typedef NCollection_Sequence <opencascade::handle <TObj_ObjectIterator>> TObj_SequenceOfIterator;
+typedef NCollection_Sequence <opencascade::handle <TObj_Object>> TObj_SequenceOfObject;
+/* end typedefs declaration */
 
 %nodefaultctor TObj_Application;
 class TObj_Application : public TDocStd_Application {

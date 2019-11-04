@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,9 @@ enum AppParCurves_Constraint {
 };
 
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(AppParCurves_Array1OfMultiCurve) NCollection_Array1 <AppParCurves_MultiCurve>;
@@ -213,9 +215,6 @@ typedef NCollection_Sequence <AppParCurves_MultiBSpCurve> AppParCurves_SequenceO
 typedef NCollection_Array1 <AppParCurves_MultiBSpCurve> AppParCurves_Array1OfMultiBSpCurve;
 typedef NCollection_Array1 <AppParCurves_MultiPoint> AppParCurves_Array1OfMultiPoint;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(appparcurves) AppParCurves;
 class AppParCurves {

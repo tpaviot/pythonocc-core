@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:42
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -80,6 +79,64 @@ enum StepFEA_UnspecifiedValue {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepFEA_Curve3dElementProperty)
+%wrap_handle(StepFEA_CurveElementEndOffset)
+%wrap_handle(StepFEA_CurveElementEndRelease)
+%wrap_handle(StepFEA_CurveElementInterval)
+%wrap_handle(StepFEA_CurveElementLocation)
+%wrap_handle(StepFEA_DegreeOfFreedomMember)
+%wrap_handle(StepFEA_ElementGeometricRelationship)
+%wrap_handle(StepFEA_ElementRepresentation)
+%wrap_handle(StepFEA_FeaAxis2Placement3d)
+%wrap_handle(StepFEA_FeaCurveSectionGeometricRelationship)
+%wrap_handle(StepFEA_FeaGroup)
+%wrap_handle(StepFEA_FeaMaterialPropertyRepresentation)
+%wrap_handle(StepFEA_FeaMaterialPropertyRepresentationItem)
+%wrap_handle(StepFEA_FeaModel)
+%wrap_handle(StepFEA_FeaModelDefinition)
+%wrap_handle(StepFEA_FeaParametricPoint)
+%wrap_handle(StepFEA_FeaRepresentationItem)
+%wrap_handle(StepFEA_FeaSurfaceSectionGeometricRelationship)
+%wrap_handle(StepFEA_FreedomAndCoefficient)
+%wrap_handle(StepFEA_FreedomsList)
+%wrap_handle(StepFEA_NodeDefinition)
+%wrap_handle(StepFEA_NodeRepresentation)
+%wrap_handle(StepFEA_NodeSet)
+%wrap_handle(StepFEA_SymmetricTensor23dMember)
+%wrap_handle(StepFEA_SymmetricTensor43dMember)
+%wrap_handle(StepFEA_AlignedCurve3dElementCoordinateSystem)
+%wrap_handle(StepFEA_AlignedSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ConstantSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_Curve3dElementRepresentation)
+%wrap_handle(StepFEA_CurveElementIntervalConstant)
+%wrap_handle(StepFEA_CurveElementIntervalLinearlyVarying)
+%wrap_handle(StepFEA_DummyNode)
+%wrap_handle(StepFEA_ElementGroup)
+%wrap_handle(StepFEA_FeaAreaDensity)
+%wrap_handle(StepFEA_FeaLinearElasticity)
+%wrap_handle(StepFEA_FeaMassDensity)
+%wrap_handle(StepFEA_FeaModel3d)
+%wrap_handle(StepFEA_FeaMoistureAbsorption)
+%wrap_handle(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
+%wrap_handle(StepFEA_FeaShellBendingStiffness)
+%wrap_handle(StepFEA_FeaShellMembraneBendingCouplingStiffness)
+%wrap_handle(StepFEA_FeaShellMembraneStiffness)
+%wrap_handle(StepFEA_FeaShellShearStiffness)
+%wrap_handle(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
+%wrap_handle(StepFEA_GeometricNode)
+%wrap_handle(StepFEA_Node)
+%wrap_handle(StepFEA_NodeGroup)
+%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateDirection)
+%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateSystem)
+%wrap_handle(StepFEA_ParametricSurface3dElementCoordinateSystem)
+%wrap_handle(StepFEA_Surface3dElementRepresentation)
+%wrap_handle(StepFEA_Volume3dElementRepresentation)
+%wrap_handle(StepFEA_NodeWithSolutionCoordinateSystem)
+%wrap_handle(StepFEA_NodeWithVector)
+/* end handles declaration */
 
 /* templates */
 %template(StepFEA_SequenceOfElementRepresentation) NCollection_Sequence <opencascade::handle <StepFEA_ElementRepresentation>>;
@@ -310,64 +367,6 @@ typedef NCollection_Array1 <opencascade::handle <StepFEA_NodeRepresentation>> St
 typedef NCollection_Array1 <opencascade::handle <StepFEA_ElementRepresentation>> StepFEA_Array1OfElementRepresentation;
 typedef NCollection_Array1 <opencascade::handle <StepFEA_CurveElementEndOffset>> StepFEA_Array1OfCurveElementEndOffset;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepFEA_Curve3dElementProperty)
-%wrap_handle(StepFEA_CurveElementEndOffset)
-%wrap_handle(StepFEA_CurveElementEndRelease)
-%wrap_handle(StepFEA_CurveElementInterval)
-%wrap_handle(StepFEA_CurveElementLocation)
-%wrap_handle(StepFEA_DegreeOfFreedomMember)
-%wrap_handle(StepFEA_ElementGeometricRelationship)
-%wrap_handle(StepFEA_ElementRepresentation)
-%wrap_handle(StepFEA_FeaAxis2Placement3d)
-%wrap_handle(StepFEA_FeaCurveSectionGeometricRelationship)
-%wrap_handle(StepFEA_FeaGroup)
-%wrap_handle(StepFEA_FeaMaterialPropertyRepresentation)
-%wrap_handle(StepFEA_FeaMaterialPropertyRepresentationItem)
-%wrap_handle(StepFEA_FeaModel)
-%wrap_handle(StepFEA_FeaModelDefinition)
-%wrap_handle(StepFEA_FeaParametricPoint)
-%wrap_handle(StepFEA_FeaRepresentationItem)
-%wrap_handle(StepFEA_FeaSurfaceSectionGeometricRelationship)
-%wrap_handle(StepFEA_FreedomAndCoefficient)
-%wrap_handle(StepFEA_FreedomsList)
-%wrap_handle(StepFEA_NodeDefinition)
-%wrap_handle(StepFEA_NodeRepresentation)
-%wrap_handle(StepFEA_NodeSet)
-%wrap_handle(StepFEA_SymmetricTensor23dMember)
-%wrap_handle(StepFEA_SymmetricTensor43dMember)
-%wrap_handle(StepFEA_AlignedCurve3dElementCoordinateSystem)
-%wrap_handle(StepFEA_AlignedSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ConstantSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_Curve3dElementRepresentation)
-%wrap_handle(StepFEA_CurveElementIntervalConstant)
-%wrap_handle(StepFEA_CurveElementIntervalLinearlyVarying)
-%wrap_handle(StepFEA_DummyNode)
-%wrap_handle(StepFEA_ElementGroup)
-%wrap_handle(StepFEA_FeaAreaDensity)
-%wrap_handle(StepFEA_FeaLinearElasticity)
-%wrap_handle(StepFEA_FeaMassDensity)
-%wrap_handle(StepFEA_FeaModel3d)
-%wrap_handle(StepFEA_FeaMoistureAbsorption)
-%wrap_handle(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
-%wrap_handle(StepFEA_FeaShellBendingStiffness)
-%wrap_handle(StepFEA_FeaShellMembraneBendingCouplingStiffness)
-%wrap_handle(StepFEA_FeaShellMembraneStiffness)
-%wrap_handle(StepFEA_FeaShellShearStiffness)
-%wrap_handle(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
-%wrap_handle(StepFEA_GeometricNode)
-%wrap_handle(StepFEA_Node)
-%wrap_handle(StepFEA_NodeGroup)
-%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateDirection)
-%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ParametricSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_Surface3dElementRepresentation)
-%wrap_handle(StepFEA_Volume3dElementRepresentation)
-%wrap_handle(StepFEA_NodeWithSolutionCoordinateSystem)
-%wrap_handle(StepFEA_NodeWithVector)
-/* end handles declaration */
 
 %nodefaultctor StepFEA_Curve3dElementProperty;
 class StepFEA_Curve3dElementProperty : public Standard_Transient {

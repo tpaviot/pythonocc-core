@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:29
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,12 @@ enum LocOpe_Operation {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(LocOpe_GeneratedShape)
+%wrap_handle(LocOpe_WiresOnShape)
+%wrap_handle(LocOpe_GluedShape)
+/* end handles declaration */
+
 /* templates */
 %template(LocOpe_SequenceOfLin) NCollection_Sequence <gp_Lin>;
 %template(LocOpe_DataMapOfShapePnt) NCollection_DataMap <TopoDS_Shape , gp_Pnt , TopTools_ShapeMapHasher>;
@@ -73,12 +78,6 @@ typedef NCollection_DataMap <TopoDS_Shape , gp_Pnt , TopTools_ShapeMapHasher>::I
 typedef NCollection_Sequence <gp_Circ> LocOpe_SequenceOfCirc;
 typedef NCollection_Sequence <LocOpe_PntFace> LocOpe_SequenceOfPntFace;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(LocOpe_GeneratedShape)
-%wrap_handle(LocOpe_WiresOnShape)
-%wrap_handle(LocOpe_GluedShape)
-/* end handles declaration */
 
 %rename(locope) LocOpe;
 class LocOpe {

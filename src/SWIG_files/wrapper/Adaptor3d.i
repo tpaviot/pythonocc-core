@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:04
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,15 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-typedef Adaptor3d_Curve * Adaptor3d_CurvePtr;
-typedef Adaptor3d_Surface * Adaptor3d_SurfacePtr;
-typedef Adaptor3d_CurveOnSurface * Adaptor3d_CurveOnSurfacePtr;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Adaptor3d_HCurve)
 %wrap_handle(Adaptor3d_HSurface)
@@ -70,6 +60,15 @@ typedef Adaptor3d_CurveOnSurface * Adaptor3d_CurveOnSurfacePtr;
 %wrap_handle(Adaptor3d_HCurveOnSurface)
 %wrap_handle(Adaptor3d_HIsoCurve)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef Adaptor3d_Curve * Adaptor3d_CurvePtr;
+typedef Adaptor3d_Surface * Adaptor3d_SurfacePtr;
+typedef Adaptor3d_CurveOnSurface * Adaptor3d_CurveOnSurfacePtr;
+/* end typedefs declaration */
 
 class Adaptor3d_Curve {
 	public:

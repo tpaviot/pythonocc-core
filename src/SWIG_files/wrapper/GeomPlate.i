@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:11
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,12 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(GeomPlate_CurveConstraint)
+%wrap_handle(GeomPlate_PointConstraint)
+%wrap_handle(GeomPlate_Surface)
+/* end handles declaration */
 
 /* templates */
 %template(GeomPlate_SequenceOfAij) NCollection_Sequence <GeomPlate_Aij>;
@@ -136,12 +141,6 @@ typedef NCollection_Array1 <TColStd_SequenceOfReal> GeomPlate_Array1OfSequenceOf
 typedef NCollection_Sequence <opencascade::handle <GeomPlate_PointConstraint>> GeomPlate_SequenceOfPointConstraint;
 typedef NCollection_Sequence <opencascade::handle <GeomPlate_CurveConstraint>> GeomPlate_SequenceOfCurveConstraint;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(GeomPlate_CurveConstraint)
-%wrap_handle(GeomPlate_PointConstraint)
-%wrap_handle(GeomPlate_Surface)
-/* end handles declaration */
 
 %nodefaultctor GeomPlate_Aij;
 class GeomPlate_Aij {

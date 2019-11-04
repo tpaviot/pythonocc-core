@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:36
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -74,20 +73,6 @@ enum Transfer_StatusResult {
 
 /* end public enums declaration */
 
-/* templates */
-%template(Transfer_TransferMapOfProcessForTransient) NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher>;
-%template(Transfer_SequenceOfBinder) NCollection_Sequence <opencascade::handle <Transfer_Binder>>;
-%template(Transfer_SequenceOfFinder) NCollection_Sequence <opencascade::handle <Transfer_Finder>>;
-%template(Transfer_TransferMapOfProcessForFinder) NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher> Transfer_TransferMapOfProcessForTransient;
-typedef NCollection_Sequence <opencascade::handle <Transfer_Binder>> Transfer_SequenceOfBinder;
-typedef NCollection_Sequence <opencascade::handle <Transfer_Finder>> Transfer_SequenceOfFinder;
-typedef NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher> Transfer_TransferMapOfProcessForFinder;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Transfer_ActorOfProcessForFinder)
 %wrap_handle(Transfer_ActorOfProcessForTransient)
@@ -110,6 +95,20 @@ typedef NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, openc
 %wrap_handle(Transfer_ActorDispatch)
 %wrap_handle(Transfer_BinderOfTransientInteger)
 /* end handles declaration */
+
+/* templates */
+%template(Transfer_TransferMapOfProcessForTransient) NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher>;
+%template(Transfer_SequenceOfBinder) NCollection_Sequence <opencascade::handle <Transfer_Binder>>;
+%template(Transfer_SequenceOfFinder) NCollection_Sequence <opencascade::handle <Transfer_Finder>>;
+%template(Transfer_TransferMapOfProcessForFinder) NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher> Transfer_TransferMapOfProcessForTransient;
+typedef NCollection_Sequence <opencascade::handle <Transfer_Binder>> Transfer_SequenceOfBinder;
+typedef NCollection_Sequence <opencascade::handle <Transfer_Finder>> Transfer_SequenceOfFinder;
+typedef NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher> Transfer_TransferMapOfProcessForFinder;
+/* end typedefs declaration */
 
 %nodefaultctor Transfer_ActorOfProcessForFinder;
 class Transfer_ActorOfProcessForFinder : public Standard_Transient {

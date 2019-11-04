@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:05
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -83,6 +82,9 @@ enum BOPAlgo_GlueEnum {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(BOPAlgo_ListOfCheckResult) NCollection_List <BOPAlgo_CheckResult>;
 /* end templates declaration */
@@ -97,9 +99,6 @@ typedef BOPAlgo_Section * BOPAlgo_PSection;
 typedef BOPAlgo_ArgumentAnalyzer * BOPAlgo_PArgumentAnalyzer;
 typedef BOPAlgo_BOP * BOPAlgo_PBOP;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor BOPAlgo_CheckResult;
 class BOPAlgo_CheckResult {

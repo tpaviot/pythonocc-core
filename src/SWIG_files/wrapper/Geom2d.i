@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:20
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,12 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Geom2d_Geometry)
 %wrap_handle(Geom2d_Transformation)
@@ -81,6 +74,12 @@ conditions:
 %wrap_handle(Geom2d_Parabola)
 %wrap_handle(Geom2d_TrimmedCurve)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %nodefaultctor Geom2d_Geometry;
 class Geom2d_Geometry : public Standard_Transient {

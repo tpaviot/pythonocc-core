@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:36
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,18 +52,18 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(StepAP242_IdAttribute)
 %wrap_handle(StepAP242_ItemIdentifiedRepresentationUsage)
 %wrap_handle(StepAP242_DraughtingModelItemAssociation)
 %wrap_handle(StepAP242_GeometricItemSpecificUsage)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %nodefaultctor StepAP242_IdAttribute;
 class StepAP242_IdAttribute : public Standard_Transient {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:36
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -79,12 +78,6 @@ enum CDF_StoreSetNameStatus {
 
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(CDF_Application)
 %wrap_handle(CDF_Directory)
@@ -94,6 +87,12 @@ enum CDF_StoreSetNameStatus {
 %wrap_handle(CDF_StoreList)
 %wrap_handle(CDF_FWOSDriver)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %rename(cdf) CDF;
 %nodefaultctor CDF;

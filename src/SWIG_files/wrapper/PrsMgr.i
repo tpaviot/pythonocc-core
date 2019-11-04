@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:29
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,12 @@ enum PrsMgr_TypeOfPresentation3d {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(PrsMgr_PresentableObject)
+%wrap_handle(PrsMgr_Presentation)
+%wrap_handle(PrsMgr_PresentationManager)
+/* end handles declaration */
+
 /* templates */
 %template(PrsMgr_ListOfPresentableObjects) NCollection_List <opencascade::handle <PrsMgr_PresentableObject>>;
 %template(PrsMgr_ListOfPresentableObjectsIter) NCollection_TListIterator<PrsMgr_ListOfPresentableObjects>;
@@ -76,12 +81,6 @@ typedef NCollection_List <opencascade::handle <Prs3d_Presentation>> PrsMgr_ListO
 typedef NCollection_Sequence <opencascade::handle <PrsMgr_Presentation>> PrsMgr_Presentations;
 typedef Graphic3d_Structure Prs3d_Presentation;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(PrsMgr_PresentableObject)
-%wrap_handle(PrsMgr_Presentation)
-%wrap_handle(PrsMgr_PresentationManager)
-/* end handles declaration */
 
 %nodefaultctor PrsMgr_PresentableObject;
 %ignore PrsMgr_PresentableObject::~PrsMgr_PresentableObject();

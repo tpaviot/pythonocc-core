@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:34
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,20 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(StepAP203_CcDesignApproval)
+%wrap_handle(StepAP203_CcDesignCertification)
+%wrap_handle(StepAP203_CcDesignContract)
+%wrap_handle(StepAP203_CcDesignDateAndTimeAssignment)
+%wrap_handle(StepAP203_CcDesignPersonAndOrganizationAssignment)
+%wrap_handle(StepAP203_CcDesignSecurityClassification)
+%wrap_handle(StepAP203_CcDesignSpecificationReference)
+%wrap_handle(StepAP203_Change)
+%wrap_handle(StepAP203_ChangeRequest)
+%wrap_handle(StepAP203_StartRequest)
+%wrap_handle(StepAP203_StartWork)
+/* end handles declaration */
 
 /* templates */
 %template(StepAP203_Array1OfPersonOrganizationItem) NCollection_Array1 <StepAP203_PersonOrganizationItem>;
@@ -418,20 +431,6 @@ typedef NCollection_Array1 <StepAP203_ApprovedItem> StepAP203_Array1OfApprovedIt
 typedef NCollection_Array1 <StepAP203_ContractedItem> StepAP203_Array1OfContractedItem;
 typedef NCollection_Array1 <StepAP203_ClassifiedItem> StepAP203_Array1OfClassifiedItem;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(StepAP203_CcDesignApproval)
-%wrap_handle(StepAP203_CcDesignCertification)
-%wrap_handle(StepAP203_CcDesignContract)
-%wrap_handle(StepAP203_CcDesignDateAndTimeAssignment)
-%wrap_handle(StepAP203_CcDesignPersonAndOrganizationAssignment)
-%wrap_handle(StepAP203_CcDesignSecurityClassification)
-%wrap_handle(StepAP203_CcDesignSpecificationReference)
-%wrap_handle(StepAP203_Change)
-%wrap_handle(StepAP203_ChangeRequest)
-%wrap_handle(StepAP203_StartRequest)
-%wrap_handle(StepAP203_StartWork)
-/* end handles declaration */
 
 %nodefaultctor StepAP203_ApprovedItem;
 class StepAP203_ApprovedItem : public StepData_SelectType {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -58,6 +57,11 @@ enum Standard_HandlerStatus {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(Standard_Transient)
+%wrap_handle(Standard_OutOfMemory)
+/* end handles declaration */
 
 /* templates */
 /* end templates declaration */
@@ -99,11 +103,6 @@ typedef const Standard_ExtCharacter * Standard_ExtString;
 typedef Standard_Size Standard_ThreadId;
 typedef Standard_ErrorHandler::Callback Standard_ErrorHandlerCallback;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Standard_Transient)
-%wrap_handle(Standard_OutOfMemory)
-/* end handles declaration */
 
 %rename(standard) Standard;
 class Standard {
@@ -244,130 +243,6 @@ class Standard_Condition {
 
 
 %extend Standard_Condition {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Standard_Dump;
-class Standard_Dump {
-	public:
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string AddValuesSeparatorToString() {
-            std::stringstream s;
-            self->AddValuesSeparator(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") DumpCharacterValues;
-		%feature("autodoc", "	* Unite values in one value using template: 'value_1', 'value_2', ..., 'value_n' @param theOStream [out] stream to be fill with values @param theCount numer of values
-
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theCount:
-	:type theCount: int
-	:rtype: void
-") DumpCharacterValues;
-		static void DumpCharacterValues (Standard_OStream & theOStream,int theCount);
-		%feature("compactdefaultargs") DumpFieldToName;
-		%feature("autodoc", "	* Convert field name into dump text value, removes '&' and 'my' prefixes An example, for field myValue, theName is Value, for &myCLass, the name is Class @param theField a source value @param theName [out] an updated name
-
-	:param theField:
-	:type theField: char *
-	:rtype: char *
-") DumpFieldToName;
-		static const char * DumpFieldToName (const char * theField);
-		%feature("compactdefaultargs") DumpKeyToClass;
-		%feature("autodoc", "	* Append into output value: 'Name': { Field } @param theOStream [out] stream to be fill with values @param theKey a source value @param theField stream value
-
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theKey:
-	:type theKey: char *
-	:param theField:
-	:type theField: TCollection_AsciiString &
-	:rtype: void
-") DumpKeyToClass;
-		static void DumpKeyToClass (Standard_OStream & theOStream,const char * theKey,const TCollection_AsciiString & theField);
-		%feature("compactdefaultargs") DumpRealValues;
-		%feature("autodoc", "	* Unite values in one value using template: value_1, value_2, ..., value_n @param theOStream [out] stream to be fill with values @param theCount numer of values
-
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theCount:
-	:type theCount: int
-	:rtype: void
-") DumpRealValues;
-		static void DumpRealValues (Standard_OStream & theOStream,int theCount);
-		%feature("compactdefaultargs") FormatJson;
-		%feature("autodoc", "	* Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after A newline and indent to the next value, increment current indent value - for '}' append A newline and current indent before it, decrement indent value - for ',' append after A newline and indent to the next value. If the current symbol is in massive container [], do nothing @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values returns text presentation
-
-	:param theStream:
-	:type theStream: Standard_SStream &
-	:param theIndent: default value is 3
-	:type theIndent: int
-	:rtype: TCollection_AsciiString
-") FormatJson;
-		static TCollection_AsciiString FormatJson (const Standard_SStream & theStream,const Standard_Integer theIndent = 3);
-		%feature("compactdefaultargs") GetPointerInfo;
-		%feature("autodoc", "	* Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped returns the string value
-
-	:param thePointer:
-	:type thePointer: opencascade::handle<Standard_Transient> &
-	:param isShortInfo: default value is true
-	:type isShortInfo: bool
-	:rtype: TCollection_AsciiString
-") GetPointerInfo;
-		static TCollection_AsciiString GetPointerInfo (const opencascade::handle<Standard_Transient> & thePointer,const bool isShortInfo = true);
-		%feature("compactdefaultargs") GetPointerInfo;
-		%feature("autodoc", "	* Convert pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped returns the string value
-
-	:param thePointer:
-	:type thePointer: void *
-	:param isShortInfo: default value is true
-	:type isShortInfo: bool
-	:rtype: TCollection_AsciiString
-") GetPointerInfo;
-		static TCollection_AsciiString GetPointerInfo (const void * thePointer,const bool isShortInfo = true);
-		%feature("compactdefaultargs") GetPointerPrefix;
-		%feature("autodoc", "	* Returns default prefix added for each pointer info string if short presentation of pointer used
-
-	:rtype: TCollection_AsciiString
-") GetPointerPrefix;
-		static TCollection_AsciiString GetPointerPrefix ();
-		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "	* Converts stream value to string value. The result is original stream value. @param theStream source value returns text presentation
-
-	:param theStream:
-	:type theStream: Standard_SStream &
-	:rtype: TCollection_AsciiString
-") Text;
-		static TCollection_AsciiString Text (const Standard_SStream & theStream);
-};
-
-
-%extend Standard_Dump {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Standard_DumpSentry;
-class Standard_DumpSentry {
-	public:
-		%feature("compactdefaultargs") Standard_DumpSentry;
-		%feature("autodoc", "	* Constructor - add parameters of start class name definition in the stream
-
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theClassName:
-	:type theClassName: char *
-	:rtype: None
-") Standard_DumpSentry;
-		 Standard_DumpSentry (Standard_OStream & theOStream,const char * theClassName);
-};
-
-
-%extend Standard_DumpSentry {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

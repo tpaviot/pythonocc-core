@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:33
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -60,6 +59,10 @@ enum Draft_ErrorStatus {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Draft_Modification)
+/* end handles declaration */
+
 /* templates */
 %template(Draft_IndexedDataMapOfFaceFaceInfo) NCollection_IndexedDataMap <TopoDS_Face , Draft_FaceInfo , TopTools_ShapeMapHasher>;
 %template(Draft_IndexedDataMapOfVertexVertexInfo) NCollection_IndexedDataMap <TopoDS_Vertex , Draft_VertexInfo , TopTools_ShapeMapHasher>;
@@ -71,10 +74,6 @@ typedef NCollection_IndexedDataMap <TopoDS_Face , Draft_FaceInfo , TopTools_Shap
 typedef NCollection_IndexedDataMap <TopoDS_Vertex , Draft_VertexInfo , TopTools_ShapeMapHasher> Draft_IndexedDataMapOfVertexVertexInfo;
 typedef NCollection_IndexedDataMap <TopoDS_Edge , Draft_EdgeInfo , TopTools_ShapeMapHasher> Draft_IndexedDataMapOfEdgeEdgeInfo;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Draft_Modification)
-/* end handles declaration */
 
 %rename(draft) Draft;
 class Draft {

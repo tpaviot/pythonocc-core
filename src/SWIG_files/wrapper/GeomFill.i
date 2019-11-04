@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -83,6 +82,37 @@ enum GeomFill_PipeError {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(GeomFill_Boundary)
+%wrap_handle(GeomFill_CircularBlendFunc)
+%wrap_handle(GeomFill_CoonsAlgPatch)
+%wrap_handle(GeomFill_Line)
+%wrap_handle(GeomFill_LocationLaw)
+%wrap_handle(GeomFill_SectionLaw)
+%wrap_handle(GeomFill_SweepFunction)
+%wrap_handle(GeomFill_TgtField)
+%wrap_handle(GeomFill_TrihedronLaw)
+%wrap_handle(GeomFill_BoundWithSurf)
+%wrap_handle(GeomFill_ConstantBiNormal)
+%wrap_handle(GeomFill_CorrectedFrenet)
+%wrap_handle(GeomFill_CurveAndTrihedron)
+%wrap_handle(GeomFill_Darboux)
+%wrap_handle(GeomFill_DegeneratedBound)
+%wrap_handle(GeomFill_DiscreteTrihedron)
+%wrap_handle(GeomFill_DraftTrihedron)
+%wrap_handle(GeomFill_EvolvedSection)
+%wrap_handle(GeomFill_Fixed)
+%wrap_handle(GeomFill_Frenet)
+%wrap_handle(GeomFill_LocationDraft)
+%wrap_handle(GeomFill_LocationGuide)
+%wrap_handle(GeomFill_SimpleBound)
+%wrap_handle(GeomFill_TgtOnCoons)
+%wrap_handle(GeomFill_TrihedronWithGuide)
+%wrap_handle(GeomFill_UniformSection)
+%wrap_handle(GeomFill_GuideTrihedronAC)
+%wrap_handle(GeomFill_GuideTrihedronPlan)
+/* end handles declaration */
 
 /* templates */
 %template(GeomFill_SequenceOfTrsf) NCollection_Sequence <gp_Trsf>;
@@ -165,37 +195,6 @@ typedef NCollection_Array1 <opencascade::handle <GeomFill_LocationLaw>> GeomFill
 typedef NCollection_Array1 <opencascade::handle <GeomFill_SectionLaw>> GeomFill_Array1OfSectionLaw;
 typedef NCollection_Sequence <gp_Ax2> GeomFill_SequenceOfAx2;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(GeomFill_Boundary)
-%wrap_handle(GeomFill_CircularBlendFunc)
-%wrap_handle(GeomFill_CoonsAlgPatch)
-%wrap_handle(GeomFill_Line)
-%wrap_handle(GeomFill_LocationLaw)
-%wrap_handle(GeomFill_SectionLaw)
-%wrap_handle(GeomFill_SweepFunction)
-%wrap_handle(GeomFill_TgtField)
-%wrap_handle(GeomFill_TrihedronLaw)
-%wrap_handle(GeomFill_BoundWithSurf)
-%wrap_handle(GeomFill_ConstantBiNormal)
-%wrap_handle(GeomFill_CorrectedFrenet)
-%wrap_handle(GeomFill_CurveAndTrihedron)
-%wrap_handle(GeomFill_Darboux)
-%wrap_handle(GeomFill_DegeneratedBound)
-%wrap_handle(GeomFill_DiscreteTrihedron)
-%wrap_handle(GeomFill_DraftTrihedron)
-%wrap_handle(GeomFill_EvolvedSection)
-%wrap_handle(GeomFill_Fixed)
-%wrap_handle(GeomFill_Frenet)
-%wrap_handle(GeomFill_LocationDraft)
-%wrap_handle(GeomFill_LocationGuide)
-%wrap_handle(GeomFill_SimpleBound)
-%wrap_handle(GeomFill_TgtOnCoons)
-%wrap_handle(GeomFill_TrihedronWithGuide)
-%wrap_handle(GeomFill_UniformSection)
-%wrap_handle(GeomFill_GuideTrihedronAC)
-%wrap_handle(GeomFill_GuideTrihedronPlan)
-/* end handles declaration */
 
 %rename(geomfill) GeomFill;
 class GeomFill {

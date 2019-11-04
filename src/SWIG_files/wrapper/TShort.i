@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:11
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(TShort_SequenceOfShortReal) NCollection_Sequence <Standard_ShortReal>;
@@ -98,9 +100,6 @@ typedef NCollection_Sequence <Standard_ShortReal> TShort_SequenceOfShortReal;
 typedef NCollection_Array2 <Standard_ShortReal> TShort_Array2OfShortReal;
 typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 /* harray1 class */
 %wrap_handle(TShort_HArray1OfShortReal)

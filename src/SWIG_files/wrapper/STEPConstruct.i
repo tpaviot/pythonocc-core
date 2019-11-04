@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:31
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(STEPConstruct_DataMapOfAsciiStringTransient) NCollection_DataMap <TCollection_AsciiString , opencascade::handle <Standard_Transient>, TCollection_AsciiString>;
 %template(STEPConstruct_DataMapOfPointTransient) NCollection_DataMap <gp_Pnt , opencascade::handle <Standard_Transient>, STEPConstruct_PointHasher>;
@@ -64,9 +66,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , opencascade::handle <Stan
 typedef NCollection_DataMap <gp_Pnt , opencascade::handle <Standard_Transient>, STEPConstruct_PointHasher> STEPConstruct_DataMapOfPointTransient;
 typedef NCollection_DataMap <gp_Pnt , opencascade::handle <Standard_Transient>, STEPConstruct_PointHasher>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %rename(stepconstruct) STEPConstruct;
 class STEPConstruct {

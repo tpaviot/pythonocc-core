@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:37
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -61,6 +60,13 @@ enum CDM_CanCloseStatus {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(CDM_Application)
+%wrap_handle(CDM_Document)
+%wrap_handle(CDM_MetaData)
+%wrap_handle(CDM_Reference)
+/* end handles declaration */
+
 /* templates */
 %template(CDM_ListOfReferences) NCollection_List <opencascade::handle <CDM_Reference>>;
 %template(CDM_ListIteratorOfListOfReferences) NCollection_TListIterator<opencascade::handle<CDM_Reference>>;
@@ -87,13 +93,6 @@ typedef NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher>
 typedef NCollection_DefaultHasher <opencascade::handle <CDM_Document>> CDM_DocumentHasher;
 typedef CDM_Document * CDM_DocumentPointer;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(CDM_Application)
-%wrap_handle(CDM_Document)
-%wrap_handle(CDM_MetaData)
-%wrap_handle(CDM_Reference)
-/* end handles declaration */
 
 %nodefaultctor CDM_Application;
 class CDM_Application : public Standard_Transient {

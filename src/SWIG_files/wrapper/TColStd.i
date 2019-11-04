@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:10
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,10 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TColStd_HPackedMapOfInteger)
+/* end handles declaration */
 
 /* templates */
 %template(TColStd_Array2OfBoolean) NCollection_Array2 <Standard_Boolean>;
@@ -476,10 +479,6 @@ typedef NCollection_Array1 <TCollection_ExtendedString> TColStd_Array1OfExtended
 typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TCollection_AsciiString> TColStd_DataMapOfAsciiStringInteger;
 typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TCollection_AsciiString>::Iterator TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TColStd_HPackedMapOfInteger)
-/* end handles declaration */
 
 %nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public Standard_Transient {

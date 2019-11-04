@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:43
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,15 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(TPrsStd_DataMapOfGUIDDriver) NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID> TPrsStd_DataMapOfGUIDDriver;
-typedef NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID>::Iterator TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(TPrsStd_Driver)
 %wrap_handle(TPrsStd_DriverTable)
@@ -72,6 +62,15 @@ typedef NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver
 %wrap_handle(TPrsStd_PlaneDriver)
 %wrap_handle(TPrsStd_PointDriver)
 /* end handles declaration */
+
+/* templates */
+%template(TPrsStd_DataMapOfGUIDDriver) NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID> TPrsStd_DataMapOfGUIDDriver;
+typedef NCollection_DataMap <Standard_GUID , opencascade::handle <TPrsStd_Driver>, Standard_GUID>::Iterator TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
+/* end typedefs declaration */
 
 class TPrsStd_ConstraintTools {
 	public:

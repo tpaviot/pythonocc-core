@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:15
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,56 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(Expr_GeneralExpression)
+%wrap_handle(Expr_GeneralFunction)
+%wrap_handle(Expr_GeneralRelation)
+%wrap_handle(Expr_BinaryExpression)
+%wrap_handle(Expr_FunctionDerivative)
+%wrap_handle(Expr_NamedExpression)
+%wrap_handle(Expr_NamedFunction)
+%wrap_handle(Expr_NumericValue)
+%wrap_handle(Expr_PolyExpression)
+%wrap_handle(Expr_SingleRelation)
+%wrap_handle(Expr_SystemRelation)
+%wrap_handle(Expr_UnaryExpression)
+%wrap_handle(Expr_Absolute)
+%wrap_handle(Expr_ArcCosine)
+%wrap_handle(Expr_ArcSine)
+%wrap_handle(Expr_ArcTangent)
+%wrap_handle(Expr_ArgCosh)
+%wrap_handle(Expr_ArgSinh)
+%wrap_handle(Expr_ArgTanh)
+%wrap_handle(Expr_BinaryFunction)
+%wrap_handle(Expr_Cosh)
+%wrap_handle(Expr_Cosine)
+%wrap_handle(Expr_Difference)
+%wrap_handle(Expr_Different)
+%wrap_handle(Expr_Division)
+%wrap_handle(Expr_Equal)
+%wrap_handle(Expr_Exponential)
+%wrap_handle(Expr_Exponentiate)
+%wrap_handle(Expr_GreaterThan)
+%wrap_handle(Expr_GreaterThanOrEqual)
+%wrap_handle(Expr_LessThan)
+%wrap_handle(Expr_LessThanOrEqual)
+%wrap_handle(Expr_LogOf10)
+%wrap_handle(Expr_LogOfe)
+%wrap_handle(Expr_NamedConstant)
+%wrap_handle(Expr_NamedUnknown)
+%wrap_handle(Expr_PolyFunction)
+%wrap_handle(Expr_Product)
+%wrap_handle(Expr_Sine)
+%wrap_handle(Expr_Sinh)
+%wrap_handle(Expr_Square)
+%wrap_handle(Expr_SquareRoot)
+%wrap_handle(Expr_Sum)
+%wrap_handle(Expr_Tangent)
+%wrap_handle(Expr_Tanh)
+%wrap_handle(Expr_UnaryFunction)
+%wrap_handle(Expr_UnaryMinus)
+/* end handles declaration */
 
 /* templates */
 %template(Expr_Array1OfNamedUnknown) NCollection_Array1 <opencascade::handle <Expr_NamedUnknown>>;
@@ -172,56 +221,6 @@ typedef NCollection_Array1 <opencascade::handle <Expr_SingleRelation>> Expr_Arra
 typedef NCollection_Sequence <opencascade::handle <Expr_GeneralRelation>> Expr_SequenceOfGeneralRelation;
 typedef NCollection_Sequence <opencascade::handle <Expr_GeneralExpression>> Expr_SequenceOfGeneralExpression;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Expr_GeneralExpression)
-%wrap_handle(Expr_GeneralFunction)
-%wrap_handle(Expr_GeneralRelation)
-%wrap_handle(Expr_BinaryExpression)
-%wrap_handle(Expr_FunctionDerivative)
-%wrap_handle(Expr_NamedExpression)
-%wrap_handle(Expr_NamedFunction)
-%wrap_handle(Expr_NumericValue)
-%wrap_handle(Expr_PolyExpression)
-%wrap_handle(Expr_SingleRelation)
-%wrap_handle(Expr_SystemRelation)
-%wrap_handle(Expr_UnaryExpression)
-%wrap_handle(Expr_Absolute)
-%wrap_handle(Expr_ArcCosine)
-%wrap_handle(Expr_ArcSine)
-%wrap_handle(Expr_ArcTangent)
-%wrap_handle(Expr_ArgCosh)
-%wrap_handle(Expr_ArgSinh)
-%wrap_handle(Expr_ArgTanh)
-%wrap_handle(Expr_BinaryFunction)
-%wrap_handle(Expr_Cosh)
-%wrap_handle(Expr_Cosine)
-%wrap_handle(Expr_Difference)
-%wrap_handle(Expr_Different)
-%wrap_handle(Expr_Division)
-%wrap_handle(Expr_Equal)
-%wrap_handle(Expr_Exponential)
-%wrap_handle(Expr_Exponentiate)
-%wrap_handle(Expr_GreaterThan)
-%wrap_handle(Expr_GreaterThanOrEqual)
-%wrap_handle(Expr_LessThan)
-%wrap_handle(Expr_LessThanOrEqual)
-%wrap_handle(Expr_LogOf10)
-%wrap_handle(Expr_LogOfe)
-%wrap_handle(Expr_NamedConstant)
-%wrap_handle(Expr_NamedUnknown)
-%wrap_handle(Expr_PolyFunction)
-%wrap_handle(Expr_Product)
-%wrap_handle(Expr_Sine)
-%wrap_handle(Expr_Sinh)
-%wrap_handle(Expr_Square)
-%wrap_handle(Expr_SquareRoot)
-%wrap_handle(Expr_Sum)
-%wrap_handle(Expr_Tangent)
-%wrap_handle(Expr_Tanh)
-%wrap_handle(Expr_UnaryFunction)
-%wrap_handle(Expr_UnaryMinus)
-/* end handles declaration */
 
 %rename(expr) Expr;
 class Expr {

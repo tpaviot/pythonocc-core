@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:24
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -72,6 +71,12 @@ enum TopOpeBRep_TypeLineCurve {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TopOpeBRep_FFDumper)
+%wrap_handle(TopOpeBRep_Hctxee2d)
+%wrap_handle(TopOpeBRep_Hctxff2d)
+/* end handles declaration */
 
 /* templates */
 %template(TopOpeBRep_DataMapOfTopolTool) NCollection_DataMap <TopoDS_Shape , opencascade::handle <BRepTopAdaptor_TopolTool>, TopTools_ShapeMapHasher>;
@@ -166,12 +171,6 @@ typedef TopOpeBRep_EdgesIntersector * TopOpeBRep_PEdgesIntersector;
 typedef IntSurf_PntOn2S * TopOpeBRep_PPntOn2S;
 typedef NCollection_Array1 <TopOpeBRep_VPointInter> TopOpeBRep_Array1OfVPointInter;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TopOpeBRep_FFDumper)
-%wrap_handle(TopOpeBRep_Hctxee2d)
-%wrap_handle(TopOpeBRep_Hctxff2d)
-/* end handles declaration */
 
 %rename(topopebrep) TopOpeBRep;
 class TopOpeBRep {

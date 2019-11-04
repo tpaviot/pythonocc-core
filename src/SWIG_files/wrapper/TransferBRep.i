@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:37
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,14 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(TransferBRep_SequenceOfTransferResultInfo) NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultInfo>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultInfo>> TransferBRep_SequenceOfTransferResultInfo;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(TransferBRep_BinderOfShape)
 %wrap_handle(TransferBRep_OrientedShapeMapper)
@@ -69,6 +60,14 @@ typedef NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultIn
 %wrap_handle(TransferBRep_TransferResultInfo)
 %wrap_handle(TransferBRep_ShapeBinder)
 /* end handles declaration */
+
+/* templates */
+%template(TransferBRep_SequenceOfTransferResultInfo) NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultInfo>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultInfo>> TransferBRep_SequenceOfTransferResultInfo;
+/* end typedefs declaration */
 
 %rename(transferbrep) TransferBRep;
 class TransferBRep {

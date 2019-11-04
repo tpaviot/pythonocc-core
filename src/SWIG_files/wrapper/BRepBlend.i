@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:21
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,14 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepBlend_AppFuncRoot)
+%wrap_handle(BRepBlend_Line)
+%wrap_handle(BRepBlend_AppFunc)
+%wrap_handle(BRepBlend_AppFuncRst)
+%wrap_handle(BRepBlend_AppFuncRstRst)
+/* end handles declaration */
+
 /* templates */
 %template(BRepBlend_SequenceOfLine) NCollection_Sequence <opencascade::handle <BRepBlend_Line>>;
 %template(BRepBlend_SequenceOfPointOnRst) NCollection_Sequence <BRepBlend_PointOnRst>;
@@ -78,14 +85,6 @@ typedef BlendFunc_ConstThroatInv BRepBlend_ConstThroatInv;
 typedef NCollection_Sequence <BRepBlend_PointOnRst> BRepBlend_SequenceOfPointOnRst;
 typedef BlendFunc_ConstThroat BRepBlend_ConstThroat;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepBlend_AppFuncRoot)
-%wrap_handle(BRepBlend_Line)
-%wrap_handle(BRepBlend_AppFunc)
-%wrap_handle(BRepBlend_AppFuncRst)
-%wrap_handle(BRepBlend_AppFuncRstRst)
-/* end handles declaration */
 
 %nodefaultctor BRepBlend_AppFuncRoot;
 class BRepBlend_AppFuncRoot : public Approx_SweepFunction {

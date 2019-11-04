@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:44
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,11 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(XmlLDrivers_DocumentRetrievalDriver)
+%wrap_handle(XmlLDrivers_DocumentStorageDriver)
+/* end handles declaration */
+
 /* templates */
 %template(XmlLDrivers_SequenceOfNamespaceDef) NCollection_Sequence <XmlLDrivers_NamespaceDef>;
 /* end templates declaration */
@@ -60,11 +64,6 @@ conditions:
 /* typedefs */
 typedef NCollection_Sequence <XmlLDrivers_NamespaceDef> XmlLDrivers_SequenceOfNamespaceDef;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(XmlLDrivers_DocumentRetrievalDriver)
-%wrap_handle(XmlLDrivers_DocumentStorageDriver)
-/* end handles declaration */
 
 %rename(xmlldrivers) XmlLDrivers;
 %nodefaultctor XmlLDrivers;

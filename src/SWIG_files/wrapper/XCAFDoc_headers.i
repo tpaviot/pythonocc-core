@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:48
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -588,6 +587,7 @@ conditions:
 #include<TopLoc_MapOfLocation.hxx>
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
+#include<XCAFNoteObjects_NoteObject.hxx>
 #include<OSD.hxx>
 #include<OSD_Chronometer.hxx>
 #include<OSD_Directory.hxx>
@@ -1119,6 +1119,7 @@ conditions:
 %import XCAFDimTolObjects.i
 %import TDocStd.i
 %import TopLoc.i
+%import XCAFNoteObjects.i
 %import OSD.i
 %import TopTools.i
 %import TDataStd.i

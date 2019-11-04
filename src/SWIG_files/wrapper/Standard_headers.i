@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:09
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -110,19 +109,6 @@ conditions:
 #include<Standard_WarningsDisable.hxx>
 #include<Standard_WarningsRestore.hxx>
 #include<Standard_math.hxx>
-#include<TCollection.hxx>
-#include<TCollection_AsciiString.hxx>
-#include<TCollection_BaseSequence.hxx>
-#include<TCollection_BasicMap.hxx>
-#include<TCollection_BasicMapIterator.hxx>
-#include<TCollection_ExtendedString.hxx>
-#include<TCollection_HAsciiString.hxx>
-#include<TCollection_HExtendedString.hxx>
-#include<TCollection_MapNode.hxx>
-#include<TCollection_MapNodePtr.hxx>
-#include<TCollection_SeqNode.hxx>
-#include<TCollection_SeqNodePtr.hxx>
-#include<TCollection_Side.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -317,4 +303,3 @@ conditions:
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>
 %};
-%import TCollection.i

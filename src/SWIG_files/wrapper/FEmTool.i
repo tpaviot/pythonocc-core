@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:12
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,16 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(FEmTool_Curve)
+%wrap_handle(FEmTool_ElementaryCriterion)
+%wrap_handle(FEmTool_SparseMatrix)
+%wrap_handle(FEmTool_LinearFlexion)
+%wrap_handle(FEmTool_LinearJerk)
+%wrap_handle(FEmTool_LinearTension)
+%wrap_handle(FEmTool_ProfileMatrix)
+/* end handles declaration */
+
 /* templates */
 %template(FEmTool_AssemblyTable) NCollection_Array2 <opencascade::handle <TColStd_HArray1OfInteger>>;
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence <FEmTool_ListOfVectors>;
@@ -66,16 +75,6 @@ typedef NCollection_Sequence <FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
 typedef NCollection_List <opencascade::handle <TColStd_HArray1OfReal>> FEmTool_ListOfVectors;
 typedef NCollection_List <opencascade::handle <TColStd_HArray1OfReal>>::Iterator FEmTool_ListIteratorOfListOfVectors;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(FEmTool_Curve)
-%wrap_handle(FEmTool_ElementaryCriterion)
-%wrap_handle(FEmTool_SparseMatrix)
-%wrap_handle(FEmTool_LinearFlexion)
-%wrap_handle(FEmTool_LinearJerk)
-%wrap_handle(FEmTool_LinearTension)
-%wrap_handle(FEmTool_ProfileMatrix)
-/* end handles declaration */
 
 %nodefaultctor FEmTool_Assembly;
 class FEmTool_Assembly {

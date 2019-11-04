@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:10
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -68,6 +67,16 @@ enum HLRAlgo_PolyMask {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(HLRAlgo_EdgesBlock)
+%wrap_handle(HLRAlgo_PolyAlgo)
+%wrap_handle(HLRAlgo_PolyData)
+%wrap_handle(HLRAlgo_PolyInternalData)
+%wrap_handle(HLRAlgo_PolyInternalNode)
+%wrap_handle(HLRAlgo_PolyShellData)
+%wrap_handle(HLRAlgo_WiresBlock)
+/* end handles declaration */
 
 /* templates */
 %template(HLRAlgo_InterferenceList) NCollection_List <HLRAlgo_Interference>;
@@ -190,16 +199,6 @@ typedef NCollection_Array1 <HLRAlgo_TriangleData> HLRAlgo_Array1OfTData;
 typedef NCollection_Array1 <HLRAlgo_PolyInternalSegment> HLRAlgo_Array1OfPISeg;
 typedef NCollection_Array1 <opencascade::handle <HLRAlgo_PolyInternalNode>> HLRAlgo_Array1OfPINod;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(HLRAlgo_EdgesBlock)
-%wrap_handle(HLRAlgo_PolyAlgo)
-%wrap_handle(HLRAlgo_PolyData)
-%wrap_handle(HLRAlgo_PolyInternalData)
-%wrap_handle(HLRAlgo_PolyInternalNode)
-%wrap_handle(HLRAlgo_PolyShellData)
-%wrap_handle(HLRAlgo_WiresBlock)
-/* end handles declaration */
 
 %rename(hlralgo) HLRAlgo;
 class HLRAlgo {

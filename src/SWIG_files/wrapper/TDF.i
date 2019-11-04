@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:39
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -59,6 +58,24 @@ enum  {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(TDF_Attribute)
+%wrap_handle(TDF_AttributeDelta)
+%wrap_handle(TDF_Data)
+%wrap_handle(TDF_DataSet)
+%wrap_handle(TDF_Delta)
+%wrap_handle(TDF_RelocationTable)
+%wrap_handle(TDF_DeltaOnAddition)
+%wrap_handle(TDF_DeltaOnForget)
+%wrap_handle(TDF_DeltaOnModification)
+%wrap_handle(TDF_DeltaOnRemoval)
+%wrap_handle(TDF_DeltaOnResume)
+%wrap_handle(TDF_Reference)
+%wrap_handle(TDF_TagSource)
+%wrap_handle(TDF_DefaultDeltaOnModification)
+%wrap_handle(TDF_DefaultDeltaOnRemoval)
+/* end handles declaration */
 
 /* templates */
 %template(TDF_AttributeList) NCollection_List <opencascade::handle <TDF_Attribute>>;
@@ -159,24 +176,6 @@ typedef NCollection_List <TDF_Label> TDF_LabelList;
 typedef NCollection_List <TDF_Label>::Iterator TDF_ListIteratorOfLabelList;
 typedef NCollection_Sequence <opencascade::handle <TDF_Attribute>> TDF_AttributeSequence;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(TDF_Attribute)
-%wrap_handle(TDF_AttributeDelta)
-%wrap_handle(TDF_Data)
-%wrap_handle(TDF_DataSet)
-%wrap_handle(TDF_Delta)
-%wrap_handle(TDF_RelocationTable)
-%wrap_handle(TDF_DeltaOnAddition)
-%wrap_handle(TDF_DeltaOnForget)
-%wrap_handle(TDF_DeltaOnModification)
-%wrap_handle(TDF_DeltaOnRemoval)
-%wrap_handle(TDF_DeltaOnResume)
-%wrap_handle(TDF_Reference)
-%wrap_handle(TDF_TagSource)
-%wrap_handle(TDF_DefaultDeltaOnModification)
-%wrap_handle(TDF_DefaultDeltaOnRemoval)
-/* end handles declaration */
 
 %rename(tdf) TDF;
 class TDF {

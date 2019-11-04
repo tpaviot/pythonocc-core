@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:11
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -70,6 +69,11 @@ enum Extrema_ElementType {
 };
 
 /* end public enums declaration */
+
+/* handles */
+%wrap_handle(Extrema_ExtPExtS)
+%wrap_handle(Extrema_ExtPRevS)
+/* end handles declaration */
 
 /* templates */
 %template(Extrema_SequenceOfPOnSurf) NCollection_Sequence <Extrema_POnSurf>;
@@ -203,11 +207,6 @@ typedef NCollection_Handle <Extrema_UBTreeOfSphere> Extrema_HUBTreeOfSphere;
 typedef NCollection_Array2 <Extrema_POnCurv> Extrema_Array2OfPOnCurv;
 typedef NCollection_Array1 <Extrema_POnSurf> Extrema_Array1OfPOnSurf;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Extrema_ExtPExtS)
-%wrap_handle(Extrema_ExtPRevS)
-/* end handles declaration */
 
 %nodefaultctor Extrema_CCLocFOfLocECC;
 class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:08
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -66,6 +65,10 @@ enum Resource_FormatType {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(Resource_Manager)
+/* end handles declaration */
+
 /* templates */
 %template(Resource_DataMapOfAsciiStringAsciiString) NCollection_DataMap <TCollection_AsciiString , TCollection_AsciiString , TCollection_AsciiString>;
 %template(Resource_DataMapOfAsciiStringExtendedString) NCollection_DataMap <TCollection_AsciiString , TCollection_ExtendedString , TCollection_AsciiString>;
@@ -77,10 +80,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , TCollection_AsciiString ,
 typedef NCollection_DataMap <TCollection_AsciiString , TCollection_ExtendedString , TCollection_AsciiString> Resource_DataMapOfAsciiStringExtendedString;
 typedef NCollection_DataMap <TCollection_AsciiString , TCollection_ExtendedString , TCollection_AsciiString>::Iterator Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(Resource_Manager)
-/* end handles declaration */
 
 %nodefaultctor Resource_LexicalCompare;
 class Resource_LexicalCompare {

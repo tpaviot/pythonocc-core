@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:44
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
@@ -65,9 +67,6 @@ typedef Standard_ExtCharacter * BinObjMgt_PExtChar;
 typedef Standard_Real * BinObjMgt_PReal;
 typedef Standard_Byte * BinObjMgt_PByte;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor BinObjMgt_Persistent;
 class BinObjMgt_Persistent {

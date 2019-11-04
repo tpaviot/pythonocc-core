@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:16
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,17 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(NLPlate_HGPPConstraint)
+%wrap_handle(NLPlate_HPG0Constraint)
+%wrap_handle(NLPlate_HPG1Constraint)
+%wrap_handle(NLPlate_HPG0G1Constraint)
+%wrap_handle(NLPlate_HPG2Constraint)
+%wrap_handle(NLPlate_HPG0G2Constraint)
+%wrap_handle(NLPlate_HPG3Constraint)
+%wrap_handle(NLPlate_HPG0G3Constraint)
+/* end handles declaration */
+
 /* templates */
 %template(NLPlate_StackOfPlate) NCollection_List <Plate_Plate>;
 %template(NLPlate_ListIteratorOfStackOfPlate) NCollection_TListIterator<Plate_Plate>;
@@ -64,17 +74,6 @@ typedef NCollection_List <Plate_Plate> NLPlate_StackOfPlate;
 typedef NCollection_List <Plate_Plate>::Iterator NLPlate_ListIteratorOfStackOfPlate;
 typedef NCollection_Sequence <opencascade::handle <NLPlate_HGPPConstraint>> NLPlate_SequenceOfHGPPConstraint;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(NLPlate_HGPPConstraint)
-%wrap_handle(NLPlate_HPG0Constraint)
-%wrap_handle(NLPlate_HPG1Constraint)
-%wrap_handle(NLPlate_HPG0G1Constraint)
-%wrap_handle(NLPlate_HPG2Constraint)
-%wrap_handle(NLPlate_HPG0G2Constraint)
-%wrap_handle(NLPlate_HPG3Constraint)
-%wrap_handle(NLPlate_HPG0G3Constraint)
-/* end handles declaration */
 
 %nodefaultctor NLPlate_HGPPConstraint;
 class NLPlate_HGPPConstraint : public Standard_Transient {

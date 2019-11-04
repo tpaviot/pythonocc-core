@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:19
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,17 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(ShapeFix_DataMapOfShapeBox2d) NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher>;
-%template(ShapeFix_SequenceOfWireSegment) NCollection_Sequence <ShapeFix_WireSegment>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher> ShapeFix_DataMapOfShapeBox2d;
-typedef NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher>::Iterator ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
-typedef NCollection_Sequence <ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegment;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(ShapeFix_Edge)
 %wrap_handle(ShapeFix_EdgeProjAux)
@@ -79,6 +67,17 @@ typedef NCollection_Sequence <ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegme
 %wrap_handle(ShapeFix_Wire)
 %wrap_handle(ShapeFix_Wireframe)
 /* end handles declaration */
+
+/* templates */
+%template(ShapeFix_DataMapOfShapeBox2d) NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher>;
+%template(ShapeFix_SequenceOfWireSegment) NCollection_Sequence <ShapeFix_WireSegment>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher> ShapeFix_DataMapOfShapeBox2d;
+typedef NCollection_DataMap <TopoDS_Shape , Bnd_Box2d , TopTools_ShapeMapHasher>::Iterator ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
+typedef NCollection_Sequence <ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegment;
+/* end typedefs declaration */
 
 %rename(shapefix) ShapeFix;
 class ShapeFix {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:40
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -66,12 +65,6 @@ enum VrmlConverter_TypeOfCamera {
 
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(VrmlConverter_Drawer)
 %wrap_handle(VrmlConverter_LineAspect)
@@ -80,6 +73,12 @@ enum VrmlConverter_TypeOfCamera {
 %wrap_handle(VrmlConverter_ShadingAspect)
 %wrap_handle(VrmlConverter_IsoAspect)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 class VrmlConverter_Curve {
 	public:

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:14
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -72,6 +71,9 @@ enum IntRes2d_TypeTrans {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(IntRes2d_SequenceOfIntersectionSegment) NCollection_Sequence <IntRes2d_IntersectionSegment>;
 %template(IntRes2d_SequenceOfIntersectionPoint) NCollection_Sequence <IntRes2d_IntersectionPoint>;
@@ -81,9 +83,6 @@ enum IntRes2d_TypeTrans {
 typedef NCollection_Sequence <IntRes2d_IntersectionSegment> IntRes2d_SequenceOfIntersectionSegment;
 typedef NCollection_Sequence <IntRes2d_IntersectionPoint> IntRes2d_SequenceOfIntersectionPoint;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor IntRes2d_Domain;
 class IntRes2d_Domain {

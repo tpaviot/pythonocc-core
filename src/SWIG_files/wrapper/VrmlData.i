@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:41
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -74,18 +73,6 @@ enum VrmlData_ErrorStatus {
 
 /* end public enums declaration */
 
-/* templates */
-%template(VrmlData_DataMapOfShapeAppearance) NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>>;
-%template(VrmlData_MapOfNode) NCollection_Map <opencascade::handle <VrmlData_Node>>;
-%template(VrmlData_ListOfNode) NCollection_List <opencascade::handle <VrmlData_Node>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
-typedef NCollection_Map <opencascade::handle <VrmlData_Node>> VrmlData_MapOfNode;
-typedef NCollection_List <opencascade::handle <VrmlData_Node>> VrmlData_ListOfNode;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(VrmlData_Node)
 %wrap_handle(VrmlData_Appearance)
@@ -107,6 +94,18 @@ typedef NCollection_List <opencascade::handle <VrmlData_Node>> VrmlData_ListOfNo
 %wrap_handle(VrmlData_Sphere)
 %wrap_handle(VrmlData_IndexedFaceSet)
 /* end handles declaration */
+
+/* templates */
+%template(VrmlData_DataMapOfShapeAppearance) NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>>;
+%template(VrmlData_MapOfNode) NCollection_Map <opencascade::handle <VrmlData_Node>>;
+%template(VrmlData_ListOfNode) NCollection_List <opencascade::handle <VrmlData_Node>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
+typedef NCollection_Map <opencascade::handle <VrmlData_Node>> VrmlData_MapOfNode;
+typedef NCollection_List <opencascade::handle <VrmlData_Node>> VrmlData_ListOfNode;
+/* end typedefs declaration */
 
 %nodefaultctor VrmlData_Node;
 class VrmlData_Node : public Standard_Transient {

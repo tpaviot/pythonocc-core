@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:33
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,16 +52,6 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
-/* templates */
-%template(STEPSelections_SequenceOfAssemblyLink) NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyLink>>;
-%template(STEPSelections_SequenceOfAssemblyComponent) NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyComponent>>;
-/* end templates declaration */
-
-/* typedefs */
-typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyLink>> STEPSelections_SequenceOfAssemblyLink;
-typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyComponent>> STEPSelections_SequenceOfAssemblyComponent;
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(STEPSelections_AssemblyComponent)
 %wrap_handle(STEPSelections_AssemblyLink)
@@ -73,6 +62,16 @@ typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyCompon
 %wrap_handle(STEPSelections_SelectGSCurves)
 %wrap_handle(STEPSelections_SelectInstances)
 /* end handles declaration */
+
+/* templates */
+%template(STEPSelections_SequenceOfAssemblyLink) NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyLink>>;
+%template(STEPSelections_SequenceOfAssemblyComponent) NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyComponent>>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyLink>> STEPSelections_SequenceOfAssemblyLink;
+typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyComponent>> STEPSelections_SequenceOfAssemblyComponent;
+/* end typedefs declaration */
 
 %nodefaultctor STEPSelections_AssemblyComponent;
 class STEPSelections_AssemblyComponent : public Standard_Transient {

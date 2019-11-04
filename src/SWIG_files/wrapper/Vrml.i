@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:38
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -135,12 +134,6 @@ enum Vrml_FontStyleStyle {
 
 /* end public enums declaration */
 
-/* templates */
-/* end templates declaration */
-
-/* typedefs */
-/* end typedefs declaration */
-
 /* handles */
 %wrap_handle(Vrml_AsciiText)
 %wrap_handle(Vrml_Coordinate3)
@@ -152,6 +145,12 @@ enum Vrml_FontStyleStyle {
 %wrap_handle(Vrml_SFImage)
 %wrap_handle(Vrml_TextureCoordinate2)
 /* end handles declaration */
+
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
 
 %rename(vrml) Vrml;
 class Vrml {

@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:21
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -52,6 +51,9 @@ conditions:
 
 /* public enums */
 /* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
 
 /* templates */
 %template(TColGeom2d_SequenceOfCurve) NCollection_Sequence <opencascade::handle <Geom2d_Curve>>;
@@ -172,9 +174,6 @@ typedef NCollection_Sequence <opencascade::handle <Geom2d_BoundedCurve>> TColGeo
 typedef NCollection_Array1 <opencascade::handle <Geom2d_BezierCurve>> TColGeom2d_Array1OfBezierCurve;
 typedef NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>> TColGeom2d_Array1OfBSplineCurve;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 /* harray1 class */
 %wrap_handle(TColGeom2d_HArray1OfCurve)

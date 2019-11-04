@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:07
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -53,6 +52,9 @@ conditions:
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
+
 /* templates */
 %template(Geom2dHatch_MapOfElements) NCollection_DataMap <Standard_Integer , Geom2dHatch_Element , TColStd_MapIntegerHasher>;
 %template(Geom2dHatch_Hatchings) NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_MapIntegerHasher>;
@@ -64,9 +66,6 @@ typedef NCollection_DataMap <Standard_Integer , Geom2dHatch_Element , TColStd_Ma
 typedef NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_MapIntegerHasher> Geom2dHatch_Hatchings;
 typedef NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfHatchings;
 /* end typedefs declaration */
-
-/* handles */
-/* end handles declaration */
 
 %nodefaultctor Geom2dHatch_Classifier;
 class Geom2dHatch_Classifier {

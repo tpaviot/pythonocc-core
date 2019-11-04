@@ -23,7 +23,6 @@ https://github.com/tpaviot/pythonocc-generator.
 This file is platform independant, but was generated under the following
 conditions:
 
-- time : 2019-11-03 11:38:19
 - operating system : debian Linux 4.15.0-66-generic
 - occt version targeted : 7.4.0
 */
@@ -106,6 +105,11 @@ enum BRepBuilderAPI_ShellError {
 
 /* end public enums declaration */
 
+/* handles */
+%wrap_handle(BRepBuilderAPI_FastSewing)
+%wrap_handle(BRepBuilderAPI_Sewing)
+/* end handles declaration */
+
 /* templates */
 %template(BRepBuilderAPI_BndBoxTree) NCollection_UBTree <Standard_Integer , Bnd_Box>;
 /* end templates declaration */
@@ -115,11 +119,6 @@ typedef NCollection_Vector <gp_XYZ> VectorOfPoint;
 typedef NCollection_CellFilter <BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> BRepBuilderAPI_BndBoxTree;
 /* end typedefs declaration */
-
-/* handles */
-%wrap_handle(BRepBuilderAPI_FastSewing)
-%wrap_handle(BRepBuilderAPI_Sewing)
-/* end handles declaration */
 
 %rename(brepbuilderapi) BRepBuilderAPI;
 class BRepBuilderAPI {
