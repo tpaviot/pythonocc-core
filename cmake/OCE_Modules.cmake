@@ -276,6 +276,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 # TKXSBase
 	Interface
 	IFSelect
+	MoniTool
 	XSControl
 	Transfer
 	TransferBRep
