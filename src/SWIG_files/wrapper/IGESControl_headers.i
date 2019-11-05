@@ -218,6 +218,18 @@ conditions:
 #include<Transfer_TransientProcess.hxx>
 #include<Transfer_UndefMode.hxx>
 #include<Transfer_VoidBinder.hxx>
+#include<IGESToBRep.hxx>
+#include<IGESToBRep_Actor.hxx>
+#include<IGESToBRep_AlgoContainer.hxx>
+#include<IGESToBRep_BRepEntity.hxx>
+#include<IGESToBRep_BasicCurve.hxx>
+#include<IGESToBRep_BasicSurface.hxx>
+#include<IGESToBRep_CurveAndSurface.hxx>
+#include<IGESToBRep_IGESBoundary.hxx>
+#include<IGESToBRep_Reader.hxx>
+#include<IGESToBRep_ToolContainer.hxx>
+#include<IGESToBRep_TopoCurve.hxx>
+#include<IGESToBRep_TopoSurface.hxx>
 #include<XSControl.hxx>
 #include<XSControl_ConnectedShapes.hxx>
 #include<XSControl_Controller.hxx>
@@ -721,6 +733,61 @@ conditions:
 #include<Interface_ValueSatisfies.hxx>
 #include<Interface_VectorOfFileParameter.hxx>
 #include<Interface_Version.hxx>
+#include<MoniTool_AttrList.hxx>
+#include<MoniTool_CaseData.hxx>
+#include<MoniTool_DataInfo.hxx>
+#include<MoniTool_DataMapIteratorOfDataMapOfShapeTransient.hxx>
+#include<MoniTool_DataMapIteratorOfDataMapOfTimer.hxx>
+#include<MoniTool_DataMapOfShapeTransient.hxx>
+#include<MoniTool_DataMapOfTimer.hxx>
+#include<MoniTool_ElemHasher.hxx>
+#include<MoniTool_Element.hxx>
+#include<MoniTool_HSequenceOfElement.hxx>
+#include<MoniTool_IndexedDataMapOfShapeTransient.hxx>
+#include<MoniTool_IntVal.hxx>
+#include<MoniTool_MTHasher.hxx>
+#include<MoniTool_Macros.hxx>
+#include<MoniTool_RealVal.hxx>
+#include<MoniTool_SequenceOfElement.hxx>
+#include<MoniTool_SignShape.hxx>
+#include<MoniTool_SignText.hxx>
+#include<MoniTool_Stat.hxx>
+#include<MoniTool_Timer.hxx>
+#include<MoniTool_TimerSentry.hxx>
+#include<MoniTool_TransientElem.hxx>
+#include<MoniTool_TypedValue.hxx>
+#include<MoniTool_ValueInterpret.hxx>
+#include<MoniTool_ValueSatisfies.hxx>
+#include<MoniTool_ValueType.hxx>
+#include<TColGeom_Array1OfBSplineCurve.hxx>
+#include<TColGeom_Array1OfBezierCurve.hxx>
+#include<TColGeom_Array1OfCurve.hxx>
+#include<TColGeom_Array1OfSurface.hxx>
+#include<TColGeom_Array2OfBezierSurface.hxx>
+#include<TColGeom_Array2OfSurface.hxx>
+#include<TColGeom_HArray1OfBSplineCurve.hxx>
+#include<TColGeom_HArray1OfBezierCurve.hxx>
+#include<TColGeom_HArray1OfCurve.hxx>
+#include<TColGeom_HArray1OfSurface.hxx>
+#include<TColGeom_HArray2OfSurface.hxx>
+#include<TColGeom_HSequenceOfBoundedCurve.hxx>
+#include<TColGeom_HSequenceOfCurve.hxx>
+#include<TColGeom_SequenceOfBoundedCurve.hxx>
+#include<TColGeom_SequenceOfCurve.hxx>
+#include<TColGeom_SequenceOfSurface.hxx>
+#include<ShapeExtend.hxx>
+#include<ShapeExtend_BasicMsgRegistrator.hxx>
+#include<ShapeExtend_ComplexCurve.hxx>
+#include<ShapeExtend_CompositeSurface.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_Explorer.hxx>
+#include<ShapeExtend_MsgRegistrator.hxx>
+#include<ShapeExtend_Parametrisation.hxx>
+#include<ShapeExtend_Status.hxx>
+#include<ShapeExtend_WireData.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -918,6 +985,7 @@ conditions:
 %import Standard.i
 %import NCollection.i
 %import Transfer.i
+%import IGESToBRep.i
 %import XSControl.i
 %import Interface.i
 %import TopoDS.i

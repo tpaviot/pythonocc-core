@@ -538,9 +538,11 @@ enum Graphic3d_NameOfTextureEnv {
 %wrap_handle(Graphic3d_Camera)
 %wrap_handle(Graphic3d_ClipPlane)
 %wrap_handle(Graphic3d_DataStructureManager)
+%wrap_handle(Graphic3d_FrameStats)
 %wrap_handle(Graphic3d_GraphicDriver)
 %wrap_handle(Graphic3d_Group)
 %wrap_handle(Graphic3d_HatchStyle)
+%wrap_handle(Graphic3d_Layer)
 %wrap_handle(Graphic3d_LightSet)
 %wrap_handle(Graphic3d_MarkerImage)
 %wrap_handle(Graphic3d_PresentationAttributes)
@@ -575,6 +577,7 @@ enum Graphic3d_NameOfTextureEnv {
 %wrap_handle(Graphic3d_Texture1D)
 %wrap_handle(Graphic3d_Texture2D)
 %wrap_handle(Graphic3d_CubeMapSeparate)
+%wrap_handle(Graphic3d_MediaTexture)
 %wrap_handle(Graphic3d_Texture1Dmanual)
 %wrap_handle(Graphic3d_Texture1Dsegment)
 %wrap_handle(Graphic3d_Texture2Dmanual)
@@ -4537,6 +4540,8 @@ class Graphic3d_FrameStats : public Standard_Transient {
 };
 
 
+%make_alias(Graphic3d_FrameStats)
+
 %extend Graphic3d_FrameStats {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5639,6 +5644,8 @@ class Graphic3d_Layer : public Standard_Transient {
 		Standard_Real considerZoomPersistenceObjects (Standard_Integer theViewId,const opencascade::handle<Graphic3d_Camera> & theCamera,Standard_Integer theWindowWidth,Standard_Integer theWindowHeight);
 };
 
+
+%make_alias(Graphic3d_Layer)
 
 %extend Graphic3d_Layer {
 	%pythoncode {
@@ -10798,6 +10805,8 @@ class Graphic3d_MediaTexture : public Graphic3d_Texture2D {
 		void SetFrame (const opencascade::handle<Media_Frame> & theFrame);
 };
 
+
+%make_alias(Graphic3d_MediaTexture)
 
 %extend Graphic3d_MediaTexture {
 	%pythoncode {

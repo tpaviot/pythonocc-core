@@ -61,6 +61,7 @@ enum Standard_HandlerStatus {
 /* handles */
 %wrap_handle(Standard_Transient)
 %wrap_handle(Standard_OutOfMemory)
+%wrap_handle(Standard_Persistent)
 /* end handles declaration */
 
 /* templates */
@@ -896,6 +897,8 @@ class Standard_Persistent : public Standard_Transient {
             };
             };
 
+
+%make_alias(Standard_Persistent)
 
 %extend Standard_Persistent {
 	%pythoncode {

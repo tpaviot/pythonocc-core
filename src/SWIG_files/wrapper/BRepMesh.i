@@ -70,7 +70,16 @@ enum BRepMesh_DegreeOfFreedom {
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(BRepMesh_Classifier)
+%wrap_handle(BRepMesh_DataStructureOfDelaun)
+%wrap_handle(BRepMesh_Deflection)
 %wrap_handle(BRepMesh_DiscretRoot)
+%wrap_handle(BRepMesh_FaceChecker)
+%wrap_handle(BRepMesh_MeshTool)
+%wrap_handle(BRepMesh_SelectorOfDataStructureOfDelaun)
+%wrap_handle(BRepMesh_ShapeTool)
+%wrap_handle(BRepMesh_VertexTool)
+%wrap_handle(BRepMesh_IncrementalMesh)
 /* end handles declaration */
 
 /* templates */
@@ -407,6 +416,8 @@ class BRepMesh_Classifier : public Standard_Transient {
 };
 
 
+%make_alias(BRepMesh_Classifier)
+
 %extend BRepMesh_Classifier {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -716,6 +727,8 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 };
 
 
+%make_alias(BRepMesh_DataStructureOfDelaun)
+
 %extend BRepMesh_DataStructureOfDelaun {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -869,6 +882,8 @@ class BRepMesh_Deflection : public Standard_Transient {
 		static void ComputeDeflection (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
 };
 
+
+%make_alias(BRepMesh_Deflection)
 
 %extend BRepMesh_Deflection {
 	%pythoncode {
@@ -1255,6 +1270,8 @@ typedef NCollection_Shared <NCollection_Array1 <opencascade::handle <Segments>>>
 };
 
 
+%make_alias(BRepMesh_FaceChecker)
+
 %extend BRepMesh_FaceChecker {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1573,6 +1590,8 @@ class BRepMesh_MeshTool : public Standard_Transient {
 		void Legalize (const Standard_Integer theLinkIndex);
 };
 
+
+%make_alias(BRepMesh_MeshTool)
 
 %extend BRepMesh_MeshTool {
 	%pythoncode {
@@ -1933,6 +1952,8 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 };
 
 
+%make_alias(BRepMesh_SelectorOfDataStructureOfDelaun)
+
 %extend BRepMesh_SelectorOfDataStructureOfDelaun {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2111,6 +2132,8 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		static gp_Pnt UseLocation (const gp_Pnt & thePnt,const TopLoc_Location & theLoc);
 };
 
+
+%make_alias(BRepMesh_ShapeTool)
 
 %extend BRepMesh_ShapeTool {
 	%pythoncode {
@@ -2625,6 +2648,8 @@ class BRepMesh_VertexTool : public Standard_Transient {
 };
 
 
+%make_alias(BRepMesh_VertexTool)
+
 %extend BRepMesh_VertexTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2860,6 +2885,8 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		static void SetParallelDefault (const Standard_Boolean isInParallel);
 };
 
+
+%make_alias(BRepMesh_IncrementalMesh)
 
 %extend BRepMesh_IncrementalMesh {
 	%pythoncode {
