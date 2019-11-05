@@ -24,7 +24,7 @@ set(PYTHONOCC_VERSION_PATCH 2)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL -dev)
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.12)
 
 if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
   set( PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
@@ -56,9 +56,8 @@ endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 ##########
 # Python #
 ##########
-find_package(PythonInterp)
-find_package(PythonLibs)
-include_directories(${PYTHON_INCLUDE_PATH})
+find_package(Python3 COMPONENTS Development)
+include_directories(${Python3_INCLUDE_DIRS})
 
 ##############################################################
 # 32/64 bit detection
@@ -199,11 +198,7 @@ endif(APPLE)
 ##################################
 # Tells Swig to use py3k option  #
 ##################################
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
-
-if(${python_version_major} MATCHES "3")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
-endif(${python_version_major} MATCHES "3")
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
 
 ################################################
 # Define output path for generated libraries:  #
@@ -261,14 +256,10 @@ endif(PYTHONOCC_WRAP_SMESH)
 ##################
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(${OCE_MODULE} python ${FILE})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-  endif (CMAKE_VERSION VERSION_LESS 3.8)
- 
+  set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+  set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+  
+  swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
   swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
   if (APPLE)
     set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
@@ -288,12 +279,8 @@ if(PYTHONOCC_WRAP_VISU)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
+    swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    
     swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
     if (APPLE)
       set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
@@ -313,12 +300,8 @@ if(PYTHONOCC_WRAP_VISU)
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
     )
 
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(Visualization python ${VISUALIZATION_SOURCE_FILES})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-  endif()
-
+  swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
+  
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
     # if GLX is enabled
@@ -345,11 +328,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
 )
 
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
-endif()
+swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
 
 swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
 if (APPLE)
@@ -371,11 +350,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo_Splitter.cxx
 )
 
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(GEOMAlgo python ${SPLITTER_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(GEOMAlgo LANGUAGE python SOURCES ${SPLITTER_SOURCE_FILES} TYPE MODULE)
-endif()
+swig_add_library(GEOMAlgo LANGUAGE python SOURCES ${SPLITTER_SOURCE_FILES} TYPE MODULE)
 
 swig_link_libraries(GEOMAlgo ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
 if (APPLE)
@@ -393,12 +368,8 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    
     swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
 
     if (APPLE)
@@ -419,12 +390,8 @@ if(PYTHONOCC_WRAP_OCAF)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    
     swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
 
     if (APPLE)
@@ -445,12 +412,8 @@ if(PYTHONOCC_WRAP_SMESH)
     set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${SMESH_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
+    swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    
     swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES})
 
     if (APPLE)
