@@ -91,6 +91,7 @@ conditions:
 %wrap_handle(Geom_SurfaceOfRevolution)
 %wrap_handle(Geom_ToroidalSurface)
 %wrap_handle(Geom_TrimmedCurve)
+%wrap_handle(Geom_HSequenceOfBSplineSurface)
 /* end handles declaration */
 
 /* templates */
@@ -9208,7 +9209,6 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Geom_HSequenceOfBSplineSurface)
 class Geom_HSequenceOfBSplineSurface : public  Geom_SequenceOfBSplineSurface, public Standard_Transient {
     Geom_HSequenceOfBSplineSurface();
     Geom_HSequenceOfBSplineSurface(const  Geom_SequenceOfBSplineSurface& theOther);

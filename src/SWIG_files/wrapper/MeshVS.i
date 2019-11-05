@@ -174,6 +174,7 @@ enum  {
 %wrap_handle(MeshVS_NodalColorPrsBuilder)
 %wrap_handle(MeshVS_TextPrsBuilder)
 %wrap_handle(MeshVS_VectorPrsBuilder)
+%wrap_handle(MeshVS_HArray1OfSequenceOfInteger)
 /* end handles declaration */
 
 /* templates */
@@ -2750,7 +2751,6 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	}
 };
 /* harray1 class */
-%wrap_handle(MeshVS_HArray1OfSequenceOfInteger)
 class MeshVS_HArray1OfSequenceOfInteger : public  MeshVS_Array1OfSequenceOfInteger, public Standard_Transient {
   public:
     MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);

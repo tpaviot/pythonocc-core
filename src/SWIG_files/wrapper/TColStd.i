@@ -54,6 +54,27 @@ conditions:
 
 /* handles */
 %wrap_handle(TColStd_HPackedMapOfInteger)
+%wrap_handle(TColStd_HArray1OfExtendedString)
+%wrap_handle(TColStd_HArray1OfCharacter)
+%wrap_handle(TColStd_HArray1OfBoolean)
+%wrap_handle(TColStd_HArray1OfAsciiString)
+%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfInteger)
+%wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfTransient)
+%wrap_handle(TColStd_HArray1OfByte)
+%wrap_handle(TColStd_HArray2OfBoolean)
+%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfCharacter)
+%wrap_handle(TColStd_HSequenceOfHAsciiString)
+%wrap_handle(TColStd_HSequenceOfTransient)
+%wrap_handle(TColStd_HSequenceOfAsciiString)
+%wrap_handle(TColStd_HSequenceOfHExtendedString)
+%wrap_handle(TColStd_HSequenceOfInteger)
+%wrap_handle(TColStd_HSequenceOfExtendedString)
+%wrap_handle(TColStd_HSequenceOfReal)
 /* end handles declaration */
 
 /* templates */
@@ -514,7 +535,6 @@ class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	}
 };
 /* harray1 class */
-%wrap_handle(TColStd_HArray1OfExtendedString)
 class TColStd_HArray1OfExtendedString : public  TColStd_Array1OfExtendedString, public Standard_Transient {
   public:
     TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -526,7 +546,6 @@ class TColStd_HArray1OfExtendedString : public  TColStd_Array1OfExtendedString, 
 %make_alias(TColStd_HArray1OfExtendedString)
 
 
-%wrap_handle(TColStd_HArray1OfCharacter)
 class TColStd_HArray1OfCharacter : public  TColStd_Array1OfCharacter, public Standard_Transient {
   public:
     TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -538,7 +557,6 @@ class TColStd_HArray1OfCharacter : public  TColStd_Array1OfCharacter, public Sta
 %make_alias(TColStd_HArray1OfCharacter)
 
 
-%wrap_handle(TColStd_HArray1OfBoolean)
 class TColStd_HArray1OfBoolean : public  TColStd_Array1OfBoolean, public Standard_Transient {
   public:
     TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -550,7 +568,6 @@ class TColStd_HArray1OfBoolean : public  TColStd_Array1OfBoolean, public Standar
 %make_alias(TColStd_HArray1OfBoolean)
 
 
-%wrap_handle(TColStd_HArray1OfAsciiString)
 class TColStd_HArray1OfAsciiString : public  TColStd_Array1OfAsciiString, public Standard_Transient {
   public:
     TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -562,7 +579,6 @@ class TColStd_HArray1OfAsciiString : public  TColStd_Array1OfAsciiString, public
 %make_alias(TColStd_HArray1OfAsciiString)
 
 
-%wrap_handle(TColStd_HArray1OfReal)
 class TColStd_HArray1OfReal : public  TColStd_Array1OfReal, public Standard_Transient {
   public:
     TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -574,7 +590,6 @@ class TColStd_HArray1OfReal : public  TColStd_Array1OfReal, public Standard_Tran
 %make_alias(TColStd_HArray1OfReal)
 
 
-%wrap_handle(TColStd_HArray1OfInteger)
 class TColStd_HArray1OfInteger : public  TColStd_Array1OfInteger, public Standard_Transient {
   public:
     TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -586,7 +601,6 @@ class TColStd_HArray1OfInteger : public  TColStd_Array1OfInteger, public Standar
 %make_alias(TColStd_HArray1OfInteger)
 
 
-%wrap_handle(TColStd_HArray1OfListOfInteger)
 class TColStd_HArray1OfListOfInteger : public  TColStd_Array1OfListOfInteger, public Standard_Transient {
   public:
     TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -598,7 +612,6 @@ class TColStd_HArray1OfListOfInteger : public  TColStd_Array1OfListOfInteger, pu
 %make_alias(TColStd_HArray1OfListOfInteger)
 
 
-%wrap_handle(TColStd_HArray1OfTransient)
 class TColStd_HArray1OfTransient : public  TColStd_Array1OfTransient, public Standard_Transient {
   public:
     TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -610,7 +623,6 @@ class TColStd_HArray1OfTransient : public  TColStd_Array1OfTransient, public Sta
 %make_alias(TColStd_HArray1OfTransient)
 
 
-%wrap_handle(TColStd_HArray1OfByte)
 class TColStd_HArray1OfByte : public  TColStd_Array1OfByte, public Standard_Transient {
   public:
     TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -623,7 +635,6 @@ class TColStd_HArray1OfByte : public  TColStd_Array1OfByte, public Standard_Tran
 
 
 /* harray2 class */
-%wrap_handle(TColStd_HArray2OfBoolean)
 class TColStd_HArray2OfBoolean : public  TColStd_Array2OfBoolean, public Standard_Transient {
   public:
     TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -637,7 +648,6 @@ class TColStd_HArray2OfBoolean : public  TColStd_Array2OfBoolean, public Standar
 %make_alias(TColStd_HArray2OfBoolean)
 
 
-%wrap_handle(TColStd_HArray2OfTransient)
 class TColStd_HArray2OfTransient : public  TColStd_Array2OfTransient, public Standard_Transient {
   public:
     TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -651,7 +661,6 @@ class TColStd_HArray2OfTransient : public  TColStd_Array2OfTransient, public Sta
 %make_alias(TColStd_HArray2OfTransient)
 
 
-%wrap_handle(TColStd_HArray2OfReal)
 class TColStd_HArray2OfReal : public  TColStd_Array2OfReal, public Standard_Transient {
   public:
     TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -665,7 +674,6 @@ class TColStd_HArray2OfReal : public  TColStd_Array2OfReal, public Standard_Tran
 %make_alias(TColStd_HArray2OfReal)
 
 
-%wrap_handle(TColStd_HArray2OfInteger)
 class TColStd_HArray2OfInteger : public  TColStd_Array2OfInteger, public Standard_Transient {
   public:
     TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -679,7 +687,6 @@ class TColStd_HArray2OfInteger : public  TColStd_Array2OfInteger, public Standar
 %make_alias(TColStd_HArray2OfInteger)
 
 
-%wrap_handle(TColStd_HArray2OfCharacter)
 class TColStd_HArray2OfCharacter : public  TColStd_Array2OfCharacter, public Standard_Transient {
   public:
     TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -694,7 +701,6 @@ class TColStd_HArray2OfCharacter : public  TColStd_Array2OfCharacter, public Sta
 
 
 /* harray2 class */
-%wrap_handle(TColStd_HSequenceOfHAsciiString)
 class TColStd_HSequenceOfHAsciiString : public  TColStd_SequenceOfHAsciiString, public Standard_Transient {
     TColStd_HSequenceOfHAsciiString();
     TColStd_HSequenceOfHAsciiString(const  TColStd_SequenceOfHAsciiString& theOther);
@@ -706,7 +712,6 @@ class TColStd_HSequenceOfHAsciiString : public  TColStd_SequenceOfHAsciiString, 
 %make_alias(TColStd_HSequenceOfHAsciiString)
 
 
-%wrap_handle(TColStd_HSequenceOfTransient)
 class TColStd_HSequenceOfTransient : public  TColStd_SequenceOfTransient, public Standard_Transient {
     TColStd_HSequenceOfTransient();
     TColStd_HSequenceOfTransient(const  TColStd_SequenceOfTransient& theOther);
@@ -718,7 +723,6 @@ class TColStd_HSequenceOfTransient : public  TColStd_SequenceOfTransient, public
 %make_alias(TColStd_HSequenceOfTransient)
 
 
-%wrap_handle(TColStd_HSequenceOfAsciiString)
 class TColStd_HSequenceOfAsciiString : public  TColStd_SequenceOfAsciiString, public Standard_Transient {
     TColStd_HSequenceOfAsciiString();
     TColStd_HSequenceOfAsciiString(const  TColStd_SequenceOfAsciiString& theOther);
@@ -730,7 +734,6 @@ class TColStd_HSequenceOfAsciiString : public  TColStd_SequenceOfAsciiString, pu
 %make_alias(TColStd_HSequenceOfAsciiString)
 
 
-%wrap_handle(TColStd_HSequenceOfHExtendedString)
 class TColStd_HSequenceOfHExtendedString : public  TColStd_SequenceOfHExtendedString, public Standard_Transient {
     TColStd_HSequenceOfHExtendedString();
     TColStd_HSequenceOfHExtendedString(const  TColStd_SequenceOfHExtendedString& theOther);
@@ -742,7 +745,6 @@ class TColStd_HSequenceOfHExtendedString : public  TColStd_SequenceOfHExtendedSt
 %make_alias(TColStd_HSequenceOfHExtendedString)
 
 
-%wrap_handle(TColStd_HSequenceOfInteger)
 class TColStd_HSequenceOfInteger : public  TColStd_SequenceOfInteger, public Standard_Transient {
     TColStd_HSequenceOfInteger();
     TColStd_HSequenceOfInteger(const  TColStd_SequenceOfInteger& theOther);
@@ -754,7 +756,6 @@ class TColStd_HSequenceOfInteger : public  TColStd_SequenceOfInteger, public Sta
 %make_alias(TColStd_HSequenceOfInteger)
 
 
-%wrap_handle(TColStd_HSequenceOfExtendedString)
 class TColStd_HSequenceOfExtendedString : public  TColStd_SequenceOfExtendedString, public Standard_Transient {
     TColStd_HSequenceOfExtendedString();
     TColStd_HSequenceOfExtendedString(const  TColStd_SequenceOfExtendedString& theOther);
@@ -766,7 +767,6 @@ class TColStd_HSequenceOfExtendedString : public  TColStd_SequenceOfExtendedStri
 %make_alias(TColStd_HSequenceOfExtendedString)
 
 
-%wrap_handle(TColStd_HSequenceOfReal)
 class TColStd_HSequenceOfReal : public  TColStd_SequenceOfReal, public Standard_Transient {
     TColStd_HSequenceOfReal();
     TColStd_HSequenceOfReal(const  TColStd_SequenceOfReal& theOther);

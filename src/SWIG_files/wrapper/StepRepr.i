@@ -126,6 +126,12 @@ conditions:
 %wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ShapeRepresentationRelationshipWithTransformation)
+%wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
+%wrap_handle(StepRepr_HArray1OfRepresentationItem)
+%wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
+%wrap_handle(StepRepr_HArray1OfShapeAspect)
+%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
+%wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 /* end handles declaration */
 
 /* templates */
@@ -3441,7 +3447,6 @@ class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRe
 	}
 };
 /* harray1 class */
-%wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
 class StepRepr_HArray1OfMaterialPropertyRepresentation : public  StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3453,7 +3458,6 @@ class StepRepr_HArray1OfMaterialPropertyRepresentation : public  StepRepr_Array1
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
 
-%wrap_handle(StepRepr_HArray1OfRepresentationItem)
 class StepRepr_HArray1OfRepresentationItem : public  StepRepr_Array1OfRepresentationItem, public Standard_Transient {
   public:
     StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3465,7 +3469,6 @@ class StepRepr_HArray1OfRepresentationItem : public  StepRepr_Array1OfRepresenta
 %make_alias(StepRepr_HArray1OfRepresentationItem)
 
 
-%wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
 class StepRepr_HArray1OfPropertyDefinitionRepresentation : public  StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3477,7 +3480,6 @@ class StepRepr_HArray1OfPropertyDefinitionRepresentation : public  StepRepr_Arra
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
 
 
-%wrap_handle(StepRepr_HArray1OfShapeAspect)
 class StepRepr_HArray1OfShapeAspect : public  StepRepr_Array1OfShapeAspect, public Standard_Transient {
   public:
     StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3491,7 +3493,6 @@ class StepRepr_HArray1OfShapeAspect : public  StepRepr_Array1OfShapeAspect, publ
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
 class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
     StepRepr_HSequenceOfRepresentationItem();
     StepRepr_HSequenceOfRepresentationItem(const  StepRepr_SequenceOfRepresentationItem& theOther);
@@ -3503,7 +3504,6 @@ class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepres
 %make_alias(StepRepr_HSequenceOfRepresentationItem)
 
 
-%wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 class StepRepr_HSequenceOfMaterialPropertyRepresentation : public  StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
     StepRepr_HSequenceOfMaterialPropertyRepresentation(const  StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);

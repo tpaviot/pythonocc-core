@@ -55,6 +55,7 @@ conditions:
 /* handles */
 %wrap_handle(AppDef_SmoothCriterion)
 %wrap_handle(AppDef_LinearCriteria)
+%wrap_handle(AppDef_HArray1OfMultiPointConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -4264,7 +4265,6 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	}
 };
 /* harray1 class */
-%wrap_handle(AppDef_HArray1OfMultiPointConstraint)
 class AppDef_HArray1OfMultiPointConstraint : public  AppDef_Array1OfMultiPointConstraint, public Standard_Transient {
   public:
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);

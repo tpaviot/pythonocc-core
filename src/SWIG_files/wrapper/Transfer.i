@@ -94,6 +94,8 @@ enum Transfer_StatusResult {
 %wrap_handle(Transfer_VoidBinder)
 %wrap_handle(Transfer_ActorDispatch)
 %wrap_handle(Transfer_BinderOfTransientInteger)
+%wrap_handle(Transfer_HSequenceOfBinder)
+%wrap_handle(Transfer_HSequenceOfFinder)
 /* end handles declaration */
 
 /* templates */
@@ -2754,7 +2756,6 @@ class Transfer_BinderOfTransientInteger : public Transfer_SimpleBinderOfTransien
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Transfer_HSequenceOfBinder)
 class Transfer_HSequenceOfBinder : public  Transfer_SequenceOfBinder, public Standard_Transient {
     Transfer_HSequenceOfBinder();
     Transfer_HSequenceOfBinder(const  Transfer_SequenceOfBinder& theOther);
@@ -2766,7 +2767,6 @@ class Transfer_HSequenceOfBinder : public  Transfer_SequenceOfBinder, public Sta
 %make_alias(Transfer_HSequenceOfBinder)
 
 
-%wrap_handle(Transfer_HSequenceOfFinder)
 class Transfer_HSequenceOfFinder : public  Transfer_SequenceOfFinder, public Standard_Transient {
     Transfer_HSequenceOfFinder();
     Transfer_HSequenceOfFinder(const  Transfer_SequenceOfFinder& theOther);

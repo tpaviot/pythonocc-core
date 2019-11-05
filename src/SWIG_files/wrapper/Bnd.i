@@ -53,6 +53,9 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(Bnd_HArray1OfBox)
+%wrap_handle(Bnd_HArray1OfSphere)
+%wrap_handle(Bnd_HArray1OfBox2d)
 /* end handles declaration */
 
 /* templates */
@@ -2392,7 +2395,6 @@ class Bnd_Tools {
 	}
 };
 /* harray1 class */
-%wrap_handle(Bnd_HArray1OfBox)
 class Bnd_HArray1OfBox : public  Bnd_Array1OfBox, public Standard_Transient {
   public:
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2404,7 +2406,6 @@ class Bnd_HArray1OfBox : public  Bnd_Array1OfBox, public Standard_Transient {
 %make_alias(Bnd_HArray1OfBox)
 
 
-%wrap_handle(Bnd_HArray1OfSphere)
 class Bnd_HArray1OfSphere : public  Bnd_Array1OfSphere, public Standard_Transient {
   public:
     Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2416,7 +2417,6 @@ class Bnd_HArray1OfSphere : public  Bnd_Array1OfSphere, public Standard_Transien
 %make_alias(Bnd_HArray1OfSphere)
 
 
-%wrap_handle(Bnd_HArray1OfBox2d)
 class Bnd_HArray1OfBox2d : public  Bnd_Array1OfBox2d, public Standard_Transient {
   public:
     Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);

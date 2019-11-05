@@ -170,6 +170,21 @@ enum StepVisual_MarkerType {
 %wrap_handle(StepVisual_DraughtingPreDefinedCurveFont)
 %wrap_handle(StepVisual_MechanicalDesignGeometricPresentationArea)
 %wrap_handle(StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem)
+%wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
+%wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
+%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
+%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
+%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
+%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
+%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
+%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
+%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
+%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
+%wrap_handle(StepVisual_HArray1OfLayeredItem)
+%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
+%wrap_handle(StepVisual_HArray1OfInvisibleItem)
 /* end handles declaration */
 
 /* templates */
@@ -4807,7 +4822,6 @@ class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItem
 	}
 };
 /* harray1 class */
-%wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
 class StepVisual_HArray1OfAnnotationPlaneElement : public  StepVisual_Array1OfAnnotationPlaneElement, public Standard_Transient {
   public:
     StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4819,7 +4833,6 @@ class StepVisual_HArray1OfAnnotationPlaneElement : public  StepVisual_Array1OfAn
 %make_alias(StepVisual_HArray1OfAnnotationPlaneElement)
 
 
-%wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
 class StepVisual_HArray1OfDraughtingCalloutElement : public  StepVisual_Array1OfDraughtingCalloutElement, public Standard_Transient {
   public:
     StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4831,7 +4844,6 @@ class StepVisual_HArray1OfDraughtingCalloutElement : public  StepVisual_Array1Of
 %make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
 
 
-%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
 class StepVisual_HArray1OfDirectionCountSelect : public  StepVisual_Array1OfDirectionCountSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4843,7 +4855,6 @@ class StepVisual_HArray1OfDirectionCountSelect : public  StepVisual_Array1OfDire
 %make_alias(StepVisual_HArray1OfDirectionCountSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
 class StepVisual_HArray1OfStyleContextSelect : public  StepVisual_Array1OfStyleContextSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4855,7 +4866,6 @@ class StepVisual_HArray1OfStyleContextSelect : public  StepVisual_Array1OfStyleC
 %make_alias(StepVisual_HArray1OfStyleContextSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
 class StepVisual_HArray1OfPresentationStyleSelect : public  StepVisual_Array1OfPresentationStyleSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4867,7 +4877,6 @@ class StepVisual_HArray1OfPresentationStyleSelect : public  StepVisual_Array1OfP
 %make_alias(StepVisual_HArray1OfPresentationStyleSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
 class StepVisual_HArray1OfCurveStyleFontPattern : public  StepVisual_Array1OfCurveStyleFontPattern, public Standard_Transient {
   public:
     StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4879,7 +4888,6 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public  StepVisual_Array1OfCur
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
 
 
-%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
 class StepVisual_HArray1OfBoxCharacteristicSelect : public  StepVisual_Array1OfBoxCharacteristicSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4891,7 +4899,6 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public  StepVisual_Array1OfB
 %make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
 class StepVisual_HArray1OfPresentationStyleAssignment : public  StepVisual_Array1OfPresentationStyleAssignment, public Standard_Transient {
   public:
     StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4903,7 +4910,6 @@ class StepVisual_HArray1OfPresentationStyleAssignment : public  StepVisual_Array
 %make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
 
 
-%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
 class StepVisual_HArray1OfFillStyleSelect : public  StepVisual_Array1OfFillStyleSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4915,7 +4921,6 @@ class StepVisual_HArray1OfFillStyleSelect : public  StepVisual_Array1OfFillStyle
 %make_alias(StepVisual_HArray1OfFillStyleSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
 class StepVisual_HArray1OfTextOrCharacter : public  StepVisual_Array1OfTextOrCharacter, public Standard_Transient {
   public:
     StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4927,7 +4932,6 @@ class StepVisual_HArray1OfTextOrCharacter : public  StepVisual_Array1OfTextOrCha
 %make_alias(StepVisual_HArray1OfTextOrCharacter)
 
 
-%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
 class StepVisual_HArray1OfSurfaceStyleElementSelect : public  StepVisual_Array1OfSurfaceStyleElementSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4939,7 +4943,6 @@ class StepVisual_HArray1OfSurfaceStyleElementSelect : public  StepVisual_Array1O
 %make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
 class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public  StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4951,7 +4954,6 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public  StepVi
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfLayeredItem)
 class StepVisual_HArray1OfLayeredItem : public  StepVisual_Array1OfLayeredItem, public Standard_Transient {
   public:
     StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4963,7 +4965,6 @@ class StepVisual_HArray1OfLayeredItem : public  StepVisual_Array1OfLayeredItem, 
 %make_alias(StepVisual_HArray1OfLayeredItem)
 
 
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
 class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public  StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4975,7 +4976,6 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public  
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
 
 
-%wrap_handle(StepVisual_HArray1OfInvisibleItem)
 class StepVisual_HArray1OfInvisibleItem : public  StepVisual_Array1OfInvisibleItem, public Standard_Transient {
   public:
     StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper);

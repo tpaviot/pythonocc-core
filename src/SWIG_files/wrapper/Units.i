@@ -61,6 +61,9 @@ conditions:
 %wrap_handle(Units_ShiftedToken)
 %wrap_handle(Units_ShiftedUnit)
 %wrap_handle(Units_UnitsLexicon)
+%wrap_handle(Units_TokensSequence)
+%wrap_handle(Units_QuantitiesSequence)
+%wrap_handle(Units_UnitsSequence)
 /* end handles declaration */
 
 /* templates */
@@ -1440,7 +1443,6 @@ class Units_UnitsLexicon : public Units_Lexicon {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Units_TokensSequence)
 class Units_TokensSequence : public  Units_TksSequence, public Standard_Transient {
     Units_TokensSequence();
     Units_TokensSequence(const  Units_TksSequence& theOther);
@@ -1452,7 +1454,6 @@ class Units_TokensSequence : public  Units_TksSequence, public Standard_Transien
 %make_alias(Units_TokensSequence)
 
 
-%wrap_handle(Units_QuantitiesSequence)
 class Units_QuantitiesSequence : public  Units_QtsSequence, public Standard_Transient {
     Units_QuantitiesSequence();
     Units_QuantitiesSequence(const  Units_QtsSequence& theOther);
@@ -1464,7 +1465,6 @@ class Units_QuantitiesSequence : public  Units_QtsSequence, public Standard_Tran
 %make_alias(Units_QuantitiesSequence)
 
 
-%wrap_handle(Units_UnitsSequence)
 class Units_UnitsSequence : public  Units_UtsSequence, public Standard_Transient {
     Units_UnitsSequence();
     Units_UnitsSequence(const  Units_UtsSequence& theOther);

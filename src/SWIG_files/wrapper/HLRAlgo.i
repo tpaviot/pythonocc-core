@@ -76,6 +76,10 @@ enum HLRAlgo_PolyMask {
 %wrap_handle(HLRAlgo_PolyInternalNode)
 %wrap_handle(HLRAlgo_PolyShellData)
 %wrap_handle(HLRAlgo_WiresBlock)
+%wrap_handle(HLRAlgo_HArray1OfPINod)
+%wrap_handle(HLRAlgo_HArray1OfPHDat)
+%wrap_handle(HLRAlgo_HArray1OfTData)
+%wrap_handle(HLRAlgo_HArray1OfPISeg)
 /* end handles declaration */
 
 /* templates */
@@ -1769,7 +1773,6 @@ class HLRAlgo_WiresBlock : public Standard_Transient {
 	}
 };
 /* harray1 class */
-%wrap_handle(HLRAlgo_HArray1OfPINod)
 class HLRAlgo_HArray1OfPINod : public  HLRAlgo_Array1OfPINod, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1781,7 +1784,6 @@ class HLRAlgo_HArray1OfPINod : public  HLRAlgo_Array1OfPINod, public Standard_Tr
 %make_alias(HLRAlgo_HArray1OfPINod)
 
 
-%wrap_handle(HLRAlgo_HArray1OfPHDat)
 class HLRAlgo_HArray1OfPHDat : public  HLRAlgo_Array1OfPHDat, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1793,7 +1795,6 @@ class HLRAlgo_HArray1OfPHDat : public  HLRAlgo_Array1OfPHDat, public Standard_Tr
 %make_alias(HLRAlgo_HArray1OfPHDat)
 
 
-%wrap_handle(HLRAlgo_HArray1OfTData)
 class HLRAlgo_HArray1OfTData : public  HLRAlgo_Array1OfTData, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1805,7 +1806,6 @@ class HLRAlgo_HArray1OfTData : public  HLRAlgo_Array1OfTData, public Standard_Tr
 %make_alias(HLRAlgo_HArray1OfTData)
 
 
-%wrap_handle(HLRAlgo_HArray1OfPISeg)
 class HLRAlgo_HArray1OfPISeg : public  HLRAlgo_Array1OfPISeg, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);

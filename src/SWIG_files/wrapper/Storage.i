@@ -172,7 +172,6 @@ typedef NCollection_Sequence <opencascade::handle <Storage_Root>> Storage_SeqOfR
 /* end typedefs declaration */
 
 /* harray1 class */
-%wrap_handle(Storage_HArrayOfSchema)
 class Storage_HArrayOfSchema : public  Storage_ArrayOfSchema, public Standard_Transient {
   public:
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -184,7 +183,6 @@ class Storage_HArrayOfSchema : public  Storage_ArrayOfSchema, public Standard_Tr
 %make_alias(Storage_HArrayOfSchema)
 
 
-%wrap_handle(Storage_HPArray)
 class Storage_HPArray : public  Storage_PArray, public Standard_Transient {
   public:
     Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -196,7 +194,6 @@ class Storage_HPArray : public  Storage_PArray, public Standard_Transient {
 %make_alias(Storage_HPArray)
 
 
-%wrap_handle(Storage_HArrayOfCallBack)
 class Storage_HArrayOfCallBack : public  Storage_ArrayOfCallBack, public Standard_Transient {
   public:
     Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -210,7 +207,6 @@ class Storage_HArrayOfCallBack : public  Storage_ArrayOfCallBack, public Standar
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Storage_HSeqOfRoot)
 class Storage_HSeqOfRoot : public  Storage_SeqOfRoot, public Standard_Transient {
     Storage_HSeqOfRoot();
     Storage_HSeqOfRoot(const  Storage_SeqOfRoot& theOther);

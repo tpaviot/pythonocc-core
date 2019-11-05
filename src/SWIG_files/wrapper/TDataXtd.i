@@ -105,6 +105,7 @@ enum TDataXtd_GeometryEnum {
 %wrap_handle(TDataXtd_Shape)
 %wrap_handle(TDataXtd_Triangulation)
 %wrap_handle(TDataXtd_PatternStd)
+%wrap_handle(TDataXtd_HArray1OfTrsf)
 /* end handles declaration */
 
 /* templates */
@@ -1789,7 +1790,6 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	}
 };
 /* harray1 class */
-%wrap_handle(TDataXtd_HArray1OfTrsf)
 class TDataXtd_HArray1OfTrsf : public  TDataXtd_Array1OfTrsf, public Standard_Transient {
   public:
     TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper);

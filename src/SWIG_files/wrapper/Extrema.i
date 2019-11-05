@@ -73,6 +73,13 @@ enum Extrema_ElementType {
 /* handles */
 %wrap_handle(Extrema_ExtPExtS)
 %wrap_handle(Extrema_ExtPRevS)
+%wrap_handle(Extrema_HArray1OfPOnSurf)
+%wrap_handle(Extrema_HArray1OfPOnCurv)
+%wrap_handle(Extrema_HArray1OfPOnCurv2d)
+%wrap_handle(Extrema_HArray2OfPOnCurv2d)
+%wrap_handle(Extrema_HArray2OfPOnCurv)
+%wrap_handle(Extrema_HArray2OfPOnSurf)
+%wrap_handle(Extrema_HArray2OfPOnSurfParams)
 /* end handles declaration */
 
 /* templates */
@@ -7295,7 +7302,6 @@ class Extrema_POnSurfParams : public Extrema_POnSurf {
 	}
 };
 /* harray1 class */
-%wrap_handle(Extrema_HArray1OfPOnSurf)
 class Extrema_HArray1OfPOnSurf : public  Extrema_Array1OfPOnSurf, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7307,7 +7313,6 @@ class Extrema_HArray1OfPOnSurf : public  Extrema_Array1OfPOnSurf, public Standar
 %make_alias(Extrema_HArray1OfPOnSurf)
 
 
-%wrap_handle(Extrema_HArray1OfPOnCurv)
 class Extrema_HArray1OfPOnCurv : public  Extrema_Array1OfPOnCurv, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7319,7 +7324,6 @@ class Extrema_HArray1OfPOnCurv : public  Extrema_Array1OfPOnCurv, public Standar
 %make_alias(Extrema_HArray1OfPOnCurv)
 
 
-%wrap_handle(Extrema_HArray1OfPOnCurv2d)
 class Extrema_HArray1OfPOnCurv2d : public  Extrema_Array1OfPOnCurv2d, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7332,7 +7336,6 @@ class Extrema_HArray1OfPOnCurv2d : public  Extrema_Array1OfPOnCurv2d, public Sta
 
 
 /* harray2 class */
-%wrap_handle(Extrema_HArray2OfPOnCurv2d)
 class Extrema_HArray2OfPOnCurv2d : public  Extrema_Array2OfPOnCurv2d, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -7346,7 +7349,6 @@ class Extrema_HArray2OfPOnCurv2d : public  Extrema_Array2OfPOnCurv2d, public Sta
 %make_alias(Extrema_HArray2OfPOnCurv2d)
 
 
-%wrap_handle(Extrema_HArray2OfPOnCurv)
 class Extrema_HArray2OfPOnCurv : public  Extrema_Array2OfPOnCurv, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -7360,7 +7362,6 @@ class Extrema_HArray2OfPOnCurv : public  Extrema_Array2OfPOnCurv, public Standar
 %make_alias(Extrema_HArray2OfPOnCurv)
 
 
-%wrap_handle(Extrema_HArray2OfPOnSurf)
 class Extrema_HArray2OfPOnSurf : public  Extrema_Array2OfPOnSurf, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -7374,7 +7375,6 @@ class Extrema_HArray2OfPOnSurf : public  Extrema_Array2OfPOnSurf, public Standar
 %make_alias(Extrema_HArray2OfPOnSurf)
 
 
-%wrap_handle(Extrema_HArray2OfPOnSurfParams)
 class Extrema_HArray2OfPOnSurfParams : public  Extrema_Array2OfPOnSurfParams, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnSurfParams(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,

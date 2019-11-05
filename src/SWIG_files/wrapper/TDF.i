@@ -75,6 +75,7 @@ enum  {
 %wrap_handle(TDF_TagSource)
 %wrap_handle(TDF_DefaultDeltaOnModification)
 %wrap_handle(TDF_DefaultDeltaOnRemoval)
+%wrap_handle(TDF_HAttributeArray1)
 /* end handles declaration */
 
 /* templates */
@@ -2527,7 +2528,6 @@ class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 	}
 };
 /* harray1 class */
-%wrap_handle(TDF_HAttributeArray1)
 class TDF_HAttributeArray1 : public  TDF_AttributeArray1, public Standard_Transient {
   public:
     TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper);

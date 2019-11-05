@@ -649,6 +649,7 @@ enum Quantity_PhysicalQuantity {
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(Quantity_HArray1OfColor)
 /* end handles declaration */
 
 /* templates */
@@ -1795,7 +1796,6 @@ class Quantity_Period {
 	}
 };
 /* harray1 class */
-%wrap_handle(Quantity_HArray1OfColor)
 class Quantity_HArray1OfColor : public  Quantity_Array1OfColor, public Standard_Transient {
   public:
     Quantity_HArray1OfColor(const Standard_Integer theLower, const Standard_Integer theUpper);

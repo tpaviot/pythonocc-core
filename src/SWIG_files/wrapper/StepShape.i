@@ -157,6 +157,17 @@ enum StepShape_BooleanOperator {
 %wrap_handle(StepShape_OrientedClosedShell)
 %wrap_handle(StepShape_OrientedOpenShell)
 %wrap_handle(StepShape_SeamEdge)
+%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
+%wrap_handle(StepShape_HArray1OfFaceBound)
+%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
+%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
+%wrap_handle(StepShape_HArray1OfEdge)
+%wrap_handle(StepShape_HArray1OfFace)
+%wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
+%wrap_handle(StepShape_HArray1OfValueQualifier)
+%wrap_handle(StepShape_HArray1OfShell)
+%wrap_handle(StepShape_HArray1OfOrientedClosedShell)
+%wrap_handle(StepShape_HArray1OfOrientedEdge)
 /* end handles declaration */
 
 /* templates */
@@ -4999,7 +5010,6 @@ class StepShape_SeamEdge : public StepShape_OrientedEdge {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
 class StepShape_HArray1OfConnectedEdgeSet : public  StepShape_Array1OfConnectedEdgeSet, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5011,7 +5021,6 @@ class StepShape_HArray1OfConnectedEdgeSet : public  StepShape_Array1OfConnectedE
 %make_alias(StepShape_HArray1OfConnectedEdgeSet)
 
 
-%wrap_handle(StepShape_HArray1OfFaceBound)
 class StepShape_HArray1OfFaceBound : public  StepShape_Array1OfFaceBound, public Standard_Transient {
   public:
     StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5023,7 +5032,6 @@ class StepShape_HArray1OfFaceBound : public  StepShape_Array1OfFaceBound, public
 %make_alias(StepShape_HArray1OfFaceBound)
 
 
-%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
 class StepShape_HArray1OfGeometricSetSelect : public  StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
   public:
     StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5035,7 +5043,6 @@ class StepShape_HArray1OfGeometricSetSelect : public  StepShape_Array1OfGeometri
 %make_alias(StepShape_HArray1OfGeometricSetSelect)
 
 
-%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
 class StepShape_HArray1OfConnectedFaceSet : public  StepShape_Array1OfConnectedFaceSet, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5047,7 +5054,6 @@ class StepShape_HArray1OfConnectedFaceSet : public  StepShape_Array1OfConnectedF
 %make_alias(StepShape_HArray1OfConnectedFaceSet)
 
 
-%wrap_handle(StepShape_HArray1OfEdge)
 class StepShape_HArray1OfEdge : public  StepShape_Array1OfEdge, public Standard_Transient {
   public:
     StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5059,7 +5065,6 @@ class StepShape_HArray1OfEdge : public  StepShape_Array1OfEdge, public Standard_
 %make_alias(StepShape_HArray1OfEdge)
 
 
-%wrap_handle(StepShape_HArray1OfFace)
 class StepShape_HArray1OfFace : public  StepShape_Array1OfFace, public Standard_Transient {
   public:
     StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5071,7 +5076,6 @@ class StepShape_HArray1OfFace : public  StepShape_Array1OfFace, public Standard_
 %make_alias(StepShape_HArray1OfFace)
 
 
-%wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
 class StepShape_HArray1OfShapeDimensionRepresentationItem : public  StepShape_Array1OfShapeDimensionRepresentationItem, public Standard_Transient {
   public:
     StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5083,7 +5087,6 @@ class StepShape_HArray1OfShapeDimensionRepresentationItem : public  StepShape_Ar
 %make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
 
 
-%wrap_handle(StepShape_HArray1OfValueQualifier)
 class StepShape_HArray1OfValueQualifier : public  StepShape_Array1OfValueQualifier, public Standard_Transient {
   public:
     StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5095,7 +5098,6 @@ class StepShape_HArray1OfValueQualifier : public  StepShape_Array1OfValueQualifi
 %make_alias(StepShape_HArray1OfValueQualifier)
 
 
-%wrap_handle(StepShape_HArray1OfShell)
 class StepShape_HArray1OfShell : public  StepShape_Array1OfShell, public Standard_Transient {
   public:
     StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5107,7 +5109,6 @@ class StepShape_HArray1OfShell : public  StepShape_Array1OfShell, public Standar
 %make_alias(StepShape_HArray1OfShell)
 
 
-%wrap_handle(StepShape_HArray1OfOrientedClosedShell)
 class StepShape_HArray1OfOrientedClosedShell : public  StepShape_Array1OfOrientedClosedShell, public Standard_Transient {
   public:
     StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5119,7 +5120,6 @@ class StepShape_HArray1OfOrientedClosedShell : public  StepShape_Array1OfOriente
 %make_alias(StepShape_HArray1OfOrientedClosedShell)
 
 
-%wrap_handle(StepShape_HArray1OfOrientedEdge)
 class StepShape_HArray1OfOrientedEdge : public  StepShape_Array1OfOrientedEdge, public Standard_Transient {
   public:
     StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper);

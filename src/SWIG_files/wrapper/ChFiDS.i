@@ -89,6 +89,8 @@ enum ChFiDS_ErrorStatus {
 %wrap_handle(ChFiDS_SurfData)
 %wrap_handle(ChFiDS_ChamfSpine)
 %wrap_handle(ChFiDS_FilSpine)
+%wrap_handle(ChFiDS_SecHArray1)
+%wrap_handle(ChFiDS_HData)
 /* end handles declaration */
 
 /* templates */
@@ -2229,7 +2231,6 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 	}
 };
 /* harray1 class */
-%wrap_handle(ChFiDS_SecHArray1)
 class ChFiDS_SecHArray1 : public  ChFiDS_SecArray1, public Standard_Transient {
   public:
     ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2243,7 +2244,6 @@ class ChFiDS_SecHArray1 : public  ChFiDS_SecArray1, public Standard_Transient {
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(ChFiDS_HData)
 class ChFiDS_HData : public  ChFiDS_SequenceOfSurfData, public Standard_Transient {
     ChFiDS_HData();
     ChFiDS_HData(const  ChFiDS_SequenceOfSurfData& theOther);

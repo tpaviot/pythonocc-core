@@ -110,6 +110,8 @@ enum Interface_CheckStatus {
 %wrap_handle(Interface_UndefinedContent)
 %wrap_handle(Interface_CopyMap)
 %wrap_handle(Interface_Static)
+%wrap_handle(Interface_HArray1OfHAsciiString)
+%wrap_handle(Interface_HSequenceOfCheck)
 /* end handles declaration */
 
 /* templates */
@@ -6178,7 +6180,6 @@ class Interface_Static : public Interface_TypedValue {
 	}
 };
 /* harray1 class */
-%wrap_handle(Interface_HArray1OfHAsciiString)
 class Interface_HArray1OfHAsciiString : public  Interface_Array1OfHAsciiString, public Standard_Transient {
   public:
     Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -6192,7 +6193,6 @@ class Interface_HArray1OfHAsciiString : public  Interface_Array1OfHAsciiString, 
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Interface_HSequenceOfCheck)
 class Interface_HSequenceOfCheck : public  Interface_SequenceOfCheck, public Standard_Transient {
     Interface_HSequenceOfCheck();
     Interface_HSequenceOfCheck(const  Interface_SequenceOfCheck& theOther);

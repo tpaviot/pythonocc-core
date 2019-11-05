@@ -112,6 +112,9 @@ enum GeomFill_PipeError {
 %wrap_handle(GeomFill_UniformSection)
 %wrap_handle(GeomFill_GuideTrihedronAC)
 %wrap_handle(GeomFill_GuideTrihedronPlan)
+%wrap_handle(GeomFill_HArray1OfLocationLaw)
+%wrap_handle(GeomFill_HArray1OfSectionLaw)
+%wrap_handle(GeomFill_HSequenceOfAx2)
 /* end handles declaration */
 
 /* templates */
@@ -7204,7 +7207,6 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	}
 };
 /* harray1 class */
-%wrap_handle(GeomFill_HArray1OfLocationLaw)
 class GeomFill_HArray1OfLocationLaw : public  GeomFill_Array1OfLocationLaw, public Standard_Transient {
   public:
     GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7216,7 +7218,6 @@ class GeomFill_HArray1OfLocationLaw : public  GeomFill_Array1OfLocationLaw, publ
 %make_alias(GeomFill_HArray1OfLocationLaw)
 
 
-%wrap_handle(GeomFill_HArray1OfSectionLaw)
 class GeomFill_HArray1OfSectionLaw : public  GeomFill_Array1OfSectionLaw, public Standard_Transient {
   public:
     GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7230,7 +7231,6 @@ class GeomFill_HArray1OfSectionLaw : public  GeomFill_Array1OfSectionLaw, public
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(GeomFill_HSequenceOfAx2)
 class GeomFill_HSequenceOfAx2 : public  GeomFill_SequenceOfAx2, public Standard_Transient {
     GeomFill_HSequenceOfAx2();
     GeomFill_HSequenceOfAx2(const  GeomFill_SequenceOfAx2& theOther);

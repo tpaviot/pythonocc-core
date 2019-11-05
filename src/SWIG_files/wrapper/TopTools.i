@@ -53,6 +53,10 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(TopTools_HArray1OfShape)
+%wrap_handle(TopTools_HArray1OfListOfShape)
+%wrap_handle(TopTools_HArray2OfShape)
+%wrap_handle(TopTools_HSequenceOfShape)
 /* end handles declaration */
 
 /* templates */
@@ -650,7 +654,6 @@ class TopTools_ShapeSet {
 	}
 };
 /* harray1 class */
-%wrap_handle(TopTools_HArray1OfShape)
 class TopTools_HArray1OfShape : public  TopTools_Array1OfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -662,7 +665,6 @@ class TopTools_HArray1OfShape : public  TopTools_Array1OfShape, public Standard_
 %make_alias(TopTools_HArray1OfShape)
 
 
-%wrap_handle(TopTools_HArray1OfListOfShape)
 class TopTools_HArray1OfListOfShape : public  TopTools_Array1OfListOfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -675,7 +677,6 @@ class TopTools_HArray1OfListOfShape : public  TopTools_Array1OfListOfShape, publ
 
 
 /* harray2 class */
-%wrap_handle(TopTools_HArray2OfShape)
 class TopTools_HArray2OfShape : public  TopTools_Array2OfShape, public Standard_Transient {
   public:
     TopTools_HArray2OfShape(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -690,7 +691,6 @@ class TopTools_HArray2OfShape : public  TopTools_Array2OfShape, public Standard_
 
 
 /* harray2 class */
-%wrap_handle(TopTools_HSequenceOfShape)
 class TopTools_HSequenceOfShape : public  TopTools_SequenceOfShape, public Standard_Transient {
     TopTools_HSequenceOfShape();
     TopTools_HSequenceOfShape(const  TopTools_SequenceOfShape& theOther);

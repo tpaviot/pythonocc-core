@@ -57,6 +57,7 @@ conditions:
 %wrap_handle(BRepAdaptor_HCurve)
 %wrap_handle(BRepAdaptor_HCurve2d)
 %wrap_handle(BRepAdaptor_HSurface)
+%wrap_handle(BRepAdaptor_HArray1OfCurve)
 /* end handles declaration */
 
 /* templates */
@@ -1290,7 +1291,6 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 	}
 };
 /* harray1 class */
-%wrap_handle(BRepAdaptor_HArray1OfCurve)
 class BRepAdaptor_HArray1OfCurve : public  BRepAdaptor_Array1OfCurve, public Standard_Transient {
   public:
     BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);

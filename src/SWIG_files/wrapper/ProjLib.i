@@ -55,6 +55,7 @@ conditions:
 /* handles */
 %wrap_handle(ProjLib_HCompProjectedCurve)
 %wrap_handle(ProjLib_HProjectedCurve)
+%wrap_handle(ProjLib_HSequenceOfHSequenceOfPnt)
 /* end handles declaration */
 
 /* templates */
@@ -2093,7 +2094,6 @@ class ProjLib_Torus : public ProjLib_Projector {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(ProjLib_HSequenceOfHSequenceOfPnt)
 class ProjLib_HSequenceOfHSequenceOfPnt : public  ProjLib_SequenceOfHSequenceOfPnt, public Standard_Transient {
     ProjLib_HSequenceOfHSequenceOfPnt();
     ProjLib_HSequenceOfHSequenceOfPnt(const  ProjLib_SequenceOfHSequenceOfPnt& theOther);

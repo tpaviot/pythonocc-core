@@ -60,6 +60,10 @@ enum AppParCurves_Constraint {
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(AppParCurves_HArray1OfMultiCurve)
+%wrap_handle(AppParCurves_HArray1OfConstraintCouple)
+%wrap_handle(AppParCurves_HArray1OfMultiPoint)
+%wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
 /* end handles declaration */
 
 /* templates */
@@ -912,7 +916,6 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	}
 };
 /* harray1 class */
-%wrap_handle(AppParCurves_HArray1OfMultiCurve)
 class AppParCurves_HArray1OfMultiCurve : public  AppParCurves_Array1OfMultiCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -924,7 +927,6 @@ class AppParCurves_HArray1OfMultiCurve : public  AppParCurves_Array1OfMultiCurve
 %make_alias(AppParCurves_HArray1OfMultiCurve)
 
 
-%wrap_handle(AppParCurves_HArray1OfConstraintCouple)
 class AppParCurves_HArray1OfConstraintCouple : public  AppParCurves_Array1OfConstraintCouple, public Standard_Transient {
   public:
     AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -936,7 +938,6 @@ class AppParCurves_HArray1OfConstraintCouple : public  AppParCurves_Array1OfCons
 %make_alias(AppParCurves_HArray1OfConstraintCouple)
 
 
-%wrap_handle(AppParCurves_HArray1OfMultiPoint)
 class AppParCurves_HArray1OfMultiPoint : public  AppParCurves_Array1OfMultiPoint, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -948,7 +949,6 @@ class AppParCurves_HArray1OfMultiPoint : public  AppParCurves_Array1OfMultiPoint
 %make_alias(AppParCurves_HArray1OfMultiPoint)
 
 
-%wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
 class AppParCurves_HArray1OfMultiBSpCurve : public  AppParCurves_Array1OfMultiBSpCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper);

@@ -68,6 +68,7 @@ enum Contap_TFunction {
 
 /* handles */
 %wrap_handle(Contap_TheIWLineOfTheIWalking)
+%wrap_handle(Contap_TheHSequenceOfPoint)
 /* end handles declaration */
 
 /* templates */
@@ -1997,7 +1998,6 @@ class Contap_TheSegmentOfTheSearch {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(Contap_TheHSequenceOfPoint)
 class Contap_TheHSequenceOfPoint : public  Contap_TheSequenceOfPoint, public Standard_Transient {
     Contap_TheHSequenceOfPoint();
     Contap_TheHSequenceOfPoint(const  Contap_TheSequenceOfPoint& theOther);

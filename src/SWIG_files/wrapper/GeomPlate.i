@@ -56,6 +56,10 @@ conditions:
 %wrap_handle(GeomPlate_CurveConstraint)
 %wrap_handle(GeomPlate_PointConstraint)
 %wrap_handle(GeomPlate_Surface)
+%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
+%wrap_handle(GeomPlate_HArray1OfHCurve)
+%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
+%wrap_handle(GeomPlate_HSequenceOfCurveConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -1290,7 +1294,6 @@ class GeomPlate_Surface : public Geom_Surface {
 	}
 };
 /* harray1 class */
-%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
 class GeomPlate_HArray1OfSequenceOfReal : public  GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
   public:
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1302,7 +1305,6 @@ class GeomPlate_HArray1OfSequenceOfReal : public  GeomPlate_Array1OfSequenceOfRe
 %make_alias(GeomPlate_HArray1OfSequenceOfReal)
 
 
-%wrap_handle(GeomPlate_HArray1OfHCurve)
 class GeomPlate_HArray1OfHCurve : public  GeomPlate_Array1OfHCurve, public Standard_Transient {
   public:
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1316,7 +1318,6 @@ class GeomPlate_HArray1OfHCurve : public  GeomPlate_Array1OfHCurve, public Stand
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
 class GeomPlate_HSequenceOfPointConstraint : public  GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
     GeomPlate_HSequenceOfPointConstraint();
     GeomPlate_HSequenceOfPointConstraint(const  GeomPlate_SequenceOfPointConstraint& theOther);
@@ -1328,7 +1329,6 @@ class GeomPlate_HSequenceOfPointConstraint : public  GeomPlate_SequenceOfPointCo
 %make_alias(GeomPlate_HSequenceOfPointConstraint)
 
 
-%wrap_handle(GeomPlate_HSequenceOfCurveConstraint)
 class GeomPlate_HSequenceOfCurveConstraint : public  GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
     GeomPlate_HSequenceOfCurveConstraint();
     GeomPlate_HSequenceOfCurveConstraint(const  GeomPlate_SequenceOfCurveConstraint& theOther);

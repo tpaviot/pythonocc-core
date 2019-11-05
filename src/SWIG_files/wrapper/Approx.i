@@ -67,6 +67,8 @@ enum Approx_ParametrizationType {
 /* handles */
 %wrap_handle(Approx_CurvlinFunc)
 %wrap_handle(Approx_SweepFunction)
+%wrap_handle(Approx_HArray1OfGTrsf2d)
+%wrap_handle(Approx_HArray1OfAdHSurface)
 /* end handles declaration */
 
 /* templates */
@@ -1465,7 +1467,6 @@ class Approx_SweepFunction : public Standard_Transient {
 	}
 };
 /* harray1 class */
-%wrap_handle(Approx_HArray1OfGTrsf2d)
 class Approx_HArray1OfGTrsf2d : public  Approx_Array1OfGTrsf2d, public Standard_Transient {
   public:
     Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1477,7 +1478,6 @@ class Approx_HArray1OfGTrsf2d : public  Approx_Array1OfGTrsf2d, public Standard_
 %make_alias(Approx_HArray1OfGTrsf2d)
 
 
-%wrap_handle(Approx_HArray1OfAdHSurface)
 class Approx_HArray1OfAdHSurface : public  Approx_Array1OfAdHSurface, public Standard_Transient {
   public:
     Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper);

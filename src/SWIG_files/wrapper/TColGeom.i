@@ -53,6 +53,13 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(TColGeom_HArray1OfSurface)
+%wrap_handle(TColGeom_HArray1OfBezierCurve)
+%wrap_handle(TColGeom_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom_HArray1OfCurve)
+%wrap_handle(TColGeom_HArray2OfSurface)
+%wrap_handle(TColGeom_HSequenceOfBoundedCurve)
+%wrap_handle(TColGeom_HSequenceOfCurve)
 /* end handles declaration */
 
 /* templates */
@@ -216,7 +223,6 @@ typedef NCollection_Array1 <opencascade::handle <Geom_BSplineCurve>> TColGeom_Ar
 /* end typedefs declaration */
 
 /* harray1 class */
-%wrap_handle(TColGeom_HArray1OfSurface)
 class TColGeom_HArray1OfSurface : public  TColGeom_Array1OfSurface, public Standard_Transient {
   public:
     TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -228,7 +234,6 @@ class TColGeom_HArray1OfSurface : public  TColGeom_Array1OfSurface, public Stand
 %make_alias(TColGeom_HArray1OfSurface)
 
 
-%wrap_handle(TColGeom_HArray1OfBezierCurve)
 class TColGeom_HArray1OfBezierCurve : public  TColGeom_Array1OfBezierCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -240,7 +245,6 @@ class TColGeom_HArray1OfBezierCurve : public  TColGeom_Array1OfBezierCurve, publ
 %make_alias(TColGeom_HArray1OfBezierCurve)
 
 
-%wrap_handle(TColGeom_HArray1OfBSplineCurve)
 class TColGeom_HArray1OfBSplineCurve : public  TColGeom_Array1OfBSplineCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -252,7 +256,6 @@ class TColGeom_HArray1OfBSplineCurve : public  TColGeom_Array1OfBSplineCurve, pu
 %make_alias(TColGeom_HArray1OfBSplineCurve)
 
 
-%wrap_handle(TColGeom_HArray1OfCurve)
 class TColGeom_HArray1OfCurve : public  TColGeom_Array1OfCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -265,7 +268,6 @@ class TColGeom_HArray1OfCurve : public  TColGeom_Array1OfCurve, public Standard_
 
 
 /* harray2 class */
-%wrap_handle(TColGeom_HArray2OfSurface)
 class TColGeom_HArray2OfSurface : public  TColGeom_Array2OfSurface, public Standard_Transient {
   public:
     TColGeom_HArray2OfSurface(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -280,7 +282,6 @@ class TColGeom_HArray2OfSurface : public  TColGeom_Array2OfSurface, public Stand
 
 
 /* harray2 class */
-%wrap_handle(TColGeom_HSequenceOfBoundedCurve)
 class TColGeom_HSequenceOfBoundedCurve : public  TColGeom_SequenceOfBoundedCurve, public Standard_Transient {
     TColGeom_HSequenceOfBoundedCurve();
     TColGeom_HSequenceOfBoundedCurve(const  TColGeom_SequenceOfBoundedCurve& theOther);
@@ -292,7 +293,6 @@ class TColGeom_HSequenceOfBoundedCurve : public  TColGeom_SequenceOfBoundedCurve
 %make_alias(TColGeom_HSequenceOfBoundedCurve)
 
 
-%wrap_handle(TColGeom_HSequenceOfCurve)
 class TColGeom_HSequenceOfCurve : public  TColGeom_SequenceOfCurve, public Standard_Transient {
     TColGeom_HSequenceOfCurve();
     TColGeom_HSequenceOfCurve(const  TColGeom_SequenceOfCurve& theOther);

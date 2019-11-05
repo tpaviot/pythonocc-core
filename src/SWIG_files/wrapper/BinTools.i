@@ -208,15 +208,7 @@ class BinTools_Curve2dSet {
 	:rtype: opencascade::handle<Geom2d_Curve>
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d (const Standard_Integer I);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") Index;
+		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "	* Returns the index of <L>.
 
 	:param C:

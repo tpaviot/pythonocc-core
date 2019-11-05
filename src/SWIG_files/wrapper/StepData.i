@@ -81,6 +81,7 @@ enum StepData_Logical {
 %wrap_handle(StepData_SelectReal)
 %wrap_handle(StepData_Simple)
 %wrap_handle(StepData_SelectArrReal)
+%wrap_handle(StepData_HArray1OfField)
 /* end handles declaration */
 
 /* templates */
@@ -4106,7 +4107,6 @@ class StepData_SelectArrReal : public StepData_SelectNamed {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepData_HArray1OfField)
 class StepData_HArray1OfField : public  StepData_Array1OfField, public Standard_Transient {
   public:
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper);

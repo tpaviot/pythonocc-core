@@ -111,6 +111,7 @@ enum IGESData_DefType {
 %wrap_handle(IGESData_UndefinedEntity)
 %wrap_handle(IGESData_ViewKindEntity)
 %wrap_handle(IGESData_FreeFormatEntity)
+%wrap_handle(IGESData_HArray1OfIGESEntity)
 /* end handles declaration */
 
 /* templates */
@@ -4687,7 +4688,6 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	}
 };
 /* harray1 class */
-%wrap_handle(IGESData_HArray1OfIGESEntity)
 class IGESData_HArray1OfIGESEntity : public  IGESData_Array1OfIGESEntity, public Standard_Transient {
   public:
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper);

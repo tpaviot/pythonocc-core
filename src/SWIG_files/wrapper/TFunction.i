@@ -67,6 +67,7 @@ enum TFunction_ExecutionStatus {
 %wrap_handle(TFunction_GraphNode)
 %wrap_handle(TFunction_Logbook)
 %wrap_handle(TFunction_Scope)
+%wrap_handle(TFunction_HArray1OfDataMapOfGUIDDriver)
 /* end handles declaration */
 
 /* templates */
@@ -1102,7 +1103,6 @@ class TFunction_Scope : public TDF_Attribute {
 	}
 };
 /* harray1 class */
-%wrap_handle(TFunction_HArray1OfDataMapOfGUIDDriver)
 class TFunction_HArray1OfDataMapOfGUIDDriver : public  TFunction_Array1OfDataMapOfGUIDDriver, public Standard_Transient {
   public:
     TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper);

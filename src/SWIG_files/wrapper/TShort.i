@@ -53,6 +53,9 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(TShort_HArray1OfShortReal)
+%wrap_handle(TShort_HArray2OfShortReal)
+%wrap_handle(TShort_HSequenceOfShortReal)
 /* end handles declaration */
 
 /* templates */
@@ -102,7 +105,6 @@ typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
 /* end typedefs declaration */
 
 /* harray1 class */
-%wrap_handle(TShort_HArray1OfShortReal)
 class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Standard_Transient {
   public:
     TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -115,7 +117,6 @@ class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Stand
 
 
 /* harray2 class */
-%wrap_handle(TShort_HArray2OfShortReal)
 class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Standard_Transient {
   public:
     TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -130,7 +131,6 @@ class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Stand
 
 
 /* harray2 class */
-%wrap_handle(TShort_HSequenceOfShortReal)
 class TShort_HSequenceOfShortReal : public  TShort_SequenceOfShortReal, public Standard_Transient {
     TShort_HSequenceOfShortReal();
     TShort_HSequenceOfShortReal(const  TShort_SequenceOfShortReal& theOther);

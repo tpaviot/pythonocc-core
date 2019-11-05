@@ -182,34 +182,6 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
-#include<TopoDS.hxx>
-#include<TopoDS_AlertWithShape.hxx>
-#include<TopoDS_Builder.hxx>
-#include<TopoDS_CompSolid.hxx>
-#include<TopoDS_Compound.hxx>
-#include<TopoDS_Edge.hxx>
-#include<TopoDS_Face.hxx>
-#include<TopoDS_FrozenShape.hxx>
-#include<TopoDS_HShape.hxx>
-#include<TopoDS_Iterator.hxx>
-#include<TopoDS_ListIteratorOfListOfShape.hxx>
-#include<TopoDS_ListOfShape.hxx>
-#include<TopoDS_LockedShape.hxx>
-#include<TopoDS_Shape.hxx>
-#include<TopoDS_Shell.hxx>
-#include<TopoDS_Solid.hxx>
-#include<TopoDS_TCompSolid.hxx>
-#include<TopoDS_TCompound.hxx>
-#include<TopoDS_TEdge.hxx>
-#include<TopoDS_TFace.hxx>
-#include<TopoDS_TShape.hxx>
-#include<TopoDS_TShell.hxx>
-#include<TopoDS_TSolid.hxx>
-#include<TopoDS_TVertex.hxx>
-#include<TopoDS_TWire.hxx>
-#include<TopoDS_UnCompatibleShapes.hxx>
-#include<TopoDS_Vertex.hxx>
-#include<TopoDS_Wire.hxx>
 #include<Interface_Array1OfFileParameter.hxx>
 #include<Interface_Array1OfHAsciiString.hxx>
 #include<Interface_BitMap.hxx>
@@ -472,6 +444,34 @@ conditions:
 #include<Transfer_TransientProcess.hxx>
 #include<Transfer_UndefMode.hxx>
 #include<Transfer_VoidBinder.hxx>
+#include<TopoDS.hxx>
+#include<TopoDS_AlertWithShape.hxx>
+#include<TopoDS_Builder.hxx>
+#include<TopoDS_CompSolid.hxx>
+#include<TopoDS_Compound.hxx>
+#include<TopoDS_Edge.hxx>
+#include<TopoDS_Face.hxx>
+#include<TopoDS_FrozenShape.hxx>
+#include<TopoDS_HShape.hxx>
+#include<TopoDS_Iterator.hxx>
+#include<TopoDS_ListIteratorOfListOfShape.hxx>
+#include<TopoDS_ListOfShape.hxx>
+#include<TopoDS_LockedShape.hxx>
+#include<TopoDS_Shape.hxx>
+#include<TopoDS_Shell.hxx>
+#include<TopoDS_Solid.hxx>
+#include<TopoDS_TCompSolid.hxx>
+#include<TopoDS_TCompound.hxx>
+#include<TopoDS_TEdge.hxx>
+#include<TopoDS_TFace.hxx>
+#include<TopoDS_TShape.hxx>
+#include<TopoDS_TShell.hxx>
+#include<TopoDS_TSolid.hxx>
+#include<TopoDS_TVertex.hxx>
+#include<TopoDS_TWire.hxx>
+#include<TopoDS_UnCompatibleShapes.hxx>
+#include<TopoDS_Vertex.hxx>
+#include<TopoDS_Wire.hxx>
 #include<TopAbs.hxx>
 #include<TopAbs_Orientation.hxx>
 #include<TopAbs_ShapeEnum.hxx>
@@ -707,10 +707,10 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
-%import TopoDS.i
 %import Interface.i
 %import TColStd.i
 %import TopTools.i
 %import Message.i
 %import Transfer.i
+%import TopoDS.i
 %import TopAbs.i

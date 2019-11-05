@@ -64,6 +64,16 @@ conditions:
 %wrap_handle(StepAP203_ChangeRequest)
 %wrap_handle(StepAP203_StartRequest)
 %wrap_handle(StepAP203_StartWork)
+%wrap_handle(StepAP203_HArray1OfSpecifiedItem)
+%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
+%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
+%wrap_handle(StepAP203_HArray1OfContractedItem)
+%wrap_handle(StepAP203_HArray1OfCertifiedItem)
+%wrap_handle(StepAP203_HArray1OfStartRequestItem)
+%wrap_handle(StepAP203_HArray1OfDateTimeItem)
+%wrap_handle(StepAP203_HArray1OfApprovedItem)
+%wrap_handle(StepAP203_HArray1OfWorkItem)
+%wrap_handle(StepAP203_HArray1OfClassifiedItem)
 /* end handles declaration */
 
 /* templates */
@@ -1396,7 +1406,6 @@ class StepAP203_WorkItem : public StepData_SelectType {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepAP203_HArray1OfSpecifiedItem)
 class StepAP203_HArray1OfSpecifiedItem : public  StepAP203_Array1OfSpecifiedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1408,7 +1417,6 @@ class StepAP203_HArray1OfSpecifiedItem : public  StepAP203_Array1OfSpecifiedItem
 %make_alias(StepAP203_HArray1OfSpecifiedItem)
 
 
-%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
 class StepAP203_HArray1OfPersonOrganizationItem : public  StepAP203_Array1OfPersonOrganizationItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1420,7 +1428,6 @@ class StepAP203_HArray1OfPersonOrganizationItem : public  StepAP203_Array1OfPers
 %make_alias(StepAP203_HArray1OfPersonOrganizationItem)
 
 
-%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
 class StepAP203_HArray1OfChangeRequestItem : public  StepAP203_Array1OfChangeRequestItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1432,7 +1439,6 @@ class StepAP203_HArray1OfChangeRequestItem : public  StepAP203_Array1OfChangeReq
 %make_alias(StepAP203_HArray1OfChangeRequestItem)
 
 
-%wrap_handle(StepAP203_HArray1OfContractedItem)
 class StepAP203_HArray1OfContractedItem : public  StepAP203_Array1OfContractedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1444,7 +1450,6 @@ class StepAP203_HArray1OfContractedItem : public  StepAP203_Array1OfContractedIt
 %make_alias(StepAP203_HArray1OfContractedItem)
 
 
-%wrap_handle(StepAP203_HArray1OfCertifiedItem)
 class StepAP203_HArray1OfCertifiedItem : public  StepAP203_Array1OfCertifiedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1456,7 +1461,6 @@ class StepAP203_HArray1OfCertifiedItem : public  StepAP203_Array1OfCertifiedItem
 %make_alias(StepAP203_HArray1OfCertifiedItem)
 
 
-%wrap_handle(StepAP203_HArray1OfStartRequestItem)
 class StepAP203_HArray1OfStartRequestItem : public  StepAP203_Array1OfStartRequestItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1468,7 +1472,6 @@ class StepAP203_HArray1OfStartRequestItem : public  StepAP203_Array1OfStartReque
 %make_alias(StepAP203_HArray1OfStartRequestItem)
 
 
-%wrap_handle(StepAP203_HArray1OfDateTimeItem)
 class StepAP203_HArray1OfDateTimeItem : public  StepAP203_Array1OfDateTimeItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1480,7 +1483,6 @@ class StepAP203_HArray1OfDateTimeItem : public  StepAP203_Array1OfDateTimeItem, 
 %make_alias(StepAP203_HArray1OfDateTimeItem)
 
 
-%wrap_handle(StepAP203_HArray1OfApprovedItem)
 class StepAP203_HArray1OfApprovedItem : public  StepAP203_Array1OfApprovedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1492,7 +1494,6 @@ class StepAP203_HArray1OfApprovedItem : public  StepAP203_Array1OfApprovedItem, 
 %make_alias(StepAP203_HArray1OfApprovedItem)
 
 
-%wrap_handle(StepAP203_HArray1OfWorkItem)
 class StepAP203_HArray1OfWorkItem : public  StepAP203_Array1OfWorkItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1504,7 +1505,6 @@ class StepAP203_HArray1OfWorkItem : public  StepAP203_Array1OfWorkItem, public S
 %make_alias(StepAP203_HArray1OfWorkItem)
 
 
-%wrap_handle(StepAP203_HArray1OfClassifiedItem)
 class StepAP203_HArray1OfClassifiedItem : public  StepAP203_Array1OfClassifiedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
