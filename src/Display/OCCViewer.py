@@ -40,21 +40,23 @@ from OCC.Core.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
 from OCC.Core.Geom import Geom_Curve, Geom_Surface
 from OCC.Core.Geom2d import Geom2d_Curve
 from OCC.Core.Visualization import Display3d
-from OCC.Core.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
+from OCC.Core.V3d import (V3d_ZBUFFER, V3d_Zpos, V3d_Zneg, V3d_Xpos,
                           V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos)
 from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Core.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                                Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
                                Quantity_NOC_CYAN1, Quantity_NOC_RED,
                                Quantity_NOC_GREEN, Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
-from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text, Prs3d_TextAspect
+from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
 from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
                                 Handle_Graphic3d_TextureEnv, Graphic3d_TextureEnv,
                                 Graphic3d_Camera, Graphic3d_RM_RAYTRACING,
                                 Graphic3d_RM_RASTERIZATION,
                                 Graphic3d_StereoMode_QuadBuffer,
                                 Graphic3d_RenderingParams,
-                                Graphic3d_MaterialAspect)
+                                Graphic3d_MaterialAspect,
+                                Graphic3d_TOSM_FRAGMENT
+                                )
 from OCC.Core.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
 
 # Shaders and Units definition must be found by occ
@@ -197,7 +199,7 @@ class Viewer3d(Display3d):
 
         if phong_shading:
             # gouraud shading by default, prefer phong instead
-            self.View.SetShadingModel(V3d_PHONG)
+            self.View.SetShadingModel(Graphic3d_TOSM_FRAGMENT)
 
         # the selected elements gray by default, better to use orange...
         # self.Context.SelectionColor(Quantity_NOC_ORANGE)
