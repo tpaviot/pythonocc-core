@@ -180,6 +180,46 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<Prs3d.hxx>
+#include<Prs3d_Arrow.hxx>
+#include<Prs3d_ArrowAspect.hxx>
+#include<Prs3d_BasicAspect.hxx>
+#include<Prs3d_DatumAspect.hxx>
+#include<Prs3d_DatumAttribute.hxx>
+#include<Prs3d_DatumAxes.hxx>
+#include<Prs3d_DatumMode.hxx>
+#include<Prs3d_DatumParts.hxx>
+#include<Prs3d_DimensionArrowOrientation.hxx>
+#include<Prs3d_DimensionAspect.hxx>
+#include<Prs3d_DimensionTextHorizontalPosition.hxx>
+#include<Prs3d_DimensionTextVerticalPosition.hxx>
+#include<Prs3d_DimensionUnits.hxx>
+#include<Prs3d_Drawer.hxx>
+#include<Prs3d_InvalidAngle.hxx>
+#include<Prs3d_IsoAspect.hxx>
+#include<Prs3d_LineAspect.hxx>
+#include<Prs3d_NListIteratorOfListOfSequenceOfPnt.hxx>
+#include<Prs3d_NListOfSequenceOfPnt.hxx>
+#include<Prs3d_PlaneAspect.hxx>
+#include<Prs3d_Point.hxx>
+#include<Prs3d_PointAspect.hxx>
+#include<Prs3d_Presentation.hxx>
+#include<Prs3d_PresentationShadow.hxx>
+#include<Prs3d_Projector.hxx>
+#include<Prs3d_Root.hxx>
+#include<Prs3d_ShadingAspect.hxx>
+#include<Prs3d_ShapeTool.hxx>
+#include<Prs3d_Text.hxx>
+#include<Prs3d_TextAspect.hxx>
+#include<Prs3d_ToolCylinder.hxx>
+#include<Prs3d_ToolDisk.hxx>
+#include<Prs3d_ToolQuadric.hxx>
+#include<Prs3d_ToolSector.hxx>
+#include<Prs3d_ToolSphere.hxx>
+#include<Prs3d_TypeOfHLR.hxx>
+#include<Prs3d_TypeOfHighlight.hxx>
+#include<Prs3d_TypeOfLinePicking.hxx>
+#include<Prs3d_VertexDrawMode.hxx>
 #include<Graphic3d_AlphaMode.hxx>
 #include<Graphic3d_ArrayFlags.hxx>
 #include<Graphic3d_ArrayOfPoints.hxx>
@@ -322,46 +362,6 @@ conditions:
 #include<Graphic3d_WorldViewProjState.hxx>
 #include<Graphic3d_ZLayerId.hxx>
 #include<Graphic3d_ZLayerSettings.hxx>
-#include<Prs3d.hxx>
-#include<Prs3d_Arrow.hxx>
-#include<Prs3d_ArrowAspect.hxx>
-#include<Prs3d_BasicAspect.hxx>
-#include<Prs3d_DatumAspect.hxx>
-#include<Prs3d_DatumAttribute.hxx>
-#include<Prs3d_DatumAxes.hxx>
-#include<Prs3d_DatumMode.hxx>
-#include<Prs3d_DatumParts.hxx>
-#include<Prs3d_DimensionArrowOrientation.hxx>
-#include<Prs3d_DimensionAspect.hxx>
-#include<Prs3d_DimensionTextHorizontalPosition.hxx>
-#include<Prs3d_DimensionTextVerticalPosition.hxx>
-#include<Prs3d_DimensionUnits.hxx>
-#include<Prs3d_Drawer.hxx>
-#include<Prs3d_InvalidAngle.hxx>
-#include<Prs3d_IsoAspect.hxx>
-#include<Prs3d_LineAspect.hxx>
-#include<Prs3d_NListIteratorOfListOfSequenceOfPnt.hxx>
-#include<Prs3d_NListOfSequenceOfPnt.hxx>
-#include<Prs3d_PlaneAspect.hxx>
-#include<Prs3d_Point.hxx>
-#include<Prs3d_PointAspect.hxx>
-#include<Prs3d_Presentation.hxx>
-#include<Prs3d_PresentationShadow.hxx>
-#include<Prs3d_Projector.hxx>
-#include<Prs3d_Root.hxx>
-#include<Prs3d_ShadingAspect.hxx>
-#include<Prs3d_ShapeTool.hxx>
-#include<Prs3d_Text.hxx>
-#include<Prs3d_TextAspect.hxx>
-#include<Prs3d_ToolCylinder.hxx>
-#include<Prs3d_ToolDisk.hxx>
-#include<Prs3d_ToolQuadric.hxx>
-#include<Prs3d_ToolSector.hxx>
-#include<Prs3d_ToolSphere.hxx>
-#include<Prs3d_TypeOfHLR.hxx>
-#include<Prs3d_TypeOfHighlight.hxx>
-#include<Prs3d_TypeOfLinePicking.hxx>
-#include<Prs3d_VertexDrawMode.hxx>
 #include<Bnd_Array1OfBox.hxx>
 #include<Bnd_Array1OfBox2d.hxx>
 #include<Bnd_Array1OfSphere.hxx>
@@ -1382,8 +1382,8 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
-%import Graphic3d.i
 %import Prs3d.i
+%import Graphic3d.i
 %import Bnd.i
 %import Quantity.i
 %import Geom.i

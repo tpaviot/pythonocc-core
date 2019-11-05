@@ -189,6 +189,21 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<Adaptor3d_Curve.hxx>
+#include<Adaptor3d_CurveOnSurface.hxx>
+#include<Adaptor3d_CurveOnSurfacePtr.hxx>
+#include<Adaptor3d_CurvePtr.hxx>
+#include<Adaptor3d_HCurve.hxx>
+#include<Adaptor3d_HCurveOnSurface.hxx>
+#include<Adaptor3d_HIsoCurve.hxx>
+#include<Adaptor3d_HSurface.hxx>
+#include<Adaptor3d_HSurfaceTool.hxx>
+#include<Adaptor3d_HVertex.hxx>
+#include<Adaptor3d_InterFunc.hxx>
+#include<Adaptor3d_IsoCurve.hxx>
+#include<Adaptor3d_Surface.hxx>
+#include<Adaptor3d_SurfacePtr.hxx>
+#include<Adaptor3d_TopolTool.hxx>
 #include<gp.hxx>
 #include<gp_Ax1.hxx>
 #include<gp_Ax2.hxx>
@@ -471,21 +486,6 @@ conditions:
 #include<Geom2d_UndefinedValue.hxx>
 #include<Geom2d_Vector.hxx>
 #include<Geom2d_VectorWithMagnitude.hxx>
-#include<Adaptor3d_Curve.hxx>
-#include<Adaptor3d_CurveOnSurface.hxx>
-#include<Adaptor3d_CurveOnSurfacePtr.hxx>
-#include<Adaptor3d_CurvePtr.hxx>
-#include<Adaptor3d_HCurve.hxx>
-#include<Adaptor3d_HCurveOnSurface.hxx>
-#include<Adaptor3d_HIsoCurve.hxx>
-#include<Adaptor3d_HSurface.hxx>
-#include<Adaptor3d_HSurfaceTool.hxx>
-#include<Adaptor3d_HVertex.hxx>
-#include<Adaptor3d_InterFunc.hxx>
-#include<Adaptor3d_IsoCurve.hxx>
-#include<Adaptor3d_Surface.hxx>
-#include<Adaptor3d_SurfacePtr.hxx>
-#include<Adaptor3d_TopolTool.hxx>
 #include<GeomLProp.hxx>
 #include<GeomLProp_CLProps.hxx>
 #include<GeomLProp_CurveTool.hxx>
@@ -758,6 +758,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import Adaptor3d.i
 %import gp.i
 %import TColgp.i
 %import Geom.i
@@ -765,7 +766,6 @@ conditions:
 %import TColStd.i
 %import Message.i
 %import Geom2d.i
-%import Adaptor3d.i
 %import GeomLProp.i
 %import Adaptor2d.i
 %import Law.i

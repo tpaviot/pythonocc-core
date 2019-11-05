@@ -211,6 +211,64 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<TColgp_Array1OfCirc2d.hxx>
+#include<TColgp_Array1OfDir.hxx>
+#include<TColgp_Array1OfDir2d.hxx>
+#include<TColgp_Array1OfLin2d.hxx>
+#include<TColgp_Array1OfPnt.hxx>
+#include<TColgp_Array1OfPnt2d.hxx>
+#include<TColgp_Array1OfVec.hxx>
+#include<TColgp_Array1OfVec2d.hxx>
+#include<TColgp_Array1OfXY.hxx>
+#include<TColgp_Array1OfXYZ.hxx>
+#include<TColgp_Array2OfCirc2d.hxx>
+#include<TColgp_Array2OfDir.hxx>
+#include<TColgp_Array2OfDir2d.hxx>
+#include<TColgp_Array2OfLin2d.hxx>
+#include<TColgp_Array2OfPnt.hxx>
+#include<TColgp_Array2OfPnt2d.hxx>
+#include<TColgp_Array2OfVec.hxx>
+#include<TColgp_Array2OfVec2d.hxx>
+#include<TColgp_Array2OfXY.hxx>
+#include<TColgp_Array2OfXYZ.hxx>
+#include<TColgp_HArray1OfCirc2d.hxx>
+#include<TColgp_HArray1OfDir.hxx>
+#include<TColgp_HArray1OfDir2d.hxx>
+#include<TColgp_HArray1OfLin2d.hxx>
+#include<TColgp_HArray1OfPnt.hxx>
+#include<TColgp_HArray1OfPnt2d.hxx>
+#include<TColgp_HArray1OfVec.hxx>
+#include<TColgp_HArray1OfVec2d.hxx>
+#include<TColgp_HArray1OfXY.hxx>
+#include<TColgp_HArray1OfXYZ.hxx>
+#include<TColgp_HArray2OfCirc2d.hxx>
+#include<TColgp_HArray2OfDir.hxx>
+#include<TColgp_HArray2OfDir2d.hxx>
+#include<TColgp_HArray2OfLin2d.hxx>
+#include<TColgp_HArray2OfPnt.hxx>
+#include<TColgp_HArray2OfPnt2d.hxx>
+#include<TColgp_HArray2OfVec.hxx>
+#include<TColgp_HArray2OfVec2d.hxx>
+#include<TColgp_HArray2OfXY.hxx>
+#include<TColgp_HArray2OfXYZ.hxx>
+#include<TColgp_HSequenceOfDir.hxx>
+#include<TColgp_HSequenceOfDir2d.hxx>
+#include<TColgp_HSequenceOfPnt.hxx>
+#include<TColgp_HSequenceOfPnt2d.hxx>
+#include<TColgp_HSequenceOfVec.hxx>
+#include<TColgp_HSequenceOfVec2d.hxx>
+#include<TColgp_HSequenceOfXY.hxx>
+#include<TColgp_HSequenceOfXYZ.hxx>
+#include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
+#include<TColgp_SequenceOfDir.hxx>
+#include<TColgp_SequenceOfDir2d.hxx>
+#include<TColgp_SequenceOfPnt.hxx>
+#include<TColgp_SequenceOfPnt2d.hxx>
+#include<TColgp_SequenceOfVec.hxx>
+#include<TColgp_SequenceOfVec2d.hxx>
+#include<TColgp_SequenceOfXY.hxx>
+#include<TColgp_SequenceOfXYZ.hxx>
 #include<Graphic3d_AlphaMode.hxx>
 #include<Graphic3d_ArrayFlags.hxx>
 #include<Graphic3d_ArrayOfPoints.hxx>
@@ -1189,6 +1247,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import TColgp.i
 %import Graphic3d.i
 %import TopoDS.i
 %import gp.i

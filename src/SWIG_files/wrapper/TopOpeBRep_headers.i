@@ -218,6 +218,13 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool.hxx>
+#include<BRepTopAdaptor_FClass2d.hxx>
+#include<BRepTopAdaptor_HVertex.hxx>
+#include<BRepTopAdaptor_MapOfShapeTool.hxx>
+#include<BRepTopAdaptor_SeqOfPtr.hxx>
+#include<BRepTopAdaptor_Tool.hxx>
+#include<BRepTopAdaptor_TopolTool.hxx>
 #include<IntRes2d_Domain.hxx>
 #include<IntRes2d_Intersection.hxx>
 #include<IntRes2d_IntersectionPoint.hxx>
@@ -1241,6 +1248,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import BRepTopAdaptor.i
 %import IntRes2d.i
 %import IntPatch.i
 %import IntSurf.i

@@ -278,6 +278,41 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<SelectMgr_AndFilter.hxx>
+#include<SelectMgr_BaseFrustum.hxx>
+#include<SelectMgr_CompositionFilter.hxx>
+#include<SelectMgr_EntityOwner.hxx>
+#include<SelectMgr_Filter.hxx>
+#include<SelectMgr_Frustum.hxx>
+#include<SelectMgr_FrustumBuilder.hxx>
+#include<SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
+#include<SelectMgr_IndexedMapOfOwner.hxx>
+#include<SelectMgr_ListIteratorOfListOfFilter.hxx>
+#include<SelectMgr_ListOfFilter.hxx>
+#include<SelectMgr_OrFilter.hxx>
+#include<SelectMgr_PickingStrategy.hxx>
+#include<SelectMgr_RectangularFrustum.hxx>
+#include<SelectMgr_SOPtr.hxx>
+#include<SelectMgr_SelectableObject.hxx>
+#include<SelectMgr_SelectableObjectSet.hxx>
+#include<SelectMgr_SelectingVolumeManager.hxx>
+#include<SelectMgr_Selection.hxx>
+#include<SelectMgr_SelectionManager.hxx>
+#include<SelectMgr_SensitiveEntity.hxx>
+#include<SelectMgr_SensitiveEntitySet.hxx>
+#include<SelectMgr_SequenceOfFilter.hxx>
+#include<SelectMgr_SequenceOfOwner.hxx>
+#include<SelectMgr_SequenceOfSelection.hxx>
+#include<SelectMgr_SortCriterion.hxx>
+#include<SelectMgr_StateOfSelection.hxx>
+#include<SelectMgr_ToleranceMap.hxx>
+#include<SelectMgr_TriangularFrustum.hxx>
+#include<SelectMgr_TriangularFrustumSet.hxx>
+#include<SelectMgr_TypeOfBVHUpdate.hxx>
+#include<SelectMgr_TypeOfUpdate.hxx>
+#include<SelectMgr_VectorTypes.hxx>
+#include<SelectMgr_ViewClipRange.hxx>
+#include<SelectMgr_ViewerSelector.hxx>
 #include<Geom_Axis1Placement.hxx>
 #include<Geom_Axis2Placement.hxx>
 #include<Geom_AxisPlacement.hxx>
@@ -607,41 +642,6 @@ conditions:
 #include<TCollection_SeqNode.hxx>
 #include<TCollection_SeqNodePtr.hxx>
 #include<TCollection_Side.hxx>
-#include<SelectMgr_AndFilter.hxx>
-#include<SelectMgr_BaseFrustum.hxx>
-#include<SelectMgr_CompositionFilter.hxx>
-#include<SelectMgr_EntityOwner.hxx>
-#include<SelectMgr_Filter.hxx>
-#include<SelectMgr_Frustum.hxx>
-#include<SelectMgr_FrustumBuilder.hxx>
-#include<SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
-#include<SelectMgr_IndexedMapOfOwner.hxx>
-#include<SelectMgr_ListIteratorOfListOfFilter.hxx>
-#include<SelectMgr_ListOfFilter.hxx>
-#include<SelectMgr_OrFilter.hxx>
-#include<SelectMgr_PickingStrategy.hxx>
-#include<SelectMgr_RectangularFrustum.hxx>
-#include<SelectMgr_SOPtr.hxx>
-#include<SelectMgr_SelectableObject.hxx>
-#include<SelectMgr_SelectableObjectSet.hxx>
-#include<SelectMgr_SelectingVolumeManager.hxx>
-#include<SelectMgr_Selection.hxx>
-#include<SelectMgr_SelectionManager.hxx>
-#include<SelectMgr_SensitiveEntity.hxx>
-#include<SelectMgr_SensitiveEntitySet.hxx>
-#include<SelectMgr_SequenceOfFilter.hxx>
-#include<SelectMgr_SequenceOfOwner.hxx>
-#include<SelectMgr_SequenceOfSelection.hxx>
-#include<SelectMgr_SortCriterion.hxx>
-#include<SelectMgr_StateOfSelection.hxx>
-#include<SelectMgr_ToleranceMap.hxx>
-#include<SelectMgr_TriangularFrustum.hxx>
-#include<SelectMgr_TriangularFrustumSet.hxx>
-#include<SelectMgr_TypeOfBVHUpdate.hxx>
-#include<SelectMgr_TypeOfUpdate.hxx>
-#include<SelectMgr_VectorTypes.hxx>
-#include<SelectMgr_ViewClipRange.hxx>
-#include<SelectMgr_ViewerSelector.hxx>
 #include<TopAbs.hxx>
 #include<TopAbs_Orientation.hxx>
 #include<TopAbs_ShapeEnum.hxx>
@@ -1419,6 +1419,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import SelectMgr.i
 %import Geom.i
 %import gp.i
 %import TopoDS.i
@@ -1427,7 +1428,6 @@ conditions:
 %import Aspect.i
 %import Bnd.i
 %import TCollection.i
-%import SelectMgr.i
 %import TopAbs.i
 %import PrsMgr.i
 %import TColStd.i
