@@ -165,6 +165,8 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 # TKMesh
 	BRepMesh
 	IntPoly
+	IMeshData
+	IMeshTools
 # TKShHealing
 	ShapeBuild
 	ShapeExtend
