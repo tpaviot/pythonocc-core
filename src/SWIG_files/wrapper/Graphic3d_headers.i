@@ -699,29 +699,6 @@ conditions:
 #include<Image_PixMapTypedData.hxx>
 #include<Image_Texture.hxx>
 #include<Image_VideoRecorder.hxx>
-#include<Select3D_BVHBuilder3d.hxx>
-#include<Select3D_BVHIndexBuffer.hxx>
-#include<Select3D_BndBox3d.hxx>
-#include<Select3D_EntitySequence.hxx>
-#include<Select3D_IndexedMapOfEntity.hxx>
-#include<Select3D_InteriorSensitivePointSet.hxx>
-#include<Select3D_Pnt.hxx>
-#include<Select3D_PointData.hxx>
-#include<Select3D_SensitiveBox.hxx>
-#include<Select3D_SensitiveCircle.hxx>
-#include<Select3D_SensitiveCurve.hxx>
-#include<Select3D_SensitiveEntity.hxx>
-#include<Select3D_SensitiveFace.hxx>
-#include<Select3D_SensitiveGroup.hxx>
-#include<Select3D_SensitivePoint.hxx>
-#include<Select3D_SensitivePoly.hxx>
-#include<Select3D_SensitivePrimitiveArray.hxx>
-#include<Select3D_SensitiveSegment.hxx>
-#include<Select3D_SensitiveSet.hxx>
-#include<Select3D_SensitiveTriangle.hxx>
-#include<Select3D_SensitiveTriangulation.hxx>
-#include<Select3D_SensitiveWire.hxx>
-#include<Select3D_TypeOfSensitivity.hxx>
 #include<OSD.hxx>
 #include<OSD_Chronometer.hxx>
 #include<OSD_Directory.hxx>
@@ -1197,5 +1174,4 @@ conditions:
 %import Bnd.i
 %import TColStd.i
 %import Image.i
-%import Select3D.i
 %import OSD.i

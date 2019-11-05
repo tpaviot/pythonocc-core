@@ -5504,24 +5504,6 @@ class Graphic3d_Layer : public Standard_Transient {
 	:rtype: Graphic3d_BvhCStructureSetTrsfPers
 ") CullableTrsfPersStructuresBVH;
 		const Graphic3d_BvhCStructureSetTrsfPers & CullableTrsfPersStructuresBVH ();
-		%feature("compactdefaultargs") FrustumCullingBVHBuilder;
-		%feature("autodoc", "	* Returns BVH tree builder for frustom culling.
-
-	:rtype: opencascade::handle<Select3D_BVHBuilder3d>
-") FrustumCullingBVHBuilder;
-		const opencascade::handle<Select3D_BVHBuilder3d> & FrustumCullingBVHBuilder ();
-		%feature("compactdefaultargs") Graphic3d_Layer;
-		%feature("autodoc", "	* Initializes associated priority list and layer properties
-
-	:param theId:
-	:type theId: Graphic3d_ZLayerId
-	:param theNbPriorities:
-	:type theNbPriorities: int
-	:param theBuilder:
-	:type theBuilder: opencascade::handle<Select3D_BVHBuilder3d> &
-	:rtype: None
-") Graphic3d_Layer;
-		 Graphic3d_Layer (Graphic3d_ZLayerId theId,Standard_Integer theNbPriorities,const opencascade::handle<Select3D_BVHBuilder3d> & theBuilder);
 		%feature("compactdefaultargs") InvalidateBVHData;
 		%feature("autodoc", "	* Marks BVH tree for given priority list as dirty and marks primitive set for rebuild.
 
@@ -5600,14 +5582,6 @@ class Graphic3d_Layer : public Standard_Transient {
 	:rtype: bool
 ") Remove;
 		bool Remove (const Graphic3d_CStructure * theStruct,Standard_Integer &OutValue,Standard_Boolean isForChangePriority = Standard_False);
-		%feature("compactdefaultargs") SetFrustumCullingBVHBuilder;
-		%feature("autodoc", "	* Assigns BVH tree builder for frustom culling.
-
-	:param theBuilder:
-	:type theBuilder: opencascade::handle<Select3D_BVHBuilder3d> &
-	:rtype: None
-") SetFrustumCullingBVHBuilder;
-		void SetFrustumCullingBVHBuilder (const opencascade::handle<Select3D_BVHBuilder3d> & theBuilder);
 		%feature("compactdefaultargs") SetLayerSettings;
 		%feature("autodoc", "	* Sets settings of the layer object.
 

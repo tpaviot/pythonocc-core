@@ -116,7 +116,6 @@ conditions:
 %wrap_handle(StepRepr_PromissoryUsageOccurrence)
 %wrap_handle(StepRepr_QuantifiedAssemblyComponentUsage)
 %wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnit)
-%wrap_handle(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnit)
 %wrap_handle(StepRepr_RepresentationRelationshipWithTransformation)
 %wrap_handle(StepRepr_SpecifiedHigherUsageOccurrence)
@@ -3131,43 +3130,6 @@ class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_ReprItemAndMea
 %make_alias(StepRepr_ReprItemAndLengthMeasureWithUnit)
 
 %extend StepRepr_ReprItemAndLengthMeasureWithUnit {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor StepRepr_ReprItemAndMeasureWithUnitAndQRI;
-class StepRepr_ReprItemAndMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnit {
-	public:
-		%feature("compactdefaultargs") GetQualifiedRepresentationItem;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepShape_QualifiedRepresentationItem>
-") GetQualifiedRepresentationItem;
-		opencascade::handle<StepShape_QualifiedRepresentationItem> GetQualifiedRepresentationItem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aMWU:
-	:type aMWU: opencascade::handle<StepBasic_MeasureWithUnit> &
-	:param aRI:
-	:type aRI: opencascade::handle<StepRepr_RepresentationItem> &
-	:param aQRI:
-	:type aQRI: opencascade::handle<StepShape_QualifiedRepresentationItem>
-	:rtype: None
-") Init;
-		void Init (const opencascade::handle<StepBasic_MeasureWithUnit> & aMWU,const opencascade::handle<StepRepr_RepresentationItem> & aRI,const opencascade::handle<StepShape_QualifiedRepresentationItem> aQRI);
-		%feature("compactdefaultargs") SetQualifiedRepresentationItem;
-		%feature("autodoc", "	:param aQRI:
-	:type aQRI: opencascade::handle<StepShape_QualifiedRepresentationItem> &
-	:rtype: None
-") SetQualifiedRepresentationItem;
-		void SetQualifiedRepresentationItem (const opencascade::handle<StepShape_QualifiedRepresentationItem> & aQRI);
-		%feature("compactdefaultargs") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
-		%feature("autodoc", "	:rtype: None
-") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
-		 StepRepr_ReprItemAndMeasureWithUnitAndQRI ();
-};
-
-
-%make_alias(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
-
-%extend StepRepr_ReprItemAndMeasureWithUnitAndQRI {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
