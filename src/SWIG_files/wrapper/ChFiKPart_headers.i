@@ -184,6 +184,12 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<Adaptor2d_Curve2d.hxx>
+#include<Adaptor2d_HCurve2d.hxx>
+#include<Adaptor2d_HLine2d.hxx>
+#include<Adaptor2d_HOffsetCurve.hxx>
+#include<Adaptor2d_Line2d.hxx>
+#include<Adaptor2d_OffsetCurve.hxx>
 #include<TopOpeBRepDS.hxx>
 #include<TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference.hxx>
 #include<TopOpeBRepDS_Association.hxx>
@@ -1226,6 +1232,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import Adaptor2d.i
 %import TopOpeBRepDS.i
 %import ChFiDS.i
 %import Adaptor3d.i

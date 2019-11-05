@@ -182,6 +182,28 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<Geom2d_AxisPlacement.hxx>
+#include<Geom2d_BSplineCurve.hxx>
+#include<Geom2d_BezierCurve.hxx>
+#include<Geom2d_BoundedCurve.hxx>
+#include<Geom2d_CartesianPoint.hxx>
+#include<Geom2d_Circle.hxx>
+#include<Geom2d_Conic.hxx>
+#include<Geom2d_Curve.hxx>
+#include<Geom2d_Direction.hxx>
+#include<Geom2d_Ellipse.hxx>
+#include<Geom2d_Geometry.hxx>
+#include<Geom2d_Hyperbola.hxx>
+#include<Geom2d_Line.hxx>
+#include<Geom2d_OffsetCurve.hxx>
+#include<Geom2d_Parabola.hxx>
+#include<Geom2d_Point.hxx>
+#include<Geom2d_Transformation.hxx>
+#include<Geom2d_TrimmedCurve.hxx>
+#include<Geom2d_UndefinedDerivative.hxx>
+#include<Geom2d_UndefinedValue.hxx>
+#include<Geom2d_Vector.hxx>
+#include<Geom2d_VectorWithMagnitude.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
 #include<Standard_Address.hxx>
@@ -459,3 +481,4 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import Geom2d.i

@@ -197,6 +197,19 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<TCollection.hxx>
+#include<TCollection_AsciiString.hxx>
+#include<TCollection_BaseSequence.hxx>
+#include<TCollection_BasicMap.hxx>
+#include<TCollection_BasicMapIterator.hxx>
+#include<TCollection_ExtendedString.hxx>
+#include<TCollection_HAsciiString.hxx>
+#include<TCollection_HExtendedString.hxx>
+#include<TCollection_MapNode.hxx>
+#include<TCollection_MapNodePtr.hxx>
+#include<TCollection_SeqNode.hxx>
+#include<TCollection_SeqNodePtr.hxx>
+#include<TCollection_Side.hxx>
 #include<TopoDS.hxx>
 #include<TopoDS_AlertWithShape.hxx>
 #include<TopoDS_Builder.hxx>
@@ -289,19 +302,6 @@ conditions:
 #include<Message_SequenceOfProgressScale.hxx>
 #include<Message_Status.hxx>
 #include<Message_StatusType.hxx>
-#include<TCollection.hxx>
-#include<TCollection_AsciiString.hxx>
-#include<TCollection_BaseSequence.hxx>
-#include<TCollection_BasicMap.hxx>
-#include<TCollection_BasicMapIterator.hxx>
-#include<TCollection_ExtendedString.hxx>
-#include<TCollection_HAsciiString.hxx>
-#include<TCollection_HExtendedString.hxx>
-#include<TCollection_MapNode.hxx>
-#include<TCollection_MapNodePtr.hxx>
-#include<TCollection_SeqNode.hxx>
-#include<TCollection_SeqNodePtr.hxx>
-#include<TCollection_Side.hxx>
 #include<OSD.hxx>
 #include<OSD_Chronometer.hxx>
 #include<OSD_Directory.hxx>
@@ -650,9 +650,9 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import TCollection.i
 %import TopoDS.i
 %import gp.i
 %import Message.i
-%import TCollection.i
 %import OSD.i
 %import TColStd.i

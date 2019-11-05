@@ -196,6 +196,19 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<TCollection.hxx>
+#include<TCollection_AsciiString.hxx>
+#include<TCollection_BaseSequence.hxx>
+#include<TCollection_BasicMap.hxx>
+#include<TCollection_BasicMapIterator.hxx>
+#include<TCollection_ExtendedString.hxx>
+#include<TCollection_HAsciiString.hxx>
+#include<TCollection_HExtendedString.hxx>
+#include<TCollection_MapNode.hxx>
+#include<TCollection_MapNodePtr.hxx>
+#include<TCollection_SeqNode.hxx>
+#include<TCollection_SeqNodePtr.hxx>
+#include<TCollection_Side.hxx>
 #include<TDocStd.hxx>
 #include<TDocStd_Application.hxx>
 #include<TDocStd_ApplicationDelta.hxx>
@@ -215,19 +228,6 @@ conditions:
 #include<TDocStd_XLinkPtr.hxx>
 #include<TDocStd_XLinkRoot.hxx>
 #include<TDocStd_XLinkTool.hxx>
-#include<TCollection.hxx>
-#include<TCollection_AsciiString.hxx>
-#include<TCollection_BaseSequence.hxx>
-#include<TCollection_BasicMap.hxx>
-#include<TCollection_BasicMapIterator.hxx>
-#include<TCollection_ExtendedString.hxx>
-#include<TCollection_HAsciiString.hxx>
-#include<TCollection_HExtendedString.hxx>
-#include<TCollection_MapNode.hxx>
-#include<TCollection_MapNodePtr.hxx>
-#include<TCollection_SeqNode.hxx>
-#include<TCollection_SeqNodePtr.hxx>
-#include<TCollection_Side.hxx>
 #include<Message.hxx>
 #include<Message_Alert.hxx>
 #include<Message_Algorithm.hxx>
@@ -617,8 +617,8 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
-%import TDocStd.i
 %import TCollection.i
+%import TDocStd.i
 %import Message.i
 %import TDF.i
 %import gp.i
