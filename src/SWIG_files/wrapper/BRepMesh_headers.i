@@ -226,6 +226,16 @@ conditions:
 #include<NCollection_Vec4.hxx>
 #include<NCollection_Vector.hxx>
 #include<NCollection_WinHeapAllocator.hxx>
+#include<IMeshTools_Context.hxx>
+#include<IMeshTools_CurveTessellator.hxx>
+#include<IMeshTools_MeshAlgo.hxx>
+#include<IMeshTools_MeshAlgoFactory.hxx>
+#include<IMeshTools_MeshBuilder.hxx>
+#include<IMeshTools_ModelAlgo.hxx>
+#include<IMeshTools_ModelBuilder.hxx>
+#include<IMeshTools_Parameters.hxx>
+#include<IMeshTools_ShapeExplorer.hxx>
+#include<IMeshTools_ShapeVisitor.hxx>
 #include<gp.hxx>
 #include<gp_Ax1.hxx>
 #include<gp_Ax2.hxx>
@@ -540,6 +550,18 @@ conditions:
 #include<Geom_UndefinedValue.hxx>
 #include<Geom_Vector.hxx>
 #include<Geom_VectorWithMagnitude.hxx>
+#include<IMeshData_Curve.hxx>
+#include<IMeshData_Edge.hxx>
+#include<IMeshData_Face.hxx>
+#include<IMeshData_Model.hxx>
+#include<IMeshData_PCurve.hxx>
+#include<IMeshData_ParametersList.hxx>
+#include<IMeshData_Shape.hxx>
+#include<IMeshData_Status.hxx>
+#include<IMeshData_StatusOwner.hxx>
+#include<IMeshData_TessellatedShape.hxx>
+#include<IMeshData_Types.hxx>
+#include<IMeshData_Wire.hxx>
 #include<TShort_Array1OfShortReal.hxx>
 #include<TShort_Array2OfShortReal.hxx>
 #include<TShort_HArray1OfShortReal.hxx>
@@ -873,6 +895,7 @@ conditions:
 %};
 %import Standard.i
 %import NCollection.i
+%import IMeshTools.i
 %import gp.i
 %import TopAbs.i
 %import BRepAdaptor.i
@@ -886,3 +909,4 @@ conditions:
 %import TopLoc.i
 %import Geom2d.i
 %import Geom.i
+%import IMeshData.i

@@ -53,10 +53,12 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(IMeshTools_Context)
 %wrap_handle(IMeshTools_CurveTessellator)
 %wrap_handle(IMeshTools_MeshAlgo)
 %wrap_handle(IMeshTools_MeshAlgoFactory)
 %wrap_handle(IMeshTools_ModelAlgo)
+%wrap_handle(IMeshTools_ShapeExplorer)
 %wrap_handle(IMeshTools_ShapeVisitor)
 /* end handles declaration */
 
@@ -221,6 +223,8 @@ class IMeshTools_Context : public IMeshData_Shape {
 		inline void SetPreProcessor (const opencascade::handle<IMeshTools_ModelAlgo> & thePreProcessor);
 };
 
+
+%make_alias(IMeshTools_Context)
 
 %extend IMeshTools_Context {
 	%pythoncode {
@@ -448,6 +452,8 @@ class IMeshTools_ShapeExplorer : public IMeshData_Shape {
 		 IMeshTools_ShapeExplorer (const TopoDS_Shape & theShape);
 };
 
+
+%make_alias(IMeshTools_ShapeExplorer)
 
 %extend IMeshTools_ShapeExplorer {
 	%pythoncode {
