@@ -15,6 +15,7 @@
 ##You should have received a copy of the GNU General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+cmake_minimum_required(VERSION 3.12)
 project(PYTHONOCC)
 
 # set pythonOCC version
@@ -24,7 +25,11 @@ set(PYTHONOCC_VERSION_PATCH )
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL -dev)
 
-cmake_minimum_required(VERSION 2.6)
+
+
+# for cmake 3.13 and newer, still use old swig style targets
+cmake_policy(SET CMP0078 OLD)
+cmake_policy(SET CMP0086 OLD)
 
 # Force C++ 11
 set(CMAKE_CXX_STANDARD 11)
@@ -60,9 +65,7 @@ endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 ##########
 # Python #
 ##########
-find_package(PythonInterp)
-find_package(PythonLibs)
-include_directories(${PYTHON_INCLUDE_PATH})
+find_package(Python COMPONENTS Development)
 
 ##############################################################
 # 32/64 bit detection
@@ -119,18 +122,18 @@ if(DEFINED OCE_INCLUDE_PATH)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
-  find_package(OCE 0.18 REQUIRED)
-  # OCE 0.18 relies on OCC 6.9.1
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DOCC_VERSION_HEX=0x060901)
-  if(OCE_FOUND)
-    message(STATUS "OpenCASCADE Community Edition (OCE) found.")
+  find_package(OpenCASCADE 7.4.0 REQUIRED)
+  
+  include_directories(${OpenCASCADE_INCLUDE_DIR})
+  if(OpenCASCADE_FOUND)
+    message(STATUS "OpenCASCADE found.")
     include_directories(${OCE_INCLUDE_DIRS})
-  else()  # set default paths
+  else(OpenCASCADE_FOUND)  # set default paths
     set(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path")
     set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path")
     include_directories(${OCE_INCLUDE_PATH})
     link_directories(${OCE_LIB_PATH})
-  endif(OCE_FOUND)
+  endif(OpenCASCADE_FOUND)
 endif(DEFINED OCE_INCLUDE_PATH)
 
 ################################
@@ -158,11 +161,11 @@ set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install 
 # TODO: this should be build from the module list
 set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
     TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
-set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl TKV3d)
-set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
-                     TKSTEP TKVRML TKXSBase)
-set(OCE_OCAF_LIBRARIES TKCAF TKCDF TKLCAF TKBin TKBinL TKBinTObj TKBinXCAF TKXml TKXmlL TKXmlTObj
-                       TKXmlXCAF TKTObj TKXCAF TKXDESTEP TKXDEIGES)
+set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
+set(OCE_DATAEXCHANGE_LIBRARIES TKXSBase TKSTEPBase TKSTEPAttr TKSTEP209 TKSTEP TKIGES
+                     TKXCAF TKXDEIGES TKXDESTEP TKSTL TKVRML TKXmlXCAF TKBinXCAF)
+set(OCE_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
+                       TKStd TKTObj TKBinTObj TKXmlTObj TKVCAF)
 
 ######################################################
 # Configure Build settings according to the platform #
@@ -195,11 +198,6 @@ else(UNIX)
 endif(UNIX)
 message(STATUS "Platform:" ${PLATFORM})
 
-if (APPLE)
-  # find out python linking commands
-  execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_config_vars('CFLAGS')[0])" OUTPUT_VARIABLE PYTHON_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE )
-  execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_config_vars('BLDSHARED')[0].split(' ', 1)[1])" OUTPUT_VARIABLE PYTHON_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE )
-endif(APPLE)
 
 ##################################
 # Tells Swig to use py3k option  #
@@ -268,19 +266,9 @@ file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(${OCE_MODULE} python ${FILE})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
     swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-  endif (CMAKE_VERSION VERSION_LESS 3.8)
- 
-  swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
-  if (APPLE)
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  else(APPLE)
-    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-  endif(APPLE)
+    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python::Module)
+
 endforeach(OCE_MODULE)
 
 #################
@@ -293,19 +281,8 @@ if(PYTHONOCC_WRAP_VISU)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
+    swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCE_MODULE} ${OCE_VISUALIZATION_LIBRARIES} Python::Module)
   endforeach(OCE_MODULE)
   # Build third part modules
   # TODO : the following line is strange but necessary
@@ -318,20 +295,13 @@ if(PYTHONOCC_WRAP_VISU)
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
     )
 
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(Visualization python ${VISUALIZATION_SOURCE_FILES})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-  endif()
+    swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
     # if GLX is enabled
-    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} /System/Library/Frameworks/Cocoa.framework)
-    set_target_properties(${SWIG_MODULE_Visualization_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_Visualization_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  else(APPLE)
-    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${PYTHON_LIBRARIES})
+    swig_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
   endif(APPLE)
 
 endif(PYTHONOCC_WRAP_VISU)
@@ -354,20 +324,8 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-     swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCE_MODULE} ${OCE_DATAEXCHANGE_LIBRARIES} Python::Module)
 
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
@@ -379,21 +337,8 @@ if(PYTHONOCC_WRAP_OCAF)
   foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCE_MODULE}  ${OCE_OCAF_LIBRARIES} Python::Module)
 
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
@@ -406,20 +351,9 @@ if(PYTHONOCC_WRAP_SMESH)
     set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${SMESH_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
+    swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
 
-    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${SMESH_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${SMESH_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${SMESH_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
+    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES} Python::Module)
 
   endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
