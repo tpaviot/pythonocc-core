@@ -318,8 +318,8 @@ class TestWrapperFeatures(unittest.TestCase):
         Test byref returned standard_boolean
         '''
         cs = ChFiDS_ChamfSpine()
-        cs.SetDistAngle(1., 45, True)
-        self.assertEqual(cs.GetDistAngle(), (1.0, 45.0, True))
+        cs.SetDistAngle(1., 45)
+        self.assertEqual(cs.GetDistAngle(), (1.0, 45.))
 
     def test_dump_to_string(self):
         '''
@@ -618,9 +618,7 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_repr_for_null_topods_shapes(self):
         # create null vertex and shape
         v = TopoDS_Vertex()
-        s = TopoDS_Shape()
         self.assertTrue('Null' in v.__repr__())
-        self.assertTrue('Null' in s.__repr__())
 
     def test_in_place_operators(self):
         # operator +=
