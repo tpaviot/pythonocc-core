@@ -42,12 +42,6 @@ addons:
 
 matrix:
   include:
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: linux
-      dist: trusty
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
       dist: trusty
@@ -74,14 +68,7 @@ before_install:
       export CXX=g++-7;
       export CC=gcc-7;
     fi;
-  - if [ ${PYTHON:0:1} == "2" ]; then
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-      else
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -O miniconda.sh;
-      fi;
-      else
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
       else
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
@@ -109,7 +96,6 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
   - conda config --add channels https://conda.anaconda.org/pythonocc
-  
 
 
 script:

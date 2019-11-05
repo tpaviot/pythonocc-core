@@ -18,6 +18,7 @@ build:
     - vc9               [win and py27]
     - vc14              [win and py35]
     - vc14              [win and py36]
+    - vc14              [win and py37]
 
 requirements:
   build:
@@ -41,8 +42,6 @@ requirements:
 test:
   requires:
     - numpy
-    - wxpython          [py27]
-    - pyside            [py27]
     - pyqt >=5
     - smesh ==6.7.6
 
