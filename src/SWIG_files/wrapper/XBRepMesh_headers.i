@@ -437,6 +437,16 @@ conditions:
 #include<TShort_HArray2OfShortReal.hxx>
 #include<TShort_HSequenceOfShortReal.hxx>
 #include<TShort_SequenceOfShortReal.hxx>
+#include<IMeshTools_Context.hxx>
+#include<IMeshTools_CurveTessellator.hxx>
+#include<IMeshTools_MeshAlgo.hxx>
+#include<IMeshTools_MeshAlgoFactory.hxx>
+#include<IMeshTools_MeshBuilder.hxx>
+#include<IMeshTools_ModelAlgo.hxx>
+#include<IMeshTools_ModelBuilder.hxx>
+#include<IMeshTools_Parameters.hxx>
+#include<IMeshTools_ShapeExplorer.hxx>
+#include<IMeshTools_ShapeVisitor.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
