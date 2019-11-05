@@ -58,6 +58,7 @@ conditions:
 %wrap_handle(ShapeAnalysis_TransferParameters)
 %wrap_handle(ShapeAnalysis_Wire)
 %wrap_handle(ShapeAnalysis_TransferParametersProj)
+%wrap_handle(ShapeAnalysis_HSequenceOfFreeBounds)
 /* end handles declaration */
 
 /* templates */
@@ -3512,7 +3513,6 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(ShapeAnalysis_HSequenceOfFreeBounds)
 class ShapeAnalysis_HSequenceOfFreeBounds : public  ShapeAnalysis_SequenceOfFreeBounds, public Standard_Transient {
     ShapeAnalysis_HSequenceOfFreeBounds();
     ShapeAnalysis_HSequenceOfFreeBounds(const  ShapeAnalysis_SequenceOfFreeBounds& theOther);

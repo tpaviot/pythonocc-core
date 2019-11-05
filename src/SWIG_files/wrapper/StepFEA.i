@@ -136,6 +136,16 @@ enum StepFEA_UnspecifiedValue {
 %wrap_handle(StepFEA_Volume3dElementRepresentation)
 %wrap_handle(StepFEA_NodeWithSolutionCoordinateSystem)
 %wrap_handle(StepFEA_NodeWithVector)
+%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
+%wrap_handle(StepFEA_HArray1OfCurveElementEndOffset)
+%wrap_handle(StepFEA_HArray1OfElementRepresentation)
+%wrap_handle(StepFEA_HArray1OfCurveElementEndRelease)
+%wrap_handle(StepFEA_HArray1OfDegreeOfFreedom)
+%wrap_handle(StepFEA_HArray1OfNodeRepresentation)
+%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
+%wrap_handle(StepFEA_HSequenceOfElementGeometricRelationship)
+%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
+%wrap_handle(StepFEA_HSequenceOfCurve3dElementProperty)
 /* end handles declaration */
 
 /* templates */
@@ -3305,7 +3315,6 @@ class StepFEA_NodeWithVector : public StepFEA_Node {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
 class StepFEA_HArray1OfCurveElementInterval : public  StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3317,7 +3326,6 @@ class StepFEA_HArray1OfCurveElementInterval : public  StepFEA_Array1OfCurveEleme
 %make_alias(StepFEA_HArray1OfCurveElementInterval)
 
 
-%wrap_handle(StepFEA_HArray1OfCurveElementEndOffset)
 class StepFEA_HArray1OfCurveElementEndOffset : public  StepFEA_Array1OfCurveElementEndOffset, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3329,7 +3337,6 @@ class StepFEA_HArray1OfCurveElementEndOffset : public  StepFEA_Array1OfCurveElem
 %make_alias(StepFEA_HArray1OfCurveElementEndOffset)
 
 
-%wrap_handle(StepFEA_HArray1OfElementRepresentation)
 class StepFEA_HArray1OfElementRepresentation : public  StepFEA_Array1OfElementRepresentation, public Standard_Transient {
   public:
     StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3341,7 +3348,6 @@ class StepFEA_HArray1OfElementRepresentation : public  StepFEA_Array1OfElementRe
 %make_alias(StepFEA_HArray1OfElementRepresentation)
 
 
-%wrap_handle(StepFEA_HArray1OfCurveElementEndRelease)
 class StepFEA_HArray1OfCurveElementEndRelease : public  StepFEA_Array1OfCurveElementEndRelease, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3353,7 +3359,6 @@ class StepFEA_HArray1OfCurveElementEndRelease : public  StepFEA_Array1OfCurveEle
 %make_alias(StepFEA_HArray1OfCurveElementEndRelease)
 
 
-%wrap_handle(StepFEA_HArray1OfDegreeOfFreedom)
 class StepFEA_HArray1OfDegreeOfFreedom : public  StepFEA_Array1OfDegreeOfFreedom, public Standard_Transient {
   public:
     StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3365,7 +3370,6 @@ class StepFEA_HArray1OfDegreeOfFreedom : public  StepFEA_Array1OfDegreeOfFreedom
 %make_alias(StepFEA_HArray1OfDegreeOfFreedom)
 
 
-%wrap_handle(StepFEA_HArray1OfNodeRepresentation)
 class StepFEA_HArray1OfNodeRepresentation : public  StepFEA_Array1OfNodeRepresentation, public Standard_Transient {
   public:
     StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3379,7 +3383,6 @@ class StepFEA_HArray1OfNodeRepresentation : public  StepFEA_Array1OfNodeRepresen
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
 class StepFEA_HSequenceOfElementRepresentation : public  StepFEA_SequenceOfElementRepresentation, public Standard_Transient {
     StepFEA_HSequenceOfElementRepresentation();
     StepFEA_HSequenceOfElementRepresentation(const  StepFEA_SequenceOfElementRepresentation& theOther);
@@ -3391,7 +3394,6 @@ class StepFEA_HSequenceOfElementRepresentation : public  StepFEA_SequenceOfEleme
 %make_alias(StepFEA_HSequenceOfElementRepresentation)
 
 
-%wrap_handle(StepFEA_HSequenceOfElementGeometricRelationship)
 class StepFEA_HSequenceOfElementGeometricRelationship : public  StepFEA_SequenceOfElementGeometricRelationship, public Standard_Transient {
     StepFEA_HSequenceOfElementGeometricRelationship();
     StepFEA_HSequenceOfElementGeometricRelationship(const  StepFEA_SequenceOfElementGeometricRelationship& theOther);
@@ -3403,7 +3405,6 @@ class StepFEA_HSequenceOfElementGeometricRelationship : public  StepFEA_Sequence
 %make_alias(StepFEA_HSequenceOfElementGeometricRelationship)
 
 
-%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
 class StepFEA_HSequenceOfNodeRepresentation : public  StepFEA_SequenceOfNodeRepresentation, public Standard_Transient {
     StepFEA_HSequenceOfNodeRepresentation();
     StepFEA_HSequenceOfNodeRepresentation(const  StepFEA_SequenceOfNodeRepresentation& theOther);
@@ -3415,7 +3416,6 @@ class StepFEA_HSequenceOfNodeRepresentation : public  StepFEA_SequenceOfNodeRepr
 %make_alias(StepFEA_HSequenceOfNodeRepresentation)
 
 
-%wrap_handle(StepFEA_HSequenceOfCurve3dElementProperty)
 class StepFEA_HSequenceOfCurve3dElementProperty : public  StepFEA_SequenceOfCurve3dElementProperty, public Standard_Transient {
     StepFEA_HSequenceOfCurve3dElementProperty();
     StepFEA_HSequenceOfCurve3dElementProperty(const  StepFEA_SequenceOfCurve3dElementProperty& theOther);

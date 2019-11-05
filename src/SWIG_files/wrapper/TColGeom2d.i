@@ -53,6 +53,11 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(TColGeom2d_HArray1OfCurve)
+%wrap_handle(TColGeom2d_HArray1OfBezierCurve)
+%wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom2d_HSequenceOfBoundedCurve)
+%wrap_handle(TColGeom2d_HSequenceOfCurve)
 /* end handles declaration */
 
 /* templates */
@@ -176,7 +181,6 @@ typedef NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>> TColGeom2
 /* end typedefs declaration */
 
 /* harray1 class */
-%wrap_handle(TColGeom2d_HArray1OfCurve)
 class TColGeom2d_HArray1OfCurve : public  TColGeom2d_Array1OfCurve, public Standard_Transient {
   public:
     TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -188,7 +192,6 @@ class TColGeom2d_HArray1OfCurve : public  TColGeom2d_Array1OfCurve, public Stand
 %make_alias(TColGeom2d_HArray1OfCurve)
 
 
-%wrap_handle(TColGeom2d_HArray1OfBezierCurve)
 class TColGeom2d_HArray1OfBezierCurve : public  TColGeom2d_Array1OfBezierCurve, public Standard_Transient {
   public:
     TColGeom2d_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -200,7 +203,6 @@ class TColGeom2d_HArray1OfBezierCurve : public  TColGeom2d_Array1OfBezierCurve, 
 %make_alias(TColGeom2d_HArray1OfBezierCurve)
 
 
-%wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
 class TColGeom2d_HArray1OfBSplineCurve : public  TColGeom2d_Array1OfBSplineCurve, public Standard_Transient {
   public:
     TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -214,7 +216,6 @@ class TColGeom2d_HArray1OfBSplineCurve : public  TColGeom2d_Array1OfBSplineCurve
 
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(TColGeom2d_HSequenceOfBoundedCurve)
 class TColGeom2d_HSequenceOfBoundedCurve : public  TColGeom2d_SequenceOfBoundedCurve, public Standard_Transient {
     TColGeom2d_HSequenceOfBoundedCurve();
     TColGeom2d_HSequenceOfBoundedCurve(const  TColGeom2d_SequenceOfBoundedCurve& theOther);
@@ -226,7 +227,6 @@ class TColGeom2d_HSequenceOfBoundedCurve : public  TColGeom2d_SequenceOfBoundedC
 %make_alias(TColGeom2d_HSequenceOfBoundedCurve)
 
 
-%wrap_handle(TColGeom2d_HSequenceOfCurve)
 class TColGeom2d_HSequenceOfCurve : public  TColGeom2d_SequenceOfCurve, public Standard_Transient {
     TColGeom2d_HSequenceOfCurve();
     TColGeom2d_HSequenceOfCurve(const  TColGeom2d_SequenceOfCurve& theOther);

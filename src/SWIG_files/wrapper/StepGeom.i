@@ -186,6 +186,15 @@ enum StepGeom_TransitionCode {
 %wrap_handle(StepGeom_UniformSurfaceAndRationalBSplineSurface)
 %wrap_handle(StepGeom_BoundaryCurve)
 %wrap_handle(StepGeom_OuterBoundaryCurve)
+%wrap_handle(StepGeom_HArray1OfCartesianPoint)
+%wrap_handle(StepGeom_HArray1OfPcurveOrSurface)
+%wrap_handle(StepGeom_HArray1OfSurfaceBoundary)
+%wrap_handle(StepGeom_HArray1OfBoundaryCurve)
+%wrap_handle(StepGeom_HArray1OfCompositeCurveSegment)
+%wrap_handle(StepGeom_HArray1OfCurve)
+%wrap_handle(StepGeom_HArray1OfTrimmingSelect)
+%wrap_handle(StepGeom_HArray2OfSurfacePatch)
+%wrap_handle(StepGeom_HArray2OfCartesianPoint)
 /* end handles declaration */
 
 /* templates */
@@ -5457,7 +5466,6 @@ class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepGeom_HArray1OfCartesianPoint)
 class StepGeom_HArray1OfCartesianPoint : public  StepGeom_Array1OfCartesianPoint, public Standard_Transient {
   public:
     StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5469,7 +5477,6 @@ class StepGeom_HArray1OfCartesianPoint : public  StepGeom_Array1OfCartesianPoint
 %make_alias(StepGeom_HArray1OfCartesianPoint)
 
 
-%wrap_handle(StepGeom_HArray1OfPcurveOrSurface)
 class StepGeom_HArray1OfPcurveOrSurface : public  StepGeom_Array1OfPcurveOrSurface, public Standard_Transient {
   public:
     StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5481,7 +5488,6 @@ class StepGeom_HArray1OfPcurveOrSurface : public  StepGeom_Array1OfPcurveOrSurfa
 %make_alias(StepGeom_HArray1OfPcurveOrSurface)
 
 
-%wrap_handle(StepGeom_HArray1OfSurfaceBoundary)
 class StepGeom_HArray1OfSurfaceBoundary : public  StepGeom_Array1OfSurfaceBoundary, public Standard_Transient {
   public:
     StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5493,7 +5499,6 @@ class StepGeom_HArray1OfSurfaceBoundary : public  StepGeom_Array1OfSurfaceBounda
 %make_alias(StepGeom_HArray1OfSurfaceBoundary)
 
 
-%wrap_handle(StepGeom_HArray1OfBoundaryCurve)
 class StepGeom_HArray1OfBoundaryCurve : public  StepGeom_Array1OfBoundaryCurve, public Standard_Transient {
   public:
     StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5505,7 +5510,6 @@ class StepGeom_HArray1OfBoundaryCurve : public  StepGeom_Array1OfBoundaryCurve, 
 %make_alias(StepGeom_HArray1OfBoundaryCurve)
 
 
-%wrap_handle(StepGeom_HArray1OfCompositeCurveSegment)
 class StepGeom_HArray1OfCompositeCurveSegment : public  StepGeom_Array1OfCompositeCurveSegment, public Standard_Transient {
   public:
     StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5517,7 +5521,6 @@ class StepGeom_HArray1OfCompositeCurveSegment : public  StepGeom_Array1OfComposi
 %make_alias(StepGeom_HArray1OfCompositeCurveSegment)
 
 
-%wrap_handle(StepGeom_HArray1OfCurve)
 class StepGeom_HArray1OfCurve : public  StepGeom_Array1OfCurve, public Standard_Transient {
   public:
     StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5529,7 +5532,6 @@ class StepGeom_HArray1OfCurve : public  StepGeom_Array1OfCurve, public Standard_
 %make_alias(StepGeom_HArray1OfCurve)
 
 
-%wrap_handle(StepGeom_HArray1OfTrimmingSelect)
 class StepGeom_HArray1OfTrimmingSelect : public  StepGeom_Array1OfTrimmingSelect, public Standard_Transient {
   public:
     StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5542,7 +5544,6 @@ class StepGeom_HArray1OfTrimmingSelect : public  StepGeom_Array1OfTrimmingSelect
 
 
 /* harray2 class */
-%wrap_handle(StepGeom_HArray2OfSurfacePatch)
 class StepGeom_HArray2OfSurfacePatch : public  StepGeom_Array2OfSurfacePatch, public Standard_Transient {
   public:
     StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -5556,7 +5557,6 @@ class StepGeom_HArray2OfSurfacePatch : public  StepGeom_Array2OfSurfacePatch, pu
 %make_alias(StepGeom_HArray2OfSurfacePatch)
 
 
-%wrap_handle(StepGeom_HArray2OfCartesianPoint)
 class StepGeom_HArray2OfCartesianPoint : public  StepGeom_Array2OfCartesianPoint, public Standard_Transient {
   public:
     StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,

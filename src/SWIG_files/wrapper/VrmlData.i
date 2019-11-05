@@ -2139,16 +2139,6 @@ class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 	:rtype: Quantity_Color
 ") GetColor;
 		Quantity_Color GetColor (const Standard_Integer iFace,const Standard_Integer iVertex);
-		%feature("compactdefaultargs") GetNormal;
-		%feature("autodoc", "	* /** * Query a normal for one node in the given element. The normal is * interpreted according to fields myNormals, myArrNormalInd, * myNormalPerVertex, as defined in VRML 2.0. * @param iFace * rank of the polygon [0 .. N-1] * @param iVertex * rank of the vertex in the polygon [0 .. M-1]. This parameter is ignored * if (myNormalPerVertex == False) * returns * Normal vector; if the normal is indefinite then returns (0., 0., 0.) */
-
-	:param iFace:
-	:type iFace: int
-	:param iVertex:
-	:type iVertex: int
-	:rtype: gp_XYZ
-") GetNormal;
-		gp_XYZ GetNormal (const Standard_Integer iFace,const Standard_Integer iVertex);
 		%feature("compactdefaultargs") IndiceNormals;
 		%feature("autodoc", "	* /** * Query normals indice for one face. This method should be called after * checking myArrNormalInd != NULL, otherwise exception will be thrown. * @param iFace * rank of the face [0 .. N-1] * @param outIndice * <tt>[out]</tt> array of normals indice * returns * number of indice in the array - the dimension of outIndice array */
 

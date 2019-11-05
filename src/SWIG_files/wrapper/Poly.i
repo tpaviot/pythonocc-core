@@ -57,6 +57,7 @@ conditions:
 %wrap_handle(Poly_Polygon3D)
 %wrap_handle(Poly_PolygonOnTriangulation)
 %wrap_handle(Poly_Triangulation)
+%wrap_handle(Poly_HArray1OfTriangle)
 /* end handles declaration */
 
 /* templates */
@@ -1170,7 +1171,6 @@ class Poly_Triangulation : public Standard_Transient {
 	}
 };
 /* harray1 class */
-%wrap_handle(Poly_HArray1OfTriangle)
 class Poly_HArray1OfTriangle : public  Poly_Array1OfTriangle, public Standard_Transient {
   public:
     Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper);

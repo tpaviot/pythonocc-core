@@ -77,6 +77,7 @@ enum TObj_DeletingMode {
 %wrap_handle(TObj_HiddenPartition)
 %wrap_handle(TObj_OcafObjectIterator)
 %wrap_handle(TObj_ReferenceIterator)
+%wrap_handle(TObj_HSequenceOfObject)
 /* end handles declaration */
 
 /* templates */
@@ -2026,7 +2027,6 @@ class TObj_ReferenceIterator : public TObj_LabelIterator {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(TObj_HSequenceOfObject)
 class TObj_HSequenceOfObject : public  TObj_SequenceOfObject, public Standard_Transient {
     TObj_HSequenceOfObject();
     TObj_HSequenceOfObject(const  TObj_SequenceOfObject& theOther);

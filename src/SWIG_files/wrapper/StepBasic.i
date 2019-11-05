@@ -249,6 +249,16 @@ enum StepBasic_SiPrefix {
 %wrap_handle(StepBasic_SiUnitAndThermodynamicTemperatureUnit)
 %wrap_handle(StepBasic_SiUnitAndTimeUnit)
 %wrap_handle(StepBasic_SiUnitAndVolumeUnit)
+%wrap_handle(StepBasic_HArray1OfOrganization)
+%wrap_handle(StepBasic_HArray1OfProductDefinition)
+%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
+%wrap_handle(StepBasic_HArray1OfPerson)
+%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
+%wrap_handle(StepBasic_HArray1OfApproval)
+%wrap_handle(StepBasic_HArray1OfNamedUnit)
+%wrap_handle(StepBasic_HArray1OfProductContext)
+%wrap_handle(StepBasic_HArray1OfDocument)
+%wrap_handle(StepBasic_HArray1OfProduct)
 /* end handles declaration */
 
 /* templates */
@@ -7840,7 +7850,6 @@ class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
 	}
 };
 /* harray1 class */
-%wrap_handle(StepBasic_HArray1OfOrganization)
 class StepBasic_HArray1OfOrganization : public  StepBasic_Array1OfOrganization, public Standard_Transient {
   public:
     StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7852,7 +7861,6 @@ class StepBasic_HArray1OfOrganization : public  StepBasic_Array1OfOrganization, 
 %make_alias(StepBasic_HArray1OfOrganization)
 
 
-%wrap_handle(StepBasic_HArray1OfProductDefinition)
 class StepBasic_HArray1OfProductDefinition : public  StepBasic_Array1OfProductDefinition, public Standard_Transient {
   public:
     StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7864,7 +7872,6 @@ class StepBasic_HArray1OfProductDefinition : public  StepBasic_Array1OfProductDe
 %make_alias(StepBasic_HArray1OfProductDefinition)
 
 
-%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
 class StepBasic_HArray1OfDerivedUnitElement : public  StepBasic_Array1OfDerivedUnitElement, public Standard_Transient {
   public:
     StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7876,7 +7883,6 @@ class StepBasic_HArray1OfDerivedUnitElement : public  StepBasic_Array1OfDerivedU
 %make_alias(StepBasic_HArray1OfDerivedUnitElement)
 
 
-%wrap_handle(StepBasic_HArray1OfPerson)
 class StepBasic_HArray1OfPerson : public  StepBasic_Array1OfPerson, public Standard_Transient {
   public:
     StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7888,7 +7894,6 @@ class StepBasic_HArray1OfPerson : public  StepBasic_Array1OfPerson, public Stand
 %make_alias(StepBasic_HArray1OfPerson)
 
 
-%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public  StepBasic_Array1OfUncertaintyMeasureWithUnit, public Standard_Transient {
   public:
     StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7900,7 +7905,6 @@ class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public  StepBasic_Array1Of
 %make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 
 
-%wrap_handle(StepBasic_HArray1OfApproval)
 class StepBasic_HArray1OfApproval : public  StepBasic_Array1OfApproval, public Standard_Transient {
   public:
     StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7912,7 +7916,6 @@ class StepBasic_HArray1OfApproval : public  StepBasic_Array1OfApproval, public S
 %make_alias(StepBasic_HArray1OfApproval)
 
 
-%wrap_handle(StepBasic_HArray1OfNamedUnit)
 class StepBasic_HArray1OfNamedUnit : public  StepBasic_Array1OfNamedUnit, public Standard_Transient {
   public:
     StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7924,7 +7927,6 @@ class StepBasic_HArray1OfNamedUnit : public  StepBasic_Array1OfNamedUnit, public
 %make_alias(StepBasic_HArray1OfNamedUnit)
 
 
-%wrap_handle(StepBasic_HArray1OfProductContext)
 class StepBasic_HArray1OfProductContext : public  StepBasic_Array1OfProductContext, public Standard_Transient {
   public:
     StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7936,7 +7938,6 @@ class StepBasic_HArray1OfProductContext : public  StepBasic_Array1OfProductConte
 %make_alias(StepBasic_HArray1OfProductContext)
 
 
-%wrap_handle(StepBasic_HArray1OfDocument)
 class StepBasic_HArray1OfDocument : public  StepBasic_Array1OfDocument, public Standard_Transient {
   public:
     StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7948,7 +7949,6 @@ class StepBasic_HArray1OfDocument : public  StepBasic_Array1OfDocument, public S
 %make_alias(StepBasic_HArray1OfDocument)
 
 
-%wrap_handle(StepBasic_HArray1OfProduct)
 class StepBasic_HArray1OfProduct : public  StepBasic_Array1OfProduct, public Standard_Transient {
   public:
     StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper);

@@ -76,6 +76,7 @@ enum MoniTool_ValueType {
 %wrap_handle(MoniTool_TypedValue)
 %wrap_handle(MoniTool_SignShape)
 %wrap_handle(MoniTool_TransientElem)
+%wrap_handle(MoniTool_HSequenceOfElement)
 /* end handles declaration */
 
 /* templates */
@@ -1748,7 +1749,6 @@ class MoniTool_TransientElem : public MoniTool_Element {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(MoniTool_HSequenceOfElement)
 class MoniTool_HSequenceOfElement : public  MoniTool_SequenceOfElement, public Standard_Transient {
     MoniTool_HSequenceOfElement();
     MoniTool_HSequenceOfElement(const  MoniTool_SequenceOfElement& theOther);

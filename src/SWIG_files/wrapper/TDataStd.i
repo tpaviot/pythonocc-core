@@ -97,6 +97,7 @@ enum TDataStd_RealEnum {
 %wrap_handle(TDataStd_TreeNode)
 %wrap_handle(TDataStd_UAttribute)
 %wrap_handle(TDataStd_Variable)
+%wrap_handle(TDataStd_HLabelArray1)
 /* end handles declaration */
 
 /* templates */
@@ -4540,7 +4541,6 @@ class TDataStd_Variable : public TDF_Attribute {
 	}
 };
 /* harray1 class */
-%wrap_handle(TDataStd_HLabelArray1)
 class TDataStd_HLabelArray1 : public  TDataStd_LabelArray1, public Standard_Transient {
   public:
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper);

@@ -61,6 +61,7 @@ conditions:
 %wrap_handle(STEPSelections_SelectForTransfer)
 %wrap_handle(STEPSelections_SelectGSCurves)
 %wrap_handle(STEPSelections_SelectInstances)
+%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
 /* end handles declaration */
 
 /* templates */
@@ -516,7 +517,6 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
 class STEPSelections_HSequenceOfAssemblyLink : public  STEPSelections_SequenceOfAssemblyLink, public Standard_Transient {
     STEPSelections_HSequenceOfAssemblyLink();
     STEPSelections_HSequenceOfAssemblyLink(const  STEPSelections_SequenceOfAssemblyLink& theOther);

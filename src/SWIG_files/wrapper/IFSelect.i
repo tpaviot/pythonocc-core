@@ -164,6 +164,7 @@ enum IFSelect_PrintCount {
 %wrap_handle(IFSelect_SelectUnknownEntities)
 %wrap_handle(IFSelect_SelectIncorrectEntities)
 %wrap_handle(IFSelect_SelectType)
+%wrap_handle(IFSelect_HSeqOfSelection)
 /* end handles declaration */
 
 /* templates */
@@ -8030,7 +8031,6 @@ class IFSelect_SelectType : public IFSelect_SelectAnyType {
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
-%wrap_handle(IFSelect_HSeqOfSelection)
 class IFSelect_HSeqOfSelection : public  IFSelect_TSeqOfSelection, public Standard_Transient {
     IFSelect_HSeqOfSelection();
     IFSelect_HSeqOfSelection(const  IFSelect_TSeqOfSelection& theOther);

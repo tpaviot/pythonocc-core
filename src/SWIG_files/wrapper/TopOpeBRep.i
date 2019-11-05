@@ -76,6 +76,8 @@ enum TopOpeBRep_TypeLineCurve {
 %wrap_handle(TopOpeBRep_FFDumper)
 %wrap_handle(TopOpeBRep_Hctxee2d)
 %wrap_handle(TopOpeBRep_Hctxff2d)
+%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
+%wrap_handle(TopOpeBRep_HArray1OfLineInter)
 /* end handles declaration */
 
 /* templates */
@@ -3012,7 +3014,6 @@ class TopOpeBRep_WPointInterIterator {
 	}
 };
 /* harray1 class */
-%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
 class TopOpeBRep_HArray1OfVPointInter : public  TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3024,7 +3025,6 @@ class TopOpeBRep_HArray1OfVPointInter : public  TopOpeBRep_Array1OfVPointInter, 
 %make_alias(TopOpeBRep_HArray1OfVPointInter)
 
 
-%wrap_handle(TopOpeBRep_HArray1OfLineInter)
 class TopOpeBRep_HArray1OfLineInter : public  TopOpeBRep_Array1OfLineInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper);

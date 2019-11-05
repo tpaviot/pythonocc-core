@@ -53,6 +53,8 @@ conditions:
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(TColQuantity_HArray1OfLength)
+%wrap_handle(TColQuantity_HArray2OfLength)
 /* end handles declaration */
 
 /* templates */
@@ -100,7 +102,6 @@ typedef NCollection_Array2 <Quantity_Length> TColQuantity_Array2OfLength;
 /* end typedefs declaration */
 
 /* harray1 class */
-%wrap_handle(TColQuantity_HArray1OfLength)
 class TColQuantity_HArray1OfLength : public  TColQuantity_Array1OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray1OfLength(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -113,7 +114,6 @@ class TColQuantity_HArray1OfLength : public  TColQuantity_Array1OfLength, public
 
 
 /* harray2 class */
-%wrap_handle(TColQuantity_HArray2OfLength)
 class TColQuantity_HArray2OfLength : public  TColQuantity_Array2OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray2OfLength(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,

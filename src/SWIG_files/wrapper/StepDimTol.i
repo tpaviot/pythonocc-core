@@ -183,6 +183,13 @@ enum StepDimTol_GeometricToleranceModifier {
 %wrap_handle(StepDimTol_PerpendicularityTolerance)
 %wrap_handle(StepDimTol_SymmetryTolerance)
 %wrap_handle(StepDimTol_TotalRunoutTolerance)
+%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
+%wrap_handle(StepDimTol_HArray1OfDatumReference)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
+%wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
+%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
 /* end handles declaration */
 
 /* templates */
@@ -3070,7 +3077,6 @@ class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWith
 	}
 };
 /* harray1 class */
-%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 class StepDimTol_HArray1OfToleranceZoneTarget : public  StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
   public:
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3082,7 +3088,6 @@ class StepDimTol_HArray1OfToleranceZoneTarget : public  StepDimTol_Array1OfToler
 %make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
 
 
-%wrap_handle(StepDimTol_HArray1OfDatumReference)
 class StepDimTol_HArray1OfDatumReference : public  StepDimTol_Array1OfDatumReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3094,7 +3099,6 @@ class StepDimTol_HArray1OfDatumReference : public  StepDimTol_Array1OfDatumRefer
 %make_alias(StepDimTol_HArray1OfDatumReference)
 
 
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
 class StepDimTol_HArray1OfDatumReferenceElement : public  StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3106,7 +3110,6 @@ class StepDimTol_HArray1OfDatumReferenceElement : public  StepDimTol_Array1OfDat
 %make_alias(StepDimTol_HArray1OfDatumReferenceElement)
 
 
-%wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
 class StepDimTol_HArray1OfDatumSystemOrReference : public  StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3118,7 +3121,6 @@ class StepDimTol_HArray1OfDatumSystemOrReference : public  StepDimTol_Array1OfDa
 %make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
 
 
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
 class StepDimTol_HArray1OfDatumReferenceCompartment : public  StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3130,7 +3132,6 @@ class StepDimTol_HArray1OfDatumReferenceCompartment : public  StepDimTol_Array1O
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
 
 
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
 class StepDimTol_HArray1OfDatumReferenceModifier : public  StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3142,7 +3143,6 @@ class StepDimTol_HArray1OfDatumReferenceModifier : public  StepDimTol_Array1OfDa
 %make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
 
 
-%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
 class StepDimTol_HArray1OfGeometricToleranceModifier : public  StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);

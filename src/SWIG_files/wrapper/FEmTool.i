@@ -60,6 +60,7 @@ conditions:
 %wrap_handle(FEmTool_LinearJerk)
 %wrap_handle(FEmTool_LinearTension)
 %wrap_handle(FEmTool_ProfileMatrix)
+%wrap_handle(FEmTool_HAssemblyTable)
 /* end handles declaration */
 
 /* templates */
@@ -755,7 +756,6 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 };
 /* harray1 class */
 /* harray2 class */
-%wrap_handle(FEmTool_HAssemblyTable)
 class FEmTool_HAssemblyTable : public  FEmTool_AssemblyTable, public Standard_Transient {
   public:
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,

@@ -90,6 +90,7 @@ enum TopOpeBRepDS_Kind {
 %wrap_handle(TopOpeBRepDS_SurfaceCurveInterference)
 %wrap_handle(TopOpeBRepDS_EdgeVertexInterference)
 %wrap_handle(TopOpeBRepDS_FaceEdgeInterference)
+%wrap_handle(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 /* end handles declaration */
 
 /* templates */
@@ -4183,7 +4184,6 @@ class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterfer
 	}
 };
 /* harray1 class */
-%wrap_handle(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference, public Standard_Transient {
   public:
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper);
