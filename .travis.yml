@@ -7,25 +7,28 @@ git:
   depth: false
 
 # the secure below is the binstar token
-# to genrate this secure
-# first create an anconda cloud token
-# $ anaconda auth -n the_token_name --max-age 22896000 -c --scopes api
-# the token is return as something like "yh-6654-12334_111225"
-# then encrypt the token
-# Note : in order to encrypt using travis
-# You may have to :
+# - Prerequisites :
+# On Linux, install travis tools using:
 # $ sudo gem install travis
-# (especially if you performed a linux distro upgrade, ruby should not be up to date)
+# this is ruby code, check your ruby environment is up to date.
+#
+# - Generate the secure
+# 1. create an anconda cloud token
+# $ anaconda auth -n the_token_name --max-age 22896000 -c --scopes api
+# token_name can be anything. Be sure you use a token_name you can easily identify
+# on the anaconda cloud configuration page.
+# the token is returned as something like "yh-6654-12334_111225"
+# 2. encrypt the token
 # You have to be in the directory where you installed the local copy of the repository
 # $ cd [your_dev_dir]/pythonocc-core
 # $ sudo travis encrypt BINSTAR_TOKEN="yh-6654-12334_111225"
 # !!be careful about the typo BINSTAR_TOKEN with the proper case. Otherwise
 # !!the $BINSTAR_TOKEN env var value will be null and the line
 # !!anaconda -t $BINSTAR_TOKEN upload *.bz2 will not be run properly
-# after that, copy/paste the secure on the following line
+# 3. after that, copy/paste the secure content just below, between double quotes.
 env:
   global:
-    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
+    - secure: "i82QH3LxjfFUrWSYxeJlKRKmpbJvN+MmBArcx2CTYX+OyAk4U4cpbaiWRl8AkiKiJXXQ3s2iYa6cZh4YrpJW9unyRlLnO5EAtgDKEmvMT5SicX3JLrepnGGOHZrcMH2STrSbXiHOuv4CyWg9DNzh4CJ7Ci25CCmIv3jwxeuVs3s="
 
 jobs:
   include:
@@ -44,51 +47,43 @@ jobs:
       os: osx
       osx_image: xcode9.4
 # Windows
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
-      env: CMAKE_GENERATOR="Visual Studio 15 2017"
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
       os: windows
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
       os: windows
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
       os: windows
 
-# Use miniconda to install binary versions of numpy etc. from continuum
-# analytic's repository. Follows an approach described by Dan Blanchard:
-# https://gist.github.com/dan-blanchard/7045057
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
-      MINICONDA_PATH=$HOME/miniconda;
-      MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
-    elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      MINICONDA_PATH=/c/tools/miniconda3;
-      MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
-    fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
-    fi
-
-install:
-  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
-      chmod +x miniconda.sh;
-      yes | ./miniconda.sh -b -p $MINICONDA_PATH;
-    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      echo "installing miniconda for windows";
-      choco install openssl.light;
-      choco install miniconda3;
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/download/miniconda.sh;
+    elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O $HOME/download/miniconda.sh;
     fi;
-  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+      export MINICONDA_PATH=$HOME/miniconda;
+      export MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
+    elif [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      export MINICONDA_PATH=$HOME/miniconda;
+      export MINICONDA_PATH_WIN=`cygpath --windows $MINICONDA_PATH`;
+      export MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
+    fi;
+  - export MINICONDA_LIB_BIN_PATH=$MINICONDA_PATH/Library/bin;
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+      bash $HOME/download/miniconda.sh -b -u -p $MINICONDA_PATH;
+    fi;
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      choco install openssl.light;
+      choco install miniconda3 --params="'/JustMe /AddToPath:1 /D:$MINICONDA_PATH_WIN'";
+    fi;
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$MINICONDA_LIB_BIN_PATH:$PATH"
+  - export PYTHONUNBUFFERED=1
   - hash -r
   - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
   - conda update -q conda
-  # install everything required to build the receipe
-  # conda-build 3.2.0 on osx to prevent using check_overlinking
-  # method which is quite loooong to process
-  - conda install conda-build
-  - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
+  - conda install conda-build anaconda-client
   # download/install OCE from DLR-SC channel
   - conda config --add channels https://conda.anaconda.org/dlr-sc
   - conda config --add channels https://conda.anaconda.org/conda-forge

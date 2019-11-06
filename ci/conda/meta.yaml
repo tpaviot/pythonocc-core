@@ -19,28 +19,33 @@ build:
 
 requirements:
   build:
-    - python
-    - oce ==0.18.3
+    - {{ compiler('cxx') }}
+    - {{ cdt('libx11-devel') }}         # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }} # [linux]
+    - {{ cdt('mesa-libgl-devel') }}     # [linux]
     - tbb ==2018_20171205
-    - cmake >=3.12
-    - ninja ==1.8.2
-    - swig >=4
+    - cmake
+    - ninja
+    - swig >=3.0.11
     - freetype ==2.9.1
+
+  host:
+    - python {{ python }}
+    - oce ==0.18.3
     - smesh ==6.7.6
 
   run:
     - oce ==0.18.3
-    - python
+    - python {{ python }}
     - tbb >=2018_20171205
     - freetype >=2.7
     - smesh ==6.7.6
-    - six
+    - pyqt >=5
 
 test:
   requires:
     - numpy
     - pyqt >=5
-    - smesh ==6.7.6
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
