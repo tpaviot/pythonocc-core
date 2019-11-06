@@ -74,17 +74,14 @@ install:
       chmod +x miniconda.sh;
       yes | ./miniconda.sh -b -p $MINICONDA_PATH;
     elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      if [[ -d $MINICONDA_SUB_PATH ]]; then
-        echo "miniconda for Windows already installed";
-      else
-        echo "installing miniconda for windows";
-        choco install miniconda3;
-      fi;
+      echo "installing miniconda for windows";
+      choco install openssl.light;
+      choco install miniconda3;
     fi;
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no --set ssl_verify no
-  #- conda update -q conda # TODO uncomment, just for testing
+  - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
+  - conda update -q conda
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
   # method which is quite loooong to process
