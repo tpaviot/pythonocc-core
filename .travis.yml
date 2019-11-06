@@ -44,18 +44,18 @@ matrix:
   include:
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: linux
-      dist: trusty
+      dist: bionic
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
-      os: linux
+      os: bionic
       dist: trusty
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: osx
@@ -65,13 +65,9 @@ matrix:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    export CXX=g++-7
-    export CC=gcc-7
-    fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     else
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
     fi
   - chmod +x miniconda.sh
   # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
@@ -107,9 +103,9 @@ script:
 after_success:
   - python ci/move-conda-package.py
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    anaconda -t $BINSTAR_TOKEN upload *.bz2 -l main --force
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l main --force;
     else
-    anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$TRAVIS_BRANCH --force
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$TRAVIS_BRANCH --force;
     fi
 
 
