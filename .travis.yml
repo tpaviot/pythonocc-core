@@ -69,10 +69,8 @@ before_install:
     fi
 
 install:
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
       chmod +x miniconda.sh;
-      # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
-      # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
       yes | ./miniconda.sh -b -p $MINICONDA_PATH;
     elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       if [[ -d $MINICONDA_SUB_PATH ]]; then
@@ -81,7 +79,7 @@ install:
         echo "installing miniconda for windows";
         choco install miniconda3;
       fi;
-    fi
+    fi;
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
