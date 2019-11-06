@@ -82,7 +82,7 @@ install:
     fi;
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no
+  - conda config --set always_yes yes --set changeps1 no --set ssl_verify no
   - conda update -q conda
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
