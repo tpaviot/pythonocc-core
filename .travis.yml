@@ -1,4 +1,4 @@
-sudo: false
+dist: bionic
 
 language: cpp
 
@@ -43,8 +43,6 @@ addons:
 matrix:
   include:
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
-      os: linux
-      dist: bionic
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
@@ -60,6 +58,9 @@ matrix:
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+      os: windows
+
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
