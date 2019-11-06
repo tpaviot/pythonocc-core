@@ -55,17 +55,34 @@ jobs:
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      MINICONDA_PATH=$HOME/miniconda;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
+    elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      MINICONDA_PATH=/c/tools/miniconda3;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
+    fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
     fi
-  - chmod +x miniconda.sh
-  # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
-  # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
-  - yes | ./miniconda.sh -b -p $HOME/miniconda
-  #- bash miniconda.sh -b -p -f $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
+
+install:
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+      chmod +x miniconda.sh;
+      # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
+      # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
+      yes | ./miniconda.sh -b -p $MINICONDA_PATH;
+    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      if [[ -d $MINICONDA_SUB_PATH ]]; then
+        echo "miniconda for Windows already installed";
+      else
+        echo "installing miniconda for windows";
+        choco install miniconda3;
+      fi;
+    fi
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
