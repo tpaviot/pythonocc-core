@@ -45,6 +45,7 @@ jobs:
       osx_image: xcode9.4
 # Windows
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
+      env: CMAKE_GENERATOR="Visual Studio 15 2017"
       os: windows
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: windows
@@ -83,7 +84,7 @@ install:
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
   - conda config --set always_yes yes --set changeps1 no --set ssl_verify no
-  - conda update -q conda
+  #- conda update -q conda # TODO uncomment, just for testing
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
   # method which is quite loooong to process
