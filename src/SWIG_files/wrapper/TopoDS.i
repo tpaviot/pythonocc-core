@@ -742,6 +742,12 @@ class TopoDS_Shape {
 	:rtype: None
 ") TShape;
 		void TShape (const opencascade::handle<TopoDS_TShape> & theTShape);
+		%feature("compactdefaultargs") TopoDS_Shape;
+		%feature("autodoc", "	* Creates a NULL Shape referring to nothing.
+
+	:rtype: None
+") TopoDS_Shape;
+		 TopoDS_Shape ();
 
         %extend{
             bool __eq_wrapper__(const TopoDS_Shape  other) {
