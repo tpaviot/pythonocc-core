@@ -1,7 +1,7 @@
 # change the version number to "0.17.1" or "0.18" in case of a release build
 package:
   name: pythonocc-core
-  version: 0.18.2
+  version: 0.19
 
 source:
   path: ../..
@@ -15,27 +15,19 @@ build:
   number: {{ GIT_DESCRIBE_NUMBER }}
   binary_relocation: false [osx]
   features:
-    - vc9               [win and py27]
-    - vc14              [win and py35]
-    - vc14              [win and py36]
+    - vc14              [win]
 
 requirements:
   build:
     - python
-    - oce ==0.18.3
-    - tbb ==2018_20171205
+    - opencascade ==7.4.0
     - cmake
     - ninja ==1.8.2
-    - swig ==3.0.12
-    - freetype ==2.9.1
-    - smesh ==6.7.6
+    - swig ==4.0.1
 
   run:
-    - oce ==0.18.3
+    - opencascade ==7.4.0
     - python
-    - tbb >=2018_20171205
-    - freetype >=2.7
-    - smesh ==6.7.6
     - six
 
 test:
