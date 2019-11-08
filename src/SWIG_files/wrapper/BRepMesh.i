@@ -1019,12 +1019,6 @@ class BRepMesh_Delaun {
 	:rtype: None
 ") InitCirclesTool;
 		void InitCirclesTool (const Standard_Integer theCellsCountU,const Standard_Integer theCellsCountV);
-		%feature("compactdefaultargs") ProcessConstraints;
-		%feature("autodoc", "	* Forces insertion of constraint edges into the base triangulation.
-
-	:rtype: inline void
-") ProcessConstraints;
-		inline void ProcessConstraints ();
 		%feature("compactdefaultargs") RemoveVertex;
 		%feature("autodoc", "	* Removes a vertex from the triangulation.
 
@@ -1522,16 +1516,6 @@ class BRepMesh_MeshTool : public Standard_Transient {
 	:rtype: None
 ") CleanFrontierLinks;
 		void CleanFrontierLinks ();
-		%feature("compactdefaultargs") DumpTriangles;
-		%feature("autodoc", "	* Dumps triangles to specified file.
-
-	:param theFileName:
-	:type theFileName: char *
-	:param theTriangles:
-	:type theTriangles: IMeshData::MapOfInteger *
-	:rtype: None
-") DumpTriangles;
-		void DumpTriangles (const char * theFileName,IMeshData::MapOfInteger * theTriangles);
 		%feature("compactdefaultargs") EraseFreeLinks;
 		%feature("autodoc", "	* Erases all links that have no elements connected to them.
 
@@ -1564,16 +1548,6 @@ class BRepMesh_MeshTool : public Standard_Transient {
 	:rtype: None
 ") EraseTriangle;
 		void EraseTriangle (const Standard_Integer theTriangleIndex,IMeshData::MapOfIntegerInteger & theLoopEdges);
-		%feature("compactdefaultargs") EraseTriangles;
-		%feature("autodoc", "	* Erases the given set of triangles. Fills map of loop edges forming the countour surrounding the erased triangles.
-
-	:param theTriangles:
-	:type theTriangles: IMeshData::MapOfInteger &
-	:param theLoopEdges:
-	:type theLoopEdges: IMeshData::MapOfIntegerInteger &
-	:rtype: None
-") EraseTriangles;
-		void EraseTriangles (const IMeshData::MapOfInteger & theTriangles,IMeshData::MapOfIntegerInteger & theLoopEdges);
 		%feature("compactdefaultargs") GetStructure;
 		%feature("autodoc", "	* Returns data structure manipulated by this tool.
 
@@ -2664,47 +2638,10 @@ class BRepMesh_ConeRangeSplitter : public BRepMesh_DefaultRangeSplitter {
 	:rtype: None
 ") BRepMesh_ConeRangeSplitter;
 		 BRepMesh_ConeRangeSplitter ();
-		%feature("compactdefaultargs") GetSplitSteps;
-		%feature("autodoc", "	* Returns split intervals along U and V direction. @param theParameters meshing parameters. @param[out] theStepsNb number of steps along corresponding direction.
-
-	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
-	:param theStepsNb:
-	:type theStepsNb: std::pair<int, int> &
-	:rtype: std::pair<float, float>
-") GetSplitSteps;
-		std::pair<Standard_Real, Standard_Real> GetSplitSteps (const IMeshTools_Parameters & theParameters,std::pair<Standard_Integer, Standard_Integer> & theStepsNb);
 };
 
 
 %extend BRepMesh_ConeRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_CylinderRangeSplitter;
-class BRepMesh_CylinderRangeSplitter : public BRepMesh_DefaultRangeSplitter {
-	public:
-		%feature("compactdefaultargs") BRepMesh_CylinderRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_CylinderRangeSplitter;
-		 BRepMesh_CylinderRangeSplitter ();
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Resets this splitter. Must be called before first use.
-
-	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
-	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
-	:rtype: void
-") Reset;
-		virtual void Reset (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
-};
-
-
-%extend BRepMesh_CylinderRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2957,17 +2894,6 @@ class BRepMesh_UVParamRangeSplitter : public BRepMesh_DefaultRangeSplitter {
 
 
 %extend BRepMesh_UVParamRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_CustomBaseMeshAlgo;
-class BRepMesh_CustomBaseMeshAlgo : public BRepMesh_ConstrainedBaseMeshAlgo {
-	public:
-};
-
-
-%extend BRepMesh_CustomBaseMeshAlgo {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

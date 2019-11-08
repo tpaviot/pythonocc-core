@@ -2629,14 +2629,6 @@ class Graphic3d_BufferRange {
 %nodefaultctor Graphic3d_BvhCStructureSet;
 class Graphic3d_BvhCStructureSet : public BVH_PrimitiveSet3d {
 	public:
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds structure to the set. returns true if structure added, otherwise returns false (structure already in the set).
-
-	:param theStruct:
-	:type theStruct: Graphic3d_CStructure *
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Graphic3d_CStructure * theStruct);
 		%feature("compactdefaultargs") Box;
 		%feature("autodoc", "	* Returns AABB of the structure.
 

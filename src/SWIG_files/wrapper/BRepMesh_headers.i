@@ -38,9 +38,7 @@ conditions:
 #include<BRepMesh_ConstrainedBaseMeshAlgo.hxx>
 #include<BRepMesh_Context.hxx>
 #include<BRepMesh_CurveTessellator.hxx>
-#include<BRepMesh_CustomBaseMeshAlgo.hxx>
 #include<BRepMesh_CustomDelaunayBaseMeshAlgo.hxx>
-#include<BRepMesh_CylinderRangeSplitter.hxx>
 #include<BRepMesh_DataStructureOfDelaun.hxx>
 #include<BRepMesh_DefaultRangeSplitter.hxx>
 #include<BRepMesh_Deflection.hxx>

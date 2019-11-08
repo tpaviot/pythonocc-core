@@ -462,62 +462,6 @@ class Aspect_Background {
 %nodefaultctor Aspect_DisplayConnection;
 class Aspect_DisplayConnection : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Aspect_DisplayConnection;
-		%feature("autodoc", "	* Default constructor. Creates connection with display name taken from 'DISPLAY' environment variable
-
-	:rtype: None
-") Aspect_DisplayConnection;
-		 Aspect_DisplayConnection ();
-		%feature("compactdefaultargs") Aspect_DisplayConnection;
-		%feature("autodoc", "	* Constructor. Creates connection with display specified in theDisplayName. Display name should be in format 'hostname:number' or 'hostname:number.screen_number', where: hostname - Specifies the name of the host machine on which the display is physically attached. number - Specifies the number of the display server on that host machine. screen_number - Specifies the screen to be used on that server. Optional variable.
-
-	:param theDisplayName:
-	:type theDisplayName: TCollection_AsciiString &
-	:rtype: None
-") Aspect_DisplayConnection;
-		 Aspect_DisplayConnection (const TCollection_AsciiString & theDisplayName);
-		%feature("compactdefaultargs") Aspect_DisplayConnection;
-		%feature("autodoc", "	* Constructor wrapping existing Display instance. WARNING! it is a responsibility of application to keep this pointer valid while Aspect_DisplayConnection is alive and to close Display when it is no more needed.
-
-	:param theDisplay:
-	:type theDisplay: Display *
-	:rtype: None
-") Aspect_DisplayConnection;
-		 Aspect_DisplayConnection (Display * theDisplay);
-		%feature("compactdefaultargs") GetAtom;
-		%feature("autodoc", "	* returns identifier(atom) for custom named property associated with windows that use current connection to X server.
-
-	:param theAtom:
-	:type theAtom: Aspect_XAtom
-	:rtype: Atom
-") GetAtom;
-		Atom GetAtom (const Aspect_XAtom theAtom);
-		%feature("compactdefaultargs") GetDisplay;
-		%feature("autodoc", "	* returns pointer to Display structure that serves as the connection to the X server.
-
-	:rtype: Display *
-") GetDisplay;
-		Display * GetDisplay ();
-		%feature("compactdefaultargs") GetDisplayName;
-		%feature("autodoc", "	* returns display name for this connection.
-
-	:rtype: TCollection_AsciiString
-") GetDisplayName;
-		const TCollection_AsciiString & GetDisplayName ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Open connection with display specified in myDisplayName class field or takes theDisplay parameter when it is not NULL. WARNING! When external Display is specified, it is a responsibility of application to keep this pointer valid while Aspect_DisplayConnection is alive and to close Display when it is no more needed. @param theDisplay external pointer to allocated Display, or NULL if new connection should be created
-
-	:param theDisplay:
-	:type theDisplay: Display *
-	:rtype: None
-") Init;
-		void Init (Display * theDisplay);
-		%feature("compactdefaultargs") IsOwnDisplay;
-		%feature("autodoc", "	* returns True if X Display has been allocated by this class
-
-	:rtype: bool
-") IsOwnDisplay;
-		Standard_Boolean IsOwnDisplay ();
 };
 
 
