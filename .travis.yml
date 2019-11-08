@@ -1,4 +1,5 @@
-sudo: false
+os: linux
+dist: bionic
 
 language: cpp
 
@@ -31,75 +32,69 @@ env:
 
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
-      - gcc-multilib
-      - g++-multilib
-      - lib32z1+
-      - lsb-core
-      - g++-7
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - libglu1-mesa-dev
 
-matrix:
+jobs:
   include:
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: linux
-      dist: trusty
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
+# Linux
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
-      os: linux
-      dist: trusty
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+# OSX
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
       osx_image: xcode9.4
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
-      os: linux
-      dist: trusty
+      os: osx
+      osx_image: xcode9.4
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+      os: osx
+      osx_image: xcode9.4
+# Windows
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
+      os: windows
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
+      os: windows
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
-      os: linux
-      dist: trusty
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
+      os: windows
+
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      MINICONDA_PATH=$HOME/miniconda;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
+    elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      MINICONDA_PATH=/c/tools/miniconda3;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
+    fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      export CXX=g++-7;
-      export CC=gcc-7;
-    fi;
-  - if [ ${PYTHON:0:1} == "2" ]; then
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-      else
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -O miniconda.sh;
-      fi;
-      else
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-      else
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
-      fi;
+    fi
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      chmod +x miniconda.sh;
+      yes | ./miniconda.sh -b -p $MINICONDA_PATH;
+    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      echo "installing miniconda for windows";
+      choco install openssl.light;
+      choco install miniconda3;
     fi;
-  - chmod +x miniconda.sh
-  # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
-  # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
-  - yes | ./miniconda.sh -b -p $HOME/miniconda
-  #- bash miniconda.sh -b -p -f $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no
+  - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
   - conda update -q conda
   # install everything required to build the receipe
   # conda-build 3.2.0 on osx to prevent using check_overlinking
   # method which is quite loooong to process
-  - conda install conda-build==3.2.0
+  - conda install conda-build
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
@@ -109,7 +104,6 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
   - conda config --add channels https://conda.anaconda.org/pythonocc
-  
 
 
 script:
@@ -125,7 +119,7 @@ after_success:
       anaconda -t $BINSTAR_TOKEN upload *.bz2 -l main --force;
     else
       anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$TRAVIS_BRANCH --force;
-    fi;
+    fi
 
 
 branches:
