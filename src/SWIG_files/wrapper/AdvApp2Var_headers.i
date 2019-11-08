@@ -28,6 +28,9 @@ conditions:
 */
 
 %{
+#if defined(_WIN32)
+#include <windows.h>
+#endif
 #include<AdvApp2Var_ApproxAFunc2Var.hxx>
 #include<AdvApp2Var_ApproxF2var.hxx>
 #include<AdvApp2Var_Context.hxx>
