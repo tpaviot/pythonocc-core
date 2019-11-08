@@ -1,7 +1,7 @@
 # change the version number to "0.17.1" or "0.18" in case of a release build
 package:
   name: pythonocc-core
-  version: 0.18.2
+  version: 0.19
 
 source:
   path: ../..
@@ -18,30 +18,21 @@ build:
 requirements:
   build:
     - python
-    - oce ==0.18.3
-    - tbb
-    - tbb-devel
+    - opencascade ==7.4.0
     - cmake
     - ninja ==1.8.2
-    - swig ==3.0.12
-    - freetype >=2.9
-    - smesh ==6.7.6
+    - swig ==4.0.1
 
   run:
-    - oce ==0.18.3
+    - opencascade ==7.4.0
     - python
-    - tbb
-    - freetype
-    - smesh ==6.7.6
     - six
 
 test:
   imports:
     - OCC
     - OCC.Core.BRepPrimAPI
-
     
-
 about:
   home: https://github.com/tpaviot/pythonocc-core
   license: LGPL
