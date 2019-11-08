@@ -56,10 +56,7 @@ endif(APPLE)
 # Option_With_Default macro #
 #############################
 macro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
-if( NOT DEFINED ${OPTION_NAME} )
-  set( ${OPTION_NAME} ${OPTION_DEFAULT} )
-endif( NOT DEFINED ${OPTION_NAME} )
-  OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
+  OPTION( ${OPTION_NAME} ${OPTION_STRING} ${${OPTION_NAME}} )
 endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 
 ##########
@@ -98,15 +95,9 @@ endif(APPLE)
 ########
 # SWIG #
 ########
-find_package(SWIG 3.0.9)
+find_package(SWIG 4.0.1 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-
-############
-# FreeType #
-############
-find_package(Freetype REQUIRED)
-include_directories(${FREETYPE_INCLUDE_DIRS})
     
 ################################
 # OCE include and lib location #
@@ -305,16 +296,6 @@ if(PYTHONOCC_WRAP_VISU)
   endif(APPLE)
 
 endif(PYTHONOCC_WRAP_VISU)
-
-##########
-# Addons #
-##########
-
-
-############
-# Splitter #
-############
-
 
 ################
 # DataExchange #
