@@ -1,4 +1,5 @@
 LIST(APPEND OCE_TOOLKIT_MODEL
+
 # TKernel
 	FSD
 	MMgt
@@ -6,7 +7,6 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	Plugin
 	Quantity
 	Resource
-	SortTools
 	Standard
 	StdFail
 	Storage
@@ -15,8 +15,6 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	TShort
 	Units
 	UnitsAPI
-	IncludeLibrary
-	Dico
 	NCollection
 	Message
 # TKMath
@@ -38,6 +36,15 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	BVH
 	Expr
 	ExprIntrp
+# TKBRep
+	TopoDS
+	TopExp
+	TopTools
+	BRep
+	BRepLProp
+	BRepAdaptor
+	BRepTools
+	BinTools
 # TKG2d
 	Geom2d
 	LProp
@@ -45,10 +52,10 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	Adaptor2d
 	Geom2dLProp
 	Geom2dAdaptor
-	GProp
 	Geom2dEvaluator
 # TKG3d
 	Geom
+	GProp
 	TColGeom
 	GeomAdaptor
 	AdvApprox
@@ -80,15 +87,33 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	GC
 	GCE2d
 	gce
-# TKBRep
-	TopoDS
-	TopExp
-	TopTools
-	BRep
-	BRepLProp
-	BRepAdaptor
-	BRepTools
-	BinTools
+# TKBO
+	IntTools
+	BRepAlgoAPI
+	BOPDS
+	BOPAlgo
+	BOPTools
+# TKBool
+	TopOpeBRep
+	TopOpeBRepDS
+	TopOpeBRepBuild
+	TopOpeBRepTool
+	BRepAlgo
+	BRepFill
+	BRepProj
+# TKFeat
+	LocOpe
+	BRepFeat
+# TKFillet
+	ChFiDS
+	ChFi2d
+	ChFi3d
+	ChFiKPart
+	Blend
+	BRepBlend
+	BlendFunc
+	BRepFilletAPI
+	FilletSurf
 # TKGeomAlgo
 	Hatch
 	GeomInt
@@ -108,7 +133,6 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	GccAna
 	GccEnt
 	GccInt
-	GccIter
 	HatchGen
 	Geom2dHatch
 	Law
@@ -124,6 +148,41 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	NLPlate
 	IntPolyh
 	TopClass
+# TKHLR
+	HLRTopoBRep
+	HLRBRep
+	HLRAlgo
+	HLRAppli
+	Intrv
+	TopBas
+	TopCnx
+	Contap
+# TKMesh
+	BRepMesh
+	BRepMeshData
+	IMeshTools
+	IMeshData
+# TKOffset
+	BRepOffsetAPI
+	Draft
+	BRepOffset
+	BiTgte
+# TKPrim
+	BRepPrim
+	BRepSweep
+	Sweep
+	BRepPrimAPI
+# TKShHealing
+	ShapeBuild
+	ShapeExtend
+	ShapeConstruct
+	ShapeCustom
+	ShapeAnalysis
+	ShapeFix
+	ShapeUpgrade
+	ShapeAlgo
+	ShapeProcess
+	ShapeProcessAPI
 # TKTopAlgo
 	IntCurvesFace
 	MAT
@@ -141,74 +200,12 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	BRepTopAdaptor
 	BRepBuilderAPI
 	BRepApprox
-# TKPrim
-	BRepPrim
-	BRepSweep
-	Sweep
-	BRepPrimAPI
-# TKBO
-	IntTools
-	BRepAlgoAPI
-	BOPCol
-	BOPDS
-	BOPAlgo
-	BOPTools
-# TKHLR
-	HLRTopoBRep
-	HLRBRep
-	HLRAlgo
-	HLRAppli
-	Intrv
-	TopBas
-	TopCnx
-	Contap
-# TKMesh
-	BRepMesh
-	IntPoly
-	IMeshData
-	IMeshTools
-# TKShHealing
-	ShapeBuild
-	ShapeExtend
-	ShapeConstruct
-	ShapeCustom
-	ShapeAnalysis
-	ShapeFix
-	ShapeUpgrade
-	ShapeAlgo
-	ShapeProcess
-	ShapeProcessAPI
 # TKXMesh
 	XBRepMesh
-# TKBool
-	TopOpeBRep
-	TopOpeBRepDS
-	TopOpeBRepBuild
-	TopOpeBRepTool
-	BRepAlgo
-	BRepFill
-	BRepProj
-# TKFillet
-	ChFiDS
-	ChFi2d
-	ChFi3d
-	ChFiKPart
-	Blend
-	BRepBlend
-	BlendFunc
-	BRepFilletAPI
-	FilletSurf
-# TKFeat
-	LocOpe
-	BRepFeat
-# TKOffset
-	BRepOffsetAPI
-	Draft
-	BRepOffset
-	BiTgte
 )
 
 LIST(APPEND OCE_TOOLKIT_VISUALIZATION
+
 # TKService
 	Aspect
 	SelectBasics
@@ -232,9 +229,18 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
 )
 
 LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
-# TKSTL
-	StlAPI
-	RWStl
+
+# TKBinXCAF
+	BinXCAFDrivers
+	BinMXCAFDoc
+# TKIGES
+	IGESControl
+	IGESData
+	IGESToBRep
+# TKRWMesh
+	RWGltf
+	RWMesh
+	RWObj
 # TKSTEP
 	StepAP214
 	RWStepAP214
@@ -271,42 +277,39 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	StepShape
 	RWStepShape
 	StepData
-# TKIGES
-	IGESControl
-	IGESData
-	IGESToBRep
-# TKXSBase
-	Interface
-	IFSelect
-	MoniTool
-	XSControl
-	Transfer
-	TransferBRep
+# TKSTL
+	StlAPI
+	RWStl
 # TKVRML
 	Vrml
 	VrmlAPI
 	VrmlConverter
 	VrmlData
+# TKXCAF
+	XCAFApp
+	XCAFDimTolObjects
+	XCAFDoc
+	XCAFPrs
+	XCAFView
+	XCAFNoteObjects
+# TKXDEIGES
+	IGESCAFControl
+# TKXDESTEP
+	STEPCAFControl
+# TKXSBase
+	Interface
+	IFSelect
+	XSControl
+	Transfer
+	TransferBRep
+	MoniTool
+# TKXmlXCAF
+	XmlXCAFDrivers
+	XmlMXCAFDoc
 )
 
 LIST(APPEND OCE_TOOLKIT_OCAF
-# TKCAF
-	TDataXtd
-	TNaming
-	TPrsStd
-	AppStd
-# TKCDF
-	CDF
-	CDM
-	LDOM
-	PCDM
-	UTL
-# TKLCAF
-	TDF
-	TDataStd
-	TFunction
-	TDocStd
-	AppStdL
+
 # TKBin
 	BinDrivers
 	BinMDataXtd
@@ -320,14 +323,30 @@ LIST(APPEND OCE_TOOLKIT_OCAF
 	BinObjMgt
 # TKBinTObj
 	BinTObjDrivers
-# TKBinXCAF
-	BinXCAFDrivers
-	BinMXCAFDoc
+# TKCAF
+	TDataXtd
+	TNaming
+	AppStd
+# TKCDF
+	CDF
+	CDM
+	LDOM
+	PCDM
+	UTL
+# TKLCAF
+	TDF
+	TDataStd
+	TFunction
+	TDocStd
+	AppStdL
+# TKTObj
+	TObj
+# TKVAF
+	TPrsStd
 # TKXml
 	XmlDrivers
 	XmlMDataXtd
 	XmlMNaming
-	XmlMPrsStd
 # TKXmlL
 	XmlLDrivers
 	XmlMDF
@@ -337,36 +356,4 @@ LIST(APPEND OCE_TOOLKIT_OCAF
 	XmlObjMgt
 # TKXmlTObj
 	XmlTObjDrivers
-# TKXmlXCAF
-	XmlXCAFDrivers
-	XmlMXCAFDoc
-# TKPCAF
-	MDataXtd
-	MNaming
-	MPrsStd
-	PDataXtd
-	PNaming
-	PPrsStd
-# TKPLCAF
-	MDF
-	MDataStd
-	MDocStd
-	MFunction
-	PDF
-	PDataStd
-	PDocStd
-	PFunction
-# TKTObj
-	TObj
-# TKXCAF
-	XCAFApp
-	XCAFDimTolObjects
-	XCAFDoc
-	XCAFPrs
-	XCAFView
-	XCAFNoteObjects
-# TKXDESTEP
-	STEPCAFControl
-# TKXDEIGES
-	IGESCAFControl
 )
