@@ -28,7 +28,8 @@ conditions:
 */
 
 %define EXTREMADOCSTRING
-"No docstring provided."
+"Extrema module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Extrema.html"
 %enddef
 %module (package="OCC.Core", docstring=EXTREMADOCSTRING) Extrema
 

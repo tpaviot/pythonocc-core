@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GPROPDOCSTRING
-"No docstring provided."
+"GProp module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GProp.html"
 %enddef
 %module (package="OCC.Core", docstring=GPROPDOCSTRING) GProp
 

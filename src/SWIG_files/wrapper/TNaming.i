@@ -28,7 +28,8 @@ conditions:
 */
 
 %define TNAMINGDOCSTRING
-"No docstring provided."
+"TNaming module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TNaming.html"
 %enddef
 %module (package="OCC.Core", docstring=TNAMINGDOCSTRING) TNaming
 

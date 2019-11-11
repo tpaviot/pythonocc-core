@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPGPROPDOCSTRING
-"No docstring provided."
+"BRepGProp module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepGProp.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPGPROPDOCSTRING) BRepGProp
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define TCOLGEOM2DDOCSTRING
-"No docstring provided."
+"TColGeom2d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TColGeom2d.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLGEOM2DDOCSTRING) TColGeom2d
 

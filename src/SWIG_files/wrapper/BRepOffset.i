@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPOFFSETDOCSTRING
-"No docstring provided."
+"BRepOffset module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepOffset.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETDOCSTRING) BRepOffset
 

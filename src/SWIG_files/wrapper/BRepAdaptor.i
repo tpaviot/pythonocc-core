@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPADAPTORDOCSTRING
-"No docstring provided."
+"BRepAdaptor module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepAdaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 

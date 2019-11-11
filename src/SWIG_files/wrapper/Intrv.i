@@ -28,7 +28,8 @@ conditions:
 */
 
 %define INTRVDOCSTRING
-"No docstring provided."
+"Intrv module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Intrv.html"
 %enddef
 %module (package="OCC.Core", docstring=INTRVDOCSTRING) Intrv
 

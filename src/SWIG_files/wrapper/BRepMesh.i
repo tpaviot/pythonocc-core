@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPMESHDOCSTRING
-"No docstring provided."
+"BRepMesh module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMesh.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMESHDOCSTRING) BRepMesh
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPINTCURVESURFACEDOCSTRING
-"No docstring provided."
+"BRepIntCurveSurface module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepIntCurveSurface.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 

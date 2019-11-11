@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GEOM2DAPIDOCSTRING
-"No docstring provided."
+"Geom2dAPI module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dAPI.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
 

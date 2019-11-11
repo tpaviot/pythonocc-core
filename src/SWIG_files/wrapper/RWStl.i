@@ -28,7 +28,8 @@ conditions:
 */
 
 %define RWSTLDOCSTRING
-"No docstring provided."
+"RWStl module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWStl.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTLDOCSTRING) RWStl
 

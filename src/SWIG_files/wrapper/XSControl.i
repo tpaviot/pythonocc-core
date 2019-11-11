@@ -28,7 +28,8 @@ conditions:
 */
 
 %define XSCONTROLDOCSTRING
-"No docstring provided."
+"XSControl module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XSControl.html"
 %enddef
 %module (package="OCC.Core", docstring=XSCONTROLDOCSTRING) XSControl
 

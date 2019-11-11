@@ -28,7 +28,8 @@ conditions:
 */
 
 %define TOPLOCDOCSTRING
-"No docstring provided."
+"TopLoc module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopLoc.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPLOCDOCSTRING) TopLoc
 

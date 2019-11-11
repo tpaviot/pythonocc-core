@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GEOM2DGCCDOCSTRING
-"No docstring provided."
+"Geom2dGcc module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dGcc.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DGCCDOCSTRING) Geom2dGcc
 

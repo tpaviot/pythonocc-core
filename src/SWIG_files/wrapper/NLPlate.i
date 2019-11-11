@@ -28,7 +28,8 @@ conditions:
 */
 
 %define NLPLATEDOCSTRING
-"No docstring provided."
+"NLPlate module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_NLPlate.html"
 %enddef
 %module (package="OCC.Core", docstring=NLPLATEDOCSTRING) NLPlate
 

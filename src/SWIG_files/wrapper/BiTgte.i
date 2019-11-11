@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BITGTEDOCSTRING
-"No docstring provided."
+"BiTgte module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BiTgte.html"
 %enddef
 %module (package="OCC.Core", docstring=BITGTEDOCSTRING) BiTgte
 

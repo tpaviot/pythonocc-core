@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPCLASS3DDOCSTRING
-"No docstring provided."
+"BRepClass3d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepClass3d.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCLASS3DDOCSTRING) BRepClass3d
 

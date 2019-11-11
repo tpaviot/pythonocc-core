@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BVHDOCSTRING
-"No docstring provided."
+"BVH module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BVH.html"
 %enddef
 %module (package="OCC.Core", docstring=BVHDOCSTRING) BVH
 

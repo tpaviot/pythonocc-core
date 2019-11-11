@@ -28,7 +28,8 @@ conditions:
 */
 
 %define SHAPEFIXDOCSTRING
-"No docstring provided."
+"ShapeFix module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeFix.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEFIXDOCSTRING) ShapeFix
 

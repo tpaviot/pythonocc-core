@@ -28,7 +28,8 @@ conditions:
 */
 
 %define STEPTOGEOMDOCSTRING
-"No docstring provided."
+"StepToGeom module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepToGeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 

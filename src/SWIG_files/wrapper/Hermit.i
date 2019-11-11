@@ -28,7 +28,8 @@ conditions:
 */
 
 %define HERMITDOCSTRING
-"No docstring provided."
+"Hermit module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Hermit.html"
 %enddef
 %module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 

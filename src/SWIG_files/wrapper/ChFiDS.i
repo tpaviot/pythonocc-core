@@ -28,7 +28,8 @@ conditions:
 */
 
 %define CHFIDSDOCSTRING
-"No docstring provided."
+"ChFiDS module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFiDS.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFIDSDOCSTRING) ChFiDS
 
@@ -1739,7 +1740,7 @@ class ChFiDS_SurfData : public Standard_Transient {
 		%feature("compactdefaultargs") ChangeOrientation;
 		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") ChangeOrientation;
-		TopAbs_Orientation  ChangeOrientation ();
+		TopAbs_Orientation & ChangeOrientation ();
 		%feature("compactdefaultargs") ChangeSurf;
 		%feature("autodoc", "	:param Index:
 	:type Index: int

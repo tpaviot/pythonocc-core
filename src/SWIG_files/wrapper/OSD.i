@@ -28,7 +28,8 @@ conditions:
 */
 
 %define OSDDOCSTRING
-"No docstring provided."
+"OSD module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_OSD.html"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 

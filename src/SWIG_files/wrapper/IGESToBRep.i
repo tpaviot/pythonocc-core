@@ -28,7 +28,8 @@ conditions:
 */
 
 %define IGESTOBREPDOCSTRING
-"No docstring provided."
+"IGESToBRep module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IGESToBRep.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESTOBREPDOCSTRING) IGESToBRep
 

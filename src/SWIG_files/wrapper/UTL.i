@@ -28,7 +28,8 @@ conditions:
 */
 
 %define UTLDOCSTRING
-"No docstring provided."
+"UTL module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_UTL.html"
 %enddef
 %module (package="OCC.Core", docstring=UTLDOCSTRING) UTL
 

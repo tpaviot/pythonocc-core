@@ -28,7 +28,8 @@ conditions:
 */
 
 %define ADVAPP2VARDOCSTRING
-"No docstring provided."
+"AdvApp2Var module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AdvApp2Var.html"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 

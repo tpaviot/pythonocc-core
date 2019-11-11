@@ -28,7 +28,8 @@ conditions:
 */
 
 %define ELSLIBDOCSTRING
-"No docstring provided."
+"ElSLib module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ElSLib.html"
 %enddef
 %module (package="OCC.Core", docstring=ELSLIBDOCSTRING) ElSLib
 

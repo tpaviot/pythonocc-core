@@ -28,7 +28,8 @@ conditions:
 */
 
 %define XMLMDOCSTDDOCSTRING
-"No docstring provided."
+"XmlMDocStd module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XmlMDocStd.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDOCSTDDOCSTRING) XmlMDocStd
 

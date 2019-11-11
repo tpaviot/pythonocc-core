@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPDOCSTRING
-"No docstring provided."
+"BRep module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRep.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPDOCSTRING) BRep
 
@@ -774,7 +775,7 @@ class BRep_CurveRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity ();
+		virtual const GeomAbs_Shape  Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape
@@ -1959,7 +1960,7 @@ class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity ();
+		virtual const GeomAbs_Shape  Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape
@@ -2678,7 +2679,7 @@ class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity ();
+		virtual const GeomAbs_Shape  Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape

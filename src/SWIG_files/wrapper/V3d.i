@@ -28,7 +28,8 @@ conditions:
 */
 
 %define V3DDOCSTRING
-"No docstring provided."
+"V3d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_V3d.html"
 %enddef
 %module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 

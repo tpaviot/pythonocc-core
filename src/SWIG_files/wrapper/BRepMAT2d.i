@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPMAT2DDOCSTRING
-"No docstring provided."
+"BRepMAT2d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMAT2d.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMAT2DDOCSTRING) BRepMAT2d
 

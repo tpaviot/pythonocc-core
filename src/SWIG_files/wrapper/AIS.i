@@ -28,7 +28,8 @@ conditions:
 */
 
 %define AISDOCSTRING
-"No docstring provided."
+"AIS module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AIS.html"
 %enddef
 %module (package="OCC.Core", docstring=AISDOCSTRING) AIS
 

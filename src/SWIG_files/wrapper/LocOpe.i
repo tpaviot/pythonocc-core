@@ -28,7 +28,8 @@ conditions:
 */
 
 %define LOCOPEDOCSTRING
-"No docstring provided."
+"LocOpe module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_LocOpe.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
@@ -992,7 +993,7 @@ class LocOpe_PntFace {
 		%feature("compactdefaultargs") ChangeOrientation;
 		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") ChangeOrientation;
-		TopAbs_Orientation  ChangeOrientation ();
+		TopAbs_Orientation & ChangeOrientation ();
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;

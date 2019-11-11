@@ -28,7 +28,8 @@ conditions:
 */
 
 %define HLRAPPLIDOCSTRING
-"No docstring provided."
+"HLRAppli module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_HLRAppli.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRAPPLIDOCSTRING) HLRAppli
 

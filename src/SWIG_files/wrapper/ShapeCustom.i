@@ -28,7 +28,8 @@ conditions:
 */
 
 %define SHAPECUSTOMDOCSTRING
-"No docstring provided."
+"ShapeCustom module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeCustom.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 

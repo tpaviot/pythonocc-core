@@ -28,7 +28,8 @@ conditions:
 */
 
 %define INTIMPDOCSTRING
-"No docstring provided."
+"IntImp module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntImp.html"
 %enddef
 %module (package="OCC.Core", docstring=INTIMPDOCSTRING) IntImp
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define APPPARCURVESDOCSTRING
-"No docstring provided."
+"AppParCurves module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AppParCurves.html"
 %enddef
 %module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
