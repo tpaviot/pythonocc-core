@@ -110,6 +110,11 @@ endif(APPLE)
 find_package(SWIG 4.0.1 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
+if(SWIG_HIDE_WARNINGS)
+  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512)
+endif(SWIG_HIDE_WARNINGS)
+# tells swig to use py3
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
     
 ################################
 # OCE include and lib location #
@@ -117,7 +122,7 @@ set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 if(DEFINED OCE_INCLUDE_PATH)
   if(NOT DEFINED OCE_LIB_PATH)
     message(FATAL_ERROR "OCE_LIB_PATH must be defined")
-  endif (NOT DEFINED OCE_LIB_PATH)
+  endif(NOT DEFINED OCE_LIB_PATH)
   set(OCE_INCLUDE_PATH ${OCE_INCLUDE_PATH} CACHE PATH "OCE include path")
   set(OCE_LIB_PATH ${OCE_LIB_PATH} CACHE PATH "OCE lib path")
   include_directories(${OCE_INCLUDE_PATH})
@@ -162,8 +167,10 @@ set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install 
 
 # List of OCE shared libraries to link with
 # TODO: this should be build from the module list
+# List of available OpenCASCADE libraries for each module
+
 set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
-    TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
+    TKTopAlgo TKPrim TKBO TKShHealing TKBool TKHLR TKFillet TKOffset TKFeat TKMesh TKXMesh)
 set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
 set(OCE_DATAEXCHANGE_LIBRARIES TKXSBase TKSTEPBase TKSTEPAttr TKSTEP209 TKSTEP TKIGES
                      TKXCAF TKXDEIGES TKXDESTEP TKSTL TKVRML TKXmlXCAF TKBinXCAF)
@@ -181,19 +188,13 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512
-        -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
+  set(CMAKE_SWIG_FLAGS -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
   add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
-    # specific windows defines for python version >=2.6.0
-    execute_process(COMMAND python -c "import sys;print ((2,6)>=sys.version_info[:2])" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
-    if(${PYTHON_26_OR_HIGHER} MATCHES "True")
-      add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
-    endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
-    set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
+    set(CMAKE_SWIG_FLAGS -DCSFDB -DWIN32 -D_WINDOWS)
     set(PLATFORM win)
   else(WIN32)
     message(STATUS "Unknown platform")
@@ -201,15 +202,6 @@ else(UNIX)
 endif(UNIX)
 message(STATUS "Platform:" ${PLATFORM})
 
-
-##################################
-# Tells Swig to use py3k option  #
-##################################
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
-
-if(${python_version_major} MATCHES "3")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
-endif(${python_version_major} MATCHES "3")
 
 ################################################
 # Define output path for generated libraries:  #
@@ -246,6 +238,7 @@ option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
+option_with_default(SWIG_HIDE_WARNINGS "False by default. Check this option if you want a less verbose swig output." FALSE)
 
 ######################
 # SMESH Modules list #
