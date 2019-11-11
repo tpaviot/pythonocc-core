@@ -28,6 +28,7 @@ conditions:
 */
 
 %{
+#include<BRepMesh_Delaun.hxx>
 #include<XBRepMesh.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
