@@ -292,11 +292,9 @@ class Viewer3d(Display3d):
         """
         texture_env = Graphic3d_TextureEnv(name_of_texture)
         self.View.SetTextureEnv(texture_env)
-        self.View.SetSurfaceDetail(V3d_TEX_ENVIRONMENT)
         self.View.Redraw()
 
     def DisableTextureEnv(self):
-        self.View.SetSurfaceDetail(V3d_TEX_NONE)
         a_null_texture = Handle_Graphic3d_TextureEnv()
         self.View.SetTextureEnv(a_null_texture) # Passing null handle to clear the texture data
         self.View.Redraw()
@@ -357,8 +355,7 @@ class Viewer3d(Display3d):
     def display_triedron(self):
         """ Show a black triedron in lower right corner
         """
-        print("WARNING : doesn't work as expected")
-        #self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_NOC_BLACK, 0.1, V3d_ZBUFFER)
+        self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_Color(Quantity_NOC_BLACK), 0.1, V3d_ZBUFFER)
 
     def hide_triedron(self):
         """ Show a black triedron in lower right corner
@@ -480,7 +477,6 @@ class Viewer3d(Display3d):
         for shape in shapes:
             if material or texture:
                 if texture:
-                    self.View.SetSurfaceDetail(V3d_TEX_ALL)
                     shape_to_display = AIS_TexturedShape(shape)
                     filename, toScaleU, toScaleV, toRepeatU, toRepeatV, originU, originV = texture.GetProperties()
                     shape_to_display.SetTextureFileName(TCollection_AsciiString(filename))
@@ -488,10 +484,10 @@ class Viewer3d(Display3d):
                     shape_to_display.SetTextureScale(True, toScaleU, toScaleV)
                     shape_to_display.SetTextureRepeat(True, toRepeatU, toRepeatV)
                     shape_to_display.SetTextureOrigin(True, originU, originV)
-                    shape_to_display.SetDisplayMode(3, True)
+                    shape_to_display.SetDisplayMode(3)
                 elif material:
                     shape_to_display = AIS_Shape(shape)
-                    shape_to_display.SetMaterial(material)
+                    shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
             else:
                 # TODO: can we use .Set to attach all TopoDS_Shapes
                 # to this AIS_Shape instance?
