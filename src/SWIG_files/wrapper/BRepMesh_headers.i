@@ -28,6 +28,7 @@ conditions:
 */
 
 %{
+#include<BRepMesh_Delaun.hxx>
 #include<BRepMesh_BaseMeshAlgo.hxx>
 #include<BRepMesh_BoundaryParamsRangeSplitter.hxx>
 #include<BRepMesh_Circle.hxx>
