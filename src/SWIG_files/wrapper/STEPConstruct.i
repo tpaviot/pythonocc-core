@@ -28,7 +28,8 @@ conditions:
 */
 
 %define STEPCONSTRUCTDOCSTRING
-"No docstring provided."
+"STEPConstruct module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_STEPConstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPCONSTRUCTDOCSTRING) STEPConstruct
 

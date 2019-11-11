@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BINMDFDOCSTRING
-"No docstring provided."
+"BinMDF module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinMDF.html"
 %enddef
 %module (package="OCC.Core", docstring=BINMDFDOCSTRING) BinMDF
 

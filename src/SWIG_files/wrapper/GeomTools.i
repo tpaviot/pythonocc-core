@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GEOMTOOLSDOCSTRING
-"No docstring provided."
+"GeomTools module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GeomTools.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMTOOLSDOCSTRING) GeomTools
 

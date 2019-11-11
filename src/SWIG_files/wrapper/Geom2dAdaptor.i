@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GEOM2DADAPTORDOCSTRING
-"No docstring provided."
+"Geom2dAdaptor module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dAdaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 

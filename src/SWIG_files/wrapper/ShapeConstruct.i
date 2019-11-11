@@ -28,7 +28,8 @@ conditions:
 */
 
 %define SHAPECONSTRUCTDOCSTRING
-"No docstring provided."
+"ShapeConstruct module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeConstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define ADAPTOR3DDOCSTRING
-"No docstring provided."
+"Adaptor3d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Adaptor3d.html"
 %enddef
 %module (package="OCC.Core", docstring=ADAPTOR3DDOCSTRING) Adaptor3d
 

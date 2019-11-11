@@ -28,7 +28,8 @@ conditions:
 */
 
 %define CHFI3DDOCSTRING
-"No docstring provided."
+"ChFi3d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFi3d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 

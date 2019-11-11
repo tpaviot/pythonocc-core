@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BNDLIBDOCSTRING
-"No docstring provided."
+"BndLib module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BndLib.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 

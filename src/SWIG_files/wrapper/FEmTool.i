@@ -28,7 +28,8 @@ conditions:
 */
 
 %define FEMTOOLDOCSTRING
-"No docstring provided."
+"FEmTool module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_FEmTool.html"
 %enddef
 %module (package="OCC.Core", docstring=FEMTOOLDOCSTRING) FEmTool
 

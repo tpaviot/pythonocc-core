@@ -28,7 +28,8 @@ conditions:
 */
 
 %define TOPOPEBREPDSDOCSTRING
-"No docstring provided."
+"TopOpeBRepDS module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopOpeBRepDS.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDSDOCSTRING) TopOpeBRepDS
 

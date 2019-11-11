@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BINMDATASTDDOCSTRING
-"No docstring provided."
+"BinMDataStd module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinMDataStd.html"
 %enddef
 %module (package="OCC.Core", docstring=BINMDATASTDDOCSTRING) BinMDataStd
 

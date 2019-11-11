@@ -28,7 +28,8 @@ conditions:
 */
 
 %define NCOLLECTIONDOCSTRING
-"No docstring provided."
+"NCollection module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_NCollection.html"
 %enddef
 %module (package="OCC.Core", docstring=NCOLLECTIONDOCSTRING) NCollection
 
@@ -76,6 +77,10 @@ conditions:
 %include "NCollection_UtfString.hxx";
 %include "NCollection_UtfIterator.hxx";
 %include "NCollection_SparseArray.hxx";
+
+%ignore NCollection_List::First();
+%ignore NCollection_List::Last();
+%ignore NCollection_TListIterator::Value();
 /* public enums */
 /* end public enums declaration */
 

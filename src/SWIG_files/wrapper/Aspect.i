@@ -28,7 +28,8 @@ conditions:
 */
 
 %define ASPECTDOCSTRING
-"No docstring provided."
+"Aspect module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Aspect.html"
 %enddef
 %module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GCE2DDOCSTRING
-"No docstring provided."
+"GCE2d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GCE2d.html"
 %enddef
 %module (package="OCC.Core", docstring=GCE2DDOCSTRING) GCE2d
 

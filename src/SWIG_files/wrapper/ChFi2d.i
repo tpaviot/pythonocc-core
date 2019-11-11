@@ -28,7 +28,8 @@ conditions:
 */
 
 %define CHFI2DDOCSTRING
-"No docstring provided."
+"ChFi2d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFi2d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI2DDOCSTRING) ChFi2d
 

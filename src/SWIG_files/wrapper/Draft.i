@@ -28,7 +28,8 @@ conditions:
 */
 
 %define DRAFTDOCSTRING
-"No docstring provided."
+"Draft module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Draft.html"
 %enddef
 %module (package="OCC.Core", docstring=DRAFTDOCSTRING) Draft
 

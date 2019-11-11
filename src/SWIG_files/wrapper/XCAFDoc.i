@@ -28,7 +28,8 @@ conditions:
 */
 
 %define XCAFDOCDOCSTRING
-"No docstring provided."
+"XCAFDoc module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XCAFDoc.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFDOCDOCSTRING) XCAFDoc
 

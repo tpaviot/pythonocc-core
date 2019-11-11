@@ -28,7 +28,8 @@ conditions:
 */
 
 %define STEPVISUALDOCSTRING
-"No docstring provided."
+"StepVisual module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepVisual.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPVISUALDOCSTRING) StepVisual
 

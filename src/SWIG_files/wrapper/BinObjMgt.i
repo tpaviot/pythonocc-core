@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BINOBJMGTDOCSTRING
-"No docstring provided."
+"BinObjMgt module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinObjMgt.html"
 %enddef
 %module (package="OCC.Core", docstring=BINOBJMGTDOCSTRING) BinObjMgt
 

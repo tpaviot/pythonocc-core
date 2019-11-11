@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BREPAPPROXDOCSTRING
-"No docstring provided."
+"BRepApprox module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepApprox.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPAPPROXDOCSTRING) BRepApprox
 

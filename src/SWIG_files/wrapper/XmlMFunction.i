@@ -28,7 +28,8 @@ conditions:
 */
 
 %define XMLMFUNCTIONDOCSTRING
-"No docstring provided."
+"XmlMFunction module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XmlMFunction.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMFUNCTIONDOCSTRING) XmlMFunction
 

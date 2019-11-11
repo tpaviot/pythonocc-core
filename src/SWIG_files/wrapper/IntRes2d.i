@@ -28,7 +28,8 @@ conditions:
 */
 
 %define INTRES2DDOCSTRING
-"No docstring provided."
+"IntRes2d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntRes2d.html"
 %enddef
 %module (package="OCC.Core", docstring=INTRES2DDOCSTRING) IntRes2d
 

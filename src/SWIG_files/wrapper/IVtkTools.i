@@ -28,7 +28,8 @@ conditions:
 */
 
 %define IVTKTOOLSDOCSTRING
-"No docstring provided."
+"IVtkTools module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IVtkTools.html"
 %enddef
 %module (package="OCC.Core", docstring=IVTKTOOLSDOCSTRING) IVtkTools
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define BINLDRIVERSDOCSTRING
-"No docstring provided."
+"BinLDrivers module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinLDrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINLDRIVERSDOCSTRING) BinLDrivers
 

@@ -28,7 +28,8 @@ conditions:
 */
 
 %define VRMLAPIDOCSTRING
-"No docstring provided."
+"VrmlAPI module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_VrmlAPI.html"
 %enddef
 %module (package="OCC.Core", docstring=VRMLAPIDOCSTRING) VrmlAPI
 

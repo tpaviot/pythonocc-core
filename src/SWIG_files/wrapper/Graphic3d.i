@@ -28,7 +28,8 @@ conditions:
 */
 
 %define GRAPHIC3DDOCSTRING
-"No docstring provided."
+"Graphic3d module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Graphic3d.html"
 %enddef
 %module (package="OCC.Core", docstring=GRAPHIC3DDOCSTRING) Graphic3d
 
