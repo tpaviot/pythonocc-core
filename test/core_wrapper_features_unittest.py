@@ -550,18 +550,6 @@ class TestWrapperFeatures(unittest.TestCase):
             self.assertTrue(isinstance(it.Value(), int))
             it.Next()
 
-    def test_deprecation_warning(self):
-        """ since pythonocc-0.18.2. import OCC.* changed to import OCC.Core.*
-        Such deprecated import raises a DeprecatedWarning
-        """
-        with assert_warns_deprecated():
-            from OCC.gp import gp_Pln
-            # create a gp_Pln object to avoid
-            # codacy and other static analysis tools
-            # to report the gp_Pln class is unused
-            # though it's not very elegant !
-            self.assertIsInstance(gp_Pln(), gp_Pln)
-
     def test_deprecation_get_handle(self):
         """ Handles are now completely transparent. The GetHandle method is
         not required anymore.
