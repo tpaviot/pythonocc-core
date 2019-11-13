@@ -62,11 +62,11 @@ endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
 ############
 # Python 3 #
 ############
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
-message(STATUS "Python include directory: ${Python3_INCLUDE_DIR}")
-message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
-message(STATUS "Python library debug: ${Python3_LIBRARY_DEBUG}")
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
+message(STATUS "Python3 interpreter:" ${Python_EXECUTABLE})
+message(STATUS "Python include directory: ${Python_INCLUDE_DIR}")
+message(STATUS "Python library release: ${Python_LIBRARY_RELEASE}")
+message(STATUS "Python library debug: ${Python_LIBRARY_DEBUG}")
 
 ##############################################
 # Installation directory                     #
@@ -244,7 +244,7 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python3::Module)
+    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python::Module)
 endforeach(OCE_MODULE)
 
 #################
@@ -258,7 +258,7 @@ if(PYTHONOCC_WRAP_VISU)
       set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
       set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
       swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-      swig_link_libraries(${OCE_MODULE} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+      swig_link_libraries(${OCE_MODULE} ${OCE_VISUALIZATION_LIBRARIES} Python::Module)
     endforeach(OCE_MODULE)
 
   # Build third part modules
@@ -272,7 +272,7 @@ if(PYTHONOCC_WRAP_VISU)
       ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp)
 
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-    swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+    swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
@@ -290,7 +290,7 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_DATAEXCHANGE_LIBRARIES} Python3::Module)
+    swig_link_libraries(${OCE_MODULE} ${OCE_DATAEXCHANGE_LIBRARIES} Python::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
@@ -302,7 +302,7 @@ if(PYTHONOCC_WRAP_OCAF)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE}  ${OCE_OCAF_LIBRARIES} Python3::Module)
+    swig_link_libraries(${OCE_MODULE}  ${OCE_OCAF_LIBRARIES} Python::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
@@ -314,7 +314,7 @@ if(PYTHONOCC_WRAP_SMESH)
     set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES} Python3::Module)
+    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES} Python::Module)
   endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
