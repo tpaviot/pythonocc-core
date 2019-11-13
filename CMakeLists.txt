@@ -83,10 +83,10 @@ find_package(SWIG 4.0.1 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 if(SWIG_HIDE_WARNINGS)
-  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512)
-endif(SWIG_HIDE_WARNINGS)
-# tells swig to use py3
-set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -py3)
+else()
+  set(CMAKE_SWIG_FLAGS -py3)
+endif()
     
 ################################
 # OCE include and lib location #
@@ -169,13 +169,13 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
   add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
-    set(CMAKE_SWIG_FLAGS -DCSFDB -DWIN32 -D_WINDOWS)
+    set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DWIN32 -D_WINDOWS)
     set(PLATFORM win)
   else(WIN32)
     message(STATUS "Unknown platform")
