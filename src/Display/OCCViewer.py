@@ -28,7 +28,7 @@ import itertools
 
 import OCC
 from OCC.Core.Aspect import Aspect_GFM_VER
-from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame
+from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame, AIS_Shape_SelectionMode
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
@@ -573,13 +573,11 @@ class Viewer3d(Display3d):
         self.View.Pan(dx, dy)
 
     def SetSelectionMode(self, mode=None):
-        self.Context.CloseAllContexts(True)
-        self.Context.OpenLocalContext()
         topo_level = next(modes)
         if mode is None:
-            self.Context.ActivateStandardMode(topo_level)
+            self.Context.Activate(AIS_Shape_SelectionMode(topo_level), True)
         else:
-            self.Context.ActivateStandardMode(mode)
+            self.Context.Activate(AIS_Shape_SelectionMode(mode), True)
         self.Context.UpdateSelected(True)
 
     def SetSelectionModeVertex(self):
@@ -592,10 +590,10 @@ class Viewer3d(Display3d):
         self.SetSelectionMode(TopAbs_FACE)
 
     def SetSelectionModeShape(self):
-        self.Context.CloseAllContexts(True)
+        self.Context.Deactivate()
 
     def SetSelectionModeNeutral(self):
-        self.Context.CloseAllContexts()
+        self.Context.Deactivate()
 
     def GetSelectedShapes(self):
         return self.selected_shapes
