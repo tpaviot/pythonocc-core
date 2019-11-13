@@ -24,7 +24,7 @@ from math import sqrt
 import warnings
 from contextlib import contextmanager
 
-from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
+from OCC.Core.Standard import Standard_Transient
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
@@ -549,39 +549,6 @@ class TestWrapperFeatures(unittest.TestCase):
         while it.More():
             self.assertTrue(isinstance(it.Value(), int))
             it.Next()
-
-    def test_deprecation_get_handle(self):
-        """ Handles are now completely transparent. The GetHandle method is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = t.GetHandle()
-            self.assertFalse(h.IsNull())
-
-    def test_deprecation_handle_class(self):
-        """ Handles are now completely transparent. The Handle_* constructor is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = Handle_Standard_Transient(t)
-            self.assertFalse(h.IsNull())
-
-    def test_deprecation_get_object(self):
-        """ Handles are now completely transparent. The GetObject method is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            o = t.GetObject()
-            self.assertFalse(o.IsNull())
-
-    def test_deprecation_downcasts(self):
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = Handle_Standard_Transient.DownCast(t)
-            self.assertFalse(h.IsNull())
 
     def test_array_iterator(self):
         P0 = gp_Pnt(1, 2, 3)

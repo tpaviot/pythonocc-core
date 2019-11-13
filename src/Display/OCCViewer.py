@@ -49,7 +49,7 @@ from OCC.Core.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WH
                                Quantity_NOC_GREEN, Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
 from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
 from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
-                                Handle_Graphic3d_TextureEnv, Graphic3d_TextureEnv,
+                                Handle_Graphic3d_TextureEnv_Create, Graphic3d_TextureEnv,
                                 Graphic3d_Camera, Graphic3d_RM_RAYTRACING,
                                 Graphic3d_RM_RASTERIZATION,
                                 Graphic3d_StereoMode_QuadBuffer,
@@ -296,7 +296,7 @@ class Viewer3d(Display3d):
         self.View.Redraw()
 
     def DisableTextureEnv(self):
-        a_null_texture = Handle_Graphic3d_TextureEnv()
+        a_null_texture = Handle_Graphic3d_TextureEnv_Create()
         self.View.SetTextureEnv(a_null_texture) # Passing null handle to clear the texture data
         self.View.Redraw()
 

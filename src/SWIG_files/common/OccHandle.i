@@ -188,17 +188,6 @@ WRAP_OCC_TRANSIENT(const, TYPE)
 // This two functions are just for backwards compatibilty
 %extend TYPE {
   %pythoncode {
-    @deprecated("It is not required anymore.")
-    def GetHandle(self):
-        return self
-
-    @deprecated("It is not required anymore.")
-    def GetObject(self):
-        return self
-
-    @deprecated("Use is None instead")
-    def IsNull(self):
-      return Handle_ ## TYPE ## _IsNull(self);
 
     @staticmethod
     def DownCast(t):
@@ -210,26 +199,6 @@ WRAP_OCC_TRANSIENT(const, TYPE)
 
 
 %define %make_alias(TYPE)
-      %pythoncode {
-        class Meta_ ## TYPE(type):
-            def __call__(cls, wrap=None):
-                if wrap is None:
-                    return Handle_ ## TYPE ## _Create()
-                else:
-                    warnings.warn("class Handle_%s is deprecated. Use %s instead." % ("TYPE", "TYPE"),
-                        category=DeprecationWarning,
-                        stacklevel=2)
-                    warnings.simplefilter('default', DeprecationWarning)
-                    return Proxy(wrap)
 
-        class Handle_ ## TYPE(with_metaclass(Meta_ ## TYPE, TYPE)):
-            @staticmethod
-            def DownCast(o):
-                warnings.warn("Handle_%s.DownCast is deprecated. Use %s.DownCast instead." % ("TYPE", "TYPE"),
-                    category=DeprecationWarning,
-                    stacklevel=2)
-                warnings.simplefilter('default', DeprecationWarning)
-                return Handle_## TYPE(Handle_ ## TYPE ## _DownCast(o))
-      }
 %enddef
 
