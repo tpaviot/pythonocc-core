@@ -48,8 +48,28 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_LocalAnalysis.htm
 %include ../common/OccHandle.i
 
 
-%include LocalAnalysis_headers.i
+%{
+#include<LocalAnalysis_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomLProp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import GeomAbs.i
+%import Geom.i
+%import GeomLProp.i
+%import Geom2d.i
 /* public enums */
 enum LocalAnalysis_StatusErrorType {
 	LocalAnalysis_NullFirstDerivative = 0,

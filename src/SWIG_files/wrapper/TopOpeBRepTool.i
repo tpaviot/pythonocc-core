@@ -48,8 +48,66 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopOpeBRepTool.ht
 %include ../common/OccHandle.i
 
 
-%include TopOpeBRepTool_headers.i
+%{
+#include<TopOpeBRepTool_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopTools_module.hxx>
+#include<BRepClass3d_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopAbs_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColStd_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<TopExp_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<TCollection_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Extrema_module.hxx>
+#include<Geom_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Bnd_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Message_module.hxx>
+#include<Intf_module.hxx>
+#include<IntSurf_module.hxx>
+#include<Extrema_module.hxx>
+#include<IntCurveSurface_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopTools.i
+%import BRepClass3d.i
+%import TopoDS.i
+%import TopAbs.i
+%import Bnd.i
+%import TColStd.i
+%import Geom2d.i
+%import GeomAdaptor.i
+%import Geom.i
+%import TColgp.i
+%import gp.i
+%import TopExp.i
+%import BRepAdaptor.i
+%import TCollection.i
+%import GeomAbs.i
+%import Extrema.i
 /* public enums */
 enum TopOpeBRepTool_OutCurveType {
 	TopOpeBRepTool_BSPLINE1 = 0,

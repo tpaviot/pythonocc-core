@@ -48,8 +48,34 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepShape.html"
 %include ../common/OccHandle.i
 
 
-%include StepShape_headers.i
+%{
+#include<StepShape_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<StepGeom_module.hxx>
+#include<TCollection_module.hxx>
+#include<StepRepr_module.hxx>
+#include<StepData_module.hxx>
+#include<StepBasic_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TCollection_module.hxx>
+#include<Interface_module.hxx>
+#include<StepBasic_module.hxx>
+#include<Message_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import StepGeom.i
+%import TCollection.i
+%import StepRepr.i
+%import StepData.i
+%import StepBasic.i
 /* public enums */
 enum StepShape_AngleRelator {
 	StepShape_Equal = 0,

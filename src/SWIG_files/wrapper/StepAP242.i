@@ -48,8 +48,40 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepAP242.html"
 %include ../common/OccHandle.i
 
 
-%include StepAP242_headers.i
+%{
+#include<StepAP242_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<StepData_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepShape_module.hxx>
+#include<StepDimTol_module.hxx>
+#include<StepRepr_module.hxx>
+#include<StepAP214_module.hxx>
+#include<Message_module.hxx>
+#include<StepBasic_module.hxx>
+#include<Interface_module.hxx>
+#include<StepShape_module.hxx>
+#include<StepGeom_module.hxx>
+#include<StepVisual_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
+%import StepData.i
+%import StepBasic.i
+%import StepShape.i
+%import StepDimTol.i
+%import StepRepr.i
+%import StepAP214.i
 /* public enums */
 /* end public enums declaration */
 

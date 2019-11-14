@@ -48,8 +48,44 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeBuild.html"
 %include ../common/OccHandle.i
 
 
-%include ShapeBuild_headers.i
+%{
+#include<ShapeBuild_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
+#include<BRepTools_module.hxx>
+#include<TopAbs_module.hxx>
+#include<ShapeExtend_module.hxx>
+#include<TShort_module.hxx>
+#include<TColGeom_module.hxx>
+#include<BRep_module.hxx>
+#include<Message_module.hxx>
+#include<TopTools_module.hxx>
+#include<Bnd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Poly_module.hxx>
+#include<Geom_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom.i
+%import TopoDS.i
+%import TopLoc.i
+%import Geom2d.i
+%import gp.i
+%import BRepTools.i
+%import TopAbs.i
+%import ShapeExtend.i
 /* public enums */
 /* end public enums declaration */
 

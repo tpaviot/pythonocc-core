@@ -48,8 +48,35 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AdvApp2Var.html"
 %include ../common/OccHandle.i
 
 
-%include AdvApp2Var_headers.i
+%{
+#if defined(_WIN32)
+#include <windows.h>
+#endif
+#include<AdvApp2Var_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<AdvApprox_module.hxx>
+#include<Geom_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<PLib_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColStd.i
+%import GeomAbs.i
+%import AdvApprox.i
+%import Geom.i
+%import gp.i
+%import TColgp.i
 /* public enums */
 enum AdvApp2Var_CriterionRepartition {
 	AdvApp2Var_Regular = 0,

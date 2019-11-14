@@ -48,8 +48,39 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntCurveSurface.h
 %include ../common/OccHandle.i
 
 
-%include IntCurveSurface_headers.i
+%{
+#include<IntCurveSurface_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<math_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
+#include<Intf_module.hxx>
+#include<Bnd_module.hxx>
+#include<IntSurf_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import math.i
+%import Adaptor3d.i
+%import Geom.i
+%import GeomAbs.i
+%import TColStd.i
+%import Intf.i
+%import Bnd.i
+%import IntSurf.i
 /* public enums */
 enum IntCurveSurface_TransitionOnCurve {
 	IntCurveSurface_Tangent = 0,

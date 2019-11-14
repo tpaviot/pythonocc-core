@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_UTL.html"
 %include ../common/OccHandle.i
 
 
-%include UTL_headers.i
+%{
+#include<UTL_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Storage_module.hxx>
+#include<TCollection_module.hxx>
+#include<OSD_module.hxx>
+#include<Resource_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Storage.i
+%import TCollection.i
+%import OSD.i
+%import Resource.i
 /* public enums */
 /* end public enums declaration */
 

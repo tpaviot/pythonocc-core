@@ -48,8 +48,48 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GeomPlate.html"
 %include ../common/OccHandle.i
 
 
-%include GeomPlate_headers.i
+%{
+#include<GeomPlate_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<Geom_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<TColStd_module.hxx>
+#include<Message_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomLProp_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Law_module.hxx>
+#include<AdvApp2Var_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Plate_module.hxx>
+#include<PLib_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Adaptor3d.i
+%import gp.i
+%import TColgp.i
+%import Geom.i
+%import TColGeom2d.i
+%import TColStd.i
+%import Message.i
+%import Geom2d.i
+%import GeomLProp.i
+%import Adaptor2d.i
+%import Law.i
+%import AdvApp2Var.i
+%import GeomAbs.i
+%import Plate.i
 /* public enums */
 /* end public enums declaration */
 

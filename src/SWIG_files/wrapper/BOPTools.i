@@ -48,8 +48,49 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BOPTools.html"
 %include ../common/OccHandle.i
 
 
-%include BOPTools_headers.i
+%{
+#include<BOPTools_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<IntTools_module.hxx>
+#include<gp_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
+#include<Message_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Extrema_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Approx_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<IntPatch_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Message_module.hxx>
+#include<TopTools_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import IntTools.i
+%import gp.i
+%import TopAbs.i
+%import TopTools.i
+%import Message.i
+%import Geom.i
+%import Geom2d.i
+%import BRepAdaptor.i
 /* public enums */
 /* end public enums declaration */
 

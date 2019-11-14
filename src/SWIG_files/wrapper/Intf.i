@@ -48,8 +48,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Intf.html"
 %include ../common/OccHandle.i
 
 
-%include Intf_headers.i
+%{
+#include<Intf_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import Bnd.i
 /* public enums */
 enum Intf_PIType {
 	Intf_EXTERNAL = 0,

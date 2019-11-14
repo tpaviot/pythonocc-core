@@ -48,8 +48,25 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopoDS.html"
 %include ../common/OccHandle.i
 
 
-%include TopoDS_headers.i
+%{
+#include<TopoDS_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Message_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Message.i
+%import TopAbs.i
+%import TopLoc.i
 /* public enums */
 /* end public enums declaration */
 

@@ -48,8 +48,39 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Contap.html"
 %include ../common/OccHandle.i
 
 
-%include Contap_headers.i
+%{
+#include<Contap_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<math_module.hxx>
+#include<gp_module.hxx>
+#include<IntSurf_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<Geom_module.hxx>
+#include<NCollection_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import math.i
+%import gp.i
+%import IntSurf.i
+%import Adaptor3d.i
+%import Adaptor2d.i
+%import GeomAbs.i
+%import Geom2d.i
+%import TColStd.i
 /* public enums */
 enum Contap_IType {
 	Contap_Lin = 0,

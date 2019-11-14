@@ -48,8 +48,28 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepData.html"
 %include ../common/OccHandle.i
 
 
-%include StepData_headers.i
+%{
+#include<StepData_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Interface_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<Message_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Interface.i
+%import TCollection.i
+%import TColStd.i
+%import Message.i
 /* public enums */
 enum StepData_Logical {
 	StepData_LFalse = 0,

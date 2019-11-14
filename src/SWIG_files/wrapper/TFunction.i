@@ -48,8 +48,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TFunction.html"
 %include ../common/OccHandle.i
 
 
-%include TFunction_headers.i
+%{
+#include<TFunction_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TDF.i
+%import TColStd.i
 /* public enums */
 enum TFunction_ExecutionStatus {
 	TFunction_ES_WrongDefinition = 0,

@@ -48,8 +48,53 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XCAFDoc.html"
 %include ../common/OccHandle.i
 
 
-%include XCAFDoc_headers.i
+%{
+#include<XCAFDoc_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
+#include<gp_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopoDS_module.hxx>
+#include<XCAFDimTolObjects_module.hxx>
+#include<TDocStd_module.hxx>
+#include<TopLoc_module.hxx>
+#include<XCAFNoteObjects_module.hxx>
+#include<OSD_module.hxx>
+#include<TopTools_module.hxx>
+#include<TDataStd_module.hxx>
+#include<XCAFView_module.hxx>
+#include<Resource_module.hxx>
+#include<Message_module.hxx>
+#include<CDF_module.hxx>
+#include<CDM_module.hxx>
+#include<PCDM_module.hxx>
+#include<TDF_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
+%import TDF.i
+%import TColStd.i
+%import gp.i
+%import Quantity.i
+%import TopoDS.i
+%import XCAFDimTolObjects.i
+%import TDocStd.i
+%import TopLoc.i
+%import XCAFNoteObjects.i
+%import OSD.i
+%import TopTools.i
+%import TDataStd.i
+%import XCAFView.i
 /* public enums */
 enum XCAFDoc_ColorType {
 	XCAFDoc_ColorGen = 0,

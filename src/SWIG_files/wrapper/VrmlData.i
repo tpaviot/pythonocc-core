@@ -48,8 +48,36 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_VrmlData.html"
 %include ../common/OccHandle.i
 
 
-%include VrmlData_headers.i
+%{
+#include<VrmlData_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TDocStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Message_module.hxx>
+#include<CDF_module.hxx>
+#include<TDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
+%import gp.i
+%import TopoDS.i
+%import TDocStd.i
+%import Bnd.i
+%import Quantity.i
 /* public enums */
 enum VrmlData_ErrorStatus {
 	VrmlData_StatusOK = 0,

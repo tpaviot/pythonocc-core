@@ -48,8 +48,25 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BSplSLib.html"
 %include ../common/OccHandle.i
 
 
-%include BSplSLib_headers.i
+%{
+#include<BSplSLib_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColStd.i
+%import TColgp.i
+%import gp.i
 /* public enums */
 /* end public enums declaration */
 

@@ -48,8 +48,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Aspect.html"
 %include ../common/OccHandle.i
 
 
-%include Aspect_headers.i
+%{
+#include<Aspect_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Quantity_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Quantity.i
+%import TCollection.i
 /* public enums */
 enum Aspect_VKeyBasic {
 	Aspect_VKey_UNKNOWN = 0,

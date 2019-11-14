@@ -48,8 +48,51 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeAnalysis.htm
 %include ../common/OccHandle.i
 
 
-%include ShapeAnalysis_headers.i
+%{
+#include<ShapeAnalysis_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<ShapeExtend_module.hxx>
+#include<TopTools_module.hxx>
+#include<gp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColgp_module.hxx>
+#include<Geom_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TColStd_module.hxx>
+#include<TopAbs_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<IntRes2d_module.hxx>
+#include<TColGeom_module.hxx>
+#include<Message_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Geom_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import ShapeExtend.i
+%import TopTools.i
+%import gp.i
+%import Geom2d.i
+%import Bnd.i
+%import TColgp.i
+%import Geom.i
+%import Adaptor3d.i
+%import TopLoc.i
+%import TColStd.i
+%import TopAbs.i
+%import GeomAdaptor.i
+%import IntRes2d.i
 /* public enums */
 /* end public enums declaration */
 

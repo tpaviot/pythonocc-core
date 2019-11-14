@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GccEnt.html"
 %include ../common/OccHandle.i
 
 
-%include GccEnt_headers.i
+%{
+#include<GccEnt_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
 /* public enums */
 enum GccEnt_Position {
 	GccEnt_unqualified = 0,

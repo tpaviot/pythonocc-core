@@ -48,8 +48,51 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TPrsStd.html"
 %include ../common/OccHandle.i
 
 
-%include TPrsStd_headers.i
+%{
+#include<TPrsStd_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TDataXtd_module.hxx>
+#include<AIS_module.hxx>
+#include<TCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<TDF_module.hxx>
+#include<gp_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<TopTools_module.hxx>
+#include<TCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<TDataStd_module.hxx>
+#include<Aspect_module.hxx>
+#include<Visual3d_module.hxx>
+#include<TNaming_module.hxx>
+#include<Select3D_module.hxx>
+#include<TColQuantity_module.hxx>
+#include<Message_module.hxx>
+#include<Poly_module.hxx>
+#include<Prs3d_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TShort_module.hxx>
+#include<SelectBasics_module.hxx>
+#include<TopoDS_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<PrsMgr_module.hxx>
+#include<V3d_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TDataXtd.i
+%import AIS.i
+%import TCollection.i
+%import TDF.i
 /* public enums */
 /* end public enums declaration */
 

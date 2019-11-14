@@ -48,8 +48,33 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dGcc.html"
 %include ../common/OccHandle.i
 
 
-%include Geom2dGcc_headers.i
+%{
+#include<Geom2dGcc_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<gp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GccAna_module.hxx>
+#include<GccEnt_module.hxx>
+#include<math_module.hxx>
+#include<GccInt_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom2dAdaptor.i
+%import gp.i
+%import Geom2d.i
+%import GccAna.i
+%import GccEnt.i
+%import math.i
 /* public enums */
 enum Geom2dGcc_Type2 {
 	Geom2dGcc_CuCuOnCu = 0,

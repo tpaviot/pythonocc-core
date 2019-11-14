@@ -48,8 +48,48 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_LocOpe.html"
 %include ../common/OccHandle.i
 
 
-%include LocOpe_headers.i
+%{
+#include<LocOpe_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopTools_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TColGeom_module.hxx>
+#include<gp_module.hxx>
+#include<Geom_module.hxx>
+#include<TColStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<BRepClass3d_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Intf_module.hxx>
+#include<Message_module.hxx>
+#include<IntSurf_module.hxx>
+#include<TopOpeBRepTool_module.hxx>
+#include<Extrema_module.hxx>
+#include<Geom2d_module.hxx>
+#include<IntCurveSurface_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import TColgp.i
+%import TopTools.i
+%import TopAbs.i
+%import TColGeom.i
+%import gp.i
+%import Geom.i
 /* public enums */
 enum LocOpe_Operation {
 	LocOpe_FUSE = 0,

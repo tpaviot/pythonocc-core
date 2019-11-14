@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopExp.html"
 %include ../common/OccHandle.i
 
 
-%include TopExp_headers.i
+%{
+#include<TopExp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
+#include<Message_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import TopAbs.i
+%import TopTools.i
 /* public enums */
 /* end public enums declaration */
 

@@ -48,8 +48,43 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ShapeExtend.html"
 %include ../common/OccHandle.i
 
 
-%include ShapeExtend_headers.i
+%{
+#include<ShapeExtend_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Message_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<gp_module.hxx>
+#include<TColGeom_module.hxx>
+#include<TColStd_module.hxx>
+#include<TopTools_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Poly_module.hxx>
+#include<IntRes2d_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Message.i
+%import TopoDS.i
+%import Geom.i
+%import GeomAbs.i
+%import gp.i
+%import TColGeom.i
+%import TColStd.i
+%import TopTools.i
+%import TopAbs.i
 /* public enums */
 enum ShapeExtend_Status {
 	ShapeExtend_OK = 0,

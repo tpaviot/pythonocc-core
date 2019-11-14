@@ -48,8 +48,63 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_SelectMgr.html"
 %include ../common/OccHandle.i
 
 
-%include SelectMgr_headers.i
+%{
+#include<SelectMgr_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<PrsMgr_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Aspect_module.hxx>
+#include<Prs3d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<V3d_module.hxx>
+#include<TopAbs_module.hxx>
+#include<BVH_module.hxx>
+#include<SelectBasics_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<Select3D_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
+#include<Message_module.hxx>
+#include<TShort_module.hxx>
+#include<SelectBasics_module.hxx>
+#include<Visual3d_module.hxx>
+#include<gp_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<TColQuantity_module.hxx>
+#include<Geom_module.hxx>
+#include<Aspect_module.hxx>
+#include<Poly_module.hxx>
+#include<TopoDS_module.hxx>
+#include<V3d_module.hxx>
+#include<Select3D_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Quantity_module.hxx>
+#include<BVH_module.hxx>
+#include<Prs3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import PrsMgr.i
+%import Graphic3d.i
+%import Aspect.i
+%import Prs3d.i
+%import TopLoc.i
+%import V3d.i
+%import TopAbs.i
+%import BVH.i
+%import SelectBasics.i
+%import gp.i
+%import TColgp.i
+%import Select3D.i
+%import Bnd.i
 /* public enums */
 enum SelectMgr_TypeOfUpdate {
 	SelectMgr_TOU_Full = 0,

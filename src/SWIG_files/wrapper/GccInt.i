@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GccInt.html"
 %include ../common/OccHandle.i
 
 
-%include GccInt_headers.i
+%{
+#include<GccInt_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
 /* public enums */
 enum GccInt_IType {
 	GccInt_Lin = 0,

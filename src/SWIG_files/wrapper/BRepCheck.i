@@ -48,8 +48,31 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepCheck.html"
 %include ../common/OccHandle.i
 
 
-%include BRepCheck_headers.i
+%{
+#include<BRepCheck_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Message_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Adaptor3d.i
+%import TopoDS.i
+%import TopTools.i
 /* public enums */
 enum BRepCheck_Status {
 	BRepCheck_NoError = 0,

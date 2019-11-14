@@ -48,8 +48,46 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_V3d.html"
 %include ../common/OccHandle.i
 
 
-%include V3d_headers.i
+%{
+#include<V3d_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<gp_module.hxx>
+#include<Quantity_module.hxx>
+#include<Aspect_module.hxx>
+#include<TColStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Image_module.hxx>
+#include<TShort_module.hxx>
+#include<TColQuantity_module.hxx>
+#include<Bnd_module.hxx>
+#include<Geom_module.hxx>
+#include<BVH_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopTools_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<Poly_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<Select3D_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Graphic3d.i
+%import gp.i
+%import Quantity.i
+%import Aspect.i
+%import TColStd.i
+%import Bnd.i
+%import TCollection.i
+%import Image.i
 /* public enums */
 enum V3d_TypeOfPickCamera {
 	V3d_POSITIONCAMERA = 0,

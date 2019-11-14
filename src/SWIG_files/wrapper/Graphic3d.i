@@ -48,8 +48,47 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Graphic3d.html"
 %include ../common/OccHandle.i
 
 
-%include Graphic3d_headers.i
+%{
+#include<Graphic3d_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BVH_module.hxx>
+#include<Quantity_module.hxx>
+#include<gp_module.hxx>
+#include<Aspect_module.hxx>
+#include<TCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColStd_module.hxx>
+#include<Image_module.hxx>
+#include<OSD_module.hxx>
+#include<TShort_module.hxx>
+#include<TColQuantity_module.hxx>
+#include<BVH_module.hxx>
+#include<TopTools_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<Poly_module.hxx>
+#include<V3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BVH.i
+%import Quantity.i
+%import gp.i
+%import Aspect.i
+%import TCollection.i
+%import Geom.i
+%import Bnd.i
+%import TColStd.i
+%import Image.i
+%import OSD.i
 
 %define Handle_Graphic3d_TextureSet Handle(Graphic3d_TextureSet)
 %enddef

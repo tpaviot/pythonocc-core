@@ -48,8 +48,41 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Approx.html"
 %include ../common/OccHandle.i
 
 
-%include Approx_headers.i
+%{
+#include<Approx_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
+#include<AppCont_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<FEmTool_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColStd.i
+%import Adaptor3d.i
+%import Adaptor2d.i
+%import GeomAbs.i
+%import Geom2d.i
+%import Geom.i
+%import AppCont.i
+%import AppParCurves.i
+%import TColgp.i
+%import gp.i
 /* public enums */
 enum Approx_Status {
 	Approx_PointsAdded = 0,

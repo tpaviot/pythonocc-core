@@ -48,8 +48,29 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshTools.html"
 %include ../common/OccHandle.i
 
 
-%include IMeshTools_headers.i
+%{
+#include<IMeshTools_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<IMeshData_module.hxx>
+#include<gp_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Message_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import IMeshData.i
+%import gp.i
+%import GeomAbs.i
+%import Message.i
+%import TopoDS.i
 /* public enums */
 /* end public enums declaration */
 

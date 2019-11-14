@@ -48,8 +48,30 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IGESData.html"
 %include ../common/OccHandle.i
 
 
-%include IGESData_headers.i
+%{
+#include<IGESData_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Interface_module.hxx>
+#include<TCollection_module.hxx>
+#include<gp_module.hxx>
+#include<Message_module.hxx>
+#include<TColStd_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Interface.i
+%import TCollection.i
+%import gp.i
+%import Message.i
+%import TColStd.i
 /* public enums */
 enum IGESData_ReadStage {
 	IGESData_ReadDir = 0,

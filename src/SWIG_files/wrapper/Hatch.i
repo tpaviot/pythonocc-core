@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Hatch.html"
 %include ../common/OccHandle.i
 
 
-%include Hatch_headers.i
+%{
+#include<Hatch_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
 /* public enums */
 enum Hatch_LineForm {
 	Hatch_XLINE = 0,

@@ -48,8 +48,36 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinLDrivers.html"
 %include ../common/OccHandle.i
 
 
-%include BinLDrivers_headers.i
+%{
+#include<BinLDrivers_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Message_module.hxx>
+#include<BinMDF_module.hxx>
+#include<TDocStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDM_module.hxx>
+#include<Storage_module.hxx>
+#include<Resource_module.hxx>
+#include<TDF_module.hxx>
+#include<CDF_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Message.i
+%import BinMDF.i
+%import TDocStd.i
+%import TCollection.i
+%import PCDM.i
+%import CDM.i
+%import Storage.i
 /* public enums */
 enum BinLDrivers_Marker {
 	BinLDrivers_ENDATTRLIST = - 1,

@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFi2d.html"
 %include ../common/OccHandle.i
 
 
-%include ChFi2d_headers.i
+%{
+#include<ChFi2d_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<TopTools_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Message_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import gp.i
+%import TopTools.i
 /* public enums */
 enum ChFi2d_ConstructionError {
 	ChFi2d_NotPlanar = 0,

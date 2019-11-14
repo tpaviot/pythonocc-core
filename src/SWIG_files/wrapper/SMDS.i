@@ -57,8 +57,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_SMDS.html"
 %shared_ptr(SMDS_Iterator<const SMDS_MeshVolume *>)
 %shared_ptr(SMDS_IteratorOfElements)
 
-%include SMDS_headers.i
+%{
+#include<SMDS_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 /* end public enums declaration */
 
