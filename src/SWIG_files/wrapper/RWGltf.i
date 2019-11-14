@@ -54,9 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWGltf.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<RWMesh_module.hxx>
 #include<Poly_module.hxx>
-#include<Quantity_module.hxx>
 #include<Bnd_module.hxx>
 #include<TCollection_module.hxx>
 #include<CDF_module.hxx>
@@ -74,9 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWGltf.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import RWMesh.i
 %import Poly.i
-%import Quantity.i
 %import Bnd.i
 %import TCollection.i
 /* public enums */
@@ -160,7 +156,6 @@ enum RWGltf_GltfAccessorLayout {
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
 %wrap_handle(RWGltf_PrimitiveArrayReader)
-%wrap_handle(RWGltf_TriangulationReader)
 /* end handles declaration */
 
 /* templates */
@@ -172,12 +167,6 @@ enum RWGltf_GltfAccessorLayout {
 %nodefaultctor RWGltf_CafReader;
 class RWGltf_CafReader : public RWMesh_CafReader {
 	public:
-		%feature("compactdefaultargs") RWGltf_CafReader;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") RWGltf_CafReader;
-		 RWGltf_CafReader ();
 		%feature("compactdefaultargs") SetMeshNameAsFallback;
 		%feature("autodoc", "	* Set flag to use Mesh name in case if Node name is empty.
 
@@ -290,20 +279,6 @@ class RWGltf_GltfFace {
 %nodefaultctor RWGltf_GltfLatePrimitiveArray;
 class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
 	public:
-		%feature("compactdefaultargs") AddPrimArrayData;
-		%feature("autodoc", "	* Add primitive array data element.
-
-	:param theType:
-	:type theType: RWGltf_GltfArrayType
-	:rtype: RWGltf_GltfPrimArrayData
-") AddPrimArrayData;
-		RWGltf_GltfPrimArrayData & AddPrimArrayData (RWGltf_GltfArrayType theType);
-		%feature("compactdefaultargs") BaseColor;
-		%feature("autodoc", "	* Return base color.
-
-	:rtype: Quantity_ColorRGBA
-") BaseColor;
-		Quantity_ColorRGBA BaseColor ();
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "	* Return bounding box defined within glTF file, or VOID if not specified.
 
@@ -352,24 +327,6 @@ class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
 	:rtype: RWGltf_GltfPrimitiveMode
 ") PrimitiveMode;
 		RWGltf_GltfPrimitiveMode PrimitiveMode ();
-		%feature("compactdefaultargs") RWGltf_GltfLatePrimitiveArray;
-		%feature("autodoc", "	* Constructor.
-
-	:param theId:
-	:type theId: TCollection_AsciiString &
-	:param theName:
-	:type theName: TCollection_AsciiString &
-	:rtype: None
-") RWGltf_GltfLatePrimitiveArray;
-		 RWGltf_GltfLatePrimitiveArray (const TCollection_AsciiString & theId,const TCollection_AsciiString & theName);
-		%feature("compactdefaultargs") SetBoundingBox;
-		%feature("autodoc", "	* This method sets input bounding box and assigns a FAKE data to underlying Poly_Triangulation as Min/Max corners of bounding box, so that standard tools like BRepBndLib::Add() can be used transparently for computing bounding box of this face.
-
-	:param theBox:
-	:type theBox: Bnd_Box &
-	:rtype: None
-") SetBoundingBox;
-		void SetBoundingBox (const Bnd_Box & theBox);
 		%feature("compactdefaultargs") SetMaterialCommon;
 		%feature("autodoc", "	* Set common (obsolete) material definition.
 
@@ -539,25 +496,6 @@ class RWGltf_PrimitiveArrayReader : public Standard_Transient {
 %make_alias(RWGltf_PrimitiveArrayReader)
 
 %extend RWGltf_PrimitiveArrayReader {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor RWGltf_TriangulationReader;
-class RWGltf_TriangulationReader : public RWGltf_PrimitiveArrayReader {
-	public:
-		%feature("compactdefaultargs") RWGltf_TriangulationReader;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") RWGltf_TriangulationReader;
-		 RWGltf_TriangulationReader ();
-};
-
-
-%make_alias(RWGltf_TriangulationReader)
-
-%extend RWGltf_TriangulationReader {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

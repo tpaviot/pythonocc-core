@@ -2681,23 +2681,6 @@ class BRepMesh_VertexTool : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BRepMesh_ConeRangeSplitter;
-class BRepMesh_ConeRangeSplitter : public BRepMesh_DefaultRangeSplitter {
-	public:
-		%feature("compactdefaultargs") BRepMesh_ConeRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_ConeRangeSplitter;
-		 BRepMesh_ConeRangeSplitter ();
-};
-
-
-%extend BRepMesh_ConeRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BRepMesh_Edge;
 class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 	public:
@@ -2882,74 +2865,6 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BRepMesh_SphereRangeSplitter;
-class BRepMesh_SphereRangeSplitter : public BRepMesh_DefaultRangeSplitter {
-	public:
-		%feature("compactdefaultargs") BRepMesh_SphereRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_SphereRangeSplitter;
-		 BRepMesh_SphereRangeSplitter ();
-};
-
-
-%extend BRepMesh_SphereRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_UVParamRangeSplitter;
-class BRepMesh_UVParamRangeSplitter : public BRepMesh_DefaultRangeSplitter {
-	public:
-		%feature("compactdefaultargs") BRepMesh_UVParamRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_UVParamRangeSplitter;
-		 BRepMesh_UVParamRangeSplitter ();
-		%feature("compactdefaultargs") GetParametersU;
-		%feature("autodoc", "	* Returns U parameters.
-
-	:rtype: inline  IMeshData::IMapOfReal
-") GetParametersU;
-		inline const IMeshData::IMapOfReal & GetParametersU ();
-		%feature("compactdefaultargs") GetParametersU;
-		%feature("autodoc", "	* Returns U parameters.
-
-	:rtype: inline IMeshData::IMapOfReal
-") GetParametersU;
-		inline IMeshData::IMapOfReal & GetParametersU ();
-		%feature("compactdefaultargs") GetParametersV;
-		%feature("autodoc", "	* Returns V parameters.
-
-	:rtype: inline  IMeshData::IMapOfReal
-") GetParametersV;
-		inline const IMeshData::IMapOfReal & GetParametersV ();
-		%feature("compactdefaultargs") GetParametersV;
-		%feature("autodoc", "	* Returns V parameters.
-
-	:rtype: inline IMeshData::IMapOfReal
-") GetParametersV;
-		inline IMeshData::IMapOfReal & GetParametersV ();
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Resets this splitter.
-
-	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
-	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
-	:rtype: None
-") Reset;
-		void Reset (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
-};
-
-
-%extend BRepMesh_UVParamRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BRepMesh_DelaunayBaseMeshAlgo;
 class BRepMesh_DelaunayBaseMeshAlgo : public BRepMesh_ConstrainedBaseMeshAlgo {
 	public:
@@ -2963,79 +2878,6 @@ class BRepMesh_DelaunayBaseMeshAlgo : public BRepMesh_ConstrainedBaseMeshAlgo {
 
 
 %extend BRepMesh_DelaunayBaseMeshAlgo {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_NURBSRangeSplitter;
-class BRepMesh_NURBSRangeSplitter : public BRepMesh_UVParamRangeSplitter {
-	public:
-		%feature("compactdefaultargs") AdjustRange;
-		%feature("autodoc", "	* Updates discrete range of surface according to its geometric range.
-
-	:rtype: void
-") AdjustRange;
-		virtual void AdjustRange ();
-		%feature("compactdefaultargs") BRepMesh_NURBSRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_NURBSRangeSplitter;
-		 BRepMesh_NURBSRangeSplitter ();
-};
-
-
-%extend BRepMesh_NURBSRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_TorusRangeSplitter;
-class BRepMesh_TorusRangeSplitter : public BRepMesh_UVParamRangeSplitter {
-	public:
-		%feature("compactdefaultargs") AddPoint;
-		%feature("autodoc", "	* Registers border point.
-
-	:param thePoint:
-	:type thePoint: gp_Pnt2d
-	:rtype: void
-") AddPoint;
-		virtual void AddPoint (const gp_Pnt2d & thePoint);
-		%feature("compactdefaultargs") BRepMesh_TorusRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_TorusRangeSplitter;
-		 BRepMesh_TorusRangeSplitter ();
-};
-
-
-%extend BRepMesh_TorusRangeSplitter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_BoundaryParamsRangeSplitter;
-class BRepMesh_BoundaryParamsRangeSplitter : public BRepMesh_NURBSRangeSplitter {
-	public:
-		%feature("compactdefaultargs") AddPoint;
-		%feature("autodoc", "	* Registers border point.
-
-	:param thePoint:
-	:type thePoint: gp_Pnt2d
-	:rtype: None
-") AddPoint;
-		void AddPoint (const gp_Pnt2d & thePoint);
-		%feature("compactdefaultargs") BRepMesh_BoundaryParamsRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_BoundaryParamsRangeSplitter;
-		 BRepMesh_BoundaryParamsRangeSplitter ();
-};
-
-
-%extend BRepMesh_BoundaryParamsRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

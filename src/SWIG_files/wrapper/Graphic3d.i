@@ -2687,34 +2687,6 @@ class Graphic3d_BvhCStructureSet : public BVH_PrimitiveSet3d {
 	:rtype: float
 ") Center;
 		Standard_Real Center (const Standard_Integer theIdx,const Standard_Integer theAxis);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Cleans the whole primitive set.
-
-	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") GetStructureById;
-		%feature("autodoc", "	* Returns the structure corresponding to the given ID.
-
-	:param theId:
-	:type theId: int
-	:rtype: Graphic3d_CStructure *
-") GetStructureById;
-		const Graphic3d_CStructure * GetStructureById (Standard_Integer theId);
-		%feature("compactdefaultargs") Graphic3d_BvhCStructureSet;
-		%feature("autodoc", "	* Creates an empty primitive set for BVH clipping.
-
-	:rtype: None
-") Graphic3d_BvhCStructureSet;
-		 Graphic3d_BvhCStructureSet ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Removes the given structure from the set. returns true if structure removed, otherwise returns false (structure is not in the set).
-
-	:param theStruct:
-	:type theStruct: Graphic3d_CStructure *
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Graphic3d_CStructure * theStruct);
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "	* Returns total number of structures.
 
