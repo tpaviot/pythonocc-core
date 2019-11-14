@@ -48,8 +48,31 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_MoniTool.html"
 %include ../common/OccHandle.i
 
 
-%include MoniTool_headers.i
+%{
+#include<MoniTool_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<Message_module.hxx>
+#include<OSD_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
+%import TopoDS.i
+%import gp.i
+%import Message.i
+%import OSD.i
+%import TColStd.i
 /* public enums */
 enum MoniTool_ValueType {
 	MoniTool_ValueMisc = 0,

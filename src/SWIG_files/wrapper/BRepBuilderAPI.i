@@ -48,8 +48,41 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepBuilderAPI.ht
 %include ../common/OccHandle.i
 
 
-%include BRepBuilderAPI_headers.i
+%{
+#include<BRepBuilderAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
+#include<BRepTools_module.hxx>
+#include<Message_module.hxx>
+#include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<Geom2d_module.hxx>
+#include<BRep_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TShort_module.hxx>
+#include<Poly_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom.i
+%import TopoDS.i
+%import TopTools.i
+%import BRepTools.i
+%import Message.i
+%import gp.i
+%import TColStd.i
+%import Bnd.i
+%import Geom2d.i
 /* public enums */
 enum BRepBuilderAPI_ShapeModification {
 	BRepBuilderAPI_Preserved = 0,

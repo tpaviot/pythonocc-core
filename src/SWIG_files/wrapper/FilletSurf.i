@@ -48,8 +48,49 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_FilletSurf.html"
 %include ../common/OccHandle.i
 
 
-%include FilletSurf_headers.i
+%{
+#include<FilletSurf_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
+#include<Geom2d_module.hxx>
+#include<ChFi3d_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TopOpeBRepDS_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Extrema_module.hxx>
+#include<Law_module.hxx>
+#include<GeomFill_module.hxx>
+#include<TopLoc_module.hxx>
+#include<ChFiDS_module.hxx>
+#include<BRepBlend_module.hxx>
+#include<TopOpeBRepTool_module.hxx>
+#include<Approx_module.hxx>
+#include<TopOpeBRepBuild_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Message_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColGeom_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom.i
+%import TopoDS.i
+%import TopTools.i
+%import Geom2d.i
+%import ChFi3d.i
 /* public enums */
 enum FilletSurf_StatusDone {
 	FilletSurf_IsOk = 0,

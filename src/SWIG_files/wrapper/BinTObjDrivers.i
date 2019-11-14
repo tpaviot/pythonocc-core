@@ -48,8 +48,36 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BinTObjDrivers.ht
 %include ../common/OccHandle.i
 
 
-%include BinTObjDrivers_headers.i
+%{
+#include<BinTObjDrivers_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BinMDF_module.hxx>
+#include<Message_module.hxx>
+#include<TDocStd_module.hxx>
+#include<BinLDrivers_module.hxx>
+#include<TDF_module.hxx>
+#include<BinObjMgt_module.hxx>
+#include<Resource_module.hxx>
+#include<PCDM_module.hxx>
+#include<LDOM_module.hxx>
+#include<CDF_module.hxx>
+#include<TDF_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BinMDF.i
+%import Message.i
+%import TDocStd.i
+%import BinLDrivers.i
+%import TDF.i
+%import BinObjMgt.i
 /* public enums */
 /* end public enums declaration */
 

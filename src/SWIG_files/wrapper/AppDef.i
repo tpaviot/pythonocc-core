@@ -48,8 +48,40 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AppDef.html"
 %include ../common/OccHandle.i
 
 
-%include AppDef_headers.i
+%{
+#include<AppDef_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<math_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<TColStd_module.hxx>
+#include<Approx_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<FEmTool_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<PLib_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import math.i
+%import AppParCurves.i
+%import TColStd.i
+%import Approx.i
+%import TColgp.i
+%import gp.i
+%import FEmTool.i
+%import GeomAbs.i
 /* public enums */
 /* end public enums declaration */
 

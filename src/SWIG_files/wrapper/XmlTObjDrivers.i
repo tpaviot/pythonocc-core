@@ -48,8 +48,36 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XmlTObjDrivers.ht
 %include ../common/OccHandle.i
 
 
-%include XmlTObjDrivers_headers.i
+%{
+#include<XmlTObjDrivers_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<XmlMDF_module.hxx>
+#include<Message_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XmlLDrivers_module.hxx>
+#include<TCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<XmlObjMgt_module.hxx>
+#include<Resource_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import XmlMDF.i
+%import Message.i
+%import TDocStd.i
+%import XmlLDrivers.i
+%import TCollection.i
+%import TDF.i
+%import XmlObjMgt.i
 /* public enums */
 /* end public enums declaration */
 

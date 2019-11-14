@@ -48,8 +48,25 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshData.html"
 %include ../common/OccHandle.i
 
 
-%include IMeshData_headers.i
+%{
+#include<IMeshData_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import gp.i
+%import TopAbs.i
 /* public enums */
 enum IMeshData_Status {
 	IMeshData_NoError = 0,

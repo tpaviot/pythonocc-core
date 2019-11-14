@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_CSLib.html"
 %include ../common/OccHandle.i
 
 
-%include CSLib_headers.i
+%{
+#include<CSLib_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<math_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColgp.i
+%import gp.i
+%import math.i
+%import TColStd.i
 /* public enums */
 enum CSLib_NormalStatus {
 	CSLib_Singular = 0,

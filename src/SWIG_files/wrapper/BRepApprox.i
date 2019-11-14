@@ -48,8 +48,51 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepApprox.html"
 %include ../common/OccHandle.i
 
 
-%include BRepApprox_headers.i
+%{
+#include<BRepApprox_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Approx_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<IntSurf_module.hxx>
+#include<math_module.hxx>
+#include<TColStd_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<IntImp_module.hxx>
+#include<gp_module.hxx>
+#include<ApproxInt_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TopoDS_module.hxx>
+#include<FEmTool_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Message_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Approx.i
+%import AppParCurves.i
+%import Geom.i
+%import Geom2d.i
+%import IntSurf.i
+%import math.i
+%import TColStd.i
+%import BRepAdaptor.i
+%import IntImp.i
+%import gp.i
+%import ApproxInt.i
+%import TColgp.i
 /* public enums */
 /* end public enums declaration */
 

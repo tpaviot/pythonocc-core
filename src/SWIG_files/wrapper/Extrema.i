@@ -48,8 +48,38 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Extrema.html"
 %include ../common/OccHandle.i
 
 
-%include Extrema_headers.i
+%{
+#include<Extrema_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<math_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Precision_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import math.i
+%import Adaptor3d.i
+%import Adaptor2d.i
+%import Geom2d.i
+%import gp.i
+%import GeomAbs.i
+%import TColStd.i
+%import Geom.i
+%import GeomAdaptor.i
 /* public enums */
 enum Extrema_ExtAlgo {
 	Extrema_ExtAlgo_Grad = 0,

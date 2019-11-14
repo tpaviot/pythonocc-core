@@ -48,8 +48,41 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepPrimAPI.html"
 %include ../common/OccHandle.i
 
 
-%include BRepPrimAPI_headers.i
+%{
+#include<BRepPrimAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
+#include<gp_module.hxx>
+#include<TopoDS_module.hxx>
+#include<BRepPrim_module.hxx>
+#include<TopTools_module.hxx>
+#include<BRepSweep_module.hxx>
+#include<Geom_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Geom2d_module.hxx>
+#include<BRep_module.hxx>
+#include<Message_module.hxx>
+#include<BRepTools_module.hxx>
+#include<Bnd_module.hxx>
+#include<Poly_module.hxx>
+#include<TShort_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BRepBuilderAPI.i
+%import gp.i
+%import TopoDS.i
+%import BRepPrim.i
+%import TopTools.i
+%import BRepSweep.i
+%import Geom.i
 /* public enums */
 /* end public enums declaration */
 

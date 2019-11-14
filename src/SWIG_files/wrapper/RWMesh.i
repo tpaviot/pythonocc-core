@@ -48,8 +48,43 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWMesh.html"
 %include ../common/OccHandle.i
 
 
-%include RWMesh_headers.i
+%{
+#include<RWMesh_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TDocStd_module.hxx>
+#include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Message_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<CDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<TDF_module.hxx>
+#include<TDocStd_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Geom_module.hxx>
+#include<TShort_module.hxx>
+#include<Aspect_module.hxx>
+#include<Bnd_module.hxx>
+#include<Quantity_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TDocStd.i
+%import gp.i
+%import TColStd.i
+%import TCollection.i
+%import Message.i
+%import TopoDS.i
+%import Graphic3d.i
 /* public enums */
 enum RWMesh_CoordinateSystem {
 	RWMesh_CoordinateSystem_Undefined = - 1,

@@ -48,8 +48,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gp.html"
 %include ../common/OccHandle.i
 
 
-%include gp_headers.i
+%{
+#include<gp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 enum gp_TrsfForm {
 	gp_Identity = 0,

@@ -48,8 +48,43 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IGESControl.html"
 %include ../common/OccHandle.i
 
 
-%include IGESControl_headers.i
+%{
+#include<IGESControl_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Transfer_module.hxx>
+#include<IGESToBRep_module.hxx>
+#include<XSControl_module.hxx>
+#include<Interface_module.hxx>
+#include<TopoDS_module.hxx>
+#include<IFSelect_module.hxx>
+#include<IGESData_module.hxx>
+#include<Message_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TopTools_module.hxx>
+#include<IGESData_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Interface_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColGeom_module.hxx>
+#include<ShapeExtend_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Transfer.i
+%import IGESToBRep.i
+%import XSControl.i
+%import Interface.i
+%import TopoDS.i
+%import IFSelect.i
+%import IGESData.i
 /* public enums */
 /* end public enums declaration */
 

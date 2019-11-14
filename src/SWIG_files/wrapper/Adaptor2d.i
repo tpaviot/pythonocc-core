@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Adaptor2d.html"
 %include ../common/OccHandle.i
 
 
-%include Adaptor2d_headers.i
+%{
+#include<Adaptor2d_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom2d.i
+%import gp.i
+%import GeomAbs.i
+%import TColStd.i
 /* public enums */
 /* end public enums declaration */
 

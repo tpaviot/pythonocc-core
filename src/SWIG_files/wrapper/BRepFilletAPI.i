@@ -48,8 +48,65 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepFilletAPI.htm
 %include ../common/OccHandle.i
 
 
-%include BRepFilletAPI_headers.i
+%{
+#include<BRepFilletAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
+#include<TopoDS_module.hxx>
+#include<ChFiDS_module.hxx>
+#include<TopTools_module.hxx>
+#include<ChFi2d_module.hxx>
+#include<TopOpeBRepBuild_module.hxx>
+#include<Law_module.hxx>
+#include<TColgp_module.hxx>
+#include<ChFi3d_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomFill_module.hxx>
+#include<BRep_module.hxx>
+#include<Geom2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<BRepTools_module.hxx>
+#include<Approx_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TopOpeBRepDS_module.hxx>
+#include<Extrema_module.hxx>
+#include<Approx_module.hxx>
+#include<BRepBlend_module.hxx>
+#include<Message_module.hxx>
+#include<TopOpeBRepTool_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<Bnd_module.hxx>
+#include<Poly_module.hxx>
+#include<TColGeom_module.hxx>
+#include<TShort_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BRepBuilderAPI.i
+%import TopoDS.i
+%import ChFiDS.i
+%import TopTools.i
+%import ChFi2d.i
+%import TopOpeBRepBuild.i
+%import Law.i
+%import TColgp.i
+%import ChFi3d.i
+%import Geom.i
+%import GeomAbs.i
 /* public enums */
 /* end public enums declaration */
 

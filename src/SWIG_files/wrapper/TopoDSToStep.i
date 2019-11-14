@@ -48,8 +48,39 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopoDSToStep.html
 %include ../common/OccHandle.i
 
 
-%include TopoDSToStep_headers.i
+%{
+#include<TopoDSToStep_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Transfer_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TCollection_module.hxx>
+#include<StepShape_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColStd_module.hxx>
+#include<Message_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepGeom_module.hxx>
+#include<Interface_module.hxx>
+#include<StepRepr_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Transfer_module.hxx>
+#include<StepData_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Transfer.i
+%import TopoDS.i
+%import TCollection.i
+%import StepShape.i
+%import MoniTool.i
+%import TColStd.i
 /* public enums */
 enum TopoDSToStep_MakeEdgeError {
 	TopoDSToStep_EdgeDone = 0,

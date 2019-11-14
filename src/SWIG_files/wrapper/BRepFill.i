@@ -48,8 +48,68 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepFill.html"
 %include ../common/OccHandle.i
 
 
-%include BRepFill_headers.i
+%{
+#include<BRepFill_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopTools_module.hxx>
+#include<MAT_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<GeomPlate_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<GeomFill_module.hxx>
+#include<AppCont_module.hxx>
+#include<BRepMAT2d_module.hxx>
+#include<Law_module.hxx>
+#include<TColgp_module.hxx>
+#include<Bisector_module.hxx>
+#include<FEmTool_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<PLib_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Plate_module.hxx>
+#include<AdvApp2Var_module.hxx>
+#include<TColGeom_module.hxx>
+#include<Message_module.hxx>
+#include<Convert_module.hxx>
+#include<Approx_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<MAT_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopTools.i
+%import MAT.i
+%import TopoDS.i
+%import gp.i
+%import TColStd.i
+%import Geom.i
+%import Geom2d.i
+%import AppParCurves.i
+%import GeomPlate.i
+%import Adaptor3d.i
+%import GeomAbs.i
+%import GeomFill.i
+%import AppCont.i
+%import BRepMAT2d.i
+%import Law.i
+%import TColgp.i
+%import Bisector.i
 /* public enums */
 enum BRepFill_TypeOfContact {
 	BRepFill_NoContact = 0,

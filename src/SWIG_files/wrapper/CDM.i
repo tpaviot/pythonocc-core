@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_CDM.html"
 %include ../common/OccHandle.i
 
 
-%include CDM_headers.i
+%{
+#include<CDM_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Message_module.hxx>
+#include<Resource_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColStd.i
+%import TCollection.i
+%import Message.i
+%import Resource.i
 /* public enums */
 enum CDM_CanCloseStatus {
 	CDM_CCS_OK = 0,

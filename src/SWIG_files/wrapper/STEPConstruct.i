@@ -48,8 +48,60 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_STEPConstruct.htm
 %include ../common/OccHandle.i
 
 
-%include STEPConstruct_headers.i
+%{
+#include<STEPConstruct_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Transfer_module.hxx>
+#include<StepShape_module.hxx>
+#include<TopoDS_module.hxx>
+#include<StepRepr_module.hxx>
+#include<TopLoc_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepAP203_module.hxx>
+#include<Interface_module.hxx>
+#include<StepGeom_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<StepData_module.hxx>
+#include<gp_module.hxx>
+#include<XSControl_module.hxx>
+#include<StepVisual_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopTools_module.hxx>
+#include<IFSelect_module.hxx>
+#include<Message_module.hxx>
+#include<StepBasic_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
+#include<StepData_module.hxx>
+#include<StepShape_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Transfer.i
+%import StepShape.i
+%import TopoDS.i
+%import StepRepr.i
+%import TopLoc.i
+%import StepBasic.i
+%import StepAP203.i
+%import Interface.i
+%import StepGeom.i
+%import TCollection.i
+%import TColStd.i
+%import StepData.i
+%import gp.i
+%import XSControl.i
+%import StepVisual.i
+%import Quantity.i
 /* public enums */
 /* end public enums declaration */
 

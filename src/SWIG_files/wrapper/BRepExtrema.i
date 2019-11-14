@@ -48,8 +48,36 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepExtrema.html"
 %include ../common/OccHandle.i
 
 
-%include BRepExtrema_headers.i
+%{
+#include<BRepExtrema_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Extrema_module.hxx>
+#include<gp_module.hxx>
+#include<Bnd_module.hxx>
+#include<BVH_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Message_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import Extrema.i
+%import gp.i
+%import Bnd.i
+%import BVH.i
 /* public enums */
 enum BRepExtrema_SupportType {
 	BRepExtrema_IsVertex = 0,

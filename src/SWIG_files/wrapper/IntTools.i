@@ -48,8 +48,75 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntTools.html"
 %include ../common/OccHandle.i
 
 
-%include IntTools_headers.i
+%{
+#include<IntTools_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<Geom_module.hxx>
+#include<TopAbs_module.hxx>
+#include<Bnd_module.hxx>
+#include<Geom2dHatch_module.hxx>
+#include<GeomAPI_module.hxx>
+#include<BRepClass3d_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<IntSurf_module.hxx>
+#include<TColStd_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<IntPatch_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<GeomInt_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<IntRes2d_module.hxx>
+#include<Geom2dInt_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<FEmTool_module.hxx>
+#include<Extrema_module.hxx>
+#include<IntAna_module.hxx>
+#include<Intf_module.hxx>
+#include<IntSurf_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Quantity_module.hxx>
+#include<HatchGen_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Approx_module.hxx>
+#include<BRepClass3d_module.hxx>
+#include<IntCurveSurface_module.hxx>
+#include<Geom2dHatch_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Message_module.hxx>
+#include<TopTools_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BRepAdaptor.i
+%import TopoDS.i
+%import gp.i
+%import Geom.i
+%import TopAbs.i
+%import Bnd.i
+%import Geom2dHatch.i
+%import GeomAPI.i
+%import BRepClass3d.i
+%import Geom2d.i
+%import GeomAbs.i
+%import IntSurf.i
+%import TColStd.i
+%import Adaptor3d.i
+%import IntPatch.i
+%import GeomAdaptor.i
+%import GeomInt.i
 /* public enums */
 /* end public enums declaration */
 

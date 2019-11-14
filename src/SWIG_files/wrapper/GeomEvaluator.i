@@ -48,8 +48,30 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GeomEvaluator.htm
 %include ../common/OccHandle.i
 
 
-%include GeomEvaluator_headers.i
+%{
+#include<GeomEvaluator_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import Geom.i
+%import GeomAdaptor.i
+%import Adaptor3d.i
 /* public enums */
 /* end public enums declaration */
 

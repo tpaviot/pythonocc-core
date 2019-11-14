@@ -48,8 +48,40 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TDataXtd.html"
 %include ../common/OccHandle.i
 
 
-%include TDataXtd_headers.i
+%{
+#include<TDataXtd_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<gp_module.hxx>
+#include<TNaming_module.hxx>
+#include<TDataStd_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Poly_module.hxx>
+#include<TShort_module.hxx>
+#include<TopTools_module.hxx>
+#include<TCollection_module.hxx>
+#include<Message_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TShort_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TDF.i
+%import gp.i
+%import TNaming.i
+%import TDataStd.i
+%import Quantity.i
+%import TopoDS.i
+%import Poly.i
+%import TShort.i
 /* public enums */
 enum TDataXtd_ConstraintEnum {
 	TDataXtd_RADIUS = 0,

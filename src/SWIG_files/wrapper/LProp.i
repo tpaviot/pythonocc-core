@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_LProp.html"
 %include ../common/OccHandle.i
 
 
-%include LProp_headers.i
+%{
+#include<LProp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import GeomAbs.i
 /* public enums */
 enum LProp_Status {
 	LProp_Undecided = 0,

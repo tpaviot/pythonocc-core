@@ -48,8 +48,56 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GeomInt.html"
 %include ../common/OccHandle.i
 
 
-%include GeomInt_headers.i
+%{
+#include<GeomInt_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<math_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<TColStd_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<IntPatch_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<gp_module.hxx>
+#include<Bnd_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TopAbs_module.hxx>
+#include<Approx_module.hxx>
+#include<IntImp_module.hxx>
+#include<ApproxInt_module.hxx>
+#include<IntSurf_module.hxx>
+#include<TColgp_module.hxx>
+#include<Bnd_module.hxx>
+#include<IntAna_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import math.i
+%import AppParCurves.i
+%import TColStd.i
+%import Geom.i
+%import Geom2d.i
+%import IntPatch.i
+%import GeomAdaptor.i
+%import gp.i
+%import Bnd.i
+%import Adaptor3d.i
+%import TopAbs.i
+%import Approx.i
+%import IntImp.i
+%import ApproxInt.i
+%import IntSurf.i
+%import TColgp.i
 /* public enums */
 /* end public enums declaration */
 

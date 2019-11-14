@@ -48,8 +48,29 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_CPnts.html"
 %include ../common/OccHandle.i
 
 
-%include CPnts_headers.i
+%{
+#include<CPnts_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<math_module.hxx>
+#include<gp_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Adaptor3d.i
+%import Adaptor2d.i
+%import math.i
+%import gp.i
 /* public enums */
 /* end public enums declaration */
 

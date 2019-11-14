@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_UnitsAPI.html"
 %include ../common/OccHandle.i
 
 
-%include UnitsAPI_headers.i
+%{
+#include<UnitsAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Units_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Units.i
 /* public enums */
 enum UnitsAPI_SystemUnits {
 	UnitsAPI_DEFAULT = 0,

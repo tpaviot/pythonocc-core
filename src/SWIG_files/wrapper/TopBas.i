@@ -48,8 +48,22 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopBas.html"
 %include ../common/OccHandle.i
 
 
-%include TopBas_headers.i
+%{
+#include<TopBas_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopAbs_module.hxx>
+#include<Message_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopAbs.i
 /* public enums */
 /* end public enums declaration */
 

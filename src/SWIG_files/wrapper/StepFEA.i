@@ -48,8 +48,38 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepFEA.html"
 %include ../common/OccHandle.i
 
 
-%include StepFEA_headers.i
+%{
+#include<StepFEA_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<StepData_module.hxx>
+#include<TColStd_module.hxx>
+#include<StepElement_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepRepr_module.hxx>
+#include<StepGeom_module.hxx>
+#include<Message_module.hxx>
+#include<Interface_module.hxx>
+#include<StepData_module.hxx>
+#include<StepShape_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
+%import StepData.i
+%import TColStd.i
+%import StepElement.i
+%import StepBasic.i
+%import StepRepr.i
+%import StepGeom.i
 /* public enums */
 enum StepFEA_ElementVolume {
 	StepFEA_Volume = 0,

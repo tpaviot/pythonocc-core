@@ -48,8 +48,46 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_VrmlAPI.html"
 %include ../common/OccHandle.i
 
 
-%include VrmlAPI_headers.i
+%{
+#include<VrmlAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<VrmlConverter_module.hxx>
+#include<Vrml_module.hxx>
+#include<Quantity_module.hxx>
+#include<TDocStd_module.hxx>
+#include<Message_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<TShort_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<TopLoc_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TopTools_module.hxx>
+#include<Poly_module.hxx>
+#include<Aspect_module.hxx>
+#include<CDF_module.hxx>
+#include<TDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import VrmlConverter.i
+%import Vrml.i
+%import Quantity.i
+%import TDocStd.i
 /* public enums */
 enum VrmlAPI_RepresentationOfShape {
 	VrmlAPI_ShadedRepresentation = 0,

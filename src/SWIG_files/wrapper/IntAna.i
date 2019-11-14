@@ -48,8 +48,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntAna.html"
 %include ../common/OccHandle.i
 
 
-%include IntAna_headers.i
+%{
+#include<IntAna_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import TColStd.i
 /* public enums */
 enum IntAna_ResultType {
 	IntAna_Point = 0,

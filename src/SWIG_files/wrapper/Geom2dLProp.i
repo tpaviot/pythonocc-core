@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dLProp.html"
 %include ../common/OccHandle.i
 
 
-%include Geom2dLProp_headers.i
+%{
+#include<Geom2dLProp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<LProp_module.hxx>
+#include<math_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import Geom2d.i
+%import LProp.i
+%import math.i
 /* public enums */
 /* end public enums declaration */
 

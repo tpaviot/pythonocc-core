@@ -48,8 +48,27 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XCAFApp.html"
 %include ../common/OccHandle.i
 
 
-%include XCAFApp_headers.i
+%{
+#include<XCAFApp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TDocStd_module.hxx>
+#include<CDF_module.hxx>
+#include<CDM_module.hxx>
+#include<PCDM_module.hxx>
+#include<LDOM_module.hxx>
+#include<TDF_module.hxx>
+#include<Resource_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TDocStd.i
 /* public enums */
 /* end public enums declaration */
 

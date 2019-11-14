@@ -48,8 +48,32 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_STEPEdit.html"
 %include ../common/OccHandle.i
 
 
-%include STEPEdit_headers.i
+%{
+#include<STEPEdit_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<StepData_module.hxx>
+#include<IFSelect_module.hxx>
+#include<Interface_module.hxx>
+#include<TCollection_module.hxx>
+#include<Message_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepData_module.hxx>
+#include<Interface_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import StepData.i
+%import IFSelect.i
+%import Interface.i
+%import TCollection.i
 /* public enums */
 /* end public enums declaration */
 

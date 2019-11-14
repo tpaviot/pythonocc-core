@@ -48,8 +48,66 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StdPrs.html"
 %include ../common/OccHandle.i
 
 
-%include StdPrs_headers.i
+%{
+#include<StdPrs_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom_module.hxx>
+#include<Prs3d_module.hxx>
+#include<Bnd_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<gp_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopoDS_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<TColStd_module.hxx>
+#include<Poly_module.hxx>
+#include<TopLoc_module.hxx>
+#include<BRep_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TopAbs_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Message_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopTools_module.hxx>
+#include<TShort_module.hxx>
+#include<Aspect_module.hxx>
+#include<V3d_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<Select3D_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom.i
+%import Prs3d.i
+%import Bnd.i
+%import Graphic3d.i
+%import gp.i
+%import Adaptor3d.i
+%import TColgp.i
+%import TopoDS.i
+%import BRepAdaptor.i
+%import HLRAlgo.i
+%import TColStd.i
+%import Poly.i
+%import TopLoc.i
+%import BRep.i
+%import GeomAbs.i
+%import TopAbs.i
+%import Adaptor2d.i
 /* public enums */
 enum StdPrs_Volume {
 	StdPrs_Volume_Autodetection = 0,

@@ -48,8 +48,85 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepOffsetAPI.htm
 %include ../common/OccHandle.i
 
 
-%include BRepOffsetAPI_headers.i
+%{
+#include<BRepOffsetAPI_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
+#include<TopoDS_module.hxx>
+#include<gp_module.hxx>
+#include<TopTools_module.hxx>
+#include<Draft_module.hxx>
+#include<Geom_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<BRepFill_module.hxx>
+#include<BRepOffset_module.hxx>
+#include<BRepPrimAPI_module.hxx>
+#include<GeomFill_module.hxx>
+#include<Law_module.hxx>
+#include<Approx_module.hxx>
+#include<Bnd_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<MAT_module.hxx>
+#include<TColgp_module.hxx>
+#include<BRepAlgo_module.hxx>
+#include<FEmTool_module.hxx>
+#include<TopOpeBRepBuild_module.hxx>
+#include<Plate_module.hxx>
+#include<Bisector_module.hxx>
+#include<TColStd_module.hxx>
+#include<PLib_module.hxx>
+#include<BRepMAT2d_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<BRepClass3d_module.hxx>
+#include<BRep_module.hxx>
+#include<BRepTools_module.hxx>
+#include<Quantity_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<AdvApp2Var_module.hxx>
+#include<TColGeom_module.hxx>
+#include<IntSurf_module.hxx>
+#include<Message_module.hxx>
+#include<Convert_module.hxx>
+#include<Intf_module.hxx>
+#include<TShort_module.hxx>
+#include<TopOpeBRepDS_module.hxx>
+#include<Poly_module.hxx>
+#include<TopOpeBRepTool_module.hxx>
+#include<Extrema_module.hxx>
+#include<Geom2d_module.hxx>
+#include<IntCurveSurface_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
+#include<GeomPlate_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Geom_module.hxx>
+#include<BRepAlgo_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import BRepBuilderAPI.i
+%import TopoDS.i
+%import gp.i
+%import TopTools.i
+%import Draft.i
+%import Geom.i
+%import GeomAbs.i
+%import BRepFill.i
+%import BRepOffset.i
+%import BRepPrimAPI.i
+%import GeomFill.i
+%import Law.i
+%import Approx.i
 /* public enums */
 /* end public enums declaration */
 

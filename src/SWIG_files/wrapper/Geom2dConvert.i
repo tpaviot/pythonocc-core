@@ -48,8 +48,32 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dConvert.htm
 %include ../common/OccHandle.i
 
 
-%include Geom2dConvert_headers.i
+%{
+#include<Geom2dConvert_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<TColStd_module.hxx>
+#include<Convert_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import Geom2d.i
+%import TColGeom2d.i
+%import TColStd.i
+%import Convert.i
+%import GeomAbs.i
+%import Adaptor2d.i
 /* public enums */
 /* end public enums declaration */
 

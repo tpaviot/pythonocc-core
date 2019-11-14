@@ -48,8 +48,47 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XSControl.html"
 %include ../common/OccHandle.i
 
 
-%include XSControl_headers.i
+%{
+#include<XSControl_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Transfer_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TColStd_module.hxx>
+#include<Interface_module.hxx>
+#include<TCollection_module.hxx>
+#include<TopTools_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
+#include<Message_module.hxx>
+#include<Message_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Transfer_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import IFSelect.i
+%import TopoDS.i
+%import Transfer.i
+%import TopAbs.i
+%import TColStd.i
+%import Interface.i
+%import TCollection.i
+%import TopTools.i
+%import Geom.i
+%import Geom2d.i
+%import gp.i
+%import Message.i
 /* public enums */
 /* end public enums declaration */
 

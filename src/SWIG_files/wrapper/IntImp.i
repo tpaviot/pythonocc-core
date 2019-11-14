@@ -48,8 +48,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IntImp.html"
 %include ../common/OccHandle.i
 
 
-%include IntImp_headers.i
+%{
+#include<IntImp_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
 /* public enums */
 enum IntImp_ConstIsoparametric {
 	IntImp_UIsoparametricOnCaro1 = 0,

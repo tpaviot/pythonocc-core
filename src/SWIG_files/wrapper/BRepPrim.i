@@ -48,8 +48,33 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepPrim.html"
 %include ../common/OccHandle.i
 
 
-%include BRepPrim_headers.i
+%{
+#include<BRepPrim_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<BRep_module.hxx>
+#include<gp_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Message_module.hxx>
+#include<Poly_module.hxx>
+#include<TShort_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import BRep.i
+%import gp.i
+%import Geom.i
+%import Geom2d.i
 /* public enums */
 enum BRepPrim_Direction {
 	BRepPrim_XMin = 0,

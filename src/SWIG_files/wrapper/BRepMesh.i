@@ -48,8 +48,59 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMesh.html"
 %include ../common/OccHandle.i
 
 
-%include BRepMesh_headers.i
+%{
+#include<BRepMesh_Delaun.hxx>
+#include<BRepMesh_module.hxx>
 
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<IMeshTools_module.hxx>
+#include<gp_module.hxx>
+#include<TopAbs_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Poly_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
+#include<IMeshData_module.hxx>
+#include<TShort_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Message_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import IMeshTools.i
+%import gp.i
+%import TopAbs.i
+%import BRepAdaptor.i
+%import TopoDS.i
+%import TCollection.i
+%import TColStd.i
+%import GeomAbs.i
+%import Adaptor3d.i
+%import Poly.i
+%import Bnd.i
+%import TopLoc.i
+%import Geom2d.i
+%import Geom.i
+%import IMeshData.i
 /* public enums */
 enum BRepMesh_FactoryError {
 	BRepMesh_FE_NOERROR = 0,
