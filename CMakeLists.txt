@@ -19,13 +19,11 @@ cmake_minimum_required(VERSION 3.12)
 project(PYTHONOCC)
 
 # set pythonOCC version
-set(PYTHONOCC_VERSION_MAJOR 0)
-set(PYTHONOCC_VERSION_MINOR 19)
-set(PYTHONOCC_VERSION_PATCH)
+set(PYTHONOCC_VERSION_MAJOR 7)
+set(PYTHONOCC_VERSION_MINOR 4)
+set(PYTHONOCC_VERSION_PATCH 0)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL)
-
-
 
 # for cmake 3.13 and newer, still use old swig style targets
 cmake_policy(SET CMP0078 OLD)
@@ -154,6 +152,11 @@ set(OCE_DATAEXCHANGE_LIBRARIES TKXSBase TKSTEPBase TKSTEPAttr TKSTEP209 TKSTEP T
 set(OCE_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
                        TKStd TKTObj TKBinTObj TKXmlTObj TKVCAF)
 
+################
+# Headers path #
+################
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/headers)
+
 ######################################################
 # Configure Build settings according to the platform #
 ######################################################
@@ -222,9 +225,9 @@ endif(WIN32)
 set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
 message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
-############################
-# OpenCASCADE Modules list #
-############################
+#################
+# Build options #
+#################
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 # add an option to choose toolkits to compile
 option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
@@ -243,10 +246,6 @@ if(PYTHONOCC_WRAP_SMESH)
   #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
   #include_directories(${VTK_INCLUDE_DIRS})
 endif(PYTHONOCC_WRAP_SMESH)
-
-###################
-# Wrapper Modules #
-###################
 
 ##################
 # MODEL Toolkits #
