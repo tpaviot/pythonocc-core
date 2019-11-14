@@ -58,10 +58,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMesh.html"
 #include<IMeshTools_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Poly_module.hxx>
@@ -89,10 +89,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMesh.html"
 %import IMeshTools.i
 %import gp.i
 %import TopAbs.i
-%import BRepAdaptor.i
 %import TopoDS.i
 %import TCollection.i
 %import TColStd.i
+%import BRepAdaptor.i
 %import GeomAbs.i
 %import Adaptor3d.i
 %import Poly.i
@@ -782,105 +782,6 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 %make_alias(BRepMesh_DataStructureOfDelaun)
 
 %extend BRepMesh_DataStructureOfDelaun {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_DefaultRangeSplitter;
-class BRepMesh_DefaultRangeSplitter {
-	public:
-		%feature("compactdefaultargs") AddPoint;
-		%feature("autodoc", "	* Registers border point.
-
-	:param thePoint:
-	:type thePoint: gp_Pnt2d
-	:rtype: void
-") AddPoint;
-		virtual void AddPoint (const gp_Pnt2d & thePoint);
-		%feature("compactdefaultargs") AdjustRange;
-		%feature("autodoc", "	* Updates discrete range of surface according to its geometric range.
-
-	:rtype: void
-") AdjustRange;
-		virtual void AdjustRange ();
-		%feature("compactdefaultargs") BRepMesh_DefaultRangeSplitter;
-		%feature("autodoc", "	* Constructor.
-
-	:rtype: None
-") BRepMesh_DefaultRangeSplitter;
-		 BRepMesh_DefaultRangeSplitter ();
-		%feature("compactdefaultargs") GetDFace;
-		%feature("autodoc", "	* Returns face model.
-
-	:rtype: inline  IMeshData::IFaceHandle
-") GetDFace;
-		inline const IMeshData::IFaceHandle & GetDFace ();
-		%feature("compactdefaultargs") GetDelta;
-		%feature("autodoc", "	* Returns delta.
-
-	:rtype: inline  std::pair<float, float>
-") GetDelta;
-		inline const std::pair<Standard_Real, Standard_Real> & GetDelta ();
-		%feature("compactdefaultargs") GetRangeU;
-		%feature("autodoc", "	* Returns U range.
-
-	:rtype: inline  std::pair<float, float>
-") GetRangeU;
-		inline const std::pair<Standard_Real, Standard_Real> & GetRangeU ();
-		%feature("compactdefaultargs") GetRangeV;
-		%feature("autodoc", "	* Returns V range.
-
-	:rtype: inline  std::pair<float, float>
-") GetRangeV;
-		inline const std::pair<Standard_Real, Standard_Real> & GetRangeV ();
-		%feature("compactdefaultargs") GetSurface;
-		%feature("autodoc", "	* Returns surface.
-
-	:rtype: inline  opencascade::handle<BRepAdaptor_HSurface>
-") GetSurface;
-		inline const opencascade::handle<BRepAdaptor_HSurface> & GetSurface ();
-		%feature("compactdefaultargs") GetToleranceUV;
-		%feature("autodoc", "	:rtype: inline  std::pair<float, float>
-") GetToleranceUV;
-		inline const std::pair<Standard_Real, Standard_Real> & GetToleranceUV ();
-		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Returns True if computed range is valid.
-
-	:rtype: bool
-") IsValid;
-		virtual Standard_Boolean IsValid ();
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* Returns point in 3d space corresponded to the given point defined in parameteric space of surface.
-
-	:param thePoint2d:
-	:type thePoint2d: gp_Pnt2d
-	:rtype: inline gp_Pnt
-") Point;
-		inline gp_Pnt Point (const gp_Pnt2d & thePoint2d);
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Resets this splitter. Must be called before first use.
-
-	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
-	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
-	:rtype: void
-") Reset;
-		virtual void Reset (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
-		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "	* Scales the given point from real parametric space to face basis and otherwise. @param thePoint point to be scaled. @param isToFaceBasis if True converts point to face basis, otherwise performs reverse conversion. returns scaled point.
-
-	:param thePoint:
-	:type thePoint: gp_Pnt2d
-	:param isToFaceBasis:
-	:type isToFaceBasis: bool
-	:rtype: gp_Pnt2d
-") Scale;
-		gp_Pnt2d Scale (const gp_Pnt2d & thePoint,const Standard_Boolean isToFaceBasis);
-};
-
-
-%extend BRepMesh_DefaultRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
