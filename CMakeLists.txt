@@ -172,8 +172,8 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
-  add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H)
+  add_definitions(-DHAVE_CONFIG_H -DCSFDB)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
