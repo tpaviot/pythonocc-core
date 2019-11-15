@@ -8,7 +8,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPython3_FIND_STRATEGY=LOCATION \
  -DPython3_FIND_FRAMEWORK=NEVER \
  -DPYTHONOCC_WRAP_SMESH=OFF \
- -SWIG_HIDE_WARNINGS=ON \
+ -DSWIG_HIDE_WARNINGS=ON \
  .
 # Build step
 # on linux travis, limit the number of concurrent jobs otherwise
