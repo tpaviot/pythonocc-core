@@ -8,8 +8,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPython3_FIND_STRATEGY=LOCATION \
  -DPython3_FIND_FRAMEWORK=NEVER \
  -DPYTHONOCC_WRAP_SMESH=OFF \
- -DSMESH_INCLUDE_PATH:PATH=$PREFIX/include/smesh \
- -DSMESH_LIB_PATH:PATH=$PREFIX/lib \
+ -SWIG_HIDE_WARNINGS=ON \
  .
 # Build step
 # on linux travis, limit the number of concurrent jobs otherwise
