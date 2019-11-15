@@ -30,13 +30,6 @@ env:
   global:
     - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
 
-addons:
-  apt:
-    packages:
-      - mesa-common-dev
-      - libgl1-mesa-dev
-      - libglu1-mesa-dev
-
 jobs:
   include:
 # Linux
@@ -54,11 +47,11 @@ jobs:
       os: osx
       osx_image: xcode9.4
 # Windows
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CXX="cl.exe"
       os: windows
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CXX="cl.exe"
       os: windows
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CXX="cl.exe"
       os: windows
 
 # Use miniconda to install binary versions of numpy etc. from continuum
@@ -92,19 +85,13 @@ install:
   - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
   - conda update -q conda
   # install everything required to build the receipe
-  # conda-build 3.2.0 on osx to prevent using check_overlinking
-  # method which is quite loooong to process
   - conda install conda-build
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
-  # download/install OCE from DLR-SC channel
+  # dlr-sc channel is required for opencascade-7.4.0 package
   - conda config --add channels https://conda.anaconda.org/dlr-sc
   - conda config --add channels https://conda.anaconda.org/conda-forge
-  - conda config --add channels https://conda.anaconda.org/tpaviot
-  - conda config --add channels https://conda.anaconda.org/oce
-  - conda config --add channels https://conda.anaconda.org/pythonocc
-
 
 script:
   - conda build ci/conda --dirty --no-remove-work-dir
