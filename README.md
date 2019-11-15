@@ -12,51 +12,50 @@ pythonocc-core
 About
 -----
 
-pythonocc is a python library whose purpose is to provide 3D modeling
+pythonocc is a python package whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 0.18.1 (december 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.18.1)
+Latest release : [pythonocc-core 7.4.0 (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0)
 
-Download/install binaries
--------------------------
-
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 2.7, 3.5 and 3.6. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.5:
-
-```bash
-# install pythonocc in the active environment with python 3.5
-conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18.1 python=3.5
-```
-
-Just replace "3.5" with "2.7" or "3.6" in the previous command to fit with your prefered python version.
-
-Download pre-releases/development binaries
-------------------------------------------
-
-Each time a change is committed to the github repository, related binaries are uploaded to the tpaviot anaconda channel, labelled with the git development branch name.
-
-Go and check [https://anaconda.org/tpaviot/pythonocc-core](https://anaconda.org/tpaviot/pythonocc-core).
 
 Build from source
 -----------------
 
 Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
 
-Online resources
-----------------
+Download/install binaries for Linux/OSX/Windows
+-----------------------------------------------
+
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 3.5, 3.6 and 3.7. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.7:
+
+```bash
+# first create an environment
+conda create --name=whatever-name python=3.7
+source activate whatever-name
+conda install -c dlr-sc/label/dev pythonocc-core==7.4.0beta
+```
+
+Just replace "3.7" with the python version you target.
+
+Other pythonocc related resources
+---------------------------------
+
+* Demos : python examples, as well as jupyter notebooks https://github.com/tpaviot/pythonocc-demos
+
+* Docker, binderhub : docker and online jupyter notebooks https://github.com/tpaviot/pythonocc-binderhub
+
+Online resources for development
+--------------------------------
 
 We use the following online resources:
 * Homepage: http://www.pythonocc.org
-
-* Sources: https://github.com/tpaviot/pythonocc-core
 
 * Anaconda cloud repository for official releases: https://anaconda.org/pythonocc
 
 * Anaconda cloud repository for nightly builds: https://anaconda.org/tpaviot/pythonocc-core
 
 * API documentation: https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18.1/
-
-* Issue/bug tracker: https://github.com/tpaviot/pythonocc-core/issues
 
 * Mailing list: http://groups.google.com/group/pythonocc
 
@@ -70,18 +69,13 @@ We use the following online resources:
 
 * Codacy quality checker: https://app.codacy.com/app/tpaviot/pythonocc-core
 
-oce and pythonocc
------------------
+pythonocc, oce and opencascade dependencies
+-------------------------------------------
 
-The basis of pythonocc is a python wrapper for the 
-[oce C++ library / CAD kernel](https://github.com/tpaviot/oce), aka pythonocc-core.
-pythonocc-core version number matches the oce library releases its wrapping.
- 
-For example; the current pythonocc-core release, 0.18, requires any of the [OCE
- 0.18.x](https://github.com/tpaviot/oce/releases) releases. Here, the __Major__ 
- version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
- version is __18__ and the __Patch__ version is (optionally) __x__. pythonocc-core can be built with any OCE version that has a corresponding __Major__ and __Minor__ version 
- number. For example, pythonocc-core 0.18.1 can be built with OCE-0.18.1.
+From release 7.4.0, pythonocc-core depends on the official OpenCascade-7.4.0 library (https://dev.opencascade.org)
+
+Former releases rely on oce (OpenCascade Community Edition), available at  
+[oce C++ library / CAD kernel](https://github.com/tpaviot/oce).
 
 License
 -------
