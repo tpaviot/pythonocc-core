@@ -59,6 +59,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshTools.html"
 #include<GeomAbs_module.hxx>
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

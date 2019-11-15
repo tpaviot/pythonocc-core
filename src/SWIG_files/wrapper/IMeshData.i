@@ -57,6 +57,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshData.html"
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -67,6 +74,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshData.html"
 %import TopoDS.i
 %import gp.i
 %import TopAbs.i
+%import BRepAdaptor.i
 /* public enums */
 enum IMeshData_Status {
 	IMeshData_NoError = 0,
@@ -89,6 +97,9 @@ enum IMeshData_Status {
 %wrap_handle(IMeshData_Model)
 %wrap_handle(IMeshData_PCurve)
 %wrap_handle(IMeshData_TessellatedShape)
+%wrap_handle(IMeshData_Edge)
+%wrap_handle(IMeshData_Face)
+%wrap_handle(IMeshData_Wire)
 /* end handles declaration */
 
 /* templates */
@@ -477,6 +488,249 @@ class IMeshData_TessellatedShape : public IMeshData_Shape {
 %make_alias(IMeshData_TessellatedShape)
 
 %extend IMeshData_TessellatedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor IMeshData_Edge;
+class IMeshData_Edge : public IMeshData_TessellatedShape, public IMeshData_StatusOwner {
+	public:
+		%feature("compactdefaultargs") AddPCurve;
+		%feature("autodoc", "	* Adds discrete pcurve for the specifed discrete face.
+
+	:param theDFace:
+	:type theDFace: IMeshData::IFacePtr &
+	:param theOrientation:
+	:type theOrientation: TopAbs_Orientation
+	:rtype: IMeshData::IPCurveHandle
+") AddPCurve;
+		virtual const IMeshData::IPCurveHandle & AddPCurve (const IMeshData::IFacePtr & theDFace,const TopAbs_Orientation theOrientation);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	* Clears curve and all pcurves assigned to the edge from discretization.
+
+	:param isKeepEndPoints:
+	:type isKeepEndPoints: bool
+	:rtype: inline void
+") Clear;
+		inline void Clear (const Standard_Boolean isKeepEndPoints);
+		%feature("compactdefaultargs") GetAngularDeflection;
+		%feature("autodoc", "	* Gets value of angular deflection for the discrete model.
+
+	:rtype: inline float
+") GetAngularDeflection;
+		inline Standard_Real GetAngularDeflection ();
+		%feature("compactdefaultargs") GetCurve;
+		%feature("autodoc", "	* Returns 3d curve associated with current edge.
+
+	:rtype: inline  IMeshData::ICurveHandle
+") GetCurve;
+		inline const IMeshData::ICurveHandle & GetCurve ();
+		%feature("compactdefaultargs") GetDegenerated;
+		%feature("autodoc", "	* Returns degenerative flag. By default equals to flag stored in topological shape.
+
+	:rtype: inline bool
+") GetDegenerated;
+		inline Standard_Boolean GetDegenerated ();
+		%feature("compactdefaultargs") GetEdge;
+		%feature("autodoc", "	* Returns TopoDS_Edge attached to model.
+
+	:rtype: inline  TopoDS_Edge
+") GetEdge;
+		inline const TopoDS_Edge  GetEdge ();
+		%feature("compactdefaultargs") GetPCurve;
+		%feature("autodoc", "	* Returns pcurve for the specified discrete face.
+
+	:param theDFace:
+	:type theDFace: IMeshData::IFacePtr &
+	:param theOrientation:
+	:type theOrientation: TopAbs_Orientation
+	:rtype: IMeshData::IPCurveHandle
+") GetPCurve;
+		virtual const IMeshData::IPCurveHandle & GetPCurve (const IMeshData::IFacePtr & theDFace,const TopAbs_Orientation theOrientation);
+		%feature("compactdefaultargs") GetPCurve;
+		%feature("autodoc", "	* Returns pcurve with the given index.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: IMeshData::IPCurveHandle
+") GetPCurve;
+		virtual const IMeshData::IPCurveHandle & GetPCurve (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") GetSameParam;
+		%feature("autodoc", "	* Returns same param flag. By default equals to flag stored in topological shape.
+
+	:rtype: inline bool
+") GetSameParam;
+		inline Standard_Boolean GetSameParam ();
+		%feature("compactdefaultargs") GetSameRange;
+		%feature("autodoc", "	* Returns same range flag. By default equals to flag stored in topological shape.
+
+	:rtype: inline bool
+") GetSameRange;
+		inline Standard_Boolean GetSameRange ();
+		%feature("compactdefaultargs") IsFree;
+		%feature("autodoc", "	* Returns true in case if the edge is free one, i.e. it does not have pcurves.
+
+	:rtype: inline bool
+") IsFree;
+		inline Standard_Boolean IsFree ();
+		%feature("compactdefaultargs") PCurvesNb;
+		%feature("autodoc", "	* Returns number of pcurves assigned to current edge.
+
+	:rtype: int
+") PCurvesNb;
+		virtual Standard_Integer PCurvesNb ();
+		%feature("compactdefaultargs") SetAngularDeflection;
+		%feature("autodoc", "	* Sets value of angular deflection for the discrete model.
+
+	:param theValue:
+	:type theValue: float
+	:rtype: inline void
+") SetAngularDeflection;
+		inline void SetAngularDeflection (const Standard_Real theValue);
+		%feature("compactdefaultargs") SetCurve;
+		%feature("autodoc", "	* Sets 3d curve associated with current edge.
+
+	:param theCurve:
+	:type theCurve: IMeshData::ICurveHandle &
+	:rtype: inline void
+") SetCurve;
+		inline void SetCurve (const IMeshData::ICurveHandle & theCurve);
+		%feature("compactdefaultargs") SetDegenerated;
+		%feature("autodoc", "	* Updates degenerative flag.
+
+	:param theValue:
+	:type theValue: bool
+	:rtype: inline void
+") SetDegenerated;
+		inline void SetDegenerated (const Standard_Boolean theValue);
+		%feature("compactdefaultargs") SetSameParam;
+		%feature("autodoc", "	* Updates same param flag.
+
+	:param theValue:
+	:type theValue: bool
+	:rtype: inline void
+") SetSameParam;
+		inline void SetSameParam (const Standard_Boolean theValue);
+		%feature("compactdefaultargs") SetSameRange;
+		%feature("autodoc", "	* Updates same range flag.
+
+	:param theValue:
+	:type theValue: bool
+	:rtype: inline void
+") SetSameRange;
+		inline void SetSameRange (const Standard_Boolean theValue);
+};
+
+
+%make_alias(IMeshData_Edge)
+
+%extend IMeshData_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor IMeshData_Face;
+class IMeshData_Face : public IMeshData_TessellatedShape, public IMeshData_StatusOwner {
+	public:
+		%feature("compactdefaultargs") AddWire;
+		%feature("autodoc", "	* Adds wire to discrete model of face.
+
+	:param theWire:
+	:type theWire: TopoDS_Wire &
+	:param theEdgeNb: default value is 0
+	:type theEdgeNb: int
+	:rtype: IMeshData::IWireHandle
+") AddWire;
+		virtual const IMeshData::IWireHandle & AddWire (const TopoDS_Wire & theWire,const Standard_Integer theEdgeNb = 0);
+		%feature("compactdefaultargs") GetFace;
+		%feature("autodoc", "	* Returns TopoDS_Face attached to model.
+
+	:rtype: inline  TopoDS_Face
+") GetFace;
+		inline const TopoDS_Face  GetFace ();
+		%feature("compactdefaultargs") GetSurface;
+		%feature("autodoc", "	* Returns face's surface.
+
+	:rtype: inline  opencascade::handle<BRepAdaptor_HSurface>
+") GetSurface;
+		inline const opencascade::handle<BRepAdaptor_HSurface> & GetSurface ();
+		%feature("compactdefaultargs") GetWire;
+		%feature("autodoc", "	* Returns discrete edge with the given index.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: IMeshData::IWireHandle
+") GetWire;
+		virtual const IMeshData::IWireHandle & GetWire (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") IsValid;
+		%feature("autodoc", "	* Returns whether the face discrete model is valid.
+
+	:rtype: inline bool
+") IsValid;
+		inline Standard_Boolean IsValid ();
+		%feature("compactdefaultargs") WiresNb;
+		%feature("autodoc", "	* Returns number of wires.
+
+	:rtype: int
+") WiresNb;
+		virtual Standard_Integer WiresNb ();
+};
+
+
+%make_alias(IMeshData_Face)
+
+%extend IMeshData_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor IMeshData_Wire;
+class IMeshData_Wire : public IMeshData_TessellatedShape, public IMeshData_StatusOwner {
+	public:
+		%feature("compactdefaultargs") AddEdge;
+		%feature("autodoc", "	* Adds new discrete edge with specified orientation to wire chain. returns index of added edge in wire chain.
+
+	:param theDEdge:
+	:type theDEdge: IMeshData::IEdgePtr &
+	:param theOrientation:
+	:type theOrientation: TopAbs_Orientation
+	:rtype: int
+") AddEdge;
+		virtual Standard_Integer AddEdge (const IMeshData::IEdgePtr & theDEdge,const TopAbs_Orientation theOrientation);
+		%feature("compactdefaultargs") EdgesNb;
+		%feature("autodoc", "	* Returns number of edges.
+
+	:rtype: int
+") EdgesNb;
+		virtual Standard_Integer EdgesNb ();
+		%feature("compactdefaultargs") GetEdge;
+		%feature("autodoc", "	* Returns discrete edge with the given index.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: IMeshData::IEdgePtr
+") GetEdge;
+		virtual const IMeshData::IEdgePtr & GetEdge (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") GetEdgeOrientation;
+		%feature("autodoc", "	* Returns True if orientation of discrete edge with the given index is forward.
+
+	:param theIndex:
+	:type theIndex: int
+	:rtype: TopAbs_Orientation
+") GetEdgeOrientation;
+		virtual TopAbs_Orientation GetEdgeOrientation (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") GetWire;
+		%feature("autodoc", "	* Returns TopoDS_Face attached to model.
+
+	:rtype: inline  TopoDS_Wire
+") GetWire;
+		inline const TopoDS_Wire  GetWire ();
+};
+
+
+%make_alias(IMeshData_Wire)
+
+%extend IMeshData_Wire {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

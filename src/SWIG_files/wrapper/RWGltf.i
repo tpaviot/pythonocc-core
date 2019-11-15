@@ -153,7 +153,6 @@ enum RWGltf_GltfAccessorLayout {
 /* end public enums declaration */
 
 /* handles */
-%wrap_handle(RWGltf_GltfLatePrimitiveArray)
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
 %wrap_handle(RWGltf_PrimitiveArrayReader)
@@ -362,8 +361,6 @@ class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
 		void SetPrimitiveMode (RWGltf_GltfPrimitiveMode theMode);
 };
 
-
-%make_alias(RWGltf_GltfLatePrimitiveArray)
 
 %extend RWGltf_GltfLatePrimitiveArray {
 	%pythoncode {
