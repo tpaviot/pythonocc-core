@@ -611,6 +611,7 @@ enum Graphic3d_NameOfTextureEnv {
 %wrap_handle(Graphic3d_AspectMarker3d)
 %wrap_handle(Graphic3d_AspectText3d)
 %wrap_handle(Graphic3d_CView)
+%wrap_handle(Graphic3d_MediaTextureSet)
 %wrap_handle(Graphic3d_TextureEnv)
 %wrap_handle(Graphic3d_TextureMap)
 %wrap_handle(Graphic3d_CubeMap)
@@ -10341,6 +10342,95 @@ class Graphic3d_FrameStatsDataTmp : public Graphic3d_FrameStatsData {
 
 
 %extend Graphic3d_FrameStatsDataTmp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor Graphic3d_MediaTextureSet;
+class Graphic3d_MediaTextureSet : public Graphic3d_TextureSet, public Media_IFrameQueue {
+	public:
+		%feature("compactdefaultargs") Duration;
+		%feature("autodoc", "	* Return duration in seconds.
+
+	:rtype: double
+") Duration;
+		double Duration ();
+		%feature("compactdefaultargs") FrameSize;
+		%feature("autodoc", "	* Return front frame dimensions.
+
+	:rtype: Graphic3d_Vec2i
+") FrameSize;
+		Graphic3d_Vec2i FrameSize ();
+		%feature("compactdefaultargs") Graphic3d_MediaTextureSet;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") Graphic3d_MediaTextureSet;
+		 Graphic3d_MediaTextureSet ();
+		%feature("compactdefaultargs") Input;
+		%feature("autodoc", "	* Return input media.
+
+	:rtype: TCollection_AsciiString
+") Input;
+		const TCollection_AsciiString & Input ();
+		%feature("compactdefaultargs") IsFullRangeYUV;
+		%feature("autodoc", "	* Return True if YUV range is full.
+
+	:rtype: bool
+") IsFullRangeYUV;
+		Standard_Boolean IsFullRangeYUV ();
+		%feature("compactdefaultargs") IsPlanarYUV;
+		%feature("autodoc", "	* Return True if texture set defined 3 YUV planes.
+
+	:rtype: bool
+") IsPlanarYUV;
+		Standard_Boolean IsPlanarYUV ();
+		%feature("compactdefaultargs") Notify;
+		%feature("autodoc", "	* Call callback.
+
+	:rtype: None
+") Notify;
+		void Notify ();
+		%feature("compactdefaultargs") OpenInput;
+		%feature("autodoc", "	* Open specified file. Passing an empty path would close current input.
+
+	:param thePath:
+	:type thePath: TCollection_AsciiString &
+	:param theToWait:
+	:type theToWait: bool
+	:rtype: None
+") OpenInput;
+		void OpenInput (const TCollection_AsciiString & thePath,Standard_Boolean theToWait);
+		%feature("compactdefaultargs") PlayerContext;
+		%feature("autodoc", "	* Return player context; it can be NULL until first OpenInput().
+
+	:rtype: opencascade::handle<Media_PlayerContext>
+") PlayerContext;
+		const opencascade::handle<Media_PlayerContext> & PlayerContext ();
+		%feature("compactdefaultargs") Progress;
+		%feature("autodoc", "	* Return playback progress in seconds.
+
+	:rtype: double
+") Progress;
+		double Progress ();
+		%feature("compactdefaultargs") ShaderProgram;
+		%feature("autodoc", "	* Return shader program for displaying texture set.
+
+	:rtype: opencascade::handle<Graphic3d_ShaderProgram>
+") ShaderProgram;
+		opencascade::handle<Graphic3d_ShaderProgram> ShaderProgram ();
+		%feature("compactdefaultargs") SwapFrames;
+		%feature("autodoc", "	* Swap front/back frames.
+
+	:rtype: bool
+") SwapFrames;
+		Standard_Boolean SwapFrames ();
+};
+
+
+%make_alias(Graphic3d_MediaTextureSet)
+
+%extend Graphic3d_MediaTextureSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

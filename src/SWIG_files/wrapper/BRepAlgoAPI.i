@@ -56,6 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepAlgoAPI.html"
 #include<NCollection_module.hxx>
 #include<BOPAlgo_module.hxx>
 #include<TopoDS_module.hxx>
+#include<BRepBuilderAPI_module.hxx>
 #include<TopTools_module.hxx>
 #include<BRepTools_module.hxx>
 #include<gp_module.hxx>
@@ -88,6 +89,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepAlgoAPI.html"
 %import NCollection.i
 %import BOPAlgo.i
 %import TopoDS.i
+%import BRepBuilderAPI.i
 %import TopTools.i
 %import BRepTools.i
 %import gp.i
@@ -193,6 +195,22 @@ class BRepAlgoAPI_Check : public BOPAlgo_Options {
 
 
 %extend BRepAlgoAPI_Check {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepAlgoAPI_Algo;
+%ignore BRepAlgoAPI_Algo::~BRepAlgoAPI_Algo();
+class BRepAlgoAPI_Algo : public BRepBuilderAPI_MakeShape, protected BOPAlgo_Options {
+	public:
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
+		virtual const TopoDS_Shape  Shape ();
+};
+
+
+%extend BRepAlgoAPI_Algo {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
