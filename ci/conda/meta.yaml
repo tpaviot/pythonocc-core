@@ -13,16 +13,22 @@ build:
 
 requirements:
   build:
-    - python
-    - opencascade ==7.4.0
+    - {{ compiler('cxx') }}
+    - {{ cdt('libx11-devel') }}         # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }} # [linux]
+    - {{ cdt('mesa-libgl-devel') }}     # [linux]
+    - ninja
     - cmake
-    - ninja ==1.8.2
-    - swig ==4.0.1
+    - swig >=3.0.11
+
+  host:
+    - python {{ python }}
+    - opencascade ==7.4.0
 
   run:
+    - pyqt
     - opencascade ==7.4.0
-    - python
-    - six
+    - python {{ python }}
 
 test:
   requires:
