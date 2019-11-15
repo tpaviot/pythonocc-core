@@ -172,8 +172,8 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H)
-  add_definitions(-DHAVE_CONFIG_H -DCSFDB)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
+  add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
@@ -250,6 +250,9 @@ endforeach(OCE_MODULE)
 # Visualisation #
 #################
 if(PYTHONOCC_WRAP_VISU)
+    find_package(OpenGL REQUIRED)
+    include_directories(OPENGL_INCLUDE_DIR)
+
     foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
       set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
       set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
