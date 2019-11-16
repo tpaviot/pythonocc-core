@@ -245,37 +245,6 @@ class RWObj_SubMesh {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor RWObj_CafReader;
-class RWObj_CafReader : public RWMesh_CafReader, protected RWObj_IShapeReceiver {
-	public:
-		%feature("compactdefaultargs") IsSinglePrecision;
-		%feature("autodoc", "	* Return single precision flag for reading vertex data (coordinates); False by default.
-
-	:rtype: bool
-") IsSinglePrecision;
-		Standard_Boolean IsSinglePrecision ();
-		%feature("compactdefaultargs") RWObj_CafReader;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") RWObj_CafReader;
-		 RWObj_CafReader ();
-		%feature("compactdefaultargs") SetSinglePrecision;
-		%feature("autodoc", "	* Setup single/double precision flag for reading vertex data (coordinates).
-
-	:param theIsSinglePrecision:
-	:type theIsSinglePrecision: bool
-	:rtype: None
-") SetSinglePrecision;
-		void SetSinglePrecision (Standard_Boolean theIsSinglePrecision);
-};
-
-
-%extend RWObj_CafReader {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor RWObj_TriangulationReader;
 class RWObj_TriangulationReader : public RWObj_Reader {
 	public:
