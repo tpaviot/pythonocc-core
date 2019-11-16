@@ -15,18 +15,6 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-/*
-This file was automatically generated using the pythonocc_generator, see
-https://github.com/tpaviot/pythonocc-generator.
-
-This file is platform independant, but was generated under the following
-conditions:
-
-- operating system : debian Linux 4.15.0-66-generic
-- occt version targeted : 7.4.0
-*/
-
 %define RWGLTFDOCSTRING
 "RWGltf module, see official documentation at
 https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWGltf.html"
@@ -153,6 +141,7 @@ enum RWGltf_GltfAccessorLayout {
 /* end public enums declaration */
 
 /* handles */
+%wrap_handle(RWGltf_GltfLatePrimitiveArray)
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
 %wrap_handle(RWGltf_PrimitiveArrayReader)
@@ -361,6 +350,8 @@ class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
 		void SetPrimitiveMode (RWGltf_GltfPrimitiveMode theMode);
 };
 
+
+%make_alias(RWGltf_GltfLatePrimitiveArray)
 
 %extend RWGltf_GltfLatePrimitiveArray {
 	%pythoncode {

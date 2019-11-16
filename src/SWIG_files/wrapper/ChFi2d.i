@@ -15,18 +15,6 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-/*
-This file was automatically generated using the pythonocc_generator, see
-https://github.com/tpaviot/pythonocc-generator.
-
-This file is platform independant, but was generated under the following
-conditions:
-
-- operating system : debian Linux 4.15.0-66-generic
-- occt version targeted : 7.4.0
-*/
-
 %define CHFI2DDOCSTRING
 "ChFi2d module, see official documentation at
 https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFi2d.html"

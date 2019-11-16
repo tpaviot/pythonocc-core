@@ -15,18 +15,6 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-/*
-This file was automatically generated using the pythonocc_generator, see
-https://github.com/tpaviot/pythonocc-generator.
-
-This file is platform independant, but was generated under the following
-conditions:
-
-- operating system : debian Linux 4.15.0-66-generic
-- occt version targeted : 7.4.0
-*/
-
 %define BREPDOCSTRING
 "BRep module, see official documentation at
 https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRep.html"
@@ -804,7 +792,7 @@ class BRep_CurveRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape  Continuity ();
+		virtual const GeomAbs_Shape & Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape
@@ -1989,7 +1977,7 @@ class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape  Continuity ();
+		virtual const GeomAbs_Shape & Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape
@@ -2708,7 +2696,7 @@ class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
-		virtual const GeomAbs_Shape  Continuity ();
+		virtual const GeomAbs_Shape & Continuity ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:param C:
 	:type C: GeomAbs_Shape
