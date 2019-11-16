@@ -57,6 +57,18 @@ macro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
   option(${OPTION_NAME} ${OPTION_STRING} ${OPTION_DEFAULT})
 endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
 
+#################
+# Build options #
+#################
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
+# add an option to choose toolkits to compile
+option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
+option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
+option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
+option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" OFF)
+option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
+option_with_default(OCE_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
+
 ############
 # Python 3 #
 ############
@@ -64,15 +76,6 @@ find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
 message(STATUS "Python include directory: ${Python3_INCLUDE_DIR}")
 message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
-message(STATUS "Python library debug: ${Python3_LIBRARY_DEBUG}")
-
-##############################################
-# Installation directory                     #
-# by default, installed to site-packages/OCC #
-##############################################
-execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
-set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
-message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
 
 ########
 # SWIG #
@@ -81,14 +84,20 @@ find_package(SWIG 4.0.1 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 if(SWIG_HIDE_WARNINGS)
-  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -py3)
+  message(STATUS "Disabled SWIG warnings")
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -O -w302,401,314,509,512,504,325,503,520,350,351,383,389,394,395,404 -py3)
 else()
-  set(CMAKE_SWIG_FLAGS -py3)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
 endif()
     
 ################################
 # OCE include and lib location #
 ################################
+if(OCE_HIDE_DEPRECATED)
+  message(STATUS "Disabled deprecation warnings for oce")
+  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations)
+endif(OCE_HIDE_DEPRECATED)
+
 if(DEFINED OCE_INCLUDE_PATH)
   if(NOT DEFINED OCE_LIB_PATH)
     message(FATAL_ERROR "OCE_LIB_PATH must be defined")
@@ -127,6 +136,14 @@ if(PYTHONOCC_WRAP_SMESH)
     set(SMESH_LIBRARIES NETGENPlugin ${SMESH_LIBRARIES})
   endif(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
 endif(PYTHONOCC_WRAP_SMESH)
+
+##############################################
+# Installation directory                     #
+# by default, installed to site-packages/OCC #
+##############################################
+execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
+set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
+message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
 
 #############################################
 # List of OCE shared libraries to link with #
@@ -184,8 +201,6 @@ else(UNIX)
     message(STATUS "Unknown platform")
   endif(WIN32)
 endif(UNIX)
-message(STATUS "Platform:" ${PLATFORM})
-
 
 ################################################
 # Define output path for generated libraries:  #
@@ -211,18 +226,6 @@ else(WIN32)
   set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
 endif(WIN32)
 set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
-message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
-
-#################
-# Build options #
-#################
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
-# add an option to choose toolkits to compile
-option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
-option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
-option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
-option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" OFF)
-option_with_default(SWIG_HIDE_WARNINGS "False by default. Check this option if you want a less verbose swig output." OFF)
 
 ######################
 # SMESH Modules list #
