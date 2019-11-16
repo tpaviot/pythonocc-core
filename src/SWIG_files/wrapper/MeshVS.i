@@ -21,7 +21,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_MeshVS.html"
 %enddef
 %module (package="OCC.Core", docstring=MESHVSDOCSTRING) MeshVS
 
-#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT

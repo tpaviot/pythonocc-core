@@ -21,7 +21,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IVtkVTK.html"
 %enddef
 %module (package="OCC.Core", docstring=IVTKVTKDOCSTRING) IVtkVTK
 
-#pragma SWIG nowarn=504,325,503,520,350,351,383,389,394,395, 404
 
 %{
 #ifdef WNT
