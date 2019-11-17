@@ -8,7 +8,7 @@ operating system : debian Linux 4.15.0-66-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-11-16 17:35:12.595768
+date : 2019-11-17 06:18:54.309661
 ############################
 
 [INFO ]  Single process mode
@@ -4842,6 +4842,16 @@ date : 2019-11-16 17:35:12.595768
 [INFO ]  StdPrs_WFSurface
 [INFO ]  ## Processing module StdSelect
 [WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <StdSelect_Prs>, TColStd_MapTransientHasher>
+[INFO ]  Wrap classes :
+[INFO ]  StdSelect
+[INFO ]  StdSelect_BRepOwner
+[INFO ]  StdSelect_BRepSelectionTool
+[INFO ]  StdSelect_EdgeFilter
+[INFO ]  StdSelect_FaceFilter
+[INFO ]  StdSelect_Prs
+[INFO ]  StdSelect_Shape
+[INFO ]  StdSelect_ShapeTypeFilter
+[INFO ]  StdSelect_ViewerSelector3d
 [INFO ]  ## Processing module V3d
 [INFO ]  Wrap classes :
 [INFO ]  V3d
@@ -5505,6 +5515,6 @@ date : 2019-11-16 17:35:12.595768
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 52.86s
+SWIG interface file generation completed in 52.66s
 #################################################
 
