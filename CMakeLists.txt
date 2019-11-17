@@ -25,6 +25,8 @@ set(PYTHONOCC_VERSION_PATCH 0)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
 # for cmake 3.13 and newer, still use old swig style targets
 cmake_policy(SET CMP0078 OLD)
 cmake_policy(SET CMP0086 OLD)
@@ -97,7 +99,7 @@ include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -O -w302,401,314,509,512,504,325,503,520,350,351,383,389,394,395,404 -py3)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -O -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404 -py3)
 else()
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
 endif()
@@ -107,7 +109,7 @@ endif()
 ################################
 if(OCE_HIDE_DEPRECATED)
   message(STATUS "Disabled deprecation warnings for oce")
-  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations)
+  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -DOCCT_NO_DEPRECATED)
 endif(OCE_HIDE_DEPRECATED)
 
 if(DEFINED OCE_INCLUDE_PATH)
