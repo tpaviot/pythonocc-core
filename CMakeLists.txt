@@ -71,12 +71,23 @@ macro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
   option(${OPTION_NAME} ${OPTION_STRING} ${OPTION_DEFAULT})
 endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
 
+#####################################################################
+# OpenGL. If available, enable compilation for Visualization module #
+#####################################################################
+find_package(OpenGL)
+include_directories(OPENGL_INCLUDE_DIR)
+
 #################
 # Build options #
 #################
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 # add an option to choose toolkits to compile
-option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
+if(OPENGL_FOUND)
+  option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
+else(OPENGL_FOUND)
+  message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
+  set(PYTHONOCC_WRAP_VISU "Compile Visualisation" OFF)
+endif(OPENGL_FOUND)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" OFF)
@@ -109,7 +120,7 @@ endif()
 ################################
 if(OCE_HIDE_DEPRECATED)
   message(STATUS "Disabled deprecation warnings for oce")
-  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -DOCCT_NO_DEPRECATED)
+  add_definitions(-DOCCT_NO_DEPRECATED)
 endif(OCE_HIDE_DEPRECATED)
 
 if(DEFINED OCE_INCLUDE_PATH)
