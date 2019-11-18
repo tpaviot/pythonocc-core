@@ -394,25 +394,25 @@ class Viewer3d(Display3d):
         """ displays a vector as an arrow
         """
         if self._inited:
-            aPresentation = Prs3d_Presentation(self._struc_mgr)
+            aStructure = Graphic3d_Structure(self._struc_mgr)
 
             pnt_as_vec = gp_Vec(pnt.X(), pnt.Y(), pnt.Z())
             start = pnt_as_vec + vec
             pnt_start = gp_Pnt(start.X(), start.Y(), start.Z())
 
             Prs3d_Arrow.Draw(
-                aPresentation,
+                aStructure,
                 pnt_start,
                 gp_Dir(vec),
                 math.radians(20),
                 vec.Magnitude()
             )
-            aPresentation.Display()
+            aStructure.Display()
             # it would be more coherent if a AIS_InteractiveObject
             # would be returned
             if update:
                 self.Repaint()
-            return aPresentation
+            return aStructure
 
     def DisplayMessage(self, point, text_to_write, height=None, message_color=None, update=False):
         """
@@ -516,7 +516,7 @@ class Viewer3d(Display3d):
         if color:
             if isinstance(color, str):
                 color = get_color_from_name(color)
-            else:
+            elif isinstance(color, int):
                 color = Quantity_Color(color)
             for shp in ais_shapes:
                 self.Context.SetColor(shp, color, False)
