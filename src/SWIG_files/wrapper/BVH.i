@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BVHDOCSTRING
 "BVH module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BVH.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bvh.html"
 %enddef
 %module (package="OCC.Core", docstring=BVHDOCSTRING) BVH
 
@@ -41,7 +41,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BVH.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -49,7 +48,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BVH.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import Bnd.i
 
 %include "BVH_Box.hxx";
 %include "BVH_PrimitiveSet.hxx";

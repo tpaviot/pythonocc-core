@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDFDOCSTRING
 "TDF module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TDF.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdf.html"
 %enddef
 %module (package="OCC.Core", docstring=TDFDOCSTRING) TDF
 
@@ -375,6 +375,16 @@ class TDF_Attribute : public Standard_Transient {
 	:rtype: void
 ") ExtendedDump;
 		virtual void ExtendedDump (Standard_OStream & anOS,const TDF_IDFilter & aFilter,TDF_AttributeIndexedMap & aMap);
+		%feature("compactdefaultargs") FindAttribute;
+		%feature("autodoc", "	* Finds an associated attribute of <self>, according to <anID>. the returned <anAttribute> is a valid one. The method returns True if found, False otherwise. A removed attribute cannot be found using this method.
+
+	:param anID:
+	:type anID: Standard_GUID &
+	:param anAttribute:
+	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:rtype: bool
+") FindAttribute;
+		Standard_Boolean FindAttribute (const Standard_GUID & anID,opencascade::handle<TDF_Attribute> & anAttribute);
 		%feature("compactdefaultargs") Forget;
 		%feature("autodoc", "	* Forgets the attribute. <aTransaction> is the current transaction in which the forget is done. A forgotten attribute is also flagged not 'Valid'. //! A forgotten attribute is invisible. Set also the 'Valid' status to False. Obvioulsy, DF cannot empty an attribute (this has a semantic signification), but can remove it from the structure. So, a forgotten attribute is NOT an empty one, but a soon DEAD one. //! Should be private.
 
@@ -1500,6 +1510,28 @@ class TDF_Label {
 	:rtype: TDF_Label
 ") Father;
 		const TDF_Label Father ();
+		%feature("compactdefaultargs") FindAttribute;
+		%feature("autodoc", "	* Finds an attribute of the current label, according to <anID>. If anAttribute is not a valid one, false is returned. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found.
+
+	:param anID:
+	:type anID: Standard_GUID &
+	:param anAttribute:
+	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:rtype: bool
+") FindAttribute;
+		Standard_Boolean FindAttribute (const Standard_GUID & anID,opencascade::handle<TDF_Attribute> & anAttribute);
+		%feature("compactdefaultargs") FindAttribute;
+		%feature("autodoc", "	* Finds an attribute of the current label, according to <anID> and <aTransaction>. This attribute has/had to be a valid one for the given transaction index . So, this attribute is not necessary a valid one. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found nor a backuped attribute of a removed one.
+
+	:param anID:
+	:type anID: Standard_GUID &
+	:param aTransaction:
+	:type aTransaction: int
+	:param anAttribute:
+	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:rtype: bool
+") FindAttribute;
+		Standard_Boolean FindAttribute (const Standard_GUID & anID,const Standard_Integer aTransaction,opencascade::handle<TDF_Attribute> & anAttribute);
 		%feature("compactdefaultargs") FindChild;
 		%feature("autodoc", "	* Finds a child label having <aTag> as tag. Creates The tag aTag identifies the label which will be the parent. If create is true and no child label is found, a new one is created. Example: //creating a label with tag 10 at Root TDF_Label lab1 = aDF->Root().FindChild(10); //creating labels 7 and 2 on label 10 TDF_Label lab2 = lab1.FindChild(7); TDF_Label lab3 = lab1.FindChild(2);
 
@@ -1772,6 +1804,26 @@ class TDF_RelocationTable : public Standard_Transient {
 	:rtype: Standard_OStream
 ") Dump;
 		Standard_OStream & Dump (const Standard_Boolean dumpLabels,const Standard_Boolean dumpAttributes,const Standard_Boolean dumpTransients,Standard_OStream & anOS);
+		%feature("compactdefaultargs") HasRelocation;
+		%feature("autodoc", "	* Finds the relocation value of <aSourceLabel> and returns it into <aTargetLabel>. //! (See above SelfRelocate method for more explanation about the method behavior)
+
+	:param aSourceLabel:
+	:type aSourceLabel: TDF_Label &
+	:param aTargetLabel:
+	:type aTargetLabel: TDF_Label &
+	:rtype: bool
+") HasRelocation;
+		Standard_Boolean HasRelocation (const TDF_Label & aSourceLabel,TDF_Label & aTargetLabel);
+		%feature("compactdefaultargs") HasRelocation;
+		%feature("autodoc", "	* Finds the relocation value of <aSourceAttribute> and returns it into <aTargetAttribute>. //! (See above SelfRelocate method for more explanation about the method behavior)
+
+	:param aSourceAttribute:
+	:type aSourceAttribute: opencascade::handle<TDF_Attribute> &
+	:param aTargetAttribute:
+	:type aTargetAttribute: opencascade::handle<TDF_Attribute> &
+	:rtype: bool
+") HasRelocation;
+		Standard_Boolean HasRelocation (const opencascade::handle<TDF_Attribute> & aSourceAttribute,opencascade::handle<TDF_Attribute> & aTargetAttribute);
 		%feature("compactdefaultargs") HasTransientRelocation;
 		%feature("autodoc", "	* Finds the relocation value of <aSourceTransient> and returns it into <aTargetTransient>. //! (See above SelfRelocate method for more explanation about the method behavior)
 

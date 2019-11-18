@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SWEEPDOCSTRING
 "Sweep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Sweep.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_sweep.html"
 %enddef
 %module (package="OCC.Core", docstring=SWEEPDOCSTRING) Sweep
 

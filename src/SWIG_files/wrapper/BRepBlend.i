@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPBLENDDOCSTRING
 "BRepBlend module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepBlend.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepblend.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPBLENDDOCSTRING) BRepBlend
 
@@ -774,14 +774,6 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 	:rtype: float
 ") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
-		%feature("compactdefaultargs") TolReached;
-		%feature("autodoc", "	:param Tol3d:
-	:type Tol3d: float &
-	:param Tol2d:
-	:type Tol2d: float &
-	:rtype: None
-") TolReached;
-		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "	:rtype: int
 ") UDegree;

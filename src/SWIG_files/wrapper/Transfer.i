@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERDOCSTRING
 "Transfer module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Transfer.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transfer.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERDOCSTRING) Transfer
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWOBJDOCSTRING
 "RWObj module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWObj.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 %enddef
 %module (package="OCC.Core", docstring=RWOBJDOCSTRING) RWObj
 
@@ -77,8 +77,6 @@ enum RWObj_SubMeshReason {
 /* end public enums declaration */
 
 /* handles */
-%wrap_handle(RWObj_Reader)
-%wrap_handle(RWObj_TriangulationReader)
 /* end handles declaration */
 
 /* templates */
@@ -136,87 +134,6 @@ class RWObj_Material {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor RWObj_Reader;
-class RWObj_Reader : public Standard_Transient {
-	public:
-		class ObjVec3iHasher {};
-		class VectorOfVertices {};
-		%feature("compactdefaultargs") ExternalFiles;
-		%feature("autodoc", "	* Return the list of external file references.
-
-	:rtype: NCollection_IndexedMap<TCollection_AsciiString>
-") ExternalFiles;
-		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles ();
-		%feature("compactdefaultargs") FileComments;
-		%feature("autodoc", "	* Returns file comments (lines starting with # at the beginning of file).
-
-	:rtype: TCollection_AsciiString
-") FileComments;
-		const TCollection_AsciiString & FileComments ();
-		%feature("compactdefaultargs") IsSinglePrecision;
-		%feature("autodoc", "	* Return single precision flag for reading vertex data (coordinates); False by default.
-
-	:rtype: bool
-") IsSinglePrecision;
-		Standard_Boolean IsSinglePrecision ();
-		%feature("compactdefaultargs") MemoryLimit;
-		%feature("autodoc", "	* Returns memory limit in bytes; -1 (no limit) by default.
-
-	:rtype: Standard_Size
-") MemoryLimit;
-		Standard_Size MemoryLimit ();
-		%feature("compactdefaultargs") NbProbeElems;
-		%feature("autodoc", "	* //!< number of probed polygon elements (of unknown size).
-
-	:rtype: int
-") NbProbeElems;
-		Standard_Integer NbProbeElems ();
-		%feature("compactdefaultargs") NbProbeNodes;
-		%feature("autodoc", "	* Number of probed nodes.
-
-	:rtype: int
-") NbProbeNodes;
-		Standard_Integer NbProbeNodes ();
-		%feature("compactdefaultargs") SetMemoryLimit;
-		%feature("autodoc", "	* Specify memory limit in bytes, so that import will be aborted by specified limit before memory allocation error occurs.
-
-	:param theMemLimit:
-	:type theMemLimit: Standard_Size
-	:rtype: None
-") SetMemoryLimit;
-		void SetMemoryLimit (Standard_Size theMemLimit);
-		%feature("compactdefaultargs") SetSinglePrecision;
-		%feature("autodoc", "	* Setup single/double precision flag for reading vertex data (coordinates).
-
-	:param theIsSinglePrecision:
-	:type theIsSinglePrecision: bool
-	:rtype: None
-") SetSinglePrecision;
-		void SetSinglePrecision (Standard_Boolean theIsSinglePrecision);
-		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "	* Setup transformation from one coordinate system to another. OBJ file might be exported following various coordinate system conventions, so that it might be useful automatically transform data during file reading.
-
-	:param theCSConverter:
-	:type theCSConverter: RWMesh_CoordinateSystemConverter &
-	:rtype: None
-") SetTransformation;
-		void SetTransformation (const RWMesh_CoordinateSystemConverter & theCSConverter);
-		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	* Return transformation from one coordinate system to another; no transformation by default.
-
-	:rtype: RWMesh_CoordinateSystemConverter
-") Transformation;
-		const RWMesh_CoordinateSystemConverter & Transformation ();
-};
-
-
-%make_alias(RWObj_Reader)
-
-%extend RWObj_Reader {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor RWObj_SubMesh;
 class RWObj_SubMesh {
 	public:
@@ -228,35 +145,6 @@ class RWObj_SubMesh {
 
 
 %extend RWObj_SubMesh {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor RWObj_TriangulationReader;
-class RWObj_TriangulationReader : public RWObj_Reader {
-	public:
-		%feature("compactdefaultargs") SetCreateShapes;
-		%feature("autodoc", "	* Set flag to create shapes.
-
-	:param theToCreateShapes:
-	:type theToCreateShapes: bool
-	:rtype: None
-") SetCreateShapes;
-		void SetCreateShapes (Standard_Boolean theToCreateShapes);
-		%feature("compactdefaultargs") SetShapeReceiver;
-		%feature("autodoc", "	* Set shape receiver callback.
-
-	:param theReceiver:
-	:type theReceiver: RWObj_IShapeReceiver *
-	:rtype: None
-") SetShapeReceiver;
-		void SetShapeReceiver (RWObj_IShapeReceiver * theReceiver);
-};
-
-
-%make_alias(RWObj_TriangulationReader)
-
-%extend RWObj_TriangulationReader {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

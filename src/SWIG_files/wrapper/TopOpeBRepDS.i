@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPOPEBREPDSDOCSTRING
 "TopOpeBRepDS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_TopOpeBRepDS.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrepds.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDSDOCSTRING) TopOpeBRepDS
 

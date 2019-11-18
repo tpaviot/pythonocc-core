@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : ff79303
+git revision : 67ebe91
 
-operating system : debian Linux 4.15.0-66-generic
+operating system : debian Linux 4.15.0-70-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-11-17 06:18:54.309661
+date : 2019-11-18 19:19:39.257426
 ############################
 
 [INFO ]  Single process mode
@@ -2527,26 +2527,17 @@ date : 2019-11-17 06:18:54.309661
 [INFO ]  Processing toolkit TKRWMesh ===
 [INFO ]  ## Processing module RWGltf
 [INFO ]  Wrap classes :
-[INFO ]  RWGltf_CafReader
 [INFO ]  RWGltf_GltfAccessor
 [INFO ]  RWGltf_GltfBufferView
 [INFO ]  RWGltf_GltfFace
-[INFO ]  RWGltf_GltfLatePrimitiveArray
 [INFO ]  RWGltf_GltfPrimArrayData
 [INFO ]  RWGltf_MaterialCommon
 [INFO ]  RWGltf_MaterialMetallicRoughness
-[INFO ]  RWGltf_PrimitiveArrayReader
-[WARNI]  Constructor skipped for abstract class RWGltf_PrimitiveArrayReader
 [INFO ]  ## Processing module RWObj
 [INFO ]  Wrap classes :
 [INFO ]  RWObj_IShapeReceiver
 [INFO ]  RWObj_Material
-[INFO ]  RWObj_Reader
-[INFO ]  Wrap nested class RWObj_Reader::ObjVec3iHasher
-[INFO ]  Wrap nested class RWObj_Reader::VectorOfVertices
-[WARNI]  Constructor skipped for abstract class RWObj_Reader
 [INFO ]  RWObj_SubMesh
-[INFO ]  RWObj_TriangulationReader
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Wrap classes :
@@ -5515,6 +5506,6 @@ date : 2019-11-17 06:18:54.309661
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 52.66s
+SWIG interface file generation completed in 46.63s
 #################################################
 

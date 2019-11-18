@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DEVALUATORDOCSTRING
 "Geom2dEvaluator module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dEvaluator.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2devaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DEVALUATORDOCSTRING) Geom2dEvaluator
 

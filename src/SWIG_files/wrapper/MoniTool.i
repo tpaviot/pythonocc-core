@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MONITOOLDOCSTRING
 "MoniTool module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_MoniTool.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_monitool.html"
 %enddef
 %module (package="OCC.Core", docstring=MONITOOLDOCSTRING) MoniTool
 
