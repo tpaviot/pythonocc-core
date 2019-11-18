@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPFEATDOCSTRING
 "BRepFeat module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepFeat.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfeat.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPFEATDOCSTRING) BRepFeat
 

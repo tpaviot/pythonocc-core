@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DLPROPDOCSTRING
 "Geom2dLProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Geom2dLProp.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dlprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 

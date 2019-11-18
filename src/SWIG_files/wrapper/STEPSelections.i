@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPSELECTIONSDOCSTRING
 "STEPSelections module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_STEPSelections.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepselections.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPSELECTIONSDOCSTRING) STEPSelections
 

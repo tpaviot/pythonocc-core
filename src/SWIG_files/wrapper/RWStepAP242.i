@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPAP242DOCSTRING
 "RWStepAP242 module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_RWStepAP242.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepap242.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP242DOCSTRING) RWStepAP242
 

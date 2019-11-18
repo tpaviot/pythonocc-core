@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPMESHDOCSTRING
 "BRepMesh module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepMesh.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMESHDOCSTRING) BRepMesh
 

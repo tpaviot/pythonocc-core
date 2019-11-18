@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSDOCSTRING
 "Units module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Units.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_units.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSDOCSTRING) Units
 

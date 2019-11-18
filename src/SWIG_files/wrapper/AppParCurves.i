@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPPARCURVESDOCSTRING
 "AppParCurves module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_AppParCurves.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appparcurves.html"
 %enddef
 %module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 

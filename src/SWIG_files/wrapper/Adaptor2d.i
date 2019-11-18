@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ADAPTOR2DDOCSTRING
 "Adaptor2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_Adaptor2d.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_adaptor2d.html"
 %enddef
 %module (package="OCC.Core", docstring=ADAPTOR2DDOCSTRING) Adaptor2d
 

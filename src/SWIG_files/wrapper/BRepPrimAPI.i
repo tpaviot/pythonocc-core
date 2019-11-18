@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPRIMAPIDOCSTRING
 "BRepPrimAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_BRepPrimAPI.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprimapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 

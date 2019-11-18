@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFIDSDOCSTRING
 "ChFiDS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ChFiDS.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfids.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFIDSDOCSTRING) ChFiDS
 

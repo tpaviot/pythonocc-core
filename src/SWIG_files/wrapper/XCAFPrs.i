@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFPRSDOCSTRING
 "XCAFPrs module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_XCAFPrs.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafprs.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFPRSDOCSTRING) XCAFPrs
 

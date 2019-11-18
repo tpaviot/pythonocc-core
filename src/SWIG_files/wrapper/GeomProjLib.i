@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMPROJLIBDOCSTRING
 "GeomProjLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_GeomProjLib.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomprojlib.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FILLETSURFDOCSTRING
 "FilletSurf module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_FilletSurf.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_filletsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=FILLETSURFDOCSTRING) FilletSurf
 

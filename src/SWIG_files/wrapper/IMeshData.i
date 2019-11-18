@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IMESHDATADOCSTRING
 "IMeshData module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_IMeshData.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_imeshdata.html"
 %enddef
 %module (package="OCC.Core", docstring=IMESHDATADOCSTRING) IMeshData
 

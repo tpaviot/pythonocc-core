@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPTOGEOMDOCSTRING
 "StepToGeom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepToGeom.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPBASICDOCSTRING
 "StepBasic module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_StepBasic.html"
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepbasic.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPBASICDOCSTRING) StepBasic
 
