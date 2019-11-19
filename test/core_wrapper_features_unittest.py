@@ -30,8 +30,8 @@ from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
+from OCC.Core.math import math_Matrix
 from OCC.Core.GC import GC_MakeSegment
-from OCC.Core.StepShape import *
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.Core.GCE2d import GCE2d_MakeSegment
@@ -63,9 +63,9 @@ def assert_warns_deprecated():
         yield w
         # Verify some things
         if not issubclass(w[-1].category, DeprecationWarning):
-        	raise AssertionError("Wrong exception type")
+            raise AssertionError("Wrong exception type")
         if not "deprecated" in str(w[-1].message):
-        	raise AssertionError("deprecated string not in message")
+            raise AssertionError("deprecated string not in message")
 
 
 
@@ -280,8 +280,28 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(p_coord[1], 2.)
         self.assertEqual(p_coord[2], 3.2)
 
-    # TODO : add a testStandardRealByRefPassedReturned
-    def test_standard_integer_by_ref_passed_returned(self):
+    def test_Standard_Real_by_ref_passed_returned(self):
+        '''
+        Check getters and setters for method that take/return
+        Standard_Real by reference. Ref github Issue #710
+        '''
+        # create a 2*2 matrix
+        #    | -1.    -2. |
+        #m = |  4.    5.5 |
+        
+        # lower indices are 0, to comply with python list indexing
+        mat = math_Matrix(0, 1, 0, 1)
+        mat.SetValue(0, 0, -1)
+        mat.SetValue(0, 1, -2)
+        mat.SetValue(1, 0, 4)
+        mat.SetValue(1, 1, 5.5)
+        # the returned value should be the same
+        self.assertEqual(mat.GetValue(0, 0), -1)
+        self.assertEqual(mat.GetValue(0, 1), -2)
+        self.assertEqual(mat.GetValue(1, 0), 4)
+        self.assertEqual(mat.GetValue(1, 1), 5.5)
+
+    def test_Standard_Integer_by_ref_passed_returned(self):
         '''
         Checks the Standard_Integer & byreference return parameter
         '''
@@ -289,7 +309,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfs.SetFixShellMode(5)
         self.assertEqual(sfs.GetFixShellMode(), 5)
 
-    def testStandardBooleanByRefPassedReturned(self):
+    def test_Standard_Boolean_by_ref_passed_returned(self):
         '''
         Checks the Standard_Boolean & byreference return parameter
         '''
@@ -299,7 +319,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfw.SetModifyGeometryMode(False)
         self.assertEqual(sfw.GetModifyGeometryMode(), False)
 
-    def testTopoDS_byref_arguments(self):
+    def test_TopoDS_byref_arguments(self):
         '''
         Test byref pass arguments to TopoDS
         '''
@@ -313,7 +333,7 @@ class TestWrapperFeatures(unittest.TestCase):
             bb.Add(c, child)
         self.assertFalse(c.IsNull())
 
-    def test_standard_boolean_byref(self):
+    def test_Standard_Boolean_byref(self):
         '''
         Test byref returned standard_boolean
         '''
@@ -380,13 +400,13 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(vec.Magnitude(), 1.)
         self.assertEqual(vec.get_attribute(), "something")
 
-    def testProtectedConstructor(self):
+    def test_protected_constructor(self):
         """ Test: protected constructor """
         # 1st, class with no subclass
         tds_builder = TopoDS_Builder()
         self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
-    def testAutoImportOfDependentModules(self):
+    def test_auto_import_of_dependent_modules(self):
         """ Test: automatic import of dependent modules """
         returned_object = GCE2d_MakeSegment(gp_Pnt2d(1, 1),
                                             gp_Pnt2d(3, 4)).Value()
@@ -525,7 +545,6 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(isinstance(curve, Geom_Curve))
         # The edge is internally a line, so we should be able to downcast it
         line = Geom_Line.DownCast(curve)
-        print(line)
         self.assertTrue(isinstance(line, Geom_Curve))
         # Hence, it should not be possible to downcast it as a B-Spline curve
         bspline = Geom_BSplineCurve.DownCast(curve)
@@ -570,7 +589,7 @@ class TestWrapperFeatures(unittest.TestCase):
         for pnt in list_of_points:
             self.assertTrue(isinstance(pnt, gp_Pnt))
 
-    def test_repr_for_null_topods_shapes(self):
+    def test_repr_for_null_TopoDS_Shape(self):
         # create null vertex and shape
         v = TopoDS_Vertex()
         self.assertTrue('Null' in v.__repr__())
