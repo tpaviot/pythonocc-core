@@ -73,15 +73,20 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepvisual.html
 /* typedefs */
 /* end typedefs declaration */
 
+/*************************************************
+* class RWStepVisual_RWAnnotationCurveOccurrence *
+*************************************************/
 %nodefaultctor RWStepVisual_RWAnnotationCurveOccurrence;
 class RWStepVisual_RWAnnotationCurveOccurrence {
 	public:
+		/****************** RWStepVisual_RWAnnotationCurveOccurrence ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationCurveOccurrence;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationCurveOccurrence;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationCurveOccurrence;
 		 RWStepVisual_RWAnnotationCurveOccurrence ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -89,25 +94,27 @@ class RWStepVisual_RWAnnotationCurveOccurrence {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrence> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationCurveOccurrence> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrence> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationCurveOccurrence> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrence> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationCurveOccurrence> & ent);
+
 };
 
 
@@ -116,15 +123,21 @@ class RWStepVisual_RWAnnotationCurveOccurrence {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************************************************************************************
+* class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem *
+***************************************************************************************************************/
 %nodefaultctor RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
 class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem {
 	public:
+		/****************** RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
 		 RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -132,25 +145,27 @@ class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomRepr
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent);
+
 };
 
 
@@ -159,15 +174,21 @@ class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomRepr
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************
+* class RWStepVisual_RWAnnotationFillArea *
+******************************************/
 %nodefaultctor RWStepVisual_RWAnnotationFillArea;
 class RWStepVisual_RWAnnotationFillArea {
 	public:
+		/****************** RWStepVisual_RWAnnotationFillArea ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationFillArea;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationFillArea;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationFillArea;
 		 RWStepVisual_RWAnnotationFillArea ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -175,25 +196,27 @@ class RWStepVisual_RWAnnotationFillArea {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillArea> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationFillArea> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillArea> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationFillArea> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillArea> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationFillArea> & ent);
+
 };
 
 
@@ -202,15 +225,21 @@ class RWStepVisual_RWAnnotationFillArea {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************************
+* class RWStepVisual_RWAnnotationFillAreaOccurrence *
+****************************************************/
 %nodefaultctor RWStepVisual_RWAnnotationFillAreaOccurrence;
 class RWStepVisual_RWAnnotationFillAreaOccurrence {
 	public:
+		/****************** RWStepVisual_RWAnnotationFillAreaOccurrence ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationFillAreaOccurrence;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationFillAreaOccurrence;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationFillAreaOccurrence;
 		 RWStepVisual_RWAnnotationFillAreaOccurrence ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -218,25 +247,27 @@ class RWStepVisual_RWAnnotationFillAreaOccurrence {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> & ent);
+
 };
 
 
@@ -245,15 +276,21 @@ class RWStepVisual_RWAnnotationFillAreaOccurrence {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************
+* class RWStepVisual_RWAnnotationOccurrence *
+********************************************/
 %nodefaultctor RWStepVisual_RWAnnotationOccurrence;
 class RWStepVisual_RWAnnotationOccurrence {
 	public:
+		/****************** RWStepVisual_RWAnnotationOccurrence ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationOccurrence;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationOccurrence;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationOccurrence;
 		 RWStepVisual_RWAnnotationOccurrence ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -261,25 +298,27 @@ class RWStepVisual_RWAnnotationOccurrence {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationOccurrence> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationOccurrence> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationOccurrence> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationOccurrence> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationOccurrence> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationOccurrence> & ent);
+
 };
 
 
@@ -288,15 +327,21 @@ class RWStepVisual_RWAnnotationOccurrence {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class RWStepVisual_RWAnnotationPlane *
+***************************************/
 %nodefaultctor RWStepVisual_RWAnnotationPlane;
 class RWStepVisual_RWAnnotationPlane {
 	public:
+		/****************** RWStepVisual_RWAnnotationPlane ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAnnotationPlane;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAnnotationPlane;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAnnotationPlane;
 		 RWStepVisual_RWAnnotationPlane ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -304,25 +349,27 @@ class RWStepVisual_RWAnnotationPlane {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationPlane> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AnnotationPlane> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationPlane> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AnnotationPlane> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AnnotationPlane> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AnnotationPlane> & ent);
+
 };
 
 
@@ -331,15 +378,21 @@ class RWStepVisual_RWAnnotationPlane {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class RWStepVisual_RWAreaInSet *
+*********************************/
 %nodefaultctor RWStepVisual_RWAreaInSet;
 class RWStepVisual_RWAreaInSet {
 	public:
+		/****************** RWStepVisual_RWAreaInSet ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWAreaInSet;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWAreaInSet;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWAreaInSet;
 		 RWStepVisual_RWAreaInSet ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -347,25 +400,27 @@ class RWStepVisual_RWAreaInSet {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AreaInSet> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_AreaInSet> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_AreaInSet> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_AreaInSet> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_AreaInSet> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_AreaInSet> & ent);
+
 };
 
 
@@ -374,15 +429,21 @@ class RWStepVisual_RWAreaInSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWBackgroundColour *
+****************************************/
 %nodefaultctor RWStepVisual_RWBackgroundColour;
 class RWStepVisual_RWBackgroundColour {
 	public:
+		/****************** RWStepVisual_RWBackgroundColour ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWBackgroundColour;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWBackgroundColour;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWBackgroundColour;
 		 RWStepVisual_RWBackgroundColour ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -390,25 +451,27 @@ class RWStepVisual_RWBackgroundColour {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_BackgroundColour> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_BackgroundColour> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_BackgroundColour> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_BackgroundColour> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_BackgroundColour> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_BackgroundColour> & ent);
+
 };
 
 
@@ -417,15 +480,21 @@ class RWStepVisual_RWBackgroundColour {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class RWStepVisual_RWCameraImage *
+***********************************/
 %nodefaultctor RWStepVisual_RWCameraImage;
 class RWStepVisual_RWCameraImage {
 	public:
+		/****************** RWStepVisual_RWCameraImage ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraImage;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraImage;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraImage;
 		 RWStepVisual_RWCameraImage ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -433,25 +502,27 @@ class RWStepVisual_RWCameraImage {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraImage> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraImage> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraImage> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraImage> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraImage> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraImage> & ent);
+
 };
 
 
@@ -460,15 +531,21 @@ class RWStepVisual_RWCameraImage {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class RWStepVisual_RWCameraModel *
+***********************************/
 %nodefaultctor RWStepVisual_RWCameraModel;
 class RWStepVisual_RWCameraModel {
 	public:
+		/****************** RWStepVisual_RWCameraModel ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModel;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModel;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModel;
 		 RWStepVisual_RWCameraModel ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -476,17 +553,18 @@ class RWStepVisual_RWCameraModel {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModel> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModel> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModel> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModel> & ent);
+
 };
 
 
@@ -495,15 +573,21 @@ class RWStepVisual_RWCameraModel {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class RWStepVisual_RWCameraModelD2 *
+*************************************/
 %nodefaultctor RWStepVisual_RWCameraModelD2;
 class RWStepVisual_RWCameraModelD2 {
 	public:
+		/****************** RWStepVisual_RWCameraModelD2 ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModelD2;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModelD2;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModelD2;
 		 RWStepVisual_RWCameraModelD2 ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -511,25 +595,27 @@ class RWStepVisual_RWCameraModelD2 {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD2> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModelD2> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD2> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraModelD2> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD2> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModelD2> & ent);
+
 };
 
 
@@ -538,15 +624,21 @@ class RWStepVisual_RWCameraModelD2 {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class RWStepVisual_RWCameraModelD3 *
+*************************************/
 %nodefaultctor RWStepVisual_RWCameraModelD3;
 class RWStepVisual_RWCameraModelD3 {
 	public:
+		/****************** RWStepVisual_RWCameraModelD3 ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModelD3;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModelD3;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModelD3;
 		 RWStepVisual_RWCameraModelD3 ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -554,25 +646,27 @@ class RWStepVisual_RWCameraModelD3 {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModelD3> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraModelD3> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModelD3> & ent);
+
 };
 
 
@@ -581,15 +675,21 @@ class RWStepVisual_RWCameraModelD3 {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class RWStepVisual_RWCameraModelD3MultiClipping *
+**************************************************/
 %nodefaultctor RWStepVisual_RWCameraModelD3MultiClipping;
 class RWStepVisual_RWCameraModelD3MultiClipping {
 	public:
+		/****************** RWStepVisual_RWCameraModelD3MultiClipping ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModelD3MultiClipping;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModelD3MultiClipping;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModelD3MultiClipping;
 		 RWStepVisual_RWCameraModelD3MultiClipping ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -597,25 +697,27 @@ class RWStepVisual_RWCameraModelD3MultiClipping {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClipping> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModelD3MultiClipping> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClipping> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraModelD3MultiClipping> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClipping> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModelD3MultiClipping> & ent);
+
 };
 
 
@@ -624,15 +726,21 @@ class RWStepVisual_RWCameraModelD3MultiClipping {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************************
+* class RWStepVisual_RWCameraModelD3MultiClippingIntersection *
+**************************************************************/
 %nodefaultctor RWStepVisual_RWCameraModelD3MultiClippingIntersection;
 class RWStepVisual_RWCameraModelD3MultiClippingIntersection {
 	public:
+		/****************** RWStepVisual_RWCameraModelD3MultiClippingIntersection ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModelD3MultiClippingIntersection;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModelD3MultiClippingIntersection;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModelD3MultiClippingIntersection;
 		 RWStepVisual_RWCameraModelD3MultiClippingIntersection ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -640,25 +748,27 @@ class RWStepVisual_RWCameraModelD3MultiClippingIntersection {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> & ent);
+
 };
 
 
@@ -667,15 +777,21 @@ class RWStepVisual_RWCameraModelD3MultiClippingIntersection {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************************
+* class RWStepVisual_RWCameraModelD3MultiClippingUnion *
+*******************************************************/
 %nodefaultctor RWStepVisual_RWCameraModelD3MultiClippingUnion;
 class RWStepVisual_RWCameraModelD3MultiClippingUnion {
 	public:
+		/****************** RWStepVisual_RWCameraModelD3MultiClippingUnion ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraModelD3MultiClippingUnion;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraModelD3MultiClippingUnion;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraModelD3MultiClippingUnion;
 		 RWStepVisual_RWCameraModelD3MultiClippingUnion ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -683,25 +799,27 @@ class RWStepVisual_RWCameraModelD3MultiClippingUnion {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> & ent);
+
 };
 
 
@@ -710,15 +828,21 @@ class RWStepVisual_RWCameraModelD3MultiClippingUnion {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class RWStepVisual_RWCameraUsage *
+***********************************/
 %nodefaultctor RWStepVisual_RWCameraUsage;
 class RWStepVisual_RWCameraUsage {
 	public:
+		/****************** RWStepVisual_RWCameraUsage ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCameraUsage;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCameraUsage;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCameraUsage;
 		 RWStepVisual_RWCameraUsage ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -726,25 +850,27 @@ class RWStepVisual_RWCameraUsage {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraUsage> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CameraUsage> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CameraUsage> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CameraUsage> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CameraUsage> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CameraUsage> & ent);
+
 };
 
 
@@ -753,15 +879,21 @@ class RWStepVisual_RWCameraUsage {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************************************************************************
+* class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation *
+************************************************************************************************************/
 %nodefaultctor RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
 class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation {
 	public:
+		/****************** RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
 		 RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -769,25 +901,27 @@ class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraught
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent);
+
 };
 
 
@@ -796,15 +930,21 @@ class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraught
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class RWStepVisual_RWColour *
+******************************/
 %nodefaultctor RWStepVisual_RWColour;
 class RWStepVisual_RWColour {
 	public:
+		/****************** RWStepVisual_RWColour ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWColour;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWColour;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWColour;
 		 RWStepVisual_RWColour ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -812,17 +952,18 @@ class RWStepVisual_RWColour {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Colour> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_Colour> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Colour> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_Colour> & ent);
+
 };
 
 
@@ -831,15 +972,21 @@ class RWStepVisual_RWColour {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class RWStepVisual_RWColourRgb *
+*********************************/
 %nodefaultctor RWStepVisual_RWColourRgb;
 class RWStepVisual_RWColourRgb {
 	public:
+		/****************** RWStepVisual_RWColourRgb ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWColourRgb;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWColourRgb;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWColourRgb;
 		 RWStepVisual_RWColourRgb ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -847,17 +994,18 @@ class RWStepVisual_RWColourRgb {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ColourRgb> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ColourRgb> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ColourRgb> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ColourRgb> & ent);
+
 };
 
 
@@ -866,15 +1014,21 @@ class RWStepVisual_RWColourRgb {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class RWStepVisual_RWColourSpecification *
+*******************************************/
 %nodefaultctor RWStepVisual_RWColourSpecification;
 class RWStepVisual_RWColourSpecification {
 	public:
+		/****************** RWStepVisual_RWColourSpecification ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWColourSpecification;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWColourSpecification;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWColourSpecification;
 		 RWStepVisual_RWColourSpecification ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -882,17 +1036,18 @@ class RWStepVisual_RWColourSpecification {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ColourSpecification> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ColourSpecification> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ColourSpecification> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ColourSpecification> & ent);
+
 };
 
 
@@ -901,15 +1056,21 @@ class RWStepVisual_RWColourSpecification {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class RWStepVisual_RWCompositeText *
+*************************************/
 %nodefaultctor RWStepVisual_RWCompositeText;
 class RWStepVisual_RWCompositeText {
 	public:
+		/****************** RWStepVisual_RWCompositeText ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCompositeText;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCompositeText;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCompositeText;
 		 RWStepVisual_RWCompositeText ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -917,25 +1078,27 @@ class RWStepVisual_RWCompositeText {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeText> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CompositeText> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeText> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CompositeText> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeText> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CompositeText> & ent);
+
 };
 
 
@@ -944,15 +1107,21 @@ class RWStepVisual_RWCompositeText {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class RWStepVisual_RWCompositeTextWithExtent *
+***********************************************/
 %nodefaultctor RWStepVisual_RWCompositeTextWithExtent;
 class RWStepVisual_RWCompositeTextWithExtent {
 	public:
+		/****************** RWStepVisual_RWCompositeTextWithExtent ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCompositeTextWithExtent;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCompositeTextWithExtent;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCompositeTextWithExtent;
 		 RWStepVisual_RWCompositeTextWithExtent ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -960,25 +1129,27 @@ class RWStepVisual_RWCompositeTextWithExtent {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeTextWithExtent> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CompositeTextWithExtent> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeTextWithExtent> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CompositeTextWithExtent> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CompositeTextWithExtent> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CompositeTextWithExtent> & ent);
+
 };
 
 
@@ -987,15 +1158,21 @@ class RWStepVisual_RWCompositeTextWithExtent {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************************
+* class RWStepVisual_RWContextDependentInvisibility *
+****************************************************/
 %nodefaultctor RWStepVisual_RWContextDependentInvisibility;
 class RWStepVisual_RWContextDependentInvisibility {
 	public:
+		/****************** RWStepVisual_RWContextDependentInvisibility ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWContextDependentInvisibility;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWContextDependentInvisibility;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWContextDependentInvisibility;
 		 RWStepVisual_RWContextDependentInvisibility ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1003,25 +1180,27 @@ class RWStepVisual_RWContextDependentInvisibility {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentInvisibility> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ContextDependentInvisibility> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentInvisibility> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_ContextDependentInvisibility> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentInvisibility> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ContextDependentInvisibility> & ent);
+
 };
 
 
@@ -1030,15 +1209,21 @@ class RWStepVisual_RWContextDependentInvisibility {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************************
+* class RWStepVisual_RWContextDependentOverRidingStyledItem *
+************************************************************/
 %nodefaultctor RWStepVisual_RWContextDependentOverRidingStyledItem;
 class RWStepVisual_RWContextDependentOverRidingStyledItem {
 	public:
+		/****************** RWStepVisual_RWContextDependentOverRidingStyledItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWContextDependentOverRidingStyledItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWContextDependentOverRidingStyledItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWContextDependentOverRidingStyledItem;
 		 RWStepVisual_RWContextDependentOverRidingStyledItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1046,25 +1231,27 @@ class RWStepVisual_RWContextDependentOverRidingStyledItem {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ContextDependentOverRidingStyledItem> & ent);
+
 };
 
 
@@ -1073,15 +1260,21 @@ class RWStepVisual_RWContextDependentOverRidingStyledItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class RWStepVisual_RWCoordinatesList *
+***************************************/
 %nodefaultctor RWStepVisual_RWCoordinatesList;
 class RWStepVisual_RWCoordinatesList {
 	public:
+		/****************** RWStepVisual_RWCoordinatesList ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCoordinatesList;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCoordinatesList;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCoordinatesList;
 		 RWStepVisual_RWCoordinatesList ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1089,17 +1282,18 @@ class RWStepVisual_RWCoordinatesList {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CoordinatesList> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CoordinatesList> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CoordinatesList> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CoordinatesList> & ent);
+
 };
 
 
@@ -1108,15 +1302,21 @@ class RWStepVisual_RWCoordinatesList {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class RWStepVisual_RWCurveStyle *
+**********************************/
 %nodefaultctor RWStepVisual_RWCurveStyle;
 class RWStepVisual_RWCurveStyle {
 	public:
+		/****************** RWStepVisual_RWCurveStyle ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCurveStyle;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCurveStyle;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCurveStyle;
 		 RWStepVisual_RWCurveStyle ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1124,25 +1324,27 @@ class RWStepVisual_RWCurveStyle {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyle> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CurveStyle> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CurveStyle> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyle> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CurveStyle> & ent);
+
 };
 
 
@@ -1151,15 +1353,21 @@ class RWStepVisual_RWCurveStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class RWStepVisual_RWCurveStyleFont *
+**************************************/
 %nodefaultctor RWStepVisual_RWCurveStyleFont;
 class RWStepVisual_RWCurveStyleFont {
 	public:
+		/****************** RWStepVisual_RWCurveStyleFont ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCurveStyleFont;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCurveStyleFont;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCurveStyleFont;
 		 RWStepVisual_RWCurveStyleFont ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1167,25 +1375,27 @@ class RWStepVisual_RWCurveStyleFont {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyleFont> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CurveStyleFont> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyleFont> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_CurveStyleFont> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyleFont> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CurveStyleFont> & ent);
+
 };
 
 
@@ -1194,15 +1404,21 @@ class RWStepVisual_RWCurveStyleFont {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class RWStepVisual_RWCurveStyleFontPattern *
+*********************************************/
 %nodefaultctor RWStepVisual_RWCurveStyleFontPattern;
 class RWStepVisual_RWCurveStyleFontPattern {
 	public:
+		/****************** RWStepVisual_RWCurveStyleFontPattern ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWCurveStyleFontPattern;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWCurveStyleFontPattern;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWCurveStyleFontPattern;
 		 RWStepVisual_RWCurveStyleFontPattern ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1210,17 +1426,18 @@ class RWStepVisual_RWCurveStyleFontPattern {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyleFontPattern> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_CurveStyleFontPattern> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_CurveStyleFontPattern> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_CurveStyleFontPattern> & ent);
+
 };
 
 
@@ -1229,15 +1446,21 @@ class RWStepVisual_RWCurveStyleFontPattern {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class RWStepVisual_RWDraughtingCallout *
+*****************************************/
 %nodefaultctor RWStepVisual_RWDraughtingCallout;
 class RWStepVisual_RWDraughtingCallout {
 	public:
+		/****************** RWStepVisual_RWDraughtingCallout ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWDraughtingCallout;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWDraughtingCallout;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWDraughtingCallout;
 		 RWStepVisual_RWDraughtingCallout ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1245,25 +1468,27 @@ class RWStepVisual_RWDraughtingCallout {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingCallout> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_DraughtingCallout> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingCallout> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_DraughtingCallout> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingCallout> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_DraughtingCallout> & ent);
+
 };
 
 
@@ -1272,18 +1497,22 @@ class RWStepVisual_RWDraughtingCallout {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class RWStepVisual_RWDraughtingModel *
+***************************************/
 %nodefaultctor RWStepVisual_RWDraughtingModel;
 class RWStepVisual_RWDraughtingModel {
 	public:
+		/****************** RWStepVisual_RWDraughtingModel ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWDraughtingModel;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") RWStepVisual_RWDraughtingModel;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") RWStepVisual_RWDraughtingModel;
 		 RWStepVisual_RWDraughtingModel ();
-		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	* Reads DraughtingModel
 
+		/****************** ReadStep ******************/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "* Reads DraughtingModel
 	:param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
@@ -1292,29 +1521,29 @@ class RWStepVisual_RWDraughtingModel {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingModel> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_DraughtingModel> & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
 
+		/****************** Share ******************/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingModel> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_DraughtingModel> & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes DraughtingModel
 
+		/****************** WriteStep ******************/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "* Writes DraughtingModel
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingModel> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_DraughtingModel> & ent);
+
 };
 
 
@@ -1323,15 +1552,21 @@ class RWStepVisual_RWDraughtingModel {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class RWStepVisual_RWDraughtingPreDefinedColour *
+**************************************************/
 %nodefaultctor RWStepVisual_RWDraughtingPreDefinedColour;
 class RWStepVisual_RWDraughtingPreDefinedColour {
 	public:
+		/****************** RWStepVisual_RWDraughtingPreDefinedColour ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWDraughtingPreDefinedColour;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWDraughtingPreDefinedColour;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWDraughtingPreDefinedColour;
 		 RWStepVisual_RWDraughtingPreDefinedColour ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1339,17 +1574,18 @@ class RWStepVisual_RWDraughtingPreDefinedColour {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingPreDefinedColour> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_DraughtingPreDefinedColour> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingPreDefinedColour> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_DraughtingPreDefinedColour> & ent);
+
 };
 
 
@@ -1358,15 +1594,21 @@ class RWStepVisual_RWDraughtingPreDefinedColour {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************************
+* class RWStepVisual_RWDraughtingPreDefinedCurveFont *
+*****************************************************/
 %nodefaultctor RWStepVisual_RWDraughtingPreDefinedCurveFont;
 class RWStepVisual_RWDraughtingPreDefinedCurveFont {
 	public:
+		/****************** RWStepVisual_RWDraughtingPreDefinedCurveFont ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWDraughtingPreDefinedCurveFont;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWDraughtingPreDefinedCurveFont;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWDraughtingPreDefinedCurveFont;
 		 RWStepVisual_RWDraughtingPreDefinedCurveFont ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1374,17 +1616,18 @@ class RWStepVisual_RWDraughtingPreDefinedCurveFont {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingPreDefinedCurveFont> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_DraughtingPreDefinedCurveFont> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_DraughtingPreDefinedCurveFont> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_DraughtingPreDefinedCurveFont> & ent);
+
 };
 
 
@@ -1393,18 +1636,22 @@ class RWStepVisual_RWDraughtingPreDefinedCurveFont {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class RWStepVisual_RWExternallyDefinedCurveFont *
+**************************************************/
 %nodefaultctor RWStepVisual_RWExternallyDefinedCurveFont;
 class RWStepVisual_RWExternallyDefinedCurveFont {
 	public:
+		/****************** RWStepVisual_RWExternallyDefinedCurveFont ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWExternallyDefinedCurveFont;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") RWStepVisual_RWExternallyDefinedCurveFont;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") RWStepVisual_RWExternallyDefinedCurveFont;
 		 RWStepVisual_RWExternallyDefinedCurveFont ();
-		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	* Reads ExternallyDefinedCurveFont
 
+		/****************** ReadStep ******************/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "* Reads ExternallyDefinedCurveFont
 	:param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
@@ -1413,29 +1660,29 @@ class RWStepVisual_RWExternallyDefinedCurveFont {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ExternallyDefinedCurveFont> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ExternallyDefinedCurveFont> & ent);
-		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	* Fills data for graph (shared items)
 
+		/****************** Share ******************/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ExternallyDefinedCurveFont> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_ExternallyDefinedCurveFont> & ent,Interface_EntityIterator & iter);
-		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	* Writes ExternallyDefinedCurveFont
 
+		/****************** WriteStep ******************/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "* Writes ExternallyDefinedCurveFont
 	:param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ExternallyDefinedCurveFont> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ExternallyDefinedCurveFont> & ent);
+
 };
 
 
@@ -1444,15 +1691,21 @@ class RWStepVisual_RWExternallyDefinedCurveFont {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class RWStepVisual_RWFillAreaStyle *
+*************************************/
 %nodefaultctor RWStepVisual_RWFillAreaStyle;
 class RWStepVisual_RWFillAreaStyle {
 	public:
+		/****************** RWStepVisual_RWFillAreaStyle ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWFillAreaStyle;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWFillAreaStyle;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWFillAreaStyle;
 		 RWStepVisual_RWFillAreaStyle ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1460,25 +1713,27 @@ class RWStepVisual_RWFillAreaStyle {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyle> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_FillAreaStyle> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_FillAreaStyle> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyle> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_FillAreaStyle> & ent);
+
 };
 
 
@@ -1487,15 +1742,21 @@ class RWStepVisual_RWFillAreaStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class RWStepVisual_RWFillAreaStyleColour *
+*******************************************/
 %nodefaultctor RWStepVisual_RWFillAreaStyleColour;
 class RWStepVisual_RWFillAreaStyleColour {
 	public:
+		/****************** RWStepVisual_RWFillAreaStyleColour ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWFillAreaStyleColour;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWFillAreaStyleColour;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWFillAreaStyleColour;
 		 RWStepVisual_RWFillAreaStyleColour ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1503,25 +1764,27 @@ class RWStepVisual_RWFillAreaStyleColour {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyleColour> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_FillAreaStyleColour> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyleColour> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_FillAreaStyleColour> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_FillAreaStyleColour> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_FillAreaStyleColour> & ent);
+
 };
 
 
@@ -1530,15 +1793,21 @@ class RWStepVisual_RWFillAreaStyleColour {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class RWStepVisual_RWInvisibility *
+************************************/
 %nodefaultctor RWStepVisual_RWInvisibility;
 class RWStepVisual_RWInvisibility {
 	public:
+		/****************** RWStepVisual_RWInvisibility ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWInvisibility;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWInvisibility;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWInvisibility;
 		 RWStepVisual_RWInvisibility ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1546,25 +1815,27 @@ class RWStepVisual_RWInvisibility {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Invisibility> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_Invisibility> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_Invisibility> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_Invisibility> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Invisibility> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_Invisibility> & ent);
+
 };
 
 
@@ -1573,15 +1844,21 @@ class RWStepVisual_RWInvisibility {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************************************
+* class RWStepVisual_RWMechanicalDesignGeometricPresentationArea *
+*****************************************************************/
 %nodefaultctor RWStepVisual_RWMechanicalDesignGeometricPresentationArea;
 class RWStepVisual_RWMechanicalDesignGeometricPresentationArea {
 	public:
+		/****************** RWStepVisual_RWMechanicalDesignGeometricPresentationArea ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWMechanicalDesignGeometricPresentationArea;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWMechanicalDesignGeometricPresentationArea;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWMechanicalDesignGeometricPresentationArea;
 		 RWStepVisual_RWMechanicalDesignGeometricPresentationArea ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1589,25 +1866,27 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationArea {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationArea> & ent);
+
 };
 
 
@@ -1616,15 +1895,21 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationArea {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************************************************
+* class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation *
+***************************************************************************/
 %nodefaultctor RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation;
 class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation {
 	public:
+		/****************** RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation;
 		 RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1632,25 +1917,27 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & ent);
+
 };
 
 
@@ -1659,15 +1946,21 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************
+* class RWStepVisual_RWOverRidingStyledItem *
+********************************************/
 %nodefaultctor RWStepVisual_RWOverRidingStyledItem;
 class RWStepVisual_RWOverRidingStyledItem {
 	public:
+		/****************** RWStepVisual_RWOverRidingStyledItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWOverRidingStyledItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWOverRidingStyledItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWOverRidingStyledItem;
 		 RWStepVisual_RWOverRidingStyledItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1675,25 +1968,27 @@ class RWStepVisual_RWOverRidingStyledItem {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_OverRidingStyledItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_OverRidingStyledItem> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_OverRidingStyledItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_OverRidingStyledItem> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_OverRidingStyledItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_OverRidingStyledItem> & ent);
+
 };
 
 
@@ -1702,15 +1997,21 @@ class RWStepVisual_RWOverRidingStyledItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class RWStepVisual_RWPlanarBox *
+*********************************/
 %nodefaultctor RWStepVisual_RWPlanarBox;
 class RWStepVisual_RWPlanarBox {
 	public:
+		/****************** RWStepVisual_RWPlanarBox ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPlanarBox;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPlanarBox;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPlanarBox;
 		 RWStepVisual_RWPlanarBox ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1718,25 +2019,27 @@ class RWStepVisual_RWPlanarBox {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PlanarBox> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PlanarBox> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PlanarBox> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PlanarBox> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PlanarBox> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PlanarBox> & ent);
+
 };
 
 
@@ -1745,15 +2048,21 @@ class RWStepVisual_RWPlanarBox {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class RWStepVisual_RWPlanarExtent *
+************************************/
 %nodefaultctor RWStepVisual_RWPlanarExtent;
 class RWStepVisual_RWPlanarExtent {
 	public:
+		/****************** RWStepVisual_RWPlanarExtent ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPlanarExtent;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPlanarExtent;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPlanarExtent;
 		 RWStepVisual_RWPlanarExtent ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1761,17 +2070,18 @@ class RWStepVisual_RWPlanarExtent {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PlanarExtent> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PlanarExtent> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PlanarExtent> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PlanarExtent> & ent);
+
 };
 
 
@@ -1780,15 +2090,21 @@ class RWStepVisual_RWPlanarExtent {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class RWStepVisual_RWPointStyle *
+**********************************/
 %nodefaultctor RWStepVisual_RWPointStyle;
 class RWStepVisual_RWPointStyle {
 	public:
+		/****************** RWStepVisual_RWPointStyle ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPointStyle;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPointStyle;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPointStyle;
 		 RWStepVisual_RWPointStyle ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1796,25 +2112,27 @@ class RWStepVisual_RWPointStyle {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PointStyle> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PointStyle> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PointStyle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PointStyle> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PointStyle> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PointStyle> & ent);
+
 };
 
 
@@ -1823,15 +2141,21 @@ class RWStepVisual_RWPointStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWPreDefinedColour *
+****************************************/
 %nodefaultctor RWStepVisual_RWPreDefinedColour;
 class RWStepVisual_RWPreDefinedColour {
 	public:
+		/****************** RWStepVisual_RWPreDefinedColour ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPreDefinedColour;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPreDefinedColour;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPreDefinedColour;
 		 RWStepVisual_RWPreDefinedColour ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1839,17 +2163,18 @@ class RWStepVisual_RWPreDefinedColour {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedColour> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PreDefinedColour> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedColour> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PreDefinedColour> & ent);
+
 };
 
 
@@ -1858,15 +2183,21 @@ class RWStepVisual_RWPreDefinedColour {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class RWStepVisual_RWPreDefinedCurveFont *
+*******************************************/
 %nodefaultctor RWStepVisual_RWPreDefinedCurveFont;
 class RWStepVisual_RWPreDefinedCurveFont {
 	public:
+		/****************** RWStepVisual_RWPreDefinedCurveFont ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPreDefinedCurveFont;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPreDefinedCurveFont;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPreDefinedCurveFont;
 		 RWStepVisual_RWPreDefinedCurveFont ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1874,17 +2205,18 @@ class RWStepVisual_RWPreDefinedCurveFont {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedCurveFont> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PreDefinedCurveFont> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedCurveFont> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PreDefinedCurveFont> & ent);
+
 };
 
 
@@ -1893,15 +2225,21 @@ class RWStepVisual_RWPreDefinedCurveFont {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class RWStepVisual_RWPreDefinedItem *
+**************************************/
 %nodefaultctor RWStepVisual_RWPreDefinedItem;
 class RWStepVisual_RWPreDefinedItem {
 	public:
+		/****************** RWStepVisual_RWPreDefinedItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPreDefinedItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPreDefinedItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPreDefinedItem;
 		 RWStepVisual_RWPreDefinedItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1909,17 +2247,18 @@ class RWStepVisual_RWPreDefinedItem {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PreDefinedItem> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PreDefinedItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PreDefinedItem> & ent);
+
 };
 
 
@@ -1928,15 +2267,21 @@ class RWStepVisual_RWPreDefinedItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWPresentationArea *
+****************************************/
 %nodefaultctor RWStepVisual_RWPresentationArea;
 class RWStepVisual_RWPresentationArea {
 	public:
+		/****************** RWStepVisual_RWPresentationArea ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationArea;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationArea;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationArea;
 		 RWStepVisual_RWPresentationArea ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1944,25 +2289,27 @@ class RWStepVisual_RWPresentationArea {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationArea> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationArea> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationArea> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationArea> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationArea> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationArea> & ent);
+
 };
 
 
@@ -1971,15 +2318,21 @@ class RWStepVisual_RWPresentationArea {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************************
+* class RWStepVisual_RWPresentationLayerAssignment *
+***************************************************/
 %nodefaultctor RWStepVisual_RWPresentationLayerAssignment;
 class RWStepVisual_RWPresentationLayerAssignment {
 	public:
+		/****************** RWStepVisual_RWPresentationLayerAssignment ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationLayerAssignment;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationLayerAssignment;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationLayerAssignment;
 		 RWStepVisual_RWPresentationLayerAssignment ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -1987,25 +2340,27 @@ class RWStepVisual_RWPresentationLayerAssignment {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerAssignment> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationLayerAssignment> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationLayerAssignment> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerAssignment> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationLayerAssignment> & ent);
+
 };
 
 
@@ -2014,15 +2369,21 @@ class RWStepVisual_RWPresentationLayerAssignment {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class RWStepVisual_RWPresentationLayerUsage *
+**********************************************/
 %nodefaultctor RWStepVisual_RWPresentationLayerUsage;
 class RWStepVisual_RWPresentationLayerUsage {
 	public:
+		/****************** RWStepVisual_RWPresentationLayerUsage ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationLayerUsage;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationLayerUsage;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationLayerUsage;
 		 RWStepVisual_RWPresentationLayerUsage ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2030,25 +2391,27 @@ class RWStepVisual_RWPresentationLayerUsage {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerUsage> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationLayerUsage> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerUsage> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationLayerUsage> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationLayerUsage> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationLayerUsage> & ent);
+
 };
 
 
@@ -2057,15 +2420,21 @@ class RWStepVisual_RWPresentationLayerUsage {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class RWStepVisual_RWPresentationRepresentation *
+**************************************************/
 %nodefaultctor RWStepVisual_RWPresentationRepresentation;
 class RWStepVisual_RWPresentationRepresentation {
 	public:
+		/****************** RWStepVisual_RWPresentationRepresentation ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationRepresentation;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationRepresentation;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationRepresentation;
 		 RWStepVisual_RWPresentationRepresentation ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2073,25 +2442,27 @@ class RWStepVisual_RWPresentationRepresentation {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationRepresentation> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationRepresentation> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationRepresentation> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationRepresentation> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationRepresentation> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationRepresentation> & ent);
+
 };
 
 
@@ -2100,15 +2471,21 @@ class RWStepVisual_RWPresentationRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class RWStepVisual_RWPresentationSet *
+***************************************/
 %nodefaultctor RWStepVisual_RWPresentationSet;
 class RWStepVisual_RWPresentationSet {
 	public:
+		/****************** RWStepVisual_RWPresentationSet ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationSet;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationSet;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationSet;
 		 RWStepVisual_RWPresentationSet ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2116,17 +2493,18 @@ class RWStepVisual_RWPresentationSet {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationSet> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationSet> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationSet> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationSet> & ent);
+
 };
 
 
@@ -2135,15 +2513,21 @@ class RWStepVisual_RWPresentationSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWPresentationSize *
+****************************************/
 %nodefaultctor RWStepVisual_RWPresentationSize;
 class RWStepVisual_RWPresentationSize {
 	public:
+		/****************** RWStepVisual_RWPresentationSize ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationSize;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationSize;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationSize;
 		 RWStepVisual_RWPresentationSize ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2151,25 +2535,27 @@ class RWStepVisual_RWPresentationSize {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationSize> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationSize> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationSize> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationSize> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationSize> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationSize> & ent);
+
 };
 
 
@@ -2178,15 +2564,21 @@ class RWStepVisual_RWPresentationSize {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************************
+* class RWStepVisual_RWPresentationStyleAssignment *
+***************************************************/
 %nodefaultctor RWStepVisual_RWPresentationStyleAssignment;
 class RWStepVisual_RWPresentationStyleAssignment {
 	public:
+		/****************** RWStepVisual_RWPresentationStyleAssignment ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationStyleAssignment;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationStyleAssignment;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationStyleAssignment;
 		 RWStepVisual_RWPresentationStyleAssignment ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2194,25 +2586,27 @@ class RWStepVisual_RWPresentationStyleAssignment {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleAssignment> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationStyleAssignment> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleAssignment> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationStyleAssignment> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleAssignment> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationStyleAssignment> & ent);
+
 };
 
 
@@ -2221,15 +2615,21 @@ class RWStepVisual_RWPresentationStyleAssignment {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class RWStepVisual_RWPresentationStyleByContext *
+**************************************************/
 %nodefaultctor RWStepVisual_RWPresentationStyleByContext;
 class RWStepVisual_RWPresentationStyleByContext {
 	public:
+		/****************** RWStepVisual_RWPresentationStyleByContext ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationStyleByContext;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationStyleByContext;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationStyleByContext;
 		 RWStepVisual_RWPresentationStyleByContext ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2237,25 +2637,27 @@ class RWStepVisual_RWPresentationStyleByContext {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleByContext> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationStyleByContext> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleByContext> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationStyleByContext> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationStyleByContext> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationStyleByContext> & ent);
+
 };
 
 
@@ -2264,15 +2666,21 @@ class RWStepVisual_RWPresentationStyleByContext {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWPresentationView *
+****************************************/
 %nodefaultctor RWStepVisual_RWPresentationView;
 class RWStepVisual_RWPresentationView {
 	public:
+		/****************** RWStepVisual_RWPresentationView ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentationView;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentationView;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentationView;
 		 RWStepVisual_RWPresentationView ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2280,25 +2688,27 @@ class RWStepVisual_RWPresentationView {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationView> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentationView> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationView> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentationView> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentationView> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentationView> & ent);
+
 };
 
 
@@ -2307,15 +2717,21 @@ class RWStepVisual_RWPresentationView {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************************
+* class RWStepVisual_RWPresentedItemRepresentation *
+***************************************************/
 %nodefaultctor RWStepVisual_RWPresentedItemRepresentation;
 class RWStepVisual_RWPresentedItemRepresentation {
 	public:
+		/****************** RWStepVisual_RWPresentedItemRepresentation ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWPresentedItemRepresentation;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWPresentedItemRepresentation;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWPresentedItemRepresentation;
 		 RWStepVisual_RWPresentedItemRepresentation ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2323,25 +2739,27 @@ class RWStepVisual_RWPresentedItemRepresentation {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentedItemRepresentation> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_PresentedItemRepresentation> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_PresentedItemRepresentation> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_PresentedItemRepresentation> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_PresentedItemRepresentation> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_PresentedItemRepresentation> & ent);
+
 };
 
 
@@ -2350,15 +2768,21 @@ class RWStepVisual_RWPresentedItemRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class RWStepVisual_RWStyledItem *
+**********************************/
 %nodefaultctor RWStepVisual_RWStyledItem;
 class RWStepVisual_RWStyledItem {
 	public:
+		/****************** RWStepVisual_RWStyledItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWStyledItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWStyledItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWStyledItem;
 		 RWStepVisual_RWStyledItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2366,25 +2790,27 @@ class RWStepVisual_RWStyledItem {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_StyledItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_StyledItem> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_StyledItem> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_StyledItem> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_StyledItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_StyledItem> & ent);
+
 };
 
 
@@ -2393,15 +2819,21 @@ class RWStepVisual_RWStyledItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWSurfaceSideStyle *
+****************************************/
 %nodefaultctor RWStepVisual_RWSurfaceSideStyle;
 class RWStepVisual_RWSurfaceSideStyle {
 	public:
+		/****************** RWStepVisual_RWSurfaceSideStyle ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceSideStyle;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceSideStyle;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceSideStyle;
 		 RWStepVisual_RWSurfaceSideStyle ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2409,25 +2841,27 @@ class RWStepVisual_RWSurfaceSideStyle {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceSideStyle> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceSideStyle> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceSideStyle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceSideStyle> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceSideStyle> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceSideStyle> & ent);
+
 };
 
 
@@ -2436,15 +2870,21 @@ class RWStepVisual_RWSurfaceSideStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************
+* class RWStepVisual_RWSurfaceStyleBoundary *
+********************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleBoundary;
 class RWStepVisual_RWSurfaceStyleBoundary {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleBoundary ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleBoundary;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleBoundary;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleBoundary;
 		 RWStepVisual_RWSurfaceStyleBoundary ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2452,25 +2892,27 @@ class RWStepVisual_RWSurfaceStyleBoundary {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleBoundary> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleBoundary> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleBoundary> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleBoundary> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleBoundary> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleBoundary> & ent);
+
 };
 
 
@@ -2479,15 +2921,21 @@ class RWStepVisual_RWSurfaceStyleBoundary {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class RWStepVisual_RWSurfaceStyleControlGrid *
+***********************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleControlGrid;
 class RWStepVisual_RWSurfaceStyleControlGrid {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleControlGrid ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleControlGrid;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleControlGrid;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleControlGrid;
 		 RWStepVisual_RWSurfaceStyleControlGrid ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2495,25 +2943,27 @@ class RWStepVisual_RWSurfaceStyleControlGrid {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleControlGrid> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleControlGrid> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleControlGrid> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleControlGrid> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleControlGrid> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleControlGrid> & ent);
+
 };
 
 
@@ -2522,15 +2972,21 @@ class RWStepVisual_RWSurfaceStyleControlGrid {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************
+* class RWStepVisual_RWSurfaceStyleFillArea *
+********************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleFillArea;
 class RWStepVisual_RWSurfaceStyleFillArea {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleFillArea ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleFillArea;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleFillArea;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleFillArea;
 		 RWStepVisual_RWSurfaceStyleFillArea ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2538,25 +2994,27 @@ class RWStepVisual_RWSurfaceStyleFillArea {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleFillArea> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleFillArea> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleFillArea> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleFillArea> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleFillArea> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleFillArea> & ent);
+
 };
 
 
@@ -2565,15 +3023,21 @@ class RWStepVisual_RWSurfaceStyleFillArea {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************************
+* class RWStepVisual_RWSurfaceStyleParameterLine *
+*************************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleParameterLine;
 class RWStepVisual_RWSurfaceStyleParameterLine {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleParameterLine ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleParameterLine;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleParameterLine;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleParameterLine;
 		 RWStepVisual_RWSurfaceStyleParameterLine ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2581,25 +3045,27 @@ class RWStepVisual_RWSurfaceStyleParameterLine {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleParameterLine> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleParameterLine> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleParameterLine> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleParameterLine> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleParameterLine> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleParameterLine> & ent);
+
 };
 
 
@@ -2608,15 +3074,21 @@ class RWStepVisual_RWSurfaceStyleParameterLine {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************************
+* class RWStepVisual_RWSurfaceStyleSegmentationCurve *
+*****************************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleSegmentationCurve;
 class RWStepVisual_RWSurfaceStyleSegmentationCurve {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleSegmentationCurve ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleSegmentationCurve;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleSegmentationCurve;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleSegmentationCurve;
 		 RWStepVisual_RWSurfaceStyleSegmentationCurve ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2624,25 +3096,27 @@ class RWStepVisual_RWSurfaceStyleSegmentationCurve {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleSegmentationCurve> & ent);
+
 };
 
 
@@ -2651,15 +3125,21 @@ class RWStepVisual_RWSurfaceStyleSegmentationCurve {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class RWStepVisual_RWSurfaceStyleSilhouette *
+**********************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleSilhouette;
 class RWStepVisual_RWSurfaceStyleSilhouette {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleSilhouette ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleSilhouette;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleSilhouette;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleSilhouette;
 		 RWStepVisual_RWSurfaceStyleSilhouette ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2667,25 +3147,27 @@ class RWStepVisual_RWSurfaceStyleSilhouette {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSilhouette> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleSilhouette> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSilhouette> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleSilhouette> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleSilhouette> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleSilhouette> & ent);
+
 };
 
 
@@ -2694,15 +3176,21 @@ class RWStepVisual_RWSurfaceStyleSilhouette {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class RWStepVisual_RWSurfaceStyleUsage *
+*****************************************/
 %nodefaultctor RWStepVisual_RWSurfaceStyleUsage;
 class RWStepVisual_RWSurfaceStyleUsage {
 	public:
+		/****************** RWStepVisual_RWSurfaceStyleUsage ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleUsage;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWSurfaceStyleUsage;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWSurfaceStyleUsage;
 		 RWStepVisual_RWSurfaceStyleUsage ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2710,25 +3198,27 @@ class RWStepVisual_RWSurfaceStyleUsage {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleUsage> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_SurfaceStyleUsage> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleUsage> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_SurfaceStyleUsage> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_SurfaceStyleUsage> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_SurfaceStyleUsage> & ent);
+
 };
 
 
@@ -2737,15 +3227,21 @@ class RWStepVisual_RWSurfaceStyleUsage {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class RWStepVisual_RWTemplate *
+********************************/
 %nodefaultctor RWStepVisual_RWTemplate;
 class RWStepVisual_RWTemplate {
 	public:
+		/****************** RWStepVisual_RWTemplate ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTemplate;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTemplate;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTemplate;
 		 RWStepVisual_RWTemplate ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2753,25 +3249,27 @@ class RWStepVisual_RWTemplate {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Template> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_Template> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_Template> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_Template> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_Template> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_Template> & ent);
+
 };
 
 
@@ -2780,15 +3278,21 @@ class RWStepVisual_RWTemplate {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class RWStepVisual_RWTemplateInstance *
+****************************************/
 %nodefaultctor RWStepVisual_RWTemplateInstance;
 class RWStepVisual_RWTemplateInstance {
 	public:
+		/****************** RWStepVisual_RWTemplateInstance ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTemplateInstance;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTemplateInstance;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTemplateInstance;
 		 RWStepVisual_RWTemplateInstance ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2796,25 +3300,27 @@ class RWStepVisual_RWTemplateInstance {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TemplateInstance> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TemplateInstance> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TemplateInstance> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TemplateInstance> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TemplateInstance> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TemplateInstance> & ent);
+
 };
 
 
@@ -2823,15 +3329,21 @@ class RWStepVisual_RWTemplateInstance {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************************
+* class RWStepVisual_RWTessellatedAnnotationOccurrence *
+*******************************************************/
 %nodefaultctor RWStepVisual_RWTessellatedAnnotationOccurrence;
 class RWStepVisual_RWTessellatedAnnotationOccurrence {
 	public:
+		/****************** RWStepVisual_RWTessellatedAnnotationOccurrence ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTessellatedAnnotationOccurrence;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTessellatedAnnotationOccurrence;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTessellatedAnnotationOccurrence;
 		 RWStepVisual_RWTessellatedAnnotationOccurrence ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2839,25 +3351,27 @@ class RWStepVisual_RWTessellatedAnnotationOccurrence {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> & ent);
+
 };
 
 
@@ -2866,15 +3380,21 @@ class RWStepVisual_RWTessellatedAnnotationOccurrence {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class RWStepVisual_RWTessellatedCurveSet *
+*******************************************/
 %nodefaultctor RWStepVisual_RWTessellatedCurveSet;
 class RWStepVisual_RWTessellatedCurveSet {
 	public:
+		/****************** RWStepVisual_RWTessellatedCurveSet ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTessellatedCurveSet;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTessellatedCurveSet;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTessellatedCurveSet;
 		 RWStepVisual_RWTessellatedCurveSet ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2882,25 +3402,27 @@ class RWStepVisual_RWTessellatedCurveSet {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedCurveSet> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TessellatedCurveSet> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedCurveSet> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TessellatedCurveSet> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedCurveSet> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TessellatedCurveSet> & ent);
+
 };
 
 
@@ -2909,15 +3431,21 @@ class RWStepVisual_RWTessellatedCurveSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class RWStepVisual_RWTessellatedGeometricSet *
+***********************************************/
 %nodefaultctor RWStepVisual_RWTessellatedGeometricSet;
 class RWStepVisual_RWTessellatedGeometricSet {
 	public:
+		/****************** RWStepVisual_RWTessellatedGeometricSet ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTessellatedGeometricSet;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTessellatedGeometricSet;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTessellatedGeometricSet;
 		 RWStepVisual_RWTessellatedGeometricSet ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2925,25 +3453,27 @@ class RWStepVisual_RWTessellatedGeometricSet {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedGeometricSet> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TessellatedGeometricSet> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedGeometricSet> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TessellatedGeometricSet> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedGeometricSet> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TessellatedGeometricSet> & ent);
+
 };
 
 
@@ -2952,15 +3482,21 @@ class RWStepVisual_RWTessellatedGeometricSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class RWStepVisual_RWTessellatedItem *
+***************************************/
 %nodefaultctor RWStepVisual_RWTessellatedItem;
 class RWStepVisual_RWTessellatedItem {
 	public:
+		/****************** RWStepVisual_RWTessellatedItem ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTessellatedItem;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTessellatedItem;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTessellatedItem;
 		 RWStepVisual_RWTessellatedItem ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -2968,17 +3504,18 @@ class RWStepVisual_RWTessellatedItem {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedItem> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TessellatedItem> & ent);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TessellatedItem> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TessellatedItem> & ent);
+
 };
 
 
@@ -2987,15 +3524,21 @@ class RWStepVisual_RWTessellatedItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class RWStepVisual_RWTextLiteral *
+***********************************/
 %nodefaultctor RWStepVisual_RWTextLiteral;
 class RWStepVisual_RWTextLiteral {
 	public:
+		/****************** RWStepVisual_RWTextLiteral ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTextLiteral;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTextLiteral;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTextLiteral;
 		 RWStepVisual_RWTextLiteral ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -3003,25 +3546,27 @@ class RWStepVisual_RWTextLiteral {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextLiteral> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TextLiteral> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TextLiteral> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TextLiteral> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextLiteral> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TextLiteral> & ent);
+
 };
 
 
@@ -3030,15 +3575,21 @@ class RWStepVisual_RWTextLiteral {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class RWStepVisual_RWTextStyle *
+*********************************/
 %nodefaultctor RWStepVisual_RWTextStyle;
 class RWStepVisual_RWTextStyle {
 	public:
+		/****************** RWStepVisual_RWTextStyle ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTextStyle;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTextStyle;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTextStyle;
 		 RWStepVisual_RWTextStyle ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -3046,25 +3597,27 @@ class RWStepVisual_RWTextStyle {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyle> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TextStyle> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyle> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TextStyle> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyle> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TextStyle> & ent);
+
 };
 
 
@@ -3073,15 +3626,21 @@ class RWStepVisual_RWTextStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class RWStepVisual_RWTextStyleForDefinedFont *
+***********************************************/
 %nodefaultctor RWStepVisual_RWTextStyleForDefinedFont;
 class RWStepVisual_RWTextStyleForDefinedFont {
 	public:
+		/****************** RWStepVisual_RWTextStyleForDefinedFont ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTextStyleForDefinedFont;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTextStyleForDefinedFont;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTextStyleForDefinedFont;
 		 RWStepVisual_RWTextStyleForDefinedFont ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -3089,25 +3648,27 @@ class RWStepVisual_RWTextStyleForDefinedFont {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TextStyleForDefinedFont> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TextStyleForDefinedFont> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TextStyleForDefinedFont> & ent);
+
 };
 
 
@@ -3116,15 +3677,21 @@ class RWStepVisual_RWTextStyleForDefinedFont {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************************
+* class RWStepVisual_RWTextStyleWithBoxCharacteristics *
+*******************************************************/
 %nodefaultctor RWStepVisual_RWTextStyleWithBoxCharacteristics;
 class RWStepVisual_RWTextStyleWithBoxCharacteristics {
 	public:
+		/****************** RWStepVisual_RWTextStyleWithBoxCharacteristics ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWTextStyleWithBoxCharacteristics;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWTextStyleWithBoxCharacteristics;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWTextStyleWithBoxCharacteristics;
 		 RWStepVisual_RWTextStyleWithBoxCharacteristics ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -3132,25 +3699,27 @@ class RWStepVisual_RWTextStyleWithBoxCharacteristics {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_TextStyleWithBoxCharacteristics> & ent);
+
 };
 
 
@@ -3159,15 +3728,21 @@ class RWStepVisual_RWTextStyleWithBoxCharacteristics {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class RWStepVisual_RWViewVolume *
+**********************************/
 %nodefaultctor RWStepVisual_RWViewVolume;
 class RWStepVisual_RWViewVolume {
 	public:
+		/****************** RWStepVisual_RWViewVolume ******************/
 		%feature("compactdefaultargs") RWStepVisual_RWViewVolume;
-		%feature("autodoc", "	:rtype: None
-") RWStepVisual_RWViewVolume;
+		%feature("autodoc", ":rtype: None") RWStepVisual_RWViewVolume;
 		 RWStepVisual_RWViewVolume ();
+
+		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "	:param data:
+		%feature("autodoc", ":param data:
 	:type data: opencascade::handle<StepData_StepReaderData> &
 	:param num:
 	:type num: int
@@ -3175,25 +3750,27 @@ class RWStepVisual_RWViewVolume {
 	:type ach: opencascade::handle<Interface_Check> &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ViewVolume> &
-	:rtype: None
-") ReadStep;
+	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepVisual_ViewVolume> & ent);
+
+		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "	:param ent:
+		%feature("autodoc", ":param ent:
 	:type ent: opencascade::handle<StepVisual_ViewVolume> &
 	:param iter:
 	:type iter: Interface_EntityIterator &
-	:rtype: None
-") Share;
+	:rtype: None") Share;
 		void Share (const opencascade::handle<StepVisual_ViewVolume> & ent,Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "	:param SW:
+		%feature("autodoc", ":param SW:
 	:type SW: StepData_StepWriter &
 	:param ent:
 	:type ent: opencascade::handle<StepVisual_ViewVolume> &
-	:rtype: None
-") WriteStep;
+	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepVisual_ViewVolume> & ent);
+
 };
 
 
@@ -3202,6 +3779,7 @@ class RWStepVisual_RWViewVolume {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

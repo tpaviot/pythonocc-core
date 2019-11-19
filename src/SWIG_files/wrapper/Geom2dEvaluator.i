@@ -70,34 +70,37 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2devaluator.h
 /* typedefs */
 /* end typedefs declaration */
 
+/******************************
+* class Geom2dEvaluator_Curve *
+******************************/
 %nodefaultctor Geom2dEvaluator_Curve;
 class Geom2dEvaluator_Curve : public Standard_Transient {
 	public:
+		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Value of 2D curve
-
+		%feature("autodoc", "* Value of 2D curve
 	:param theU:
 	:type theU: float
 	:param theValue:
 	:type theValue: gp_Pnt2d
-	:rtype: None
-") D0;
+	:rtype: None") D0;
 		void D0 (const Standard_Real theU,gp_Pnt2d & theValue);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Value and first derivatives of curve
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* Value and first derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
 	:type theValue: gp_Pnt2d
 	:param theD1:
 	:type theD1: gp_Vec2d
-	:rtype: None
-") D1;
+	:rtype: None") D1;
 		void D1 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Value, first and second derivatives of curve
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* Value, first and second derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
@@ -106,12 +109,12 @@ class Geom2dEvaluator_Curve : public Standard_Transient {
 	:type theD1: gp_Vec2d
 	:param theD2:
 	:type theD2: gp_Vec2d
-	:rtype: None
-") D2;
+	:rtype: None") D2;
 		void D2 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1,gp_Vec2d & theD2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Value, first, second and third derivatives of curve
 
+		/****************** D3 ******************/
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "* Value, first, second and third derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
@@ -122,19 +125,19 @@ class Geom2dEvaluator_Curve : public Standard_Transient {
 	:type theD2: gp_Vec2d
 	:param theD3:
 	:type theD3: gp_Vec2d
-	:rtype: None
-") D3;
+	:rtype: None") D3;
 		void D3 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1,gp_Vec2d & theD2,gp_Vec2d & theD3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
 
+		/****************** DN ******************/
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "* Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
 	:param theU:
 	:type theU: float
 	:param theDerU:
 	:type theDerU: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		gp_Vec2d DN (const Standard_Real theU,const Standard_Integer theDerU);
+
 };
 
 
@@ -145,34 +148,38 @@ class Geom2dEvaluator_Curve : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class Geom2dEvaluator_OffsetCurve *
+************************************/
 %nodefaultctor Geom2dEvaluator_OffsetCurve;
 class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 	public:
+		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Value of curve
-
+		%feature("autodoc", "* Value of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
 	:type theValue: gp_Pnt2d
-	:rtype: None
-") D0;
+	:rtype: None") D0;
 		void D0 (const Standard_Real theU,gp_Pnt2d & theValue);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Value and first derivatives of curve
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* Value and first derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
 	:type theValue: gp_Pnt2d
 	:param theD1:
 	:type theD1: gp_Vec2d
-	:rtype: None
-") D1;
+	:rtype: None") D1;
 		void D1 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Value, first and second derivatives of curve
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* Value, first and second derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
@@ -181,12 +188,12 @@ class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 	:type theD1: gp_Vec2d
 	:param theD2:
 	:type theD2: gp_Vec2d
-	:rtype: None
-") D2;
+	:rtype: None") D2;
 		void D2 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1,gp_Vec2d & theD2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Value, first, second and third derivatives of curve
 
+		/****************** D3 ******************/
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "* Value, first, second and third derivatives of curve
 	:param theU:
 	:type theU: float
 	:param theValue:
@@ -197,47 +204,47 @@ class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 	:type theD2: gp_Vec2d
 	:param theD3:
 	:type theD3: gp_Vec2d
-	:rtype: None
-") D3;
+	:rtype: None") D3;
 		void D3 (const Standard_Real theU,gp_Pnt2d & theValue,gp_Vec2d & theD1,gp_Vec2d & theD2,gp_Vec2d & theD3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
 
+		/****************** DN ******************/
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "* Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
 	:param theU:
 	:type theU: float
 	:param theDeriv:
 	:type theDeriv: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		gp_Vec2d DN (const Standard_Real theU,const Standard_Integer theDeriv);
-		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
-		%feature("autodoc", "	* Initialize evaluator by curve
 
+		/****************** Geom2dEvaluator_OffsetCurve ******************/
+		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
+		%feature("autodoc", "* Initialize evaluator by curve
 	:param theBase:
 	:type theBase: opencascade::handle<Geom2d_Curve> &
 	:param theOffset:
 	:type theOffset: float
-	:rtype: None
-") Geom2dEvaluator_OffsetCurve;
+	:rtype: None") Geom2dEvaluator_OffsetCurve;
 		 Geom2dEvaluator_OffsetCurve (const opencascade::handle<Geom2d_Curve> & theBase,const Standard_Real theOffset);
-		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
-		%feature("autodoc", "	* Initialize evaluator by curve adaptor
 
+		/****************** Geom2dEvaluator_OffsetCurve ******************/
+		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
+		%feature("autodoc", "* Initialize evaluator by curve adaptor
 	:param theBase:
 	:type theBase: opencascade::handle<Geom2dAdaptor_HCurve> &
 	:param theOffset:
 	:type theOffset: float
-	:rtype: None
-") Geom2dEvaluator_OffsetCurve;
+	:rtype: None") Geom2dEvaluator_OffsetCurve;
 		 Geom2dEvaluator_OffsetCurve (const opencascade::handle<Geom2dAdaptor_HCurve> & theBase,const Standard_Real theOffset);
-		%feature("compactdefaultargs") SetOffsetValue;
-		%feature("autodoc", "	* Change the offset value
 
+		/****************** SetOffsetValue ******************/
+		%feature("compactdefaultargs") SetOffsetValue;
+		%feature("autodoc", "* Change the offset value
 	:param theOffset:
 	:type theOffset: float
-	:rtype: None
-") SetOffsetValue;
+	:rtype: None") SetOffsetValue;
 		void SetOffsetValue (Standard_Real theOffset);
+
 };
 
 
@@ -248,6 +255,7 @@ class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

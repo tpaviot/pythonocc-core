@@ -78,30 +78,35 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmldrivers.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/*******************
+* class XmlDrivers *
+*******************/
 %rename(xmldrivers) XmlDrivers;
 %nodefaultctor XmlDrivers;
 class XmlDrivers {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		static opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
-		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "	* Defines format 'XmlOcaf' and registers its read and write drivers in the specified application
 
+		/****************** DefineFormat ******************/
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "* Defines format 'XmlOcaf' and registers its read and write drivers in the specified application
 	:param theApp:
 	:type theApp: opencascade::handle<TDocStd_Application> &
-	:rtype: void
-") DefineFormat;
+	:rtype: void") DefineFormat;
 		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
+
+		/****************** Factory ******************/
 		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	:param theGUID:
+		%feature("autodoc", ":param theGUID:
 	:type theGUID: Standard_GUID &
-	:rtype: opencascade::handle<Standard_Transient>
-") Factory;
+	:rtype: opencascade::handle<Standard_Transient>") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
+
 };
 
 
@@ -110,33 +115,41 @@ class XmlDrivers {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class XmlDrivers_DocumentRetrievalDriver *
+*******************************************/
 %nodefaultctor XmlDrivers_DocumentRetrievalDriver;
 class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** ReadShapeSection ******************/
 		%feature("compactdefaultargs") ReadShapeSection;
-		%feature("autodoc", "	:param thePDoc:
+		%feature("autodoc", ":param thePDoc:
 	:type thePDoc: XmlObjMgt_Element &
 	:param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriver>
-") ReadShapeSection;
+	:rtype: opencascade::handle<XmlMDF_ADriver>") ReadShapeSection;
 		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection (const XmlObjMgt_Element & thePDoc,const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** ShapeSetCleaning ******************/
 		%feature("compactdefaultargs") ShapeSetCleaning;
-		%feature("autodoc", "	:param theDriver:
+		%feature("autodoc", ":param theDriver:
 	:type theDriver: opencascade::handle<XmlMDF_ADriver> &
-	:rtype: void
-") ShapeSetCleaning;
+	:rtype: void") ShapeSetCleaning;
 		virtual void ShapeSetCleaning (const opencascade::handle<XmlMDF_ADriver> & theDriver);
+
+		/****************** XmlDrivers_DocumentRetrievalDriver ******************/
 		%feature("compactdefaultargs") XmlDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	:rtype: None
-") XmlDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", ":rtype: None") XmlDrivers_DocumentRetrievalDriver;
 		 XmlDrivers_DocumentRetrievalDriver ();
+
 };
 
 
@@ -147,27 +160,34 @@ class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalD
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class XmlDrivers_DocumentStorageDriver *
+*****************************************/
 %nodefaultctor XmlDrivers_DocumentStorageDriver;
 class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** WriteShapeSection ******************/
 		%feature("compactdefaultargs") WriteShapeSection;
-		%feature("autodoc", "	:param thePDoc:
+		%feature("autodoc", ":param thePDoc:
 	:type thePDoc: XmlObjMgt_Element &
-	:rtype: bool
-") WriteShapeSection;
+	:rtype: bool") WriteShapeSection;
 		virtual Standard_Boolean WriteShapeSection (XmlObjMgt_Element & thePDoc);
+
+		/****************** XmlDrivers_DocumentStorageDriver ******************/
 		%feature("compactdefaultargs") XmlDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	:param theCopyright:
+		%feature("autodoc", ":param theCopyright:
 	:type theCopyright: TCollection_ExtendedString &
-	:rtype: None
-") XmlDrivers_DocumentStorageDriver;
+	:rtype: None") XmlDrivers_DocumentStorageDriver;
 		 XmlDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
+
 };
 
 
@@ -178,6 +198,7 @@ class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDrive
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

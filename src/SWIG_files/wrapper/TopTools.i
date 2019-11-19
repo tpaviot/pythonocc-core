@@ -210,27 +210,30 @@ typedef TopTools_DataMapOfShapeBox::Iterator TopTools_DataMapIteratorOfDataMapOf
 typedef NCollection_Array2 <TopoDS_Shape> TopTools_Array2OfShape;
 /* end typedefs declaration */
 
+/*****************
+* class TopTools *
+*****************/
 %rename(toptools) TopTools;
 class TopTools {
 	public:
+		/****************** Dummy ******************/
 		%feature("compactdefaultargs") Dummy;
-		%feature("autodoc", "	* This is to bypass an extraction bug. It will force the inclusion of Standard_Integer.hxx itself including Standard_OStream.hxx at the correct position.
-
+		%feature("autodoc", "* This is to bypass an extraction bug. It will force the inclusion of Standard_Integer.hxx itself including Standard_OStream.hxx at the correct position.
 	:param I:
 	:type I: int
-	:rtype: void
-") Dummy;
+	:rtype: void") Dummy;
 		static void Dummy (const Standard_Integer I);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* A set of Shapes. Can be dump, wrote or read. Dumps the topological structure of <Sh> on the stream <S>.
 
+		/****************** Dump ******************/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "* A set of Shapes. Can be dump, wrote or read. Dumps the topological structure of <Sh> on the stream <S>.
 	:param Sh:
 	:type Sh: TopoDS_Shape &
 	:param S:
 	:type S: Standard_OStream &
-	:rtype: void
-") Dump;
+	:rtype: void") Dump;
 		static void Dump (const TopoDS_Shape & Sh,Standard_OStream & S);
+
 };
 
 
@@ -239,23 +242,27 @@ class TopTools {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class TopTools_LocationSet *
+*****************************/
 %nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
+		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Incorporate a new Location in the set and returns its index.
-
+		%feature("autodoc", "* Incorporate a new Location in the set and returns its index.
 	:param L:
 	:type L: TopLoc_Location &
-	:rtype: int
-") Add;
+	:rtype: int") Add;
 		Standard_Integer Add (const TopLoc_Location & L);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clears the content of the set.
 
-	:rtype: None
-") Clear;
+		/****************** Clear ******************/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "* Clears the content of the set.
+	:rtype: None") Clear;
 		void Clear ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -264,26 +271,27 @@ class TopTools_LocationSet {
             self->Dump(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "	:rtype: opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
+        		/****************** GetProgress ******************/
+		%feature("compactdefaultargs") GetProgress;
+		%feature("autodoc", ":rtype: opencascade::handle<Message_ProgressIndicator>") GetProgress;
 		opencascade::handle<Message_ProgressIndicator> GetProgress ();
-		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "	* Returns the index of <L>.
 
+		/****************** Index ******************/
+		%feature("compactdefaultargs") Index;
+		%feature("autodoc", "* Returns the index of <L>.
 	:param L:
 	:type L: TopLoc_Location &
-	:rtype: int
-") Index;
+	:rtype: int") Index;
 		Standard_Integer Index (const TopLoc_Location & L);
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	* Returns the location of index <I>.
 
+		/****************** Location ******************/
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "* Returns the location of index <I>.
 	:param I:
 	:type I: int
-	:rtype: TopLoc_Location
-") Location;
+	:rtype: TopLoc_Location") Location;
 		const TopLoc_Location & Location (const Standard_Integer I);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -291,18 +299,19 @@ class TopTools_LocationSet {
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "	:param PR:
+        		/****************** SetProgress ******************/
+		%feature("compactdefaultargs") SetProgress;
+		%feature("autodoc", ":param PR:
 	:type PR: opencascade::handle<Message_ProgressIndicator> &
-	:rtype: None
-") SetProgress;
+	:rtype: None") SetProgress;
 		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
-		%feature("compactdefaultargs") TopTools_LocationSet;
-		%feature("autodoc", "	* Returns an empty set of locations.
 
-	:rtype: None
-") TopTools_LocationSet;
+		/****************** TopTools_LocationSet ******************/
+		%feature("compactdefaultargs") TopTools_LocationSet;
+		%feature("autodoc", "* Returns an empty set of locations.
+	:rtype: None") TopTools_LocationSet;
 		 TopTools_LocationSet ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -319,47 +328,51 @@ class TopTools_LocationSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class TopTools_MutexForShapeProvider *
+***************************************/
 %nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
+		/****************** CreateMutexForShape ******************/
 		%feature("compactdefaultargs") CreateMutexForShape;
-		%feature("autodoc", "	* Creates and associates mutex with theShape
-
+		%feature("autodoc", "* Creates and associates mutex with theShape
 	:param theShape:
 	:type theShape: TopoDS_Shape &
-	:rtype: None
-") CreateMutexForShape;
+	:rtype: None") CreateMutexForShape;
 		void CreateMutexForShape (const TopoDS_Shape & theShape);
-		%feature("compactdefaultargs") CreateMutexesForSubShapes;
-		%feature("autodoc", "	* Creates and associates mutexes with each sub-shape of type theType in theShape.
 
+		/****************** CreateMutexesForSubShapes ******************/
+		%feature("compactdefaultargs") CreateMutexesForSubShapes;
+		%feature("autodoc", "* Creates and associates mutexes with each sub-shape of type theType in theShape.
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theType:
 	:type theType: TopAbs_ShapeEnum
-	:rtype: None
-") CreateMutexesForSubShapes;
+	:rtype: None") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes (const TopoDS_Shape & theShape,const TopAbs_ShapeEnum theType);
-		%feature("compactdefaultargs") GetMutex;
-		%feature("autodoc", "	* Returns pointer to mutex associated with theShape. In case when mutex not found returns NULL.
 
+		/****************** GetMutex ******************/
+		%feature("compactdefaultargs") GetMutex;
+		%feature("autodoc", "* Returns pointer to mutex associated with theShape. In case when mutex not found returns NULL.
 	:param theShape:
 	:type theShape: TopoDS_Shape &
-	:rtype: Standard_Mutex *
-") GetMutex;
+	:rtype: Standard_Mutex *") GetMutex;
 		Standard_Mutex * GetMutex (const TopoDS_Shape & theShape);
+
+		/****************** RemoveAllMutexes ******************/
 		%feature("compactdefaultargs") RemoveAllMutexes;
-		%feature("autodoc", "	* Removes all mutexes
-
-	:rtype: None
-") RemoveAllMutexes;
+		%feature("autodoc", "* Removes all mutexes
+	:rtype: None") RemoveAllMutexes;
 		void RemoveAllMutexes ();
-		%feature("compactdefaultargs") TopTools_MutexForShapeProvider;
-		%feature("autodoc", "	* Constructor
 
-	:rtype: None
-") TopTools_MutexForShapeProvider;
+		/****************** TopTools_MutexForShapeProvider ******************/
+		%feature("compactdefaultargs") TopTools_MutexForShapeProvider;
+		%feature("autodoc", "* Constructor
+	:rtype: None") TopTools_MutexForShapeProvider;
 		 TopTools_MutexForShapeProvider ();
+
 };
 
 
@@ -368,28 +381,32 @@ class TopTools_MutexForShapeProvider {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class TopTools_OrientedShapeMapHasher *
+****************************************/
 class TopTools_OrientedShapeMapHasher {
 	public:
+		/****************** HashCode ******************/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Computes a hash code for the given shape, in the range [1, theUpperBound] @param theShape the shape which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
-
+		%feature("autodoc", "* Computes a hash code for the given shape, in the range [1, theUpperBound] @param theShape the shape which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theUpperBound:
 	:type theUpperBound: int
-	:rtype: int
-") HashCode;
+	:rtype: int") HashCode;
 		static Standard_Integer HashCode (const TopoDS_Shape & theShape,const Standard_Integer theUpperBound);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns True when the two keys are equal. Two same keys must have the same hashcode, the contrary is not necessary.
 
+		/****************** IsEqual ******************/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "* Returns True when the two keys are equal. Two same keys must have the same hashcode, the contrary is not necessary.
 	:param S1:
 	:type S1: TopoDS_Shape &
 	:param S2:
 	:type S2: TopoDS_Shape &
-	:rtype: bool
-") IsEqual;
+	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
+
 };
 
 
@@ -398,28 +415,32 @@ class TopTools_OrientedShapeMapHasher {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class TopTools_ShapeMapHasher *
+********************************/
 class TopTools_ShapeMapHasher {
 	public:
+		/****************** HashCode ******************/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Computes a hash code for the given shape, in the range [1, theUpperBound] @param theShape the shape which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
-
+		%feature("autodoc", "* Computes a hash code for the given shape, in the range [1, theUpperBound] @param theShape the shape which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theUpperBound:
 	:type theUpperBound: int
-	:rtype: int
-") HashCode;
+	:rtype: int") HashCode;
 		static Standard_Integer HashCode (const TopoDS_Shape & theShape,Standard_Integer theUpperBound);
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 
+		/****************** IsEqual ******************/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 	:param S1:
 	:type S1: TopoDS_Shape &
 	:param S2:
 	:type S2: TopoDS_Shape &
-	:rtype: bool
-") IsEqual;
+	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
+
 };
 
 
@@ -428,55 +449,60 @@ class TopTools_ShapeMapHasher {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************
+* class TopTools_ShapeSet *
+**************************/
 %nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
+		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
-
+		%feature("autodoc", "* Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: int
-") Add;
+	:rtype: int") Add;
 		Standard_Integer Add (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") AddGeometry;
-		%feature("autodoc", "	* Stores the geometry of <S>.
 
+		/****************** AddGeometry ******************/
+		%feature("compactdefaultargs") AddGeometry;
+		%feature("autodoc", "* Stores the geometry of <S>.
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: void
-") AddGeometry;
+	:rtype: void") AddGeometry;
 		virtual void AddGeometry (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") AddShapes;
-		%feature("autodoc", "	* Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 
+		/****************** AddShapes ******************/
+		%feature("compactdefaultargs") AddShapes;
+		%feature("autodoc", "* Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 	:param S1:
 	:type S1: TopoDS_Shape &
 	:param S2:
 	:type S2: TopoDS_Shape &
-	:rtype: void
-") AddShapes;
+	:rtype: void") AddShapes;
 		virtual void AddShapes (TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("compactdefaultargs") ChangeLocations;
-		%feature("autodoc", "	:rtype: TopTools_LocationSet
-") ChangeLocations;
-		TopTools_LocationSet & ChangeLocations ();
-		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "	* This method is called after each new completed shape. <T> is the type. <S> is the shape. In this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
 
+		/****************** ChangeLocations ******************/
+		%feature("compactdefaultargs") ChangeLocations;
+		%feature("autodoc", ":rtype: TopTools_LocationSet") ChangeLocations;
+		TopTools_LocationSet & ChangeLocations ();
+
+		/****************** Check ******************/
+		%feature("compactdefaultargs") Check;
+		%feature("autodoc", "* This method is called after each new completed shape. <T> is the type. <S> is the shape. In this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: void
-") Check;
+	:rtype: void") Check;
 		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clears the content of the set. This method can be redefined.
 
-	:rtype: void
-") Clear;
+		/****************** Clear ******************/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "* Clears the content of the set. This method can be redefined.
+	:rtype: void") Clear;
 		virtual void Clear ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -485,16 +511,16 @@ class TopTools_ShapeSet {
             self->Dump(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* Dumps on <OS> the shape <S>. Dumps the orientation, the index of the TShape and the index of the Location.
-
+        		/****************** Dump ******************/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "* Dumps on <OS> the shape <S>. Dumps the orientation, the index of the TShape and the index of the Location.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param OS:
 	:type OS: Standard_OStream &
-	:rtype: None
-") Dump;
+	:rtype: None") Dump;
 		void Dump (const TopoDS_Shape & S,Standard_OStream & OS);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -503,14 +529,14 @@ class TopTools_ShapeSet {
             self->DumpExtent(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") DumpExtent;
-		%feature("autodoc", "	* Dumps the number of objects in me in the string S (Number of shapes of each type)
-
+        		/****************** DumpExtent ******************/
+		%feature("compactdefaultargs") DumpExtent;
+		%feature("autodoc", "* Dumps the number of objects in me in the string S (Number of shapes of each type)
 	:param S:
 	:type S: TCollection_AsciiString &
-	:rtype: None
-") DumpExtent;
+	:rtype: None") DumpExtent;
 		void DumpExtent (TCollection_AsciiString & S);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -519,44 +545,46 @@ class TopTools_ShapeSet {
             self->DumpGeometry(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") DumpGeometry;
-		%feature("autodoc", "	* Dumps the geometry of <S> on the stream <OS>.
-
+        		/****************** DumpGeometry ******************/
+		%feature("compactdefaultargs") DumpGeometry;
+		%feature("autodoc", "* Dumps the geometry of <S> on the stream <OS>.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param OS:
 	:type OS: Standard_OStream &
-	:rtype: void
-") DumpGeometry;
+	:rtype: void") DumpGeometry;
 		virtual void DumpGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
+
+		/****************** FormatNb ******************/
 		%feature("compactdefaultargs") FormatNb;
-		%feature("autodoc", "	* two formats available for the moment: First: does not write CurveOnSurface UV Points into the file on reading calls Check() method. Second: stores CurveOnSurface UV Points. On reading format is recognized from Version string.
-
-	:rtype: int
-") FormatNb;
+		%feature("autodoc", "* two formats available for the moment: First: does not write CurveOnSurface UV Points into the file on reading calls Check() method. Second: stores CurveOnSurface UV Points. On reading format is recognized from Version string.
+	:rtype: int") FormatNb;
 		Standard_Integer FormatNb ();
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "	:rtype: opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress ();
-		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "	* Returns the index of <S>.
 
+		/****************** GetProgress ******************/
+		%feature("compactdefaultargs") GetProgress;
+		%feature("autodoc", ":rtype: opencascade::handle<Message_ProgressIndicator>") GetProgress;
+		opencascade::handle<Message_ProgressIndicator> GetProgress ();
+
+		/****************** Index ******************/
+		%feature("compactdefaultargs") Index;
+		%feature("autodoc", "* Returns the index of <S>.
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: int
-") Index;
+	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Locations;
-		%feature("autodoc", "	:rtype: TopTools_LocationSet
-") Locations;
-		const TopTools_LocationSet & Locations ();
-		%feature("compactdefaultargs") NbShapes;
-		%feature("autodoc", "	* Returns number of shapes read from file.
 
-	:rtype: int
-") NbShapes;
+		/****************** Locations ******************/
+		%feature("compactdefaultargs") Locations;
+		%feature("autodoc", ":rtype: TopTools_LocationSet") Locations;
+		const TopTools_LocationSet & Locations ();
+
+		/****************** NbShapes ******************/
+		%feature("compactdefaultargs") NbShapes;
+		%feature("autodoc", "* Returns number of shapes read from file.
+	:rtype: int") NbShapes;
 		Standard_Integer NbShapes ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -564,16 +592,16 @@ class TopTools_ShapeSet {
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Reads from <IS> a shape and returns it in S.
-
+        		/****************** Read ******************/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "* Reads from <IS> a shape and returns it in S.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param IS:
 	:type IS: Standard_IStream &
-	:rtype: None
-") Read;
+	:rtype: None") Read;
 		void Read (TopoDS_Shape & S,Standard_IStream & IS);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -581,44 +609,46 @@ class TopTools_ShapeSet {
             std::stringstream s(src);
             self->ReadGeometry(s);}
         };
-        		%feature("compactdefaultargs") ReadGeometry;
-		%feature("autodoc", "	* Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
-
+        		/****************** ReadGeometry ******************/
+		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "* Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param IS:
 	:type IS: Standard_IStream &
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: void
-") ReadGeometry;
+	:rtype: void") ReadGeometry;
 		virtual void ReadGeometry (const TopAbs_ShapeEnum T,Standard_IStream & IS,TopoDS_Shape & S);
-		%feature("compactdefaultargs") SetFormatNb;
-		%feature("autodoc", "	:param theFormatNb:
-	:type theFormatNb: int
-	:rtype: None
-") SetFormatNb;
-		void SetFormatNb (const Standard_Integer theFormatNb);
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "	:param PR:
-	:type PR: opencascade::handle<Message_ProgressIndicator> &
-	:rtype: None
-") SetProgress;
-		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns the sub-shape of index <I>.
 
+		/****************** SetFormatNb ******************/
+		%feature("compactdefaultargs") SetFormatNb;
+		%feature("autodoc", ":param theFormatNb:
+	:type theFormatNb: int
+	:rtype: None") SetFormatNb;
+		void SetFormatNb (const Standard_Integer theFormatNb);
+
+		/****************** SetProgress ******************/
+		%feature("compactdefaultargs") SetProgress;
+		%feature("autodoc", ":param PR:
+	:type PR: opencascade::handle<Message_ProgressIndicator> &
+	:rtype: None") SetProgress;
+		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
+
+		/****************** Shape ******************/
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "* Returns the sub-shape of index <I>.
 	:param I:
 	:type I: int
-	:rtype: TopoDS_Shape
-") Shape;
+	:rtype: TopoDS_Shape") Shape;
 		const TopoDS_Shape  Shape (const Standard_Integer I);
-		%feature("compactdefaultargs") TopTools_ShapeSet;
-		%feature("autodoc", "	* Builds an empty ShapeSet.
 
-	:rtype: None
-") TopTools_ShapeSet;
+		/****************** TopTools_ShapeSet ******************/
+		%feature("compactdefaultargs") TopTools_ShapeSet;
+		%feature("autodoc", "* Builds an empty ShapeSet.
+	:rtype: None") TopTools_ShapeSet;
 		 TopTools_ShapeSet ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -627,16 +657,16 @@ class TopTools_ShapeSet {
             self->Write(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
-
+        		/****************** Write ******************/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "* Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param OS:
 	:type OS: Standard_OStream &
-	:rtype: None
-") Write;
+	:rtype: None") Write;
 		void Write (const TopoDS_Shape & S,Standard_OStream & OS);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -645,16 +675,16 @@ class TopTools_ShapeSet {
             self->WriteGeometry(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") WriteGeometry;
-		%feature("autodoc", "	* Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
-
+        		/****************** WriteGeometry ******************/
+		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "* Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param OS:
 	:type OS: Standard_OStream &
-	:rtype: void
-") WriteGeometry;
+	:rtype: void") WriteGeometry;
 		virtual void WriteGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
+
 };
 
 
@@ -663,6 +693,7 @@ class TopTools_ShapeSet {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 class TopTools_HArray1OfShape : public  TopTools_Array1OfShape, public Standard_Transient {
   public:

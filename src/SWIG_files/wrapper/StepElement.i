@@ -475,18 +475,21 @@ typedef NCollection_Array2 <opencascade::handle <StepElement_SurfaceElementPurpo
 typedef NCollection_Sequence <opencascade::handle <StepElement_CurveElementPurposeMember>> StepElement_SequenceOfCurveElementPurposeMember;
 /* end typedefs declaration */
 
+/*****************************************************
+* class StepElement_AnalysisItemWithinRepresentation *
+*****************************************************/
 %nodefaultctor StepElement_AnalysisItemWithinRepresentation;
 class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aName:
 	:type aName: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
@@ -495,65 +498,65 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 	:type aItem: opencascade::handle<StepRepr_RepresentationItem> &
 	:param aRep:
 	:type aRep: opencascade::handle<StepRepr_Representation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_RepresentationItem> & aItem,const opencascade::handle<StepRepr_Representation> & aRep);
+
+		/****************** Item ******************/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	* Returns field Item
-
-	:rtype: opencascade::handle<StepRepr_RepresentationItem>
-") Item;
+		%feature("autodoc", "* Returns field Item
+	:rtype: opencascade::handle<StepRepr_RepresentationItem>") Item;
 		opencascade::handle<StepRepr_RepresentationItem> Item ();
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns field Name
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Name;
+		%feature("autodoc", "* Returns field Name
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Name;
 		opencascade::handle<TCollection_HAsciiString> Name ();
+
+		/****************** Rep ******************/
 		%feature("compactdefaultargs") Rep;
-		%feature("autodoc", "	* Returns field Rep
-
-	:rtype: opencascade::handle<StepRepr_Representation>
-") Rep;
+		%feature("autodoc", "* Returns field Rep
+	:rtype: opencascade::handle<StepRepr_Representation>") Rep;
 		opencascade::handle<StepRepr_Representation> Rep ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	* Set field Item
 
+		/****************** SetItem ******************/
+		%feature("compactdefaultargs") SetItem;
+		%feature("autodoc", "* Set field Item
 	:param Item:
 	:type Item: opencascade::handle<StepRepr_RepresentationItem> &
-	:rtype: None
-") SetItem;
+	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepRepr_RepresentationItem> & Item);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set field Name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set field Name
 	:param Name:
 	:type Name: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetName;
+	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
-		%feature("compactdefaultargs") SetRep;
-		%feature("autodoc", "	* Set field Rep
 
+		/****************** SetRep ******************/
+		%feature("compactdefaultargs") SetRep;
+		%feature("autodoc", "* Set field Rep
 	:param Rep:
 	:type Rep: opencascade::handle<StepRepr_Representation> &
-	:rtype: None
-") SetRep;
+	:rtype: None") SetRep;
 		void SetRep (const opencascade::handle<StepRepr_Representation> & Rep);
-		%feature("compactdefaultargs") StepElement_AnalysisItemWithinRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_AnalysisItemWithinRepresentation;
+		/****************** StepElement_AnalysisItemWithinRepresentation ******************/
+		%feature("compactdefaultargs") StepElement_AnalysisItemWithinRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_AnalysisItemWithinRepresentation;
 		 StepElement_AnalysisItemWithinRepresentation ();
+
 };
 
 
@@ -564,53 +567,57 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************************
+* class StepElement_CurveElementEndReleasePacket *
+*************************************************/
 %nodefaultctor StepElement_CurveElementEndReleasePacket;
 class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aReleaseFreedom:
 	:type aReleaseFreedom: StepElement_CurveElementFreedom &
 	:param aReleaseStiffness:
 	:type aReleaseStiffness: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_CurveElementFreedom & aReleaseFreedom,const Standard_Real aReleaseStiffness);
+
+		/****************** ReleaseFreedom ******************/
 		%feature("compactdefaultargs") ReleaseFreedom;
-		%feature("autodoc", "	* Returns field ReleaseFreedom
-
-	:rtype: StepElement_CurveElementFreedom
-") ReleaseFreedom;
+		%feature("autodoc", "* Returns field ReleaseFreedom
+	:rtype: StepElement_CurveElementFreedom") ReleaseFreedom;
 		StepElement_CurveElementFreedom ReleaseFreedom ();
+
+		/****************** ReleaseStiffness ******************/
 		%feature("compactdefaultargs") ReleaseStiffness;
-		%feature("autodoc", "	* Returns field ReleaseStiffness
-
-	:rtype: float
-") ReleaseStiffness;
+		%feature("autodoc", "* Returns field ReleaseStiffness
+	:rtype: float") ReleaseStiffness;
 		Standard_Real ReleaseStiffness ();
-		%feature("compactdefaultargs") SetReleaseFreedom;
-		%feature("autodoc", "	* Set field ReleaseFreedom
 
+		/****************** SetReleaseFreedom ******************/
+		%feature("compactdefaultargs") SetReleaseFreedom;
+		%feature("autodoc", "* Set field ReleaseFreedom
 	:param ReleaseFreedom:
 	:type ReleaseFreedom: StepElement_CurveElementFreedom &
-	:rtype: None
-") SetReleaseFreedom;
+	:rtype: None") SetReleaseFreedom;
 		void SetReleaseFreedom (const StepElement_CurveElementFreedom & ReleaseFreedom);
-		%feature("compactdefaultargs") SetReleaseStiffness;
-		%feature("autodoc", "	* Set field ReleaseStiffness
 
+		/****************** SetReleaseStiffness ******************/
+		%feature("compactdefaultargs") SetReleaseStiffness;
+		%feature("autodoc", "* Set field ReleaseStiffness
 	:param ReleaseStiffness:
 	:type ReleaseStiffness: float
-	:rtype: None
-") SetReleaseStiffness;
+	:rtype: None") SetReleaseStiffness;
 		void SetReleaseStiffness (const Standard_Real ReleaseStiffness);
-		%feature("compactdefaultargs") StepElement_CurveElementEndReleasePacket;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementEndReleasePacket;
+		/****************** StepElement_CurveElementEndReleasePacket ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementEndReleasePacket;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementEndReleasePacket;
 		 StepElement_CurveElementEndReleasePacket ();
+
 };
 
 
@@ -621,65 +628,69 @@ class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class StepElement_CurveElementFreedom *
+****************************************/
 %nodefaultctor StepElement_CurveElementFreedom;
 class StepElement_CurveElementFreedom : public StepData_SelectType {
 	public:
+		/****************** ApplicationDefinedDegreeOfFreedom ******************/
 		%feature("compactdefaultargs") ApplicationDefinedDegreeOfFreedom;
-		%feature("autodoc", "	* Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type)
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") ApplicationDefinedDegreeOfFreedom;
+		%feature("autodoc", "* Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type)
+	:rtype: opencascade::handle<TCollection_HAsciiString>") ApplicationDefinedDegreeOfFreedom;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CurveElementFreedom select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of CurveElementFreedom select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** EnumeratedCurveElementFreedom ******************/
 		%feature("compactdefaultargs") EnumeratedCurveElementFreedom;
-		%feature("autodoc", "	* Returns Value as EnumeratedCurveElementFreedom (or Null if another type)
-
-	:rtype: StepElement_EnumeratedCurveElementFreedom
-") EnumeratedCurveElementFreedom;
+		%feature("autodoc", "* Returns Value as EnumeratedCurveElementFreedom (or Null if another type)
+	:rtype: StepElement_EnumeratedCurveElementFreedom") EnumeratedCurveElementFreedom;
 		StepElement_EnumeratedCurveElementFreedom EnumeratedCurveElementFreedom ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type CurveElementFreedomMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type CurveElementFreedomMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
-		%feature("autodoc", "	* Set Value for ApplicationDefinedDegreeOfFreedom
 
+		/****************** SetApplicationDefinedDegreeOfFreedom ******************/
+		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
+		%feature("autodoc", "* Set Value for ApplicationDefinedDegreeOfFreedom
 	:param aVal:
 	:type aVal: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetApplicationDefinedDegreeOfFreedom;
+	:rtype: None") SetApplicationDefinedDegreeOfFreedom;
 		void SetApplicationDefinedDegreeOfFreedom (const opencascade::handle<TCollection_HAsciiString> & aVal);
-		%feature("compactdefaultargs") SetEnumeratedCurveElementFreedom;
-		%feature("autodoc", "	* Set Value for EnumeratedCurveElementFreedom
 
+		/****************** SetEnumeratedCurveElementFreedom ******************/
+		%feature("compactdefaultargs") SetEnumeratedCurveElementFreedom;
+		%feature("autodoc", "* Set Value for EnumeratedCurveElementFreedom
 	:param aVal:
 	:type aVal: StepElement_EnumeratedCurveElementFreedom
-	:rtype: None
-") SetEnumeratedCurveElementFreedom;
+	:rtype: None") SetEnumeratedCurveElementFreedom;
 		void SetEnumeratedCurveElementFreedom (const StepElement_EnumeratedCurveElementFreedom aVal);
-		%feature("compactdefaultargs") StepElement_CurveElementFreedom;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementFreedom;
+		/****************** StepElement_CurveElementFreedom ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementFreedom;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementFreedom;
 		 StepElement_CurveElementFreedom ();
+
 };
 
 
@@ -688,43 +699,47 @@ class StepElement_CurveElementFreedom : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class StepElement_CurveElementFreedomMember *
+**********************************************/
 %nodefaultctor StepElement_CurveElementFreedomMember;
 class StepElement_CurveElementFreedomMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_CurveElementFreedomMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementFreedomMember;
+		/****************** StepElement_CurveElementFreedomMember ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementFreedomMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementFreedomMember;
 		 StepElement_CurveElementFreedomMember ();
+
 };
 
 
@@ -735,65 +750,69 @@ class StepElement_CurveElementFreedomMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class StepElement_CurveElementPurpose *
+****************************************/
 %nodefaultctor StepElement_CurveElementPurpose;
 class StepElement_CurveElementPurpose : public StepData_SelectType {
 	public:
+		/****************** ApplicationDefinedElementPurpose ******************/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") ApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
+	:rtype: opencascade::handle<TCollection_HAsciiString>") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member CurveElementPurposeMember 1 -> EnumeratedCurveElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member CurveElementPurposeMember 1 -> EnumeratedCurveElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CurveElementPurpose select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of CurveElementPurpose select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** EnumeratedCurveElementPurpose ******************/
 		%feature("compactdefaultargs") EnumeratedCurveElementPurpose;
-		%feature("autodoc", "	* Returns Value as EnumeratedCurveElementPurpose (or Null if another type)
-
-	:rtype: StepElement_EnumeratedCurveElementPurpose
-") EnumeratedCurveElementPurpose;
+		%feature("autodoc", "* Returns Value as EnumeratedCurveElementPurpose (or Null if another type)
+	:rtype: StepElement_EnumeratedCurveElementPurpose") EnumeratedCurveElementPurpose;
 		StepElement_EnumeratedCurveElementPurpose EnumeratedCurveElementPurpose ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type CurveElementPurposeMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type CurveElementPurposeMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Set Value for ApplicationDefinedElementPurpose
 
+		/****************** SetApplicationDefinedElementPurpose ******************/
+		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
 	:type aVal: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetApplicationDefinedElementPurpose;
+	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
-		%feature("compactdefaultargs") SetEnumeratedCurveElementPurpose;
-		%feature("autodoc", "	* Set Value for EnumeratedCurveElementPurpose
 
+		/****************** SetEnumeratedCurveElementPurpose ******************/
+		%feature("compactdefaultargs") SetEnumeratedCurveElementPurpose;
+		%feature("autodoc", "* Set Value for EnumeratedCurveElementPurpose
 	:param aVal:
 	:type aVal: StepElement_EnumeratedCurveElementPurpose
-	:rtype: None
-") SetEnumeratedCurveElementPurpose;
+	:rtype: None") SetEnumeratedCurveElementPurpose;
 		void SetEnumeratedCurveElementPurpose (const StepElement_EnumeratedCurveElementPurpose aVal);
-		%feature("compactdefaultargs") StepElement_CurveElementPurpose;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementPurpose;
+		/****************** StepElement_CurveElementPurpose ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementPurpose;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementPurpose;
 		 StepElement_CurveElementPurpose ();
+
 };
 
 
@@ -802,43 +821,47 @@ class StepElement_CurveElementPurpose : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class StepElement_CurveElementPurposeMember *
+**********************************************/
 %nodefaultctor StepElement_CurveElementPurposeMember;
 class StepElement_CurveElementPurposeMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_CurveElementPurposeMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementPurposeMember;
+		/****************** StepElement_CurveElementPurposeMember ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementPurposeMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementPurposeMember;
 		 StepElement_CurveElementPurposeMember ();
+
 };
 
 
@@ -849,53 +872,57 @@ class StepElement_CurveElementPurposeMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class StepElement_CurveElementSectionDefinition *
+**************************************************/
 %nodefaultctor StepElement_CurveElementSectionDefinition;
 class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDescription:
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aSectionAngle:
 	:type aSectionAngle: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aDescription,const Standard_Real aSectionAngle);
+
+		/****************** SectionAngle ******************/
 		%feature("compactdefaultargs") SectionAngle;
-		%feature("autodoc", "	* Returns field SectionAngle
-
-	:rtype: float
-") SectionAngle;
+		%feature("autodoc", "* Returns field SectionAngle
+	:rtype: float") SectionAngle;
 		Standard_Real SectionAngle ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetSectionAngle;
-		%feature("autodoc", "	* Set field SectionAngle
 
+		/****************** SetSectionAngle ******************/
+		%feature("compactdefaultargs") SetSectionAngle;
+		%feature("autodoc", "* Set field SectionAngle
 	:param SectionAngle:
 	:type SectionAngle: float
-	:rtype: None
-") SetSectionAngle;
+	:rtype: None") SetSectionAngle;
 		void SetSectionAngle (const Standard_Real SectionAngle);
-		%feature("compactdefaultargs") StepElement_CurveElementSectionDefinition;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_CurveElementSectionDefinition;
+		/****************** StepElement_CurveElementSectionDefinition ******************/
+		%feature("compactdefaultargs") StepElement_CurveElementSectionDefinition;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementSectionDefinition;
 		 StepElement_CurveElementSectionDefinition ();
+
 };
 
 
@@ -906,177 +933,181 @@ class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class StepElement_ElementAspect *
+**********************************/
 %nodefaultctor StepElement_ElementAspect;
 class StepElement_ElementAspect : public StepData_SelectType {
 	public:
+		/****************** CaseMem ******************/
 		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member ElementAspectMember 1 -> ElementVolume 2 -> Volume3dFace 3 -> Volume2dFace 4 -> Volume3dEdge 5 -> Volume2dEdge 6 -> Surface3dFace 7 -> Surface2dFace 8 -> Surface3dEdge 9 -> Surface2dEdge 10 -> CurveEdge 0 else
-
+		%feature("autodoc", "* Recognizes a items of select member ElementAspectMember 1 -> ElementVolume 2 -> Volume3dFace 3 -> Volume2dFace 4 -> Volume3dEdge 5 -> Volume2dEdge 6 -> Surface3dFace 7 -> Surface2dFace 8 -> Surface3dEdge 9 -> Surface2dEdge 10 -> CurveEdge 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ElementAspect select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of ElementAspect select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** CurveEdge ******************/
 		%feature("compactdefaultargs") CurveEdge;
-		%feature("autodoc", "	* Returns Value as CurveEdge (or Null if another type)
-
-	:rtype: StepElement_CurveEdge
-") CurveEdge;
+		%feature("autodoc", "* Returns Value as CurveEdge (or Null if another type)
+	:rtype: StepElement_CurveEdge") CurveEdge;
 		StepElement_CurveEdge CurveEdge ();
+
+		/****************** ElementVolume ******************/
 		%feature("compactdefaultargs") ElementVolume;
-		%feature("autodoc", "	* Returns Value as ElementVolume (or Null if another type)
-
-	:rtype: StepElement_ElementVolume
-") ElementVolume;
+		%feature("autodoc", "* Returns Value as ElementVolume (or Null if another type)
+	:rtype: StepElement_ElementVolume") ElementVolume;
 		StepElement_ElementVolume ElementVolume ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type ElementAspectMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type ElementAspectMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetCurveEdge;
-		%feature("autodoc", "	* Set Value for CurveEdge
 
+		/****************** SetCurveEdge ******************/
+		%feature("compactdefaultargs") SetCurveEdge;
+		%feature("autodoc", "* Set Value for CurveEdge
 	:param aVal:
 	:type aVal: StepElement_CurveEdge
-	:rtype: None
-") SetCurveEdge;
+	:rtype: None") SetCurveEdge;
 		void SetCurveEdge (const StepElement_CurveEdge aVal);
-		%feature("compactdefaultargs") SetElementVolume;
-		%feature("autodoc", "	* Set Value for ElementVolume
 
+		/****************** SetElementVolume ******************/
+		%feature("compactdefaultargs") SetElementVolume;
+		%feature("autodoc", "* Set Value for ElementVolume
 	:param aVal:
 	:type aVal: StepElement_ElementVolume
-	:rtype: None
-") SetElementVolume;
+	:rtype: None") SetElementVolume;
 		void SetElementVolume (const StepElement_ElementVolume aVal);
+
+		/****************** SetSurface2dEdge ******************/
 		%feature("compactdefaultargs") SetSurface2dEdge;
-		%feature("autodoc", "	* Set Value for Surface2dEdge
-
+		%feature("autodoc", "* Set Value for Surface2dEdge
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetSurface2dEdge;
+	:rtype: None") SetSurface2dEdge;
 		void SetSurface2dEdge (const Standard_Integer aVal);
+
+		/****************** SetSurface2dFace ******************/
 		%feature("compactdefaultargs") SetSurface2dFace;
-		%feature("autodoc", "	* Set Value for Surface2dFace
-
+		%feature("autodoc", "* Set Value for Surface2dFace
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetSurface2dFace;
+	:rtype: None") SetSurface2dFace;
 		void SetSurface2dFace (const Standard_Integer aVal);
+
+		/****************** SetSurface3dEdge ******************/
 		%feature("compactdefaultargs") SetSurface3dEdge;
-		%feature("autodoc", "	* Set Value for Surface3dEdge
-
+		%feature("autodoc", "* Set Value for Surface3dEdge
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetSurface3dEdge;
+	:rtype: None") SetSurface3dEdge;
 		void SetSurface3dEdge (const Standard_Integer aVal);
+
+		/****************** SetSurface3dFace ******************/
 		%feature("compactdefaultargs") SetSurface3dFace;
-		%feature("autodoc", "	* Set Value for Surface3dFace
-
+		%feature("autodoc", "* Set Value for Surface3dFace
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetSurface3dFace;
+	:rtype: None") SetSurface3dFace;
 		void SetSurface3dFace (const Standard_Integer aVal);
+
+		/****************** SetVolume2dEdge ******************/
 		%feature("compactdefaultargs") SetVolume2dEdge;
-		%feature("autodoc", "	* Set Value for Volume2dEdge
-
+		%feature("autodoc", "* Set Value for Volume2dEdge
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetVolume2dEdge;
+	:rtype: None") SetVolume2dEdge;
 		void SetVolume2dEdge (const Standard_Integer aVal);
+
+		/****************** SetVolume2dFace ******************/
 		%feature("compactdefaultargs") SetVolume2dFace;
-		%feature("autodoc", "	* Set Value for Volume2dFace
-
+		%feature("autodoc", "* Set Value for Volume2dFace
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetVolume2dFace;
+	:rtype: None") SetVolume2dFace;
 		void SetVolume2dFace (const Standard_Integer aVal);
+
+		/****************** SetVolume3dEdge ******************/
 		%feature("compactdefaultargs") SetVolume3dEdge;
-		%feature("autodoc", "	* Set Value for Volume3dEdge
-
+		%feature("autodoc", "* Set Value for Volume3dEdge
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetVolume3dEdge;
+	:rtype: None") SetVolume3dEdge;
 		void SetVolume3dEdge (const Standard_Integer aVal);
-		%feature("compactdefaultargs") SetVolume3dFace;
-		%feature("autodoc", "	* Set Value for Volume3dFace
 
+		/****************** SetVolume3dFace ******************/
+		%feature("compactdefaultargs") SetVolume3dFace;
+		%feature("autodoc", "* Set Value for Volume3dFace
 	:param aVal:
 	:type aVal: int
-	:rtype: None
-") SetVolume3dFace;
+	:rtype: None") SetVolume3dFace;
 		void SetVolume3dFace (const Standard_Integer aVal);
+
+		/****************** StepElement_ElementAspect ******************/
 		%feature("compactdefaultargs") StepElement_ElementAspect;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_ElementAspect;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_ElementAspect;
 		 StepElement_ElementAspect ();
+
+		/****************** Surface2dEdge ******************/
 		%feature("compactdefaultargs") Surface2dEdge;
-		%feature("autodoc", "	* Returns Value as Surface2dEdge (or Null if another type)
-
-	:rtype: int
-") Surface2dEdge;
+		%feature("autodoc", "* Returns Value as Surface2dEdge (or Null if another type)
+	:rtype: int") Surface2dEdge;
 		Standard_Integer Surface2dEdge ();
+
+		/****************** Surface2dFace ******************/
 		%feature("compactdefaultargs") Surface2dFace;
-		%feature("autodoc", "	* Returns Value as Surface2dFace (or Null if another type)
-
-	:rtype: int
-") Surface2dFace;
+		%feature("autodoc", "* Returns Value as Surface2dFace (or Null if another type)
+	:rtype: int") Surface2dFace;
 		Standard_Integer Surface2dFace ();
+
+		/****************** Surface3dEdge ******************/
 		%feature("compactdefaultargs") Surface3dEdge;
-		%feature("autodoc", "	* Returns Value as Surface3dEdge (or Null if another type)
-
-	:rtype: int
-") Surface3dEdge;
+		%feature("autodoc", "* Returns Value as Surface3dEdge (or Null if another type)
+	:rtype: int") Surface3dEdge;
 		Standard_Integer Surface3dEdge ();
+
+		/****************** Surface3dFace ******************/
 		%feature("compactdefaultargs") Surface3dFace;
-		%feature("autodoc", "	* Returns Value as Surface3dFace (or Null if another type)
-
-	:rtype: int
-") Surface3dFace;
+		%feature("autodoc", "* Returns Value as Surface3dFace (or Null if another type)
+	:rtype: int") Surface3dFace;
 		Standard_Integer Surface3dFace ();
+
+		/****************** Volume2dEdge ******************/
 		%feature("compactdefaultargs") Volume2dEdge;
-		%feature("autodoc", "	* Returns Value as Volume2dEdge (or Null if another type)
-
-	:rtype: int
-") Volume2dEdge;
+		%feature("autodoc", "* Returns Value as Volume2dEdge (or Null if another type)
+	:rtype: int") Volume2dEdge;
 		Standard_Integer Volume2dEdge ();
+
+		/****************** Volume2dFace ******************/
 		%feature("compactdefaultargs") Volume2dFace;
-		%feature("autodoc", "	* Returns Value as Volume2dFace (or Null if another type)
-
-	:rtype: int
-") Volume2dFace;
+		%feature("autodoc", "* Returns Value as Volume2dFace (or Null if another type)
+	:rtype: int") Volume2dFace;
 		Standard_Integer Volume2dFace ();
+
+		/****************** Volume3dEdge ******************/
 		%feature("compactdefaultargs") Volume3dEdge;
-		%feature("autodoc", "	* Returns Value as Volume3dEdge (or Null if another type)
-
-	:rtype: int
-") Volume3dEdge;
+		%feature("autodoc", "* Returns Value as Volume3dEdge (or Null if another type)
+	:rtype: int") Volume3dEdge;
 		Standard_Integer Volume3dEdge ();
-		%feature("compactdefaultargs") Volume3dFace;
-		%feature("autodoc", "	* Returns Value as Volume3dFace (or Null if another type)
 
-	:rtype: int
-") Volume3dFace;
+		/****************** Volume3dFace ******************/
+		%feature("compactdefaultargs") Volume3dFace;
+		%feature("autodoc", "* Returns Value as Volume3dFace (or Null if another type)
+	:rtype: int") Volume3dFace;
 		Standard_Integer Volume3dFace ();
+
 };
 
 
@@ -1085,43 +1116,47 @@ class StepElement_ElementAspect : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class StepElement_ElementAspectMember *
+****************************************/
 %nodefaultctor StepElement_ElementAspectMember;
 class StepElement_ElementAspectMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_ElementAspectMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_ElementAspectMember;
+		/****************** StepElement_ElementAspectMember ******************/
+		%feature("compactdefaultargs") StepElement_ElementAspectMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_ElementAspectMember;
 		 StepElement_ElementAspectMember ();
+
 };
 
 
@@ -1132,53 +1167,57 @@ class StepElement_ElementAspectMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepElement_ElementDescriptor *
+**************************************/
 %nodefaultctor StepElement_ElementDescriptor;
 class StepElement_ElementDescriptor : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aTopologyOrder:
 	:type aTopologyOrder: StepElement_ElementOrder
 	:param aDescription:
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aTopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aDescription);
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetTopologyOrder;
-		%feature("autodoc", "	* Set field TopologyOrder
 
+		/****************** SetTopologyOrder ******************/
+		%feature("compactdefaultargs") SetTopologyOrder;
+		%feature("autodoc", "* Set field TopologyOrder
 	:param TopologyOrder:
 	:type TopologyOrder: StepElement_ElementOrder
-	:rtype: None
-") SetTopologyOrder;
+	:rtype: None") SetTopologyOrder;
 		void SetTopologyOrder (const StepElement_ElementOrder TopologyOrder);
+
+		/****************** StepElement_ElementDescriptor ******************/
 		%feature("compactdefaultargs") StepElement_ElementDescriptor;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_ElementDescriptor;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_ElementDescriptor;
 		 StepElement_ElementDescriptor ();
-		%feature("compactdefaultargs") TopologyOrder;
-		%feature("autodoc", "	* Returns field TopologyOrder
 
-	:rtype: StepElement_ElementOrder
-") TopologyOrder;
+		/****************** TopologyOrder ******************/
+		%feature("compactdefaultargs") TopologyOrder;
+		%feature("autodoc", "* Returns field TopologyOrder
+	:rtype: StepElement_ElementOrder") TopologyOrder;
 		StepElement_ElementOrder TopologyOrder ();
+
 };
 
 
@@ -1189,69 +1228,73 @@ class StepElement_ElementDescriptor : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class StepElement_ElementMaterial *
+************************************/
 %nodefaultctor StepElement_ElementMaterial;
 class StepElement_ElementMaterial : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aMaterialId:
 	:type aMaterialId: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aProperties:
 	:type aProperties: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aMaterialId,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & aProperties);
+
+		/****************** MaterialId ******************/
 		%feature("compactdefaultargs") MaterialId;
-		%feature("autodoc", "	* Returns field MaterialId
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") MaterialId;
+		%feature("autodoc", "* Returns field MaterialId
+	:rtype: opencascade::handle<TCollection_HAsciiString>") MaterialId;
 		opencascade::handle<TCollection_HAsciiString> MaterialId ();
+
+		/****************** Properties ******************/
 		%feature("compactdefaultargs") Properties;
-		%feature("autodoc", "	* Returns field Properties
-
-	:rtype: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation>
-") Properties;
+		%feature("autodoc", "* Returns field Properties
+	:rtype: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation>") Properties;
 		opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> Properties ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetMaterialId;
-		%feature("autodoc", "	* Set field MaterialId
 
+		/****************** SetMaterialId ******************/
+		%feature("compactdefaultargs") SetMaterialId;
+		%feature("autodoc", "* Set field MaterialId
 	:param MaterialId:
 	:type MaterialId: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetMaterialId;
+	:rtype: None") SetMaterialId;
 		void SetMaterialId (const opencascade::handle<TCollection_HAsciiString> & MaterialId);
-		%feature("compactdefaultargs") SetProperties;
-		%feature("autodoc", "	* Set field Properties
 
+		/****************** SetProperties ******************/
+		%feature("compactdefaultargs") SetProperties;
+		%feature("autodoc", "* Set field Properties
 	:param Properties:
 	:type Properties: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> &
-	:rtype: None
-") SetProperties;
+	:rtype: None") SetProperties;
 		void SetProperties (const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & Properties);
-		%feature("compactdefaultargs") StepElement_ElementMaterial;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_ElementMaterial;
+		/****************** StepElement_ElementMaterial ******************/
+		%feature("compactdefaultargs") StepElement_ElementMaterial;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_ElementMaterial;
 		 StepElement_ElementMaterial ();
+
 };
 
 
@@ -1262,65 +1305,69 @@ class StepElement_ElementMaterial : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class StepElement_MeasureOrUnspecifiedValue *
+**********************************************/
 %nodefaultctor StepElement_MeasureOrUnspecifiedValue;
 class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 	public:
+		/****************** CaseMem ******************/
 		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member MeasureOrUnspecifiedValueMember 1 -> ContextDependentMeasure 2 -> UnspecifiedValue 0 else
-
+		%feature("autodoc", "* Recognizes a items of select member MeasureOrUnspecifiedValueMember 1 -> ContextDependentMeasure 2 -> UnspecifiedValue 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of MeasureOrUnspecifiedValue select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of MeasureOrUnspecifiedValue select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** ContextDependentMeasure ******************/
 		%feature("compactdefaultargs") ContextDependentMeasure;
-		%feature("autodoc", "	* Returns Value as ContextDependentMeasure (or Null if another type)
-
-	:rtype: float
-") ContextDependentMeasure;
+		%feature("autodoc", "* Returns Value as ContextDependentMeasure (or Null if another type)
+	:rtype: float") ContextDependentMeasure;
 		Standard_Real ContextDependentMeasure ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type MeasureOrUnspecifiedValueMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type MeasureOrUnspecifiedValueMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetContextDependentMeasure;
-		%feature("autodoc", "	* Set Value for ContextDependentMeasure
 
+		/****************** SetContextDependentMeasure ******************/
+		%feature("compactdefaultargs") SetContextDependentMeasure;
+		%feature("autodoc", "* Set Value for ContextDependentMeasure
 	:param aVal:
 	:type aVal: float
-	:rtype: None
-") SetContextDependentMeasure;
+	:rtype: None") SetContextDependentMeasure;
 		void SetContextDependentMeasure (const Standard_Real aVal);
-		%feature("compactdefaultargs") SetUnspecifiedValue;
-		%feature("autodoc", "	* Set Value for UnspecifiedValue
 
+		/****************** SetUnspecifiedValue ******************/
+		%feature("compactdefaultargs") SetUnspecifiedValue;
+		%feature("autodoc", "* Set Value for UnspecifiedValue
 	:param aVal:
 	:type aVal: StepElement_UnspecifiedValue
-	:rtype: None
-") SetUnspecifiedValue;
+	:rtype: None") SetUnspecifiedValue;
 		void SetUnspecifiedValue (const StepElement_UnspecifiedValue aVal);
+
+		/****************** StepElement_MeasureOrUnspecifiedValue ******************/
 		%feature("compactdefaultargs") StepElement_MeasureOrUnspecifiedValue;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_MeasureOrUnspecifiedValue;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_MeasureOrUnspecifiedValue;
 		 StepElement_MeasureOrUnspecifiedValue ();
-		%feature("compactdefaultargs") UnspecifiedValue;
-		%feature("autodoc", "	* Returns Value as UnspecifiedValue (or Null if another type)
 
-	:rtype: StepElement_UnspecifiedValue
-") UnspecifiedValue;
+		/****************** UnspecifiedValue ******************/
+		%feature("compactdefaultargs") UnspecifiedValue;
+		%feature("autodoc", "* Returns Value as UnspecifiedValue (or Null if another type)
+	:rtype: StepElement_UnspecifiedValue") UnspecifiedValue;
 		StepElement_UnspecifiedValue UnspecifiedValue ();
+
 };
 
 
@@ -1329,43 +1376,47 @@ class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************************
+* class StepElement_MeasureOrUnspecifiedValueMember *
+****************************************************/
 %nodefaultctor StepElement_MeasureOrUnspecifiedValueMember;
 class StepElement_MeasureOrUnspecifiedValueMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_MeasureOrUnspecifiedValueMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_MeasureOrUnspecifiedValueMember;
+		/****************** StepElement_MeasureOrUnspecifiedValueMember ******************/
+		%feature("compactdefaultargs") StepElement_MeasureOrUnspecifiedValueMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_MeasureOrUnspecifiedValueMember;
 		 StepElement_MeasureOrUnspecifiedValueMember ();
+
 };
 
 
@@ -1376,69 +1427,73 @@ class StepElement_MeasureOrUnspecifiedValueMember : public StepData_SelectNamed 
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class StepElement_SurfaceElementProperty *
+*******************************************/
 %nodefaultctor StepElement_SurfaceElementProperty;
 class StepElement_SurfaceElementProperty : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aPropertyId:
 	:type aPropertyId: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aSection:
 	:type aSection: opencascade::handle<StepElement_SurfaceSectionField> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aPropertyId,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepElement_SurfaceSectionField> & aSection);
+
+		/****************** PropertyId ******************/
 		%feature("compactdefaultargs") PropertyId;
-		%feature("autodoc", "	* Returns field PropertyId
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") PropertyId;
+		%feature("autodoc", "* Returns field PropertyId
+	:rtype: opencascade::handle<TCollection_HAsciiString>") PropertyId;
 		opencascade::handle<TCollection_HAsciiString> PropertyId ();
+
+		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "	* Returns field Section
-
-	:rtype: opencascade::handle<StepElement_SurfaceSectionField>
-") Section;
+		%feature("autodoc", "* Returns field Section
+	:rtype: opencascade::handle<StepElement_SurfaceSectionField>") Section;
 		opencascade::handle<StepElement_SurfaceSectionField> Section ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetPropertyId;
-		%feature("autodoc", "	* Set field PropertyId
 
+		/****************** SetPropertyId ******************/
+		%feature("compactdefaultargs") SetPropertyId;
+		%feature("autodoc", "* Set field PropertyId
 	:param PropertyId:
 	:type PropertyId: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetPropertyId;
+	:rtype: None") SetPropertyId;
 		void SetPropertyId (const opencascade::handle<TCollection_HAsciiString> & PropertyId);
-		%feature("compactdefaultargs") SetSection;
-		%feature("autodoc", "	* Set field Section
 
+		/****************** SetSection ******************/
+		%feature("compactdefaultargs") SetSection;
+		%feature("autodoc", "* Set field Section
 	:param Section:
 	:type Section: opencascade::handle<StepElement_SurfaceSectionField> &
-	:rtype: None
-") SetSection;
+	:rtype: None") SetSection;
 		void SetSection (const opencascade::handle<StepElement_SurfaceSectionField> & Section);
-		%feature("compactdefaultargs") StepElement_SurfaceElementProperty;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceElementProperty;
+		/****************** StepElement_SurfaceElementProperty ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceElementProperty;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceElementProperty;
 		 StepElement_SurfaceElementProperty ();
+
 };
 
 
@@ -1449,65 +1504,69 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************
+* class StepElement_SurfaceElementPurpose *
+******************************************/
 %nodefaultctor StepElement_SurfaceElementPurpose;
 class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 	public:
+		/****************** ApplicationDefinedElementPurpose ******************/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") ApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
+	:rtype: opencascade::handle<TCollection_HAsciiString>") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member SurfaceElementPurposeMember 1 -> EnumeratedSurfaceElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member SurfaceElementPurposeMember 1 -> EnumeratedSurfaceElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SurfaceElementPurpose select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of SurfaceElementPurpose select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** EnumeratedSurfaceElementPurpose ******************/
 		%feature("compactdefaultargs") EnumeratedSurfaceElementPurpose;
-		%feature("autodoc", "	* Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type)
-
-	:rtype: StepElement_EnumeratedSurfaceElementPurpose
-") EnumeratedSurfaceElementPurpose;
+		%feature("autodoc", "* Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type)
+	:rtype: StepElement_EnumeratedSurfaceElementPurpose") EnumeratedSurfaceElementPurpose;
 		StepElement_EnumeratedSurfaceElementPurpose EnumeratedSurfaceElementPurpose ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type SurfaceElementPurposeMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type SurfaceElementPurposeMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Set Value for ApplicationDefinedElementPurpose
 
+		/****************** SetApplicationDefinedElementPurpose ******************/
+		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
 	:type aVal: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetApplicationDefinedElementPurpose;
+	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
-		%feature("compactdefaultargs") SetEnumeratedSurfaceElementPurpose;
-		%feature("autodoc", "	* Set Value for EnumeratedSurfaceElementPurpose
 
+		/****************** SetEnumeratedSurfaceElementPurpose ******************/
+		%feature("compactdefaultargs") SetEnumeratedSurfaceElementPurpose;
+		%feature("autodoc", "* Set Value for EnumeratedSurfaceElementPurpose
 	:param aVal:
 	:type aVal: StepElement_EnumeratedSurfaceElementPurpose
-	:rtype: None
-") SetEnumeratedSurfaceElementPurpose;
+	:rtype: None") SetEnumeratedSurfaceElementPurpose;
 		void SetEnumeratedSurfaceElementPurpose (const StepElement_EnumeratedSurfaceElementPurpose aVal);
-		%feature("compactdefaultargs") StepElement_SurfaceElementPurpose;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceElementPurpose;
+		/****************** StepElement_SurfaceElementPurpose ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceElementPurpose;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceElementPurpose;
 		 StepElement_SurfaceElementPurpose ();
+
 };
 
 
@@ -1516,43 +1575,47 @@ class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************
+* class StepElement_SurfaceElementPurposeMember *
+************************************************/
 %nodefaultctor StepElement_SurfaceElementPurposeMember;
 class StepElement_SurfaceElementPurposeMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_SurfaceElementPurposeMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceElementPurposeMember;
+		/****************** StepElement_SurfaceElementPurposeMember ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceElementPurposeMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceElementPurposeMember;
 		 StepElement_SurfaceElementPurposeMember ();
+
 };
 
 
@@ -1563,69 +1626,73 @@ class StepElement_SurfaceElementPurposeMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepElement_SurfaceSection *
+***********************************/
 %nodefaultctor StepElement_SurfaceSection;
 class StepElement_SurfaceSection : public Standard_Transient {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aOffset:
 	:type aOffset: StepElement_MeasureOrUnspecifiedValue &
 	:param aNonStructuralMass:
 	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
 	:param aNonStructuralMassOffset:
 	:type aNonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_MeasureOrUnspecifiedValue & aOffset,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMassOffset);
+
+		/****************** NonStructuralMass ******************/
 		%feature("compactdefaultargs") NonStructuralMass;
-		%feature("autodoc", "	* Returns field NonStructuralMass
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") NonStructuralMass;
+		%feature("autodoc", "* Returns field NonStructuralMass
+	:rtype: StepElement_MeasureOrUnspecifiedValue") NonStructuralMass;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass ();
+
+		/****************** NonStructuralMassOffset ******************/
 		%feature("compactdefaultargs") NonStructuralMassOffset;
-		%feature("autodoc", "	* Returns field NonStructuralMassOffset
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") NonStructuralMassOffset;
+		%feature("autodoc", "* Returns field NonStructuralMassOffset
+	:rtype: StepElement_MeasureOrUnspecifiedValue") NonStructuralMassOffset;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMassOffset ();
+
+		/****************** Offset ******************/
 		%feature("compactdefaultargs") Offset;
-		%feature("autodoc", "	* Returns field Offset
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") Offset;
+		%feature("autodoc", "* Returns field Offset
+	:rtype: StepElement_MeasureOrUnspecifiedValue") Offset;
 		StepElement_MeasureOrUnspecifiedValue Offset ();
-		%feature("compactdefaultargs") SetNonStructuralMass;
-		%feature("autodoc", "	* Set field NonStructuralMass
 
+		/****************** SetNonStructuralMass ******************/
+		%feature("compactdefaultargs") SetNonStructuralMass;
+		%feature("autodoc", "* Set field NonStructuralMass
 	:param NonStructuralMass:
 	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetNonStructuralMass;
+	:rtype: None") SetNonStructuralMass;
 		void SetNonStructuralMass (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
-		%feature("compactdefaultargs") SetNonStructuralMassOffset;
-		%feature("autodoc", "	* Set field NonStructuralMassOffset
 
+		/****************** SetNonStructuralMassOffset ******************/
+		%feature("compactdefaultargs") SetNonStructuralMassOffset;
+		%feature("autodoc", "* Set field NonStructuralMassOffset
 	:param NonStructuralMassOffset:
 	:type NonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetNonStructuralMassOffset;
+	:rtype: None") SetNonStructuralMassOffset;
 		void SetNonStructuralMassOffset (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMassOffset);
-		%feature("compactdefaultargs") SetOffset;
-		%feature("autodoc", "	* Set field Offset
 
+		/****************** SetOffset ******************/
+		%feature("compactdefaultargs") SetOffset;
+		%feature("autodoc", "* Set field Offset
 	:param Offset:
 	:type Offset: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetOffset;
+	:rtype: None") SetOffset;
 		void SetOffset (const StepElement_MeasureOrUnspecifiedValue & Offset);
-		%feature("compactdefaultargs") StepElement_SurfaceSection;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceSection;
+		/****************** StepElement_SurfaceSection ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceSection;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceSection;
 		 StepElement_SurfaceSection ();
+
 };
 
 
@@ -1636,15 +1703,19 @@ class StepElement_SurfaceSection : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class StepElement_SurfaceSectionField *
+****************************************/
 %nodefaultctor StepElement_SurfaceSectionField;
 class StepElement_SurfaceSectionField : public Standard_Transient {
 	public:
+		/****************** StepElement_SurfaceSectionField ******************/
 		%feature("compactdefaultargs") StepElement_SurfaceSectionField;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_SurfaceSectionField;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceSectionField;
 		 StepElement_SurfaceSectionField ();
+
 };
 
 
@@ -1655,65 +1726,69 @@ class StepElement_SurfaceSectionField : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class StepElement_VolumeElementPurpose *
+*****************************************/
 %nodefaultctor StepElement_VolumeElementPurpose;
 class StepElement_VolumeElementPurpose : public StepData_SelectType {
 	public:
+		/****************** ApplicationDefinedElementPurpose ******************/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") ApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
+	:rtype: opencascade::handle<TCollection_HAsciiString>") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member VolumeElementPurposeMember 1 -> EnumeratedVolumeElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member VolumeElementPurposeMember 1 -> EnumeratedVolumeElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of VolumeElementPurpose select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of VolumeElementPurpose select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** EnumeratedVolumeElementPurpose ******************/
 		%feature("compactdefaultargs") EnumeratedVolumeElementPurpose;
-		%feature("autodoc", "	* Returns Value as EnumeratedVolumeElementPurpose (or Null if another type)
-
-	:rtype: StepElement_EnumeratedVolumeElementPurpose
-") EnumeratedVolumeElementPurpose;
+		%feature("autodoc", "* Returns Value as EnumeratedVolumeElementPurpose (or Null if another type)
+	:rtype: StepElement_EnumeratedVolumeElementPurpose") EnumeratedVolumeElementPurpose;
 		StepElement_EnumeratedVolumeElementPurpose EnumeratedVolumeElementPurpose ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type VolumeElementPurposeMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type VolumeElementPurposeMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
-		%feature("autodoc", "	* Set Value for ApplicationDefinedElementPurpose
 
+		/****************** SetApplicationDefinedElementPurpose ******************/
+		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
+		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
 	:type aVal: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetApplicationDefinedElementPurpose;
+	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
-		%feature("compactdefaultargs") SetEnumeratedVolumeElementPurpose;
-		%feature("autodoc", "	* Set Value for EnumeratedVolumeElementPurpose
 
+		/****************** SetEnumeratedVolumeElementPurpose ******************/
+		%feature("compactdefaultargs") SetEnumeratedVolumeElementPurpose;
+		%feature("autodoc", "* Set Value for EnumeratedVolumeElementPurpose
 	:param aVal:
 	:type aVal: StepElement_EnumeratedVolumeElementPurpose
-	:rtype: None
-") SetEnumeratedVolumeElementPurpose;
+	:rtype: None") SetEnumeratedVolumeElementPurpose;
 		void SetEnumeratedVolumeElementPurpose (const StepElement_EnumeratedVolumeElementPurpose aVal);
-		%feature("compactdefaultargs") StepElement_VolumeElementPurpose;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_VolumeElementPurpose;
+		/****************** StepElement_VolumeElementPurpose ******************/
+		%feature("compactdefaultargs") StepElement_VolumeElementPurpose;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_VolumeElementPurpose;
 		 StepElement_VolumeElementPurpose ();
+
 };
 
 
@@ -1722,43 +1797,47 @@ class StepElement_VolumeElementPurpose : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class StepElement_VolumeElementPurposeMember *
+***********************************************/
 %nodefaultctor StepElement_VolumeElementPurposeMember;
 class StepElement_VolumeElementPurposeMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepElement_VolumeElementPurposeMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_VolumeElementPurposeMember;
+		/****************** StepElement_VolumeElementPurposeMember ******************/
+		%feature("compactdefaultargs") StepElement_VolumeElementPurposeMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_VolumeElementPurposeMember;
 		 StepElement_VolumeElementPurposeMember ();
+
 };
 
 
@@ -1769,41 +1848,45 @@ class StepElement_VolumeElementPurposeMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class StepElement_Curve3dElementDescriptor *
+*********************************************/
 %nodefaultctor StepElement_Curve3dElementDescriptor;
 class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
 	:type aElementDescriptor_Description: opencascade::handle<TCollection_HAsciiString> &
 	:param aPurpose:
 	:type aPurpose: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description,const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & aPurpose);
+
+		/****************** Purpose ******************/
 		%feature("compactdefaultargs") Purpose;
-		%feature("autodoc", "	* Returns field Purpose
-
-	:rtype: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember>
-") Purpose;
+		%feature("autodoc", "* Returns field Purpose
+	:rtype: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember>") Purpose;
 		opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> Purpose ();
-		%feature("compactdefaultargs") SetPurpose;
-		%feature("autodoc", "	* Set field Purpose
 
+		/****************** SetPurpose ******************/
+		%feature("compactdefaultargs") SetPurpose;
+		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
 	:type Purpose: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> &
-	:rtype: None
-") SetPurpose;
+	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & Purpose);
-		%feature("compactdefaultargs") StepElement_Curve3dElementDescriptor;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_Curve3dElementDescriptor;
+		/****************** StepElement_Curve3dElementDescriptor ******************/
+		%feature("compactdefaultargs") StepElement_Curve3dElementDescriptor;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_Curve3dElementDescriptor;
 		 StepElement_Curve3dElementDescriptor ();
+
 };
 
 
@@ -1814,18 +1897,22 @@ class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescripto
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************************
+* class StepElement_CurveElementSectionDerivedDefinitions *
+**********************************************************/
 %nodefaultctor StepElement_CurveElementSectionDerivedDefinitions;
 class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_CurveElementSectionDefinition {
 	public:
+		/****************** CrossSectionalArea ******************/
 		%feature("compactdefaultargs") CrossSectionalArea;
-		%feature("autodoc", "	* Returns field CrossSectionalArea
-
-	:rtype: float
-") CrossSectionalArea;
+		%feature("autodoc", "* Returns field CrossSectionalArea
+	:rtype: float") CrossSectionalArea;
 		Standard_Real CrossSectionalArea ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCurveElementSectionDefinition_Description:
 	:type aCurveElementSectionDefinition_Description: opencascade::handle<TCollection_HAsciiString> &
 	:param aCurveElementSectionDefinition_SectionAngle:
@@ -1850,149 +1937,149 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
 	:param aPolarMoment:
 	:type aPolarMoment: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aCurveElementSectionDefinition_Description,const Standard_Real aCurveElementSectionDefinition_SectionAngle,const Standard_Real aCrossSectionalArea,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aShearArea,const opencascade::handle<TColStd_HArray1OfReal> & aSecondMomentOfArea,const Standard_Real aTorsionalConstant,const StepElement_MeasureOrUnspecifiedValue & aWarpingConstant,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfCentroid,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfShearCentre,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aPolarMoment);
+
+		/****************** LocationOfCentroid ******************/
 		%feature("compactdefaultargs") LocationOfCentroid;
-		%feature("autodoc", "	* Returns field LocationOfCentroid
-
-	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
-") LocationOfCentroid;
+		%feature("autodoc", "* Returns field LocationOfCentroid
+	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>") LocationOfCentroid;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfCentroid ();
+
+		/****************** LocationOfNonStructuralMass ******************/
 		%feature("compactdefaultargs") LocationOfNonStructuralMass;
-		%feature("autodoc", "	* Returns field LocationOfNonStructuralMass
-
-	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
-") LocationOfNonStructuralMass;
+		%feature("autodoc", "* Returns field LocationOfNonStructuralMass
+	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>") LocationOfNonStructuralMass;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfNonStructuralMass ();
+
+		/****************** LocationOfShearCentre ******************/
 		%feature("compactdefaultargs") LocationOfShearCentre;
-		%feature("autodoc", "	* Returns field LocationOfShearCentre
-
-	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
-") LocationOfShearCentre;
+		%feature("autodoc", "* Returns field LocationOfShearCentre
+	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>") LocationOfShearCentre;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfShearCentre ();
+
+		/****************** NonStructuralMass ******************/
 		%feature("compactdefaultargs") NonStructuralMass;
-		%feature("autodoc", "	* Returns field NonStructuralMass
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") NonStructuralMass;
+		%feature("autodoc", "* Returns field NonStructuralMass
+	:rtype: StepElement_MeasureOrUnspecifiedValue") NonStructuralMass;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass ();
+
+		/****************** PolarMoment ******************/
 		%feature("compactdefaultargs") PolarMoment;
-		%feature("autodoc", "	* Returns field PolarMoment
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") PolarMoment;
+		%feature("autodoc", "* Returns field PolarMoment
+	:rtype: StepElement_MeasureOrUnspecifiedValue") PolarMoment;
 		StepElement_MeasureOrUnspecifiedValue PolarMoment ();
+
+		/****************** SecondMomentOfArea ******************/
 		%feature("compactdefaultargs") SecondMomentOfArea;
-		%feature("autodoc", "	* Returns field SecondMomentOfArea
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") SecondMomentOfArea;
+		%feature("autodoc", "* Returns field SecondMomentOfArea
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") SecondMomentOfArea;
 		opencascade::handle<TColStd_HArray1OfReal> SecondMomentOfArea ();
-		%feature("compactdefaultargs") SetCrossSectionalArea;
-		%feature("autodoc", "	* Set field CrossSectionalArea
 
+		/****************** SetCrossSectionalArea ******************/
+		%feature("compactdefaultargs") SetCrossSectionalArea;
+		%feature("autodoc", "* Set field CrossSectionalArea
 	:param CrossSectionalArea:
 	:type CrossSectionalArea: float
-	:rtype: None
-") SetCrossSectionalArea;
+	:rtype: None") SetCrossSectionalArea;
 		void SetCrossSectionalArea (const Standard_Real CrossSectionalArea);
-		%feature("compactdefaultargs") SetLocationOfCentroid;
-		%feature("autodoc", "	* Set field LocationOfCentroid
 
+		/****************** SetLocationOfCentroid ******************/
+		%feature("compactdefaultargs") SetLocationOfCentroid;
+		%feature("autodoc", "* Set field LocationOfCentroid
 	:param LocationOfCentroid:
 	:type LocationOfCentroid: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
-	:rtype: None
-") SetLocationOfCentroid;
+	:rtype: None") SetLocationOfCentroid;
 		void SetLocationOfCentroid (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfCentroid);
-		%feature("compactdefaultargs") SetLocationOfNonStructuralMass;
-		%feature("autodoc", "	* Set field LocationOfNonStructuralMass
 
+		/****************** SetLocationOfNonStructuralMass ******************/
+		%feature("compactdefaultargs") SetLocationOfNonStructuralMass;
+		%feature("autodoc", "* Set field LocationOfNonStructuralMass
 	:param LocationOfNonStructuralMass:
 	:type LocationOfNonStructuralMass: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
-	:rtype: None
-") SetLocationOfNonStructuralMass;
+	:rtype: None") SetLocationOfNonStructuralMass;
 		void SetLocationOfNonStructuralMass (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfNonStructuralMass);
-		%feature("compactdefaultargs") SetLocationOfShearCentre;
-		%feature("autodoc", "	* Set field LocationOfShearCentre
 
+		/****************** SetLocationOfShearCentre ******************/
+		%feature("compactdefaultargs") SetLocationOfShearCentre;
+		%feature("autodoc", "* Set field LocationOfShearCentre
 	:param LocationOfShearCentre:
 	:type LocationOfShearCentre: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
-	:rtype: None
-") SetLocationOfShearCentre;
+	:rtype: None") SetLocationOfShearCentre;
 		void SetLocationOfShearCentre (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfShearCentre);
-		%feature("compactdefaultargs") SetNonStructuralMass;
-		%feature("autodoc", "	* Set field NonStructuralMass
 
+		/****************** SetNonStructuralMass ******************/
+		%feature("compactdefaultargs") SetNonStructuralMass;
+		%feature("autodoc", "* Set field NonStructuralMass
 	:param NonStructuralMass:
 	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetNonStructuralMass;
+	:rtype: None") SetNonStructuralMass;
 		void SetNonStructuralMass (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
-		%feature("compactdefaultargs") SetPolarMoment;
-		%feature("autodoc", "	* Set field PolarMoment
 
+		/****************** SetPolarMoment ******************/
+		%feature("compactdefaultargs") SetPolarMoment;
+		%feature("autodoc", "* Set field PolarMoment
 	:param PolarMoment:
 	:type PolarMoment: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetPolarMoment;
+	:rtype: None") SetPolarMoment;
 		void SetPolarMoment (const StepElement_MeasureOrUnspecifiedValue & PolarMoment);
-		%feature("compactdefaultargs") SetSecondMomentOfArea;
-		%feature("autodoc", "	* Set field SecondMomentOfArea
 
+		/****************** SetSecondMomentOfArea ******************/
+		%feature("compactdefaultargs") SetSecondMomentOfArea;
+		%feature("autodoc", "* Set field SecondMomentOfArea
 	:param SecondMomentOfArea:
 	:type SecondMomentOfArea: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") SetSecondMomentOfArea;
+	:rtype: None") SetSecondMomentOfArea;
 		void SetSecondMomentOfArea (const opencascade::handle<TColStd_HArray1OfReal> & SecondMomentOfArea);
-		%feature("compactdefaultargs") SetShearArea;
-		%feature("autodoc", "	* Set field ShearArea
 
+		/****************** SetShearArea ******************/
+		%feature("compactdefaultargs") SetShearArea;
+		%feature("autodoc", "* Set field ShearArea
 	:param ShearArea:
 	:type ShearArea: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
-	:rtype: None
-") SetShearArea;
+	:rtype: None") SetShearArea;
 		void SetShearArea (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & ShearArea);
-		%feature("compactdefaultargs") SetTorsionalConstant;
-		%feature("autodoc", "	* Set field TorsionalConstant
 
+		/****************** SetTorsionalConstant ******************/
+		%feature("compactdefaultargs") SetTorsionalConstant;
+		%feature("autodoc", "* Set field TorsionalConstant
 	:param TorsionalConstant:
 	:type TorsionalConstant: float
-	:rtype: None
-") SetTorsionalConstant;
+	:rtype: None") SetTorsionalConstant;
 		void SetTorsionalConstant (const Standard_Real TorsionalConstant);
-		%feature("compactdefaultargs") SetWarpingConstant;
-		%feature("autodoc", "	* Set field WarpingConstant
 
+		/****************** SetWarpingConstant ******************/
+		%feature("compactdefaultargs") SetWarpingConstant;
+		%feature("autodoc", "* Set field WarpingConstant
 	:param WarpingConstant:
 	:type WarpingConstant: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetWarpingConstant;
+	:rtype: None") SetWarpingConstant;
 		void SetWarpingConstant (const StepElement_MeasureOrUnspecifiedValue & WarpingConstant);
+
+		/****************** ShearArea ******************/
 		%feature("compactdefaultargs") ShearArea;
-		%feature("autodoc", "	* Returns field ShearArea
-
-	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
-") ShearArea;
+		%feature("autodoc", "* Returns field ShearArea
+	:rtype: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>") ShearArea;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> ShearArea ();
+
+		/****************** StepElement_CurveElementSectionDerivedDefinitions ******************/
 		%feature("compactdefaultargs") StepElement_CurveElementSectionDerivedDefinitions;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_CurveElementSectionDerivedDefinitions;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_CurveElementSectionDerivedDefinitions;
 		 StepElement_CurveElementSectionDerivedDefinitions ();
+
+		/****************** TorsionalConstant ******************/
 		%feature("compactdefaultargs") TorsionalConstant;
-		%feature("autodoc", "	* Returns field TorsionalConstant
-
-	:rtype: float
-") TorsionalConstant;
+		%feature("autodoc", "* Returns field TorsionalConstant
+	:rtype: float") TorsionalConstant;
 		Standard_Real TorsionalConstant ();
-		%feature("compactdefaultargs") WarpingConstant;
-		%feature("autodoc", "	* Returns field WarpingConstant
 
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") WarpingConstant;
+		/****************** WarpingConstant ******************/
+		%feature("compactdefaultargs") WarpingConstant;
+		%feature("autodoc", "* Returns field WarpingConstant
+	:rtype: StepElement_MeasureOrUnspecifiedValue") WarpingConstant;
 		StepElement_MeasureOrUnspecifiedValue WarpingConstant ();
+
 };
 
 
@@ -2003,12 +2090,16 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class StepElement_Surface3dElementDescriptor *
+***********************************************/
 %nodefaultctor StepElement_Surface3dElementDescriptor;
 class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
@@ -2017,43 +2108,43 @@ class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescrip
 	:type aPurpose: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> &
 	:param aShape:
 	:type aShape: StepElement_Element2dShape
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description,const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & aPurpose,const StepElement_Element2dShape aShape);
+
+		/****************** Purpose ******************/
 		%feature("compactdefaultargs") Purpose;
-		%feature("autodoc", "	* Returns field Purpose
-
-	:rtype: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember>
-") Purpose;
+		%feature("autodoc", "* Returns field Purpose
+	:rtype: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember>") Purpose;
 		opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> Purpose ();
-		%feature("compactdefaultargs") SetPurpose;
-		%feature("autodoc", "	* Set field Purpose
 
+		/****************** SetPurpose ******************/
+		%feature("compactdefaultargs") SetPurpose;
+		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
 	:type Purpose: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> &
-	:rtype: None
-") SetPurpose;
+	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & Purpose);
-		%feature("compactdefaultargs") SetShape;
-		%feature("autodoc", "	* Set field Shape
 
+		/****************** SetShape ******************/
+		%feature("compactdefaultargs") SetShape;
+		%feature("autodoc", "* Set field Shape
 	:param Shape:
 	:type Shape: StepElement_Element2dShape
-	:rtype: None
-") SetShape;
+	:rtype: None") SetShape;
 		void SetShape (const StepElement_Element2dShape Shape);
+
+		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns field Shape
-
-	:rtype: StepElement_Element2dShape
-") Shape;
+		%feature("autodoc", "* Returns field Shape
+	:rtype: StepElement_Element2dShape") Shape;
 		StepElement_Element2dShape Shape ();
-		%feature("compactdefaultargs") StepElement_Surface3dElementDescriptor;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_Surface3dElementDescriptor;
+		/****************** StepElement_Surface3dElementDescriptor ******************/
+		%feature("compactdefaultargs") StepElement_Surface3dElementDescriptor;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_Surface3dElementDescriptor;
 		 StepElement_Surface3dElementDescriptor ();
+
 };
 
 
@@ -2064,37 +2155,41 @@ class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescrip
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************
+* class StepElement_SurfaceSectionFieldConstant *
+************************************************/
 %nodefaultctor StepElement_SurfaceSectionFieldConstant;
 class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectionField {
 	public:
+		/****************** Definition ******************/
 		%feature("compactdefaultargs") Definition;
-		%feature("autodoc", "	* Returns field Definition
-
-	:rtype: opencascade::handle<StepElement_SurfaceSection>
-") Definition;
+		%feature("autodoc", "* Returns field Definition
+	:rtype: opencascade::handle<StepElement_SurfaceSection>") Definition;
 		opencascade::handle<StepElement_SurfaceSection> Definition ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDefinition:
 	:type aDefinition: opencascade::handle<StepElement_SurfaceSection> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepElement_SurfaceSection> & aDefinition);
-		%feature("compactdefaultargs") SetDefinition;
-		%feature("autodoc", "	* Set field Definition
 
+		/****************** SetDefinition ******************/
+		%feature("compactdefaultargs") SetDefinition;
+		%feature("autodoc", "* Set field Definition
 	:param Definition:
 	:type Definition: opencascade::handle<StepElement_SurfaceSection> &
-	:rtype: None
-") SetDefinition;
+	:rtype: None") SetDefinition;
 		void SetDefinition (const opencascade::handle<StepElement_SurfaceSection> & Definition);
-		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldConstant;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceSectionFieldConstant;
+		/****************** StepElement_SurfaceSectionFieldConstant ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldConstant;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceSectionFieldConstant;
 		 StepElement_SurfaceSectionFieldConstant ();
+
 };
 
 
@@ -2105,53 +2200,57 @@ class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectio
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class StepElement_SurfaceSectionFieldVarying *
+***********************************************/
 %nodefaultctor StepElement_SurfaceSectionFieldVarying;
 class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSectionField {
 	public:
+		/****************** AdditionalNodeValues ******************/
 		%feature("compactdefaultargs") AdditionalNodeValues;
-		%feature("autodoc", "	* Returns field AdditionalNodeValues
-
-	:rtype: bool
-") AdditionalNodeValues;
+		%feature("autodoc", "* Returns field AdditionalNodeValues
+	:rtype: bool") AdditionalNodeValues;
 		Standard_Boolean AdditionalNodeValues ();
+
+		/****************** Definitions ******************/
 		%feature("compactdefaultargs") Definitions;
-		%feature("autodoc", "	* Returns field Definitions
-
-	:rtype: opencascade::handle<StepElement_HArray1OfSurfaceSection>
-") Definitions;
+		%feature("autodoc", "* Returns field Definitions
+	:rtype: opencascade::handle<StepElement_HArray1OfSurfaceSection>") Definitions;
 		opencascade::handle<StepElement_HArray1OfSurfaceSection> Definitions ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDefinitions:
 	:type aDefinitions: opencascade::handle<StepElement_HArray1OfSurfaceSection> &
 	:param aAdditionalNodeValues:
 	:type aAdditionalNodeValues: bool
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepElement_HArray1OfSurfaceSection> & aDefinitions,const Standard_Boolean aAdditionalNodeValues);
-		%feature("compactdefaultargs") SetAdditionalNodeValues;
-		%feature("autodoc", "	* Set field AdditionalNodeValues
 
+		/****************** SetAdditionalNodeValues ******************/
+		%feature("compactdefaultargs") SetAdditionalNodeValues;
+		%feature("autodoc", "* Set field AdditionalNodeValues
 	:param AdditionalNodeValues:
 	:type AdditionalNodeValues: bool
-	:rtype: None
-") SetAdditionalNodeValues;
+	:rtype: None") SetAdditionalNodeValues;
 		void SetAdditionalNodeValues (const Standard_Boolean AdditionalNodeValues);
-		%feature("compactdefaultargs") SetDefinitions;
-		%feature("autodoc", "	* Set field Definitions
 
+		/****************** SetDefinitions ******************/
+		%feature("compactdefaultargs") SetDefinitions;
+		%feature("autodoc", "* Set field Definitions
 	:param Definitions:
 	:type Definitions: opencascade::handle<StepElement_HArray1OfSurfaceSection> &
-	:rtype: None
-") SetDefinitions;
+	:rtype: None") SetDefinitions;
 		void SetDefinitions (const opencascade::handle<StepElement_HArray1OfSurfaceSection> & Definitions);
-		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldVarying;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_SurfaceSectionFieldVarying;
+		/****************** StepElement_SurfaceSectionFieldVarying ******************/
+		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldVarying;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_SurfaceSectionFieldVarying;
 		 StepElement_SurfaceSectionFieldVarying ();
+
 };
 
 
@@ -2162,18 +2261,22 @@ class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSection
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************
+* class StepElement_UniformSurfaceSection *
+******************************************/
 %nodefaultctor StepElement_UniformSurfaceSection;
 class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 	public:
+		/****************** BendingThickness ******************/
 		%feature("compactdefaultargs") BendingThickness;
-		%feature("autodoc", "	* Returns field BendingThickness
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") BendingThickness;
+		%feature("autodoc", "* Returns field BendingThickness
+	:rtype: StepElement_MeasureOrUnspecifiedValue") BendingThickness;
 		StepElement_MeasureOrUnspecifiedValue BendingThickness ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aSurfaceSection_Offset:
 	:type aSurfaceSection_Offset: StepElement_MeasureOrUnspecifiedValue &
 	:param aSurfaceSection_NonStructuralMass:
@@ -2186,51 +2289,51 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 	:type aBendingThickness: StepElement_MeasureOrUnspecifiedValue &
 	:param aShearThickness:
 	:type aShearThickness: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_Offset,const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMassOffset,const Standard_Real aThickness,const StepElement_MeasureOrUnspecifiedValue & aBendingThickness,const StepElement_MeasureOrUnspecifiedValue & aShearThickness);
-		%feature("compactdefaultargs") SetBendingThickness;
-		%feature("autodoc", "	* Set field BendingThickness
 
+		/****************** SetBendingThickness ******************/
+		%feature("compactdefaultargs") SetBendingThickness;
+		%feature("autodoc", "* Set field BendingThickness
 	:param BendingThickness:
 	:type BendingThickness: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetBendingThickness;
+	:rtype: None") SetBendingThickness;
 		void SetBendingThickness (const StepElement_MeasureOrUnspecifiedValue & BendingThickness);
-		%feature("compactdefaultargs") SetShearThickness;
-		%feature("autodoc", "	* Set field ShearThickness
 
+		/****************** SetShearThickness ******************/
+		%feature("compactdefaultargs") SetShearThickness;
+		%feature("autodoc", "* Set field ShearThickness
 	:param ShearThickness:
 	:type ShearThickness: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetShearThickness;
+	:rtype: None") SetShearThickness;
 		void SetShearThickness (const StepElement_MeasureOrUnspecifiedValue & ShearThickness);
-		%feature("compactdefaultargs") SetThickness;
-		%feature("autodoc", "	* Set field Thickness
 
+		/****************** SetThickness ******************/
+		%feature("compactdefaultargs") SetThickness;
+		%feature("autodoc", "* Set field Thickness
 	:param Thickness:
 	:type Thickness: float
-	:rtype: None
-") SetThickness;
+	:rtype: None") SetThickness;
 		void SetThickness (const Standard_Real Thickness);
+
+		/****************** ShearThickness ******************/
 		%feature("compactdefaultargs") ShearThickness;
-		%feature("autodoc", "	* Returns field ShearThickness
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") ShearThickness;
+		%feature("autodoc", "* Returns field ShearThickness
+	:rtype: StepElement_MeasureOrUnspecifiedValue") ShearThickness;
 		StepElement_MeasureOrUnspecifiedValue ShearThickness ();
+
+		/****************** StepElement_UniformSurfaceSection ******************/
 		%feature("compactdefaultargs") StepElement_UniformSurfaceSection;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepElement_UniformSurfaceSection;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_UniformSurfaceSection;
 		 StepElement_UniformSurfaceSection ();
-		%feature("compactdefaultargs") Thickness;
-		%feature("autodoc", "	* Returns field Thickness
 
-	:rtype: float
-") Thickness;
+		/****************** Thickness ******************/
+		%feature("compactdefaultargs") Thickness;
+		%feature("autodoc", "* Returns field Thickness
+	:rtype: float") Thickness;
 		Standard_Real Thickness ();
+
 };
 
 
@@ -2241,12 +2344,16 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class StepElement_Volume3dElementDescriptor *
+**********************************************/
 %nodefaultctor StepElement_Volume3dElementDescriptor;
 class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
@@ -2255,43 +2362,43 @@ class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescript
 	:type aPurpose: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> &
 	:param aShape:
 	:type aShape: StepElement_Volume3dElementShape
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description,const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & aPurpose,const StepElement_Volume3dElementShape aShape);
+
+		/****************** Purpose ******************/
 		%feature("compactdefaultargs") Purpose;
-		%feature("autodoc", "	* Returns field Purpose
-
-	:rtype: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember>
-") Purpose;
+		%feature("autodoc", "* Returns field Purpose
+	:rtype: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember>") Purpose;
 		opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> Purpose ();
-		%feature("compactdefaultargs") SetPurpose;
-		%feature("autodoc", "	* Set field Purpose
 
+		/****************** SetPurpose ******************/
+		%feature("compactdefaultargs") SetPurpose;
+		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
 	:type Purpose: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> &
-	:rtype: None
-") SetPurpose;
+	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & Purpose);
-		%feature("compactdefaultargs") SetShape;
-		%feature("autodoc", "	* Set field Shape
 
+		/****************** SetShape ******************/
+		%feature("compactdefaultargs") SetShape;
+		%feature("autodoc", "* Set field Shape
 	:param Shape:
 	:type Shape: StepElement_Volume3dElementShape
-	:rtype: None
-") SetShape;
+	:rtype: None") SetShape;
 		void SetShape (const StepElement_Volume3dElementShape Shape);
+
+		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns field Shape
-
-	:rtype: StepElement_Volume3dElementShape
-") Shape;
+		%feature("autodoc", "* Returns field Shape
+	:rtype: StepElement_Volume3dElementShape") Shape;
 		StepElement_Volume3dElementShape Shape ();
-		%feature("compactdefaultargs") StepElement_Volume3dElementDescriptor;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepElement_Volume3dElementDescriptor;
+		/****************** StepElement_Volume3dElementDescriptor ******************/
+		%feature("compactdefaultargs") StepElement_Volume3dElementDescriptor;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepElement_Volume3dElementDescriptor;
 		 StepElement_Volume3dElementDescriptor ();
+
 };
 
 
@@ -2302,6 +2409,7 @@ class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescript
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 class StepElement_HArray1OfVolumeElementPurpose : public  StepElement_Array1OfVolumeElementPurpose, public Standard_Transient {
   public:

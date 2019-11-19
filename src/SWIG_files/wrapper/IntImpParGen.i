@@ -64,11 +64,15 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intimppargen.html
 /* typedefs */
 /* end typedefs declaration */
 
+/*********************
+* class IntImpParGen *
+*********************/
 %rename(intimppargen) IntImpParGen;
 class IntImpParGen {
 	public:
+		/****************** DeterminePosition ******************/
 		%feature("compactdefaultargs") DeterminePosition;
-		%feature("autodoc", "	:param Pos1:
+		%feature("autodoc", ":param Pos1:
 	:type Pos1: IntRes2d_Position &
 	:param Dom1:
 	:type Dom1: IntRes2d_Domain &
@@ -76,12 +80,12 @@ class IntImpParGen {
 	:type P1: gp_Pnt2d
 	:param Tol:
 	:type Tol: float
-	:rtype: void
-") DeterminePosition;
+	:rtype: void") DeterminePosition;
 		static void DeterminePosition (IntRes2d_Position & Pos1,const IntRes2d_Domain & Dom1,const gp_Pnt2d & P1,const Standard_Real Tol);
-		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", "	* Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
 
+		/****************** DetermineTransition ******************/
+		%feature("compactdefaultargs") DetermineTransition;
+		%feature("autodoc", "* Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
 	:param Pos1:
 	:type Pos1: IntRes2d_Position
 	:param Tan1:
@@ -100,11 +104,12 @@ class IntImpParGen {
 	:type Trans2: IntRes2d_Transition &
 	:param Tol:
 	:type Tol: float
-	:rtype: void
-") DetermineTransition;
+	:rtype: void") DetermineTransition;
 		static void DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,const gp_Vec2d & Norm1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,const gp_Vec2d & Norm2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+
+		/****************** DetermineTransition ******************/
 		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", "	:param Pos1:
+		%feature("autodoc", ":param Pos1:
 	:type Pos1: IntRes2d_Position
 	:param Tan1:
 	:type Tan1: gp_Vec2d
@@ -118,17 +123,18 @@ class IntImpParGen {
 	:type Trans2: IntRes2d_Transition &
 	:param Tol:
 	:type Tol: float
-	:rtype: bool
-") DetermineTransition;
+	:rtype: bool") DetermineTransition;
 		static Standard_Boolean DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+
+		/****************** NormalizeOnDomain ******************/
 		%feature("compactdefaultargs") NormalizeOnDomain;
-		%feature("autodoc", "	:param Par1:
+		%feature("autodoc", ":param Par1:
 	:type Par1: float &
 	:param Dom1:
 	:type Dom1: IntRes2d_Domain &
-	:rtype: float
-") NormalizeOnDomain;
+	:rtype: float") NormalizeOnDomain;
 		static Standard_Real NormalizeOnDomain (Standard_Real &OutValue,const IntRes2d_Domain & Dom1);
+
 };
 
 
@@ -137,6 +143,10 @@ class IntImpParGen {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class IntImpParGen_ImpTool *
+*****************************/
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

@@ -70,19 +70,22 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlmdocstd.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/*******************
+* class XmlMDocStd *
+*******************/
 %rename(xmlmdocstd) XmlMDocStd;
 class XmlMDocStd {
 	public:
+		/****************** AddDrivers ******************/
 		%feature("compactdefaultargs") AddDrivers;
-		%feature("autodoc", "	* Adds the attribute drivers to <aDriverTable>.
-
+		%feature("autodoc", "* Adds the attribute drivers to <aDriverTable>.
 	:param aDriverTable:
 	:type aDriverTable: opencascade::handle<XmlMDF_ADriverTable> &
 	:param theMessageDriver:
 	:type theMessageDriver: opencascade::handle<Message_Messenger> &
-	:rtype: void
-") AddDrivers;
+	:rtype: void") AddDrivers;
 		static void AddDrivers (const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable,const opencascade::handle<Message_Messenger> & theMessageDriver);
+
 };
 
 
@@ -91,39 +94,47 @@ class XmlMDocStd {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class XmlMDocStd_XLinkDriver *
+*******************************/
 %nodefaultctor XmlMDocStd_XLinkDriver;
 class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	public:
+		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "	:rtype: opencascade::handle<TDF_Attribute>
-") NewEmpty;
+		%feature("autodoc", ":rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty ();
+
+		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param Source:
+		%feature("autodoc", ":param Source:
 	:type Source: XmlObjMgt_Persistent &
 	:param Target:
 	:type Target: opencascade::handle<TDF_Attribute> &
 	:param RelocTable:
 	:type RelocTable: XmlObjMgt_RRelocationTable &
-	:rtype: bool
-") Paste;
+	:rtype: bool") Paste;
 		Standard_Boolean Paste (const XmlObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,XmlObjMgt_RRelocationTable & RelocTable);
+
+		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "	:param Source:
+		%feature("autodoc", ":param Source:
 	:type Source: opencascade::handle<TDF_Attribute> &
 	:param Target:
 	:type Target: XmlObjMgt_Persistent &
 	:param RelocTable:
 	:type RelocTable: XmlObjMgt_SRelocationTable &
-	:rtype: None
-") Paste;
+	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
+
+		/****************** XmlMDocStd_XLinkDriver ******************/
 		%feature("compactdefaultargs") XmlMDocStd_XLinkDriver;
-		%feature("autodoc", "	:param theMessageDriver:
+		%feature("autodoc", ":param theMessageDriver:
 	:type theMessageDriver: opencascade::handle<Message_Messenger> &
-	:rtype: None
-") XmlMDocStd_XLinkDriver;
+	:rtype: None") XmlMDocStd_XLinkDriver;
 		 XmlMDocStd_XLinkDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
+
 };
 
 
@@ -134,6 +145,7 @@ class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

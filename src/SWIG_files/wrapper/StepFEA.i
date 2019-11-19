@@ -396,30 +396,33 @@ typedef NCollection_Array1 <opencascade::handle <StepFEA_ElementRepresentation>>
 typedef NCollection_Array1 <opencascade::handle <StepFEA_CurveElementEndOffset>> StepFEA_Array1OfCurveElementEndOffset;
 /* end typedefs declaration */
 
+/***************************************
+* class StepFEA_Curve3dElementProperty *
+***************************************/
 %nodefaultctor StepFEA_Curve3dElementProperty;
 class StepFEA_Curve3dElementProperty : public Standard_Transient {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
+
+		/****************** EndOffsets ******************/
 		%feature("compactdefaultargs") EndOffsets;
-		%feature("autodoc", "	* Returns field EndOffsets
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset>
-") EndOffsets;
+		%feature("autodoc", "* Returns field EndOffsets
+	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset>") EndOffsets;
 		opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> EndOffsets ();
+
+		/****************** EndReleases ******************/
 		%feature("compactdefaultargs") EndReleases;
-		%feature("autodoc", "	* Returns field EndReleases
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease>
-") EndReleases;
+		%feature("autodoc", "* Returns field EndReleases
+	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease>") EndReleases;
 		opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> EndReleases ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aPropertyId:
 	:type aPropertyId: opencascade::handle<TCollection_HAsciiString> &
 	:param aDescription:
@@ -430,67 +433,67 @@ class StepFEA_Curve3dElementProperty : public Standard_Transient {
 	:type aEndOffsets: opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> &
 	:param aEndReleases:
 	:type aEndReleases: opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aPropertyId,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepFEA_HArray1OfCurveElementInterval> & aIntervalDefinitions,const opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> & aEndOffsets,const opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> & aEndReleases);
+
+		/****************** IntervalDefinitions ******************/
 		%feature("compactdefaultargs") IntervalDefinitions;
-		%feature("autodoc", "	* Returns field IntervalDefinitions
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementInterval>
-") IntervalDefinitions;
+		%feature("autodoc", "* Returns field IntervalDefinitions
+	:rtype: opencascade::handle<StepFEA_HArray1OfCurveElementInterval>") IntervalDefinitions;
 		opencascade::handle<StepFEA_HArray1OfCurveElementInterval> IntervalDefinitions ();
+
+		/****************** PropertyId ******************/
 		%feature("compactdefaultargs") PropertyId;
-		%feature("autodoc", "	* Returns field PropertyId
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") PropertyId;
+		%feature("autodoc", "* Returns field PropertyId
+	:rtype: opencascade::handle<TCollection_HAsciiString>") PropertyId;
 		opencascade::handle<TCollection_HAsciiString> PropertyId ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetEndOffsets;
-		%feature("autodoc", "	* Set field EndOffsets
 
+		/****************** SetEndOffsets ******************/
+		%feature("compactdefaultargs") SetEndOffsets;
+		%feature("autodoc", "* Set field EndOffsets
 	:param EndOffsets:
 	:type EndOffsets: opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> &
-	:rtype: None
-") SetEndOffsets;
+	:rtype: None") SetEndOffsets;
 		void SetEndOffsets (const opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> & EndOffsets);
-		%feature("compactdefaultargs") SetEndReleases;
-		%feature("autodoc", "	* Set field EndReleases
 
+		/****************** SetEndReleases ******************/
+		%feature("compactdefaultargs") SetEndReleases;
+		%feature("autodoc", "* Set field EndReleases
 	:param EndReleases:
 	:type EndReleases: opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> &
-	:rtype: None
-") SetEndReleases;
+	:rtype: None") SetEndReleases;
 		void SetEndReleases (const opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> & EndReleases);
-		%feature("compactdefaultargs") SetIntervalDefinitions;
-		%feature("autodoc", "	* Set field IntervalDefinitions
 
+		/****************** SetIntervalDefinitions ******************/
+		%feature("compactdefaultargs") SetIntervalDefinitions;
+		%feature("autodoc", "* Set field IntervalDefinitions
 	:param IntervalDefinitions:
 	:type IntervalDefinitions: opencascade::handle<StepFEA_HArray1OfCurveElementInterval> &
-	:rtype: None
-") SetIntervalDefinitions;
+	:rtype: None") SetIntervalDefinitions;
 		void SetIntervalDefinitions (const opencascade::handle<StepFEA_HArray1OfCurveElementInterval> & IntervalDefinitions);
-		%feature("compactdefaultargs") SetPropertyId;
-		%feature("autodoc", "	* Set field PropertyId
 
+		/****************** SetPropertyId ******************/
+		%feature("compactdefaultargs") SetPropertyId;
+		%feature("autodoc", "* Set field PropertyId
 	:param PropertyId:
 	:type PropertyId: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetPropertyId;
+	:rtype: None") SetPropertyId;
 		void SetPropertyId (const opencascade::handle<TCollection_HAsciiString> & PropertyId);
-		%feature("compactdefaultargs") StepFEA_Curve3dElementProperty;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_Curve3dElementProperty;
+		/****************** StepFEA_Curve3dElementProperty ******************/
+		%feature("compactdefaultargs") StepFEA_Curve3dElementProperty;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_Curve3dElementProperty;
 		 StepFEA_Curve3dElementProperty ();
+
 };
 
 
@@ -501,41 +504,45 @@ class StepFEA_Curve3dElementProperty : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************
+* class StepFEA_CurveElementEndCoordinateSystem *
+************************************************/
 %nodefaultctor StepFEA_CurveElementEndCoordinateSystem;
 class StepFEA_CurveElementEndCoordinateSystem : public StepData_SelectType {
 	public:
+		/****************** AlignedCurve3dElementCoordinateSystem ******************/
 		%feature("compactdefaultargs") AlignedCurve3dElementCoordinateSystem;
-		%feature("autodoc", "	* Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type)
-
-	:rtype: opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem>
-") AlignedCurve3dElementCoordinateSystem;
+		%feature("autodoc", "* Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type)
+	:rtype: opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem>") AlignedCurve3dElementCoordinateSystem;
 		opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem> AlignedCurve3dElementCoordinateSystem ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CurveElementEndCoordinateSystem select type 1 -> FeaAxis2Placement3d from StepFEA 2 -> AlignedCurve3dElementCoordinateSystem from StepFEA 3 -> ParametricCurve3dElementCoordinateSystem from StepFEA 0 else
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of CurveElementEndCoordinateSystem select type 1 -> FeaAxis2Placement3d from StepFEA 2 -> AlignedCurve3dElementCoordinateSystem from StepFEA 3 -> ParametricCurve3dElementCoordinateSystem from StepFEA 0 else
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** FeaAxis2Placement3d ******************/
 		%feature("compactdefaultargs") FeaAxis2Placement3d;
-		%feature("autodoc", "	* Returns Value as FeaAxis2Placement3d (or Null if another type)
-
-	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>
-") FeaAxis2Placement3d;
+		%feature("autodoc", "* Returns Value as FeaAxis2Placement3d (or Null if another type)
+	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>") FeaAxis2Placement3d;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> FeaAxis2Placement3d ();
+
+		/****************** ParametricCurve3dElementCoordinateSystem ******************/
 		%feature("compactdefaultargs") ParametricCurve3dElementCoordinateSystem;
-		%feature("autodoc", "	* Returns Value as ParametricCurve3dElementCoordinateSystem (or Null if another type)
-
-	:rtype: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateSystem>
-") ParametricCurve3dElementCoordinateSystem;
+		%feature("autodoc", "* Returns Value as ParametricCurve3dElementCoordinateSystem (or Null if another type)
+	:rtype: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateSystem>") ParametricCurve3dElementCoordinateSystem;
 		opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateSystem> ParametricCurve3dElementCoordinateSystem ();
-		%feature("compactdefaultargs") StepFEA_CurveElementEndCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementEndCoordinateSystem;
+		/****************** StepFEA_CurveElementEndCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementEndCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementEndCoordinateSystem;
 		 StepFEA_CurveElementEndCoordinateSystem ();
+
 };
 
 
@@ -544,53 +551,57 @@ class StepFEA_CurveElementEndCoordinateSystem : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_CurveElementEndOffset *
+**************************************/
 %nodefaultctor StepFEA_CurveElementEndOffset;
 class StepFEA_CurveElementEndOffset : public Standard_Transient {
 	public:
+		/****************** CoordinateSystem ******************/
 		%feature("compactdefaultargs") CoordinateSystem;
-		%feature("autodoc", "	* Returns field CoordinateSystem
-
-	:rtype: StepFEA_CurveElementEndCoordinateSystem
-") CoordinateSystem;
+		%feature("autodoc", "* Returns field CoordinateSystem
+	:rtype: StepFEA_CurveElementEndCoordinateSystem") CoordinateSystem;
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCoordinateSystem:
 	:type aCoordinateSystem: StepFEA_CurveElementEndCoordinateSystem &
 	:param aOffsetVector:
 	:type aOffsetVector: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem,const opencascade::handle<TColStd_HArray1OfReal> & aOffsetVector);
+
+		/****************** OffsetVector ******************/
 		%feature("compactdefaultargs") OffsetVector;
-		%feature("autodoc", "	* Returns field OffsetVector
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") OffsetVector;
+		%feature("autodoc", "* Returns field OffsetVector
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") OffsetVector;
 		opencascade::handle<TColStd_HArray1OfReal> OffsetVector ();
-		%feature("compactdefaultargs") SetCoordinateSystem;
-		%feature("autodoc", "	* Set field CoordinateSystem
 
+		/****************** SetCoordinateSystem ******************/
+		%feature("compactdefaultargs") SetCoordinateSystem;
+		%feature("autodoc", "* Set field CoordinateSystem
 	:param CoordinateSystem:
 	:type CoordinateSystem: StepFEA_CurveElementEndCoordinateSystem &
-	:rtype: None
-") SetCoordinateSystem;
+	:rtype: None") SetCoordinateSystem;
 		void SetCoordinateSystem (const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
-		%feature("compactdefaultargs") SetOffsetVector;
-		%feature("autodoc", "	* Set field OffsetVector
 
+		/****************** SetOffsetVector ******************/
+		%feature("compactdefaultargs") SetOffsetVector;
+		%feature("autodoc", "* Set field OffsetVector
 	:param OffsetVector:
 	:type OffsetVector: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") SetOffsetVector;
+	:rtype: None") SetOffsetVector;
 		void SetOffsetVector (const opencascade::handle<TColStd_HArray1OfReal> & OffsetVector);
-		%feature("compactdefaultargs") StepFEA_CurveElementEndOffset;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementEndOffset;
+		/****************** StepFEA_CurveElementEndOffset ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementEndOffset;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementEndOffset;
 		 StepFEA_CurveElementEndOffset ();
+
 };
 
 
@@ -601,53 +612,57 @@ class StepFEA_CurveElementEndOffset : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class StepFEA_CurveElementEndRelease *
+***************************************/
 %nodefaultctor StepFEA_CurveElementEndRelease;
 class StepFEA_CurveElementEndRelease : public Standard_Transient {
 	public:
+		/****************** CoordinateSystem ******************/
 		%feature("compactdefaultargs") CoordinateSystem;
-		%feature("autodoc", "	* Returns field CoordinateSystem
-
-	:rtype: StepFEA_CurveElementEndCoordinateSystem
-") CoordinateSystem;
+		%feature("autodoc", "* Returns field CoordinateSystem
+	:rtype: StepFEA_CurveElementEndCoordinateSystem") CoordinateSystem;
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCoordinateSystem:
 	:type aCoordinateSystem: StepFEA_CurveElementEndCoordinateSystem &
 	:param aReleases:
 	:type aReleases: opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem,const opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> & aReleases);
+
+		/****************** Releases ******************/
 		%feature("compactdefaultargs") Releases;
-		%feature("autodoc", "	* Returns field Releases
-
-	:rtype: opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket>
-") Releases;
+		%feature("autodoc", "* Returns field Releases
+	:rtype: opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket>") Releases;
 		opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> Releases ();
-		%feature("compactdefaultargs") SetCoordinateSystem;
-		%feature("autodoc", "	* Set field CoordinateSystem
 
+		/****************** SetCoordinateSystem ******************/
+		%feature("compactdefaultargs") SetCoordinateSystem;
+		%feature("autodoc", "* Set field CoordinateSystem
 	:param CoordinateSystem:
 	:type CoordinateSystem: StepFEA_CurveElementEndCoordinateSystem &
-	:rtype: None
-") SetCoordinateSystem;
+	:rtype: None") SetCoordinateSystem;
 		void SetCoordinateSystem (const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
-		%feature("compactdefaultargs") SetReleases;
-		%feature("autodoc", "	* Set field Releases
 
+		/****************** SetReleases ******************/
+		%feature("compactdefaultargs") SetReleases;
+		%feature("autodoc", "* Set field Releases
 	:param Releases:
 	:type Releases: opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> &
-	:rtype: None
-") SetReleases;
+	:rtype: None") SetReleases;
 		void SetReleases (const opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> & Releases);
-		%feature("compactdefaultargs") StepFEA_CurveElementEndRelease;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementEndRelease;
+		/****************** StepFEA_CurveElementEndRelease ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementEndRelease;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementEndRelease;
 		 StepFEA_CurveElementEndRelease ();
+
 };
 
 
@@ -658,53 +673,57 @@ class StepFEA_CurveElementEndRelease : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class StepFEA_CurveElementInterval *
+*************************************/
 %nodefaultctor StepFEA_CurveElementInterval;
 class StepFEA_CurveElementInterval : public Standard_Transient {
 	public:
+		/****************** EuAngles ******************/
 		%feature("compactdefaultargs") EuAngles;
-		%feature("autodoc", "	* Returns field EuAngles
-
-	:rtype: opencascade::handle<StepBasic_EulerAngles>
-") EuAngles;
+		%feature("autodoc", "* Returns field EuAngles
+	:rtype: opencascade::handle<StepBasic_EulerAngles>") EuAngles;
 		opencascade::handle<StepBasic_EulerAngles> EuAngles ();
+
+		/****************** FinishPosition ******************/
 		%feature("compactdefaultargs") FinishPosition;
-		%feature("autodoc", "	* Returns field FinishPosition
-
-	:rtype: opencascade::handle<StepFEA_CurveElementLocation>
-") FinishPosition;
+		%feature("autodoc", "* Returns field FinishPosition
+	:rtype: opencascade::handle<StepFEA_CurveElementLocation>") FinishPosition;
 		opencascade::handle<StepFEA_CurveElementLocation> FinishPosition ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aFinishPosition:
 	:type aFinishPosition: opencascade::handle<StepFEA_CurveElementLocation> &
 	:param aEuAngles:
 	:type aEuAngles: opencascade::handle<StepBasic_EulerAngles> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepFEA_CurveElementLocation> & aFinishPosition,const opencascade::handle<StepBasic_EulerAngles> & aEuAngles);
-		%feature("compactdefaultargs") SetEuAngles;
-		%feature("autodoc", "	* Set field EuAngles
 
+		/****************** SetEuAngles ******************/
+		%feature("compactdefaultargs") SetEuAngles;
+		%feature("autodoc", "* Set field EuAngles
 	:param EuAngles:
 	:type EuAngles: opencascade::handle<StepBasic_EulerAngles> &
-	:rtype: None
-") SetEuAngles;
+	:rtype: None") SetEuAngles;
 		void SetEuAngles (const opencascade::handle<StepBasic_EulerAngles> & EuAngles);
-		%feature("compactdefaultargs") SetFinishPosition;
-		%feature("autodoc", "	* Set field FinishPosition
 
+		/****************** SetFinishPosition ******************/
+		%feature("compactdefaultargs") SetFinishPosition;
+		%feature("autodoc", "* Set field FinishPosition
 	:param FinishPosition:
 	:type FinishPosition: opencascade::handle<StepFEA_CurveElementLocation> &
-	:rtype: None
-") SetFinishPosition;
+	:rtype: None") SetFinishPosition;
 		void SetFinishPosition (const opencascade::handle<StepFEA_CurveElementLocation> & FinishPosition);
-		%feature("compactdefaultargs") StepFEA_CurveElementInterval;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementInterval;
+		/****************** StepFEA_CurveElementInterval ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementInterval;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementInterval;
 		 StepFEA_CurveElementInterval ();
+
 };
 
 
@@ -715,37 +734,41 @@ class StepFEA_CurveElementInterval : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************
+* class StepFEA_CurveElementLocation *
+*************************************/
 %nodefaultctor StepFEA_CurveElementLocation;
 class StepFEA_CurveElementLocation : public Standard_Transient {
 	public:
+		/****************** Coordinate ******************/
 		%feature("compactdefaultargs") Coordinate;
-		%feature("autodoc", "	* Returns field Coordinate
-
-	:rtype: opencascade::handle<StepFEA_FeaParametricPoint>
-") Coordinate;
+		%feature("autodoc", "* Returns field Coordinate
+	:rtype: opencascade::handle<StepFEA_FeaParametricPoint>") Coordinate;
 		opencascade::handle<StepFEA_FeaParametricPoint> Coordinate ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCoordinate:
 	:type aCoordinate: opencascade::handle<StepFEA_FeaParametricPoint> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepFEA_FeaParametricPoint> & aCoordinate);
-		%feature("compactdefaultargs") SetCoordinate;
-		%feature("autodoc", "	* Set field Coordinate
 
+		/****************** SetCoordinate ******************/
+		%feature("compactdefaultargs") SetCoordinate;
+		%feature("autodoc", "* Set field Coordinate
 	:param Coordinate:
 	:type Coordinate: opencascade::handle<StepFEA_FeaParametricPoint> &
-	:rtype: None
-") SetCoordinate;
+	:rtype: None") SetCoordinate;
 		void SetCoordinate (const opencascade::handle<StepFEA_FeaParametricPoint> & Coordinate);
-		%feature("compactdefaultargs") StepFEA_CurveElementLocation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementLocation;
+		/****************** StepFEA_CurveElementLocation ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementLocation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementLocation;
 		 StepFEA_CurveElementLocation ();
+
 };
 
 
@@ -756,65 +779,69 @@ class StepFEA_CurveElementLocation : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class StepFEA_DegreeOfFreedom *
+********************************/
 %nodefaultctor StepFEA_DegreeOfFreedom;
 class StepFEA_DegreeOfFreedom : public StepData_SelectType {
 	public:
+		/****************** ApplicationDefinedDegreeOfFreedom ******************/
 		%feature("compactdefaultargs") ApplicationDefinedDegreeOfFreedom;
-		%feature("autodoc", "	* Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type)
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") ApplicationDefinedDegreeOfFreedom;
+		%feature("autodoc", "* Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type)
+	:rtype: opencascade::handle<TCollection_HAsciiString>") ApplicationDefinedDegreeOfFreedom;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of CurveElementFreedom select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of CurveElementFreedom select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** EnumeratedDegreeOfFreedom ******************/
 		%feature("compactdefaultargs") EnumeratedDegreeOfFreedom;
-		%feature("autodoc", "	* Returns Value as EnumeratedDegreeOfFreedom (or Null if another type)
-
-	:rtype: StepFEA_EnumeratedDegreeOfFreedom
-") EnumeratedDegreeOfFreedom;
+		%feature("autodoc", "* Returns Value as EnumeratedDegreeOfFreedom (or Null if another type)
+	:rtype: StepFEA_EnumeratedDegreeOfFreedom") EnumeratedDegreeOfFreedom;
 		StepFEA_EnumeratedDegreeOfFreedom EnumeratedDegreeOfFreedom ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type CurveElementFreedomMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type CurveElementFreedomMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
-		%feature("autodoc", "	* Set Value for ApplicationDefinedDegreeOfFreedom
 
+		/****************** SetApplicationDefinedDegreeOfFreedom ******************/
+		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
+		%feature("autodoc", "* Set Value for ApplicationDefinedDegreeOfFreedom
 	:param aVal:
 	:type aVal: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetApplicationDefinedDegreeOfFreedom;
+	:rtype: None") SetApplicationDefinedDegreeOfFreedom;
 		void SetApplicationDefinedDegreeOfFreedom (const opencascade::handle<TCollection_HAsciiString> & aVal);
-		%feature("compactdefaultargs") SetEnumeratedDegreeOfFreedom;
-		%feature("autodoc", "	* Returns Value as EnumeratedDegreeOfFreedom (or Null if another type)
 
+		/****************** SetEnumeratedDegreeOfFreedom ******************/
+		%feature("compactdefaultargs") SetEnumeratedDegreeOfFreedom;
+		%feature("autodoc", "* Returns Value as EnumeratedDegreeOfFreedom (or Null if another type)
 	:param aVal:
 	:type aVal: StepFEA_EnumeratedDegreeOfFreedom
-	:rtype: None
-") SetEnumeratedDegreeOfFreedom;
+	:rtype: None") SetEnumeratedDegreeOfFreedom;
 		void SetEnumeratedDegreeOfFreedom (const StepFEA_EnumeratedDegreeOfFreedom aVal);
-		%feature("compactdefaultargs") StepFEA_DegreeOfFreedom;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_DegreeOfFreedom;
+		/****************** StepFEA_DegreeOfFreedom ******************/
+		%feature("compactdefaultargs") StepFEA_DegreeOfFreedom;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_DegreeOfFreedom;
 		 StepFEA_DegreeOfFreedom ();
+
 };
 
 
@@ -823,43 +850,47 @@ class StepFEA_DegreeOfFreedom : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_DegreeOfFreedomMember *
+**************************************/
 %nodefaultctor StepFEA_DegreeOfFreedomMember;
 class StepFEA_DegreeOfFreedomMember : public StepData_SelectNamed {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepFEA_DegreeOfFreedomMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_DegreeOfFreedomMember;
+		/****************** StepFEA_DegreeOfFreedomMember ******************/
+		%feature("compactdefaultargs") StepFEA_DegreeOfFreedomMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_DegreeOfFreedomMember;
 		 StepFEA_DegreeOfFreedomMember ();
+
 };
 
 
@@ -870,69 +901,73 @@ class StepFEA_DegreeOfFreedomMember : public StepData_SelectNamed {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class StepFEA_ElementGeometricRelationship *
+*********************************************/
 %nodefaultctor StepFEA_ElementGeometricRelationship;
 class StepFEA_ElementGeometricRelationship : public Standard_Transient {
 	public:
+		/****************** Aspect ******************/
 		%feature("compactdefaultargs") Aspect;
-		%feature("autodoc", "	* Returns field Aspect
-
-	:rtype: StepElement_ElementAspect
-") Aspect;
+		%feature("autodoc", "* Returns field Aspect
+	:rtype: StepElement_ElementAspect") Aspect;
 		StepElement_ElementAspect Aspect ();
+
+		/****************** ElementRef ******************/
 		%feature("compactdefaultargs") ElementRef;
-		%feature("autodoc", "	* Returns field ElementRef
-
-	:rtype: StepFEA_ElementOrElementGroup
-") ElementRef;
+		%feature("autodoc", "* Returns field ElementRef
+	:rtype: StepFEA_ElementOrElementGroup") ElementRef;
 		StepFEA_ElementOrElementGroup ElementRef ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aElementRef:
 	:type aElementRef: StepFEA_ElementOrElementGroup &
 	:param aItem:
 	:type aItem: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
 	:param aAspect:
 	:type aAspect: StepElement_ElementAspect &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepFEA_ElementOrElementGroup & aElementRef,const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & aItem,const StepElement_ElementAspect & aAspect);
+
+		/****************** Item ******************/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	* Returns field Item
-
-	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
-") Item;
+		%feature("autodoc", "* Returns field Item
+	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item ();
-		%feature("compactdefaultargs") SetAspect;
-		%feature("autodoc", "	* Set field Aspect
 
+		/****************** SetAspect ******************/
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "* Set field Aspect
 	:param Aspect:
 	:type Aspect: StepElement_ElementAspect &
-	:rtype: None
-") SetAspect;
+	:rtype: None") SetAspect;
 		void SetAspect (const StepElement_ElementAspect & Aspect);
-		%feature("compactdefaultargs") SetElementRef;
-		%feature("autodoc", "	* Set field ElementRef
 
+		/****************** SetElementRef ******************/
+		%feature("compactdefaultargs") SetElementRef;
+		%feature("autodoc", "* Set field ElementRef
 	:param ElementRef:
 	:type ElementRef: StepFEA_ElementOrElementGroup &
-	:rtype: None
-") SetElementRef;
+	:rtype: None") SetElementRef;
 		void SetElementRef (const StepFEA_ElementOrElementGroup & ElementRef);
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	* Set field Item
 
+		/****************** SetItem ******************/
+		%feature("compactdefaultargs") SetItem;
+		%feature("autodoc", "* Set field Item
 	:param Item:
 	:type Item: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
-	:rtype: None
-") SetItem;
+	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
-		%feature("compactdefaultargs") StepFEA_ElementGeometricRelationship;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ElementGeometricRelationship;
+		/****************** StepFEA_ElementGeometricRelationship ******************/
+		%feature("compactdefaultargs") StepFEA_ElementGeometricRelationship;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ElementGeometricRelationship;
 		 StepFEA_ElementGeometricRelationship ();
+
 };
 
 
@@ -943,35 +978,39 @@ class StepFEA_ElementGeometricRelationship : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_ElementOrElementGroup *
+**************************************/
 %nodefaultctor StepFEA_ElementOrElementGroup;
 class StepFEA_ElementOrElementGroup : public StepData_SelectType {
 	public:
+		/****************** CaseNum ******************/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of ElementOrElementGroup select type 1 -> ElementRepresentation from StepFEA 2 -> ElementGroup from StepFEA 0 else
-
+		%feature("autodoc", "* Recognizes a kind of ElementOrElementGroup select type 1 -> ElementRepresentation from StepFEA 2 -> ElementGroup from StepFEA 0 else
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** ElementGroup ******************/
 		%feature("compactdefaultargs") ElementGroup;
-		%feature("autodoc", "	* Returns Value as ElementGroup (or Null if another type)
-
-	:rtype: opencascade::handle<StepFEA_ElementGroup>
-") ElementGroup;
+		%feature("autodoc", "* Returns Value as ElementGroup (or Null if another type)
+	:rtype: opencascade::handle<StepFEA_ElementGroup>") ElementGroup;
 		opencascade::handle<StepFEA_ElementGroup> ElementGroup ();
+
+		/****************** ElementRepresentation ******************/
 		%feature("compactdefaultargs") ElementRepresentation;
-		%feature("autodoc", "	* Returns Value as ElementRepresentation (or Null if another type)
-
-	:rtype: opencascade::handle<StepFEA_ElementRepresentation>
-") ElementRepresentation;
+		%feature("autodoc", "* Returns Value as ElementRepresentation (or Null if another type)
+	:rtype: opencascade::handle<StepFEA_ElementRepresentation>") ElementRepresentation;
 		opencascade::handle<StepFEA_ElementRepresentation> ElementRepresentation ();
-		%feature("compactdefaultargs") StepFEA_ElementOrElementGroup;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ElementOrElementGroup;
+		/****************** StepFEA_ElementOrElementGroup ******************/
+		%feature("compactdefaultargs") StepFEA_ElementOrElementGroup;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ElementOrElementGroup;
 		 StepFEA_ElementOrElementGroup ();
+
 };
 
 
@@ -980,12 +1019,16 @@ class StepFEA_ElementOrElementGroup : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_ElementRepresentation *
+**************************************/
 %nodefaultctor StepFEA_ElementRepresentation;
 class StepFEA_ElementRepresentation : public StepRepr_Representation {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -994,29 +1037,29 @@ class StepFEA_ElementRepresentation : public StepRepr_Representation {
 	:type aRepresentation_ContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
 	:param aNodeList:
 	:type aNodeList: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodeList);
+
+		/****************** NodeList ******************/
 		%feature("compactdefaultargs") NodeList;
-		%feature("autodoc", "	* Returns field NodeList
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
-") NodeList;
+		%feature("autodoc", "* Returns field NodeList
+	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>") NodeList;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> NodeList ();
-		%feature("compactdefaultargs") SetNodeList;
-		%feature("autodoc", "	* Set field NodeList
 
+		/****************** SetNodeList ******************/
+		%feature("compactdefaultargs") SetNodeList;
+		%feature("autodoc", "* Set field NodeList
 	:param NodeList:
 	:type NodeList: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") SetNodeList;
+	:rtype: None") SetNodeList;
 		void SetNodeList (const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & NodeList);
-		%feature("compactdefaultargs") StepFEA_ElementRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ElementRepresentation;
+		/****************** StepFEA_ElementRepresentation ******************/
+		%feature("compactdefaultargs") StepFEA_ElementRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ElementRepresentation;
 		 StepFEA_ElementRepresentation ();
+
 };
 
 
@@ -1027,18 +1070,22 @@ class StepFEA_ElementRepresentation : public StepRepr_Representation {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class StepFEA_FeaAxis2Placement3d *
+************************************/
 %nodefaultctor StepFEA_FeaAxis2Placement3d;
 class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 	public:
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aPlacement_Location:
@@ -1055,37 +1102,37 @@ class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 	:type aSystemType: StepFEA_CoordinateSystemType
 	:param aDescription:
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepGeom_CartesianPoint> & aPlacement_Location,const Standard_Boolean hasAxis2Placement3d_Axis,const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_Axis,const Standard_Boolean hasAxis2Placement3d_RefDirection,const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_RefDirection,const StepFEA_CoordinateSystemType aSystemType,const opencascade::handle<TCollection_HAsciiString> & aDescription);
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetSystemType;
-		%feature("autodoc", "	* Set field SystemType
 
+		/****************** SetSystemType ******************/
+		%feature("compactdefaultargs") SetSystemType;
+		%feature("autodoc", "* Set field SystemType
 	:param SystemType:
 	:type SystemType: StepFEA_CoordinateSystemType
-	:rtype: None
-") SetSystemType;
+	:rtype: None") SetSystemType;
 		void SetSystemType (const StepFEA_CoordinateSystemType SystemType);
+
+		/****************** StepFEA_FeaAxis2Placement3d ******************/
 		%feature("compactdefaultargs") StepFEA_FeaAxis2Placement3d;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaAxis2Placement3d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaAxis2Placement3d;
 		 StepFEA_FeaAxis2Placement3d ();
-		%feature("compactdefaultargs") SystemType;
-		%feature("autodoc", "	* Returns field SystemType
 
-	:rtype: StepFEA_CoordinateSystemType
-") SystemType;
+		/****************** SystemType ******************/
+		%feature("compactdefaultargs") SystemType;
+		%feature("autodoc", "* Returns field SystemType
+	:rtype: StepFEA_CoordinateSystemType") SystemType;
 		StepFEA_CoordinateSystemType SystemType ();
+
 };
 
 
@@ -1096,53 +1143,57 @@ class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************************
+* class StepFEA_FeaCurveSectionGeometricRelationship *
+*****************************************************/
 %nodefaultctor StepFEA_FeaCurveSectionGeometricRelationship;
 class StepFEA_FeaCurveSectionGeometricRelationship : public Standard_Transient {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aSectionRef:
 	:type aSectionRef: opencascade::handle<StepElement_CurveElementSectionDefinition> &
 	:param aItem:
 	:type aItem: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepElement_CurveElementSectionDefinition> & aSectionRef,const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & aItem);
+
+		/****************** Item ******************/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	* Returns field Item
-
-	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
-") Item;
+		%feature("autodoc", "* Returns field Item
+	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item ();
+
+		/****************** SectionRef ******************/
 		%feature("compactdefaultargs") SectionRef;
-		%feature("autodoc", "	* Returns field SectionRef
-
-	:rtype: opencascade::handle<StepElement_CurveElementSectionDefinition>
-") SectionRef;
+		%feature("autodoc", "* Returns field SectionRef
+	:rtype: opencascade::handle<StepElement_CurveElementSectionDefinition>") SectionRef;
 		opencascade::handle<StepElement_CurveElementSectionDefinition> SectionRef ();
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	* Set field Item
 
+		/****************** SetItem ******************/
+		%feature("compactdefaultargs") SetItem;
+		%feature("autodoc", "* Set field Item
 	:param Item:
 	:type Item: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
-	:rtype: None
-") SetItem;
+	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
-		%feature("compactdefaultargs") SetSectionRef;
-		%feature("autodoc", "	* Set field SectionRef
 
+		/****************** SetSectionRef ******************/
+		%feature("compactdefaultargs") SetSectionRef;
+		%feature("autodoc", "* Set field SectionRef
 	:param SectionRef:
 	:type SectionRef: opencascade::handle<StepElement_CurveElementSectionDefinition> &
-	:rtype: None
-") SetSectionRef;
+	:rtype: None") SetSectionRef;
 		void SetSectionRef (const opencascade::handle<StepElement_CurveElementSectionDefinition> & SectionRef);
-		%feature("compactdefaultargs") StepFEA_FeaCurveSectionGeometricRelationship;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaCurveSectionGeometricRelationship;
+		/****************** StepFEA_FeaCurveSectionGeometricRelationship ******************/
+		%feature("compactdefaultargs") StepFEA_FeaCurveSectionGeometricRelationship;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaCurveSectionGeometricRelationship;
 		 StepFEA_FeaCurveSectionGeometricRelationship ();
+
 };
 
 
@@ -1153,41 +1204,45 @@ class StepFEA_FeaCurveSectionGeometricRelationship : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class StepFEA_FeaGroup *
+*************************/
 %nodefaultctor StepFEA_FeaGroup;
 class StepFEA_FeaGroup : public StepBasic_Group {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aGroup_Name:
 	:type aGroup_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aGroup_Description:
 	:type aGroup_Description: opencascade::handle<TCollection_HAsciiString> &
 	:param aModelRef:
 	:type aModelRef: opencascade::handle<StepFEA_FeaModel> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aGroup_Name,const opencascade::handle<TCollection_HAsciiString> & aGroup_Description,const opencascade::handle<StepFEA_FeaModel> & aModelRef);
+
+		/****************** ModelRef ******************/
 		%feature("compactdefaultargs") ModelRef;
-		%feature("autodoc", "	* Returns field ModelRef
-
-	:rtype: opencascade::handle<StepFEA_FeaModel>
-") ModelRef;
+		%feature("autodoc", "* Returns field ModelRef
+	:rtype: opencascade::handle<StepFEA_FeaModel>") ModelRef;
 		opencascade::handle<StepFEA_FeaModel> ModelRef ();
-		%feature("compactdefaultargs") SetModelRef;
-		%feature("autodoc", "	* Set field ModelRef
 
+		/****************** SetModelRef ******************/
+		%feature("compactdefaultargs") SetModelRef;
+		%feature("autodoc", "* Set field ModelRef
 	:param ModelRef:
 	:type ModelRef: opencascade::handle<StepFEA_FeaModel> &
-	:rtype: None
-") SetModelRef;
+	:rtype: None") SetModelRef;
 		void SetModelRef (const opencascade::handle<StepFEA_FeaModel> & ModelRef);
-		%feature("compactdefaultargs") StepFEA_FeaGroup;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaGroup;
+		/****************** StepFEA_FeaGroup ******************/
+		%feature("compactdefaultargs") StepFEA_FeaGroup;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaGroup;
 		 StepFEA_FeaGroup ();
+
 };
 
 
@@ -1198,15 +1253,19 @@ class StepFEA_FeaGroup : public StepBasic_Group {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************************
+* class StepFEA_FeaMaterialPropertyRepresentation *
+**************************************************/
 %nodefaultctor StepFEA_FeaMaterialPropertyRepresentation;
 class StepFEA_FeaMaterialPropertyRepresentation : public StepRepr_MaterialPropertyRepresentation {
 	public:
+		/****************** StepFEA_FeaMaterialPropertyRepresentation ******************/
 		%feature("compactdefaultargs") StepFEA_FeaMaterialPropertyRepresentation;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaMaterialPropertyRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaMaterialPropertyRepresentation;
 		 StepFEA_FeaMaterialPropertyRepresentation ();
+
 };
 
 
@@ -1217,15 +1276,19 @@ class StepFEA_FeaMaterialPropertyRepresentation : public StepRepr_MaterialProper
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************************
+* class StepFEA_FeaMaterialPropertyRepresentationItem *
+******************************************************/
 %nodefaultctor StepFEA_FeaMaterialPropertyRepresentationItem;
 class StepFEA_FeaMaterialPropertyRepresentationItem : public StepRepr_RepresentationItem {
 	public:
+		/****************** StepFEA_FeaMaterialPropertyRepresentationItem ******************/
 		%feature("compactdefaultargs") StepFEA_FeaMaterialPropertyRepresentationItem;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaMaterialPropertyRepresentationItem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaMaterialPropertyRepresentationItem;
 		 StepFEA_FeaMaterialPropertyRepresentationItem ();
+
 };
 
 
@@ -1236,30 +1299,34 @@ class StepFEA_FeaMaterialPropertyRepresentationItem : public StepRepr_Representa
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class StepFEA_FeaModel *
+*************************/
 %nodefaultctor StepFEA_FeaModel;
 class StepFEA_FeaModel : public StepRepr_Representation {
 	public:
+		/****************** AnalysisType ******************/
 		%feature("compactdefaultargs") AnalysisType;
-		%feature("autodoc", "	* Returns field AnalysisType
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") AnalysisType;
+		%feature("autodoc", "* Returns field AnalysisType
+	:rtype: opencascade::handle<TCollection_HAsciiString>") AnalysisType;
 		opencascade::handle<TCollection_HAsciiString> AnalysisType ();
+
+		/****************** CreatingSoftware ******************/
 		%feature("compactdefaultargs") CreatingSoftware;
-		%feature("autodoc", "	* Returns field CreatingSoftware
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") CreatingSoftware;
+		%feature("autodoc", "* Returns field CreatingSoftware
+	:rtype: opencascade::handle<TCollection_HAsciiString>") CreatingSoftware;
 		opencascade::handle<TCollection_HAsciiString> CreatingSoftware ();
+
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	* Returns field Description
-
-	:rtype: opencascade::handle<TCollection_HAsciiString>
-") Description;
+		%feature("autodoc", "* Returns field Description
+	:rtype: opencascade::handle<TCollection_HAsciiString>") Description;
 		opencascade::handle<TCollection_HAsciiString> Description ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -1274,53 +1341,53 @@ class StepFEA_FeaModel : public StepRepr_Representation {
 	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
 	:param aAnalysisType:
 	:type aAnalysisType: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<TCollection_HAsciiString> & aCreatingSoftware,const opencascade::handle<TColStd_HArray1OfAsciiString> & aIntendedAnalysisCode,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<TCollection_HAsciiString> & aAnalysisType);
+
+		/****************** IntendedAnalysisCode ******************/
 		%feature("compactdefaultargs") IntendedAnalysisCode;
-		%feature("autodoc", "	* Returns field IntendedAnalysisCode
-
-	:rtype: opencascade::handle<TColStd_HArray1OfAsciiString>
-") IntendedAnalysisCode;
+		%feature("autodoc", "* Returns field IntendedAnalysisCode
+	:rtype: opencascade::handle<TColStd_HArray1OfAsciiString>") IntendedAnalysisCode;
 		opencascade::handle<TColStd_HArray1OfAsciiString> IntendedAnalysisCode ();
-		%feature("compactdefaultargs") SetAnalysisType;
-		%feature("autodoc", "	* Set field AnalysisType
 
+		/****************** SetAnalysisType ******************/
+		%feature("compactdefaultargs") SetAnalysisType;
+		%feature("autodoc", "* Set field AnalysisType
 	:param AnalysisType:
 	:type AnalysisType: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetAnalysisType;
+	:rtype: None") SetAnalysisType;
 		void SetAnalysisType (const opencascade::handle<TCollection_HAsciiString> & AnalysisType);
-		%feature("compactdefaultargs") SetCreatingSoftware;
-		%feature("autodoc", "	* Set field CreatingSoftware
 
+		/****************** SetCreatingSoftware ******************/
+		%feature("compactdefaultargs") SetCreatingSoftware;
+		%feature("autodoc", "* Set field CreatingSoftware
 	:param CreatingSoftware:
 	:type CreatingSoftware: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetCreatingSoftware;
+	:rtype: None") SetCreatingSoftware;
 		void SetCreatingSoftware (const opencascade::handle<TCollection_HAsciiString> & CreatingSoftware);
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	* Set field Description
 
+		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "* Set field Description
 	:param Description:
 	:type Description: opencascade::handle<TCollection_HAsciiString> &
-	:rtype: None
-") SetDescription;
+	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
-		%feature("compactdefaultargs") SetIntendedAnalysisCode;
-		%feature("autodoc", "	* Set field IntendedAnalysisCode
 
+		/****************** SetIntendedAnalysisCode ******************/
+		%feature("compactdefaultargs") SetIntendedAnalysisCode;
+		%feature("autodoc", "* Set field IntendedAnalysisCode
 	:param IntendedAnalysisCode:
 	:type IntendedAnalysisCode: opencascade::handle<TColStd_HArray1OfAsciiString> &
-	:rtype: None
-") SetIntendedAnalysisCode;
+	:rtype: None") SetIntendedAnalysisCode;
 		void SetIntendedAnalysisCode (const opencascade::handle<TColStd_HArray1OfAsciiString> & IntendedAnalysisCode);
-		%feature("compactdefaultargs") StepFEA_FeaModel;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaModel;
+		/****************** StepFEA_FeaModel ******************/
+		%feature("compactdefaultargs") StepFEA_FeaModel;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaModel;
 		 StepFEA_FeaModel ();
+
 };
 
 
@@ -1331,15 +1398,19 @@ class StepFEA_FeaModel : public StepRepr_Representation {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_FeaModelDefinition *
+***********************************/
 %nodefaultctor StepFEA_FeaModelDefinition;
 class StepFEA_FeaModelDefinition : public StepRepr_ShapeAspect {
 	public:
+		/****************** StepFEA_FeaModelDefinition ******************/
 		%feature("compactdefaultargs") StepFEA_FeaModelDefinition;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaModelDefinition;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaModelDefinition;
 		 StepFEA_FeaModelDefinition ();
+
 };
 
 
@@ -1350,39 +1421,43 @@ class StepFEA_FeaModelDefinition : public StepRepr_ShapeAspect {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_FeaParametricPoint *
+***********************************/
 %nodefaultctor StepFEA_FeaParametricPoint;
 class StepFEA_FeaParametricPoint : public StepGeom_Point {
 	public:
+		/****************** Coordinates ******************/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "	* Returns field Coordinates
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") Coordinates;
+		%feature("autodoc", "* Returns field Coordinates
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") Coordinates;
 		opencascade::handle<TColStd_HArray1OfReal> Coordinates ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinates:
 	:type aCoordinates: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<TColStd_HArray1OfReal> & aCoordinates);
-		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "	* Set field Coordinates
 
+		/****************** SetCoordinates ******************/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "* Set field Coordinates
 	:param Coordinates:
 	:type Coordinates: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") SetCoordinates;
+	:rtype: None") SetCoordinates;
 		void SetCoordinates (const opencascade::handle<TColStd_HArray1OfReal> & Coordinates);
-		%feature("compactdefaultargs") StepFEA_FeaParametricPoint;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaParametricPoint;
+		/****************** StepFEA_FeaParametricPoint ******************/
+		%feature("compactdefaultargs") StepFEA_FeaParametricPoint;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaParametricPoint;
 		 StepFEA_FeaParametricPoint ();
+
 };
 
 
@@ -1393,15 +1468,19 @@ class StepFEA_FeaParametricPoint : public StepGeom_Point {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_FeaRepresentationItem *
+**************************************/
 %nodefaultctor StepFEA_FeaRepresentationItem;
 class StepFEA_FeaRepresentationItem : public StepRepr_RepresentationItem {
 	public:
+		/****************** StepFEA_FeaRepresentationItem ******************/
 		%feature("compactdefaultargs") StepFEA_FeaRepresentationItem;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaRepresentationItem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaRepresentationItem;
 		 StepFEA_FeaRepresentationItem ();
+
 };
 
 
@@ -1412,53 +1491,57 @@ class StepFEA_FeaRepresentationItem : public StepRepr_RepresentationItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************************
+* class StepFEA_FeaSurfaceSectionGeometricRelationship *
+*******************************************************/
 %nodefaultctor StepFEA_FeaSurfaceSectionGeometricRelationship;
 class StepFEA_FeaSurfaceSectionGeometricRelationship : public Standard_Transient {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aSectionRef:
 	:type aSectionRef: opencascade::handle<StepElement_SurfaceSection> &
 	:param aItem:
 	:type aItem: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepElement_SurfaceSection> & aSectionRef,const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & aItem);
+
+		/****************** Item ******************/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	* Returns field Item
-
-	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
-") Item;
+		%feature("autodoc", "* Returns field Item
+	:rtype: opencascade::handle<StepElement_AnalysisItemWithinRepresentation>") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item ();
+
+		/****************** SectionRef ******************/
 		%feature("compactdefaultargs") SectionRef;
-		%feature("autodoc", "	* Returns field SectionRef
-
-	:rtype: opencascade::handle<StepElement_SurfaceSection>
-") SectionRef;
+		%feature("autodoc", "* Returns field SectionRef
+	:rtype: opencascade::handle<StepElement_SurfaceSection>") SectionRef;
 		opencascade::handle<StepElement_SurfaceSection> SectionRef ();
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	* Set field Item
 
+		/****************** SetItem ******************/
+		%feature("compactdefaultargs") SetItem;
+		%feature("autodoc", "* Set field Item
 	:param Item:
 	:type Item: opencascade::handle<StepElement_AnalysisItemWithinRepresentation> &
-	:rtype: None
-") SetItem;
+	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
-		%feature("compactdefaultargs") SetSectionRef;
-		%feature("autodoc", "	* Set field SectionRef
 
+		/****************** SetSectionRef ******************/
+		%feature("compactdefaultargs") SetSectionRef;
+		%feature("autodoc", "* Set field SectionRef
 	:param SectionRef:
 	:type SectionRef: opencascade::handle<StepElement_SurfaceSection> &
-	:rtype: None
-") SetSectionRef;
+	:rtype: None") SetSectionRef;
 		void SetSectionRef (const opencascade::handle<StepElement_SurfaceSection> & SectionRef);
-		%feature("compactdefaultargs") StepFEA_FeaSurfaceSectionGeometricRelationship;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaSurfaceSectionGeometricRelationship;
+		/****************** StepFEA_FeaSurfaceSectionGeometricRelationship ******************/
+		%feature("compactdefaultargs") StepFEA_FeaSurfaceSectionGeometricRelationship;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaSurfaceSectionGeometricRelationship;
 		 StepFEA_FeaSurfaceSectionGeometricRelationship ();
+
 };
 
 
@@ -1469,53 +1552,57 @@ class StepFEA_FeaSurfaceSectionGeometricRelationship : public Standard_Transient
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_FreedomAndCoefficient *
+**************************************/
 %nodefaultctor StepFEA_FreedomAndCoefficient;
 class StepFEA_FreedomAndCoefficient : public Standard_Transient {
 	public:
+		/****************** A ******************/
 		%feature("compactdefaultargs") A;
-		%feature("autodoc", "	* Returns field A
-
-	:rtype: StepElement_MeasureOrUnspecifiedValue
-") A;
+		%feature("autodoc", "* Returns field A
+	:rtype: StepElement_MeasureOrUnspecifiedValue") A;
 		StepElement_MeasureOrUnspecifiedValue A ();
+
+		/****************** Freedom ******************/
 		%feature("compactdefaultargs") Freedom;
-		%feature("autodoc", "	* Returns field Freedom
-
-	:rtype: StepFEA_DegreeOfFreedom
-") Freedom;
+		%feature("autodoc", "* Returns field Freedom
+	:rtype: StepFEA_DegreeOfFreedom") Freedom;
 		StepFEA_DegreeOfFreedom Freedom ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aFreedom:
 	:type aFreedom: StepFEA_DegreeOfFreedom &
 	:param aA:
 	:type aA: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const StepFEA_DegreeOfFreedom & aFreedom,const StepElement_MeasureOrUnspecifiedValue & aA);
-		%feature("compactdefaultargs") SetA;
-		%feature("autodoc", "	* Set field A
 
+		/****************** SetA ******************/
+		%feature("compactdefaultargs") SetA;
+		%feature("autodoc", "* Set field A
 	:param A:
 	:type A: StepElement_MeasureOrUnspecifiedValue &
-	:rtype: None
-") SetA;
+	:rtype: None") SetA;
 		void SetA (const StepElement_MeasureOrUnspecifiedValue & A);
-		%feature("compactdefaultargs") SetFreedom;
-		%feature("autodoc", "	* Set field Freedom
 
+		/****************** SetFreedom ******************/
+		%feature("compactdefaultargs") SetFreedom;
+		%feature("autodoc", "* Set field Freedom
 	:param Freedom:
 	:type Freedom: StepFEA_DegreeOfFreedom &
-	:rtype: None
-") SetFreedom;
+	:rtype: None") SetFreedom;
 		void SetFreedom (const StepFEA_DegreeOfFreedom & Freedom);
-		%feature("compactdefaultargs") StepFEA_FreedomAndCoefficient;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FreedomAndCoefficient;
+		/****************** StepFEA_FreedomAndCoefficient ******************/
+		%feature("compactdefaultargs") StepFEA_FreedomAndCoefficient;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FreedomAndCoefficient;
 		 StepFEA_FreedomAndCoefficient ();
+
 };
 
 
@@ -1526,37 +1613,41 @@ class StepFEA_FreedomAndCoefficient : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class StepFEA_FreedomsList *
+*****************************/
 %nodefaultctor StepFEA_FreedomsList;
 class StepFEA_FreedomsList : public Standard_Transient {
 	public:
+		/****************** Freedoms ******************/
 		%feature("compactdefaultargs") Freedoms;
-		%feature("autodoc", "	* Returns field Freedoms
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom>
-") Freedoms;
+		%feature("autodoc", "* Returns field Freedoms
+	:rtype: opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom>") Freedoms;
 		opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> Freedoms ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aFreedoms:
 	:type aFreedoms: opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> & aFreedoms);
-		%feature("compactdefaultargs") SetFreedoms;
-		%feature("autodoc", "	* Set field Freedoms
 
+		/****************** SetFreedoms ******************/
+		%feature("compactdefaultargs") SetFreedoms;
+		%feature("autodoc", "* Set field Freedoms
 	:param Freedoms:
 	:type Freedoms: opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> &
-	:rtype: None
-") SetFreedoms;
+	:rtype: None") SetFreedoms;
 		void SetFreedoms (const opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> & Freedoms);
-		%feature("compactdefaultargs") StepFEA_FreedomsList;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FreedomsList;
+		/****************** StepFEA_FreedomsList ******************/
+		%feature("compactdefaultargs") StepFEA_FreedomsList;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FreedomsList;
 		 StepFEA_FreedomsList ();
+
 };
 
 
@@ -1567,15 +1658,19 @@ class StepFEA_FreedomsList : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class StepFEA_NodeDefinition *
+*******************************/
 %nodefaultctor StepFEA_NodeDefinition;
 class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
 	public:
+		/****************** StepFEA_NodeDefinition ******************/
 		%feature("compactdefaultargs") StepFEA_NodeDefinition;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_NodeDefinition;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeDefinition;
 		 StepFEA_NodeDefinition ();
+
 };
 
 
@@ -1586,12 +1681,16 @@ class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_NodeRepresentation *
+***********************************/
 %nodefaultctor StepFEA_NodeRepresentation;
 class StepFEA_NodeRepresentation : public StepRepr_Representation {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -1600,29 +1699,29 @@ class StepFEA_NodeRepresentation : public StepRepr_Representation {
 	:type aRepresentation_ContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
 	:param aModelRef:
 	:type aModelRef: opencascade::handle<StepFEA_FeaModel> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<StepFEA_FeaModel> & aModelRef);
+
+		/****************** ModelRef ******************/
 		%feature("compactdefaultargs") ModelRef;
-		%feature("autodoc", "	* Returns field ModelRef
-
-	:rtype: opencascade::handle<StepFEA_FeaModel>
-") ModelRef;
+		%feature("autodoc", "* Returns field ModelRef
+	:rtype: opencascade::handle<StepFEA_FeaModel>") ModelRef;
 		opencascade::handle<StepFEA_FeaModel> ModelRef ();
-		%feature("compactdefaultargs") SetModelRef;
-		%feature("autodoc", "	* Set field ModelRef
 
+		/****************** SetModelRef ******************/
+		%feature("compactdefaultargs") SetModelRef;
+		%feature("autodoc", "* Set field ModelRef
 	:param ModelRef:
 	:type ModelRef: opencascade::handle<StepFEA_FeaModel> &
-	:rtype: None
-") SetModelRef;
+	:rtype: None") SetModelRef;
 		void SetModelRef (const opencascade::handle<StepFEA_FeaModel> & ModelRef);
-		%feature("compactdefaultargs") StepFEA_NodeRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_NodeRepresentation;
+		/****************** StepFEA_NodeRepresentation ******************/
+		%feature("compactdefaultargs") StepFEA_NodeRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeRepresentation;
 		 StepFEA_NodeRepresentation ();
+
 };
 
 
@@ -1633,39 +1732,43 @@ class StepFEA_NodeRepresentation : public StepRepr_Representation {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class StepFEA_NodeSet *
+************************/
 %nodefaultctor StepFEA_NodeSet;
 class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aNodes:
 	:type aNodes: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodes);
+
+		/****************** Nodes ******************/
 		%feature("compactdefaultargs") Nodes;
-		%feature("autodoc", "	* Returns field Nodes
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
-") Nodes;
+		%feature("autodoc", "* Returns field Nodes
+	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>") Nodes;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes ();
-		%feature("compactdefaultargs") SetNodes;
-		%feature("autodoc", "	* Set field Nodes
 
+		/****************** SetNodes ******************/
+		%feature("compactdefaultargs") SetNodes;
+		%feature("autodoc", "* Set field Nodes
 	:param Nodes:
 	:type Nodes: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") SetNodes;
+	:rtype: None") SetNodes;
 		void SetNodes (const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
-		%feature("compactdefaultargs") StepFEA_NodeSet;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_NodeSet;
+		/****************** StepFEA_NodeSet ******************/
+		%feature("compactdefaultargs") StepFEA_NodeSet;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeSet;
 		 StepFEA_NodeSet ();
+
 };
 
 
@@ -1676,29 +1779,33 @@ class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_SymmetricTensor22d *
+***********************************/
 %nodefaultctor StepFEA_SymmetricTensor22d;
 class StepFEA_SymmetricTensor22d : public StepData_SelectType {
 	public:
+		/****************** AnisotropicSymmetricTensor22d ******************/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor22d;
-		%feature("autodoc", "	* Returns Value as AnisotropicSymmetricTensor22d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") AnisotropicSymmetricTensor22d;
+		%feature("autodoc", "* Returns Value as AnisotropicSymmetricTensor22d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") AnisotropicSymmetricTensor22d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor22d ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SymmetricTensor22d select type 1 -> HArray1OfReal from TColStd 0 else
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of SymmetricTensor22d select type 1 -> HArray1OfReal from TColStd 0 else
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor22d;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor22d;
+		/****************** StepFEA_SymmetricTensor22d ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor22d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor22d;
 		 StepFEA_SymmetricTensor22d ();
+
 };
 
 
@@ -1707,79 +1814,83 @@ class StepFEA_SymmetricTensor22d : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_SymmetricTensor23d *
+***********************************/
 %nodefaultctor StepFEA_SymmetricTensor23d;
 class StepFEA_SymmetricTensor23d : public StepData_SelectType {
 	public:
+		/****************** AnisotropicSymmetricTensor23d ******************/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Returns Value as AnisotropicSymmetricTensor23d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") AnisotropicSymmetricTensor23d;
+		%feature("autodoc", "* Returns Value as AnisotropicSymmetricTensor23d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") AnisotropicSymmetricTensor23d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor23d ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member SymmetricTensor23dMember 1 -> IsotropicSymmetricTensor23d 2 -> OrthotropicSymmetricTensor23d 3 -> AnisotropicSymmetricTensor23d 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member SymmetricTensor23dMember 1 -> IsotropicSymmetricTensor23d 2 -> OrthotropicSymmetricTensor23d 3 -> AnisotropicSymmetricTensor23d 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SymmetricTensor23d select type return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of SymmetricTensor23d select type return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** IsotropicSymmetricTensor23d ******************/
 		%feature("compactdefaultargs") IsotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Returns Value as IsotropicSymmetricTensor23d (or Null if another type)
-
-	:rtype: float
-") IsotropicSymmetricTensor23d;
+		%feature("autodoc", "* Returns Value as IsotropicSymmetricTensor23d (or Null if another type)
+	:rtype: float") IsotropicSymmetricTensor23d;
 		Standard_Real IsotropicSymmetricTensor23d ();
+
+		/****************** NewMember ******************/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	* Returns a new select member the type SymmetricTensor23dMember
-
-	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
+		%feature("autodoc", "* Returns a new select member the type SymmetricTensor23dMember
+	:rtype: opencascade::handle<StepData_SelectMember>") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember ();
+
+		/****************** OrthotropicSymmetricTensor23d ******************/
 		%feature("compactdefaultargs") OrthotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Returns Value as OrthotropicSymmetricTensor23d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") OrthotropicSymmetricTensor23d;
+		%feature("autodoc", "* Returns Value as OrthotropicSymmetricTensor23d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") OrthotropicSymmetricTensor23d;
 		opencascade::handle<TColStd_HArray1OfReal> OrthotropicSymmetricTensor23d ();
-		%feature("compactdefaultargs") SetAnisotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Set Value for AnisotropicSymmetricTensor23d
 
+		/****************** SetAnisotropicSymmetricTensor23d ******************/
+		%feature("compactdefaultargs") SetAnisotropicSymmetricTensor23d;
+		%feature("autodoc", "* Set Value for AnisotropicSymmetricTensor23d
 	:param aVal:
 	:type aVal: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") SetAnisotropicSymmetricTensor23d;
+	:rtype: None") SetAnisotropicSymmetricTensor23d;
 		void SetAnisotropicSymmetricTensor23d (const opencascade::handle<TColStd_HArray1OfReal> & aVal);
-		%feature("compactdefaultargs") SetIsotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Set Value for IsotropicSymmetricTensor23d
 
+		/****************** SetIsotropicSymmetricTensor23d ******************/
+		%feature("compactdefaultargs") SetIsotropicSymmetricTensor23d;
+		%feature("autodoc", "* Set Value for IsotropicSymmetricTensor23d
 	:param aVal:
 	:type aVal: float
-	:rtype: None
-") SetIsotropicSymmetricTensor23d;
+	:rtype: None") SetIsotropicSymmetricTensor23d;
 		void SetIsotropicSymmetricTensor23d (const Standard_Real aVal);
-		%feature("compactdefaultargs") SetOrthotropicSymmetricTensor23d;
-		%feature("autodoc", "	* Set Value for OrthotropicSymmetricTensor23d
 
+		/****************** SetOrthotropicSymmetricTensor23d ******************/
+		%feature("compactdefaultargs") SetOrthotropicSymmetricTensor23d;
+		%feature("autodoc", "* Set Value for OrthotropicSymmetricTensor23d
 	:param aVal:
 	:type aVal: opencascade::handle<TColStd_HArray1OfReal> &
-	:rtype: None
-") SetOrthotropicSymmetricTensor23d;
+	:rtype: None") SetOrthotropicSymmetricTensor23d;
 		void SetOrthotropicSymmetricTensor23d (const opencascade::handle<TColStd_HArray1OfReal> & aVal);
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor23d;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor23d;
+		/****************** StepFEA_SymmetricTensor23d ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor23d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor23d;
 		 StepFEA_SymmetricTensor23d ();
+
 };
 
 
@@ -1788,43 +1899,47 @@ class StepFEA_SymmetricTensor23d : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class StepFEA_SymmetricTensor23dMember *
+*****************************************/
 %nodefaultctor StepFEA_SymmetricTensor23dMember;
 class StepFEA_SymmetricTensor23dMember : public StepData_SelectArrReal {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor23dMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor23dMember;
+		/****************** StepFEA_SymmetricTensor23dMember ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor23dMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor23dMember;
 		 StepFEA_SymmetricTensor23dMember ();
+
 };
 
 
@@ -1835,29 +1950,33 @@ class StepFEA_SymmetricTensor23dMember : public StepData_SelectArrReal {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_SymmetricTensor42d *
+***********************************/
 %nodefaultctor StepFEA_SymmetricTensor42d;
 class StepFEA_SymmetricTensor42d : public StepData_SelectType {
 	public:
+		/****************** AnisotropicSymmetricTensor42d ******************/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor42d;
-		%feature("autodoc", "	* Returns Value as AnisotropicSymmetricTensor42d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") AnisotropicSymmetricTensor42d;
+		%feature("autodoc", "* Returns Value as AnisotropicSymmetricTensor42d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") AnisotropicSymmetricTensor42d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor42d ();
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a kind of SymmetricTensor42d select type 1 -> HArray1OfReal from TColStd 0 else
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* Recognizes a kind of SymmetricTensor42d select type 1 -> HArray1OfReal from TColStd 0 else
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor42d;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor42d;
+		/****************** StepFEA_SymmetricTensor42d ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor42d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor42d;
 		 StepFEA_SymmetricTensor42d ();
+
 };
 
 
@@ -1866,65 +1985,70 @@ class StepFEA_SymmetricTensor42d : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class StepFEA_SymmetricTensor43d *
+***********************************/
 %nodefaultctor StepFEA_SymmetricTensor43d;
 class StepFEA_SymmetricTensor43d : public StepData_SelectType {
 	public:
+		/****************** AnisotropicSymmetricTensor43d ******************/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor43d;
-		%feature("autodoc", "	* Returns Value as AnisotropicSymmetricTensor43d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") AnisotropicSymmetricTensor43d;
+		%feature("autodoc", "* Returns Value as AnisotropicSymmetricTensor43d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") AnisotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor43d ();
-		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a items of select member CurveElementFreedomMember 1 -> AnisotropicSymmetricTensor43d 2 -> FeaIsotropicSymmetricTensor43d 3 -> FeaIsoOrthotropicSymmetricTensor43d 4 -> FeaTransverseIsotropicSymmetricTensor43d 5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d 6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d 0 else
 
+		/****************** CaseMem ******************/
+		%feature("compactdefaultargs") CaseMem;
+		%feature("autodoc", "* Recognizes a items of select member CurveElementFreedomMember 1 -> AnisotropicSymmetricTensor43d 2 -> FeaIsotropicSymmetricTensor43d 3 -> FeaIsoOrthotropicSymmetricTensor43d 4 -> FeaTransverseIsotropicSymmetricTensor43d 5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d 6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d 0 else
 	:param ent:
 	:type ent: opencascade::handle<StepData_SelectMember> &
-	:rtype: int
-") CaseMem;
+	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
-		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* return 0
 
+		/****************** CaseNum ******************/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "* return 0
 	:param ent:
 	:type ent: opencascade::handle<Standard_Transient> &
-	:rtype: int
-") CaseNum;
+	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** FeaColumnNormalisedMonoclinicSymmetricTensor43d ******************/
 		%feature("compactdefaultargs") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
-		%feature("autodoc", "	* Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
+		%feature("autodoc", "* Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedMonoclinicSymmetricTensor43d ();
+
+		/****************** FeaColumnNormalisedOrthotropicSymmetricTensor43d ******************/
 		%feature("compactdefaultargs") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
-		%feature("autodoc", "	* Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
+		%feature("autodoc", "* Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedOrthotropicSymmetricTensor43d ();
+
+		/****************** FeaIsoOrthotropicSymmetricTensor43d ******************/
 		%feature("compactdefaultargs") FeaIsoOrthotropicSymmetricTensor43d;
-		%feature("autodoc", "	* Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") FeaIsoOrthotropicSymmetricTensor43d;
+		%feature("autodoc", "* Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") FeaIsoOrthotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaIsoOrthotropicSymmetricTensor43d ();
+
+		/****************** FeaTransverseIsotropicSymmetricTensor43d ******************/
 		%feature("compactdefaultargs") FeaTransverseIsotropicSymmetricTensor43d;
-		%feature("autodoc", "	* Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type)
-
-	:rtype: opencascade::handle<TColStd_HArray1OfReal>
-") FeaTransverseIsotropicSymmetricTensor43d;
+		%feature("autodoc", "* Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type)
+	:rtype: opencascade::handle<TColStd_HArray1OfReal>") FeaTransverseIsotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaTransverseIsotropicSymmetricTensor43d ();
-		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepData_SelectMember>
-") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember ();
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor43d;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor43d;
+		/****************** NewMember ******************/
+		%feature("compactdefaultargs") NewMember;
+		%feature("autodoc", ":rtype: opencascade::handle<StepData_SelectMember>") NewMember;
+		virtual opencascade::handle<StepData_SelectMember> NewMember ();
+
+		/****************** StepFEA_SymmetricTensor43d ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor43d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor43d;
 		 StepFEA_SymmetricTensor43d ();
+
 };
 
 
@@ -1933,43 +2057,47 @@ class StepFEA_SymmetricTensor43d : public StepData_SelectType {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class StepFEA_SymmetricTensor43dMember *
+*****************************************/
 %nodefaultctor StepFEA_SymmetricTensor43dMember;
 class StepFEA_SymmetricTensor43dMember : public StepData_SelectArrReal {
 	public:
+		/****************** HasName ******************/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "	* Returns True if has name
-
-	:rtype: bool
-") HasName;
+		%feature("autodoc", "* Returns True if has name
+	:rtype: bool") HasName;
 		virtual Standard_Boolean HasName ();
+
+		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Tells if the name of a SelectMember matches a given one;
-
+		%feature("autodoc", "* Tells if the name of a SelectMember matches a given one;
 	:param name:
 	:type name: char *
-	:rtype: bool
-") Matches;
+	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (const char * name);
+
+		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns set name
-
-	:rtype: char *
-") Name;
+		%feature("autodoc", "* Returns set name
+	:rtype: char *") Name;
 		virtual const char * Name ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	* Set name
 
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "* Set name
 	:param name:
 	:type name: char *
-	:rtype: bool
-") SetName;
+	:rtype: bool") SetName;
 		virtual Standard_Boolean SetName (const char * name);
-		%feature("compactdefaultargs") StepFEA_SymmetricTensor43dMember;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_SymmetricTensor43dMember;
+		/****************** StepFEA_SymmetricTensor43dMember ******************/
+		%feature("compactdefaultargs") StepFEA_SymmetricTensor43dMember;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_SymmetricTensor43dMember;
 		 StepFEA_SymmetricTensor43dMember ();
+
 };
 
 
@@ -1980,39 +2108,43 @@ class StepFEA_SymmetricTensor43dMember : public StepData_SelectArrReal {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************************
+* class StepFEA_AlignedCurve3dElementCoordinateSystem *
+******************************************************/
 %nodefaultctor StepFEA_AlignedCurve3dElementCoordinateSystem;
 class StepFEA_AlignedCurve3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** CoordinateSystem ******************/
 		%feature("compactdefaultargs") CoordinateSystem;
-		%feature("autodoc", "	* Returns field CoordinateSystem
-
-	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>
-") CoordinateSystem;
+		%feature("autodoc", "* Returns field CoordinateSystem
+	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSystem:
 	:type aCoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepFEA_FeaAxis2Placement3d> & aCoordinateSystem);
-		%feature("compactdefaultargs") SetCoordinateSystem;
-		%feature("autodoc", "	* Set field CoordinateSystem
 
+		/****************** SetCoordinateSystem ******************/
+		%feature("compactdefaultargs") SetCoordinateSystem;
+		%feature("autodoc", "* Set field CoordinateSystem
 	:param CoordinateSystem:
 	:type CoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") SetCoordinateSystem;
+	:rtype: None") SetCoordinateSystem;
 		void SetCoordinateSystem (const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
-		%feature("compactdefaultargs") StepFEA_AlignedCurve3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_AlignedCurve3dElementCoordinateSystem;
+		/****************** StepFEA_AlignedCurve3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_AlignedCurve3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_AlignedCurve3dElementCoordinateSystem;
 		 StepFEA_AlignedCurve3dElementCoordinateSystem ();
+
 };
 
 
@@ -2023,39 +2155,43 @@ class StepFEA_AlignedCurve3dElementCoordinateSystem : public StepFEA_FeaRepresen
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************************
+* class StepFEA_AlignedSurface3dElementCoordinateSystem *
+********************************************************/
 %nodefaultctor StepFEA_AlignedSurface3dElementCoordinateSystem;
 class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** CoordinateSystem ******************/
 		%feature("compactdefaultargs") CoordinateSystem;
-		%feature("autodoc", "	* Returns field CoordinateSystem
-
-	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>
-") CoordinateSystem;
+		%feature("autodoc", "* Returns field CoordinateSystem
+	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSystem:
 	:type aCoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepFEA_FeaAxis2Placement3d> & aCoordinateSystem);
-		%feature("compactdefaultargs") SetCoordinateSystem;
-		%feature("autodoc", "	* Set field CoordinateSystem
 
+		/****************** SetCoordinateSystem ******************/
+		%feature("compactdefaultargs") SetCoordinateSystem;
+		%feature("autodoc", "* Set field CoordinateSystem
 	:param CoordinateSystem:
 	:type CoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") SetCoordinateSystem;
+	:rtype: None") SetCoordinateSystem;
 		void SetCoordinateSystem (const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
-		%feature("compactdefaultargs") StepFEA_AlignedSurface3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_AlignedSurface3dElementCoordinateSystem;
+		/****************** StepFEA_AlignedSurface3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_AlignedSurface3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_AlignedSurface3dElementCoordinateSystem;
 		 StepFEA_AlignedSurface3dElementCoordinateSystem ();
+
 };
 
 
@@ -2066,39 +2202,43 @@ class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepres
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************************
+* class StepFEA_ArbitraryVolume3dElementCoordinateSystem *
+*********************************************************/
 %nodefaultctor StepFEA_ArbitraryVolume3dElementCoordinateSystem;
 class StepFEA_ArbitraryVolume3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** CoordinateSystem ******************/
 		%feature("compactdefaultargs") CoordinateSystem;
-		%feature("autodoc", "	* Returns field CoordinateSystem
-
-	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>
-") CoordinateSystem;
+		%feature("autodoc", "* Returns field CoordinateSystem
+	:rtype: opencascade::handle<StepFEA_FeaAxis2Placement3d>") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aCoordinateSystem:
 	:type aCoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepFEA_FeaAxis2Placement3d> & aCoordinateSystem);
-		%feature("compactdefaultargs") SetCoordinateSystem;
-		%feature("autodoc", "	* Set field CoordinateSystem
 
+		/****************** SetCoordinateSystem ******************/
+		%feature("compactdefaultargs") SetCoordinateSystem;
+		%feature("autodoc", "* Set field CoordinateSystem
 	:param CoordinateSystem:
 	:type CoordinateSystem: opencascade::handle<StepFEA_FeaAxis2Placement3d> &
-	:rtype: None
-") SetCoordinateSystem;
+	:rtype: None") SetCoordinateSystem;
 		void SetCoordinateSystem (const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
-		%feature("compactdefaultargs") StepFEA_ArbitraryVolume3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ArbitraryVolume3dElementCoordinateSystem;
+		/****************** StepFEA_ArbitraryVolume3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_ArbitraryVolume3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ArbitraryVolume3dElementCoordinateSystem;
 		 StepFEA_ArbitraryVolume3dElementCoordinateSystem ();
+
 };
 
 
@@ -2109,55 +2249,59 @@ class StepFEA_ArbitraryVolume3dElementCoordinateSystem : public StepFEA_FeaRepre
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************************
+* class StepFEA_ConstantSurface3dElementCoordinateSystem *
+*********************************************************/
 %nodefaultctor StepFEA_ConstantSurface3dElementCoordinateSystem;
 class StepFEA_ConstantSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** Angle ******************/
 		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	* Returns field Angle
-
-	:rtype: float
-") Angle;
+		%feature("autodoc", "* Returns field Angle
+	:rtype: float") Angle;
 		Standard_Real Angle ();
+
+		/****************** Axis ******************/
 		%feature("compactdefaultargs") Axis;
-		%feature("autodoc", "	* Returns field Axis
-
-	:rtype: int
-") Axis;
+		%feature("autodoc", "* Returns field Axis
+	:rtype: int") Axis;
 		Standard_Integer Axis ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aAxis:
 	:type aAxis: int
 	:param aAngle:
 	:type aAngle: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const Standard_Integer aAxis,const Standard_Real aAngle);
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	* Set field Angle
 
+		/****************** SetAngle ******************/
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", "* Set field Angle
 	:param Angle:
 	:type Angle: float
-	:rtype: None
-") SetAngle;
+	:rtype: None") SetAngle;
 		void SetAngle (const Standard_Real Angle);
-		%feature("compactdefaultargs") SetAxis;
-		%feature("autodoc", "	* Set field Axis
 
+		/****************** SetAxis ******************/
+		%feature("compactdefaultargs") SetAxis;
+		%feature("autodoc", "* Set field Axis
 	:param Axis:
 	:type Axis: int
-	:rtype: None
-") SetAxis;
+	:rtype: None") SetAxis;
 		void SetAxis (const Standard_Integer Axis);
-		%feature("compactdefaultargs") StepFEA_ConstantSurface3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ConstantSurface3dElementCoordinateSystem;
+		/****************** StepFEA_ConstantSurface3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_ConstantSurface3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ConstantSurface3dElementCoordinateSystem;
 		 StepFEA_ConstantSurface3dElementCoordinateSystem ();
+
 };
 
 
@@ -2168,18 +2312,22 @@ class StepFEA_ConstantSurface3dElementCoordinateSystem : public StepFEA_FeaRepre
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class StepFEA_Curve3dElementRepresentation *
+*********************************************/
 %nodefaultctor StepFEA_Curve3dElementRepresentation;
 class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
+		/****************** ElementDescriptor ******************/
 		%feature("compactdefaultargs") ElementDescriptor;
-		%feature("autodoc", "	* Returns field ElementDescriptor
-
-	:rtype: opencascade::handle<StepElement_Curve3dElementDescriptor>
-") ElementDescriptor;
+		%feature("autodoc", "* Returns field ElementDescriptor
+	:rtype: opencascade::handle<StepElement_Curve3dElementDescriptor>") ElementDescriptor;
 		opencascade::handle<StepElement_Curve3dElementDescriptor> ElementDescriptor ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -2196,65 +2344,65 @@ class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentatio
 	:type aProperty: opencascade::handle<StepFEA_Curve3dElementProperty> &
 	:param aMaterial:
 	:type aMaterial: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList,const opencascade::handle<StepFEA_FeaModel3d> & aModelRef,const opencascade::handle<StepElement_Curve3dElementDescriptor> & aElementDescriptor,const opencascade::handle<StepFEA_Curve3dElementProperty> & aProperty,const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+
+		/****************** Material ******************/
 		%feature("compactdefaultargs") Material;
-		%feature("autodoc", "	* Returns field Material
-
-	:rtype: opencascade::handle<StepElement_ElementMaterial>
-") Material;
+		%feature("autodoc", "* Returns field Material
+	:rtype: opencascade::handle<StepElement_ElementMaterial>") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material ();
+
+		/****************** ModelRef ******************/
 		%feature("compactdefaultargs") ModelRef;
-		%feature("autodoc", "	* Returns field ModelRef
-
-	:rtype: opencascade::handle<StepFEA_FeaModel3d>
-") ModelRef;
+		%feature("autodoc", "* Returns field ModelRef
+	:rtype: opencascade::handle<StepFEA_FeaModel3d>") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef ();
+
+		/****************** Property ******************/
 		%feature("compactdefaultargs") Property;
-		%feature("autodoc", "	* Returns field Property
-
-	:rtype: opencascade::handle<StepFEA_Curve3dElementProperty>
-") Property;
+		%feature("autodoc", "* Returns field Property
+	:rtype: opencascade::handle<StepFEA_Curve3dElementProperty>") Property;
 		opencascade::handle<StepFEA_Curve3dElementProperty> Property ();
-		%feature("compactdefaultargs") SetElementDescriptor;
-		%feature("autodoc", "	* Set field ElementDescriptor
 
+		/****************** SetElementDescriptor ******************/
+		%feature("compactdefaultargs") SetElementDescriptor;
+		%feature("autodoc", "* Set field ElementDescriptor
 	:param ElementDescriptor:
 	:type ElementDescriptor: opencascade::handle<StepElement_Curve3dElementDescriptor> &
-	:rtype: None
-") SetElementDescriptor;
+	:rtype: None") SetElementDescriptor;
 		void SetElementDescriptor (const opencascade::handle<StepElement_Curve3dElementDescriptor> & ElementDescriptor);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	* Set field Material
 
+		/****************** SetMaterial ******************/
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "* Set field Material
 	:param Material:
 	:type Material: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") SetMaterial;
+	:rtype: None") SetMaterial;
 		void SetMaterial (const opencascade::handle<StepElement_ElementMaterial> & Material);
-		%feature("compactdefaultargs") SetModelRef;
-		%feature("autodoc", "	* Set field ModelRef
 
+		/****************** SetModelRef ******************/
+		%feature("compactdefaultargs") SetModelRef;
+		%feature("autodoc", "* Set field ModelRef
 	:param ModelRef:
 	:type ModelRef: opencascade::handle<StepFEA_FeaModel3d> &
-	:rtype: None
-") SetModelRef;
+	:rtype: None") SetModelRef;
 		void SetModelRef (const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
-		%feature("compactdefaultargs") SetProperty;
-		%feature("autodoc", "	* Set field Property
 
+		/****************** SetProperty ******************/
+		%feature("compactdefaultargs") SetProperty;
+		%feature("autodoc", "* Set field Property
 	:param Property:
 	:type Property: opencascade::handle<StepFEA_Curve3dElementProperty> &
-	:rtype: None
-") SetProperty;
+	:rtype: None") SetProperty;
 		void SetProperty (const opencascade::handle<StepFEA_Curve3dElementProperty> & Property);
-		%feature("compactdefaultargs") StepFEA_Curve3dElementRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_Curve3dElementRepresentation;
+		/****************** StepFEA_Curve3dElementRepresentation ******************/
+		%feature("compactdefaultargs") StepFEA_Curve3dElementRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_Curve3dElementRepresentation;
 		 StepFEA_Curve3dElementRepresentation ();
+
 };
 
 
@@ -2265,41 +2413,45 @@ class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentatio
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class StepFEA_CurveElementIntervalConstant *
+*********************************************/
 %nodefaultctor StepFEA_CurveElementIntervalConstant;
 class StepFEA_CurveElementIntervalConstant : public StepFEA_CurveElementInterval {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCurveElementInterval_FinishPosition:
 	:type aCurveElementInterval_FinishPosition: opencascade::handle<StepFEA_CurveElementLocation> &
 	:param aCurveElementInterval_EuAngles:
 	:type aCurveElementInterval_EuAngles: opencascade::handle<StepBasic_EulerAngles> &
 	:param aSection:
 	:type aSection: opencascade::handle<StepElement_CurveElementSectionDefinition> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepFEA_CurveElementLocation> & aCurveElementInterval_FinishPosition,const opencascade::handle<StepBasic_EulerAngles> & aCurveElementInterval_EuAngles,const opencascade::handle<StepElement_CurveElementSectionDefinition> & aSection);
+
+		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "	* Returns field Section
-
-	:rtype: opencascade::handle<StepElement_CurveElementSectionDefinition>
-") Section;
+		%feature("autodoc", "* Returns field Section
+	:rtype: opencascade::handle<StepElement_CurveElementSectionDefinition>") Section;
 		opencascade::handle<StepElement_CurveElementSectionDefinition> Section ();
-		%feature("compactdefaultargs") SetSection;
-		%feature("autodoc", "	* Set field Section
 
+		/****************** SetSection ******************/
+		%feature("compactdefaultargs") SetSection;
+		%feature("autodoc", "* Set field Section
 	:param Section:
 	:type Section: opencascade::handle<StepElement_CurveElementSectionDefinition> &
-	:rtype: None
-") SetSection;
+	:rtype: None") SetSection;
 		void SetSection (const opencascade::handle<StepElement_CurveElementSectionDefinition> & Section);
-		%feature("compactdefaultargs") StepFEA_CurveElementIntervalConstant;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementIntervalConstant;
+		/****************** StepFEA_CurveElementIntervalConstant ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementIntervalConstant;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementIntervalConstant;
 		 StepFEA_CurveElementIntervalConstant ();
+
 };
 
 
@@ -2310,41 +2462,45 @@ class StepFEA_CurveElementIntervalConstant : public StepFEA_CurveElementInterval
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************************
+* class StepFEA_CurveElementIntervalLinearlyVarying *
+****************************************************/
 %nodefaultctor StepFEA_CurveElementIntervalLinearlyVarying;
 class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementInterval {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCurveElementInterval_FinishPosition:
 	:type aCurveElementInterval_FinishPosition: opencascade::handle<StepFEA_CurveElementLocation> &
 	:param aCurveElementInterval_EuAngles:
 	:type aCurveElementInterval_EuAngles: opencascade::handle<StepBasic_EulerAngles> &
 	:param aSections:
 	:type aSections: opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<StepFEA_CurveElementLocation> & aCurveElementInterval_FinishPosition,const opencascade::handle<StepBasic_EulerAngles> & aCurveElementInterval_EuAngles,const opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> & aSections);
+
+		/****************** Sections ******************/
 		%feature("compactdefaultargs") Sections;
-		%feature("autodoc", "	* Returns field Sections
-
-	:rtype: opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition>
-") Sections;
+		%feature("autodoc", "* Returns field Sections
+	:rtype: opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition>") Sections;
 		opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> Sections ();
-		%feature("compactdefaultargs") SetSections;
-		%feature("autodoc", "	* Set field Sections
 
+		/****************** SetSections ******************/
+		%feature("compactdefaultargs") SetSections;
+		%feature("autodoc", "* Set field Sections
 	:param Sections:
 	:type Sections: opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> &
-	:rtype: None
-") SetSections;
+	:rtype: None") SetSections;
 		void SetSections (const opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> & Sections);
-		%feature("compactdefaultargs") StepFEA_CurveElementIntervalLinearlyVarying;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_CurveElementIntervalLinearlyVarying;
+		/****************** StepFEA_CurveElementIntervalLinearlyVarying ******************/
+		%feature("compactdefaultargs") StepFEA_CurveElementIntervalLinearlyVarying;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_CurveElementIntervalLinearlyVarying;
 		 StepFEA_CurveElementIntervalLinearlyVarying ();
+
 };
 
 
@@ -2355,15 +2511,19 @@ class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementI
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************
+* class StepFEA_DummyNode *
+**************************/
 %nodefaultctor StepFEA_DummyNode;
 class StepFEA_DummyNode : public StepFEA_NodeRepresentation {
 	public:
+		/****************** StepFEA_DummyNode ******************/
 		%feature("compactdefaultargs") StepFEA_DummyNode;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_DummyNode;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_DummyNode;
 		 StepFEA_DummyNode ();
+
 };
 
 
@@ -2374,18 +2534,22 @@ class StepFEA_DummyNode : public StepFEA_NodeRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class StepFEA_ElementGroup *
+*****************************/
 %nodefaultctor StepFEA_ElementGroup;
 class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 	public:
+		/****************** Elements ******************/
 		%feature("compactdefaultargs") Elements;
-		%feature("autodoc", "	* Returns field Elements
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfElementRepresentation>
-") Elements;
+		%feature("autodoc", "* Returns field Elements
+	:rtype: opencascade::handle<StepFEA_HArray1OfElementRepresentation>") Elements;
 		opencascade::handle<StepFEA_HArray1OfElementRepresentation> Elements ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aGroup_Name:
 	:type aGroup_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aGroup_Description:
@@ -2394,23 +2558,23 @@ class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 	:type aFeaGroup_ModelRef: opencascade::handle<StepFEA_FeaModel> &
 	:param aElements:
 	:type aElements: opencascade::handle<StepFEA_HArray1OfElementRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aGroup_Name,const opencascade::handle<TCollection_HAsciiString> & aGroup_Description,const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef,const opencascade::handle<StepFEA_HArray1OfElementRepresentation> & aElements);
-		%feature("compactdefaultargs") SetElements;
-		%feature("autodoc", "	* Set field Elements
 
+		/****************** SetElements ******************/
+		%feature("compactdefaultargs") SetElements;
+		%feature("autodoc", "* Set field Elements
 	:param Elements:
 	:type Elements: opencascade::handle<StepFEA_HArray1OfElementRepresentation> &
-	:rtype: None
-") SetElements;
+	:rtype: None") SetElements;
 		void SetElements (const opencascade::handle<StepFEA_HArray1OfElementRepresentation> & Elements);
-		%feature("compactdefaultargs") StepFEA_ElementGroup;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ElementGroup;
+		/****************** StepFEA_ElementGroup ******************/
+		%feature("compactdefaultargs") StepFEA_ElementGroup;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ElementGroup;
 		 StepFEA_ElementGroup ();
+
 };
 
 
@@ -2421,39 +2585,43 @@ class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class StepFEA_FeaAreaDensity *
+*******************************/
 %nodefaultctor StepFEA_FeaAreaDensity;
 class StepFEA_FeaAreaDensity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstant ******************/
 		%feature("compactdefaultargs") FeaConstant;
-		%feature("autodoc", "	* Returns field FeaConstant
-
-	:rtype: float
-") FeaConstant;
+		%feature("autodoc", "* Returns field FeaConstant
+	:rtype: float") FeaConstant;
 		Standard_Real FeaConstant ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstant:
 	:type aFeaConstant: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const Standard_Real aFeaConstant);
-		%feature("compactdefaultargs") SetFeaConstant;
-		%feature("autodoc", "	* Set field FeaConstant
 
+		/****************** SetFeaConstant ******************/
+		%feature("compactdefaultargs") SetFeaConstant;
+		%feature("autodoc", "* Set field FeaConstant
 	:param FeaConstant:
 	:type FeaConstant: float
-	:rtype: None
-") SetFeaConstant;
+	:rtype: None") SetFeaConstant;
 		void SetFeaConstant (const Standard_Real FeaConstant);
-		%feature("compactdefaultargs") StepFEA_FeaAreaDensity;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaAreaDensity;
+		/****************** StepFEA_FeaAreaDensity ******************/
+		%feature("compactdefaultargs") StepFEA_FeaAreaDensity;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaAreaDensity;
 		 StepFEA_FeaAreaDensity ();
+
 };
 
 
@@ -2464,39 +2632,43 @@ class StepFEA_FeaAreaDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class StepFEA_FeaLinearElasticity *
+************************************/
 %nodefaultctor StepFEA_FeaLinearElasticity;
 class StepFEA_FeaLinearElasticity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor43d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor43d") FeaConstants;
 		StepFEA_SymmetricTensor43d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor43d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor43d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor43d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor43d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaLinearElasticity;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaLinearElasticity;
+		/****************** StepFEA_FeaLinearElasticity ******************/
+		%feature("compactdefaultargs") StepFEA_FeaLinearElasticity;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaLinearElasticity;
 		 StepFEA_FeaLinearElasticity ();
+
 };
 
 
@@ -2507,39 +2679,43 @@ class StepFEA_FeaLinearElasticity : public StepFEA_FeaMaterialPropertyRepresenta
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class StepFEA_FeaMassDensity *
+*******************************/
 %nodefaultctor StepFEA_FeaMassDensity;
 class StepFEA_FeaMassDensity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstant ******************/
 		%feature("compactdefaultargs") FeaConstant;
-		%feature("autodoc", "	* Returns field FeaConstant
-
-	:rtype: float
-") FeaConstant;
+		%feature("autodoc", "* Returns field FeaConstant
+	:rtype: float") FeaConstant;
 		Standard_Real FeaConstant ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstant:
 	:type aFeaConstant: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const Standard_Real aFeaConstant);
-		%feature("compactdefaultargs") SetFeaConstant;
-		%feature("autodoc", "	* Set field FeaConstant
 
+		/****************** SetFeaConstant ******************/
+		%feature("compactdefaultargs") SetFeaConstant;
+		%feature("autodoc", "* Set field FeaConstant
 	:param FeaConstant:
 	:type FeaConstant: float
-	:rtype: None
-") SetFeaConstant;
+	:rtype: None") SetFeaConstant;
 		void SetFeaConstant (const Standard_Real FeaConstant);
-		%feature("compactdefaultargs") StepFEA_FeaMassDensity;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaMassDensity;
+		/****************** StepFEA_FeaMassDensity ******************/
+		%feature("compactdefaultargs") StepFEA_FeaMassDensity;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaMassDensity;
 		 StepFEA_FeaMassDensity ();
+
 };
 
 
@@ -2550,15 +2726,19 @@ class StepFEA_FeaMassDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************
+* class StepFEA_FeaModel3d *
+***************************/
 %nodefaultctor StepFEA_FeaModel3d;
 class StepFEA_FeaModel3d : public StepFEA_FeaModel {
 	public:
+		/****************** StepFEA_FeaModel3d ******************/
 		%feature("compactdefaultargs") StepFEA_FeaModel3d;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_FeaModel3d;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaModel3d;
 		 StepFEA_FeaModel3d ();
+
 };
 
 
@@ -2569,39 +2749,43 @@ class StepFEA_FeaModel3d : public StepFEA_FeaModel {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class StepFEA_FeaMoistureAbsorption *
+**************************************/
 %nodefaultctor StepFEA_FeaMoistureAbsorption;
 class StepFEA_FeaMoistureAbsorption : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor23d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor23d") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor23d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor23d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor23d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor23d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaMoistureAbsorption;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaMoistureAbsorption;
+		/****************** StepFEA_FeaMoistureAbsorption ******************/
+		%feature("compactdefaultargs") StepFEA_FeaMoistureAbsorption;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaMoistureAbsorption;
 		 StepFEA_FeaMoistureAbsorption ();
+
 };
 
 
@@ -2612,55 +2796,59 @@ class StepFEA_FeaMoistureAbsorption : public StepFEA_FeaMaterialPropertyRepresen
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************************************
+* class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion *
+*************************************************************/
 %nodefaultctor StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
 class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor23d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor23d") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor23d &
 	:param aReferenceTemperature:
 	:type aReferenceTemperature: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor23d & aFeaConstants,const Standard_Real aReferenceTemperature);
+
+		/****************** ReferenceTemperature ******************/
 		%feature("compactdefaultargs") ReferenceTemperature;
-		%feature("autodoc", "	* Returns field ReferenceTemperature
-
-	:rtype: float
-") ReferenceTemperature;
+		%feature("autodoc", "* Returns field ReferenceTemperature
+	:rtype: float") ReferenceTemperature;
 		Standard_Real ReferenceTemperature ();
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor23d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor23d & FeaConstants);
-		%feature("compactdefaultargs") SetReferenceTemperature;
-		%feature("autodoc", "	* Set field ReferenceTemperature
 
+		/****************** SetReferenceTemperature ******************/
+		%feature("compactdefaultargs") SetReferenceTemperature;
+		%feature("autodoc", "* Set field ReferenceTemperature
 	:param ReferenceTemperature:
 	:type ReferenceTemperature: float
-	:rtype: None
-") SetReferenceTemperature;
+	:rtype: None") SetReferenceTemperature;
 		void SetReferenceTemperature (const Standard_Real ReferenceTemperature);
-		%feature("compactdefaultargs") StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
+		/****************** StepFEA_FeaSecantCoefficientOfLinearThermalExpansion ******************/
+		%feature("compactdefaultargs") StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
 		 StepFEA_FeaSecantCoefficientOfLinearThermalExpansion ();
+
 };
 
 
@@ -2671,39 +2859,43 @@ class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public StepFEA_FeaM
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class StepFEA_FeaShellBendingStiffness *
+*****************************************/
 %nodefaultctor StepFEA_FeaShellBendingStiffness;
 class StepFEA_FeaShellBendingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor42d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor42d") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor42d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor42d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaShellBendingStiffness;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaShellBendingStiffness;
+		/****************** StepFEA_FeaShellBendingStiffness ******************/
+		%feature("compactdefaultargs") StepFEA_FeaShellBendingStiffness;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaShellBendingStiffness;
 		 StepFEA_FeaShellBendingStiffness ();
+
 };
 
 
@@ -2714,39 +2906,43 @@ class StepFEA_FeaShellBendingStiffness : public StepFEA_FeaMaterialPropertyRepre
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************************
+* class StepFEA_FeaShellMembraneBendingCouplingStiffness *
+*********************************************************/
 %nodefaultctor StepFEA_FeaShellMembraneBendingCouplingStiffness;
 class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor42d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor42d") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor42d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor42d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaShellMembraneBendingCouplingStiffness;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaShellMembraneBendingCouplingStiffness;
+		/****************** StepFEA_FeaShellMembraneBendingCouplingStiffness ******************/
+		%feature("compactdefaultargs") StepFEA_FeaShellMembraneBendingCouplingStiffness;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaShellMembraneBendingCouplingStiffness;
 		 StepFEA_FeaShellMembraneBendingCouplingStiffness ();
+
 };
 
 
@@ -2757,39 +2953,43 @@ class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMater
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************
+* class StepFEA_FeaShellMembraneStiffness *
+******************************************/
 %nodefaultctor StepFEA_FeaShellMembraneStiffness;
 class StepFEA_FeaShellMembraneStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor42d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor42d") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor42d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor42d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor42d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaShellMembraneStiffness;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaShellMembraneStiffness;
+		/****************** StepFEA_FeaShellMembraneStiffness ******************/
+		%feature("compactdefaultargs") StepFEA_FeaShellMembraneStiffness;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaShellMembraneStiffness;
 		 StepFEA_FeaShellMembraneStiffness ();
+
 };
 
 
@@ -2800,39 +3000,43 @@ class StepFEA_FeaShellMembraneStiffness : public StepFEA_FeaMaterialPropertyRepr
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class StepFEA_FeaShellShearStiffness *
+***************************************/
 %nodefaultctor StepFEA_FeaShellShearStiffness;
 class StepFEA_FeaShellShearStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor22d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor22d") FeaConstants;
 		StepFEA_SymmetricTensor22d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor22d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor22d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor22d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor22d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaShellShearStiffness;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaShellShearStiffness;
+		/****************** StepFEA_FeaShellShearStiffness ******************/
+		%feature("compactdefaultargs") StepFEA_FeaShellShearStiffness;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaShellShearStiffness;
 		 StepFEA_FeaShellShearStiffness ();
+
 };
 
 
@@ -2843,39 +3047,43 @@ class StepFEA_FeaShellShearStiffness : public StepFEA_FeaMaterialPropertyReprese
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************************************
+* class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion *
+*****************************************************************/
 %nodefaultctor StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
 class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
+		/****************** FeaConstants ******************/
 		%feature("compactdefaultargs") FeaConstants;
-		%feature("autodoc", "	* Returns field FeaConstants
-
-	:rtype: StepFEA_SymmetricTensor23d
-") FeaConstants;
+		%feature("autodoc", "* Returns field FeaConstants
+	:rtype: StepFEA_SymmetricTensor23d") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aFeaConstants:
 	:type aFeaConstants: StepFEA_SymmetricTensor23d &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const StepFEA_SymmetricTensor23d & aFeaConstants);
-		%feature("compactdefaultargs") SetFeaConstants;
-		%feature("autodoc", "	* Set field FeaConstants
 
+		/****************** SetFeaConstants ******************/
+		%feature("compactdefaultargs") SetFeaConstants;
+		%feature("autodoc", "* Set field FeaConstants
 	:param FeaConstants:
 	:type FeaConstants: StepFEA_SymmetricTensor23d &
-	:rtype: None
-") SetFeaConstants;
+	:rtype: None") SetFeaConstants;
 		void SetFeaConstants (const StepFEA_SymmetricTensor23d & FeaConstants);
-		%feature("compactdefaultargs") StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
+		/****************** StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion ******************/
+		%feature("compactdefaultargs") StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
 		 StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion ();
+
 };
 
 
@@ -2886,15 +3094,19 @@ class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class StepFEA_GeometricNode *
+******************************/
 %nodefaultctor StepFEA_GeometricNode;
 class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
 	public:
+		/****************** StepFEA_GeometricNode ******************/
 		%feature("compactdefaultargs") StepFEA_GeometricNode;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_GeometricNode;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_GeometricNode;
 		 StepFEA_GeometricNode ();
+
 };
 
 
@@ -2905,15 +3117,19 @@ class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************
+* class StepFEA_Node *
+*********************/
 %nodefaultctor StepFEA_Node;
 class StepFEA_Node : public StepFEA_NodeRepresentation {
 	public:
+		/****************** StepFEA_Node ******************/
 		%feature("compactdefaultargs") StepFEA_Node;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_Node;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_Node;
 		 StepFEA_Node ();
+
 };
 
 
@@ -2924,12 +3140,16 @@ class StepFEA_Node : public StepFEA_NodeRepresentation {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************
+* class StepFEA_NodeGroup *
+**************************/
 %nodefaultctor StepFEA_NodeGroup;
 class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aGroup_Name:
 	:type aGroup_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aGroup_Description:
@@ -2938,29 +3158,29 @@ class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 	:type aFeaGroup_ModelRef: opencascade::handle<StepFEA_FeaModel> &
 	:param aNodes:
 	:type aNodes: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aGroup_Name,const opencascade::handle<TCollection_HAsciiString> & aGroup_Description,const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodes);
+
+		/****************** Nodes ******************/
 		%feature("compactdefaultargs") Nodes;
-		%feature("autodoc", "	* Returns field Nodes
-
-	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
-") Nodes;
+		%feature("autodoc", "* Returns field Nodes
+	:rtype: opencascade::handle<StepFEA_HArray1OfNodeRepresentation>") Nodes;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes ();
-		%feature("compactdefaultargs") SetNodes;
-		%feature("autodoc", "	* Set field Nodes
 
+		/****************** SetNodes ******************/
+		%feature("compactdefaultargs") SetNodes;
+		%feature("autodoc", "* Set field Nodes
 	:param Nodes:
 	:type Nodes: opencascade::handle<StepFEA_HArray1OfNodeRepresentation> &
-	:rtype: None
-") SetNodes;
+	:rtype: None") SetNodes;
 		void SetNodes (const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
-		%feature("compactdefaultargs") StepFEA_NodeGroup;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_NodeGroup;
+		/****************** StepFEA_NodeGroup ******************/
+		%feature("compactdefaultargs") StepFEA_NodeGroup;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeGroup;
 		 StepFEA_NodeGroup ();
+
 };
 
 
@@ -2971,39 +3191,43 @@ class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************************
+* class StepFEA_ParametricCurve3dElementCoordinateDirection *
+************************************************************/
 %nodefaultctor StepFEA_ParametricCurve3dElementCoordinateDirection;
 class StepFEA_ParametricCurve3dElementCoordinateDirection : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
-
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aOrientation:
 	:type aOrientation: opencascade::handle<StepGeom_Direction> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepGeom_Direction> & aOrientation);
+
+		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	* Returns field Orientation
-
-	:rtype: opencascade::handle<StepGeom_Direction>
-") Orientation;
+		%feature("autodoc", "* Returns field Orientation
+	:rtype: opencascade::handle<StepGeom_Direction>") Orientation;
 		opencascade::handle<StepGeom_Direction> Orientation ();
-		%feature("compactdefaultargs") SetOrientation;
-		%feature("autodoc", "	* Set field Orientation
 
+		/****************** SetOrientation ******************/
+		%feature("compactdefaultargs") SetOrientation;
+		%feature("autodoc", "* Set field Orientation
 	:param Orientation:
 	:type Orientation: opencascade::handle<StepGeom_Direction> &
-	:rtype: None
-") SetOrientation;
+	:rtype: None") SetOrientation;
 		void SetOrientation (const opencascade::handle<StepGeom_Direction> & Orientation);
-		%feature("compactdefaultargs") StepFEA_ParametricCurve3dElementCoordinateDirection;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ParametricCurve3dElementCoordinateDirection;
+		/****************** StepFEA_ParametricCurve3dElementCoordinateDirection ******************/
+		%feature("compactdefaultargs") StepFEA_ParametricCurve3dElementCoordinateDirection;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ParametricCurve3dElementCoordinateDirection;
 		 StepFEA_ParametricCurve3dElementCoordinateDirection ();
+
 };
 
 
@@ -3014,39 +3238,43 @@ class StepFEA_ParametricCurve3dElementCoordinateDirection : public StepFEA_FeaRe
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************************
+* class StepFEA_ParametricCurve3dElementCoordinateSystem *
+*********************************************************/
 %nodefaultctor StepFEA_ParametricCurve3dElementCoordinateSystem;
 class StepFEA_ParametricCurve3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** Direction ******************/
 		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "	* Returns field Direction
-
-	:rtype: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection>
-") Direction;
+		%feature("autodoc", "* Returns field Direction
+	:rtype: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection>") Direction;
 		opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> Direction ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aDirection:
 	:type aDirection: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> & aDirection);
-		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	* Set field Direction
 
+		/****************** SetDirection ******************/
+		%feature("compactdefaultargs") SetDirection;
+		%feature("autodoc", "* Set field Direction
 	:param Direction:
 	:type Direction: opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> &
-	:rtype: None
-") SetDirection;
+	:rtype: None") SetDirection;
 		void SetDirection (const opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> & Direction);
-		%feature("compactdefaultargs") StepFEA_ParametricCurve3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ParametricCurve3dElementCoordinateSystem;
+		/****************** StepFEA_ParametricCurve3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_ParametricCurve3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ParametricCurve3dElementCoordinateSystem;
 		 StepFEA_ParametricCurve3dElementCoordinateSystem ();
+
 };
 
 
@@ -3057,55 +3285,59 @@ class StepFEA_ParametricCurve3dElementCoordinateSystem : public StepFEA_FeaRepre
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************************
+* class StepFEA_ParametricSurface3dElementCoordinateSystem *
+***********************************************************/
 %nodefaultctor StepFEA_ParametricSurface3dElementCoordinateSystem;
 class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
+		/****************** Angle ******************/
 		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	* Returns field Angle
-
-	:rtype: float
-") Angle;
+		%feature("autodoc", "* Returns field Angle
+	:rtype: float") Angle;
 		Standard_Real Angle ();
+
+		/****************** Axis ******************/
 		%feature("compactdefaultargs") Axis;
-		%feature("autodoc", "	* Returns field Axis
-
-	:rtype: int
-") Axis;
+		%feature("autodoc", "* Returns field Axis
+	:rtype: int") Axis;
 		Standard_Integer Axis ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
 	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aAxis:
 	:type aAxis: int
 	:param aAngle:
 	:type aAngle: float
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const Standard_Integer aAxis,const Standard_Real aAngle);
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	* Set field Angle
 
+		/****************** SetAngle ******************/
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", "* Set field Angle
 	:param Angle:
 	:type Angle: float
-	:rtype: None
-") SetAngle;
+	:rtype: None") SetAngle;
 		void SetAngle (const Standard_Real Angle);
-		%feature("compactdefaultargs") SetAxis;
-		%feature("autodoc", "	* Set field Axis
 
+		/****************** SetAxis ******************/
+		%feature("compactdefaultargs") SetAxis;
+		%feature("autodoc", "* Set field Axis
 	:param Axis:
 	:type Axis: int
-	:rtype: None
-") SetAxis;
+	:rtype: None") SetAxis;
 		void SetAxis (const Standard_Integer Axis);
-		%feature("compactdefaultargs") StepFEA_ParametricSurface3dElementCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_ParametricSurface3dElementCoordinateSystem;
+		/****************** StepFEA_ParametricSurface3dElementCoordinateSystem ******************/
+		%feature("compactdefaultargs") StepFEA_ParametricSurface3dElementCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_ParametricSurface3dElementCoordinateSystem;
 		 StepFEA_ParametricSurface3dElementCoordinateSystem ();
+
 };
 
 
@@ -3116,18 +3348,22 @@ class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRep
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class StepFEA_Surface3dElementRepresentation *
+***********************************************/
 %nodefaultctor StepFEA_Surface3dElementRepresentation;
 class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
+		/****************** ElementDescriptor ******************/
 		%feature("compactdefaultargs") ElementDescriptor;
-		%feature("autodoc", "	* Returns field ElementDescriptor
-
-	:rtype: opencascade::handle<StepElement_Surface3dElementDescriptor>
-") ElementDescriptor;
+		%feature("autodoc", "* Returns field ElementDescriptor
+	:rtype: opencascade::handle<StepElement_Surface3dElementDescriptor>") ElementDescriptor;
 		opencascade::handle<StepElement_Surface3dElementDescriptor> ElementDescriptor ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -3144,65 +3380,65 @@ class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentat
 	:type aProperty: opencascade::handle<StepElement_SurfaceElementProperty> &
 	:param aMaterial:
 	:type aMaterial: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList,const opencascade::handle<StepFEA_FeaModel3d> & aModelRef,const opencascade::handle<StepElement_Surface3dElementDescriptor> & aElementDescriptor,const opencascade::handle<StepElement_SurfaceElementProperty> & aProperty,const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+
+		/****************** Material ******************/
 		%feature("compactdefaultargs") Material;
-		%feature("autodoc", "	* Returns field Material
-
-	:rtype: opencascade::handle<StepElement_ElementMaterial>
-") Material;
+		%feature("autodoc", "* Returns field Material
+	:rtype: opencascade::handle<StepElement_ElementMaterial>") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material ();
+
+		/****************** ModelRef ******************/
 		%feature("compactdefaultargs") ModelRef;
-		%feature("autodoc", "	* Returns field ModelRef
-
-	:rtype: opencascade::handle<StepFEA_FeaModel3d>
-") ModelRef;
+		%feature("autodoc", "* Returns field ModelRef
+	:rtype: opencascade::handle<StepFEA_FeaModel3d>") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef ();
+
+		/****************** Property ******************/
 		%feature("compactdefaultargs") Property;
-		%feature("autodoc", "	* Returns field Property
-
-	:rtype: opencascade::handle<StepElement_SurfaceElementProperty>
-") Property;
+		%feature("autodoc", "* Returns field Property
+	:rtype: opencascade::handle<StepElement_SurfaceElementProperty>") Property;
 		opencascade::handle<StepElement_SurfaceElementProperty> Property ();
-		%feature("compactdefaultargs") SetElementDescriptor;
-		%feature("autodoc", "	* Set field ElementDescriptor
 
+		/****************** SetElementDescriptor ******************/
+		%feature("compactdefaultargs") SetElementDescriptor;
+		%feature("autodoc", "* Set field ElementDescriptor
 	:param ElementDescriptor:
 	:type ElementDescriptor: opencascade::handle<StepElement_Surface3dElementDescriptor> &
-	:rtype: None
-") SetElementDescriptor;
+	:rtype: None") SetElementDescriptor;
 		void SetElementDescriptor (const opencascade::handle<StepElement_Surface3dElementDescriptor> & ElementDescriptor);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	* Set field Material
 
+		/****************** SetMaterial ******************/
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "* Set field Material
 	:param Material:
 	:type Material: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") SetMaterial;
+	:rtype: None") SetMaterial;
 		void SetMaterial (const opencascade::handle<StepElement_ElementMaterial> & Material);
-		%feature("compactdefaultargs") SetModelRef;
-		%feature("autodoc", "	* Set field ModelRef
 
+		/****************** SetModelRef ******************/
+		%feature("compactdefaultargs") SetModelRef;
+		%feature("autodoc", "* Set field ModelRef
 	:param ModelRef:
 	:type ModelRef: opencascade::handle<StepFEA_FeaModel3d> &
-	:rtype: None
-") SetModelRef;
+	:rtype: None") SetModelRef;
 		void SetModelRef (const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
-		%feature("compactdefaultargs") SetProperty;
-		%feature("autodoc", "	* Set field Property
 
+		/****************** SetProperty ******************/
+		%feature("compactdefaultargs") SetProperty;
+		%feature("autodoc", "* Set field Property
 	:param Property:
 	:type Property: opencascade::handle<StepElement_SurfaceElementProperty> &
-	:rtype: None
-") SetProperty;
+	:rtype: None") SetProperty;
 		void SetProperty (const opencascade::handle<StepElement_SurfaceElementProperty> & Property);
-		%feature("compactdefaultargs") StepFEA_Surface3dElementRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_Surface3dElementRepresentation;
+		/****************** StepFEA_Surface3dElementRepresentation ******************/
+		%feature("compactdefaultargs") StepFEA_Surface3dElementRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_Surface3dElementRepresentation;
 		 StepFEA_Surface3dElementRepresentation ();
+
 };
 
 
@@ -3213,18 +3449,22 @@ class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentat
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************************
+* class StepFEA_Volume3dElementRepresentation *
+**********************************************/
 %nodefaultctor StepFEA_Volume3dElementRepresentation;
 class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
+		/****************** ElementDescriptor ******************/
 		%feature("compactdefaultargs") ElementDescriptor;
-		%feature("autodoc", "	* Returns field ElementDescriptor
-
-	:rtype: opencascade::handle<StepElement_Volume3dElementDescriptor>
-") ElementDescriptor;
+		%feature("autodoc", "* Returns field ElementDescriptor
+	:rtype: opencascade::handle<StepElement_Volume3dElementDescriptor>") ElementDescriptor;
 		opencascade::handle<StepElement_Volume3dElementDescriptor> ElementDescriptor ();
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize all fields (own and inherited)
 
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentation_Name:
 	:type aRepresentation_Name: opencascade::handle<TCollection_HAsciiString> &
 	:param aRepresentation_Items:
@@ -3239,51 +3479,51 @@ class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentati
 	:type aElementDescriptor: opencascade::handle<StepElement_Volume3dElementDescriptor> &
 	:param aMaterial:
 	:type aMaterial: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") Init;
+	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items,const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems,const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList,const opencascade::handle<StepFEA_FeaModel3d> & aModelRef,const opencascade::handle<StepElement_Volume3dElementDescriptor> & aElementDescriptor,const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+
+		/****************** Material ******************/
 		%feature("compactdefaultargs") Material;
-		%feature("autodoc", "	* Returns field Material
-
-	:rtype: opencascade::handle<StepElement_ElementMaterial>
-") Material;
+		%feature("autodoc", "* Returns field Material
+	:rtype: opencascade::handle<StepElement_ElementMaterial>") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material ();
+
+		/****************** ModelRef ******************/
 		%feature("compactdefaultargs") ModelRef;
-		%feature("autodoc", "	* Returns field ModelRef
-
-	:rtype: opencascade::handle<StepFEA_FeaModel3d>
-") ModelRef;
+		%feature("autodoc", "* Returns field ModelRef
+	:rtype: opencascade::handle<StepFEA_FeaModel3d>") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef ();
-		%feature("compactdefaultargs") SetElementDescriptor;
-		%feature("autodoc", "	* Set field ElementDescriptor
 
+		/****************** SetElementDescriptor ******************/
+		%feature("compactdefaultargs") SetElementDescriptor;
+		%feature("autodoc", "* Set field ElementDescriptor
 	:param ElementDescriptor:
 	:type ElementDescriptor: opencascade::handle<StepElement_Volume3dElementDescriptor> &
-	:rtype: None
-") SetElementDescriptor;
+	:rtype: None") SetElementDescriptor;
 		void SetElementDescriptor (const opencascade::handle<StepElement_Volume3dElementDescriptor> & ElementDescriptor);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	* Set field Material
 
+		/****************** SetMaterial ******************/
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "* Set field Material
 	:param Material:
 	:type Material: opencascade::handle<StepElement_ElementMaterial> &
-	:rtype: None
-") SetMaterial;
+	:rtype: None") SetMaterial;
 		void SetMaterial (const opencascade::handle<StepElement_ElementMaterial> & Material);
-		%feature("compactdefaultargs") SetModelRef;
-		%feature("autodoc", "	* Set field ModelRef
 
+		/****************** SetModelRef ******************/
+		%feature("compactdefaultargs") SetModelRef;
+		%feature("autodoc", "* Set field ModelRef
 	:param ModelRef:
 	:type ModelRef: opencascade::handle<StepFEA_FeaModel3d> &
-	:rtype: None
-") SetModelRef;
+	:rtype: None") SetModelRef;
 		void SetModelRef (const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
-		%feature("compactdefaultargs") StepFEA_Volume3dElementRepresentation;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") StepFEA_Volume3dElementRepresentation;
+		/****************** StepFEA_Volume3dElementRepresentation ******************/
+		%feature("compactdefaultargs") StepFEA_Volume3dElementRepresentation;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_Volume3dElementRepresentation;
 		 StepFEA_Volume3dElementRepresentation ();
+
 };
 
 
@@ -3294,15 +3534,19 @@ class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentati
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************************
+* class StepFEA_NodeWithSolutionCoordinateSystem *
+*************************************************/
 %nodefaultctor StepFEA_NodeWithSolutionCoordinateSystem;
 class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
 	public:
+		/****************** StepFEA_NodeWithSolutionCoordinateSystem ******************/
 		%feature("compactdefaultargs") StepFEA_NodeWithSolutionCoordinateSystem;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_NodeWithSolutionCoordinateSystem;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeWithSolutionCoordinateSystem;
 		 StepFEA_NodeWithSolutionCoordinateSystem ();
+
 };
 
 
@@ -3313,15 +3557,19 @@ class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class StepFEA_NodeWithVector *
+*******************************/
 %nodefaultctor StepFEA_NodeWithVector;
 class StepFEA_NodeWithVector : public StepFEA_Node {
 	public:
+		/****************** StepFEA_NodeWithVector ******************/
 		%feature("compactdefaultargs") StepFEA_NodeWithVector;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") StepFEA_NodeWithVector;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") StepFEA_NodeWithVector;
 		 StepFEA_NodeWithVector ();
+
 };
 
 
@@ -3332,6 +3580,7 @@ class StepFEA_NodeWithVector : public StepFEA_Node {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 class StepFEA_HArray1OfCurveElementInterval : public  StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
   public:

@@ -84,38 +84,42 @@ enum BinDrivers_Marker {
 /* typedefs */
 /* end typedefs declaration */
 
+/*******************
+* class BinDrivers *
+*******************/
 %rename(bindrivers) BinDrivers;
 %nodefaultctor BinDrivers;
 class BinDrivers {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	* Creates the table of drivers of types supported
-
+		%feature("autodoc", "* Creates the table of drivers of types supported
 	:param MsgDrv:
 	:type MsgDrv: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<BinMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & MsgDrv);
-		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "	* Defines format 'BinOcaf' and registers its read and write drivers in the specified application
 
+		/****************** DefineFormat ******************/
+		%feature("compactdefaultargs") DefineFormat;
+		%feature("autodoc", "* Defines format 'BinOcaf' and registers its read and write drivers in the specified application
 	:param theApp:
 	:type theApp: opencascade::handle<TDocStd_Application> &
-	:rtype: void
-") DefineFormat;
+	:rtype: void") DefineFormat;
 		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
-		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	:param theGUID:
-	:type theGUID: Standard_GUID &
-	:rtype: opencascade::handle<Standard_Transient>
-") Factory;
-		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
-		%feature("compactdefaultargs") StorageVersion;
-		%feature("autodoc", "	* returns '1'
 
-	:rtype: TCollection_AsciiString
-") StorageVersion;
+		/****************** Factory ******************/
+		%feature("compactdefaultargs") Factory;
+		%feature("autodoc", ":param theGUID:
+	:type theGUID: Standard_GUID &
+	:rtype: opencascade::handle<Standard_Transient>") Factory;
+		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
+
+		/****************** StorageVersion ******************/
+		%feature("compactdefaultargs") StorageVersion;
+		%feature("autodoc", "* returns '1'
+	:rtype: TCollection_AsciiString") StorageVersion;
 		static TCollection_AsciiString StorageVersion ();
+
 };
 
 
@@ -124,45 +128,52 @@ class BinDrivers {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class BinDrivers_DocumentRetrievalDriver *
+*******************************************/
 %nodefaultctor BinDrivers_DocumentRetrievalDriver;
 class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<BinMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
-		%feature("compactdefaultargs") BinDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	* Constructor
 
-	:rtype: None
-") BinDrivers_DocumentRetrievalDriver;
+		/****************** BinDrivers_DocumentRetrievalDriver ******************/
+		%feature("compactdefaultargs") BinDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", "* Constructor
+	:rtype: None") BinDrivers_DocumentRetrievalDriver;
 		 BinDrivers_DocumentRetrievalDriver ();
+
+		/****************** CheckShapeSection ******************/
 		%feature("compactdefaultargs") CheckShapeSection;
-		%feature("autodoc", "	:param thePos:
+		%feature("autodoc", ":param thePos:
 	:type thePos: Storage_Position &
 	:param theIS:
 	:type theIS: Standard_IStream &
-	:rtype: void
-") CheckShapeSection;
+	:rtype: void") CheckShapeSection;
 		virtual void CheckShapeSection (const Storage_Position & thePos,Standard_IStream & theIS);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clears the NamedShape driver
 
-	:rtype: void
-") Clear;
+		/****************** Clear ******************/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "* Clears the NamedShape driver
+	:rtype: void") Clear;
 		virtual void Clear ();
+
+		/****************** ReadShapeSection ******************/
 		%feature("compactdefaultargs") ReadShapeSection;
-		%feature("autodoc", "	:param theSection:
+		%feature("autodoc", ":param theSection:
 	:type theSection: BinLDrivers_DocumentSection &
 	:param theIS:
 	:type theIS: Standard_IStream &
 	:param isMess: default value is Standard_False
 	:type isMess: bool
-	:rtype: void
-") ReadShapeSection;
+	:rtype: void") ReadShapeSection;
 		virtual void ReadShapeSection (BinLDrivers_DocumentSection & theSection,Standard_IStream & theIS,const Standard_Boolean isMess = Standard_False);
+
 };
 
 
@@ -173,47 +184,52 @@ class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalD
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class BinDrivers_DocumentStorageDriver *
+*****************************************/
 %nodefaultctor BinDrivers_DocumentStorageDriver;
 class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<BinMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** BinDrivers_DocumentStorageDriver ******************/
 		%feature("compactdefaultargs") BinDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	* Constructor
-
-	:rtype: None
-") BinDrivers_DocumentStorageDriver;
+		%feature("autodoc", "* Constructor
+	:rtype: None") BinDrivers_DocumentStorageDriver;
 		 BinDrivers_DocumentStorageDriver ();
+
+		/****************** IsWithTriangles ******************/
 		%feature("compactdefaultargs") IsWithTriangles;
-		%feature("autodoc", "	* Return true if shape should be stored with triangles.
-
-	:rtype: bool
-") IsWithTriangles;
+		%feature("autodoc", "* Return true if shape should be stored with triangles.
+	:rtype: bool") IsWithTriangles;
 		Standard_Boolean IsWithTriangles ();
-		%feature("compactdefaultargs") SetWithTriangles;
-		%feature("autodoc", "	* Set if triangulation should be stored or not.
 
+		/****************** SetWithTriangles ******************/
+		%feature("compactdefaultargs") SetWithTriangles;
+		%feature("autodoc", "* Set if triangulation should be stored or not.
 	:param theMessageDriver:
 	:type theMessageDriver: opencascade::handle<Message_Messenger> &
 	:param theWithTriangulation:
 	:type theWithTriangulation: bool
-	:rtype: None
-") SetWithTriangles;
+	:rtype: None") SetWithTriangles;
 		void SetWithTriangles (const opencascade::handle<Message_Messenger> & theMessageDriver,const Standard_Boolean theWithTriangulation);
-		%feature("compactdefaultargs") WriteShapeSection;
-		%feature("autodoc", "	* implements the procedure of writing a shape section to file
 
+		/****************** WriteShapeSection ******************/
+		%feature("compactdefaultargs") WriteShapeSection;
+		%feature("autodoc", "* implements the procedure of writing a shape section to file
 	:param theDocSection:
 	:type theDocSection: BinLDrivers_DocumentSection &
 	:param theOS:
 	:type theOS: Standard_OStream &
-	:rtype: void
-") WriteShapeSection;
+	:rtype: void") WriteShapeSection;
 		virtual void WriteShapeSection (BinLDrivers_DocumentSection & theDocSection,Standard_OStream & theOS);
+
 };
 
 
@@ -224,6 +240,7 @@ class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDrive
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

@@ -103,41 +103,44 @@ enum Geom2dGcc_Type1 {
 /* typedefs */
 /* end typedefs declaration */
 
+/******************
+* class Geom2dGcc *
+******************/
 %rename(geom2dgcc) Geom2dGcc;
 class Geom2dGcc {
 	public:
+		/****************** Enclosed ******************/
 		%feature("compactdefaultargs") Enclosed;
-		%feature("autodoc", "	* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve is enclosed by the curve. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Enclosed(Obj);
-
+		%feature("autodoc", "* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve is enclosed by the curve. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Enclosed(Obj);
 	:param Obj:
 	:type Obj: Geom2dAdaptor_Curve &
-	:rtype: Geom2dGcc_QualifiedCurve
-") Enclosed;
+	:rtype: Geom2dGcc_QualifiedCurve") Enclosed;
 		static Geom2dGcc_QualifiedCurve Enclosed (const Geom2dAdaptor_Curve & Obj);
+
+		/****************** Enclosing ******************/
 		%feature("compactdefaultargs") Enclosing;
-		%feature("autodoc", "	* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve encloses the curve. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Enclosing(Obj);
-
+		%feature("autodoc", "* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve encloses the curve. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Enclosing(Obj);
 	:param Obj:
 	:type Obj: Geom2dAdaptor_Curve &
-	:rtype: Geom2dGcc_QualifiedCurve
-") Enclosing;
+	:rtype: Geom2dGcc_QualifiedCurve") Enclosing;
 		static Geom2dGcc_QualifiedCurve Enclosing (const Geom2dAdaptor_Curve & Obj);
+
+		/****************** Outside ******************/
 		%feature("compactdefaultargs") Outside;
-		%feature("autodoc", "	* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve and the curve are external to one another. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Outside(Obj);
-
+		%feature("autodoc", "* Constructs such a qualified curve that the solution computed by a construction algorithm using the qualified curve and the curve are external to one another. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Outside(Obj);
 	:param Obj:
 	:type Obj: Geom2dAdaptor_Curve &
-	:rtype: Geom2dGcc_QualifiedCurve
-") Outside;
+	:rtype: Geom2dGcc_QualifiedCurve") Outside;
 		static Geom2dGcc_QualifiedCurve Outside (const Geom2dAdaptor_Curve & Obj);
-		%feature("compactdefaultargs") Unqualified;
-		%feature("autodoc", "	* Constructs such a qualified curve that the relative position of the solution computed by a construction algorithm using the qualified curve to the circle or line is not qualified, i.e. all solutions apply. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Unqualified(Obj);
 
+		/****************** Unqualified ******************/
+		%feature("compactdefaultargs") Unqualified;
+		%feature("autodoc", "* Constructs such a qualified curve that the relative position of the solution computed by a construction algorithm using the qualified curve to the circle or line is not qualified, i.e. all solutions apply. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Unqualified(Obj);
 	:param Obj:
 	:type Obj: Geom2dAdaptor_Curve &
-	:rtype: Geom2dGcc_QualifiedCurve
-") Unqualified;
+	:rtype: Geom2dGcc_QualifiedCurve") Unqualified;
 		static Geom2dGcc_QualifiedCurve Unqualified (const Geom2dAdaptor_Curve & Obj);
+
 };
 
 
@@ -146,24 +149,28 @@ class Geom2dGcc {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class Geom2dGcc_Circ2d2TanOn *
+*******************************/
 %nodefaultctor Geom2dGcc_Circ2d2TanOn;
 class Geom2dGcc_Circ2d2TanOn {
 	public:
+		/****************** CenterOn3 ******************/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "	* Returns the center PntSol of the solution of index Index computed by this algorithm. ParArg is the parameter of the point PntSol on the third argument. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
-
+		%feature("autodoc", "* Returns the center PntSol of the solution of index Index computed by this algorithm. ParArg is the parameter of the point PntSol on the third argument. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") CenterOn3;
+	:rtype: None") CenterOn3;
 		void CenterOn3 (const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. Param1 is the initial guess on the second curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOn ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. Param1 is the initial guess on the second curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
@@ -178,12 +185,12 @@ class Geom2dGcc_Circ2d2TanOn {
 	:type Param2: float
 	:param ParamOn:
 	:type ParamOn: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOn;
+	:rtype: None") Geom2dGcc_Circ2d2TanOn;
 		 Geom2dGcc_Circ2d2TanOn (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Tolerance,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamOn);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to one curve and one point and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOn ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to one curve and one point and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Point:
@@ -196,12 +203,12 @@ class Geom2dGcc_Circ2d2TanOn {
 	:type Param1: float
 	:param ParamOn:
 	:type ParamOn: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOn;
+	:rtype: None") Geom2dGcc_Circ2d2TanOn;
 		 Geom2dGcc_Circ2d2TanOn (const Geom2dGcc_QualifiedCurve & Qualified1,const opencascade::handle<Geom2d_Point> & Point,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Tolerance,const Standard_Real Param1,const Standard_Real ParamOn);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two points and having the center ON a 2d curve. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOn ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOn;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two points and having the center ON a 2d curve. Tolerance is used for the limit cases.
 	:param Point1:
 	:type Point1: opencascade::handle<Geom2d_Point> &
 	:param Point2:
@@ -210,52 +217,54 @@ class Geom2dGcc_Circ2d2TanOn {
 	:type OnCurve: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOn;
+	:rtype: None") Geom2dGcc_Circ2d2TanOn;
 		 Geom2dGcc_Circ2d2TanOn (const opencascade::handle<Geom2d_Point> & Point1,const opencascade::handle<Geom2d_Point> & Point2,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
-
+		%feature("autodoc", "* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
-
+		%feature("autodoc", "* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame2;
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. NotDone is raised if the algorithm failed.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. NotDone is raised if the algorithm failed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Results ******************/
 		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: GccAna_Circ2d2TanOn &
-	:rtype: None
-") Results;
+	:rtype: None") Results;
 		void Results (const GccAna_Circ2d2TanOn & Circ);
+
+		/****************** Results ******************/
 		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: Geom2dGcc_Circ2d2TanOnGeo &
-	:rtype: None
-") Results;
+	:rtype: None") Results;
 		void Results (const Geom2dGcc_Circ2d2TanOnGeo & Circ);
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -264,12 +273,12 @@ class Geom2dGcc_Circ2d2TanOn {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -278,29 +287,29 @@ class Geom2dGcc_Circ2d2TanOn {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Exceptions Standard_OutOfRange if Index is less than or equal to zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Exceptions Standard_OutOfRange if Index is less than or equal to zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified). Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified). Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -309,24 +318,28 @@ class Geom2dGcc_Circ2d2TanOn {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class Geom2dGcc_Circ2d2TanOnGeo *
+**********************************/
 %nodefaultctor Geom2dGcc_Circ2d2TanOnGeo;
 class Geom2dGcc_Circ2d2TanOnGeo {
 	public:
+		/****************** CenterOn3 ******************/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "	* Returns informations about the center (on the curv) of the result. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
-
+		%feature("autodoc", "* Returns informations about the center (on the curv) of the result. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") CenterOn3;
+	:rtype: None") CenterOn3;
 		void CenterOn3 (const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a curve.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -335,12 +348,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const GccEnt_QualifiedCirc & Qualified1,const GccEnt_QualifiedCirc & Qualified2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line having the center ON a curve.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line having the center ON a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -349,12 +362,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const GccEnt_QualifiedCirc & Qualified1,const GccEnt_QualifiedLin & Qualified2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point having the center ON a curve.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point having the center ON a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Point2:
@@ -363,12 +376,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const GccEnt_QualifiedCirc & Qualified1,const gp_Pnt2d & Point2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a curve.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -377,12 +390,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const GccEnt_QualifiedLin & Qualified1,const GccEnt_QualifiedLin & Qualified2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point having the center ON a 2d line.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point having the center ON a 2d line.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -391,12 +404,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const GccEnt_QualifiedLin & Qualified1,const gp_Pnt2d & Qualified2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two points having the center ON a 2d line.
 
+		/****************** Geom2dGcc_Circ2d2TanOnGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two points having the center ON a 2d line.
 	:param Point1:
 	:type Point1: gp_Pnt2d
 	:param Point2:
@@ -405,40 +418,40 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type OnCurv: Geom2dAdaptor_Curve &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnGeo;
 		 Geom2dGcc_Circ2d2TanOnGeo (const gp_Pnt2d & Point1,const gp_Pnt2d & Point2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the construction algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the construction algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns True if the solution number Index is equal to the first argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
-
+		%feature("autodoc", "* Returns True if the solution number Index is equal to the first argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* Returns True if the solution number Index is equal to the second argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
-
+		%feature("autodoc", "* Returns True if the solution number Index is equal to the second argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame2;
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -447,12 +460,12 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -461,29 +474,29 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -492,22 +505,26 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class Geom2dGcc_Circ2d2TanOnIter *
+***********************************/
 %nodefaultctor Geom2dGcc_Circ2d2TanOnIter;
 class Geom2dGcc_Circ2d2TanOnIter {
 	public:
+		/****************** CenterOn3 ******************/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "	* Returns information about the center (on the curv) of the result and the third argument. It raises NotDone if the construction algorithm didn't succeed.
-
+		%feature("autodoc", "* Returns information about the center (on the curv) of the result and the third argument. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") CenterOn3;
+	:rtype: None") CenterOn3;
 		void CenterOn3 (Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -522,12 +539,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Lin2d & OnLine,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -542,12 +559,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Lin2d & OnLine,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d line. Param1 is the initial guess on the first QualifiedCurv. Param2 is the initial guess on the first QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d line. Param1 is the initial guess on the first QualifiedCurv. Param2 is the initial guess on the first QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -562,12 +579,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Lin2d & OnLine,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d point and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d point and a curve and having the center ON a 2d line. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Point2:
@@ -580,12 +597,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param2: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Point2,const gp_Lin2d & OnLine,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -600,12 +617,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Circ2d & OnCirc,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -620,12 +637,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Circ2d & OnCirc,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d circle. Param1 is the initial guess on the first QualifiedCurv. Param2 is the initial guess on the first QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d circle. Param1 is the initial guess on the first QualifiedCurv. Param2 is the initial guess on the first QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -640,12 +657,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Circ2d & OnCirc,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d point and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d point and a curve and having the center ON a 2d circle. Param2 is the initial guess on the curve QualifiedCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Point2:
@@ -658,12 +675,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type Param2: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Point2,const gp_Circ2d & OnCirc,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d curve. Param2 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve and having the center ON a 2d curve. Param2 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -678,12 +695,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type ParamOn: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamOn,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d curve. Param2 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve and having the center ON a 2d curve. Param2 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -698,12 +715,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type ParamOn: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamOn,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d Point and a curve and having the center ON a 2d curve. Param1 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d Point and a curve and having the center ON a 2d curve. Param1 is the initial guess on the curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Point2:
@@ -716,12 +733,12 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type ParamOn: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Point2,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Param1,const Standard_Real ParamOn,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. Param1 is the initial guess on the second curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 
+		/****************** Geom2dGcc_Circ2d2TanOnIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanOnIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two curves and having the center ON a 2d curve. Param1 is the initial guess on the first curve QualifiedCurv. Param1 is the initial guess on the second curve QualifiedCurv. ParamOn is the initial guess on the center curve OnCurv. Tolerance is used for the limit cases.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -736,65 +753,66 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	:type ParamOn: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanOnIter;
+	:rtype: None") Geom2dGcc_Circ2d2TanOnIter;
 		 Geom2dGcc_Circ2d2TanOnIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dAdaptor_Curve & OnCurve,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamOn,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the construction algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the construction algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: bool
-") IsTheSame1;
+		%feature("autodoc", "* It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 ();
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: bool
-") IsTheSame2;
+		%feature("autodoc", "* It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 ();
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns information about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
-
+		%feature("autodoc", "* Returns information about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns information about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns information about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution. It raises NotDone if the construction algorithm didn't succeed.
 
-	:rtype: gp_Circ2d
-") ThisSolution;
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution. It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution ();
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Qualif1:
+		%feature("autodoc", ":param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -803,11 +821,16 @@ class Geom2dGcc_Circ2d2TanOnIter {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class Geom2dGcc_Circ2d2TanRad *
+********************************/
 %nodefaultctor Geom2dGcc_Circ2d2TanRad;
 class Geom2dGcc_Circ2d2TanRad {
 	public:
+		/****************** Geom2dGcc_Circ2d2TanRad ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRad;
-		%feature("autodoc", "	:param Qualified1:
+		%feature("autodoc", ":param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
 	:type Qualified2: Geom2dGcc_QualifiedCurve &
@@ -815,11 +838,12 @@ class Geom2dGcc_Circ2d2TanRad {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRad;
+	:rtype: None") Geom2dGcc_Circ2d2TanRad;
 		 Geom2dGcc_Circ2d2TanRad (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const Standard_Real Radius,const Standard_Real Tolerance);
+
+		/****************** Geom2dGcc_Circ2d2TanRad ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRad;
-		%feature("autodoc", "	:param Qualified1:
+		%feature("autodoc", ":param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Point:
 	:type Point: opencascade::handle<Geom2d_Point> &
@@ -827,12 +851,12 @@ class Geom2dGcc_Circ2d2TanRad {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRad;
+	:rtype: None") Geom2dGcc_Circ2d2TanRad;
 		 Geom2dGcc_Circ2d2TanRad (const Geom2dGcc_QualifiedCurve & Qualified1,const opencascade::handle<Geom2d_Point> & Point,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRad;
-		%feature("autodoc", "	* These constructors create one or more 2D circles of radius Radius either - tangential to the 2 curves Qualified1 and Qualified2, or - tangential to the curve Qualified1 and passing through the point Point, or - passing through two points Point1 and Point2. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. For example, take two circles C1 and C2, such that C2 is inside C1, and almost tangential to C1. There is, in fact, no point of intersection between C1 and C2. You now want to find a circle of radius R (smaller than the radius of C2), which is tangential to C1 and C2, and inside these two circles: a pure mathematical resolution will not find a solution. This is where the tolerance criterion is used: the algorithm considers that C1 and C2 are tangential if the shortest distance between these two circles is less than or equal to Tolerance. Thus, a solution is found by the algorithm. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line). Standard_NegativeValue if Radius is negative.
 
+		/****************** Geom2dGcc_Circ2d2TanRad ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRad;
+		%feature("autodoc", "* These constructors create one or more 2D circles of radius Radius either - tangential to the 2 curves Qualified1 and Qualified2, or - tangential to the curve Qualified1 and passing through the point Point, or - passing through two points Point1 and Point2. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. For example, take two circles C1 and C2, such that C2 is inside C1, and almost tangential to C1. There is, in fact, no point of intersection between C1 and C2. You now want to find a circle of radius R (smaller than the radius of C2), which is tangential to C1 and C2, and inside these two circles: a pure mathematical resolution will not find a solution. This is where the tolerance criterion is used: the algorithm considers that C1 and C2 are tangential if the shortest distance between these two circles is less than or equal to Tolerance. Thus, a solution is found by the algorithm. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line). Standard_NegativeValue if Radius is negative.
 	:param Point1:
 	:type Point1: opencascade::handle<Geom2d_Point> &
 	:param Point2:
@@ -841,52 +865,54 @@ class Geom2dGcc_Circ2d2TanRad {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRad;
+	:rtype: None") Geom2dGcc_Circ2d2TanRad;
 		 Geom2dGcc_Circ2d2TanRad (const opencascade::handle<Geom2d_Point> & Point1,const opencascade::handle<Geom2d_Point> & Point2,const Standard_Real Radius,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns true if the solution of index Index and, respectively, the first or second argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first or second argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame2;
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. NotDone is raised if the algorithm failed. Exceptions StdFail_NotDone if the construction fails.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. NotDone is raised if the algorithm failed. Exceptions StdFail_NotDone if the construction fails.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Results ******************/
 		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: GccAna_Circ2d2TanRad &
-	:rtype: None
-") Results;
+	:rtype: None") Results;
 		void Results (const GccAna_Circ2d2TanRad & Circ);
+
+		/****************** Results ******************/
 		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: Geom2dGcc_Circ2d2TanRadGeo &
-	:rtype: None
-") Results;
+	:rtype: None") Results;
 		void Results (const Geom2dGcc_Circ2d2TanRadGeo & Circ);
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -895,12 +921,12 @@ class Geom2dGcc_Circ2d2TanRad {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -909,29 +935,29 @@ class Geom2dGcc_Circ2d2TanRad {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point, or - GccEnt_unqualified in certain limit cases where it is impossible to qualify the solution as enclosed, enclosing or outside. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point, or - GccEnt_unqualified in certain limit cases where it is impossible to qualify the solution as enclosed, enclosing or outside. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -940,12 +966,16 @@ class Geom2dGcc_Circ2d2TanRad {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class Geom2dGcc_Circ2d2TanRadGeo *
+***********************************/
 %nodefaultctor Geom2dGcc_Circ2d2TanRadGeo;
 class Geom2dGcc_Circ2d2TanRadGeo {
 	public:
+		/****************** Geom2dGcc_Circ2d2TanRadGeo ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
-
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a curve with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -954,12 +984,12 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRadGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanRadGeo;
 		 Geom2dGcc_Circ2d2TanRadGeo (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 
+		/****************** Geom2dGcc_Circ2d2TanRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a curve with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -968,12 +998,12 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRadGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanRadGeo;
 		 Geom2dGcc_Circ2d2TanRadGeo (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to two curves with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 
+		/****************** Geom2dGcc_Circ2d2TanRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two curves with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -982,12 +1012,12 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRadGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanRadGeo;
 		 Geom2dGcc_Circ2d2TanRadGeo (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles TANgent to a curve and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 
+		/****************** Geom2dGcc_Circ2d2TanRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d2TanRadGeo;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a curve and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Point2:
@@ -996,40 +1026,40 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d2TanRadGeo;
+	:rtype: None") Geom2dGcc_Circ2d2TanRadGeo;
 		 Geom2dGcc_Circ2d2TanRadGeo (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Point2,const Standard_Real Radius,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns True if the solution number Index is equal to the first argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns True if the solution number Index is equal to the first argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* Returns True if the solution number Index is equal to the second argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns True if the solution number Index is equal to the second argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame2;
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. It raises NotDone if the algorithm failed.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. It raises NotDone if the algorithm failed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntSol on the first argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
-
+		%feature("autodoc", "* Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntSol on the first argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1038,12 +1068,12 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns information about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntArg on the second argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns information about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntArg on the second argument. It raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1052,29 +1082,29 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. It raises OutOfRange exception if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. It raises OutOfRange exception if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* It returns the information about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* It returns the information about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -1083,12 +1113,16 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class Geom2dGcc_Circ2d3Tan *
+*****************************/
 %nodefaultctor Geom2dGcc_Circ2d3Tan;
 class Geom2dGcc_Circ2d3Tan {
 	public:
+		/****************** Geom2dGcc_Circ2d3Tan ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
-		%feature("autodoc", "	* Constructs one or more 2D circles tangential to three curves Qualified1, Qualified2 and Qualified3, where Param1, Param2 and Param3 are used, respectively, as the initial values of the parameters on Qualified1, Qualified2 and Qualified3 of the tangency point between these arguments and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if either Qualified1, Qualified2 or Qualified3 is more complex than a line or a circle).
-
+		%feature("autodoc", "* Constructs one or more 2D circles tangential to three curves Qualified1, Qualified2 and Qualified3, where Param1, Param2 and Param3 are used, respectively, as the initial values of the parameters on Qualified1, Qualified2 and Qualified3 of the tangency point between these arguments and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if either Qualified1, Qualified2 or Qualified3 is more complex than a line or a circle).
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
@@ -1103,12 +1137,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Param2: float
 	:param Param3:
 	:type Param3: float
-	:rtype: None
-") Geom2dGcc_Circ2d3Tan;
+	:rtype: None") Geom2dGcc_Circ2d3Tan;
 		 Geom2dGcc_Circ2d3Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const Geom2dGcc_QualifiedCurve & Qualified3,const Standard_Real Tolerance,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
-		%feature("autodoc", "	* Constructs one or more 2D circles tangential to two curves Qualified1 and Qualified2 and passing through the point Point, where Param1 and Param2 are used, respectively, as the initial values of the parameters on Qualified1 and Qualified2 of the tangency point between this argument and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if either Qualified1 or Qualified2 is more complex than a line or a circle).
 
+		/****************** Geom2dGcc_Circ2d3Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
+		%feature("autodoc", "* Constructs one or more 2D circles tangential to two curves Qualified1 and Qualified2 and passing through the point Point, where Param1 and Param2 are used, respectively, as the initial values of the parameters on Qualified1 and Qualified2 of the tangency point between this argument and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if either Qualified1 or Qualified2 is more complex than a line or a circle).
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
@@ -1121,12 +1155,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Param1: float
 	:param Param2:
 	:type Param2: float
-	:rtype: None
-") Geom2dGcc_Circ2d3Tan;
+	:rtype: None") Geom2dGcc_Circ2d3Tan;
 		 Geom2dGcc_Circ2d3Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const opencascade::handle<Geom2d_Point> & Point,const Standard_Real Tolerance,const Standard_Real Param1,const Standard_Real Param2);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
-		%feature("autodoc", "	* Constructs one or more 2D circles tangential to the curve Qualified1 and passing through two points Point1 and Point2, where Param1 is used as the initial value of the parameter on Qualified1 of the tangency point between this argument and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if Qualified1 is more complex than a line or a circle)
 
+		/****************** Geom2dGcc_Circ2d3Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
+		%feature("autodoc", "* Constructs one or more 2D circles tangential to the curve Qualified1 and passing through two points Point1 and Point2, where Param1 is used as the initial value of the parameter on Qualified1 of the tangency point between this argument and the solution sought, if the algorithm chooses an iterative method to find the solution (i.e. if Qualified1 is more complex than a line or a circle)
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Point1:
@@ -1137,12 +1171,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Tolerance: float
 	:param Param1:
 	:type Param1: float
-	:rtype: None
-") Geom2dGcc_Circ2d3Tan;
+	:rtype: None") Geom2dGcc_Circ2d3Tan;
 		 Geom2dGcc_Circ2d3Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const opencascade::handle<Geom2d_Point> & Point1,const opencascade::handle<Geom2d_Point> & Point2,const Standard_Real Tolerance,const Standard_Real Param1);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
-		%feature("autodoc", "	* Constructs one or more 2D circles passing through three points Point1, Point2 and Point3. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. For example, take: - two circles C1 and C2, such that C2 is inside C1, and almost tangential to C1; there is in fact no point of intersection between C1 and C2; and - a circle C3 outside C1. You now want to find a circle which is tangential to C1, C2 and C3: a pure mathematical resolution will not find a solution. This is where the tolerance criterion is used: the algorithm considers that C1 and C2 are tangential if the shortest distance between these two circles is less than or equal to Tolerance. Thus, the algorithm finds a solution. Warning An iterative algorithm is used if Qualified1, Qualified2 or Qualified3 is more complex than a line or a circle. In such cases, the algorithm constructs only one solution. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
 
+		/****************** Geom2dGcc_Circ2d3Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3Tan;
+		%feature("autodoc", "* Constructs one or more 2D circles passing through three points Point1, Point2 and Point3. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. For example, take: - two circles C1 and C2, such that C2 is inside C1, and almost tangential to C1; there is in fact no point of intersection between C1 and C2; and - a circle C3 outside C1. You now want to find a circle which is tangential to C1, C2 and C3: a pure mathematical resolution will not find a solution. This is where the tolerance criterion is used: the algorithm considers that C1 and C2 are tangential if the shortest distance between these two circles is less than or equal to Tolerance. Thus, the algorithm finds a solution. Warning An iterative algorithm is used if Qualified1, Qualified2 or Qualified3 is more complex than a line or a circle. In such cases, the algorithm constructs only one solution. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
 	:param Point1:
 	:type Point1: opencascade::handle<Geom2d_Point> &
 	:param Point2:
@@ -1151,47 +1185,48 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Point3: opencascade::handle<Geom2d_Point> &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3Tan;
+	:rtype: None") Geom2dGcc_Circ2d3Tan;
 		 Geom2dGcc_Circ2d3Tan (const opencascade::handle<Geom2d_Point> & Point1,const opencascade::handle<Geom2d_Point> & Point2,const opencascade::handle<Geom2d_Point> & Point3,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns True if the solution is equal to the first argument.
-
+		%feature("autodoc", "* Returns True if the solution is equal to the first argument.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* Returns True if the solution is equal to the second argument.
-
+		%feature("autodoc", "* Returns True if the solution is equal to the second argument.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame2;
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 (const Standard_Integer Index);
-		%feature("compactdefaultargs") IsTheSame3;
-		%feature("autodoc", "	* Returns True if the solution is equal to the third argument. If Rarg is the radius of the first, second or third argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** IsTheSame3 ******************/
+		%feature("compactdefaultargs") IsTheSame3;
+		%feature("autodoc", "* Returns True if the solution is equal to the third argument. If Rarg is the radius of the first, second or third argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame3;
+	:rtype: bool") IsTheSame3;
 		Standard_Boolean IsTheSame3 (const Standard_Integer Index);
-		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. NotDone is raised if the algorithm failed.
 
-	:rtype: int
-") NbSolutions;
+		/****************** NbSolutions ******************/
+		%feature("compactdefaultargs") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. NotDone is raised if the algorithm failed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Results ******************/
 		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: GccAna_Circ2d3Tan &
 	:param Rank1:
 	:type Rank1: int
@@ -1199,12 +1234,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Rank2: int
 	:param Rank3:
 	:type Rank3: int
-	:rtype: None
-") Results;
+	:rtype: None") Results;
 		void Results (const GccAna_Circ2d3Tan & Circ,const Standard_Integer Rank1,const Standard_Integer Rank2,const Standard_Integer Rank3);
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1213,12 +1248,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** Tangency2 ******************/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1227,12 +1262,12 @@ class Geom2dGcc_Circ2d3Tan {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency3;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the third argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 
+		/****************** Tangency3 ******************/
+		%feature("compactdefaultargs") Tangency3;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the third argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1241,20 +1276,20 @@ class Geom2dGcc_Circ2d3Tan {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency3;
+	:rtype: None") Tangency3;
 		void Tangency3 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* It returns the informations about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 	:param Index:
 	:type Index: int
 	:param Qualif1:
@@ -1263,9 +1298,9 @@ class Geom2dGcc_Circ2d3Tan {
 	:type Qualif2: GccEnt_Position &
 	:param Qualif3:
 	:type Qualif3: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2,GccEnt_Position & Qualif3);
+
 };
 
 
@@ -1274,12 +1309,16 @@ class Geom2dGcc_Circ2d3Tan {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class Geom2dGcc_Circ2d3TanIter *
+*********************************/
 %nodefaultctor Geom2dGcc_Circ2d3TanIter;
 class Geom2dGcc_Circ2d3TanIter {
 	public:
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to 2 circles and a curve.
-
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 circles and a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -1294,12 +1333,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedCirc & Qualified1,const GccEnt_QualifiedCirc & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a circle and 2 curves.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and 2 curves.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -1314,12 +1353,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a circle and a line and a curve.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and a line and a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -1334,12 +1373,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedCirc & Qualified1,const GccEnt_QualifiedLin & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a circle and a point and a curve.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and a point and a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -1352,12 +1391,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param2: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Pnt2d & Point3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to 2 lines and a curve.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 lines and a curve.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -1372,12 +1411,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedLin & Qualified1,const GccEnt_QualifiedLin & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a line and 2 curves.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a line and 2 curves.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -1392,12 +1431,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a line and a curve and a point.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a line and a curve and a point.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param Qualified2:
@@ -1410,12 +1449,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param2: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const GccEnt_QualifiedLin & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Pnt2d & Point3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a curve and 2 points.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a curve and 2 points.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Point1:
@@ -1426,12 +1465,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param1: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Point1,const gp_Pnt2d & Point2,const Standard_Real Param1,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to 2 curves and a point.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 curves and a point.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -1444,12 +1483,12 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param2: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const gp_Pnt2d & Point2,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to 3 curves.
 
+		/****************** Geom2dGcc_Circ2d3TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2d3TanIter;
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 3 curves.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -1464,85 +1503,86 @@ class Geom2dGcc_Circ2d3TanIter {
 	:type Param3: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2d3TanIter;
+	:rtype: None") Geom2dGcc_Circ2d3TanIter;
 		 Geom2dGcc_Circ2d3TanIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Geom2dGcc_QCurve & Qualified3,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the construction algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the construction algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** IsTheSame1 ******************/
 		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: bool
-") IsTheSame1;
+		%feature("autodoc", "* It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 ();
+
+		/****************** IsTheSame2 ******************/
 		%feature("compactdefaultargs") IsTheSame2;
-		%feature("autodoc", "	* It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: bool
-") IsTheSame2;
+		%feature("autodoc", "* It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: bool") IsTheSame2;
 		Standard_Boolean IsTheSame2 ();
+
+		/****************** IsTheSame3 ******************/
 		%feature("compactdefaultargs") IsTheSame3;
-		%feature("autodoc", "	* It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: bool
-") IsTheSame3;
+		%feature("autodoc", "* It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: bool") IsTheSame3;
 		Standard_Boolean IsTheSame3 ();
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** Tangency2 ******************/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency3;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the third argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 
+		/****************** Tangency3 ******************/
+		%feature("compactdefaultargs") Tangency3;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the third argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. It raises NotDone if the construction algorithm didn't succeed.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency3;
+	:rtype: None") Tangency3;
 		void Tangency3 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution. It raises NotDone if the construction algorithm didn't succeed.
 
-	:rtype: gp_Circ2d
-") ThisSolution;
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution. It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution ();
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Qualif1:
+		%feature("autodoc", ":param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
 	:param Qualif3:
 	:type Qualif3: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (GccEnt_Position & Qualif1,GccEnt_Position & Qualif2,GccEnt_Position & Qualif3);
+
 };
 
 
@@ -1551,44 +1591,48 @@ class Geom2dGcc_Circ2d3TanIter {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class Geom2dGcc_Circ2dTanCen *
+*******************************/
 %nodefaultctor Geom2dGcc_Circ2dTanCen;
 class Geom2dGcc_Circ2dTanCen {
 	public:
+		/****************** Geom2dGcc_Circ2dTanCen ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanCen;
-		%feature("autodoc", "	* Constructs one or more 2D circles tangential to the curve Qualified1 and centered on the point Pcenter. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. Tolerance is only used in these algorithms in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is thus a very small circle. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
-
+		%feature("autodoc", "* Constructs one or more 2D circles tangential to the curve Qualified1 and centered on the point Pcenter. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. Tolerance is only used in these algorithms in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is thus a very small circle. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Pcenter:
 	:type Pcenter: opencascade::handle<Geom2d_Point> &
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanCen;
+	:rtype: None") Geom2dGcc_Circ2dTanCen;
 		 Geom2dGcc_Circ2dTanCen (const Geom2dGcc_QualifiedCurve & Qualified1,const opencascade::handle<Geom2d_Point> & Pcenter,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns true if the solution of index Index and the first argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. NotDone is raised if the construction algorithm didn't succeed. OutOfRange is raised if Index is greater than the number of solutions.
 
+		/****************** IsTheSame1 ******************/
+		%feature("compactdefaultargs") IsTheSame1;
+		%feature("autodoc", "* Returns true if the solution of index Index and the first argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. NotDone is raised if the construction algorithm didn't succeed. OutOfRange is raised if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* Returns the number of circles, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* Returns the number of circles, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1597,27 +1641,27 @@ class Geom2dGcc_Circ2dTanCen {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns a circle, representing the solution of index Index computed by this algorithm. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns a circle, representing the solution of index Index computed by this algorithm. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the argument. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the argument. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
+
 };
 
 
@@ -1626,36 +1670,40 @@ class Geom2dGcc_Circ2dTanCen {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class Geom2dGcc_Circ2dTanCenGeo *
+**********************************/
 %nodefaultctor Geom2dGcc_Circ2dTanCenGeo;
 class Geom2dGcc_Circ2dTanCenGeo {
 	public:
+		/****************** Geom2dGcc_Circ2dTanCenGeo ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanCenGeo;
-		%feature("autodoc", "	* This method implements the algorithms used to create 2d circles tangent to a circle and centered on a point.
-
+		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and centered on a point.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Pcenter:
 	:type Pcenter: gp_Pnt2d
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanCenGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanCenGeo;
 		 Geom2dGcc_Circ2dTanCenGeo (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & Pcenter,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the construction algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the construction algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* Returns the number of solutions and raises NotDone exception if the algorithm didn't succeed. It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* Returns the number of solutions and raises NotDone exception if the algorithm didn't succeed. It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntArg on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntArg on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1664,25 +1712,26 @@ class Geom2dGcc_Circ2dTanCenGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Index:
+		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
+
 };
 
 
@@ -1691,24 +1740,28 @@ class Geom2dGcc_Circ2dTanCenGeo {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class Geom2dGcc_Circ2dTanOnRad *
+*********************************/
 %nodefaultctor Geom2dGcc_Circ2dTanOnRad;
 class Geom2dGcc_Circ2dTanOnRad {
 	public:
+		/****************** CenterOn3 ******************/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "	* Returns the center PntSol on the second argument (i.e. line or circle) of the solution of index Index computed by this algorithm. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. PntArg is the projection of PntSol on the argument curv. Exceptions: Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
-
+		%feature("autodoc", "* Returns the center PntSol on the second argument (i.e. line or circle) of the solution of index Index computed by this algorithm. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. PntArg is the projection of PntSol on the argument curv. Exceptions: Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") CenterOn3;
+	:rtype: None") CenterOn3;
 		void CenterOn3 (const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRad;
-		%feature("autodoc", "	* Constructs one or more 2D circles of radius Radius, centered on the 2D curve OnCurv and: - tangential to the curve Qualified1
 
+		/****************** Geom2dGcc_Circ2dTanOnRad ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRad;
+		%feature("autodoc", "* Constructs one or more 2D circles of radius Radius, centered on the 2D curve OnCurv and: - tangential to the curve Qualified1
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param OnCurv:
@@ -1717,12 +1770,12 @@ class Geom2dGcc_Circ2dTanOnRad {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRad;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRad;
 		 Geom2dGcc_Circ2dTanOnRad (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRad;
-		%feature("autodoc", "	* Constructs one or more 2D circles of radius Radius, centered on the 2D curve OnCurv and: passing through the point Point1. OnCurv is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by the construction algorithm. Similarly, the qualified curve Qualified1 is created from an adapted curve. Adapted curves are created in the following way: opencascade::handle<Geom2d_Curve> myCurveOn = ... ; Geom2dAdaptor_Curve OnCurv ( myCurveOn ) ; The algorithm is then constructed with this object: opencascade::handle<Geom2d_Curve> myCurve1 = ... ; Geom2dAdaptor_Curve Adapted1 ( myCurve1 ) ; Geom2dGcc_QualifiedCurve Qualified1 = Geom2dGcc::Outside(Adapted1); Standard_Real Radius = ... , Tolerance = ... ; Geom2dGcc_Circ2dTanOnRad myAlgo ( Qualified1 , OnCurv , Radius , Tolerance ) ; if ( myAlgo.IsDone() ) { Standard_Integer Nbr = myAlgo.NbSolutions() ; gp_Circ2d Circ ; for ( Standard_Integer i = 1 ; i <= nbr ; i++ ) { Circ = myAlgo.ThisSolution (i) ; ... } }
 
+		/****************** Geom2dGcc_Circ2dTanOnRad ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRad;
+		%feature("autodoc", "* Constructs one or more 2D circles of radius Radius, centered on the 2D curve OnCurv and: passing through the point Point1. OnCurv is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by the construction algorithm. Similarly, the qualified curve Qualified1 is created from an adapted curve. Adapted curves are created in the following way: opencascade::handle<Geom2d_Curve> myCurveOn = ... ; Geom2dAdaptor_Curve OnCurv ( myCurveOn ) ; The algorithm is then constructed with this object: opencascade::handle<Geom2d_Curve> myCurve1 = ... ; Geom2dAdaptor_Curve Adapted1 ( myCurve1 ) ; Geom2dGcc_QualifiedCurve Qualified1 = Geom2dGcc::Outside(Adapted1); Standard_Real Radius = ... , Tolerance = ... ; Geom2dGcc_Circ2dTanOnRad myAlgo ( Qualified1 , OnCurv , Radius , Tolerance ) ; if ( myAlgo.IsDone() ) { Standard_Integer Nbr = myAlgo.NbSolutions() ; gp_Circ2d Circ ; for ( Standard_Integer i = 1 ; i <= nbr ; i++ ) { Circ = myAlgo.ThisSolution (i) ; ... } }
 	:param Point1:
 	:type Point1: opencascade::handle<Geom2d_Point> &
 	:param OnCurv:
@@ -1731,44 +1784,46 @@ class Geom2dGcc_Circ2dTanOnRad {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRad;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRad;
 		 Geom2dGcc_Circ2dTanOnRad (const opencascade::handle<Geom2d_Point> & Point1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns true if the solution of index Index and the first argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 
+		/****************** IsTheSame1 ******************/
+		%feature("compactdefaultargs") IsTheSame1;
+		%feature("autodoc", "* Returns true if the solution of index Index and the first argument of this algorithm are the same (i.e. there are 2 identical circles). If Rarg is the radius of the first argument, Rsol is the radius of the solution and dist is the distance between the two centers, we consider the two circles to be identical if |Rarg - Rsol| and dist are less than or equal to the tolerance criterion given at the time of construction of this algorithm. OutOfRange is raised if Index is greater than the number of solutions. notDone is raised if the construction algorithm did not succeed.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* Returns the number of circles, representing solutions computed by this algorithm. Exceptions: StdFail_NotDone if the construction fails.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* Returns the number of circles, representing solutions computed by this algorithm. Exceptions: StdFail_NotDone if the construction fails.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
-	:type Circ: GccAna_Circ2dTanOnRad &
-	:rtype: None
-") Results;
-		void Results (const GccAna_Circ2dTanOnRad & Circ);
-		%feature("compactdefaultargs") Results;
-		%feature("autodoc", "	:param Circ:
-	:type Circ: Geom2dGcc_Circ2dTanOnRadGeo &
-	:rtype: None
-") Results;
-		void Results (const Geom2dGcc_Circ2dTanOnRadGeo & Circ);
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** Results ******************/
+		%feature("compactdefaultargs") Results;
+		%feature("autodoc", ":param Circ:
+	:type Circ: GccAna_Circ2dTanOnRad &
+	:rtype: None") Results;
+		void Results (const GccAna_Circ2dTanOnRad & Circ);
+
+		/****************** Results ******************/
+		%feature("compactdefaultargs") Results;
+		%feature("autodoc", ":param Circ:
+	:type Circ: Geom2dGcc_Circ2dTanOnRadGeo &
+	:rtype: None") Results;
+		void Results (const Geom2dGcc_Circ2dTanOnRadGeo & Circ);
+
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1777,27 +1832,27 @@ class Geom2dGcc_Circ2dTanOnRad {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be carefull: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
+
 };
 
 
@@ -1806,24 +1861,28 @@ class Geom2dGcc_Circ2dTanOnRad {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class Geom2dGcc_Circ2dTanOnRadGeo *
+************************************/
 %nodefaultctor Geom2dGcc_Circ2dTanOnRadGeo;
 class Geom2dGcc_Circ2dTanOnRadGeo {
 	public:
+		/****************** CenterOn3 ******************/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "	* Returns informations about the center (on the curv) of the result. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
-
+		%feature("autodoc", "* Returns informations about the center (on the curv) of the result. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") CenterOn3;
+	:rtype: None") CenterOn3;
 		void CenterOn3 (const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles tangent to a curve and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a curve and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param OnLine:
@@ -1832,12 +1891,12 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const Geom2dGcc_QCurve & Qualified1,const gp_Lin2d & OnLine,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles tangent to a curve and centered on a 2d Circle with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a curve and centered on a 2d Circle with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param OnCirc:
@@ -1846,12 +1905,12 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const Geom2dGcc_QCurve & Qualified1,const gp_Circ2d & OnCirc,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param OnCurv:
@@ -1860,12 +1919,12 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const GccEnt_QualifiedCirc & Qualified1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedLin &
 	:param OnCurv:
@@ -1874,12 +1933,12 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const GccEnt_QualifiedLin & Qualified1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles tangent to a 2d curve and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a 2d curve and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param OnCurv:
@@ -1888,12 +1947,12 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const Geom2dGcc_QCurve & Qualified1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
-		%feature("autodoc", "	* This methods implements the algorithms used to create 2d Circles passing through a 2d point and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 
+		/****************** Geom2dGcc_Circ2dTanOnRadGeo ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Circ2dTanOnRadGeo;
+		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles passing through a 2d point and centered on a 2d curve with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Point1:
 	:type Point1: gp_Pnt2d
 	:param OnCurv:
@@ -1902,32 +1961,32 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type Radius: float
 	:param Tolerance:
 	:type Tolerance: float
-	:rtype: None
-") Geom2dGcc_Circ2dTanOnRadGeo;
+	:rtype: None") Geom2dGcc_Circ2dTanOnRadGeo;
 		 Geom2dGcc_Circ2dTanOnRadGeo (const gp_Pnt2d & Point1,const Geom2dAdaptor_Curve & OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns True if the construction algorithm succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This method returns True if the construction algorithm succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") IsTheSame1;
-		%feature("autodoc", "	* Returns True if the solution number Index is equal to the first argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
+		/****************** IsTheSame1 ******************/
+		%feature("compactdefaultargs") IsTheSame1;
+		%feature("autodoc", "* Returns True if the solution number Index is equal to the first argument and False in the other cases. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsTheSame1;
+	:rtype: bool") IsTheSame1;
 		Standard_Boolean IsTheSame1 (const Standard_Integer Index);
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* This method returns the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* This method returns the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -1936,25 +1995,26 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Circ2d
-") ThisSolution;
+	:rtype: gp_Circ2d") ThisSolution;
 		gp_Circ2d ThisSolution (const Standard_Integer Index);
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Index:
+		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
+
 };
 
 
@@ -1963,10 +2023,15 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class Geom2dGcc_CurveTool *
+****************************/
 class Geom2dGcc_CurveTool {
 	public:
+		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param U:
 	:type U: float
@@ -1974,11 +2039,12 @@ class Geom2dGcc_CurveTool {
 	:type P: gp_Pnt2d
 	:param T:
 	:type T: gp_Vec2d
-	:rtype: void
-") D1;
+	:rtype: void") D1;
 		static void D1 (const Geom2dAdaptor_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & T);
+
+		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param U:
 	:type U: float
@@ -1988,11 +2054,12 @@ class Geom2dGcc_CurveTool {
 	:type T: gp_Vec2d
 	:param N:
 	:type N: gp_Vec2d
-	:rtype: void
-") D2;
+	:rtype: void") D2;
 		static void D2 (const Geom2dAdaptor_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & T,gp_Vec2d & N);
+
+		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param U:
 	:type U: float
@@ -2004,43 +2071,48 @@ class Geom2dGcc_CurveTool {
 	:type N: gp_Vec2d
 	:param dN:
 	:type dN: gp_Vec2d
-	:rtype: void
-") D3;
+	:rtype: void") D3;
 		static void D3 (const Geom2dAdaptor_Curve & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & T,gp_Vec2d & N,gp_Vec2d & dN);
+
+		/****************** EpsX ******************/
 		%feature("compactdefaultargs") EpsX;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param Tol:
 	:type Tol: float
-	:rtype: float
-") EpsX;
+	:rtype: float") EpsX;
 		static Standard_Real EpsX (const Geom2dAdaptor_Curve & C,const Standard_Real Tol);
+
+		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
-	:rtype: float
-") FirstParameter;
+	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const Geom2dAdaptor_Curve & C);
+
+		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
-	:rtype: float
-") LastParameter;
+	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const Geom2dAdaptor_Curve & C);
+
+		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
-	:rtype: int
-") NbSamples;
+	:rtype: int") NbSamples;
 		static Standard_Integer NbSamples (const Geom2dAdaptor_Curve & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param X:
 	:type X: float
-	:rtype: gp_Pnt2d
-") Value;
+	:rtype: gp_Pnt2d") Value;
 		static gp_Pnt2d Value (const Geom2dAdaptor_Curve & C,const Standard_Real X);
+
 };
 
 
@@ -2049,49 +2121,54 @@ class Geom2dGcc_CurveTool {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class Geom2dGcc_FunctionTanCirCu *
+***********************************/
 %nodefaultctor Geom2dGcc_FunctionTanCirCu;
 class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 	public:
+		/****************** Derivative ******************/
 		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
-
+		%feature("autodoc", "* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Derivative;
+	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+
+		/****************** Geom2dGcc_FunctionTanCirCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCirCu;
-		%feature("autodoc", "	:param Circ:
+		%feature("autodoc", ":param Circ:
 	:type Circ: gp_Circ2d
 	:param Curv:
 	:type Curv: Geom2dAdaptor_Curve &
-	:rtype: None
-") Geom2dGcc_FunctionTanCirCu;
+	:rtype: None") Geom2dGcc_FunctionTanCirCu;
 		 Geom2dGcc_FunctionTanCirCu (const gp_Circ2d & Circ,const Geom2dAdaptor_Curve & Curv);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
-	:rtype: bool
-") Value;
+	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Values ******************/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Values;
+	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+
 };
 
 
@@ -2100,37 +2177,44 @@ class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class Geom2dGcc_FunctionTanCuCu *
+**********************************/
 %nodefaultctor Geom2dGcc_FunctionTanCuCu;
 class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 	public:
+		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "	* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
-
+		%feature("autodoc", "* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: math_Vector &
 	:param Deriv:
 	:type Deriv: math_Matrix &
-	:rtype: bool
-") Derivatives;
+	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & Deriv);
+
+		/****************** Geom2dGcc_FunctionTanCuCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCu;
-		%feature("autodoc", "	:param Curv1:
+		%feature("autodoc", ":param Curv1:
 	:type Curv1: Geom2dAdaptor_Curve &
 	:param Curv2:
 	:type Curv2: Geom2dAdaptor_Curve &
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCu;
 		 Geom2dGcc_FunctionTanCuCu (const Geom2dAdaptor_Curve & Curv1,const Geom2dAdaptor_Curve & Curv2);
+
+		/****************** Geom2dGcc_FunctionTanCuCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCu;
-		%feature("autodoc", "	:param Circ1:
+		%feature("autodoc", ":param Circ1:
 	:type Circ1: gp_Circ2d
 	:param Curv2:
 	:type Curv2: Geom2dAdaptor_Curve &
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCu;
 		 Geom2dGcc_FunctionTanCuCu (const gp_Circ2d & Circ1,const Geom2dAdaptor_Curve & Curv2);
+
+		/****************** InitDerivative ******************/
 		%feature("compactdefaultargs") InitDerivative;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: math_Vector &
 	:param Point1:
 	:type Point1: gp_Pnt2d
@@ -2144,43 +2228,43 @@ class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 	:type D21: gp_Vec2d
 	:param D22:
 	:type D22: gp_Vec2d
-	:rtype: None
-") InitDerivative;
+	:rtype: None") InitDerivative;
 		void InitDerivative (const math_Vector & X,gp_Pnt2d & Point1,gp_Pnt2d & Point2,gp_Vec2d & Tan1,gp_Vec2d & Tan2,gp_Vec2d & D21,gp_Vec2d & D22);
+
+		/****************** NbEquations ******************/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "	* returns the number of equations of the function.
-
-	:rtype: int
-") NbEquations;
+		%feature("autodoc", "* returns the number of equations of the function.
+	:rtype: int") NbEquations;
 		Standard_Integer NbEquations ();
+
+		/****************** NbVariables ******************/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "	* returns the number of variables of the function.
-
-	:rtype: int
-") NbVariables;
+		%feature("autodoc", "* returns the number of variables of the function.
+	:rtype: int") NbVariables;
 		Standard_Integer NbVariables ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: math_Vector &
 	:param F:
 	:type F: math_Vector &
-	:rtype: bool
-") Value;
+	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Values ******************/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: math_Vector &
 	:param F:
 	:type F: math_Vector &
 	:param Deriv:
 	:type Deriv: math_Matrix &
-	:rtype: bool
-") Values;
+	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & Deriv);
+
 };
 
 
@@ -2189,21 +2273,29 @@ class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class Geom2dGcc_FunctionTanCuCuCu *
+************************************/
+/**************************************
+* class Geom2dGcc_FunctionTanCuCuOnCu *
+**************************************/
 %nodefaultctor Geom2dGcc_FunctionTanCuCuOnCu;
 class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	public:
+		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "	* Returns the values of the derivatives for the variable <X>.
-
+		%feature("autodoc", "* Returns the values of the derivatives for the variable <X>.
 	:param X:
 	:type X: math_Vector &
 	:param D:
 	:type D: math_Matrix &
-	:rtype: bool
-") Derivatives;
+	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2211,11 +2303,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCi: gp_Circ2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const Geom2dAdaptor_Curve & C2,const gp_Circ2d & OnCi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: gp_Circ2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2223,11 +2316,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCi: gp_Circ2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Circ2d & C1,const Geom2dAdaptor_Curve & C2,const gp_Circ2d & OnCi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param L1:
+		%feature("autodoc", ":param L1:
 	:type L1: gp_Lin2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2235,11 +2329,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCi: gp_Circ2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Lin2d & L1,const Geom2dAdaptor_Curve & C2,const gp_Circ2d & OnCi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param P2:
 	:type P2: gp_Pnt2d
@@ -2247,11 +2342,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCi: gp_Circ2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const gp_Pnt2d & P2,const gp_Circ2d & OnCi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2259,11 +2355,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnLi: gp_Lin2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const Geom2dAdaptor_Curve & C2,const gp_Lin2d & OnLi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: gp_Circ2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2271,11 +2368,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnLi: gp_Lin2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Circ2d & C1,const Geom2dAdaptor_Curve & C2,const gp_Lin2d & OnLi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param L1:
+		%feature("autodoc", ":param L1:
 	:type L1: gp_Lin2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2283,11 +2381,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnLi: gp_Lin2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Lin2d & L1,const Geom2dAdaptor_Curve & C2,const gp_Lin2d & OnLi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param P2:
 	:type P2: gp_Pnt2d
@@ -2295,11 +2394,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnLi: gp_Lin2d
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const gp_Pnt2d & P2,const gp_Lin2d & OnLi,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2307,11 +2407,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCu: Geom2dAdaptor_Curve &
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const Geom2dAdaptor_Curve & C2,const Geom2dAdaptor_Curve & OnCu,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: gp_Circ2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2319,11 +2420,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCu: Geom2dAdaptor_Curve &
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Circ2d & C1,const Geom2dAdaptor_Curve & C2,const Geom2dAdaptor_Curve & OnCu,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param L1:
+		%feature("autodoc", ":param L1:
 	:type L1: gp_Lin2d
 	:param C2:
 	:type C2: Geom2dAdaptor_Curve &
@@ -2331,11 +2433,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCu: Geom2dAdaptor_Curve &
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const gp_Lin2d & L1,const Geom2dAdaptor_Curve & C2,const Geom2dAdaptor_Curve & OnCu,const Standard_Real Rad);
+
+		/****************** Geom2dGcc_FunctionTanCuCuOnCu ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuCuOnCu;
-		%feature("autodoc", "	:param C1:
+		%feature("autodoc", ":param C1:
 	:type C1: Geom2dAdaptor_Curve &
 	:param P1:
 	:type P1: gp_Pnt2d
@@ -2343,11 +2446,12 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type OnCu: Geom2dAdaptor_Curve &
 	:param Rad:
 	:type Rad: float
-	:rtype: None
-") Geom2dGcc_FunctionTanCuCuOnCu;
+	:rtype: None") Geom2dGcc_FunctionTanCuCuOnCu;
 		 Geom2dGcc_FunctionTanCuCuOnCu (const Geom2dAdaptor_Curve & C1,const gp_Pnt2d & P1,const Geom2dAdaptor_Curve & OnCu,const Standard_Real Rad);
+
+		/****************** InitDerivative ******************/
 		%feature("compactdefaultargs") InitDerivative;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: math_Vector &
 	:param Point1:
 	:type Point1: gp_Pnt2d
@@ -2367,43 +2471,43 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	:type D22: gp_Vec2d
 	:param D23:
 	:type D23: gp_Vec2d
-	:rtype: None
-") InitDerivative;
+	:rtype: None") InitDerivative;
 		void InitDerivative (const math_Vector & X,gp_Pnt2d & Point1,gp_Pnt2d & Point2,gp_Pnt2d & Point3,gp_Vec2d & Tan1,gp_Vec2d & Tan2,gp_Vec2d & Tan3,gp_Vec2d & D21,gp_Vec2d & D22,gp_Vec2d & D23);
+
+		/****************** NbEquations ******************/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "	* Returns the number of equations of the function.
-
-	:rtype: int
-") NbEquations;
+		%feature("autodoc", "* Returns the number of equations of the function.
+	:rtype: int") NbEquations;
 		Standard_Integer NbEquations ();
+
+		/****************** NbVariables ******************/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "	* Returns the number of variables of the function.
-
-	:rtype: int
-") NbVariables;
+		%feature("autodoc", "* Returns the number of variables of the function.
+	:rtype: int") NbVariables;
 		Standard_Integer NbVariables ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the values of the Functions for the variable <X>.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the values of the Functions for the variable <X>.
 	:param X:
 	:type X: math_Vector &
 	:param F:
 	:type F: math_Vector &
-	:rtype: bool
-") Value;
+	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the values of the functions and the derivatives for the variable <X>.
 
+		/****************** Values ******************/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "* Returns the values of the functions and the derivatives for the variable <X>.
 	:param X:
 	:type X: math_Vector &
 	:param F:
 	:type F: math_Vector &
 	:param D:
 	:type D: math_Matrix &
-	:rtype: bool
-") Values;
+	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
+
 };
 
 
@@ -2412,49 +2516,54 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************
+* class Geom2dGcc_FunctionTanCuPnt *
+***********************************/
 %nodefaultctor Geom2dGcc_FunctionTanCuPnt;
 class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 	public:
+		/****************** Derivative ******************/
 		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
-
+		%feature("autodoc", "* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Derivative;
+	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+
+		/****************** Geom2dGcc_FunctionTanCuPnt ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanCuPnt;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: Geom2dAdaptor_Curve &
 	:param Point:
 	:type Point: gp_Pnt2d
-	:rtype: None
-") Geom2dGcc_FunctionTanCuPnt;
+	:rtype: None") Geom2dGcc_FunctionTanCuPnt;
 		 Geom2dGcc_FunctionTanCuPnt (const Geom2dAdaptor_Curve & C,const gp_Pnt2d & Point);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
-	:rtype: bool
-") Value;
+	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Values ******************/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Values;
+	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+
 };
 
 
@@ -2463,49 +2572,54 @@ class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class Geom2dGcc_FunctionTanObl *
+*********************************/
 %nodefaultctor Geom2dGcc_FunctionTanObl;
 class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 	public:
+		/****************** Derivative ******************/
 		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "	* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
-
+		%feature("autodoc", "* Computes the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Derivative;
+	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+
+		/****************** Geom2dGcc_FunctionTanObl ******************/
 		%feature("compactdefaultargs") Geom2dGcc_FunctionTanObl;
-		%feature("autodoc", "	:param Curve:
+		%feature("autodoc", ":param Curve:
 	:type Curve: Geom2dAdaptor_Curve &
 	:param Dir:
 	:type Dir: gp_Dir2d
-	:rtype: None
-") Geom2dGcc_FunctionTanObl;
+	:rtype: None") Geom2dGcc_FunctionTanObl;
 		 Geom2dGcc_FunctionTanObl (const Geom2dAdaptor_Curve & Curve,const gp_Dir2d & Dir);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the value of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
-	:rtype: bool
-") Value;
+	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 
+		/****************** Values ******************/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "* Computes the value and the derivative of the function F for the variable X. It returns True if the computation is successfully done, False otherwise.
 	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
 	:param Deriv:
 	:type Deriv: float &
-	:rtype: bool
-") Values;
+	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+
 };
 
 
@@ -2514,36 +2628,40 @@ class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class Geom2dGcc_Lin2d2Tan *
+****************************/
 %nodefaultctor Geom2dGcc_Lin2d2Tan;
 class Geom2dGcc_Lin2d2Tan {
 	public:
+		/****************** Geom2dGcc_Lin2d2Tan ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points.
-
+		%feature("autodoc", "* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
 	:type Qualified2: Geom2dGcc_QualifiedCurve &
 	:param Tolang:
 	:type Tolang: float
-	:rtype: None
-") Geom2dGcc_Lin2d2Tan;
+	:rtype: None") Geom2dGcc_Lin2d2Tan;
 		 Geom2dGcc_Lin2d2Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const Standard_Real Tolang);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points.
 
+		/****************** Geom2dGcc_Lin2d2Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
+		%feature("autodoc", "* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param ThePoint:
 	:type ThePoint: gp_Pnt2d
 	:param Tolang:
 	:type Tolang: float
-	:rtype: None
-") Geom2dGcc_Lin2d2Tan;
+	:rtype: None") Geom2dGcc_Lin2d2Tan;
 		 Geom2dGcc_Lin2d2Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const gp_Pnt2d & ThePoint,const Standard_Real Tolang);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points. Param1 is used for the initial guess on the first curve. Param2 is used for the initial guess on the second curve.
 
+		/****************** Geom2dGcc_Lin2d2Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
+		%feature("autodoc", "* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points. Param1 is used for the initial guess on the first curve. Param2 is used for the initial guess on the second curve.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param Qualified2:
@@ -2554,12 +2672,12 @@ class Geom2dGcc_Lin2d2Tan {
 	:type Param1: float
 	:param Param2:
 	:type Param2: float
-	:rtype: None
-") Geom2dGcc_Lin2d2Tan;
+	:rtype: None") Geom2dGcc_Lin2d2Tan;
 		 Geom2dGcc_Lin2d2Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const Geom2dGcc_QualifiedCurve & Qualified2,const Standard_Real Tolang,const Standard_Real Param1,const Standard_Real Param2);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve.
 
+		/****************** Geom2dGcc_Lin2d2Tan ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2d2Tan;
+		%feature("autodoc", "* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param ThePoint:
@@ -2568,24 +2686,24 @@ class Geom2dGcc_Lin2d2Tan {
 	:type Tolang: float
 	:param Param1:
 	:type Param1: float
-	:rtype: None
-") Geom2dGcc_Lin2d2Tan;
+	:rtype: None") Geom2dGcc_Lin2d2Tan;
 		 Geom2dGcc_Lin2d2Tan (const Geom2dGcc_QualifiedCurve & Qualified1,const gp_Pnt2d & ThePoint,const Standard_Real Tolang,const Standard_Real Param1);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* Returns the number of lines, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.R
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* Returns the number of lines, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.R
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
+
+		/****************** Tangency1 ******************/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
-
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -2594,12 +2712,12 @@ class Geom2dGcc_Lin2d2Tan {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** Tangency2 ******************/
+		%feature("compactdefaultargs") Tangency2;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -2608,29 +2726,29 @@ class Geom2dGcc_Lin2d2Tan {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns a line, representing the solution of index Index computed by this algorithm. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns a line, representing the solution of index Index computed by this algorithm. Warning This indexing simply provides a means of consulting the solutions. The index values are not associated with these solutions outside the context of the algorithm object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Lin2d
-") ThisSolution;
+	:rtype: gp_Lin2d") ThisSolution;
 		gp_Lin2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -2639,12 +2757,16 @@ class Geom2dGcc_Lin2d2Tan {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class Geom2dGcc_Lin2d2TanIter *
+********************************/
 %nodefaultctor Geom2dGcc_Lin2d2TanIter;
 class Geom2dGcc_Lin2d2TanIter {
 	public:
+		/****************** Geom2dGcc_Lin2d2TanIter ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Lin2d2TanIter;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve.
-
+		%feature("autodoc", "* This class implements the algorithms used to create 2d lines passing thrue a point and tangent to a curve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param ThePoint:
@@ -2653,12 +2775,12 @@ class Geom2dGcc_Lin2d2TanIter {
 	:type Param1: float
 	:param Tolang:
 	:type Tolang: float
-	:rtype: None
-") Geom2dGcc_Lin2d2TanIter;
+	:rtype: None") Geom2dGcc_Lin2d2TanIter;
 		 Geom2dGcc_Lin2d2TanIter (const Geom2dGcc_QCurve & Qualified1,const gp_Pnt2d & ThePoint,const Standard_Real Param1,const Standard_Real Tolang);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2d2TanIter;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d line tangent to a circle and to a cuve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve. Exception BadQualifier is raised in the case of EnclosedCirc
 
+		/****************** Geom2dGcc_Lin2d2TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2d2TanIter;
+		%feature("autodoc", "* This class implements the algorithms used to create 2d line tangent to a circle and to a cuve. Tolang is used to determine the tolerance for the tangency points. Param2 is used for the initial guess on the curve. Exception BadQualifier is raised in the case of EnclosedCirc
 	:param Qualified1:
 	:type Qualified1: GccEnt_QualifiedCirc &
 	:param Qualified2:
@@ -2667,12 +2789,12 @@ class Geom2dGcc_Lin2d2TanIter {
 	:type Param2: float
 	:param Tolang:
 	:type Tolang: float
-	:rtype: None
-") Geom2dGcc_Lin2d2TanIter;
+	:rtype: None") Geom2dGcc_Lin2d2TanIter;
 		 Geom2dGcc_Lin2d2TanIter (const GccEnt_QualifiedCirc & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Standard_Real Param2,const Standard_Real Tolang);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2d2TanIter;
-		%feature("autodoc", "	* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points. Param1 is used for the initial guess on the first curve. Param2 is used for the initial guess on the second curve.
 
+		/****************** Geom2dGcc_Lin2d2TanIter ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2d2TanIter;
+		%feature("autodoc", "* This class implements the algorithms used to create 2d line tangent to two curves. Tolang is used to determine the tolerance for the tangency points. Param1 is used for the initial guess on the first curve. Param2 is used for the initial guess on the second curve.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param Qualified2:
@@ -2683,51 +2805,53 @@ class Geom2dGcc_Lin2d2TanIter {
 	:type Param2: float
 	:param Tolang:
 	:type Tolang: float
-	:rtype: None
-") Geom2dGcc_Lin2d2TanIter;
+	:rtype: None") Geom2dGcc_Lin2d2TanIter;
 		 Geom2dGcc_Lin2d2TanIter (const Geom2dGcc_QCurve & Qualified1,const Geom2dGcc_QCurve & Qualified2,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolang);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This methode returns true when there is a solution and false in the other cases.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* This methode returns true when there is a solution and false in the other cases.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** Tangency2 ******************/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "	:param ParSol:
+		%feature("autodoc", ":param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency2;
+	:rtype: None") Tangency2;
 		void Tangency2 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution.
 
-	:rtype: gp_Lin2d
-") ThisSolution;
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns the solution.
+	:rtype: gp_Lin2d") ThisSolution;
 		gp_Lin2d ThisSolution ();
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Qualif1:
+		%feature("autodoc", ":param Qualif1:
 	:type Qualif1: GccEnt_Position &
 	:param Qualif2:
 	:type Qualif2: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
+
 };
 
 
@@ -2736,12 +2860,16 @@ class Geom2dGcc_Lin2d2TanIter {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class Geom2dGcc_Lin2dTanObl *
+******************************/
 %nodefaultctor Geom2dGcc_Lin2dTanObl;
 class Geom2dGcc_Lin2dTanObl {
 	public:
+		/****************** Geom2dGcc_Lin2dTanObl ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Lin2dTanObl;
-		%feature("autodoc", "	* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Tolang is the angular tolerance.
-
+		%feature("autodoc", "* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Tolang is the angular tolerance.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param TheLin:
@@ -2750,12 +2878,12 @@ class Geom2dGcc_Lin2dTanObl {
 	:type TolAng: float
 	:param Angle:
 	:type Angle: float
-	:rtype: None
-") Geom2dGcc_Lin2dTanObl;
+	:rtype: None") Geom2dGcc_Lin2dTanObl;
 		 Geom2dGcc_Lin2dTanObl (const Geom2dGcc_QualifiedCurve & Qualified1,const gp_Lin2d & TheLin,const Standard_Real TolAng,const Standard_Real Angle);
-		%feature("compactdefaultargs") Geom2dGcc_Lin2dTanObl;
-		%feature("autodoc", "	* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Param2 is the initial guess on the curve QualifiedCurv. Tolang is the angular tolerance. Warning An iterative algorithm is used if Qualified1 is more complex than a line or a circle. In such cases, the algorithm constructs only one solution. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 
+		/****************** Geom2dGcc_Lin2dTanObl ******************/
+		%feature("compactdefaultargs") Geom2dGcc_Lin2dTanObl;
+		%feature("autodoc", "* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Param2 is the initial guess on the curve QualifiedCurv. Tolang is the angular tolerance. Warning An iterative algorithm is used if Qualified1 is more complex than a line or a circle. In such cases, the algorithm constructs only one solution. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QualifiedCurve &
 	:param TheLin:
@@ -2766,12 +2894,12 @@ class Geom2dGcc_Lin2dTanObl {
 	:type Param1: float
 	:param Angle:
 	:type Angle: float
-	:rtype: None
-") Geom2dGcc_Lin2dTanObl;
+	:rtype: None") Geom2dGcc_Lin2dTanObl;
 		 Geom2dGcc_Lin2dTanObl (const Geom2dGcc_QualifiedCurve & Qualified1,const gp_Lin2d & TheLin,const Standard_Real TolAng,const Standard_Real Param1,const Standard_Real Angle);
+
+		/****************** Intersection2 ******************/
 		%feature("compactdefaultargs") Intersection2;
-		%feature("autodoc", "	* Returns the point of intersection PntSol between the solution of index Index and the second argument (the line) of this algorithm. ParSol is the parameter of the point PntSol on the solution. ParArg is the parameter of the point PntSol on the second argument (the line). Exceptions StdFail_NotDone if the construction fails. Geom2dGcc_IsParallel if the solution and the second argument (the line) are parallel. Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
-
+		%feature("autodoc", "* Returns the point of intersection PntSol between the solution of index Index and the second argument (the line) of this algorithm. ParSol is the parameter of the point PntSol on the solution. ParArg is the parameter of the point PntSol on the second argument (the line). Exceptions StdFail_NotDone if the construction fails. Geom2dGcc_IsParallel if the solution and the second argument (the line) are parallel. Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -2780,24 +2908,24 @@ class Geom2dGcc_Lin2dTanObl {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Intersection2;
+	:rtype: None") Intersection2;
 		void Intersection2 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** NbSolutions ******************/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "	* Returns the number of lines, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.
-
-	:rtype: int
-") NbSolutions;
+		%feature("autodoc", "* Returns the number of lines, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.
+	:rtype: int") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", "* Returns informations about the tangency point between the result and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv.
 	:param Index:
 	:type Index: int
 	:param ParSol:
@@ -2806,27 +2934,27 @@ class Geom2dGcc_Lin2dTanObl {
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Tangency1;
 		void Tangency1 (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns a line, representing the solution of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** ThisSolution ******************/
+		%feature("compactdefaultargs") ThisSolution;
+		%feature("autodoc", "* Returns a line, representing the solution of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Lin2d
-") ThisSolution;
+	:rtype: gp_Lin2d") ThisSolution;
 		gp_Lin2d ThisSolution (const Standard_Integer Index);
-		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 
+		/****************** WhichQualifier ******************/
+		%feature("compactdefaultargs") WhichQualifier;
+		%feature("autodoc", "* Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 	:param Index:
 	:type Index: int
 	:param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
+
 };
 
 
@@ -2835,12 +2963,16 @@ class Geom2dGcc_Lin2dTanObl {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class Geom2dGcc_Lin2dTanOblIter *
+**********************************/
 %nodefaultctor Geom2dGcc_Lin2dTanOblIter;
 class Geom2dGcc_Lin2dTanOblIter {
 	public:
+		/****************** Geom2dGcc_Lin2dTanOblIter ******************/
 		%feature("compactdefaultargs") Geom2dGcc_Lin2dTanOblIter;
-		%feature("autodoc", "	* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Param2 is the initial guess on the curve QualifiedCurv. Tolang is the angular tolerance.
-
+		%feature("autodoc", "* This class implements the algorithm used to create 2d line tangent to a curve and doing an angle Angle with the line TheLin. Angle must be in Radian. Param2 is the initial guess on the curve QualifiedCurv. Tolang is the angular tolerance.
 	:param Qualified1:
 	:type Qualified1: Geom2dGcc_QCurve &
 	:param TheLin:
@@ -2851,49 +2983,54 @@ class Geom2dGcc_Lin2dTanOblIter {
 	:type TolAng: float
 	:param Angle: default value is 0
 	:type Angle: float
-	:rtype: None
-") Geom2dGcc_Lin2dTanOblIter;
+	:rtype: None") Geom2dGcc_Lin2dTanOblIter;
 		 Geom2dGcc_Lin2dTanOblIter (const Geom2dGcc_QCurve & Qualified1,const gp_Lin2d & TheLin,const Standard_Real Param1,const Standard_Real TolAng,const Standard_Real Angle = 0);
-		%feature("compactdefaultargs") Intersection2;
-		%feature("autodoc", "	:param ParSol:
-	:type ParSol: float &
-	:param ParArg:
-	:type ParArg: float &
-	:param PntSol:
-	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Intersection2;
-		void Intersection2 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* This method returns true when there is a solution and false in the other cases.
 
-	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") IsParallel2;
-		%feature("autodoc", "	:rtype: bool
-") IsParallel2;
-		Standard_Boolean IsParallel2 ();
-		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "	:param ParSol:
+		/****************** Intersection2 ******************/
+		%feature("compactdefaultargs") Intersection2;
+		%feature("autodoc", ":param ParSol:
 	:type ParSol: float &
 	:param ParArg:
 	:type ParArg: float &
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
-	:rtype: None
-") Tangency1;
+	:rtype: None") Intersection2;
+		void Intersection2 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** IsDone ******************/
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "* This method returns true when there is a solution and false in the other cases.
+	:rtype: bool") IsDone;
+		Standard_Boolean IsDone ();
+
+		/****************** IsParallel2 ******************/
+		%feature("compactdefaultargs") IsParallel2;
+		%feature("autodoc", ":rtype: bool") IsParallel2;
+		Standard_Boolean IsParallel2 ();
+
+		/****************** Tangency1 ******************/
+		%feature("compactdefaultargs") Tangency1;
+		%feature("autodoc", ":param ParSol:
+	:type ParSol: float &
+	:param ParArg:
+	:type ParArg: float &
+	:param PntSol:
+	:type PntSol: gp_Pnt2d
+	:rtype: None") Tangency1;
 		void Tangency1 (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt2d & PntSol);
+
+		/****************** ThisSolution ******************/
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") ThisSolution;
+		%feature("autodoc", ":rtype: gp_Lin2d") ThisSolution;
 		gp_Lin2d ThisSolution ();
+
+		/****************** WhichQualifier ******************/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "	:param Qualif1:
+		%feature("autodoc", ":param Qualif1:
 	:type Qualif1: GccEnt_Position &
-	:rtype: None
-") WhichQualifier;
+	:rtype: None") WhichQualifier;
 		void WhichQualifier (GccEnt_Position & Qualif1);
+
 };
 
 
@@ -2902,49 +3039,56 @@ class Geom2dGcc_Lin2dTanOblIter {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class Geom2dGcc_QCurve *
+*************************/
 %nodefaultctor Geom2dGcc_QCurve;
 class Geom2dGcc_QCurve {
 	public:
+		/****************** Geom2dGcc_QCurve ******************/
 		%feature("compactdefaultargs") Geom2dGcc_QCurve;
-		%feature("autodoc", "	:param Curve:
+		%feature("autodoc", ":param Curve:
 	:type Curve: Geom2dAdaptor_Curve &
 	:param Qualifier:
 	:type Qualifier: GccEnt_Position
-	:rtype: None
-") Geom2dGcc_QCurve;
+	:rtype: None") Geom2dGcc_QCurve;
 		 Geom2dGcc_QCurve (const Geom2dAdaptor_Curve & Curve,const GccEnt_Position Qualifier);
+
+		/****************** IsEnclosed ******************/
 		%feature("compactdefaultargs") IsEnclosed;
-		%feature("autodoc", "	* Returns true if the solution is Enclosed in the Curv and false in the other cases.
-
-	:rtype: bool
-") IsEnclosed;
+		%feature("autodoc", "* Returns true if the solution is Enclosed in the Curv and false in the other cases.
+	:rtype: bool") IsEnclosed;
 		Standard_Boolean IsEnclosed ();
+
+		/****************** IsEnclosing ******************/
 		%feature("compactdefaultargs") IsEnclosing;
-		%feature("autodoc", "	* Returns true if the solution is Enclosing the Curv and false in the other cases.
-
-	:rtype: bool
-") IsEnclosing;
+		%feature("autodoc", "* Returns true if the solution is Enclosing the Curv and false in the other cases.
+	:rtype: bool") IsEnclosing;
 		Standard_Boolean IsEnclosing ();
+
+		/****************** IsOutside ******************/
 		%feature("compactdefaultargs") IsOutside;
-		%feature("autodoc", "	* Returns true if the solution is Outside the Curv and false in the other cases.
-
-	:rtype: bool
-") IsOutside;
+		%feature("autodoc", "* Returns true if the solution is Outside the Curv and false in the other cases.
+	:rtype: bool") IsOutside;
 		Standard_Boolean IsOutside ();
-		%feature("compactdefaultargs") IsUnqualified;
-		%feature("autodoc", "	* Returns true if the solution is unqualified and false in the other cases.
 
-	:rtype: bool
-") IsUnqualified;
+		/****************** IsUnqualified ******************/
+		%feature("compactdefaultargs") IsUnqualified;
+		%feature("autodoc", "* Returns true if the solution is unqualified and false in the other cases.
+	:rtype: bool") IsUnqualified;
 		Standard_Boolean IsUnqualified ();
+
+		/****************** Qualified ******************/
 		%feature("compactdefaultargs") Qualified;
-		%feature("autodoc", "	:rtype: Geom2dAdaptor_Curve
-") Qualified;
+		%feature("autodoc", ":rtype: Geom2dAdaptor_Curve") Qualified;
 		Geom2dAdaptor_Curve Qualified ();
+
+		/****************** Qualifier ******************/
 		%feature("compactdefaultargs") Qualifier;
-		%feature("autodoc", "	:rtype: GccEnt_Position
-") Qualifier;
+		%feature("autodoc", ":rtype: GccEnt_Position") Qualifier;
 		GccEnt_Position Qualifier ();
+
 };
 
 
@@ -2953,55 +3097,59 @@ class Geom2dGcc_QCurve {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class Geom2dGcc_QualifiedCurve *
+*********************************/
 %nodefaultctor Geom2dGcc_QualifiedCurve;
 class Geom2dGcc_QualifiedCurve {
 	public:
+		/****************** Geom2dGcc_QualifiedCurve ******************/
 		%feature("compactdefaultargs") Geom2dGcc_QualifiedCurve;
-		%feature("autodoc", "	* Constructs a qualified curve by assigning the qualifier Qualifier to the curve Curve. Qualifier may be: - GccEnt_enclosing if the solution of a construction algorithm using the qualified curve encloses the curve, or - GccEnt_enclosed if the solution is enclosed by the curve, or - GccEnt_outside if both the solution and the curve are external to one another, or - GccEnt_unqualified if all solutions apply. Note: The interior of a curve is defined as the left-hand side of the curve in relation to its orientation. Warning Curve is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Curve ( mycurve ) ; The qualified curve is then constructed with this object: GccEnt_Position myQualif = GccEnt_outside ; Geom2dGcc_QualifiedCurve myQCurve ( Curve, myQualif ); is private;
-
+		%feature("autodoc", "* Constructs a qualified curve by assigning the qualifier Qualifier to the curve Curve. Qualifier may be: - GccEnt_enclosing if the solution of a construction algorithm using the qualified curve encloses the curve, or - GccEnt_enclosed if the solution is enclosed by the curve, or - GccEnt_outside if both the solution and the curve are external to one another, or - GccEnt_unqualified if all solutions apply. Note: The interior of a curve is defined as the left-hand side of the curve in relation to its orientation. Warning Curve is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve Curve ( mycurve ) ; The qualified curve is then constructed with this object: GccEnt_Position myQualif = GccEnt_outside ; Geom2dGcc_QualifiedCurve myQCurve ( Curve, myQualif ); is private;
 	:param Curve:
 	:type Curve: Geom2dAdaptor_Curve &
 	:param Qualifier:
 	:type Qualifier: GccEnt_Position
-	:rtype: None
-") Geom2dGcc_QualifiedCurve;
+	:rtype: None") Geom2dGcc_QualifiedCurve;
 		 Geom2dGcc_QualifiedCurve (const Geom2dAdaptor_Curve & Curve,const GccEnt_Position Qualifier);
+
+		/****************** IsEnclosed ******************/
 		%feature("compactdefaultargs") IsEnclosed;
-		%feature("autodoc", "	* It returns true if the solution is Enclosed in the Curv and false in the other cases.
-
-	:rtype: bool
-") IsEnclosed;
+		%feature("autodoc", "* It returns true if the solution is Enclosed in the Curv and false in the other cases.
+	:rtype: bool") IsEnclosed;
 		Standard_Boolean IsEnclosed ();
+
+		/****************** IsEnclosing ******************/
 		%feature("compactdefaultargs") IsEnclosing;
-		%feature("autodoc", "	* It returns true if the solution is Enclosing the Curv and false in the other cases.
-
-	:rtype: bool
-") IsEnclosing;
+		%feature("autodoc", "* It returns true if the solution is Enclosing the Curv and false in the other cases.
+	:rtype: bool") IsEnclosing;
 		Standard_Boolean IsEnclosing ();
+
+		/****************** IsOutside ******************/
 		%feature("compactdefaultargs") IsOutside;
-		%feature("autodoc", "	* It returns true if the solution is Outside the Curv and false in the other cases.
-
-	:rtype: bool
-") IsOutside;
+		%feature("autodoc", "* It returns true if the solution is Outside the Curv and false in the other cases.
+	:rtype: bool") IsOutside;
 		Standard_Boolean IsOutside ();
+
+		/****************** IsUnqualified ******************/
 		%feature("compactdefaultargs") IsUnqualified;
-		%feature("autodoc", "	* Returns true if the solution is unqualified and false in the other cases.
-
-	:rtype: bool
-") IsUnqualified;
+		%feature("autodoc", "* Returns true if the solution is unqualified and false in the other cases.
+	:rtype: bool") IsUnqualified;
 		Standard_Boolean IsUnqualified ();
+
+		/****************** Qualified ******************/
 		%feature("compactdefaultargs") Qualified;
-		%feature("autodoc", "	* Returns a 2D curve to which the qualifier is assigned. Warning The returned curve is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The Geom2d curve on which the adapted curve is based can be obtained in the following way: myQualifiedCurve = ... ; Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified(); opencascade::handle<Geom2d_Curve> = myAdaptedCurve.Curve();
-
-	:rtype: Geom2dAdaptor_Curve
-") Qualified;
+		%feature("autodoc", "* Returns a 2D curve to which the qualifier is assigned. Warning The returned curve is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The Geom2d curve on which the adapted curve is based can be obtained in the following way: myQualifiedCurve = ... ; Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified(); opencascade::handle<Geom2d_Curve> = myAdaptedCurve.Curve();
+	:rtype: Geom2dAdaptor_Curve") Qualified;
 		Geom2dAdaptor_Curve Qualified ();
-		%feature("compactdefaultargs") Qualifier;
-		%feature("autodoc", "	* Returns - the qualifier of this qualified curve if it is enclosing, enclosed or outside, or - GccEnt_noqualifier if it is unqualified.
 
-	:rtype: GccEnt_Position
-") Qualifier;
+		/****************** Qualifier ******************/
+		%feature("compactdefaultargs") Qualifier;
+		%feature("autodoc", "* Returns - the qualifier of this qualified curve if it is enclosing, enclosed or outside, or - GccEnt_noqualifier if it is unqualified.
+	:rtype: GccEnt_Position") Qualifier;
 		GccEnt_Position Qualifier ();
+
 };
 
 
@@ -3010,6 +3158,7 @@ class Geom2dGcc_QualifiedCurve {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

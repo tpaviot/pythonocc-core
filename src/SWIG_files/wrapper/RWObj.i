@@ -85,12 +85,18 @@ enum RWObj_SubMeshReason {
 /* typedefs */
 /* end typedefs declaration */
 
+/**************
+* class RWObj *
+**************/
+/*****************************
+* class RWObj_IShapeReceiver *
+*****************************/
 %nodefaultctor RWObj_IShapeReceiver;
 class RWObj_IShapeReceiver {
 	public:
+		/****************** BindNamedShape ******************/
 		%feature("compactdefaultargs") BindNamedShape;
-		%feature("autodoc", "	* @param theShape shape to register @param theName shape name @param theMaterial shape material @param theIsRootShape indicates that this is a root object (free shape)
-
+		%feature("autodoc", "* @param theShape shape to register @param theName shape name @param theMaterial shape material @param theIsRootShape indicates that this is a root object (free shape)
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theName:
@@ -99,9 +105,9 @@ class RWObj_IShapeReceiver {
 	:type theMaterial: RWObj_Material *
 	:param theIsRootShape:
 	:type theIsRootShape: bool
-	:rtype: None
-") BindNamedShape;
+	:rtype: None") BindNamedShape;
 		void BindNamedShape (const TopoDS_Shape & theShape,const TCollection_AsciiString & theName,const RWObj_Material * theMaterial,const Standard_Boolean theIsRootShape);
+
 };
 
 
@@ -110,6 +116,10 @@ class RWObj_IShapeReceiver {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class RWObj_Material *
+***********************/
 %nodefaultctor RWObj_Material;
 class RWObj_Material {
 	public:
@@ -122,10 +132,11 @@ class RWObj_Material {
 		Quantity_Color SpecularColor;
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
+		/****************** RWObj_Material ******************/
 		%feature("compactdefaultargs") RWObj_Material;
-		%feature("autodoc", "	:rtype: None
-") RWObj_Material;
+		%feature("autodoc", ":rtype: None") RWObj_Material;
 		 RWObj_Material ();
+
 };
 
 
@@ -134,6 +145,16 @@ class RWObj_Material {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class RWObj_MtlReader *
+************************/
+/*********************
+* class RWObj_Reader *
+*********************/
+/**********************
+* class RWObj_SubMesh *
+**********************/
 %nodefaultctor RWObj_SubMesh;
 class RWObj_SubMesh {
 	public:
@@ -149,6 +170,13 @@ class RWObj_SubMesh {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class RWObj_CafReader *
+************************/
+/**********************************
+* class RWObj_TriangulationReader *
+**********************************/
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

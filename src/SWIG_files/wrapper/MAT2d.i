@@ -104,43 +104,52 @@ typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHash
 typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 /* end typedefs declaration */
 
+/********************
+* class MAT2d_BiInt *
+********************/
 %nodefaultctor MAT2d_BiInt;
 class MAT2d_BiInt {
 	public:
+		/****************** FirstIndex ******************/
 		%feature("compactdefaultargs") FirstIndex;
-		%feature("autodoc", "	:rtype: int
-") FirstIndex;
+		%feature("autodoc", ":rtype: int") FirstIndex;
 		Standard_Integer FirstIndex ();
+
+		/****************** FirstIndex ******************/
 		%feature("compactdefaultargs") FirstIndex;
-		%feature("autodoc", "	:param I1:
+		%feature("autodoc", ":param I1:
 	:type I1: int
-	:rtype: None
-") FirstIndex;
+	:rtype: None") FirstIndex;
 		void FirstIndex (const Standard_Integer I1);
+
+		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param B:
+		%feature("autodoc", ":param B:
 	:type B: MAT2d_BiInt &
-	:rtype: bool
-") IsEqual;
+	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const MAT2d_BiInt & B);
+
+		/****************** MAT2d_BiInt ******************/
 		%feature("compactdefaultargs") MAT2d_BiInt;
-		%feature("autodoc", "	:param I1:
+		%feature("autodoc", ":param I1:
 	:type I1: int
 	:param I2:
 	:type I2: int
-	:rtype: None
-") MAT2d_BiInt;
+	:rtype: None") MAT2d_BiInt;
 		 MAT2d_BiInt (const Standard_Integer I1,const Standard_Integer I2);
+
+		/****************** SecondIndex ******************/
 		%feature("compactdefaultargs") SecondIndex;
-		%feature("autodoc", "	:rtype: int
-") SecondIndex;
+		%feature("autodoc", ":rtype: int") SecondIndex;
 		Standard_Integer SecondIndex ();
+
+		/****************** SecondIndex ******************/
 		%feature("compactdefaultargs") SecondIndex;
-		%feature("autodoc", "	:param I2:
+		%feature("autodoc", ":param I2:
 	:type I2: int
-	:rtype: None
-") SecondIndex;
+	:rtype: None") SecondIndex;
 		void SecondIndex (const Standard_Integer I2);
+
 
         %extend{
             bool __eq_wrapper__(const MAT2d_BiInt  other) {
@@ -163,49 +172,55 @@ class MAT2d_BiInt {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class MAT2d_Circuit *
+**********************/
 %nodefaultctor MAT2d_Circuit;
 class MAT2d_Circuit : public Standard_Transient {
 	public:
+		/****************** Connexion ******************/
 		%feature("compactdefaultargs") Connexion;
-		%feature("autodoc", "	* Returns the Connexion on the item <Index> in me.
-
+		%feature("autodoc", "* Returns the Connexion on the item <Index> in me.
 	:param Index:
 	:type Index: int
-	:rtype: opencascade::handle<MAT2d_Connexion>
-") Connexion;
+	:rtype: opencascade::handle<MAT2d_Connexion>") Connexion;
 		opencascade::handle<MAT2d_Connexion> Connexion (const Standard_Integer Index);
-		%feature("compactdefaultargs") ConnexionOn;
-		%feature("autodoc", "	* Returns <True> is there is a connexion on the item <Index> in <self>.
 
+		/****************** ConnexionOn ******************/
+		%feature("compactdefaultargs") ConnexionOn;
+		%feature("autodoc", "* Returns <True> is there is a connexion on the item <Index> in <self>.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") ConnexionOn;
+	:rtype: bool") ConnexionOn;
 		Standard_Boolean ConnexionOn (const Standard_Integer Index);
-		%feature("compactdefaultargs") LineLength;
-		%feature("autodoc", "	* Returns the number of items on the line <IndexLine>.
 
+		/****************** LineLength ******************/
+		%feature("compactdefaultargs") LineLength;
+		%feature("autodoc", "* Returns the number of items on the line <IndexLine>.
 	:param IndexLine:
 	:type IndexLine: int
-	:rtype: int
-") LineLength;
+	:rtype: int") LineLength;
 		Standard_Integer LineLength (const Standard_Integer IndexLine);
+
+		/****************** MAT2d_Circuit ******************/
 		%feature("compactdefaultargs") MAT2d_Circuit;
-		%feature("autodoc", "	:param aJoinType: default value is GeomAbs_Arc
+		%feature("autodoc", ":param aJoinType: default value is GeomAbs_Arc
 	:type aJoinType: GeomAbs_JoinType
 	:param IsOpenResult: default value is Standard_False
 	:type IsOpenResult: bool
-	:rtype: None
-") MAT2d_Circuit;
+	:rtype: None") MAT2d_Circuit;
 		 MAT2d_Circuit (const GeomAbs_JoinType aJoinType = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
-		%feature("compactdefaultargs") NumberOfItems;
-		%feature("autodoc", "	* Returns the Number of Items .
 
-	:rtype: int
-") NumberOfItems;
+		/****************** NumberOfItems ******************/
+		%feature("compactdefaultargs") NumberOfItems;
+		%feature("autodoc", "* Returns the Number of Items .
+	:rtype: int") NumberOfItems;
 		Standard_Integer NumberOfItems ();
+
+		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param aFigure:
+		%feature("autodoc", ":param aFigure:
 	:type aFigure: MAT2d_SequenceOfSequenceOfGeometry &
 	:param IsClosed:
 	:type IsClosed: TColStd_SequenceOfBoolean &
@@ -213,27 +228,27 @@ class MAT2d_Circuit : public Standard_Transient {
 	:type IndRefLine: int
 	:param Trigo:
 	:type Trigo: bool
-	:rtype: None
-") Perform;
+	:rtype: None") Perform;
 		void Perform (MAT2d_SequenceOfSequenceOfGeometry & aFigure,const TColStd_SequenceOfBoolean & IsClosed,const Standard_Integer IndRefLine,const Standard_Boolean Trigo);
-		%feature("compactdefaultargs") RefToEqui;
-		%feature("autodoc", "	* Returns the set of index of the items in <self>corresponding to the curve <IndCurve> on the line <IndLine> from the initial figure.
 
+		/****************** RefToEqui ******************/
+		%feature("compactdefaultargs") RefToEqui;
+		%feature("autodoc", "* Returns the set of index of the items in <self>corresponding to the curve <IndCurve> on the line <IndLine> from the initial figure.
 	:param IndLine:
 	:type IndLine: int
 	:param IndCurve:
 	:type IndCurve: int
-	:rtype: TColStd_SequenceOfInteger
-") RefToEqui;
+	:rtype: TColStd_SequenceOfInteger") RefToEqui;
 		const TColStd_SequenceOfInteger & RefToEqui (const Standard_Integer IndLine,const Standard_Integer IndCurve);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the item at position <Index> in <self>.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Returns the item at position <Index> in <self>.
 	:param Index:
 	:type Index: int
-	:rtype: opencascade::handle<Geom2d_Geometry>
-") Value;
+	:rtype: opencascade::handle<Geom2d_Geometry>") Value;
 		opencascade::handle<Geom2d_Geometry> Value (const Standard_Integer Index);
+
 };
 
 
@@ -244,95 +259,106 @@ class MAT2d_Circuit : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class MAT2d_Connexion *
+************************/
 %nodefaultctor MAT2d_Connexion;
 class MAT2d_Connexion : public Standard_Transient {
 	public:
+		/****************** Distance ******************/
 		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Returns the distance between the two points.
-
-	:rtype: float
-") Distance;
+		%feature("autodoc", "* Returns the distance between the two points.
+	:rtype: float") Distance;
 		Standard_Real Distance ();
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	:param aDistance:
-	:type aDistance: float
-	:rtype: None
-") Distance;
-		void Distance (const Standard_Real aDistance);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* Print <self>.
 
+		/****************** Distance ******************/
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", ":param aDistance:
+	:type aDistance: float
+	:rtype: None") Distance;
+		void Distance (const Standard_Real aDistance);
+
+		/****************** Dump ******************/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "* Print <self>.
 	:param Deep: default value is 0
 	:type Deep: int
 	:param Offset: default value is 0
 	:type Offset: int
-	:rtype: None
-") Dump;
+	:rtype: None") Dump;
 		void Dump (const Standard_Integer Deep = 0,const Standard_Integer Offset = 0);
-		%feature("compactdefaultargs") IndexFirstLine;
-		%feature("autodoc", "	* Returns the Index on the first line.
 
-	:rtype: int
-") IndexFirstLine;
+		/****************** IndexFirstLine ******************/
+		%feature("compactdefaultargs") IndexFirstLine;
+		%feature("autodoc", "* Returns the Index on the first line.
+	:rtype: int") IndexFirstLine;
 		Standard_Integer IndexFirstLine ();
+
+		/****************** IndexFirstLine ******************/
 		%feature("compactdefaultargs") IndexFirstLine;
-		%feature("autodoc", "	:param anIndex:
+		%feature("autodoc", ":param anIndex:
 	:type anIndex: int
-	:rtype: None
-") IndexFirstLine;
+	:rtype: None") IndexFirstLine;
 		void IndexFirstLine (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") IndexItemOnFirst;
-		%feature("autodoc", "	* Returns the Index of the item on the first line.
 
-	:rtype: int
-") IndexItemOnFirst;
+		/****************** IndexItemOnFirst ******************/
+		%feature("compactdefaultargs") IndexItemOnFirst;
+		%feature("autodoc", "* Returns the Index of the item on the first line.
+	:rtype: int") IndexItemOnFirst;
 		Standard_Integer IndexItemOnFirst ();
+
+		/****************** IndexItemOnFirst ******************/
 		%feature("compactdefaultargs") IndexItemOnFirst;
-		%feature("autodoc", "	:param anIndex:
+		%feature("autodoc", ":param anIndex:
 	:type anIndex: int
-	:rtype: None
-") IndexItemOnFirst;
+	:rtype: None") IndexItemOnFirst;
 		void IndexItemOnFirst (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") IndexItemOnSecond;
-		%feature("autodoc", "	* Returns the Index of the item on the second line.
 
-	:rtype: int
-") IndexItemOnSecond;
+		/****************** IndexItemOnSecond ******************/
+		%feature("compactdefaultargs") IndexItemOnSecond;
+		%feature("autodoc", "* Returns the Index of the item on the second line.
+	:rtype: int") IndexItemOnSecond;
 		Standard_Integer IndexItemOnSecond ();
+
+		/****************** IndexItemOnSecond ******************/
 		%feature("compactdefaultargs") IndexItemOnSecond;
-		%feature("autodoc", "	:param anIndex:
+		%feature("autodoc", ":param anIndex:
 	:type anIndex: int
-	:rtype: None
-") IndexItemOnSecond;
+	:rtype: None") IndexItemOnSecond;
 		void IndexItemOnSecond (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") IndexSecondLine;
-		%feature("autodoc", "	* Returns the Index on the Second line.
 
-	:rtype: int
-") IndexSecondLine;
+		/****************** IndexSecondLine ******************/
+		%feature("compactdefaultargs") IndexSecondLine;
+		%feature("autodoc", "* Returns the Index on the Second line.
+	:rtype: int") IndexSecondLine;
 		Standard_Integer IndexSecondLine ();
-		%feature("compactdefaultargs") IndexSecondLine;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: None
-") IndexSecondLine;
-		void IndexSecondLine (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") IsAfter;
-		%feature("autodoc", "	* Returns <True> if my firstPoint is on the same line than the firstpoint of <aConnexion> and my firstpoint is after the firstpoint of <aConnexion> on the line. <aSense> = 1 if <aConnexion> is on the Left of its firstline, else <aSense> = -1.
 
+		/****************** IndexSecondLine ******************/
+		%feature("compactdefaultargs") IndexSecondLine;
+		%feature("autodoc", ":param anIndex:
+	:type anIndex: int
+	:rtype: None") IndexSecondLine;
+		void IndexSecondLine (const Standard_Integer anIndex);
+
+		/****************** IsAfter ******************/
+		%feature("compactdefaultargs") IsAfter;
+		%feature("autodoc", "* Returns <True> if my firstPoint is on the same line than the firstpoint of <aConnexion> and my firstpoint is after the firstpoint of <aConnexion> on the line. <aSense> = 1 if <aConnexion> is on the Left of its firstline, else <aSense> = -1.
 	:param aConnexion:
 	:type aConnexion: opencascade::handle<MAT2d_Connexion> &
 	:param aSense:
 	:type aSense: float
-	:rtype: bool
-") IsAfter;
+	:rtype: bool") IsAfter;
 		Standard_Boolean IsAfter (const opencascade::handle<MAT2d_Connexion> & aConnexion,const Standard_Real aSense);
+
+		/****************** MAT2d_Connexion ******************/
 		%feature("compactdefaultargs") MAT2d_Connexion;
-		%feature("autodoc", "	:rtype: None
-") MAT2d_Connexion;
+		%feature("autodoc", ":rtype: None") MAT2d_Connexion;
 		 MAT2d_Connexion ();
+
+		/****************** MAT2d_Connexion ******************/
 		%feature("compactdefaultargs") MAT2d_Connexion;
-		%feature("autodoc", "	:param LineA:
+		%feature("autodoc", ":param LineA:
 	:type LineA: int
 	:param LineB:
 	:type LineB: int
@@ -350,63 +376,67 @@ class MAT2d_Connexion : public Standard_Transient {
 	:type PointA: gp_Pnt2d
 	:param PointB:
 	:type PointB: gp_Pnt2d
-	:rtype: None
-") MAT2d_Connexion;
+	:rtype: None") MAT2d_Connexion;
 		 MAT2d_Connexion (const Standard_Integer LineA,const Standard_Integer LineB,const Standard_Integer ItemA,const Standard_Integer ItemB,const Standard_Real Distance,const Standard_Real ParameterOnA,const Standard_Real ParameterOnB,const gp_Pnt2d & PointA,const gp_Pnt2d & PointB);
-		%feature("compactdefaultargs") ParameterOnFirst;
-		%feature("autodoc", "	* Returns the parameter of the point on the firstline.
 
-	:rtype: float
-") ParameterOnFirst;
+		/****************** ParameterOnFirst ******************/
+		%feature("compactdefaultargs") ParameterOnFirst;
+		%feature("autodoc", "* Returns the parameter of the point on the firstline.
+	:rtype: float") ParameterOnFirst;
 		Standard_Real ParameterOnFirst ();
+
+		/****************** ParameterOnFirst ******************/
 		%feature("compactdefaultargs") ParameterOnFirst;
-		%feature("autodoc", "	:param aParameter:
+		%feature("autodoc", ":param aParameter:
 	:type aParameter: float
-	:rtype: None
-") ParameterOnFirst;
+	:rtype: None") ParameterOnFirst;
 		void ParameterOnFirst (const Standard_Real aParameter);
-		%feature("compactdefaultargs") ParameterOnSecond;
-		%feature("autodoc", "	* Returns the parameter of the point on the secondline.
 
-	:rtype: float
-") ParameterOnSecond;
+		/****************** ParameterOnSecond ******************/
+		%feature("compactdefaultargs") ParameterOnSecond;
+		%feature("autodoc", "* Returns the parameter of the point on the secondline.
+	:rtype: float") ParameterOnSecond;
 		Standard_Real ParameterOnSecond ();
+
+		/****************** ParameterOnSecond ******************/
 		%feature("compactdefaultargs") ParameterOnSecond;
-		%feature("autodoc", "	:param aParameter:
+		%feature("autodoc", ":param aParameter:
 	:type aParameter: float
-	:rtype: None
-") ParameterOnSecond;
+	:rtype: None") ParameterOnSecond;
 		void ParameterOnSecond (const Standard_Real aParameter);
-		%feature("compactdefaultargs") PointOnFirst;
-		%feature("autodoc", "	* Returns the point on the firstline.
 
-	:rtype: gp_Pnt2d
-") PointOnFirst;
+		/****************** PointOnFirst ******************/
+		%feature("compactdefaultargs") PointOnFirst;
+		%feature("autodoc", "* Returns the point on the firstline.
+	:rtype: gp_Pnt2d") PointOnFirst;
 		gp_Pnt2d PointOnFirst ();
+
+		/****************** PointOnFirst ******************/
 		%feature("compactdefaultargs") PointOnFirst;
-		%feature("autodoc", "	:param aPoint:
+		%feature("autodoc", ":param aPoint:
 	:type aPoint: gp_Pnt2d
-	:rtype: None
-") PointOnFirst;
+	:rtype: None") PointOnFirst;
 		void PointOnFirst (const gp_Pnt2d & aPoint);
-		%feature("compactdefaultargs") PointOnSecond;
-		%feature("autodoc", "	* Returns the point on the secondline.
 
-	:rtype: gp_Pnt2d
-") PointOnSecond;
+		/****************** PointOnSecond ******************/
+		%feature("compactdefaultargs") PointOnSecond;
+		%feature("autodoc", "* Returns the point on the secondline.
+	:rtype: gp_Pnt2d") PointOnSecond;
 		gp_Pnt2d PointOnSecond ();
-		%feature("compactdefaultargs") PointOnSecond;
-		%feature("autodoc", "	:param aPoint:
-	:type aPoint: gp_Pnt2d
-	:rtype: None
-") PointOnSecond;
-		void PointOnSecond (const gp_Pnt2d & aPoint);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	* Returns the reverse connexion of <self>. the firstpoint is the secondpoint. the secondpoint is the firstpoint.
 
-	:rtype: opencascade::handle<MAT2d_Connexion>
-") Reverse;
+		/****************** PointOnSecond ******************/
+		%feature("compactdefaultargs") PointOnSecond;
+		%feature("autodoc", ":param aPoint:
+	:type aPoint: gp_Pnt2d
+	:rtype: None") PointOnSecond;
+		void PointOnSecond (const gp_Pnt2d & aPoint);
+
+		/****************** Reverse ******************/
+		%feature("compactdefaultargs") Reverse;
+		%feature("autodoc", "* Returns the reverse connexion of <self>. the firstpoint is the secondpoint. the secondpoint is the firstpoint.
+	:rtype: opencascade::handle<MAT2d_Connexion>") Reverse;
 		opencascade::handle<MAT2d_Connexion> Reverse ();
+
 };
 
 
@@ -417,26 +447,34 @@ class MAT2d_Connexion : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class MAT2d_CutCurve *
+***********************/
+/*****************************
+* class MAT2d_MapBiIntHasher *
+*****************************/
 class MAT2d_MapBiIntHasher {
 	public:
+		/****************** HashCode ******************/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Computes a hash code for the given key, in the range [1, theUpperBound] @param theKey the key which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
-
+		%feature("autodoc", "* Computes a hash code for the given key, in the range [1, theUpperBound] @param theKey the key which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theKey:
 	:type theKey: MAT2d_BiInt &
 	:param theUpperBound:
 	:type theUpperBound: int
-	:rtype: int
-") HashCode;
+	:rtype: int") HashCode;
 		static Standard_Integer HashCode (const MAT2d_BiInt & theKey,const Standard_Integer theUpperBound);
+
+		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	:param Key1:
+		%feature("autodoc", ":param Key1:
 	:type Key1: MAT2d_BiInt &
 	:param Key2:
 	:type Key2: MAT2d_BiInt &
-	:rtype: bool
-") IsEqual;
+	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const MAT2d_BiInt & Key1,const MAT2d_BiInt & Key2);
+
 };
 
 
@@ -445,75 +483,79 @@ class MAT2d_MapBiIntHasher {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************
+* class MAT2d_Mat2d *
+********************/
 %nodefaultctor MAT2d_Mat2d;
 class MAT2d_Mat2d {
 	public:
+		/****************** Bisector ******************/
 		%feature("compactdefaultargs") Bisector;
-		%feature("autodoc", "	* Returns the current root.
-
-	:rtype: opencascade::handle<MAT_Bisector>
-") Bisector;
+		%feature("autodoc", "* Returns the current root.
+	:rtype: opencascade::handle<MAT_Bisector>") Bisector;
 		opencascade::handle<MAT_Bisector> Bisector ();
+
+		/****************** CreateMat ******************/
 		%feature("compactdefaultargs") CreateMat;
-		%feature("autodoc", "	* Algoritm of computation of the bisecting locus.
-
+		%feature("autodoc", "* Algoritm of computation of the bisecting locus.
 	:param aTool:
 	:type aTool: MAT2d_Tool2d &
-	:rtype: None
-") CreateMat;
+	:rtype: None") CreateMat;
 		void CreateMat (MAT2d_Tool2d & aTool);
-		%feature("compactdefaultargs") CreateMatOpen;
-		%feature("autodoc", "	* Algoritm of computation of the bisecting locus for open wire.
 
+		/****************** CreateMatOpen ******************/
+		%feature("compactdefaultargs") CreateMatOpen;
+		%feature("autodoc", "* Algoritm of computation of the bisecting locus for open wire.
 	:param aTool:
 	:type aTool: MAT2d_Tool2d &
-	:rtype: None
-") CreateMatOpen;
+	:rtype: None") CreateMatOpen;
 		void CreateMatOpen (MAT2d_Tool2d & aTool);
+
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialize an iterator on the set of the roots of the trees of bisectors.
-
-	:rtype: None
-") Init;
+		%feature("autodoc", "* Initialize an iterator on the set of the roots of the trees of bisectors.
+	:rtype: None") Init;
 		void Init ();
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns <True> if CreateMat has succeeded.
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* Returns <True> if CreateMat has succeeded.
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") MAT2d_Mat2d;
-		%feature("autodoc", "	* Empty construtor.
 
+		/****************** MAT2d_Mat2d ******************/
+		%feature("compactdefaultargs") MAT2d_Mat2d;
+		%feature("autodoc", "* Empty construtor.
 	:param IsOpenResult: default value is Standard_False
 	:type IsOpenResult: bool
-	:rtype: None
-") MAT2d_Mat2d;
+	:rtype: None") MAT2d_Mat2d;
 		 MAT2d_Mat2d (const Standard_Boolean IsOpenResult = Standard_False);
+
+		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	* Return False if there is no more roots.
-
-	:rtype: bool
-") More;
+		%feature("autodoc", "* Return False if there is no more roots.
+	:rtype: bool") More;
 		Standard_Boolean More ();
+
+		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Move to the next root.
-
-	:rtype: None
-") Next;
+		%feature("autodoc", "* Move to the next root.
+	:rtype: None") Next;
 		void Next ();
+
+		/****************** NumberOfBisectors ******************/
 		%feature("compactdefaultargs") NumberOfBisectors;
-		%feature("autodoc", "	* Returns the total number of bisectors.
-
-	:rtype: int
-") NumberOfBisectors;
+		%feature("autodoc", "* Returns the total number of bisectors.
+	:rtype: int") NumberOfBisectors;
 		Standard_Integer NumberOfBisectors ();
-		%feature("compactdefaultargs") SemiInfinite;
-		%feature("autodoc", "	* Returns True if there are semi_infinite bisectors. So there is a tree for each semi_infinte bisector.
 
-	:rtype: bool
-") SemiInfinite;
+		/****************** SemiInfinite ******************/
+		%feature("compactdefaultargs") SemiInfinite;
+		%feature("autodoc", "* Returns True if there are semi_infinite bisectors. So there is a tree for each semi_infinte bisector.
+	:rtype: bool") SemiInfinite;
 		Standard_Boolean SemiInfinite ();
+
 };
 
 
@@ -522,69 +564,74 @@ class MAT2d_Mat2d {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class MAT2d_MiniPath *
+***********************/
 %nodefaultctor MAT2d_MiniPath;
 class MAT2d_MiniPath {
 	public:
+		/****************** ConnexionsFrom ******************/
 		%feature("compactdefaultargs") ConnexionsFrom;
-		%feature("autodoc", "	* Returns the connexions which start on line designed by <Index>.
-
+		%feature("autodoc", "* Returns the connexions which start on line designed by <Index>.
 	:param Index:
 	:type Index: int
-	:rtype: MAT2d_SequenceOfConnexion
-") ConnexionsFrom;
+	:rtype: MAT2d_SequenceOfConnexion") ConnexionsFrom;
 		MAT2d_SequenceOfConnexion & ConnexionsFrom (const Standard_Integer Index);
+
+		/****************** Father ******************/
 		%feature("compactdefaultargs") Father;
-		%feature("autodoc", "	* Returns the connexion which ends on line designed by <Index>.
-
+		%feature("autodoc", "* Returns the connexion which ends on line designed by <Index>.
 	:param Index:
 	:type Index: int
-	:rtype: opencascade::handle<MAT2d_Connexion>
-") Father;
+	:rtype: opencascade::handle<MAT2d_Connexion>") Father;
 		opencascade::handle<MAT2d_Connexion> Father (const Standard_Integer Index);
+
+		/****************** IsConnexionsFrom ******************/
 		%feature("compactdefaultargs") IsConnexionsFrom;
-		%feature("autodoc", "	* Returns <True> if there is one Connexion which starts on line designed by <Index>.
-
+		%feature("autodoc", "* Returns <True> if there is one Connexion which starts on line designed by <Index>.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsConnexionsFrom;
+	:rtype: bool") IsConnexionsFrom;
 		Standard_Boolean IsConnexionsFrom (const Standard_Integer Index);
-		%feature("compactdefaultargs") IsRoot;
-		%feature("autodoc", "	* Returns <True> if the line designed by <Index> is the root.
 
+		/****************** IsRoot ******************/
+		%feature("compactdefaultargs") IsRoot;
+		%feature("autodoc", "* Returns <True> if the line designed by <Index> is the root.
 	:param Index:
 	:type Index: int
-	:rtype: bool
-") IsRoot;
+	:rtype: bool") IsRoot;
 		Standard_Boolean IsRoot (const Standard_Integer Index);
+
+		/****************** MAT2d_MiniPath ******************/
 		%feature("compactdefaultargs") MAT2d_MiniPath;
-		%feature("autodoc", "	:rtype: None
-") MAT2d_MiniPath;
+		%feature("autodoc", ":rtype: None") MAT2d_MiniPath;
 		 MAT2d_MiniPath ();
+
+		/****************** Path ******************/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "	* Returns the sequence of connexions corresponding to the path.
-
-	:rtype: MAT2d_SequenceOfConnexion
-") Path;
+		%feature("autodoc", "* Returns the sequence of connexions corresponding to the path.
+	:rtype: MAT2d_SequenceOfConnexion") Path;
 		const MAT2d_SequenceOfConnexion & Path ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "* Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 	:param Figure:
 	:type Figure: MAT2d_SequenceOfSequenceOfGeometry &
 	:param IndStart:
 	:type IndStart: int
 	:param Sense:
 	:type Sense: bool
-	:rtype: None
-") Perform;
+	:rtype: None") Perform;
 		void Perform (const MAT2d_SequenceOfSequenceOfGeometry & Figure,const Standard_Integer IndStart,const Standard_Boolean Sense);
-		%feature("compactdefaultargs") RunOnConnexions;
-		%feature("autodoc", "	* Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is A / | B E / | | C D F //! the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, E->F, F->E, E->A.
 
-	:rtype: None
-") RunOnConnexions;
+		/****************** RunOnConnexions ******************/
+		%feature("compactdefaultargs") RunOnConnexions;
+		%feature("autodoc", "* Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is A / | B E / | | C D F //! the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, E->F, F->E, E->A.
+	:rtype: None") RunOnConnexions;
 		void RunOnConnexions ();
+
 };
 
 
@@ -593,199 +640,206 @@ class MAT2d_MiniPath {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************
+* class MAT2d_Tool2d *
+*********************/
 %nodefaultctor MAT2d_Tool2d;
 class MAT2d_Tool2d {
 	public:
+		/****************** BisecFusion ******************/
 		%feature("compactdefaultargs") BisecFusion;
-		%feature("autodoc", "	:param Index1:
+		%feature("autodoc", ":param Index1:
 	:type Index1: int
 	:param Index2:
 	:type Index2: int
-	:rtype: None
-") BisecFusion;
+	:rtype: None") BisecFusion;
 		void BisecFusion (const Standard_Integer Index1,const Standard_Integer Index2);
-		%feature("compactdefaultargs") ChangeGeomBis;
-		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 
+		/****************** ChangeGeomBis ******************/
+		%feature("compactdefaultargs") ChangeGeomBis;
+		%feature("autodoc", "* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 	:param Index:
 	:type Index: int
-	:rtype: Bisector_Bisec
-") ChangeGeomBis;
+	:rtype: Bisector_Bisec") ChangeGeomBis;
 		Bisector_Bisec & ChangeGeomBis (const Standard_Integer Index);
-		%feature("compactdefaultargs") Circuit;
-		%feature("autodoc", "	:rtype: opencascade::handle<MAT2d_Circuit>
-") Circuit;
-		opencascade::handle<MAT2d_Circuit> Circuit ();
-		%feature("compactdefaultargs") CreateBisector;
-		%feature("autodoc", "	* Creates the geometric bisector defined by <abisector>.
 
+		/****************** Circuit ******************/
+		%feature("compactdefaultargs") Circuit;
+		%feature("autodoc", ":rtype: opencascade::handle<MAT2d_Circuit>") Circuit;
+		opencascade::handle<MAT2d_Circuit> Circuit ();
+
+		/****************** CreateBisector ******************/
+		%feature("compactdefaultargs") CreateBisector;
+		%feature("autodoc", "* Creates the geometric bisector defined by <abisector>.
 	:param abisector:
 	:type abisector: opencascade::handle<MAT_Bisector> &
-	:rtype: None
-") CreateBisector;
+	:rtype: None") CreateBisector;
 		void CreateBisector (const opencascade::handle<MAT_Bisector> & abisector);
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Returns the distance between the two points designed by their parameters on <abisector>.
 
+		/****************** Distance ******************/
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "* Returns the distance between the two points designed by their parameters on <abisector>.
 	:param abisector:
 	:type abisector: opencascade::handle<MAT_Bisector> &
 	:param param1:
 	:type param1: float
 	:param param2:
 	:type param2: float
-	:rtype: float
-") Distance;
+	:rtype: float") Distance;
 		Standard_Real Distance (const opencascade::handle<MAT_Bisector> & abisector,const Standard_Real param1,const Standard_Real param2);
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* displays informations about the bisector defined by <bisector>.
 
+		/****************** Dump ******************/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "* displays informations about the bisector defined by <bisector>.
 	:param bisector:
 	:type bisector: int
 	:param erease:
 	:type erease: int
-	:rtype: None
-") Dump;
+	:rtype: None") Dump;
 		void Dump (const Standard_Integer bisector,const Standard_Integer erease);
-		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "	* Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
 
+		/****************** FirstPoint ******************/
+		%feature("compactdefaultargs") FirstPoint;
+		%feature("autodoc", "* Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
 	:param anitem:
 	:type anitem: int
 	:param dist:
 	:type dist: float &
-	:rtype: int
-") FirstPoint;
+	:rtype: int") FirstPoint;
 		Standard_Integer FirstPoint (const Standard_Integer anitem,Standard_Real &OutValue);
+
+		/****************** GeomBis ******************/
 		%feature("compactdefaultargs") GeomBis;
-		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
-
+		%feature("autodoc", "* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 	:param Index:
 	:type Index: int
-	:rtype: Bisector_Bisec
-") GeomBis;
+	:rtype: Bisector_Bisec") GeomBis;
 		const Bisector_Bisec & GeomBis (const Standard_Integer Index);
+
+		/****************** GeomElt ******************/
 		%feature("compactdefaultargs") GeomElt;
-		%feature("autodoc", "	* Returns the Geometry of index <Index> in <theGeomElts>.
-
+		%feature("autodoc", "* Returns the Geometry of index <Index> in <theGeomElts>.
 	:param Index:
 	:type Index: int
-	:rtype: opencascade::handle<Geom2d_Geometry>
-") GeomElt;
+	:rtype: opencascade::handle<Geom2d_Geometry>") GeomElt;
 		opencascade::handle<Geom2d_Geometry> GeomElt (const Standard_Integer Index);
+
+		/****************** GeomPnt ******************/
 		%feature("compactdefaultargs") GeomPnt;
-		%feature("autodoc", "	* Returns the point of index <Index> in the <theGeomPnts>.
-
+		%feature("autodoc", "* Returns the point of index <Index> in the <theGeomPnts>.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Pnt2d
-") GeomPnt;
+	:rtype: gp_Pnt2d") GeomPnt;
 		const gp_Pnt2d  GeomPnt (const Standard_Integer Index);
-		%feature("compactdefaultargs") GeomVec;
-		%feature("autodoc", "	* Returns the vector of index <Index> in the <theGeomVecs>.
 
+		/****************** GeomVec ******************/
+		%feature("compactdefaultargs") GeomVec;
+		%feature("autodoc", "* Returns the vector of index <Index> in the <theGeomVecs>.
 	:param Index:
 	:type Index: int
-	:rtype: gp_Vec2d
-") GeomVec;
+	:rtype: gp_Vec2d") GeomVec;
 		const gp_Vec2d  GeomVec (const Standard_Integer Index);
-		%feature("compactdefaultargs") InitItems;
-		%feature("autodoc", "	* InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
 
+		/****************** InitItems ******************/
+		%feature("compactdefaultargs") InitItems;
+		%feature("autodoc", "* InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
 	:param aCircuit:
 	:type aCircuit: opencascade::handle<MAT2d_Circuit> &
-	:rtype: None
-") InitItems;
+	:rtype: None") InitItems;
 		void InitItems (const opencascade::handle<MAT2d_Circuit> & aCircuit);
-		%feature("compactdefaultargs") IntersectBisector;
-		%feature("autodoc", "	* Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . If this point exists, <intpnt> is its index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
 
+		/****************** IntersectBisector ******************/
+		%feature("compactdefaultargs") IntersectBisector;
+		%feature("autodoc", "* Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . If this point exists, <intpnt> is its index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
 	:param bisectorone:
 	:type bisectorone: opencascade::handle<MAT_Bisector> &
 	:param bisectortwo:
 	:type bisectortwo: opencascade::handle<MAT_Bisector> &
 	:param intpnt:
 	:type intpnt: int &
-	:rtype: float
-") IntersectBisector;
+	:rtype: float") IntersectBisector;
 		Standard_Real IntersectBisector (const opencascade::handle<MAT_Bisector> & bisectorone,const opencascade::handle<MAT_Bisector> & bisectortwo,Standard_Integer &OutValue);
+
+		/****************** MAT2d_Tool2d ******************/
 		%feature("compactdefaultargs") MAT2d_Tool2d;
-		%feature("autodoc", "	* Empty Constructor.
-
-	:rtype: None
-") MAT2d_Tool2d;
+		%feature("autodoc", "* Empty Constructor.
+	:rtype: None") MAT2d_Tool2d;
 		 MAT2d_Tool2d ();
+
+		/****************** NumberOfItems ******************/
 		%feature("compactdefaultargs") NumberOfItems;
-		%feature("autodoc", "	* Returns the Number of Items .
-
-	:rtype: int
-") NumberOfItems;
+		%feature("autodoc", "* Returns the Number of Items .
+	:rtype: int") NumberOfItems;
 		Standard_Integer NumberOfItems ();
-		%feature("compactdefaultargs") Sense;
-		%feature("autodoc", "	* <aSide> defines the side of the computation of the map.
 
+		/****************** Sense ******************/
+		%feature("compactdefaultargs") Sense;
+		%feature("autodoc", "* <aSide> defines the side of the computation of the map.
 	:param aside:
 	:type aside: MAT_Side
-	:rtype: None
-") Sense;
+	:rtype: None") Sense;
 		void Sense (const MAT_Side aside);
-		%feature("compactdefaultargs") SetJoinType;
-		%feature("autodoc", "	:param aJoinType:
-	:type aJoinType: GeomAbs_JoinType
-	:rtype: None
-") SetJoinType;
-		void SetJoinType (const GeomAbs_JoinType aJoinType);
-		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "	* Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>
 
+		/****************** SetJoinType ******************/
+		%feature("compactdefaultargs") SetJoinType;
+		%feature("autodoc", ":param aJoinType:
+	:type aJoinType: GeomAbs_JoinType
+	:rtype: None") SetJoinType;
+		void SetJoinType (const GeomAbs_JoinType aJoinType);
+
+		/****************** Tangent ******************/
+		%feature("compactdefaultargs") Tangent;
+		%feature("autodoc", "* Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>
 	:param bisector:
 	:type bisector: int
-	:rtype: int
-") Tangent;
+	:rtype: int") Tangent;
 		Standard_Integer Tangent (const Standard_Integer bisector);
+
+		/****************** TangentAfter ******************/
 		%feature("compactdefaultargs") TangentAfter;
-		%feature("autodoc", "	* Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
-
+		%feature("autodoc", "* Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
 	:param anitem:
 	:type anitem: int
 	:param IsOpenResult:
 	:type IsOpenResult: bool
-	:rtype: int
-") TangentAfter;
+	:rtype: int") TangentAfter;
 		Standard_Integer TangentAfter (const Standard_Integer anitem,const Standard_Boolean IsOpenResult);
-		%feature("compactdefaultargs") TangentBefore;
-		%feature("autodoc", "	* Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
 
+		/****************** TangentBefore ******************/
+		%feature("compactdefaultargs") TangentBefore;
+		%feature("autodoc", "* Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
 	:param anitem:
 	:type anitem: int
 	:param IsOpenResult:
 	:type IsOpenResult: bool
-	:rtype: int
-") TangentBefore;
+	:rtype: int") TangentBefore;
 		Standard_Integer TangentBefore (const Standard_Integer anitem,const Standard_Boolean IsOpenResult);
+
+		/****************** ToleranceOfConfusion ******************/
 		%feature("compactdefaultargs") ToleranceOfConfusion;
-		%feature("autodoc", "	* Returns tolerance to test the confusion of two points.
-
-	:rtype: float
-") ToleranceOfConfusion;
+		%feature("autodoc", "* Returns tolerance to test the confusion of two points.
+	:rtype: float") ToleranceOfConfusion;
 		Standard_Real ToleranceOfConfusion ();
-		%feature("compactdefaultargs") TrimBisector;
-		%feature("autodoc", "	* Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 
+		/****************** TrimBisector ******************/
+		%feature("compactdefaultargs") TrimBisector;
+		%feature("autodoc", "* Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 	:param abisector:
 	:type abisector: opencascade::handle<MAT_Bisector> &
-	:rtype: bool
-") TrimBisector;
+	:rtype: bool") TrimBisector;
 		Standard_Boolean TrimBisector (const opencascade::handle<MAT_Bisector> & abisector);
-		%feature("compactdefaultargs") TrimBisector;
-		%feature("autodoc", "	* Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 
+		/****************** TrimBisector ******************/
+		%feature("compactdefaultargs") TrimBisector;
+		%feature("autodoc", "* Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 	:param abisector:
 	:type abisector: opencascade::handle<MAT_Bisector> &
 	:param apoint:
 	:type apoint: int
-	:rtype: bool
-") TrimBisector;
+	:rtype: bool") TrimBisector;
 		Standard_Boolean TrimBisector (const opencascade::handle<MAT_Bisector> & abisector,const Standard_Integer apoint);
+
 };
 
 
@@ -794,6 +848,7 @@ class MAT2d_Tool2d {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

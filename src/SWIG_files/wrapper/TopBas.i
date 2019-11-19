@@ -67,81 +67,94 @@ typedef NCollection_List <TopBas_TestInterference> TopBas_ListOfTestInterference
 typedef NCollection_List <TopBas_TestInterference>::Iterator TopBas_ListIteratorOfListOfTestInterference;
 /* end typedefs declaration */
 
+/********************************
+* class TopBas_TestInterference *
+********************************/
 %nodefaultctor TopBas_TestInterference;
 class TopBas_TestInterference {
 	public:
+		/****************** Boundary ******************/
 		%feature("compactdefaultargs") Boundary;
-		%feature("autodoc", "	:param B:
+		%feature("autodoc", ":param B:
 	:type B: int &
-	:rtype: None
-") Boundary;
+	:rtype: None") Boundary;
 		void Boundary (const Standard_Integer & B);
+
+		/****************** Boundary ******************/
 		%feature("compactdefaultargs") Boundary;
-		%feature("autodoc", "	:rtype: int
-") Boundary;
+		%feature("autodoc", ":rtype: int") Boundary;
 		const Standard_Integer & Boundary ();
+
+		/****************** BoundaryTransition ******************/
 		%feature("compactdefaultargs") BoundaryTransition;
-		%feature("autodoc", "	:param BTr:
+		%feature("autodoc", ":param BTr:
 	:type BTr: TopAbs_Orientation
-	:rtype: None
-") BoundaryTransition;
+	:rtype: None") BoundaryTransition;
 		void BoundaryTransition (const TopAbs_Orientation BTr);
+
+		/****************** BoundaryTransition ******************/
 		%feature("compactdefaultargs") BoundaryTransition;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") BoundaryTransition;
+		%feature("autodoc", ":rtype: TopAbs_Orientation") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition ();
 
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetChangeBoundary() {
-                return (Standard_Integer) $self->ChangeBoundary();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeBoundary(Standard_Integer value ) {
-                $self->ChangeBoundary()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetChangeIntersection() {
-                return (Standard_Real) $self->ChangeIntersection();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeIntersection(Standard_Real value ) {
-                $self->ChangeIntersection()=value;
-                }
-            };
-            		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:rtype: None
-") Intersection;
-		void Intersection (const Standard_Real & I);
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Integer GetChangeBoundary() {
+            return (Standard_Integer) $self->ChangeBoundary();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetChangeBoundary(Standard_Integer value) {
+            $self->ChangeBoundary()=value;
+            }
+        };
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Real GetChangeIntersection() {
+            return (Standard_Real) $self->ChangeIntersection();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetChangeIntersection(Standard_Real value) {
+            $self->ChangeIntersection()=value;
+            }
+        };
+		/****************** Intersection ******************/
 		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:rtype: float
-") Intersection;
+		%feature("autodoc", ":param I:
+	:type I: float &
+	:rtype: None") Intersection;
+		void Intersection (const Standard_Real & I);
+
+		/****************** Intersection ******************/
+		%feature("compactdefaultargs") Intersection;
+		%feature("autodoc", ":rtype: float") Intersection;
 		const Standard_Real & Intersection ();
+
+		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:param O:
+		%feature("autodoc", ":param O:
 	:type O: TopAbs_Orientation
-	:rtype: None
-") Orientation;
+	:rtype: None") Orientation;
 		void Orientation (const TopAbs_Orientation O);
+
+		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") Orientation;
+		%feature("autodoc", ":rtype: TopAbs_Orientation") Orientation;
 		TopAbs_Orientation Orientation ();
+
+		/****************** TopBas_TestInterference ******************/
 		%feature("compactdefaultargs") TopBas_TestInterference;
-		%feature("autodoc", "	:rtype: None
-") TopBas_TestInterference;
+		%feature("autodoc", ":rtype: None") TopBas_TestInterference;
 		 TopBas_TestInterference ();
+
+		/****************** TopBas_TestInterference ******************/
 		%feature("compactdefaultargs") TopBas_TestInterference;
-		%feature("autodoc", "	:param Inters:
+		%feature("autodoc", ":param Inters:
 	:type Inters: float &
 	:param Bound:
 	:type Bound: int &
@@ -151,19 +164,21 @@ class TopBas_TestInterference {
 	:type Trans: TopAbs_Orientation
 	:param BTrans:
 	:type BTrans: TopAbs_Orientation
-	:rtype: None
-") TopBas_TestInterference;
+	:rtype: None") TopBas_TestInterference;
 		 TopBas_TestInterference (const Standard_Real & Inters,const Standard_Integer & Bound,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
+
+		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "	:param Tr:
+		%feature("autodoc", ":param Tr:
 	:type Tr: TopAbs_Orientation
-	:rtype: None
-") Transition;
+	:rtype: None") Transition;
 		void Transition (const TopAbs_Orientation Tr);
+
+		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "	:rtype: TopAbs_Orientation
-") Transition;
+		%feature("autodoc", ":rtype: TopAbs_Orientation") Transition;
 		TopAbs_Orientation Transition ();
+
 };
 
 
@@ -172,6 +187,7 @@ class TopBas_TestInterference {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

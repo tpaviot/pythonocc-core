@@ -66,36 +66,39 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hermit.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/***************
+* class Hermit *
+***************/
 %rename(hermit) Hermit;
 class Hermit {
 	public:
+		/****************** Solution ******************/
 		%feature("compactdefaultargs") Solution;
-		%feature("autodoc", "	* returns the correct spline a(u) which will be multiplicated with BS later.
-
+		%feature("autodoc", "* returns the correct spline a(u) which will be multiplicated with BS later.
 	:param BS:
 	:type BS: opencascade::handle<Geom_BSplineCurve> &
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
 	:type TolKnots: float
-	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") Solution;
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution (const opencascade::handle<Geom_BSplineCurve> & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
-		%feature("compactdefaultargs") Solution;
-		%feature("autodoc", "	* returns the correct spline a(u) which will be multiplicated with BS later.
 
+		/****************** Solution ******************/
+		%feature("compactdefaultargs") Solution;
+		%feature("autodoc", "* returns the correct spline a(u) which will be multiplicated with BS later.
 	:param BS:
 	:type BS: opencascade::handle<Geom2d_BSplineCurve> &
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
 	:type TolKnots: float
-	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") Solution;
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution (const opencascade::handle<Geom2d_BSplineCurve> & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
-		%feature("compactdefaultargs") Solutionbis;
-		%feature("autodoc", "	* returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 
+		/****************** Solutionbis ******************/
+		%feature("compactdefaultargs") Solutionbis;
+		%feature("autodoc", "* returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 	:param BS:
 	:type BS: opencascade::handle<Geom_BSplineCurve> &
 	:param Knotmin:
@@ -106,9 +109,9 @@ class Hermit {
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
 	:type TolKnots: float
-	:rtype: void
-") Solutionbis;
+	:rtype: void") Solutionbis;
 		static void Solutionbis (const opencascade::handle<Geom_BSplineCurve> & BS,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+
 };
 
 
@@ -117,6 +120,7 @@ class Hermit {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

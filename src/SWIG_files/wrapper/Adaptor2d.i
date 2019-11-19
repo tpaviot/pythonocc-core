@@ -71,49 +71,56 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_adaptor2d.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/**************************
+* class Adaptor2d_Curve2d *
+**************************/
 class Adaptor2d_Curve2d {
 	public:
+		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") BSpline;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
 		virtual opencascade::handle<Geom2d_BSplineCurve> BSpline ();
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BezierCurve>
-") Bezier;
-		virtual opencascade::handle<Geom2d_BezierCurve> Bezier ();
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Circle;
-		virtual gp_Circ2d Circle ();
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		virtual GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
+		/****************** Bezier ******************/
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
+		virtual opencascade::handle<Geom2d_BezierCurve> Bezier ();
+
+		/****************** Circle ******************/
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", ":rtype: gp_Circ2d") Circle;
+		virtual gp_Circ2d Circle ();
+
+		/****************** Continuity ******************/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", ":rtype: GeomAbs_Shape") Continuity;
+		virtual GeomAbs_Shape Continuity ();
+
+		/****************** D0 ******************/
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: void
-") D0;
+	:rtype: void") D0;
 		virtual void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 	:param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: void
-") D1;
+	:rtype: void") D1;
 		virtual void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 	:param U:
 	:type U: float
 	:param P:
@@ -122,12 +129,12 @@ class Adaptor2d_Curve2d {
 	:type V1: gp_Vec2d
 	:param V2:
 	:type V2: gp_Vec2d
-	:rtype: void
-") D2;
+	:rtype: void") D2;
 		virtual void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
+		/****************** D3 ******************/
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 	:param U:
 	:type U: float
 	:param P:
@@ -138,127 +145,141 @@ class Adaptor2d_Curve2d {
 	:type V2: gp_Vec2d
 	:param V3:
 	:type V3: gp_Vec2d
-	:rtype: void
-") D3;
+	:rtype: void") D3;
 		virtual void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
+		/****************** DN ******************/
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 	:param U:
 	:type U: float
 	:param N:
 	:type N: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		virtual gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+
+		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
+		%feature("autodoc", ":rtype: int") Degree;
 		virtual Standard_Integer Degree ();
+
+		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Ellipse;
+		%feature("autodoc", ":rtype: gp_Elips2d") Ellipse;
 		virtual gp_Elips2d Ellipse ();
+
+		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
+		%feature("autodoc", ":rtype: float") FirstParameter;
 		virtual Standard_Real FirstParameter ();
+
+		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
-
-	:rtype: GeomAbs_CurveType
-") GetType;
+		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
+	:rtype: GeomAbs_CurveType") GetType;
 		virtual GeomAbs_CurveType GetType ();
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Hyperbola;
-		virtual gp_Hypr2d Hyperbola ();
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
+		/****************** Hyperbola ******************/
+		%feature("compactdefaultargs") Hyperbola;
+		%feature("autodoc", ":rtype: gp_Hypr2d") Hyperbola;
+		virtual gp_Hypr2d Hyperbola ();
+
+		/****************** Intervals ******************/
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
 	:type T: TColStd_Array1OfReal &
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: void
-") Intervals;
+	:rtype: void") Intervals;
 		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		virtual Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		virtual Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "	:rtype: bool
-") IsRational;
-		virtual Standard_Boolean IsRational ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		virtual Standard_Real LastParameter ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Line;
-		virtual gp_Lin2d Line ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
+		/****************** IsClosed ******************/
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", ":rtype: bool") IsClosed;
+		virtual Standard_Boolean IsClosed ();
+
+		/****************** IsPeriodic ******************/
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", ":rtype: bool") IsPeriodic;
+		virtual Standard_Boolean IsPeriodic ();
+
+		/****************** IsRational ******************/
+		%feature("compactdefaultargs") IsRational;
+		%feature("autodoc", ":rtype: bool") IsRational;
+		virtual Standard_Boolean IsRational ();
+
+		/****************** LastParameter ******************/
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", ":rtype: float") LastParameter;
+		virtual Standard_Real LastParameter ();
+
+		/****************** Line ******************/
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", ":rtype: gp_Lin2d") Line;
+		virtual gp_Lin2d Line ();
+
+		/****************** NbIntervals ******************/
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
+	:rtype: int") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		virtual Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	:rtype: int
-") NbPoles;
-		virtual Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:rtype: int
-") NbSamples;
-		virtual Standard_Integer NbSamples ();
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Parabola;
-		virtual gp_Parab2d Parabola ();
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:rtype: float
-") Period;
-		virtual Standard_Real Period ();
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
+		/****************** NbKnots ******************/
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", ":rtype: int") NbKnots;
+		virtual Standard_Integer NbKnots ();
+
+		/****************** NbPoles ******************/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", ":rtype: int") NbPoles;
+		virtual Standard_Integer NbPoles ();
+
+		/****************** NbSamples ******************/
+		%feature("compactdefaultargs") NbSamples;
+		%feature("autodoc", ":rtype: int") NbSamples;
+		virtual Standard_Integer NbSamples ();
+
+		/****************** Parabola ******************/
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", ":rtype: gp_Parab2d") Parabola;
+		virtual gp_Parab2d Parabola ();
+
+		/****************** Period ******************/
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", ":rtype: float") Period;
+		virtual Standard_Real Period ();
+
+		/****************** Resolution ******************/
+		%feature("compactdefaultargs") Resolution;
+		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 	:param R3d:
 	:type R3d: float
-	:rtype: float
-") Resolution;
+	:rtype: float") Resolution;
 		virtual Standard_Real Resolution (const Standard_Real R3d);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
+		/****************** Trim ******************/
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 	:param First:
 	:type First: float
 	:param Last:
 	:type Last: float
 	:param Tol:
 	:type Tol: float
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
-") Trim;
+	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Trim;
 		virtual opencascade::handle<Adaptor2d_HCurve2d> Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param U:
 	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
+	:rtype: gp_Pnt2d") Value;
 		virtual gp_Pnt2d Value (const Standard_Real U);
+
 };
 
 
@@ -267,51 +288,62 @@ class Adaptor2d_Curve2d {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************
+* class Adaptor2d_HCurve2d *
+***************************/
 %nodefaultctor Adaptor2d_HCurve2d;
 class Adaptor2d_HCurve2d : public Standard_Transient {
 	public:
+		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") BSpline;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
 		opencascade::handle<Geom2d_BSplineCurve> BSpline ();
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BezierCurve>
-") Bezier;
-		opencascade::handle<Geom2d_BezierCurve> Bezier ();
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Circle;
-		gp_Circ2d Circle ();
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "	* Returns a reference to the Curve2d inside the HCurve2d.
 
-	:rtype: Adaptor2d_Curve2d
-") Curve2d;
+		/****************** Bezier ******************/
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
+		opencascade::handle<Geom2d_BezierCurve> Bezier ();
+
+		/****************** Circle ******************/
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", ":rtype: gp_Circ2d") Circle;
+		gp_Circ2d Circle ();
+
+		/****************** Continuity ******************/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", ":rtype: GeomAbs_Shape") Continuity;
+		GeomAbs_Shape Continuity ();
+
+		/****************** Curve2d ******************/
+		%feature("compactdefaultargs") Curve2d;
+		%feature("autodoc", "* Returns a reference to the Curve2d inside the HCurve2d.
+	:rtype: Adaptor2d_Curve2d") Curve2d;
 		virtual const Adaptor2d_Curve2d & Curve2d ();
+
+		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: None
-") D0;
+	:rtype: None") D0;
 		void D0 (const Standard_Real U,gp_Pnt2d & P);
+
+		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: None
-") D1;
+	:rtype: None") D1;
 		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
+
+		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
@@ -319,11 +351,12 @@ class Adaptor2d_HCurve2d : public Standard_Transient {
 	:type V1: gp_Vec2d
 	:param V2:
 	:type V2: gp_Vec2d
-	:rtype: None
-") D2;
+	:rtype: None") D2;
 		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
+
+		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
@@ -333,111 +366,130 @@ class Adaptor2d_HCurve2d : public Standard_Transient {
 	:type V2: gp_Vec2d
 	:param V3:
 	:type V3: gp_Vec2d
-	:rtype: None
-") D3;
+	:rtype: None") D3;
 		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
+
+		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param N:
 	:type N: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+
+		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
+		%feature("autodoc", ":rtype: int") Degree;
 		Standard_Integer Degree ();
+
+		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Ellipse;
+		%feature("autodoc", ":rtype: gp_Elips2d") Ellipse;
 		gp_Elips2d Ellipse ();
+
+		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
+		%feature("autodoc", ":rtype: float") FirstParameter;
 		Standard_Real FirstParameter ();
+
+		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	:rtype: GeomAbs_CurveType
-") GetType;
+		%feature("autodoc", ":rtype: GeomAbs_CurveType") GetType;
 		GeomAbs_CurveType GetType ();
+
+		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Hyperbola;
+		%feature("autodoc", ":rtype: gp_Hypr2d") Hyperbola;
 		gp_Hypr2d Hyperbola ();
+
+		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param T:
+		%feature("autodoc", ":param T:
 	:type T: TColStd_Array1OfReal &
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
+	:rtype: None") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "	:rtype: bool
-") IsRational;
-		Standard_Boolean IsRational ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Line;
-		gp_Lin2d Line ();
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	:rtype: int
-") NbPoles;
-		Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Parabola;
-		gp_Parab2d Parabola ();
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:rtype: float
-") Period;
-		Standard_Real Period ();
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	:param R3d:
-	:type R3d: float
-	:rtype: float
-") Resolution;
-		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* If <First> >= <Last>
 
+		/****************** IsClosed ******************/
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", ":rtype: bool") IsClosed;
+		Standard_Boolean IsClosed ();
+
+		/****************** IsPeriodic ******************/
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", ":rtype: bool") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+
+		/****************** IsRational ******************/
+		%feature("compactdefaultargs") IsRational;
+		%feature("autodoc", ":rtype: bool") IsRational;
+		Standard_Boolean IsRational ();
+
+		/****************** LastParameter ******************/
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", ":rtype: float") LastParameter;
+		Standard_Real LastParameter ();
+
+		/****************** Line ******************/
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", ":rtype: gp_Lin2d") Line;
+		gp_Lin2d Line ();
+
+		/****************** NbIntervals ******************/
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", ":param S:
+	:type S: GeomAbs_Shape
+	:rtype: int") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+
+		/****************** NbKnots ******************/
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", ":rtype: int") NbKnots;
+		Standard_Integer NbKnots ();
+
+		/****************** NbPoles ******************/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", ":rtype: int") NbPoles;
+		Standard_Integer NbPoles ();
+
+		/****************** Parabola ******************/
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", ":rtype: gp_Parab2d") Parabola;
+		gp_Parab2d Parabola ();
+
+		/****************** Period ******************/
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", ":rtype: float") Period;
+		Standard_Real Period ();
+
+		/****************** Resolution ******************/
+		%feature("compactdefaultargs") Resolution;
+		%feature("autodoc", ":param R3d:
+	:type R3d: float
+	:rtype: float") Resolution;
+		Standard_Real Resolution (const Standard_Real R3d);
+
+		/****************** Trim ******************/
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "* If <First> >= <Last>
 	:param First:
 	:type First: float
 	:param Last:
 	:type Last: float
 	:param Tol:
 	:type Tol: float
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
-") Trim;
+	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Trim;
 		opencascade::handle<Adaptor2d_HCurve2d> Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
+	:rtype: gp_Pnt2d") Value;
 		gp_Pnt2d Value (const Standard_Real U);
+
 };
 
 
@@ -448,43 +500,47 @@ class Adaptor2d_HCurve2d : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************
+* class Adaptor2d_HLine2d *
+**************************/
 %nodefaultctor Adaptor2d_HLine2d;
 class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 	public:
+		/****************** Adaptor2d_HLine2d ******************/
 		%feature("compactdefaultargs") Adaptor2d_HLine2d;
-		%feature("autodoc", "	* Creates an empty GenHCurve2d.
-
-	:rtype: None
-") Adaptor2d_HLine2d;
+		%feature("autodoc", "* Creates an empty GenHCurve2d.
+	:rtype: None") Adaptor2d_HLine2d;
 		 Adaptor2d_HLine2d ();
+
+		/****************** Adaptor2d_HLine2d ******************/
 		%feature("compactdefaultargs") Adaptor2d_HLine2d;
-		%feature("autodoc", "	* Creates a GenHCurve2d from a Curve
-
+		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
 	:type C: Adaptor2d_Line2d &
-	:rtype: None
-") Adaptor2d_HLine2d;
+	:rtype: None") Adaptor2d_HLine2d;
 		 Adaptor2d_HLine2d (const Adaptor2d_Line2d & C);
+
+		/****************** ChangeCurve2d ******************/
 		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "	* Returns the curve used to create the GenHCurve.
-
-	:rtype: Adaptor2d_Line2d
-") ChangeCurve2d;
+		%feature("autodoc", "* Returns the curve used to create the GenHCurve.
+	:rtype: Adaptor2d_Line2d") ChangeCurve2d;
 		Adaptor2d_Line2d & ChangeCurve2d ();
+
+		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "	* Returns the curve used to create the GenHCurve2d. This is redefined from HCurve2d, cannot be inline.
-
-	:rtype: Adaptor2d_Curve2d
-") Curve2d;
+		%feature("autodoc", "* Returns the curve used to create the GenHCurve2d. This is redefined from HCurve2d, cannot be inline.
+	:rtype: Adaptor2d_Curve2d") Curve2d;
 		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Sets the field of the GenHCurve2d.
 
+		/****************** Set ******************/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
 	:type C: Adaptor2d_Line2d &
-	:rtype: None
-") Set;
+	:rtype: None") Set;
 		void Set (const Adaptor2d_Line2d & C);
+
 };
 
 
@@ -495,43 +551,47 @@ class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class Adaptor2d_HOffsetCurve *
+*******************************/
 %nodefaultctor Adaptor2d_HOffsetCurve;
 class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 	public:
+		/****************** Adaptor2d_HOffsetCurve ******************/
 		%feature("compactdefaultargs") Adaptor2d_HOffsetCurve;
-		%feature("autodoc", "	* Creates an empty GenHCurve2d.
-
-	:rtype: None
-") Adaptor2d_HOffsetCurve;
+		%feature("autodoc", "* Creates an empty GenHCurve2d.
+	:rtype: None") Adaptor2d_HOffsetCurve;
 		 Adaptor2d_HOffsetCurve ();
+
+		/****************** Adaptor2d_HOffsetCurve ******************/
 		%feature("compactdefaultargs") Adaptor2d_HOffsetCurve;
-		%feature("autodoc", "	* Creates a GenHCurve2d from a Curve
-
+		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
 	:type C: Adaptor2d_OffsetCurve &
-	:rtype: None
-") Adaptor2d_HOffsetCurve;
+	:rtype: None") Adaptor2d_HOffsetCurve;
 		 Adaptor2d_HOffsetCurve (const Adaptor2d_OffsetCurve & C);
+
+		/****************** ChangeCurve2d ******************/
 		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "	* Returns the curve used to create the GenHCurve.
-
-	:rtype: Adaptor2d_OffsetCurve
-") ChangeCurve2d;
+		%feature("autodoc", "* Returns the curve used to create the GenHCurve.
+	:rtype: Adaptor2d_OffsetCurve") ChangeCurve2d;
 		Adaptor2d_OffsetCurve & ChangeCurve2d ();
+
+		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "	* Returns the curve used to create the GenHCurve2d. This is redefined from HCurve2d, cannot be inline.
-
-	:rtype: Adaptor2d_Curve2d
-") Curve2d;
+		%feature("autodoc", "* Returns the curve used to create the GenHCurve2d. This is redefined from HCurve2d, cannot be inline.
+	:rtype: Adaptor2d_Curve2d") Curve2d;
 		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Sets the field of the GenHCurve2d.
 
+		/****************** Set ******************/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
 	:type C: Adaptor2d_OffsetCurve &
-	:rtype: None
-") Set;
+	:rtype: None") Set;
 		void Set (const Adaptor2d_OffsetCurve & C);
+
 };
 
 
@@ -542,15 +602,21 @@ class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class Adaptor2d_Line2d *
+*************************/
 %nodefaultctor Adaptor2d_Line2d;
 class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	public:
+		/****************** Adaptor2d_Line2d ******************/
 		%feature("compactdefaultargs") Adaptor2d_Line2d;
-		%feature("autodoc", "	:rtype: None
-") Adaptor2d_Line2d;
+		%feature("autodoc", ":rtype: None") Adaptor2d_Line2d;
 		 Adaptor2d_Line2d ();
+
+		/****************** Adaptor2d_Line2d ******************/
 		%feature("compactdefaultargs") Adaptor2d_Line2d;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param D:
 	:type D: gp_Dir2d
@@ -558,45 +624,52 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	:type UFirst: float
 	:param ULast:
 	:type ULast: float
-	:rtype: None
-") Adaptor2d_Line2d;
+	:rtype: None") Adaptor2d_Line2d;
 		 Adaptor2d_Line2d (const gp_Pnt2d & P,const gp_Dir2d & D,const Standard_Real UFirst,const Standard_Real ULast);
+
+		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") BSpline;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
 		opencascade::handle<Geom2d_BSplineCurve> BSpline ();
+
+		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BezierCurve>
-") Bezier;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
 		opencascade::handle<Geom2d_BezierCurve> Bezier ();
+
+		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Circle;
+		%feature("autodoc", ":rtype: gp_Circ2d") Circle;
 		gp_Circ2d Circle ();
+
+		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
+		%feature("autodoc", ":rtype: GeomAbs_Shape") Continuity;
 		GeomAbs_Shape Continuity ();
+
+		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: float
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: None
-") D0;
+	:rtype: None") D0;
 		void D0 (const Standard_Real X,gp_Pnt2d & P);
+
+		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: float
 	:param P:
 	:type P: gp_Pnt2d
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: None
-") D1;
+	:rtype: None") D1;
 		void D1 (const Standard_Real X,gp_Pnt2d & P,gp_Vec2d & V);
+
+		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: float
 	:param P:
 	:type P: gp_Pnt2d
@@ -604,11 +677,12 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	:type V1: gp_Vec2d
 	:param V2:
 	:type V2: gp_Vec2d
-	:rtype: None
-") D2;
+	:rtype: None") D2;
 		void D2 (const Standard_Real X,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
+
+		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: float
 	:param P:
 	:type P: gp_Pnt2d
@@ -618,131 +692,150 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	:type V2: gp_Vec2d
 	:param V3:
 	:type V3: gp_Vec2d
-	:rtype: None
-") D3;
+	:rtype: None") D3;
 		void D3 (const Standard_Real X,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
+
+		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param N:
 	:type N: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
-		Standard_Integer Degree ();
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Ellipse;
-		gp_Elips2d Ellipse ();
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
-		Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	:rtype: GeomAbs_CurveType
-") GetType;
-		GeomAbs_CurveType GetType ();
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Hyperbola;
-		gp_Hypr2d Hyperbola ();
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
+		/****************** Degree ******************/
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", ":rtype: int") Degree;
+		Standard_Integer Degree ();
+
+		/****************** Ellipse ******************/
+		%feature("compactdefaultargs") Ellipse;
+		%feature("autodoc", ":rtype: gp_Elips2d") Ellipse;
+		gp_Elips2d Ellipse ();
+
+		/****************** FirstParameter ******************/
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", ":rtype: float") FirstParameter;
+		Standard_Real FirstParameter ();
+
+		/****************** GetType ******************/
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", ":rtype: GeomAbs_CurveType") GetType;
+		GeomAbs_CurveType GetType ();
+
+		/****************** Hyperbola ******************/
+		%feature("compactdefaultargs") Hyperbola;
+		%feature("autodoc", ":rtype: gp_Hypr2d") Hyperbola;
+		gp_Hypr2d Hyperbola ();
+
+		/****************** Intervals ******************/
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
 	:type T: TColStd_Array1OfReal &
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
+	:rtype: None") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+
+		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
+		%feature("autodoc", ":rtype: bool") IsClosed;
 		Standard_Boolean IsClosed ();
+
+		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
+		%feature("autodoc", ":rtype: bool") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
+
+		/****************** IsRational ******************/
 		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "	:rtype: bool
-") IsRational;
+		%feature("autodoc", ":rtype: bool") IsRational;
 		Standard_Boolean IsRational ();
+
+		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
+		%feature("autodoc", ":rtype: float") LastParameter;
 		Standard_Real LastParameter ();
+
+		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Line;
+		%feature("autodoc", ":rtype: gp_Lin2d") Line;
 		gp_Lin2d Line ();
+
+		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	:param L:
+		%feature("autodoc", ":param L:
 	:type L: gp_Lin2d
-	:rtype: None
-") Load;
+	:rtype: None") Load;
 		void Load (const gp_Lin2d & L);
+
+		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	:param L:
+		%feature("autodoc", ":param L:
 	:type L: gp_Lin2d
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
 	:type ULast: float
-	:rtype: None
-") Load;
+	:rtype: None") Load;
 		void Load (const gp_Lin2d & L,const Standard_Real UFirst,const Standard_Real ULast);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
+		/****************** NbIntervals ******************/
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
+	:rtype: int") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	:rtype: int
-") NbPoles;
-		Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Parabola;
-		gp_Parab2d Parabola ();
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:rtype: float
-") Period;
-		Standard_Real Period ();
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	:param R3d:
-	:type R3d: float
-	:rtype: float
-") Resolution;
-		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
+		/****************** NbKnots ******************/
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", ":rtype: int") NbKnots;
+		Standard_Integer NbKnots ();
+
+		/****************** NbPoles ******************/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", ":rtype: int") NbPoles;
+		Standard_Integer NbPoles ();
+
+		/****************** Parabola ******************/
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", ":rtype: gp_Parab2d") Parabola;
+		gp_Parab2d Parabola ();
+
+		/****************** Period ******************/
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", ":rtype: float") Period;
+		Standard_Real Period ();
+
+		/****************** Resolution ******************/
+		%feature("compactdefaultargs") Resolution;
+		%feature("autodoc", ":param R3d:
+	:type R3d: float
+	:rtype: float") Resolution;
+		Standard_Real Resolution (const Standard_Real R3d);
+
+		/****************** Trim ******************/
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 	:param First:
 	:type First: float
 	:param Last:
 	:type Last: float
 	:param Tol:
 	:type Tol: float
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
-") Trim;
+	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Trim;
 		opencascade::handle<Adaptor2d_HCurve2d> Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", ":param X:
 	:type X: float
-	:rtype: gp_Pnt2d
-") Value;
+	:rtype: gp_Pnt2d") Value;
 		gp_Pnt2d Value (const Standard_Real X);
+
 };
 
 
@@ -751,36 +844,40 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class Adaptor2d_OffsetCurve *
+******************************/
 %nodefaultctor Adaptor2d_OffsetCurve;
 class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	public:
+		/****************** Adaptor2d_OffsetCurve ******************/
 		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
-		%feature("autodoc", "	* The Offset is set to 0.
-
-	:rtype: None
-") Adaptor2d_OffsetCurve;
+		%feature("autodoc", "* The Offset is set to 0.
+	:rtype: None") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve ();
-		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
-		%feature("autodoc", "	* The curve is loaded. The Offset is set to 0.
 
+		/****************** Adaptor2d_OffsetCurve ******************/
+		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
+		%feature("autodoc", "* The curve is loaded. The Offset is set to 0.
 	:param C:
 	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
-	:rtype: None
-") Adaptor2d_OffsetCurve;
+	:rtype: None") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve (const opencascade::handle<Adaptor2d_HCurve2d> & C);
-		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
-		%feature("autodoc", "	* Creates an OffsetCurve curve. The Offset is set to Offset.
 
+		/****************** Adaptor2d_OffsetCurve ******************/
+		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
+		%feature("autodoc", "* Creates an OffsetCurve curve. The Offset is set to Offset.
 	:param C:
 	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
 	:param Offset:
 	:type Offset: float
-	:rtype: None
-") Adaptor2d_OffsetCurve;
+	:rtype: None") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real Offset);
-		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
-		%feature("autodoc", "	* Create an Offset curve. WFirst,WLast define the bounds of the Offset curve.
 
+		/****************** Adaptor2d_OffsetCurve ******************/
+		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
+		%feature("autodoc", "* Create an Offset curve. WFirst,WLast define the bounds of the Offset curve.
 	:param C:
 	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
 	:param Offset:
@@ -789,54 +886,59 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	:type WFirst: float
 	:param WLast:
 	:type WLast: float
-	:rtype: None
-") Adaptor2d_OffsetCurve;
+	:rtype: None") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real Offset,const Standard_Real WFirst,const Standard_Real WLast);
-		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BSplineCurve>
-") BSpline;
-		opencascade::handle<Geom2d_BSplineCurve> BSpline ();
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:rtype: opencascade::handle<Geom2d_BezierCurve>
-") Bezier;
-		opencascade::handle<Geom2d_BezierCurve> Bezier ();
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:rtype: gp_Circ2d
-") Circle;
-		gp_Circ2d Circle ();
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity ();
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
-") Curve;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Curve ();
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
+		/****************** BSpline ******************/
+		%feature("compactdefaultargs") BSpline;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
+		opencascade::handle<Geom2d_BSplineCurve> BSpline ();
+
+		/****************** Bezier ******************/
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", ":rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
+		opencascade::handle<Geom2d_BezierCurve> Bezier ();
+
+		/****************** Circle ******************/
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", ":rtype: gp_Circ2d") Circle;
+		gp_Circ2d Circle ();
+
+		/****************** Continuity ******************/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", ":rtype: GeomAbs_Shape") Continuity;
+		GeomAbs_Shape Continuity ();
+
+		/****************** Curve ******************/
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", ":rtype: opencascade::handle<Adaptor2d_HCurve2d>") Curve;
+		const opencascade::handle<Adaptor2d_HCurve2d> & Curve ();
+
+		/****************** D0 ******************/
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: None
-") D0;
+	:rtype: None") D0;
 		void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 	:param U:
 	:type U: float
 	:param P:
 	:type P: gp_Pnt2d
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: None
-") D1;
+	:rtype: None") D1;
 		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 	:param U:
 	:type U: float
 	:param P:
@@ -845,12 +947,12 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	:type V1: gp_Vec2d
 	:param V2:
 	:type V2: gp_Vec2d
-	:rtype: None
-") D2;
+	:rtype: None") D2;
 		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
+		/****************** D3 ******************/
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 	:param U:
 	:type U: float
 	:param P:
@@ -861,159 +963,174 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	:type V2: gp_Vec2d
 	:param V3:
 	:type V3: gp_Vec2d
-	:rtype: None
-") D3;
+	:rtype: None") D3;
 		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
+		/****************** DN ******************/
+		%feature("compactdefaultargs") DN;
+		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 	:param U:
 	:type U: float
 	:param N:
 	:type N: int
-	:rtype: gp_Vec2d
-") DN;
+	:rtype: gp_Vec2d") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
+
+		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	:rtype: int
-") Degree;
+		%feature("autodoc", ":rtype: int") Degree;
 		Standard_Integer Degree ();
+
+		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:rtype: gp_Elips2d
-") Ellipse;
+		%feature("autodoc", ":rtype: gp_Elips2d") Ellipse;
 		gp_Elips2d Ellipse ();
+
+		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:rtype: float
-") FirstParameter;
+		%feature("autodoc", ":rtype: float") FirstParameter;
 		Standard_Real FirstParameter ();
+
+		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
-
-	:rtype: GeomAbs_CurveType
-") GetType;
+		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
+	:rtype: GeomAbs_CurveType") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:rtype: gp_Hypr2d
-") Hyperbola;
-		gp_Hypr2d Hyperbola ();
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
+		/****************** Hyperbola ******************/
+		%feature("compactdefaultargs") Hyperbola;
+		%feature("autodoc", ":rtype: gp_Hypr2d") Hyperbola;
+		gp_Hypr2d Hyperbola ();
+
+		/****************** Intervals ******************/
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
 	:type T: TColStd_Array1OfReal &
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: None
-") Intervals;
+	:rtype: None") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:rtype: bool
-") IsClosed;
-		Standard_Boolean IsClosed ();
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:rtype: bool
-") IsPeriodic;
-		Standard_Boolean IsPeriodic ();
-		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "	:rtype: bool
-") IsRational;
-		Standard_Boolean IsRational ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:rtype: float
-") LastParameter;
-		Standard_Real LastParameter ();
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:rtype: gp_Lin2d
-") Line;
-		gp_Lin2d Line ();
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	* Changes the curve. The Offset is reset to 0.
 
+		/****************** IsClosed ******************/
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", ":rtype: bool") IsClosed;
+		Standard_Boolean IsClosed ();
+
+		/****************** IsPeriodic ******************/
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", ":rtype: bool") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+
+		/****************** IsRational ******************/
+		%feature("compactdefaultargs") IsRational;
+		%feature("autodoc", ":rtype: bool") IsRational;
+		Standard_Boolean IsRational ();
+
+		/****************** LastParameter ******************/
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", ":rtype: float") LastParameter;
+		Standard_Real LastParameter ();
+
+		/****************** Line ******************/
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", ":rtype: gp_Lin2d") Line;
+		gp_Lin2d Line ();
+
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "* Changes the curve. The Offset is reset to 0.
 	:param S:
 	:type S: opencascade::handle<Adaptor2d_HCurve2d> &
-	:rtype: None
-") Load;
+	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor2d_HCurve2d> & S);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	* Changes the Offset on the current Curve.
 
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "* Changes the Offset on the current Curve.
 	:param Offset:
 	:type Offset: float
-	:rtype: None
-") Load;
+	:rtype: None") Load;
 		void Load (const Standard_Real Offset);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	* Changes the Offset Curve on the current Curve.
 
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "* Changes the Offset Curve on the current Curve.
 	:param Offset:
 	:type Offset: float
 	:param WFirst:
 	:type WFirst: float
 	:param WLast:
 	:type WLast: float
-	:rtype: None
-") Load;
+	:rtype: None") Load;
 		void Load (const Standard_Real Offset,const Standard_Real WFirst,const Standard_Real WLast);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
+		/****************** NbIntervals ******************/
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 	:param S:
 	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
+	:rtype: int") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("compactdefaultargs") NbKnots;
-		%feature("autodoc", "	:rtype: int
-") NbKnots;
-		Standard_Integer NbKnots ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	:rtype: int
-") NbPoles;
-		Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:rtype: int
-") NbSamples;
-		Standard_Integer NbSamples ();
-		%feature("compactdefaultargs") Offset;
-		%feature("autodoc", "	:rtype: float
-") Offset;
-		Standard_Real Offset ();
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:rtype: gp_Parab2d
-") Parabola;
-		gp_Parab2d Parabola ();
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:rtype: float
-") Period;
-		Standard_Real Period ();
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
+		/****************** NbKnots ******************/
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", ":rtype: int") NbKnots;
+		Standard_Integer NbKnots ();
+
+		/****************** NbPoles ******************/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", ":rtype: int") NbPoles;
+		Standard_Integer NbPoles ();
+
+		/****************** NbSamples ******************/
+		%feature("compactdefaultargs") NbSamples;
+		%feature("autodoc", ":rtype: int") NbSamples;
+		Standard_Integer NbSamples ();
+
+		/****************** Offset ******************/
+		%feature("compactdefaultargs") Offset;
+		%feature("autodoc", ":rtype: float") Offset;
+		Standard_Real Offset ();
+
+		/****************** Parabola ******************/
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", ":rtype: gp_Parab2d") Parabola;
+		gp_Parab2d Parabola ();
+
+		/****************** Period ******************/
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", ":rtype: float") Period;
+		Standard_Real Period ();
+
+		/****************** Resolution ******************/
+		%feature("compactdefaultargs") Resolution;
+		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 	:param R3d:
 	:type R3d: float
-	:rtype: float
-") Resolution;
+	:rtype: float") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
+		/****************** Trim ******************/
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 	:param First:
 	:type First: float
 	:param Last:
 	:type Last: float
 	:param Tol:
 	:type Tol: float
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>
-") Trim;
+	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Trim;
 		opencascade::handle<Adaptor2d_HCurve2d> Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param U:
 	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
+	:rtype: gp_Pnt2d") Value;
 		gp_Pnt2d Value (const Standard_Real U);
+
 };
 
 
@@ -1022,6 +1139,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
