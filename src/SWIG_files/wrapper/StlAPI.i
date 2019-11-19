@@ -64,31 +64,34 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stlapi.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/***************
+* class StlAPI *
+***************/
 %rename(stlapi) StlAPI;
 class StlAPI {
 	public:
+		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Legacy interface. Read STL file and create a shape composed of triangular faces, one per facet. This approach is very inefficient, especially for large files. Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
-
+		%feature("autodoc", "* Legacy interface. Read STL file and create a shape composed of triangular faces, one per facet. This approach is very inefficient, especially for large files. Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param aFile:
 	:type aFile: char *
-	:rtype: bool
-") Read;
+	:rtype: bool") Read;
 		static Standard_Boolean Read (TopoDS_Shape & theShape,const char * aFile);
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Convert and write shape to STL format. File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default).
 
+		/****************** Write ******************/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "* Convert and write shape to STL format. File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default).
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theFile:
 	:type theFile: char *
 	:param theAsciiMode: default value is Standard_True
 	:type theAsciiMode: bool
-	:rtype: bool
-") Write;
+	:rtype: bool") Write;
 		static Standard_Boolean Write (const TopoDS_Shape & theShape,const char * theFile,const Standard_Boolean theAsciiMode = Standard_True);
+
 };
 
 
@@ -97,19 +100,23 @@ class StlAPI {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class StlAPI_Reader *
+**********************/
 %nodefaultctor StlAPI_Reader;
 class StlAPI_Reader {
 	public:
+		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Reads STL file to the TopoDS_Shape (each triangle is converted to the face). returns True if reading is successful
-
+		%feature("autodoc", "* Reads STL file to the TopoDS_Shape (each triangle is converted to the face). returns True if reading is successful
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theFileName:
 	:type theFileName: char *
-	:rtype: bool
-") Read;
+	:rtype: bool") Read;
 		Standard_Boolean Read (TopoDS_Shape & theShape,const char * theFileName);
+
 };
 
 
@@ -118,38 +125,42 @@ class StlAPI_Reader {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class StlAPI_Writer *
+**********************/
 %nodefaultctor StlAPI_Writer;
 class StlAPI_Writer {
 	public:
 
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetASCIIMode() {
-                return (Standard_Boolean) $self->ASCIIMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetASCIIMode(Standard_Boolean value ) {
-                $self->ASCIIMode()=value;
-                }
-            };
-            		%feature("compactdefaultargs") StlAPI_Writer;
-		%feature("autodoc", "	* Creates a writer object with default parameters: ASCIIMode.
-
-	:rtype: None
-") StlAPI_Writer;
+        %feature("autodoc","1");
+        %extend {
+            Standard_Boolean GetASCIIMode() {
+            return (Standard_Boolean) $self->ASCIIMode();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetASCIIMode(Standard_Boolean value) {
+            $self->ASCIIMode()=value;
+            }
+        };
+		/****************** StlAPI_Writer ******************/
+		%feature("compactdefaultargs") StlAPI_Writer;
+		%feature("autodoc", "* Creates a writer object with default parameters: ASCIIMode.
+	:rtype: None") StlAPI_Writer;
 		 StlAPI_Writer ();
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 
+		/****************** Write ******************/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "* Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theFileName:
 	:type theFileName: char *
-	:rtype: bool
-") Write;
+	:rtype: bool") Write;
 		Standard_Boolean Write (const TopoDS_Shape & theShape,const char * theFileName);
+
 };
 
 
@@ -158,6 +169,7 @@ class StlAPI_Writer {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

@@ -78,11 +78,15 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xbrepmesh.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/******************
+* class XBRepMesh *
+******************/
 %rename(xbrepmesh) XBRepMesh;
 class XBRepMesh {
 	public:
+		/****************** Discret ******************/
 		%feature("compactdefaultargs") Discret;
-		%feature("autodoc", "	:param theShape:
+		%feature("autodoc", ":param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theDeflection:
 	:type theDeflection: float
@@ -90,9 +94,9 @@ class XBRepMesh {
 	:type theAngle: float
 	:param theAlgo:
 	:type theAlgo: BRepMesh_DiscretRoot * &
-	:rtype: int
-") Discret;
+	:rtype: int") Discret;
 		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_DiscretRoot * & theAlgo);
+
 };
 
 
@@ -101,6 +105,7 @@ class XBRepMesh {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

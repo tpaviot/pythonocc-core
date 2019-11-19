@@ -68,15 +68,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appstd.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/***************************
+* class AppStd_Application *
+***************************/
 %nodefaultctor AppStd_Application;
 class AppStd_Application : public TDocStd_Application {
 	public:
+		/****************** ResourcesName ******************/
 		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "	* returns the file name which contains application resources
-
-	:rtype: char *
-") ResourcesName;
+		%feature("autodoc", "* returns the file name which contains application resources
+	:rtype: char *") ResourcesName;
 		const char * ResourcesName ();
+
 };
 
 
@@ -87,6 +90,7 @@ class AppStd_Application : public TDocStd_Application {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

@@ -144,6 +144,12 @@ enum RWGltf_GltfAccessorLayout {
 /* typedefs */
 /* end typedefs declaration */
 
+/*************************
+* class RWGltf_CafReader *
+*************************/
+/****************************
+* class RWGltf_GltfAccessor *
+****************************/
 %nodefaultctor RWGltf_GltfAccessor;
 class RWGltf_GltfAccessor {
 	public:
@@ -154,12 +160,12 @@ class RWGltf_GltfAccessor {
 		RWGltf_GltfAccessorLayout Type;
 		RWGltf_GltfAccessorCompType ComponentType;
 		Graphic3d_BndBox3d BndBox;
+		/****************** RWGltf_GltfAccessor ******************/
 		%feature("compactdefaultargs") RWGltf_GltfAccessor;
-		%feature("autodoc", "	* //!< bounding box Empty constructor.
-
-	:rtype: None
-") RWGltf_GltfAccessor;
+		%feature("autodoc", "* //!< bounding box Empty constructor.
+	:rtype: None") RWGltf_GltfAccessor;
 		 RWGltf_GltfAccessor ();
+
 };
 
 
@@ -168,6 +174,10 @@ class RWGltf_GltfAccessor {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class RWGltf_GltfBufferView *
+******************************/
 %nodefaultctor RWGltf_GltfBufferView;
 class RWGltf_GltfBufferView {
 	public:
@@ -176,10 +186,11 @@ class RWGltf_GltfBufferView {
 		int64_t ByteLength;
 		int32_t ByteStride;
 		RWGltf_GltfBufferViewTarget Target;
+		/****************** RWGltf_GltfBufferView ******************/
 		%feature("compactdefaultargs") RWGltf_GltfBufferView;
-		%feature("autodoc", "	:rtype: None
-") RWGltf_GltfBufferView;
+		%feature("autodoc", ":rtype: None") RWGltf_GltfBufferView;
 		 RWGltf_GltfBufferView ();
+
 };
 
 
@@ -188,6 +199,10 @@ class RWGltf_GltfBufferView {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class RWGltf_GltfFace *
+************************/
 %nodefaultctor RWGltf_GltfFace;
 class RWGltf_GltfFace {
 	public:
@@ -203,6 +218,13 @@ class RWGltf_GltfFace {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class RWGltf_GltfLatePrimitiveArray *
+**************************************/
+/*********************************
+* class RWGltf_GltfPrimArrayData *
+*********************************/
 %nodefaultctor RWGltf_GltfPrimArrayData;
 class RWGltf_GltfPrimArrayData {
 	public:
@@ -211,16 +233,18 @@ class RWGltf_GltfPrimArrayData {
 		int64_t StreamOffset;
 		RWGltf_GltfAccessor Accessor;
 		RWGltf_GltfArrayType Type;
+		/****************** RWGltf_GltfPrimArrayData ******************/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
-		%feature("autodoc", "	:rtype: None
-") RWGltf_GltfPrimArrayData;
+		%feature("autodoc", ":rtype: None") RWGltf_GltfPrimArrayData;
 		 RWGltf_GltfPrimArrayData ();
+
+		/****************** RWGltf_GltfPrimArrayData ******************/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
-		%feature("autodoc", "	:param theType:
+		%feature("autodoc", ":param theType:
 	:type theType: RWGltf_GltfArrayType
-	:rtype: None
-") RWGltf_GltfPrimArrayData;
+	:rtype: None") RWGltf_GltfPrimArrayData;
 		 RWGltf_GltfPrimArrayData (RWGltf_GltfArrayType theType);
+
 };
 
 
@@ -229,6 +253,13 @@ class RWGltf_GltfPrimArrayData {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class RWGltf_GltfSharedIStream *
+*********************************/
+/******************************
+* class RWGltf_MaterialCommon *
+******************************/
 %nodefaultctor RWGltf_MaterialCommon;
 class RWGltf_MaterialCommon : public Standard_Transient {
 	public:
@@ -243,10 +274,11 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 		Quantity_Color EmissiveColor;
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
+		/****************** RWGltf_MaterialCommon ******************/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
-		%feature("autodoc", "	:rtype: None
-") RWGltf_MaterialCommon;
+		%feature("autodoc", ":rtype: None") RWGltf_MaterialCommon;
 		 RWGltf_MaterialCommon ();
+
 };
 
 
@@ -257,6 +289,10 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class RWGltf_MaterialMetallicRoughness *
+*****************************************/
 %nodefaultctor RWGltf_MaterialMetallicRoughness;
 class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	public:
@@ -271,12 +307,12 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		Graphic3d_Vec3 EmissiveFactor;
 		Standard_ShortReal Metallic;
 		Standard_ShortReal Roughness;
+		/****************** RWGltf_MaterialMetallicRoughness ******************/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;
-		%feature("autodoc", "	* //!< roughness (or scale factor to the texture) within range [0.0, 1.0]; 1.0 by default
-
-	:rtype: None
-") RWGltf_MaterialMetallicRoughness;
+		%feature("autodoc", "* //!< roughness (or scale factor to the texture) within range [0.0, 1.0]; 1.0 by default
+	:rtype: None") RWGltf_MaterialMetallicRoughness;
 		 RWGltf_MaterialMetallicRoughness ();
+
 };
 
 
@@ -287,6 +323,13 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class RWGltf_PrimitiveArrayReader *
+************************************/
+/***********************************
+* class RWGltf_TriangulationReader *
+***********************************/
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

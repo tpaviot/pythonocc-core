@@ -81,42 +81,46 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrappli.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/******************************
+* class HLRAppli_ReflectLines *
+******************************/
 %nodefaultctor HLRAppli_ReflectLines;
 class HLRAppli_ReflectLines {
 	public:
+		/****************** GetCompoundOf3dEdges ******************/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
-		%feature("autodoc", "	* returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d
-
+		%feature("autodoc", "* returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d
 	:param type:
 	:type type: HLRBRep_TypeOfResultingEdge
 	:param visible:
 	:type visible: bool
 	:param In3d:
 	:type In3d: bool
-	:rtype: TopoDS_Shape
-") GetCompoundOf3dEdges;
+	:rtype: TopoDS_Shape") GetCompoundOf3dEdges;
 		TopoDS_Shape GetCompoundOf3dEdges (const HLRBRep_TypeOfResultingEdge type,const Standard_Boolean visible,const Standard_Boolean In3d);
+
+		/****************** GetResult ******************/
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* returns resulting compound of reflect lines represented by edges in 3d
-
-	:rtype: TopoDS_Shape
-") GetResult;
+		%feature("autodoc", "* returns resulting compound of reflect lines represented by edges in 3d
+	:rtype: TopoDS_Shape") GetResult;
 		TopoDS_Shape GetResult ();
-		%feature("compactdefaultargs") HLRAppli_ReflectLines;
-		%feature("autodoc", "	* Constructor
 
+		/****************** HLRAppli_ReflectLines ******************/
+		%feature("compactdefaultargs") HLRAppli_ReflectLines;
+		%feature("autodoc", "* Constructor
 	:param aShape:
 	:type aShape: TopoDS_Shape &
-	:rtype: None
-") HLRAppli_ReflectLines;
+	:rtype: None") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines (const TopoDS_Shape & aShape);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") SetAxes;
-		%feature("autodoc", "	* Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", ":rtype: None") Perform;
+		void Perform ();
+
+		/****************** SetAxes ******************/
+		%feature("compactdefaultargs") SetAxes;
+		%feature("autodoc", "* Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 	:param Nx:
 	:type Nx: float
 	:param Ny:
@@ -135,9 +139,9 @@ class HLRAppli_ReflectLines {
 	:type YUp: float
 	:param ZUp:
 	:type ZUp: float
-	:rtype: None
-") SetAxes;
+	:rtype: None") SetAxes;
 		void SetAxes (const Standard_Real Nx,const Standard_Real Ny,const Standard_Real Nz,const Standard_Real XAt,const Standard_Real YAt,const Standard_Real ZAt,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp);
+
 };
 
 
@@ -146,6 +150,7 @@ class HLRAppli_ReflectLines {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

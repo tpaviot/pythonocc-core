@@ -76,26 +76,29 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlxcafdrivers.ht
 /* typedefs */
 /* end typedefs declaration */
 
+/***********************
+* class XmlXCAFDrivers *
+***********************/
 %rename(xmlxcafdrivers) XmlXCAFDrivers;
 %nodefaultctor XmlXCAFDrivers;
 class XmlXCAFDrivers {
 	public:
+		/****************** DefineFormat ******************/
 		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "	* Defines format 'XmlXCAF' and registers its read and write drivers in the specified application
-
+		%feature("autodoc", "* Defines format 'XmlXCAF' and registers its read and write drivers in the specified application
 	:param theApp:
 	:type theApp: opencascade::handle<TDocStd_Application> &
-	:rtype: void
-") DefineFormat;
+	:rtype: void") DefineFormat;
 		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
-		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "	* Depending from the ID, returns a list of storage or retrieval attribute drivers. Used for plugin. //! Standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent 47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient //! XCAF data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema
 
+		/****************** Factory ******************/
+		%feature("compactdefaultargs") Factory;
+		%feature("autodoc", "* Depending from the ID, returns a list of storage or retrieval attribute drivers. Used for plugin. //! Standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent 47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient //! XCAF data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema
 	:param aGUID:
 	:type aGUID: Standard_GUID &
-	:rtype: opencascade::handle<Standard_Transient>
-") Factory;
+	:rtype: opencascade::handle<Standard_Transient>") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & aGUID);
+
 };
 
 
@@ -104,19 +107,25 @@ class XmlXCAFDrivers {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class XmlXCAFDrivers_DocumentRetrievalDriver *
+***********************************************/
 %nodefaultctor XmlXCAFDrivers_DocumentRetrievalDriver;
 class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** XmlXCAFDrivers_DocumentRetrievalDriver ******************/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "	:rtype: None
-") XmlXCAFDrivers_DocumentRetrievalDriver;
+		%feature("autodoc", ":rtype: None") XmlXCAFDrivers_DocumentRetrievalDriver;
 		 XmlXCAFDrivers_DocumentRetrievalDriver ();
+
 };
 
 
@@ -127,21 +136,27 @@ class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetriev
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class XmlXCAFDrivers_DocumentStorageDriver *
+*********************************************/
 %nodefaultctor XmlXCAFDrivers_DocumentStorageDriver;
 class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDriver {
 	public:
+		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "	:param theMsgDriver:
+		%feature("autodoc", ":param theMsgDriver:
 	:type theMsgDriver: opencascade::handle<Message_Messenger> &
-	:rtype: opencascade::handle<XmlMDF_ADriverTable>
-") AttributeDrivers;
+	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** XmlXCAFDrivers_DocumentStorageDriver ******************/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentStorageDriver;
-		%feature("autodoc", "	:param theCopyright:
+		%feature("autodoc", ":param theCopyright:
 	:type theCopyright: TCollection_ExtendedString &
-	:rtype: None
-") XmlXCAFDrivers_DocumentStorageDriver;
+	:rtype: None") XmlXCAFDrivers_DocumentStorageDriver;
 		 XmlXCAFDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
+
 };
 
 
@@ -152,6 +167,7 @@ class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDr
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

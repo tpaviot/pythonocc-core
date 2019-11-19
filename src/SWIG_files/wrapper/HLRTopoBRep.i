@@ -96,11 +96,14 @@ typedef NCollection_DataMap <TopoDS_Shape , HLRTopoBRep_ListOfVData , TopTools_S
 typedef NCollection_DataMap <TopoDS_Shape , HLRTopoBRep_ListOfVData , TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
 /* end typedefs declaration */
 
+/*****************************
+* class HLRTopoBRep_DSFiller *
+*****************************/
 class HLRTopoBRep_DSFiller {
 	public:
+		/****************** Insert ******************/
 		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Stores in <DS> the outlines of <S> using the current outliner and stores the isolines in <DS> using a Hatcher.
-
+		%feature("autodoc", "* Stores in <DS> the outlines of <S> using the current outliner and stores the isolines in <DS> using a Hatcher.
 	:param S:
 	:type S: TopoDS_Shape &
 	:param FO:
@@ -111,9 +114,9 @@ class HLRTopoBRep_DSFiller {
 	:type MST: BRepTopAdaptor_MapOfShapeTool &
 	:param nbIso:
 	:type nbIso: int
-	:rtype: void
-") Insert;
+	:rtype: void") Insert;
 		static void Insert (const TopoDS_Shape & S,Contap_Contour & FO,HLRTopoBRep_Data & DS,BRepTopAdaptor_MapOfShapeTool & MST,const Standard_Integer nbIso);
+
 };
 
 
@@ -122,245 +125,271 @@ class HLRTopoBRep_DSFiller {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class HLRTopoBRep_Data *
+*************************/
 %nodefaultctor HLRTopoBRep_Data;
 class HLRTopoBRep_Data {
 	public:
+		/****************** AddIntL ******************/
 		%feature("compactdefaultargs") AddIntL;
-		%feature("autodoc", "	:param F:
+		%feature("autodoc", ":param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") AddIntL;
+	:rtype: TopTools_ListOfShape") AddIntL;
 		TopTools_ListOfShape & AddIntL (const TopoDS_Face & F);
+
+		/****************** AddIntV ******************/
 		%feature("compactdefaultargs") AddIntV;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: TopoDS_Vertex &
-	:rtype: None
-") AddIntV;
+	:rtype: None") AddIntV;
 		void AddIntV (const TopoDS_Vertex & V);
+
+		/****************** AddIsoL ******************/
 		%feature("compactdefaultargs") AddIsoL;
-		%feature("autodoc", "	:param F:
+		%feature("autodoc", ":param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") AddIsoL;
+	:rtype: TopTools_ListOfShape") AddIsoL;
 		TopTools_ListOfShape & AddIsoL (const TopoDS_Face & F);
+
+		/****************** AddOldS ******************/
 		%feature("compactdefaultargs") AddOldS;
-		%feature("autodoc", "	:param NewS:
+		%feature("autodoc", ":param NewS:
 	:type NewS: TopoDS_Shape &
 	:param OldS:
 	:type OldS: TopoDS_Shape &
-	:rtype: None
-") AddOldS;
+	:rtype: None") AddOldS;
 		void AddOldS (const TopoDS_Shape & NewS,const TopoDS_Shape & OldS);
+
+		/****************** AddOutL ******************/
 		%feature("compactdefaultargs") AddOutL;
-		%feature("autodoc", "	:param F:
+		%feature("autodoc", ":param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") AddOutL;
+	:rtype: TopTools_ListOfShape") AddOutL;
 		TopTools_ListOfShape & AddOutL (const TopoDS_Face & F);
+
+		/****************** AddOutV ******************/
 		%feature("compactdefaultargs") AddOutV;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: TopoDS_Vertex &
-	:rtype: None
-") AddOutV;
+	:rtype: None") AddOutV;
 		void AddOutV (const TopoDS_Vertex & V);
+
+		/****************** AddSplE ******************/
 		%feature("compactdefaultargs") AddSplE;
-		%feature("autodoc", "	:param E:
+		%feature("autodoc", ":param E:
 	:type E: TopoDS_Edge &
-	:rtype: TopTools_ListOfShape
-") AddSplE;
+	:rtype: TopTools_ListOfShape") AddSplE;
 		TopTools_ListOfShape & AddSplE (const TopoDS_Edge & E);
+
+		/****************** Append ******************/
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: TopoDS_Vertex &
 	:param P:
 	:type P: float
-	:rtype: None
-") Append;
+	:rtype: None") Append;
 		void Append (const TopoDS_Vertex & V,const Standard_Real P);
+
+		/****************** Clean ******************/
 		%feature("compactdefaultargs") Clean;
-		%feature("autodoc", "	* Clear of all the data not needed during and after the hiding process.
-
-	:rtype: None
-") Clean;
+		%feature("autodoc", "* Clear of all the data not needed during and after the hiding process.
+	:rtype: None") Clean;
 		void Clean ();
+
+		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Clear of all the maps.
-
-	:rtype: None
-") Clear;
+		%feature("autodoc", "* Clear of all the maps.
+	:rtype: None") Clear;
 		void Clear ();
+
+		/****************** Edge ******************/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") Edge;
+		%feature("autodoc", ":rtype: TopoDS_Edge") Edge;
 		const TopoDS_Edge  Edge ();
+
+		/****************** EdgeHasSplE ******************/
 		%feature("compactdefaultargs") EdgeHasSplE;
-		%feature("autodoc", "	* Returns True if the Edge is split.
-
+		%feature("autodoc", "* Returns True if the Edge is split.
 	:param E:
 	:type E: TopoDS_Edge &
-	:rtype: bool
-") EdgeHasSplE;
+	:rtype: bool") EdgeHasSplE;
 		Standard_Boolean EdgeHasSplE (const TopoDS_Edge & E);
+
+		/****************** EdgeSplE ******************/
 		%feature("compactdefaultargs") EdgeSplE;
-		%feature("autodoc", "	* Returns the list of the edges.
-
+		%feature("autodoc", "* Returns the list of the edges.
 	:param E:
 	:type E: TopoDS_Edge &
-	:rtype: TopTools_ListOfShape
-") EdgeSplE;
+	:rtype: TopTools_ListOfShape") EdgeSplE;
 		const TopTools_ListOfShape & EdgeSplE (const TopoDS_Edge & E);
+
+		/****************** FaceHasIntL ******************/
 		%feature("compactdefaultargs") FaceHasIntL;
-		%feature("autodoc", "	* Returns True if the Face has internal outline.
-
+		%feature("autodoc", "* Returns True if the Face has internal outline.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: bool
-") FaceHasIntL;
+	:rtype: bool") FaceHasIntL;
 		Standard_Boolean FaceHasIntL (const TopoDS_Face & F);
+
+		/****************** FaceHasIsoL ******************/
 		%feature("compactdefaultargs") FaceHasIsoL;
-		%feature("autodoc", "	* Returns True if the Face has isolines.
-
+		%feature("autodoc", "* Returns True if the Face has isolines.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: bool
-") FaceHasIsoL;
+	:rtype: bool") FaceHasIsoL;
 		Standard_Boolean FaceHasIsoL (const TopoDS_Face & F);
+
+		/****************** FaceHasOutL ******************/
 		%feature("compactdefaultargs") FaceHasOutL;
-		%feature("autodoc", "	* Returns True if the Face has outlines on restriction.
-
+		%feature("autodoc", "* Returns True if the Face has outlines on restriction.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: bool
-") FaceHasOutL;
+	:rtype: bool") FaceHasOutL;
 		Standard_Boolean FaceHasOutL (const TopoDS_Face & F);
+
+		/****************** FaceIntL ******************/
 		%feature("compactdefaultargs") FaceIntL;
-		%feature("autodoc", "	* Returns the list of the internal OutLines.
-
+		%feature("autodoc", "* Returns the list of the internal OutLines.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") FaceIntL;
+	:rtype: TopTools_ListOfShape") FaceIntL;
 		const TopTools_ListOfShape & FaceIntL (const TopoDS_Face & F);
+
+		/****************** FaceIsoL ******************/
 		%feature("compactdefaultargs") FaceIsoL;
-		%feature("autodoc", "	* Returns the list of the IsoLines.
-
+		%feature("autodoc", "* Returns the list of the IsoLines.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") FaceIsoL;
+	:rtype: TopTools_ListOfShape") FaceIsoL;
 		const TopTools_ListOfShape & FaceIsoL (const TopoDS_Face & F);
-		%feature("compactdefaultargs") FaceOutL;
-		%feature("autodoc", "	* Returns the list of the OutLines on restriction.
 
+		/****************** FaceOutL ******************/
+		%feature("compactdefaultargs") FaceOutL;
+		%feature("autodoc", "* Returns the list of the OutLines on restriction.
 	:param F:
 	:type F: TopoDS_Face &
-	:rtype: TopTools_ListOfShape
-") FaceOutL;
+	:rtype: TopTools_ListOfShape") FaceOutL;
 		const TopTools_ListOfShape & FaceOutL (const TopoDS_Face & F);
-		%feature("compactdefaultargs") HLRTopoBRep_Data;
-		%feature("autodoc", "	:rtype: None
-") HLRTopoBRep_Data;
-		 HLRTopoBRep_Data ();
-		%feature("compactdefaultargs") InitEdge;
-		%feature("autodoc", "	:rtype: None
-") InitEdge;
-		void InitEdge ();
-		%feature("compactdefaultargs") InitVertex;
-		%feature("autodoc", "	* Start an iteration on the vertices of E.
 
+		/****************** HLRTopoBRep_Data ******************/
+		%feature("compactdefaultargs") HLRTopoBRep_Data;
+		%feature("autodoc", ":rtype: None") HLRTopoBRep_Data;
+		 HLRTopoBRep_Data ();
+
+		/****************** InitEdge ******************/
+		%feature("compactdefaultargs") InitEdge;
+		%feature("autodoc", ":rtype: None") InitEdge;
+		void InitEdge ();
+
+		/****************** InitVertex ******************/
+		%feature("compactdefaultargs") InitVertex;
+		%feature("autodoc", "* Start an iteration on the vertices of E.
 	:param E:
 	:type E: TopoDS_Edge &
-	:rtype: None
-") InitVertex;
+	:rtype: None") InitVertex;
 		void InitVertex (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	* Insert before the current position.
 
+		/****************** InsertBefore ******************/
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "* Insert before the current position.
 	:param V:
 	:type V: TopoDS_Vertex &
 	:param P:
 	:type P: float
-	:rtype: None
-") InsertBefore;
+	:rtype: None") InsertBefore;
 		void InsertBefore (const TopoDS_Vertex & V,const Standard_Real P);
+
+		/****************** IsIntLFaceEdge ******************/
 		%feature("compactdefaultargs") IsIntLFaceEdge;
-		%feature("autodoc", "	:param F:
+		%feature("autodoc", ":param F:
 	:type F: TopoDS_Face &
 	:param E:
 	:type E: TopoDS_Edge &
-	:rtype: bool
-") IsIntLFaceEdge;
+	:rtype: bool") IsIntLFaceEdge;
 		Standard_Boolean IsIntLFaceEdge (const TopoDS_Face & F,const TopoDS_Edge & E);
+
+		/****************** IsIntV ******************/
 		%feature("compactdefaultargs") IsIntV;
-		%feature("autodoc", "	* Returns True if V is an internal outline vertex.
-
+		%feature("autodoc", "* Returns True if V is an internal outline vertex.
 	:param V:
 	:type V: TopoDS_Vertex &
-	:rtype: bool
-") IsIntV;
+	:rtype: bool") IsIntV;
 		Standard_Boolean IsIntV (const TopoDS_Vertex & V);
-		%feature("compactdefaultargs") IsIsoLFaceEdge;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") IsIsoLFaceEdge;
-		Standard_Boolean IsIsoLFaceEdge (const TopoDS_Face & F,const TopoDS_Edge & E);
-		%feature("compactdefaultargs") IsOutLFaceEdge;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") IsOutLFaceEdge;
-		Standard_Boolean IsOutLFaceEdge (const TopoDS_Face & F,const TopoDS_Edge & E);
-		%feature("compactdefaultargs") IsOutV;
-		%feature("autodoc", "	* Returns True if V is an outline vertex on a restriction.
 
+		/****************** IsIsoLFaceEdge ******************/
+		%feature("compactdefaultargs") IsIsoLFaceEdge;
+		%feature("autodoc", ":param F:
+	:type F: TopoDS_Face &
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool") IsIsoLFaceEdge;
+		Standard_Boolean IsIsoLFaceEdge (const TopoDS_Face & F,const TopoDS_Edge & E);
+
+		/****************** IsOutLFaceEdge ******************/
+		%feature("compactdefaultargs") IsOutLFaceEdge;
+		%feature("autodoc", ":param F:
+	:type F: TopoDS_Face &
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool") IsOutLFaceEdge;
+		Standard_Boolean IsOutLFaceEdge (const TopoDS_Face & F,const TopoDS_Edge & E);
+
+		/****************** IsOutV ******************/
+		%feature("compactdefaultargs") IsOutV;
+		%feature("autodoc", "* Returns True if V is an outline vertex on a restriction.
 	:param V:
 	:type V: TopoDS_Vertex &
-	:rtype: bool
-") IsOutV;
+	:rtype: bool") IsOutV;
 		Standard_Boolean IsOutV (const TopoDS_Vertex & V);
+
+		/****************** IsSplEEdgeEdge ******************/
 		%feature("compactdefaultargs") IsSplEEdgeEdge;
-		%feature("autodoc", "	:param E1:
+		%feature("autodoc", ":param E1:
 	:type E1: TopoDS_Edge &
 	:param E2:
 	:type E2: TopoDS_Edge &
-	:rtype: bool
-") IsSplEEdgeEdge;
+	:rtype: bool") IsSplEEdgeEdge;
 		Standard_Boolean IsSplEEdgeEdge (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
+
+		/****************** MoreEdge ******************/
 		%feature("compactdefaultargs") MoreEdge;
-		%feature("autodoc", "	:rtype: bool
-") MoreEdge;
+		%feature("autodoc", ":rtype: bool") MoreEdge;
 		Standard_Boolean MoreEdge ();
+
+		/****************** MoreVertex ******************/
 		%feature("compactdefaultargs") MoreVertex;
-		%feature("autodoc", "	:rtype: bool
-") MoreVertex;
+		%feature("autodoc", ":rtype: bool") MoreVertex;
 		Standard_Boolean MoreVertex ();
+
+		/****************** NewSOldS ******************/
 		%feature("compactdefaultargs") NewSOldS;
-		%feature("autodoc", "	:param New:
+		%feature("autodoc", ":param New:
 	:type New: TopoDS_Shape &
-	:rtype: TopoDS_Shape
-") NewSOldS;
+	:rtype: TopoDS_Shape") NewSOldS;
 		TopoDS_Shape NewSOldS (const TopoDS_Shape & New);
+
+		/****************** NextEdge ******************/
 		%feature("compactdefaultargs") NextEdge;
-		%feature("autodoc", "	:rtype: None
-") NextEdge;
+		%feature("autodoc", ":rtype: None") NextEdge;
 		void NextEdge ();
+
+		/****************** NextVertex ******************/
 		%feature("compactdefaultargs") NextVertex;
-		%feature("autodoc", "	:rtype: None
-") NextVertex;
+		%feature("autodoc", ":rtype: None") NextVertex;
 		void NextVertex ();
+
+		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	:rtype: float
-") Parameter;
+		%feature("autodoc", ":rtype: float") Parameter;
 		Standard_Real Parameter ();
+
+		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
-") Vertex;
+		%feature("autodoc", ":rtype: TopoDS_Vertex") Vertex;
 		const TopoDS_Vertex  Vertex ();
+
 };
 
 
@@ -369,37 +398,48 @@ class HLRTopoBRep_Data {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class HLRTopoBRep_FaceData *
+*****************************/
 %nodefaultctor HLRTopoBRep_FaceData;
 class HLRTopoBRep_FaceData {
 	public:
+		/****************** AddIntL ******************/
 		%feature("compactdefaultargs") AddIntL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") AddIntL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") AddIntL;
 		TopTools_ListOfShape & AddIntL ();
+
+		/****************** AddIsoL ******************/
 		%feature("compactdefaultargs") AddIsoL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") AddIsoL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") AddIsoL;
 		TopTools_ListOfShape & AddIsoL ();
+
+		/****************** AddOutL ******************/
 		%feature("compactdefaultargs") AddOutL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") AddOutL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") AddOutL;
 		TopTools_ListOfShape & AddOutL ();
+
+		/****************** FaceIntL ******************/
 		%feature("compactdefaultargs") FaceIntL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") FaceIntL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") FaceIntL;
 		const TopTools_ListOfShape & FaceIntL ();
+
+		/****************** FaceIsoL ******************/
 		%feature("compactdefaultargs") FaceIsoL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") FaceIsoL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") FaceIsoL;
 		const TopTools_ListOfShape & FaceIsoL ();
+
+		/****************** FaceOutL ******************/
 		%feature("compactdefaultargs") FaceOutL;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") FaceOutL;
+		%feature("autodoc", ":rtype: TopTools_ListOfShape") FaceOutL;
 		const TopTools_ListOfShape & FaceOutL ();
+
+		/****************** HLRTopoBRep_FaceData ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_FaceData;
-		%feature("autodoc", "	:rtype: None
-") HLRTopoBRep_FaceData;
+		%feature("autodoc", ":rtype: None") HLRTopoBRep_FaceData;
 		 HLRTopoBRep_FaceData ();
+
 };
 
 
@@ -408,10 +448,15 @@ class HLRTopoBRep_FaceData {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class HLRTopoBRep_FaceIsoLiner *
+*********************************/
 class HLRTopoBRep_FaceIsoLiner {
 	public:
+		/****************** MakeIsoLine ******************/
 		%feature("compactdefaultargs") MakeIsoLine;
-		%feature("autodoc", "	:param F:
+		%feature("autodoc", ":param F:
 	:type F: TopoDS_Face &
 	:param Iso:
 	:type Iso: opencascade::handle<Geom2d_Line> &
@@ -427,11 +472,12 @@ class HLRTopoBRep_FaceIsoLiner {
 	:type Tol: float
 	:param DS:
 	:type DS: HLRTopoBRep_Data &
-	:rtype: void
-") MakeIsoLine;
+	:rtype: void") MakeIsoLine;
 		static void MakeIsoLine (const TopoDS_Face & F,const opencascade::handle<Geom2d_Line> & Iso,TopoDS_Vertex & V1,TopoDS_Vertex & V2,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,HLRTopoBRep_Data & DS);
+
+		/****************** MakeVertex ******************/
 		%feature("compactdefaultargs") MakeVertex;
-		%feature("autodoc", "	:param E:
+		%feature("autodoc", ":param E:
 	:type E: TopoDS_Edge &
 	:param P:
 	:type P: gp_Pnt
@@ -441,11 +487,12 @@ class HLRTopoBRep_FaceIsoLiner {
 	:type Tol: float
 	:param DS:
 	:type DS: HLRTopoBRep_Data &
-	:rtype: TopoDS_Vertex
-") MakeVertex;
+	:rtype: TopoDS_Vertex") MakeVertex;
 		static TopoDS_Vertex MakeVertex (const TopoDS_Edge & E,const gp_Pnt & P,const Standard_Real Par,const Standard_Real Tol,HLRTopoBRep_Data & DS);
+
+		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param FI:
+		%feature("autodoc", ":param FI:
 	:type FI: int
 	:param F:
 	:type F: TopoDS_Face &
@@ -453,9 +500,9 @@ class HLRTopoBRep_FaceIsoLiner {
 	:type DS: HLRTopoBRep_Data &
 	:param nbIsos:
 	:type nbIsos: int
-	:rtype: void
-") Perform;
+	:rtype: void") Perform;
 		static void Perform (const Standard_Integer FI,const TopoDS_Face & F,HLRTopoBRep_Data & DS,const Standard_Integer nbIsos);
+
 };
 
 
@@ -464,61 +511,74 @@ class HLRTopoBRep_FaceIsoLiner {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class HLRTopoBRep_OutLiner *
+*****************************/
 %nodefaultctor HLRTopoBRep_OutLiner;
 class HLRTopoBRep_OutLiner : public Standard_Transient {
 	public:
+		/****************** DataStructure ******************/
 		%feature("compactdefaultargs") DataStructure;
-		%feature("autodoc", "	:rtype: HLRTopoBRep_Data
-") DataStructure;
+		%feature("autodoc", ":rtype: HLRTopoBRep_Data") DataStructure;
 		HLRTopoBRep_Data & DataStructure ();
+
+		/****************** Fill ******************/
 		%feature("compactdefaultargs") Fill;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: HLRAlgo_Projector &
 	:param MST:
 	:type MST: BRepTopAdaptor_MapOfShapeTool &
 	:param nbIso:
 	:type nbIso: int
-	:rtype: None
-") Fill;
+	:rtype: None") Fill;
 		void Fill (const HLRAlgo_Projector & P,BRepTopAdaptor_MapOfShapeTool & MST,const Standard_Integer nbIso);
+
+		/****************** HLRTopoBRep_OutLiner ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_OutLiner;
-		%feature("autodoc", "	:rtype: None
-") HLRTopoBRep_OutLiner;
+		%feature("autodoc", ":rtype: None") HLRTopoBRep_OutLiner;
 		 HLRTopoBRep_OutLiner ();
+
+		/****************** HLRTopoBRep_OutLiner ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_OutLiner;
-		%feature("autodoc", "	:param OriSh:
+		%feature("autodoc", ":param OriSh:
 	:type OriSh: TopoDS_Shape &
-	:rtype: None
-") HLRTopoBRep_OutLiner;
+	:rtype: None") HLRTopoBRep_OutLiner;
 		 HLRTopoBRep_OutLiner (const TopoDS_Shape & OriSh);
+
+		/****************** HLRTopoBRep_OutLiner ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_OutLiner;
-		%feature("autodoc", "	:param OriS:
+		%feature("autodoc", ":param OriS:
 	:type OriS: TopoDS_Shape &
 	:param OutS:
 	:type OutS: TopoDS_Shape &
-	:rtype: None
-") HLRTopoBRep_OutLiner;
+	:rtype: None") HLRTopoBRep_OutLiner;
 		 HLRTopoBRep_OutLiner (const TopoDS_Shape & OriS,const TopoDS_Shape & OutS);
+
+		/****************** OriginalShape ******************/
 		%feature("compactdefaultargs") OriginalShape;
-		%feature("autodoc", "	:param OriS:
+		%feature("autodoc", ":param OriS:
 	:type OriS: TopoDS_Shape &
-	:rtype: None
-") OriginalShape;
+	:rtype: None") OriginalShape;
 		void OriginalShape (const TopoDS_Shape & OriS);
+
+		/****************** OriginalShape ******************/
 		%feature("compactdefaultargs") OriginalShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") OriginalShape;
+		%feature("autodoc", ":rtype: TopoDS_Shape") OriginalShape;
 		TopoDS_Shape  OriginalShape ();
+
+		/****************** OutLinedShape ******************/
 		%feature("compactdefaultargs") OutLinedShape;
-		%feature("autodoc", "	:param OutS:
+		%feature("autodoc", ":param OutS:
 	:type OutS: TopoDS_Shape &
-	:rtype: None
-") OutLinedShape;
+	:rtype: None") OutLinedShape;
 		void OutLinedShape (const TopoDS_Shape & OutS);
+
+		/****************** OutLinedShape ******************/
 		%feature("compactdefaultargs") OutLinedShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") OutLinedShape;
+		%feature("autodoc", ":rtype: TopoDS_Shape") OutLinedShape;
 		TopoDS_Shape  OutLinedShape ();
+
 };
 
 
@@ -529,29 +589,37 @@ class HLRTopoBRep_OutLiner : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************
+* class HLRTopoBRep_VData *
+**************************/
 %nodefaultctor HLRTopoBRep_VData;
 class HLRTopoBRep_VData {
 	public:
+		/****************** HLRTopoBRep_VData ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_VData;
-		%feature("autodoc", "	:rtype: None
-") HLRTopoBRep_VData;
+		%feature("autodoc", ":rtype: None") HLRTopoBRep_VData;
 		 HLRTopoBRep_VData ();
+
+		/****************** HLRTopoBRep_VData ******************/
 		%feature("compactdefaultargs") HLRTopoBRep_VData;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: float
 	:param V:
 	:type V: TopoDS_Shape &
-	:rtype: None
-") HLRTopoBRep_VData;
+	:rtype: None") HLRTopoBRep_VData;
 		 HLRTopoBRep_VData (const Standard_Real P,const TopoDS_Shape & V);
+
+		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	:rtype: float
-") Parameter;
+		%feature("autodoc", ":rtype: float") Parameter;
 		Standard_Real Parameter ();
+
+		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Vertex;
+		%feature("autodoc", ":rtype: TopoDS_Shape") Vertex;
 		const TopoDS_Shape  Vertex ();
+
 };
 
 
@@ -560,6 +628,7 @@ class HLRTopoBRep_VData {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

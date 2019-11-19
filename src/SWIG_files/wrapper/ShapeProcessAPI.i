@@ -82,55 +82,58 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocessapi.h
 /* typedefs */
 /* end typedefs declaration */
 
+/**************************************
+* class ShapeProcessAPI_ApplySequence *
+**************************************/
 %nodefaultctor ShapeProcessAPI_ApplySequence;
 class ShapeProcessAPI_ApplySequence {
 	public:
+		/****************** ClearMap ******************/
 		%feature("compactdefaultargs") ClearMap;
-		%feature("autodoc", "	* Clears myMap with accumulated history.
-
-	:rtype: None
-") ClearMap;
+		%feature("autodoc", "* Clears myMap with accumulated history.
+	:rtype: None") ClearMap;
 		void ClearMap ();
+
+		/****************** Context ******************/
 		%feature("compactdefaultargs") Context;
-		%feature("autodoc", "	* Returns object for managing resource file and sequence of operators.
-
-	:rtype: opencascade::handle<ShapeProcess_ShapeContext>
-") Context;
+		%feature("autodoc", "* Returns object for managing resource file and sequence of operators.
+	:rtype: opencascade::handle<ShapeProcess_ShapeContext>") Context;
 		opencascade::handle<ShapeProcess_ShapeContext> & Context ();
+
+		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "	* Returns myMap with accumulated history.
-
-	:rtype: TopTools_DataMapOfShapeShape
-") Map;
+		%feature("autodoc", "* Returns myMap with accumulated history.
+	:rtype: TopTools_DataMapOfShapeShape") Map;
 		const TopTools_DataMapOfShapeShape & Map ();
-		%feature("compactdefaultargs") PrepareShape;
-		%feature("autodoc", "	* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 
+		/****************** PrepareShape ******************/
+		%feature("compactdefaultargs") PrepareShape;
+		%feature("autodoc", "* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 	:param shape:
 	:type shape: TopoDS_Shape &
 	:param fillmap: default value is Standard_False
 	:type fillmap: bool
 	:param until: default value is TopAbs_SHAPE
 	:type until: TopAbs_ShapeEnum
-	:rtype: TopoDS_Shape
-") PrepareShape;
+	:rtype: TopoDS_Shape") PrepareShape;
 		TopoDS_Shape PrepareShape (const TopoDS_Shape & shape,const Standard_Boolean fillmap = Standard_False,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+
+		/****************** PrintPreparationResult ******************/
 		%feature("compactdefaultargs") PrintPreparationResult;
-		%feature("autodoc", "	* Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
-
-	:rtype: None
-") PrintPreparationResult;
+		%feature("autodoc", "* Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
+	:rtype: None") PrintPreparationResult;
 		void PrintPreparationResult ();
-		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
-		%feature("autodoc", "	* Creates an object and loads resource file and sequence of operators given by their names.
 
+		/****************** ShapeProcessAPI_ApplySequence ******************/
+		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
+		%feature("autodoc", "* Creates an object and loads resource file and sequence of operators given by their names.
 	:param rscName:
 	:type rscName: char *
 	:param seqName: default value is ""
 	:type seqName: char *
-	:rtype: None
-") ShapeProcessAPI_ApplySequence;
+	:rtype: None") ShapeProcessAPI_ApplySequence;
 		 ShapeProcessAPI_ApplySequence (const char * rscName,const char * seqName = "");
+
 };
 
 
@@ -139,6 +142,7 @@ class ShapeProcessAPI_ApplySequence {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

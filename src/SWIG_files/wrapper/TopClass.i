@@ -72,103 +72,106 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topclass.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/*******************************
+* class TopClass_SolidExplorer *
+*******************************/
 %nodefaultctor TopClass_SolidExplorer;
 class TopClass_SolidExplorer {
 	public:
+		/****************** CurrentFace ******************/
 		%feature("compactdefaultargs") CurrentFace;
-		%feature("autodoc", "	* Returns the current face.
-
-	:rtype: TopoDS_Face
-") CurrentFace;
+		%feature("autodoc", "* Returns the current face.
+	:rtype: TopoDS_Face") CurrentFace;
 		virtual TopoDS_Face CurrentFace ();
+
+		/****************** InitFace ******************/
 		%feature("compactdefaultargs") InitFace;
-		%feature("autodoc", "	* Starts an exploration of the faces.
-
-	:rtype: void
-") InitFace;
+		%feature("autodoc", "* Starts an exploration of the faces.
+	:rtype: void") InitFace;
 		virtual void InitFace ();
+
+		/****************** InitShell ******************/
 		%feature("compactdefaultargs") InitShell;
-		%feature("autodoc", "	* Starts an exploration of the shells.
-
-	:rtype: void
-") InitShell;
+		%feature("autodoc", "* Starts an exploration of the shells.
+	:rtype: void") InitShell;
 		virtual void InitShell ();
+
+		/****************** MoreFaces ******************/
 		%feature("compactdefaultargs") MoreFaces;
-		%feature("autodoc", "	* Returns True if there is a current face.
-
-	:rtype: bool
-") MoreFaces;
+		%feature("autodoc", "* Returns True if there is a current face.
+	:rtype: bool") MoreFaces;
 		virtual Standard_Boolean MoreFaces ();
+
+		/****************** MoreShells ******************/
 		%feature("compactdefaultargs") MoreShells;
-		%feature("autodoc", "	* Returns True if there is a current shell.
-
-	:rtype: bool
-") MoreShells;
+		%feature("autodoc", "* Returns True if there is a current shell.
+	:rtype: bool") MoreShells;
 		virtual Standard_Boolean MoreShells ();
+
+		/****************** NextFace ******************/
 		%feature("compactdefaultargs") NextFace;
-		%feature("autodoc", "	* Sets the explorer to the next face and returns False if there are no more wires.
-
-	:rtype: void
-") NextFace;
+		%feature("autodoc", "* Sets the explorer to the next face and returns False if there are no more wires.
+	:rtype: void") NextFace;
 		virtual void NextFace ();
+
+		/****************** NextShell ******************/
 		%feature("compactdefaultargs") NextShell;
-		%feature("autodoc", "	* Sets the explorer to the next shell and returns False if there are no more wires.
-
-	:rtype: void
-") NextShell;
+		%feature("autodoc", "* Sets the explorer to the next shell and returns False if there are no more wires.
+	:rtype: void") NextShell;
 		virtual void NextShell ();
+
+		/****************** OtherSegment ******************/
 		%feature("compactdefaultargs") OtherSegment;
-		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on. //! if the method is called N times on a shape with F faces (N>F) the line point to other points on the face 1,2,3 ... N
-
+		%feature("autodoc", "* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on. //! if the method is called N times on a shape with F faces (N>F) the line point to other points on the face 1,2,3 ... N
 	:param P:
 	:type P: gp_Pnt
 	:param L:
 	:type L: gp_Lin
 	:param Par:
 	:type Par: float &
-	:rtype: void
-") OtherSegment;
+	:rtype: void") OtherSegment;
 		virtual void OtherSegment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Reject;
-		%feature("autodoc", "	* Should return True if the point is outside a bounding volume of the shape.
 
+		/****************** Reject ******************/
+		%feature("compactdefaultargs") Reject;
+		%feature("autodoc", "* Should return True if the point is outside a bounding volume of the shape.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: bool
-") Reject;
+	:rtype: bool") Reject;
 		virtual Standard_Boolean Reject (const gp_Pnt & P);
+
+		/****************** RejectFace ******************/
 		%feature("compactdefaultargs") RejectFace;
-		%feature("autodoc", "	* Returns True if the face bounding volume does not intersect the segment.
-
+		%feature("autodoc", "* Returns True if the face bounding volume does not intersect the segment.
 	:param L:
 	:type L: gp_Lin
 	:param Par:
 	:type Par: float
-	:rtype: bool
-") RejectFace;
+	:rtype: bool") RejectFace;
 		virtual Standard_Boolean RejectFace (const gp_Lin & L,const Standard_Real Par);
-		%feature("compactdefaultargs") RejectShell;
-		%feature("autodoc", "	* Returns True if the shell bounding volume does not intersect the segment.
 
+		/****************** RejectShell ******************/
+		%feature("compactdefaultargs") RejectShell;
+		%feature("autodoc", "* Returns True if the shell bounding volume does not intersect the segment.
 	:param L:
 	:type L: gp_Lin
 	:param Par:
 	:type Par: float
-	:rtype: bool
-") RejectShell;
+	:rtype: bool") RejectShell;
 		virtual Standard_Boolean RejectShell (const gp_Lin & L,const Standard_Real Par);
-		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
 
+		/****************** Segment ******************/
+		%feature("compactdefaultargs") Segment;
+		%feature("autodoc", "* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
 	:param P:
 	:type P: gp_Pnt
 	:param L:
 	:type L: gp_Lin
 	:param Par:
 	:type Par: float &
-	:rtype: void
-") Segment;
+	:rtype: void") Segment;
 		virtual void Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
+
 };
 
 
@@ -177,6 +180,7 @@ class TopClass_SolidExplorer {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

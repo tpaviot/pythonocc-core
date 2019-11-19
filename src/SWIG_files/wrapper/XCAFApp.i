@@ -69,29 +69,32 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafapp.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/****************************
+* class XCAFApp_Application *
+****************************/
 %nodefaultctor XCAFApp_Application;
 class XCAFApp_Application : public TDocStd_Application {
 	public:
+		/****************** GetApplication ******************/
 		%feature("compactdefaultargs") GetApplication;
-		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
-
-	:rtype: opencascade::handle<XCAFApp_Application>
-") GetApplication;
+		%feature("autodoc", "* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
+	:rtype: opencascade::handle<XCAFApp_Application>") GetApplication;
 		static opencascade::handle<XCAFApp_Application> GetApplication ();
-		%feature("compactdefaultargs") InitDocument;
-		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
 
+		/****************** InitDocument ******************/
+		%feature("compactdefaultargs") InitDocument;
+		%feature("autodoc", "* Set XCAFDoc_DocumentTool attribute
 	:param aDoc:
 	:type aDoc: opencascade::handle<TDocStd_Document> &
-	:rtype: void
-") InitDocument;
+	:rtype: void") InitDocument;
 		virtual void InitDocument (const opencascade::handle<TDocStd_Document> & aDoc);
-		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "	* methods from TDocStd_Application ================================
 
-	:rtype: char *
-") ResourcesName;
+		/****************** ResourcesName ******************/
+		%feature("compactdefaultargs") ResourcesName;
+		%feature("autodoc", "* methods from TDocStd_Application ================================
+	:rtype: char *") ResourcesName;
 		virtual const char * ResourcesName ();
+
 };
 
 
@@ -102,6 +105,7 @@ class XCAFApp_Application : public TDocStd_Application {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

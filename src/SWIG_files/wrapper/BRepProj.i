@@ -66,69 +66,72 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepproj.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/****************************
+* class BRepProj_Projection *
+****************************/
 %nodefaultctor BRepProj_Projection;
 class BRepProj_Projection {
 	public:
+		/****************** BRepProj_Projection ******************/
 		%feature("compactdefaultargs") BRepProj_Projection;
-		%feature("autodoc", "	* Makes a Cylindrical projection of Wire om Shape
-
+		%feature("autodoc", "* Makes a Cylindrical projection of Wire om Shape
 	:param Wire:
 	:type Wire: TopoDS_Shape &
 	:param Shape:
 	:type Shape: TopoDS_Shape &
 	:param D:
 	:type D: gp_Dir
-	:rtype: None
-") BRepProj_Projection;
+	:rtype: None") BRepProj_Projection;
 		 BRepProj_Projection (const TopoDS_Shape & Wire,const TopoDS_Shape & Shape,const gp_Dir & D);
-		%feature("compactdefaultargs") BRepProj_Projection;
-		%feature("autodoc", "	* Makes a Conical projection of Wire om Shape
 
+		/****************** BRepProj_Projection ******************/
+		%feature("compactdefaultargs") BRepProj_Projection;
+		%feature("autodoc", "* Makes a Conical projection of Wire om Shape
 	:param Wire:
 	:type Wire: TopoDS_Shape &
 	:param Shape:
 	:type Shape: TopoDS_Shape &
 	:param P:
 	:type P: gp_Pnt
-	:rtype: None
-") BRepProj_Projection;
+	:rtype: None") BRepProj_Projection;
 		 BRepProj_Projection (const TopoDS_Shape & Wire,const TopoDS_Shape & Shape,const gp_Pnt & P);
+
+		/****************** Current ******************/
 		%feature("compactdefaultargs") Current;
-		%feature("autodoc", "	* Returns the current result wire.
-
-	:rtype: TopoDS_Wire
-") Current;
+		%feature("autodoc", "* Returns the current result wire.
+	:rtype: TopoDS_Wire") Current;
 		TopoDS_Wire Current ();
+
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Resets the iterator by resulting wires.
-
-	:rtype: None
-") Init;
+		%feature("autodoc", "* Resets the iterator by resulting wires.
+	:rtype: None") Init;
 		void Init ();
+
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* returns False if the section failed
-
-	:rtype: bool
-") IsDone;
+		%feature("autodoc", "* returns False if the section failed
+	:rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
+		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	* Returns True if there is a current result wire
-
-	:rtype: bool
-") More;
+		%feature("autodoc", "* Returns True if there is a current result wire
+	:rtype: bool") More;
 		Standard_Boolean More ();
+
+		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Move to the next result wire.
-
-	:rtype: None
-") Next;
+		%feature("autodoc", "* Move to the next result wire.
+	:rtype: None") Next;
 		void Next ();
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	* Returns the complete result as compound of wires.
 
-	:rtype: TopoDS_Compound
-") Shape;
+		/****************** Shape ******************/
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "* Returns the complete result as compound of wires.
+	:rtype: TopoDS_Compound") Shape;
 		TopoDS_Compound Shape ();
+
 };
 
 
@@ -137,6 +140,7 @@ class BRepProj_Projection {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

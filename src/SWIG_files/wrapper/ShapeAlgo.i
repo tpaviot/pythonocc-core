@@ -84,29 +84,32 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapealgo.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/******************
+* class ShapeAlgo *
+******************/
 %rename(shapealgo) ShapeAlgo;
 class ShapeAlgo {
 	public:
+		/****************** AlgoContainer ******************/
 		%feature("compactdefaultargs") AlgoContainer;
-		%feature("autodoc", "	* Returns default AlgoContainer
-
-	:rtype: opencascade::handle<ShapeAlgo_AlgoContainer>
-") AlgoContainer;
+		%feature("autodoc", "* Returns default AlgoContainer
+	:rtype: opencascade::handle<ShapeAlgo_AlgoContainer>") AlgoContainer;
 		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer ();
+
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
-
-	:rtype: void
-") Init;
+		%feature("autodoc", "* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
+	:rtype: void") Init;
 		static void Init ();
-		%feature("compactdefaultargs") SetAlgoContainer;
-		%feature("autodoc", "	* Sets default AlgoContainer
 
+		/****************** SetAlgoContainer ******************/
+		%feature("compactdefaultargs") SetAlgoContainer;
+		%feature("autodoc", "* Sets default AlgoContainer
 	:param aContainer:
 	:type aContainer: opencascade::handle<ShapeAlgo_AlgoContainer> &
-	:rtype: void
-") SetAlgoContainer;
+	:rtype: void") SetAlgoContainer;
 		static void SetAlgoContainer (const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
+
 };
 
 
@@ -115,27 +118,34 @@ class ShapeAlgo {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class ShapeAlgo_AlgoContainer *
+********************************/
+/********************************
+* class ShapeAlgo_ToolContainer *
+********************************/
 %nodefaultctor ShapeAlgo_ToolContainer;
 class ShapeAlgo_ToolContainer : public Standard_Transient {
 	public:
+		/****************** EdgeProjAux ******************/
 		%feature("compactdefaultargs") EdgeProjAux;
-		%feature("autodoc", "	* Returns ShapeFix_EdgeProjAux
-
-	:rtype: opencascade::handle<ShapeFix_EdgeProjAux>
-") EdgeProjAux;
+		%feature("autodoc", "* Returns ShapeFix_EdgeProjAux
+	:rtype: opencascade::handle<ShapeFix_EdgeProjAux>") EdgeProjAux;
 		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux ();
+
+		/****************** FixShape ******************/
 		%feature("compactdefaultargs") FixShape;
-		%feature("autodoc", "	* Returns ShapeFix_Shape
-
-	:rtype: opencascade::handle<ShapeFix_Shape>
-") FixShape;
+		%feature("autodoc", "* Returns ShapeFix_Shape
+	:rtype: opencascade::handle<ShapeFix_Shape>") FixShape;
 		virtual opencascade::handle<ShapeFix_Shape> FixShape ();
-		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
-		%feature("autodoc", "	* Empty constructor
 
-	:rtype: None
-") ShapeAlgo_ToolContainer;
+		/****************** ShapeAlgo_ToolContainer ******************/
+		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") ShapeAlgo_ToolContainer;
 		 ShapeAlgo_ToolContainer ();
+
 };
 
 
@@ -146,6 +156,7 @@ class ShapeAlgo_ToolContainer : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

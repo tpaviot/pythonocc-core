@@ -82,12 +82,16 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomtostep.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/************************
+* class GeomToStep_Root *
+************************/
 class GeomToStep_Root {
 	public:
+		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
+		%feature("autodoc", ":rtype: bool") IsDone;
 		Standard_Boolean IsDone ();
+
 };
 
 
@@ -96,37 +100,46 @@ class GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class GeomToStep_MakeAxis1Placement *
+**************************************/
 %nodefaultctor GeomToStep_MakeAxis1Placement;
 class GeomToStep_MakeAxis1Placement : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeAxis1Placement ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax1
-	:rtype: None
-") GeomToStep_MakeAxis1Placement;
+	:rtype: None") GeomToStep_MakeAxis1Placement;
 		 GeomToStep_MakeAxis1Placement (const gp_Ax1 & A);
+
+		/****************** GeomToStep_MakeAxis1Placement ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax2d
-	:rtype: None
-") GeomToStep_MakeAxis1Placement;
+	:rtype: None") GeomToStep_MakeAxis1Placement;
 		 GeomToStep_MakeAxis1Placement (const gp_Ax2d & A);
+
+		/****************** GeomToStep_MakeAxis1Placement ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: opencascade::handle<Geom_Axis1Placement> &
-	:rtype: None
-") GeomToStep_MakeAxis1Placement;
+	:rtype: None") GeomToStep_MakeAxis1Placement;
 		 GeomToStep_MakeAxis1Placement (const opencascade::handle<Geom_Axis1Placement> & A);
+
+		/****************** GeomToStep_MakeAxis1Placement ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: opencascade::handle<Geom2d_AxisPlacement> &
-	:rtype: None
-") GeomToStep_MakeAxis1Placement;
+	:rtype: None") GeomToStep_MakeAxis1Placement;
 		 GeomToStep_MakeAxis1Placement (const opencascade::handle<Geom2d_AxisPlacement> & A);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Axis1Placement>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Axis1Placement>") Value;
 		const opencascade::handle<StepGeom_Axis1Placement> & Value ();
+
 };
 
 
@@ -135,25 +148,32 @@ class GeomToStep_MakeAxis1Placement : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class GeomToStep_MakeAxis2Placement2d *
+****************************************/
 %nodefaultctor GeomToStep_MakeAxis2Placement2d;
 class GeomToStep_MakeAxis2Placement2d : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeAxis2Placement2d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement2d;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax2
-	:rtype: None
-") GeomToStep_MakeAxis2Placement2d;
+	:rtype: None") GeomToStep_MakeAxis2Placement2d;
 		 GeomToStep_MakeAxis2Placement2d (const gp_Ax2 & A);
+
+		/****************** GeomToStep_MakeAxis2Placement2d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement2d;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax22d
-	:rtype: None
-") GeomToStep_MakeAxis2Placement2d;
+	:rtype: None") GeomToStep_MakeAxis2Placement2d;
 		 GeomToStep_MakeAxis2Placement2d (const gp_Ax22d & A);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Axis2Placement2d>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Axis2Placement2d>") Value;
 		const opencascade::handle<StepGeom_Axis2Placement2d> & Value ();
+
 };
 
 
@@ -162,41 +182,51 @@ class GeomToStep_MakeAxis2Placement2d : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class GeomToStep_MakeAxis2Placement3d *
+****************************************/
 %nodefaultctor GeomToStep_MakeAxis2Placement3d;
 class GeomToStep_MakeAxis2Placement3d : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeAxis2Placement3d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "	:rtype: None
-") GeomToStep_MakeAxis2Placement3d;
+		%feature("autodoc", ":rtype: None") GeomToStep_MakeAxis2Placement3d;
 		 GeomToStep_MakeAxis2Placement3d ();
+
+		/****************** GeomToStep_MakeAxis2Placement3d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax2
-	:rtype: None
-") GeomToStep_MakeAxis2Placement3d;
+	:rtype: None") GeomToStep_MakeAxis2Placement3d;
 		 GeomToStep_MakeAxis2Placement3d (const gp_Ax2 & A);
+
+		/****************** GeomToStep_MakeAxis2Placement3d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: gp_Ax3
-	:rtype: None
-") GeomToStep_MakeAxis2Placement3d;
+	:rtype: None") GeomToStep_MakeAxis2Placement3d;
 		 GeomToStep_MakeAxis2Placement3d (const gp_Ax3 & A);
+
+		/****************** GeomToStep_MakeAxis2Placement3d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "	:param T:
+		%feature("autodoc", ":param T:
 	:type T: gp_Trsf
-	:rtype: None
-") GeomToStep_MakeAxis2Placement3d;
+	:rtype: None") GeomToStep_MakeAxis2Placement3d;
 		 GeomToStep_MakeAxis2Placement3d (const gp_Trsf & T);
+
+		/****************** GeomToStep_MakeAxis2Placement3d ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", ":param A:
 	:type A: opencascade::handle<Geom_Axis2Placement> &
-	:rtype: None
-") GeomToStep_MakeAxis2Placement3d;
+	:rtype: None") GeomToStep_MakeAxis2Placement3d;
 		 GeomToStep_MakeAxis2Placement3d (const opencascade::handle<Geom_Axis2Placement> & A);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Axis2Placement3d>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Axis2Placement3d>") Value;
 		const opencascade::handle<StepGeom_Axis2Placement3d> & Value ();
+
 };
 
 
@@ -205,25 +235,32 @@ class GeomToStep_MakeAxis2Placement3d : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************************
+* class GeomToStep_MakeBSplineCurveWithKnots *
+*********************************************/
 %nodefaultctor GeomToStep_MakeBSplineCurveWithKnots;
 class GeomToStep_MakeBSplineCurveWithKnots : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBSplineCurveWithKnots ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnots;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom_BSplineCurve> &
-	:rtype: None
-") GeomToStep_MakeBSplineCurveWithKnots;
+	:rtype: None") GeomToStep_MakeBSplineCurveWithKnots;
 		 GeomToStep_MakeBSplineCurveWithKnots (const opencascade::handle<Geom_BSplineCurve> & Bsplin);
+
+		/****************** GeomToStep_MakeBSplineCurveWithKnots ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnots;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom2d_BSplineCurve> &
-	:rtype: None
-") GeomToStep_MakeBSplineCurveWithKnots;
+	:rtype: None") GeomToStep_MakeBSplineCurveWithKnots;
 		 GeomToStep_MakeBSplineCurveWithKnots (const opencascade::handle<Geom2d_BSplineCurve> & Bsplin);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineCurveWithKnots>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BSplineCurveWithKnots>") Value;
 		const opencascade::handle<StepGeom_BSplineCurveWithKnots> & Value ();
+
 };
 
 
@@ -232,25 +269,32 @@ class GeomToStep_MakeBSplineCurveWithKnots : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************************************************
+* class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve *
+********************************************************************/
 %nodefaultctor GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom_BSplineCurve> &
-	:rtype: None
-") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
+	:rtype: None") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve (const opencascade::handle<Geom_BSplineCurve> & Bsplin);
+
+		/****************** GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom2d_BSplineCurve> &
-	:rtype: None
-") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
+	:rtype: None") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve (const opencascade::handle<Geom2d_BSplineCurve> & Bsplin);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve>") Value;
 		const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & Value ();
+
 };
 
 
@@ -259,19 +303,25 @@ class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve : public GeomT
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************************************
+* class GeomToStep_MakeBSplineSurfaceWithKnots *
+***********************************************/
 %nodefaultctor GeomToStep_MakeBSplineSurfaceWithKnots;
 class GeomToStep_MakeBSplineSurfaceWithKnots : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBSplineSurfaceWithKnots ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineSurfaceWithKnots;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom_BSplineSurface> &
-	:rtype: None
-") GeomToStep_MakeBSplineSurfaceWithKnots;
+	:rtype: None") GeomToStep_MakeBSplineSurfaceWithKnots;
 		 GeomToStep_MakeBSplineSurfaceWithKnots (const opencascade::handle<Geom_BSplineSurface> & Bsplin);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineSurfaceWithKnots>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BSplineSurfaceWithKnots>") Value;
 		const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & Value ();
+
 };
 
 
@@ -280,19 +330,25 @@ class GeomToStep_MakeBSplineSurfaceWithKnots : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************************************
+* class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface *
+************************************************************************/
 %nodefaultctor GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
-		%feature("autodoc", "	:param Bsplin:
+		%feature("autodoc", ":param Bsplin:
 	:type Bsplin: opencascade::handle<Geom_BSplineSurface> &
-	:rtype: None
-") GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
+	:rtype: None") GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		 GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface (const opencascade::handle<Geom_BSplineSurface> & Bsplin);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface>") Value;
 		const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & Value ();
+
 };
 
 
@@ -301,25 +357,32 @@ class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface : public G
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class GeomToStep_MakeBoundedCurve *
+************************************/
 %nodefaultctor GeomToStep_MakeBoundedCurve;
 class GeomToStep_MakeBoundedCurve : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBoundedCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedCurve;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_BoundedCurve> &
-	:rtype: None
-") GeomToStep_MakeBoundedCurve;
+	:rtype: None") GeomToStep_MakeBoundedCurve;
 		 GeomToStep_MakeBoundedCurve (const opencascade::handle<Geom_BoundedCurve> & C);
+
+		/****************** GeomToStep_MakeBoundedCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedCurve;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_BoundedCurve> &
-	:rtype: None
-") GeomToStep_MakeBoundedCurve;
+	:rtype: None") GeomToStep_MakeBoundedCurve;
 		 GeomToStep_MakeBoundedCurve (const opencascade::handle<Geom2d_BoundedCurve> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BoundedCurve>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BoundedCurve>") Value;
 		const opencascade::handle<StepGeom_BoundedCurve> & Value ();
+
 };
 
 
@@ -328,19 +391,25 @@ class GeomToStep_MakeBoundedCurve : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class GeomToStep_MakeBoundedSurface *
+**************************************/
 %nodefaultctor GeomToStep_MakeBoundedSurface;
 class GeomToStep_MakeBoundedSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeBoundedSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedSurface;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_BoundedSurface> &
-	:rtype: None
-") GeomToStep_MakeBoundedSurface;
+	:rtype: None") GeomToStep_MakeBoundedSurface;
 		 GeomToStep_MakeBoundedSurface (const opencascade::handle<Geom_BoundedSurface> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_BoundedSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_BoundedSurface>") Value;
 		const opencascade::handle<StepGeom_BoundedSurface> & Value ();
+
 };
 
 
@@ -349,37 +418,46 @@ class GeomToStep_MakeBoundedSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class GeomToStep_MakeCartesianPoint *
+**************************************/
 %nodefaultctor GeomToStep_MakeCartesianPoint;
 class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeCartesianPoint ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
-	:rtype: None
-") GeomToStep_MakeCartesianPoint;
+	:rtype: None") GeomToStep_MakeCartesianPoint;
 		 GeomToStep_MakeCartesianPoint (const gp_Pnt & P);
+
+		/****************** GeomToStep_MakeCartesianPoint ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
-	:rtype: None
-") GeomToStep_MakeCartesianPoint;
+	:rtype: None") GeomToStep_MakeCartesianPoint;
 		 GeomToStep_MakeCartesianPoint (const gp_Pnt2d & P);
+
+		/****************** GeomToStep_MakeCartesianPoint ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: opencascade::handle<Geom_CartesianPoint> &
-	:rtype: None
-") GeomToStep_MakeCartesianPoint;
+	:rtype: None") GeomToStep_MakeCartesianPoint;
 		 GeomToStep_MakeCartesianPoint (const opencascade::handle<Geom_CartesianPoint> & P);
+
+		/****************** GeomToStep_MakeCartesianPoint ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: opencascade::handle<Geom2d_CartesianPoint> &
-	:rtype: None
-") GeomToStep_MakeCartesianPoint;
+	:rtype: None") GeomToStep_MakeCartesianPoint;
 		 GeomToStep_MakeCartesianPoint (const opencascade::handle<Geom2d_CartesianPoint> & P);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CartesianPoint>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_CartesianPoint>") Value;
 		const opencascade::handle<StepGeom_CartesianPoint> & Value ();
+
 };
 
 
@@ -388,31 +466,39 @@ class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class GeomToStep_MakeCircle *
+******************************/
 %nodefaultctor GeomToStep_MakeCircle;
 class GeomToStep_MakeCircle : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeCircle ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: gp_Circ
-	:rtype: None
-") GeomToStep_MakeCircle;
+	:rtype: None") GeomToStep_MakeCircle;
 		 GeomToStep_MakeCircle (const gp_Circ & C);
+
+		/****************** GeomToStep_MakeCircle ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Circle> &
-	:rtype: None
-") GeomToStep_MakeCircle;
+	:rtype: None") GeomToStep_MakeCircle;
 		 GeomToStep_MakeCircle (const opencascade::handle<Geom_Circle> & C);
+
+		/****************** GeomToStep_MakeCircle ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Circle> &
-	:rtype: None
-") GeomToStep_MakeCircle;
+	:rtype: None") GeomToStep_MakeCircle;
 		 GeomToStep_MakeCircle (const opencascade::handle<Geom2d_Circle> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Circle>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Circle>") Value;
 		const opencascade::handle<StepGeom_Circle> & Value ();
+
 };
 
 
@@ -421,25 +507,32 @@ class GeomToStep_MakeCircle : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class GeomToStep_MakeConic *
+*****************************/
 %nodefaultctor GeomToStep_MakeConic;
 class GeomToStep_MakeConic : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeConic ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeConic;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Conic> &
-	:rtype: None
-") GeomToStep_MakeConic;
+	:rtype: None") GeomToStep_MakeConic;
 		 GeomToStep_MakeConic (const opencascade::handle<Geom_Conic> & C);
+
+		/****************** GeomToStep_MakeConic ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeConic;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Conic> &
-	:rtype: None
-") GeomToStep_MakeConic;
+	:rtype: None") GeomToStep_MakeConic;
 		 GeomToStep_MakeConic (const opencascade::handle<Geom2d_Conic> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Conic>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Conic>") Value;
 		const opencascade::handle<StepGeom_Conic> & Value ();
+
 };
 
 
@@ -448,19 +541,25 @@ class GeomToStep_MakeConic : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/**************************************
+* class GeomToStep_MakeConicalSurface *
+**************************************/
 %nodefaultctor GeomToStep_MakeConicalSurface;
 class GeomToStep_MakeConicalSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeConicalSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeConicalSurface;
-		%feature("autodoc", "	:param CSurf:
+		%feature("autodoc", ":param CSurf:
 	:type CSurf: opencascade::handle<Geom_ConicalSurface> &
-	:rtype: None
-") GeomToStep_MakeConicalSurface;
+	:rtype: None") GeomToStep_MakeConicalSurface;
 		 GeomToStep_MakeConicalSurface (const opencascade::handle<Geom_ConicalSurface> & CSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_ConicalSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_ConicalSurface>") Value;
 		const opencascade::handle<StepGeom_ConicalSurface> & Value ();
+
 };
 
 
@@ -469,25 +568,32 @@ class GeomToStep_MakeConicalSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class GeomToStep_MakeCurve *
+*****************************/
 %nodefaultctor GeomToStep_MakeCurve;
 class GeomToStep_MakeCurve : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCurve;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Curve> &
-	:rtype: None
-") GeomToStep_MakeCurve;
+	:rtype: None") GeomToStep_MakeCurve;
 		 GeomToStep_MakeCurve (const opencascade::handle<Geom_Curve> & C);
+
+		/****************** GeomToStep_MakeCurve ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCurve;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Curve> &
-	:rtype: None
-") GeomToStep_MakeCurve;
+	:rtype: None") GeomToStep_MakeCurve;
 		 GeomToStep_MakeCurve (const opencascade::handle<Geom2d_Curve> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Curve>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Curve>") Value;
 		const opencascade::handle<StepGeom_Curve> & Value ();
+
 };
 
 
@@ -496,19 +602,25 @@ class GeomToStep_MakeCurve : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************************
+* class GeomToStep_MakeCylindricalSurface *
+******************************************/
 %nodefaultctor GeomToStep_MakeCylindricalSurface;
 class GeomToStep_MakeCylindricalSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeCylindricalSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeCylindricalSurface;
-		%feature("autodoc", "	:param CSurf:
+		%feature("autodoc", ":param CSurf:
 	:type CSurf: opencascade::handle<Geom_CylindricalSurface> &
-	:rtype: None
-") GeomToStep_MakeCylindricalSurface;
+	:rtype: None") GeomToStep_MakeCylindricalSurface;
 		 GeomToStep_MakeCylindricalSurface (const opencascade::handle<Geom_CylindricalSurface> & CSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_CylindricalSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_CylindricalSurface>") Value;
 		const opencascade::handle<StepGeom_CylindricalSurface> & Value ();
+
 };
 
 
@@ -517,37 +629,46 @@ class GeomToStep_MakeCylindricalSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class GeomToStep_MakeDirection *
+*********************************/
 %nodefaultctor GeomToStep_MakeDirection;
 class GeomToStep_MakeDirection : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeDirection ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeDirection;
-		%feature("autodoc", "	:param D:
+		%feature("autodoc", ":param D:
 	:type D: gp_Dir
-	:rtype: None
-") GeomToStep_MakeDirection;
+	:rtype: None") GeomToStep_MakeDirection;
 		 GeomToStep_MakeDirection (const gp_Dir & D);
+
+		/****************** GeomToStep_MakeDirection ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeDirection;
-		%feature("autodoc", "	:param D:
+		%feature("autodoc", ":param D:
 	:type D: gp_Dir2d
-	:rtype: None
-") GeomToStep_MakeDirection;
+	:rtype: None") GeomToStep_MakeDirection;
 		 GeomToStep_MakeDirection (const gp_Dir2d & D);
+
+		/****************** GeomToStep_MakeDirection ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeDirection;
-		%feature("autodoc", "	:param D:
+		%feature("autodoc", ":param D:
 	:type D: opencascade::handle<Geom_Direction> &
-	:rtype: None
-") GeomToStep_MakeDirection;
+	:rtype: None") GeomToStep_MakeDirection;
 		 GeomToStep_MakeDirection (const opencascade::handle<Geom_Direction> & D);
+
+		/****************** GeomToStep_MakeDirection ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeDirection;
-		%feature("autodoc", "	:param D:
+		%feature("autodoc", ":param D:
 	:type D: opencascade::handle<Geom2d_Direction> &
-	:rtype: None
-") GeomToStep_MakeDirection;
+	:rtype: None") GeomToStep_MakeDirection;
 		 GeomToStep_MakeDirection (const opencascade::handle<Geom2d_Direction> & D);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Direction>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Direction>") Value;
 		const opencascade::handle<StepGeom_Direction> & Value ();
+
 };
 
 
@@ -556,19 +677,25 @@ class GeomToStep_MakeDirection : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************************
+* class GeomToStep_MakeElementarySurface *
+*****************************************/
 %nodefaultctor GeomToStep_MakeElementarySurface;
 class GeomToStep_MakeElementarySurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeElementarySurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeElementarySurface;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", ":param S:
 	:type S: opencascade::handle<Geom_ElementarySurface> &
-	:rtype: None
-") GeomToStep_MakeElementarySurface;
+	:rtype: None") GeomToStep_MakeElementarySurface;
 		 GeomToStep_MakeElementarySurface (const opencascade::handle<Geom_ElementarySurface> & S);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_ElementarySurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_ElementarySurface>") Value;
 		const opencascade::handle<StepGeom_ElementarySurface> & Value ();
+
 };
 
 
@@ -577,31 +704,39 @@ class GeomToStep_MakeElementarySurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class GeomToStep_MakeEllipse *
+*******************************/
 %nodefaultctor GeomToStep_MakeEllipse;
 class GeomToStep_MakeEllipse : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeEllipse ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: gp_Elips
-	:rtype: None
-") GeomToStep_MakeEllipse;
+	:rtype: None") GeomToStep_MakeEllipse;
 		 GeomToStep_MakeEllipse (const gp_Elips & C);
+
+		/****************** GeomToStep_MakeEllipse ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Ellipse> &
-	:rtype: None
-") GeomToStep_MakeEllipse;
+	:rtype: None") GeomToStep_MakeEllipse;
 		 GeomToStep_MakeEllipse (const opencascade::handle<Geom_Ellipse> & C);
+
+		/****************** GeomToStep_MakeEllipse ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Ellipse> &
-	:rtype: None
-") GeomToStep_MakeEllipse;
+	:rtype: None") GeomToStep_MakeEllipse;
 		 GeomToStep_MakeEllipse (const opencascade::handle<Geom2d_Ellipse> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Ellipse>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Ellipse>") Value;
 		const opencascade::handle<StepGeom_Ellipse> & Value ();
+
 };
 
 
@@ -610,25 +745,32 @@ class GeomToStep_MakeEllipse : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class GeomToStep_MakeHyperbola *
+*********************************/
 %nodefaultctor GeomToStep_MakeHyperbola;
 class GeomToStep_MakeHyperbola : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeHyperbola ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeHyperbola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Hyperbola> &
-	:rtype: None
-") GeomToStep_MakeHyperbola;
+	:rtype: None") GeomToStep_MakeHyperbola;
 		 GeomToStep_MakeHyperbola (const opencascade::handle<Geom2d_Hyperbola> & C);
+
+		/****************** GeomToStep_MakeHyperbola ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeHyperbola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Hyperbola> &
-	:rtype: None
-") GeomToStep_MakeHyperbola;
+	:rtype: None") GeomToStep_MakeHyperbola;
 		 GeomToStep_MakeHyperbola (const opencascade::handle<Geom_Hyperbola> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Hyperbola>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Hyperbola>") Value;
 		const opencascade::handle<StepGeom_Hyperbola> & Value ();
+
 };
 
 
@@ -637,37 +779,46 @@ class GeomToStep_MakeHyperbola : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class GeomToStep_MakeLine *
+****************************/
 %nodefaultctor GeomToStep_MakeLine;
 class GeomToStep_MakeLine : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeLine ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
-		%feature("autodoc", "	:param L:
+		%feature("autodoc", ":param L:
 	:type L: gp_Lin
-	:rtype: None
-") GeomToStep_MakeLine;
+	:rtype: None") GeomToStep_MakeLine;
 		 GeomToStep_MakeLine (const gp_Lin & L);
+
+		/****************** GeomToStep_MakeLine ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
-		%feature("autodoc", "	:param L:
+		%feature("autodoc", ":param L:
 	:type L: gp_Lin2d
-	:rtype: None
-") GeomToStep_MakeLine;
+	:rtype: None") GeomToStep_MakeLine;
 		 GeomToStep_MakeLine (const gp_Lin2d & L);
+
+		/****************** GeomToStep_MakeLine ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Line> &
-	:rtype: None
-") GeomToStep_MakeLine;
+	:rtype: None") GeomToStep_MakeLine;
 		 GeomToStep_MakeLine (const opencascade::handle<Geom_Line> & C);
+
+		/****************** GeomToStep_MakeLine ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Line> &
-	:rtype: None
-") GeomToStep_MakeLine;
+	:rtype: None") GeomToStep_MakeLine;
 		 GeomToStep_MakeLine (const opencascade::handle<Geom2d_Line> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Line>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Line>") Value;
 		const opencascade::handle<StepGeom_Line> & Value ();
+
 };
 
 
@@ -676,25 +827,32 @@ class GeomToStep_MakeLine : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class GeomToStep_MakeParabola *
+********************************/
 %nodefaultctor GeomToStep_MakeParabola;
 class GeomToStep_MakeParabola : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeParabola ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeParabola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom2d_Parabola> &
-	:rtype: None
-") GeomToStep_MakeParabola;
+	:rtype: None") GeomToStep_MakeParabola;
 		 GeomToStep_MakeParabola (const opencascade::handle<Geom2d_Parabola> & C);
+
+		/****************** GeomToStep_MakeParabola ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeParabola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Parabola> &
-	:rtype: None
-") GeomToStep_MakeParabola;
+	:rtype: None") GeomToStep_MakeParabola;
 		 GeomToStep_MakeParabola (const opencascade::handle<Geom_Parabola> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Parabola>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Parabola>") Value;
 		const opencascade::handle<StepGeom_Parabola> & Value ();
+
 };
 
 
@@ -703,25 +861,32 @@ class GeomToStep_MakeParabola : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class GeomToStep_MakePlane *
+*****************************/
 %nodefaultctor GeomToStep_MakePlane;
 class GeomToStep_MakePlane : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakePlane ******************/
 		%feature("compactdefaultargs") GeomToStep_MakePlane;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pln
-	:rtype: None
-") GeomToStep_MakePlane;
+	:rtype: None") GeomToStep_MakePlane;
 		 GeomToStep_MakePlane (const gp_Pln & P);
+
+		/****************** GeomToStep_MakePlane ******************/
 		%feature("compactdefaultargs") GeomToStep_MakePlane;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: opencascade::handle<Geom_Plane> &
-	:rtype: None
-") GeomToStep_MakePlane;
+	:rtype: None") GeomToStep_MakePlane;
 		 GeomToStep_MakePlane (const opencascade::handle<Geom_Plane> & P);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Plane>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Plane>") Value;
 		const opencascade::handle<StepGeom_Plane> & Value ();
+
 };
 
 
@@ -730,25 +895,32 @@ class GeomToStep_MakePlane : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class GeomToStep_MakePolyline *
+********************************/
 %nodefaultctor GeomToStep_MakePolyline;
 class GeomToStep_MakePolyline : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakePolyline ******************/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: TColgp_Array1OfPnt
-	:rtype: None
-") GeomToStep_MakePolyline;
+	:rtype: None") GeomToStep_MakePolyline;
 		 GeomToStep_MakePolyline (const TColgp_Array1OfPnt & P);
+
+		/****************** GeomToStep_MakePolyline ******************/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: TColgp_Array1OfPnt2d
-	:rtype: None
-") GeomToStep_MakePolyline;
+	:rtype: None") GeomToStep_MakePolyline;
 		 GeomToStep_MakePolyline (const TColgp_Array1OfPnt2d & P);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Polyline>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Polyline>") Value;
 		const opencascade::handle<StepGeom_Polyline> & Value ();
+
 };
 
 
@@ -757,19 +929,25 @@ class GeomToStep_MakePolyline : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************************************
+* class GeomToStep_MakeRectangularTrimmedSurface *
+*************************************************/
 %nodefaultctor GeomToStep_MakeRectangularTrimmedSurface;
 class GeomToStep_MakeRectangularTrimmedSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeRectangularTrimmedSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeRectangularTrimmedSurface;
-		%feature("autodoc", "	:param RTSurf:
+		%feature("autodoc", ":param RTSurf:
 	:type RTSurf: opencascade::handle<Geom_RectangularTrimmedSurface> &
-	:rtype: None
-") GeomToStep_MakeRectangularTrimmedSurface;
+	:rtype: None") GeomToStep_MakeRectangularTrimmedSurface;
 		 GeomToStep_MakeRectangularTrimmedSurface (const opencascade::handle<Geom_RectangularTrimmedSurface> & RTSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_RectangularTrimmedSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_RectangularTrimmedSurface>") Value;
 		const opencascade::handle<StepGeom_RectangularTrimmedSurface> & Value ();
+
 };
 
 
@@ -778,19 +956,25 @@ class GeomToStep_MakeRectangularTrimmedSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************************
+* class GeomToStep_MakeSphericalSurface *
+****************************************/
 %nodefaultctor GeomToStep_MakeSphericalSurface;
 class GeomToStep_MakeSphericalSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeSphericalSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeSphericalSurface;
-		%feature("autodoc", "	:param CSurf:
+		%feature("autodoc", ":param CSurf:
 	:type CSurf: opencascade::handle<Geom_SphericalSurface> &
-	:rtype: None
-") GeomToStep_MakeSphericalSurface;
+	:rtype: None") GeomToStep_MakeSphericalSurface;
 		 GeomToStep_MakeSphericalSurface (const opencascade::handle<Geom_SphericalSurface> & CSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_SphericalSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_SphericalSurface>") Value;
 		const opencascade::handle<StepGeom_SphericalSurface> & Value ();
+
 };
 
 
@@ -799,19 +983,25 @@ class GeomToStep_MakeSphericalSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class GeomToStep_MakeSurface *
+*******************************/
 %nodefaultctor GeomToStep_MakeSurface;
 class GeomToStep_MakeSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeSurface;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", ":param C:
 	:type C: opencascade::handle<Geom_Surface> &
-	:rtype: None
-") GeomToStep_MakeSurface;
+	:rtype: None") GeomToStep_MakeSurface;
 		 GeomToStep_MakeSurface (const opencascade::handle<Geom_Surface> & C);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Surface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Surface>") Value;
 		const opencascade::handle<StepGeom_Surface> & Value ();
+
 };
 
 
@@ -820,19 +1010,25 @@ class GeomToStep_MakeSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************************
+* class GeomToStep_MakeSurfaceOfLinearExtrusion *
+************************************************/
 %nodefaultctor GeomToStep_MakeSurfaceOfLinearExtrusion;
 class GeomToStep_MakeSurfaceOfLinearExtrusion : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeSurfaceOfLinearExtrusion ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeSurfaceOfLinearExtrusion;
-		%feature("autodoc", "	:param CSurf:
+		%feature("autodoc", ":param CSurf:
 	:type CSurf: opencascade::handle<Geom_SurfaceOfLinearExtrusion> &
-	:rtype: None
-") GeomToStep_MakeSurfaceOfLinearExtrusion;
+	:rtype: None") GeomToStep_MakeSurfaceOfLinearExtrusion;
 		 GeomToStep_MakeSurfaceOfLinearExtrusion (const opencascade::handle<Geom_SurfaceOfLinearExtrusion> & CSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion>") Value;
 		const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & Value ();
+
 };
 
 
@@ -841,19 +1037,25 @@ class GeomToStep_MakeSurfaceOfLinearExtrusion : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************************
+* class GeomToStep_MakeSurfaceOfRevolution *
+*******************************************/
 %nodefaultctor GeomToStep_MakeSurfaceOfRevolution;
 class GeomToStep_MakeSurfaceOfRevolution : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeSurfaceOfRevolution ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeSurfaceOfRevolution;
-		%feature("autodoc", "	:param RevSurf:
+		%feature("autodoc", ":param RevSurf:
 	:type RevSurf: opencascade::handle<Geom_SurfaceOfRevolution> &
-	:rtype: None
-") GeomToStep_MakeSurfaceOfRevolution;
+	:rtype: None") GeomToStep_MakeSurfaceOfRevolution;
 		 GeomToStep_MakeSurfaceOfRevolution (const opencascade::handle<Geom_SurfaceOfRevolution> & RevSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_SurfaceOfRevolution>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_SurfaceOfRevolution>") Value;
 		const opencascade::handle<StepGeom_SurfaceOfRevolution> & Value ();
+
 };
 
 
@@ -862,19 +1064,25 @@ class GeomToStep_MakeSurfaceOfRevolution : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************************
+* class GeomToStep_MakeSweptSurface *
+************************************/
 %nodefaultctor GeomToStep_MakeSweptSurface;
 class GeomToStep_MakeSweptSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeSweptSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeSweptSurface;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", ":param S:
 	:type S: opencascade::handle<Geom_SweptSurface> &
-	:rtype: None
-") GeomToStep_MakeSweptSurface;
+	:rtype: None") GeomToStep_MakeSweptSurface;
 		 GeomToStep_MakeSweptSurface (const opencascade::handle<Geom_SweptSurface> & S);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_SweptSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_SweptSurface>") Value;
 		const opencascade::handle<StepGeom_SweptSurface> & Value ();
+
 };
 
 
@@ -883,19 +1091,25 @@ class GeomToStep_MakeSweptSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************************
+* class GeomToStep_MakeToroidalSurface *
+***************************************/
 %nodefaultctor GeomToStep_MakeToroidalSurface;
 class GeomToStep_MakeToroidalSurface : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeToroidalSurface ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeToroidalSurface;
-		%feature("autodoc", "	:param TorSurf:
+		%feature("autodoc", ":param TorSurf:
 	:type TorSurf: opencascade::handle<Geom_ToroidalSurface> &
-	:rtype: None
-") GeomToStep_MakeToroidalSurface;
+	:rtype: None") GeomToStep_MakeToroidalSurface;
 		 GeomToStep_MakeToroidalSurface (const opencascade::handle<Geom_ToroidalSurface> & TorSurf);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_ToroidalSurface>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_ToroidalSurface>") Value;
 		const opencascade::handle<StepGeom_ToroidalSurface> & Value ();
+
 };
 
 
@@ -904,37 +1118,46 @@ class GeomToStep_MakeToroidalSurface : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class GeomToStep_MakeVector *
+******************************/
 %nodefaultctor GeomToStep_MakeVector;
 class GeomToStep_MakeVector : public GeomToStep_Root {
 	public:
+		/****************** GeomToStep_MakeVector ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: gp_Vec
-	:rtype: None
-") GeomToStep_MakeVector;
+	:rtype: None") GeomToStep_MakeVector;
 		 GeomToStep_MakeVector (const gp_Vec & V);
+
+		/****************** GeomToStep_MakeVector ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: gp_Vec2d
-	:rtype: None
-") GeomToStep_MakeVector;
+	:rtype: None") GeomToStep_MakeVector;
 		 GeomToStep_MakeVector (const gp_Vec2d & V);
+
+		/****************** GeomToStep_MakeVector ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: opencascade::handle<Geom_Vector> &
-	:rtype: None
-") GeomToStep_MakeVector;
+	:rtype: None") GeomToStep_MakeVector;
 		 GeomToStep_MakeVector (const opencascade::handle<Geom_Vector> & V);
+
+		/****************** GeomToStep_MakeVector ******************/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", ":param V:
 	:type V: opencascade::handle<Geom2d_Vector> &
-	:rtype: None
-") GeomToStep_MakeVector;
+	:rtype: None") GeomToStep_MakeVector;
 		 GeomToStep_MakeVector (const opencascade::handle<Geom2d_Vector> & V);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: opencascade::handle<StepGeom_Vector>
-") Value;
+		%feature("autodoc", ":rtype: opencascade::handle<StepGeom_Vector>") Value;
 		const opencascade::handle<StepGeom_Vector> & Value ();
+
 };
 
 
@@ -943,6 +1166,7 @@ class GeomToStep_MakeVector : public GeomToStep_Root {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

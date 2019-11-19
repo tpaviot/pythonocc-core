@@ -423,37 +423,40 @@ typedef unsigned int Aspect_VKeyFlags;
 typedef unsigned int Aspect_VKeyMouse;
 /* end typedefs declaration */
 
+/**************************
+* class Aspect_Background *
+**************************/
 %nodefaultctor Aspect_Background;
 class Aspect_Background {
 	public:
+		/****************** Aspect_Background ******************/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "	* Creates a window background. Default color : NOC_MATRAGRAY.
-
-	:rtype: None
-") Aspect_Background;
+		%feature("autodoc", "* Creates a window background. Default color : NOC_MATRAGRAY.
+	:rtype: None") Aspect_Background;
 		 Aspect_Background ();
+
+		/****************** Aspect_Background ******************/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "	* Creates a window background with the colour <AColor>.
-
+		%feature("autodoc", "* Creates a window background with the colour <AColor>.
 	:param AColor:
 	:type AColor: Quantity_Color &
-	:rtype: None
-") Aspect_Background;
+	:rtype: None") Aspect_Background;
 		 Aspect_Background (const Quantity_Color & AColor);
+
+		/****************** Color ******************/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	* Returns the colour of the window background <self>.
-
-	:rtype: Quantity_Color
-") Color;
+		%feature("autodoc", "* Returns the colour of the window background <self>.
+	:rtype: Quantity_Color") Color;
 		Quantity_Color Color ();
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Modifies the colour of the window background <self>.
 
+		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "* Modifies the colour of the window background <self>.
 	:param AColor:
 	:type AColor: Quantity_Color &
-	:rtype: None
-") SetColor;
+	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & AColor);
+
 };
 
 
@@ -462,6 +465,10 @@ class Aspect_Background {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************************
+* class Aspect_DisplayConnection *
+*********************************/
 %nodefaultctor Aspect_DisplayConnection;
 class Aspect_DisplayConnection : public Standard_Transient {
 	public:
@@ -475,77 +482,81 @@ class Aspect_DisplayConnection : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************
+* class Aspect_GenId *
+*********************/
 %nodefaultctor Aspect_GenId;
 class Aspect_GenId {
 	public:
+		/****************** Aspect_GenId ******************/
 		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "	* Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2.
-
-	:rtype: None
-") Aspect_GenId;
+		%feature("autodoc", "* Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2.
+	:rtype: None") Aspect_GenId;
 		 Aspect_GenId ();
-		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "	* Creates an available set of identifiers with specified range. Raises IdentDefinitionError if theUpper is less than theLow.
 
+		/****************** Aspect_GenId ******************/
+		%feature("compactdefaultargs") Aspect_GenId;
+		%feature("autodoc", "* Creates an available set of identifiers with specified range. Raises IdentDefinitionError if theUpper is less than theLow.
 	:param theLow:
 	:type theLow: int
 	:param theUpper:
 	:type theUpper: int
-	:rtype: None
-") Aspect_GenId;
+	:rtype: None") Aspect_GenId;
 		 Aspect_GenId (const Standard_Integer theLow,const Standard_Integer theUpper);
+
+		/****************** Available ******************/
 		%feature("compactdefaultargs") Available;
-		%feature("autodoc", "	* Returns the number of available identifiers.
-
-	:rtype: int
-") Available;
+		%feature("autodoc", "* Returns the number of available identifiers.
+	:rtype: int") Available;
 		Standard_Integer Available ();
-		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "	* Free all identifiers - make the whole range available again.
 
-	:rtype: None
-") Free;
+		/****************** Free ******************/
+		%feature("compactdefaultargs") Free;
+		%feature("autodoc", "* Free all identifiers - make the whole range available again.
+	:rtype: None") Free;
 		void Free ();
-		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "	* Free specified identifier. Warning - method has no protection against double-freeing!
 
+		/****************** Free ******************/
+		%feature("compactdefaultargs") Free;
+		%feature("autodoc", "* Free specified identifier. Warning - method has no protection against double-freeing!
 	:param theId:
 	:type theId: int
-	:rtype: None
-") Free;
+	:rtype: None") Free;
 		void Free (const Standard_Integer theId);
+
+		/****************** HasFree ******************/
 		%feature("compactdefaultargs") HasFree;
-		%feature("autodoc", "	* Returns true if there are available identifiers in range.
-
-	:rtype: bool
-") HasFree;
+		%feature("autodoc", "* Returns true if there are available identifiers in range.
+	:rtype: bool") HasFree;
 		Standard_Boolean HasFree ();
+
+		/****************** Lower ******************/
 		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	* Returns the lower identifier in range.
-
-	:rtype: int
-") Lower;
+		%feature("autodoc", "* Returns the lower identifier in range.
+	:rtype: int") Lower;
 		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Returns the next available identifier. Warning: Raises IdentDefinitionError if all identifiers are busy.
 
-	:rtype: int
-") Next;
+		/****************** Next ******************/
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "* Returns the next available identifier. Warning: Raises IdentDefinitionError if all identifiers are busy.
+	:rtype: int") Next;
 		Standard_Integer Next ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Generates the next available identifier. @param theId [out] generated identifier returns False if all identifiers are busy.
 
+		/****************** Next ******************/
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "* Generates the next available identifier. @param theId [out] generated identifier returns False if all identifiers are busy.
 	:param theId:
 	:type theId: int &
-	:rtype: bool
-") Next;
+	:rtype: bool") Next;
 		Standard_Boolean Next (Standard_Integer &OutValue);
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	* Returns the upper identifier in range.
 
-	:rtype: int
-") Upper;
+		/****************** Upper ******************/
+		%feature("compactdefaultargs") Upper;
+		%feature("autodoc", "* Returns the upper identifier in range.
+	:rtype: int") Upper;
 		Standard_Integer Upper ();
+
 };
 
 
@@ -554,28 +565,32 @@ class Aspect_GenId {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************
+* class Aspect_Grid *
+********************/
 %nodefaultctor Aspect_Grid;
 class Aspect_Grid : public Standard_Transient {
 	public:
+		/****************** Activate ******************/
 		%feature("compactdefaultargs") Activate;
-		%feature("autodoc", "	* activates the grid. The Hit method will return gridx and gridx computed according to the steps of the grid.
-
-	:rtype: None
-") Activate;
+		%feature("autodoc", "* activates the grid. The Hit method will return gridx and gridx computed according to the steps of the grid.
+	:rtype: None") Activate;
 		void Activate ();
-		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "	* Returns the colors of the grid.
 
+		/****************** Colors ******************/
+		%feature("compactdefaultargs") Colors;
+		%feature("autodoc", "* Returns the colors of the grid.
 	:param aColor:
 	:type aColor: Quantity_Color &
 	:param aTenthColor:
 	:type aTenthColor: Quantity_Color &
-	:rtype: None
-") Colors;
+	:rtype: None") Colors;
 		void Colors (Quantity_Color & aColor,Quantity_Color & aTenthColor);
+
+		/****************** Compute ******************/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y
-
+		%feature("autodoc", "* returns the point of the grid the closest to the point X,Y
 	:param X:
 	:type X: float
 	:param Y:
@@ -584,36 +599,36 @@ class Aspect_Grid : public Standard_Transient {
 	:type gridX: float &
 	:param gridY:
 	:type gridY: float &
-	:rtype: void
-") Compute;
+	:rtype: void") Compute;
 		virtual void Compute (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
+
+		/****************** Deactivate ******************/
 		%feature("compactdefaultargs") Deactivate;
-		%feature("autodoc", "	* deactivates the grid. The hit method will return gridx and gridx as the enter value X & Y.
-
-	:rtype: None
-") Deactivate;
+		%feature("autodoc", "* deactivates the grid. The hit method will return gridx and gridx as the enter value X & Y.
+	:rtype: None") Deactivate;
 		void Deactivate ();
+
+		/****************** Display ******************/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Display the grid at screen.
-
-	:rtype: void
-") Display;
+		%feature("autodoc", "* Display the grid at screen.
+	:rtype: void") Display;
 		virtual void Display ();
+
+		/****************** DrawMode ******************/
 		%feature("compactdefaultargs") DrawMode;
-		%feature("autodoc", "	* Returns the grid aspect.
-
-	:rtype: Aspect_GridDrawMode
-") DrawMode;
+		%feature("autodoc", "* Returns the grid aspect.
+	:rtype: Aspect_GridDrawMode") DrawMode;
 		Aspect_GridDrawMode DrawMode ();
+
+		/****************** Erase ******************/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "	* Erase the grid from screen.
-
-	:rtype: void
-") Erase;
+		%feature("autodoc", "* Erase the grid from screen.
+	:rtype: void") Erase;
 		virtual void Erase ();
-		%feature("compactdefaultargs") Hit;
-		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y if the grid is active. If the grid is not active returns X,Y.
 
+		/****************** Hit ******************/
+		%feature("compactdefaultargs") Hit;
+		%feature("autodoc", "* returns the point of the grid the closest to the point X,Y if the grid is active. If the grid is not active returns X,Y.
 	:param X:
 	:type X: float
 	:param Y:
@@ -622,103 +637,104 @@ class Aspect_Grid : public Standard_Transient {
 	:type gridX: float &
 	:param gridY:
 	:type gridY: float &
-	:rtype: None
-") Hit;
+	:rtype: None") Hit;
 		void Hit (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
+
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:rtype: void
-") Init;
+		%feature("autodoc", ":rtype: void") Init;
 		virtual void Init ();
+
+		/****************** IsActive ******************/
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "	* Returns True when the grid is active.
-
-	:rtype: bool
-") IsActive;
+		%feature("autodoc", "* Returns True when the grid is active.
+	:rtype: bool") IsActive;
 		Standard_Boolean IsActive ();
+
+		/****************** IsDisplayed ******************/
 		%feature("compactdefaultargs") IsDisplayed;
-		%feature("autodoc", "	* Returns True when the grid is displayed at screen.
-
-	:rtype: bool
-") IsDisplayed;
+		%feature("autodoc", "* Returns True when the grid is displayed at screen.
+	:rtype: bool") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed ();
-		%feature("compactdefaultargs") Rotate;
-		%feature("autodoc", "	* Rotate the grid from a relative angle.
 
+		/****************** Rotate ******************/
+		%feature("compactdefaultargs") Rotate;
+		%feature("autodoc", "* Rotate the grid from a relative angle.
 	:param anAngle:
 	:type anAngle: float
-	:rtype: None
-") Rotate;
+	:rtype: None") Rotate;
 		void Rotate (const Standard_Real anAngle);
+
+		/****************** RotationAngle ******************/
 		%feature("compactdefaultargs") RotationAngle;
-		%feature("autodoc", "	* returns the x Angle of the grid.
-
-	:rtype: float
-") RotationAngle;
+		%feature("autodoc", "* returns the x Angle of the grid.
+	:rtype: float") RotationAngle;
 		Standard_Real RotationAngle ();
-		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "	* Change the colors of the grid
 
+		/****************** SetColors ******************/
+		%feature("compactdefaultargs") SetColors;
+		%feature("autodoc", "* Change the colors of the grid
 	:param aColor:
 	:type aColor: Quantity_Color &
 	:param aTenthColor:
 	:type aTenthColor: Quantity_Color &
-	:rtype: void
-") SetColors;
+	:rtype: void") SetColors;
 		virtual void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
-		%feature("compactdefaultargs") SetDrawMode;
-		%feature("autodoc", "	* Change the grid aspect.
 
+		/****************** SetDrawMode ******************/
+		%feature("compactdefaultargs") SetDrawMode;
+		%feature("autodoc", "* Change the grid aspect.
 	:param aDrawMode:
 	:type aDrawMode: Aspect_GridDrawMode
-	:rtype: None
-") SetDrawMode;
+	:rtype: None") SetDrawMode;
 		void SetDrawMode (const Aspect_GridDrawMode aDrawMode);
-		%feature("compactdefaultargs") SetRotationAngle;
-		%feature("autodoc", "	* defines the orientation of the grid.
 
+		/****************** SetRotationAngle ******************/
+		%feature("compactdefaultargs") SetRotationAngle;
+		%feature("autodoc", "* defines the orientation of the grid.
 	:param anAngle:
 	:type anAngle: float
-	:rtype: None
-") SetRotationAngle;
+	:rtype: None") SetRotationAngle;
 		void SetRotationAngle (const Standard_Real anAngle);
+
+		/****************** SetXOrigin ******************/
 		%feature("compactdefaultargs") SetXOrigin;
-		%feature("autodoc", "	* defines the x Origin of the grid.
-
+		%feature("autodoc", "* defines the x Origin of the grid.
 	:param anOrigin:
 	:type anOrigin: float
-	:rtype: None
-") SetXOrigin;
+	:rtype: None") SetXOrigin;
 		void SetXOrigin (const Standard_Real anOrigin);
-		%feature("compactdefaultargs") SetYOrigin;
-		%feature("autodoc", "	* defines the y Origin of the grid.
 
+		/****************** SetYOrigin ******************/
+		%feature("compactdefaultargs") SetYOrigin;
+		%feature("autodoc", "* defines the y Origin of the grid.
 	:param anOrigin:
 	:type anOrigin: float
-	:rtype: None
-") SetYOrigin;
+	:rtype: None") SetYOrigin;
 		void SetYOrigin (const Standard_Real anOrigin);
-		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "	* Translate the grid from a relative distance.
 
+		/****************** Translate ******************/
+		%feature("compactdefaultargs") Translate;
+		%feature("autodoc", "* Translate the grid from a relative distance.
 	:param aDx:
 	:type aDx: float
 	:param aDy:
 	:type aDy: float
-	:rtype: None
-") Translate;
+	:rtype: None") Translate;
 		void Translate (const Standard_Real aDx,const Standard_Real aDy);
+
+		/****************** XOrigin ******************/
 		%feature("compactdefaultargs") XOrigin;
-		%feature("autodoc", "	* returns the x Origin of the grid.
-
-	:rtype: float
-") XOrigin;
+		%feature("autodoc", "* returns the x Origin of the grid.
+	:rtype: float") XOrigin;
 		Standard_Real XOrigin ();
-		%feature("compactdefaultargs") YOrigin;
-		%feature("autodoc", "	* returns the x Origin of the grid.
 
-	:rtype: float
-") YOrigin;
+		/****************** YOrigin ******************/
+		%feature("compactdefaultargs") YOrigin;
+		%feature("autodoc", "* returns the x Origin of the grid.
+	:rtype: float") YOrigin;
 		Standard_Real YOrigin ();
+
 };
 
 
@@ -729,51 +745,55 @@ class Aspect_Grid : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************
+* class Aspect_ScrollDelta *
+***************************/
 %nodefaultctor Aspect_ScrollDelta;
 class Aspect_ScrollDelta {
 	public:
 		float Delta;
 		Aspect_VKeyFlags Flags;
+		/****************** Aspect_ScrollDelta ******************/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "	* Empty constructor.
-
-	:rtype: None
-") Aspect_ScrollDelta;
+		%feature("autodoc", "* Empty constructor.
+	:rtype: None") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta ();
-		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "	* Constructor.
 
+		/****************** Aspect_ScrollDelta ******************/
+		%feature("compactdefaultargs") Aspect_ScrollDelta;
+		%feature("autodoc", "* Constructor.
 	:param thePnt:
 	:type thePnt: NCollection_Vec2<int> &
 	:param theValue:
 	:type theValue: float
 	:param theFlags: default value is Aspect_VKeyFlags_NONE
 	:type theFlags: Aspect_VKeyFlags
-	:rtype: None
-") Aspect_ScrollDelta;
+	:rtype: None") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta (const NCollection_Vec2<int> & thePnt,Standard_Real theValue,Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
-		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "	* Constructor with undefined point.
 
+		/****************** Aspect_ScrollDelta ******************/
+		%feature("compactdefaultargs") Aspect_ScrollDelta;
+		%feature("autodoc", "* Constructor with undefined point.
 	:param theValue:
 	:type theValue: float
 	:param theFlags: default value is Aspect_VKeyFlags_NONE
 	:type theFlags: Aspect_VKeyFlags
-	:rtype: None
-") Aspect_ScrollDelta;
+	:rtype: None") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta (Standard_Real theValue,Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
+
+		/****************** HasPoint ******************/
 		%feature("compactdefaultargs") HasPoint;
-		%feature("autodoc", "	* //!< key flags Return true if action has point defined.
-
-	:rtype: bool
-") HasPoint;
+		%feature("autodoc", "* //!< key flags Return true if action has point defined.
+	:rtype: bool") HasPoint;
 		bool HasPoint ();
-		%feature("compactdefaultargs") ResetPoint;
-		%feature("autodoc", "	* Reset at point.
 
-	:rtype: None
-") ResetPoint;
+		/****************** ResetPoint ******************/
+		%feature("compactdefaultargs") ResetPoint;
+		%feature("autodoc", "* Reset at point.
+	:rtype: None") ResetPoint;
 		void ResetPoint ();
+
 };
 
 
@@ -782,44 +802,48 @@ class Aspect_ScrollDelta {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************
+* class Aspect_Touch *
+*********************/
 %nodefaultctor Aspect_Touch;
 class Aspect_Touch {
 	public:
 		bool IsPreciseDevice;
+		/****************** Aspect_Touch ******************/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "	* Empty constructor
-
-	:rtype: None
-") Aspect_Touch;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") Aspect_Touch;
 		 Aspect_Touch ();
-		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "	* Constructor with initialization.
 
+		/****************** Aspect_Touch ******************/
+		%feature("compactdefaultargs") Aspect_Touch;
+		%feature("autodoc", "* Constructor with initialization.
 	:param thePnt:
 	:type thePnt: NCollection_Vec2<float> &
 	:param theIsPreciseDevice:
 	:type theIsPreciseDevice: bool
-	:rtype: None
-") Aspect_Touch;
+	:rtype: None") Aspect_Touch;
 		 Aspect_Touch (const NCollection_Vec2<Standard_Real> & thePnt,Standard_Boolean theIsPreciseDevice);
-		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "	* Constructor with initialization.
 
+		/****************** Aspect_Touch ******************/
+		%feature("compactdefaultargs") Aspect_Touch;
+		%feature("autodoc", "* Constructor with initialization.
 	:param theX:
 	:type theX: float
 	:param theY:
 	:type theY: float
 	:param theIsPreciseDevice:
 	:type theIsPreciseDevice: bool
-	:rtype: None
-") Aspect_Touch;
+	:rtype: None") Aspect_Touch;
 		 Aspect_Touch (Standard_Real theX,Standard_Real theY,Standard_Boolean theIsPreciseDevice);
-		%feature("compactdefaultargs") Delta;
-		%feature("autodoc", "	* //!< precise device input (e.g. mouse cursor, NOT emulated from touch screen) Return values delta.
 
-	:rtype: NCollection_Vec2<float>
-") Delta;
+		/****************** Delta ******************/
+		%feature("compactdefaultargs") Delta;
+		%feature("autodoc", "* //!< precise device input (e.g. mouse cursor, NOT emulated from touch screen) Return values delta.
+	:rtype: NCollection_Vec2<float>") Delta;
 		NCollection_Vec2<Standard_Real> Delta ();
+
 };
 
 
@@ -828,74 +852,78 @@ class Aspect_Touch {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Aspect_Window *
+**********************/
 %nodefaultctor Aspect_Window;
 class Aspect_Window : public Standard_Transient {
 	public:
+		/****************** Background ******************/
 		%feature("compactdefaultargs") Background;
-		%feature("autodoc", "	* Returns the window background.
-
-	:rtype: Aspect_Background
-") Background;
+		%feature("autodoc", "* Returns the window background.
+	:rtype: Aspect_Background") Background;
 		Aspect_Background Background ();
+
+		/****************** BackgroundFillMethod ******************/
 		%feature("compactdefaultargs") BackgroundFillMethod;
-		%feature("autodoc", "	* Returns the current image background fill mode.
-
-	:rtype: Aspect_FillMethod
-") BackgroundFillMethod;
+		%feature("autodoc", "* Returns the current image background fill mode.
+	:rtype: Aspect_FillMethod") BackgroundFillMethod;
 		Aspect_FillMethod BackgroundFillMethod ();
+
+		/****************** DoMapping ******************/
 		%feature("compactdefaultargs") DoMapping;
-		%feature("autodoc", "	* Apply the mapping change to the window <self>. and returns True if the window is mapped at screen.
-
-	:rtype: bool
-") DoMapping;
+		%feature("autodoc", "* Apply the mapping change to the window <self>. and returns True if the window is mapped at screen.
+	:rtype: bool") DoMapping;
 		virtual Standard_Boolean DoMapping ();
+
+		/****************** DoResize ******************/
 		%feature("compactdefaultargs") DoResize;
-		%feature("autodoc", "	* Apply the resizing to the window <self>.
-
-	:rtype: Aspect_TypeOfResize
-") DoResize;
+		%feature("autodoc", "* Apply the resizing to the window <self>.
+	:rtype: Aspect_TypeOfResize") DoResize;
 		virtual Aspect_TypeOfResize DoResize ();
+
+		/****************** GradientBackground ******************/
 		%feature("compactdefaultargs") GradientBackground;
-		%feature("autodoc", "	* Returns the window gradient background.
-
-	:rtype: Aspect_GradientBackground
-") GradientBackground;
+		%feature("autodoc", "* Returns the window gradient background.
+	:rtype: Aspect_GradientBackground") GradientBackground;
 		Aspect_GradientBackground GradientBackground ();
-		%feature("compactdefaultargs") InvalidateContent;
-		%feature("autodoc", "	* Invalidate entire window content. //! Implementation is expected to allow calling this method from non-GUI thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! Optional display argument should be passed when called from non-GUI thread on platforms implementing thread-unsafe connections to display. NULL can be passed instead otherwise.
 
+		/****************** InvalidateContent ******************/
+		%feature("compactdefaultargs") InvalidateContent;
+		%feature("autodoc", "* Invalidate entire window content. //! Implementation is expected to allow calling this method from non-GUI thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! Optional display argument should be passed when called from non-GUI thread on platforms implementing thread-unsafe connections to display. NULL can be passed instead otherwise.
 	:param theDisp:
 	:type theDisp: opencascade::handle<Aspect_DisplayConnection> &
-	:rtype: None
-") InvalidateContent;
+	:rtype: None") InvalidateContent;
 		void InvalidateContent (const opencascade::handle<Aspect_DisplayConnection> & theDisp);
+
+		/****************** IsMapped ******************/
 		%feature("compactdefaultargs") IsMapped;
-		%feature("autodoc", "	* Returns True if the window <self> is opened and False if the window is closed.
-
-	:rtype: bool
-") IsMapped;
+		%feature("autodoc", "* Returns True if the window <self> is opened and False if the window is closed.
+	:rtype: bool") IsMapped;
 		virtual Standard_Boolean IsMapped ();
+
+		/****************** IsVirtual ******************/
 		%feature("compactdefaultargs") IsVirtual;
-		%feature("autodoc", "	* Returns True if the window <self> is virtual
-
-	:rtype: bool
-") IsVirtual;
+		%feature("autodoc", "* Returns True if the window <self> is virtual
+	:rtype: bool") IsVirtual;
 		Standard_Boolean IsVirtual ();
+
+		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "	* Opens the window <self>.
-
-	:rtype: void
-") Map;
+		%feature("autodoc", "* Opens the window <self>.
+	:rtype: void") Map;
 		virtual void Map ();
+
+		/****************** NativeFBConfig ******************/
 		%feature("compactdefaultargs") NativeFBConfig;
-		%feature("autodoc", "	* Returns native Window FB config (GLXFBConfig on Xlib)
-
-	:rtype: Aspect_FBConfig
-") NativeFBConfig;
+		%feature("autodoc", "* Returns native Window FB config (GLXFBConfig on Xlib)
+	:rtype: Aspect_FBConfig") NativeFBConfig;
 		virtual Aspect_FBConfig NativeFBConfig ();
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "	* Returns The Window POSITION in PIXEL
 
+		/****************** Position ******************/
+		%feature("compactdefaultargs") Position;
+		%feature("autodoc", "* Returns The Window POSITION in PIXEL
 	:param X1:
 	:type X1: int &
 	:param Y1:
@@ -904,83 +932,83 @@ class Aspect_Window : public Standard_Transient {
 	:type X2: int &
 	:param Y2:
 	:type Y2: int &
-	:rtype: void
-") Position;
+	:rtype: void") Position;
 		virtual void Position (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+
+		/****************** Ratio ******************/
 		%feature("compactdefaultargs") Ratio;
-		%feature("autodoc", "	* Returns The Window RATIO equal to the physical WIDTH/HEIGHT dimensions
-
-	:rtype: float
-") Ratio;
+		%feature("autodoc", "* Returns The Window RATIO equal to the physical WIDTH/HEIGHT dimensions
+	:rtype: float") Ratio;
 		virtual Standard_Real Ratio ();
-		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "	* Modifies the window background.
 
+		/****************** SetBackground ******************/
+		%feature("compactdefaultargs") SetBackground;
+		%feature("autodoc", "* Modifies the window background.
 	:param ABack:
 	:type ABack: Aspect_Background &
-	:rtype: None
-") SetBackground;
+	:rtype: None") SetBackground;
 		void SetBackground (const Aspect_Background & ABack);
-		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "	* Modifies the window background.
 
+		/****************** SetBackground ******************/
+		%feature("compactdefaultargs") SetBackground;
+		%feature("autodoc", "* Modifies the window background.
 	:param color:
 	:type color: Quantity_Color &
-	:rtype: None
-") SetBackground;
+	:rtype: None") SetBackground;
 		void SetBackground (const Quantity_Color & color);
-		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "	* Modifies the window gradient background.
 
+		/****************** SetBackground ******************/
+		%feature("compactdefaultargs") SetBackground;
+		%feature("autodoc", "* Modifies the window gradient background.
 	:param ABackground:
 	:type ABackground: Aspect_GradientBackground &
-	:rtype: None
-") SetBackground;
+	:rtype: None") SetBackground;
 		void SetBackground (const Aspect_GradientBackground & ABackground);
-		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "	* Modifies the window gradient background.
 
+		/****************** SetBackground ******************/
+		%feature("compactdefaultargs") SetBackground;
+		%feature("autodoc", "* Modifies the window gradient background.
 	:param theFirstColor:
 	:type theFirstColor: Quantity_Color &
 	:param theSecondColor:
 	:type theSecondColor: Quantity_Color &
 	:param theFillMethod:
 	:type theFillMethod: Aspect_GradientFillMethod
-	:rtype: None
-") SetBackground;
+	:rtype: None") SetBackground;
 		void SetBackground (const Quantity_Color & theFirstColor,const Quantity_Color & theSecondColor,const Aspect_GradientFillMethod theFillMethod);
-		%feature("compactdefaultargs") SetTitle;
-		%feature("autodoc", "	* Sets window title.
 
+		/****************** SetTitle ******************/
+		%feature("compactdefaultargs") SetTitle;
+		%feature("autodoc", "* Sets window title.
 	:param theTitle:
 	:type theTitle: TCollection_AsciiString &
-	:rtype: None
-") SetTitle;
+	:rtype: None") SetTitle;
 		void SetTitle (const TCollection_AsciiString & theTitle);
-		%feature("compactdefaultargs") SetVirtual;
-		%feature("autodoc", "	* Setup the virtual state
 
+		/****************** SetVirtual ******************/
+		%feature("compactdefaultargs") SetVirtual;
+		%feature("autodoc", "* Setup the virtual state
 	:param theVirtual:
 	:type theVirtual: bool
-	:rtype: None
-") SetVirtual;
+	:rtype: None") SetVirtual;
 		void SetVirtual (const Standard_Boolean theVirtual);
-		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "	* Returns The Window SIZE in PIXEL
 
+		/****************** Size ******************/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", "* Returns The Window SIZE in PIXEL
 	:param Width:
 	:type Width: int &
 	:param Height:
 	:type Height: int &
-	:rtype: void
-") Size;
+	:rtype: void") Size;
 		virtual void Size (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("compactdefaultargs") Unmap;
-		%feature("autodoc", "	* Closes the window <self>.
 
-	:rtype: void
-") Unmap;
+		/****************** Unmap ******************/
+		%feature("compactdefaultargs") Unmap;
+		%feature("autodoc", "* Closes the window <self>.
+	:rtype: void") Unmap;
 		virtual void Unmap ();
+
 };
 
 
@@ -991,55 +1019,62 @@ class Aspect_Window : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class Aspect_CircularGrid *
+****************************/
+/**********************************
+* class Aspect_GradientBackground *
+**********************************/
 %nodefaultctor Aspect_GradientBackground;
 class Aspect_GradientBackground : public Aspect_Background {
 	public:
+		/****************** Aspect_GradientBackground ******************/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "	* Creates a window gradient background. Default colors : Quantity_NOC_BLACK. Default fill method : Aspect_GFM_NONE
-
-	:rtype: None
-") Aspect_GradientBackground;
+		%feature("autodoc", "* Creates a window gradient background. Default colors : Quantity_NOC_BLACK. Default fill method : Aspect_GFM_NONE
+	:rtype: None") Aspect_GradientBackground;
 		 Aspect_GradientBackground ();
+
+		/****************** Aspect_GradientBackground ******************/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "	* Creates a window gradient background with colours <AColor1, AColor2>.
-
+		%feature("autodoc", "* Creates a window gradient background with colours <AColor1, AColor2>.
 	:param AColor1:
 	:type AColor1: Quantity_Color &
 	:param AColor2:
 	:type AColor2: Quantity_Color &
 	:param AMethod: default value is Aspect_GFM_HOR
 	:type AMethod: Aspect_GradientFillMethod
-	:rtype: None
-") Aspect_GradientBackground;
+	:rtype: None") Aspect_GradientBackground;
 		 Aspect_GradientBackground (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+
+		/****************** BgGradientFillMethod ******************/
 		%feature("compactdefaultargs") BgGradientFillMethod;
-		%feature("autodoc", "	* Returns the current gradient background fill mode.
-
-	:rtype: Aspect_GradientFillMethod
-") BgGradientFillMethod;
+		%feature("autodoc", "* Returns the current gradient background fill mode.
+	:rtype: Aspect_GradientFillMethod") BgGradientFillMethod;
 		Aspect_GradientFillMethod BgGradientFillMethod ();
-		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "	* Returns colours of the window gradient background <self>.
 
+		/****************** Colors ******************/
+		%feature("compactdefaultargs") Colors;
+		%feature("autodoc", "* Returns colours of the window gradient background <self>.
 	:param AColor1:
 	:type AColor1: Quantity_Color &
 	:param AColor2:
 	:type AColor2: Quantity_Color &
-	:rtype: None
-") Colors;
+	:rtype: None") Colors;
 		void Colors (Quantity_Color & AColor1,Quantity_Color & AColor2);
-		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "	* Modifies the colours of the window gradient background <self>.
 
+		/****************** SetColors ******************/
+		%feature("compactdefaultargs") SetColors;
+		%feature("autodoc", "* Modifies the colours of the window gradient background <self>.
 	:param AColor1:
 	:type AColor1: Quantity_Color &
 	:param AColor2:
 	:type AColor2: Quantity_Color &
 	:param AMethod: default value is Aspect_GFM_HOR
 	:type AMethod: Aspect_GradientFillMethod
-	:rtype: None
-") SetColors;
+	:rtype: None") SetColors;
 		void SetColors (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+
 };
 
 
@@ -1048,6 +1083,13 @@ class Aspect_GradientBackground : public Aspect_Background {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class Aspect_NeutralWindow *
+*****************************/
+/*******************************
+* class Aspect_RectangularGrid *
+*******************************/
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

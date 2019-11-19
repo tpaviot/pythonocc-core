@@ -65,17 +65,21 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intstart.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/*****************************
+* class IntStart_SITopolTool *
+*****************************/
 %nodefaultctor IntStart_SITopolTool;
 class IntStart_SITopolTool : public Standard_Transient {
 	public:
+		/****************** Classify ******************/
 		%feature("compactdefaultargs") Classify;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param Tol:
 	:type Tol: float
-	:rtype: TopAbs_State
-") Classify;
+	:rtype: TopAbs_State") Classify;
 		virtual TopAbs_State Classify (const gp_Pnt2d & P,const Standard_Real Tol);
+
 };
 
 
@@ -86,6 +90,7 @@ class IntStart_SITopolTool : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */

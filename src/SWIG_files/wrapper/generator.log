@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 67ebe91
+git revision : d5ba0d4
 
 operating system : debian Linux 4.15.0-70-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-11-18 19:19:39.257426
+date : 2019-11-19 11:35:52.474854
 ############################
 
 [INFO ]  Single process mode
@@ -38,6 +38,16 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  BOPAlgo_MakePeriodic
 [INFO ]  Wrap nested class BOPAlgo_MakePeriodic::PeriodicityParams
 [INFO ]  BOPAlgo_ArgumentAnalyzer
+[WARNI]  Creating Get and Set methods for method ArgumentTypeMode
+[WARNI]  Creating Get and Set methods for method ContinuityMode
+[WARNI]  Creating Get and Set methods for method CurveOnSurfaceMode
+[WARNI]  Creating Get and Set methods for method MergeEdgeMode
+[WARNI]  Creating Get and Set methods for method MergeVertexMode
+[WARNI]  Creating Get and Set methods for method RebuildFaceMode
+[WARNI]  Creating Get and Set methods for method SelfInterMode
+[WARNI]  Creating Get and Set methods for method SmallEdgeMode
+[WARNI]  Creating Get and Set methods for method StopOnFirstFaulty
+[WARNI]  Creating Get and Set methods for method TangentMode
 [INFO ]  BOPAlgo_BuilderArea
 [INFO ]  BOPAlgo_BuilderShape
 [INFO ]  BOPAlgo_PaveFiller
@@ -190,6 +200,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  BRepTools_Quilt
 [INFO ]  BRepTools_ReShape
 [INFO ]  Wrap nested class BRepTools_ReShape::TReplacement
+[WARNI]  Creating Get and Set methods for method ModeConsiderLocation
 [INFO ]  BRepTools_ShapeSet
 [INFO ]  BRepTools_Substitution
 [INFO ]  BRepTools_WireExplorer
@@ -748,6 +759,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  BlendFunc_Ruled
 [INFO ]  BlendFunc_RuledInv
 [INFO ]  BlendFunc_Tensor
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  BlendFunc_ChamfInv
 [INFO ]  BlendFunc_Chamfer
 [INFO ]  BlendFunc_ConstThroat
@@ -1131,6 +1143,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  GeomFill_Sweep
 [INFO ]  GeomFill_SweepFunction
 [INFO ]  GeomFill_Tensor
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  GeomFill_TgtField
 [INFO ]  GeomFill_TrihedronLaw
 [INFO ]  GeomFill_BoundWithSurf
@@ -1435,6 +1448,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  AppDef_TheResol
 [INFO ]  AppDef_Variational
 [INFO ]  AppDef_LinearCriteria
+[WARNI]  Creating Get and Set methods for method EstLength
 [INFO ]  ## Processing module AppParCurves
 [INFO ]  Found HARRAY1 definitionAppParCurves_HArray1OfMultiCurve: AppParCurves_Array1OfMultiCurve
 [INFO ]  Found HARRAY1 definitionAppParCurves_HArray1OfConstraintCouple: AppParCurves_Array1OfConstraintCouple
@@ -1554,6 +1568,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  FEmTool_LinearJerk
 [INFO ]  FEmTool_LinearTension
 [INFO ]  FEmTool_ProfileMatrix
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  ## Processing module GC
 [INFO ]  Wrap classes :
 [INFO ]  GC_MakeMirror
@@ -1827,6 +1842,8 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ## Processing module TopBas
 [INFO ]  Wrap classes :
 [INFO ]  TopBas_TestInterference
+[WARNI]  Creating Get and Set methods for method ChangeBoundary
+[WARNI]  Creating Get and Set methods for method ChangeIntersection
 [INFO ]  ## Processing module TopCnx
 [INFO ]  Wrap classes :
 [INFO ]  TopCnx_EdgeFaceTransition
@@ -1860,6 +1877,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  IGESData_IGESReaderTool
 [INFO ]  IGESData_IGESType
 [INFO ]  IGESData_IGESWriter
+[WARNI]  Creating Get and Set methods for method WriteMode
 [INFO ]  IGESData_NodeOfSpecificLib
 [INFO ]  IGESData_NodeOfWriterLib
 [INFO ]  IGESData_ParamCursor
@@ -2154,6 +2172,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Poly_Polygon3D
 [INFO ]  Poly_PolygonOnTriangulation
 [INFO ]  Poly_Triangle
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  Poly_Triangulation
 [INFO ]  ## Processing module Precision
 [INFO ]  Wrap classes :
@@ -2218,7 +2237,9 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  gp_Lin
 [INFO ]  gp_Lin2d
 [INFO ]  gp_Mat
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  gp_Mat2d
+[WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  gp_Parab
 [INFO ]  gp_Parab2d
 [INFO ]  gp_Pln
@@ -2234,7 +2255,9 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  gp_Vec
 [INFO ]  gp_Vec2d
 [INFO ]  gp_XY
+[WARNI]  Creating Get and Set methods for method ChangeCoord
 [INFO ]  gp_XYZ
+[WARNI]  Creating Get and Set methods for method ChangeCoord
 [INFO ]  ## Processing module math
 [INFO ]  Wrap classes :
 [INFO ]  math
@@ -2249,6 +2272,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  math_Crout
 [INFO ]  math_DirectPolynomialRoots
 [INFO ]  math_DoubleTab
+[WARNI]  Creating Get and Set methods for method Value
 [INFO ]  math_EigenValuesSearcher
 [INFO ]  math_FRPR
 [INFO ]  math_Function
@@ -2270,6 +2294,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  math_Jacobi
 [INFO ]  math_KronrodSingleIntegration
 [INFO ]  math_Matrix
+[WARNI]  Creating Get and Set methods for method Value
 [INFO ]  math_MultipleVarFunction
 [INFO ]  math_NewtonFunctionRoot
 [INFO ]  math_NewtonFunctionSetRoot
@@ -2481,6 +2506,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Draft_FaceInfo
 [INFO ]  Draft_Modification
 [INFO ]  Draft_VertexInfo
+[WARNI]  Creating Get and Set methods for method ChangeParameter
 [INFO ]  Processing toolkit TKPrim ===
 [INFO ]  ## Processing module BRepPrim
 [INFO ]  Wrap classes :
@@ -2797,6 +2823,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  TopoDSToStep
 [INFO ]  TopoDSToStep_FacetedTool
 [INFO ]  TopoDSToStep_Root
+[WARNI]  Creating Get and Set methods for method Tolerance
 [INFO ]  TopoDSToStep_Tool
 [INFO ]  TopoDSToStep_Builder
 [INFO ]  TopoDSToStep_MakeBrepWithVoids
@@ -3858,6 +3885,8 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  StepData_StepReaderData
 [INFO ]  StepData_StepReaderTool
 [INFO ]  StepData_StepWriter
+[WARNI]  Creating Get and Set methods for method LabelMode
+[WARNI]  Creating Get and Set methods for method TypeMode
 [INFO ]  StepData_WriterLib
 [INFO ]  StepData_DefaultGeneral
 [INFO ]  StepData_ECDescr
@@ -4184,6 +4213,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  StlAPI
 [INFO ]  StlAPI_Reader
 [INFO ]  StlAPI_Writer
+[WARNI]  Creating Get and Set methods for method ASCIIMode
 [INFO ]  Processing toolkit TKService ===
 [INFO ]  ## Processing module Aspect
 [INFO ]  Wrap classes :
@@ -4228,14 +4258,22 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeAnalysis_FreeBoundsProperties
 [INFO ]  ShapeAnalysis_Geom
 [INFO ]  ShapeAnalysis_ShapeContents
+[WARNI]  Creating Get and Set methods for method ModifyBigSplineMode
+[WARNI]  Creating Get and Set methods for method ModifyIndirectMode
+[WARNI]  Creating Get and Set methods for method ModifyOffestSurfaceMode
+[WARNI]  Creating Get and Set methods for method ModifyOffsetCurveMode
+[WARNI]  Creating Get and Set methods for method ModifyTrimmed2dMode
+[WARNI]  Creating Get and Set methods for method ModifyTrimmed3dMode
 [INFO ]  ShapeAnalysis_ShapeTolerance
 [INFO ]  ShapeAnalysis_Shell
 [INFO ]  ShapeAnalysis_Surface
 [INFO ]  ShapeAnalysis_TransferParameters
 [INFO ]  ShapeAnalysis_Wire
 [INFO ]  ShapeAnalysis_WireOrder
+[WARNI]  Creating Get and Set methods for method KeepLoopsMode
 [INFO ]  ShapeAnalysis_WireVertex
 [INFO ]  ShapeAnalysis_TransferParametersProj
+[WARNI]  Creating Get and Set methods for method ForceProjection
 [INFO ]  ## Processing module ShapeBuild
 [INFO ]  Wrap classes :
 [INFO ]  ShapeBuild
@@ -4248,6 +4286,8 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeConstruct_Curve
 [INFO ]  ShapeConstruct_MakeTriangulation
 [INFO ]  ShapeConstruct_ProjectCurveOnSurface
+[WARNI]  Creating Get and Set methods for method AdjustOverDegenMode
+[WARNI]  Creating Get and Set methods for method BuildCurveMode
 [INFO ]  ## Processing module ShapeCustom
 [INFO ]  Wrap classes :
 [INFO ]  ShapeCustom
@@ -4255,6 +4295,22 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeCustom_Curve2d
 [INFO ]  ShapeCustom_Modification
 [INFO ]  ShapeCustom_RestrictionParameters
+[WARNI]  Creating Get and Set methods for method ConvertBezierSurf
+[WARNI]  Creating Get and Set methods for method ConvertConicalSurf
+[WARNI]  Creating Get and Set methods for method ConvertCurve2d
+[WARNI]  Creating Get and Set methods for method ConvertCurve3d
+[WARNI]  Creating Get and Set methods for method ConvertCylindricalSurf
+[WARNI]  Creating Get and Set methods for method ConvertExtrusionSurf
+[WARNI]  Creating Get and Set methods for method ConvertOffsetCurv2d
+[WARNI]  Creating Get and Set methods for method ConvertOffsetCurv3d
+[WARNI]  Creating Get and Set methods for method ConvertOffsetSurf
+[WARNI]  Creating Get and Set methods for method ConvertPlane
+[WARNI]  Creating Get and Set methods for method ConvertRevolutionSurf
+[WARNI]  Creating Get and Set methods for method ConvertSphericalSurf
+[WARNI]  Creating Get and Set methods for method ConvertToroidalSurf
+[WARNI]  Creating Get and Set methods for method GMaxDegree
+[WARNI]  Creating Get and Set methods for method GMaxSeg
+[WARNI]  Creating Get and Set methods for method SegmentSurfaceMode
 [INFO ]  ShapeCustom_Surface
 [INFO ]  ShapeCustom_TrsfModification
 [INFO ]  ShapeCustom_ConvertToBSpline
@@ -4267,6 +4323,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeExtend_CompositeSurface
 [INFO ]  ShapeExtend_Explorer
 [INFO ]  ShapeExtend_WireData
+[WARNI]  Creating Get and Set methods for method ManifoldMode
 [INFO ]  ShapeExtend_MsgRegistrator
 [INFO ]  ## Processing module ShapeFix
 [INFO ]  Wrap classes :
@@ -4282,15 +4339,69 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeFix_SplitTool
 [INFO ]  ShapeFix_WireVertex
 [INFO ]  ShapeFix_ComposeShell
+[WARNI]  Creating Get and Set methods for method ClosedMode
 [INFO ]  ShapeFix_Face
+[WARNI]  Creating Get and Set methods for method AutoCorrectPrecisionMode
+[WARNI]  Creating Get and Set methods for method FixAddNaturalBoundMode
+[WARNI]  Creating Get and Set methods for method FixIntersectingWiresMode
+[WARNI]  Creating Get and Set methods for method FixLoopWiresMode
+[WARNI]  Creating Get and Set methods for method FixMissingSeamMode
+[WARNI]  Creating Get and Set methods for method FixOrientationMode
+[WARNI]  Creating Get and Set methods for method FixPeriodicDegeneratedMode
+[WARNI]  Creating Get and Set methods for method FixSmallAreaWireMode
+[WARNI]  Creating Get and Set methods for method FixSplitFaceMode
+[WARNI]  Creating Get and Set methods for method FixWireMode
+[WARNI]  Creating Get and Set methods for method RemoveSmallAreaFaceMode
 [INFO ]  ShapeFix_FixSmallFace
 [INFO ]  ShapeFix_FixSmallSolid
 [INFO ]  ShapeFix_Shape
+[WARNI]  Creating Get and Set methods for method FixFreeFaceMode
+[WARNI]  Creating Get and Set methods for method FixFreeShellMode
+[WARNI]  Creating Get and Set methods for method FixFreeWireMode
+[WARNI]  Creating Get and Set methods for method FixSameParameterMode
+[WARNI]  Creating Get and Set methods for method FixSolidMode
+[WARNI]  Creating Get and Set methods for method FixVertexPositionMode
+[WARNI]  Creating Get and Set methods for method FixVertexTolMode
 [INFO ]  ShapeFix_Shell
+[WARNI]  Creating Get and Set methods for method FixFaceMode
+[WARNI]  Creating Get and Set methods for method FixOrientationMode
 [INFO ]  ShapeFix_Solid
+[WARNI]  Creating Get and Set methods for method CreateOpenSolidMode
+[WARNI]  Creating Get and Set methods for method FixShellMode
+[WARNI]  Creating Get and Set methods for method FixShellOrientationMode
 [INFO ]  ShapeFix_SplitCommonVertex
 [INFO ]  ShapeFix_Wire
+[WARNI]  Creating Get and Set methods for method ClosedWireMode
+[WARNI]  Creating Get and Set methods for method FixAddCurve3dMode
+[WARNI]  Creating Get and Set methods for method FixAddPCurveMode
+[WARNI]  Creating Get and Set methods for method FixConnectedMode
+[WARNI]  Creating Get and Set methods for method FixDegeneratedMode
+[WARNI]  Creating Get and Set methods for method FixEdgeCurvesMode
+[WARNI]  Creating Get and Set methods for method FixGaps2dMode
+[WARNI]  Creating Get and Set methods for method FixGaps3dMode
+[WARNI]  Creating Get and Set methods for method FixGapsByRangesMode
+[WARNI]  Creating Get and Set methods for method FixIntersectingEdgesMode
+[WARNI]  Creating Get and Set methods for method FixLackingMode
+[WARNI]  Creating Get and Set methods for method FixNonAdjacentIntersectingEdgesMode
+[WARNI]  Creating Get and Set methods for method FixNotchedEdgesMode
+[WARNI]  Creating Get and Set methods for method FixRemoveCurve3dMode
+[WARNI]  Creating Get and Set methods for method FixRemovePCurveMode
+[WARNI]  Creating Get and Set methods for method FixReorderMode
+[WARNI]  Creating Get and Set methods for method FixReversed2dMode
+[WARNI]  Creating Get and Set methods for method FixSameParameterMode
+[WARNI]  Creating Get and Set methods for method FixSeamMode
+[WARNI]  Creating Get and Set methods for method FixSelfIntersectingEdgeMode
+[WARNI]  Creating Get and Set methods for method FixSelfIntersectionMode
+[WARNI]  Creating Get and Set methods for method FixShiftedMode
+[WARNI]  Creating Get and Set methods for method FixSmallMode
+[WARNI]  Creating Get and Set methods for method FixTailMode
+[WARNI]  Creating Get and Set methods for method FixVertexToleranceMode
+[WARNI]  Creating Get and Set methods for method ModifyGeometryMode
+[WARNI]  Creating Get and Set methods for method ModifyRemoveLoopMode
+[WARNI]  Creating Get and Set methods for method ModifyTopologyMode
+[WARNI]  Creating Get and Set methods for method PreferencePCurveMode
 [INFO ]  ShapeFix_Wireframe
+[WARNI]  Creating Get and Set methods for method ModeDropSmallEdges
 [INFO ]  ## Processing module ShapeProcess
 [WARNI]  Template: )skipped because name does'nt contain _.
 [INFO ]  Wrap classes :
@@ -4317,9 +4428,12 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeUpgrade_FaceDivide
 [INFO ]  ShapeUpgrade_FixSmallCurves
 [INFO ]  ShapeUpgrade_RemoveInternalWires
+[WARNI]  Creating Get and Set methods for method MinArea
+[WARNI]  Creating Get and Set methods for method RemoveFaceMode
 [INFO ]  ShapeUpgrade_ShapeConvertToBezier
 [INFO ]  ShapeUpgrade_ShapeDivideAngle
 [INFO ]  ShapeUpgrade_ShapeDivideArea
+[WARNI]  Creating Get and Set methods for method MaxArea
 [INFO ]  ShapeUpgrade_ShapeDivideClosed
 [INFO ]  ShapeUpgrade_ShapeDivideClosedEdges
 [INFO ]  ShapeUpgrade_ShapeDivideContinuity
@@ -4327,6 +4441,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeUpgrade_SplitCurve3d
 [INFO ]  ShapeUpgrade_SplitSurfaceAngle
 [INFO ]  ShapeUpgrade_SplitSurfaceArea
+[WARNI]  Creating Get and Set methods for method NbParts
 [INFO ]  ShapeUpgrade_SplitSurfaceContinuity
 [INFO ]  ShapeUpgrade_WireDivide
 [INFO ]  ShapeUpgrade_ClosedEdgeDivide
@@ -4334,6 +4449,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  ShapeUpgrade_ConvertCurve2dToBezier
 [INFO ]  ShapeUpgrade_ConvertCurve3dToBezier
 [INFO ]  ShapeUpgrade_FaceDivideArea
+[WARNI]  Creating Get and Set methods for method MaxArea
 [INFO ]  ShapeUpgrade_FixSmallBezierCurves
 [INFO ]  ShapeUpgrade_SplitCurve2dContinuity
 [INFO ]  ShapeUpgrade_SplitCurve3dContinuity
@@ -4670,6 +4786,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Graphic3d_DataStructureManager
 [INFO ]  Graphic3d_FrameStats
 [WARNI]  Constructor skipped for abstract class Graphic3d_FrameStats
+[WARNI]  Creating Get and Set methods for method ChangeTimer
 [INFO ]  Graphic3d_FrameStatsData
 [INFO ]  Graphic3d_Fresnel
 [INFO ]  Graphic3d_GraduatedTrihedron
@@ -4726,6 +4843,9 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Graphic3d_CView
 [WARNI]  Constructor skipped for abstract class Graphic3d_CView
 [INFO ]  Graphic3d_FrameStatsDataTmp
+[WARNI]  Creating Get and Set methods for method ChangeFrameRate
+[WARNI]  Creating Get and Set methods for method ChangeFrameRateCpu
+[WARNI]  Creating Get and Set methods for method ChangeTimerValue
 [INFO ]  Graphic3d_MediaTextureSet
 [INFO ]  Graphic3d_TextureEnv
 [INFO ]  Graphic3d_TextureMap
@@ -5055,6 +5175,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  IFSelect_ContextWrite
 [INFO ]  IFSelect_Dispatch
 [INFO ]  IFSelect_EditForm
+[WARNI]  Creating Get and Set methods for method EditKeepStatus
 [INFO ]  IFSelect_Editor
 [INFO ]  IFSelect_Functions
 [INFO ]  IFSelect_GeneralModifier
@@ -5070,6 +5191,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  IFSelect_ShareOutResult
 [INFO ]  IFSelect_Signature
 [INFO ]  IFSelect_SignatureList
+[WARNI]  Creating Get and Set methods for method ModeSignOnly
 [INFO ]  IFSelect_Transformer
 [INFO ]  IFSelect_WorkLibrary
 [INFO ]  IFSelect_WorkSession
@@ -5154,7 +5276,9 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Interface_HGraph
 [INFO ]  Interface_IntList
 [INFO ]  Interface_IntVal
+[WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  Interface_InterfaceModel
+[WARNI]  Creating Get and Set methods for method DispatchStatus
 [INFO ]  Interface_LineBuffer
 [INFO ]  Interface_MSG
 [INFO ]  Interface_MapAsciiStringHasher
@@ -5186,8 +5310,10 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  MoniTool_ElemHasher
 [INFO ]  MoniTool_Element
 [INFO ]  MoniTool_IntVal
+[WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_MTHasher
 [INFO ]  MoniTool_RealVal
+[WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_SignText
 [INFO ]  MoniTool_Stat
 [INFO ]  MoniTool_Timer
@@ -5217,6 +5343,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Transfer_TransferIterator
 [INFO ]  Transfer_TransferOutput
 [INFO ]  Transfer_ActorOfFinderProcess
+[WARNI]  Creating Get and Set methods for method ModeTrans
 [INFO ]  Transfer_ActorOfTransientProcess
 [INFO ]  Transfer_FinderProcess
 [INFO ]  Transfer_IteratorOfProcessForFinder
@@ -5236,10 +5363,19 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  TransferBRep_BinderOfShape
 [INFO ]  TransferBRep_OrientedShapeMapper
 [INFO ]  TransferBRep_Reader
+[WARNI]  Creating Get and Set methods for method ModeNewTransfer
 [INFO ]  TransferBRep_ShapeInfo
 [INFO ]  TransferBRep_ShapeListBinder
 [INFO ]  TransferBRep_ShapeMapper
 [INFO ]  TransferBRep_TransferResultInfo
+[WARNI]  Creating Get and Set methods for method NoResult
+[WARNI]  Creating Get and Set methods for method NoResultFail
+[WARNI]  Creating Get and Set methods for method NoResultWarning
+[WARNI]  Creating Get and Set methods for method NoResultWarningFail
+[WARNI]  Creating Get and Set methods for method Result
+[WARNI]  Creating Get and Set methods for method ResultFail
+[WARNI]  Creating Get and Set methods for method ResultWarning
+[WARNI]  Creating Get and Set methods for method ResultWarningFail
 [INFO ]  TransferBRep_ShapeBinder
 [INFO ]  ## Processing module XSControl
 [INFO ]  Wrap classes :
@@ -5432,6 +5568,7 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  Standard_MMgrTBBalloc
 [INFO ]  Standard_OutOfMemory
 [INFO ]  Standard_Persistent
+[WARNI]  Creating Get and Set methods for method TypeNum
 [INFO ]  ## Processing module StdFail
 [INFO ]  ## Processing module Storage
 [INFO ]  Found HARRAY1 definitionStorage_HArrayOfSchema: Storage_ArrayOfSchema
@@ -5506,6 +5643,6 @@ date : 2019-11-18 19:19:39.257426
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 46.63s
+SWIG interface file generation completed in 43.92s
 #################################################
 

@@ -502,29 +502,36 @@ typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TColle
 typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TCollection_AsciiString>::Iterator TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 /* end typedefs declaration */
 
+/************************************
+* class TColStd_HPackedMapOfInteger *
+************************************/
 %nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	public:
+		/****************** ChangeMap ******************/
 		%feature("compactdefaultargs") ChangeMap;
-		%feature("autodoc", "	:rtype: TColStd_PackedMapOfInteger
-") ChangeMap;
+		%feature("autodoc", ":rtype: TColStd_PackedMapOfInteger") ChangeMap;
 		TColStd_PackedMapOfInteger & ChangeMap ();
+
+		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "	:rtype: TColStd_PackedMapOfInteger
-") Map;
+		%feature("autodoc", ":rtype: TColStd_PackedMapOfInteger") Map;
 		const TColStd_PackedMapOfInteger & Map ();
+
+		/****************** TColStd_HPackedMapOfInteger ******************/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
+		%feature("autodoc", ":param NbBuckets: default value is 1
 	:type NbBuckets: int
-	:rtype: None
-") TColStd_HPackedMapOfInteger;
+	:rtype: None") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger (const Standard_Integer NbBuckets = 1);
+
+		/****************** TColStd_HPackedMapOfInteger ******************/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
-		%feature("autodoc", "	:param theOther:
+		%feature("autodoc", ":param theOther:
 	:type theOther: TColStd_PackedMapOfInteger &
-	:rtype: None
-") TColStd_HPackedMapOfInteger;
+	:rtype: None") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger (const TColStd_PackedMapOfInteger & theOther);
+
 };
 
 
@@ -535,6 +542,7 @@ class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 class TColStd_HArray1OfExtendedString : public  TColStd_Array1OfExtendedString, public Standard_Transient {
   public:

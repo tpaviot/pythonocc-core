@@ -64,12 +64,15 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topcnx.html"
 /* typedefs */
 /* end typedefs declaration */
 
+/**********************************
+* class TopCnx_EdgeFaceTransition *
+**********************************/
 %nodefaultctor TopCnx_EdgeFaceTransition;
 class TopCnx_EdgeFaceTransition {
 	public:
+		/****************** AddInterference ******************/
 		%feature("compactdefaultargs") AddInterference;
-		%feature("autodoc", "	* Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
-
+		%feature("autodoc", "* Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
 	:param Tole:
 	:type Tole: float
 	:param Tang:
@@ -84,47 +87,47 @@ class TopCnx_EdgeFaceTransition {
 	:type Tr: TopAbs_Orientation
 	:param BTr:
 	:type BTr: TopAbs_Orientation
-	:rtype: None
-") AddInterference;
+	:rtype: None") AddInterference;
 		void AddInterference (const Standard_Real Tole,const gp_Dir & Tang,const gp_Dir & Norm,const Standard_Real Curv,const TopAbs_Orientation Or,const TopAbs_Orientation Tr,const TopAbs_Orientation BTr);
+
+		/****************** BoundaryTransition ******************/
 		%feature("compactdefaultargs") BoundaryTransition;
-		%feature("autodoc", "	* Returns the current cumulated BoundaryTransition.
-
-	:rtype: TopAbs_Orientation
-") BoundaryTransition;
+		%feature("autodoc", "* Returns the current cumulated BoundaryTransition.
+	:rtype: TopAbs_Orientation") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition ();
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Initialize the algorithm with the local description of the edge.
 
+		/****************** Reset ******************/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "* Initialize the algorithm with the local description of the edge.
 	:param Tgt:
 	:type Tgt: gp_Dir
 	:param Norm:
 	:type Norm: gp_Dir
 	:param Curv:
 	:type Curv: float
-	:rtype: None
-") Reset;
+	:rtype: None") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm,const Standard_Real Curv);
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Initialize the algorithm with a linear Edge.
 
+		/****************** Reset ******************/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "* Initialize the algorithm with a linear Edge.
 	:param Tgt:
 	:type Tgt: gp_Dir
-	:rtype: None
-") Reset;
+	:rtype: None") Reset;
 		void Reset (const gp_Dir & Tgt);
+
+		/****************** TopCnx_EdgeFaceTransition ******************/
 		%feature("compactdefaultargs") TopCnx_EdgeFaceTransition;
-		%feature("autodoc", "	* Creates an empty algorithm.
-
-	:rtype: None
-") TopCnx_EdgeFaceTransition;
+		%feature("autodoc", "* Creates an empty algorithm.
+	:rtype: None") TopCnx_EdgeFaceTransition;
 		 TopCnx_EdgeFaceTransition ();
-		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "	* Returns the current cumulated transition.
 
-	:rtype: TopAbs_Orientation
-") Transition;
+		/****************** Transition ******************/
+		%feature("compactdefaultargs") Transition;
+		%feature("autodoc", "* Returns the current cumulated transition.
+	:rtype: TopAbs_Orientation") Transition;
 		TopAbs_Orientation Transition ();
+
 };
 
 
@@ -133,6 +136,7 @@ class TopCnx_EdgeFaceTransition {
 	__repr__ = _dumps_object
 	}
 };
+
 /* harray1 class */
 /* harray2 class */
 /* harray2 class */
