@@ -3,16 +3,6 @@ dist: bionic
 
 language: cpp
 
-cache:
- apt: true
-
-addons:
-  apt:
-    packages:
-      - mesa-common-dev
-      - libgl1-mesa-dev
-      - libglu1-mesa-dev
-
 git:
   depth: false
 
