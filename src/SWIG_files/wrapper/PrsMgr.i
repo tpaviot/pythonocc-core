@@ -212,17 +212,15 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 	:rtype: int") DisplayMode;
 		Standard_Integer DisplayMode ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** DynamicHilightAttributes ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** DynamicHilightAttributes ******************/
 		%feature("compactdefaultargs") DynamicHilightAttributes;
 		%feature("autodoc", "* Returns the hilight attributes settings. When not NULL, overrides both Prs3d_TypeOfHighlight_LocalDynamic and Prs3d_TypeOfHighlight_Dynamic defined within AIS_InteractiveContext.
 	:rtype: opencascade::handle<Prs3d_Drawer>") DynamicHilightAttributes;

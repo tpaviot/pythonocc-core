@@ -1219,17 +1219,15 @@ class Bnd_Box {
 		%feature("autodoc", ":rtype: None") Dump;
 		void Dump ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Enlarge ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Enlarge ******************/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "* Enlarges the box with a tolerance value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 	:param Tol:
@@ -1876,17 +1874,15 @@ class Bnd_OBB {
 	:rtype: gp_XYZ") Center;
 		const gp_XYZ  Center ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Enlarge ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Enlarge ******************/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "* Enlarges the box with the given value
 	:param theGapAdd:
@@ -2111,17 +2107,15 @@ class Bnd_Range {
 	:rtype: float") Delta;
 		Standard_Real Delta ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Enlarge ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Enlarge ******************/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "* Extends this to the given value (in both side)
 	:param theDelta:

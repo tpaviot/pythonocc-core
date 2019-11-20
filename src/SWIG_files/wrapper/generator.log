@@ -8,7 +8,7 @@ operating system : debian Linux 4.15.0-70-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-11-19 11:35:52.474854
+date : 2019-11-20 06:51:34.681431
 ############################
 
 [INFO ]  Single process mode
@@ -5643,6 +5643,6 @@ date : 2019-11-19 11:35:52.474854
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 43.92s
+SWIG interface file generation completed in 49.96s
 #################################################
 

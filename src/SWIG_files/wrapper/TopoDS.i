@@ -532,17 +532,15 @@ class TopoDS_Shape {
 	:rtype: None") Convex;
 		void Convex (Standard_Boolean theIsConvex);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** EmptyCopied ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** EmptyCopied ******************/
 		%feature("compactdefaultargs") EmptyCopied;
 		%feature("autodoc", "* Returns a new Shape with the same Orientation and Location and a new TShape with the same geometry and no sub-shapes.
 	:rtype: TopoDS_Shape") EmptyCopied;
@@ -876,17 +874,15 @@ class TopoDS_TShape : public Standard_Transient {
 	:rtype: None") Convex;
 		void Convex (Standard_Boolean theIsConvex);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** EmptyCopy ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** EmptyCopy ******************/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "* Returns a copy of the TShape with no sub-shapes.
 	:rtype: opencascade::handle<TopoDS_TShape>") EmptyCopy;

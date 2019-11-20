@@ -424,17 +424,15 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 	:rtype: bool") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** EnableDrawHiddenLine ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** EnableDrawHiddenLine ******************/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
 		%feature("autodoc", "* Enables the DrawHiddenLine function.
 	:rtype: None") EnableDrawHiddenLine;
@@ -1808,17 +1806,15 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 		%feature("autodoc", ":rtype: opencascade::handle<Graphic3d_AspectLine3d>") Aspect;
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Length ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Length ******************/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Returns the current value of the length used when drawing an arrow.
 	:rtype: float") Length;
@@ -1950,17 +1946,15 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 	:rtype: bool") DrawThirdAxis;
 		Standard_Boolean DrawThirdAxis ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** FirstAxisAspect ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** FirstAxisAspect ******************/
 		%feature("compactdefaultargs") FirstAxisAspect;
 		%feature("autodoc", "* Returns the attributes for display of the first axis.
 	:rtype: opencascade::handle<Prs3d_LineAspect>") FirstAxisAspect;
@@ -2170,17 +2164,15 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 	:rtype: float") ArrowTailSize;
 		Standard_Real ArrowTailSize ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** ExtensionSize ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** ExtensionSize ******************/
 		%feature("compactdefaultargs") ExtensionSize;
 		%feature("autodoc", "* Returns extension size.
 	:rtype: float") ExtensionSize;
@@ -2381,17 +2373,15 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	:rtype: opencascade::handle<Graphic3d_AspectLine3d>") Aspect;
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Prs3d_LineAspect ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Prs3d_LineAspect ******************/
 		%feature("compactdefaultargs") Prs3d_LineAspect;
 		%feature("autodoc", "* Constructs a framework for line aspect defined by - the color aColor - the type of line aType and - the line thickness aWidth. Type of line refers to whether the line is solid or dotted, for example.
 	:param theColor:
@@ -2505,17 +2495,15 @@ class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 	:rtype: bool") DisplayIso;
 		Standard_Boolean DisplayIso ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** EdgesAspect ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** EdgesAspect ******************/
 		%feature("compactdefaultargs") EdgesAspect;
 		%feature("autodoc", "* Returns the attributes of displayed edges involved in the presentation of planes.
 	:rtype: opencascade::handle<Prs3d_LineAspect>") EdgesAspect;
@@ -2647,17 +2635,15 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("autodoc", ":rtype: opencascade::handle<Graphic3d_AspectMarker3d>") Aspect;
 		const opencascade::handle<Graphic3d_AspectMarker3d> & Aspect ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetTexture ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetTexture ******************/
 		%feature("compactdefaultargs") GetTexture;
 		%feature("autodoc", "* Returns marker's texture.
 	:rtype: opencascade::handle<Graphic3d_MarkerImage>") GetTexture;
@@ -2767,17 +2753,15 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:rtype: Quantity_Color") Color;
 		const Quantity_Color & Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Material ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Material ******************/
 		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "* Returns the polygons material aspect.
 	:param aModel: default value is Aspect_TOFM_FRONT_SIDE
@@ -2961,17 +2945,15 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	:rtype: opencascade::handle<Graphic3d_AspectText3d>") Aspect;
 		const opencascade::handle<Graphic3d_AspectText3d> & Aspect ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Height ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "* Returns the height of the text box.
 	:rtype: float") Height;
