@@ -78,6 +78,7 @@ install:
       choco install miniconda3;
     fi;
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
+  - export PYTHONUNBUFFERED=1
   - hash -r
   - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
   - conda update -q conda
