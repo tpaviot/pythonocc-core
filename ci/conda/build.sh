@@ -15,10 +15,12 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPython3_FIND_FRAMEWORK=NEVER \
  -DSWIG_HIDE_WARNINGS=ON \
  .
+
 # Build step
-# on linux travis, limit the number of concurrent jobs otherwise
-# gcc gets out of memory
-ninja -j 2 install
+ninja
+
+# Install step
+ninja install
 
 # fix rpaths
 if [ `uname` == Darwin ]; then
