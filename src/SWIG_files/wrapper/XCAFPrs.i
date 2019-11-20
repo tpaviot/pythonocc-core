@@ -486,17 +486,15 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 %nodefaultctor XCAFPrs_Style;
 class XCAFPrs_Style {
 	public:
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetColorCurv ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetColorCurv ******************/
 		%feature("compactdefaultargs") GetColorCurv;
 		%feature("autodoc", "* Return curve color.
 	:rtype: Quantity_Color") GetColorCurv;

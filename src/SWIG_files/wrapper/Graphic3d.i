@@ -1708,17 +1708,15 @@ class Graphic3d_Aspects : public Standard_Transient {
 	:rtype: bool") Distinguish;
 		bool Distinguish ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** EdgeColor ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** EdgeColor ******************/
 		%feature("compactdefaultargs") EdgeColor;
 		%feature("autodoc", "* Return color of edges.
 	:rtype: Quantity_Color") EdgeColor;
@@ -5286,17 +5284,15 @@ class Graphic3d_Group : public Standard_Transient {
 	:rtype: bool") ContainsFacet;
 		bool ContainsFacet ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** IsClosed ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "* Return true if primitive arrays within this graphic group form closed volume (do no contain open shells).
 	:rtype: bool") IsClosed;
@@ -6330,17 +6326,15 @@ class Graphic3d_PolygonOffset {
 		Aspect_PolygonOffsetMode Mode;
 		Standard_ShortReal Factor;
 		Standard_ShortReal Units;
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Graphic3d_PolygonOffset ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Graphic3d_PolygonOffset ******************/
 		%feature("compactdefaultargs") Graphic3d_PolygonOffset;
 		%feature("autodoc", "* Empty constructor.
 	:rtype: None") Graphic3d_PolygonOffset;

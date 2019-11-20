@@ -3747,17 +3747,15 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 	:rtype: None") ClearOwner;
 		void ClearOwner ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetContext ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetContext ******************/
 		%feature("compactdefaultargs") GetContext;
 		%feature("autodoc", "* Returns the context pointer to the interactive context.
 	:rtype: opencascade::handle<AIS_InteractiveContext>") GetContext;

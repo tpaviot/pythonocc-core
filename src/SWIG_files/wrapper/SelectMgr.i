@@ -190,17 +190,15 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 	:rtype: bool") ComesFromDecomposition;
 		Standard_Boolean ComesFromDecomposition ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** HandleMouseClick ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** HandleMouseClick ******************/
 		%feature("compactdefaultargs") HandleMouseClick;
 		%feature("autodoc", "* Handle mouse button click event. Does nothing by default and returns False. @param thePoint mouse cursor position @param theButton clicked button @param theModifiers key modifiers @param theIsDoubleClick flag indicating double mouse click returns True if object handled click
 	:param thePoint:
@@ -527,17 +525,15 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 	:rtype: opencascade::handle<SelectMgr_Selection>") CurrentSelection;
 		const opencascade::handle<SelectMgr_Selection> & CurrentSelection ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: void") DumpJson;
-		virtual void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** ErasePresentations ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** ErasePresentations ******************/
 		%feature("compactdefaultargs") ErasePresentations;
 		%feature("autodoc", "* Removes presentations returned by GetHilightPresentation() and GetSelectPresentation().
 	:param theToRemove:
@@ -1665,17 +1661,15 @@ class SelectMgr_ViewClipRange {
 	:rtype: Bnd_Range") ChangeUnclipRange;
 		Bnd_Range & ChangeUnclipRange ();
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetNearestDepth ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetNearestDepth ******************/
 		%feature("compactdefaultargs") GetNearestDepth;
 		%feature("autodoc", "* Calculates the min not clipped value from the range. Returns False if the whole range is clipped.
 	:param theRange:

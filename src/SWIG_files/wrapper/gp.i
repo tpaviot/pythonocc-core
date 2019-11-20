@@ -5738,17 +5738,15 @@ class gp_Mat {
 	:rtype: Standard_NODISCARD gp_Mat") Divided;
 		Standard_NODISCARD gp_Mat Divided (const Standard_Real Scalar);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Invert ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Invert ******************/
 		%feature("compactdefaultargs") Invert;
 		%feature("autodoc", ":rtype: None") Invert;
 		void Invert ();
@@ -9110,17 +9108,15 @@ class gp_Torus {
 %nodefaultctor gp_Trsf;
 class gp_Trsf {
 	public:
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Form ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Form ******************/
 		%feature("compactdefaultargs") Form;
 		%feature("autodoc", "* Returns the nature of the transformation. It can be: an identity transformation, a rotation, a translation, a mirror transformation (relative to a point, an axis or a plane), a scaling transformation, or a compound transformation.
 	:rtype: gp_TrsfForm") Form;
@@ -11506,17 +11502,15 @@ class gp_XYZ {
 	:rtype: float") DotCross;
 		Standard_Real DotCross (const gp_XYZ & Coord1,const gp_XYZ & Coord2);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetData ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetData ******************/
 		%feature("compactdefaultargs") GetData;
 		%feature("autodoc", "* Returns a const ptr to coordinates location. Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!
 	:rtype: inline  float *") GetData;

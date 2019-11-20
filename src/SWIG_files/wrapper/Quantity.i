@@ -884,17 +884,15 @@ class Quantity_Color {
 	:rtype: float") Distance;
 		Standard_Real Distance (const Quantity_Color & AColor);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** Epsilon ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** Epsilon ******************/
 		%feature("compactdefaultargs") Epsilon;
 		%feature("autodoc", "* Returns the specified value used to compare <self> and an other color in IsDifferent and in IsEqual methods.
 	:rtype: float") Epsilon;
@@ -1210,17 +1208,15 @@ class Quantity_ColorRGBA {
 	:rtype: TCollection_AsciiString") ColorToHex;
 		static TCollection_AsciiString ColorToHex (const Quantity_ColorRGBA & theColor,const bool theToPrefixHash = true);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** GetRGB ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** GetRGB ******************/
 		%feature("compactdefaultargs") GetRGB;
 		%feature("autodoc", "* Return RGB color value.
 	:rtype: Quantity_Color") GetRGB;

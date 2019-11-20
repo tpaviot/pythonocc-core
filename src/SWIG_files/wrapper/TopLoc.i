@@ -77,17 +77,15 @@ typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
 %nodefaultctor TopLoc_Datum3D;
 class TopLoc_Datum3D : public Standard_Transient {
 	public:
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        
         %feature("autodoc", "1");
         %extend{
             std::string ShallowDumpToString() {
@@ -132,17 +130,15 @@ class TopLoc_Datum3D : public Standard_Transient {
 %nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** TopLoc_ItemLocation ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** TopLoc_ItemLocation ******************/
 		%feature("compactdefaultargs") TopLoc_ItemLocation;
 		%feature("autodoc", "* Sets the elementary Datum to <D> Sets the exponent to <P>
 	:param D:
@@ -175,17 +171,15 @@ class TopLoc_Location {
 	:rtype: Standard_NODISCARD TopLoc_Location") Divided;
 		Standard_NODISCARD TopLoc_Location Divided (const TopLoc_Location & Other);
 
-		/****************** DumpJson ******************/
-		%feature("compactdefaultargs") DumpJson;
-		%feature("autodoc", "* Dumps the content of me into the stream
-	:param theOStream:
-	:type theOStream: Standard_OStream &
-	:param theDepth: default value is -1
-	:type theDepth: int
-	:rtype: None") DumpJson;
-		void DumpJson (Standard_OStream & theOStream,const Standard_Integer theDepth = -1);
 
-		/****************** FirstDatum ******************/
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return s.str();}
+        };
+        		/****************** FirstDatum ******************/
 		%feature("compactdefaultargs") FirstDatum;
 		%feature("autodoc", "* Returns the first elementary datum of the Location. Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
 	:rtype: opencascade::handle<TopLoc_Datum3D>") FirstDatum;
