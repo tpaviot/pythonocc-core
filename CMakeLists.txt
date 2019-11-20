@@ -105,7 +105,7 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 4.0.1 REQUIRED)
+find_package(SWIG 3.0.11 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 if(SWIG_HIDE_WARNINGS)
