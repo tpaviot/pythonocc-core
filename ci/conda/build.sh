@@ -18,7 +18,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
 # Build step
 # on linux travis, limit the number of concurrent jobs otherwise
 # gcc gets out of memory
-ninja -j 6 install
+ninja -j 2 install
 
 # fix rpaths
 if [ `uname` == Darwin ]; then
