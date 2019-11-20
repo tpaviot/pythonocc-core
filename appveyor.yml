@@ -1,4 +1,4 @@
-version: pythonocc-core-0.18.2.{build}
+version: pythonocc-core-7.4.0-dev.{build}
 
 environment:
   binstar_token:
@@ -8,7 +8,7 @@ environment:
     # and copy paste to
     # https://ci.appveyor.com/tools/encrypt
     # then copy/paste the result below
-    secure: +BLEI1wg9klPN7BVAY1thK7n1x1/L10dWtgKzOmGCI4mg4V77hes9yj3kjZ168xf
+    secure: 6Wllm3O0zxgpBaBDNMTQAVdcBb9tMylzp72/JlpDQjljxvmF/g8FPSDZaGVs9zR8
 
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
@@ -50,8 +50,6 @@ platform:
     - x64
 
 install:
-    # Set the CONDA_NPY, although it has no impact on the actual build. We need this because of a test within conda-build.
-    - cmd: set CONDA_NPY=19
     # Remove cygwin (and therefore the git that comes with it).
     - cmd: rmdir C:\cygwin /s /q
     # Use the pre-installed Miniconda for the desired arch
@@ -71,10 +69,6 @@ install:
     - cmd: conda update conda
     - cmd: conda install conda-build anaconda-client
     - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
-    - cmd: conda config --add channels https://conda.anaconda.org/oce
-    - cmd: conda config --add channels https://conda.anaconda.org/pythonocc
-    - cmd: conda config --add channels https://conda.anaconda.org/tpaviot
-    - cmd: set PYTHONBUFFERED=1
 
 build: off
 
