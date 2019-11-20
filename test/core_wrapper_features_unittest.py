@@ -25,12 +25,14 @@ import warnings
 from contextlib import contextmanager
 
 from OCC.Core.Standard import Standard_Transient
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
-from OCC.Core.math import math_Matrix
+from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -655,9 +657,10 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(d.Z(), 9.)
 
     def test_shape_conversion_as_py_none(self):
-        # see issue #600 and PR #614
-        # a null topods_shape should be returned as Py_None by the TopoDS transformer
-        # the following test case returns a null topods_shape
+        """ see issue #600 and PR #614
+        a null topods_shape should be returned as Py_None by the TopoDS transformer
+        the following test case returns a null topods_shape
+        """
         box = BRepPrimAPI_MakeBox(1., 1., 1.).Shape()
         hlr = HLRBRep_Algo()
         hlr.Add(box)
@@ -668,6 +671,33 @@ class TestWrapperFeatures(unittest.TestCase):
         hlr_shapes = HLRBRep_HLRToShape(hlr)
         visible_smooth_edges = hlr_shapes.Rg1LineVCompound()
         self.assertTrue(visible_smooth_edges is None)
+
+    def test_DumpToString(self):
+        """ some objects can be serialized to a string
+        """
+        v = math_Vector(0, 2)
+        serialized_v = v.DumpToString()
+        # should output
+        expected_output = 'math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n'
+        self.assertEqual(expected_output, serialized_v)
+
+    def test_DumpJsonToString(self):
+        """ Since opencascade 7x, some objects can be serialized to json
+        """
+        # create a sphere with a radius of 10.
+        sph= BRepPrimAPI_MakeSphere(10.).Shape()
+        # compute the Bnd box for this sphere
+        bnd_box = Bnd_Box()
+        brepbndlib_Add(sph, bnd_box)
+        # check the result
+        corner_min = bnd_box.CornerMin()
+        self.assertEqual([round(corner_min.X(), 3), round(corner_min.Y(), 3), round(corner_min.Z(), 3)],
+                         [-10., -10., -10.])
+        # check dump json is working
+        json_string = bnd_box.DumpJsonToString()
+        expected_output = '"Bnd_Box": {"CornerMin": [-10, -10, -10], "CornerMax": [10, 10, 10], "Gap": 1e-07, "Flags": 0}'
+        self.assertEqual(json_string, expected_output)
+
 
 def suite():
     test_suite = unittest.TestSuite()
