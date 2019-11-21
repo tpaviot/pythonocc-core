@@ -1,0 +1,5 @@
+c_compiler:
+ - vs2015                     # [win]
+ 
+cxx_compiler:
+ - vs2015                     # [win]
