@@ -26,13 +26,11 @@ requirements:
     - opencascade ==7.4.0
 
   run:
-    - pyqt
     - opencascade ==7.4.0
     - python {{ python }}
 
 test:
   requires:
-    - numpy
     - pyqt >=5
 
 about:
