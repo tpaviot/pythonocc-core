@@ -34,22 +34,22 @@ jobs:
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
 # OSX
-    - env: PYTHON="3.5" CONDA_PY=36 ARCH="x86_64"
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
       os: osx
-      osx_image: xcode9.4
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+      osx_image:  xcode9.4
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
       os: osx
-      osx_image: xcode9.4
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+      osx_image:  xcode9.4
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
       os: osx
-      osx_image: xcode9.4
+      osx_image:  xcode9.4
 # Windows
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
-      os: windows
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
-      os: windows
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
-      os: windows
+#    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
+#    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
+#    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
 
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
@@ -66,6 +66,10 @@ before_install:
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz -O MacOSX10.9.sdk.tar.xz;
+      tar xf MacOSX10.9.sdk.tar.xz;
+      sudo mv MacOSX10.9.sdk /opt/;
+      ls /opt;
     fi
 
 install:

@@ -1,6 +1,9 @@
-version: pythonocc-core-7.4.0-dev.{build}
+version: pythonocc-core-7.4.0beta-dev.{build}
 
-os: Visual Studio 2015
+os:
+  - Visual Studio 2015
+  - macOS
+  - Ubuntu
 
 environment:
   binstar_token:
@@ -36,30 +39,41 @@ environment:
       CONDA_INSTALL_LOCN: "C:\\Miniconda37-x64"
 
 install:
+    - ps: |
+        if ($isLinux) {
+          wget "http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O miniconda.sh
+        } elseif ($isMacOS) {
+          brew install wget
+          wget "https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh" -O miniconda.sh
+          wget "https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz"  -O MacOSX10.9.sdk.tar.xz
+          tar xf MacOSX10.9.sdk.tar.xz
+          sudo mv MacOSX10.9.sdk /opt/
+          ls /opt
+        }
+    - sh: bash miniconda.sh -b
+    - sh: export PATH=$HOME/miniconda3/bin:$PATH
+    # On Windows, activate the environment
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-    - cmd: conda config --set always_yes yes --set changeps1 no
-    - cmd: conda config --set show_channel_urls true
-    - cmd: conda install conda-build anaconda-client
-    - cmd: conda config --add channels dlr-sc
+    # Following lines are os independant
+    - conda config --set always_yes yes --set changeps1 no
+    - conda config --set show_channel_urls true
+    - conda install conda-build anaconda-client
+    - conda config --add channels dlr-sc
     - cmd: set PYTHONBUFFERED=1
+    - sh: export PYTHONBUFFERED=1
 
 build: off
 
 test_script:
-  # Build and test the package. This appears(?) to sporadically fail due to a 
-  # bug in conda-build on 32 bit python.
-  # https://github.com/conda/conda-build/issues/152
-  #
-  # Note also that our setup.py script, which is called by conda-build, writes
-  # a __conda_version__.txt file, so the version number on the binary package
-  # is set dynamically. This unfortunately mean that conda build --output
-  # doesn't really work.
-  #
   - cmd: conda build .\\ci\\conda --quiet --no-remove-work-dir --dirty
+  - sh: conda build ./ci/conda --quiet --no-remove-work-dir --dirty
   # move conda package to /dist
-  - cmd: mkdir dist
+  - mkdir dist  # portable command windows/linux
+  # upload for osx
+  - sh: cp $HOME/miniconda3/osx-64/*.bz2 dist
+  - sh: anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH --force
+  # upload for Windows
   - cmd: copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"
-  # upload package to anaconda$
   - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH --force "2>&1"
 
 artifacts:
