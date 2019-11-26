@@ -14,8 +14,6 @@ build:
 
   number: {{ GIT_DESCRIBE_NUMBER }}
   binary_relocation: false [osx]
-  features:
-    - vc14              [win]
 
 requirements:
   build:
@@ -23,7 +21,7 @@ requirements:
     - {{ cdt('libx11-devel') }}         # [linux]
     - {{ cdt('xorg-x11-proto-devel') }} # [linux]
     - {{ cdt('mesa-libgl-devel') }}     # [linux]
-    - tbb ==2018_20171205
+    - tbb
     - cmake
     - ninja
     - swig >=3.0.11

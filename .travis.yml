@@ -28,7 +28,7 @@ git:
 # 3. after that, copy/paste the secure content just below, between double quotes.
 env:
   global:
-    - secure: "i82QH3LxjfFUrWSYxeJlKRKmpbJvN+MmBArcx2CTYX+OyAk4U4cpbaiWRl8AkiKiJXXQ3s2iYa6cZh4YrpJW9unyRlLnO5EAtgDKEmvMT5SicX3JLrepnGGOHZrcMH2STrSbXiHOuv4CyWg9DNzh4CJ7Ci25CCmIv3jwxeuVs3s="
+    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
 
 jobs:
   include:
@@ -47,11 +47,11 @@ jobs:
       os: osx
       osx_image: xcode9.4
 # Windows
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: windows
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: windows
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: windows
 
 before_install:
@@ -59,6 +59,10 @@ before_install:
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz -O MacOSX10.9.sdk.tar.xz;
+      tar xf MacOSX10.9.sdk.tar.xz;
+      sudo mv MacOSX10.9.sdk /opt/;
+      ls /opt;
     fi;
   - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
       export MINICONDA_PATH=$HOME/miniconda;
