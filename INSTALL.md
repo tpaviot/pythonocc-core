@@ -33,7 +33,7 @@ can compile/use it :
 **Important**: the OCE version has to match the pythonocc-core version,
 which is currently **0.18.x**
 
-- Optional : smesh-6.7.4 (https://github.com/tpaviot/smesh)
+- Optional : smesh-6.7.6 (https://github.com/tpaviot/smesh)
 
 Create a local copy of the repository
 -------------------------------------
