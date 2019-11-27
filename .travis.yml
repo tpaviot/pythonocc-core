@@ -27,7 +27,7 @@ git:
 # after that, copy/paste the secure on the following line
 env:
   global:
-    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
+    - secure: "Mu6SQsBmz2inttfIj3pXk4lx6ZXNs7MAq1agDgnGJknQTTi4ta0H+usxKhhGvxkh4eGgX01HuXAbPejU0W9xatHvYDQ3piKvqv672TrhYShHA4bWJke3q88BezSYaDQ+UBTmP5DD/ZFbprH+6bP9WqpRaYGC6UHbFkjRKEd2bk4="
 
 addons:
   apt:
@@ -38,12 +38,6 @@ addons:
 
 matrix:
   include:
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: linux
-      dist: bionic
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
       dist: bionic
@@ -85,6 +79,7 @@ before_install:
   - yes | ./miniconda.sh -b -p $HOME/miniconda
   #- bash miniconda.sh -b -p -f $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
+  - export PYTHONUNBUFFERED=1
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
@@ -96,13 +91,11 @@ before_install:
   # Useful for debugging any issues with conda
   - conda info -a
   # download/install OCE from DLR-SC channel
-  - conda config --add channels https://conda.anaconda.org/dlr-sc
-  - conda config --add channels https://conda.anaconda.org/conda-forge
-  - conda config --add channels https://conda.anaconda.org/tpaviot
-  - conda config --add channels https://conda.anaconda.org/oce
-  - conda config --add channels https://conda.anaconda.org/pythonocc
-  
-
+  - conda config --add channels dlr-sc
+  - conda config --add channels conda-forge
+  - conda config --add channels tpaviot
+  - conda config --add channels oce
+  - conda config --add channels pythonocc
 
 script:
   - conda build ci/conda --dirty --no-remove-work-dir

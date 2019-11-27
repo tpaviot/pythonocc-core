@@ -14,16 +14,13 @@ build:
 
   number: {{ GIT_DESCRIBE_NUMBER }}
   binary_relocation: false [osx]
-  features:
-    - vc9               [win and py27]
-    - vc14              [win and py35]
-    - vc14              [win and py36]
 
 requirements:
   build:
     - python
     - oce ==0.18.3
-    - tbb ==2018_20171205
+    - tbb
+    - tbb-devel
     - cmake
     - ninja ==1.8.2
     - swig ==3.0.12
@@ -33,18 +30,17 @@ requirements:
   run:
     - oce ==0.18.3
     - python
-    - tbb >=2018_20171205
-    - freetype >=2.7
+    - tbb
+    - freetype
     - smesh ==6.7.6
     - six
 
 test:
-  requires:
-    - numpy
-    - wxpython          [py27]
-    - pyside            [py27]
-    - pyqt >=5
-    - smesh ==6.7.6
+  imports:
+    - OCC
+    - OCC.Core.BRepPrimAPI
+
+    
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
