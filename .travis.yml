@@ -25,7 +25,7 @@ git:
 # after that, copy/paste the secure on the following line
 env:
   global:
-    - secure: "Mu6SQsBmz2inttfIj3pXk4lx6ZXNs7MAq1agDgnGJknQTTi4ta0H+usxKhhGvxkh4eGgX01HuXAbPejU0W9xatHvYDQ3piKvqv672TrhYShHA4bWJke3q88BezSYaDQ+UBTmP5DD/ZFbprH+6bP9WqpRaYGC6UHbFkjRKEd2bk4="
+    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
 
 jobs:
   include:
@@ -81,11 +81,6 @@ install:
       choco install openssl.light;
       choco install miniconda3;
     fi;
-  # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
-  # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
-  - yes | ./miniconda.sh -b -p $HOME/miniconda
-  #- bash miniconda.sh -b -p -f $HOME/miniconda
-  - export PYTHONUNBUFFERED=1
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - export PYTHONUNBUFFERED=1
   - hash -r
