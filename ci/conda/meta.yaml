@@ -1,7 +1,8 @@
-# change the version number to "0.17.1" or "0.18" in case of a release build
+{% set version = "7.4.0beta" %}
+
 package:
   name: pythonocc-core
-  version: 7.4.0
+  version: {{ version }}
 
 source:
   path: ../..
