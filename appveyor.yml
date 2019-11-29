@@ -70,8 +70,8 @@ test_script:
   # move conda package to /dist
   - mkdir dist  # portable command windows/linux
   # upload for osx
-  - sh: cp $HOME/miniconda3/osx-64/*.bz2 dist
-  - sh: anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH --force
+  - sh: cp $HOME/miniconda3/conda-bld/osx-64/*.bz2 dist
+  - sh: anaconda -t $BINSTAR_TOKEN upload dist/*.bz2 -l cd-$APPVEYOR_REPO_BRANCH --force
   # upload for Windows
   - cmd: copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"
   - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH --force "2>&1"
