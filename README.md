@@ -16,7 +16,7 @@ pythonocc is a python package whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 7.4.0 (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0)
+Latest release : [pythonocc-core 7.4.0beta (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0beta)
 
 
 Build from source
@@ -33,7 +33,7 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=whatever-name python=3.7
 source activate whatever-name
-conda install -c dlr-sc/label/dev pythonocc-core==7.4.0beta
+conda install -c dlr-sc pythonocc-core=7.4.0beta
 ```
 
 Just replace "3.7" with the python version you target.
