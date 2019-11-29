@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,22 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define INTIMPPARGENDOCSTRING
-"
-Gives a generic algorithm to intersect Implicit Curves
-and Bounded Parametric Curves.
-
-Level: Internal
-
-All the methods of all the classes are Internal.
-
-"
+"IntImpParGen module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intimppargen.html"
 %enddef
 %module (package="OCC.Core", docstring=INTIMPPARGENDOCSTRING) IntImpParGen
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -45,21 +35,57 @@ All the methods of all the classes are Internal.
 %include ../common/OccHandle.i
 
 
-%include IntImpParGen_headers.i
+%{
+#include<IntImpParGen_module.hxx>
+
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<IntRes2d_module.hxx>
+#include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import IntRes2d.i
+%import gp.i
+/* public enums */
+/* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
+
+/* templates */
+/* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
-
+/*********************
+* class IntImpParGen *
+*********************/
 %rename(intimppargen) IntImpParGen;
 class IntImpParGen {
 	public:
-		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", "	* Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
+		/****************** DeterminePosition ******************/
+		%feature("compactdefaultargs") DeterminePosition;
+		%feature("autodoc", ":param Pos1:
+	:type Pos1: IntRes2d_Position &
+	:param Dom1:
+	:type Dom1: IntRes2d_Domain &
+	:param P1:
+	:type P1: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: void") DeterminePosition;
+		static void DeterminePosition (IntRes2d_Position & Pos1,const IntRes2d_Domain & Dom1,const gp_Pnt2d & P1,const Standard_Real Tol);
 
+		/****************** DetermineTransition ******************/
+		%feature("compactdefaultargs") DetermineTransition;
+		%feature("autodoc", "* Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
 	:param Pos1:
 	:type Pos1: IntRes2d_Position
 	:param Tan1:
@@ -78,11 +104,12 @@ class IntImpParGen {
 	:type Trans2: IntRes2d_Transition &
 	:param Tol:
 	:type Tol: float
-	:rtype: void
-") DetermineTransition;
+	:rtype: void") DetermineTransition;
 		static void DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,const gp_Vec2d & Norm1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,const gp_Vec2d & Norm2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+
+		/****************** DetermineTransition ******************/
 		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", "	:param Pos1:
+		%feature("autodoc", ":param Pos1:
 	:type Pos1: IntRes2d_Position
 	:param Tan1:
 	:type Tan1: gp_Vec2d
@@ -96,29 +123,18 @@ class IntImpParGen {
 	:type Trans2: IntRes2d_Transition &
 	:param Tol:
 	:type Tol: float
-	:rtype: bool
-") DetermineTransition;
+	:rtype: bool") DetermineTransition;
 		static Standard_Boolean DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
-		%feature("compactdefaultargs") DeterminePosition;
-		%feature("autodoc", "	:param Pos1:
-	:type Pos1: IntRes2d_Position &
-	:param Dom1:
-	:type Dom1: IntRes2d_Domain &
-	:param P1:
-	:type P1: gp_Pnt2d
-	:param Tol:
-	:type Tol: float
-	:rtype: void
-") DeterminePosition;
-		static void DeterminePosition (IntRes2d_Position & Pos1,const IntRes2d_Domain & Dom1,const gp_Pnt2d & P1,const Standard_Real Tol);
+
+		/****************** NormalizeOnDomain ******************/
 		%feature("compactdefaultargs") NormalizeOnDomain;
-		%feature("autodoc", "	:param Par1:
+		%feature("autodoc", ":param Par1:
 	:type Par1: float &
 	:param Dom1:
 	:type Dom1: IntRes2d_Domain &
-	:rtype: float
-") NormalizeOnDomain;
+	:rtype: float") NormalizeOnDomain;
 		static Standard_Real NormalizeOnDomain (Standard_Real &OutValue,const IntRes2d_Domain & Dom1);
+
 };
 
 
@@ -127,3 +143,10 @@ class IntImpParGen {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class IntImpParGen_ImpTool *
+*****************************/
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

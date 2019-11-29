@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define FSDDOCSTRING
-""
+"FSD module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_fsd.html"
 %enddef
 %module (package="OCC.Core", docstring=FSDDOCSTRING) FSD
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -37,13 +35,30 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/OccHandle.i
 
 
-%include FSD_headers.i
+%{
+#include<FSD_module.hxx>
 
-/* typedefs */
-typedef fstream FSD_FStream;
-typedef FILE * FSD_BStream;
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef std::fstream FSD_FStream;
+typedef FILE * FSD_BStream;
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
-#include <StdPrs_ToolShadedShape.hxx>
+#include <StdPrs_ToolTriangulatedShape.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <TopoDS.hxx>
 #include <Poly_Connect.hxx>
@@ -38,6 +38,9 @@
 #include <TopExp.hxx>
 #include <BRepTools.hxx>
 #include <BRepBndLib.hxx>
+#include <BRep_Tool.hxx>
+#include <TopoDS_Face.hxx>
+
 //---------------------------------------------------------------------------
 Tesselator::Tesselator(TopoDS_Shape   aShape,
                        theTextureMappingRule            aTxtMapType,
@@ -146,7 +149,7 @@ void Tesselator::SetDeviation(Standard_Real aDeviation)
 void Tesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer       ExpFace;
-    StdPrs_ToolShadedShape   SST;
+    StdPrs_ToolTriangulatedShape   SST;
 
     gp_Dir d;
     gp_Pnt p;
@@ -239,7 +242,7 @@ void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality, b
   Standard_Real dVmax;
 
   TopExp_Explorer       ExpFace;
-  StdPrs_ToolShadedShape   SST;
+  StdPrs_ToolTriangulatedShape   SST;
 
   gp_Dir d;
   gp_Pnt p;
@@ -570,7 +573,7 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 
 void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
 {
-    ofstream X3Dfile;
+    std::ofstream X3Dfile;
     X3Dfile.open (filename);
     // write header
     X3Dfile << "<?xml version='1.0' encoding='UTF-8'?>" ;

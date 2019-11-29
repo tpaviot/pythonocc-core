@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,59 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define VRMLDOCSTRING
-"Vrml package implements the specification of the
-VRML ( Virtual Reality Modeling Language ). VRML
-is a standard language for describing interactive
-3-D objects and worlds delivered across Internet.
-Actual version of Vrml package have made for objects
-of VRML version 1.0.
-This package is used by VrmlConverter package.
-The developer should already be familiar with VRML
-specification before using this package.
-
-Coordinate System
-
-VRML uses a Cartesian, right-handed, 3-dimensional coordinate system.
-By default, objects are projected onto a 2-dimensional device by projecting
-them in the direction of the positive Z axis, with the positive X axis to
-the right and the positive Y axis up. A camera or modeling transformation
-may be used to alter this default projection.
-The standard unit for lengths and distances specified is meters.
-The standard unit for angles is radians.
-
-Fields
-
-There are two general classes of fields; fields that contain a single value
-(where a value may be a single number, a vector, or even an image), and fields that
-contain multiple values. Single-valued fields all have names that begin with 'SF',
-multiple-valued fields have names that begin with 'MF'. Each field type defines
-the format for the values it writes.
-
-Nodes
-
-VRML defines several different classes of nodes. Most of the nodes can be classified
-into one of three categories; shape, property or group. Shape nodes define the geometry
-in the world. Conceptually, they are the only nodes that draw anything. Property nodes
-affect the way shapes are drawn. And grouping nodes gather other nodes together, allowing
-collections of nodes to be treated as a single object. Some group nodes also control
-whether or not their children are drawn.
-Nodes may contain zero or more fields. Each node type defines the type, name, and default
-value for each of its fields. The default value for the field is used if a value for
-the field is not specified in the VRML file.
-
-Instancing
-
-A node may be the child of more than one group. This is called 'instancing' (using the same
-instance of a node multiple times, called 'aliasing' or 'multiple references' by other
-systems), and is accomplished by using the 'USE' and 'DEF keywords.
-"
+"Vrml module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrml.html"
 %enddef
 %module (package="OCC.Core", docstring=VRMLDOCSTRING) Vrml
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -82,11 +35,29 @@ systems), and is accomplished by using the 'USE' and 'DEF keywords.
 %include ../common/OccHandle.i
 
 
-%include Vrml_headers.i
+%{
+#include<Vrml_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<Quantity_module.hxx>
+#include<gp_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TColStd.i
+%import TColgp.i
+%import Quantity.i
+%import gp.i
+%import TCollection.i
 /* public enums */
 enum Vrml_VertexOrdering {
 	Vrml_UNKNOWN_ORDERING = 0,
@@ -172,6 +143,7 @@ enum Vrml_FontStyleStyle {
 
 /* end public enums declaration */
 
+/* handles */
 %wrap_handle(Vrml_AsciiText)
 %wrap_handle(Vrml_Coordinate3)
 %wrap_handle(Vrml_IndexedFaceSet)
@@ -181,10 +153,29 @@ enum Vrml_FontStyleStyle {
 %wrap_handle(Vrml_Normal)
 %wrap_handle(Vrml_SFImage)
 %wrap_handle(Vrml_TextureCoordinate2)
+/* end handles declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/*************
+* class Vrml *
+*************/
 %rename(vrml) Vrml;
 class Vrml {
 	public:
+		/****************** CommentWriter ******************/
+		%feature("compactdefaultargs") CommentWriter;
+		%feature("autodoc", ":param aComment:
+	:type aComment: char *
+	:param anOStream:
+	:type anOStream: Standard_OStream &
+	:rtype: Standard_OStream") CommentWriter;
+		static Standard_OStream & CommentWriter (const char * aComment,Standard_OStream & anOStream);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -193,15 +184,7 @@ class Vrml {
             self->VrmlHeaderWriter(s);
             return s.str();}
         };
-        		%feature("compactdefaultargs") CommentWriter;
-		%feature("autodoc", "	:param aComment:
-	:type aComment: char *
-	:param anOStream:
-	:type anOStream: Standard_OStream &
-	:rtype: Standard_OStream
-") CommentWriter;
-		static Standard_OStream & CommentWriter (const char * aComment,Standard_OStream & anOStream);
-};
+        };
 
 
 %extend Vrml {
@@ -209,65 +192,18 @@ class Vrml {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_AsciiText *
+***********************/
 %nodefaultctor Vrml_AsciiText;
-class Vrml_AsciiText : public MMgt_TShared {
+class Vrml_AsciiText : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_AsciiText;
-		%feature("autodoc", "	:rtype: None
-") Vrml_AsciiText;
-		 Vrml_AsciiText ();
-		%feature("compactdefaultargs") Vrml_AsciiText;
-		%feature("autodoc", "	:param aString:
-	:type aString: Handle_TColStd_HArray1OfAsciiString &
-	:param aSpacing:
-	:type aSpacing: float
-	:param aJustification:
-	:type aJustification: Vrml_AsciiTextJustification
-	:param aWidth:
-	:type aWidth: float
-	:rtype: None
-") Vrml_AsciiText;
-		 Vrml_AsciiText (const Handle_TColStd_HArray1OfAsciiString & aString,const Standard_Real aSpacing,const Vrml_AsciiTextJustification aJustification,const Standard_Real aWidth);
-		%feature("compactdefaultargs") SetString;
-		%feature("autodoc", "	:param aString:
-	:type aString: Handle_TColStd_HArray1OfAsciiString &
-	:rtype: None
-") SetString;
-		void SetString (const Handle_TColStd_HArray1OfAsciiString & aString);
-		%feature("compactdefaultargs") String;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfAsciiString
-") String;
-		Handle_TColStd_HArray1OfAsciiString String ();
-		%feature("compactdefaultargs") SetSpacing;
-		%feature("autodoc", "	:param aSpacing:
-	:type aSpacing: float
-	:rtype: None
-") SetSpacing;
-		void SetSpacing (const Standard_Real aSpacing);
-		%feature("compactdefaultargs") Spacing;
-		%feature("autodoc", "	:rtype: float
-") Spacing;
-		Standard_Real Spacing ();
-		%feature("compactdefaultargs") SetJustification;
-		%feature("autodoc", "	:param aJustification:
-	:type aJustification: Vrml_AsciiTextJustification
-	:rtype: None
-") SetJustification;
-		void SetJustification (const Vrml_AsciiTextJustification aJustification);
+		/****************** Justification ******************/
 		%feature("compactdefaultargs") Justification;
-		%feature("autodoc", "	:rtype: Vrml_AsciiTextJustification
-") Justification;
+		%feature("autodoc", ":rtype: Vrml_AsciiTextJustification") Justification;
 		Vrml_AsciiTextJustification Justification ();
-		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "	:param aWidth:
-	:type aWidth: float
-	:rtype: None
-") SetWidth;
-		void SetWidth (const Standard_Real aWidth);
-		%feature("compactdefaultargs") Width;
-		%feature("autodoc", "	:rtype: float
-") Width;
-		Standard_Real Width ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -276,7 +212,68 @@ class Vrml_AsciiText : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetJustification ******************/
+		%feature("compactdefaultargs") SetJustification;
+		%feature("autodoc", ":param aJustification:
+	:type aJustification: Vrml_AsciiTextJustification
+	:rtype: None") SetJustification;
+		void SetJustification (const Vrml_AsciiTextJustification aJustification);
+
+		/****************** SetSpacing ******************/
+		%feature("compactdefaultargs") SetSpacing;
+		%feature("autodoc", ":param aSpacing:
+	:type aSpacing: float
+	:rtype: None") SetSpacing;
+		void SetSpacing (const Standard_Real aSpacing);
+
+		/****************** SetString ******************/
+		%feature("compactdefaultargs") SetString;
+		%feature("autodoc", ":param aString:
+	:type aString: opencascade::handle<TColStd_HArray1OfAsciiString> &
+	:rtype: None") SetString;
+		void SetString (const opencascade::handle<TColStd_HArray1OfAsciiString> & aString);
+
+		/****************** SetWidth ******************/
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", ":param aWidth:
+	:type aWidth: float
+	:rtype: None") SetWidth;
+		void SetWidth (const Standard_Real aWidth);
+
+		/****************** Spacing ******************/
+		%feature("compactdefaultargs") Spacing;
+		%feature("autodoc", ":rtype: float") Spacing;
+		Standard_Real Spacing ();
+
+		/****************** String ******************/
+		%feature("compactdefaultargs") String;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfAsciiString>") String;
+		opencascade::handle<TColStd_HArray1OfAsciiString> String ();
+
+		/****************** Vrml_AsciiText ******************/
+		%feature("compactdefaultargs") Vrml_AsciiText;
+		%feature("autodoc", ":rtype: None") Vrml_AsciiText;
+		 Vrml_AsciiText ();
+
+		/****************** Vrml_AsciiText ******************/
+		%feature("compactdefaultargs") Vrml_AsciiText;
+		%feature("autodoc", ":param aString:
+	:type aString: opencascade::handle<TColStd_HArray1OfAsciiString> &
+	:param aSpacing:
+	:type aSpacing: float
+	:param aJustification:
+	:type aJustification: Vrml_AsciiTextJustification
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None") Vrml_AsciiText;
+		 Vrml_AsciiText (const opencascade::handle<TColStd_HArray1OfAsciiString> & aString,const Standard_Real aSpacing,const Vrml_AsciiTextJustification aJustification,const Standard_Real aWidth);
+
+		/****************** Width ******************/
+		%feature("compactdefaultargs") Width;
+		%feature("autodoc", ":rtype: float") Width;
+		Standard_Real Width ();
+
+};
 
 
 %make_alias(Vrml_AsciiText)
@@ -286,49 +283,28 @@ class Vrml_AsciiText : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************
+* class Vrml_Cone *
+******************/
 %nodefaultctor Vrml_Cone;
 class Vrml_Cone {
 	public:
-		%feature("compactdefaultargs") Vrml_Cone;
-		%feature("autodoc", "	:param aParts: default value is Vrml_ConeALL
-	:type aParts: Vrml_ConeParts
-	:param aBottomRadius: default value is 1
-	:type aBottomRadius: float
-	:param aHeight: default value is 2
-	:type aHeight: float
-	:rtype: None
-") Vrml_Cone;
-		 Vrml_Cone (const Vrml_ConeParts aParts = Vrml_ConeALL,const Standard_Real aBottomRadius = 1,const Standard_Real aHeight = 2);
-		%feature("compactdefaultargs") SetParts;
-		%feature("autodoc", "	:param aParts:
-	:type aParts: Vrml_ConeParts
-	:rtype: None
-") SetParts;
-		void SetParts (const Vrml_ConeParts aParts);
-		%feature("compactdefaultargs") Parts;
-		%feature("autodoc", "	:rtype: Vrml_ConeParts
-") Parts;
-		Vrml_ConeParts Parts ();
-		%feature("compactdefaultargs") SetBottomRadius;
-		%feature("autodoc", "	:param aBottomRadius:
-	:type aBottomRadius: float
-	:rtype: None
-") SetBottomRadius;
-		void SetBottomRadius (const Standard_Real aBottomRadius);
+		/****************** BottomRadius ******************/
 		%feature("compactdefaultargs") BottomRadius;
-		%feature("autodoc", "	:rtype: float
-") BottomRadius;
+		%feature("autodoc", ":rtype: float") BottomRadius;
 		Standard_Real BottomRadius ();
-		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "	:param aHeight:
-	:type aHeight: float
-	:rtype: None
-") SetHeight;
-		void SetHeight (const Standard_Real aHeight);
+
+		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:rtype: float
-") Height;
+		%feature("autodoc", ":rtype: float") Height;
 		Standard_Real Height ();
+
+		/****************** Parts ******************/
+		%feature("compactdefaultargs") Parts;
+		%feature("autodoc", ":rtype: Vrml_ConeParts") Parts;
+		Vrml_ConeParts Parts ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -337,7 +313,39 @@ class Vrml_Cone {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetBottomRadius ******************/
+		%feature("compactdefaultargs") SetBottomRadius;
+		%feature("autodoc", ":param aBottomRadius:
+	:type aBottomRadius: float
+	:rtype: None") SetBottomRadius;
+		void SetBottomRadius (const Standard_Real aBottomRadius);
+
+		/****************** SetHeight ******************/
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", ":param aHeight:
+	:type aHeight: float
+	:rtype: None") SetHeight;
+		void SetHeight (const Standard_Real aHeight);
+
+		/****************** SetParts ******************/
+		%feature("compactdefaultargs") SetParts;
+		%feature("autodoc", ":param aParts:
+	:type aParts: Vrml_ConeParts
+	:rtype: None") SetParts;
+		void SetParts (const Vrml_ConeParts aParts);
+
+		/****************** Vrml_Cone ******************/
+		%feature("compactdefaultargs") Vrml_Cone;
+		%feature("autodoc", ":param aParts: default value is Vrml_ConeALL
+	:type aParts: Vrml_ConeParts
+	:param aBottomRadius: default value is 1
+	:type aBottomRadius: float
+	:param aHeight: default value is 2
+	:type aHeight: float
+	:rtype: None") Vrml_Cone;
+		 Vrml_Cone (const Vrml_ConeParts aParts = Vrml_ConeALL,const Standard_Real aBottomRadius = 1,const Standard_Real aHeight = 2);
+
+};
 
 
 %extend Vrml_Cone {
@@ -345,29 +353,18 @@ class Vrml_Cone {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class Vrml_Coordinate3 *
+*************************/
 %nodefaultctor Vrml_Coordinate3;
-class Vrml_Coordinate3 : public MMgt_TShared {
+class Vrml_Coordinate3 : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_Coordinate3;
-		%feature("autodoc", "	:param aPoint:
-	:type aPoint: Handle_TColgp_HArray1OfVec
-	:rtype: None
-") Vrml_Coordinate3;
-		 Vrml_Coordinate3 (const Handle_TColgp_HArray1OfVec & aPoint);
-		%feature("compactdefaultargs") Vrml_Coordinate3;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Coordinate3;
-		 Vrml_Coordinate3 ();
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "	:param aPoint:
-	:type aPoint: Handle_TColgp_HArray1OfVec
-	:rtype: None
-") SetPoint;
-		void SetPoint (const Handle_TColgp_HArray1OfVec & aPoint);
+		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfVec
-") Point;
-		Handle_TColgp_HArray1OfVec Point ();
+		%feature("autodoc", ":rtype: opencascade::handle<TColgp_HArray1OfVec>") Point;
+		opencascade::handle<TColgp_HArray1OfVec> Point ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -376,7 +373,26 @@ class Vrml_Coordinate3 : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetPoint ******************/
+		%feature("compactdefaultargs") SetPoint;
+		%feature("autodoc", ":param aPoint:
+	:type aPoint: opencascade::handle<TColgp_HArray1OfVec>
+	:rtype: None") SetPoint;
+		void SetPoint (const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
+
+		/****************** Vrml_Coordinate3 ******************/
+		%feature("compactdefaultargs") Vrml_Coordinate3;
+		%feature("autodoc", ":param aPoint:
+	:type aPoint: opencascade::handle<TColgp_HArray1OfVec>
+	:rtype: None") Vrml_Coordinate3;
+		 Vrml_Coordinate3 (const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
+
+		/****************** Vrml_Coordinate3 ******************/
+		%feature("compactdefaultargs") Vrml_Coordinate3;
+		%feature("autodoc", ":rtype: None") Vrml_Coordinate3;
+		 Vrml_Coordinate3 ();
+
+};
 
 
 %make_alias(Vrml_Coordinate3)
@@ -386,49 +402,23 @@ class Vrml_Coordinate3 : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************
+* class Vrml_Cube *
+******************/
 %nodefaultctor Vrml_Cube;
 class Vrml_Cube {
 	public:
-		%feature("compactdefaultargs") Vrml_Cube;
-		%feature("autodoc", "	:param aWidth: default value is 2
-	:type aWidth: float
-	:param aHeight: default value is 2
-	:type aHeight: float
-	:param aDepth: default value is 2
-	:type aDepth: float
-	:rtype: None
-") Vrml_Cube;
-		 Vrml_Cube (const Standard_Real aWidth = 2,const Standard_Real aHeight = 2,const Standard_Real aDepth = 2);
-		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "	:param aWidth:
-	:type aWidth: float
-	:rtype: None
-") SetWidth;
-		void SetWidth (const Standard_Real aWidth);
-		%feature("compactdefaultargs") Width;
-		%feature("autodoc", "	:rtype: float
-") Width;
-		Standard_Real Width ();
-		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "	:param aHeight:
-	:type aHeight: float
-	:rtype: None
-") SetHeight;
-		void SetHeight (const Standard_Real aHeight);
-		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:rtype: float
-") Height;
-		Standard_Real Height ();
-		%feature("compactdefaultargs") SetDepth;
-		%feature("autodoc", "	:param aDepth:
-	:type aDepth: float
-	:rtype: None
-") SetDepth;
-		void SetDepth (const Standard_Real aDepth);
+		/****************** Depth ******************/
 		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: float
-") Depth;
+		%feature("autodoc", ":rtype: float") Depth;
 		Standard_Real Depth ();
+
+		/****************** Height ******************/
+		%feature("compactdefaultargs") Height;
+		%feature("autodoc", ":rtype: float") Height;
+		Standard_Real Height ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -437,7 +427,44 @@ class Vrml_Cube {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetDepth ******************/
+		%feature("compactdefaultargs") SetDepth;
+		%feature("autodoc", ":param aDepth:
+	:type aDepth: float
+	:rtype: None") SetDepth;
+		void SetDepth (const Standard_Real aDepth);
+
+		/****************** SetHeight ******************/
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", ":param aHeight:
+	:type aHeight: float
+	:rtype: None") SetHeight;
+		void SetHeight (const Standard_Real aHeight);
+
+		/****************** SetWidth ******************/
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", ":param aWidth:
+	:type aWidth: float
+	:rtype: None") SetWidth;
+		void SetWidth (const Standard_Real aWidth);
+
+		/****************** Vrml_Cube ******************/
+		%feature("compactdefaultargs") Vrml_Cube;
+		%feature("autodoc", ":param aWidth: default value is 2
+	:type aWidth: float
+	:param aHeight: default value is 2
+	:type aHeight: float
+	:param aDepth: default value is 2
+	:type aDepth: float
+	:rtype: None") Vrml_Cube;
+		 Vrml_Cube (const Standard_Real aWidth = 2,const Standard_Real aHeight = 2,const Standard_Real aDepth = 2);
+
+		/****************** Width ******************/
+		%feature("compactdefaultargs") Width;
+		%feature("autodoc", ":rtype: float") Width;
+		Standard_Real Width ();
+
+};
 
 
 %extend Vrml_Cube {
@@ -445,49 +472,23 @@ class Vrml_Cube {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Vrml_Cylinder *
+**********************/
 %nodefaultctor Vrml_Cylinder;
 class Vrml_Cylinder {
 	public:
-		%feature("compactdefaultargs") Vrml_Cylinder;
-		%feature("autodoc", "	:param aParts: default value is Vrml_CylinderALL
-	:type aParts: Vrml_CylinderParts
-	:param aRadius: default value is 1
-	:type aRadius: float
-	:param aHeight: default value is 2
-	:type aHeight: float
-	:rtype: None
-") Vrml_Cylinder;
-		 Vrml_Cylinder (const Vrml_CylinderParts aParts = Vrml_CylinderALL,const Standard_Real aRadius = 1,const Standard_Real aHeight = 2);
-		%feature("compactdefaultargs") SetParts;
-		%feature("autodoc", "	:param aParts:
-	:type aParts: Vrml_CylinderParts
-	:rtype: None
-") SetParts;
-		void SetParts (const Vrml_CylinderParts aParts);
-		%feature("compactdefaultargs") Parts;
-		%feature("autodoc", "	:rtype: Vrml_CylinderParts
-") Parts;
-		Vrml_CylinderParts Parts ();
-		%feature("compactdefaultargs") SetRadius;
-		%feature("autodoc", "	:param aRadius:
-	:type aRadius: float
-	:rtype: None
-") SetRadius;
-		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
-		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "	:param aHeight:
-	:type aHeight: float
-	:rtype: None
-") SetHeight;
-		void SetHeight (const Standard_Real aHeight);
+		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:rtype: float
-") Height;
+		%feature("autodoc", ":rtype: float") Height;
 		Standard_Real Height ();
+
+		/****************** Parts ******************/
+		%feature("compactdefaultargs") Parts;
+		%feature("autodoc", ":rtype: Vrml_CylinderParts") Parts;
+		Vrml_CylinderParts Parts ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -496,7 +497,44 @@ class Vrml_Cylinder {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Radius ******************/
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", ":rtype: float") Radius;
+		Standard_Real Radius ();
+
+		/****************** SetHeight ******************/
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", ":param aHeight:
+	:type aHeight: float
+	:rtype: None") SetHeight;
+		void SetHeight (const Standard_Real aHeight);
+
+		/****************** SetParts ******************/
+		%feature("compactdefaultargs") SetParts;
+		%feature("autodoc", ":param aParts:
+	:type aParts: Vrml_CylinderParts
+	:rtype: None") SetParts;
+		void SetParts (const Vrml_CylinderParts aParts);
+
+		/****************** SetRadius ******************/
+		%feature("compactdefaultargs") SetRadius;
+		%feature("autodoc", ":param aRadius:
+	:type aRadius: float
+	:rtype: None") SetRadius;
+		void SetRadius (const Standard_Real aRadius);
+
+		/****************** Vrml_Cylinder ******************/
+		%feature("compactdefaultargs") Vrml_Cylinder;
+		%feature("autodoc", ":param aParts: default value is Vrml_CylinderALL
+	:type aParts: Vrml_CylinderParts
+	:param aRadius: default value is 1
+	:type aRadius: float
+	:param aHeight: default value is 2
+	:type aHeight: float
+	:rtype: None") Vrml_Cylinder;
+		 Vrml_Cylinder (const Vrml_CylinderParts aParts = Vrml_CylinderALL,const Standard_Real aRadius = 1,const Standard_Real aHeight = 2);
+
+};
 
 
 %extend Vrml_Cylinder {
@@ -504,15 +542,77 @@ class Vrml_Cylinder {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class Vrml_DirectionalLight *
+******************************/
 %nodefaultctor Vrml_DirectionalLight;
 class Vrml_DirectionalLight {
 	public:
+		/****************** Color ******************/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", ":rtype: Quantity_Color") Color;
+		Quantity_Color Color ();
+
+		/****************** Direction ******************/
+		%feature("compactdefaultargs") Direction;
+		%feature("autodoc", ":rtype: gp_Vec") Direction;
+		gp_Vec Direction ();
+
+		/****************** Intensity ******************/
+		%feature("compactdefaultargs") Intensity;
+		%feature("autodoc", ":rtype: float") Intensity;
+		Standard_Real Intensity ();
+
+		/****************** OnOff ******************/
+		%feature("compactdefaultargs") OnOff;
+		%feature("autodoc", ":rtype: bool") OnOff;
+		Standard_Boolean OnOff ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", ":param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None") SetColor;
+		void SetColor (const Quantity_Color & aColor);
+
+		/****************** SetDirection ******************/
+		%feature("compactdefaultargs") SetDirection;
+		%feature("autodoc", ":param aDirection:
+	:type aDirection: gp_Vec
+	:rtype: None") SetDirection;
+		void SetDirection (const gp_Vec & aDirection);
+
+		/****************** SetIntensity ******************/
+		%feature("compactdefaultargs") SetIntensity;
+		%feature("autodoc", ":param aIntensity:
+	:type aIntensity: float
+	:rtype: None") SetIntensity;
+		void SetIntensity (const Standard_Real aIntensity);
+
+		/****************** SetOnOff ******************/
+		%feature("compactdefaultargs") SetOnOff;
+		%feature("autodoc", ":param aOnOff:
+	:type aOnOff: bool
+	:rtype: None") SetOnOff;
+		void SetOnOff (const Standard_Boolean aOnOff);
+
+		/****************** Vrml_DirectionalLight ******************/
 		%feature("compactdefaultargs") Vrml_DirectionalLight;
-		%feature("autodoc", "	:rtype: None
-") Vrml_DirectionalLight;
+		%feature("autodoc", ":rtype: None") Vrml_DirectionalLight;
 		 Vrml_DirectionalLight ();
+
+		/****************** Vrml_DirectionalLight ******************/
 		%feature("compactdefaultargs") Vrml_DirectionalLight;
-		%feature("autodoc", "	:param aOnOff:
+		%feature("autodoc", ":param aOnOff:
 	:type aOnOff: bool
 	:param aIntensity:
 	:type aIntensity: float
@@ -520,58 +620,10 @@ class Vrml_DirectionalLight {
 	:type aColor: Quantity_Color &
 	:param aDirection:
 	:type aDirection: gp_Vec
-	:rtype: None
-") Vrml_DirectionalLight;
+	:rtype: None") Vrml_DirectionalLight;
 		 Vrml_DirectionalLight (const Standard_Boolean aOnOff,const Standard_Real aIntensity,const Quantity_Color & aColor,const gp_Vec & aDirection);
-		%feature("compactdefaultargs") SetOnOff;
-		%feature("autodoc", "	:param aOnOff:
-	:type aOnOff: bool
-	:rtype: None
-") SetOnOff;
-		void SetOnOff (const Standard_Boolean aOnOff);
-		%feature("compactdefaultargs") OnOff;
-		%feature("autodoc", "	:rtype: bool
-") OnOff;
-		Standard_Boolean OnOff ();
-		%feature("compactdefaultargs") SetIntensity;
-		%feature("autodoc", "	:param aIntensity:
-	:type aIntensity: float
-	:rtype: None
-") SetIntensity;
-		void SetIntensity (const Standard_Real aIntensity);
-		%feature("compactdefaultargs") Intensity;
-		%feature("autodoc", "	:rtype: float
-") Intensity;
-		Standard_Real Intensity ();
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	:param aColor:
-	:type aColor: Quantity_Color &
-	:rtype: None
-") SetColor;
-		void SetColor (const Quantity_Color & aColor);
-		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	:rtype: Quantity_Color
-") Color;
-		Quantity_Color Color ();
-		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	:param aDirection:
-	:type aDirection: gp_Vec
-	:rtype: None
-") SetDirection;
-		void SetDirection (const gp_Vec & aDirection);
-		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Direction;
-		gp_Vec Direction ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_DirectionalLight {
@@ -579,49 +631,18 @@ class Vrml_DirectionalLight {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_FontStyle *
+***********************/
 %nodefaultctor Vrml_FontStyle;
 class Vrml_FontStyle {
 	public:
-		%feature("compactdefaultargs") Vrml_FontStyle;
-		%feature("autodoc", "	:param aSize: default value is 10
-	:type aSize: float
-	:param aFamily: default value is Vrml_SERIF
-	:type aFamily: Vrml_FontStyleFamily
-	:param aStyle: default value is Vrml_NONE
-	:type aStyle: Vrml_FontStyleStyle
-	:rtype: None
-") Vrml_FontStyle;
-		 Vrml_FontStyle (const Standard_Real aSize = 10,const Vrml_FontStyleFamily aFamily = Vrml_SERIF,const Vrml_FontStyleStyle aStyle = Vrml_NONE);
-		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "	:param aSize:
-	:type aSize: float
-	:rtype: None
-") SetSize;
-		void SetSize (const Standard_Real aSize);
-		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "	:rtype: float
-") Size;
-		Standard_Real Size ();
-		%feature("compactdefaultargs") SetFamily;
-		%feature("autodoc", "	:param aFamily:
-	:type aFamily: Vrml_FontStyleFamily
-	:rtype: None
-") SetFamily;
-		void SetFamily (const Vrml_FontStyleFamily aFamily);
+		/****************** Family ******************/
 		%feature("compactdefaultargs") Family;
-		%feature("autodoc", "	:rtype: Vrml_FontStyleFamily
-") Family;
+		%feature("autodoc", ":rtype: Vrml_FontStyleFamily") Family;
 		Vrml_FontStyleFamily Family ();
-		%feature("compactdefaultargs") SetStyle;
-		%feature("autodoc", "	:param aStyle:
-	:type aStyle: Vrml_FontStyleStyle
-	:rtype: None
-") SetStyle;
-		void SetStyle (const Vrml_FontStyleStyle aStyle);
-		%feature("compactdefaultargs") Style;
-		%feature("autodoc", "	:rtype: Vrml_FontStyleStyle
-") Style;
-		Vrml_FontStyleStyle Style ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -630,7 +651,49 @@ class Vrml_FontStyle {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetFamily ******************/
+		%feature("compactdefaultargs") SetFamily;
+		%feature("autodoc", ":param aFamily:
+	:type aFamily: Vrml_FontStyleFamily
+	:rtype: None") SetFamily;
+		void SetFamily (const Vrml_FontStyleFamily aFamily);
+
+		/****************** SetSize ******************/
+		%feature("compactdefaultargs") SetSize;
+		%feature("autodoc", ":param aSize:
+	:type aSize: float
+	:rtype: None") SetSize;
+		void SetSize (const Standard_Real aSize);
+
+		/****************** SetStyle ******************/
+		%feature("compactdefaultargs") SetStyle;
+		%feature("autodoc", ":param aStyle:
+	:type aStyle: Vrml_FontStyleStyle
+	:rtype: None") SetStyle;
+		void SetStyle (const Vrml_FontStyleStyle aStyle);
+
+		/****************** Size ******************/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", ":rtype: float") Size;
+		Standard_Real Size ();
+
+		/****************** Style ******************/
+		%feature("compactdefaultargs") Style;
+		%feature("autodoc", ":rtype: Vrml_FontStyleStyle") Style;
+		Vrml_FontStyleStyle Style ();
+
+		/****************** Vrml_FontStyle ******************/
+		%feature("compactdefaultargs") Vrml_FontStyle;
+		%feature("autodoc", ":param aSize: default value is 10
+	:type aSize: float
+	:param aFamily: default value is Vrml_SERIF
+	:type aFamily: Vrml_FontStyleFamily
+	:param aStyle: default value is Vrml_NONE
+	:type aStyle: Vrml_FontStyleStyle
+	:rtype: None") Vrml_FontStyle;
+		 Vrml_FontStyle (const Standard_Real aSize = 10,const Vrml_FontStyleFamily aFamily = Vrml_SERIF,const Vrml_FontStyleStyle aStyle = Vrml_NONE);
+
+};
 
 
 %extend Vrml_FontStyle {
@@ -638,13 +701,13 @@ class Vrml_FontStyle {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************
+* class Vrml_Group *
+*******************/
 %nodefaultctor Vrml_Group;
 class Vrml_Group {
 	public:
-		%feature("compactdefaultargs") Vrml_Group;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Group;
-		 Vrml_Group ();
 
         %feature("autodoc", "1");
         %extend{
@@ -653,7 +716,12 @@ class Vrml_Group {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Vrml_Group ******************/
+		%feature("compactdefaultargs") Vrml_Group;
+		%feature("autodoc", ":rtype: None") Vrml_Group;
+		 Vrml_Group ();
+
+};
 
 
 %extend Vrml_Group {
@@ -661,65 +729,28 @@ class Vrml_Group {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class Vrml_IndexedFaceSet *
+****************************/
 %nodefaultctor Vrml_IndexedFaceSet;
-class Vrml_IndexedFaceSet : public MMgt_TShared {
+class Vrml_IndexedFaceSet : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
-		%feature("autodoc", "	:param aCoordIndex:
-	:type aCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:param aMaterialIndex:
-	:type aMaterialIndex: Handle_TColStd_HArray1OfInteger &
-	:param aNormalIndex:
-	:type aNormalIndex: Handle_TColStd_HArray1OfInteger &
-	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") Vrml_IndexedFaceSet;
-		 Vrml_IndexedFaceSet (const Handle_TColStd_HArray1OfInteger & aCoordIndex,const Handle_TColStd_HArray1OfInteger & aMaterialIndex,const Handle_TColStd_HArray1OfInteger & aNormalIndex,const Handle_TColStd_HArray1OfInteger & aTextureCoordIndex);
-		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
-		%feature("autodoc", "	:rtype: None
-") Vrml_IndexedFaceSet;
-		 Vrml_IndexedFaceSet ();
-		%feature("compactdefaultargs") SetCoordIndex;
-		%feature("autodoc", "	:param aCoordIndex:
-	:type aCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetCoordIndex;
-		void SetCoordIndex (const Handle_TColStd_HArray1OfInteger & aCoordIndex);
+		/****************** CoordIndex ******************/
 		%feature("compactdefaultargs") CoordIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") CoordIndex;
-		Handle_TColStd_HArray1OfInteger CoordIndex ();
-		%feature("compactdefaultargs") SetMaterialIndex;
-		%feature("autodoc", "	:param aMaterialIndex:
-	:type aMaterialIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetMaterialIndex;
-		void SetMaterialIndex (const Handle_TColStd_HArray1OfInteger & aMaterialIndex);
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") CoordIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex ();
+
+		/****************** MaterialIndex ******************/
 		%feature("compactdefaultargs") MaterialIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") MaterialIndex;
-		Handle_TColStd_HArray1OfInteger MaterialIndex ();
-		%feature("compactdefaultargs") SetNormalIndex;
-		%feature("autodoc", "	:param aNormalIndex:
-	:type aNormalIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetNormalIndex;
-		void SetNormalIndex (const Handle_TColStd_HArray1OfInteger & aNormalIndex);
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") MaterialIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex ();
+
+		/****************** NormalIndex ******************/
 		%feature("compactdefaultargs") NormalIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") NormalIndex;
-		Handle_TColStd_HArray1OfInteger NormalIndex ();
-		%feature("compactdefaultargs") SetTextureCoordIndex;
-		%feature("autodoc", "	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetTextureCoordIndex;
-		void SetTextureCoordIndex (const Handle_TColStd_HArray1OfInteger & aTextureCoordIndex);
-		%feature("compactdefaultargs") TextureCoordIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") TextureCoordIndex;
-		Handle_TColStd_HArray1OfInteger TextureCoordIndex ();
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") NormalIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -728,7 +759,58 @@ class Vrml_IndexedFaceSet : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetCoordIndex ******************/
+		%feature("compactdefaultargs") SetCoordIndex;
+		%feature("autodoc", ":param aCoordIndex:
+	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetCoordIndex;
+		void SetCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
+
+		/****************** SetMaterialIndex ******************/
+		%feature("compactdefaultargs") SetMaterialIndex;
+		%feature("autodoc", ":param aMaterialIndex:
+	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetMaterialIndex;
+		void SetMaterialIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
+
+		/****************** SetNormalIndex ******************/
+		%feature("compactdefaultargs") SetNormalIndex;
+		%feature("autodoc", ":param aNormalIndex:
+	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetNormalIndex;
+		void SetNormalIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
+
+		/****************** SetTextureCoordIndex ******************/
+		%feature("compactdefaultargs") SetTextureCoordIndex;
+		%feature("autodoc", ":param aTextureCoordIndex:
+	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetTextureCoordIndex;
+		void SetTextureCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+
+		/****************** TextureCoordIndex ******************/
+		%feature("compactdefaultargs") TextureCoordIndex;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") TextureCoordIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex ();
+
+		/****************** Vrml_IndexedFaceSet ******************/
+		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
+		%feature("autodoc", ":param aCoordIndex:
+	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aMaterialIndex:
+	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aNormalIndex:
+	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aTextureCoordIndex:
+	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") Vrml_IndexedFaceSet;
+		 Vrml_IndexedFaceSet (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+
+		/****************** Vrml_IndexedFaceSet ******************/
+		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
+		%feature("autodoc", ":rtype: None") Vrml_IndexedFaceSet;
+		 Vrml_IndexedFaceSet ();
+
+};
 
 
 %make_alias(Vrml_IndexedFaceSet)
@@ -738,65 +820,28 @@ class Vrml_IndexedFaceSet : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/****************************
+* class Vrml_IndexedLineSet *
+****************************/
 %nodefaultctor Vrml_IndexedLineSet;
-class Vrml_IndexedLineSet : public MMgt_TShared {
+class Vrml_IndexedLineSet : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_IndexedLineSet;
-		%feature("autodoc", "	:param aCoordIndex:
-	:type aCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:param aMaterialIndex:
-	:type aMaterialIndex: Handle_TColStd_HArray1OfInteger &
-	:param aNormalIndex:
-	:type aNormalIndex: Handle_TColStd_HArray1OfInteger &
-	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") Vrml_IndexedLineSet;
-		 Vrml_IndexedLineSet (const Handle_TColStd_HArray1OfInteger & aCoordIndex,const Handle_TColStd_HArray1OfInteger & aMaterialIndex,const Handle_TColStd_HArray1OfInteger & aNormalIndex,const Handle_TColStd_HArray1OfInteger & aTextureCoordIndex);
-		%feature("compactdefaultargs") Vrml_IndexedLineSet;
-		%feature("autodoc", "	:rtype: None
-") Vrml_IndexedLineSet;
-		 Vrml_IndexedLineSet ();
-		%feature("compactdefaultargs") SetCoordIndex;
-		%feature("autodoc", "	:param aCoordIndex:
-	:type aCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetCoordIndex;
-		void SetCoordIndex (const Handle_TColStd_HArray1OfInteger & aCoordIndex);
+		/****************** CoordIndex ******************/
 		%feature("compactdefaultargs") CoordIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") CoordIndex;
-		Handle_TColStd_HArray1OfInteger CoordIndex ();
-		%feature("compactdefaultargs") SetMaterialIndex;
-		%feature("autodoc", "	:param aMaterialIndex:
-	:type aMaterialIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetMaterialIndex;
-		void SetMaterialIndex (const Handle_TColStd_HArray1OfInteger & aMaterialIndex);
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") CoordIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex ();
+
+		/****************** MaterialIndex ******************/
 		%feature("compactdefaultargs") MaterialIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") MaterialIndex;
-		Handle_TColStd_HArray1OfInteger MaterialIndex ();
-		%feature("compactdefaultargs") SetNormalIndex;
-		%feature("autodoc", "	:param aNormalIndex:
-	:type aNormalIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetNormalIndex;
-		void SetNormalIndex (const Handle_TColStd_HArray1OfInteger & aNormalIndex);
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") MaterialIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex ();
+
+		/****************** NormalIndex ******************/
 		%feature("compactdefaultargs") NormalIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") NormalIndex;
-		Handle_TColStd_HArray1OfInteger NormalIndex ();
-		%feature("compactdefaultargs") SetTextureCoordIndex;
-		%feature("autodoc", "	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetTextureCoordIndex;
-		void SetTextureCoordIndex (const Handle_TColStd_HArray1OfInteger & aTextureCoordIndex);
-		%feature("compactdefaultargs") TextureCoordIndex;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") TextureCoordIndex;
-		Handle_TColStd_HArray1OfInteger TextureCoordIndex ();
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") NormalIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -805,7 +850,58 @@ class Vrml_IndexedLineSet : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetCoordIndex ******************/
+		%feature("compactdefaultargs") SetCoordIndex;
+		%feature("autodoc", ":param aCoordIndex:
+	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetCoordIndex;
+		void SetCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
+
+		/****************** SetMaterialIndex ******************/
+		%feature("compactdefaultargs") SetMaterialIndex;
+		%feature("autodoc", ":param aMaterialIndex:
+	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetMaterialIndex;
+		void SetMaterialIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
+
+		/****************** SetNormalIndex ******************/
+		%feature("compactdefaultargs") SetNormalIndex;
+		%feature("autodoc", ":param aNormalIndex:
+	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetNormalIndex;
+		void SetNormalIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
+
+		/****************** SetTextureCoordIndex ******************/
+		%feature("compactdefaultargs") SetTextureCoordIndex;
+		%feature("autodoc", ":param aTextureCoordIndex:
+	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetTextureCoordIndex;
+		void SetTextureCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+
+		/****************** TextureCoordIndex ******************/
+		%feature("compactdefaultargs") TextureCoordIndex;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") TextureCoordIndex;
+		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex ();
+
+		/****************** Vrml_IndexedLineSet ******************/
+		%feature("compactdefaultargs") Vrml_IndexedLineSet;
+		%feature("autodoc", ":param aCoordIndex:
+	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aMaterialIndex:
+	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aNormalIndex:
+	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:param aTextureCoordIndex:
+	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") Vrml_IndexedLineSet;
+		 Vrml_IndexedLineSet (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+
+		/****************** Vrml_IndexedLineSet ******************/
+		%feature("compactdefaultargs") Vrml_IndexedLineSet;
+		%feature("autodoc", ":rtype: None") Vrml_IndexedLineSet;
+		 Vrml_IndexedLineSet ();
+
+};
 
 
 %make_alias(Vrml_IndexedLineSet)
@@ -815,25 +911,13 @@ class Vrml_IndexedLineSet : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************
+* class Vrml_Info *
+******************/
 %nodefaultctor Vrml_Info;
 class Vrml_Info {
 	public:
-		%feature("compactdefaultargs") Vrml_Info;
-		%feature("autodoc", "	:param aString: default value is '<Undefinedinfo>'
-	:type aString: TCollection_AsciiString &
-	:rtype: None
-") Vrml_Info;
-		 Vrml_Info (const TCollection_AsciiString & aString = "<Undefinedinfo>");
-		%feature("compactdefaultargs") SetString;
-		%feature("autodoc", "	:param aString:
-	:type aString: TCollection_AsciiString &
-	:rtype: None
-") SetString;
-		void SetString (const TCollection_AsciiString & aString);
-		%feature("compactdefaultargs") String;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") String;
-		TCollection_AsciiString String ();
 
         %feature("autodoc", "1");
         %extend{
@@ -842,7 +926,26 @@ class Vrml_Info {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetString ******************/
+		%feature("compactdefaultargs") SetString;
+		%feature("autodoc", ":param aString:
+	:type aString: TCollection_AsciiString &
+	:rtype: None") SetString;
+		void SetString (const TCollection_AsciiString & aString);
+
+		/****************** String ******************/
+		%feature("compactdefaultargs") String;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") String;
+		TCollection_AsciiString String ();
+
+		/****************** Vrml_Info ******************/
+		%feature("compactdefaultargs") Vrml_Info;
+		%feature("autodoc", ":param aString: default value is '<Undefinedinfo>'
+	:type aString: TCollection_AsciiString &
+	:rtype: None") Vrml_Info;
+		 Vrml_Info (const TCollection_AsciiString & aString = "<Undefinedinfo>");
+
+};
 
 
 %extend Vrml_Info {
@@ -850,17 +953,13 @@ class Vrml_Info {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class Vrml_Instancing *
+************************/
 %nodefaultctor Vrml_Instancing;
 class Vrml_Instancing {
 	public:
-		%feature("compactdefaultargs") Vrml_Instancing;
-		%feature("autodoc", "	* Adds 'DEF <myName>' in anOStream (VRML file).
-
-	:param aString:
-	:type aString: TCollection_AsciiString &
-	:rtype: None
-") Vrml_Instancing;
-		 Vrml_Instancing (const TCollection_AsciiString & aString);
 
         %feature("autodoc", "1");
         %extend{
@@ -877,7 +976,15 @@ class Vrml_Instancing {
             self->USE(s);
             return s.str();}
         };
-        };
+        		/****************** Vrml_Instancing ******************/
+		%feature("compactdefaultargs") Vrml_Instancing;
+		%feature("autodoc", "* Adds 'DEF <myName>' in anOStream (VRML file).
+	:param aString:
+	:type aString: TCollection_AsciiString &
+	:rtype: None") Vrml_Instancing;
+		 Vrml_Instancing (const TCollection_AsciiString & aString);
+
+};
 
 
 %extend Vrml_Instancing {
@@ -885,41 +992,18 @@ class Vrml_Instancing {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************
+* class Vrml_LOD *
+*****************/
 %nodefaultctor Vrml_LOD;
-class Vrml_LOD : public MMgt_TShared {
+class Vrml_LOD : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_LOD;
-		%feature("autodoc", "	:rtype: None
-") Vrml_LOD;
-		 Vrml_LOD ();
-		%feature("compactdefaultargs") Vrml_LOD;
-		%feature("autodoc", "	:param aRange:
-	:type aRange: Handle_TColStd_HArray1OfReal &
-	:param aCenter:
-	:type aCenter: gp_Vec
-	:rtype: None
-") Vrml_LOD;
-		 Vrml_LOD (const Handle_TColStd_HArray1OfReal & aRange,const gp_Vec & aCenter);
-		%feature("compactdefaultargs") SetRange;
-		%feature("autodoc", "	:param aRange:
-	:type aRange: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetRange;
-		void SetRange (const Handle_TColStd_HArray1OfReal & aRange);
-		%feature("compactdefaultargs") Range;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") Range;
-		Handle_TColStd_HArray1OfReal Range ();
-		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "	:param aCenter:
-	:type aCenter: gp_Vec
-	:rtype: None
-") SetCenter;
-		void SetCenter (const gp_Vec & aCenter);
+		/****************** Center ******************/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Center;
+		%feature("autodoc", ":rtype: gp_Vec") Center;
 		gp_Vec Center ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -928,7 +1012,40 @@ class Vrml_LOD : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Range ******************/
+		%feature("compactdefaultargs") Range;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfReal>") Range;
+		opencascade::handle<TColStd_HArray1OfReal> Range ();
+
+		/****************** SetCenter ******************/
+		%feature("compactdefaultargs") SetCenter;
+		%feature("autodoc", ":param aCenter:
+	:type aCenter: gp_Vec
+	:rtype: None") SetCenter;
+		void SetCenter (const gp_Vec & aCenter);
+
+		/****************** SetRange ******************/
+		%feature("compactdefaultargs") SetRange;
+		%feature("autodoc", ":param aRange:
+	:type aRange: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None") SetRange;
+		void SetRange (const opencascade::handle<TColStd_HArray1OfReal> & aRange);
+
+		/****************** Vrml_LOD ******************/
+		%feature("compactdefaultargs") Vrml_LOD;
+		%feature("autodoc", ":rtype: None") Vrml_LOD;
+		 Vrml_LOD ();
+
+		/****************** Vrml_LOD ******************/
+		%feature("compactdefaultargs") Vrml_LOD;
+		%feature("autodoc", ":param aRange:
+	:type aRange: opencascade::handle<TColStd_HArray1OfReal> &
+	:param aCenter:
+	:type aCenter: gp_Vec
+	:rtype: None") Vrml_LOD;
+		 Vrml_LOD (const opencascade::handle<TColStd_HArray1OfReal> & aRange,const gp_Vec & aCenter);
+
+};
 
 
 %make_alias(Vrml_LOD)
@@ -938,89 +1055,28 @@ class Vrml_LOD : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Vrml_Material *
+**********************/
 %nodefaultctor Vrml_Material;
-class Vrml_Material : public MMgt_TShared {
+class Vrml_Material : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_Material;
-		%feature("autodoc", "	:param aAmbientColor:
-	:type aAmbientColor: Handle_Quantity_HArray1OfColor &
-	:param aDiffuseColor:
-	:type aDiffuseColor: Handle_Quantity_HArray1OfColor &
-	:param aSpecularColor:
-	:type aSpecularColor: Handle_Quantity_HArray1OfColor &
-	:param aEmissiveColor:
-	:type aEmissiveColor: Handle_Quantity_HArray1OfColor &
-	:param aShininess:
-	:type aShininess: Handle_TColStd_HArray1OfReal &
-	:param aTransparency:
-	:type aTransparency: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") Vrml_Material;
-		 Vrml_Material (const Handle_Quantity_HArray1OfColor & aAmbientColor,const Handle_Quantity_HArray1OfColor & aDiffuseColor,const Handle_Quantity_HArray1OfColor & aSpecularColor,const Handle_Quantity_HArray1OfColor & aEmissiveColor,const Handle_TColStd_HArray1OfReal & aShininess,const Handle_TColStd_HArray1OfReal & aTransparency);
-		%feature("compactdefaultargs") Vrml_Material;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Material;
-		 Vrml_Material ();
-		%feature("compactdefaultargs") SetAmbientColor;
-		%feature("autodoc", "	:param aAmbientColor:
-	:type aAmbientColor: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetAmbientColor;
-		void SetAmbientColor (const Handle_Quantity_HArray1OfColor & aAmbientColor);
+		/****************** AmbientColor ******************/
 		%feature("compactdefaultargs") AmbientColor;
-		%feature("autodoc", "	:rtype: Handle_Quantity_HArray1OfColor
-") AmbientColor;
-		Handle_Quantity_HArray1OfColor AmbientColor ();
-		%feature("compactdefaultargs") SetDiffuseColor;
-		%feature("autodoc", "	:param aDiffuseColor:
-	:type aDiffuseColor: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetDiffuseColor;
-		void SetDiffuseColor (const Handle_Quantity_HArray1OfColor & aDiffuseColor);
+		%feature("autodoc", ":rtype: opencascade::handle<Quantity_HArray1OfColor>") AmbientColor;
+		opencascade::handle<Quantity_HArray1OfColor> AmbientColor ();
+
+		/****************** DiffuseColor ******************/
 		%feature("compactdefaultargs") DiffuseColor;
-		%feature("autodoc", "	:rtype: Handle_Quantity_HArray1OfColor
-") DiffuseColor;
-		Handle_Quantity_HArray1OfColor DiffuseColor ();
-		%feature("compactdefaultargs") SetSpecularColor;
-		%feature("autodoc", "	:param aSpecularColor:
-	:type aSpecularColor: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetSpecularColor;
-		void SetSpecularColor (const Handle_Quantity_HArray1OfColor & aSpecularColor);
-		%feature("compactdefaultargs") SpecularColor;
-		%feature("autodoc", "	:rtype: Handle_Quantity_HArray1OfColor
-") SpecularColor;
-		Handle_Quantity_HArray1OfColor SpecularColor ();
-		%feature("compactdefaultargs") SetEmissiveColor;
-		%feature("autodoc", "	:param aEmissiveColor:
-	:type aEmissiveColor: Handle_Quantity_HArray1OfColor &
-	:rtype: None
-") SetEmissiveColor;
-		void SetEmissiveColor (const Handle_Quantity_HArray1OfColor & aEmissiveColor);
+		%feature("autodoc", ":rtype: opencascade::handle<Quantity_HArray1OfColor>") DiffuseColor;
+		opencascade::handle<Quantity_HArray1OfColor> DiffuseColor ();
+
+		/****************** EmissiveColor ******************/
 		%feature("compactdefaultargs") EmissiveColor;
-		%feature("autodoc", "	:rtype: Handle_Quantity_HArray1OfColor
-") EmissiveColor;
-		Handle_Quantity_HArray1OfColor EmissiveColor ();
-		%feature("compactdefaultargs") SetShininess;
-		%feature("autodoc", "	:param aShininess:
-	:type aShininess: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetShininess;
-		void SetShininess (const Handle_TColStd_HArray1OfReal & aShininess);
-		%feature("compactdefaultargs") Shininess;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") Shininess;
-		Handle_TColStd_HArray1OfReal Shininess ();
-		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	:param aTransparency:
-	:type aTransparency: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") SetTransparency;
-		void SetTransparency (const Handle_TColStd_HArray1OfReal & aTransparency);
-		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
-") Transparency;
-		Handle_TColStd_HArray1OfReal Transparency ();
+		%feature("autodoc", ":rtype: opencascade::handle<Quantity_HArray1OfColor>") EmissiveColor;
+		opencascade::handle<Quantity_HArray1OfColor> EmissiveColor ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -1029,7 +1085,86 @@ class Vrml_Material : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetAmbientColor ******************/
+		%feature("compactdefaultargs") SetAmbientColor;
+		%feature("autodoc", ":param aAmbientColor:
+	:type aAmbientColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:rtype: None") SetAmbientColor;
+		void SetAmbientColor (const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor);
+
+		/****************** SetDiffuseColor ******************/
+		%feature("compactdefaultargs") SetDiffuseColor;
+		%feature("autodoc", ":param aDiffuseColor:
+	:type aDiffuseColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:rtype: None") SetDiffuseColor;
+		void SetDiffuseColor (const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor);
+
+		/****************** SetEmissiveColor ******************/
+		%feature("compactdefaultargs") SetEmissiveColor;
+		%feature("autodoc", ":param aEmissiveColor:
+	:type aEmissiveColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:rtype: None") SetEmissiveColor;
+		void SetEmissiveColor (const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor);
+
+		/****************** SetShininess ******************/
+		%feature("compactdefaultargs") SetShininess;
+		%feature("autodoc", ":param aShininess:
+	:type aShininess: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None") SetShininess;
+		void SetShininess (const opencascade::handle<TColStd_HArray1OfReal> & aShininess);
+
+		/****************** SetSpecularColor ******************/
+		%feature("compactdefaultargs") SetSpecularColor;
+		%feature("autodoc", ":param aSpecularColor:
+	:type aSpecularColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:rtype: None") SetSpecularColor;
+		void SetSpecularColor (const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor);
+
+		/****************** SetTransparency ******************/
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", ":param aTransparency:
+	:type aTransparency: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None") SetTransparency;
+		void SetTransparency (const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
+
+		/****************** Shininess ******************/
+		%feature("compactdefaultargs") Shininess;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfReal>") Shininess;
+		opencascade::handle<TColStd_HArray1OfReal> Shininess ();
+
+		/****************** SpecularColor ******************/
+		%feature("compactdefaultargs") SpecularColor;
+		%feature("autodoc", ":rtype: opencascade::handle<Quantity_HArray1OfColor>") SpecularColor;
+		opencascade::handle<Quantity_HArray1OfColor> SpecularColor ();
+
+		/****************** Transparency ******************/
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfReal>") Transparency;
+		opencascade::handle<TColStd_HArray1OfReal> Transparency ();
+
+		/****************** Vrml_Material ******************/
+		%feature("compactdefaultargs") Vrml_Material;
+		%feature("autodoc", ":param aAmbientColor:
+	:type aAmbientColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:param aDiffuseColor:
+	:type aDiffuseColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:param aSpecularColor:
+	:type aSpecularColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:param aEmissiveColor:
+	:type aEmissiveColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:param aShininess:
+	:type aShininess: opencascade::handle<TColStd_HArray1OfReal> &
+	:param aTransparency:
+	:type aTransparency: opencascade::handle<TColStd_HArray1OfReal> &
+	:rtype: None") Vrml_Material;
+		 Vrml_Material (const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor,const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor,const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor,const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor,const opencascade::handle<TColStd_HArray1OfReal> & aShininess,const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
+
+		/****************** Vrml_Material ******************/
+		%feature("compactdefaultargs") Vrml_Material;
+		%feature("autodoc", ":rtype: None") Vrml_Material;
+		 Vrml_Material ();
+
+};
 
 
 %make_alias(Vrml_Material)
@@ -1039,29 +1174,13 @@ class Vrml_Material : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class Vrml_MaterialBinding *
+*****************************/
 %nodefaultctor Vrml_MaterialBinding;
 class Vrml_MaterialBinding {
 	public:
-		%feature("compactdefaultargs") Vrml_MaterialBinding;
-		%feature("autodoc", "	:param aValue:
-	:type aValue: Vrml_MaterialBindingAndNormalBinding
-	:rtype: None
-") Vrml_MaterialBinding;
-		 Vrml_MaterialBinding (const Vrml_MaterialBindingAndNormalBinding aValue);
-		%feature("compactdefaultargs") Vrml_MaterialBinding;
-		%feature("autodoc", "	:rtype: None
-") Vrml_MaterialBinding;
-		 Vrml_MaterialBinding ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param aValue:
-	:type aValue: Vrml_MaterialBindingAndNormalBinding
-	:rtype: None
-") SetValue;
-		void SetValue (const Vrml_MaterialBindingAndNormalBinding aValue);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Vrml_MaterialBindingAndNormalBinding
-") Value;
-		Vrml_MaterialBindingAndNormalBinding Value ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1070,7 +1189,31 @@ class Vrml_MaterialBinding {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetValue ******************/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", ":param aValue:
+	:type aValue: Vrml_MaterialBindingAndNormalBinding
+	:rtype: None") SetValue;
+		void SetValue (const Vrml_MaterialBindingAndNormalBinding aValue);
+
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", ":rtype: Vrml_MaterialBindingAndNormalBinding") Value;
+		Vrml_MaterialBindingAndNormalBinding Value ();
+
+		/****************** Vrml_MaterialBinding ******************/
+		%feature("compactdefaultargs") Vrml_MaterialBinding;
+		%feature("autodoc", ":param aValue:
+	:type aValue: Vrml_MaterialBindingAndNormalBinding
+	:rtype: None") Vrml_MaterialBinding;
+		 Vrml_MaterialBinding (const Vrml_MaterialBindingAndNormalBinding aValue);
+
+		/****************** Vrml_MaterialBinding ******************/
+		%feature("compactdefaultargs") Vrml_MaterialBinding;
+		%feature("autodoc", ":rtype: None") Vrml_MaterialBinding;
+		 Vrml_MaterialBinding ();
+
+};
 
 
 %extend Vrml_MaterialBinding {
@@ -1078,29 +1221,18 @@ class Vrml_MaterialBinding {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class Vrml_MatrixTransform *
+*****************************/
 %nodefaultctor Vrml_MatrixTransform;
 class Vrml_MatrixTransform {
 	public:
-		%feature("compactdefaultargs") Vrml_MatrixTransform;
-		%feature("autodoc", "	:rtype: None
-") Vrml_MatrixTransform;
-		 Vrml_MatrixTransform ();
-		%feature("compactdefaultargs") Vrml_MatrixTransform;
-		%feature("autodoc", "	:param aMatrix:
-	:type aMatrix: gp_Trsf
-	:rtype: None
-") Vrml_MatrixTransform;
-		 Vrml_MatrixTransform (const gp_Trsf & aMatrix);
-		%feature("compactdefaultargs") SetMatrix;
-		%feature("autodoc", "	:param aMatrix:
-	:type aMatrix: gp_Trsf
-	:rtype: None
-") SetMatrix;
-		void SetMatrix (const gp_Trsf & aMatrix);
+		/****************** Matrix ******************/
 		%feature("compactdefaultargs") Matrix;
-		%feature("autodoc", "	:rtype: gp_Trsf
-") Matrix;
+		%feature("autodoc", ":rtype: gp_Trsf") Matrix;
 		gp_Trsf Matrix ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -1109,7 +1241,26 @@ class Vrml_MatrixTransform {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetMatrix ******************/
+		%feature("compactdefaultargs") SetMatrix;
+		%feature("autodoc", ":param aMatrix:
+	:type aMatrix: gp_Trsf
+	:rtype: None") SetMatrix;
+		void SetMatrix (const gp_Trsf & aMatrix);
+
+		/****************** Vrml_MatrixTransform ******************/
+		%feature("compactdefaultargs") Vrml_MatrixTransform;
+		%feature("autodoc", ":rtype: None") Vrml_MatrixTransform;
+		 Vrml_MatrixTransform ();
+
+		/****************** Vrml_MatrixTransform ******************/
+		%feature("compactdefaultargs") Vrml_MatrixTransform;
+		%feature("autodoc", ":param aMatrix:
+	:type aMatrix: gp_Trsf
+	:rtype: None") Vrml_MatrixTransform;
+		 Vrml_MatrixTransform (const gp_Trsf & aMatrix);
+
+};
 
 
 %extend Vrml_MatrixTransform {
@@ -1117,29 +1268,13 @@ class Vrml_MatrixTransform {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************
+* class Vrml_Normal *
+********************/
 %nodefaultctor Vrml_Normal;
-class Vrml_Normal : public MMgt_TShared {
+class Vrml_Normal : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_Normal;
-		%feature("autodoc", "	:param aVector:
-	:type aVector: Handle_TColgp_HArray1OfVec
-	:rtype: None
-") Vrml_Normal;
-		 Vrml_Normal (const Handle_TColgp_HArray1OfVec & aVector);
-		%feature("compactdefaultargs") Vrml_Normal;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Normal;
-		 Vrml_Normal ();
-		%feature("compactdefaultargs") SetVector;
-		%feature("autodoc", "	:param aVector:
-	:type aVector: Handle_TColgp_HArray1OfVec
-	:rtype: None
-") SetVector;
-		void SetVector (const Handle_TColgp_HArray1OfVec & aVector);
-		%feature("compactdefaultargs") Vector;
-		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfVec
-") Vector;
-		Handle_TColgp_HArray1OfVec Vector ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1148,7 +1283,31 @@ class Vrml_Normal : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetVector ******************/
+		%feature("compactdefaultargs") SetVector;
+		%feature("autodoc", ":param aVector:
+	:type aVector: opencascade::handle<TColgp_HArray1OfVec>
+	:rtype: None") SetVector;
+		void SetVector (const opencascade::handle<TColgp_HArray1OfVec> & aVector);
+
+		/****************** Vector ******************/
+		%feature("compactdefaultargs") Vector;
+		%feature("autodoc", ":rtype: opencascade::handle<TColgp_HArray1OfVec>") Vector;
+		opencascade::handle<TColgp_HArray1OfVec> Vector ();
+
+		/****************** Vrml_Normal ******************/
+		%feature("compactdefaultargs") Vrml_Normal;
+		%feature("autodoc", ":param aVector:
+	:type aVector: opencascade::handle<TColgp_HArray1OfVec>
+	:rtype: None") Vrml_Normal;
+		 Vrml_Normal (const opencascade::handle<TColgp_HArray1OfVec> & aVector);
+
+		/****************** Vrml_Normal ******************/
+		%feature("compactdefaultargs") Vrml_Normal;
+		%feature("autodoc", ":rtype: None") Vrml_Normal;
+		 Vrml_Normal ();
+
+};
 
 
 %make_alias(Vrml_Normal)
@@ -1158,29 +1317,13 @@ class Vrml_Normal : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/***************************
+* class Vrml_NormalBinding *
+***************************/
 %nodefaultctor Vrml_NormalBinding;
 class Vrml_NormalBinding {
 	public:
-		%feature("compactdefaultargs") Vrml_NormalBinding;
-		%feature("autodoc", "	:param aValue:
-	:type aValue: Vrml_MaterialBindingAndNormalBinding
-	:rtype: None
-") Vrml_NormalBinding;
-		 Vrml_NormalBinding (const Vrml_MaterialBindingAndNormalBinding aValue);
-		%feature("compactdefaultargs") Vrml_NormalBinding;
-		%feature("autodoc", "	:rtype: None
-") Vrml_NormalBinding;
-		 Vrml_NormalBinding ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param aValue:
-	:type aValue: Vrml_MaterialBindingAndNormalBinding
-	:rtype: None
-") SetValue;
-		void SetValue (const Vrml_MaterialBindingAndNormalBinding aValue);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Vrml_MaterialBindingAndNormalBinding
-") Value;
-		Vrml_MaterialBindingAndNormalBinding Value ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1189,7 +1332,31 @@ class Vrml_NormalBinding {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetValue ******************/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", ":param aValue:
+	:type aValue: Vrml_MaterialBindingAndNormalBinding
+	:rtype: None") SetValue;
+		void SetValue (const Vrml_MaterialBindingAndNormalBinding aValue);
+
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", ":rtype: Vrml_MaterialBindingAndNormalBinding") Value;
+		Vrml_MaterialBindingAndNormalBinding Value ();
+
+		/****************** Vrml_NormalBinding ******************/
+		%feature("compactdefaultargs") Vrml_NormalBinding;
+		%feature("autodoc", ":param aValue:
+	:type aValue: Vrml_MaterialBindingAndNormalBinding
+	:rtype: None") Vrml_NormalBinding;
+		 Vrml_NormalBinding (const Vrml_MaterialBindingAndNormalBinding aValue);
+
+		/****************** Vrml_NormalBinding ******************/
+		%feature("compactdefaultargs") Vrml_NormalBinding;
+		%feature("autodoc", ":rtype: None") Vrml_NormalBinding;
+		 Vrml_NormalBinding ();
+
+};
 
 
 %extend Vrml_NormalBinding {
@@ -1197,65 +1364,33 @@ class Vrml_NormalBinding {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class Vrml_OrthographicCamera *
+********************************/
 %nodefaultctor Vrml_OrthographicCamera;
 class Vrml_OrthographicCamera {
 	public:
-		%feature("compactdefaultargs") Vrml_OrthographicCamera;
-		%feature("autodoc", "	:rtype: None
-") Vrml_OrthographicCamera;
-		 Vrml_OrthographicCamera ();
-		%feature("compactdefaultargs") Vrml_OrthographicCamera;
-		%feature("autodoc", "	:param aPosition:
-	:type aPosition: gp_Vec
-	:param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
-	:param aFocalDistance:
-	:type aFocalDistance: float
-	:param aHeight:
-	:type aHeight: float
-	:rtype: None
-") Vrml_OrthographicCamera;
-		 Vrml_OrthographicCamera (const gp_Vec & aPosition,const Vrml_SFRotation & aOrientation,const Standard_Real aFocalDistance,const Standard_Real aHeight);
-		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "	:param aPosition:
-	:type aPosition: gp_Vec
-	:rtype: None
-") SetPosition;
-		void SetPosition (const gp_Vec & aPosition);
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Position;
-		gp_Vec Position ();
-		%feature("compactdefaultargs") SetOrientation;
-		%feature("autodoc", "	:param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
-	:rtype: None
-") SetOrientation;
-		void SetOrientation (const Vrml_SFRotation & aOrientation);
-		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:rtype: Vrml_SFRotation
-") Orientation;
-		Vrml_SFRotation Orientation ();
-		%feature("compactdefaultargs") SetFocalDistance;
-		%feature("autodoc", "	:param aFocalDistance:
-	:type aFocalDistance: float
-	:rtype: None
-") SetFocalDistance;
-		void SetFocalDistance (const Standard_Real aFocalDistance);
+		/****************** FocalDistance ******************/
 		%feature("compactdefaultargs") FocalDistance;
-		%feature("autodoc", "	:rtype: float
-") FocalDistance;
+		%feature("autodoc", ":rtype: float") FocalDistance;
 		Standard_Real FocalDistance ();
-		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "	:param aHeight:
-	:type aHeight: float
-	:rtype: None
-") SetHeight;
-		void SetHeight (const Standard_Real aHeight);
+
+		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:rtype: float
-") Height;
+		%feature("autodoc", ":rtype: float") Height;
 		Standard_Real Height ();
+
+		/****************** Orientation ******************/
+		%feature("compactdefaultargs") Orientation;
+		%feature("autodoc", ":rtype: Vrml_SFRotation") Orientation;
+		Vrml_SFRotation Orientation ();
+
+		/****************** Position ******************/
+		%feature("compactdefaultargs") Position;
+		%feature("autodoc", ":rtype: gp_Vec") Position;
+		gp_Vec Position ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -1264,7 +1399,53 @@ class Vrml_OrthographicCamera {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetFocalDistance ******************/
+		%feature("compactdefaultargs") SetFocalDistance;
+		%feature("autodoc", ":param aFocalDistance:
+	:type aFocalDistance: float
+	:rtype: None") SetFocalDistance;
+		void SetFocalDistance (const Standard_Real aFocalDistance);
+
+		/****************** SetHeight ******************/
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", ":param aHeight:
+	:type aHeight: float
+	:rtype: None") SetHeight;
+		void SetHeight (const Standard_Real aHeight);
+
+		/****************** SetOrientation ******************/
+		%feature("compactdefaultargs") SetOrientation;
+		%feature("autodoc", ":param aOrientation:
+	:type aOrientation: Vrml_SFRotation &
+	:rtype: None") SetOrientation;
+		void SetOrientation (const Vrml_SFRotation & aOrientation);
+
+		/****************** SetPosition ******************/
+		%feature("compactdefaultargs") SetPosition;
+		%feature("autodoc", ":param aPosition:
+	:type aPosition: gp_Vec
+	:rtype: None") SetPosition;
+		void SetPosition (const gp_Vec & aPosition);
+
+		/****************** Vrml_OrthographicCamera ******************/
+		%feature("compactdefaultargs") Vrml_OrthographicCamera;
+		%feature("autodoc", ":rtype: None") Vrml_OrthographicCamera;
+		 Vrml_OrthographicCamera ();
+
+		/****************** Vrml_OrthographicCamera ******************/
+		%feature("compactdefaultargs") Vrml_OrthographicCamera;
+		%feature("autodoc", ":param aPosition:
+	:type aPosition: gp_Vec
+	:param aOrientation:
+	:type aOrientation: Vrml_SFRotation &
+	:param aFocalDistance:
+	:type aFocalDistance: float
+	:param aHeight:
+	:type aHeight: float
+	:rtype: None") Vrml_OrthographicCamera;
+		 Vrml_OrthographicCamera (const gp_Vec & aPosition,const Vrml_SFRotation & aOrientation,const Standard_Real aFocalDistance,const Standard_Real aHeight);
+
+};
 
 
 %extend Vrml_OrthographicCamera {
@@ -1272,15 +1453,77 @@ class Vrml_OrthographicCamera {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class Vrml_PerspectiveCamera *
+*******************************/
 %nodefaultctor Vrml_PerspectiveCamera;
 class Vrml_PerspectiveCamera {
 	public:
+		/****************** Angle ******************/
+		%feature("compactdefaultargs") Angle;
+		%feature("autodoc", ":rtype: float") Angle;
+		Standard_Real Angle ();
+
+		/****************** FocalDistance ******************/
+		%feature("compactdefaultargs") FocalDistance;
+		%feature("autodoc", ":rtype: float") FocalDistance;
+		Standard_Real FocalDistance ();
+
+		/****************** Orientation ******************/
+		%feature("compactdefaultargs") Orientation;
+		%feature("autodoc", ":rtype: Vrml_SFRotation") Orientation;
+		Vrml_SFRotation Orientation ();
+
+		/****************** Position ******************/
+		%feature("compactdefaultargs") Position;
+		%feature("autodoc", ":rtype: gp_Vec") Position;
+		gp_Vec Position ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** SetAngle ******************/
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", ":param aHeightAngle:
+	:type aHeightAngle: float
+	:rtype: None") SetAngle;
+		void SetAngle (const Standard_Real aHeightAngle);
+
+		/****************** SetFocalDistance ******************/
+		%feature("compactdefaultargs") SetFocalDistance;
+		%feature("autodoc", ":param aFocalDistance:
+	:type aFocalDistance: float
+	:rtype: None") SetFocalDistance;
+		void SetFocalDistance (const Standard_Real aFocalDistance);
+
+		/****************** SetOrientation ******************/
+		%feature("compactdefaultargs") SetOrientation;
+		%feature("autodoc", ":param aOrientation:
+	:type aOrientation: Vrml_SFRotation &
+	:rtype: None") SetOrientation;
+		void SetOrientation (const Vrml_SFRotation & aOrientation);
+
+		/****************** SetPosition ******************/
+		%feature("compactdefaultargs") SetPosition;
+		%feature("autodoc", ":param aPosition:
+	:type aPosition: gp_Vec
+	:rtype: None") SetPosition;
+		void SetPosition (const gp_Vec & aPosition);
+
+		/****************** Vrml_PerspectiveCamera ******************/
 		%feature("compactdefaultargs") Vrml_PerspectiveCamera;
-		%feature("autodoc", "	:rtype: None
-") Vrml_PerspectiveCamera;
+		%feature("autodoc", ":rtype: None") Vrml_PerspectiveCamera;
 		 Vrml_PerspectiveCamera ();
+
+		/****************** Vrml_PerspectiveCamera ******************/
 		%feature("compactdefaultargs") Vrml_PerspectiveCamera;
-		%feature("autodoc", "	:param aPosition:
+		%feature("autodoc", ":param aPosition:
 	:type aPosition: gp_Vec
 	:param aOrientation:
 	:type aOrientation: Vrml_SFRotation &
@@ -1288,58 +1531,10 @@ class Vrml_PerspectiveCamera {
 	:type aFocalDistance: float
 	:param aHeightAngle:
 	:type aHeightAngle: float
-	:rtype: None
-") Vrml_PerspectiveCamera;
+	:rtype: None") Vrml_PerspectiveCamera;
 		 Vrml_PerspectiveCamera (const gp_Vec & aPosition,const Vrml_SFRotation & aOrientation,const Standard_Real aFocalDistance,const Standard_Real aHeightAngle);
-		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "	:param aPosition:
-	:type aPosition: gp_Vec
-	:rtype: None
-") SetPosition;
-		void SetPosition (const gp_Vec & aPosition);
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Position;
-		gp_Vec Position ();
-		%feature("compactdefaultargs") SetOrientation;
-		%feature("autodoc", "	:param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
-	:rtype: None
-") SetOrientation;
-		void SetOrientation (const Vrml_SFRotation & aOrientation);
-		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	:rtype: Vrml_SFRotation
-") Orientation;
-		Vrml_SFRotation Orientation ();
-		%feature("compactdefaultargs") SetFocalDistance;
-		%feature("autodoc", "	:param aFocalDistance:
-	:type aFocalDistance: float
-	:rtype: None
-") SetFocalDistance;
-		void SetFocalDistance (const Standard_Real aFocalDistance);
-		%feature("compactdefaultargs") FocalDistance;
-		%feature("autodoc", "	:rtype: float
-") FocalDistance;
-		Standard_Real FocalDistance ();
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	:param aHeightAngle:
-	:type aHeightAngle: float
-	:rtype: None
-") SetAngle;
-		void SetAngle (const Standard_Real aHeightAngle);
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	:rtype: float
-") Angle;
-		Standard_Real Angle ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_PerspectiveCamera {
@@ -1347,15 +1542,77 @@ class Vrml_PerspectiveCamera {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class Vrml_PointLight *
+************************/
 %nodefaultctor Vrml_PointLight;
 class Vrml_PointLight {
 	public:
+		/****************** Color ******************/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", ":rtype: Quantity_Color") Color;
+		Quantity_Color Color ();
+
+		/****************** Intensity ******************/
+		%feature("compactdefaultargs") Intensity;
+		%feature("autodoc", ":rtype: float") Intensity;
+		Standard_Real Intensity ();
+
+		/****************** Location ******************/
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", ":rtype: gp_Vec") Location;
+		gp_Vec Location ();
+
+		/****************** OnOff ******************/
+		%feature("compactdefaultargs") OnOff;
+		%feature("autodoc", ":rtype: bool") OnOff;
+		Standard_Boolean OnOff ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", ":param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None") SetColor;
+		void SetColor (const Quantity_Color & aColor);
+
+		/****************** SetIntensity ******************/
+		%feature("compactdefaultargs") SetIntensity;
+		%feature("autodoc", ":param aIntensity:
+	:type aIntensity: float
+	:rtype: None") SetIntensity;
+		void SetIntensity (const Standard_Real aIntensity);
+
+		/****************** SetLocation ******************/
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", ":param aLocation:
+	:type aLocation: gp_Vec
+	:rtype: None") SetLocation;
+		void SetLocation (const gp_Vec & aLocation);
+
+		/****************** SetOnOff ******************/
+		%feature("compactdefaultargs") SetOnOff;
+		%feature("autodoc", ":param aOnOff:
+	:type aOnOff: bool
+	:rtype: None") SetOnOff;
+		void SetOnOff (const Standard_Boolean aOnOff);
+
+		/****************** Vrml_PointLight ******************/
 		%feature("compactdefaultargs") Vrml_PointLight;
-		%feature("autodoc", "	:rtype: None
-") Vrml_PointLight;
+		%feature("autodoc", ":rtype: None") Vrml_PointLight;
 		 Vrml_PointLight ();
+
+		/****************** Vrml_PointLight ******************/
 		%feature("compactdefaultargs") Vrml_PointLight;
-		%feature("autodoc", "	:param aOnOff:
+		%feature("autodoc", ":param aOnOff:
 	:type aOnOff: bool
 	:param aIntensity:
 	:type aIntensity: float
@@ -1363,58 +1620,10 @@ class Vrml_PointLight {
 	:type aColor: Quantity_Color &
 	:param aLocation:
 	:type aLocation: gp_Vec
-	:rtype: None
-") Vrml_PointLight;
+	:rtype: None") Vrml_PointLight;
 		 Vrml_PointLight (const Standard_Boolean aOnOff,const Standard_Real aIntensity,const Quantity_Color & aColor,const gp_Vec & aLocation);
-		%feature("compactdefaultargs") SetOnOff;
-		%feature("autodoc", "	:param aOnOff:
-	:type aOnOff: bool
-	:rtype: None
-") SetOnOff;
-		void SetOnOff (const Standard_Boolean aOnOff);
-		%feature("compactdefaultargs") OnOff;
-		%feature("autodoc", "	:rtype: bool
-") OnOff;
-		Standard_Boolean OnOff ();
-		%feature("compactdefaultargs") SetIntensity;
-		%feature("autodoc", "	:param aIntensity:
-	:type aIntensity: float
-	:rtype: None
-") SetIntensity;
-		void SetIntensity (const Standard_Real aIntensity);
-		%feature("compactdefaultargs") Intensity;
-		%feature("autodoc", "	:rtype: float
-") Intensity;
-		Standard_Real Intensity ();
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	:param aColor:
-	:type aColor: Quantity_Color &
-	:rtype: None
-") SetColor;
-		void SetColor (const Quantity_Color & aColor);
-		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	:rtype: Quantity_Color
-") Color;
-		Quantity_Color Color ();
-		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "	:param aLocation:
-	:type aLocation: gp_Vec
-	:rtype: None
-") SetLocation;
-		void SetLocation (const gp_Vec & aLocation);
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Location;
-		gp_Vec Location ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_PointLight {
@@ -1422,37 +1631,18 @@ class Vrml_PointLight {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Vrml_PointSet *
+**********************/
 %nodefaultctor Vrml_PointSet;
 class Vrml_PointSet {
 	public:
-		%feature("compactdefaultargs") Vrml_PointSet;
-		%feature("autodoc", "	:param aStartIndex: default value is 0
-	:type aStartIndex: int
-	:param aNumPoints: default value is -1
-	:type aNumPoints: int
-	:rtype: None
-") Vrml_PointSet;
-		 Vrml_PointSet (const Standard_Integer aStartIndex = 0,const Standard_Integer aNumPoints = -1);
-		%feature("compactdefaultargs") SetStartIndex;
-		%feature("autodoc", "	:param aStartIndex:
-	:type aStartIndex: int
-	:rtype: None
-") SetStartIndex;
-		void SetStartIndex (const Standard_Integer aStartIndex);
-		%feature("compactdefaultargs") StartIndex;
-		%feature("autodoc", "	:rtype: int
-") StartIndex;
-		Standard_Integer StartIndex ();
-		%feature("compactdefaultargs") SetNumPoints;
-		%feature("autodoc", "	:param aNumPoints:
-	:type aNumPoints: int
-	:rtype: None
-") SetNumPoints;
-		void SetNumPoints (const Standard_Integer aNumPoints);
+		/****************** NumPoints ******************/
 		%feature("compactdefaultargs") NumPoints;
-		%feature("autodoc", "	:rtype: int
-") NumPoints;
+		%feature("autodoc", ":rtype: int") NumPoints;
 		Standard_Integer NumPoints ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -1461,7 +1651,35 @@ class Vrml_PointSet {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetNumPoints ******************/
+		%feature("compactdefaultargs") SetNumPoints;
+		%feature("autodoc", ":param aNumPoints:
+	:type aNumPoints: int
+	:rtype: None") SetNumPoints;
+		void SetNumPoints (const Standard_Integer aNumPoints);
+
+		/****************** SetStartIndex ******************/
+		%feature("compactdefaultargs") SetStartIndex;
+		%feature("autodoc", ":param aStartIndex:
+	:type aStartIndex: int
+	:rtype: None") SetStartIndex;
+		void SetStartIndex (const Standard_Integer aStartIndex);
+
+		/****************** StartIndex ******************/
+		%feature("compactdefaultargs") StartIndex;
+		%feature("autodoc", ":rtype: int") StartIndex;
+		Standard_Integer StartIndex ();
+
+		/****************** Vrml_PointSet ******************/
+		%feature("compactdefaultargs") Vrml_PointSet;
+		%feature("autodoc", ":param aStartIndex: default value is 0
+	:type aStartIndex: int
+	:param aNumPoints: default value is -1
+	:type aNumPoints: int
+	:rtype: None") Vrml_PointSet;
+		 Vrml_PointSet (const Standard_Integer aStartIndex = 0,const Standard_Integer aNumPoints = -1);
+
+};
 
 
 %extend Vrml_PointSet {
@@ -1469,29 +1687,13 @@ class Vrml_PointSet {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Vrml_Rotation *
+**********************/
 %nodefaultctor Vrml_Rotation;
 class Vrml_Rotation {
 	public:
-		%feature("compactdefaultargs") Vrml_Rotation;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Rotation;
-		 Vrml_Rotation ();
-		%feature("compactdefaultargs") Vrml_Rotation;
-		%feature("autodoc", "	:param aRotation:
-	:type aRotation: Vrml_SFRotation &
-	:rtype: None
-") Vrml_Rotation;
-		 Vrml_Rotation (const Vrml_SFRotation & aRotation);
-		%feature("compactdefaultargs") SetRotation;
-		%feature("autodoc", "	:param aRotation:
-	:type aRotation: Vrml_SFRotation &
-	:rtype: None
-") SetRotation;
-		void SetRotation (const Vrml_SFRotation & aRotation);
-		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "	:rtype: Vrml_SFRotation
-") Rotation;
-		Vrml_SFRotation Rotation ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1500,7 +1702,31 @@ class Vrml_Rotation {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Rotation ******************/
+		%feature("compactdefaultargs") Rotation;
+		%feature("autodoc", ":rtype: Vrml_SFRotation") Rotation;
+		Vrml_SFRotation Rotation ();
+
+		/****************** SetRotation ******************/
+		%feature("compactdefaultargs") SetRotation;
+		%feature("autodoc", ":param aRotation:
+	:type aRotation: Vrml_SFRotation &
+	:rtype: None") SetRotation;
+		void SetRotation (const Vrml_SFRotation & aRotation);
+
+		/****************** Vrml_Rotation ******************/
+		%feature("compactdefaultargs") Vrml_Rotation;
+		%feature("autodoc", ":rtype: None") Vrml_Rotation;
+		 Vrml_Rotation ();
+
+		/****************** Vrml_Rotation ******************/
+		%feature("compactdefaultargs") Vrml_Rotation;
+		%feature("autodoc", ":param aRotation:
+	:type aRotation: Vrml_SFRotation &
+	:rtype: None") Vrml_Rotation;
+		 Vrml_Rotation (const Vrml_SFRotation & aRotation);
+
+};
 
 
 %extend Vrml_Rotation {
@@ -1508,69 +1734,84 @@ class Vrml_Rotation {
 	__repr__ = _dumps_object
 	}
 };
+
+/*********************
+* class Vrml_SFImage *
+*********************/
 %nodefaultctor Vrml_SFImage;
-class Vrml_SFImage : public MMgt_TShared {
+class Vrml_SFImage : public Standard_Transient {
 	public:
+		/****************** Array ******************/
+		%feature("compactdefaultargs") Array;
+		%feature("autodoc", ":rtype: opencascade::handle<TColStd_HArray1OfInteger>") Array;
+		opencascade::handle<TColStd_HArray1OfInteger> Array ();
+
+		/****************** ArrayFlag ******************/
+		%feature("compactdefaultargs") ArrayFlag;
+		%feature("autodoc", ":rtype: bool") ArrayFlag;
+		Standard_Boolean ArrayFlag ();
+
+		/****************** Height ******************/
+		%feature("compactdefaultargs") Height;
+		%feature("autodoc", ":rtype: int") Height;
+		Standard_Integer Height ();
+
+		/****************** Number ******************/
+		%feature("compactdefaultargs") Number;
+		%feature("autodoc", ":rtype: Vrml_SFImageNumber") Number;
+		Vrml_SFImageNumber Number ();
+
+		/****************** SetArray ******************/
+		%feature("compactdefaultargs") SetArray;
+		%feature("autodoc", ":param anArray:
+	:type anArray: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") SetArray;
+		void SetArray (const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
+
+		/****************** SetHeight ******************/
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", ":param aHeight:
+	:type aHeight: int
+	:rtype: None") SetHeight;
+		void SetHeight (const Standard_Integer aHeight);
+
+		/****************** SetNumber ******************/
+		%feature("compactdefaultargs") SetNumber;
+		%feature("autodoc", ":param aNumber:
+	:type aNumber: Vrml_SFImageNumber
+	:rtype: None") SetNumber;
+		void SetNumber (const Vrml_SFImageNumber aNumber);
+
+		/****************** SetWidth ******************/
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", ":param aWidth:
+	:type aWidth: int
+	:rtype: None") SetWidth;
+		void SetWidth (const Standard_Integer aWidth);
+
+		/****************** Vrml_SFImage ******************/
 		%feature("compactdefaultargs") Vrml_SFImage;
-		%feature("autodoc", "	:rtype: None
-") Vrml_SFImage;
+		%feature("autodoc", ":rtype: None") Vrml_SFImage;
 		 Vrml_SFImage ();
+
+		/****************** Vrml_SFImage ******************/
 		%feature("compactdefaultargs") Vrml_SFImage;
-		%feature("autodoc", "	:param aWidth:
+		%feature("autodoc", ":param aWidth:
 	:type aWidth: int
 	:param aHeight:
 	:type aHeight: int
 	:param aNumber:
 	:type aNumber: Vrml_SFImageNumber
 	:param anArray:
-	:type anArray: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") Vrml_SFImage;
-		 Vrml_SFImage (const Standard_Integer aWidth,const Standard_Integer aHeight,const Vrml_SFImageNumber aNumber,const Handle_TColStd_HArray1OfInteger & anArray);
-		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "	:param aWidth:
-	:type aWidth: int
-	:rtype: None
-") SetWidth;
-		void SetWidth (const Standard_Integer aWidth);
+	:type anArray: opencascade::handle<TColStd_HArray1OfInteger> &
+	:rtype: None") Vrml_SFImage;
+		 Vrml_SFImage (const Standard_Integer aWidth,const Standard_Integer aHeight,const Vrml_SFImageNumber aNumber,const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
+
+		/****************** Width ******************/
 		%feature("compactdefaultargs") Width;
-		%feature("autodoc", "	:rtype: int
-") Width;
+		%feature("autodoc", ":rtype: int") Width;
 		Standard_Integer Width ();
-		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "	:param aHeight:
-	:type aHeight: int
-	:rtype: None
-") SetHeight;
-		void SetHeight (const Standard_Integer aHeight);
-		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:rtype: int
-") Height;
-		Standard_Integer Height ();
-		%feature("compactdefaultargs") SetNumber;
-		%feature("autodoc", "	:param aNumber:
-	:type aNumber: Vrml_SFImageNumber
-	:rtype: None
-") SetNumber;
-		void SetNumber (const Vrml_SFImageNumber aNumber);
-		%feature("compactdefaultargs") Number;
-		%feature("autodoc", "	:rtype: Vrml_SFImageNumber
-") Number;
-		Vrml_SFImageNumber Number ();
-		%feature("compactdefaultargs") SetArray;
-		%feature("autodoc", "	:param anArray:
-	:type anArray: Handle_TColStd_HArray1OfInteger &
-	:rtype: None
-") SetArray;
-		void SetArray (const Handle_TColStd_HArray1OfInteger & anArray);
-		%feature("compactdefaultargs") Array;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
-") Array;
-		Handle_TColStd_HArray1OfInteger Array ();
-		%feature("compactdefaultargs") ArrayFlag;
-		%feature("autodoc", "	:rtype: bool
-") ArrayFlag;
-		Standard_Boolean ArrayFlag ();
+
 };
 
 
@@ -1581,15 +1822,69 @@ class Vrml_SFImage : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class Vrml_SFRotation *
+************************/
 %nodefaultctor Vrml_SFRotation;
 class Vrml_SFRotation {
 	public:
+		/****************** Angle ******************/
+		%feature("compactdefaultargs") Angle;
+		%feature("autodoc", ":rtype: float") Angle;
+		Standard_Real Angle ();
+
+		/****************** RotationX ******************/
+		%feature("compactdefaultargs") RotationX;
+		%feature("autodoc", ":rtype: float") RotationX;
+		Standard_Real RotationX ();
+
+		/****************** RotationY ******************/
+		%feature("compactdefaultargs") RotationY;
+		%feature("autodoc", ":rtype: float") RotationY;
+		Standard_Real RotationY ();
+
+		/****************** RotationZ ******************/
+		%feature("compactdefaultargs") RotationZ;
+		%feature("autodoc", ":rtype: float") RotationZ;
+		Standard_Real RotationZ ();
+
+		/****************** SetAngle ******************/
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", ":param anAngle:
+	:type anAngle: float
+	:rtype: None") SetAngle;
+		void SetAngle (const Standard_Real anAngle);
+
+		/****************** SetRotationX ******************/
+		%feature("compactdefaultargs") SetRotationX;
+		%feature("autodoc", ":param aRotationX:
+	:type aRotationX: float
+	:rtype: None") SetRotationX;
+		void SetRotationX (const Standard_Real aRotationX);
+
+		/****************** SetRotationY ******************/
+		%feature("compactdefaultargs") SetRotationY;
+		%feature("autodoc", ":param aRotationY:
+	:type aRotationY: float
+	:rtype: None") SetRotationY;
+		void SetRotationY (const Standard_Real aRotationY);
+
+		/****************** SetRotationZ ******************/
+		%feature("compactdefaultargs") SetRotationZ;
+		%feature("autodoc", ":param aRotationZ:
+	:type aRotationZ: float
+	:rtype: None") SetRotationZ;
+		void SetRotationZ (const Standard_Real aRotationZ);
+
+		/****************** Vrml_SFRotation ******************/
 		%feature("compactdefaultargs") Vrml_SFRotation;
-		%feature("autodoc", "	:rtype: None
-") Vrml_SFRotation;
+		%feature("autodoc", ":rtype: None") Vrml_SFRotation;
 		 Vrml_SFRotation ();
+
+		/****************** Vrml_SFRotation ******************/
 		%feature("compactdefaultargs") Vrml_SFRotation;
-		%feature("autodoc", "	:param aRotationX:
+		%feature("autodoc", ":param aRotationX:
 	:type aRotationX: float
 	:param aRotationY:
 	:type aRotationY: float
@@ -1597,49 +1892,9 @@ class Vrml_SFRotation {
 	:type aRotationZ: float
 	:param anAngle:
 	:type anAngle: float
-	:rtype: None
-") Vrml_SFRotation;
+	:rtype: None") Vrml_SFRotation;
 		 Vrml_SFRotation (const Standard_Real aRotationX,const Standard_Real aRotationY,const Standard_Real aRotationZ,const Standard_Real anAngle);
-		%feature("compactdefaultargs") SetRotationX;
-		%feature("autodoc", "	:param aRotationX:
-	:type aRotationX: float
-	:rtype: None
-") SetRotationX;
-		void SetRotationX (const Standard_Real aRotationX);
-		%feature("compactdefaultargs") RotationX;
-		%feature("autodoc", "	:rtype: float
-") RotationX;
-		Standard_Real RotationX ();
-		%feature("compactdefaultargs") SetRotationY;
-		%feature("autodoc", "	:param aRotationY:
-	:type aRotationY: float
-	:rtype: None
-") SetRotationY;
-		void SetRotationY (const Standard_Real aRotationY);
-		%feature("compactdefaultargs") RotationY;
-		%feature("autodoc", "	:rtype: float
-") RotationY;
-		Standard_Real RotationY ();
-		%feature("compactdefaultargs") SetRotationZ;
-		%feature("autodoc", "	:param aRotationZ:
-	:type aRotationZ: float
-	:rtype: None
-") SetRotationZ;
-		void SetRotationZ (const Standard_Real aRotationZ);
-		%feature("compactdefaultargs") RotationZ;
-		%feature("autodoc", "	:rtype: float
-") RotationZ;
-		Standard_Real RotationZ ();
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	:param anAngle:
-	:type anAngle: float
-	:rtype: None
-") SetAngle;
-		void SetAngle (const Standard_Real anAngle);
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	:rtype: float
-") Angle;
-		Standard_Real Angle ();
+
 };
 
 
@@ -1648,29 +1903,13 @@ class Vrml_SFRotation {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************
+* class Vrml_Scale *
+*******************/
 %nodefaultctor Vrml_Scale;
 class Vrml_Scale {
 	public:
-		%feature("compactdefaultargs") Vrml_Scale;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Scale;
-		 Vrml_Scale ();
-		%feature("compactdefaultargs") Vrml_Scale;
-		%feature("autodoc", "	:param aScaleFactor:
-	:type aScaleFactor: gp_Vec
-	:rtype: None
-") Vrml_Scale;
-		 Vrml_Scale (const gp_Vec & aScaleFactor);
-		%feature("compactdefaultargs") SetScaleFactor;
-		%feature("autodoc", "	:param aScaleFactor:
-	:type aScaleFactor: gp_Vec
-	:rtype: None
-") SetScaleFactor;
-		void SetScaleFactor (const gp_Vec & aScaleFactor);
-		%feature("compactdefaultargs") ScaleFactor;
-		%feature("autodoc", "	:rtype: gp_Vec
-") ScaleFactor;
-		gp_Vec ScaleFactor ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1679,7 +1918,31 @@ class Vrml_Scale {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** ScaleFactor ******************/
+		%feature("compactdefaultargs") ScaleFactor;
+		%feature("autodoc", ":rtype: gp_Vec") ScaleFactor;
+		gp_Vec ScaleFactor ();
+
+		/****************** SetScaleFactor ******************/
+		%feature("compactdefaultargs") SetScaleFactor;
+		%feature("autodoc", ":param aScaleFactor:
+	:type aScaleFactor: gp_Vec
+	:rtype: None") SetScaleFactor;
+		void SetScaleFactor (const gp_Vec & aScaleFactor);
+
+		/****************** Vrml_Scale ******************/
+		%feature("compactdefaultargs") Vrml_Scale;
+		%feature("autodoc", ":rtype: None") Vrml_Scale;
+		 Vrml_Scale ();
+
+		/****************** Vrml_Scale ******************/
+		%feature("compactdefaultargs") Vrml_Scale;
+		%feature("autodoc", ":param aScaleFactor:
+	:type aScaleFactor: gp_Vec
+	:rtype: None") Vrml_Scale;
+		 Vrml_Scale (const gp_Vec & aScaleFactor);
+
+};
 
 
 %extend Vrml_Scale {
@@ -1687,29 +1950,13 @@ class Vrml_Scale {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_Separator *
+***********************/
 %nodefaultctor Vrml_Separator;
 class Vrml_Separator {
 	public:
-		%feature("compactdefaultargs") Vrml_Separator;
-		%feature("autodoc", "	:param aRenderCulling:
-	:type aRenderCulling: Vrml_SeparatorRenderCulling
-	:rtype: None
-") Vrml_Separator;
-		 Vrml_Separator (const Vrml_SeparatorRenderCulling aRenderCulling);
-		%feature("compactdefaultargs") Vrml_Separator;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Separator;
-		 Vrml_Separator ();
-		%feature("compactdefaultargs") SetRenderCulling;
-		%feature("autodoc", "	:param aRenderCulling:
-	:type aRenderCulling: Vrml_SeparatorRenderCulling
-	:rtype: None
-") SetRenderCulling;
-		void SetRenderCulling (const Vrml_SeparatorRenderCulling aRenderCulling);
-		%feature("compactdefaultargs") RenderCulling;
-		%feature("autodoc", "	:rtype: Vrml_SeparatorRenderCulling
-") RenderCulling;
-		Vrml_SeparatorRenderCulling RenderCulling ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1718,7 +1965,31 @@ class Vrml_Separator {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** RenderCulling ******************/
+		%feature("compactdefaultargs") RenderCulling;
+		%feature("autodoc", ":rtype: Vrml_SeparatorRenderCulling") RenderCulling;
+		Vrml_SeparatorRenderCulling RenderCulling ();
+
+		/****************** SetRenderCulling ******************/
+		%feature("compactdefaultargs") SetRenderCulling;
+		%feature("autodoc", ":param aRenderCulling:
+	:type aRenderCulling: Vrml_SeparatorRenderCulling
+	:rtype: None") SetRenderCulling;
+		void SetRenderCulling (const Vrml_SeparatorRenderCulling aRenderCulling);
+
+		/****************** Vrml_Separator ******************/
+		%feature("compactdefaultargs") Vrml_Separator;
+		%feature("autodoc", ":param aRenderCulling:
+	:type aRenderCulling: Vrml_SeparatorRenderCulling
+	:rtype: None") Vrml_Separator;
+		 Vrml_Separator (const Vrml_SeparatorRenderCulling aRenderCulling);
+
+		/****************** Vrml_Separator ******************/
+		%feature("compactdefaultargs") Vrml_Separator;
+		%feature("autodoc", ":rtype: None") Vrml_Separator;
+		 Vrml_Separator ();
+
+};
 
 
 %extend Vrml_Separator {
@@ -1726,11 +1997,72 @@ class Vrml_Separator {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class Vrml_ShapeHints *
+************************/
 %nodefaultctor Vrml_ShapeHints;
 class Vrml_ShapeHints {
 	public:
+		/****************** Angle ******************/
+		%feature("compactdefaultargs") Angle;
+		%feature("autodoc", ":rtype: float") Angle;
+		Standard_Real Angle ();
+
+		/****************** FaceType ******************/
+		%feature("compactdefaultargs") FaceType;
+		%feature("autodoc", ":rtype: Vrml_FaceType") FaceType;
+		Vrml_FaceType FaceType ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** SetAngle ******************/
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", ":param aAngle:
+	:type aAngle: float
+	:rtype: None") SetAngle;
+		void SetAngle (const Standard_Real aAngle);
+
+		/****************** SetFaceType ******************/
+		%feature("compactdefaultargs") SetFaceType;
+		%feature("autodoc", ":param aFaceType:
+	:type aFaceType: Vrml_FaceType
+	:rtype: None") SetFaceType;
+		void SetFaceType (const Vrml_FaceType aFaceType);
+
+		/****************** SetShapeType ******************/
+		%feature("compactdefaultargs") SetShapeType;
+		%feature("autodoc", ":param aShapeType:
+	:type aShapeType: Vrml_ShapeType
+	:rtype: None") SetShapeType;
+		void SetShapeType (const Vrml_ShapeType aShapeType);
+
+		/****************** SetVertexOrdering ******************/
+		%feature("compactdefaultargs") SetVertexOrdering;
+		%feature("autodoc", ":param aVertexOrdering:
+	:type aVertexOrdering: Vrml_VertexOrdering
+	:rtype: None") SetVertexOrdering;
+		void SetVertexOrdering (const Vrml_VertexOrdering aVertexOrdering);
+
+		/****************** ShapeType ******************/
+		%feature("compactdefaultargs") ShapeType;
+		%feature("autodoc", ":rtype: Vrml_ShapeType") ShapeType;
+		Vrml_ShapeType ShapeType ();
+
+		/****************** VertexOrdering ******************/
+		%feature("compactdefaultargs") VertexOrdering;
+		%feature("autodoc", ":rtype: Vrml_VertexOrdering") VertexOrdering;
+		Vrml_VertexOrdering VertexOrdering ();
+
+		/****************** Vrml_ShapeHints ******************/
 		%feature("compactdefaultargs") Vrml_ShapeHints;
-		%feature("autodoc", "	:param aVertexOrdering: default value is Vrml_UNKNOWN_ORDERING
+		%feature("autodoc", ":param aVertexOrdering: default value is Vrml_UNKNOWN_ORDERING
 	:type aVertexOrdering: Vrml_VertexOrdering
 	:param aShapeType: default value is Vrml_UNKNOWN_SHAPE_TYPE
 	:type aShapeType: Vrml_ShapeType
@@ -1738,58 +2070,10 @@ class Vrml_ShapeHints {
 	:type aFaceType: Vrml_FaceType
 	:param aAngle: default value is 0.5
 	:type aAngle: float
-	:rtype: None
-") Vrml_ShapeHints;
+	:rtype: None") Vrml_ShapeHints;
 		 Vrml_ShapeHints (const Vrml_VertexOrdering aVertexOrdering = Vrml_UNKNOWN_ORDERING,const Vrml_ShapeType aShapeType = Vrml_UNKNOWN_SHAPE_TYPE,const Vrml_FaceType aFaceType = Vrml_CONVEX,const Standard_Real aAngle = 0.5);
-		%feature("compactdefaultargs") SetVertexOrdering;
-		%feature("autodoc", "	:param aVertexOrdering:
-	:type aVertexOrdering: Vrml_VertexOrdering
-	:rtype: None
-") SetVertexOrdering;
-		void SetVertexOrdering (const Vrml_VertexOrdering aVertexOrdering);
-		%feature("compactdefaultargs") VertexOrdering;
-		%feature("autodoc", "	:rtype: Vrml_VertexOrdering
-") VertexOrdering;
-		Vrml_VertexOrdering VertexOrdering ();
-		%feature("compactdefaultargs") SetShapeType;
-		%feature("autodoc", "	:param aShapeType:
-	:type aShapeType: Vrml_ShapeType
-	:rtype: None
-") SetShapeType;
-		void SetShapeType (const Vrml_ShapeType aShapeType);
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "	:rtype: Vrml_ShapeType
-") ShapeType;
-		Vrml_ShapeType ShapeType ();
-		%feature("compactdefaultargs") SetFaceType;
-		%feature("autodoc", "	:param aFaceType:
-	:type aFaceType: Vrml_FaceType
-	:rtype: None
-") SetFaceType;
-		void SetFaceType (const Vrml_FaceType aFaceType);
-		%feature("compactdefaultargs") FaceType;
-		%feature("autodoc", "	:rtype: Vrml_FaceType
-") FaceType;
-		Vrml_FaceType FaceType ();
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	:param aAngle:
-	:type aAngle: float
-	:rtype: None
-") SetAngle;
-		void SetAngle (const Standard_Real aAngle);
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	:rtype: float
-") Angle;
-		Standard_Real Angle ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_ShapeHints {
@@ -1797,25 +2081,13 @@ class Vrml_ShapeHints {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************
+* class Vrml_Sphere *
+********************/
 %nodefaultctor Vrml_Sphere;
 class Vrml_Sphere {
 	public:
-		%feature("compactdefaultargs") Vrml_Sphere;
-		%feature("autodoc", "	:param aRadius: default value is 1
-	:type aRadius: float
-	:rtype: None
-") Vrml_Sphere;
-		 Vrml_Sphere (const Standard_Real aRadius = 1);
-		%feature("compactdefaultargs") SetRadius;
-		%feature("autodoc", "	:param aRadius:
-	:type aRadius: float
-	:rtype: None
-") SetRadius;
-		void SetRadius (const Standard_Real aRadius);
-		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "	:rtype: float
-") Radius;
-		Standard_Real Radius ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1824,7 +2096,26 @@ class Vrml_Sphere {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Radius ******************/
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", ":rtype: float") Radius;
+		Standard_Real Radius ();
+
+		/****************** SetRadius ******************/
+		%feature("compactdefaultargs") SetRadius;
+		%feature("autodoc", ":param aRadius:
+	:type aRadius: float
+	:rtype: None") SetRadius;
+		void SetRadius (const Standard_Real aRadius);
+
+		/****************** Vrml_Sphere ******************/
+		%feature("compactdefaultargs") Vrml_Sphere;
+		%feature("autodoc", ":param aRadius: default value is 1
+	:type aRadius: float
+	:rtype: None") Vrml_Sphere;
+		 Vrml_Sphere (const Standard_Real aRadius = 1);
+
+};
 
 
 %extend Vrml_Sphere {
@@ -1832,15 +2123,113 @@ class Vrml_Sphere {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_SpotLight *
+***********************/
 %nodefaultctor Vrml_SpotLight;
 class Vrml_SpotLight {
 	public:
+		/****************** Color ******************/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", ":rtype: Quantity_Color") Color;
+		Quantity_Color Color ();
+
+		/****************** CutOffAngle ******************/
+		%feature("compactdefaultargs") CutOffAngle;
+		%feature("autodoc", ":rtype: float") CutOffAngle;
+		Standard_Real CutOffAngle ();
+
+		/****************** Direction ******************/
+		%feature("compactdefaultargs") Direction;
+		%feature("autodoc", ":rtype: gp_Vec") Direction;
+		gp_Vec Direction ();
+
+		/****************** DropOffRate ******************/
+		%feature("compactdefaultargs") DropOffRate;
+		%feature("autodoc", ":rtype: float") DropOffRate;
+		Standard_Real DropOffRate ();
+
+		/****************** Intensity ******************/
+		%feature("compactdefaultargs") Intensity;
+		%feature("autodoc", ":rtype: float") Intensity;
+		Standard_Real Intensity ();
+
+		/****************** Location ******************/
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", ":rtype: gp_Vec") Location;
+		gp_Vec Location ();
+
+		/****************** OnOff ******************/
+		%feature("compactdefaultargs") OnOff;
+		%feature("autodoc", ":rtype: bool") OnOff;
+		Standard_Boolean OnOff ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", ":param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None") SetColor;
+		void SetColor (const Quantity_Color & aColor);
+
+		/****************** SetCutOffAngle ******************/
+		%feature("compactdefaultargs") SetCutOffAngle;
+		%feature("autodoc", ":param aCutOffAngle:
+	:type aCutOffAngle: float
+	:rtype: None") SetCutOffAngle;
+		void SetCutOffAngle (const Standard_Real aCutOffAngle);
+
+		/****************** SetDirection ******************/
+		%feature("compactdefaultargs") SetDirection;
+		%feature("autodoc", ":param aDirection:
+	:type aDirection: gp_Vec
+	:rtype: None") SetDirection;
+		void SetDirection (const gp_Vec & aDirection);
+
+		/****************** SetDropOffRate ******************/
+		%feature("compactdefaultargs") SetDropOffRate;
+		%feature("autodoc", ":param aDropOffRate:
+	:type aDropOffRate: float
+	:rtype: None") SetDropOffRate;
+		void SetDropOffRate (const Standard_Real aDropOffRate);
+
+		/****************** SetIntensity ******************/
+		%feature("compactdefaultargs") SetIntensity;
+		%feature("autodoc", ":param aIntensity:
+	:type aIntensity: float
+	:rtype: None") SetIntensity;
+		void SetIntensity (const Standard_Real aIntensity);
+
+		/****************** SetLocation ******************/
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", ":param aLocation:
+	:type aLocation: gp_Vec
+	:rtype: None") SetLocation;
+		void SetLocation (const gp_Vec & aLocation);
+
+		/****************** SetOnOff ******************/
+		%feature("compactdefaultargs") SetOnOff;
+		%feature("autodoc", ":param anOnOff:
+	:type anOnOff: bool
+	:rtype: None") SetOnOff;
+		void SetOnOff (const Standard_Boolean anOnOff);
+
+		/****************** Vrml_SpotLight ******************/
 		%feature("compactdefaultargs") Vrml_SpotLight;
-		%feature("autodoc", "	:rtype: None
-") Vrml_SpotLight;
+		%feature("autodoc", ":rtype: None") Vrml_SpotLight;
 		 Vrml_SpotLight ();
+
+		/****************** Vrml_SpotLight ******************/
 		%feature("compactdefaultargs") Vrml_SpotLight;
-		%feature("autodoc", "	:param aOnOff:
+		%feature("autodoc", ":param aOnOff:
 	:type aOnOff: bool
 	:param aIntensity:
 	:type aIntensity: float
@@ -1854,88 +2243,10 @@ class Vrml_SpotLight {
 	:type aDropOffRate: float
 	:param aCutOffAngle:
 	:type aCutOffAngle: float
-	:rtype: None
-") Vrml_SpotLight;
+	:rtype: None") Vrml_SpotLight;
 		 Vrml_SpotLight (const Standard_Boolean aOnOff,const Standard_Real aIntensity,const Quantity_Color & aColor,const gp_Vec & aLocation,const gp_Vec & aDirection,const Standard_Real aDropOffRate,const Standard_Real aCutOffAngle);
-		%feature("compactdefaultargs") SetOnOff;
-		%feature("autodoc", "	:param anOnOff:
-	:type anOnOff: bool
-	:rtype: None
-") SetOnOff;
-		void SetOnOff (const Standard_Boolean anOnOff);
-		%feature("compactdefaultargs") OnOff;
-		%feature("autodoc", "	:rtype: bool
-") OnOff;
-		Standard_Boolean OnOff ();
-		%feature("compactdefaultargs") SetIntensity;
-		%feature("autodoc", "	:param aIntensity:
-	:type aIntensity: float
-	:rtype: None
-") SetIntensity;
-		void SetIntensity (const Standard_Real aIntensity);
-		%feature("compactdefaultargs") Intensity;
-		%feature("autodoc", "	:rtype: float
-") Intensity;
-		Standard_Real Intensity ();
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	:param aColor:
-	:type aColor: Quantity_Color &
-	:rtype: None
-") SetColor;
-		void SetColor (const Quantity_Color & aColor);
-		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	:rtype: Quantity_Color
-") Color;
-		Quantity_Color Color ();
-		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "	:param aLocation:
-	:type aLocation: gp_Vec
-	:rtype: None
-") SetLocation;
-		void SetLocation (const gp_Vec & aLocation);
-		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Location;
-		gp_Vec Location ();
-		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	:param aDirection:
-	:type aDirection: gp_Vec
-	:rtype: None
-") SetDirection;
-		void SetDirection (const gp_Vec & aDirection);
-		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Direction;
-		gp_Vec Direction ();
-		%feature("compactdefaultargs") SetDropOffRate;
-		%feature("autodoc", "	:param aDropOffRate:
-	:type aDropOffRate: float
-	:rtype: None
-") SetDropOffRate;
-		void SetDropOffRate (const Standard_Real aDropOffRate);
-		%feature("compactdefaultargs") DropOffRate;
-		%feature("autodoc", "	:rtype: float
-") DropOffRate;
-		Standard_Real DropOffRate ();
-		%feature("compactdefaultargs") SetCutOffAngle;
-		%feature("autodoc", "	:param aCutOffAngle:
-	:type aCutOffAngle: float
-	:rtype: None
-") SetCutOffAngle;
-		void SetCutOffAngle (const Standard_Real aCutOffAngle);
-		%feature("compactdefaultargs") CutOffAngle;
-		%feature("autodoc", "	:rtype: float
-") CutOffAngle;
-		Standard_Real CutOffAngle ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_SpotLight {
@@ -1943,25 +2254,13 @@ class Vrml_SpotLight {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************
+* class Vrml_Switch *
+********************/
 %nodefaultctor Vrml_Switch;
 class Vrml_Switch {
 	public:
-		%feature("compactdefaultargs") Vrml_Switch;
-		%feature("autodoc", "	:param aWhichChild: default value is -1
-	:type aWhichChild: int
-	:rtype: None
-") Vrml_Switch;
-		 Vrml_Switch (const Standard_Integer aWhichChild = -1);
-		%feature("compactdefaultargs") SetWhichChild;
-		%feature("autodoc", "	:param aWhichChild:
-	:type aWhichChild: int
-	:rtype: None
-") SetWhichChild;
-		void SetWhichChild (const Standard_Integer aWhichChild);
-		%feature("compactdefaultargs") WhichChild;
-		%feature("autodoc", "	:rtype: int
-") WhichChild;
-		Standard_Integer WhichChild ();
 
         %feature("autodoc", "1");
         %extend{
@@ -1970,7 +2269,26 @@ class Vrml_Switch {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetWhichChild ******************/
+		%feature("compactdefaultargs") SetWhichChild;
+		%feature("autodoc", ":param aWhichChild:
+	:type aWhichChild: int
+	:rtype: None") SetWhichChild;
+		void SetWhichChild (const Standard_Integer aWhichChild);
+
+		/****************** Vrml_Switch ******************/
+		%feature("compactdefaultargs") Vrml_Switch;
+		%feature("autodoc", ":param aWhichChild: default value is -1
+	:type aWhichChild: int
+	:rtype: None") Vrml_Switch;
+		 Vrml_Switch (const Standard_Integer aWhichChild = -1);
+
+		/****************** WhichChild ******************/
+		%feature("compactdefaultargs") WhichChild;
+		%feature("autodoc", ":rtype: int") WhichChild;
+		Standard_Integer WhichChild ();
+
+};
 
 
 %extend Vrml_Switch {
@@ -1978,65 +2296,23 @@ class Vrml_Switch {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************
+* class Vrml_Texture2 *
+**********************/
 %nodefaultctor Vrml_Texture2;
 class Vrml_Texture2 {
 	public:
-		%feature("compactdefaultargs") Vrml_Texture2;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Texture2;
-		 Vrml_Texture2 ();
-		%feature("compactdefaultargs") Vrml_Texture2;
-		%feature("autodoc", "	:param aFilename:
-	:type aFilename: TCollection_AsciiString &
-	:param aImage:
-	:type aImage: Handle_Vrml_SFImage &
-	:param aWrapS:
-	:type aWrapS: Vrml_Texture2Wrap
-	:param aWrapT:
-	:type aWrapT: Vrml_Texture2Wrap
-	:rtype: None
-") Vrml_Texture2;
-		 Vrml_Texture2 (const TCollection_AsciiString & aFilename,const Handle_Vrml_SFImage & aImage,const Vrml_Texture2Wrap aWrapS,const Vrml_Texture2Wrap aWrapT);
-		%feature("compactdefaultargs") SetFilename;
-		%feature("autodoc", "	:param aFilename:
-	:type aFilename: TCollection_AsciiString &
-	:rtype: None
-") SetFilename;
-		void SetFilename (const TCollection_AsciiString & aFilename);
+		/****************** Filename ******************/
 		%feature("compactdefaultargs") Filename;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Filename;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Filename;
 		TCollection_AsciiString Filename ();
-		%feature("compactdefaultargs") SetImage;
-		%feature("autodoc", "	:param aImage:
-	:type aImage: Handle_Vrml_SFImage &
-	:rtype: None
-") SetImage;
-		void SetImage (const Handle_Vrml_SFImage & aImage);
+
+		/****************** Image ******************/
 		%feature("compactdefaultargs") Image;
-		%feature("autodoc", "	:rtype: Handle_Vrml_SFImage
-") Image;
-		Handle_Vrml_SFImage Image ();
-		%feature("compactdefaultargs") SetWrapS;
-		%feature("autodoc", "	:param aWrapS:
-	:type aWrapS: Vrml_Texture2Wrap
-	:rtype: None
-") SetWrapS;
-		void SetWrapS (const Vrml_Texture2Wrap aWrapS);
-		%feature("compactdefaultargs") WrapS;
-		%feature("autodoc", "	:rtype: Vrml_Texture2Wrap
-") WrapS;
-		Vrml_Texture2Wrap WrapS ();
-		%feature("compactdefaultargs") SetWrapT;
-		%feature("autodoc", "	:param aWrapT:
-	:type aWrapT: Vrml_Texture2Wrap
-	:rtype: None
-") SetWrapT;
-		void SetWrapT (const Vrml_Texture2Wrap aWrapT);
-		%feature("compactdefaultargs") WrapT;
-		%feature("autodoc", "	:rtype: Vrml_Texture2Wrap
-") WrapT;
-		Vrml_Texture2Wrap WrapT ();
+		%feature("autodoc", ":rtype: opencascade::handle<Vrml_SFImage>") Image;
+		opencascade::handle<Vrml_SFImage> Image ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -2045,7 +2321,63 @@ class Vrml_Texture2 {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetFilename ******************/
+		%feature("compactdefaultargs") SetFilename;
+		%feature("autodoc", ":param aFilename:
+	:type aFilename: TCollection_AsciiString &
+	:rtype: None") SetFilename;
+		void SetFilename (const TCollection_AsciiString & aFilename);
+
+		/****************** SetImage ******************/
+		%feature("compactdefaultargs") SetImage;
+		%feature("autodoc", ":param aImage:
+	:type aImage: opencascade::handle<Vrml_SFImage> &
+	:rtype: None") SetImage;
+		void SetImage (const opencascade::handle<Vrml_SFImage> & aImage);
+
+		/****************** SetWrapS ******************/
+		%feature("compactdefaultargs") SetWrapS;
+		%feature("autodoc", ":param aWrapS:
+	:type aWrapS: Vrml_Texture2Wrap
+	:rtype: None") SetWrapS;
+		void SetWrapS (const Vrml_Texture2Wrap aWrapS);
+
+		/****************** SetWrapT ******************/
+		%feature("compactdefaultargs") SetWrapT;
+		%feature("autodoc", ":param aWrapT:
+	:type aWrapT: Vrml_Texture2Wrap
+	:rtype: None") SetWrapT;
+		void SetWrapT (const Vrml_Texture2Wrap aWrapT);
+
+		/****************** Vrml_Texture2 ******************/
+		%feature("compactdefaultargs") Vrml_Texture2;
+		%feature("autodoc", ":rtype: None") Vrml_Texture2;
+		 Vrml_Texture2 ();
+
+		/****************** Vrml_Texture2 ******************/
+		%feature("compactdefaultargs") Vrml_Texture2;
+		%feature("autodoc", ":param aFilename:
+	:type aFilename: TCollection_AsciiString &
+	:param aImage:
+	:type aImage: opencascade::handle<Vrml_SFImage> &
+	:param aWrapS:
+	:type aWrapS: Vrml_Texture2Wrap
+	:param aWrapT:
+	:type aWrapT: Vrml_Texture2Wrap
+	:rtype: None") Vrml_Texture2;
+		 Vrml_Texture2 (const TCollection_AsciiString & aFilename,const opencascade::handle<Vrml_SFImage> & aImage,const Vrml_Texture2Wrap aWrapS,const Vrml_Texture2Wrap aWrapT);
+
+		/****************** WrapS ******************/
+		%feature("compactdefaultargs") WrapS;
+		%feature("autodoc", ":rtype: Vrml_Texture2Wrap") WrapS;
+		Vrml_Texture2Wrap WrapS ();
+
+		/****************** WrapT ******************/
+		%feature("compactdefaultargs") WrapT;
+		%feature("autodoc", ":rtype: Vrml_Texture2Wrap") WrapT;
+		Vrml_Texture2Wrap WrapT ();
+
+};
 
 
 %extend Vrml_Texture2 {
@@ -2053,15 +2385,77 @@ class Vrml_Texture2 {
 	__repr__ = _dumps_object
 	}
 };
+
+/*******************************
+* class Vrml_Texture2Transform *
+*******************************/
 %nodefaultctor Vrml_Texture2Transform;
 class Vrml_Texture2Transform {
 	public:
+		/****************** Center ******************/
+		%feature("compactdefaultargs") Center;
+		%feature("autodoc", ":rtype: gp_Vec2d") Center;
+		gp_Vec2d Center ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** Rotation ******************/
+		%feature("compactdefaultargs") Rotation;
+		%feature("autodoc", ":rtype: float") Rotation;
+		Standard_Real Rotation ();
+
+		/****************** ScaleFactor ******************/
+		%feature("compactdefaultargs") ScaleFactor;
+		%feature("autodoc", ":rtype: gp_Vec2d") ScaleFactor;
+		gp_Vec2d ScaleFactor ();
+
+		/****************** SetCenter ******************/
+		%feature("compactdefaultargs") SetCenter;
+		%feature("autodoc", ":param aCenter:
+	:type aCenter: gp_Vec2d
+	:rtype: None") SetCenter;
+		void SetCenter (const gp_Vec2d & aCenter);
+
+		/****************** SetRotation ******************/
+		%feature("compactdefaultargs") SetRotation;
+		%feature("autodoc", ":param aRotation:
+	:type aRotation: float
+	:rtype: None") SetRotation;
+		void SetRotation (const Standard_Real aRotation);
+
+		/****************** SetScaleFactor ******************/
+		%feature("compactdefaultargs") SetScaleFactor;
+		%feature("autodoc", ":param aScaleFactor:
+	:type aScaleFactor: gp_Vec2d
+	:rtype: None") SetScaleFactor;
+		void SetScaleFactor (const gp_Vec2d & aScaleFactor);
+
+		/****************** SetTranslation ******************/
+		%feature("compactdefaultargs") SetTranslation;
+		%feature("autodoc", ":param aTranslation:
+	:type aTranslation: gp_Vec2d
+	:rtype: None") SetTranslation;
+		void SetTranslation (const gp_Vec2d & aTranslation);
+
+		/****************** Translation ******************/
+		%feature("compactdefaultargs") Translation;
+		%feature("autodoc", ":rtype: gp_Vec2d") Translation;
+		gp_Vec2d Translation ();
+
+		/****************** Vrml_Texture2Transform ******************/
 		%feature("compactdefaultargs") Vrml_Texture2Transform;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Texture2Transform;
+		%feature("autodoc", ":rtype: None") Vrml_Texture2Transform;
 		 Vrml_Texture2Transform ();
+
+		/****************** Vrml_Texture2Transform ******************/
 		%feature("compactdefaultargs") Vrml_Texture2Transform;
-		%feature("autodoc", "	:param aTranslation:
+		%feature("autodoc", ":param aTranslation:
 	:type aTranslation: gp_Vec2d
 	:param aRotation:
 	:type aRotation: float
@@ -2069,58 +2463,10 @@ class Vrml_Texture2Transform {
 	:type aScaleFactor: gp_Vec2d
 	:param aCenter:
 	:type aCenter: gp_Vec2d
-	:rtype: None
-") Vrml_Texture2Transform;
+	:rtype: None") Vrml_Texture2Transform;
 		 Vrml_Texture2Transform (const gp_Vec2d & aTranslation,const Standard_Real aRotation,const gp_Vec2d & aScaleFactor,const gp_Vec2d & aCenter);
-		%feature("compactdefaultargs") SetTranslation;
-		%feature("autodoc", "	:param aTranslation:
-	:type aTranslation: gp_Vec2d
-	:rtype: None
-") SetTranslation;
-		void SetTranslation (const gp_Vec2d & aTranslation);
-		%feature("compactdefaultargs") Translation;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") Translation;
-		gp_Vec2d Translation ();
-		%feature("compactdefaultargs") SetRotation;
-		%feature("autodoc", "	:param aRotation:
-	:type aRotation: float
-	:rtype: None
-") SetRotation;
-		void SetRotation (const Standard_Real aRotation);
-		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "	:rtype: float
-") Rotation;
-		Standard_Real Rotation ();
-		%feature("compactdefaultargs") SetScaleFactor;
-		%feature("autodoc", "	:param aScaleFactor:
-	:type aScaleFactor: gp_Vec2d
-	:rtype: None
-") SetScaleFactor;
-		void SetScaleFactor (const gp_Vec2d & aScaleFactor);
-		%feature("compactdefaultargs") ScaleFactor;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") ScaleFactor;
-		gp_Vec2d ScaleFactor ();
-		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "	:param aCenter:
-	:type aCenter: gp_Vec2d
-	:rtype: None
-") SetCenter;
-		void SetCenter (const gp_Vec2d & aCenter);
-		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	:rtype: gp_Vec2d
-") Center;
-		gp_Vec2d Center ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_Texture2Transform {
@@ -2128,29 +2474,18 @@ class Vrml_Texture2Transform {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class Vrml_TextureCoordinate2 *
+********************************/
 %nodefaultctor Vrml_TextureCoordinate2;
-class Vrml_TextureCoordinate2 : public MMgt_TShared {
+class Vrml_TextureCoordinate2 : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
-		%feature("autodoc", "	:rtype: None
-") Vrml_TextureCoordinate2;
-		 Vrml_TextureCoordinate2 ();
-		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
-		%feature("autodoc", "	:param aPoint:
-	:type aPoint: Handle_TColgp_HArray1OfVec2d
-	:rtype: None
-") Vrml_TextureCoordinate2;
-		 Vrml_TextureCoordinate2 (const Handle_TColgp_HArray1OfVec2d & aPoint);
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "	:param aPoint:
-	:type aPoint: Handle_TColgp_HArray1OfVec2d
-	:rtype: None
-") SetPoint;
-		void SetPoint (const Handle_TColgp_HArray1OfVec2d & aPoint);
+		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfVec2d
-") Point;
-		Handle_TColgp_HArray1OfVec2d Point ();
+		%feature("autodoc", ":rtype: opencascade::handle<TColgp_HArray1OfVec2d>") Point;
+		opencascade::handle<TColgp_HArray1OfVec2d> Point ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -2159,7 +2494,26 @@ class Vrml_TextureCoordinate2 : public MMgt_TShared {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetPoint ******************/
+		%feature("compactdefaultargs") SetPoint;
+		%feature("autodoc", ":param aPoint:
+	:type aPoint: opencascade::handle<TColgp_HArray1OfVec2d>
+	:rtype: None") SetPoint;
+		void SetPoint (const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
+
+		/****************** Vrml_TextureCoordinate2 ******************/
+		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
+		%feature("autodoc", ":rtype: None") Vrml_TextureCoordinate2;
+		 Vrml_TextureCoordinate2 ();
+
+		/****************** Vrml_TextureCoordinate2 ******************/
+		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
+		%feature("autodoc", ":param aPoint:
+	:type aPoint: opencascade::handle<TColgp_HArray1OfVec2d>
+	:rtype: None") Vrml_TextureCoordinate2;
+		 Vrml_TextureCoordinate2 (const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
+
+};
 
 
 %make_alias(Vrml_TextureCoordinate2)
@@ -2169,15 +2523,89 @@ class Vrml_TextureCoordinate2 : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_Transform *
+***********************/
 %nodefaultctor Vrml_Transform;
 class Vrml_Transform {
 	public:
+		/****************** Center ******************/
+		%feature("compactdefaultargs") Center;
+		%feature("autodoc", ":rtype: gp_Vec") Center;
+		gp_Vec Center ();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		/****************** Rotation ******************/
+		%feature("compactdefaultargs") Rotation;
+		%feature("autodoc", ":rtype: Vrml_SFRotation") Rotation;
+		Vrml_SFRotation Rotation ();
+
+		/****************** ScaleFactor ******************/
+		%feature("compactdefaultargs") ScaleFactor;
+		%feature("autodoc", ":rtype: gp_Vec") ScaleFactor;
+		gp_Vec ScaleFactor ();
+
+		/****************** ScaleOrientation ******************/
+		%feature("compactdefaultargs") ScaleOrientation;
+		%feature("autodoc", ":rtype: Vrml_SFRotation") ScaleOrientation;
+		Vrml_SFRotation ScaleOrientation ();
+
+		/****************** SetCenter ******************/
+		%feature("compactdefaultargs") SetCenter;
+		%feature("autodoc", ":param aCenter:
+	:type aCenter: gp_Vec
+	:rtype: None") SetCenter;
+		void SetCenter (const gp_Vec & aCenter);
+
+		/****************** SetRotation ******************/
+		%feature("compactdefaultargs") SetRotation;
+		%feature("autodoc", ":param aRotation:
+	:type aRotation: Vrml_SFRotation &
+	:rtype: None") SetRotation;
+		void SetRotation (const Vrml_SFRotation & aRotation);
+
+		/****************** SetScaleFactor ******************/
+		%feature("compactdefaultargs") SetScaleFactor;
+		%feature("autodoc", ":param aScaleFactor:
+	:type aScaleFactor: gp_Vec
+	:rtype: None") SetScaleFactor;
+		void SetScaleFactor (const gp_Vec & aScaleFactor);
+
+		/****************** SetScaleOrientation ******************/
+		%feature("compactdefaultargs") SetScaleOrientation;
+		%feature("autodoc", ":param aScaleOrientation:
+	:type aScaleOrientation: Vrml_SFRotation &
+	:rtype: None") SetScaleOrientation;
+		void SetScaleOrientation (const Vrml_SFRotation & aScaleOrientation);
+
+		/****************** SetTranslation ******************/
+		%feature("compactdefaultargs") SetTranslation;
+		%feature("autodoc", ":param aTranslation:
+	:type aTranslation: gp_Vec
+	:rtype: None") SetTranslation;
+		void SetTranslation (const gp_Vec & aTranslation);
+
+		/****************** Translation ******************/
+		%feature("compactdefaultargs") Translation;
+		%feature("autodoc", ":rtype: gp_Vec") Translation;
+		gp_Vec Translation ();
+
+		/****************** Vrml_Transform ******************/
 		%feature("compactdefaultargs") Vrml_Transform;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Transform;
+		%feature("autodoc", ":rtype: None") Vrml_Transform;
 		 Vrml_Transform ();
+
+		/****************** Vrml_Transform ******************/
 		%feature("compactdefaultargs") Vrml_Transform;
-		%feature("autodoc", "	:param aTranslation:
+		%feature("autodoc", ":param aTranslation:
 	:type aTranslation: gp_Vec
 	:param aRotation:
 	:type aRotation: Vrml_SFRotation &
@@ -2187,68 +2615,10 @@ class Vrml_Transform {
 	:type aScaleOrientation: Vrml_SFRotation &
 	:param aCenter:
 	:type aCenter: gp_Vec
-	:rtype: None
-") Vrml_Transform;
+	:rtype: None") Vrml_Transform;
 		 Vrml_Transform (const gp_Vec & aTranslation,const Vrml_SFRotation & aRotation,const gp_Vec & aScaleFactor,const Vrml_SFRotation & aScaleOrientation,const gp_Vec & aCenter);
-		%feature("compactdefaultargs") SetTranslation;
-		%feature("autodoc", "	:param aTranslation:
-	:type aTranslation: gp_Vec
-	:rtype: None
-") SetTranslation;
-		void SetTranslation (const gp_Vec & aTranslation);
-		%feature("compactdefaultargs") Translation;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Translation;
-		gp_Vec Translation ();
-		%feature("compactdefaultargs") SetRotation;
-		%feature("autodoc", "	:param aRotation:
-	:type aRotation: Vrml_SFRotation &
-	:rtype: None
-") SetRotation;
-		void SetRotation (const Vrml_SFRotation & aRotation);
-		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "	:rtype: Vrml_SFRotation
-") Rotation;
-		Vrml_SFRotation Rotation ();
-		%feature("compactdefaultargs") SetScaleFactor;
-		%feature("autodoc", "	:param aScaleFactor:
-	:type aScaleFactor: gp_Vec
-	:rtype: None
-") SetScaleFactor;
-		void SetScaleFactor (const gp_Vec & aScaleFactor);
-		%feature("compactdefaultargs") ScaleFactor;
-		%feature("autodoc", "	:rtype: gp_Vec
-") ScaleFactor;
-		gp_Vec ScaleFactor ();
-		%feature("compactdefaultargs") SetScaleOrientation;
-		%feature("autodoc", "	:param aScaleOrientation:
-	:type aScaleOrientation: Vrml_SFRotation &
-	:rtype: None
-") SetScaleOrientation;
-		void SetScaleOrientation (const Vrml_SFRotation & aScaleOrientation);
-		%feature("compactdefaultargs") ScaleOrientation;
-		%feature("autodoc", "	:rtype: Vrml_SFRotation
-") ScaleOrientation;
-		Vrml_SFRotation ScaleOrientation ();
-		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "	:param aCenter:
-	:type aCenter: gp_Vec
-	:rtype: None
-") SetCenter;
-		void SetCenter (const gp_Vec & aCenter);
-		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Center;
-		gp_Vec Center ();
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend Vrml_Transform {
@@ -2256,13 +2626,13 @@ class Vrml_Transform {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class Vrml_TransformSeparator *
+********************************/
 %nodefaultctor Vrml_TransformSeparator;
 class Vrml_TransformSeparator {
 	public:
-		%feature("compactdefaultargs") Vrml_TransformSeparator;
-		%feature("autodoc", "	:rtype: None
-") Vrml_TransformSeparator;
-		 Vrml_TransformSeparator ();
 
         %feature("autodoc", "1");
         %extend{
@@ -2271,7 +2641,12 @@ class Vrml_TransformSeparator {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** Vrml_TransformSeparator ******************/
+		%feature("compactdefaultargs") Vrml_TransformSeparator;
+		%feature("autodoc", ":rtype: None") Vrml_TransformSeparator;
+		 Vrml_TransformSeparator ();
+
+};
 
 
 %extend Vrml_TransformSeparator {
@@ -2279,29 +2654,13 @@ class Vrml_TransformSeparator {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class Vrml_Translation *
+*************************/
 %nodefaultctor Vrml_Translation;
 class Vrml_Translation {
 	public:
-		%feature("compactdefaultargs") Vrml_Translation;
-		%feature("autodoc", "	:rtype: None
-") Vrml_Translation;
-		 Vrml_Translation ();
-		%feature("compactdefaultargs") Vrml_Translation;
-		%feature("autodoc", "	:param aTranslation:
-	:type aTranslation: gp_Vec
-	:rtype: None
-") Vrml_Translation;
-		 Vrml_Translation (const gp_Vec & aTranslation);
-		%feature("compactdefaultargs") SetTranslation;
-		%feature("autodoc", "	:param aTranslation:
-	:type aTranslation: gp_Vec
-	:rtype: None
-") SetTranslation;
-		void SetTranslation (const gp_Vec & aTranslation);
-		%feature("compactdefaultargs") Translation;
-		%feature("autodoc", "	:rtype: gp_Vec
-") Translation;
-		gp_Vec Translation ();
 
         %feature("autodoc", "1");
         %extend{
@@ -2310,7 +2669,31 @@ class Vrml_Translation {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetTranslation ******************/
+		%feature("compactdefaultargs") SetTranslation;
+		%feature("autodoc", ":param aTranslation:
+	:type aTranslation: gp_Vec
+	:rtype: None") SetTranslation;
+		void SetTranslation (const gp_Vec & aTranslation);
+
+		/****************** Translation ******************/
+		%feature("compactdefaultargs") Translation;
+		%feature("autodoc", ":rtype: gp_Vec") Translation;
+		gp_Vec Translation ();
+
+		/****************** Vrml_Translation ******************/
+		%feature("compactdefaultargs") Vrml_Translation;
+		%feature("autodoc", ":rtype: None") Vrml_Translation;
+		 Vrml_Translation ();
+
+		/****************** Vrml_Translation ******************/
+		%feature("compactdefaultargs") Vrml_Translation;
+		%feature("autodoc", ":param aTranslation:
+	:type aTranslation: gp_Vec
+	:rtype: None") Vrml_Translation;
+		 Vrml_Translation (const gp_Vec & aTranslation);
+
+};
 
 
 %extend Vrml_Translation {
@@ -2318,49 +2701,28 @@ class Vrml_Translation {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_WWWAnchor *
+***********************/
 %nodefaultctor Vrml_WWWAnchor;
 class Vrml_WWWAnchor {
 	public:
-		%feature("compactdefaultargs") Vrml_WWWAnchor;
-		%feature("autodoc", "	:param aName: default value is ""
-	:type aName: TCollection_AsciiString &
-	:param aDescription: default value is ""
-	:type aDescription: TCollection_AsciiString &
-	:param aMap: default value is Vrml_MAP_NONE
-	:type aMap: Vrml_WWWAnchorMap
-	:rtype: None
-") Vrml_WWWAnchor;
-		 Vrml_WWWAnchor (const TCollection_AsciiString & aName = "",const TCollection_AsciiString & aDescription = "",const Vrml_WWWAnchorMap aMap = Vrml_MAP_NONE);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: TCollection_AsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const TCollection_AsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Name;
-		TCollection_AsciiString Name ();
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "	:param aDescription:
-	:type aDescription: TCollection_AsciiString &
-	:rtype: None
-") SetDescription;
-		void SetDescription (const TCollection_AsciiString & aDescription);
+		/****************** Description ******************/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Description;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Description;
 		TCollection_AsciiString Description ();
-		%feature("compactdefaultargs") SetMap;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: Vrml_WWWAnchorMap
-	:rtype: None
-") SetMap;
-		void SetMap (const Vrml_WWWAnchorMap aMap);
+
+		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "	:rtype: Vrml_WWWAnchorMap
-") Map;
+		%feature("autodoc", ":rtype: Vrml_WWWAnchorMap") Map;
 		Vrml_WWWAnchorMap Map ();
+
+		/****************** Name ******************/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Name;
+		TCollection_AsciiString Name ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -2369,7 +2731,39 @@ class Vrml_WWWAnchor {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetDescription ******************/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", ":param aDescription:
+	:type aDescription: TCollection_AsciiString &
+	:rtype: None") SetDescription;
+		void SetDescription (const TCollection_AsciiString & aDescription);
+
+		/****************** SetMap ******************/
+		%feature("compactdefaultargs") SetMap;
+		%feature("autodoc", ":param aMap:
+	:type aMap: Vrml_WWWAnchorMap
+	:rtype: None") SetMap;
+		void SetMap (const Vrml_WWWAnchorMap aMap);
+
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", ":param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: None") SetName;
+		void SetName (const TCollection_AsciiString & aName);
+
+		/****************** Vrml_WWWAnchor ******************/
+		%feature("compactdefaultargs") Vrml_WWWAnchor;
+		%feature("autodoc", ":param aName: default value is ""
+	:type aName: TCollection_AsciiString &
+	:param aDescription: default value is ""
+	:type aDescription: TCollection_AsciiString &
+	:param aMap: default value is Vrml_MAP_NONE
+	:type aMap: Vrml_WWWAnchorMap
+	:rtype: None") Vrml_WWWAnchor;
+		 Vrml_WWWAnchor (const TCollection_AsciiString & aName = "",const TCollection_AsciiString & aDescription = "",const Vrml_WWWAnchorMap aMap = Vrml_MAP_NONE);
+
+};
 
 
 %extend Vrml_WWWAnchor {
@@ -2377,53 +2771,28 @@ class Vrml_WWWAnchor {
 	__repr__ = _dumps_object
 	}
 };
+
+/***********************
+* class Vrml_WWWInline *
+***********************/
 %nodefaultctor Vrml_WWWInline;
 class Vrml_WWWInline {
 	public:
-		%feature("compactdefaultargs") Vrml_WWWInline;
-		%feature("autodoc", "	:rtype: None
-") Vrml_WWWInline;
-		 Vrml_WWWInline ();
-		%feature("compactdefaultargs") Vrml_WWWInline;
-		%feature("autodoc", "	:param aName:
-	:type aName: TCollection_AsciiString &
-	:param aBboxSize:
-	:type aBboxSize: gp_Vec
-	:param aBboxCenter:
-	:type aBboxCenter: gp_Vec
-	:rtype: None
-") Vrml_WWWInline;
-		 Vrml_WWWInline (const TCollection_AsciiString & aName,const gp_Vec & aBboxSize,const gp_Vec & aBboxCenter);
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param aName:
-	:type aName: TCollection_AsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const TCollection_AsciiString & aName);
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Name;
-		TCollection_AsciiString Name ();
-		%feature("compactdefaultargs") SetBboxSize;
-		%feature("autodoc", "	:param aBboxSize:
-	:type aBboxSize: gp_Vec
-	:rtype: None
-") SetBboxSize;
-		void SetBboxSize (const gp_Vec & aBboxSize);
-		%feature("compactdefaultargs") BboxSize;
-		%feature("autodoc", "	:rtype: gp_Vec
-") BboxSize;
-		gp_Vec BboxSize ();
-		%feature("compactdefaultargs") SetBboxCenter;
-		%feature("autodoc", "	:param aBboxCenter:
-	:type aBboxCenter: gp_Vec
-	:rtype: None
-") SetBboxCenter;
-		void SetBboxCenter (const gp_Vec & aBboxCenter);
+		/****************** BboxCenter ******************/
 		%feature("compactdefaultargs") BboxCenter;
-		%feature("autodoc", "	:rtype: gp_Vec
-") BboxCenter;
+		%feature("autodoc", ":rtype: gp_Vec") BboxCenter;
 		gp_Vec BboxCenter ();
+
+		/****************** BboxSize ******************/
+		%feature("compactdefaultargs") BboxSize;
+		%feature("autodoc", ":rtype: gp_Vec") BboxSize;
+		gp_Vec BboxSize ();
+
+		/****************** Name ******************/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Name;
+		TCollection_AsciiString Name ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -2432,7 +2801,44 @@ class Vrml_WWWInline {
             self->Print(s);
             return s.str();}
         };
-        };
+        		/****************** SetBboxCenter ******************/
+		%feature("compactdefaultargs") SetBboxCenter;
+		%feature("autodoc", ":param aBboxCenter:
+	:type aBboxCenter: gp_Vec
+	:rtype: None") SetBboxCenter;
+		void SetBboxCenter (const gp_Vec & aBboxCenter);
+
+		/****************** SetBboxSize ******************/
+		%feature("compactdefaultargs") SetBboxSize;
+		%feature("autodoc", ":param aBboxSize:
+	:type aBboxSize: gp_Vec
+	:rtype: None") SetBboxSize;
+		void SetBboxSize (const gp_Vec & aBboxSize);
+
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", ":param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: None") SetName;
+		void SetName (const TCollection_AsciiString & aName);
+
+		/****************** Vrml_WWWInline ******************/
+		%feature("compactdefaultargs") Vrml_WWWInline;
+		%feature("autodoc", ":rtype: None") Vrml_WWWInline;
+		 Vrml_WWWInline ();
+
+		/****************** Vrml_WWWInline ******************/
+		%feature("compactdefaultargs") Vrml_WWWInline;
+		%feature("autodoc", ":param aName:
+	:type aName: TCollection_AsciiString &
+	:param aBboxSize:
+	:type aBboxSize: gp_Vec
+	:param aBboxCenter:
+	:type aBboxCenter: gp_Vec
+	:rtype: None") Vrml_WWWInline;
+		 Vrml_WWWInline (const TCollection_AsciiString & aName,const gp_Vec & aBboxSize,const gp_Vec & aBboxCenter);
+
+};
 
 
 %extend Vrml_WWWInline {
@@ -2440,3 +2846,7 @@ class Vrml_WWWInline {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

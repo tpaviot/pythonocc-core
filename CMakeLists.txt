@@ -15,16 +15,21 @@
 ##You should have received a copy of the GNU General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+cmake_minimum_required(VERSION 3.12)
 project(PYTHONOCC)
 
 # set pythonOCC version
-set(PYTHONOCC_VERSION_MAJOR 0)
-set(PYTHONOCC_VERSION_MINOR 18)
-set(PYTHONOCC_VERSION_PATCH 2)
+set(PYTHONOCC_VERSION_MAJOR 7)
+set(PYTHONOCC_VERSION_MINOR 4)
+set(PYTHONOCC_VERSION_PATCH 0)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL)
+set(PYTHONOCC_VERSION_DEVEL -beta)
 
-cmake_minimum_required(VERSION 2.6)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+# for cmake 3.13 and newer, still use old swig style targets
+cmake_policy(SET CMP0078 OLD)
+cmake_policy(SET CMP0086 OLD)
 
 ## cmake policies
 if (NOT CMAKE_VERSION VERSION_LESS "3.13")
@@ -38,11 +43,14 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.13")
     cmake_policy(SET CMP0086 OLD)
 endif()
 
+# Force C++ 11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-  set( PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
-endif( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-set( CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
+if(NOT DEFINED PYTHONOCC_BUILD_TYPE)
+  set(PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type") # By default set release build
+endif(NOT DEFINED PYTHONOCC_BUILD_TYPE)
+set(CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE)
 
 message(STATUS " ${CMAKE_CXX_FLAGS}") 
 set(BUILD_SHARED_LIBS ON)
@@ -59,68 +67,66 @@ endif(APPLE)
 #############################
 # Option_With_Default macro #
 #############################
-macro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
-if( NOT DEFINED ${OPTION_NAME} )
-  set( ${OPTION_NAME} ${OPTION_DEFAULT} )
-endif( NOT DEFINED ${OPTION_NAME} )
-  OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
-endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
+macro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
+  option(${OPTION_NAME} ${OPTION_STRING} ${OPTION_DEFAULT})
+endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
 
-##########
-# Python #
-##########
-find_package(PythonInterp)
-find_package(PythonLibs)
-include_directories(${PYTHON_INCLUDE_PATH})
+#####################################################################
+# OpenGL. If available, enable compilation for Visualization module #
+#####################################################################
+find_package(OpenGL)
+include_directories(OPENGL_INCLUDE_DIR)
 
-##############################################################
-# 32/64 bit detection
-###############################################################
-if(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-  # If in 64bit mode, we have to define the _OCC64 variable
-  add_definitions(-D_OCC64)
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_OCC64)
-  set(BIT 64)
-else(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-  set(BIT 32)
-endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-message(STATUS "Build ${BIT}bit")
+#################
+# Build options #
+#################
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
+# add an option to choose toolkits to compile
+if(OPENGL_FOUND)
+  option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
+else(OPENGL_FOUND)
+  message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
+  set(PYTHONOCC_WRAP_VISU "Compile Visualisation" OFF)
+endif(OPENGL_FOUND)
+option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
+option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
+option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" OFF)
+option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
+option_with_default(OCE_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
 
-# Mingw64 needs MS_WIN64 to be defined (otherwise link failures)
-if(MINGW)
-  message(STATUS "MinGW:")
-  if(BIT MATCHES "64")
-      add_definitions(-DMS_WIN64)
-  endif(BIT MATCHES "64")
-endif(MINGW)
-
-# MACOSX_DEPLOYEMENT_TARGET
-# explicit link to libc++ for recent osx versions
-if(APPLE)
-  message(STATUS "Explicitely link to libc++ on modern osx versions")
-  add_definitions(-stdlib=libc++)
-endif(APPLE)
+############
+# Python 3 #
+############
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
+message(STATUS "Python include directory: ${Python3_INCLUDE_DIR}")
+message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 
 ########
 # SWIG #
 ########
-find_package(SWIG 3.0.9)
+find_package(SWIG 3.0.11 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-
-############
-# FreeType #
-############
-find_package(Freetype REQUIRED)
-include_directories(${FREETYPE_INCLUDE_DIRS})
+if(SWIG_HIDE_WARNINGS)
+  message(STATUS "Disabled SWIG warnings")
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -O -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404 -py3)
+else()
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+endif()
     
 ################################
 # OCE include and lib location #
 ################################
+if(OCE_HIDE_DEPRECATED)
+  message(STATUS "Disabled deprecation warnings for oce")
+  add_definitions(-DOCCT_NO_DEPRECATED)
+endif(OCE_HIDE_DEPRECATED)
+
 if(DEFINED OCE_INCLUDE_PATH)
   if(NOT DEFINED OCE_LIB_PATH)
     message(FATAL_ERROR "OCE_LIB_PATH must be defined")
-  endif (NOT DEFINED OCE_LIB_PATH)
+  endif(NOT DEFINED OCE_LIB_PATH)
   set(OCE_INCLUDE_PATH ${OCE_INCLUDE_PATH} CACHE PATH "OCE include path")
   set(OCE_LIB_PATH ${OCE_LIB_PATH} CACHE PATH "OCE lib path")
   include_directories(${OCE_INCLUDE_PATH})
@@ -128,18 +134,18 @@ if(DEFINED OCE_INCLUDE_PATH)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
-  find_package(OCE 0.18 REQUIRED)
-  # OCE 0.18 relies on OCC 6.9.1
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DOCC_VERSION_HEX=0x060901)
-  if(OCE_FOUND)
-    message(STATUS "OpenCASCADE Community Edition (OCE) found.")
+  find_package(OpenCASCADE 7.4.0 REQUIRED)
+  
+  include_directories(${OpenCASCADE_INCLUDE_DIR})
+  if(OpenCASCADE_FOUND)
+    message(STATUS "OpenCASCADE found.")
     include_directories(${OCE_INCLUDE_DIRS})
-  else()  # set default paths
+  else(OpenCASCADE_FOUND)  # set default paths
     set(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path")
     set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path")
     include_directories(${OCE_INCLUDE_PATH})
     link_directories(${OCE_LIB_PATH})
-  endif(OCE_FOUND)
+  endif(OpenCASCADE_FOUND)
 endif(DEFINED OCE_INCLUDE_PATH)
 
 ################################
@@ -160,21 +166,46 @@ endif(PYTHONOCC_WRAP_SMESH)
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
-set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
+execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
+set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
+message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
 
-# List of OCE shared libraries to link with
-# TODO: this should be build from the module list
+#############################################
+# List of OCE shared libraries to link with #
+#############################################
 set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
-    TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
-set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl TKVoxel TKNIS TKV3d)
-set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
-    TKSTEP TKVRML TKXSBase)
-set(OCE_OCAF_LIBRARIES TKCAF TKCDF TKLCAF TKXCAF TKXDESTEP TKXDEIGES)
+                        TKTopAlgo TKPrim TKBO TKShHealing TKBool TKHLR TKFillet
+                        TKOffset TKFeat TKMesh TKXMesh)
+set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
+set(OCE_DATAEXCHANGE_LIBRARIES TKXSBase TKSTEPBase TKSTEPAttr TKSTEP209 TKSTEP TKIGES
+                               TKXCAF TKXDEIGES TKXDESTEP TKSTL TKVRML TKXmlXCAF TKBinXCAF)
+set(OCE_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
+                       TKStd TKTObj TKBinTObj TKXmlTObj TKVCAF)
+
+################
+# Headers path #
+################
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/headers)
 
 ######################################################
 # Configure Build settings according to the platform #
 ######################################################
+
+# Mingw64 needs MS_WIN64 to be defined (otherwise link failures)
+if(MINGW)
+  message(STATUS "MinGW:")
+  if(${CMAKE_SIZEOF_VOID_P} MATCHES "8")  # 64 bit check
+      add_definitions(-DMS_WIN64)
+  endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+endif(MINGW)
+
+# MACOSX_DEPLOYEMENT_TARGET
+# explicit link to libc++ for recent osx versions
+if(APPLE)
+  message(STATUS "Explicitely link to libc++ on modern osx versions")
+  add_definitions(-stdlib=libc++)
+endif(APPLE)
+
 if(UNIX)
   if(APPLE)
     ######### MacOSX ###########
@@ -183,40 +214,18 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512
-        -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
-  add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H)
+  add_definitions(-DHAVE_CONFIG_H -DCSFDB)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
-    # specific windows defines for python version >=2.6.0
-    execute_process(COMMAND python -c "import sys;print ((2,6)>=sys.version_info[:2])" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
-    if(${PYTHON_26_OR_HIGHER} MATCHES "True")
-      add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
-    endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
-    set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
+    set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DWIN32 -D_WINDOWS)
     set(PLATFORM win)
   else(WIN32)
     message(STATUS "Unknown platform")
   endif(WIN32)
 endif(UNIX)
-message(STATUS "Platform:" ${PLATFORM})
-
-if (APPLE)
-  # find out python linking commands
-  execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_config_vars('CFLAGS')[0])" OUTPUT_VARIABLE PYTHON_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE )
-  execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_config_vars('BLDSHARED')[0].split(' ', 1)[1])" OUTPUT_VARIABLE PYTHON_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE )
-endif(APPLE)
-
-##################################
-# Tells Swig to use py3k option  #
-##################################
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
-
-if(${python_version_major} MATCHES "3")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
-endif(${python_version_major} MATCHES "3")
 
 ################################################
 # Define output path for generated libraries:  #
@@ -242,32 +251,17 @@ else(WIN32)
   set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
 endif(WIN32)
 set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
-message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
-
-############################
-# OpenCASCADE Modules list #
-############################
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
-# add an option to choose toolkits to compile
-option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
-option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
-option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
-option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
 
 ######################
 # SMESH Modules list #
 ######################
 if(PYTHONOCC_WRAP_SMESH)
-  option_with_default(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN "Compile NETGENPlugin wrapper" FALSE)
+  option_with_default(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN "Compile NETGENPlugin wrapper" OFF)
   include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
   # need vtk headers to compile
   #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
   #include_directories(${VTK_INCLUDE_DIRS})
 endif(PYTHONOCC_WRAP_SMESH)
-
-###################
-# Wrapper Modules #
-###################
 
 ##################
 # MODEL Toolkits #
@@ -276,19 +270,8 @@ file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(${OCE_MODULE} python ${FILE})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
     swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-  endif (CMAKE_VERSION VERSION_LESS 3.8)
- 
-  swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
-  if (APPLE)
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  else(APPLE)
-    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-  endif(APPLE)
+    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python3::Module)
 endforeach(OCE_MODULE)
 
 #################
@@ -297,106 +280,34 @@ endforeach(OCE_MODULE)
 if(PYTHONOCC_WRAP_VISU)
     find_package(OpenGL REQUIRED)
     include_directories(OPENGL_INCLUDE_DIR)
-  foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
 
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
+    foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
+      set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+      set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
       swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
+      swig_link_libraries(${OCE_MODULE} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+    endforeach(OCE_MODULE)
 
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
-  endforeach(OCE_MODULE)
   # Build third part modules
   # TODO : the following line is strange but necessary
   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Visualization)
   set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
   set(VISUALIZATION_SOURCE_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
-    )
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp)
 
-  if (CMAKE_VERSION VERSION_LESS 3.8)
-    swig_add_module(Visualization python ${VISUALIZATION_SOURCE_FILES})
-  else (CMAKE_VERSION VERSION_LESS 3.8)
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-  endif()
+    swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
     # if GLX is enabled
-    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} /System/Library/Frameworks/Cocoa.framework)
-    set_target_properties(${SWIG_MODULE_Visualization_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_Visualization_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  else(APPLE)
-    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${PYTHON_LIBRARIES})
+    swig_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
   endif(APPLE)
 
 endif(PYTHONOCC_WRAP_VISU)
-
-##########
-# Addons #
-##########
-execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Addons)
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i PROPERTIES CPLUSPLUS ON)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
-set(ADDONS_SOURCE_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
-)
-
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
-endif()
-
-swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-if (APPLE)
-  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-  swig_link_libraries(Addons ${OPENGL_LIBRARIES})
-else(APPLE)
-  swig_link_libraries(Addons ${PYTHON_LIBRARIES})
-endif(APPLE)
-
-############
-# Splitter #
-############
-execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Splitter)
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i PROPERTIES CPLUSPLUS ON)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter)
-set(SPLITTER_SOURCE_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i
-${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo_Splitter.cxx
-)
-
-if (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_module(GEOMAlgo python ${SPLITTER_SOURCE_FILES})
-else (CMAKE_VERSION VERSION_LESS 3.8)
-  swig_add_library(GEOMAlgo LANGUAGE python SOURCES ${SPLITTER_SOURCE_FILES} TYPE MODULE)
-endif()
-
-swig_link_libraries(GEOMAlgo ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-if (APPLE)
-  set_target_properties(${SWIG_MODULE_GEOMAlgo_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-  set_target_properties(${SWIG_MODULE_GEOMAlgo_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-else(APPLE)
-  swig_link_libraries(GEOMAlgo ${PYTHON_LIBRARIES})
-endif(APPLE)
 
 ################
 # DataExchange #
@@ -405,22 +316,8 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
   foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-     swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
-
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCE_MODULE} ${OCE_DATAEXCHANGE_LIBRARIES} Python3::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
@@ -431,22 +328,8 @@ if(PYTHONOCC_WRAP_OCAF)
   foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${OCE_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-    set_target_properties(${SWIG_MODULE_${OCE_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
-
+    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCE_MODULE}  ${OCE_OCAF_LIBRARIES} Python3::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
@@ -457,22 +340,8 @@ if(PYTHONOCC_WRAP_SMESH)
   foreach(SMESH_MODULE ${SMESH_TOOLKIT})
     set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-
-    if (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_module(${SMESH_MODULE} python ${FILE})
-    else (CMAKE_VERSION VERSION_LESS 3.8)
-      swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    endif()
-
-    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES})
-
-    if (APPLE)
-      set_target_properties(${SWIG_MODULE_${SMESH_MODULE}_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-      set_target_properties(${SWIG_MODULE_${SMESH_MODULE}_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-    else(APPLE)
-      swig_link_libraries(${SMESH_MODULE} ${PYTHON_LIBRARIES})
-    endif(APPLE)
-
+    swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES} Python3::Module)
   endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
@@ -488,67 +357,57 @@ set(BUILD_DIR ${CMAKE_BINARY_DIR}/${LIBRARY_OUTPUT_PATH})
 
 # install pythonOCC modules
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
 if(PYTHONOCC_WRAP_VISU)
 foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_VISU)
 if(PYTHONOCC_WRAP_DATAEXCHANGE)
 foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 if(PYTHONOCC_WRAP_OCAF)
 foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
 # install third part modules
 if(PYTHONOCC_WRAP_VISU)
-install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(TARGETS _Visualization DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+install(TARGETS _Visualization DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endif(PYTHONOCC_WRAP_VISU)
 
 # instal SMESH
 if(PYTHONOCC_WRAP_SMESH)
 foreach(SMESH_MODULE ${SMESH_TOOLKIT})
-    install(FILES ${BUILD_DIR}/${SMESH_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-    install(FILES ${BUILD_DIR}/_${SMESH_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+    install(FILES ${BUILD_DIR}/${SMESH_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(FILES ${BUILD_DIR}/_${SMESH_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
-# install addons
-install(FILES ${BUILD_DIR}/Addons.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(TARGETS _Addons DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+# install Display
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 
 # install LICENSE file
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 
 # install AUTHORS file
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 
 # install __init__.py file
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 
-# install Splitter to Core
-install(FILES ${BUILD_DIR}/GEOMAlgo.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-install(TARGETS _GEOMAlgo DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
-
 # install Extend
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 
 # install Wrapper utils
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Wrapper DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
-
-# install deprecated modules
-file(GLOB DEPRECATED_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/deprecated_modules/*.py)
-install(FILES ${DEPRECATED_MODULES} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )

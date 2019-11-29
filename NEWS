@@ -1,4 +1,24 @@
 ==========================
+Version 7.4.0beta - December 2019
+
+This release require opencascade 7.4.0
+
+* Port to opencascade 7.4.0
+
+* Dropped SMESH support.
+
+==========================
+Version 0.18.2 - December 2019
+
+This release requires oce-0.18 or higher
+
+* wrapper : fixes
+
+* jupyter renderer
+
+THIS RELEASE IS THE LAST ONE DEPENDING ON OCE 0.18x
+
+==========================
 Version 0.18.1 - December 2017
 
 This release requires oce-0.18 or oce-0.18.1.

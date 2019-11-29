@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define TSHORTDOCSTRING
-""
+"TShort module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tshort.html"
 %enddef
 %module (package="OCC.Core", docstring=TSHORTDOCSTRING) TShort
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -37,103 +35,35 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/OccHandle.i
 
 
-%include TShort_headers.i
+%{
+#include<TShort_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<Standard_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
 %wrap_handle(TShort_HArray1OfShortReal)
 %wrap_handle(TShort_HArray2OfShortReal)
 %wrap_handle(TShort_HSequenceOfShortReal)
-%wrap_handle(TShort_SequenceNodeOfSequenceOfShortReal)
+/* end handles declaration */
 
-%nodefaultctor TShort_Array1OfShortReal;
-class TShort_Array1OfShortReal {
-	public:
-		%feature("compactdefaultargs") TShort_Array1OfShortReal;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TShort_Array1OfShortReal;
-		 TShort_Array1OfShortReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") TShort_Array1OfShortReal;
-		%feature("autodoc", "	:param Item:
-	:type Item: Standard_ShortReal &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TShort_Array1OfShortReal;
-		 TShort_Array1OfShortReal (const Standard_ShortReal & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") Init;
-		void Init (const Standard_ShortReal & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_Array1OfShortReal &
-	:rtype: TShort_Array1OfShortReal
-") Assign;
-		const TShort_Array1OfShortReal & Assign (const TShort_Array1OfShortReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_Array1OfShortReal &
-	:rtype: TShort_Array1OfShortReal
-") operator =;
-		const TShort_Array1OfShortReal & operator = (const TShort_Array1OfShortReal & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Standard_ShortReal & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
-};
+/* templates */
+%template(TShort_SequenceOfShortReal) NCollection_Sequence <Standard_ShortReal>;
+%template(TShort_Array2OfShortReal) NCollection_Array2 <Standard_ShortReal>;
+%template(TShort_Array1OfShortReal) NCollection_Array1 <Standard_ShortReal>;
 
-
-
-%extend TShort_Array1OfShortReal {
+%extend NCollection_Array1 <Standard_ShortReal> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -160,654 +90,55 @@ class TShort_Array1OfShortReal {
         if self.current >= self.Upper():
             raise StopIteration
         else:
-            self.current +=1
+            self.current += 1
         return self.Value(self.current)
 
     __next__ = next
-
     }
 };
-%extend TShort_Array1OfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TShort_Array2OfShortReal;
-class TShort_Array2OfShortReal {
-	public:
-		%feature("compactdefaultargs") TShort_Array2OfShortReal;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") TShort_Array2OfShortReal;
-		 TShort_Array2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") TShort_Array2OfShortReal;
-		%feature("autodoc", "	:param Item:
-	:type Item: Standard_ShortReal &
-	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") TShort_Array2OfShortReal;
-		 TShort_Array2OfShortReal (const Standard_ShortReal & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") Init;
-		void Init (const Standard_ShortReal & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_Array2OfShortReal &
-	:rtype: TShort_Array2OfShortReal
-") Assign;
-		const TShort_Array2OfShortReal & Assign (const TShort_Array2OfShortReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_Array2OfShortReal &
-	:rtype: TShort_Array2OfShortReal
-") operator =;
-		const TShort_Array2OfShortReal & operator = (const TShort_Array2OfShortReal & Other);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-};
+/* end templates declaration */
 
+/* typedefs */
+typedef NCollection_Sequence <Standard_ShortReal> TShort_SequenceOfShortReal;
+typedef NCollection_Array2 <Standard_ShortReal> TShort_Array2OfShortReal;
+typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
+/* end typedefs declaration */
 
-%extend TShort_Array2OfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
+/* harray1 class */
+class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Standard_Transient {
+  public:
+    TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper, const  TShort_Array1OfShortReal::value_type& theValue);
+    TShort_HArray1OfShortReal(const  TShort_Array1OfShortReal& theOther);
+    const  TShort_Array1OfShortReal& Array1();
+     TShort_Array1OfShortReal& ChangeArray1();
 };
-%nodefaultctor TShort_HArray1OfShortReal;
-class TShort_HArray1OfShortReal : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TShort_HArray1OfShortReal;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") TShort_HArray1OfShortReal;
-		 TShort_HArray1OfShortReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") TShort_HArray1OfShortReal;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") TShort_HArray1OfShortReal;
-		 TShort_HArray1OfShortReal (const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") Init;
-		void Init (const Standard_ShortReal & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Standard_ShortReal & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: TShort_Array1OfShortReal
-") Array1;
-		const TShort_Array1OfShortReal & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: TShort_Array1OfShortReal
-") ChangeArray1;
-		TShort_Array1OfShortReal & ChangeArray1 ();
-};
-
-
 %make_alias(TShort_HArray1OfShortReal)
 
 
-%extend TShort_HArray1OfShortReal {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
+/* harray2 class */
+class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Standard_Transient {
+  public:
+    TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const  TShort_Array2OfShortReal::value_type& theValue);
+    TShort_HArray2OfShortReal(const  TShort_Array2OfShortReal& theOther);
+    const  TShort_Array2OfShortReal& Array2 ();
+     TShort_Array2OfShortReal& ChangeArray2 (); 
 };
-%extend TShort_HArray1OfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TShort_HArray2OfShortReal;
-class TShort_HArray2OfShortReal : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TShort_HArray2OfShortReal;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") TShort_HArray2OfShortReal;
-		 TShort_HArray2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") TShort_HArray2OfShortReal;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") TShort_HArray2OfShortReal;
-		 TShort_HArray2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Standard_ShortReal &
-	:rtype: None
-") Init;
-		void Init (const Standard_ShortReal & V);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") Array2;
-		%feature("autodoc", "	:rtype: TShort_Array2OfShortReal
-") Array2;
-		const TShort_Array2OfShortReal & Array2 ();
-		%feature("compactdefaultargs") ChangeArray2;
-		%feature("autodoc", "	:rtype: TShort_Array2OfShortReal
-") ChangeArray2;
-		TShort_Array2OfShortReal & ChangeArray2 ();
-};
-
-
 %make_alias(TShort_HArray2OfShortReal)
 
-%extend TShort_HArray2OfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TShort_HSequenceOfShortReal;
-class TShort_HSequenceOfShortReal : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TShort_HSequenceOfShortReal;
-		%feature("autodoc", "	:rtype: None
-") TShort_HSequenceOfShortReal;
-		 TShort_HSequenceOfShortReal ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Standard_ShortReal &
-	:rtype: None
-") Append;
-		void Append (const Standard_ShortReal & anItem);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_TShort_HSequenceOfShortReal &
-	:rtype: None
-") Append;
-		void Append (const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param anItem:
-	:type anItem: Standard_ShortReal &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_ShortReal & anItem);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param aSequence:
-	:type aSequence: Handle_TShort_HSequenceOfShortReal &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
-") Reverse;
-		void Reverse ();
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Standard_ShortReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_TShort_HSequenceOfShortReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Standard_ShortReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param aSequence:
-	:type aSequence: Handle_TShort_HSequenceOfShortReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anOtherIndex:
-	:type anOtherIndex: int
-	:rtype: None
-") Exchange;
-		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Handle_TShort_HSequenceOfShortReal
-") Split;
-		Handle_TShort_HSequenceOfShortReal Split (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:param anItem:
-	:type anItem: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param anIndex:
-	:type anIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer anIndex);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: int
-	:param toIndex:
-	:type toIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("compactdefaultargs") Sequence;
-		%feature("autodoc", "	:rtype: TShort_SequenceOfShortReal
-") Sequence;
-		const TShort_SequenceOfShortReal & Sequence ();
-		%feature("compactdefaultargs") ChangeSequence;
-		%feature("autodoc", "	:rtype: TShort_SequenceOfShortReal
-") ChangeSequence;
-		TShort_SequenceOfShortReal & ChangeSequence ();
-};
 
-
+/* harray2 class */
+class TShort_HSequenceOfShortReal : public  TShort_SequenceOfShortReal, public Standard_Transient {
+    TShort_HSequenceOfShortReal();
+    TShort_HSequenceOfShortReal(const  TShort_SequenceOfShortReal& theOther);
+    const  TShort_SequenceOfShortReal& Sequence();
+    void Append (const  TShort_SequenceOfShortReal::value_type& theItem);
+    void Append ( TShort_SequenceOfShortReal& theSequence);
+     TShort_SequenceOfShortReal& ChangeSequence();
+};
 %make_alias(TShort_HSequenceOfShortReal)
 
-%extend TShort_HSequenceOfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TShort_SequenceNodeOfSequenceOfShortReal;
-class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") TShort_SequenceNodeOfSequenceOfShortReal;
-		%feature("autodoc", "	:param I:
-	:type I: Standard_ShortReal &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") TShort_SequenceNodeOfSequenceOfShortReal;
-		 TShort_SequenceNodeOfSequenceOfShortReal (const Standard_ShortReal & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Standard_ShortReal
-") Value;
-		Standard_ShortReal & Value ();
-};
 
-
-%make_alias(TShort_SequenceNodeOfSequenceOfShortReal)
-
-%extend TShort_SequenceNodeOfSequenceOfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor TShort_SequenceOfShortReal;
-class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") TShort_SequenceOfShortReal;
-		%feature("autodoc", "	:rtype: None
-") TShort_SequenceOfShortReal;
-		 TShort_SequenceOfShortReal ();
-		%feature("compactdefaultargs") TShort_SequenceOfShortReal;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_SequenceOfShortReal &
-	:rtype: None
-") TShort_SequenceOfShortReal;
-		 TShort_SequenceOfShortReal (const TShort_SequenceOfShortReal & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_SequenceOfShortReal &
-	:rtype: TShort_SequenceOfShortReal
-") Assign;
-		const TShort_SequenceOfShortReal & Assign (const TShort_SequenceOfShortReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TShort_SequenceOfShortReal &
-	:rtype: TShort_SequenceOfShortReal
-") operator =;
-		const TShort_SequenceOfShortReal & operator = (const TShort_SequenceOfShortReal & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Standard_ShortReal &
-	:rtype: None
-") Append;
-		void Append (const Standard_ShortReal & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: TShort_SequenceOfShortReal &
-	:rtype: None
-") Append;
-		void Append (TShort_SequenceOfShortReal & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Standard_ShortReal &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_ShortReal & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: TShort_SequenceOfShortReal &
-	:rtype: None
-") Prepend;
-		void Prepend (TShort_SequenceOfShortReal & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Standard_ShortReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Standard_ShortReal & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: TShort_SequenceOfShortReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,TShort_SequenceOfShortReal & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Standard_ShortReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Standard_ShortReal & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: TShort_SequenceOfShortReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,TShort_SequenceOfShortReal & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Standard_ShortReal
-") First;
-		const Standard_ShortReal & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Standard_ShortReal
-") Last;
-		const Standard_ShortReal & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: TShort_SequenceOfShortReal &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,TShort_SequenceOfShortReal & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") Value;
-		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Standard_ShortReal &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Standard_ShortReal & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Standard_ShortReal
-") ChangeValue;
-		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend TShort_SequenceOfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,36 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define GEOMABSDOCSTRING
-"This package gives resources for Geometric applications
-
-it contains :
-CurveType enumeration to describe the different type of
-curves
-
-SurfaceType enumeration to describe the different type of
-surfaces
-
-Shape enumeration to describe the continuity of curve
-or surface
-
-CurveForm enumeration to describe the specific form of
-curve
-
-SurfaceForm enumeration to describe the specific form of
-surface
-
-BSplKnotDistribution enumeration to describe the
-repartition of set of knots
-
-UVSense enumeration to describe the orientation of
-the parametric surface"
+"GeomAbs module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomabs.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMABSDOCSTRING) GeomAbs
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -59,11 +35,19 @@ the parametric surface"
 %include ../common/OccHandle.i
 
 
-%include GeomAbs_headers.i
+%{
+#include<GeomAbs_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 enum GeomAbs_IsoType {
 	GeomAbs_IsoU = 0,
@@ -99,7 +83,8 @@ enum GeomAbs_CurveType {
 	GeomAbs_Parabola = 4,
 	GeomAbs_BezierCurve = 5,
 	GeomAbs_BSplineCurve = 6,
-	GeomAbs_OtherCurve = 7,
+	GeomAbs_OffsetCurve = 7,
+	GeomAbs_OtherCurve = 8,
 };
 
 enum GeomAbs_SurfaceForm {
@@ -149,4 +134,15 @@ enum GeomAbs_UVSense {
 
 /* end public enums declaration */
 
+/* handles */
+/* end handles declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

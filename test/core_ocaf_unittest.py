@@ -55,7 +55,7 @@ class TestOCAF(unittest.TestCase):
         ''' Creates an OCAF app and an empty document '''
         # create an handle to a document
         doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
-        self.assertFalse(doc.IsNull())
+        self.assertFalse(doc is None)
 
     def test_write_step_file(self):
         ''' Exports a colored box into a STEP file '''

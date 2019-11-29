@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,17 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define STEPCAFCONTROLDOCSTRING
-"-Purpose : This package provides external access and control for STEP,
-on the level of CAF (shapes with attributes, external
-references etc.)
-"
+"STEPCAFControl module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -40,63 +35,149 @@ references etc.)
 %include ../common/OccHandle.i
 
 
-%include STEPCAFControl_headers.i
+%{
+#include<STEPCAFControl_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<StepShape_module.hxx>
+#include<StepBasic_module.hxx>
+#include<STEPControl_module.hxx>
+#include<TopoDS_module.hxx>
+#include<TDF_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TCollection_module.hxx>
+#include<XSControl_module.hxx>
+#include<XCAFDimTolObjects_module.hxx>
+#include<StepDimTol_module.hxx>
+#include<StepRepr_module.hxx>
+#include<StepVisual_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<STEPConstruct_module.hxx>
+#include<TDocStd_module.hxx>
+#include<Resource_module.hxx>
+#include<Interface_module.hxx>
+#include<TopLoc_module.hxx>
+#include<TopTools_module.hxx>
+#include<CDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<Message_module.hxx>
+#include<Quantity_module.hxx>
+#include<StepGeom_module.hxx>
+#include<CDM_module.hxx>
+#include<StepAP203_module.hxx>
+#include<Resource_module.hxx>
+#include<StepVisual_module.hxx>
+#include<StepData_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<IFSelect_module.hxx>
+#include<Transfer_module.hxx>
+#include<Resource_module.hxx>
+#include<TopLoc_module.hxx>
+#include<XCAFView_module.hxx>
+#include<XSControl_module.hxx>
+#include<StepRepr_module.hxx>
+#include<TDataStd_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import StepShape.i
+%import StepBasic.i
+%import STEPControl.i
+%import TopoDS.i
+%import TDF.i
+%import IFSelect.i
+%import TCollection.i
+%import XSControl.i
+%import XCAFDimTolObjects.i
+%import StepDimTol.i
+%import StepRepr.i
+%import StepVisual.i
+%import XCAFDoc.i
+%import STEPConstruct.i
+%import TDocStd.i
+%import Resource.i
 /* public enums */
 /* end public enums declaration */
 
+/* handles */
 %wrap_handle(STEPCAFControl_ActorWrite)
 %wrap_handle(STEPCAFControl_Controller)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfLabelShape)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfShapePD)
-%wrap_handle(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR)
-%wrap_handle(STEPCAFControl_DictionaryOfExternFile)
 %wrap_handle(STEPCAFControl_ExternFile)
-%wrap_handle(STEPCAFControl_StackItemOfDictionaryOfExternFile)
+/* end handles declaration */
 
+/* templates */
+%template(STEPCAFControl_DataMapOfPDExternFile) NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>;
+%template(STEPCAFControl_DataMapOfShapeSDR) NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>;
+%template(STEPCAFControl_DataMapOfShapePD) NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepBasic_ProductDefinition>, TopTools_ShapeMapHasher>;
+%template(STEPCAFControl_DataMapOfLabelExternFile) NCollection_DataMap <TDF_Label , opencascade::handle <STEPCAFControl_ExternFile>, TDF_LabelMapHasher>;
+%template(STEPCAFControl_DataMapOfSDRExternFile) NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>;
+%template(STEPCAFControl_DataMapOfLabelShape) NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfPDExternFile;
+typedef NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapeSDR;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepBasic_ProductDefinition>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapePD;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <StepBasic_ProductDefinition>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
+typedef NCollection_DataMap <TDF_Label , opencascade::handle <STEPCAFControl_ExternFile>, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelExternFile;
+typedef NCollection_DataMap <TDF_Label , opencascade::handle <STEPCAFControl_ExternFile>, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
+typedef NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfSDRExternFile;
+typedef NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
+typedef NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelShape;
+typedef NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
+/* end typedefs declaration */
+
+/**********************************
+* class STEPCAFControl_ActorWrite *
+**********************************/
 %nodefaultctor STEPCAFControl_ActorWrite;
 class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_ActorWrite;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_ActorWrite;
-		 STEPCAFControl_ActorWrite ();
-		%feature("compactdefaultargs") IsAssembly;
-		%feature("autodoc", "	* Check whether shape S is assembly Returns True if shape is registered in assemblies map
+		/****************** ClearMap ******************/
+		%feature("compactdefaultargs") ClearMap;
+		%feature("autodoc", "* Clears map of shapes registered as assemblies
+	:rtype: None") ClearMap;
+		void ClearMap ();
 
+		/****************** IsAssembly ******************/
+		%feature("compactdefaultargs") IsAssembly;
+		%feature("autodoc", "* Check whether shape S is assembly Returns True if shape is registered in assemblies map
 	:param S:
 	:type S: TopoDS_Shape &
-	:rtype: bool
-") IsAssembly;
+	:rtype: bool") IsAssembly;
 		virtual Standard_Boolean IsAssembly (TopoDS_Shape & S);
-		%feature("compactdefaultargs") SetStdMode;
-		%feature("autodoc", "	* Set standard mode of work In standard mode Actor (default) behaves exactly as its ancestor, also map is cleared
 
+		/****************** RegisterAssembly ******************/
+		%feature("compactdefaultargs") RegisterAssembly;
+		%feature("autodoc", "* Registers shape to be written as assembly The shape should be TopoDS_Compound (else does nothing)
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None") RegisterAssembly;
+		void RegisterAssembly (const TopoDS_Shape & S);
+
+		/****************** STEPCAFControl_ActorWrite ******************/
+		%feature("compactdefaultargs") STEPCAFControl_ActorWrite;
+		%feature("autodoc", ":rtype: None") STEPCAFControl_ActorWrite;
+		 STEPCAFControl_ActorWrite ();
+
+		/****************** SetStdMode ******************/
+		%feature("compactdefaultargs") SetStdMode;
+		%feature("autodoc", "* Set standard mode of work In standard mode Actor (default) behaves exactly as its ancestor, also map is cleared
 	:param stdmode: default value is Standard_True
 	:type stdmode: bool
-	:rtype: None
-") SetStdMode;
+	:rtype: None") SetStdMode;
 		void SetStdMode (const Standard_Boolean stdmode = Standard_True);
-		%feature("compactdefaultargs") ClearMap;
-		%feature("autodoc", "	* Clears map of shapes registered as assemblies
 
-	:rtype: None
-") ClearMap;
-		void ClearMap ();
-		%feature("compactdefaultargs") RegisterAssembly;
-		%feature("autodoc", "	* Registers shape to be written as assembly The shape should be TopoDS_Compound (else does nothing)
-
-	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") RegisterAssembly;
-		void RegisterAssembly (const TopoDS_Shape & S);
 };
 
 
@@ -107,21 +188,25 @@ class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 	__repr__ = _dumps_object
 	}
 };
+
+/**********************************
+* class STEPCAFControl_Controller *
+**********************************/
 %nodefaultctor STEPCAFControl_Controller;
 class STEPCAFControl_Controller : public STEPControl_Controller {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_Controller;
-		%feature("autodoc", "	* Initializes the use of STEP Norm (the first time)
-
-	:rtype: None
-") STEPCAFControl_Controller;
-		 STEPCAFControl_Controller ();
+		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Standard Initialisation. It creates a Controller for STEP-XCAF and records it to various names, available to select it later Returns True when done, False if could not be done
-
-	:rtype: bool
-") Init;
+		%feature("autodoc", "* Standard Initialisation. It creates a Controller for STEP-XCAF and records it to various names, available to select it later Returns True when done, False if could not be done
+	:rtype: bool") Init;
 		static Standard_Boolean Init ();
+
+		/****************** STEPCAFControl_Controller ******************/
+		%feature("compactdefaultargs") STEPCAFControl_Controller;
+		%feature("autodoc", "* Initializes the use of STEP Norm (the first time)
+	:rtype: None") STEPCAFControl_Controller;
+		 STEPCAFControl_Controller ();
+
 };
 
 
@@ -132,1120 +217,91 @@ class STEPCAFControl_Controller : public STEPControl_Controller {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfLabelExternFile &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile (const STEPCAFControl_DataMapOfLabelExternFile & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfLabelExternFile &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfLabelExternFile & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TDF_Label
-") Key;
-		const TDF_Label & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
 
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfLabelShape &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape (const STEPCAFControl_DataMapOfLabelShape & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfLabelShape &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfLabelShape & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TDF_Label
-") Key;
-		const TDF_Label & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Value;
-		const TopoDS_Shape  Value ();
-};
-
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfPDExternFile &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile (const STEPCAFControl_DataMapOfPDExternFile & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfPDExternFile &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfPDExternFile & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
-") Key;
-		Handle_StepBasic_ProductDefinition Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
-
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfSDRExternFile &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile (const STEPCAFControl_DataMapOfSDRExternFile & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfSDRExternFile &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfSDRExternFile & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") Key;
-		Handle_StepShape_ShapeDefinitionRepresentation Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
-
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfShapePD ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfShapePD &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfShapePD (const STEPCAFControl_DataMapOfShapePD & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfShapePD &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfShapePD & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
-") Value;
-		Handle_StepBasic_ProductDefinition Value ();
-};
-
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapePD {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR ();
-		%feature("compactdefaultargs") STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfShapeSDR &
-	:rtype: None
-") STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-		 STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR (const STEPCAFControl_DataMapOfShapeSDR & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: STEPCAFControl_DataMapOfShapeSDR &
-	:rtype: None
-") Initialize;
-		void Initialize (const STEPCAFControl_DataMapOfShapeSDR & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		const TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") Value;
-		Handle_StepShape_ShapeDefinitionRepresentation Value ();
-};
-
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
-class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
-		 STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile (const TDF_Label & K,const Handle_STEPCAFControl_ExternFile & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TDF_Label
-") Key;
-		TDF_Label & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
-class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:param I:
-	:type I: TopoDS_Shape &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
-		 STEPCAFControl_DataMapNodeOfDataMapOfLabelShape (const TDF_Label & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TDF_Label
-") Key;
-		TDF_Label & Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Value;
-		TopoDS_Shape  Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfLabelShape)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
-class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
-		 STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile (const Handle_StepBasic_ProductDefinition & K,const Handle_STEPCAFControl_ExternFile & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
-") Key;
-		Handle_StepBasic_ProductDefinition Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
-class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
-		 STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile (const Handle_StepShape_ShapeDefinitionRepresentation & K,const Handle_STEPCAFControl_ExternFile & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") Key;
-		Handle_StepShape_ShapeDefinitionRepresentation Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
-class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_StepBasic_ProductDefinition &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
-		 STEPCAFControl_DataMapNodeOfDataMapOfShapePD (const TopoDS_Shape & K,const Handle_StepBasic_ProductDefinition & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
-") Value;
-		Handle_StepBasic_ProductDefinition Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfShapePD)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
-class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_StepShape_ShapeDefinitionRepresentation &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
-		 STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR (const TopoDS_Shape & K,const Handle_StepShape_ShapeDefinitionRepresentation & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Key;
-		TopoDS_Shape  Key ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") Value;
-		Handle_StepShape_ShapeDefinitionRepresentation Value ();
-};
-
-
-%make_alias(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR)
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfLabelExternFile;
-class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfLabelExternFile;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfLabelExternFile;
-		 STEPCAFControl_DataMapOfLabelExternFile (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfLabelExternFile &
-	:rtype: STEPCAFControl_DataMapOfLabelExternFile
-") Assign;
-		STEPCAFControl_DataMapOfLabelExternFile & Assign (const STEPCAFControl_DataMapOfLabelExternFile & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfLabelExternFile &
-	:rtype: STEPCAFControl_DataMapOfLabelExternFile
-") operator =;
-		STEPCAFControl_DataMapOfLabelExternFile & operator = (const STEPCAFControl_DataMapOfLabelExternFile & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TDF_Label & K,const Handle_STEPCAFControl_ExternFile & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TDF_Label & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TDF_Label & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") Find;
-		Handle_STEPCAFControl_ExternFile Find (const TDF_Label & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") ChangeFind;
-		Handle_STEPCAFControl_ExternFile ChangeFind (const TDF_Label & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TDF_Label & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TDF_Label & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfLabelExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfLabelShape;
-class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfLabelShape;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfLabelShape;
-		 STEPCAFControl_DataMapOfLabelShape (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfLabelShape &
-	:rtype: STEPCAFControl_DataMapOfLabelShape
-") Assign;
-		STEPCAFControl_DataMapOfLabelShape & Assign (const STEPCAFControl_DataMapOfLabelShape & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfLabelShape &
-	:rtype: STEPCAFControl_DataMapOfLabelShape
-") operator =;
-		STEPCAFControl_DataMapOfLabelShape & operator = (const STEPCAFControl_DataMapOfLabelShape & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:param I:
-	:type I: TopoDS_Shape &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TDF_Label & K,const TopoDS_Shape & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TDF_Label & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TDF_Label & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: TopoDS_Shape
-") Find;
-		const TopoDS_Shape  Find (const TDF_Label & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: TopoDS_Shape
-") ChangeFind;
-		TopoDS_Shape  ChangeFind (const TDF_Label & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TDF_Label & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TDF_Label &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TDF_Label & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfLabelShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfPDExternFile;
-class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfPDExternFile;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfPDExternFile;
-		 STEPCAFControl_DataMapOfPDExternFile (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfPDExternFile &
-	:rtype: STEPCAFControl_DataMapOfPDExternFile
-") Assign;
-		STEPCAFControl_DataMapOfPDExternFile & Assign (const STEPCAFControl_DataMapOfPDExternFile & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfPDExternFile &
-	:rtype: STEPCAFControl_DataMapOfPDExternFile
-") operator =;
-		STEPCAFControl_DataMapOfPDExternFile & operator = (const STEPCAFControl_DataMapOfPDExternFile & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const Handle_StepBasic_ProductDefinition & K,const Handle_STEPCAFControl_ExternFile & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const Handle_StepBasic_ProductDefinition & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const Handle_StepBasic_ProductDefinition & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") Find;
-		Handle_STEPCAFControl_ExternFile Find (const Handle_StepBasic_ProductDefinition & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") ChangeFind;
-		Handle_STEPCAFControl_ExternFile ChangeFind (const Handle_StepBasic_ProductDefinition & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const Handle_StepBasic_ProductDefinition & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepBasic_ProductDefinition &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const Handle_StepBasic_ProductDefinition & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfPDExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfSDRExternFile;
-class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfSDRExternFile;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfSDRExternFile;
-		 STEPCAFControl_DataMapOfSDRExternFile (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfSDRExternFile &
-	:rtype: STEPCAFControl_DataMapOfSDRExternFile
-") Assign;
-		STEPCAFControl_DataMapOfSDRExternFile & Assign (const STEPCAFControl_DataMapOfSDRExternFile & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfSDRExternFile &
-	:rtype: STEPCAFControl_DataMapOfSDRExternFile
-") operator =;
-		STEPCAFControl_DataMapOfSDRExternFile & operator = (const STEPCAFControl_DataMapOfSDRExternFile & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:param I:
-	:type I: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const Handle_StepShape_ShapeDefinitionRepresentation & K,const Handle_STEPCAFControl_ExternFile & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") Find;
-		Handle_STEPCAFControl_ExternFile Find (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: Handle_STEPCAFControl_ExternFile
-") ChangeFind;
-		Handle_STEPCAFControl_ExternFile ChangeFind (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const Handle_StepShape_ShapeDefinitionRepresentation & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfSDRExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfShapePD;
-class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfShapePD;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfShapePD;
-		 STEPCAFControl_DataMapOfShapePD (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfShapePD &
-	:rtype: STEPCAFControl_DataMapOfShapePD
-") Assign;
-		STEPCAFControl_DataMapOfShapePD & Assign (const STEPCAFControl_DataMapOfShapePD & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfShapePD &
-	:rtype: STEPCAFControl_DataMapOfShapePD
-") operator =;
-		STEPCAFControl_DataMapOfShapePD & operator = (const STEPCAFControl_DataMapOfShapePD & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_StepBasic_ProductDefinition &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const Handle_StepBasic_ProductDefinition & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_StepBasic_ProductDefinition
-") Find;
-		Handle_StepBasic_ProductDefinition Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_StepBasic_ProductDefinition
-") ChangeFind;
-		Handle_StepBasic_ProductDefinition ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfShapePD {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DataMapOfShapeSDR;
-class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DataMapOfShapeSDR;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") STEPCAFControl_DataMapOfShapeSDR;
-		 STEPCAFControl_DataMapOfShapeSDR (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfShapeSDR &
-	:rtype: STEPCAFControl_DataMapOfShapeSDR
-") Assign;
-		STEPCAFControl_DataMapOfShapeSDR & Assign (const STEPCAFControl_DataMapOfShapeSDR & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: STEPCAFControl_DataMapOfShapeSDR &
-	:rtype: STEPCAFControl_DataMapOfShapeSDR
-") operator =;
-		STEPCAFControl_DataMapOfShapeSDR & operator = (const STEPCAFControl_DataMapOfShapeSDR & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:param I:
-	:type I: Handle_StepShape_ShapeDefinitionRepresentation &
-	:rtype: bool
-") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const Handle_StepShape_ShapeDefinitionRepresentation & I);
-		%feature("compactdefaultargs") IsBound;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") IsBound;
-		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") UnBind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: bool
-") UnBind;
-		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") Find;
-		Handle_StepShape_ShapeDefinitionRepresentation Find (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
-") ChangeFind;
-		Handle_StepShape_ShapeDefinitionRepresentation ChangeFind (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") Find1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") Find1;
-		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("compactdefaultargs") ChangeFind1;
-		%feature("autodoc", "	:param K:
-	:type K: TopoDS_Shape &
-	:rtype: Standard_Address
-") ChangeFind1;
-		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
-};
-
-
-%extend STEPCAFControl_DataMapOfShapeSDR {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor STEPCAFControl_DictionaryOfExternFile;
-class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_DictionaryOfExternFile;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_DictionaryOfExternFile;
-		 STEPCAFControl_DictionaryOfExternFile ();
-		%feature("compactdefaultargs") HasItem;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param exact: default value is Standard_False
-	:type exact: bool
-	:rtype: bool
-") HasItem;
-		Standard_Boolean HasItem (const char * name,const Standard_Boolean exact = Standard_False);
-		%feature("compactdefaultargs") HasItem;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: bool
-") HasItem;
-		Standard_Boolean HasItem (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: Handle_STEPCAFControl_ExternFile
-") Item;
-		Handle_STEPCAFControl_ExternFile Item (const char * name,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: Handle_STEPCAFControl_ExternFile
-") Item;
-		Handle_STEPCAFControl_ExternFile Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") GetItem;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param anitem:
-	:type anitem: Handle_STEPCAFControl_ExternFile &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: bool
-") GetItem;
-		Standard_Boolean GetItem (const char * name,Handle_STEPCAFControl_ExternFile & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") GetItem;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param anitem:
-	:type anitem: Handle_STEPCAFControl_ExternFile &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: bool
-") GetItem;
-		Standard_Boolean GetItem (const TCollection_AsciiString & name,Handle_STEPCAFControl_ExternFile & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param anitem:
-	:type anitem: Handle_STEPCAFControl_ExternFile &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: None
-") SetItem;
-		void SetItem (const char * name,const Handle_STEPCAFControl_ExternFile & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param anitem:
-	:type anitem: Handle_STEPCAFControl_ExternFile &
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: None
-") SetItem;
-		void SetItem (const TCollection_AsciiString & name,const Handle_STEPCAFControl_ExternFile & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") NewItem;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param isvalued:
-	:type isvalued: bool
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: Handle_STEPCAFControl_ExternFile
-") NewItem;
-		Handle_STEPCAFControl_ExternFile NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") NewItem;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param isvalued:
-	:type isvalued: bool
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: Handle_STEPCAFControl_ExternFile
-") NewItem;
-		Handle_STEPCAFControl_ExternFile NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") RemoveItem;
-		%feature("autodoc", "	:param name:
-	:type name: char *
-	:param cln: default value is Standard_True
-	:type cln: bool
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: bool
-") RemoveItem;
-		Standard_Boolean RemoveItem (const char * name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") RemoveItem;
-		%feature("autodoc", "	:param name:
-	:type name: TCollection_AsciiString &
-	:param cln: default value is Standard_True
-	:type cln: bool
-	:param exact: default value is Standard_True
-	:type exact: bool
-	:rtype: bool
-") RemoveItem;
-		Standard_Boolean RemoveItem (const TCollection_AsciiString & name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
-		%feature("compactdefaultargs") Clean;
-		%feature("autodoc", "	:rtype: None
-") Clean;
-		void Clean ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
-") Copy;
-		Handle_STEPCAFControl_DictionaryOfExternFile Copy ();
-		%feature("compactdefaultargs") Complete;
-		%feature("autodoc", "	:param acell:
-	:type acell: Handle_STEPCAFControl_DictionaryOfExternFile &
-	:rtype: bool
-") Complete;
-		Standard_Boolean Complete (Handle_STEPCAFControl_DictionaryOfExternFile & acell);
-};
-
-
-%make_alias(STEPCAFControl_DictionaryOfExternFile)
-
-%extend STEPCAFControl_DictionaryOfExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/**********************************
+* class STEPCAFControl_ExternFile *
+**********************************/
 %nodefaultctor STEPCAFControl_ExternFile;
-class STEPCAFControl_ExternFile : public MMgt_TShared {
+class STEPCAFControl_ExternFile : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_ExternFile;
-		%feature("autodoc", "	* Creates an empty structure
-
-	:rtype: None
-") STEPCAFControl_ExternFile;
-		 STEPCAFControl_ExternFile ();
-		%feature("compactdefaultargs") SetWS;
-		%feature("autodoc", "	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:rtype: None
-") SetWS;
-		void SetWS (const Handle_XSControl_WorkSession & WS);
-		%feature("compactdefaultargs") GetWS;
-		%feature("autodoc", "	:rtype: Handle_XSControl_WorkSession
-") GetWS;
-		Handle_XSControl_WorkSession GetWS ();
-		%feature("compactdefaultargs") SetLoadStatus;
-		%feature("autodoc", "	:param stat:
-	:type stat: IFSelect_ReturnStatus
-	:rtype: None
-") SetLoadStatus;
-		void SetLoadStatus (const IFSelect_ReturnStatus stat);
-		%feature("compactdefaultargs") GetLoadStatus;
-		%feature("autodoc", "	:rtype: IFSelect_ReturnStatus
-") GetLoadStatus;
-		IFSelect_ReturnStatus GetLoadStatus ();
-		%feature("compactdefaultargs") SetTransferStatus;
-		%feature("autodoc", "	:param isok:
-	:type isok: bool
-	:rtype: None
-") SetTransferStatus;
-		void SetTransferStatus (const Standard_Boolean isok);
-		%feature("compactdefaultargs") GetTransferStatus;
-		%feature("autodoc", "	:rtype: bool
-") GetTransferStatus;
-		Standard_Boolean GetTransferStatus ();
-		%feature("compactdefaultargs") SetWriteStatus;
-		%feature("autodoc", "	:param stat:
-	:type stat: IFSelect_ReturnStatus
-	:rtype: None
-") SetWriteStatus;
-		void SetWriteStatus (const IFSelect_ReturnStatus stat);
-		%feature("compactdefaultargs") GetWriteStatus;
-		%feature("autodoc", "	:rtype: IFSelect_ReturnStatus
-") GetWriteStatus;
-		IFSelect_ReturnStatus GetWriteStatus ();
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "	:param name:
-	:type name: Handle_TCollection_HAsciiString &
-	:rtype: None
-") SetName;
-		void SetName (const Handle_TCollection_HAsciiString & name);
-		%feature("compactdefaultargs") GetName;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") GetName;
-		Handle_TCollection_HAsciiString GetName ();
-		%feature("compactdefaultargs") SetLabel;
-		%feature("autodoc", "	:param L:
-	:type L: TDF_Label &
-	:rtype: None
-") SetLabel;
-		void SetLabel (const TDF_Label & L);
+		/****************** GetLabel ******************/
 		%feature("compactdefaultargs") GetLabel;
-		%feature("autodoc", "	:rtype: TDF_Label
-") GetLabel;
+		%feature("autodoc", ":rtype: TDF_Label") GetLabel;
 		TDF_Label GetLabel ();
+
+		/****************** GetLoadStatus ******************/
+		%feature("compactdefaultargs") GetLoadStatus;
+		%feature("autodoc", ":rtype: IFSelect_ReturnStatus") GetLoadStatus;
+		IFSelect_ReturnStatus GetLoadStatus ();
+
+		/****************** GetName ******************/
+		%feature("compactdefaultargs") GetName;
+		%feature("autodoc", ":rtype: opencascade::handle<TCollection_HAsciiString>") GetName;
+		opencascade::handle<TCollection_HAsciiString> GetName ();
+
+		/****************** GetTransferStatus ******************/
+		%feature("compactdefaultargs") GetTransferStatus;
+		%feature("autodoc", ":rtype: bool") GetTransferStatus;
+		Standard_Boolean GetTransferStatus ();
+
+		/****************** GetWS ******************/
+		%feature("compactdefaultargs") GetWS;
+		%feature("autodoc", ":rtype: opencascade::handle<XSControl_WorkSession>") GetWS;
+		opencascade::handle<XSControl_WorkSession> GetWS ();
+
+		/****************** GetWriteStatus ******************/
+		%feature("compactdefaultargs") GetWriteStatus;
+		%feature("autodoc", ":rtype: IFSelect_ReturnStatus") GetWriteStatus;
+		IFSelect_ReturnStatus GetWriteStatus ();
+
+		/****************** STEPCAFControl_ExternFile ******************/
+		%feature("compactdefaultargs") STEPCAFControl_ExternFile;
+		%feature("autodoc", "* Creates an empty structure
+	:rtype: None") STEPCAFControl_ExternFile;
+		 STEPCAFControl_ExternFile ();
+
+		/****************** SetLabel ******************/
+		%feature("compactdefaultargs") SetLabel;
+		%feature("autodoc", ":param L:
+	:type L: TDF_Label &
+	:rtype: None") SetLabel;
+		void SetLabel (const TDF_Label & L);
+
+		/****************** SetLoadStatus ******************/
+		%feature("compactdefaultargs") SetLoadStatus;
+		%feature("autodoc", ":param stat:
+	:type stat: IFSelect_ReturnStatus
+	:rtype: None") SetLoadStatus;
+		void SetLoadStatus (const IFSelect_ReturnStatus stat);
+
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", ":param name:
+	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:rtype: None") SetName;
+		void SetName (const opencascade::handle<TCollection_HAsciiString> & name);
+
+		/****************** SetTransferStatus ******************/
+		%feature("compactdefaultargs") SetTransferStatus;
+		%feature("autodoc", ":param isok:
+	:type isok: bool
+	:rtype: None") SetTransferStatus;
+		void SetTransferStatus (const Standard_Boolean isok);
+
+		/****************** SetWS ******************/
+		%feature("compactdefaultargs") SetWS;
+		%feature("autodoc", ":param WS:
+	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:rtype: None") SetWS;
+		void SetWS (const opencascade::handle<XSControl_WorkSession> & WS);
+
+		/****************** SetWriteStatus ******************/
+		%feature("compactdefaultargs") SetWriteStatus;
+		%feature("autodoc", ":param stat:
+	:type stat: IFSelect_ReturnStatus
+	:rtype: None") SetWriteStatus;
+		void SetWriteStatus (const IFSelect_ReturnStatus stat);
+
 };
 
 
@@ -1256,266 +312,437 @@ class STEPCAFControl_ExternFile : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor STEPCAFControl_IteratorOfDictionaryOfExternFile;
-class STEPCAFControl_IteratorOfDictionaryOfExternFile {
+
+/***********************************
+* class STEPCAFControl_GDTProperty *
+***********************************/
+%nodefaultctor STEPCAFControl_GDTProperty;
+class STEPCAFControl_GDTProperty {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		%feature("autodoc", "	:param acell:
-	:type acell: Handle_STEPCAFControl_DictionaryOfExternFile &
-	:rtype: None
-") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		 STEPCAFControl_IteratorOfDictionaryOfExternFile (const Handle_STEPCAFControl_DictionaryOfExternFile & acell);
-		%feature("compactdefaultargs") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		%feature("autodoc", "	:param acell:
-	:type acell: Handle_STEPCAFControl_DictionaryOfExternFile &
-	:param basename:
-	:type basename: char *
-	:rtype: None
-") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		 STEPCAFControl_IteratorOfDictionaryOfExternFile (const Handle_STEPCAFControl_DictionaryOfExternFile & acell,const char * basename);
-		%feature("compactdefaultargs") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		%feature("autodoc", "	:param acell:
-	:type acell: Handle_STEPCAFControl_DictionaryOfExternFile &
-	:param basename:
-	:type basename: TCollection_AsciiString &
-	:rtype: None
-") STEPCAFControl_IteratorOfDictionaryOfExternFile;
-		 STEPCAFControl_IteratorOfDictionaryOfExternFile (const Handle_STEPCAFControl_DictionaryOfExternFile & acell,const TCollection_AsciiString & basename);
-		%feature("compactdefaultargs") Start;
-		%feature("autodoc", "	:rtype: None
-") Start;
-		void Start ();
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
-") Value;
-		Handle_STEPCAFControl_ExternFile Value ();
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Name;
-		TCollection_AsciiString Name ();
+		/****************** GetDatumRefModifiers ******************/
+		%feature("compactdefaultargs") GetDatumRefModifiers;
+		%feature("autodoc", ":param theModifiers:
+	:type theModifiers: XCAFDimTolObjects_DatumModifiersSequence
+	:param theModifWithVal:
+	:type theModifWithVal: XCAFDimTolObjects_DatumModifWithValue
+	:param theValue:
+	:type theValue: float
+	:param theUnit:
+	:type theUnit: StepBasic_Unit
+	:rtype: opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>") GetDatumRefModifiers;
+		static opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> GetDatumRefModifiers (const XCAFDimTolObjects_DatumModifiersSequence theModifiers,const XCAFDimTolObjects_DatumModifWithValue theModifWithVal,const Standard_Real theValue,const StepBasic_Unit theUnit);
+
+		/****************** GetDatumTargetName ******************/
+		%feature("compactdefaultargs") GetDatumTargetName;
+		%feature("autodoc", ":param theDatumType:
+	:type theDatumType: XCAFDimTolObjects_DatumTargetType
+	:rtype: opencascade::handle<TCollection_HAsciiString>") GetDatumTargetName;
+		static opencascade::handle<TCollection_HAsciiString> GetDatumTargetName (const XCAFDimTolObjects_DatumTargetType theDatumType);
+
+		/****************** GetDatumTargetType ******************/
+		%feature("compactdefaultargs") GetDatumTargetType;
+		%feature("autodoc", ":param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param theType:
+	:type theType: XCAFDimTolObjects_DatumTargetType &
+	:rtype: bool") GetDatumTargetType;
+		static Standard_Boolean GetDatumTargetType (const opencascade::handle<TCollection_HAsciiString> & theDescription,XCAFDimTolObjects_DatumTargetType & theType);
+
+		/****************** GetDimClassOfTolerance ******************/
+		%feature("compactdefaultargs") GetDimClassOfTolerance;
+		%feature("autodoc", ":param theLAF:
+	:type theLAF: opencascade::handle<StepShape_LimitsAndFits> &
+	:param theHolle:
+	:type theHolle: bool
+	:param theFV:
+	:type theFV: XCAFDimTolObjects_DimensionFormVariance &
+	:param theG:
+	:type theG: XCAFDimTolObjects_DimensionGrade &
+	:rtype: void") GetDimClassOfTolerance;
+		static void GetDimClassOfTolerance (const opencascade::handle<StepShape_LimitsAndFits> & theLAF,Standard_Boolean &OutValue,XCAFDimTolObjects_DimensionFormVariance & theFV,XCAFDimTolObjects_DimensionGrade & theG);
+
+		/****************** GetDimModifierName ******************/
+		%feature("compactdefaultargs") GetDimModifierName;
+		%feature("autodoc", ":param theModifier:
+	:type theModifier: XCAFDimTolObjects_DimensionModif
+	:rtype: opencascade::handle<TCollection_HAsciiString>") GetDimModifierName;
+		static opencascade::handle<TCollection_HAsciiString> GetDimModifierName (const XCAFDimTolObjects_DimensionModif theModifier);
+
+		/****************** GetDimModifiers ******************/
+		%feature("compactdefaultargs") GetDimModifiers;
+		%feature("autodoc", ":param theCRI:
+	:type theCRI: opencascade::handle<StepRepr_CompoundRepresentationItem> &
+	:param theModifiers:
+	:type theModifiers: XCAFDimTolObjects_DimensionModifiersSequence &
+	:rtype: void") GetDimModifiers;
+		static void GetDimModifiers (const opencascade::handle<StepRepr_CompoundRepresentationItem> & theCRI,XCAFDimTolObjects_DimensionModifiersSequence & theModifiers);
+
+		/****************** GetDimQualifierName ******************/
+		%feature("compactdefaultargs") GetDimQualifierName;
+		%feature("autodoc", ":param theQualifier:
+	:type theQualifier: XCAFDimTolObjects_DimensionQualifier
+	:rtype: opencascade::handle<TCollection_HAsciiString>") GetDimQualifierName;
+		static opencascade::handle<TCollection_HAsciiString> GetDimQualifierName (const XCAFDimTolObjects_DimensionQualifier theQualifier);
+
+		/****************** GetDimQualifierType ******************/
+		%feature("compactdefaultargs") GetDimQualifierType;
+		%feature("autodoc", ":param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param theType:
+	:type theType: XCAFDimTolObjects_DimensionQualifier &
+	:rtype: bool") GetDimQualifierType;
+		static Standard_Boolean GetDimQualifierType (const opencascade::handle<TCollection_HAsciiString> & theDescription,XCAFDimTolObjects_DimensionQualifier & theType);
+
+		/****************** GetDimType ******************/
+		%feature("compactdefaultargs") GetDimType;
+		%feature("autodoc", ":param theName:
+	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:param theType:
+	:type theType: XCAFDimTolObjects_DimensionType &
+	:rtype: bool") GetDimType;
+		static Standard_Boolean GetDimType (const opencascade::handle<TCollection_HAsciiString> & theName,XCAFDimTolObjects_DimensionType & theType);
+
+		/****************** GetDimTypeName ******************/
+		%feature("compactdefaultargs") GetDimTypeName;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_DimensionType
+	:rtype: opencascade::handle<TCollection_HAsciiString>") GetDimTypeName;
+		static opencascade::handle<TCollection_HAsciiString> GetDimTypeName (const XCAFDimTolObjects_DimensionType theType);
+
+		/****************** GetGeomTolerance ******************/
+		%feature("compactdefaultargs") GetGeomTolerance;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_GeomToleranceType
+	:rtype: opencascade::handle<StepDimTol_GeometricTolerance>") GetGeomTolerance;
+		static opencascade::handle<StepDimTol_GeometricTolerance> GetGeomTolerance (const XCAFDimTolObjects_GeomToleranceType theType);
+
+		/****************** GetGeomToleranceModifier ******************/
+		%feature("compactdefaultargs") GetGeomToleranceModifier;
+		%feature("autodoc", ":param theModifier:
+	:type theModifier: XCAFDimTolObjects_GeomToleranceModif
+	:rtype: StepDimTol_GeometricToleranceModifier") GetGeomToleranceModifier;
+		static StepDimTol_GeometricToleranceModifier GetGeomToleranceModifier (const XCAFDimTolObjects_GeomToleranceModif theModifier);
+
+		/****************** GetGeomToleranceType ******************/
+		%feature("compactdefaultargs") GetGeomToleranceType;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_GeomToleranceType
+	:rtype: StepDimTol_GeometricToleranceType") GetGeomToleranceType;
+		static StepDimTol_GeometricToleranceType GetGeomToleranceType (const XCAFDimTolObjects_GeomToleranceType theType);
+
+		/****************** GetGeomToleranceType ******************/
+		%feature("compactdefaultargs") GetGeomToleranceType;
+		%feature("autodoc", ":param theType:
+	:type theType: StepDimTol_GeometricToleranceType
+	:rtype: XCAFDimTolObjects_GeomToleranceType") GetGeomToleranceType;
+		static XCAFDimTolObjects_GeomToleranceType GetGeomToleranceType (const StepDimTol_GeometricToleranceType theType);
+
+		/****************** GetLimitsAndFits ******************/
+		%feature("compactdefaultargs") GetLimitsAndFits;
+		%feature("autodoc", ":param theHole:
+	:type theHole: bool
+	:param theFormVariance:
+	:type theFormVariance: XCAFDimTolObjects_DimensionFormVariance
+	:param theGrade:
+	:type theGrade: XCAFDimTolObjects_DimensionGrade
+	:rtype: opencascade::handle<StepShape_LimitsAndFits>") GetLimitsAndFits;
+		static opencascade::handle<StepShape_LimitsAndFits> GetLimitsAndFits (Standard_Boolean theHole,XCAFDimTolObjects_DimensionFormVariance theFormVariance,XCAFDimTolObjects_DimensionGrade theGrade);
+
+		/****************** GetTessellation ******************/
+		%feature("compactdefaultargs") GetTessellation;
+		%feature("autodoc", ":param theShape:
+	:type theShape: TopoDS_Shape
+	:rtype: opencascade::handle<StepVisual_TessellatedGeometricSet>") GetTessellation;
+		static opencascade::handle<StepVisual_TessellatedGeometricSet> GetTessellation (const TopoDS_Shape theShape);
+
+		/****************** GetTolValueType ******************/
+		%feature("compactdefaultargs") GetTolValueType;
+		%feature("autodoc", ":param theDescription:
+	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:param theType:
+	:type theType: XCAFDimTolObjects_GeomToleranceTypeValue &
+	:rtype: bool") GetTolValueType;
+		static Standard_Boolean GetTolValueType (const opencascade::handle<TCollection_HAsciiString> & theDescription,XCAFDimTolObjects_GeomToleranceTypeValue & theType);
+
+		/****************** GetTolValueType ******************/
+		%feature("compactdefaultargs") GetTolValueType;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_GeomToleranceTypeValue &
+	:rtype: opencascade::handle<TCollection_HAsciiString>") GetTolValueType;
+		static opencascade::handle<TCollection_HAsciiString> GetTolValueType (const XCAFDimTolObjects_GeomToleranceTypeValue & theType);
+
+		/****************** IsDimensionalLocation ******************/
+		%feature("compactdefaultargs") IsDimensionalLocation;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_DimensionType
+	:rtype: bool") IsDimensionalLocation;
+		static Standard_Boolean IsDimensionalLocation (const XCAFDimTolObjects_DimensionType theType);
+
+		/****************** IsDimensionalSize ******************/
+		%feature("compactdefaultargs") IsDimensionalSize;
+		%feature("autodoc", ":param theType:
+	:type theType: XCAFDimTolObjects_DimensionType
+	:rtype: bool") IsDimensionalSize;
+		static Standard_Boolean IsDimensionalSize (const XCAFDimTolObjects_DimensionType theType);
+
+		/****************** STEPCAFControl_GDTProperty ******************/
+		%feature("compactdefaultargs") STEPCAFControl_GDTProperty;
+		%feature("autodoc", ":rtype: None") STEPCAFControl_GDTProperty;
+		 STEPCAFControl_GDTProperty ();
+
 };
 
 
-%extend STEPCAFControl_IteratorOfDictionaryOfExternFile {
+%extend STEPCAFControl_GDTProperty {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
+
+/******************************
+* class STEPCAFControl_Reader *
+******************************/
 %nodefaultctor STEPCAFControl_Reader;
 class STEPCAFControl_Reader {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_Reader;
-		%feature("autodoc", "	* Creates a reader with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
+		/****************** ChangeReader ******************/
+		%feature("compactdefaultargs") ChangeReader;
+		%feature("autodoc", "* Returns basic reader
+	:rtype: STEPControl_Reader") ChangeReader;
+		STEPControl_Reader & ChangeReader ();
 
-	:rtype: None
-") STEPCAFControl_Reader;
-		 STEPCAFControl_Reader ();
-		%feature("compactdefaultargs") STEPCAFControl_Reader;
-		%feature("autodoc", "	* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP
-
-	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:param scratch: default value is Standard_True
-	:type scratch: bool
-	:rtype: None
-") STEPCAFControl_Reader;
-		 STEPCAFControl_Reader (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP
-
-	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:param scratch: default value is Standard_True
-	:type scratch: bool
-	:rtype: None
-") Init;
-		void Init (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") ReadFile;
-		%feature("autodoc", "	* Loads a file and returns the read status Provided for use like single-file reader
-
-	:param filename:
-	:type filename: char *
-	:rtype: IFSelect_ReturnStatus
-") ReadFile;
-		IFSelect_ReturnStatus ReadFile (const char * filename);
-		%feature("compactdefaultargs") NbRootsForTransfer;
-		%feature("autodoc", "	* Returns number of roots recognized for transfer Shortcut for Reader().NbRootsForTransfer()
-
-	:rtype: int
-") NbRootsForTransfer;
-		Standard_Integer NbRootsForTransfer ();
-		%feature("compactdefaultargs") TransferOneRoot;
-		%feature("autodoc", "	* Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader
-
-	:param num:
-	:type num: int
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") TransferOneRoot;
-		Standard_Boolean TransferOneRoot (const Standard_Integer num,Handle_TDocStd_Document & doc);
-		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	* Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader
-
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") Transfer;
-		Standard_Boolean Transfer (Handle_TDocStd_Document & doc);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param filename:
-	:type filename: TCollection_AsciiString &
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const TCollection_AsciiString & filename,Handle_TDocStd_Document & doc);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Translate STEP file given by filename into the document Return True if succeeded, and False in case of fail
-
-	:param filename:
-	:type filename: char *
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const char * filename,Handle_TDocStd_Document & doc);
-		%feature("compactdefaultargs") ExternFiles;
-		%feature("autodoc", "	* Returns data on external files Returns Null handle if no external files are read
-
-	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
-") ExternFiles;
-		Handle_STEPCAFControl_DictionaryOfExternFile ExternFiles ();
+		/****************** ExternFile ******************/
 		%feature("compactdefaultargs") ExternFile;
-		%feature("autodoc", "	* Returns data on external file by its name Returns False if no external file with given name is read
-
+		%feature("autodoc", "* Returns data on external file by its name Returns False if no external file with given name is read
 	:param name:
 	:type name: char *
 	:param ef:
-	:type ef: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") ExternFile;
-		Standard_Boolean ExternFile (const char * name,Handle_STEPCAFControl_ExternFile & ef);
-		%feature("compactdefaultargs") ChangeReader;
-		%feature("autodoc", "	* Returns basic reader
+	:type ef: opencascade::handle<STEPCAFControl_ExternFile> &
+	:rtype: bool") ExternFile;
+		Standard_Boolean ExternFile (const char * name,opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
-	:rtype: STEPControl_Reader
-") ChangeReader;
-		STEPControl_Reader & ChangeReader ();
-		%feature("compactdefaultargs") Reader;
-		%feature("autodoc", "	* Returns basic reader as const
+		/****************** ExternFiles ******************/
+		%feature("compactdefaultargs") ExternFiles;
+		%feature("autodoc", "* Returns data on external files Returns Null handle if no external files are read
+	:rtype: NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile> >") ExternFiles;
+		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile> > & ExternFiles ();
 
-	:rtype: STEPControl_Reader
-") Reader;
-		const STEPControl_Reader & Reader ();
+		/****************** FindInstance ******************/
 		%feature("compactdefaultargs") FindInstance;
-		%feature("autodoc", "	* Returns label of instance of an assembly component corresponding to a given NAUO
-
+		%feature("autodoc", "* Returns label of instance of an assembly component corresponding to a given NAUO
 	:param NAUO:
-	:type NAUO: Handle_StepRepr_NextAssemblyUsageOccurrence &
+	:type NAUO: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
 	:param STool:
-	:type STool: Handle_XCAFDoc_ShapeTool &
+	:type STool: opencascade::handle<XCAFDoc_ShapeTool> &
 	:param Tool:
 	:type Tool: STEPConstruct_Tool &
-	:param PDRFileMap:
-	:type PDRFileMap: STEPCAFControl_DataMapOfPDExternFile &
 	:param ShapeLabelMap:
 	:type ShapeLabelMap: XCAFDoc_DataMapOfShapeLabel &
-	:rtype: TDF_Label
-") FindInstance;
-		static TDF_Label FindInstance (const Handle_StepRepr_NextAssemblyUsageOccurrence & NAUO,const Handle_XCAFDoc_ShapeTool & STool,const STEPConstruct_Tool & Tool,const STEPCAFControl_DataMapOfPDExternFile & PDRFileMap,const XCAFDoc_DataMapOfShapeLabel & ShapeLabelMap);
-		%feature("compactdefaultargs") SetColorMode;
-		%feature("autodoc", "	* Set ColorMode for indicate read Colors or not.
+	:rtype: TDF_Label") FindInstance;
+		static TDF_Label FindInstance (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & NAUO,const opencascade::handle<XCAFDoc_ShapeTool> & STool,const STEPConstruct_Tool & Tool,const XCAFDoc_DataMapOfShapeLabel & ShapeLabelMap);
 
+		/****************** GetColorMode ******************/
+		%feature("compactdefaultargs") GetColorMode;
+		%feature("autodoc", ":rtype: bool") GetColorMode;
+		Standard_Boolean GetColorMode ();
+
+		/****************** GetGDTMode ******************/
+		%feature("compactdefaultargs") GetGDTMode;
+		%feature("autodoc", ":rtype: bool") GetGDTMode;
+		Standard_Boolean GetGDTMode ();
+
+		/****************** GetLayerMode ******************/
+		%feature("compactdefaultargs") GetLayerMode;
+		%feature("autodoc", ":rtype: bool") GetLayerMode;
+		Standard_Boolean GetLayerMode ();
+
+		/****************** GetMatMode ******************/
+		%feature("compactdefaultargs") GetMatMode;
+		%feature("autodoc", ":rtype: bool") GetMatMode;
+		Standard_Boolean GetMatMode ();
+
+		/****************** GetNameMode ******************/
+		%feature("compactdefaultargs") GetNameMode;
+		%feature("autodoc", ":rtype: bool") GetNameMode;
+		Standard_Boolean GetNameMode ();
+
+		/****************** GetPropsMode ******************/
+		%feature("compactdefaultargs") GetPropsMode;
+		%feature("autodoc", ":rtype: bool") GetPropsMode;
+		Standard_Boolean GetPropsMode ();
+
+		/****************** GetSHUOMode ******************/
+		%feature("compactdefaultargs") GetSHUOMode;
+		%feature("autodoc", ":rtype: bool") GetSHUOMode;
+		Standard_Boolean GetSHUOMode ();
+
+		/****************** GetViewMode ******************/
+		%feature("compactdefaultargs") GetViewMode;
+		%feature("autodoc", "* Get View mode
+	:rtype: bool") GetViewMode;
+		Standard_Boolean GetViewMode ();
+
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP
+	:param WS:
+	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:param scratch: default value is Standard_True
+	:type scratch: bool
+	:rtype: None") Init;
+		void Init (const opencascade::handle<XSControl_WorkSession> & WS,const Standard_Boolean scratch = Standard_True);
+
+		/****************** NbRootsForTransfer ******************/
+		%feature("compactdefaultargs") NbRootsForTransfer;
+		%feature("autodoc", "* Returns number of roots recognized for transfer Shortcut for Reader().NbRootsForTransfer()
+	:rtype: int") NbRootsForTransfer;
+		Standard_Integer NbRootsForTransfer ();
+
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", ":param filename:
+	:type filename: TCollection_AsciiString &
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:rtype: bool") Perform;
+		Standard_Boolean Perform (const TCollection_AsciiString & filename,opencascade::handle<TDocStd_Document> & doc);
+
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "* Translate STEP file given by filename into the document Return True if succeeded, and False in case of fail
+	:param filename:
+	:type filename: char *
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:rtype: bool") Perform;
+		Standard_Boolean Perform (const char * filename,opencascade::handle<TDocStd_Document> & doc);
+
+		/****************** ReadFile ******************/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "* Loads a file and returns the read status Provided for use like single-file reader
+	:param filename:
+	:type filename: char *
+	:rtype: IFSelect_ReturnStatus") ReadFile;
+		IFSelect_ReturnStatus ReadFile (const char * filename);
+
+		/****************** Reader ******************/
+		%feature("compactdefaultargs") Reader;
+		%feature("autodoc", "* Returns basic reader as const
+	:rtype: STEPControl_Reader") Reader;
+		const STEPControl_Reader & Reader ();
+
+		/****************** STEPCAFControl_Reader ******************/
+		%feature("compactdefaultargs") STEPCAFControl_Reader;
+		%feature("autodoc", "* Creates a reader with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
+	:rtype: None") STEPCAFControl_Reader;
+		 STEPCAFControl_Reader ();
+
+		/****************** STEPCAFControl_Reader ******************/
+		%feature("compactdefaultargs") STEPCAFControl_Reader;
+		%feature("autodoc", "* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP
+	:param WS:
+	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:param scratch: default value is Standard_True
+	:type scratch: bool
+	:rtype: None") STEPCAFControl_Reader;
+		 STEPCAFControl_Reader (const opencascade::handle<XSControl_WorkSession> & WS,const Standard_Boolean scratch = Standard_True);
+
+		/****************** SetColorMode ******************/
+		%feature("compactdefaultargs") SetColorMode;
+		%feature("autodoc", "* Set ColorMode for indicate read Colors or not.
 	:param colormode:
 	:type colormode: bool
-	:rtype: None
-") SetColorMode;
+	:rtype: None") SetColorMode;
 		void SetColorMode (const Standard_Boolean colormode);
-		%feature("compactdefaultargs") GetColorMode;
-		%feature("autodoc", "	:rtype: bool
-") GetColorMode;
-		Standard_Boolean GetColorMode ();
-		%feature("compactdefaultargs") SetNameMode;
-		%feature("autodoc", "	* Set NameMode for indicate read Name or not.
 
-	:param namemode:
-	:type namemode: bool
-	:rtype: None
-") SetNameMode;
-		void SetNameMode (const Standard_Boolean namemode);
-		%feature("compactdefaultargs") GetNameMode;
-		%feature("autodoc", "	:rtype: bool
-") GetNameMode;
-		Standard_Boolean GetNameMode ();
-		%feature("compactdefaultargs") SetLayerMode;
-		%feature("autodoc", "	* Set LayerMode for indicate read Layers or not.
-
-	:param layermode:
-	:type layermode: bool
-	:rtype: None
-") SetLayerMode;
-		void SetLayerMode (const Standard_Boolean layermode);
-		%feature("compactdefaultargs") GetLayerMode;
-		%feature("autodoc", "	:rtype: bool
-") GetLayerMode;
-		Standard_Boolean GetLayerMode ();
-		%feature("compactdefaultargs") SetPropsMode;
-		%feature("autodoc", "	* PropsMode for indicate read Validation properties or not.
-
-	:param propsmode:
-	:type propsmode: bool
-	:rtype: None
-") SetPropsMode;
-		void SetPropsMode (const Standard_Boolean propsmode);
-		%feature("compactdefaultargs") GetPropsMode;
-		%feature("autodoc", "	:rtype: bool
-") GetPropsMode;
-		Standard_Boolean GetPropsMode ();
-		%feature("compactdefaultargs") SetSHUOMode;
-		%feature("autodoc", "	* Set SHUO mode for indicate write SHUO or not.
-
-	:param shuomode:
-	:type shuomode: bool
-	:rtype: None
-") SetSHUOMode;
-		void SetSHUOMode (const Standard_Boolean shuomode);
-		%feature("compactdefaultargs") GetSHUOMode;
-		%feature("autodoc", "	:rtype: bool
-") GetSHUOMode;
-		Standard_Boolean GetSHUOMode ();
+		/****************** SetGDTMode ******************/
 		%feature("compactdefaultargs") SetGDTMode;
-		%feature("autodoc", "	* Set GDT mode for indicate write GDT or not.
-
+		%feature("autodoc", "* Set GDT mode for indicate write GDT or not.
 	:param gdtmode:
 	:type gdtmode: bool
-	:rtype: None
-") SetGDTMode;
+	:rtype: None") SetGDTMode;
 		void SetGDTMode (const Standard_Boolean gdtmode);
-		%feature("compactdefaultargs") GetGDTMode;
-		%feature("autodoc", "	:rtype: bool
-") GetGDTMode;
-		Standard_Boolean GetGDTMode ();
-		%feature("compactdefaultargs") SetMatMode;
-		%feature("autodoc", "	* Set Material mode
 
+		/****************** SetLayerMode ******************/
+		%feature("compactdefaultargs") SetLayerMode;
+		%feature("autodoc", "* Set LayerMode for indicate read Layers or not.
+	:param layermode:
+	:type layermode: bool
+	:rtype: None") SetLayerMode;
+		void SetLayerMode (const Standard_Boolean layermode);
+
+		/****************** SetMatMode ******************/
+		%feature("compactdefaultargs") SetMatMode;
+		%feature("autodoc", "* Set Material mode
 	:param matmode:
 	:type matmode: bool
-	:rtype: None
-") SetMatMode;
+	:rtype: None") SetMatMode;
 		void SetMatMode (const Standard_Boolean matmode);
-		%feature("compactdefaultargs") GetMatMode;
-		%feature("autodoc", "	:rtype: bool
-") GetMatMode;
-		Standard_Boolean GetMatMode ();
+
+		/****************** SetNameMode ******************/
+		%feature("compactdefaultargs") SetNameMode;
+		%feature("autodoc", "* Set NameMode for indicate read Name or not.
+	:param namemode:
+	:type namemode: bool
+	:rtype: None") SetNameMode;
+		void SetNameMode (const Standard_Boolean namemode);
+
+		/****************** SetPropsMode ******************/
+		%feature("compactdefaultargs") SetPropsMode;
+		%feature("autodoc", "* PropsMode for indicate read Validation properties or not.
+	:param propsmode:
+	:type propsmode: bool
+	:rtype: None") SetPropsMode;
+		void SetPropsMode (const Standard_Boolean propsmode);
+
+		/****************** SetSHUOMode ******************/
+		%feature("compactdefaultargs") SetSHUOMode;
+		%feature("autodoc", "* Set SHUO mode for indicate write SHUO or not.
+	:param shuomode:
+	:type shuomode: bool
+	:rtype: None") SetSHUOMode;
+		void SetSHUOMode (const Standard_Boolean shuomode);
+
+		/****************** SetSourceCodePage ******************/
+		%feature("compactdefaultargs") SetSourceCodePage;
+		%feature("autodoc", "* Return the encoding of STEP file for converting names into UNICODE.
+	:param theCode:
+	:type theCode: Resource_FormatType
+	:rtype: None") SetSourceCodePage;
+		void SetSourceCodePage (Resource_FormatType theCode);
+
+		/****************** SetViewMode ******************/
+		%feature("compactdefaultargs") SetViewMode;
+		%feature("autodoc", "* Set View mode
+	:param viewmode:
+	:type viewmode: bool
+	:rtype: None") SetViewMode;
+		void SetViewMode (const Standard_Boolean viewmode);
+
+		/****************** SourceCodePage ******************/
+		%feature("compactdefaultargs") SourceCodePage;
+		%feature("autodoc", "* Return the encoding of STEP file for converting names into UNICODE. Initialized from 'read.stepcaf.codepage' variable by constructor, which is Resource_UTF8 by default.
+	:rtype: Resource_FormatType") SourceCodePage;
+		Resource_FormatType SourceCodePage ();
+
+		/****************** Transfer ******************/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "* Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:rtype: bool") Transfer;
+		Standard_Boolean Transfer (opencascade::handle<TDocStd_Document> & doc);
+
+		/****************** TransferOneRoot ******************/
+		%feature("compactdefaultargs") TransferOneRoot;
+		%feature("autodoc", "* Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader
+	:param num:
+	:type num: int
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:rtype: bool") TransferOneRoot;
+		Standard_Boolean TransferOneRoot (const Standard_Integer num,opencascade::handle<TDocStd_Document> & doc);
+
 };
 
 
@@ -1524,242 +751,219 @@ class STEPCAFControl_Reader {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor STEPCAFControl_StackItemOfDictionaryOfExternFile;
-class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") STEPCAFControl_StackItemOfDictionaryOfExternFile;
-		%feature("autodoc", "	:rtype: None
-") STEPCAFControl_StackItemOfDictionaryOfExternFile;
-		 STEPCAFControl_StackItemOfDictionaryOfExternFile ();
-		%feature("compactdefaultargs") STEPCAFControl_StackItemOfDictionaryOfExternFile;
-		%feature("autodoc", "	:param previous:
-	:type previous: Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile &
-	:rtype: None
-") STEPCAFControl_StackItemOfDictionaryOfExternFile;
-		 STEPCAFControl_StackItemOfDictionaryOfExternFile (const Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile & previous);
-		%feature("compactdefaultargs") Previous;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile
-") Previous;
-		Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile Previous ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
-") Value;
-		Handle_STEPCAFControl_DictionaryOfExternFile Value ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param cval:
-	:type cval: Handle_STEPCAFControl_DictionaryOfExternFile &
-	:rtype: None
-") SetValue;
-		void SetValue (const Handle_STEPCAFControl_DictionaryOfExternFile & cval);
-};
 
-
-%make_alias(STEPCAFControl_StackItemOfDictionaryOfExternFile)
-
-%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/******************************
+* class STEPCAFControl_Writer *
+******************************/
 %nodefaultctor STEPCAFControl_Writer;
 class STEPCAFControl_Writer {
 	public:
-		%feature("compactdefaultargs") STEPCAFControl_Writer;
-		%feature("autodoc", "	* Creates a writer with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
+		/****************** ChangeWriter ******************/
+		%feature("compactdefaultargs") ChangeWriter;
+		%feature("autodoc", "* Returns basic reader for root file
+	:rtype: STEPControl_Writer") ChangeWriter;
+		STEPControl_Writer & ChangeWriter ();
 
-	:rtype: None
-") STEPCAFControl_Writer;
-		 STEPCAFControl_Writer ();
-		%feature("compactdefaultargs") STEPCAFControl_Writer;
-		%feature("autodoc", "	* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP Clears the internal data structures
-
-	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:param scratch: default value is Standard_True
-	:type scratch: bool
-	:rtype: None
-") STEPCAFControl_Writer;
-		 STEPCAFControl_Writer (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP
-
-	:param WS:
-	:type WS: Handle_XSControl_WorkSession &
-	:param scratch: default value is Standard_True
-	:type scratch: bool
-	:rtype: None
-") Init;
-		void Init (const Handle_XSControl_WorkSession & WS,const Standard_Boolean scratch = Standard_True);
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Writes all the produced models into file In case of multimodel with extern references, filename will be a name of root file, all other files have names of corresponding parts Provided for use like single-file writer
-
-	:param filename:
-	:type filename: char *
-	:rtype: IFSelect_ReturnStatus
-") Write;
-		IFSelect_ReturnStatus Write (const char * filename);
-		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:param mode: default value is STEPControl_AsIs
-	:type mode: STEPControl_StepModelType
-	:param multi: default value is 0
-	:type multi: char *
-	:rtype: bool
-") Transfer;
-		Standard_Boolean Transfer (const Handle_TDocStd_Document & doc,const STEPControl_StepModelType mode = STEPControl_AsIs,const char * multi = 0);
-		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	* Transfers a document (or single label) to a STEP model The mode of translation of shape is AsIs If multi is not null pointer, it switches to multifile mode (with external refs), and string pointed by <multi> gives prefix for names of extern files (can be empty string) Returns True if translation is OK
-
-	:param L:
-	:type L: TDF_Label &
-	:param mode: default value is STEPControl_AsIs
-	:type mode: STEPControl_StepModelType
-	:param multi: default value is 0
-	:type multi: char *
-	:rtype: bool
-") Transfer;
-		Standard_Boolean Transfer (const TDF_Label & L,const STEPControl_StepModelType mode = STEPControl_AsIs,const char * multi = 0);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:param filename:
-	:type filename: TCollection_AsciiString &
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const Handle_TDocStd_Document & doc,const TCollection_AsciiString & filename);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Transfers a document and writes it to a STEP file Returns True if translation is OK
-
-	:param doc:
-	:type doc: Handle_TDocStd_Document &
-	:param filename:
-	:type filename: char *
-	:rtype: bool
-") Perform;
-		Standard_Boolean Perform (const Handle_TDocStd_Document & doc,const char * filename);
-		%feature("compactdefaultargs") ExternFiles;
-		%feature("autodoc", "	* Returns data on external files Returns Null handle if no external files are read
-
-	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
-") ExternFiles;
-		Handle_STEPCAFControl_DictionaryOfExternFile ExternFiles ();
+		/****************** ExternFile ******************/
 		%feature("compactdefaultargs") ExternFile;
-		%feature("autodoc", "	* Returns data on external file by its original label Returns False if no external file with given name is read
-
+		%feature("autodoc", "* Returns data on external file by its original label Returns False if no external file with given name is read
 	:param L:
 	:type L: TDF_Label &
 	:param ef:
-	:type ef: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") ExternFile;
-		Standard_Boolean ExternFile (const TDF_Label & L,Handle_STEPCAFControl_ExternFile & ef);
-		%feature("compactdefaultargs") ExternFile;
-		%feature("autodoc", "	* Returns data on external file by its name Returns False if no external file with given name is read
+	:type ef: opencascade::handle<STEPCAFControl_ExternFile> &
+	:rtype: bool") ExternFile;
+		Standard_Boolean ExternFile (const TDF_Label & L,opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
+		/****************** ExternFile ******************/
+		%feature("compactdefaultargs") ExternFile;
+		%feature("autodoc", "* Returns data on external file by its name Returns False if no external file with given name is read
 	:param name:
 	:type name: char *
 	:param ef:
-	:type ef: Handle_STEPCAFControl_ExternFile &
-	:rtype: bool
-") ExternFile;
-		Standard_Boolean ExternFile (const char * name,Handle_STEPCAFControl_ExternFile & ef);
-		%feature("compactdefaultargs") ChangeWriter;
-		%feature("autodoc", "	* Returns basic reader for root file
+	:type ef: opencascade::handle<STEPCAFControl_ExternFile> &
+	:rtype: bool") ExternFile;
+		Standard_Boolean ExternFile (const char * name,opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
-	:rtype: STEPControl_Writer
-") ChangeWriter;
-		STEPControl_Writer & ChangeWriter ();
-		%feature("compactdefaultargs") Writer;
-		%feature("autodoc", "	* Returns basic reader as const
+		/****************** ExternFiles ******************/
+		%feature("compactdefaultargs") ExternFiles;
+		%feature("autodoc", "* Returns data on external files Returns Null handle if no external files are read
+	:rtype: NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile> >") ExternFiles;
+		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile> > & ExternFiles ();
 
-	:rtype: STEPControl_Writer
-") Writer;
-		const STEPControl_Writer & Writer ();
+		/****************** GetColorMode ******************/
+		%feature("compactdefaultargs") GetColorMode;
+		%feature("autodoc", ":rtype: bool") GetColorMode;
+		Standard_Boolean GetColorMode ();
+
+		/****************** GetDimTolMode ******************/
+		%feature("compactdefaultargs") GetDimTolMode;
+		%feature("autodoc", ":rtype: bool") GetDimTolMode;
+		Standard_Boolean GetDimTolMode ();
+
+		/****************** GetLayerMode ******************/
+		%feature("compactdefaultargs") GetLayerMode;
+		%feature("autodoc", ":rtype: bool") GetLayerMode;
+		Standard_Boolean GetLayerMode ();
+
+		/****************** GetMaterialMode ******************/
+		%feature("compactdefaultargs") GetMaterialMode;
+		%feature("autodoc", ":rtype: bool") GetMaterialMode;
+		Standard_Boolean GetMaterialMode ();
+
+		/****************** GetNameMode ******************/
+		%feature("compactdefaultargs") GetNameMode;
+		%feature("autodoc", ":rtype: bool") GetNameMode;
+		Standard_Boolean GetNameMode ();
+
+		/****************** GetPropsMode ******************/
+		%feature("compactdefaultargs") GetPropsMode;
+		%feature("autodoc", ":rtype: bool") GetPropsMode;
+		Standard_Boolean GetPropsMode ();
+
+		/****************** GetSHUOMode ******************/
+		%feature("compactdefaultargs") GetSHUOMode;
+		%feature("autodoc", ":rtype: bool") GetSHUOMode;
+		Standard_Boolean GetSHUOMode ();
+
+		/****************** Init ******************/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "* Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP
+	:param WS:
+	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:param scratch: default value is Standard_True
+	:type scratch: bool
+	:rtype: None") Init;
+		void Init (const opencascade::handle<XSControl_WorkSession> & WS,const Standard_Boolean scratch = Standard_True);
+
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", ":param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:param filename:
+	:type filename: TCollection_AsciiString &
+	:rtype: bool") Perform;
+		Standard_Boolean Perform (const opencascade::handle<TDocStd_Document> & doc,const TCollection_AsciiString & filename);
+
+		/****************** Perform ******************/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "* Transfers a document and writes it to a STEP file Returns True if translation is OK
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:param filename:
+	:type filename: char *
+	:rtype: bool") Perform;
+		Standard_Boolean Perform (const opencascade::handle<TDocStd_Document> & doc,const char * filename);
+
+		/****************** STEPCAFControl_Writer ******************/
+		%feature("compactdefaultargs") STEPCAFControl_Writer;
+		%feature("autodoc", "* Creates a writer with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
+	:rtype: None") STEPCAFControl_Writer;
+		 STEPCAFControl_Writer ();
+
+		/****************** STEPCAFControl_Writer ******************/
+		%feature("compactdefaultargs") STEPCAFControl_Writer;
+		%feature("autodoc", "* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP Clears the internal data structures
+	:param WS:
+	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:param scratch: default value is Standard_True
+	:type scratch: bool
+	:rtype: None") STEPCAFControl_Writer;
+		 STEPCAFControl_Writer (const opencascade::handle<XSControl_WorkSession> & WS,const Standard_Boolean scratch = Standard_True);
+
+		/****************** SetColorMode ******************/
 		%feature("compactdefaultargs") SetColorMode;
-		%feature("autodoc", "	* Set ColorMode for indicate write Colors or not.
-
+		%feature("autodoc", "* Set ColorMode for indicate write Colors or not.
 	:param colormode:
 	:type colormode: bool
-	:rtype: None
-") SetColorMode;
+	:rtype: None") SetColorMode;
 		void SetColorMode (const Standard_Boolean colormode);
-		%feature("compactdefaultargs") GetColorMode;
-		%feature("autodoc", "	:rtype: bool
-") GetColorMode;
-		Standard_Boolean GetColorMode ();
-		%feature("compactdefaultargs") SetNameMode;
-		%feature("autodoc", "	* Set NameMode for indicate write Name or not.
 
-	:param namemode:
-	:type namemode: bool
-	:rtype: None
-") SetNameMode;
-		void SetNameMode (const Standard_Boolean namemode);
-		%feature("compactdefaultargs") GetNameMode;
-		%feature("autodoc", "	:rtype: bool
-") GetNameMode;
-		Standard_Boolean GetNameMode ();
-		%feature("compactdefaultargs") SetLayerMode;
-		%feature("autodoc", "	* Set LayerMode for indicate write Layers or not.
-
-	:param layermode:
-	:type layermode: bool
-	:rtype: None
-") SetLayerMode;
-		void SetLayerMode (const Standard_Boolean layermode);
-		%feature("compactdefaultargs") GetLayerMode;
-		%feature("autodoc", "	:rtype: bool
-") GetLayerMode;
-		Standard_Boolean GetLayerMode ();
-		%feature("compactdefaultargs") SetPropsMode;
-		%feature("autodoc", "	* PropsMode for indicate write Validation properties or not.
-
-	:param propsmode:
-	:type propsmode: bool
-	:rtype: None
-") SetPropsMode;
-		void SetPropsMode (const Standard_Boolean propsmode);
-		%feature("compactdefaultargs") GetPropsMode;
-		%feature("autodoc", "	:rtype: bool
-") GetPropsMode;
-		Standard_Boolean GetPropsMode ();
-		%feature("compactdefaultargs") SetSHUOMode;
-		%feature("autodoc", "	* Set SHUO mode for indicate write SHUO or not.
-
-	:param shuomode:
-	:type shuomode: bool
-	:rtype: None
-") SetSHUOMode;
-		void SetSHUOMode (const Standard_Boolean shuomode);
-		%feature("compactdefaultargs") GetSHUOMode;
-		%feature("autodoc", "	:rtype: bool
-") GetSHUOMode;
-		Standard_Boolean GetSHUOMode ();
+		/****************** SetDimTolMode ******************/
 		%feature("compactdefaultargs") SetDimTolMode;
-		%feature("autodoc", "	* Set dimtolmode for indicate write D&GTs or not.
-
+		%feature("autodoc", "* Set dimtolmode for indicate write D&GTs or not.
 	:param dimtolmode:
 	:type dimtolmode: bool
-	:rtype: None
-") SetDimTolMode;
+	:rtype: None") SetDimTolMode;
 		void SetDimTolMode (const Standard_Boolean dimtolmode);
-		%feature("compactdefaultargs") GetDimTolMode;
-		%feature("autodoc", "	:rtype: bool
-") GetDimTolMode;
-		Standard_Boolean GetDimTolMode ();
-		%feature("compactdefaultargs") SetMaterialMode;
-		%feature("autodoc", "	* Set dimtolmode for indicate write D&GTs or not.
 
+		/****************** SetLayerMode ******************/
+		%feature("compactdefaultargs") SetLayerMode;
+		%feature("autodoc", "* Set LayerMode for indicate write Layers or not.
+	:param layermode:
+	:type layermode: bool
+	:rtype: None") SetLayerMode;
+		void SetLayerMode (const Standard_Boolean layermode);
+
+		/****************** SetMaterialMode ******************/
+		%feature("compactdefaultargs") SetMaterialMode;
+		%feature("autodoc", "* Set dimtolmode for indicate write D&GTs or not.
 	:param matmode:
 	:type matmode: bool
-	:rtype: None
-") SetMaterialMode;
+	:rtype: None") SetMaterialMode;
 		void SetMaterialMode (const Standard_Boolean matmode);
-		%feature("compactdefaultargs") GetMaterialMode;
-		%feature("autodoc", "	:rtype: bool
-") GetMaterialMode;
-		Standard_Boolean GetMaterialMode ();
+
+		/****************** SetNameMode ******************/
+		%feature("compactdefaultargs") SetNameMode;
+		%feature("autodoc", "* Set NameMode for indicate write Name or not.
+	:param namemode:
+	:type namemode: bool
+	:rtype: None") SetNameMode;
+		void SetNameMode (const Standard_Boolean namemode);
+
+		/****************** SetPropsMode ******************/
+		%feature("compactdefaultargs") SetPropsMode;
+		%feature("autodoc", "* PropsMode for indicate write Validation properties or not.
+	:param propsmode:
+	:type propsmode: bool
+	:rtype: None") SetPropsMode;
+		void SetPropsMode (const Standard_Boolean propsmode);
+
+		/****************** SetSHUOMode ******************/
+		%feature("compactdefaultargs") SetSHUOMode;
+		%feature("autodoc", "* Set SHUO mode for indicate write SHUO or not.
+	:param shuomode:
+	:type shuomode: bool
+	:rtype: None") SetSHUOMode;
+		void SetSHUOMode (const Standard_Boolean shuomode);
+
+		/****************** Transfer ******************/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "* Transfers a document (or single label) to a STEP model The mode of translation of shape is AsIs If multi is not null pointer, it switches to multifile mode (with external refs), and string pointed by <multi> gives prefix for names of extern files (can be empty string) Returns True if translation is OK
+	:param doc:
+	:type doc: opencascade::handle<TDocStd_Document> &
+	:param mode: default value is STEPControl_AsIs
+	:type mode: STEPControl_StepModelType
+	:param multi: default value is 0
+	:type multi: char *
+	:rtype: bool") Transfer;
+		Standard_Boolean Transfer (const opencascade::handle<TDocStd_Document> & doc,const STEPControl_StepModelType mode = STEPControl_AsIs,const char * multi = 0);
+
+		/****************** Transfer ******************/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "* Method to transfer part of the document specified by label
+	:param L:
+	:type L: TDF_Label &
+	:param mode: default value is STEPControl_AsIs
+	:type mode: STEPControl_StepModelType
+	:param multi: default value is 0
+	:type multi: char *
+	:rtype: bool") Transfer;
+		Standard_Boolean Transfer (const TDF_Label & L,const STEPControl_StepModelType mode = STEPControl_AsIs,const char * multi = 0);
+
+		/****************** Write ******************/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "* Writes all the produced models into file In case of multimodel with extern references, filename will be a name of root file, all other files have names of corresponding parts Provided for use like single-file writer
+	:param filename:
+	:type filename: char *
+	:rtype: IFSelect_ReturnStatus") Write;
+		IFSelect_ReturnStatus Write (const char * filename);
+
+		/****************** Writer ******************/
+		%feature("compactdefaultargs") Writer;
+		%feature("autodoc", "* Returns basic reader as const
+	:rtype: STEPControl_Writer") Writer;
+		const STEPControl_Writer & Writer ();
+
 };
 
 
@@ -1768,3 +972,7 @@ class STEPCAFControl_Writer {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

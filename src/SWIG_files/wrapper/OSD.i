@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,23 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define OSDDOCSTRING
-"-History:
-Version  Date    Purpose
-1.1  24/06/92  Operating System Dependent tools
-1.2
-2.0
-3.0
-Windows NT 30/09/96 ( EUG )
-Set of Operating Sytem Dependent Tools
-(O)perating (S)ystem (D)ependent
-"
+"OSD module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_osd.html"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -46,13 +35,21 @@ Set of Operating Sytem Dependent Tools
 %include ../common/OccHandle.i
 
 
-%include OSD_headers.i
+%{
+#include<OSD_module.hxx>
 
-/* typedefs */
-typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
-typedef pthread_t OSD_PThread;
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TCollection.i
 /* public enums */
 enum OSD_LockType {
 	OSD_NoLock = 0,
@@ -102,8 +99,7 @@ enum OSD_WhoAmI {
 	OSD_WChronometer = 11,
 	OSD_WTimer = 12,
 	OSD_WPackage = 13,
-	OSD_WPrinter = 14,
-	OSD_WEnvironmentIterator = 15,
+	OSD_WEnvironmentIterator = 14,
 };
 
 enum OSD_SysType {
@@ -127,6 +123,13 @@ enum OSD_KindFile {
 	OSD_LINK = 2,
 	OSD_SOCKET = 3,
 	OSD_UNKNOWN = 4,
+};
+
+enum OSD_SignalMode {
+	OSD_SignalMode_AsIs = 0,
+	OSD_SignalMode_Set = 1,
+	OSD_SignalMode_SetUnhandled = 2,
+	OSD_SignalMode_Unset = 3,
 };
 
 enum OSD_FromWhere {
@@ -156,3 +159,14 @@ enum OSD_SingleProtection {
 
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
+typedef pthread_t OSD_PThread;
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

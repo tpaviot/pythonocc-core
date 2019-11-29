@@ -24,12 +24,15 @@ from math import sqrt
 import warnings
 from contextlib import contextmanager
 
-from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.Standard import Standard_Transient
+from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
+from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
 from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -62,9 +65,9 @@ def assert_warns_deprecated():
         yield w
         # Verify some things
         if not issubclass(w[-1].category, DeprecationWarning):
-        	raise AssertionError("Wrong exception type")
+            raise AssertionError("Wrong exception type")
         if not "deprecated" in str(w[-1].message):
-        	raise AssertionError("deprecated string not in message")
+            raise AssertionError("deprecated string not in message")
 
 
 
@@ -279,8 +282,28 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(p_coord[1], 2.)
         self.assertEqual(p_coord[2], 3.2)
 
-    # TODO : add a testStandardRealByRefPassedReturned
-    def test_standard_integer_by_ref_passed_returned(self):
+    def test_Standard_Real_by_ref_passed_returned(self):
+        '''
+        Check getters and setters for method that take/return
+        Standard_Real by reference. Ref github Issue #710
+        '''
+        # create a 2*2 matrix
+        #    | -1.    -2. |
+        #m = |  4.    5.5 |
+        
+        # lower indices are 0, to comply with python list indexing
+        mat = math_Matrix(0, 1, 0, 1)
+        mat.SetValue(0, 0, -1)
+        mat.SetValue(0, 1, -2)
+        mat.SetValue(1, 0, 4)
+        mat.SetValue(1, 1, 5.5)
+        # the returned value should be the same
+        self.assertEqual(mat.GetValue(0, 0), -1)
+        self.assertEqual(mat.GetValue(0, 1), -2)
+        self.assertEqual(mat.GetValue(1, 0), 4)
+        self.assertEqual(mat.GetValue(1, 1), 5.5)
+
+    def test_Standard_Integer_by_ref_passed_returned(self):
         '''
         Checks the Standard_Integer & byreference return parameter
         '''
@@ -288,7 +311,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfs.SetFixShellMode(5)
         self.assertEqual(sfs.GetFixShellMode(), 5)
 
-    def testStandardBooleanByRefPassedReturned(self):
+    def test_Standard_Boolean_by_ref_passed_returned(self):
         '''
         Checks the Standard_Boolean & byreference return parameter
         '''
@@ -298,7 +321,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfw.SetModifyGeometryMode(False)
         self.assertEqual(sfw.GetModifyGeometryMode(), False)
 
-    def testTopoDS_byref_arguments(self):
+    def test_TopoDS_byref_arguments(self):
         '''
         Test byref pass arguments to TopoDS
         '''
@@ -312,13 +335,13 @@ class TestWrapperFeatures(unittest.TestCase):
             bb.Add(c, child)
         self.assertFalse(c.IsNull())
 
-    def test_standard_boolean_byref(self):
+    def test_Standard_Boolean_byref(self):
         '''
         Test byref returned standard_boolean
         '''
         cs = ChFiDS_ChamfSpine()
-        cs.SetDistAngle(1., 45, True)
-        self.assertEqual(cs.GetDistAngle(), (1.0, 45.0, True))
+        cs.SetDistAngle(1., 45)
+        self.assertEqual(cs.GetDistAngle(), (1.0, 45.))
 
     def test_dump_to_string(self):
         '''
@@ -379,13 +402,13 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(vec.Magnitude(), 1.)
         self.assertEqual(vec.get_attribute(), "something")
 
-    def testProtectedConstructor(self):
+    def test_protected_constructor(self):
         """ Test: protected constructor """
         # 1st, class with no subclass
         tds_builder = TopoDS_Builder()
         self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
-    def testAutoImportOfDependentModules(self):
+    def test_auto_import_of_dependent_modules(self):
         """ Test: automatic import of dependent modules """
         returned_object = GCE2d_MakeSegment(gp_Pnt2d(1, 1),
                                             gp_Pnt2d(3, 4)).Value()
@@ -548,51 +571,6 @@ class TestWrapperFeatures(unittest.TestCase):
             self.assertTrue(isinstance(it.Value(), int))
             it.Next()
 
-    def test_deprecation_warning(self):
-        """ since pythonocc-0.18.2. import OCC.* changed to import OCC.Core.*
-        Such deprecated import raises a DeprecatedWarning
-        """
-        with assert_warns_deprecated():
-            from OCC.gp import gp_Pln
-            # create a gp_Pln object to avoid
-            # codacy and other static analysis tools
-            # to report the gp_Pln class is unused
-            # though it's not very elegant !
-            self.assertIsInstance(gp_Pln(), gp_Pln)
-
-    def test_deprecation_get_handle(self):
-        """ Handles are now completely transparent. The GetHandle method is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = t.GetHandle()
-            self.assertFalse(h.IsNull())
-
-    def test_deprecation_handle_class(self):
-        """ Handles are now completely transparent. The Handle_* constructor is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = Handle_Standard_Transient(t)
-            self.assertFalse(h.IsNull())
-
-    def test_deprecation_get_object(self):
-        """ Handles are now completely transparent. The GetObject method is
-        not required anymore.
-        """
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            o = t.GetObject()
-            self.assertFalse(o.IsNull())
-
-    def test_deprecation_downcasts(self):
-        t = Standard_Transient()
-        with assert_warns_deprecated():
-            h = Handle_Standard_Transient.DownCast(t)
-            self.assertFalse(h.IsNull())
-
     def test_array_iterator(self):
         P0 = gp_Pnt(1, 2, 3)
         list_of_points = TColgp_Array1OfPnt(5, 8)
@@ -613,11 +591,11 @@ class TestWrapperFeatures(unittest.TestCase):
         for pnt in list_of_points:
             self.assertTrue(isinstance(pnt, gp_Pnt))
 
-    def test_repr_for_null_topods_shapes(self):
+    def test_repr_for_null_TopoDS_Shape(self):
         # create null vertex and shape
         v = TopoDS_Vertex()
-        s = TopoDS_Shape()
         self.assertTrue('Null' in v.__repr__())
+        s = TopoDS_Shape()
         self.assertTrue('Null' in s.__repr__())
 
     def test_in_place_operators(self):
@@ -679,9 +657,10 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(d.Z(), 9.)
 
     def test_shape_conversion_as_py_none(self):
-        # see issue #600 and PR #614
-        # a null topods_shape should be returned as Py_None by the TopoDS transformer
-        # the following test case returns a null topods_shape
+        """ see issue #600 and PR #614
+        a null topods_shape should be returned as Py_None by the TopoDS transformer
+        the following test case returns a null topods_shape
+        """
         box = BRepPrimAPI_MakeBox(1., 1., 1.).Shape()
         hlr = HLRBRep_Algo()
         hlr.Add(box)
@@ -692,6 +671,33 @@ class TestWrapperFeatures(unittest.TestCase):
         hlr_shapes = HLRBRep_HLRToShape(hlr)
         visible_smooth_edges = hlr_shapes.Rg1LineVCompound()
         self.assertTrue(visible_smooth_edges is None)
+
+    def test_DumpToString(self):
+        """ some objects can be serialized to a string
+        """
+        v = math_Vector(0, 2)
+        serialized_v = v.DumpToString()
+        # should output
+        expected_output = 'math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n'
+        self.assertEqual(expected_output, serialized_v)
+
+    def test_DumpJsonToString(self):
+        """ Since opencascade 7x, some objects can be serialized to json
+        """
+        # create a sphere with a radius of 10.
+        sph= BRepPrimAPI_MakeSphere(10.).Shape()
+        # compute the Bnd box for this sphere
+        bnd_box = Bnd_Box()
+        brepbndlib_Add(sph, bnd_box)
+        # check the result
+        corner_min = bnd_box.CornerMin()
+        self.assertEqual([round(corner_min.X(), 3), round(corner_min.Y(), 3), round(corner_min.Z(), 3)],
+                         [-10., -10., -10.])
+        # check dump json is working
+        json_string = bnd_box.DumpJsonToString()
+        expected_output = '"Bnd_Box": {"CornerMin": [-10, -10, -10], "CornerMax": [10, 10, 10], "Gap": 1e-07, "Flags": 0}'
+        self.assertEqual(json_string, expected_output)
+
 
 def suite():
     test_suite = unittest.TestSuite()

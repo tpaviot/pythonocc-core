@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,14 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define XBREPMESHDOCSTRING
-"No docstring provided."
+"XBRepMesh module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xbrepmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=XBREPMESHDOCSTRING) XBRepMesh
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -37,20 +35,58 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/OccHandle.i
 
 
-%include XBRepMesh_headers.i
+%{
+#include<BRepMesh_Delaun.hxx>
+#include<XBRepMesh_module.hxx>
+
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
+#include<BRepMesh_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
+#include<Geom_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TopLoc_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<Message_module.hxx>
+#include<Bnd_module.hxx>
+#include<Poly_module.hxx>
+#include<TShort_module.hxx>
+#include<IMeshTools_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import TopoDS.i
+%import BRepMesh.i
+/* public enums */
+/* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
+
+/* templates */
+/* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
-
+/******************
+* class XBRepMesh *
+******************/
 %rename(xbrepmesh) XBRepMesh;
 class XBRepMesh {
 	public:
+		/****************** Discret ******************/
 		%feature("compactdefaultargs") Discret;
-		%feature("autodoc", "	:param theShape:
+		%feature("autodoc", ":param theShape:
 	:type theShape: TopoDS_Shape &
 	:param theDeflection:
 	:type theDeflection: float
@@ -58,9 +94,9 @@ class XBRepMesh {
 	:type theAngle: float
 	:param theAlgo:
 	:type theAlgo: BRepMesh_DiscretRoot * &
-	:rtype: int
-") Discret;
+	:rtype: int") Discret;
 		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_DiscretRoot * & theAlgo);
+
 };
 
 
@@ -69,3 +105,7 @@ class XBRepMesh {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

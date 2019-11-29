@@ -1,9 +1,7 @@
-sudo: false
+os: linux
+dist: bionic
 
 language: cpp
-
-cache:
- apt: true
 
 git:
   depth: false
@@ -27,75 +25,75 @@ git:
 # after that, copy/paste the secure on the following line
 env:
   global:
-    - secure: "Mu6SQsBmz2inttfIj3pXk4lx6ZXNs7MAq1agDgnGJknQTTi4ta0H+usxKhhGvxkh4eGgX01HuXAbPejU0W9xatHvYDQ3piKvqv672TrhYShHA4bWJke3q88BezSYaDQ+UBTmP5DD/ZFbprH+6bP9WqpRaYGC6UHbFkjRKEd2bk4="
+    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
 
-addons:
-  apt:
-    packages:
-      - mesa-common-dev
-      - libgl1-mesa-dev
-      - libglu1-mesa-dev
-
-matrix:
+jobs:
   include:
+# Linux
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
-      os: linux
-      dist: bionic
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
-      os: linux
-      dist: bionic
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
-      os: osx
-      osx_image: xcode9.4
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
-      os: linux
-      dist: bionic
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+# OSX
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
       os: osx
-      osx_image: xcode9.4
+      osx_image:  xcode9.4
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
+      os: osx
+      osx_image:  xcode9.4
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET=10.9
+      os: osx
+      osx_image:  xcode9.4
+# Windows
+#    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
+#    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
+#    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" CC="cl.exe" CXX="cl.exe" MSVC_TOOLSET_VERSION=15
+#      os: windows
+
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
-  - if [ ${PYTHON:0:1} == "2" ]; then
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-      else
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -O miniconda.sh;
-      fi;
-      else
-      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      MINICONDA_PATH=$HOME/miniconda;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
+    elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      MINICONDA_PATH=/c/tools/miniconda3;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
+    fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-      else
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
-      fi;
+      wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz -O MacOSX10.9.sdk.tar.xz;
+      tar xf MacOSX10.9.sdk.tar.xz;
+      sudo mv MacOSX10.9.sdk /opt/;
+      ls /opt;
+    fi
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      chmod +x miniconda.sh;
+      yes | ./miniconda.sh -b -p $MINICONDA_PATH;
+    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      echo "installing miniconda for windows";
+      choco install openssl.light;
+      choco install miniconda3;
     fi;
-  - chmod +x miniconda.sh
-  # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
-  # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
-  - yes | ./miniconda.sh -b -p $HOME/miniconda
-  #- bash miniconda.sh -b -p -f $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - export PYTHONUNBUFFERED=1
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no
+  - conda config --set always_yes yes --set changeps1 no --set ssl_verify false
   - conda update -q conda
   # install everything required to build the receipe
-  # conda-build 3.2.0 on osx to prevent using check_overlinking
-  # method which is quite loooong to process
-  #- conda install conda-build==3.2.0
-  - conda install conda-build anaconda-client
+  - conda install conda-build
+  - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
-  # download/install OCE from DLR-SC channel
-  - conda config --add channels dlr-sc
-  - conda config --add channels conda-forge
-  - conda config --add channels tpaviot
-  - conda config --add channels oce
-  - conda config --add channels pythonocc
+  # dlr-sc channel is required for opencascade-7.4.0 package
+  - conda config --add channels https://conda.anaconda.org/dlr-sc
+  - conda config --add channels https://conda.anaconda.org/conda-forge
 
 script:
   - conda build ci/conda --dirty --no-remove-work-dir
@@ -110,7 +108,7 @@ after_success:
       anaconda -t $BINSTAR_TOKEN upload *.bz2 -l main --force;
     else
       anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$TRAVIS_BRANCH --force;
-    fi;
+    fi
 
 
 branches:

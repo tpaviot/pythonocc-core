@@ -1,4 +1,9 @@
-version: pythonocc-core-0.18.2.{build}
+version: pythonocc-core-7.4.0beta-dev.{build}
+
+os:
+  - Visual Studio 2015
+  - macOS
+  - Ubuntu
 
 environment:
   binstar_token:
@@ -8,16 +13,7 @@ environment:
     # and copy paste to
     # https://ci.appveyor.com/tools/encrypt
     # then copy/paste the result below
-    secure: +BLEI1wg9klPN7BVAY1thK7n1x1/L10dWtgKzOmGCI4mg4V77hes9yj3kjZ168xf
-
-  global:
-    # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
-    # /E:ON and /V:ON options are not enabled in the batch script intepreter
-    # See: http://stackoverflow.com/a/13751649/163740
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci\\appveyor\\obvci_appveyor_python_build_env.cmd"
-  
-    # Workaround for https://github.com/conda/conda-build/issues/636
-    PYTHONIOENCODING: "UTF-8"
+    secure: 6Wllm3O0zxgpBaBDNMTQAVdcBb9tMylzp72/JlpDQjljxvmF/g8FPSDZaGVs9zR8
 
   matrix:
     - PYTHON: "C:\\Python36_32"
@@ -26,73 +22,58 @@ environment:
       CONDA_PY: "36"
       CONDA_NPY: "18"
       CONDA_INSTALL_LOCN: "C:\\Miniconda36"
-    - PYTHON: "C:\\Python36_64"
-      PYTHON_VERSION: "3.6"
+    - PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
       CONDA_PY: "36"
       CONDA_NPY: "18"
       CONDA_INSTALL_LOCN: "C:\\Miniconda36-x64"
-    - PYTHON: "C:\\Python37_32"
-      PYTHON_VERSION: "3.7"
+    - PYTHON_VERSION: "3.7"
       PYTHON_ARCH: "32"
       CONDA_PY: "37"
       CONDA_NPY: "18"
       CONDA_INSTALL_LOCN: "C:\\Miniconda37"
-    - PYTHON: "C:\\Python37_64"
-      PYTHON_VERSION: "3.7"
+    - PYTHON_VERSION: "3.7"
       PYTHON_ARCH: "64"
       CONDA_PY: "37"
       CONDA_NPY: "18"
       CONDA_INSTALL_LOCN: "C:\\Miniconda37-x64"
-# We always use a 64-bit machine, but can build x86 distributions
-# with the TARGET_ARCH variable (which is used by CMD_IN_ENV).
-platform:
-    - x64
 
 install:
-    # Set the CONDA_NPY, although it has no impact on the actual build. We need this because of a test within conda-build.
-    - cmd: set CONDA_NPY=19
-    # Remove cygwin (and therefore the git that comes with it).
-    - cmd: rmdir C:\cygwin /s /q
-    # Use the pre-installed Miniconda for the desired arch
-    #
-    # However, it is really old. So, we need to update some
-    # things before we proceed. That seems to require it being
-    # on the path. So, we temporarily put conda on the path
-    # so that we can update it. Then we remove it so that
-    # we can do a proper activation.
-    - cmd: set "OLDPATH=%PATH%"
-    - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
-    - cmd: conda config --set always_yes yes --set changeps1 no
-    - cmd: conda update conda
-    - cmd: set "PATH=%OLDPATH%"
+    - ps: |
+        if ($isLinux) {
+          wget "http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O miniconda.sh
+        } elseif ($isMacOS) {
+          brew install wget
+          wget "https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh" -O miniconda.sh
+          wget "https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz"  -O MacOSX10.9.sdk.tar.xz
+          tar xf MacOSX10.9.sdk.tar.xz
+          sudo mv MacOSX10.9.sdk /opt/
+          ls /opt
+        }
+    - sh: bash miniconda.sh -b
+    - sh: export PATH=$HOME/miniconda3/bin:$PATH
+    # On Windows, activate the environment
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-    - cmd: conda config --set show_channel_urls true
-    - cmd: conda update conda
-    - cmd: conda install conda-build anaconda-client
-    - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
-    - cmd: conda config --add channels https://conda.anaconda.org/oce
-    - cmd: conda config --add channels https://conda.anaconda.org/pythonocc
-    - cmd: conda config --add channels https://conda.anaconda.org/tpaviot
+    # Following lines are os independant
+    - conda config --set always_yes yes --set changeps1 no
+    - conda config --set show_channel_urls true
+    - conda install conda-build anaconda-client
+    - conda config --add channels dlr-sc
     - cmd: set PYTHONBUFFERED=1
+    - sh: export PYTHONBUFFERED=1
 
 build: off
 
 test_script:
-  # Build and test the package. This appears(?) to sporadically fail due to a 
-  # bug in conda-build on 32 bit python.
-  # https://github.com/conda/conda-build/issues/152
-  #
-  # Note also that our setup.py script, which is called by conda-build, writes
-  # a __conda_version__.txt file, so the version number on the binary package
-  # is set dynamically. This unfortunately mean that conda build --output
-  # doesn't really work.
-  #
-  - "%CMD_IN_ENV% conda build .\\ci\\conda --quiet --no-remove-work-dir --dirty"
+  - cmd: conda build .\\ci\\conda --quiet --no-remove-work-dir --dirty
+  - sh: conda build ./ci/conda --quiet --no-remove-work-dir --dirty
   # move conda package to /dist
-  - cmd: 'mkdir dist'
-  - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
-  # upload package to anaconda$
+  - mkdir dist  # portable command windows/linux
+  # upload for osx
+  - sh: cp $HOME/miniconda3/conda-bld/osx-64/*.bz2 dist
+  - sh: anaconda -t $BINSTAR_TOKEN upload dist/*.bz2 -l cd-$APPVEYOR_REPO_BRANCH --force
+  # upload for Windows
+  - cmd: copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"
   - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH --force "2>&1"
 
 artifacts:

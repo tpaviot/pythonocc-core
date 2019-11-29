@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,15 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define IMAGEDOCSTRING
-"The package Image provides image manipulation classes.
-"
+"Image module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_image.html"
 %enddef
 %module (package="OCC.Core", docstring=IMAGEDOCSTRING) Image
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -38,12 +35,46 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/OccHandle.i
 
 
-%include Image_headers.i
+%{
+#include<Image_module.hxx>
 
-/* typedefs */
-typedef Handle_Image_PixMap Image_PixMap_Handle;
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
+enum Image_Format {
+	Image_Format_UNKNOWN = 0,
+	Image_Format_Gray = 1,
+	Image_Format_Alpha = 2,
+	Image_Format_RGB = 3,
+	Image_Format_BGR = 4,
+	Image_Format_RGB32 = 5,
+	Image_Format_BGR32 = 6,
+	Image_Format_RGBA = 7,
+	Image_Format_BGRA = 8,
+	Image_Format_GrayF = 9,
+	Image_Format_AlphaF = 10,
+	Image_Format_RGBF = 11,
+	Image_Format_BGRF = 12,
+	Image_Format_RGBAF = 13,
+	Image_Format_BGRAF = 14,
+};
+
 /* end public enums declaration */
 
+/* templates */
+/* end templates declaration */
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

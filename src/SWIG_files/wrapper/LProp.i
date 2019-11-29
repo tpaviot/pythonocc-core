@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,41 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define LPROPDOCSTRING
-"Handles local properties of curves and surfaces.
-Given a curve and a parameter value the following computations
-are available :
-- point,
-- derivatives,
-- tangent,
-- normal,
-- curvature,
-- centre of curvature,
-- Locals curvature's extremas,
-- Points of inflection,
-Given a surface and 2 parameters the following computations
-are available :
-- for each parameter:
-- derivatives,
-- tangent line,
-- centre of curvature,
-- point,
-- normal line,
-- maximum and minimum curvatures,
-- principal directions of curvature,
-- mean curvature,
-- Gaussian curvature.
-
-
--Level : Public.
-All methods of all classes will be public.
-"
+"LProp module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_lprop.html"
 %enddef
 %module (package="OCC.Core", docstring=LPROPDOCSTRING) LProp
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -64,11 +35,21 @@ All methods of all classes will be public.
 %include ../common/OccHandle.i
 
 
-%include LProp_headers.i
+%{
+#include<LProp_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import GeomAbs.i
 /* public enums */
 enum LProp_Status {
 	LProp_Undecided = 0,
@@ -85,17 +66,31 @@ enum LProp_CIType {
 
 /* end public enums declaration */
 
-%wrap_handle(LProp_SequenceNodeOfSequenceOfCIType)
+/* handles */
+/* end handles declaration */
 
+/* templates */
+%template(LProp_SequenceOfCIType) NCollection_Sequence <LProp_CIType>;
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Sequence <LProp_CIType> LProp_SequenceOfCIType;
+/* end typedefs declaration */
+
+/*****************************
+* class LProp_AnalyticCurInf *
+*****************************/
 %nodefaultctor LProp_AnalyticCurInf;
 class LProp_AnalyticCurInf {
 	public:
+		/****************** LProp_AnalyticCurInf ******************/
 		%feature("compactdefaultargs") LProp_AnalyticCurInf;
-		%feature("autodoc", "	:rtype: None
-") LProp_AnalyticCurInf;
+		%feature("autodoc", ":rtype: None") LProp_AnalyticCurInf;
 		 LProp_AnalyticCurInf ();
+
+		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param T:
+		%feature("autodoc", ":param T:
 	:type T: GeomAbs_CurveType
 	:param UFirst:
 	:type UFirst: float
@@ -103,9 +98,9 @@ class LProp_AnalyticCurInf {
 	:type ULast: float
 	:param Result:
 	:type Result: LProp_CurAndInf &
-	:rtype: None
-") Perform;
+	:rtype: None") Perform;
 		void Perform (const GeomAbs_CurveType T,const Standard_Real UFirst,const Standard_Real ULast,LProp_CurAndInf & Result);
+
 };
 
 
@@ -114,57 +109,66 @@ class LProp_AnalyticCurInf {
 	__repr__ = _dumps_object
 	}
 };
+
+/************************
+* class LProp_CurAndInf *
+************************/
 %nodefaultctor LProp_CurAndInf;
 class LProp_CurAndInf {
 	public:
-		%feature("compactdefaultargs") LProp_CurAndInf;
-		%feature("autodoc", "	:rtype: None
-") LProp_CurAndInf;
-		 LProp_CurAndInf ();
-		%feature("compactdefaultargs") AddInflection;
-		%feature("autodoc", "	:param Param:
-	:type Param: float
-	:rtype: None
-") AddInflection;
-		void AddInflection (const Standard_Real Param);
+		/****************** AddExtCur ******************/
 		%feature("compactdefaultargs") AddExtCur;
-		%feature("autodoc", "	:param Param:
+		%feature("autodoc", ":param Param:
 	:type Param: float
 	:param IsMin:
 	:type IsMin: bool
-	:rtype: None
-") AddExtCur;
+	:rtype: None") AddExtCur;
 		void AddExtCur (const Standard_Real Param,const Standard_Boolean IsMin);
+
+		/****************** AddInflection ******************/
+		%feature("compactdefaultargs") AddInflection;
+		%feature("autodoc", ":param Param:
+	:type Param: float
+	:rtype: None") AddInflection;
+		void AddInflection (const Standard_Real Param);
+
+		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
+		%feature("autodoc", ":rtype: None") Clear;
 		void Clear ();
+
+		/****************** IsEmpty ******************/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
+		%feature("autodoc", ":rtype: bool") IsEmpty;
 		Standard_Boolean IsEmpty ();
+
+		/****************** LProp_CurAndInf ******************/
+		%feature("compactdefaultargs") LProp_CurAndInf;
+		%feature("autodoc", ":rtype: None") LProp_CurAndInf;
+		 LProp_CurAndInf ();
+
+		/****************** NbPoints ******************/
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of points. The Points are stored to increasing parameter.
-
-	:rtype: int
-") NbPoints;
+		%feature("autodoc", "* Returns the number of points. The Points are stored to increasing parameter.
+	:rtype: int") NbPoints;
 		Standard_Integer NbPoints ();
+
+		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter of the Nth point. raises if N not in the range [1,NbPoints()]
-
+		%feature("autodoc", "* Returns the parameter of the Nth point. raises if N not in the range [1,NbPoints()]
 	:param N:
 	:type N: int
-	:rtype: float
-") Parameter;
+	:rtype: float") Parameter;
 		Standard_Real Parameter (const Standard_Integer N);
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	* Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of curvature. - MaxCur if the Nth parameter corresponds to a maximum of the radius of curvature. - Inflection if the parameter corresponds to a point of inflection. raises if N not in the range [1,NbPoints()]
 
+		/****************** Type ******************/
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "* Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of curvature. - MaxCur if the Nth parameter corresponds to a maximum of the radius of curvature. - Inflection if the parameter corresponds to a point of inflection. raises if N not in the range [1,NbPoints()]
 	:param N:
 	:type N: int
-	:rtype: LProp_CIType
-") Type;
+	:rtype: LProp_CIType") Type;
 		LProp_CIType Type (const Standard_Integer N);
+
 };
 
 
@@ -173,173 +177,7 @@ class LProp_CurAndInf {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor LProp_SequenceNodeOfSequenceOfCIType;
-class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") LProp_SequenceNodeOfSequenceOfCIType;
-		%feature("autodoc", "	:param I:
-	:type I: LProp_CIType &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") LProp_SequenceNodeOfSequenceOfCIType;
-		 LProp_SequenceNodeOfSequenceOfCIType (const LProp_CIType & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: LProp_CIType
-") Value;
-		LProp_CIType  Value ();
-};
 
-
-%make_alias(LProp_SequenceNodeOfSequenceOfCIType)
-
-%extend LProp_SequenceNodeOfSequenceOfCIType {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor LProp_SequenceOfCIType;
-class LProp_SequenceOfCIType : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") LProp_SequenceOfCIType;
-		%feature("autodoc", "	:rtype: None
-") LProp_SequenceOfCIType;
-		 LProp_SequenceOfCIType ();
-		%feature("compactdefaultargs") LProp_SequenceOfCIType;
-		%feature("autodoc", "	:param Other:
-	:type Other: LProp_SequenceOfCIType &
-	:rtype: None
-") LProp_SequenceOfCIType;
-		 LProp_SequenceOfCIType (const LProp_SequenceOfCIType & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: LProp_SequenceOfCIType &
-	:rtype: LProp_SequenceOfCIType
-") Assign;
-		const LProp_SequenceOfCIType & Assign (const LProp_SequenceOfCIType & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: LProp_SequenceOfCIType &
-	:rtype: LProp_SequenceOfCIType
-") operator =;
-		const LProp_SequenceOfCIType & operator = (const LProp_SequenceOfCIType & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: LProp_CIType &
-	:rtype: None
-") Append;
-		void Append (const LProp_CIType & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: LProp_SequenceOfCIType &
-	:rtype: None
-") Append;
-		void Append (LProp_SequenceOfCIType & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: LProp_CIType &
-	:rtype: None
-") Prepend;
-		void Prepend (const LProp_CIType & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: LProp_SequenceOfCIType &
-	:rtype: None
-") Prepend;
-		void Prepend (LProp_SequenceOfCIType & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: LProp_CIType &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const LProp_CIType & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LProp_SequenceOfCIType &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,LProp_SequenceOfCIType & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: LProp_CIType &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const LProp_CIType & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: LProp_SequenceOfCIType &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,LProp_SequenceOfCIType & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: LProp_CIType
-") First;
-		const LProp_CIType  First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: LProp_CIType
-") Last;
-		const LProp_CIType  Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: LProp_SequenceOfCIType &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,LProp_SequenceOfCIType & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: LProp_CIType
-") Value;
-		const LProp_CIType  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: LProp_CIType &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const LProp_CIType & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: LProp_CIType
-") ChangeValue;
-		LProp_CIType  ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend LProp_SequenceOfCIType {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,17 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define MMGTDOCSTRING
-"-Purpose:
-The package MMgt provides single class TShared which is second in hierarchy
-of inheritance from Standard_Transient, kept for historic reasons
-"
+"MMgt module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_mmgt.html"
 %enddef
 %module (package="OCC.Core", docstring=MMGTDOCSTRING) MMgt
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -40,30 +35,32 @@ of inheritance from Standard_Transient, kept for historic reasons
 %include ../common/OccHandle.i
 
 
-%include MMgt_headers.i
+%{
+#include<MMgt_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
 /* public enums */
 /* end public enums declaration */
 
-%wrap_handle(MMgt_TShared)
+/* handles */
+/* end handles declaration */
 
-%nodefaultctor MMgt_TShared;
-class MMgt_TShared : public Standard_Transient {
-	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-};
+/* templates */
+/* end templates declaration */
 
+/* typedefs */
+typedef Standard_Transient MMgt_TShared;
+/* end typedefs declaration */
 
-%make_alias(MMgt_TShared)
-
-%extend MMgt_TShared {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

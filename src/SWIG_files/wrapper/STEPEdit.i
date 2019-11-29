@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define STEPEDITDOCSTRING
-"-Purpose : Provides tools to exploit and edit a set of STEP data :
-editors, selections ..
-"
+"STEPEdit module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepedit.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPEDITDOCSTRING) STEPEdit
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -39,56 +35,88 @@ editors, selections ..
 %include ../common/OccHandle.i
 
 
-%include STEPEdit_headers.i
+%{
+#include<STEPEdit_module.hxx>
+
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<StepData_module.hxx>
+#include<IFSelect_module.hxx>
+#include<Interface_module.hxx>
+#include<TCollection_module.hxx>
+#include<Message_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepData_module.hxx>
+#include<Interface_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import StepData.i
+%import IFSelect.i
+%import Interface.i
+%import TCollection.i
+/* public enums */
+/* end public enums declaration */
+
+/* handles */
+%wrap_handle(STEPEdit_EditContext)
+%wrap_handle(STEPEdit_EditSDR)
+/* end handles declaration */
+
+/* templates */
+/* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
-%wrap_handle(STEPEdit_EditContext)
-%wrap_handle(STEPEdit_EditSDR)
-
+/*****************
+* class STEPEdit *
+*****************/
 %rename(stepedit) STEPEdit;
 class STEPEdit {
 	public:
-		%feature("compactdefaultargs") Protocol;
-		%feature("autodoc", "	* Returns a Protocol fit for STEP (creates the first time)
-
-	:rtype: Handle_Interface_Protocol
-") Protocol;
-		static Handle_Interface_Protocol Protocol ();
+		/****************** NewModel ******************/
 		%feature("compactdefaultargs") NewModel;
-		%feature("autodoc", "	* Returns a new empty StepModel fit for STEP i.e. with its header determined from Protocol
+		%feature("autodoc", "* Returns a new empty StepModel fit for STEP i.e. with its header determined from Protocol
+	:rtype: opencascade::handle<StepData_StepModel>") NewModel;
+		static opencascade::handle<StepData_StepModel> NewModel ();
 
-	:rtype: Handle_StepData_StepModel
-") NewModel;
-		static Handle_StepData_StepModel NewModel ();
-		%feature("compactdefaultargs") SignType;
-		%feature("autodoc", "	* Returns a SignType fit for STEP (creates the first time)
-
-	:rtype: Handle_IFSelect_Signature
-") SignType;
-		static Handle_IFSelect_Signature SignType ();
-		%feature("compactdefaultargs") NewSelectSDR;
-		%feature("autodoc", "	* Creates a Selection for ShapeDefinitionRepresentation By default searches among root entities
-
-	:rtype: Handle_IFSelect_SelectSignature
-") NewSelectSDR;
-		static Handle_IFSelect_SelectSignature NewSelectSDR ();
+		/****************** NewSelectPlacedItem ******************/
 		%feature("compactdefaultargs") NewSelectPlacedItem;
-		%feature("autodoc", "	* Creates a Selection for Placed Items, i.e. MappedItem or ContextDependentShapeRepresentation, which itself refers to a RepresentationRelationship with possible subtypes (Shape... and/or ...WithTransformation) By default in the whole StepModel
+		%feature("autodoc", "* Creates a Selection for Placed Items, i.e. MappedItem or ContextDependentShapeRepresentation, which itself refers to a RepresentationRelationship with possible subtypes (Shape... and/or ...WithTransformation) By default in the whole StepModel
+	:rtype: opencascade::handle<IFSelect_SelectSignature>") NewSelectPlacedItem;
+		static opencascade::handle<IFSelect_SelectSignature> NewSelectPlacedItem ();
 
-	:rtype: Handle_IFSelect_SelectSignature
-") NewSelectPlacedItem;
-		static Handle_IFSelect_SelectSignature NewSelectPlacedItem ();
+		/****************** NewSelectSDR ******************/
+		%feature("compactdefaultargs") NewSelectSDR;
+		%feature("autodoc", "* Creates a Selection for ShapeDefinitionRepresentation By default searches among root entities
+	:rtype: opencascade::handle<IFSelect_SelectSignature>") NewSelectSDR;
+		static opencascade::handle<IFSelect_SelectSignature> NewSelectSDR ();
+
+		/****************** NewSelectShapeRepr ******************/
 		%feature("compactdefaultargs") NewSelectShapeRepr;
-		%feature("autodoc", "	* Creates a Selection for ShapeRepresentation and its sub-types, plus ContextDependentShapeRepresentation (which is not a sub-type of ShapeRepresentation) By default in the whole StepModel
+		%feature("autodoc", "* Creates a Selection for ShapeRepresentation and its sub-types, plus ContextDependentShapeRepresentation (which is not a sub-type of ShapeRepresentation) By default in the whole StepModel
+	:rtype: opencascade::handle<IFSelect_SelectSignature>") NewSelectShapeRepr;
+		static opencascade::handle<IFSelect_SelectSignature> NewSelectShapeRepr ();
 
-	:rtype: Handle_IFSelect_SelectSignature
-") NewSelectShapeRepr;
-		static Handle_IFSelect_SelectSignature NewSelectShapeRepr ();
+		/****************** Protocol ******************/
+		%feature("compactdefaultargs") Protocol;
+		%feature("autodoc", "* Returns a Protocol fit for STEP (creates the first time)
+	:rtype: opencascade::handle<Interface_Protocol>") Protocol;
+		static opencascade::handle<Interface_Protocol> Protocol ();
+
+		/****************** SignType ******************/
+		%feature("compactdefaultargs") SignType;
+		%feature("autodoc", "* Returns a SignType fit for STEP (creates the first time)
+	:rtype: opencascade::handle<IFSelect_Signature>") SignType;
+		static opencascade::handle<IFSelect_Signature> SignType ();
+
 };
 
 
@@ -97,51 +125,61 @@ class STEPEdit {
 	__repr__ = _dumps_object
 	}
 };
+
+/*****************************
+* class STEPEdit_EditContext *
+*****************************/
 %nodefaultctor STEPEdit_EditContext;
 class STEPEdit_EditContext : public IFSelect_Editor {
 	public:
-		%feature("compactdefaultargs") STEPEdit_EditContext;
-		%feature("autodoc", "	:rtype: None
-") STEPEdit_EditContext;
-		 STEPEdit_EditContext ();
+		/****************** Apply ******************/
+		%feature("compactdefaultargs") Apply;
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param model:
+	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:rtype: bool") Apply;
+		Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
+
+		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Label;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Label;
 		TCollection_AsciiString Label ();
+
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param model:
+	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:rtype: bool") Load;
+		Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
+
+		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:rtype: bool
-") Recognize;
-		Standard_Boolean Recognize (const Handle_IFSelect_EditForm & form);
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:rtype: bool") Recognize;
+		Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
+
+		/****************** STEPEdit_EditContext ******************/
+		%feature("compactdefaultargs") STEPEdit_EditContext;
+		%feature("autodoc", ":rtype: None") STEPEdit_EditContext;
+		 STEPEdit_EditContext ();
+
+		/****************** StringValue ******************/
 		%feature("compactdefaultargs") StringValue;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
 	:param num:
 	:type num: int
-	:rtype: Handle_TCollection_HAsciiString
-") StringValue;
-		Handle_TCollection_HAsciiString StringValue (const Handle_IFSelect_EditForm & form,const Standard_Integer num);
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param model:
-	:type model: Handle_Interface_InterfaceModel &
-	:rtype: bool
-") Apply;
-		Standard_Boolean Apply (const Handle_IFSelect_EditForm & form,const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param model:
-	:type model: Handle_Interface_InterfaceModel &
-	:rtype: bool
-") Load;
-		Standard_Boolean Load (const Handle_IFSelect_EditForm & form,const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;
+		opencascade::handle<TCollection_HAsciiString> StringValue (const opencascade::handle<IFSelect_EditForm> & form,const Standard_Integer num);
+
 };
 
 
@@ -152,51 +190,61 @@ class STEPEdit_EditContext : public IFSelect_Editor {
 	__repr__ = _dumps_object
 	}
 };
+
+/*************************
+* class STEPEdit_EditSDR *
+*************************/
 %nodefaultctor STEPEdit_EditSDR;
 class STEPEdit_EditSDR : public IFSelect_Editor {
 	public:
-		%feature("compactdefaultargs") STEPEdit_EditSDR;
-		%feature("autodoc", "	:rtype: None
-") STEPEdit_EditSDR;
-		 STEPEdit_EditSDR ();
+		/****************** Apply ******************/
+		%feature("compactdefaultargs") Apply;
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param model:
+	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:rtype: bool") Apply;
+		Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
+
+		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", "	:rtype: TCollection_AsciiString
-") Label;
+		%feature("autodoc", ":rtype: TCollection_AsciiString") Label;
 		TCollection_AsciiString Label ();
+
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:param ent:
+	:type ent: opencascade::handle<Standard_Transient> &
+	:param model:
+	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:rtype: bool") Load;
+		Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
+
+		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:rtype: bool
-") Recognize;
-		Standard_Boolean Recognize (const Handle_IFSelect_EditForm & form);
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
+	:rtype: bool") Recognize;
+		Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
+
+		/****************** STEPEdit_EditSDR ******************/
+		%feature("compactdefaultargs") STEPEdit_EditSDR;
+		%feature("autodoc", ":rtype: None") STEPEdit_EditSDR;
+		 STEPEdit_EditSDR ();
+
+		/****************** StringValue ******************/
 		%feature("compactdefaultargs") StringValue;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
+		%feature("autodoc", ":param form:
+	:type form: opencascade::handle<IFSelect_EditForm> &
 	:param num:
 	:type num: int
-	:rtype: Handle_TCollection_HAsciiString
-") StringValue;
-		Handle_TCollection_HAsciiString StringValue (const Handle_IFSelect_EditForm & form,const Standard_Integer num);
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param model:
-	:type model: Handle_Interface_InterfaceModel &
-	:rtype: bool
-") Apply;
-		Standard_Boolean Apply (const Handle_IFSelect_EditForm & form,const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "	:param form:
-	:type form: Handle_IFSelect_EditForm &
-	:param ent:
-	:type ent: Handle_Standard_Transient &
-	:param model:
-	:type model: Handle_Interface_InterfaceModel &
-	:rtype: bool
-") Load;
-		Standard_Boolean Load (const Handle_IFSelect_EditForm & form,const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;
+		opencascade::handle<TCollection_HAsciiString> StringValue (const opencascade::handle<IFSelect_EditForm> & form,const Standard_Integer num);
+
 };
 
 
@@ -207,3 +255,7 @@ class STEPEdit_EditSDR : public IFSelect_Editor {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

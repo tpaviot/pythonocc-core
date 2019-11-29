@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,16 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define STEPTOGEOMDOCSTRING
-"- Purpose: Creation des entites geometriques de Geom a partir du schema
-StepGeom (Part42, geometric)
-"
+"StepToGeom module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -39,854 +35,390 @@ StepGeom (Part42, geometric)
 %include ../common/OccHandle.i
 
 
-%include StepToGeom_headers.i
+%{
+#include<StepToGeom_module.hxx>
+
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<StepGeom_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
+#include<Message_module.hxx>
+#include<StepShape_module.hxx>
+#include<StepBasic_module.hxx>
+#include<StepGeom_module.hxx>
+#include<StepRepr_module.hxx>
+#include<StepElement_module.hxx>
+#include<Interface_module.hxx>
+#include<StepData_module.hxx>
+#include<MoniTool_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import StepGeom.i
+%import Geom.i
+%import Geom2d.i
+%import gp.i
+/* public enums */
+/* end public enums declaration */
+
+/* handles */
+/* end handles declaration */
+
+/* templates */
+/* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
-
-class StepToGeom_MakeAxis1Placement {
+/*******************
+* class StepToGeom *
+*******************/
+%rename(steptogeom) StepToGeom;
+%nodefaultctor StepToGeom;
+class StepToGeom {
 	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SA:
-	:type SA: Handle_StepGeom_Axis1Placement &
-	:param CA:
-	:type CA: Handle_Geom_Axis1Placement &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Axis1Placement & SA,Handle_Geom_Axis1Placement & CA);
-};
-
-
-%extend StepToGeom_MakeAxis1Placement {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeAxis2Placement {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SA:
-	:type SA: Handle_StepGeom_Axis2Placement3d &
-	:param CA:
-	:type CA: Handle_Geom_Axis2Placement &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Axis2Placement3d & SA,Handle_Geom_Axis2Placement & CA);
-};
-
-
-%extend StepToGeom_MakeAxis2Placement {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeAxisPlacement {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SA:
-	:type SA: Handle_StepGeom_Axis2Placement2d &
-	:param CA:
-	:type CA: Handle_Geom2d_AxisPlacement &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Axis2Placement2d & SA,Handle_Geom2d_AxisPlacement & CA);
-};
-
-
-%extend StepToGeom_MakeAxisPlacement {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBSplineCurve {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_BSplineCurve &
-	:param CC:
-	:type CC: Handle_Geom_BSplineCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BSplineCurve & SC,Handle_Geom_BSplineCurve & CC);
-};
-
-
-%extend StepToGeom_MakeBSplineCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBSplineCurve2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_BSplineCurve &
-	:param CC:
-	:type CC: Handle_Geom2d_BSplineCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BSplineCurve & SC,Handle_Geom2d_BSplineCurve & CC);
-};
-
-
-%extend StepToGeom_MakeBSplineCurve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBSplineSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_BSplineSurface &
-	:param CS:
-	:type CS: Handle_Geom_BSplineSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BSplineSurface & SS,Handle_Geom_BSplineSurface & CS);
-};
-
-
-%extend StepToGeom_MakeBSplineSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBoundedCurve {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_BoundedCurve &
-	:param CC:
-	:type CC: Handle_Geom_BoundedCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BoundedCurve & SC,Handle_Geom_BoundedCurve & CC);
-};
-
-
-%extend StepToGeom_MakeBoundedCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBoundedCurve2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_BoundedCurve &
-	:param CC:
-	:type CC: Handle_Geom2d_BoundedCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BoundedCurve & SC,Handle_Geom2d_BoundedCurve & CC);
-};
-
-
-%extend StepToGeom_MakeBoundedCurve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeBoundedSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_BoundedSurface &
-	:param CS:
-	:type CS: Handle_Geom_BoundedSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_BoundedSurface & SS,Handle_Geom_BoundedSurface & CS);
-};
-
-
-%extend StepToGeom_MakeBoundedSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCartesianPoint {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SP:
-	:type SP: Handle_StepGeom_CartesianPoint &
-	:param CP:
-	:type CP: Handle_Geom_CartesianPoint &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_CartesianPoint & SP,Handle_Geom_CartesianPoint & CP);
-};
-
-
-%extend StepToGeom_MakeCartesianPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCartesianPoint2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SP:
-	:type SP: Handle_StepGeom_CartesianPoint &
-	:param CP:
-	:type CP: Handle_Geom2d_CartesianPoint &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_CartesianPoint & SP,Handle_Geom2d_CartesianPoint & CP);
-};
-
-
-%extend StepToGeom_MakeCartesianPoint2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCircle {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Circle &
-	:param CC:
-	:type CC: Handle_Geom_Circle &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Circle & SC,Handle_Geom_Circle & CC);
-};
-
-
-%extend StepToGeom_MakeCircle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCircle2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Circle &
-	:param CC:
-	:type CC: Handle_Geom2d_Circle &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Circle & SC,Handle_Geom2d_Circle & CC);
-};
-
-
-%extend StepToGeom_MakeCircle2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeConic {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Conic &
-	:param CC:
-	:type CC: Handle_Geom_Conic &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Conic & SC,Handle_Geom_Conic & CC);
-};
-
-
-%extend StepToGeom_MakeConic {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeConic2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Conic &
-	:param CC:
-	:type CC: Handle_Geom2d_Conic &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Conic & SC,Handle_Geom2d_Conic & CC);
-};
-
-
-%extend StepToGeom_MakeConic2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeConicalSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_ConicalSurface &
-	:param CS:
-	:type CS: Handle_Geom_ConicalSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_ConicalSurface & SS,Handle_Geom_ConicalSurface & CS);
-};
-
-
-%extend StepToGeom_MakeConicalSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCurve {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Curve &
-	:param CC:
-	:type CC: Handle_Geom_Curve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Curve & SC,Handle_Geom_Curve & CC);
-};
-
-
-%extend StepToGeom_MakeCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCurve2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Curve &
-	:param CC:
-	:type CC: Handle_Geom2d_Curve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Curve & SC,Handle_Geom2d_Curve & CC);
-};
-
-
-%extend StepToGeom_MakeCurve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeCylindricalSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_CylindricalSurface &
-	:param CS:
-	:type CS: Handle_Geom_CylindricalSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_CylindricalSurface & SS,Handle_Geom_CylindricalSurface & CS);
-};
-
-
-%extend StepToGeom_MakeCylindricalSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeDirection {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SD:
-	:type SD: Handle_StepGeom_Direction &
-	:param CD:
-	:type CD: Handle_Geom_Direction &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Direction & SD,Handle_Geom_Direction & CD);
-};
-
-
-%extend StepToGeom_MakeDirection {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeDirection2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SD:
-	:type SD: Handle_StepGeom_Direction &
-	:param CD:
-	:type CD: Handle_Geom2d_Direction &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Direction & SD,Handle_Geom2d_Direction & CD);
-};
-
-
-%extend StepToGeom_MakeDirection2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeElementarySurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_ElementarySurface &
-	:param CS:
-	:type CS: Handle_Geom_ElementarySurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_ElementarySurface & SS,Handle_Geom_ElementarySurface & CS);
-};
-
-
-%extend StepToGeom_MakeElementarySurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeEllipse {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Ellipse &
-	:param CC:
-	:type CC: Handle_Geom_Ellipse &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Ellipse & SC,Handle_Geom_Ellipse & CC);
-};
-
-
-%extend StepToGeom_MakeEllipse {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeEllipse2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Ellipse &
-	:param CC:
-	:type CC: Handle_Geom2d_Ellipse &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Ellipse & SC,Handle_Geom2d_Ellipse & CC);
-};
-
-
-%extend StepToGeom_MakeEllipse2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeHyperbola {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Hyperbola &
-	:param CC:
-	:type CC: Handle_Geom_Hyperbola &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Hyperbola & SC,Handle_Geom_Hyperbola & CC);
-};
-
-
-%extend StepToGeom_MakeHyperbola {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeHyperbola2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Hyperbola &
-	:param CC:
-	:type CC: Handle_Geom2d_Hyperbola &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Hyperbola & SC,Handle_Geom2d_Hyperbola & CC);
-};
-
-
-%extend StepToGeom_MakeHyperbola2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeLine {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Line &
-	:param CC:
-	:type CC: Handle_Geom_Line &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Line & SC,Handle_Geom_Line & CC);
-};
-
-
-%extend StepToGeom_MakeLine {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeLine2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Line &
-	:param CC:
-	:type CC: Handle_Geom2d_Line &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Line & SC,Handle_Geom2d_Line & CC);
-};
-
-
-%extend StepToGeom_MakeLine2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeParabola {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Parabola &
-	:param CC:
-	:type CC: Handle_Geom_Parabola &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Parabola & SC,Handle_Geom_Parabola & CC);
-};
-
-
-%extend StepToGeom_MakeParabola {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeParabola2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_Parabola &
-	:param CC:
-	:type CC: Handle_Geom2d_Parabola &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Parabola & SC,Handle_Geom2d_Parabola & CC);
-};
-
-
-%extend StepToGeom_MakeParabola2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakePlane {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SP:
-	:type SP: Handle_StepGeom_Plane &
-	:param CP:
-	:type CP: Handle_Geom_Plane &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Plane & SP,Handle_Geom_Plane & CP);
-};
-
-
-%extend StepToGeom_MakePlane {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakePolyline2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SPL:
-	:type SPL: Handle_StepGeom_Polyline &
-	:param CC:
-	:type CC: Handle_Geom2d_BSplineCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Polyline & SPL,Handle_Geom2d_BSplineCurve & CC);
-};
-
-
-%extend StepToGeom_MakePolyline2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeRectangularTrimmedSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_RectangularTrimmedSurface &
-	:param CS:
-	:type CS: Handle_Geom_RectangularTrimmedSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_RectangularTrimmedSurface & SS,Handle_Geom_RectangularTrimmedSurface & CS);
-};
-
-
-%extend StepToGeom_MakeRectangularTrimmedSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeSphericalSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param Surf:
-	:type Surf: Handle_StepGeom_SphericalSurface &
-	:param CS:
-	:type CS: Handle_Geom_SphericalSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_SphericalSurface & Surf,Handle_Geom_SphericalSurface & CS);
-};
-
-
-%extend StepToGeom_MakeSphericalSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_Surface &
-	:param CS:
-	:type CS: Handle_Geom_Surface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Surface & SS,Handle_Geom_Surface & CS);
-};
-
-
-%extend StepToGeom_MakeSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeSurfaceOfLinearExtrusion {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_SurfaceOfLinearExtrusion &
-	:param CS:
-	:type CS: Handle_Geom_SurfaceOfLinearExtrusion &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_SurfaceOfLinearExtrusion & SS,Handle_Geom_SurfaceOfLinearExtrusion & CS);
-};
-
-
-%extend StepToGeom_MakeSurfaceOfLinearExtrusion {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeSurfaceOfRevolution {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_SurfaceOfRevolution &
-	:param CS:
-	:type CS: Handle_Geom_SurfaceOfRevolution &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_SurfaceOfRevolution & SS,Handle_Geom_SurfaceOfRevolution & CS);
-};
-
-
-%extend StepToGeom_MakeSurfaceOfRevolution {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeSweptSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_SweptSurface &
-	:param CS:
-	:type CS: Handle_Geom_SweptSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_SweptSurface & SS,Handle_Geom_SweptSurface & CS);
-};
-
-
-%extend StepToGeom_MakeSweptSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeToroidalSurface {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SS:
-	:type SS: Handle_StepGeom_ToroidalSurface &
-	:param CS:
-	:type CS: Handle_Geom_ToroidalSurface &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_ToroidalSurface & SS,Handle_Geom_ToroidalSurface & CS);
-};
-
-
-%extend StepToGeom_MakeToroidalSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeTransformation2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SCTO:
-	:type SCTO: Handle_StepGeom_CartesianTransformationOperator2d &
+		/****************** MakeAxis1Placement ******************/
+		%feature("compactdefaultargs") MakeAxis1Placement;
+		%feature("autodoc", ":param SA:
+	:type SA: opencascade::handle<StepGeom_Axis1Placement> &
+	:rtype: opencascade::handle<Geom_Axis1Placement>") MakeAxis1Placement;
+		static opencascade::handle<Geom_Axis1Placement> MakeAxis1Placement (const opencascade::handle<StepGeom_Axis1Placement> & SA);
+
+		/****************** MakeAxis2Placement ******************/
+		%feature("compactdefaultargs") MakeAxis2Placement;
+		%feature("autodoc", ":param SA:
+	:type SA: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:rtype: opencascade::handle<Geom_Axis2Placement>") MakeAxis2Placement;
+		static opencascade::handle<Geom_Axis2Placement> MakeAxis2Placement (const opencascade::handle<StepGeom_Axis2Placement3d> & SA);
+
+		/****************** MakeAxisPlacement ******************/
+		%feature("compactdefaultargs") MakeAxisPlacement;
+		%feature("autodoc", ":param SA:
+	:type SA: opencascade::handle<StepGeom_Axis2Placement2d> &
+	:rtype: opencascade::handle<Geom2d_AxisPlacement>") MakeAxisPlacement;
+		static opencascade::handle<Geom2d_AxisPlacement> MakeAxisPlacement (const opencascade::handle<StepGeom_Axis2Placement2d> & SA);
+
+		/****************** MakeBSplineCurve ******************/
+		%feature("compactdefaultargs") MakeBSplineCurve;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_BSplineCurve> &
+	:rtype: opencascade::handle<Geom_BSplineCurve>") MakeBSplineCurve;
+		static opencascade::handle<Geom_BSplineCurve> MakeBSplineCurve (const opencascade::handle<StepGeom_BSplineCurve> & SC);
+
+		/****************** MakeBSplineCurve2d ******************/
+		%feature("compactdefaultargs") MakeBSplineCurve2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_BSplineCurve> &
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>") MakeBSplineCurve2d;
+		static opencascade::handle<Geom2d_BSplineCurve> MakeBSplineCurve2d (const opencascade::handle<StepGeom_BSplineCurve> & SC);
+
+		/****************** MakeBSplineSurface ******************/
+		%feature("compactdefaultargs") MakeBSplineSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_BSplineSurface> &
+	:rtype: opencascade::handle<Geom_BSplineSurface>") MakeBSplineSurface;
+		static opencascade::handle<Geom_BSplineSurface> MakeBSplineSurface (const opencascade::handle<StepGeom_BSplineSurface> & SS);
+
+		/****************** MakeBoundedCurve ******************/
+		%feature("compactdefaultargs") MakeBoundedCurve;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_BoundedCurve> &
+	:rtype: opencascade::handle<Geom_BoundedCurve>") MakeBoundedCurve;
+		static opencascade::handle<Geom_BoundedCurve> MakeBoundedCurve (const opencascade::handle<StepGeom_BoundedCurve> & SC);
+
+		/****************** MakeBoundedCurve2d ******************/
+		%feature("compactdefaultargs") MakeBoundedCurve2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_BoundedCurve> &
+	:rtype: opencascade::handle<Geom2d_BoundedCurve>") MakeBoundedCurve2d;
+		static opencascade::handle<Geom2d_BoundedCurve> MakeBoundedCurve2d (const opencascade::handle<StepGeom_BoundedCurve> & SC);
+
+		/****************** MakeBoundedSurface ******************/
+		%feature("compactdefaultargs") MakeBoundedSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_BoundedSurface> &
+	:rtype: opencascade::handle<Geom_BoundedSurface>") MakeBoundedSurface;
+		static opencascade::handle<Geom_BoundedSurface> MakeBoundedSurface (const opencascade::handle<StepGeom_BoundedSurface> & SS);
+
+		/****************** MakeCartesianPoint ******************/
+		%feature("compactdefaultargs") MakeCartesianPoint;
+		%feature("autodoc", ":param SP:
+	:type SP: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: opencascade::handle<Geom_CartesianPoint>") MakeCartesianPoint;
+		static opencascade::handle<Geom_CartesianPoint> MakeCartesianPoint (const opencascade::handle<StepGeom_CartesianPoint> & SP);
+
+		/****************** MakeCartesianPoint2d ******************/
+		%feature("compactdefaultargs") MakeCartesianPoint2d;
+		%feature("autodoc", ":param SP:
+	:type SP: opencascade::handle<StepGeom_CartesianPoint> &
+	:rtype: opencascade::handle<Geom2d_CartesianPoint>") MakeCartesianPoint2d;
+		static opencascade::handle<Geom2d_CartesianPoint> MakeCartesianPoint2d (const opencascade::handle<StepGeom_CartesianPoint> & SP);
+
+		/****************** MakeCircle ******************/
+		%feature("compactdefaultargs") MakeCircle;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Circle> &
+	:rtype: opencascade::handle<Geom_Circle>") MakeCircle;
+		static opencascade::handle<Geom_Circle> MakeCircle (const opencascade::handle<StepGeom_Circle> & SC);
+
+		/****************** MakeCircle2d ******************/
+		%feature("compactdefaultargs") MakeCircle2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Circle> &
+	:rtype: opencascade::handle<Geom2d_Circle>") MakeCircle2d;
+		static opencascade::handle<Geom2d_Circle> MakeCircle2d (const opencascade::handle<StepGeom_Circle> & SC);
+
+		/****************** MakeConic ******************/
+		%feature("compactdefaultargs") MakeConic;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Conic> &
+	:rtype: opencascade::handle<Geom_Conic>") MakeConic;
+		static opencascade::handle<Geom_Conic> MakeConic (const opencascade::handle<StepGeom_Conic> & SC);
+
+		/****************** MakeConic2d ******************/
+		%feature("compactdefaultargs") MakeConic2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Conic> &
+	:rtype: opencascade::handle<Geom2d_Conic>") MakeConic2d;
+		static opencascade::handle<Geom2d_Conic> MakeConic2d (const opencascade::handle<StepGeom_Conic> & SC);
+
+		/****************** MakeConicalSurface ******************/
+		%feature("compactdefaultargs") MakeConicalSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_ConicalSurface> &
+	:rtype: opencascade::handle<Geom_ConicalSurface>") MakeConicalSurface;
+		static opencascade::handle<Geom_ConicalSurface> MakeConicalSurface (const opencascade::handle<StepGeom_ConicalSurface> & SS);
+
+		/****************** MakeCurve ******************/
+		%feature("compactdefaultargs") MakeCurve;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Curve> &
+	:rtype: opencascade::handle<Geom_Curve>") MakeCurve;
+		static opencascade::handle<Geom_Curve> MakeCurve (const opencascade::handle<StepGeom_Curve> & SC);
+
+		/****************** MakeCurve2d ******************/
+		%feature("compactdefaultargs") MakeCurve2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Curve> &
+	:rtype: opencascade::handle<Geom2d_Curve>") MakeCurve2d;
+		static opencascade::handle<Geom2d_Curve> MakeCurve2d (const opencascade::handle<StepGeom_Curve> & SC);
+
+		/****************** MakeCylindricalSurface ******************/
+		%feature("compactdefaultargs") MakeCylindricalSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_CylindricalSurface> &
+	:rtype: opencascade::handle<Geom_CylindricalSurface>") MakeCylindricalSurface;
+		static opencascade::handle<Geom_CylindricalSurface> MakeCylindricalSurface (const opencascade::handle<StepGeom_CylindricalSurface> & SS);
+
+		/****************** MakeDirection ******************/
+		%feature("compactdefaultargs") MakeDirection;
+		%feature("autodoc", ":param SD:
+	:type SD: opencascade::handle<StepGeom_Direction> &
+	:rtype: opencascade::handle<Geom_Direction>") MakeDirection;
+		static opencascade::handle<Geom_Direction> MakeDirection (const opencascade::handle<StepGeom_Direction> & SD);
+
+		/****************** MakeDirection2d ******************/
+		%feature("compactdefaultargs") MakeDirection2d;
+		%feature("autodoc", ":param SD:
+	:type SD: opencascade::handle<StepGeom_Direction> &
+	:rtype: opencascade::handle<Geom2d_Direction>") MakeDirection2d;
+		static opencascade::handle<Geom2d_Direction> MakeDirection2d (const opencascade::handle<StepGeom_Direction> & SD);
+
+		/****************** MakeElementarySurface ******************/
+		%feature("compactdefaultargs") MakeElementarySurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_ElementarySurface> &
+	:rtype: opencascade::handle<Geom_ElementarySurface>") MakeElementarySurface;
+		static opencascade::handle<Geom_ElementarySurface> MakeElementarySurface (const opencascade::handle<StepGeom_ElementarySurface> & SS);
+
+		/****************** MakeEllipse ******************/
+		%feature("compactdefaultargs") MakeEllipse;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Ellipse> &
+	:rtype: opencascade::handle<Geom_Ellipse>") MakeEllipse;
+		static opencascade::handle<Geom_Ellipse> MakeEllipse (const opencascade::handle<StepGeom_Ellipse> & SC);
+
+		/****************** MakeEllipse2d ******************/
+		%feature("compactdefaultargs") MakeEllipse2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Ellipse> &
+	:rtype: opencascade::handle<Geom2d_Ellipse>") MakeEllipse2d;
+		static opencascade::handle<Geom2d_Ellipse> MakeEllipse2d (const opencascade::handle<StepGeom_Ellipse> & SC);
+
+		/****************** MakeHyperbola ******************/
+		%feature("compactdefaultargs") MakeHyperbola;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Hyperbola> &
+	:rtype: opencascade::handle<Geom_Hyperbola>") MakeHyperbola;
+		static opencascade::handle<Geom_Hyperbola> MakeHyperbola (const opencascade::handle<StepGeom_Hyperbola> & SC);
+
+		/****************** MakeHyperbola2d ******************/
+		%feature("compactdefaultargs") MakeHyperbola2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Hyperbola> &
+	:rtype: opencascade::handle<Geom2d_Hyperbola>") MakeHyperbola2d;
+		static opencascade::handle<Geom2d_Hyperbola> MakeHyperbola2d (const opencascade::handle<StepGeom_Hyperbola> & SC);
+
+		/****************** MakeLine ******************/
+		%feature("compactdefaultargs") MakeLine;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Line> &
+	:rtype: opencascade::handle<Geom_Line>") MakeLine;
+		static opencascade::handle<Geom_Line> MakeLine (const opencascade::handle<StepGeom_Line> & SC);
+
+		/****************** MakeLine2d ******************/
+		%feature("compactdefaultargs") MakeLine2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Line> &
+	:rtype: opencascade::handle<Geom2d_Line>") MakeLine2d;
+		static opencascade::handle<Geom2d_Line> MakeLine2d (const opencascade::handle<StepGeom_Line> & SC);
+
+		/****************** MakeParabola ******************/
+		%feature("compactdefaultargs") MakeParabola;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Parabola> &
+	:rtype: opencascade::handle<Geom_Parabola>") MakeParabola;
+		static opencascade::handle<Geom_Parabola> MakeParabola (const opencascade::handle<StepGeom_Parabola> & SC);
+
+		/****************** MakeParabola2d ******************/
+		%feature("compactdefaultargs") MakeParabola2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_Parabola> &
+	:rtype: opencascade::handle<Geom2d_Parabola>") MakeParabola2d;
+		static opencascade::handle<Geom2d_Parabola> MakeParabola2d (const opencascade::handle<StepGeom_Parabola> & SC);
+
+		/****************** MakePlane ******************/
+		%feature("compactdefaultargs") MakePlane;
+		%feature("autodoc", ":param SP:
+	:type SP: opencascade::handle<StepGeom_Plane> &
+	:rtype: opencascade::handle<Geom_Plane>") MakePlane;
+		static opencascade::handle<Geom_Plane> MakePlane (const opencascade::handle<StepGeom_Plane> & SP);
+
+		/****************** MakePolyline ******************/
+		%feature("compactdefaultargs") MakePolyline;
+		%feature("autodoc", ":param SPL:
+	:type SPL: opencascade::handle<StepGeom_Polyline> &
+	:rtype: opencascade::handle<Geom_BSplineCurve>") MakePolyline;
+		static opencascade::handle<Geom_BSplineCurve> MakePolyline (const opencascade::handle<StepGeom_Polyline> & SPL);
+
+		/****************** MakePolyline2d ******************/
+		%feature("compactdefaultargs") MakePolyline2d;
+		%feature("autodoc", ":param SPL:
+	:type SPL: opencascade::handle<StepGeom_Polyline> &
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>") MakePolyline2d;
+		static opencascade::handle<Geom2d_BSplineCurve> MakePolyline2d (const opencascade::handle<StepGeom_Polyline> & SPL);
+
+		/****************** MakeRectangularTrimmedSurface ******************/
+		%feature("compactdefaultargs") MakeRectangularTrimmedSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_RectangularTrimmedSurface> &
+	:rtype: opencascade::handle<Geom_RectangularTrimmedSurface>") MakeRectangularTrimmedSurface;
+		static opencascade::handle<Geom_RectangularTrimmedSurface> MakeRectangularTrimmedSurface (const opencascade::handle<StepGeom_RectangularTrimmedSurface> & SS);
+
+		/****************** MakeSphericalSurface ******************/
+		%feature("compactdefaultargs") MakeSphericalSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_SphericalSurface> &
+	:rtype: opencascade::handle<Geom_SphericalSurface>") MakeSphericalSurface;
+		static opencascade::handle<Geom_SphericalSurface> MakeSphericalSurface (const opencascade::handle<StepGeom_SphericalSurface> & SS);
+
+		/****************** MakeSurface ******************/
+		%feature("compactdefaultargs") MakeSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_Surface> &
+	:rtype: opencascade::handle<Geom_Surface>") MakeSurface;
+		static opencascade::handle<Geom_Surface> MakeSurface (const opencascade::handle<StepGeom_Surface> & SS);
+
+		/****************** MakeSurfaceOfLinearExtrusion ******************/
+		%feature("compactdefaultargs") MakeSurfaceOfLinearExtrusion;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> &
+	:rtype: opencascade::handle<Geom_SurfaceOfLinearExtrusion>") MakeSurfaceOfLinearExtrusion;
+		static opencascade::handle<Geom_SurfaceOfLinearExtrusion> MakeSurfaceOfLinearExtrusion (const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & SS);
+
+		/****************** MakeSurfaceOfRevolution ******************/
+		%feature("compactdefaultargs") MakeSurfaceOfRevolution;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_SurfaceOfRevolution> &
+	:rtype: opencascade::handle<Geom_SurfaceOfRevolution>") MakeSurfaceOfRevolution;
+		static opencascade::handle<Geom_SurfaceOfRevolution> MakeSurfaceOfRevolution (const opencascade::handle<StepGeom_SurfaceOfRevolution> & SS);
+
+		/****************** MakeSweptSurface ******************/
+		%feature("compactdefaultargs") MakeSweptSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_SweptSurface> &
+	:rtype: opencascade::handle<Geom_SweptSurface>") MakeSweptSurface;
+		static opencascade::handle<Geom_SweptSurface> MakeSweptSurface (const opencascade::handle<StepGeom_SweptSurface> & SS);
+
+		/****************** MakeToroidalSurface ******************/
+		%feature("compactdefaultargs") MakeToroidalSurface;
+		%feature("autodoc", ":param SS:
+	:type SS: opencascade::handle<StepGeom_ToroidalSurface> &
+	:rtype: opencascade::handle<Geom_ToroidalSurface>") MakeToroidalSurface;
+		static opencascade::handle<Geom_ToroidalSurface> MakeToroidalSurface (const opencascade::handle<StepGeom_ToroidalSurface> & SS);
+
+		/****************** MakeTransformation2d ******************/
+		%feature("compactdefaultargs") MakeTransformation2d;
+		%feature("autodoc", ":param SCTO:
+	:type SCTO: opencascade::handle<StepGeom_CartesianTransformationOperator2d> &
 	:param CT:
 	:type CT: gp_Trsf2d
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_CartesianTransformationOperator2d & SCTO,gp_Trsf2d & CT);
-};
+	:rtype: bool") MakeTransformation2d;
+		static Standard_Boolean MakeTransformation2d (const opencascade::handle<StepGeom_CartesianTransformationOperator2d> & SCTO,gp_Trsf2d & CT);
 
-
-%extend StepToGeom_MakeTransformation2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeTransformation3d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SCTO:
-	:type SCTO: Handle_StepGeom_CartesianTransformationOperator3d &
+		/****************** MakeTransformation3d ******************/
+		%feature("compactdefaultargs") MakeTransformation3d;
+		%feature("autodoc", ":param SCTO:
+	:type SCTO: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
 	:param CT:
 	:type CT: gp_Trsf
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_CartesianTransformationOperator3d & SCTO,gp_Trsf & CT);
+	:rtype: bool") MakeTransformation3d;
+		static Standard_Boolean MakeTransformation3d (const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & SCTO,gp_Trsf & CT);
+
+		/****************** MakeTrimmedCurve ******************/
+		%feature("compactdefaultargs") MakeTrimmedCurve;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_TrimmedCurve> &
+	:rtype: opencascade::handle<Geom_TrimmedCurve>") MakeTrimmedCurve;
+		static opencascade::handle<Geom_TrimmedCurve> MakeTrimmedCurve (const opencascade::handle<StepGeom_TrimmedCurve> & SC);
+
+		/****************** MakeTrimmedCurve2d ******************/
+		%feature("compactdefaultargs") MakeTrimmedCurve2d;
+		%feature("autodoc", ":param SC:
+	:type SC: opencascade::handle<StepGeom_TrimmedCurve> &
+	:rtype: opencascade::handle<Geom2d_BSplineCurve>") MakeTrimmedCurve2d;
+		static opencascade::handle<Geom2d_BSplineCurve> MakeTrimmedCurve2d (const opencascade::handle<StepGeom_TrimmedCurve> & SC);
+
+		/****************** MakeVectorWithMagnitude ******************/
+		%feature("compactdefaultargs") MakeVectorWithMagnitude;
+		%feature("autodoc", ":param SV:
+	:type SV: opencascade::handle<StepGeom_Vector> &
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") MakeVectorWithMagnitude;
+		static opencascade::handle<Geom_VectorWithMagnitude> MakeVectorWithMagnitude (const opencascade::handle<StepGeom_Vector> & SV);
+
+		/****************** MakeVectorWithMagnitude2d ******************/
+		%feature("compactdefaultargs") MakeVectorWithMagnitude2d;
+		%feature("autodoc", ":param SV:
+	:type SV: opencascade::handle<StepGeom_Vector> &
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") MakeVectorWithMagnitude2d;
+		static opencascade::handle<Geom2d_VectorWithMagnitude> MakeVectorWithMagnitude2d (const opencascade::handle<StepGeom_Vector> & SV);
+
 };
 
 
-%extend StepToGeom_MakeTransformation3d {
+%extend StepToGeom {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
-class StepToGeom_MakeTrimmedCurve {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_TrimmedCurve &
-	:param CC:
-	:type CC: Handle_Geom_TrimmedCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_TrimmedCurve & SC,Handle_Geom_TrimmedCurve & CC);
-};
 
-
-%extend StepToGeom_MakeTrimmedCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeTrimmedCurve2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SC:
-	:type SC: Handle_StepGeom_TrimmedCurve &
-	:param CC:
-	:type CC: Handle_Geom2d_BSplineCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_TrimmedCurve & SC,Handle_Geom2d_BSplineCurve & CC);
-};
-
-
-%extend StepToGeom_MakeTrimmedCurve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeVectorWithMagnitude {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SV:
-	:type SV: Handle_StepGeom_Vector &
-	:param CV:
-	:type CV: Handle_Geom_VectorWithMagnitude &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Vector & SV,Handle_Geom_VectorWithMagnitude & CV);
-};
-
-
-%extend StepToGeom_MakeVectorWithMagnitude {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakeVectorWithMagnitude2d {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SV:
-	:type SV: Handle_StepGeom_Vector &
-	:param CV:
-	:type CV: Handle_Geom2d_VectorWithMagnitude &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Vector & SV,Handle_Geom2d_VectorWithMagnitude & CV);
-};
-
-
-%extend StepToGeom_MakeVectorWithMagnitude2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_Root {
-	public:
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-};
-
-
-%extend StepToGeom_Root {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class StepToGeom_MakePolyline : public StepToGeom_Root {
-	public:
-		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "	:param SPL:
-	:type SPL: Handle_StepGeom_Polyline &
-	:param CC:
-	:type CC: Handle_Geom_BSplineCurve &
-	:rtype: bool
-") Convert;
-		static Standard_Boolean Convert (const Handle_StepGeom_Polyline & SPL,Handle_Geom_BSplineCurve & CC);
-};
-
-
-%extend StepToGeom_MakePolyline {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,23 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define INTSTARTDOCSTRING
-"This package provides generic algorithms to
-find specific points (points on boundaries
-and points inside a surface) used as starting
-points for marching algorithms.
-
--Level: Internal
-
-All the methods of the classes of this package are Internal.
-
-"
+"IntStart module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intstart.html"
 %enddef
 %module (package="OCC.Core", docstring=INTSTARTDOCSTRING) IntStart
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -46,27 +35,51 @@ All the methods of the classes of this package are Internal.
 %include ../common/OccHandle.i
 
 
-%include IntStart_headers.i
+%{
+#include<IntStart_module.hxx>
+
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<gp_module.hxx>
+#include<TopAbs_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import gp.i
+%import TopAbs.i
+/* public enums */
+/* end public enums declaration */
+
+/* handles */
+%wrap_handle(IntStart_SITopolTool)
+/* end handles declaration */
+
+/* templates */
+/* end templates declaration */
 
 /* typedefs */
 /* end typedefs declaration */
 
-/* public enums */
-/* end public enums declaration */
-
-%wrap_handle(IntStart_SITopolTool)
-
+/*****************************
+* class IntStart_SITopolTool *
+*****************************/
 %nodefaultctor IntStart_SITopolTool;
-class IntStart_SITopolTool : public MMgt_TShared {
+class IntStart_SITopolTool : public Standard_Transient {
 	public:
+		/****************** Classify ******************/
 		%feature("compactdefaultargs") Classify;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param Tol:
 	:type Tol: float
-	:rtype: TopAbs_State
-") Classify;
+	:rtype: TopAbs_State") Classify;
 		virtual TopAbs_State Classify (const gp_Pnt2d & P,const Standard_Real Tol);
+
 };
 
 
@@ -77,3 +90,7 @@ class IntStart_SITopolTool : public MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+/* harray2 class */
+/* harray2 class */

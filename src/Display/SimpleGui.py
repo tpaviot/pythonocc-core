@@ -182,10 +182,11 @@ def init_display(backend_str=None,
         if not app:  # create QApplication if it doesnt exist
             app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
+        win.resize(size[0] -1, size[1] -1)
         win.show()
-        win.resize(size[0], size[1])
         win.centerOnScreen()
         win.canva.InitDriver()
+        win.resize(size[0], size[1])
         win.canva.qApp = app
         display = win.canva._display
 

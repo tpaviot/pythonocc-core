@@ -1,6 +1,5 @@
 /*
-Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
-
+Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -15,18 +14,13 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 %define APPPARCURVESDOCSTRING
-"Parallel Approximation in n curves.
-This package gives all the algorithms used to approximate a MultiLine
-described by the tool MLineTool.
-The result of the approximation will be a MultiCurve.
-"
+"AppParCurves module, see official documentation at
+https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appparcurves.html"
 %enddef
 %module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
-#pragma SWIG nowarn=504,325,503
 
 %{
 #ifdef WNT
@@ -41,11 +35,27 @@ The result of the approximation will be a MultiCurve.
 %include ../common/OccHandle.i
 
 
-%include AppParCurves_headers.i
+%{
+#include<AppParCurves_module.hxx>
 
-/* typedefs */
-/* end typedefs declaration */
-
+//Dependencies
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<math_module.hxx>
+#include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
+#include<Storage_module.hxx>
+%};
+%import Standard.i
+%import NCollection.i
+%import math.i
+%import TColgp.i
+%import gp.i
+%import TColStd.i
 /* public enums */
 enum AppParCurves_Constraint {
 	AppParCurves_NoConstraint = 0,
@@ -56,28 +66,176 @@ enum AppParCurves_Constraint {
 
 /* end public enums declaration */
 
-%wrap_handle(AppParCurves_HArray1OfConstraintCouple)
-%wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
+/* handles */
 %wrap_handle(AppParCurves_HArray1OfMultiCurve)
+%wrap_handle(AppParCurves_HArray1OfConstraintCouple)
 %wrap_handle(AppParCurves_HArray1OfMultiPoint)
-%wrap_handle(AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve)
-%wrap_handle(AppParCurves_SequenceNodeOfSequenceOfMultiCurve)
+%wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
+/* end handles declaration */
 
+/* templates */
+%template(AppParCurves_Array1OfMultiCurve) NCollection_Array1 <AppParCurves_MultiCurve>;
+
+%extend NCollection_Array1 <AppParCurves_MultiCurve> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(AppParCurves_Array1OfConstraintCouple) NCollection_Array1 <AppParCurves_ConstraintCouple>;
+
+%extend NCollection_Array1 <AppParCurves_ConstraintCouple> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(AppParCurves_SequenceOfMultiCurve) NCollection_Sequence <AppParCurves_MultiCurve>;
+%template(AppParCurves_SequenceOfMultiBSpCurve) NCollection_Sequence <AppParCurves_MultiBSpCurve>;
+%template(AppParCurves_Array1OfMultiBSpCurve) NCollection_Array1 <AppParCurves_MultiBSpCurve>;
+
+%extend NCollection_Array1 <AppParCurves_MultiBSpCurve> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(AppParCurves_Array1OfMultiPoint) NCollection_Array1 <AppParCurves_MultiPoint>;
+
+%extend NCollection_Array1 <AppParCurves_MultiPoint> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+/* end templates declaration */
+
+/* typedefs */
+typedef NCollection_Array1 <AppParCurves_MultiCurve> AppParCurves_Array1OfMultiCurve;
+typedef NCollection_Array1 <AppParCurves_ConstraintCouple> AppParCurves_Array1OfConstraintCouple;
+typedef NCollection_Sequence <AppParCurves_MultiCurve> AppParCurves_SequenceOfMultiCurve;
+typedef NCollection_Sequence <AppParCurves_MultiBSpCurve> AppParCurves_SequenceOfMultiBSpCurve;
+typedef NCollection_Array1 <AppParCurves_MultiBSpCurve> AppParCurves_Array1OfMultiBSpCurve;
+typedef NCollection_Array1 <AppParCurves_MultiPoint> AppParCurves_Array1OfMultiPoint;
+/* end typedefs declaration */
+
+/*********************
+* class AppParCurves *
+*********************/
 %rename(appparcurves) AppParCurves;
 class AppParCurves {
 	public:
-		%feature("compactdefaultargs") BernsteinMatrix;
-		%feature("autodoc", "	:param NbPoles:
-	:type NbPoles: int
-	:param U:
-	:type U: math_Vector &
-	:param A:
-	:type A: math_Matrix &
-	:rtype: void
-") BernsteinMatrix;
-		static void BernsteinMatrix (const Standard_Integer NbPoles,const math_Vector & U,math_Matrix & A);
+		/****************** Bernstein ******************/
 		%feature("compactdefaultargs") Bernstein;
-		%feature("autodoc", "	:param NbPoles:
+		%feature("autodoc", ":param NbPoles:
 	:type NbPoles: int
 	:param U:
 	:type U: math_Vector &
@@ -85,19 +243,32 @@ class AppParCurves {
 	:type A: math_Matrix &
 	:param DA:
 	:type DA: math_Matrix &
-	:rtype: void
-") Bernstein;
+	:rtype: void") Bernstein;
 		static void Bernstein (const Standard_Integer NbPoles,const math_Vector & U,math_Matrix & A,math_Matrix & DA);
+
+		/****************** BernsteinMatrix ******************/
+		%feature("compactdefaultargs") BernsteinMatrix;
+		%feature("autodoc", ":param NbPoles:
+	:type NbPoles: int
+	:param U:
+	:type U: math_Vector &
+	:param A:
+	:type A: math_Matrix &
+	:rtype: void") BernsteinMatrix;
+		static void BernsteinMatrix (const Standard_Integer NbPoles,const math_Vector & U,math_Matrix & A);
+
+		/****************** SecondDerivativeBernstein ******************/
 		%feature("compactdefaultargs") SecondDerivativeBernstein;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", ":param U:
 	:type U: float
 	:param DDA:
 	:type DDA: math_Vector &
-	:rtype: void
-") SecondDerivativeBernstein;
+	:rtype: void") SecondDerivativeBernstein;
 		static void SecondDerivativeBernstein (const Standard_Real U,math_Vector & DDA);
+
+		/****************** SplineFunction ******************/
 		%feature("compactdefaultargs") SplineFunction;
-		%feature("autodoc", "	:param NbPoles:
+		%feature("autodoc", ":param NbPoles:
 	:type NbPoles: int
 	:param Degree:
 	:type Degree: int
@@ -111,9 +282,9 @@ class AppParCurves {
 	:type DA: math_Matrix &
 	:param Index:
 	:type Index: math_IntegerVector &
-	:rtype: void
-") SplineFunction;
+	:rtype: void") SplineFunction;
 		static void SplineFunction (const Standard_Integer NbPoles,const Standard_Integer Degree,const math_Vector & Parameters,const math_Vector & FlatKnots,math_Matrix & A,math_Matrix & DA,math_IntegerVector & Index);
+
 };
 
 
@@ -122,541 +293,57 @@ class AppParCurves {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor AppParCurves_Array1OfConstraintCouple;
-class AppParCurves_Array1OfConstraintCouple {
-	public:
-		%feature("compactdefaultargs") AppParCurves_Array1OfConstraintCouple;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfConstraintCouple;
-		 AppParCurves_Array1OfConstraintCouple (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_Array1OfConstraintCouple;
-		%feature("autodoc", "	:param Item:
-	:type Item: AppParCurves_ConstraintCouple &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfConstraintCouple;
-		 AppParCurves_Array1OfConstraintCouple (const AppParCurves_ConstraintCouple & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_ConstraintCouple &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_ConstraintCouple & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfConstraintCouple &
-	:rtype: AppParCurves_Array1OfConstraintCouple
-") Assign;
-		const AppParCurves_Array1OfConstraintCouple & Assign (const AppParCurves_Array1OfConstraintCouple & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfConstraintCouple &
-	:rtype: AppParCurves_Array1OfConstraintCouple
-") operator =;
-		const AppParCurves_Array1OfConstraintCouple & operator = (const AppParCurves_Array1OfConstraintCouple & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_ConstraintCouple &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_ConstraintCouple & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_ConstraintCouple
-") Value;
-		const AppParCurves_ConstraintCouple & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_ConstraintCouple
-") ChangeValue;
-		AppParCurves_ConstraintCouple & ChangeValue (const Standard_Integer Index);
-};
 
-
-
-%extend AppParCurves_Array1OfConstraintCouple {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_Array1OfConstraintCouple {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_Array1OfMultiBSpCurve;
-class AppParCurves_Array1OfMultiBSpCurve {
-	public:
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiBSpCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiBSpCurve;
-		 AppParCurves_Array1OfMultiBSpCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiBSpCurve;
-		%feature("autodoc", "	:param Item:
-	:type Item: AppParCurves_MultiBSpCurve &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiBSpCurve;
-		 AppParCurves_Array1OfMultiBSpCurve (const AppParCurves_MultiBSpCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiBSpCurve & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiBSpCurve &
-	:rtype: AppParCurves_Array1OfMultiBSpCurve
-") Assign;
-		const AppParCurves_Array1OfMultiBSpCurve & Assign (const AppParCurves_Array1OfMultiBSpCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiBSpCurve &
-	:rtype: AppParCurves_Array1OfMultiBSpCurve
-") operator =;
-		const AppParCurves_Array1OfMultiBSpCurve & operator = (const AppParCurves_Array1OfMultiBSpCurve & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiBSpCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") Value;
-		const AppParCurves_MultiBSpCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") ChangeValue;
-		AppParCurves_MultiBSpCurve & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend AppParCurves_Array1OfMultiBSpCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_Array1OfMultiBSpCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_Array1OfMultiCurve;
-class AppParCurves_Array1OfMultiCurve {
-	public:
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiCurve;
-		 AppParCurves_Array1OfMultiCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiCurve;
-		%feature("autodoc", "	:param Item:
-	:type Item: AppParCurves_MultiCurve &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiCurve;
-		 AppParCurves_Array1OfMultiCurve (const AppParCurves_MultiCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiCurve &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiCurve & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiCurve &
-	:rtype: AppParCurves_Array1OfMultiCurve
-") Assign;
-		const AppParCurves_Array1OfMultiCurve & Assign (const AppParCurves_Array1OfMultiCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiCurve &
-	:rtype: AppParCurves_Array1OfMultiCurve
-") operator =;
-		const AppParCurves_Array1OfMultiCurve & operator = (const AppParCurves_Array1OfMultiCurve & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") ChangeValue;
-		AppParCurves_MultiCurve & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend AppParCurves_Array1OfMultiCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_Array1OfMultiCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_Array1OfMultiPoint;
-class AppParCurves_Array1OfMultiPoint {
-	public:
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiPoint;
-		 AppParCurves_Array1OfMultiPoint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_Array1OfMultiPoint;
-		%feature("autodoc", "	:param Item:
-	:type Item: AppParCurves_MultiPoint &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_Array1OfMultiPoint;
-		 AppParCurves_Array1OfMultiPoint (const AppParCurves_MultiPoint & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiPoint &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiPoint & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiPoint &
-	:rtype: AppParCurves_Array1OfMultiPoint
-") Assign;
-		const AppParCurves_Array1OfMultiPoint & Assign (const AppParCurves_Array1OfMultiPoint & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_Array1OfMultiPoint &
-	:rtype: AppParCurves_Array1OfMultiPoint
-") operator =;
-		const AppParCurves_Array1OfMultiPoint & operator = (const AppParCurves_Array1OfMultiPoint & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiPoint
-") Value;
-		const AppParCurves_MultiPoint & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiPoint
-") ChangeValue;
-		AppParCurves_MultiPoint & ChangeValue (const Standard_Integer Index);
-};
-
-
-
-%extend AppParCurves_Array1OfMultiPoint {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_Array1OfMultiPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/**************************************
+* class AppParCurves_ConstraintCouple *
+**************************************/
 %nodefaultctor AppParCurves_ConstraintCouple;
 class AppParCurves_ConstraintCouple {
 	public:
+		/****************** AppParCurves_ConstraintCouple ******************/
 		%feature("compactdefaultargs") AppParCurves_ConstraintCouple;
-		%feature("autodoc", "	* returns an indefinite ConstraintCouple.
-
-	:rtype: None
-") AppParCurves_ConstraintCouple;
+		%feature("autodoc", "* returns an indefinite ConstraintCouple.
+	:rtype: None") AppParCurves_ConstraintCouple;
 		 AppParCurves_ConstraintCouple ();
+
+		/****************** AppParCurves_ConstraintCouple ******************/
 		%feature("compactdefaultargs") AppParCurves_ConstraintCouple;
-		%feature("autodoc", "	* Create a couple the object <Index> will have the constraint <Cons>.
-
+		%feature("autodoc", "* Create a couple the object <Index> will have the constraint <Cons>.
 	:param TheIndex:
 	:type TheIndex: int
 	:param Cons:
 	:type Cons: AppParCurves_Constraint
-	:rtype: None
-") AppParCurves_ConstraintCouple;
+	:rtype: None") AppParCurves_ConstraintCouple;
 		 AppParCurves_ConstraintCouple (const Standard_Integer TheIndex,const AppParCurves_Constraint Cons);
-		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "	* returns the index of the constraint object.
 
-	:rtype: int
-") Index;
-		Standard_Integer Index ();
+		/****************** Constraint ******************/
 		%feature("compactdefaultargs") Constraint;
-		%feature("autodoc", "	* returns the constraint of the object.
-
-	:rtype: AppParCurves_Constraint
-") Constraint;
+		%feature("autodoc", "* returns the constraint of the object.
+	:rtype: AppParCurves_Constraint") Constraint;
 		AppParCurves_Constraint Constraint ();
-		%feature("compactdefaultargs") SetIndex;
-		%feature("autodoc", "	* Changes the index of the constraint object.
 
-	:param TheIndex:
-	:type TheIndex: int
-	:rtype: None
-") SetIndex;
-		void SetIndex (const Standard_Integer TheIndex);
+		/****************** Index ******************/
+		%feature("compactdefaultargs") Index;
+		%feature("autodoc", "* returns the index of the constraint object.
+	:rtype: int") Index;
+		Standard_Integer Index ();
+
+		/****************** SetConstraint ******************/
 		%feature("compactdefaultargs") SetConstraint;
-		%feature("autodoc", "	* Changes the constraint of the object.
-
+		%feature("autodoc", "* Changes the constraint of the object.
 	:param Cons:
 	:type Cons: AppParCurves_Constraint
-	:rtype: None
-") SetConstraint;
+	:rtype: None") SetConstraint;
 		void SetConstraint (const AppParCurves_Constraint Cons);
+
+		/****************** SetIndex ******************/
+		%feature("compactdefaultargs") SetIndex;
+		%feature("autodoc", "* Changes the index of the constraint object.
+	:param TheIndex:
+	:type TheIndex: int
+	:rtype: None") SetIndex;
+		void SetIndex (const Standard_Integer TheIndex);
+
 };
 
 
@@ -665,574 +352,190 @@ class AppParCurves_ConstraintCouple {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor AppParCurves_HArray1OfConstraintCouple;
-class AppParCurves_HArray1OfConstraintCouple : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") AppParCurves_HArray1OfConstraintCouple;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_HArray1OfConstraintCouple;
-		 AppParCurves_HArray1OfConstraintCouple (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_HArray1OfConstraintCouple;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: AppParCurves_ConstraintCouple &
-	:rtype: None
-") AppParCurves_HArray1OfConstraintCouple;
-		 AppParCurves_HArray1OfConstraintCouple (const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_ConstraintCouple & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_ConstraintCouple &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_ConstraintCouple & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_ConstraintCouple &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_ConstraintCouple & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_ConstraintCouple
-") Value;
-		const AppParCurves_ConstraintCouple & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_ConstraintCouple
-") ChangeValue;
-		AppParCurves_ConstraintCouple & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfConstraintCouple
-") Array1;
-		const AppParCurves_Array1OfConstraintCouple & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfConstraintCouple
-") ChangeArray1;
-		AppParCurves_Array1OfConstraintCouple & ChangeArray1 ();
-};
 
-
-%make_alias(AppParCurves_HArray1OfConstraintCouple)
-
-
-%extend AppParCurves_HArray1OfConstraintCouple {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_HArray1OfConstraintCouple {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_HArray1OfMultiBSpCurve;
-class AppParCurves_HArray1OfMultiBSpCurve : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiBSpCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_HArray1OfMultiBSpCurve;
-		 AppParCurves_HArray1OfMultiBSpCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiBSpCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") AppParCurves_HArray1OfMultiBSpCurve;
-		 AppParCurves_HArray1OfMultiBSpCurve (const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiBSpCurve & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiBSpCurve & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiBSpCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") Value;
-		const AppParCurves_MultiBSpCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") ChangeValue;
-		AppParCurves_MultiBSpCurve & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiBSpCurve
-") Array1;
-		const AppParCurves_Array1OfMultiBSpCurve & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiBSpCurve
-") ChangeArray1;
-		AppParCurves_Array1OfMultiBSpCurve & ChangeArray1 ();
-};
-
-
-%make_alias(AppParCurves_HArray1OfMultiBSpCurve)
-
-
-%extend AppParCurves_HArray1OfMultiBSpCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_HArray1OfMultiBSpCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_HArray1OfMultiCurve;
-class AppParCurves_HArray1OfMultiCurve : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_HArray1OfMultiCurve;
-		 AppParCurves_HArray1OfMultiCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiCurve;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: AppParCurves_MultiCurve &
-	:rtype: None
-") AppParCurves_HArray1OfMultiCurve;
-		 AppParCurves_HArray1OfMultiCurve (const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiCurve & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiCurve &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiCurve & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiCurve & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") ChangeValue;
-		AppParCurves_MultiCurve & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiCurve
-") Array1;
-		const AppParCurves_Array1OfMultiCurve & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiCurve
-") ChangeArray1;
-		AppParCurves_Array1OfMultiCurve & ChangeArray1 ();
-};
-
-
-%make_alias(AppParCurves_HArray1OfMultiCurve)
-
-
-%extend AppParCurves_HArray1OfMultiCurve {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_HArray1OfMultiCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_HArray1OfMultiPoint;
-class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") AppParCurves_HArray1OfMultiPoint;
-		 AppParCurves_HArray1OfMultiPoint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") AppParCurves_HArray1OfMultiPoint;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:param V:
-	:type V: AppParCurves_MultiPoint &
-	:rtype: None
-") AppParCurves_HArray1OfMultiPoint;
-		 AppParCurves_HArray1OfMultiPoint (const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiPoint & V);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: AppParCurves_MultiPoint &
-	:rtype: None
-") Init;
-		void Init (const AppParCurves_MultiPoint & V);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: AppParCurves_MultiPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiPoint & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiPoint
-") Value;
-		const AppParCurves_MultiPoint & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiPoint
-") ChangeValue;
-		AppParCurves_MultiPoint & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Array1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiPoint
-") Array1;
-		const AppParCurves_Array1OfMultiPoint & Array1 ();
-		%feature("compactdefaultargs") ChangeArray1;
-		%feature("autodoc", "	:rtype: AppParCurves_Array1OfMultiPoint
-") ChangeArray1;
-		AppParCurves_Array1OfMultiPoint & ChangeArray1 ();
-};
-
-
-%make_alias(AppParCurves_HArray1OfMultiPoint)
-
-
-%extend AppParCurves_HArray1OfMultiPoint {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current +=1
-        return self.Value(self.current)
-
-    __next__ = next
-
-    }
-};
-%extend AppParCurves_HArray1OfMultiPoint {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/********************************
+* class AppParCurves_MultiCurve *
+********************************/
 %nodefaultctor AppParCurves_MultiCurve;
 class AppParCurves_MultiCurve {
 	public:
+		/****************** AppParCurves_MultiCurve ******************/
 		%feature("compactdefaultargs") AppParCurves_MultiCurve;
-		%feature("autodoc", "	* returns an indefinite MultiCurve.
-
-	:rtype: None
-") AppParCurves_MultiCurve;
+		%feature("autodoc", "* returns an indefinite MultiCurve.
+	:rtype: None") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve ();
-		%feature("compactdefaultargs") AppParCurves_MultiCurve;
-		%feature("autodoc", "	* creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 
+		/****************** AppParCurves_MultiCurve ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiCurve;
+		%feature("autodoc", "* creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 	:param NbPol:
 	:type NbPol: int
-	:rtype: None
-") AppParCurves_MultiCurve;
+	:rtype: None") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve (const Standard_Integer NbPol);
-		%feature("compactdefaultargs") AppParCurves_MultiCurve;
-		%feature("autodoc", "	* creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 
+		/****************** AppParCurves_MultiCurve ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiCurve;
+		%feature("autodoc", "* creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 	:param tabMU:
 	:type tabMU: AppParCurves_Array1OfMultiPoint &
-	:rtype: None
-") AppParCurves_MultiCurve;
+	:rtype: None") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve (const AppParCurves_Array1OfMultiPoint & tabMU);
-		%feature("compactdefaultargs") SetNbPoles;
-		%feature("autodoc", "	* The number of poles of the MultiCurve will be set to <nbPoles>.
 
-	:param nbPoles:
-	:type nbPoles: int
-	:rtype: None
-") SetNbPoles;
-		void SetNbPoles (const Standard_Integer nbPoles);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* sets the MultiPoint of range Index to the value <MPoint>. An exception is raised if Index <0 or Index >NbMPoint.
-
-	:param Index:
-	:type Index: int
-	:param MPoint:
-	:type MPoint: AppParCurves_MultiPoint &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiPoint & MPoint);
-		%feature("compactdefaultargs") NbCurves;
-		%feature("autodoc", "	* Returns the number of curves resulting from the approximation of a MultiLine.
-
-	:rtype: int
-") NbCurves;
-		Standard_Integer NbCurves ();
-		%feature("compactdefaultargs") NbPoles;
-		%feature("autodoc", "	* Returns the number of poles on curves resulting from the approximation of a MultiLine.
-
-	:rtype: int
-") NbPoles;
-		virtual Standard_Integer NbPoles ();
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	* returns the degree of the curves.
-
-	:rtype: int
-") Degree;
-		virtual Standard_Integer Degree ();
-		%feature("compactdefaultargs") Dimension;
-		%feature("autodoc", "	* returns the dimension of the CuIndex curve. An exception is raised if CuIndex<0 or CuIndex>NbCurves.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:rtype: int
-") Dimension;
-		Standard_Integer Dimension (const Standard_Integer CuIndex);
+		/****************** Curve ******************/
 		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	* returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 2d.
-
+		%feature("autodoc", "* returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 2d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param TabPnt:
 	:type TabPnt: TColgp_Array1OfPnt
-	:rtype: None
-") Curve;
+	:rtype: None") Curve;
 		void Curve (const Standard_Integer CuIndex,TColgp_Array1OfPnt & TabPnt);
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "	* returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 3d.
 
+		/****************** Curve ******************/
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "* returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 3d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param TabPnt:
 	:type TabPnt: TColgp_Array1OfPnt2d
-	:rtype: None
-") Curve;
+	:rtype: None") Curve;
 		void Curve (const Standard_Integer CuIndex,TColgp_Array1OfPnt2d & TabPnt);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the Index MultiPoint. An exception is raised if Index <0 or Index >Degree+1.
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:rtype: void") D1;
+		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1);
+
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:rtype: void") D1;
+		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1);
+
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: void") D2;
+		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1,gp_Vec & V2);
+
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:rtype: void") D2;
+		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1,gp_Vec2d & V2);
+
+		/****************** Degree ******************/
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "* returns the degree of the curves.
+	:rtype: int") Degree;
+		virtual Standard_Integer Degree ();
+
+		/****************** Dimension ******************/
+		%feature("compactdefaultargs") Dimension;
+		%feature("autodoc", "* returns the dimension of the CuIndex curve. An exception is raised if CuIndex<0 or CuIndex>NbCurves.
+	:param CuIndex:
+	:type CuIndex: int
+	:rtype: int") Dimension;
+		Standard_Integer Dimension (const Standard_Integer CuIndex);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		/****************** NbCurves ******************/
+		%feature("compactdefaultargs") NbCurves;
+		%feature("autodoc", "* Returns the number of curves resulting from the approximation of a MultiLine.
+	:rtype: int") NbCurves;
+		Standard_Integer NbCurves ();
+
+		/****************** NbPoles ******************/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", "* Returns the number of poles on curves resulting from the approximation of a MultiLine.
+	:rtype: int") NbPoles;
+		virtual Standard_Integer NbPoles ();
+
+		/****************** Pole ******************/
+		%feature("compactdefaultargs") Pole;
+		%feature("autodoc", "* returns the Nieme pole of the CuIndex curve. the curve must be a 3D curve.
+	:param CuIndex:
+	:type CuIndex: int
+	:param Nieme:
+	:type Nieme: int
+	:rtype: gp_Pnt") Pole;
+		const gp_Pnt  Pole (const Standard_Integer CuIndex,const Standard_Integer Nieme);
+
+		/****************** Pole2d ******************/
+		%feature("compactdefaultargs") Pole2d;
+		%feature("autodoc", "* returns the Nieme pole of the CuIndex curve. the curve must be a 2D curve.
+	:param CuIndex:
+	:type CuIndex: int
+	:param Nieme:
+	:type Nieme: int
+	:rtype: gp_Pnt2d") Pole2d;
+		const gp_Pnt2d  Pole2d (const Standard_Integer CuIndex,const Standard_Integer Nieme);
+
+		/****************** SetNbPoles ******************/
+		%feature("compactdefaultargs") SetNbPoles;
+		%feature("autodoc", "* The number of poles of the MultiCurve will be set to <nbPoles>.
+	:param nbPoles:
+	:type nbPoles: int
+	:rtype: None") SetNbPoles;
+		void SetNbPoles (const Standard_Integer nbPoles);
+
+		/****************** SetValue ******************/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "* sets the MultiPoint of range Index to the value <MPoint>. An exception is raised if Index <0 or Index >NbMPoint.
 	:param Index:
 	:type Index: int
-	:rtype: AppParCurves_MultiPoint
-") Value;
-		const AppParCurves_MultiPoint & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") Pole;
-		%feature("autodoc", "	* returns the Nieme pole of the CuIndex curve. the curve must be a 3D curve.
+	:param MPoint:
+	:type MPoint: AppParCurves_MultiPoint &
+	:rtype: None") SetValue;
+		void SetValue (const Standard_Integer Index,const AppParCurves_MultiPoint & MPoint);
 
-	:param CuIndex:
-	:type CuIndex: int
-	:param Nieme:
-	:type Nieme: int
-	:rtype: gp_Pnt
-") Pole;
-		const gp_Pnt  Pole (const Standard_Integer CuIndex,const Standard_Integer Nieme);
-		%feature("compactdefaultargs") Pole2d;
-		%feature("autodoc", "	* returns the Nieme pole of the CuIndex curve. the curve must be a 2D curve.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param Nieme:
-	:type Nieme: int
-	:rtype: gp_Pnt2d
-") Pole2d;
-		const gp_Pnt2d  Pole2d (const Standard_Integer CuIndex,const Standard_Integer Nieme);
+		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz
-
+		%feature("autodoc", "* Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz
 	:param CuIndex:
 	:type CuIndex: int
 	:param x:
@@ -1247,12 +550,12 @@ class AppParCurves_MultiCurve {
 	:type z: float
 	:param dz:
 	:type dz: float
-	:rtype: None
-") Transform;
+	:rtype: None") Transform;
 		void Transform (const Standard_Integer CuIndex,const Standard_Real x,const Standard_Real dx,const Standard_Real y,const Standard_Real dy,const Standard_Real z,const Standard_Real dz);
-		%feature("compactdefaultargs") Transform2d;
-		%feature("autodoc", "	* Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 
+		/****************** Transform2d ******************/
+		%feature("compactdefaultargs") Transform2d;
+		%feature("autodoc", "* Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 	:param CuIndex:
 	:type CuIndex: int
 	:param x:
@@ -1263,102 +566,42 @@ class AppParCurves_MultiCurve {
 	:type y: float
 	:param dy:
 	:type dy: float
-	:rtype: None
-") Transform2d;
+	:rtype: None") Transform2d;
 		void Transform2d (const Standard_Integer CuIndex,const Standard_Real x,const Standard_Real dx,const Standard_Real y,const Standard_Real dy);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* returns the Index MultiPoint. An exception is raised if Index <0 or Index >Degree+1.
+	:param Index:
+	:type Index: int
+	:rtype: AppParCurves_MultiPoint") Value;
+		const AppParCurves_MultiPoint & Value (const Standard_Integer Index);
+
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
 	:type U: float
 	:param Pt:
 	:type Pt: gp_Pnt
-	:rtype: void
-") Value;
+	:rtype: void") Value;
 		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt);
+
+		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
-
+		%feature("autodoc", "* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
 	:type U: float
 	:param Pt:
 	:type Pt: gp_Pnt2d
-	:rtype: void
-") Value;
+	:rtype: void") Value;
 		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param V1:
-	:type V1: gp_Vec
-	:rtype: void
-") D1;
-		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:rtype: void
-") D1;
-		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param V1:
-	:type V1: gp_Vec
-	:param V2:
-	:type V2: gp_Vec
-	:rtype: void
-") D2;
-		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1,gp_Vec & V2);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:rtype: void
-") D2;
-		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1,gp_Vec2d & V2);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend AppParCurves_MultiCurve {
@@ -1366,110 +609,122 @@ class AppParCurves_MultiCurve {
 	__repr__ = _dumps_object
 	}
 };
+
+/********************************
+* class AppParCurves_MultiPoint *
+********************************/
 %nodefaultctor AppParCurves_MultiPoint;
 class AppParCurves_MultiPoint {
 	public:
+		/****************** AppParCurves_MultiPoint ******************/
 		%feature("compactdefaultargs") AppParCurves_MultiPoint;
-		%feature("autodoc", "	* creates an indefinite MultiPoint.
-
-	:rtype: None
-") AppParCurves_MultiPoint;
+		%feature("autodoc", "* creates an indefinite MultiPoint.
+	:rtype: None") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint ();
-		%feature("compactdefaultargs") AppParCurves_MultiPoint;
-		%feature("autodoc", "	* constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the number of 3D Points. NbPoints2d is the number of 2D Points.
 
+		/****************** AppParCurves_MultiPoint ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiPoint;
+		%feature("autodoc", "* constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the number of 3D Points. NbPoints2d is the number of 2D Points.
 	:param NbPoints:
 	:type NbPoints: int
 	:param NbPoints2d:
 	:type NbPoints2d: int
-	:rtype: None
-") AppParCurves_MultiPoint;
+	:rtype: None") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint (const Standard_Integer NbPoints,const Standard_Integer NbPoints2d);
-		%feature("compactdefaultargs") AppParCurves_MultiPoint;
-		%feature("autodoc", "	* creates a MultiPoint only composed of 3D points.
 
+		/****************** AppParCurves_MultiPoint ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiPoint;
+		%feature("autodoc", "* creates a MultiPoint only composed of 3D points.
 	:param tabP:
 	:type tabP: TColgp_Array1OfPnt
-	:rtype: None
-") AppParCurves_MultiPoint;
+	:rtype: None") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint (const TColgp_Array1OfPnt & tabP);
-		%feature("compactdefaultargs") AppParCurves_MultiPoint;
-		%feature("autodoc", "	* creates a MultiPoint only composed of 2D points.
 
+		/****************** AppParCurves_MultiPoint ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiPoint;
+		%feature("autodoc", "* creates a MultiPoint only composed of 2D points.
 	:param tabP2d:
 	:type tabP2d: TColgp_Array1OfPnt2d
-	:rtype: None
-") AppParCurves_MultiPoint;
+	:rtype: None") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint (const TColgp_Array1OfPnt2d & tabP2d);
-		%feature("compactdefaultargs") AppParCurves_MultiPoint;
-		%feature("autodoc", "	* constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the total number of Points.
 
+		/****************** AppParCurves_MultiPoint ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiPoint;
+		%feature("autodoc", "* constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the total number of Points.
 	:param tabP:
 	:type tabP: TColgp_Array1OfPnt
 	:param tabP2d:
 	:type tabP2d: TColgp_Array1OfPnt2d
-	:rtype: None
-") AppParCurves_MultiPoint;
+	:rtype: None") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint (const TColgp_Array1OfPnt & tabP,const TColgp_Array1OfPnt2d & tabP2d);
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "	* the 3d Point of range Index of this MultiPoint is set to <Point>. An exception is raised if Index < 0 or Index > number of 3d Points.
 
+		/****************** Dimension ******************/
+		%feature("compactdefaultargs") Dimension;
+		%feature("autodoc", "* returns the dimension of the point of range Index. An exception is raised if Index <0 or Index > NbCurves.
+	:param Index:
+	:type Index: int
+	:rtype: int") Dimension;
+		Standard_Integer Dimension (const Standard_Integer Index);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		/****************** NbPoints ******************/
+		%feature("compactdefaultargs") NbPoints;
+		%feature("autodoc", "* returns the number of points of dimension 3D.
+	:rtype: int") NbPoints;
+		Standard_Integer NbPoints ();
+
+		/****************** NbPoints2d ******************/
+		%feature("compactdefaultargs") NbPoints2d;
+		%feature("autodoc", "* returns the number of points of dimension 2D.
+	:rtype: int") NbPoints2d;
+		Standard_Integer NbPoints2d ();
+
+		/****************** Point ******************/
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "* returns the 3d Point of range Index. An exception is raised if Index < 0 or Index < number of 3d Points.
+	:param Index:
+	:type Index: int
+	:rtype: gp_Pnt") Point;
+		const gp_Pnt  Point (const Standard_Integer Index);
+
+		/****************** Point2d ******************/
+		%feature("compactdefaultargs") Point2d;
+		%feature("autodoc", "* returns the 2d Point of range Index. An exception is raised if index <= number of 3d Points or Index > total number of Points.
+	:param Index:
+	:type Index: int
+	:rtype: gp_Pnt2d") Point2d;
+		const gp_Pnt2d  Point2d (const Standard_Integer Index);
+
+		/****************** SetPoint ******************/
+		%feature("compactdefaultargs") SetPoint;
+		%feature("autodoc", "* the 3d Point of range Index of this MultiPoint is set to <Point>. An exception is raised if Index < 0 or Index > number of 3d Points.
 	:param Index:
 	:type Index: int
 	:param Point:
 	:type Point: gp_Pnt
-	:rtype: None
-") SetPoint;
+	:rtype: None") SetPoint;
 		void SetPoint (const Standard_Integer Index,const gp_Pnt & Point);
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* returns the 3d Point of range Index. An exception is raised if Index < 0 or Index < number of 3d Points.
 
-	:param Index:
-	:type Index: int
-	:rtype: gp_Pnt
-") Point;
-		const gp_Pnt  Point (const Standard_Integer Index);
+		/****************** SetPoint2d ******************/
 		%feature("compactdefaultargs") SetPoint2d;
-		%feature("autodoc", "	* The 2d Point of range Index is set to <Point>. An exception is raised if Index > 3d Points or Index > total number of Points.
-
+		%feature("autodoc", "* The 2d Point of range Index is set to <Point>. An exception is raised if Index > 3d Points or Index > total number of Points.
 	:param Index:
 	:type Index: int
 	:param Point:
 	:type Point: gp_Pnt2d
-	:rtype: None
-") SetPoint2d;
+	:rtype: None") SetPoint2d;
 		void SetPoint2d (const Standard_Integer Index,const gp_Pnt2d & Point);
-		%feature("compactdefaultargs") Point2d;
-		%feature("autodoc", "	* returns the 2d Point of range Index. An exception is raised if index <= number of 3d Points or Index > total number of Points.
 
-	:param Index:
-	:type Index: int
-	:rtype: gp_Pnt2d
-") Point2d;
-		const gp_Pnt2d  Point2d (const Standard_Integer Index);
-		%feature("compactdefaultargs") Dimension;
-		%feature("autodoc", "	* returns the dimension of the point of range Index. An exception is raised if Index <0 or Index > NbCurves.
-
-	:param Index:
-	:type Index: int
-	:rtype: int
-") Dimension;
-		Standard_Integer Dimension (const Standard_Integer Index);
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* returns the number of points of dimension 3D.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") NbPoints2d;
-		%feature("autodoc", "	* returns the number of points of dimension 2D.
-
-	:rtype: int
-") NbPoints2d;
-		Standard_Integer NbPoints2d ();
+		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz
-
+		%feature("autodoc", "* Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz
 	:param CuIndex:
 	:type CuIndex: int
 	:param x:
@@ -1484,12 +739,12 @@ class AppParCurves_MultiPoint {
 	:type z: float
 	:param dz:
 	:type dz: float
-	:rtype: None
-") Transform;
+	:rtype: None") Transform;
 		void Transform (const Standard_Integer CuIndex,const Standard_Real x,const Standard_Real dx,const Standard_Real y,const Standard_Real dy,const Standard_Real z,const Standard_Real dz);
-		%feature("compactdefaultargs") Transform2d;
-		%feature("autodoc", "	* Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 
+		/****************** Transform2d ******************/
+		%feature("compactdefaultargs") Transform2d;
+		%feature("autodoc", "* Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 	:param CuIndex:
 	:type CuIndex: int
 	:param x:
@@ -1500,18 +755,10 @@ class AppParCurves_MultiPoint {
 	:type y: float
 	:param dy:
 	:type dy: float
-	:rtype: None
-") Transform2d;
+	:rtype: None") Transform2d;
 		void Transform2d (const Standard_Integer CuIndex,const Standard_Real x,const Standard_Real dx,const Standard_Real y,const Standard_Real dy);
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %extend AppParCurves_MultiPoint {
@@ -1519,448 +766,54 @@ class AppParCurves_MultiPoint {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
-class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
-		%feature("autodoc", "	:param I:
-	:type I: AppParCurves_MultiBSpCurve &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
-		 AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve (const AppParCurves_MultiBSpCurve & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiBSpCurve
-") Value;
-		AppParCurves_MultiBSpCurve & Value ();
-};
 
-
-%make_alias(AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve)
-
-%extend AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
-class AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
-		%feature("autodoc", "	:param I:
-	:type I: AppParCurves_MultiCurve &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
-		 AppParCurves_SequenceNodeOfSequenceOfMultiCurve (const AppParCurves_MultiCurve & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Value;
-		AppParCurves_MultiCurve & Value ();
-};
-
-
-%make_alias(AppParCurves_SequenceNodeOfSequenceOfMultiCurve)
-
-%extend AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_SequenceOfMultiBSpCurve;
-class AppParCurves_SequenceOfMultiBSpCurve : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AppParCurves_SequenceOfMultiBSpCurve;
-		%feature("autodoc", "	:rtype: None
-") AppParCurves_SequenceOfMultiBSpCurve;
-		 AppParCurves_SequenceOfMultiBSpCurve ();
-		%feature("compactdefaultargs") AppParCurves_SequenceOfMultiBSpCurve;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") AppParCurves_SequenceOfMultiBSpCurve;
-		 AppParCurves_SequenceOfMultiBSpCurve (const AppParCurves_SequenceOfMultiBSpCurve & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: AppParCurves_SequenceOfMultiBSpCurve
-") Assign;
-		const AppParCurves_SequenceOfMultiBSpCurve & Assign (const AppParCurves_SequenceOfMultiBSpCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: AppParCurves_SequenceOfMultiBSpCurve
-") operator =;
-		const AppParCurves_SequenceOfMultiBSpCurve & operator = (const AppParCurves_SequenceOfMultiBSpCurve & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") Append;
-		void Append (const AppParCurves_MultiBSpCurve & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") Append;
-		void Append (AppParCurves_SequenceOfMultiBSpCurve & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") Prepend;
-		void Prepend (const AppParCurves_MultiBSpCurve & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") Prepend;
-		void Prepend (AppParCurves_SequenceOfMultiBSpCurve & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AppParCurves_MultiBSpCurve & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AppParCurves_SequenceOfMultiBSpCurve & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AppParCurves_MultiBSpCurve & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AppParCurves_SequenceOfMultiBSpCurve & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiBSpCurve
-") First;
-		const AppParCurves_MultiBSpCurve & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiBSpCurve
-") Last;
-		const AppParCurves_MultiBSpCurve & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AppParCurves_SequenceOfMultiBSpCurve &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AppParCurves_SequenceOfMultiBSpCurve & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") Value;
-		const AppParCurves_MultiBSpCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AppParCurves_MultiBSpCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiBSpCurve & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiBSpCurve
-") ChangeValue;
-		AppParCurves_MultiBSpCurve & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AppParCurves_SequenceOfMultiBSpCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppParCurves_SequenceOfMultiCurve;
-class AppParCurves_SequenceOfMultiCurve : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") AppParCurves_SequenceOfMultiCurve;
-		%feature("autodoc", "	:rtype: None
-") AppParCurves_SequenceOfMultiCurve;
-		 AppParCurves_SequenceOfMultiCurve ();
-		%feature("compactdefaultargs") AppParCurves_SequenceOfMultiCurve;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") AppParCurves_SequenceOfMultiCurve;
-		 AppParCurves_SequenceOfMultiCurve (const AppParCurves_SequenceOfMultiCurve & Other);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiCurve &
-	:rtype: AppParCurves_SequenceOfMultiCurve
-") Assign;
-		const AppParCurves_SequenceOfMultiCurve & Assign (const AppParCurves_SequenceOfMultiCurve & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: AppParCurves_SequenceOfMultiCurve &
-	:rtype: AppParCurves_SequenceOfMultiCurve
-") operator =;
-		const AppParCurves_SequenceOfMultiCurve & operator = (const AppParCurves_SequenceOfMultiCurve & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: AppParCurves_MultiCurve &
-	:rtype: None
-") Append;
-		void Append (const AppParCurves_MultiCurve & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") Append;
-		void Append (AppParCurves_SequenceOfMultiCurve & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: AppParCurves_MultiCurve &
-	:rtype: None
-") Prepend;
-		void Prepend (const AppParCurves_MultiCurve & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") Prepend;
-		void Prepend (AppParCurves_SequenceOfMultiCurve & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AppParCurves_MultiCurve &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const AppParCurves_MultiCurve & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: AppParCurves_MultiCurve &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const AppParCurves_MultiCurve & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") First;
-		const AppParCurves_MultiCurve & First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Last;
-		const AppParCurves_MultiCurve & Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: AppParCurves_SequenceOfMultiCurve &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: AppParCurves_MultiCurve &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const AppParCurves_MultiCurve & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: AppParCurves_MultiCurve
-") ChangeValue;
-		AppParCurves_MultiCurve & ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%extend AppParCurves_SequenceOfMultiCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
+/***********************************
+* class AppParCurves_MultiBSpCurve *
+***********************************/
 %nodefaultctor AppParCurves_MultiBSpCurve;
 class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	public:
+		/****************** AppParCurves_MultiBSpCurve ******************/
 		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
-		%feature("autodoc", "	* returns an indefinite MultiBSpCurve.
-
-	:rtype: None
-") AppParCurves_MultiBSpCurve;
+		%feature("autodoc", "* returns an indefinite MultiBSpCurve.
+	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve ();
-		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
-		%feature("autodoc", "	* creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 
+		/****************** AppParCurves_MultiBSpCurve ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
+		%feature("autodoc", "* creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 	:param NbPol:
 	:type NbPol: int
-	:rtype: None
-") AppParCurves_MultiBSpCurve;
+	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve (const Standard_Integer NbPol);
-		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
-		%feature("autodoc", "	* creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 
+		/****************** AppParCurves_MultiBSpCurve ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
+		%feature("autodoc", "* creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 	:param tabMU:
 	:type tabMU: AppParCurves_Array1OfMultiPoint &
 	:param Knots:
 	:type Knots: TColStd_Array1OfReal &
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger &
-	:rtype: None
-") AppParCurves_MultiBSpCurve;
+	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve (const AppParCurves_Array1OfMultiPoint & tabMU,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
-		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
-		%feature("autodoc", "	* creates a MultiBSpCurve, describing BSpline curves, taking control points from <SC>.
 
+		/****************** AppParCurves_MultiBSpCurve ******************/
+		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
+		%feature("autodoc", "* creates a MultiBSpCurve, describing BSpline curves, taking control points from <SC>.
 	:param SC:
 	:type SC: AppParCurves_MultiCurve &
 	:param Knots:
 	:type Knots: TColStd_Array1OfReal &
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger &
-	:rtype: None
-") AppParCurves_MultiBSpCurve;
+	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve (const AppParCurves_MultiCurve & SC,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
-		%feature("compactdefaultargs") SetKnots;
-		%feature("autodoc", "	* Knots of the multiBSpCurve are assigned to <theknots>.
 
-	:param theKnots:
-	:type theKnots: TColStd_Array1OfReal &
-	:rtype: None
-") SetKnots;
-		void SetKnots (const TColStd_Array1OfReal & theKnots);
-		%feature("compactdefaultargs") SetMultiplicities;
-		%feature("autodoc", "	* Multiplicities of the multiBSpCurve are assigned to <theMults>.
-
-	:param theMults:
-	:type theMults: TColStd_Array1OfInteger &
-	:rtype: None
-") SetMultiplicities;
-		void SetMultiplicities (const TColStd_Array1OfInteger & theMults);
-		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	* Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
-
-	:rtype: TColStd_Array1OfReal
-") Knots;
-		const TColStd_Array1OfReal & Knots ();
-		%feature("compactdefaultargs") Multiplicities;
-		%feature("autodoc", "	* Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
-
-	:rtype: TColStd_Array1OfInteger
-") Multiplicities;
-		const TColStd_Array1OfInteger & Multiplicities ();
-		%feature("compactdefaultargs") Degree;
-		%feature("autodoc", "	* returns the degree of the curve(s).
-
-	:rtype: int
-") Degree;
-		virtual Standard_Integer Degree ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:rtype: void
-") Value;
-		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
-
-	:param CuIndex:
-	:type CuIndex: int
-	:param U:
-	:type U: float
-	:param Pt:
-	:type Pt: gp_Pnt2d
-	:rtype: void
-") Value;
-		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt);
+		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
-
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
@@ -1969,12 +822,12 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	:type Pt: gp_Pnt
 	:param V1:
 	:type V1: gp_Vec
-	:rtype: void
-") D1;
+	:rtype: void") D1;
 		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 
+		/****************** D1 ******************/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
@@ -1983,12 +836,12 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	:type Pt: gp_Pnt2d
 	:param V1:
 	:type V1: gp_Vec2d
-	:rtype: void
-") D1;
+	:rtype: void") D1;
 		virtual void D1 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
@@ -1999,12 +852,12 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	:type V1: gp_Vec
 	:param V2:
 	:type V2: gp_Vec
-	:rtype: void
-") D2;
+	:rtype: void") D2;
 		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt,gp_Vec & V1,gp_Vec & V2);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 
+		/****************** D2 ******************/
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 	:param CuIndex:
 	:type CuIndex: int
 	:param U:
@@ -2015,9 +868,15 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	:type V1: gp_Vec2d
 	:param V2:
 	:type V2: gp_Vec2d
-	:rtype: void
-") D2;
+	:rtype: void") D2;
 		virtual void D2 (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt,gp_Vec2d & V1,gp_Vec2d & V2);
+
+		/****************** Degree ******************/
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "* returns the degree of the curve(s).
+	:rtype: int") Degree;
+		virtual Standard_Integer Degree ();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -2026,7 +885,59 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
             self->Dump(s);
             return s.str();}
         };
-        };
+        		/****************** Knots ******************/
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "* Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
+	:rtype: TColStd_Array1OfReal") Knots;
+		const TColStd_Array1OfReal & Knots ();
+
+		/****************** Multiplicities ******************/
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "* Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
+	:rtype: TColStd_Array1OfInteger") Multiplicities;
+		const TColStd_Array1OfInteger & Multiplicities ();
+
+		/****************** SetKnots ******************/
+		%feature("compactdefaultargs") SetKnots;
+		%feature("autodoc", "* Knots of the multiBSpCurve are assigned to <theknots>.
+	:param theKnots:
+	:type theKnots: TColStd_Array1OfReal &
+	:rtype: None") SetKnots;
+		void SetKnots (const TColStd_Array1OfReal & theKnots);
+
+		/****************** SetMultiplicities ******************/
+		%feature("compactdefaultargs") SetMultiplicities;
+		%feature("autodoc", "* Multiplicities of the multiBSpCurve are assigned to <theMults>.
+	:param theMults:
+	:type theMults: TColStd_Array1OfInteger &
+	:rtype: None") SetMultiplicities;
+		void SetMultiplicities (const TColStd_Array1OfInteger & theMults);
+
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt
+	:rtype: void") Value;
+		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt & Pt);
+
+		/****************** Value ******************/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "* returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
+	:param CuIndex:
+	:type CuIndex: int
+	:param U:
+	:type U: float
+	:param Pt:
+	:type Pt: gp_Pnt2d
+	:rtype: void") Value;
+		virtual void Value (const Standard_Integer CuIndex,const Standard_Real U,gp_Pnt2d & Pt);
+
+};
 
 
 %extend AppParCurves_MultiBSpCurve {
@@ -2034,3 +945,51 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	__repr__ = _dumps_object
 	}
 };
+
+/* harray1 class */
+class AppParCurves_HArray1OfMultiCurve : public  AppParCurves_Array1OfMultiCurve, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiCurve::value_type& theValue);
+    AppParCurves_HArray1OfMultiCurve(const  AppParCurves_Array1OfMultiCurve& theOther);
+    const  AppParCurves_Array1OfMultiCurve& Array1();
+     AppParCurves_Array1OfMultiCurve& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfMultiCurve)
+
+
+class AppParCurves_HArray1OfConstraintCouple : public  AppParCurves_Array1OfConstraintCouple, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfConstraintCouple::value_type& theValue);
+    AppParCurves_HArray1OfConstraintCouple(const  AppParCurves_Array1OfConstraintCouple& theOther);
+    const  AppParCurves_Array1OfConstraintCouple& Array1();
+     AppParCurves_Array1OfConstraintCouple& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfConstraintCouple)
+
+
+class AppParCurves_HArray1OfMultiPoint : public  AppParCurves_Array1OfMultiPoint, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiPoint::value_type& theValue);
+    AppParCurves_HArray1OfMultiPoint(const  AppParCurves_Array1OfMultiPoint& theOther);
+    const  AppParCurves_Array1OfMultiPoint& Array1();
+     AppParCurves_Array1OfMultiPoint& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfMultiPoint)
+
+
+class AppParCurves_HArray1OfMultiBSpCurve : public  AppParCurves_Array1OfMultiBSpCurve, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiBSpCurve::value_type& theValue);
+    AppParCurves_HArray1OfMultiBSpCurve(const  AppParCurves_Array1OfMultiBSpCurve& theOther);
+    const  AppParCurves_Array1OfMultiBSpCurve& Array1();
+     AppParCurves_Array1OfMultiBSpCurve& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfMultiBSpCurve)
+
+
+/* harray2 class */
+/* harray2 class */

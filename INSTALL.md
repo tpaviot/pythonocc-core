@@ -19,21 +19,12 @@ Requirements
 pythonOCC needs the following libraries or programs to be installed before you
 can compile/use it :
 
-- the python programming language (http://www.python.org). Python 2.7 and 3.x
- are officially supported,
+- the python programming language (http://www.python.org). Python 3.x is required. Python 2
+is officially dropped since the release 7.4.0.
 
-- OpenCascade Community Edition 0.18.x (https://github.com/tpaviot/oce),
+- OpenCascade 7.4.0 (https://dev.opencascade.org),
 
-- FreeType 2.6.3 (https://www.freetype.org/),
-
-- SWIG 3.0.9 or higher (http://www.swig.org),
-
-- CMake 2.8 or higher (http://www.cmake.org).
-
-**Important**: the OCE version has to match the pythonocc-core version,
-which is currently **0.18.x**
-
-- Optional : smesh-6.7.6 (https://github.com/tpaviot/smesh)
+- SWIG 3.0.11 or higher (http://www.swig.org),
 
 Create a local copy of the repository
 -------------------------------------
@@ -50,7 +41,6 @@ pythonocc-core compilation
 The configuration steps uses cmake:
 
     cmake ..
-
 By default, cmake looks for oce include headers in /usr/local/include/oce and
 libraries in /usr/local/include/lib. If these paths don't match your
 installation, you have to set OCE_INCLUDE_PATH and OCE_LIB_PATH:
@@ -84,5 +74,6 @@ In order to check that everything is ok, run the pythonocc unittest suite:
     cd ../test
     python run_tests.py
 
-You can also run the examples avalaible in the pythonocc-core/examples
-directory.
+demos
+-----
+Download/test demos available at https://github.com/tpaviot/pythonocc-demos

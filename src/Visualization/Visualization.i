@@ -25,9 +25,14 @@
 %}
 
 %include ../SWIG_files/common/ExceptionCatcher.i
+%include ../SWIG_files/common/OccHandle.i
 %include "python/std_string.i"
 %include "std_vector.i"
 %include "typemaps.i"
+
+%wrap_handle(AIS_InteractiveContext)
+%wrap_handle(V3d_View)
+%wrap_handle(V3d_Viewer)
 
 %template(vector_float) std::vector<float>;
 

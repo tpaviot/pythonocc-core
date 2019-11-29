@@ -28,7 +28,7 @@ import itertools
 
 import OCC
 from OCC.Core.Aspect import Aspect_GFM_VER
-from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame
+from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame, AIS_Shape_SelectionMode
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
@@ -40,22 +40,24 @@ from OCC.Core.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
 from OCC.Core.Geom import Geom_Curve, Geom_Surface
 from OCC.Core.Geom2d import Geom2d_Curve
 from OCC.Core.Visualization import Display3d
-from OCC.Core.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
-                          V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos, V3d_TEX_ALL,
-                          V3d_TEX_NONE, V3d_TEX_ENVIRONMENT,
-                          V3d_LayerMgr)
+from OCC.Core.V3d import (V3d_ZBUFFER, V3d_Zpos, V3d_Zneg, V3d_Xpos,
+                          V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos)
 from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Core.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                                Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
                                Quantity_NOC_CYAN1, Quantity_NOC_RED,
                                Quantity_NOC_GREEN, Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
-from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text, Prs3d_TextAspect
+from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
 from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
-                                Handle_Graphic3d_TextureEnv, Graphic3d_TextureEnv,
+                                Handle_Graphic3d_TextureEnv_Create, Graphic3d_TextureEnv,
                                 Graphic3d_Camera, Graphic3d_RM_RAYTRACING,
                                 Graphic3d_RM_RASTERIZATION,
                                 Graphic3d_StereoMode_QuadBuffer,
-                                Graphic3d_RenderingParams)
+                                Graphic3d_RenderingParams,
+                                Graphic3d_MaterialAspect,
+                                Graphic3d_TOSM_FRAGMENT,
+                                Graphic3d_Structure
+                                )
 from OCC.Core.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
 
 # Shaders and Units definition must be found by occ
@@ -165,7 +167,7 @@ class Viewer3d(Display3d):
             self._select_callbacks.remove(callback)
 
     def MoveTo(self, X, Y):
-        self.Context.MoveTo(X, Y, self.View)
+        self.Context.MoveTo(X, Y, self.View, True)
 
     def FitAll(self):
         self.View.ZFitAll()
@@ -198,7 +200,7 @@ class Viewer3d(Display3d):
 
         if phong_shading:
             # gouraud shading by default, prefer phong instead
-            self.View.SetShadingModel(V3d_PHONG)
+            self.View.SetShadingModel(Graphic3d_TOSM_FRAGMENT)
 
         # the selected elements gray by default, better to use orange...
         # self.Context.SelectionColor(Quantity_NOC_ORANGE)
@@ -207,15 +209,19 @@ class Viewer3d(Display3d):
         self._struc_mgr = self.Context.MainPrsMgr().StructureManager()
 
         # overlayer
-        self.OverLayer = self.Viewer.Viewer().OverLayer()
-        if self.OverLayer is None:
-            aMgr = V3d_LayerMgr(self.View)
-            self.OverLayer = aMgr.Overlay()
-            self.View.SetLayerMgr(aMgr)
-        print("Layer manager created")
-        height, width = self.View.Window().Size()
-        print("Layer dimensions: %i, %i" % (height, width))
-        self.OverLayer.SetViewport(height, width)
+        ## TODO : code below is deprecated
+        ## for overlayers see
+        ## https://dev.opencascade.org/doc/overview/html/occt_dev_guides__upgrade.html
+        ##
+        # self.OverLayer = self.Viewer.Viewer().OverLayer()
+        # if self.OverLayer is None:
+        #     aMgr = V3d_LayerMgr(self.View)
+        #     self.OverLayer = aMgr.Overlay()
+        #     self.View.SetLayerMgr(aMgr)
+        # print("Layer manager created")
+        # height, width = self.View.Window().Size()
+        # print("Layer dimensions: %i, %i" % (height, width))
+        # self.OverLayer.SetViewport(height, width)
 
         # turn self._inited flag to True
         self._inited = True
@@ -228,20 +234,20 @@ class Viewer3d(Display3d):
 
     def Repaint(self):
         # overlayed objects
-        self.OverLayer.Begin()
-        for item in self._overlay_items:
-            item.RedrawLayerPrs()
-        self.OverLayer.End()
+        #self.OverLayer.Begin()
+        #for item in self._overlay_items:
+        #    item.RedrawLayerPrs()
+        #self.OverLayer.End()
         # finally redraw the view
         self.Viewer.Redraw()
 
     def SetModeWireFrame(self):
         self.View.SetComputedMode(False)
-        self.Context.SetDisplayMode(AIS_WireFrame)
+        self.Context.SetDisplayMode(AIS_WireFrame, True)
 
     def SetModeShaded(self):
         self.View.SetComputedMode(False)
-        self.Context.SetDisplayMode(AIS_Shaded)
+        self.Context.SetDisplayMode(AIS_Shaded, True)
 
     def SetModeHLR(self):
         self.View.SetComputedMode(True)
@@ -287,12 +293,10 @@ class Viewer3d(Display3d):
         """
         texture_env = Graphic3d_TextureEnv(name_of_texture)
         self.View.SetTextureEnv(texture_env)
-        self.View.SetSurfaceDetail(V3d_TEX_ENVIRONMENT)
         self.View.Redraw()
 
     def DisableTextureEnv(self):
-        self.View.SetSurfaceDetail(V3d_TEX_NONE)
-        a_null_texture = Handle_Graphic3d_TextureEnv()
+        a_null_texture = Handle_Graphic3d_TextureEnv_Create()
         self.View.SetTextureEnv(a_null_texture) # Passing null handle to clear the texture data
         self.View.Redraw()
 
@@ -352,7 +356,7 @@ class Viewer3d(Display3d):
     def display_triedron(self):
         """ Show a black triedron in lower right corner
         """
-        self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_NOC_BLACK, 0.1, V3d_ZBUFFER)
+        self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_Color(Quantity_NOC_BLACK), 0.1, V3d_ZBUFFER)
 
     def hide_triedron(self):
         """ Show a black triedron in lower right corner
@@ -390,25 +394,25 @@ class Viewer3d(Display3d):
         """ displays a vector as an arrow
         """
         if self._inited:
-            aPresentation = Prs3d_Presentation(self._struc_mgr)
+            aStructure = Graphic3d_Structure(self._struc_mgr)
 
             pnt_as_vec = gp_Vec(pnt.X(), pnt.Y(), pnt.Z())
             start = pnt_as_vec + vec
             pnt_start = gp_Pnt(start.X(), start.Y(), start.Z())
 
             Prs3d_Arrow.Draw(
-                aPresentation,
+                aStructure,
                 pnt_start,
                 gp_Dir(vec),
                 math.radians(20),
                 vec.Magnitude()
             )
-            aPresentation.Display()
+            aStructure.Display()
             # it would be more coherent if a AIS_InteractiveObject
             # would be returned
             if update:
                 self.Repaint()
-            return aPresentation
+            return aStructure
 
     def DisplayMessage(self, point, text_to_write, height=None, message_color=None, update=False):
         """
@@ -416,7 +420,7 @@ class Viewer3d(Display3d):
         :text_to_write: a string
         :message_color: triple with the range 0-1
         """
-        aPresentation = Prs3d_Presentation(self._struc_mgr)
+        aStructure = Graphic3d_Structure(self._struc_mgr)
         text_aspect = Prs3d_TextAspect()
 
         if message_color is not None:
@@ -425,16 +429,16 @@ class Viewer3d(Display3d):
             text_aspect.SetHeight(height)
         if isinstance(point, gp_Pnt2d):
             point = gp_Pnt(point.X(), point.Y(), 0)
-        Prs3d_Text.Draw(aPresentation,
+        Prs3d_Text.Draw(aStructure,
                         text_aspect,
                         to_string(text_to_write),
                         point)
-        aPresentation.Display()
+        aStructure.Display()
         # @TODO: it would be more coherent if a AIS_InteractiveObject
         # is be returned
         if update:
             self.Repaint()
-        return aPresentation
+        return aStructure
 
     def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=False):
         """ display one or a set of displayable objects
@@ -474,7 +478,6 @@ class Viewer3d(Display3d):
         for shape in shapes:
             if material or texture:
                 if texture:
-                    self.View.SetSurfaceDetail(V3d_TEX_ALL)
                     shape_to_display = AIS_TexturedShape(shape)
                     filename, toScaleU, toScaleV, toRepeatU, toRepeatV, originU, originV = texture.GetProperties()
                     shape_to_display.SetTextureFileName(TCollection_AsciiString(filename))
@@ -485,7 +488,7 @@ class Viewer3d(Display3d):
                     shape_to_display.SetDisplayMode(3)
                 elif material:
                     shape_to_display = AIS_Shape(shape)
-                    shape_to_display.SetMaterial(material)
+                    shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
             else:
                 # TODO: can we use .Set to attach all TopoDS_Shapes
                 # to this AIS_Shape instance?
@@ -509,10 +512,12 @@ class Viewer3d(Display3d):
         if material is None:
             #The default material is too shiny to show the object
             #color well, so I set it to something less reflective
-            shape_to_display.SetMaterial(Graphic3d_NOM_NEON_GNC)
+            shape_to_display.SetMaterial(Graphic3d_MaterialAspect(Graphic3d_NOM_NEON_GNC))
         if color:
             if isinstance(color, str):
                 color = get_color_from_name(color)
+            elif isinstance(color, int):
+                color = Quantity_Color(color)
             for shp in ais_shapes:
                 self.Context.SetColor(shp, color, False)
         if transparency:
@@ -538,7 +543,7 @@ class Viewer3d(Display3d):
                           'CYAN': Quantity_NOC_CYAN1,
                           'BLACK': Quantity_NOC_BLACK,
                           'ORANGE': Quantity_NOC_ORANGE}
-            clr = Quantity_Color(dict_color[color])
+            clr = dict_color[color]
         elif isinstance(color, Quantity_Color):
             clr = color
         else:
@@ -547,17 +552,19 @@ class Viewer3d(Display3d):
         return self.DisplayShape(shapes, color=clr, update=update)
 
     def EnableAntiAliasing(self):
-        self.View.SetAntialiasingOn()
-        self.Repaint()
+        #self.View.SetAntialiasingOn()
+        #self.Repaint()
+        print("Warning: EnableAntiAliasing does not work as exce$")
 
     def DisableAntiAliasing(self):
-        self.View.SetAntialiasingOff()
-        self.Repaint()
+        #self.View.SetAntialiasingOff()
+        #self.Repaint()
+        print("Warning: DisableAntiAliasing does not work as exce$")
 
     def EraseAll(self):
         # nessecary to remove text added by DisplayMessage
         self.Context.PurgeDisplay()
-        self.Context.EraseAll()
+        self.Context.EraseAll(True)
 
     def Tumble(self, num_images, animation=True):
         self.View.Tumble(num_images, animation)
@@ -566,14 +573,12 @@ class Viewer3d(Display3d):
         self.View.Pan(dx, dy)
 
     def SetSelectionMode(self, mode=None):
-        self.Context.CloseAllContexts()
-        self.Context.OpenLocalContext()
         topo_level = next(modes)
         if mode is None:
-            self.Context.ActivateStandardMode(topo_level)
+            self.Context.Activate(AIS_Shape_SelectionMode(topo_level), True)
         else:
-            self.Context.ActivateStandardMode(mode)
-        self.Context.UpdateSelected()
+            self.Context.Activate(AIS_Shape_SelectionMode(mode), True)
+        self.Context.UpdateSelected(True)
 
     def SetSelectionModeVertex(self):
         self.SetSelectionMode(TopAbs_VERTEX)
@@ -585,10 +590,10 @@ class Viewer3d(Display3d):
         self.SetSelectionMode(TopAbs_FACE)
 
     def SetSelectionModeShape(self):
-        self.Context.CloseAllContexts()
+        self.Context.Deactivate()
 
     def SetSelectionModeNeutral(self):
-        self.Context.CloseAllContexts()
+        self.Context.Deactivate()
 
     def GetSelectedShapes(self):
         return self.selected_shapes
@@ -600,7 +605,7 @@ class Viewer3d(Display3d):
         return self.selected_shape
 
     def SelectArea(self, Xmin, Ymin, Xmax, Ymax):
-        self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View)
+        self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View, True)
         self.Context.InitSelected()
         # reinit the selected_shapes list
         self.selected_shapes = []
@@ -613,7 +618,7 @@ class Viewer3d(Display3d):
             callback(self.selected_shapes, Xmin, Ymin, Xmax, Ymax)
 
     def Select(self, X, Y):
-        self.Context.Select()
+        self.Context.Select(True)
         self.Context.InitSelected()
 
         self.selected_shapes = []
