@@ -36,6 +36,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html
 
 
 %{
+#include<Precision.hxx>
+#include<ShapeUpgrade_UnifySameDomain.hxx>
 #include<ShapeUpgrade_module.hxx>
 
 //Dependencies
@@ -51,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html
 #include<ShapeExtend_module.hxx>
 #include<Message_module.hxx>
 #include<TColStd_module.hxx>
+#include<BRepTools_module.hxx>
 #include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<ShapeAnalysis_module.hxx>
@@ -86,6 +89,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html
 %import ShapeExtend.i
 %import Message.i
 %import TColStd.i
+%import BRepTools.i
 %import TopTools.i
 %import GeomAbs.i
 %import ShapeAnalysis.i
@@ -98,6 +102,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html
 %wrap_handle(ShapeUpgrade_SplitCurve)
 %wrap_handle(ShapeUpgrade_SplitSurface)
 %wrap_handle(ShapeUpgrade_Tool)
+%wrap_handle(ShapeUpgrade_UnifySameDomain)
 %wrap_handle(ShapeUpgrade_ConvertSurfaceToBezierBasis)
 %wrap_handle(ShapeUpgrade_EdgeDivide)
 %wrap_handle(ShapeUpgrade_FaceDivide)
@@ -676,6 +681,129 @@ class ShapeUpgrade_Tool : public Standard_Transient {
 %make_alias(ShapeUpgrade_Tool)
 
 %extend ShapeUpgrade_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class ShapeUpgrade_UnifySameDomain *
+*************************************/
+%nodefaultctor ShapeUpgrade_UnifySameDomain;
+class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
+	public:
+		/****************** AllowInternalEdges ******************/
+		%feature("compactdefaultargs") AllowInternalEdges;
+		%feature("autodoc", "* Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
+	:param theValue:
+	:type theValue: bool
+	:rtype: None") AllowInternalEdges;
+		void AllowInternalEdges (const Standard_Boolean theValue);
+
+		/****************** Build ******************/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "* Performs unification and builds the resulting shape.
+	:rtype: None") Build;
+		void Build ();
+
+		/****************** History ******************/
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "* Returns the history of the processed shapes.
+	:rtype: opencascade::handle<BRepTools_History>") History;
+		const opencascade::handle<BRepTools_History> & History ();
+
+		/****************** History ******************/
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "* Returns the history of the processed shapes.
+	:rtype: opencascade::handle<BRepTools_History>") History;
+		opencascade::handle<BRepTools_History> & History ();
+
+		/****************** Initialize ******************/
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "* Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization.
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param UnifyEdges: default value is Standard_True
+	:type UnifyEdges: bool
+	:param UnifyFaces: default value is Standard_True
+	:type UnifyFaces: bool
+	:param ConcatBSplines: default value is Standard_False
+	:type ConcatBSplines: bool
+	:rtype: None") Initialize;
+		void Initialize (const TopoDS_Shape & aShape,const Standard_Boolean UnifyEdges = Standard_True,const Standard_Boolean UnifyFaces = Standard_True,const Standard_Boolean ConcatBSplines = Standard_False);
+
+		/****************** KeepShape ******************/
+		%feature("compactdefaultargs") KeepShape;
+		%feature("autodoc", "* Sets the shape for avoid merging of the faces/edges. This shape can be vertex or edge. If the shape is a vertex it forbids merging of connected edges. If the shape is a edge it forbids merging of connected faces. This method can be called several times to keep several shapes.
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None") KeepShape;
+		void KeepShape (const TopoDS_Shape & theShape);
+
+		/****************** KeepShapes ******************/
+		%feature("compactdefaultargs") KeepShapes;
+		%feature("autodoc", "* Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape.
+	:param theShapes:
+	:type theShapes: TopTools_MapOfShape &
+	:rtype: None") KeepShapes;
+		void KeepShapes (const TopTools_MapOfShape & theShapes);
+
+		/****************** SetAngularTolerance ******************/
+		%feature("compactdefaultargs") SetAngularTolerance;
+		%feature("autodoc", "* Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular().
+	:param theValue:
+	:type theValue: float
+	:rtype: None") SetAngularTolerance;
+		void SetAngularTolerance (const Standard_Real theValue);
+
+		/****************** SetLinearTolerance ******************/
+		%feature("compactdefaultargs") SetLinearTolerance;
+		%feature("autodoc", "* Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion().
+	:param theValue:
+	:type theValue: float
+	:rtype: None") SetLinearTolerance;
+		void SetLinearTolerance (const Standard_Real theValue);
+
+		/****************** SetSafeInputMode ******************/
+		%feature("compactdefaultargs") SetSafeInputMode;
+		%feature("autodoc", "* Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
+	:param theValue:
+	:type theValue: bool
+	:rtype: None") SetSafeInputMode;
+		void SetSafeInputMode (Standard_Boolean theValue);
+
+		/****************** Shape ******************/
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "* Gives the resulting shape
+	:rtype: TopoDS_Shape") Shape;
+		const TopoDS_Shape  Shape ();
+
+		/****************** ShapeUpgrade_UnifySameDomain ******************/
+		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
+		%feature("autodoc", "* Empty constructor
+	:rtype: None") ShapeUpgrade_UnifySameDomain;
+		 ShapeUpgrade_UnifySameDomain ();
+
+		/****************** ShapeUpgrade_UnifySameDomain ******************/
+		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
+		%feature("autodoc", "* Constructor defining input shape and necessary flags. It does not perform unification.
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param UnifyEdges: default value is Standard_True
+	:type UnifyEdges: bool
+	:param UnifyFaces: default value is Standard_True
+	:type UnifyFaces: bool
+	:param ConcatBSplines: default value is Standard_False
+	:type ConcatBSplines: bool
+	:rtype: None") ShapeUpgrade_UnifySameDomain;
+		 ShapeUpgrade_UnifySameDomain (const TopoDS_Shape & aShape,const Standard_Boolean UnifyEdges = Standard_True,const Standard_Boolean UnifyFaces = Standard_True,const Standard_Boolean ConcatBSplines = Standard_False);
+
+};
+
+
+%make_alias(ShapeUpgrade_UnifySameDomain)
+
+%extend ShapeUpgrade_UnifySameDomain {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
