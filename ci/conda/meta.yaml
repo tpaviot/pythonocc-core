@@ -1,4 +1,4 @@
-{% set version = "7.4.0beta" %}
+{% set version = "7.4.0-dev" %}
 
 package:
   name: pythonocc-core
